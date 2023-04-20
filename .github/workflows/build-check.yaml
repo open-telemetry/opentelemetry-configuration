@@ -1,0 +1,23 @@
+name: Build Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check-schema:
+    runs-on: ubuntu-latest
+    steps:
+    - name: check out code
+      uses: actions/checkout@v2
+
+    - name: install dependencies
+      run: npm install
+
+    - name: compile schema
+      run: make compile-schema
+
+    - name: validate example
+      run: make validate-example
