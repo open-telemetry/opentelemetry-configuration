@@ -6,7 +6,7 @@
     "additionalProperties": true,
     "properties": {
         "file_format": {
-            "type": "number"
+            "type": "string"
         }
     },
     "required": [
