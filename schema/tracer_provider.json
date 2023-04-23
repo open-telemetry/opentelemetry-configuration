@@ -1,0 +1,9 @@
+{
+    "$id": "https://opentelemetry.io/otelconfig/tracer_provider.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "TracerProvider",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+    }
+}
