@@ -1,4 +1,4 @@
-SCHEMA_FILES := $(shell find .  -path './schema/*.json' -exec basename {} \; | sort)
+SCHEMA_FILES := $(shell find . -path './schema/*.json' -exec basename {} \; | sort)
 
 .PHONY: all
 all: install-tools compile-schema validate-example
