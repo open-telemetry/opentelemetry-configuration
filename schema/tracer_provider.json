@@ -8,8 +8,14 @@
         "span_limits": {
             "title": "SpanLimits",
             "type": "object",
-            "allOf": [{ "$ref": "common.json#/definitions/AttributeLimits" }],
+            "additionalProperties": false,
             "properties": {
+                "attribute_value_length_limit": {
+                    "type": "integer"
+                },
+                "attribute_count_limit": {
+                    "type": "integer"
+                },
                 "event_count_limit": {
                     "type": "integer"
                 },
