@@ -1,2 +1,11 @@
 # The file format version
 file_format: "0.1"
+
+# Configure logger provider.
+logger_provider: {}
+
+# Configure meter provider.
+meter_provider: {}
+
+# Configure tracer provider.
+tracer_provider: {}

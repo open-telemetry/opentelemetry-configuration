@@ -1,0 +1,9 @@
+{
+    "$id": "https://opentelemetry.io/otelconfig/meter_provider.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "MeterProvider",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+    }
+}
