@@ -5,5 +5,24 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
+        "span_limits": {
+            "title": "SpanLimits",
+            "type": "object",
+            "allOf": [{ "$ref": "common.json#/definitions/AttributeLimits" }],
+            "properties": {
+                "event_count_limit": {
+                    "type": "integer"
+                },
+                "link_count_limit": {
+                    "type": "integer"
+                },
+                "event_attribute_count_limit": {
+                    "type": "integer"
+                },
+                "link_attribute_count_limit": {
+                    "type": "integer"
+                }
+            }
+        }
     }
 }

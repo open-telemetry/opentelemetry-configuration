@@ -1,0 +1,17 @@
+{
+    "$id": "https://opentelemetry.io/otelconfig/common.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "definitions": {
+        "AttributeLimits": {
+            "type": "object",
+            "properties": {
+                "attribute_value_length_limit": {
+                    "type": "integer"
+                },
+                "attribute_count_limit": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

@@ -5,5 +5,10 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
+        "log_record_limits": {
+            "title": "LogRecordLimits",
+            "type": "object",
+            "allOf": [{ "$ref": "common.json#/definitions/AttributeLimits" }]
+        }
     }
 }

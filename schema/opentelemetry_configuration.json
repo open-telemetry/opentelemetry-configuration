@@ -8,6 +8,9 @@
         "file_format": {
             "type": "string"
         },
+        "attribute_limits": {
+            "$ref": "common.json#/definitions/AttributeLimits"
+        },
         "logger_provider": {
             "$ref": "logger_provider.json"
         },
