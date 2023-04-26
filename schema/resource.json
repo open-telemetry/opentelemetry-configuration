@@ -1,0 +1,12 @@
+{
+    "$id": "https://opentelemetry.io/otelconfig/resource.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Resource",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "attributes": {
+            "$ref": "attributes.json"
+        }
+    }
+}

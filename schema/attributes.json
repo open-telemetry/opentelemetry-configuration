@@ -1,0 +1,15 @@
+{
+    "$id": "https://opentelemetry.io/otelconfig/attributes.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Attributes",
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+        "service.name": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "service.name"
+    ]
+}
