@@ -1,7 +1,7 @@
 # The file format version
 file_format: "0.1"
 
-# Configure general attribute limits. See also tracer_provider.span_limits, logger_provider.log_record_limits.
+# Configure general attribute limits. See also tracer_provider.span_limits, logger_provider.logrecord_limits.
 attribute_limits:
   # Set the max attribute value size.
   #
@@ -15,7 +15,7 @@ attribute_limits:
 # Configure logger provider.
 logger_provider:
   # Configure the log record limits. See also attribute_limits.
-  log_record_limits:
+  logrecord_limits:
     # Set the max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
     #
     # Environment variable: OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT
