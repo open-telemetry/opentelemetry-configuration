@@ -10,7 +10,7 @@ meter_provider: {}
 # Configure tracer provider.
 tracer_provider: {}
 
-# Configure resource attributes and resource detection for all signals.
+# Configure resource for all signals.
 resource:
   # Key-value pairs to be used as resource attributes.
   #
