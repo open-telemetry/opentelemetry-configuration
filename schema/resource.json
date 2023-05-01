@@ -6,7 +6,19 @@
     "additionalProperties": false,
     "properties": {
         "attributes": {
-            "$ref": "attributes.json"
+            "$ref": "#/$defs/Attributes"
+        }
+    },
+    "$defs": {
+        "Attributes": {
+            "title": "Attributes",
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+                "service.name": {
+                    "type": "string"
+                }
+            }
         }
     }
 }
