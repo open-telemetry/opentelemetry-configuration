@@ -5,5 +5,30 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
+        "span_limits": {
+            "title": "SpanLimits",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "attribute_value_length_limit": {
+                    "type": "integer"
+                },
+                "attribute_count_limit": {
+                    "type": "integer"
+                },
+                "event_count_limit": {
+                    "type": "integer"
+                },
+                "link_count_limit": {
+                    "type": "integer"
+                },
+                "event_attribute_count_limit": {
+                    "type": "integer"
+                },
+                "link_attribute_count_limit": {
+                    "type": "integer"
+                }
+            }
+        }
     }
 }

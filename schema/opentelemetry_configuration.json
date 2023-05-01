@@ -8,6 +8,19 @@
         "file_format": {
             "type": "string"
         },
+        "attribute_limits": {
+            "title": "AttributeLimits",
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+                "attribute_value_length_limit": {
+                    "type": "integer"
+                },
+                "attribute_count_limit": {
+                    "type": "integer"
+                }
+            }
+        },
         "logger_provider": {
             "$ref": "logger_provider.json"
         },
