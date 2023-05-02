@@ -56,3 +56,14 @@ tracer_provider:
     #
     # Environment variable: OTEL_LINK_ATTRIBUTE_COUNT_LIMIT
     link_attribute_count_limit: 128
+
+# Configure resource for all signals.
+resource:
+  # Key-value pairs to be used as resource attributes.
+  #
+  # Environment variable: OTEL_RESOURCE_ATTRIBUTES
+  attributes:
+    # Sets the value of the `service.name` resource attribute
+    #
+    # Environment variable: OTEL_SERVICE_NAME
+    service.name: !!str "unknown_service"
