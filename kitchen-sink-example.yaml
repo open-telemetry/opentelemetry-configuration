@@ -1,11 +1,69 @@
 # The file format version
 file_format: "0.1"
 
+# Configure general attribute limits. See also tracer_provider.span_limits, logger_provider.logrecord_limits.
+attribute_limits:
+  # Set the max attribute value size.
+  #
+  # Environment variable: OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT
+  attribute_value_length_limit: 4096
+  # Set the max attribute count.
+  #
+  # Environment variable: OTEL_ATTRIBUTE_COUNT_LIMIT
+  attribute_count_limit: 128
+
 # Configure logger provider.
-logger_provider: {}
+logger_provider:
+  # Configure the log record limits. See also attribute_limits.
+  logrecord_limits:
+    # Set the max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
+    #
+    # Environment variable: OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT
+    attribute_value_length_limit: 4096
+    # Set the max log record attribute count. Overrides attribute_limits.attribute_count_limit.
+    #
+    # Environment variable: OTEL_LOGRECORD_ATTRIBUTE_COUNT_LIMIT
+    attribute_count_limit: 128
 
 # Configure meter provider.
 meter_provider: {}
 
 # Configure tracer provider.
-tracer_provider: {}
+tracer_provider:
+  # Configure span limits. See also attribute_limits.
+  span_limits:
+    # Set the max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
+    #
+    # Environment variable: OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT
+    attribute_value_length_limit: 4096
+    # Set the max span attribute count. Overrides attribute_limits.attribute_count_limit.
+    #
+    # Environment variable: OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT
+    attribute_count_limit: 128
+    # Set the max span event count.
+    #
+    # Environment variable: OTEL_SPAN_EVENT_COUNT_LIMIT
+    event_count_limit: 128
+    # Set the max span link count.
+    #
+    # Environment variable: OTEL_SPAN_LINK_COUNT_LIMIT
+    link_count_limit: 128
+    # Set the max attributes per span event.
+    #
+    # Environment variable: OTEL_EVENT_ATTRIBUTE_COUNT_LIMIT
+    event_attribute_count_limit: 128
+    # Set the max attributes per span link.
+    #
+    # Environment variable: OTEL_LINK_ATTRIBUTE_COUNT_LIMIT
+    link_attribute_count_limit: 128
+
+# Configure resource for all signals.
+resource:
+  # Key-value pairs to be used as resource attributes.
+  #
+  # Environment variable: OTEL_RESOURCE_ATTRIBUTES
+  attributes:
+    # Sets the value of the `service.name` resource attribute
+    #
+    # Environment variable: OTEL_SERVICE_NAME
+    service.name: !!str "unknown_service"

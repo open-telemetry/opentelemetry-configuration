@@ -5,5 +5,18 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
+        "logrecord_limits": {
+            "title": "LogRecordLimits",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "attribute_value_length_limit": {
+                    "type": "integer"
+                },
+                "attribute_count_limit": {
+                    "type": "integer"
+                }
+            }
+        }
     }
 }
