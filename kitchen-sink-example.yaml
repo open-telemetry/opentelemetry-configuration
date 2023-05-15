@@ -28,6 +28,11 @@ logger_provider:
 # Configure meter provider.
 meter_provider: {}
 
+# Configure context propagators.
+#
+# Environment variable: OTEL_PROPAGATORS
+propagators: [tracecontext, baggage, b3, b3multi, jaeger, xray, ottrace]
+
 # Configure tracer provider.
 tracer_provider:
   # Configure span limits. See also attribute_limits.
