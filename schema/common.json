@@ -1,0 +1,13 @@
+{
+    "$id": "https://opentelemetry.io/otelconfig/common.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Common",
+    "type": "object",
+    "$defs": {
+        "Headers": {
+            "type": "object",
+            "additionalProperties": true,
+            "title": "Headers"
+        }
+    }
+}
