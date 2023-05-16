@@ -7,9 +7,6 @@
     "properties": {
         "sampler_id": {
             "type": "string"
-        },
-        "argument": {
-            "type": "string"
         }
     }
 }

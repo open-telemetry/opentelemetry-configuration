@@ -30,6 +30,26 @@ meter_provider: {}
 
 # Configure tracer provider.
 tracer_provider:
+  sampler:
+    # Choose sampler id. Must be entry point name of sampler
+    sampler_id: parent_based
+    # Set root sampler.
+    root:
+      sampler_id: custom_sampler_id
+      ratio: 0.01
+    # Set the sampler used when the parent is remote and is sampled.
+    remote_parent_sampled:
+      sampler_id: always_on
+    # Set the sampler used when the parent is remote and is not sampled.
+    remote_parent_not_sampled:
+      sampler_id: always_off
+    # Set the sampler used when the parent is local and is sampled.
+    local_parent_sampled:
+      sampler_id: always_on
+    # Set the sampler used when the parent is local and is not sampled.
+    local_parent_not_sampled:
+      sampler_id: always_off
+    
   # Configure span limits. See also attribute_limits.
   span_limits:
     # Set the max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
