@@ -1,5 +1,40 @@
 # The file format version
 file_format: "0.1"
+exporters: &otlp-exporter
+  otlp:
+    # Sets the protocol.
+    #
+    # Environment variable: OTEL_EXPORTER_OTLP_PROTOCOL, OTEL_EXPORTER_OTLP_METRICS_PROTOCOL
+    protocol: http/protobuf
+    # Sets the endpoint.
+    #
+    # Environment variable: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_METRICS_ENDPOINT
+    endpoint: http://localhost:4318/v1/metrics
+    # Sets the certificate.
+    #
+    # Environment variable: OTEL_EXPORTER_OTLP_CERTIFICATE, OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE
+    certificate: /app/cert.pem
+    # Sets the mTLS private client key.
+    #
+    # Environment variable: OTEL_EXPORTER_OTLP_CLIENT_KEY, OTEL_EXPORTER_OTLP_METRICS_CLIENT_KEY
+    client_key: /app/cert.pem
+    # Sets the mTLS client certificate.
+    #
+    # Environment variable: OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE, OTEL_EXPORTER_OTLP_METRICS_CLIENT_CERTIFICATE
+    client_certificate: /app/cert.pem
+    # Sets the headers.
+    #
+    # Environment variable: OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_METRICS_HEADERS
+    headers:
+      api-key: 1234
+    # Sets the compression.
+    #
+    # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_METRICS_COMPRESSION
+    compression: gzip
+    # Sets the max time to wait for each export.
+    #
+    # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_METRICS_TIMEOUT
+    timeout: 10000
 
 # Configure general attribute limits. See also tracer_provider.span_limits, logger_provider.logrecord_limits.
 attribute_limits:
@@ -26,7 +61,54 @@ logger_provider:
     attribute_count_limit: 128
 
 # Configure meter provider.
-meter_provider: {}
+meter_provider:
+  metric_readers:
+    # Add a pull-based metric reader.
+    pull/prometheus:
+      exporter:
+        prometheus:
+          # Set the host used to serve metrics in the prometheus format.
+          #
+          # Environment variable: OTEL_EXPORTER_PROMETHEUS_HOST
+          host: localhost
+          # Set the port used to serve metrics in the prometheus format.
+          #
+          # Environment variable: OTEL_EXPORTER_PROMETHEUS_PORT
+          port: 9464
+    # Add a periodic metric reader.
+    #
+    # Environment variable: OTEL_METRICS_EXPORT_*, OTEL_METRICS_EXPORTER
+    periodic/otlp:
+      # Sets delay interval between the start of two consecutive export attempts.
+      #
+      # Environment variable: OTEL_METRIC_EXPORT_INTERVAL
+      interval: 5000
+      # Sets the maximum allowed time to export data.
+      #
+      # Environment variable: OTEL_METRIC_EXPORT_TIMEOUT
+      timeout: 30000
+      # Sets the exporter. Exporter must refer to a key in sdk.meter_provider.exporters.
+      #
+      # Environment variable: OTEL_METRICS_EXPORTER
+      exporter:
+        # expand the otlp-exporter anchor and add metric specific configuration
+        <<: *otlp-exporter
+        # Sets the temporality preference.
+        #
+        # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+        temporality_preference: delta
+        # Sets the default histogram aggregation.
+        #
+        # Environment variable: OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION
+        default_histogram_aggregation: exponential_bucket_histogram
+    periodic/console:
+      exporter:
+        console: {}
+
+# Configure context propagators.
+#
+# Environment variable: OTEL_PROPAGATORS
+propagators: [tracecontext, baggage, b3, b3multi, jaeger, xray, ottrace]
 
 # Configure tracer provider.
 tracer_provider:
