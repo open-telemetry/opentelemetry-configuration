@@ -5,6 +5,16 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
+        "sampler": {
+            "title": "Sampler",
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+                "sampler_id": {
+                    "type": "string"
+                }
+            }
+        },
         "span_limits": {
             "title": "SpanLimits",
             "type": "object",
