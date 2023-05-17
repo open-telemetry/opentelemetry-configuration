@@ -1,0 +1,12 @@
+{
+    "$id": "https://opentelemetry.io/otelconfig/sampler.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Sampler",
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+        "sampler_id": {
+            "type": "string"
+        }
+    }
+}
