@@ -36,7 +36,7 @@ exporters: &otlp-exporter
     # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_METRICS_TIMEOUT
     timeout: 10000
 
-# Configure general attribute limits. See also tracer_provider.span_limits, logger_provider.logrecord_limits.
+# Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
   # Set the max attribute value size.
   #
@@ -50,7 +50,7 @@ attribute_limits:
 # Configure logger provider.
 logger_provider:
   # Configure the log record limits. See also attribute_limits.
-  logrecord_limits:
+  limits:
     # Set the max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
     #
     # Environment variable: OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT
@@ -62,7 +62,7 @@ logger_provider:
 
 # Configure meter provider.
 meter_provider:
-  metric_readers:
+  readers:
     # Add a pull-based metric reader.
     pull/prometheus:
       exporter:
@@ -113,7 +113,7 @@ propagators: [tracecontext, baggage, b3, b3multi, jaeger, xray, ottrace]
 # Configure tracer provider.
 tracer_provider:
   # Configure span limits. See also attribute_limits.
-  span_limits:
+  limits:
     # Set the max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
     #
     # Environment variable: OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT

@@ -5,7 +5,7 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
-        "metric_readers": {
+        "readers": {
             "type": "object",
             "additionalProperties": true,
             "patternProperties": {

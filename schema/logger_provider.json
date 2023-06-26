@@ -5,7 +5,7 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
-        "logrecord_limits": {
+        "limits": {
             "title": "LogRecordLimits",
             "type": "object",
             "additionalProperties": false,

@@ -30,3 +30,12 @@ Allowable changes:
 
 - For major versions: All changes are permitted.
 - For minor versions: TBD
+
+## Naming guidelines
+
+The following defines guidelines used to produce configuration schema:
+
+1. To remove redundant information from the configuration file, prefixes for data produced by each of the providers
+will removed from configuration options. For example, under the `meter_provider` configuration, metric readers will be
+identified by the word `readers` rather than by `metric_readers`. Similarly, the prefix `span_` will be dropped for tracer
+provider configuration, and `logrecord` for logger provider.
