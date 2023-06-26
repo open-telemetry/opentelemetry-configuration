@@ -61,7 +61,7 @@
                     "$ref": "#/$defs/OtlpMetric"
                 },
                 "console": {
-                    "$ref": "common.js#/$defs/Console"
+                    "$ref": "common.json#/$defs/Console"
                 },
                 "prometheus": {
                     "$ref": "#/$defs/Prometheus"
@@ -84,6 +84,48 @@
                     "type": "integer"
                 }
             }
+        },
+        "OtlpMetric": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "protocol": {
+                    "type": "string",
+                    "pattern": "^(http|grpc)\\/(protobuf|json)"
+                },
+                "endpoint": {
+                    "type": "string"
+                },
+                "certificate": {
+                    "type": "string"
+                },
+                "client_key": {
+                    "type": "string"
+                },
+                "client_certificate": {
+                    "type": "string"
+                },
+                "headers": {
+                    "$ref": "common.json#/$defs/Headers"
+                },
+                "compression": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "type": "integer"
+                },
+                "temporality_preference": {
+                    "type": "string"
+                },
+                "default_histogram_aggregation": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "endpoint",
+                "protocol"
+            ],
+            "title": "OtlpMetric"
         }
     }
 }

@@ -59,6 +59,18 @@
             "additionalProperties": false,
             "title": "BatchSpanProcessor",
             "properties": {
+                "schedule_delay": {
+                    "type": "integer"
+                },
+                "export_timeout": {
+                    "type": "integer"
+                },
+                "max_queue_size": {
+                    "type": "integer"
+                },
+                "max_export_batch_size": {
+                    "type": "integer"
+                },
                 "exporter": {
                     "$ref": "#/$defs/SpanExporter"
                 }
@@ -67,12 +79,19 @@
         "SpanExporter": {
             "type": "object",
             "additionalProperties": true,
-            "patternProperties": {
-                "^otlp.*": {
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "otlp": {
                     "$ref": "common.json#/$defs/Otlp"
                 },
-                "^console.*": {
+                "console": {
                     "$ref": "common.json#/$defs/Console"
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
                 }
             }
         }

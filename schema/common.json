@@ -37,12 +37,6 @@
                 },
                 "timeout": {
                     "type": "integer"
-                },
-                "temporality_preference": {
-                    "type": "string"
-                },
-                "default_histogram_aggregation": {
-                    "type": "string"
                 }
             },
             "required": [
