@@ -138,6 +138,38 @@ tracer_provider:
     #
     # Environment variable: OTEL_LINK_ATTRIBUTE_COUNT_LIMIT
     link_attribute_count_limit: 128
+  # Configure the sampler.
+  sampler:
+    # Set the sampler id. Known values include: always_on, always_off, jaeger_remote, parent_based, trace_id_ratio_based.
+    #
+    # Environment variable: OTEL_TRACES_SAMPLER=parentbased_*
+    id: parent_based
+    # Configure the parent_based root sampler.
+    root:
+      # Set the parent_based root sampler id.
+      #
+      # Environment variable: OTEL_TRACES_SAMPLER=parentbased_traceidratio
+      id: trace_id_ratio_based
+      # Set the trace_id_ratio_based sampler trace_id_ratio.
+      #
+      # Environment variable: OTEL_TRACES_SAMPLER_ARG=traceidratio=0.0001
+      trace_id_ratio: 0.0001
+    # Configure the parent_based remote_parent_sampled sampler.
+    remote_parent_sampled:
+      # Set parent_based remote_parent_sampled sampler id.
+      id: always_on
+    # Configure the parent_based remote_parent_not_sampled sampler.
+    remote_parent_not_sampled:
+      # Set parent_based remote_parent_not_sampled sampler id.
+      id: always_off
+    # Configure the parent_based local_parent_sampled sampler.
+    local_parent_sampled:
+      # Set parent_based local_parent_sampled sampler id.
+      id: always_on
+    # Configure the parent_based local_parent_not_sampled sampler.
+    local_parent_not_sampled:
+      # Set parent_based local_parent_not_sampled sampler id.
+      id: always_off
 
 # Configure resource for all signals.
 resource:

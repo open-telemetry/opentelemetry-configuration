@@ -29,6 +29,89 @@
                     "type": "integer"
                 }
             }
+        },
+        "sampler": {
+            "$ref": "#/$defs/Sampler"
+        }
+    },
+    "$defs": {
+        "Sampler": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            },
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "id": {
+                                "const":  "jaeger_remote"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "endpoint": {
+                                "type": "string"
+                            },
+                            "interval": {
+                                "type": "integer"
+                            },
+                            "initial_sampler": {
+                                "$ref": "#/$defs/Sampler"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "id": {
+                                "const":  "parent_based"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "root": {
+                                "$ref": "#/$defs/Sampler"
+                            },
+                            "remote_parent_sampled": {
+                                "$ref": "#/$defs/Sampler"
+                            },
+                            "remote_parent_not_sampled": {
+                                "$ref": "#/$defs/Sampler"
+                            },
+                            "local_parent_sampled": {
+                                "$ref": "#/$defs/Sampler"
+                            },
+                            "local_parent_not_sampled": {
+                                "$ref": "#/$defs/Sampler"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "id": {
+                                "const":  "trace_id_ratio_based"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "ratio": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                }
+            ]
+
         }
     }
 }
