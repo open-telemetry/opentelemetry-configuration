@@ -5,7 +5,7 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
-        "span_limits": {
+        "limits": {
             "title": "SpanLimits",
             "type": "object",
             "additionalProperties": false,
