@@ -54,15 +54,22 @@
         "MetricExporter": {
             "type": "object",
             "additionalProperties": true,
-            "patternProperties": {
-                "^otlp.*": {
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "otlp": {
                     "$ref": "#/$defs/Otlp"
                 },
-                "^console.*": {
+                "console": {
                     "$ref": "#/$defs/Console"
                 },
-                "^prometheus.*": {
+                "prometheus": {
                     "$ref": "#/$defs/Prometheus"
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
                 }
             }
         },
