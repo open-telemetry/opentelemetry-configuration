@@ -8,8 +8,8 @@ exporters:
     protocol: http/protobuf
     # Sets the endpoint.
     #
-    # Environment variable: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_METRICS_ENDPOINT
-    endpoint: http://localhost:4318/v1/metrics
+    # Environment variable: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_METRICS_ENDPOINT, OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+    endpoint: http://localhost:4318
     # Sets the certificate.
     #
     # Environment variable: OTEL_EXPORTER_OTLP_CERTIFICATE, OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE
@@ -113,6 +113,31 @@ propagators: [tracecontext, baggage, b3, b3multi, jaeger, xray, ottrace]
 
 # Configure tracer provider.
 tracer_provider:
+  processors:
+    batch/otlp:
+      # Sets the delay interval between two consecutive exports.
+      #
+      # Environment variable: OTEL_BSP_SCHEDULE_DELAY
+      schedule_delay: 5000
+      # Sets the maximum allowed time to export data.
+      #
+      # Environment variable: OTEL_BSP_EXPORT_TIMEOUT
+      export_timeout: 30000
+      # Sets the maximum queue size.
+      #
+      # Environment variable: OTEL_BSP_MAX_QUEUE_SIZE
+      max_queue_size: 2048
+      # Sets the maximum batch size.
+      #
+      # Environment variable: OTEL_BSP_MAX_EXPORT_BATCH_SIZE
+      max_export_batch_size: 512
+      exporter:
+        otlp:
+          # expand the otlp-exporter anchor
+          <<: *otlp-exporter
+    batch/console:
+      exporter:
+        console: {}
   # Configure span limits. See also attribute_limits.
   limits:
     # Set the max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.

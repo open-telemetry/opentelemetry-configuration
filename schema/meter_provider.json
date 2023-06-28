@@ -58,10 +58,10 @@
             "maxProperties": 1,
             "properties": {
                 "otlp": {
-                    "$ref": "#/$defs/Otlp"
+                    "$ref": "#/$defs/OtlpMetric"
                 },
                 "console": {
-                    "$ref": "#/$defs/Console"
+                    "$ref": "common.json#/$defs/Console"
                 },
                 "prometheus": {
                     "$ref": "#/$defs/Prometheus"
@@ -73,12 +73,19 @@
                 }
             }
         },
-        "Console": {
+        "Prometheus": {
             "type": "object",
             "additionalProperties": false,
-            "properties": {}
+            "properties": {
+                "host": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "integer"
+                }
+            }
         },
-        "Otlp": {
+        "OtlpMetric": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -118,19 +125,7 @@
                 "endpoint",
                 "protocol"
             ],
-            "title": "Otlp"
-        },
-        "Prometheus": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "host": {
-                    "type": "string"
-                },
-                "port": {
-                    "type": "integer"
-                }
-            }
+            "title": "OtlpMetric"
         }
     }
 }

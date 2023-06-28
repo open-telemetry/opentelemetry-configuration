@@ -5,6 +5,18 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
+        "processors": {
+            "type": "object",
+            "additionalProperties": true,
+            "patternProperties": {
+                "^batch.*": {
+                    "$ref": "#/$defs/BatchSpanProcessor"
+                },
+                "^simple.*": {
+                    "$ref": "#/$defs/SimpleSpanProcessor"
+                }
+            }
+        },
         "limits": {
             "title": "SpanLimits",
             "type": "object",
@@ -27,6 +39,59 @@
                 },
                 "link_attribute_count_limit": {
                     "type": "integer"
+                }
+            }
+        }
+    },
+    "$defs": {
+        "SimpleSpanProcessor": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "SimpleSpanProcessor",
+            "properties": {
+                "exporter": {
+                    "$ref": "#/$defs/SpanExporter"
+                }
+            }
+        },
+        "BatchSpanProcessor": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "BatchSpanProcessor",
+            "properties": {
+                "schedule_delay": {
+                    "type": "integer"
+                },
+                "export_timeout": {
+                    "type": "integer"
+                },
+                "max_queue_size": {
+                    "type": "integer"
+                },
+                "max_export_batch_size": {
+                    "type": "integer"
+                },
+                "exporter": {
+                    "$ref": "#/$defs/SpanExporter"
+                }
+            }
+        },
+        "SpanExporter": {
+            "type": "object",
+            "additionalProperties": true,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "otlp": {
+                    "$ref": "common.json#/$defs/Otlp"
+                },
+                "console": {
+                    "$ref": "common.json#/$defs/Console"
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
                 }
             }
         }
