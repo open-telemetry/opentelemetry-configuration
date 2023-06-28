@@ -29,6 +29,77 @@
                     "type": "integer"
                 }
             }
+        },
+        "sampler": {
+            "$ref": "#/$defs/Sampler"
+        }
+    },
+    "$defs": {
+        "Sampler": {
+            "type": "object",
+            "additionalProperties": true,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "always_off": {
+                    "type": "object",
+                    "additionalProperties": false
+                },
+                "always_on": {
+                    "type": "object",
+                    "additionalProperties": false
+                },
+                "jaeger_remote": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "endpoint": {
+                            "type": "string"
+                        },
+                        "interval": {
+                            "type": "integer"
+                        },
+                        "initial_sampler": {
+                            "$ref": "#/$defs/Sampler"
+                        }
+                    }
+                },
+                "parent_based": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "root": {
+                            "$ref": "#/$defs/Sampler"
+                        },
+                        "remote_parent_sampled": {
+                            "$ref": "#/$defs/Sampler"
+                        },
+                        "remote_parent_not_sampled": {
+                            "$ref": "#/$defs/Sampler"
+                        },
+                        "local_parent_sampled": {
+                            "$ref": "#/$defs/Sampler"
+                        },
+                        "local_parent_not_sampled": {
+                            "$ref": "#/$defs/Sampler"
+                        }
+                    }
+                },
+                "trace_id_ratio_based": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "ratio": {
+                            "type": "number"
+                        }
+                    }
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
+                }
+            }
         }
     }
 }
