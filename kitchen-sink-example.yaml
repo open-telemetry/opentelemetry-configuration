@@ -1,7 +1,7 @@
 # The file format version
 file_format: "0.1"
-exporters: &otlp-exporter
-  otlp:
+exporters:
+  otlp: &otlp-exporter
     # Sets the protocol.
     #
     # Environment variable: OTEL_EXPORTER_OTLP_PROTOCOL, OTEL_EXPORTER_OTLP_METRICS_PROTOCOL
@@ -91,16 +91,17 @@ meter_provider:
       #
       # Environment variable: OTEL_METRICS_EXPORTER
       exporter:
-        # expand the otlp-exporter anchor and add metric specific configuration
-        <<: *otlp-exporter
-        # Sets the temporality preference.
-        #
-        # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
-        temporality_preference: delta
-        # Sets the default histogram aggregation.
-        #
-        # Environment variable: OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION
-        default_histogram_aggregation: exponential_bucket_histogram
+        otlp:
+          # expand the otlp-exporter anchor and add metric specific configuration
+          <<: *otlp-exporter
+          # Sets the temporality preference.
+          #
+          # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+          temporality_preference: delta
+          # Sets the default histogram aggregation.
+          #
+          # Environment variable: OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION
+          default_histogram_aggregation: exponential_bucket_histogram
     periodic/console:
       exporter:
         console: {}
