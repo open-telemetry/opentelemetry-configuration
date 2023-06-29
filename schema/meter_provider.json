@@ -20,7 +20,7 @@
         "views": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/ViewRegistration"
+                "$ref": "#/$defs/View"
             }
         }
     },
@@ -60,24 +60,38 @@
         "MetricExporter": {
             "type": "object",
             "additionalProperties": true,
-            "patternProperties": {
-                "^otlp.*": {
-                    "$ref": "#/$defs/Otlp"
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "otlp": {
+                    "$ref": "#/$defs/OtlpMetric"
                 },
-                "^console.*": {
-                    "$ref": "#/$defs/Console"
+                "console": {
+                    "$ref": "common.json#/$defs/Console"
                 },
-                "^prometheus.*": {
+                "prometheus": {
                     "$ref": "#/$defs/Prometheus"
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
                 }
             }
         },
-        "Console": {
+        "Prometheus": {
             "type": "object",
             "additionalProperties": false,
-            "properties": {}
+            "properties": {
+                "host": {
+                    "type": "string"
+                },
+                "port": {
+                    "type": "integer"
+                }
+            }
         },
-        "Otlp": {
+        "OtlpMetric": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -117,25 +131,14 @@
                 "endpoint",
                 "protocol"
             ],
-            "title": "Otlp"
+            "title": "OtlpMetric"
         },
-        "Prometheus": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "host": {
-                    "type": "string"
-                },
-                "port": {
-                    "type": "integer"
-                }
-            }
-        },
-        "ViewRegistration": {
+        "View": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "selector": {
+                    "title": "Selector",
                     "type": "object",
                     "additionalProperties": false,
                     "properties": {
@@ -156,7 +159,8 @@
                         }
                     }
                 },
-                "view": {
+                "stream": {
+                    "title": "Stream",
                     "type": "object",
                     "additionalProperties": false,
                     "properties": {
@@ -222,7 +226,6 @@
                                 "type": "string"
                             }
                         }
-
                     }
                 }
             }

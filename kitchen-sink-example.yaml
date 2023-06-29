@@ -1,15 +1,15 @@
 # The file format version
 file_format: "0.1"
-exporters: &otlp-exporter
-  otlp:
+exporters:
+  otlp: &otlp-exporter
     # Sets the protocol.
     #
     # Environment variable: OTEL_EXPORTER_OTLP_PROTOCOL, OTEL_EXPORTER_OTLP_METRICS_PROTOCOL
     protocol: http/protobuf
     # Sets the endpoint.
     #
-    # Environment variable: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_METRICS_ENDPOINT
-    endpoint: http://localhost:4318/v1/metrics
+    # Environment variable: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_METRICS_ENDPOINT, OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+    endpoint: http://localhost:4318
     # Sets the certificate.
     #
     # Environment variable: OTEL_EXPORTER_OTLP_CERTIFICATE, OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE
@@ -91,16 +91,17 @@ meter_provider:
       #
       # Environment variable: OTEL_METRICS_EXPORTER
       exporter:
-        # expand the otlp-exporter anchor and add metric specific configuration
-        <<: *otlp-exporter
-        # Sets the temporality preference.
-        #
-        # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
-        temporality_preference: delta
-        # Sets the default histogram aggregation.
-        #
-        # Environment variable: OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION
-        default_histogram_aggregation: exponential_bucket_histogram
+        otlp:
+          # expand the otlp-exporter anchor and add metric specific configuration
+          <<: *otlp-exporter
+          # Sets the temporality preference.
+          #
+          # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+          temporality_preference: delta
+          # Sets the default histogram aggregation.
+          #
+          # Environment variable: OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION
+          default_histogram_aggregation: exponential_bucket_histogram
     periodic/console:
       exporter:
         console: {}
@@ -118,7 +119,7 @@ meter_provider:
         meter_version: 1.0.0
         # Configure the view to meter schema url selection criteria.
         meter_schema_url: https://opentelemetry.io/schemas/1.16.0
-      view:
+      stream:
         # Configure the metric name of the resulting stream(s).
         name: new_instrument_name
         # Configure the metric description of the resulting stream(s).
@@ -143,6 +144,31 @@ propagators: [tracecontext, baggage, b3, b3multi, jaeger, xray, ottrace]
 
 # Configure tracer provider.
 tracer_provider:
+  processors:
+    batch/otlp:
+      # Sets the delay interval between two consecutive exports.
+      #
+      # Environment variable: OTEL_BSP_SCHEDULE_DELAY
+      schedule_delay: 5000
+      # Sets the maximum allowed time to export data.
+      #
+      # Environment variable: OTEL_BSP_EXPORT_TIMEOUT
+      export_timeout: 30000
+      # Sets the maximum queue size.
+      #
+      # Environment variable: OTEL_BSP_MAX_QUEUE_SIZE
+      max_queue_size: 2048
+      # Sets the maximum batch size.
+      #
+      # Environment variable: OTEL_BSP_MAX_EXPORT_BATCH_SIZE
+      max_export_batch_size: 512
+      exporter:
+        otlp:
+          # expand the otlp-exporter anchor
+          <<: *otlp-exporter
+    batch/console:
+      exporter:
+        console: {}
   # Configure span limits. See also attribute_limits.
   limits:
     # Set the max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
