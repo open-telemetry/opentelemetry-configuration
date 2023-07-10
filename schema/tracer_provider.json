@@ -47,6 +47,28 @@
         }
     },
     "$defs": {
+        "BatchSpanProcessor": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "BatchSpanProcessor",
+            "properties": {
+                "schedule_delay": {
+                    "type": "integer"
+                },
+                "export_timeout": {
+                    "type": "integer"
+                },
+                "max_queue_size": {
+                    "type": "integer"
+                },
+                "max_export_batch_size": {
+                    "type": "integer"
+                },
+                "exporter": {
+                    "$ref": "#/$defs/SpanExporter"
+                }
+            }
+        },
         "Sampler": {
             "type": "object",
             "additionalProperties": true,
@@ -112,36 +134,12 @@
                     "type": "object"
                 }
             }
-        }
-    },
-    "$defs": {
+        },
         "SimpleSpanProcessor": {
             "type": "object",
             "additionalProperties": false,
             "title": "SimpleSpanProcessor",
             "properties": {
-                "exporter": {
-                    "$ref": "#/$defs/SpanExporter"
-                }
-            }
-        },
-        "BatchSpanProcessor": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "BatchSpanProcessor",
-            "properties": {
-                "schedule_delay": {
-                    "type": "integer"
-                },
-                "export_timeout": {
-                    "type": "integer"
-                },
-                "max_queue_size": {
-                    "type": "integer"
-                },
-                "max_export_batch_size": {
-                    "type": "integer"
-                },
                 "exporter": {
                     "$ref": "#/$defs/SpanExporter"
                 }
