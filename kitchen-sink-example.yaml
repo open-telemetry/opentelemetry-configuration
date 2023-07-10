@@ -133,6 +133,37 @@ meter_provider:
     periodic/console:
       exporter:
         console: {}
+  # Configure views. Each view has a selector which determines the instrument(s) it applies to, and a view which configures resulting metric stream(s).
+  views:
+    # Add a view.
+    - selector:
+        # Configure the view to instrument name selection criteria.
+        instrument_name: my-instrument
+        # Configure the view to instrument type selection criteria.
+        instrument_type: histogram
+        # Configure the view to meter name selection criteria.
+        meter_name: my-meter
+        # Configure the view to meter version selection criteria.
+        meter_version: 1.0.0
+        # Configure the view to meter schema url selection criteria.
+        meter_schema_url: https://opentelemetry.io/schemas/1.16.0
+      stream:
+        # Configure the metric name of the resulting stream(s).
+        name: new_instrument_name
+        # Configure the metric description of the resulting stream(s).
+        description: new_description
+        # Configure the aggregation of the resulting stream(s). Known values include: default, drop, explicit_bucket_histogram, exponential_bucket_histogram, last_value, sum.
+        aggregation:
+          # Set the aggregation to be explicit_bucket_histogram.
+          explicit_bucket_histogram:
+            # Configure the explicit_bucket_histogram bucket boundaries.
+            boundaries: [ 0.0, 5.0, 10.0, 25.0, 50.0, 75.0, 100.0, 250.0, 500.0, 750.0, 1000.0, 2500.0, 5000.0, 7500.0, 10000.0 ]
+            # Configure the explicit_bucket_histogram to record min and max.
+            record_min_max: true
+        # Configure the attribute keys retained in the resulting stream(s).
+        attribute_keys:
+          - key1
+          - key2
 
 # Configure context propagators.
 #

@@ -16,6 +16,12 @@
                     "$ref": "#/$defs/PullMetricReader"
                 }
             }
+        },
+        "views": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/View"
+            }
         }
     },
     "$defs": {
@@ -126,6 +132,103 @@
                 "protocol"
             ],
             "title": "OtlpMetric"
+        },
+        "View": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "selector": {
+                    "title": "Selector",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "instrument_name": {
+                            "type": "string"
+                        },
+                        "instrument_type": {
+                            "type": "string"
+                        },
+                        "meter_name": {
+                            "type": "string"
+                        },
+                        "meter_version": {
+                            "type": "string"
+                        },
+                        "meter_schema_url": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "stream": {
+                    "title": "Stream",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "aggregation": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "minProperties": 1,
+                            "maxProperties": 1,
+                            "properties": {
+                                "default": {
+                                    "type": "null"
+                                },
+                                "drop": {
+                                    "type": "null"
+                                },
+                                "explicit_bucket_histogram": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "boundaries": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "record_min_max": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                },
+                                "exponential_bucket_histogram": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "max_scale": {
+                                            "type": "integer"
+                                        },
+                                        "max_size": {
+                                            "type": "integer"
+                                        },
+                                        "record_min_max": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                },
+                                "last_value": {
+                                    "type": "null"
+                                },
+                                "sum": {
+                                    "type": "null"
+                                }
+                            }
+                        },
+                        "attribute_keys": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
