@@ -6,14 +6,25 @@
     "additionalProperties": false,
     "properties": {
         "processors": {
-            "type": "object",
-            "additionalProperties": true,
-            "patternProperties": {
-                "^batch.*": {
-                    "$ref": "#/$defs/BatchLogRecordProcessor"
+            "type": "array",
+            "items": {
+                "title": "LogRecordProcessor",
+                "type": "object",
+                "additionalProperties": true,
+                "minProperties": 1,
+                "maxProperties": 1,
+                "properties": {
+                    "batch": {
+                        "$ref": "#/$defs/BatchLogRecordProcessor"
+                    },
+                    "simple": {
+                        "$ref": "#/$defs/SimpleLogRecordProcessor"
+                    }
                 },
-                "^simple.*": {
-                    "$ref": "#/$defs/SimpleLogRecordProcessor"
+                "patternProperties": {
+                    ".*": {
+                        "type": "object"
+                    }
                 }
             }
         },

@@ -6,14 +6,20 @@
     "additionalProperties": false,
     "properties": {
         "readers": {
-            "type": "object",
-            "additionalProperties": true,
-            "patternProperties": {
-                "^periodic.*": {
-                    "$ref": "#/$defs/PeriodicMetricReader"
-                },
-                "^pull.*": {
-                    "$ref": "#/$defs/PullMetricReader"
+            "type": "array",
+            "items": {
+                "title": "MetricReader",
+                "type": "object",
+                "additionalProperties": false,
+                "minProperties": 1,
+                "maxProperties": 1,
+                "properties": {
+                    "periodic": {
+                        "$ref": "#/$defs/PeriodicMetricReader"
+                    },
+                    "pull": {
+                        "$ref": "#/$defs/PullMetricReader"
+                    }
                 }
             }
         },

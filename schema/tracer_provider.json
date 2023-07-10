@@ -6,14 +6,25 @@
     "additionalProperties": false,
     "properties": {
         "processors": {
-            "type": "object",
-            "additionalProperties": true,
-            "patternProperties": {
-                "^batch.*": {
-                    "$ref": "#/$defs/BatchSpanProcessor"
+            "type": "array",
+            "items": {
+                "title": "SpanProcessor",
+                "type": "object",
+                "additionalProperties": true,
+                "minProperties": 1,
+                "maxProperties": 1,
+                "properties": {
+                    "batch": {
+                        "$ref": "#/$defs/BatchSpanProcessor"
+                    },
+                    "simple": {
+                        "$ref": "#/$defs/SimpleSpanProcessor"
+                    }
                 },
-                "^simple.*": {
-                    "$ref": "#/$defs/SimpleSpanProcessor"
+                "patternProperties": {
+                    ".*": {
+                        "type": "object"
+                    }
                 }
             }
         },
