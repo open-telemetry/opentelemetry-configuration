@@ -5,6 +5,18 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
+        "processors": {
+            "type": "object",
+            "additionalProperties": true,
+            "patternProperties": {
+                "^batch.*": {
+                    "$ref": "#/$defs/BatchLogRecordProcessor"
+                },
+                "^simple.*": {
+                    "$ref": "#/$defs/SimpleLogRecordProcessor"
+                }
+            }
+        },
         "limits": {
             "title": "LogRecordLimits",
             "type": "object",
@@ -15,6 +27,54 @@
                 },
                 "attribute_count_limit": {
                     "type": "integer"
+                }
+            }
+        }
+    },
+    "$defs": {
+        "SimpleLogRecordProcessor": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "exporter": {
+                    "$ref": "#/$defs/LogRecordExporter"
+                }
+            }
+        },
+        "BatchLogRecordProcessor": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "schedule_delay": {
+                    "type": "integer"
+                },
+                "export_timeout": {
+                    "type": "integer"
+                },
+                "max_queue_size": {
+                    "type": "integer"
+                },
+                "max_export_batch_size": {
+                    "type": "integer"
+                },
+                "exporter": {
+                    "$ref": "#/$defs/LogRecordExporter"
+                }
+            }
+        },
+        "LogRecordExporter": {
+            "type": "object",
+            "additionalProperties": true,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "otlp": {
+                    "$ref": "common.json#/$defs/Otlp"
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
                 }
             }
         }

@@ -49,6 +49,34 @@ attribute_limits:
 
 # Configure logger provider.
 logger_provider:
+  # Configure log record processors.
+  processors:
+    # Add a batch log record processor.
+    batch/otlp:
+      # Sets the delay interval between two consecutive exports.
+      #
+      # Environment variable: OTEL_BLRP_SCHEDULE_DELAY
+      schedule_delay: 5000
+      # Sets the maximum allowed time to export data.
+      #
+      # Environment variable: OTEL_BLRP_EXPORT_TIMEOUT
+      export_timeout: 30000
+      # Sets the maximum queue size.
+      #
+      # Environment variable: OTEL_BLRP_MAX_QUEUE_SIZE
+      max_queue_size: 2048
+      # Sets the maximum batch size.
+      #
+      # Environment variable: OTEL_BLRP_MAX_EXPORT_BATCH_SIZE
+      max_export_batch_size: 512
+      # Set the exporter.
+      #
+      # Environment variable: OTEL_LOGS_EXPORTER
+      exporter:
+        # Set the exporter to be OTLP.
+        otlp:
+          # expand the otlp-exporter anchor
+          <<: *otlp-exporter
   # Configure the log record limits. See also attribute_limits.
   limits:
     # Set the max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
@@ -144,7 +172,9 @@ propagators: [tracecontext, baggage, b3, b3multi, jaeger, xray, ottrace]
 
 # Configure tracer provider.
 tracer_provider:
+  # Configure span processors.
   processors:
+    # Add a batch span processor.
     batch/otlp:
       # Sets the delay interval between two consecutive exports.
       #
@@ -162,12 +192,19 @@ tracer_provider:
       #
       # Environment variable: OTEL_BSP_MAX_EXPORT_BATCH_SIZE
       max_export_batch_size: 512
+      # Set the exporter.
+      #
+      # Environment variable: OTEL_TRACES_EXPORTER
       exporter:
+        # Set the exporter to be OTLP.
         otlp:
           # expand the otlp-exporter anchor
           <<: *otlp-exporter
-    batch/console:
+    # Add a simple span processor.
+    simple/console:
+      # Set the exporter.
       exporter:
+        # Set the exporter to be console.
         console: {}
   # Configure span limits. See also attribute_limits.
   limits:
