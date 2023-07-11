@@ -20,4 +20,4 @@ jobs:
       run: make compile-schema
 
     - name: validate example
-      run: make validate-example
+      run: make validate-examples

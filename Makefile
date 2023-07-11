@@ -1,7 +1,8 @@
 SCHEMA_FILES := $(shell find . -path './schema/*.json' -exec basename {} \; | sort)
+EXAMPLE_FILES := $(shell find . -path './examples/*.yaml' | sort)
 
 .PHONY: all
-all: install-tools compile-schema validate-example
+all: install-tools compile-schema validate-examples
 
 .PHONY: compile-schema
 compile-schema:
@@ -11,10 +12,13 @@ compile-schema:
 	        || exit 1; \
 	done
 
-.PHONY: validate-example
-validate-example:
+.PHONY: validate-examples
+validate-examples:
 	@if ! npm ls ajv-cli; then npm install; fi
-	npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./schema/opentelemetry_configuration.json -r "./schema/!(opentelemetry_configuration.json)" -d ./kitchen-sink-example.yaml
+	@for f in $(EXAMPLE_FILES); do \
+		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./schema/opentelemetry_configuration.json -r "./schema/!(opentelemetry_configuration.json)" -d $$f \
+		    || exit 1; \
+	done
 
 .PHONY: install-tools
 install-tools:
