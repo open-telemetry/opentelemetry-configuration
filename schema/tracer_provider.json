@@ -8,50 +8,11 @@
         "processors": {
             "type": "array",
             "items": {
-                "title": "SpanProcessor",
-                "type": "object",
-                "additionalProperties": true,
-                "minProperties": 1,
-                "maxProperties": 1,
-                "properties": {
-                    "batch": {
-                        "$ref": "#/$defs/BatchSpanProcessor"
-                    },
-                    "simple": {
-                        "$ref": "#/$defs/SimpleSpanProcessor"
-                    }
-                },
-                "patternProperties": {
-                    ".*": {
-                        "type": "object"
-                    }
-                }
+                "$ref": "#/$defs/SpanProcessor"
             }
         },
         "limits": {
-            "title": "SpanLimits",
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "attribute_value_length_limit": {
-                    "type": "integer"
-                },
-                "attribute_count_limit": {
-                    "type": "integer"
-                },
-                "event_count_limit": {
-                    "type": "integer"
-                },
-                "link_count_limit": {
-                    "type": "integer"
-                },
-                "event_attribute_count_limit": {
-                    "type": "integer"
-                },
-                "link_attribute_count_limit": {
-                    "type": "integer"
-                }
-            }
+            "$ref": "#/$defs/SpanLimits"
         },
         "sampler": {
             "$ref": "#/$defs/Sampler"
@@ -167,6 +128,49 @@
                 },
                 "console": {
                     "$ref": "common.json#/$defs/Console"
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
+                }
+            }
+        },
+        "SpanLimits": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "attribute_value_length_limit": {
+                    "type": "integer"
+                },
+                "attribute_count_limit": {
+                    "type": "integer"
+                },
+                "event_count_limit": {
+                    "type": "integer"
+                },
+                "link_count_limit": {
+                    "type": "integer"
+                },
+                "event_attribute_count_limit": {
+                    "type": "integer"
+                },
+                "link_attribute_count_limit": {
+                    "type": "integer"
+                }
+            }
+        },
+        "SpanProcessor": {
+            "type": "object",
+            "additionalProperties": true,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "batch": {
+                    "$ref": "#/$defs/BatchSpanProcessor"
+                },
+                "simple": {
+                    "$ref": "#/$defs/SimpleSpanProcessor"
                 }
             },
             "patternProperties": {

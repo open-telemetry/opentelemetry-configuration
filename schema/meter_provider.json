@@ -8,19 +8,7 @@
         "readers": {
             "type": "array",
             "items": {
-                "title": "MetricReader",
-                "type": "object",
-                "additionalProperties": false,
-                "minProperties": 1,
-                "maxProperties": 1,
-                "properties": {
-                    "periodic": {
-                        "$ref": "#/$defs/PeriodicMetricReader"
-                    },
-                    "pull": {
-                        "$ref": "#/$defs/PullMetricReader"
-                    }
-                }
+                "$ref": "#/$defs/MetricReader"
             }
         },
         "views": {
@@ -94,6 +82,20 @@
                 },
                 "port": {
                     "type": "integer"
+                }
+            }
+        },
+        "MetricReader": {
+            "type": "object",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "periodic": {
+                    "$ref": "#/$defs/PeriodicMetricReader"
+                },
+                "pull": {
+                    "$ref": "#/$defs/PullMetricReader"
                 }
             }
         },
