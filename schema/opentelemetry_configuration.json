@@ -9,17 +9,7 @@
             "type": "string"
         },
         "attribute_limits": {
-            "title": "AttributeLimits",
-            "type": "object",
-            "additionalProperties": true,
-            "properties": {
-                "attribute_value_length_limit": {
-                    "type": "integer"
-                },
-                "attribute_count_limit": {
-                    "type": "integer"
-                }
-            }
+            "$ref": "#/$defs/AttributeLimits"
         },
         "logger_provider": {
             "$ref": "logger_provider.json"
@@ -42,5 +32,19 @@
     },
     "required": [
         "file_format"
-    ]
+    ],
+    "$defs": {
+        "AttributeLimits": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+                "attribute_value_length_limit": {
+                    "type": "integer"
+                },
+                "attribute_count_limit": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
 }

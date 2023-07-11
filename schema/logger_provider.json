@@ -6,29 +6,13 @@
     "additionalProperties": false,
     "properties": {
         "processors": {
-            "type": "object",
-            "additionalProperties": true,
-            "patternProperties": {
-                "^batch.*": {
-                    "$ref": "#/$defs/BatchLogRecordProcessor"
-                },
-                "^simple.*": {
-                    "$ref": "#/$defs/SimpleLogRecordProcessor"
-                }
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/LogRecordProcessor"
             }
         },
         "limits": {
-            "title": "LogRecordLimits",
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "attribute_value_length_limit": {
-                    "type": "integer"
-                },
-                "attribute_count_limit": {
-                    "type": "integer"
-                }
-            }
+            "$ref": "#/$defs/LogRecordLimits"
         }
     },
     "$defs": {
@@ -70,6 +54,37 @@
             "properties": {
                 "otlp": {
                     "$ref": "common.json#/$defs/Otlp"
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
+                }
+            }
+        },
+        "LogRecordLimits": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "attribute_value_length_limit": {
+                    "type": "integer"
+                },
+                "attribute_count_limit": {
+                    "type": "integer"
+                }
+            }
+        },
+        "LogRecordProcessor": {
+            "type": "object",
+            "additionalProperties": true,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "batch": {
+                    "$ref": "#/$defs/BatchLogRecordProcessor"
+                },
+                "simple": {
+                    "$ref": "#/$defs/SimpleLogRecordProcessor"
                 }
             },
             "patternProperties": {
