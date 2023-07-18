@@ -23,7 +23,10 @@
                 "exporter": {
                     "$ref": "#/$defs/LogRecordExporter"
                 }
-            }
+            },
+            "required": [
+                "exporter"
+            ]
         },
         "BatchLogRecordProcessor": {
             "type": "object",
@@ -44,7 +47,10 @@
                 "exporter": {
                     "$ref": "#/$defs/LogRecordExporter"
                 }
-            }
+            },
+            "required": [
+                "exporter"
+            ]
         },
         "LogRecordExporter": {
             "type": "object",

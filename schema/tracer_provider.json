@@ -39,7 +39,10 @@
                 "exporter": {
                     "$ref": "#/$defs/SpanExporter"
                 }
-            }
+            },
+            "required": [
+                "exporter"
+            ]
         },
         "Sampler": {
             "type": "object",
@@ -115,7 +118,10 @@
                 "exporter": {
                     "$ref": "#/$defs/SpanExporter"
                 }
-            }
+            },
+            "required": [
+                "exporter"
+            ]
         },
         "SpanExporter": {
             "type": "object",
