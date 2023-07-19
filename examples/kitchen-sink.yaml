@@ -71,7 +71,7 @@ logger_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_LOGS_HEADERS
             headers:
-              api-key: !!str 1234
+              api-key: "1234"
             # Sets the compression.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_LOGS_COMPRESSION
