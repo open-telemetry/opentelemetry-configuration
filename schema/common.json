@@ -6,8 +6,12 @@
     "$defs": {
         "Headers": {
             "type": "object",
-            "additionalProperties": true,
-            "title": "Headers"
+            "title": "Headers",
+            "patternProperties": {
+                ".*": {
+                    "type": "string"
+                }
+            }
         },
         "Otlp": {
             "type": "object",

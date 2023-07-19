@@ -9,7 +9,7 @@ exporters:
     client_key: /app/cert.pem
     client_certificate: /app/cert.pem
     headers:
-      api-key: 1234
+      api-key: !!str 1234
     compression: gzip
     timeout: 10000
 
