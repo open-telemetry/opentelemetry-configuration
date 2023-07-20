@@ -24,10 +24,12 @@
             "additionalProperties": false,
             "properties": {
                 "interval": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "timeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "exporter": {
                     "$ref": "#/$defs/MetricExporter"
@@ -126,7 +128,8 @@
                     "type": "string"
                 },
                 "timeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "temporality_preference": {
                     "type": "string"

@@ -33,16 +33,20 @@
             "additionalProperties": false,
             "properties": {
                 "schedule_delay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "export_timeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "max_queue_size": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "max_export_batch_size": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "exporter": {
                     "$ref": "#/$defs/LogRecordExporter"
@@ -73,10 +77,12 @@
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "attribute_count_limit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 }
             }
         },
