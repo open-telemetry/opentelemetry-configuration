@@ -36,7 +36,8 @@
                     "type": "string"
                 },
                 "timeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 }
             },
             "required": [

@@ -25,16 +25,20 @@
             "title": "BatchSpanProcessor",
             "properties": {
                 "schedule_delay": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "export_timeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "max_queue_size": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "max_export_batch_size": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "exporter": {
                     "$ref": "#/$defs/SpanExporter"
@@ -66,7 +70,8 @@
                             "type": "string"
                         },
                         "interval": {
-                            "type": "integer"
+                            "type": "integer",
+                            "minimum": 0
                         },
                         "initial_sampler": {
                             "$ref": "#/$defs/Sampler"
@@ -147,22 +152,28 @@
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "attribute_count_limit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "event_count_limit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "link_count_limit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "event_attribute_count_limit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 },
                 "link_attribute_count_limit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 0
                 }
             }
         },
