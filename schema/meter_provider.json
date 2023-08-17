@@ -163,8 +163,8 @@
                                 "histogram",
                                 "observable_counter",
                                 "observable_gauge",
-                                "observable_updown_counter",
-                                "updown_counter"
+                                "observable_up_down_counter",
+                                "up_down_counter"
                             ]
                         },
                         "unit": {
