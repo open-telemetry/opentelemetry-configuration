@@ -157,7 +157,15 @@
                             "type": "string"
                         },
                         "instrument_type": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": [
+                                "counter",
+                                "histogram",
+                                "observable_counter",
+                                "observable_gauge",
+                                "observable_up_down_counter",
+                                "up_down_counter"
+                            ]
                         },
                         "unit": {
                             "type": "string"
