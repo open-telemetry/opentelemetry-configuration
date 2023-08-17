@@ -167,6 +167,9 @@
                                 "updown_counter"
                             ]
                         },
+                        "unit": {
+                            "type": "string"
+                        },
                         "meter_name": {
                             "type": "string"
                         },
