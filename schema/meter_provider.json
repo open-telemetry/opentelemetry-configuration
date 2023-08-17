@@ -159,6 +159,9 @@
                         "instrument_type": {
                             "type": "string"
                         },
+                        "unit": {
+                            "type": "string"
+                        },
                         "meter_name": {
                             "type": "string"
                         },
