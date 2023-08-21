@@ -8,6 +8,9 @@
         "file_format": {
             "type": "string"
         },
+        "disabled": {
+            "type": "boolean"
+        },
         "attribute_limits": {
             "$ref": "#/$defs/AttributeLimits"
         },
