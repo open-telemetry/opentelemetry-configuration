@@ -31,7 +31,7 @@ meter_provider:
             # expand the otlp-exporter anchor and add metric specific configuration
             <<: *otlp-exporter
             temporality_preference: delta
-            default_histogram_aggregation: exponential_bucket_histogram
+            default_histogram_aggregation: base2_exponential_bucket_histogram
 
 tracer_provider:
   processors:

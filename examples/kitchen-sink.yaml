@@ -174,7 +174,7 @@ meter_provider:
             # Configure default histogram aggregation.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION
-            default_histogram_aggregation: exponential_bucket_histogram
+            default_histogram_aggregation: base2_exponential_bucket_histogram
     # Configure a periodic metric reader.
     - periodic:
         # Configure exporter.

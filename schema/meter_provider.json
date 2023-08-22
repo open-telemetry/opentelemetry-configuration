@@ -135,7 +135,11 @@
                     "type": "string"
                 },
                 "default_histogram_aggregation": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "explicit_bucket_histogram",
+                        "base2_exponential_bucket_histogram"
+                    ]
                 }
             },
             "required": [
@@ -219,7 +223,7 @@
                                         }
                                     }
                                 },
-                                "exponential_bucket_histogram": {
+                                "base2_exponential_bucket_histogram": {
                                     "type": "object",
                                     "additionalProperties": false,
                                     "properties": {
