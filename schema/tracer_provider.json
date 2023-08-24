@@ -139,6 +139,9 @@
                 },
                 "console": {
                     "$ref": "common.json#/$defs/Console"
+                },
+                "zipkin": {
+                    "$ref": "#/$defs/Zipkin"
                 }
             },
             "patternProperties": {
@@ -195,6 +198,23 @@
                     "type": "object"
                 }
             }
+        },
+        "Zipkin": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "endpoint": {
+                    "type": "string"
+                },
+                "timeout": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            },
+            "required": [
+                "endpoint"
+            ],
+            "title": "Zipkin"
         }
     }
 }
