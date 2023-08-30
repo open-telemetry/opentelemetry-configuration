@@ -216,10 +216,11 @@ meter_provider:
           - key1
           - key2
 
-# Configure context propagators.
+# Configure text map context propagators.
 #
 # Environment variable: OTEL_PROPAGATORS
-propagators: [tracecontext, baggage, b3, b3multi, jaeger, xray, ottrace]
+propagator:
+  composite: [tracecontext, baggage, b3, b3multi, jaeger, xray, ottrace]
 
 # Configure tracer provider.
 tracer_provider:
