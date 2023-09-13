@@ -203,10 +203,12 @@
                             "maxProperties": 1,
                             "properties": {
                                 "default": {
-                                    "type": "null"
+                                    "type": "object",
+                                    "additionalProperties": false
                                 },
                                 "drop": {
-                                    "type": "null"
+                                    "type": "object",
+                                    "additionalProperties": false
                                 },
                                 "explicit_bucket_histogram": {
                                     "type": "object",
@@ -239,10 +241,12 @@
                                     }
                                 },
                                 "last_value": {
-                                    "type": "null"
+                                    "type": "object",
+                                    "additionalProperties": false
                                 },
                                 "sum": {
-                                    "type": "null"
+                                    "type": "object",
+                                    "additionalProperties": false
                                 }
                             }
                         },
