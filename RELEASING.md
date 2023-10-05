@@ -66,6 +66,6 @@ for a list of major changes since last release.
 
 ## Update release versions in documentations and CHANGELOG files
 
-After releasing is done, you need to update [README.md](README.md) and [CHANGELOG.md](CHANGELOG.md).
+After releasing is done, you need to update the [CHANGELOG.md](CHANGELOG.md).
 
 Create a PR to mark the new release in [CHANGELOG.md](CHANGELOG.md) on main branch.
