@@ -2,10 +2,8 @@
 
 ## Tagging the Release
 
-Our release branches follow the naming convention of `v<major>.<minor>.x`, while
-the tags include the patch version `v<major>.<minor>.<patch>`. For example, the
-same branch `v0.3.x` would be used to create all `v0.3` tags (e.g. `v0.3.0`,
-`v0.3.1`).
+Our release tags follow the convention `v<major>.<minor>.<patch>`. For example,
+the `v0.1.0`, `v0.1.1`).
 
 In this section upstream repository refers to the main opentelemetry-configuration
 github repository.
@@ -13,21 +11,24 @@ github repository.
 Before any push to the upstream repository you need to create a [personal access
 token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-1. Create the release branch and push it to GitHub:
+1. Checkout `main` and ensure you are synchronized with main on `upstream`.
 
     ```bash
-    MAJOR=0 MINOR=3 PATCH=0 # Set appropriately for new release
-    git checkout -b v$MAJOR.$MINOR.x main
-    git push upstream v$MAJOR.$MINOR.x
+   git checkout main
+   git pull upstream main
     ```
 
-2. For `vMajor.Minor.x` branch:
+NOTE: Your local `main` branch should have additional commits besides those on
+upstream `main`.
+
+TODO: include command for ensuring local main is identical to upstream main.
+
+2. For `vMajor.Minor.Patch` tag:
 
     - Create and push a tag:
 
     ```bash
-    git checkout v$MAJOR.$MINOR.x
-    git pull upstream v$MAJOR.$MINOR.x
+    MAJOR=0 MINOR=1 PATCH=0 # Set appropriately for new release
     git tag -a v$MAJOR.$MINOR.$PATCH -m "Version $MAJOR.$MINOR.$PATCH"
     git push upstream v$MAJOR.$MINOR.$PATCH
     ```
@@ -35,21 +36,13 @@ token](https://help.github.com/articles/creating-a-personal-access-token-for-the
 ## Patch Release
 
 All patch releases should include only bug-fixes, and must avoid
-adding/modifying the public APIs. To cherry-pick one commit use the following
-instructions:
+adding/modifying the public APIs. To prepare a patch follow the following instructions:
 
-- Create and push a tag:
+* Checkout the tag corresponding to the version to patch (e.g. `v0.1.0` if producing `v0.1.1`)
+* Cherry-pick the commits to include
+* Create and push new tag as described above
 
-```bash
-COMMIT=1224f0a # Set the right commit hash.
-git checkout -b cherrypick v$MAJOR.$MINOR.x
-git cherry-pick -x $COMMIT
-git commit -a -m "Cherry-pick commit $COMMIT"
-```
-
-- Go through PR review and merge it to GitHub v$MAJOR.$MINOR.x branch.
-
-- Tag a new patch release when all commits are merged.
+TODO: update to include specific commands after performing first patch release
 
 ## Announcement
 
@@ -66,6 +59,8 @@ for a list of major changes since last release.
 
 ## Update release versions in documentations and CHANGELOG files
 
-After releasing is done, you need to update the [CHANGELOG.md](CHANGELOG.md).
+After releasing is done, you need to update the [CHANGELOG.md](CHANGELOG.md),
+adding a heading for the release of the
+form `## v{Major}.{Minor}.{Patch} - YYYY-MM-DD` under `## Unreleased`.
 
 Create a PR to mark the new release in [CHANGELOG.md](CHANGELOG.md) on main branch.
