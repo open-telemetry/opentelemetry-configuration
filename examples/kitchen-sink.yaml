@@ -374,3 +374,4 @@ resource:
     #
     # Environment variable: OTEL_SERVICE_NAME
     service.name: !!str "unknown_service"
+  schema_url: https://opentelemetry.io/schemas/1.16.0
