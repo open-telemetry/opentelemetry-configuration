@@ -32,11 +32,11 @@ logger_provider:
   processors:
     # Configure a batch log record processor.
     - batch:
-        # Configure delay interval between two consecutive exports.
+        # Configure delay interval (in milliseconds) between two consecutive exports.
         #
         # Environment variable: OTEL_BLRP_SCHEDULE_DELAY
         schedule_delay: 5000
-        # Configure maximum allowed time to export data.
+        # Configure maximum allowed time (in milliseconds) to export data.
         #
         # Environment variable: OTEL_BLRP_EXPORT_TIMEOUT
         export_timeout: 30000
@@ -83,7 +83,7 @@ logger_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_LOGS_COMPRESSION
             compression: gzip
-            # Configure max time to wait for each export.
+            # Configure max time (in milliseconds) to wait for each export.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_LOGS_TIMEOUT
             timeout: 10000
@@ -120,11 +120,11 @@ meter_provider:
             port: 9464
     # Configure a periodic metric reader.
     - periodic:
-        # Configure delay interval between start of two consecutive exports.
+        # Configure delay interval (in milliseconds) between start of two consecutive exports.
         #
         # Environment variable: OTEL_METRIC_EXPORT_INTERVAL
         interval: 5000
-        # Configure maximum allowed time to export data.
+        # Configure maximum allowed time (in milliseconds) to export data.
         #
         # Environment variable: OTEL_METRIC_EXPORT_TIMEOUT
         timeout: 30000
@@ -163,7 +163,7 @@ meter_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_METRICS_COMPRESSION
             compression: gzip
-            # Configure max time to wait for each export.
+            # Configure max time (in milliseconds) to wait for each export.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_METRICS_TIMEOUT
             timeout: 10000
@@ -228,11 +228,11 @@ tracer_provider:
   processors:
     # Configure a batch span processor.
     - batch:
-        # Configure delay interval between two consecutive exports.
+        # Configure delay interval (in milliseconds) between two consecutive exports.
         #
         # Environment variable: OTEL_BSP_SCHEDULE_DELAY
         schedule_delay: 5000
-        # Configure maximum allowed time to export data.
+        # Configure maximum allowed time (in milliseconds) to export data.
         #
         # Environment variable: OTEL_BSP_EXPORT_TIMEOUT
         export_timeout: 30000
@@ -279,7 +279,7 @@ tracer_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_TRACES_COMPRESSION
             compression: gzip
-            # Configure max time to wait for each export.
+            # Configure max time (in milliseconds) to wait for each export.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_TRACES_TIMEOUT
             timeout: 10000
@@ -295,7 +295,7 @@ tracer_provider:
             #
             # Environment variable: OTEL_EXPORTER_ZIPKIN_ENDPOINT
             endpoint: http://localhost:9411/api/v2/spans
-            # Configure max time to wait for each export.
+            # Configure max time (in milliseconds) to wait for each export.
             #
             # Environment variable: OTEL_EXPORTER_ZIPKIN_TIMEOUT
             timeout: 10000
