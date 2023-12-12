@@ -24,6 +24,7 @@ from opentelemetry.configuration._internal import (
     process_schema,
     render_schema,
     create_object,
+    load_configuration
 )
 
 __all__ = [
@@ -32,4 +33,5 @@ __all__ = [
     "process_schema",
     "render_schema",
     "create_object",
+    "load_configuration"
 ]

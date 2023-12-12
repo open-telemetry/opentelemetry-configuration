@@ -19,6 +19,7 @@ from opentelemetry.configuration import (
     process_schema,
     create_object,
     validate_configuration,
+    load_configuration,
 )
 from pathlib import Path
 
@@ -27,9 +28,11 @@ data_path = Path(__file__).parent.joinpath("data")
 
 def test_create_object():
 
-    configuration = validate_configuration(
+    configuration = load_configuration(
         data_path.joinpath("kitchen-sink.yaml")
     )
+
+    validate_configuration(configuration)
 
     processed_schema = process_schema(
         resolve_schema(

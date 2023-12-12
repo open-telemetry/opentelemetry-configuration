@@ -38,11 +38,14 @@ def resolve_schema(json_file_path) -> dict:
     return dictionary
 
 
-def validate_configuration(configuration_file_path: str) -> dict:
+def load_configuration(configuration_file_path: str) -> dict:
 
     with open(configuration_file_path, "r") as configuration_file:
 
-        configuration = safe_load(configuration_file)
+        return safe_load(configuration_file)
+
+
+def validate_configuration(configuration: dict):
 
     root_path = Path(getcwd()).parent.parent
 
@@ -63,10 +66,8 @@ def validate_configuration(configuration_file_path: str) -> dict:
         registry=Registry(retrieve=retrieve_from_path)
     ).validate(configuration)
 
-    return configuration
 
-
-def process_schema(schema: dict):
+def process_schema(schema: dict) -> dict:
 
     type_type = {
         "integer": "int",
