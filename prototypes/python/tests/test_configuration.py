@@ -20,8 +20,13 @@ from opentelemetry.configuration import (
     create_object,
     validate_configuration,
     load_configuration,
+    substitute_environment_variables,
+    render_schema,
 )
+from unittest.mock import patch
+from os import environ
 from pathlib import Path
+from pytest import fail
 
 data_path = Path(__file__).parent.joinpath("data")
 
@@ -29,10 +34,13 @@ data_path = Path(__file__).parent.joinpath("data")
 def test_create_object():
 
     configuration = load_configuration(
-        data_path.joinpath("kitchen-sink.yaml")
+        data_path.joinpath("configuration_0.yaml")
     )
 
-    validate_configuration(configuration)
+    try:
+        validate_configuration(configuration)
+    except Exception as error:
+        fail(f"Unexpected exception raised: {error}")
 
     processed_schema = process_schema(
         resolve_schema(
@@ -113,3 +121,44 @@ def test_create_object():
         _resource.
         _schema_url
     ) == "https://opentelemetry.io/schemas/1.16.0"
+
+
+@patch.dict(environ, {"OTEL_BLRB_EXPORT_TIMEOUT": "943"}, clear=True)
+def test_substitute_environment_variables():
+    configuration = load_configuration(
+        data_path.joinpath("configuration_1.yaml")
+    )
+
+    processed_schema = process_schema(
+        resolve_schema(
+            data_path.joinpath("opentelemetry_configuration.json")
+        )
+    )
+    configuration = substitute_environment_variables(
+        configuration, processed_schema
+    )
+
+    assert (
+        configuration
+        ["logger_provider"]
+        ["processors"]
+        [0]
+        ["batch"]
+        ["export_timeout"]
+    ) == 943
+    try:
+        validate_configuration(configuration)
+    except Exception as error:
+        fail(f"Unexpected exception raised: {error}")
+
+
+def test_render(tmpdir):
+
+    render_schema(
+        process_schema(
+            resolve_schema(
+                data_path.joinpath("opentelemetry_configuration.json")
+            )
+        ),
+        tmpdir.join("path_function.py")
+    )

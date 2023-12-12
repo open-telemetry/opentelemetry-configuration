@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from ipdb import set_trace
+from os import environ
 from yaml import safe_load
+from re import compile as re_compile
 from jsonref import JsonRef
 from os.path import exists
 from pathlib import Path
@@ -24,6 +27,18 @@ from jsonschema.validators import Draft202012Validator
 from referencing import Registry, Resource
 from opentelemetry.configuration._internal.path_function import path_function
 from jinja2 import Environment, FileSystemLoader
+
+set_trace
+
+_environment_variable_regex = re_compile(r"\$\{([a-zA-Z]\w*)\}")
+_type_type = {
+    "integer": int,
+    "boolean": bool,
+    "string": str,
+    "array": list,
+    "object": object,
+    "number": float
+}
 
 
 def resolve_schema(json_file_path) -> dict:
@@ -69,15 +84,6 @@ def validate_configuration(configuration: dict):
 
 def process_schema(schema: dict) -> dict:
 
-    type_type = {
-        "integer": "int",
-        "boolean": "bool",
-        "string": "str",
-        "array": "list",
-        "object": "object",
-        "number": "float"
-    }
-
     def traverse(
         schema: dict,
         schema_value_id_stack: list,
@@ -117,20 +123,27 @@ def process_schema(schema: dict) -> dict:
             for positional_attribute in positional_attributes:
 
                 result_positional_attributes[positional_attribute] = (
-                    type_type[
-                        schema_properties[positional_attribute]["type"]
-                    ]
+                    str(
+                        _type_type[
+                            schema_properties[positional_attribute]["type"]
+                        ].__name__
+                    )
                 )
 
             for optional_attribute in optional_attributes:
 
                 result_optional_attributes[optional_attribute] = (
-                    type_type[
-                        schema_properties[optional_attribute]["type"]
-                    ]
+                    str(
+                        _type_type[
+                            schema_properties[optional_attribute]["type"]
+                        ].__name__
+                    )
                 )
 
             children = {}
+
+            children.update(result_positional_attributes)
+            children.update(result_optional_attributes)
 
             processed_schema[schema_key_stack[-1]] = {
                 "function_name": "_".join(schema_key_stack[1:]),
@@ -213,7 +226,7 @@ def process_schema(schema: dict) -> dict:
     return processed_schema[""]["children"]
 
 
-def render_schema(processed_schema: dict):
+def render_schema(processed_schema: dict, path_function_path: Path):
 
     def traverse(
         processed_schema: dict,
@@ -225,6 +238,9 @@ def render_schema(processed_schema: dict):
             processed_schema_key,
             processed_schema_value
         ) in processed_schema.items():
+
+            if not isinstance(processed_schema_value, dict):
+                continue
 
             function_arguments[processed_schema_value["function_name"]] = {
                 "optional_attributes": (
@@ -262,7 +278,7 @@ def render_schema(processed_schema: dict):
         loader=FileSystemLoader(current_path.joinpath("templates"))
     )
 
-    with open("path_function.py", "w") as result_py_file:
+    with open(path_function_path, "w") as result_py_file:
 
         result_py_file.write(
             "\n".join(
@@ -370,3 +386,67 @@ def create_object(
         processed_schema,
         path_function,
     )
+
+
+def substitute_environment_variables(
+    configuration: dict,
+    processed_schema: dict
+) -> dict:
+
+    def traverse(
+        configuration: dict,
+        processed_schema: dict,
+        original_processed_schema: dict
+    ):
+
+        for configuration_key, configuration_value in configuration.items():
+
+            if configuration_key not in processed_schema.keys():
+                continue
+
+            if isinstance(configuration_value, dict):
+
+                recursive_paths = (
+                    processed_schema[configuration_key]["recursive_path"]
+                )
+
+                if recursive_paths:
+
+                    children = original_processed_schema
+
+                    for recursive_path in recursive_paths:
+                        children = children[recursive_path]["children"]
+
+                else:
+                    children = processed_schema[configuration_key]["children"]
+
+                traverse(
+                    configuration_value,
+                    children,
+                    original_processed_schema
+                )
+
+            elif isinstance(configuration_value, list):
+
+                for element in configuration_value:
+                    if isinstance(element, dict):
+                        traverse(
+                            element,
+                            processed_schema[configuration_key]["children"],
+                            original_processed_schema
+                        )
+
+            elif isinstance(configuration_value, str):
+
+                match = _environment_variable_regex.match(configuration_value)
+
+                if match is not None:
+
+                    configuration[configuration_key] = (
+                        __builtins__[processed_schema[configuration_key]]
+                        (environ.get(match.group(1)))
+                    )
+
+    traverse(configuration, processed_schema, processed_schema)
+
+    return configuration
