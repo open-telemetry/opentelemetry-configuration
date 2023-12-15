@@ -84,6 +84,12 @@
                 },
                 "port": {
                     "type": "integer"
+                },
+                "without_units": {
+                    "type": "boolean"
+                },
+                "without_type_suffix": {
+                    "type": "boolean"
                 }
             }
         },
