@@ -90,6 +90,9 @@
                 },
                 "without_type_suffix": {
                     "type": "boolean"
+                },
+                "without_scope_info": {
+                    "type": "boolean"
                 }
             }
         },
