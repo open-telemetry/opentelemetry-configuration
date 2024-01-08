@@ -11,8 +11,11 @@
         "schema_url": {
             "type": "string"
         },
-        "detectors": {
-            "$ref": "#/$defs/Detectors"
+        "disabled_attribute_keys": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "$defs": {
@@ -23,19 +26,6 @@
             "properties": {
                 "service.name": {
                     "type": "string"
-                }
-            }
-        },
-        "Detectors": {
-            "title": "Detectors",
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "disabled_attribute_keys": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
                 }
             }
         }
