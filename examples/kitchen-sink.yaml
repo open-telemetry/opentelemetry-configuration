@@ -176,7 +176,7 @@ meter_provider:
             timeout: 10000
             # Configure client transport security for the exporter's connection.
             #
-            # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_METRICS_INSECURE, OTEL_EXPORTER_OTLP_METRIC_INSECURE
+            # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_METRICS_INSECURE
             insecure: true
             # Configure temporality preference.
             #
@@ -296,7 +296,7 @@ tracer_provider:
             timeout: 10000
             # Configure client transport security for the exporter's connection.
             #
-            # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_TRACES_INSECURE, OTEL_EXPORTER_OTLP_TRACE_INSECURE
+            # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_TRACES_INSECURE
             insecure: true
     # Configure a batch span processor.
     - batch:
