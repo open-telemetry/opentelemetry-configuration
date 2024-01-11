@@ -87,7 +87,7 @@ logger_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_LOGS_TIMEOUT
             timeout: 10000
-            # Whether to enable client transport security for the exporter's connection.
+            # Configure client transport security for the exporter's connection.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_LOGS_INSECURE
             insecure: true
@@ -174,7 +174,7 @@ meter_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_METRICS_TIMEOUT
             timeout: 10000
-            # Whether to enable client transport security for the exporter's connection.
+            # Configure client transport security for the exporter's connection.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_METRICS_INSECURE, OTEL_EXPORTER_OTLP_METRIC_INSECURE
             insecure: true
@@ -294,7 +294,7 @@ tracer_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_TRACES_TIMEOUT
             timeout: 10000
-            # Whether to enable client transport security for the exporter's connection.
+            # Configure client transport security for the exporter's connection.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_TRACES_INSECURE, OTEL_EXPORTER_OTLP_TRACE_INSECURE
             insecure: true
