@@ -90,7 +90,7 @@ logger_provider:
             # Configure client transport security for the exporter's connection.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_LOGS_INSECURE
-            insecure: true
+            insecure: false
   # Configure log record limits. See also attribute_limits.
   limits:
     # Configure max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
@@ -177,7 +177,7 @@ meter_provider:
             # Configure client transport security for the exporter's connection.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_METRICS_INSECURE
-            insecure: true
+            insecure: false
             # Configure temporality preference.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
@@ -297,7 +297,7 @@ tracer_provider:
             # Configure client transport security for the exporter's connection.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_TRACES_INSECURE
-            insecure: true
+            insecure: false
     # Configure a batch span processor.
     - batch:
         # Configure exporter.
