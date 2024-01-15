@@ -93,6 +93,9 @@
                 },
                 "without_scope_info": {
                     "type": "boolean"
+                },
+                "with_resource_constant_labels": {
+                    "type": "string"
                 }
             }
         },
