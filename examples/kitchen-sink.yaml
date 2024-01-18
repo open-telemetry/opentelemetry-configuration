@@ -122,8 +122,11 @@ meter_provider:
             #
             # Environment variable: OTEL_EXPORTER_PROMETHEUS_PORT
             port: 9464
+            # Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.
             without_units: false
+            # Configure Prometheus Exporter to produce metrics without a type suffix.
             without_type_suffix: false
+            # Configure Prometheus Exporter to produce metrics without a scope info metric.
             without_scope_info: false
     # Configure a periodic metric reader.
     - periodic:
