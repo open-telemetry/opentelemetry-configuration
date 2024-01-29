@@ -4,15 +4,6 @@
     "title": "Common",
     "type": "object",
     "$defs": {
-        "Headers": {
-            "type": "object",
-            "title": "Headers",
-            "patternProperties": {
-                ".*": {
-                    "type": "string"
-                }
-            }
-        },
         "Otlp": {
             "type": "object",
             "additionalProperties": false,
@@ -34,7 +25,7 @@
                     "type": "string"
                 },
                 "headers": {
-                    "$ref": "#/$defs/Headers"
+                    "type": "string"
                 },
                 "compression": {
                     "type": "string"

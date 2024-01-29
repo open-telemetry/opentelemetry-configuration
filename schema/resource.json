@@ -6,22 +6,10 @@
     "additionalProperties": false,
     "properties": {
         "attributes": {
-            "$ref": "#/$defs/Attributes"
+            "type": "string"
         },
         "schema_url": {
             "type": "string"
-        }
-    },
-    "$defs": {
-        "Attributes": {
-            "title": "Attributes",
-            "type": "object",
-            "additionalProperties": true,
-            "properties": {
-                "service.name": {
-                    "type": "string"
-                }
-            }
         }
     }
 }
