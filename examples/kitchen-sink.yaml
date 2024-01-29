@@ -12,18 +12,18 @@ file_format: "0.1"
 # to ensure the SDK isn't disabled, the default value when this is not provided
 # is for the SDK to be enabled.
 #
-# Environment variable: OTEL_SDK_DISABLED
+# Environment variable: OTEL_CONF_DISABLED
 disabled: false
 
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
   # Configure max attribute value size.
   #
-  # Environment variable: OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT
+  # Environment variable: OTEL_CONF_ATTRIBUTE_LIMITS__ATTRIBUTE_VALUE_LENGTH_LIMIT
   attribute_value_length_limit: 4096
   # Configure max attribute count.
   #
-  # Environment variable: OTEL_ATTRIBUTE_COUNT_LIMIT
+  # Environment variable: OTEL_CONF_ATTRIBUTE_LIMITS__ATTRIBUTE_COUNT_LIMIT
   attribute_count_limit: 128
 
 # Configure logger provider.
@@ -41,73 +41,73 @@ logger_provider:
     batch:
       # Configure delay interval (in milliseconds) between two consecutive exports.
       #
-      # Environment variable: OTEL_BLRP_SCHEDULE_DELAY
+      # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__SCHEDULE_DELAY
       schedule_delay: 5000
       # Configure maximum allowed time (in milliseconds) to export data.
       #
-      # Environment variable: OTEL_BLRP_EXPORT_TIMEOUT
+      # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__EXPORT_TIMEOUT
       export_timeout: 30000
       # Configure maximum queue size.
       #
-      # Environment variable: OTEL_BLRP_MAX_QUEUE_SIZE
+      # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__MAX_QUEUE_SIZE
       max_queue_size: 2048
       # Configure maximum batch size.
       #
-      # Environment variable: OTEL_BLRP_MAX_EXPORT_BATCH_SIZE
+      # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__MAX_EXPORT_BATCH_SIZE
       max_export_batch_size: 512
       # Configure exporter.
-      #
-      # Environment variable: OTEL_LOGS_EXPORTER
       exporter:
         # Configure exporter to be OTLP.
         otlp:
           # Configure protocol.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_PROTOCOL, OTEL_EXPORTER_OTLP_LOGS_PROTOCOL
+          # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__PROTOCOL
           protocol: http/protobuf
           # Configure endpoint.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_LOGS_ENDPOINT
+          # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__ENDPOINT
           endpoint: http://localhost:4318
           # Configure certificate.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_CERTIFICATE, OTEL_EXPORTER_OTLP_LOGS_CERTIFICATE
+          # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__CERTIFICATE
           certificate: /app/cert.pem
           # Configure mTLS private client key.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_CLIENT_KEY, OTEL_EXPORTER_OTLP_LOGS_CLIENT_KEY
+          # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__CLIENT_KEY
           client_key: /app/cert.pem
           # Configure mTLS client certificate.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE, OTEL_EXPORTER_OTLP_LOGS_CLIENT_CERTIFICATE
+          # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__CLIENT_CERTIFICATE
           client_certificate: /app/cert.pem
           # Configure headers.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_LOGS_HEADERS
+          # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__HEADERS
           headers: "api-key=1234"
           # Configure compression.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_LOGS_COMPRESSION
+          # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__COMPRESSION
           compression: gzip
           # Configure max time (in milliseconds) to wait for each export.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_LOGS_TIMEOUT
+          # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__TIMEOUT
           timeout: 10000
           # Configure client transport security for the exporter's connection.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_LOGS_INSECURE
+          # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__INSECURE
           insecure: false
   # The ordered list of entries from logger_provider.processors registered with the logger provider.
+  #
+  # Environment variable: OTEL_CONF_LOGGER_PROVIDER__PROCESSOR_PIPELINE
   processor_pipeline: [batch]
   # Configure log record limits. See also attribute_limits.
   limits:
     # Configure max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
     #
-    # Environment variable: OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT
+    # Environment variable: OTEL_CONF_LOGGER_PROVIDER__LIMITS__ATTRIBUTE_VALUE_LENGTH_LIMIT
     attribute_value_length_limit: 4096
     # Configure max log record attribute count. Overrides attribute_limits.attribute_count_limit.
     #
-    # Environment variable: OTEL_LOGRECORD_ATTRIBUTE_COUNT_LIMIT
+    # Environment variable: OTEL_CONF_LOGGER_PROVIDER__LIMITS__ATTRIBUTE_COUNT_LIMIT
     attribute_count_limit: 128
 
 # Configure meter provider.
@@ -123,84 +123,86 @@ meter_provider:
     # Configure a pull-based metric reader.
     pull:
       # Configure exporter.
-      #
-      # Environment variable: OTEL_METRICS_EXPORTER
       exporter:
         # Configure exporter to be prometheus.
         prometheus:
           # Configure host.
           #
-          # Environment variable: OTEL_EXPORTER_PROMETHEUS_HOST
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PULL__EXPORTER__PROMETHEUS__HOST
           host: localhost
           # Configure port.
           #
-          # Environment variable: OTEL_EXPORTER_PROMETHEUS_PORT
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PULL__EXPORTER__PROMETHEUS__PORT
           port: 9464
           # Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.
+          #
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PULL__EXPORTER__PROMETHEUS__WITHOUT_UNITS
           without_units: false
           # Configure Prometheus Exporter to produce metrics without a type suffix.
+          #
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PULL__EXPORTER__PROMETHEUS__WITHOUT_TYPE_SUFFIX
           without_type_suffix: false
           # Configure Prometheus Exporter to produce metrics without a scope info metric.
+          #
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PULL__EXPORTER__PROMETHEUS__WITHOUT_SCOPE_INFO
           without_scope_info: false
     # Configure a periodic metric reader.
     periodic:
       # Configure delay interval (in milliseconds) between start of two consecutive exports.
       #
-      # Environment variable: OTEL_METRIC_EXPORT_INTERVAL
+      # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__INTERVAL
       interval: 5000
       # Configure maximum allowed time (in milliseconds) to export data.
       #
-      # Environment variable: OTEL_METRIC_EXPORT_TIMEOUT
+      # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__TIMEOUT
       timeout: 30000
       # Configure exporter.
-      #
-      # Environment variable: OTEL_METRICS_EXPORTER
       exporter:
         # Configure exporter to be OTLP.
         otlp:
           # Configure protocol.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_PROTOCOL, OTEL_EXPORTER_OTLP_METRICS_PROTOCOL
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__EXPORTER__OTLP__PROTOCOL
           protocol: http/protobuf
           # Configure endpoint.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_METRICS_ENDPOINT
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__EXPORTER__OTLP__ENDPOINT
           endpoint: http://localhost:4318
           # Configure certificate.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_CERTIFICATE, OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__EXPORTER__OTLP__CERTIFICATE
           certificate: /app/cert.pem
           # Configure mTLS private client key.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_CLIENT_KEY, OTEL_EXPORTER_OTLP_METRICS_CLIENT_KEY
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__EXPORTER__OTLP__CLIENT_KEY
           client_key: /app/cert.pem
           # Configure mTLS client certificate.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE, OTEL_EXPORTER_OTLP_METRICS_CLIENT_CERTIFICATE
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__EXPORTER__OTLP__CERTIFICATE
           client_certificate: /app/cert.pem
           # Configure headers.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_METRICS_HEADERS
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__EXPORTER__OTLP__HEADERS
           headers: "api-key=1234"
           # Configure compression.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_METRICS_COMPRESSION
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__EXPORTER__OTLP__COMPRESSION
           compression: gzip
           # Configure max time (in milliseconds) to wait for each export.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_METRICS_TIMEOUT
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__EXPORTER__OTLP__TIMEOUT
           timeout: 10000
           # Configure client transport security for the exporter's connection.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_METRICS_INSECURE
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__EXPORTER__OTLP__INSECURE
           insecure: false
           # Configure temporality preference.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__EXPORTER__OTLP__TEMPORALITY_PREFERENCE
           temporality_preference: delta
           # Configure default histogram aggregation.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION
+          # Environment variable: OTEL_CONF__METER_PROVIDER__READERS__PERIODIC__EXPORTER__OTLP__DEFAULT_HISTOGRAM_AGGREGATION
           default_histogram_aggregation: base2_exponential_bucket_histogram
     # Configure a periodic metric reader.
     periodic/console:
@@ -215,44 +217,67 @@ meter_provider:
     # Entry keys MUST match the expression "^[a-zA-Z0-9_]*$".
     #
     # Entry keys are purely descriptive. They do not correspond to any property in the SDK.
-    kitchen_sink_view:
+    demo_view:
       # Configure selector.
       selector:
         # Configure instrument name selection criteria.
+        #
+        # Environment variable: OTEL_CONF__METER_PROVIDER__VIEWS__DEMO_VIEW__SELECTOR__INSTRUMENT_NAME
         instrument_name: my-instrument
         # Configure instrument type selection criteria.
+        #
+        # Environment variable: OTEL_CONF__METER_PROVIDER__VIEWS__DEMO_VIEW__SELECTOR__INSTRUMENT_TYPE
         instrument_type: histogram
         # Configure the instrument unit selection criteria.
+        #
+        # Environment variable: OTEL_CONF__METER_PROVIDER__VIEWS__DEMO_VIEW__SELECTOR__UNIT
         unit: ms
         # Configure meter name selection criteria.
+        #
+        # Environment variable: OTEL_CONF__METER_PROVIDER__VIEWS__DEMO_VIEW__SELECTOR__METER_NAME
         meter_name: my-meter
         # Configure meter version selection criteria.
+        #
+        # Environment variable: OTEL_CONF__METER_PROVIDER__VIEWS__DEMO_VIEW__SELECTOR__METER_VERSION
         meter_version: 1.0.0
         # Configure meter schema url selection criteria.
+        #
+        # Environment variable: OTEL_CONF__METER_PROVIDER__VIEWS__DEMO_VIEW__SELECTOR__METER_SCHEMA_URL
         meter_schema_url: https://opentelemetry.io/schemas/1.16.0
       # Configure stream.
       stream:
         # Configure metric name of the resulting stream(s).
+        #
+        # Environment variable: OTEL_CONF__METER_PROVIDER__VIEWS__DEMO_VIEW__STREAM__NAME
         name: new_instrument_name
         # Configure metric description of the resulting stream(s).
+        #
+        # Environment variable: OTEL_CONF__METER_PROVIDER__VIEWS__DEMO_VIEW__STREAM__DESCRIPTION
         description: new_description
         # Configure aggregation of the resulting stream(s). Known values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum.
         aggregation:
           # Configure aggregation to be explicit_bucket_histogram.
           explicit_bucket_histogram:
             # Configure bucket boundaries.
+            #
+            # Environment variable: OTEL_CONF__METER_PROVIDER__VIEWS__DEMO_VIEW__STREAM__AGGREGATION__EXPLICIT_BUCKET_HISTOGRAM__BOUNDARIES
             boundaries: [ 0.0, 5.0, 10.0, 25.0, 50.0, 75.0, 100.0, 250.0, 500.0, 750.0, 1000.0, 2500.0, 5000.0, 7500.0, 10000.0 ]
             # Configure record min and max.
+            #
+            # Environment variable: OTEL_CONF__METER_PROVIDER__VIEWS__DEMO_VIEW__STREAM__AGGREGATION__EXPLICIT_BUCKET_HISTOGRAM__RECORD_MIN_MAX
             record_min_max: true
         # Configure attribute keys retained in the resulting stream(s).
+        #
+        # Environment variable: OTEL_CONF__METER_PROVIDER__VIEWS__DEMO_VIEW__STREAM__ATTRIBUTE_KEYS
         attribute_keys:
           - key1
           - key2
 
 # Configure text map context propagators.
-#
-# Environment variable: OTEL_PROPAGATORS
 propagator:
+  # Configure composite propagator.
+  #
+  # Environment variable: OTEL_CONF_PROPAGATOR__COMPOSITE
   composite: [tracecontext, baggage, b3, b3multi, jaeger, xray, ottrace]
 
 # Configure tracer provider.
@@ -270,19 +295,19 @@ tracer_provider:
     batch:
       # Configure delay interval (in milliseconds) between two consecutive exports.
       #
-      # Environment variable: OTEL_BSP_SCHEDULE_DELAY
+      # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__SCHEDULE_DELAY
       schedule_delay: 5000
       # Configure maximum allowed time (in milliseconds) to export data.
       #
-      # Environment variable: OTEL_BSP_EXPORT_TIMEOUT
+      # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__TIMEOUT
       export_timeout: 30000
       # Configure maximum queue size.
       #
-      # Environment variable: OTEL_BSP_MAX_QUEUE_SIZE
+      # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__MAX_QUEUE_SIZE
       max_queue_size: 2048
       # Configure maximum batch size.
       #
-      # Environment variable: OTEL_BSP_MAX_EXPORT_BATCH_SIZE
+      # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__MAX_EXPORT_BATCH_SIZE
       max_export_batch_size: 512
       # Configure exporter.
       #
@@ -292,55 +317,53 @@ tracer_provider:
         otlp:
           # Configure protocol.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_PROTOCOL, OTEL_EXPORTER_OTLP_TRACES_PROTOCOL
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__PROTOCOL
           protocol: http/protobuf
           # Configure endpoint.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__ENDPOINT
           endpoint: http://localhost:4318
           # Configure certificate.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_CERTIFICATE, OTEL_EXPORTER_OTLP_TRACES_CERTIFICATE
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__CERTIFICATE
           certificate: /app/cert.pem
           # Configure mTLS private client key.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_CLIENT_KEY, OTEL_EXPORTER_OTLP_TRACES_CLIENT_KEY
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__CLIENT_KEY
           client_key: /app/cert.pem
           # Configure mTLS client certificate.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE, OTEL_EXPORTER_OTLP_TRACES_CLIENT_CERTIFICATE
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__CLIENT_CERTIFICATE
           client_certificate: /app/cert.pem
           # Configure headers.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_TRACES_HEADERS
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__HEADERS
           headers: "api-key=1234"
           # Configure compression.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_TRACES_COMPRESSION
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__COMPRESSION
           compression: gzip
           # Configure max time (in milliseconds) to wait for each export.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_TRACES_TIMEOUT
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__TIMEOUT
           timeout: 10000
           # Configure client transport security for the exporter's connection.
           #
-          # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_TRACES_INSECURE
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH__EXPORTER__OTLP__INSECURE
           insecure: false
     # Configure a batch span processor.
     batch/zipkin:
       # Configure exporter.
-      #
-      # Environment variable: OTEL_TRACES_EXPORTER
       exporter:
         # Configure exporter to be zipkin.
         zipkin:
           # Configure endpoint.
           #
-          # Environment variable: OTEL_EXPORTER_ZIPKIN_ENDPOINT
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH_ZIPKIN__EXPORTER__ZIPKIN__ENDPOINT
           endpoint: http://localhost:9411/api/v2/spans
           # Configure max time (in milliseconds) to wait for each export.
           #
-          # Environment variable: OTEL_EXPORTER_ZIPKIN_TIMEOUT
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__PROCESSORS__BATCH_ZIPKIN__EXPORTER__ZIPKIN__TIMEOUT
           timeout: 10000
     # Configure a simple span processor.
     simple:
@@ -354,43 +377,39 @@ tracer_provider:
   limits:
     # Configure max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
     #
-    # Environment variable: OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT
+    # Environment variable: OTEL_CONF_TRACER_PROVIDER__LIMITS__ATTRIBUTE_VALUE_LENGTH_LIMIT
     attribute_value_length_limit: 4096
     # Configure max span attribute count. Overrides attribute_limits.attribute_count_limit.
     #
-    # Environment variable: OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT
+    # Environment variable: OTEL_CONF_TRACER_PROVIDER__LIMITS__ATTRIBUTE_COUNT_LIMIT
     attribute_count_limit: 128
     # Configure max span event count.
     #
-    # Environment variable: OTEL_SPAN_EVENT_COUNT_LIMIT
+    # Environment variable: OTEL_CONF_TRACER_PROVIDER__LIMITS__EVENT_COUNT_LIMIT
     event_count_limit: 128
     # Configure max span link count.
     #
-    # Environment variable: OTEL_SPAN_LINK_COUNT_LIMIT
+    # Environment variable: OTEL_CONF_TRACER_PROVIDER__LIMITS__LINK_COUNT_LIMIT
     link_count_limit: 128
     # Configure max attributes per span event.
     #
-    # Environment variable: OTEL_EVENT_ATTRIBUTE_COUNT_LIMIT
+    # Environment variable: OTEL_CONF_TRACER_PROVIDER__LIMITS__EVENT_ATTRIBUTE_COUNT_LIMIT
     event_attribute_count_limit: 128
     # Configure max attributes per span link.
     #
-    # Environment variable: OTEL_LINK_ATTRIBUTE_COUNT_LIMIT
+    # Environment variable: OTEL_CONF_TRACER_PROVIDER__LIMITS__LINK_ATTRIBUTE_COUNT_LIMIT
     link_attribute_count_limit: 128
   # Configure the sampler.
   sampler:
     # Configure sampler to be parent_based. Known values include: always_off, always_on, jaeger_remote, parent_based, trace_id_ratio_based.
-    #
-    # Environment variable: OTEL_TRACES_SAMPLER=parentbased_*
     parent_based:
       # Configure root sampler.
-      #
-      # Environment variable: OTEL_TRACES_SAMPLER=parentbased_traceidratio
       root:
         # Configure sampler to be trace_id_ratio_based.
         trace_id_ratio_based:
           # Configure trace_id_ratio.
           #
-          # Environment variable: OTEL_TRACES_SAMPLER_ARG=traceidratio=0.0001
+          # Environment variable: OTEL_CONF_TRACER_PROVIDER__SAMPLER__PARENT_BASED__ROOT__TRACE_ID_RATIO_BASED__RATIO
           ratio: 0.0001
       # Configure remote_parent_sampled sampler.
       remote_parent_sampled:
@@ -413,7 +432,9 @@ tracer_provider:
 resource:
   # Configure resource attributes.
   #
-  # Environment variable: OTEL_RESOURCE_ATTRIBUTES
+  # Environment variable: OTEL_CONF__RESOURCE__ATTRIBUTES
   attributes: "service.name=unknown_service"
   # Configure the resource schema URL.
+  #
+  # Environment variable: OTEL_CONF__RESOURCE__SCHEMA_URL
   schema_url: https://opentelemetry.io/schemas/1.16.0
