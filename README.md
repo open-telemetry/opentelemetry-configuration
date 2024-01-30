@@ -31,11 +31,31 @@ Allowable changes:
 - For major versions: All changes are permitted.
 - For minor versions: TBD
 
-## Naming guidelines
+## Schema Modeling Guidelines
 
-The following defines guidelines used to produce configuration schema:
+The following guidelines are used to model the configuration schema:
 
-1. To remove redundant information from the configuration file, prefixes for data produced by each of the providers
+* To remove redundant information from the configuration file, prefixes for data produced by each of the providers
 will be removed from configuration options. For example, under the `meter_provider` configuration, metric readers will be
 identified by the word `readers` rather than by `metric_readers`. Similarly, the prefix `span_` will be dropped for tracer
-provider configuration, and `logrecord` for logger provider.
+provider configuration, and `logrecord` for logger provider. 
+* Avoid use of object arrays, which are difficult to manipulate with environment variable overrides. Instead, separate the configuration of the elements from
+  their ordering. If multiple of the same element are allowed, use keys of matching `^(?<elementName>[a-zA-Z0-9_]*)(\/(?<elementId>[a-zA-Z0-9_]*))?$`. For
+  example, when configuring the span processor pipeline, use:
+   ```
+   tracer_provider:
+     processors:
+       batch/local:
+         exporter:
+           otlp:
+             endpoint: http://localhost:4317
+       batch/remote:
+         exporter:
+           otlp:
+             endpoint: http://remote-host:4317      
+     processor_pipeline: [batch/local, batch/remote]
+   ```
+* Use keys matching `^[a-zA-Z0-9_]*$`. Keys with other characters are difficult to manipulate with environment variable overrides. If modeling a property which
+  consists of key values but whose keys do not conform to these restrictions, model it as a comma separated string value of the
+  form: `<key1>=<value1>,<key2>=<value2>`. For example, HTTP headers commonly use `-`, which is not allowed, but can be represented
+  with `Api-Key=123,X-Tenant-Id=abc`.
