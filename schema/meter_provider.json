@@ -6,15 +6,29 @@
     "additionalProperties": false,
     "properties": {
         "readers": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/MetricReader"
-            }
+            "type": "object",
+            "propertyNames": {
+                "pattern": "^([a-zA-Z0-9_]*)(\/[a-zA-Z0-9_]*)?$"
+            },
+            "patternProperties": {
+                "^periodic(\/.*)?$": {
+                    "$ref": "#/$defs/PeriodicMetricReader"
+                },
+                "^pull(/.*)?$": {
+                    "$ref": "#/$defs/PullMetricReader"
+                }
+            },
+            "additionalProperties": true
         },
         "views": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/View"
+            "type": "object",
+            "propertyNames": {
+                "pattern": "^[a-zA-Z0-9_]*$"
+            },
+            "patternProperties": {
+                "^.*$": {
+                    "$ref": "#/$defs/View"
+                }
             }
         }
     },
@@ -96,20 +110,6 @@
                 }
             }
         },
-        "MetricReader": {
-            "type": "object",
-            "additionalProperties": false,
-            "minProperties": 1,
-            "maxProperties": 1,
-            "properties": {
-                "periodic": {
-                    "$ref": "#/$defs/PeriodicMetricReader"
-                },
-                "pull": {
-                    "$ref": "#/$defs/PullMetricReader"
-                }
-            }
-        },
         "OtlpMetric": {
             "type": "object",
             "additionalProperties": false,
@@ -131,7 +131,7 @@
                     "type": "string"
                 },
                 "headers": {
-                    "$ref": "common.json#/$defs/Headers"
+                    "type": "string"
                 },
                 "compression": {
                     "type": "string"

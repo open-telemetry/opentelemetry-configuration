@@ -3,12 +3,27 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "TracerProvider",
     "type": "object",
-    "additionalProperties": false,
+    "additionalProperties": true,
     "properties": {
         "processors": {
+            "type": "object",
+            "propertyNames": {
+                "pattern": "^([a-zA-Z0-9_]*)(\/[a-zA-Z0-9_]*)?$"
+            },
+            "patternProperties": {
+                "^batch(\/.*)?$": {
+                    "$ref": "#/$defs/BatchSpanProcessor"
+                },
+                "^simple(/.*)?$": {
+                    "$ref": "#/$defs/SimpleSpanProcessor"
+                }
+            },
+            "additionalProperties": true
+        },
+        "processor_pipeline": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/SpanProcessor"
+                "type": "string"
             }
         },
         "limits": {
@@ -109,8 +124,11 @@
                     }
                 }
             },
+            "propertyNames": {
+                "pattern": "^[a-zA-Z0-9_]*$"
+            },
             "patternProperties": {
-                ".*": {
+                "^.*$": {
                     "type": "object"
                 }
             }
@@ -144,8 +162,11 @@
                     "$ref": "#/$defs/Zipkin"
                 }
             },
+            "propertyNames": {
+                "pattern": "^[a-zA-Z0-9_]*$"
+            },
             "patternProperties": {
-                ".*": {
+                "^.*$": {
                     "type": "object"
                 }
             }
@@ -177,25 +198,6 @@
                 "link_attribute_count_limit": {
                     "type": "integer",
                     "minimum": 0
-                }
-            }
-        },
-        "SpanProcessor": {
-            "type": "object",
-            "additionalProperties": true,
-            "minProperties": 1,
-            "maxProperties": 1,
-            "properties": {
-                "batch": {
-                    "$ref": "#/$defs/BatchSpanProcessor"
-                },
-                "simple": {
-                    "$ref": "#/$defs/SimpleSpanProcessor"
-                }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": "object"
                 }
             }
         },

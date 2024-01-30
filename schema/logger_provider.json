@@ -6,9 +6,24 @@
     "additionalProperties": false,
     "properties": {
         "processors": {
+            "type": "object",
+            "propertyNames": {
+                "pattern": "^([a-zA-Z0-9_]*)(\/[a-zA-Z0-9_]*)?$"
+            },
+            "patternProperties": {
+                "^batch(\/.*)?$": {
+                    "$ref": "#/$defs/BatchLogRecordProcessor"
+                },
+                "^simple(/.*)?$": {
+                    "$ref": "#/$defs/SimpleLogRecordProcessor"
+                }
+            },
+            "additionalProperties": true
+        },
+        "processor_pipeline": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/LogRecordProcessor"
+                "type": "string"
             }
         },
         "limits": {
@@ -66,8 +81,11 @@
                     "$ref": "common.json#/$defs/Otlp"
                 }
             },
+            "propertyNames": {
+                "pattern": "^[a-zA-Z0-9_]*$"
+            },
             "patternProperties": {
-                ".*": {
+                "^.*$": {
                     "type": "object"
                 }
             }
@@ -83,25 +101,6 @@
                 "attribute_count_limit": {
                     "type": "integer",
                     "minimum": 0
-                }
-            }
-        },
-        "LogRecordProcessor": {
-            "type": "object",
-            "additionalProperties": true,
-            "minProperties": 1,
-            "maxProperties": 1,
-            "properties": {
-                "batch": {
-                    "$ref": "#/$defs/BatchLogRecordProcessor"
-                },
-                "simple": {
-                    "$ref": "#/$defs/SimpleLogRecordProcessor"
-                }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": "object"
                 }
             }
         }
