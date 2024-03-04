@@ -10,6 +10,12 @@
         },
         "schema_url": {
             "type": "string"
+        },
+        "disabled_attribute_keys": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "$defs": {
