@@ -2,20 +2,20 @@
     "$id": "https://opentelemetry.io/otelconfig/resource.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Resource",
-    "type": "object",
+    "type": ["object", "null"],
     "additionalProperties": false,
     "properties": {
         "attributes": {
             "$ref": "#/$defs/Attributes"
         },
         "schema_url": {
-            "type": "string"
+            "type": ["string", "null"]
         }
     },
     "$defs": {
         "Attributes": {
             "title": "Attributes",
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": true
         }
     }
