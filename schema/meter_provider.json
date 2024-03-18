@@ -2,7 +2,7 @@
     "$id": "https://opentelemetry.io/otelconfig/meter_provider.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "MeterProvider",
-    "type": "object",
+    "type": ["object", "null"],
     "additionalProperties": false,
     "properties": {
         "readers": {
@@ -20,15 +20,15 @@
     },
     "$defs": {
         "PeriodicMetricReader": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
                 "interval": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "timeout": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "exporter": {
@@ -41,7 +41,7 @@
             "title": "PeriodicMetricReader"
         },
         "PullMetricReader": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
                 "exporter": {
@@ -54,7 +54,7 @@
             "title": "PullMetricReader"
         },
         "MetricExporter": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
@@ -71,33 +71,33 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": "object"
+                    "type": ["object", "null"]
                 }
             }
         },
         "Prometheus": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
                 "host": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "port": {
-                    "type": "integer"
+                    "type": ["integer", "null"]
                 },
                 "without_units": {
-                    "type": "boolean"
+                    "type": ["boolean", "null"]
                 },
                 "without_type_suffix": {
-                    "type": "boolean"
+                    "type": ["boolean", "null"]
                 },
                 "without_scope_info": {
-                    "type": "boolean"
+                    "type": ["boolean", "null"]
                 }
             }
         },
         "MetricReader": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "minProperties": 1,
             "maxProperties": 1,
@@ -111,47 +111,47 @@
             }
         },
         "OtlpMetric": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
                 "protocol": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "pattern": "^(http|grpc)\\/(protobuf|json)"
                 },
                 "endpoint": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "certificate": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "client_key": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "client_certificate": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "headers": {
                     "$ref": "common.json#/$defs/Headers"
                 },
                 "compression": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "timeout": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "temporality_preference": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "default_histogram_aggregation": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "enum": [
                         "explicit_bucket_histogram",
                         "base2_exponential_bucket_histogram"
                     ]
                 },
                 "insecure": {
-                    "type": "boolean"
+                    "type": ["boolean", "null"]
                 }
             },
             "required": [
@@ -161,19 +161,19 @@
             "title": "OtlpMetric"
         },
         "View": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
                 "selector": {
                     "title": "Selector",
-                    "type": "object",
+                    "type": ["object", "null"],
                     "additionalProperties": false,
                     "properties": {
                         "instrument_name": {
-                            "type": "string"
+                            "type": ["string", "null"]
                         },
                         "instrument_type": {
-                            "type": "string",
+                            "type": ["string", "null"],
                             "enum": [
                                 "counter",
                                 "histogram",
@@ -184,46 +184,46 @@
                             ]
                         },
                         "unit": {
-                            "type": "string"
+                            "type": ["string", "null"]
                         },
                         "meter_name": {
-                            "type": "string"
+                            "type": ["string", "null"]
                         },
                         "meter_version": {
-                            "type": "string"
+                            "type": ["string", "null"]
                         },
                         "meter_schema_url": {
-                            "type": "string"
+                            "type": ["string", "null"]
                         }
                     }
                 },
                 "stream": {
                     "title": "Stream",
-                    "type": "object",
+                    "type": ["object", "null"],
                     "additionalProperties": false,
                     "properties": {
                         "name": {
-                            "type": "string"
+                            "type": ["string", "null"]
                         },
                         "description": {
-                            "type": "string"
+                            "type": ["string", "null"]
                         },
                         "aggregation": {
-                            "type": "object",
+                            "type": ["object", "null"],
                             "additionalProperties": false,
                             "minProperties": 1,
                             "maxProperties": 1,
                             "properties": {
                                 "default": {
-                                    "type": "object",
+                                    "type": ["object", "null"],
                                     "additionalProperties": false
                                 },
                                 "drop": {
-                                    "type": "object",
+                                    "type": ["object", "null"],
                                     "additionalProperties": false
                                 },
                                 "explicit_bucket_histogram": {
-                                    "type": "object",
+                                    "type": ["object", "null"],
                                     "additionalProperties": false,
                                     "properties": {
                                         "boundaries": {
@@ -233,31 +233,31 @@
                                             }
                                         },
                                         "record_min_max": {
-                                            "type": "boolean"
+                                            "type": ["boolean", "null"]
                                         }
                                     }
                                 },
                                 "base2_exponential_bucket_histogram": {
-                                    "type": "object",
+                                    "type": ["object", "null"],
                                     "additionalProperties": false,
                                     "properties": {
                                         "max_scale": {
-                                            "type": "integer"
+                                            "type": ["integer", "null"]
                                         },
                                         "max_size": {
-                                            "type": "integer"
+                                            "type": ["integer", "null"]
                                         },
                                         "record_min_max": {
-                                            "type": "boolean"
+                                            "type": ["boolean", "null"]
                                         }
                                     }
                                 },
                                 "last_value": {
-                                    "type": "object",
+                                    "type": ["object", "null"],
                                     "additionalProperties": false
                                 },
                                 "sum": {
-                                    "type": "object",
+                                    "type": ["object", "null"],
                                     "additionalProperties": false
                                 }
                             }
@@ -265,7 +265,7 @@
                         "attribute_keys": {
                             "type": "array",
                             "items": {
-                                "type": "string"
+                                "type": ["string", "null"]
                             }
                         }
                     }
