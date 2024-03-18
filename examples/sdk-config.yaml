@@ -1,0 +1,206 @@
+# sdk-config.yaml is a typical starting point for configuring the SDK, including exporting to
+# localhost via OTLP.
+
+# NOTE: With the exception of env var substitution syntax, SDKs ignore environment variables
+# when interpreting config files.
+#
+# This template includes env var substitution references (i.e. ${MY_ENV}) for all spec defined
+# env vars (https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/)
+# which map cleanly to file configuration. For example, OTEL_SDK_DISABLED is referenced below,
+# but OTEL_TRACES_EXPORTER is not since it does not map well to the hierarchical structure of
+# file configuration.
+#
+# Because env vars are ignored except for env var substitution, if "disabled: ${OTEL_SDK_DISABLED:-false}"
+# is replaced with "disabled: false", setting OTEL_SDK_DISALBED env var will not have any effect.
+# See https://opentelemetry.io/docs/specs/otel/configuration/file-configuration/ for more information.
+# The following spec defined env vars are NOT referenced and are thus ignored:
+#
+# - OTEL_RESOURCE_ATTRIBUTES
+# - OTEL_LOG_LEVEL
+# - OTEL_PROPAGATORS
+# - OTEL_TRACES_SAMPLER
+# - OTEL_TRACES_SAMPLER_ARG
+# - OTEL_EXPORTER_ZIPKIN_ENDPOINT
+# - OTEL_EXPORTER_ZIPKIN_TIMEOUT
+# - OTEL_EXPORTER_PROMETHEUS_HOST
+# - OTEL_EXPORTER_PROMETHEUS_PORT
+# - OTEL_TRACES_EXPORTER
+# - OTEL_METRICS_EXPORTER
+# - OTEL_LOGS_EXPORTER
+# - OTEL_METRICS_EXEMPLAR_FILTER
+# - OTEL_EXPORTER_OTLP_{SIGNAL}_ENDPOINT
+# - OTEL_EXPORTER_OTLP_{SIGNAL}_INSECURE
+# - OTEL_EXPORTER_OTLP_{SIGNAL}_CERTIFICATE
+# - OTEL_EXPORTER_OTLP_{SIGNAL}_CLIENT_KEY
+# - OTEL_EXPORTER_OTLP_{SIGNAL}_CLIENT_CERTIFICATE
+# - OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_{SIGNAL}_HEADERS
+# - OTEL_EXPORTER_OTLP_{SIGNAL}_COMPRESSION
+# - OTEL_EXPORTER_OTLP_{SIGNAL}_TIMEOUT
+# - OTEL_EXPORTER_OTLP_{SIGNAL}_PROTOCOL
+
+# The file format version
+file_format: "0.1"
+
+# Configure if the SDK is disabled or not.
+disabled: ${OTEL_SDK_DISABLED:-false}
+
+# Configure resource for all signals.
+resource:
+  # Configure resource attributes.
+  attributes:
+    # Configure `service.name` resource attribute
+    service.name: ${OTEL_SERVICE_NAME:-unknown_service}
+
+# Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
+attribute_limits:
+  # Configure max attribute value size.
+  attribute_value_length_limit: ${OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT}
+  # Configure max attribute count.
+  attribute_count_limit: ${OTEL_ATTRIBUTE_COUNT_LIMIT:-128}
+
+# Configure text map context propagators.
+propagator:
+  composite: [tracecontext, baggage]
+
+# Configure tracer provider.
+tracer_provider:
+  # Configure span processors.
+  processors:
+    # Configure a batch span processor.
+    - batch:
+        # Configure delay interval (in milliseconds) between two consecutive exports.
+        schedule_delay: ${OTEL_BSP_SCHEDULE_DELAY:-5000}
+        # Configure maximum allowed time (in milliseconds) to export data.
+        export_timeout: ${OTEL_BSP_EXPORT_TIMEOUT:-30000}
+        # Configure maximum queue size.
+        max_queue_size: ${OTEL_BSP_MAX_QUEUE_SIZE:-2048}
+        # Configure maximum batch size.
+        max_export_batch_size: ${OTEL_BSP_MAX_EXPORT_BATCH_SIZE:-512}
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP.
+          otlp:
+            # Configure protocol.
+            protocol: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http/protobuf}
+            # Configure endpoint.
+            endpoint: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http://localhost:-4318}
+            # Configure certificate.
+            certificate: ${OTEL_EXPORTER_OTLP_CERTIFICATE}
+            # Configure mTLS private client key.
+            client_key: ${OTEL_EXPORTER_OTLP_CLIENT_KEY}
+            # Configure mTLS client certificate.
+            client_certificate: ${OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE}
+            # Configure compression.
+            compression: ${OTEL_EXPORTER_OTLP_COMPRESSION:-gzip}
+            # Configure max time (in milliseconds) to wait for each export.
+            timeout: ${OTEL_EXPORTER_OTLP_TIMEOUT:-10000}
+  # Configure span limits. See also attribute_limits.
+  limits:
+    # Configure max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
+    attribute_value_length_limit: ${OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT}
+    # Configure max span attribute count. Overrides attribute_limits.attribute_count_limit.
+    attribute_count_limit: ${OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT:-128}
+    # Configure max span event count.
+    event_count_limit: ${OTEL_SPAN_EVENT_COUNT_LIMIT:-128}
+    # Configure max span link count.
+    link_count_limit: ${OTEL_SPAN_LINK_COUNT_LIMIT:-128}
+    # Configure max attributes per span event.
+    event_attribute_count_limit: ${OTEL_EVENT_ATTRIBUTE_COUNT_LIMIT:-128}
+    # Configure max attributes per span link.
+    link_attribute_count_limit: ${OTEL_LINK_ATTRIBUTE_COUNT_LIMIT:-128}
+  # Configure the sampler.
+  sampler:
+    # Configure sampler to be parent_based. Known values include: always_off, always_on, jaeger_remote, parent_based, trace_id_ratio_based.
+    parent_based:
+      # Configure root sampler.
+      root:
+        # Configure sampler to be always_on.
+        always_on: {}
+      # Configure remote_parent_sampled sampler.
+      remote_parent_sampled:
+        # Configure sampler to be always_on.
+        always_on: {}
+      # Configure remote_parent_not_sampled sampler.
+      remote_parent_not_sampled:
+        # Configure sampler to be always_off.
+        always_off: {}
+      # Configure local_parent_sampled sampler.
+      local_parent_sampled:
+        # Configure sampler to be always_on.
+        always_on: {}
+      # Configure local_parent_not_sampled sampler.
+      local_parent_not_sampled:
+        # Configure sampler to be always_off.
+        always_off: {}
+
+# Configure meter provider.
+meter_provider:
+  # Configure metric readers.
+  readers:
+    # Configure a periodic metric reader.
+    - periodic:
+        # Configure delay interval (in milliseconds) between start of two consecutive exports.
+        interval: ${OTEL_METRIC_EXPORT_INTERVAL:-60000}
+        # Configure maximum allowed time (in milliseconds) to export data.
+        timeout: ${OTEL_METRIC_EXPORT_TIMEOUT:-30000}
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP.
+          otlp:
+            # Configure protocol.
+            protocol: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http/protobuf}
+            # Configure endpoint.
+            endpoint: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http://localhost:-4318}
+            # Configure certificate.
+            certificate: ${OTEL_EXPORTER_OTLP_CERTIFICATE}
+            # Configure mTLS private client key.
+            client_key: ${OTEL_EXPORTER_OTLP_CLIENT_KEY}
+            # Configure mTLS client certificate.
+            client_certificate: ${OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE}
+            # Configure compression.
+            compression: ${OTEL_EXPORTER_OTLP_COMPRESSION:-gzip}
+            # Configure max time (in milliseconds) to wait for each export.
+            timeout: ${OTEL_EXPORTER_OTLP_TIMEOUT:-10000}
+            # Configure temporality preference.
+            temporality_preference: ${OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:-cumulative}
+            # Configure default histogram aggregation.
+            default_histogram_aggregation: ${OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION:-explicit_bucket_histogram}
+
+# Configure logger provider.
+logger_provider:
+  # Configure log record processors.
+  processors:
+    # Configure a batch log record processor.
+    - batch:
+        # Configure delay interval (in milliseconds) between two consecutive exports.
+        schedule_delay: ${OTEL_BLRP_SCHEDULE_DELAY:-1000}
+        # Configure maximum allowed time (in milliseconds) to export data.
+        export_timeout: ${OTEL_BLRP_EXPORT_TIMEOUT:-30000}
+        # Configure maximum queue size.
+        max_queue_size: ${OTEL_BLRP_MAX_QUEUE_SIZE:-2048}
+        # Configure maximum batch size.
+        max_export_batch_size: ${OTEL_BLRP_MAX_EXPORT_BATCH_SIZE:-512}
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP.
+          otlp:
+            # Configure protocol.
+            protocol: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http/protobuf}
+            # Configure endpoint.
+            endpoint: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http://localhost:-4318}
+            # Configure certificate.
+            certificate: ${OTEL_EXPORTER_OTLP_CERTIFICATE}
+            # Configure mTLS private client key.
+            client_key: ${OTEL_EXPORTER_OTLP_CLIENT_KEY}
+            # Configure mTLS client certificate.
+            client_certificate: ${OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE}
+            # Configure compression.
+            compression: ${OTEL_EXPORTER_OTLP_COMPRESSION:-gzip}
+            # Configure max time (in milliseconds) to wait for each export.
+            timeout: ${OTEL_EXPORTER_OTLP_TIMEOUT:-10000}
+  # Configure log record limits. See also attribute_limits.
+  limits:
+    # Configure max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
+    attribute_value_length_limit: ${OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT}
+    # Configure max log record attribute count. Overrides attribute_limits.attribute_count_limit.
+    attribute_count_limit: ${OTEL_LOGRECORD_ATTRIBUTE_COUNT_LIMIT:-128}
