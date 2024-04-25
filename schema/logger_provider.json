@@ -64,6 +64,9 @@
             "properties": {
                 "otlp": {
                     "$ref": "common.json#/$defs/Otlp"
+                },
+                "console": {
+                    "$ref": "common.json#/$defs/Console"
                 }
             },
             "patternProperties": {
