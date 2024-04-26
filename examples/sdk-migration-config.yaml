@@ -83,7 +83,7 @@ tracer_provider:
             # Configure protocol.
             protocol: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http/protobuf}
             # Configure endpoint.
-            endpoint: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http://localhost:-4318}
+            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}
             # Configure certificate.
             certificate: ${OTEL_EXPORTER_OTLP_CERTIFICATE}
             # Configure mTLS private client key.
@@ -150,7 +150,7 @@ meter_provider:
             # Configure protocol.
             protocol: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http/protobuf}
             # Configure endpoint.
-            endpoint: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http://localhost:-4318}
+            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}
             # Configure certificate.
             certificate: ${OTEL_EXPORTER_OTLP_CERTIFICATE}
             # Configure mTLS private client key.
@@ -187,7 +187,7 @@ logger_provider:
             # Configure protocol.
             protocol: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http/protobuf}
             # Configure endpoint.
-            endpoint: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http://localhost:4318}
+            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318/v1/logs}
             # Configure certificate.
             certificate: ${OTEL_EXPORTER_OTLP_CERTIFICATE}
             # Configure mTLS private client key.
