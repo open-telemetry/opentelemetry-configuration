@@ -50,7 +50,7 @@ tracer_provider:
             # Configure protocol.
             protocol: http/protobuf
             # Configure endpoint.
-            endpoint: http://localhost:-4318
+            endpoint: http://localhost:4318
             # Configure certificate.
             certificate:
             # Configure mTLS private client key.
@@ -117,7 +117,7 @@ meter_provider:
             # Configure protocol.
             protocol: http/protobuf
             # Configure endpoint.
-            endpoint: http://localhost:-4318
+            endpoint: http://localhost:4318
             # Configure certificate.
             certificate:
             # Configure mTLS private client key.
