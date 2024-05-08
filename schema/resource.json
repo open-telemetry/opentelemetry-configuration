@@ -8,6 +8,9 @@
         "attributes": {
             "$ref": "#/$defs/Attributes"
         },
+        "detectors": {
+            "$ref": "#/$defs/Detectors"
+        },
         "schema_url": {
             "type": "string"
         }
@@ -16,10 +19,31 @@
         "Attributes": {
             "title": "Attributes",
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": true
+        },
+        "Detectors": {
+            "title": "Detectors",
+            "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "service.name": {
-                    "type": "string"
+                "attributes": {
+                    "title": "DetectorAttributes",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "included": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "excluded": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
                 }
             }
         }
