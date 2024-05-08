@@ -136,10 +136,12 @@ meter_provider:
             without_scope_info: false
             # Configure Prometheus Exporter to add resource attributes as metrics attributes.
             with_resource_constant_labels:
+              # Configure resource attributes to be included, in this example attributes starting with service.
               included:
-                - "service.*"
+                - "service*"
+              # Configure resource attributes to be excluded, in this example attribute service.attr1.
               excluded:
-                - "otherattribute"
+                - "service.attr1"
     # Configure a periodic metric reader.
     - periodic:
         # Configure delay interval (in milliseconds) between start of two consecutive exports.
