@@ -95,7 +95,7 @@
                     "type": "boolean"
                 },
                 "with_resource_constant_labels": {
-                    "type": "string"
+                    "$ref": "common.json#/$defs/IncludeExclude"
                 }
             }
         },

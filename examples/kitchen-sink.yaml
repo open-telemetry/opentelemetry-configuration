@@ -135,7 +135,11 @@ meter_provider:
             # Configure Prometheus Exporter to produce metrics without a scope info metric.
             without_scope_info: false
             # Configure Prometheus Exporter to add resource attributes as metrics attributes.
-            with_resource_constant_labels: "service\\.[.]*"
+            with_resource_constant_labels:
+              included:
+                - "service.*"
+              excluded:
+                - "otherattribute"
     # Configure a periodic metric reader.
     - periodic:
         # Configure delay interval (in milliseconds) between start of two consecutive exports.
