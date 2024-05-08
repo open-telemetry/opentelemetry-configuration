@@ -42,6 +42,9 @@
                 "timeout": {
                     "type": "integer",
                     "minimum": 0
+                },
+                "insecure": {
+                    "type": "boolean"
                 }
             },
             "required": [

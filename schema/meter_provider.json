@@ -149,6 +149,9 @@
                         "explicit_bucket_histogram",
                         "base2_exponential_bucket_histogram"
                     ]
+                },
+                "insecure": {
+                    "type": "boolean"
                 }
             },
             "required": [

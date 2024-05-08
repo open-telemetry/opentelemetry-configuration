@@ -19,12 +19,7 @@
         "Attributes": {
             "title": "Attributes",
             "type": "object",
-            "additionalProperties": true,
-            "properties": {
-                "service.name": {
-                    "type": "string"
-                }
-            }
+            "additionalProperties": true
         },
         "Detectors": {
             "title": "Detectors",

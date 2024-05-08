@@ -87,6 +87,16 @@ logger_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_LOGS_TIMEOUT
             timeout: 10000
+            # Configure client transport security for the exporter's connection.
+            #
+            # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_LOGS_INSECURE
+            insecure: false
+    # Configure a simple span processor.
+    - simple:
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be console.
+          console: {}
   # Configure log record limits. See also attribute_limits.
   limits:
     # Configure max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
@@ -118,8 +128,11 @@ meter_provider:
             #
             # Environment variable: OTEL_EXPORTER_PROMETHEUS_PORT
             port: 9464
+            # Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.
             without_units: false
+            # Configure Prometheus Exporter to produce metrics without a type suffix.
             without_type_suffix: false
+            # Configure Prometheus Exporter to produce metrics without a scope info metric.
             without_scope_info: false
     # Configure a periodic metric reader.
     - periodic:
@@ -170,6 +183,10 @@ meter_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_METRICS_TIMEOUT
             timeout: 10000
+            # Configure client transport security for the exporter's connection.
+            #
+            # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_METRICS_INSECURE
+            insecure: false
             # Configure temporality preference.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
@@ -286,6 +303,10 @@ tracer_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_TIMEOUT, OTEL_EXPORTER_OTLP_TRACES_TIMEOUT
             timeout: 10000
+            # Configure client transport security for the exporter's connection.
+            #
+            # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_TRACES_INSECURE
+            insecure: false
     # Configure a batch span processor.
     - batch:
         # Configure exporter.
