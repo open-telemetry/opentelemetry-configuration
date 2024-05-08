@@ -35,10 +35,8 @@ Allowable changes:
 
 The following guidelines are used to model the configuration schema:
 
-* To remove redundant information from the configuration file, prefixes for data produced by each of the providers
-will be removed from configuration options. For example, under the `meter_provider` configuration, metric readers will be
-identified by the word `readers` rather than by `metric_readers`. Similarly, the prefix `span_` will be dropped for tracer
-provider configuration, and `logrecord` for logger provider.
-* Use wildcard `*` (match any number of any character, including none) and `?` (match any single character) instead of regex. If a single property with
-  wildcards is likely to be insufficient, accept an array of strings with wildcard with entries joined with a logical OR. For example, given `["foo*", "bar*"]`,
-  match on any value that starts with `foo` OR `bar`.
+* To remove redundant information from the configuration file, prefixes for data produced by each of the providers will be removed from configuration options. For example, under the `meter_provider` configuration, metric readers will be identified by the word `readers` rather than by `metric_readers`. Similarly, the prefix `span_` will be dropped for tracer provider configuration, and `logrecord` for logger provider.
+* Use wildcard `*` (match any number of any character, including none) and `?` (match any single character) instead of regex. If a single property with wildcards is likely to be insufficient, accept `included` and `excluded` properties, each with an array of strings with wildcard entries. The wildcard entries should be joined with a logical OR. If `included` is not specified, assume that all entries are included. Apply `excluded` after applying `included`. Examples:
+  * Given `excluded: ["a*"]`: Match all except values starting with `a`.
+  * Given `included: ["a*", "b*"]`, `excluded: ["ab*"]`: Match any value starting with `a` or `b`, excluding values starting with `ab`.
+  * Given `included: ["a", "b"]`, `excluded: ["a"]`: Match values equal to `b`.
