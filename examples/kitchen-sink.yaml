@@ -134,6 +134,14 @@ meter_provider:
             without_type_suffix: false
             # Configure Prometheus Exporter to produce metrics without a scope info metric.
             without_scope_info: false
+            # Configure Prometheus Exporter to add resource attributes as metrics attributes.
+            with_resource_constant_labels:
+              # Configure resource attributes to be included, in this example attributes starting with service.
+              included:
+                - "service*"
+              # Configure resource attributes to be excluded, in this example attribute service.attr1.
+              excluded:
+                - "service.attr1"
     # Configure a periodic metric reader.
     - periodic:
         # Configure delay interval (in milliseconds) between start of two consecutive exports.
@@ -398,5 +406,23 @@ resource:
     #
     # Environment variable: OTEL_SERVICE_NAME
     service.name: !!str "unknown_service"
+  # Configure resource detectors.
+  detectors:
+    # Configure attributes provided by resource detectors.
+    attributes:
+      # Configure list of attribute key patterns to include from resource detectors. If not set, all attributes are included.
+      #
+      # Attribute keys from resource detectors are evaluated to match as follows:
+      #   * If the value of the attribute key exactly matches.
+      #   * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+      included:
+        - process.*
+      # Configure list of attribute key patterns to exclude from resource detectors. Applies after .resource.detectors.attributes.included (i.e. excluded has higher priority than included).
+      #
+      # Attribute keys from resource detectors are evaluated to match as follows:
+      #   * If the value of the attribute key exactly matches.
+      #   * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+      excluded:
+        - process.command_args
   # Configure the resource schema URL.
   schema_url: https://opentelemetry.io/schemas/1.16.0
