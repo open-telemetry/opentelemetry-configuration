@@ -33,6 +33,12 @@
                 },
                 "exporter": {
                     "$ref": "#/$defs/MetricExporter"
+                },
+                "producers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/MetricProducer"
+                    }
                 }
             },
             "required": [
@@ -46,6 +52,12 @@
             "properties": {
                 "exporter": {
                     "$ref": "#/$defs/MetricExporter"
+                },
+                "producers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/MetricProducer"
+                    }
                 }
             },
             "required": [
@@ -67,6 +79,27 @@
                 },
                 "prometheus": {
                     "$ref": "#/$defs/Prometheus"
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
+                }
+            }
+        },
+        "MetricProducer": {
+            "type": "object",
+            "additionalProperties": true,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "opencensus": {
+                    "type": "object",
+                    "additionalProperties": false
+                },
+                "prometheus": {
+                    "type": "object",
+                    "additionalProperties": false
                 }
             },
             "patternProperties": {
