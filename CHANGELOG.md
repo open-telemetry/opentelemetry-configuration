@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Adding Instrumentation configuration
+
 ## v0.1.0 - 2023-10-05
 
 Initial configuration schema release, including:

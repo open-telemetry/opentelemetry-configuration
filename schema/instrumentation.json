@@ -1,0 +1,92 @@
+{
+    "$id": "https://opentelemetry.io/otelconfig/instrumentation.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Instrumentation",
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+        "common": {
+            "type": "object",
+            "properties": {
+                "peer-service-mapping": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/PeerServiceMapping"
+                    }
+                },
+                "http-capture-headers": {
+                    "type": "object",
+                    "properties": {
+                        "client": {
+                            "$ref": "#/$defs/RequestResponseHeaders"
+                        },
+                        "server": {
+                            "$ref": "#/$defs/RequestResponseHeaders"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "db-statement-sanitizer": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "java": {
+            "$ref": "#/$defs/JavaModules"
+        },
+        "js": {
+            "$ref": "#/$defs/JsModules"
+        },
+        "php": {
+            "$ref": "#/$defs/PhpModules"
+        },
+        "python": {
+            "$ref": "#/$defs/PythonModules"
+        }
+    },
+    "$defs": {
+        "PeerServiceMapping": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "peer": {
+                    "type": "string"
+                },
+                "service": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "peer",
+                "service"
+            ]
+        },
+        "ArrayOfHeaders": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "RequestResponseHeaders": {
+            "type": "object",
+            "properties": {
+                "request": {
+                    "$ref": "#/$defs/ArrayOfHeaders"
+                },
+                "response": {
+                    "$ref": "#/$defs/ArrayOfHeaders"
+                }
+            },
+            "additionalProperties": false
+        },
+        "JavaModules": {},
+        "JsModules": {},
+        "PhpModules": {},
+        "PythonModules": {}
+    }
+}

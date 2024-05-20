@@ -426,3 +426,37 @@ resource:
         - process.command_args
   # Configure the resource schema URL.
   schema_url: https://opentelemetry.io/schemas/1.16.0
+# Configure instrumentation
+instrumentation:
+  # Configure options common to multiple languages
+  common:
+    peer-service-mapping:
+      - peer: foo
+        service: bar
+      - peer: bar
+        service: bat
+    http-capture-headers:
+      client:
+        request:
+          - X-Foo
+        response:
+          - X-Foo-*
+      server:
+        request:
+          - X-Bar-*
+        response:
+          - X-Bar
+    db-statement-sanitizer:
+      enabled: true
+      foo: bar
+  # Configure language-specific module options
+  java:
+    logback-appender:
+      experimental:
+        capture-mdc-attributes:
+          - attr_one
+          - attr_two
+  php:
+    example_instrumentation:
+      span_name: test123
+      enabled: true
