@@ -33,12 +33,6 @@
                 },
                 "exporter": {
                     "$ref": "#/$defs/MetricExporter"
-                },
-                "producers": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/MetricProducer"
-                    }
                 }
             },
             "required": [
@@ -96,10 +90,6 @@
                 "opencensus": {
                     "type": "object",
                     "additionalProperties": false
-                },
-                "prometheus": {
-                    "type": "object",
-                    "additionalProperties": false
                 }
             },
             "patternProperties": {
@@ -143,6 +133,12 @@
                 },
                 "pull": {
                     "$ref": "#/$defs/PullMetricReader"
+                },
+                "producers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/MetricProducer"
+                    }
                 }
             }
         },
