@@ -3,34 +3,47 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Instrumentation",
     "type": "object",
-    "additionalProperties": true,
+    "additionalProperties": false,
     "properties": {
-        "common": {
+        "general": {
             "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "peer-service-mapping": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/PeerServiceMapping"
+                "peer": {
+                    "type": "object",
+                    "properties": {
+                        "service-mapping": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/$defs/PeerServiceMapping"
+                            }
+                        }
                     }
                 },
-                "http-capture-headers": {
+                "http": {
                     "type": "object",
+                    "additionalProperties": false,
                     "properties": {
                         "client": {
-                            "$ref": "#/$defs/RequestResponseHeaders"
+                            "$ref": "#/$defs/RequestResponseCaptureHeaders"
                         },
                         "server": {
-                            "$ref": "#/$defs/RequestResponseHeaders"
+                            "$ref": "#/$defs/RequestResponseCaptureHeaders"
                         }
-                    },
-                    "additionalProperties": false
+                    }
                 },
-                "db-statement-sanitizer": {
+                "db": {
                     "type": "object",
+                    "additionalProperties": false,
                     "properties": {
-                        "enabled": {
-                            "type": "boolean"
+                        "statement-sanitizer": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean"
+                                }
+                            }
                         }
                     }
                 }
@@ -72,17 +85,26 @@
                 "type": "string"
             }
         },
-        "RequestResponseHeaders": {
+        "CaptureHeaders": {
             "type": "object",
+            "additionalProperties": false,
             "properties": {
-                "request": {
-                    "$ref": "#/$defs/ArrayOfHeaders"
-                },
-                "response": {
+                "capture-headers": {
                     "$ref": "#/$defs/ArrayOfHeaders"
                 }
-            },
-            "additionalProperties": false
+            }
+        },
+        "RequestResponseCaptureHeaders": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "request": {
+                    "$ref": "#/$defs/CaptureHeaders"
+                },
+                "response": {
+                    "$ref": "#/$defs/CaptureHeaders"
+                }
+            }
         },
         "JavaModules": {},
         "JsModules": {},
