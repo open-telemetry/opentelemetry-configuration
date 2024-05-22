@@ -432,10 +432,10 @@ instrumentation:
   general:
     peer:
       service-mapping:
-        - peer: foo
-          service: bar
-        - peer: bar
-          service: bat
+        - peer: 1.2.3.4
+          service: FooService
+        - peer: 2.3.4.5
+          service: BarService
     http:
       client:
         request:
