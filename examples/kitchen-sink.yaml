@@ -426,17 +426,27 @@ resource:
         - process.command_args
   # Configure the resource schema URL.
   schema_url: https://opentelemetry.io/schemas/1.16.0
-# Configure instrumentation
+# Configure instrumentation.
 instrumentation:
-  # General SemConv options that may apply to multiple languages
+  # Configure general SemConv options that may apply to multiple languages and instrumentations.
   general:
+    # Configure instrumentations following the peer semantic conventions.
+    # 
+    # See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
     peer:
+      # Configure the service mapping for instrumentations following peer.service semantic conventions.
+      # 
+      # See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
       service-mapping:
         - peer: 1.2.3.4
           service: FooService
         - peer: 2.3.4.5
           service: BarService
+    # Configure instrumentations following the http semantic conventions.
+    # 
+    # See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
     http:
+      # Configure instrumentations following the http client semantic conentions.
       client:
         request:
           capture-headers:
