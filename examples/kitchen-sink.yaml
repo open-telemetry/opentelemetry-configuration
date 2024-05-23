@@ -473,12 +473,21 @@ instrumentation:
         enabled: true
   # Language-specific module options
   java:
+    # Configure Java's Logback Appender instrumentation.
+    #
+    # See https://opentelemetry.io/docs/languages/java/automatic/spring-boot/#logback
     logback-appender:
+      experimental-log-attributes: true
       experimental:
+        capture-code-attributes: true
+        capture-marker-attribute: false
+        capture-key-value-pair-attributes: true
+        capture-logger-context-attributes: false
         capture-mdc-attributes:
           - attr_one
           - attr_two
   php:
+    # Configure PHP's example instrumentation.
     example_instrumentation:
       span_name: test123
       enabled: true
