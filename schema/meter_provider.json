@@ -126,6 +126,7 @@
             "type": "object",
             "additionalProperties": false,
             "minProperties": 1,
+            "maxProperties": 2,
             "properties": {
                 "periodic": {
                     "$ref": "#/$defs/PeriodicMetricReader"
