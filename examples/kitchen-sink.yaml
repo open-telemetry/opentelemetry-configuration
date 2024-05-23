@@ -446,7 +446,7 @@ instrumentation:
     # 
     # See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
     http:
-      # Configure instrumentations following the http client semantic conentions.
+      # Configure instrumentations following the http client semantic conventions.
       client:
         request:
           capture-headers:
@@ -454,6 +454,7 @@ instrumentation:
         response:
           capture-headers:
             - X-Foo
+      # Configure instrumentations following the http server semantic conventions.
       server:
         request:
           capture-headers:
@@ -461,7 +462,13 @@ instrumentation:
         response:
           capture-headers:
             - X-Bar
+    # Configure instrumentations following the db semantic conventions.
+    #
+    # See db semantic conventions: https://opentelemetry.io/docs/specs/semconv/database/
     db:
+      # Configure database statement sanitization.
+      #
+      # See https://opentelemetry.io/docs/specs/semconv/database/database-spans/#common-attributes
       statement-sanitizer:
         enabled: true
   # Language-specific module options

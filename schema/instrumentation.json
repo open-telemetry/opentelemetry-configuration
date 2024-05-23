@@ -49,6 +49,21 @@
                 }
             }
         },
+        "android": {
+            "$ref": "#/$defs/AndroidModules"
+        },
+        "cpp": {
+            "$ref": "#/$defs/CppModules"
+        },
+        "dotnet": {
+            "$ref": "#/$defs/DotnetModules"
+        },
+        "erlang": {
+            "$ref": "#/$defs/ErlangModules"
+        },
+        "go": {
+            "$ref": "#/$defs/GoModules"
+        },
         "java": {
             "$ref": "#/$defs/JavaModules"
         },
@@ -60,6 +75,15 @@
         },
         "python": {
             "$ref": "#/$defs/PythonModules"
+        },
+        "ruby": {
+            "$ref": "#/$defs/RubyModules"
+        },
+        "rust": {
+            "$ref": "#/$defs/RustModules"
+        },
+        "swift": {
+            "$ref": "#/$defs/SwiftModules"
         }
     },
     "$defs": {
@@ -106,9 +130,17 @@
                 }
             }
         },
+        "AndroidModules": {},
+        "CppModules": {},
+        "DotnetModules": {},
+        "ErlangModules": {},
+        "GoModules": {},
         "JavaModules": {},
         "JsModules": {},
         "PhpModules": {},
-        "PythonModules": {}
+        "PythonModules": {},
+        "RubyModules": {},
+        "RustModules": {},
+        "SwiftModules": {}
     }
 }
