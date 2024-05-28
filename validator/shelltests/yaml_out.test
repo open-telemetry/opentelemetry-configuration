@@ -1,0 +1,8 @@
+FILE_FORMAT=0.1 ./otel_config_validator -o out.yaml shelltests/test.yaml
+>>>
+>>>= 0
+
+yq eval '.file_format' out.yaml
+>>>
+0.1
+>>>= 0
