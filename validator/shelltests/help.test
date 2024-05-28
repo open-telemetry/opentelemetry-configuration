@@ -1,0 +1,15 @@
+./otel_config_validator --help
+>>>
+NAME:
+   otel_config_validator - Validate a configuration file against the OpenTelemetry Configuration Schema
+
+USAGE:
+   otel_config_validator [global options] [command [command options]] [arguments...]
+
+COMMANDS:
+   help, h  Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --output value, -o value  optionally where to output the configuration (as json or yaml) after variable expansion and validation
+   --help, -h                show help (default: false)
+>>>= 0

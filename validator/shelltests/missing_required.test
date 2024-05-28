@@ -1,0 +1,5 @@
+./otel_config_validator shelltests/missing_required.yaml
+>>>2
+[I#] [S#] doesn't validate with https://opentelemetry.io/otelconfig/opentelemetry_configuration.json#
+  [I#] [S#/required] missing properties: 'file_format'
+>>>= 1
