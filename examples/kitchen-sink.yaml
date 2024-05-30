@@ -485,56 +485,56 @@ instrumentation:
   #
   # Configure C++ language-specific instrumentation libraries.
   cpp:
-    # Configure the instrumentation corresponding to key "another_example_key".
+    # Configure the instrumentation corresponding to key "example".
     example:
       property: "value"
   # Configure .NET language-specific instrumentation libraries.
   dotnet:
-    # Configure the instrumentation corresponding to key "another_example_key".
+    # Configure the instrumentation corresponding to key "example".
     example:
       property: "value"
   # Configure Erlang language-specific instrumentation libraries.
   erlang:
-    # Configure the instrumentation corresponding to key "another_example_key".
+    # Configure the instrumentation corresponding to key "example".
     example:
       property: "value"
   # Configure Go language-specific instrumentation libraries.
   go:
-    # Configure the instrumentation corresponding to key "another_example_key".
+    # Configure the instrumentation corresponding to key "example".
     example:
       property: "value"
   # Configure Java language-specific instrumentation libraries.
   java:
-    # Configure the instrumentation corresponding to key "another_example_key".
+    # Configure the instrumentation corresponding to key "example".
     example:
       property: "value"
   # Configure JavaScript language-specific instrumentation libraries.
   js:
-    # Configure the instrumentation corresponding to key "another_example_key".
+    # Configure the instrumentation corresponding to key "example".
     example:
       property: "value"
   # Configure PHP language-specific instrumentation libraries.
   php:
-    # Configure the instrumentation corresponding to key "another_example_key".
+    # Configure the instrumentation corresponding to key "example".
     example:
       property: "value"
   # Configure Python language-specific instrumentation libraries.
   python:
-    # Configure the instrumentation corresponding to key "another_example_key".
+    # Configure the instrumentation corresponding to key "example".
     example:
       property: "value"
   # Configure Ruby language-specific instrumentation libraries.
   ruby:
-    # Configure the instrumentation corresponding to key "another_example_key".
+    # Configure the instrumentation corresponding to key "example".
     example:
       property: "value"
   # Configure Rust language-specific instrumentation libraries.
   rust:
-    # Configure the instrumentation corresponding to key "another_example_key".
+    # Configure the instrumentation corresponding to key "example".
     example:
       property: "value"
   # Configure Swift language-specific instrumentation libraries.
   swift:
-    # Configure the instrumentation corresponding to key "another_example_key".
+    # Configure the instrumentation corresponding to key "example".
     example:
       property: "value"
