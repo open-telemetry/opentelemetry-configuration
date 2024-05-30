@@ -434,18 +434,23 @@ resource:
         - process.command_args
   # Configure the resource schema URL.
   schema_url: https://opentelemetry.io/schemas/1.16.0
+
 # Configure instrumentation.
 instrumentation:
   # Configure general SemConv options that may apply to multiple languages and instrumentations.
+  #
+  # Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
   general:
     # Configure instrumentations following the peer semantic conventions.
     # 
     # See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
     peer:
       # Configure the service mapping for instrumentations following peer.service semantic conventions.
+      #
+      # Each entry is a key value pair where "peer" defines the IP address and "service" defines the corresponding logical name of the service.
       # 
       # See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
-      service-mapping:
+      service_mapping:
         - peer: 1.2.3.4
           service: FooService
         - peer: 2.3.4.5
@@ -456,46 +461,80 @@ instrumentation:
     http:
       # Configure instrumentations following the http client semantic conventions.
       client:
-        request:
-          capture-headers:
-            - X-Foo
-        response:
-          capture-headers:
-            - X-Foo
+        # Configure headers to capture for outbound http requests.
+        request_captured_headers:
+          - Content-Type
+          - Accept
+        # Configure headers to capture for outbound http responses.
+        response_captured_headers:
+          - Content-Type
+          - Content-Encoding
       # Configure instrumentations following the http server semantic conventions.
       server:
-        request:
-          capture-headers:
-            - X-Bar
-        response:
-          capture-headers:
-            - X-Bar
-    # Configure instrumentations following the db semantic conventions.
-    #
-    # See db semantic conventions: https://opentelemetry.io/docs/specs/semconv/database/
-    db:
-      # Configure database statement sanitization.
-      #
-      # See https://opentelemetry.io/docs/specs/semconv/database/database-spans/#common-attributes
-      statement-sanitizer:
-        enabled: true
-  # Language-specific module options
+        # Configure headers to capture for inbound http requests.
+        request_captured_headers:
+          - Content-Type
+          - Accept
+        # Configure headers to capture for outbound http responses.
+        response_captured_headers:
+          - Content-Type
+          - Content-Encoding
+  # Configure language-specific instrumentation libraries.
+  #
+  # Keys may refer to instrumentation libraries or collections of related configuration. Because there is no central schema defining the keys or their contents, instrumentation must carefully document their schema and avoid key collisions with other instrumentations.
+  #
+  # Configure C++ language-specific instrumentation libraries.
+  cpp:
+    # Configure the instrumentation corresponding to key "another_example_key".
+    example:
+      property: "value"
+  # Configure .NET language-specific instrumentation libraries.
+  dotnet:
+    # Configure the instrumentation corresponding to key "another_example_key".
+    example:
+      property: "value"
+  # Configure Erlang language-specific instrumentation libraries.
+  erlang:
+    # Configure the instrumentation corresponding to key "another_example_key".
+    example:
+      property: "value"
+  # Configure Go language-specific instrumentation libraries.
+  go:
+    # Configure the instrumentation corresponding to key "another_example_key".
+    example:
+      property: "value"
+  # Configure Java language-specific instrumentation libraries.
   java:
-    # Configure Java's Logback Appender instrumentation.
-    #
-    # See https://opentelemetry.io/docs/languages/java/automatic/spring-boot/#logback
-    logback-appender:
-      experimental-log-attributes: true
-      experimental:
-        capture-code-attributes: true
-        capture-marker-attribute: false
-        capture-key-value-pair-attributes: true
-        capture-logger-context-attributes: false
-        capture-mdc-attributes:
-          - attr_one
-          - attr_two
+    # Configure the instrumentation corresponding to key "another_example_key".
+    example:
+      property: "value"
+  # Configure JavaScript language-specific instrumentation libraries.
+  js:
+    # Configure the instrumentation corresponding to key "another_example_key".
+    example:
+      property: "value"
+  # Configure PHP language-specific instrumentation libraries.
   php:
-    # Configure PHP's example instrumentation.
-    example_instrumentation:
-      span_name: test123
-      enabled: true
+    # Configure the instrumentation corresponding to key "another_example_key".
+    example:
+      property: "value"
+  # Configure Python language-specific instrumentation libraries.
+  python:
+    # Configure the instrumentation corresponding to key "another_example_key".
+    example:
+      property: "value"
+  # Configure Ruby language-specific instrumentation libraries.
+  ruby:
+    # Configure the instrumentation corresponding to key "another_example_key".
+    example:
+      property: "value"
+  # Configure Rust language-specific instrumentation libraries.
+  rust:
+    # Configure the instrumentation corresponding to key "another_example_key".
+    example:
+      property: "value"
+  # Configure Swift language-specific instrumentation libraries.
+  swift:
+    # Configure the instrumentation corresponding to key "another_example_key".
+    example:
+      property: "value"

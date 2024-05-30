@@ -6,16 +6,73 @@
     "additionalProperties": false,
     "properties": {
         "general": {
+            "$ref": "#/$defs/GeneralInstrumentation"
+        },
+        "cpp": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "dotnet": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "erlang": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "go": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "java": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "js": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "php": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "python": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "ruby": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "rust": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "swift": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        }
+    },
+    "patternProperties": {
+        ".*": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        }
+    },
+    "$defs": {
+        "GeneralInstrumentation": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "peer": {
                     "type": "object",
+                    "additionalProperties": false,
                     "properties": {
-                        "service-mapping": {
+                        "service_mapping": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/$defs/PeerServiceMapping"
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "peer": {
+                                        "type": "string"
+                                    },
+                                    "service": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "peer",
+                                    "service"
+                                ]
                             }
                         }
                     }
@@ -25,23 +82,38 @@
                     "additionalProperties": false,
                     "properties": {
                         "client": {
-                            "$ref": "#/$defs/RequestResponseCaptureHeaders"
-                        },
-                        "server": {
-                            "$ref": "#/$defs/RequestResponseCaptureHeaders"
-                        }
-                    }
-                },
-                "db": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "statement-sanitizer": {
                             "type": "object",
                             "additionalProperties": false,
                             "properties": {
-                                "enabled": {
-                                    "type": "boolean"
+                                "request_captured_headers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "response_captured_headers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "server": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "request_captured_headers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "response_captured_headers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
                                 }
                             }
                         }
@@ -49,98 +121,14 @@
                 }
             }
         },
-        "android": {
-            "$ref": "#/$defs/AndroidModules"
-        },
-        "cpp": {
-            "$ref": "#/$defs/CppModules"
-        },
-        "dotnet": {
-            "$ref": "#/$defs/DotnetModules"
-        },
-        "erlang": {
-            "$ref": "#/$defs/ErlangModules"
-        },
-        "go": {
-            "$ref": "#/$defs/GoModules"
-        },
-        "java": {
-            "$ref": "#/$defs/JavaModules"
-        },
-        "js": {
-            "$ref": "#/$defs/JsModules"
-        },
-        "php": {
-            "$ref": "#/$defs/PhpModules"
-        },
-        "python": {
-            "$ref": "#/$defs/PythonModules"
-        },
-        "ruby": {
-            "$ref": "#/$defs/RubyModules"
-        },
-        "rust": {
-            "$ref": "#/$defs/RustModules"
-        },
-        "swift": {
-            "$ref": "#/$defs/SwiftModules"
+        "LanguageSpecificInstrumentation": {
+            "type": "object",
+            "additionalProperties": true,
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
+                }
+            }
         }
-    },
-    "$defs": {
-        "PeerServiceMapping": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "peer": {
-                    "type": "string"
-                },
-                "service": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "peer",
-                "service"
-            ]
-        },
-        "ArrayOfHeaders": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "CaptureHeaders": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "capture-headers": {
-                    "$ref": "#/$defs/ArrayOfHeaders"
-                }
-            }
-        },
-        "RequestResponseCaptureHeaders": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "request": {
-                    "$ref": "#/$defs/CaptureHeaders"
-                },
-                "response": {
-                    "$ref": "#/$defs/CaptureHeaders"
-                }
-            }
-        },
-        "AndroidModules": {},
-        "CppModules": {},
-        "DotnetModules": {},
-        "ErlangModules": {},
-        "GoModules": {},
-        "JavaModules": {},
-        "JsModules": {},
-        "PhpModules": {},
-        "PythonModules": {},
-        "RubyModules": {},
-        "RustModules": {},
-        "SwiftModules": {}
     }
 }
