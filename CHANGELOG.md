@@ -2,7 +2,7 @@
 
 ## Unreleased
 
- * Add exporter `retry` configuration.
+ * Add exporter `retry` configuration. [#97](https://github.com/open-telemetry/opentelemetry-configuration/pull/97)
 
 ## [v0.2.0] - 2024-05-08
 
