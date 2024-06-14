@@ -91,6 +91,12 @@ logger_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_LOGS_INSECURE
             insecure: false
+            # Configure retry policy
+            retry:
+              # Configure maximum number of retries before failing.
+              max_attempts: 3
+              # Configure initial delay (in milliseconds) to be used for exponential backoff with jitter.
+              initial_delay: 100
     # Configure a simple span processor.
     - simple:
         # Configure exporter.
