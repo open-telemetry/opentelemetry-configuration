@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Adding initial instrumentation configuration schema
+
 ## [v0.2.0] - 2024-05-08
 
 * Document time value units in kitchen-sink example. [#51](https://github.com/open-telemetry/opentelemetry-configuration/pull/51)
