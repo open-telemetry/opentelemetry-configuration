@@ -1,0 +1,4 @@
+./otel_config_validator -o out.json
+>>>2
+Must pass a configuration filename
+>>>= 1
