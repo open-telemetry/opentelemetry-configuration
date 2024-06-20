@@ -2,14 +2,14 @@
     "$id": "https://opentelemetry.io/otelconfig/common.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Common",
-    "type": "object",
+    "type": ["object", "null"],
     "$defs": {
         "Headers": {
-            "type": "object",
+            "type": ["object", "null"],
             "title": "Headers",
             "patternProperties": {
                 ".*": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 }
             }
         },
@@ -32,37 +32,37 @@
             }
         },
         "Otlp": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
                 "protocol": {
-                    "type": "string",
+                    "type": ["string", "null"],
                     "pattern": "^(http|grpc)\\/(protobuf|json)"
                 },
                 "endpoint": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "certificate": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "client_key": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "client_certificate": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "headers": {
                     "$ref": "#/$defs/Headers"
                 },
                 "compression": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "timeout": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "insecure": {
-                    "type": "boolean"
+                    "type": ["boolean", "null"]
                 }
             },
             "required": [
@@ -72,7 +72,7 @@
             "title": "Otlp"
         },
         "Console": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false
         }
     }
