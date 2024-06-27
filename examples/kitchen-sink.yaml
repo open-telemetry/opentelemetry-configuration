@@ -205,6 +205,12 @@ meter_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_METRICS_INSECURE
             insecure: false
+            # Configure retry policy
+            retry:
+              # Configure maximum number of retries before failing.
+              max_attempts: 3
+              # Configure initial delay (in milliseconds) to be used for exponential backoff with jitter.
+              initial_delay: 100
             # Configure temporality preference.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
@@ -329,6 +335,12 @@ tracer_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_TRACES_INSECURE
             insecure: false
+            # Configure retry policy
+            retry:
+              # Configure maximum number of retries before failing.
+              max_attempts: 3
+              # Configure initial delay (in milliseconds) to be used for exponential backoff with jitter.
+              initial_delay: 100
     # Configure a batch span processor.
     - batch:
         # Configure exporter.
@@ -345,6 +357,12 @@ tracer_provider:
             #
             # Environment variable: OTEL_EXPORTER_ZIPKIN_TIMEOUT
             timeout: 10000
+            # Configure retry policy
+            retry:
+              # Configure maximum number of retries before failing.
+              max_attempts: 3
+              # Configure initial delay (in milliseconds) to be used for exponential backoff with jitter.
+              initial_delay: 100
     # Configure a simple span processor.
     - simple:
         # Configure exporter.

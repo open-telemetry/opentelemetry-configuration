@@ -209,6 +209,9 @@
                 "timeout": {
                     "type": "integer",
                     "minimum": 0
+                },
+                "retry": {
+                    "$ref": "common.json#/$defs/Retry"
                 }
             },
             "required": [
