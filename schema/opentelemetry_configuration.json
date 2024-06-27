@@ -28,6 +28,9 @@
         },
         "resource": {
             "$ref": "resource.json"
+        },
+        "instrumentation": {
+            "$ref": "instrumentation.json"
         }
     },
     "required": [
