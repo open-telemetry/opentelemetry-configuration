@@ -2,7 +2,9 @@
 
 ## Unreleased
 
-* Adding initial instrumentation configuration schema
+ 
+ * Adding initial instrumentation configuration schema. [#91](https://github.com/open-telemetry/opentelemetry-configuration/pull/91)
+ * Add exporter `retry` configuration. [#97](https://github.com/open-telemetry/opentelemetry-configuration/pull/97)
 
 ## [v0.2.0] - 2024-05-08
 
