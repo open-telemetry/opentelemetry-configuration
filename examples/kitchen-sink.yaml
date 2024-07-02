@@ -142,6 +142,7 @@ meter_provider:
               # Configure resource attributes to be excluded, in this example attribute service.attr1.
               excluded:
                 - "service.attr1"
+            default_histogram_aggregation: "base2_exponential_bucket_histogram"
       # Configure metric producers.
       producers:
         # Configure metric producer to be opencensus
@@ -442,13 +443,13 @@ instrumentation:
   # Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
   general:
     # Configure instrumentations following the peer semantic conventions.
-    # 
+    #
     # See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
     peer:
       # Configure the service mapping for instrumentations following peer.service semantic conventions.
       #
       # Each entry is a key value pair where "peer" defines the IP address and "service" defines the corresponding logical name of the service.
-      # 
+      #
       # See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
       service_mapping:
         - peer: 1.2.3.4
@@ -456,7 +457,7 @@ instrumentation:
         - peer: 2.3.4.5
           service: BarService
     # Configure instrumentations following the http semantic conventions.
-    # 
+    #
     # See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
     http:
       # Configure instrumentations following the http client semantic conventions.

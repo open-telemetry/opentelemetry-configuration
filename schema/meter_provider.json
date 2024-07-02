@@ -113,6 +113,13 @@
                 },
                 "with_resource_constant_labels": {
                     "$ref": "common.json#/$defs/IncludeExclude"
+                },
+								"default_histogram_aggregation": {
+                    "type": "string",
+                    "enum": [
+                        "explicit_bucket_histogram",
+                        "base2_exponential_bucket_histogram"
+                    ]
                 }
             }
         },
