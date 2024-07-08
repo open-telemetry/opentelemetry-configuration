@@ -75,6 +75,23 @@
                 }
             }
         },
+        "MetricProducer": {
+            "type": "object",
+            "additionalProperties": true,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "opencensus": {
+                    "type": "object",
+                    "additionalProperties": false
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
+                }
+            }
+        },
         "Prometheus": {
             "type": ["object", "null"],
             "additionalProperties": false,
@@ -103,13 +120,19 @@
             "type": ["object", "null"],
             "additionalProperties": false,
             "minProperties": 1,
-            "maxProperties": 1,
+            "maxProperties": 2,
             "properties": {
                 "periodic": {
                     "$ref": "#/$defs/PeriodicMetricReader"
                 },
                 "pull": {
                     "$ref": "#/$defs/PullMetricReader"
+                },
+                "producers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/MetricProducer"
+                    }
                 }
             }
         },

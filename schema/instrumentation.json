@@ -1,0 +1,134 @@
+{
+    "$id": "https://opentelemetry.io/otelconfig/instrumentation.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Instrumentation",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "general": {
+            "$ref": "#/$defs/GeneralInstrumentation"
+        },
+        "cpp": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "dotnet": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "erlang": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "go": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "java": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "js": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "php": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "python": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "ruby": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "rust": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        },
+        "swift": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        }
+    },
+    "patternProperties": {
+        ".*": {
+            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+        }
+    },
+    "$defs": {
+        "GeneralInstrumentation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "peer": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "service_mapping": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "peer": {
+                                        "type": "string"
+                                    },
+                                    "service": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "peer",
+                                    "service"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "http": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "client": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "request_captured_headers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "response_captured_headers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "server": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "request_captured_headers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "response_captured_headers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "LanguageSpecificInstrumentation": {
+            "type": "object",
+            "additionalProperties": true,
+            "patternProperties": {
+                ".*": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
