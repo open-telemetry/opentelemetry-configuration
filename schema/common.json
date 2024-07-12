@@ -13,6 +13,24 @@
                 }
             }
         },
+        "IncludeExclude": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "included": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "excluded": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "Otlp": {
             "type": ["object", "null"],
             "additionalProperties": false,

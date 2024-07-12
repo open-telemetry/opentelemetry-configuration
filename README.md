@@ -40,11 +40,26 @@ Allowable changes:
 - For major versions: All changes are permitted.
 - For minor versions: TBD
 
-## Naming guidelines
+## Schema modeling rules
 
-The following defines guidelines used to produce configuration schema:
+The following rules are enforced when modeling the configuration schema:
 
-1. To remove redundant information from the configuration file, prefixes for data produced by each of the providers
-will be removed from configuration options. For example, under the `meter_provider` configuration, metric readers will be
-identified by the word `readers` rather than by `metric_readers`. Similarly, the prefix `span_` will be dropped for tracer
-provider configuration, and `logrecord` for logger provider.
+### What properties are part of schema?
+
+Only properties which are described in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification) or [semantic-conventions](https://github.com/open-telemetry/semantic-conventions) are modeled in the schema. However, it's acceptable to allow additional properties specific to a particular language or implementation, and not covered by the schema. Model these by setting `"additionalProperties": true` (see [JSON schema additionalProperties](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties)). Types should set `"additionalProperties": false` by default unless requested by an opentelemetry component [maintainer](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer) which supports additional options.
+
+### Property naming
+
+To remove redundant information from the configuration file, prefixes for data produced by each of the providers will be removed from configuration options. For example, under the `meter_provider` configuration, metric readers are identified by the word `readers` rather than by `metric_readers`. Similarly, the prefix `span_` will be dropped for tracer provider configuration, and `logrecord` for logger provider.
+
+### Property name case
+
+Properties defined in the schema should be lower [snake case](https://en.wikipedia.org/wiki/Snake_case).
+
+### Properties which pattern matching
+
+When a property requires pattern matching, use wildcard `*` (match any number of any character, including none) and `?` (match any single character) instead of regex. If a single property with wildcards is likely to be insufficient to model the configuration requirements, accept `included` and `excluded` properties, each with an array of strings with wildcard entries. The wildcard entries should be joined with a logical OR. If `included` is not specified, assume that all entries are included. Apply `excluded` after applying `included`. Examples:
+
+* Given `excluded: ["a*"]`: Match all except values starting with `a`.
+* Given `included: ["a*", "b*"]`, `excluded: ["ab*"]`: Match any value starting with `a` or `b`, excluding values starting with `ab`.
+* Given `included: ["a", "b"]`, `excluded: ["a"]`: Match values equal to `b`.
