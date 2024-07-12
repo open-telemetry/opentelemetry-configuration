@@ -8,12 +8,11 @@
 # file configuration.
 #
 # NOTE: With the exception of env var substitution syntax, SDKs ignore environment variables
-# when interpreting config files.
-#
-# Because env vars are ignored except for env var substitution, if "disabled: ${OTEL_SDK_DISABLED:-false}"
-# is replaced with "disabled: false", setting OTEL_SDK_DISALBED env var will not have any effect.
-# See https://opentelemetry.io/docs/specs/otel/configuration/file-configuration/ for more information.
-# The following spec defined env vars are NOT referenced and are thus ignored:
+# when interpreting config files. For example, if "disabled: ${OTEL_SDK_DISABLED:-false}"
+# is replaced with "disabled: false", then setting the env var OTEL_SDK_DISABLED will not have
+# any effect. See https://opentelemetry.io/docs/specs/otel/configuration/file-configuration/
+# for more information. The following spec defined env vars are NOT referenced and are thus
+# ignored:
 #
 # - OTEL_RESOURCE_ATTRIBUTES
 # - OTEL_LOG_LEVEL
