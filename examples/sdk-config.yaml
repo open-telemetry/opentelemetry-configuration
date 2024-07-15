@@ -50,7 +50,7 @@ tracer_provider:
             # Configure protocol.
             protocol: http/protobuf
             # Configure endpoint.
-            endpoint: http://localhost:4318
+            endpoint: http://localhost:4318/v1/traces
             # Configure certificate.
             certificate:
             # Configure mTLS private client key.
@@ -61,6 +61,8 @@ tracer_provider:
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.
             timeout: 10000
+            # Configure headers:
+            headers: {}
   # Configure span limits. See also attribute_limits.
   limits:
     # Configure max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
@@ -117,7 +119,7 @@ meter_provider:
             # Configure protocol.
             protocol: http/protobuf
             # Configure endpoint.
-            endpoint: http://localhost:4318
+            endpoint: http://localhost:4318/v1/metrics
             # Configure certificate.
             certificate:
             # Configure mTLS private client key.
@@ -128,6 +130,8 @@ meter_provider:
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.
             timeout: 10000
+            # Configure headers:
+            headers: {}
             # Configure temporality preference.
             temporality_preference: cumulative
             # Configure default histogram aggregation.
@@ -154,7 +158,7 @@ logger_provider:
             # Configure protocol.
             protocol: http/protobuf
             # Configure endpoint.
-            endpoint: http://localhost:4318
+            endpoint: http://localhost:4318/v1/logs
             # Configure certificate.
             certificate:
             # Configure mTLS private client key.
@@ -165,6 +169,8 @@ logger_provider:
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.
             timeout: 10000
+            # Configure headers:
+            headers: {}
   # Configure log record limits. See also attribute_limits.
   limits:
     # Configure max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.

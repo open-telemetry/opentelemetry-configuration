@@ -9,8 +9,8 @@
 #
 # NOTE: With the exception of env var substitution syntax, SDKs ignore environment variables
 # when interpreting config files. For example, if "disabled: ${OTEL_SDK_DISABLED:-false}"
-# is replaced with "disabled: false", then setting the env var OTEL_SDK_DISABLED will not have
-# any effect. See https://opentelemetry.io/docs/specs/otel/configuration/file-configuration/
+# is replaced with "disabled: false", then setting the env var OTEL_SDK_DISABLED will have
+# no effect. See https://opentelemetry.io/docs/specs/otel/configuration/file-configuration/
 # for more information. The following spec defined env vars are NOT referenced and are thus
 # ignored:
 #
@@ -27,15 +27,15 @@
 # - OTEL_METRICS_EXPORTER
 # - OTEL_LOGS_EXPORTER
 # - OTEL_METRICS_EXEMPLAR_FILTER
-# - OTEL_EXPORTER_OTLP_{SIGNAL}_ENDPOINT
-# - OTEL_EXPORTER_OTLP_{SIGNAL}_INSECURE
-# - OTEL_EXPORTER_OTLP_{SIGNAL}_CERTIFICATE
-# - OTEL_EXPORTER_OTLP_{SIGNAL}_CLIENT_KEY
-# - OTEL_EXPORTER_OTLP_{SIGNAL}_CLIENT_CERTIFICATE
+# - OTEL_EXPORTER_OTLP_PROTOCOL
+# - OTEL_EXPORTER_OTLP_ENDPOINT
+# - OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_{SIGNAL}_INSECURE
+# - OTEL_EXPORTER_OTLP_CERTIFICATE
+# - OTEL_EXPORTER_OTLP_CLIENT_KEY
+# - OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE
 # - OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_{SIGNAL}_HEADERS
-# - OTEL_EXPORTER_OTLP_{SIGNAL}_COMPRESSION
-# - OTEL_EXPORTER_OTLP_{SIGNAL}_TIMEOUT
-# - OTEL_EXPORTER_OTLP_{SIGNAL}_PROTOCOL
+# - OTEL_EXPORTER_OTLP_COMPRESSION
+# - OTEL_EXPORTER_OTLP_TIMEOUT
 
 # The file format version
 file_format: "0.1"
@@ -80,19 +80,21 @@ tracer_provider:
           # Configure exporter to be OTLP.
           otlp:
             # Configure protocol.
-            protocol: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http/protobuf}
+            protocol: ${OTEL_EXPORTER_OTLP_TRACES_PROTOCOL:-http/protobuf}
             # Configure endpoint.
-            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}
+            endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}
             # Configure certificate.
-            certificate: ${OTEL_EXPORTER_OTLP_CERTIFICATE}
+            certificate: ${OTEL_EXPORTER_OTLP_TRACES_CERTIFICATE}
             # Configure mTLS private client key.
-            client_key: ${OTEL_EXPORTER_OTLP_CLIENT_KEY}
+            client_key: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_KEY}
             # Configure mTLS client certificate.
-            client_certificate: ${OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE}
+            client_certificate: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_CERTIFICATE}
             # Configure compression.
-            compression: ${OTEL_EXPORTER_OTLP_COMPRESSION:-gzip}
+            compression: ${OTEL_EXPORTER_OTLP_TRACES_COMPRESSION:-gzip}
             # Configure max time (in milliseconds) to wait for each export.
-            timeout: ${OTEL_EXPORTER_OTLP_TIMEOUT:-10000}
+            timeout: ${OTEL_EXPORTER_OTLP_TRACES_TIMEOUT:-10000}
+            # Configure headers:
+            headers: {}
   # Configure span limits. See also attribute_limits.
   limits:
     # Configure max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
@@ -147,19 +149,21 @@ meter_provider:
           # Configure exporter to be OTLP.
           otlp:
             # Configure protocol.
-            protocol: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http/protobuf}
+            protocol: ${OTEL_EXPORTER_OTLP_METRICS_PROTOCOL:-http/protobuf}
             # Configure endpoint.
-            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}
+            endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
             # Configure certificate.
-            certificate: ${OTEL_EXPORTER_OTLP_CERTIFICATE}
+            certificate: ${OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE}
             # Configure mTLS private client key.
-            client_key: ${OTEL_EXPORTER_OTLP_CLIENT_KEY}
+            client_key: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_KEY}
             # Configure mTLS client certificate.
-            client_certificate: ${OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE}
+            client_certificate: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_CERTIFICATE}
             # Configure compression.
-            compression: ${OTEL_EXPORTER_OTLP_COMPRESSION:-gzip}
+            compression: ${OTEL_EXPORTER_OTLP_METRICS_COMPRESSION:-gzip}
             # Configure max time (in milliseconds) to wait for each export.
-            timeout: ${OTEL_EXPORTER_OTLP_TIMEOUT:-10000}
+            timeout: ${OTEL_EXPORTER_OTLP_METRICS_TIMEOUT:-10000}
+            # Configure headers:
+            headers: {}
             # Configure temporality preference.
             temporality_preference: ${OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:-cumulative}
             # Configure default histogram aggregation.
@@ -184,19 +188,21 @@ logger_provider:
           # Configure exporter to be OTLP.
           otlp:
             # Configure protocol.
-            protocol: ${OTEL_EXPORTER_OTLP_PROTOCOL:-http/protobuf}
+            protocol: ${OTEL_EXPORTER_OTLP_LOGS_PROTOCOL:-http/protobuf}
             # Configure endpoint.
-            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318/v1/logs}
+            endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}
             # Configure certificate.
-            certificate: ${OTEL_EXPORTER_OTLP_CERTIFICATE}
+            certificate: ${OTEL_EXPORTER_OTLP_LOGS_CERTIFICATE}
             # Configure mTLS private client key.
-            client_key: ${OTEL_EXPORTER_OTLP_CLIENT_KEY}
+            client_key: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_KEY}
             # Configure mTLS client certificate.
-            client_certificate: ${OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE}
+            client_certificate: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_CERTIFICATE}
             # Configure compression.
-            compression: ${OTEL_EXPORTER_OTLP_COMPRESSION:-gzip}
+            compression: ${OTEL_EXPORTER_OTLP_LOGS_COMPRESSION:-gzip}
             # Configure max time (in milliseconds) to wait for each export.
-            timeout: ${OTEL_EXPORTER_OTLP_TIMEOUT:-10000}
+            timeout: ${OTEL_EXPORTER_OTLP_LOGS_TIMEOUT:-10000}
+            # Configure headers:
+            headers: {}
   # Configure log record limits. See also attribute_limits.
   limits:
     # Configure max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.

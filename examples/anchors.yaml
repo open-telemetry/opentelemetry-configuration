@@ -4,7 +4,6 @@ file_format: "0.1"
 exporters:
   otlp: &otlp-exporter
     protocol: http/protobuf
-    endpoint: http://localhost:4318
     certificate: /app/cert.pem
     client_key: /app/cert.pem
     client_certificate: /app/cert.pem
@@ -20,6 +19,7 @@ logger_provider:
           otlp:
             # expand the otlp-exporter anchor
             <<: *otlp-exporter
+            endpoint: http://localhost:4318/v1/logs
 
 meter_provider:
   readers:
@@ -30,6 +30,7 @@ meter_provider:
           otlp:
             # expand the otlp-exporter anchor and add metric specific configuration
             <<: *otlp-exporter
+            endpoint: http://localhost:4318/v1/metrics
             temporality_preference: delta
             default_histogram_aggregation: base2_exponential_bucket_histogram
 
@@ -40,3 +41,4 @@ tracer_provider:
           otlp:
             # expand the otlp-exporter anchor
             <<: *otlp-exporter
+            endpoint: http://localhost:4318/v1/traces
