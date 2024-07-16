@@ -63,6 +63,9 @@
                 },
                 "insecure": {
                     "type": "boolean"
+                },
+                "retry": {
+                    "$ref": "#/$defs/Retry"
                 }
             },
             "required": [
@@ -74,6 +77,16 @@
         "Console": {
             "type": "object",
             "additionalProperties": false
+        },
+        "Retry": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "disabled": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
         }
     }
 }

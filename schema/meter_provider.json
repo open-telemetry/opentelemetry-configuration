@@ -166,6 +166,12 @@
                     "type": "integer",
                     "minimum": 0
                 },
+                "insecure": {
+                    "type": "boolean"
+                },
+                "retry": {
+                    "$ref": "common.json#/$defs/Retry"
+                },
                 "temporality_preference": {
                     "type": "string"
                 },
@@ -175,9 +181,6 @@
                         "explicit_bucket_histogram",
                         "base2_exponential_bucket_histogram"
                     ]
-                },
-                "insecure": {
-                    "type": "boolean"
                 }
             },
             "required": [
