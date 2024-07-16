@@ -80,14 +80,10 @@
         },
         "Retry": {
             "type": "object",
+            "additionalProperties": true,
             "properties": {
-                "max_attempts": {
-                    "type": "integer",
-                    "minimum": 0
-                },
-                "initial_delay": {
-                    "type": "integer",
-                    "minimum": 1
+                "enabled": {
+                    "type": "boolean"
                 }
             }
         }

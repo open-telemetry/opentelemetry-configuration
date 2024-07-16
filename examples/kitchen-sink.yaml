@@ -93,10 +93,8 @@ logger_provider:
             insecure: false
             # Configure retry policy
             retry:
-              # Configure maximum number of retries before failing.
-              max_attempts: 3
-              # Configure initial delay (in milliseconds) to be used for exponential backoff with jitter.
-              initial_delay: 100
+              # Configure retry enabled
+              enabled: true
     # Configure a simple span processor.
     - simple:
         # Configure exporter.
@@ -207,10 +205,8 @@ meter_provider:
             insecure: false
             # Configure retry policy
             retry:
-              # Configure maximum number of retries before failing.
-              max_attempts: 3
-              # Configure initial delay (in milliseconds) to be used for exponential backoff with jitter.
-              initial_delay: 100
+              # Configure retry enabled
+              enabled: true
             # Configure temporality preference.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
@@ -337,10 +333,8 @@ tracer_provider:
             insecure: false
             # Configure retry policy
             retry:
-              # Configure maximum number of retries before failing.
-              max_attempts: 3
-              # Configure initial delay (in milliseconds) to be used for exponential backoff with jitter.
-              initial_delay: 100
+              # Configure retry enabled
+              enabled: true
     # Configure a batch span processor.
     - batch:
         # Configure exporter.
@@ -359,10 +353,8 @@ tracer_provider:
             timeout: 10000
             # Configure retry policy
             retry:
-              # Configure maximum number of retries before failing.
-              max_attempts: 3
-              # Configure initial delay (in milliseconds) to be used for exponential backoff with jitter.
-              initial_delay: 100
+              # Configure retry enabled
+              enabled: true
     # Configure a simple span processor.
     - simple:
         # Configure exporter.
