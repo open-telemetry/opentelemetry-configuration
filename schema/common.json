@@ -82,9 +82,9 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "enabled": {
+                "disabled": {
                     "type": "boolean",
-                    "default": true
+                    "default": false
                 }
             }
         }

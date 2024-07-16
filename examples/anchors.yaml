@@ -13,7 +13,7 @@ exporters:
     compression: gzip
     timeout: 10000
     retry:
-      enabled: true
+      disabled: false
 
 logger_provider:
   processors:

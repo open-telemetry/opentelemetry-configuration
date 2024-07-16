@@ -91,10 +91,10 @@ logger_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_LOGS_INSECURE
             insecure: false
-            # Configure retry policy
+            # Configure retry policy.
             retry:
-              # Configure retry enabled
-              enabled: true
+              # Configure retry disabled.
+              disabled: false
     # Configure a simple span processor.
     - simple:
         # Configure exporter.
@@ -203,10 +203,10 @@ meter_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_METRICS_INSECURE
             insecure: false
-            # Configure retry policy
+            # Configure retry policy.
             retry:
-              # Configure retry enabled
-              enabled: true
+              # Configure retry disabled.
+              disabled: false
             # Configure temporality preference.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
@@ -331,10 +331,10 @@ tracer_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_TRACES_INSECURE
             insecure: false
-            # Configure retry policy
+            # Configure retry policy.
             retry:
-              # Configure retry enabled
-              enabled: true
+              # Configure retry disabled.
+              disabled: false
     # Configure a batch span processor.
     - batch:
         # Configure exporter.
@@ -351,10 +351,10 @@ tracer_provider:
             #
             # Environment variable: OTEL_EXPORTER_ZIPKIN_TIMEOUT
             timeout: 10000
-            # Configure retry policy
+            # Configure retry policy.
             retry:
-              # Configure retry enabled
-              enabled: true
+              # Configure retry disabled.
+              disabled: false
     # Configure a simple span processor.
     - simple:
         # Configure exporter.
