@@ -3,7 +3,7 @@ EXAMPLE_FILES := $(shell find . -path './examples/*.yaml' -exec basename {} \; |
 $(shell mkdir -p out)
 
 .PHONY: all
-all: install-tools compile-schema validate-examples generate-descriptions
+all: install-tools compile-schema generate-descriptions validate-examples
 
 .PHONY: compile-schema
 compile-schema:
