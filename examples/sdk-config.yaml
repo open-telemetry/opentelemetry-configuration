@@ -1,0 +1,179 @@
+# sdk-config.yaml is a typical starting point for configuring the SDK, including exporting to
+# localhost via OTLP.
+
+# NOTE: With the exception of env var substitution syntax (i.e. ${MY_ENV}), SDKs ignore
+# environment variables when interpreting config files. This including ignoring all env
+# vars defined in https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/.
+
+# The file format version
+file_format: "0.1"
+
+# Configure if the SDK is disabled or not.
+disabled: false
+
+# Configure resource for all signals.
+resource:
+  # Configure resource attributes.
+  attributes:
+    # Configure `service.name` resource attribute
+    service.name: unknown_service
+
+# Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
+attribute_limits:
+  # Configure max attribute value size.
+  attribute_value_length_limit:
+  # Configure max attribute count.
+  attribute_count_limit: 128
+
+# Configure text map context propagators.
+propagator:
+  composite: [tracecontext, baggage]
+
+# Configure tracer provider.
+tracer_provider:
+  # Configure span processors.
+  processors:
+    # Configure a batch span processor.
+    - batch:
+        # Configure delay interval (in milliseconds) between two consecutive exports.
+        schedule_delay: 5000
+        # Configure maximum allowed time (in milliseconds) to export data.
+        export_timeout: 30000
+        # Configure maximum queue size.
+        max_queue_size: 2048
+        # Configure maximum batch size.
+        max_export_batch_size: 512
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP.
+          otlp:
+            # Configure protocol.
+            protocol: http/protobuf
+            # Configure endpoint.
+            endpoint: http://localhost:4318/v1/traces
+            # Configure certificate.
+            certificate:
+            # Configure mTLS private client key.
+            client_key:
+            # Configure mTLS client certificate.
+            client_certificate:
+            # Configure compression.
+            compression: gzip
+            # Configure max time (in milliseconds) to wait for each export.
+            timeout: 10000
+            # Configure headers:
+            headers: {}
+  # Configure span limits. See also attribute_limits.
+  limits:
+    # Configure max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
+    attribute_value_length_limit:
+    # Configure max span attribute count. Overrides attribute_limits.attribute_count_limit.
+    attribute_count_limit: 128
+    # Configure max span event count.
+    event_count_limit: 128
+    # Configure max span link count.
+    link_count_limit: 128
+    # Configure max attributes per span event.
+    event_attribute_count_limit: 128
+    # Configure max attributes per span link.
+    link_attribute_count_limit: 128
+  # Configure the sampler.
+  sampler:
+    # Configure sampler to be parent_based. Known values include: always_off, always_on, jaeger_remote, parent_based, trace_id_ratio_based.
+    parent_based:
+      # Configure root sampler.
+      root:
+        # Configure sampler to be always_on.
+        always_on: {}
+      # Configure remote_parent_sampled sampler.
+      remote_parent_sampled:
+        # Configure sampler to be always_on.
+        always_on: {}
+      # Configure remote_parent_not_sampled sampler.
+      remote_parent_not_sampled:
+        # Configure sampler to be always_off.
+        always_off: {}
+      # Configure local_parent_sampled sampler.
+      local_parent_sampled:
+        # Configure sampler to be always_on.
+        always_on: {}
+      # Configure local_parent_not_sampled sampler.
+      local_parent_not_sampled:
+        # Configure sampler to be always_off.
+        always_off: {}
+
+# Configure meter provider.
+meter_provider:
+  # Configure metric readers.
+  readers:
+    # Configure a periodic metric reader.
+    - periodic:
+        # Configure delay interval (in milliseconds) between start of two consecutive exports.
+        interval: 60000
+        # Configure maximum allowed time (in milliseconds) to export data.
+        timeout: 30000
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP.
+          otlp:
+            # Configure protocol.
+            protocol: http/protobuf
+            # Configure endpoint.
+            endpoint: http://localhost:4318/v1/metrics
+            # Configure certificate.
+            certificate:
+            # Configure mTLS private client key.
+            client_key:
+            # Configure mTLS client certificate.
+            client_certificate:
+            # Configure compression.
+            compression: gzip
+            # Configure max time (in milliseconds) to wait for each export.
+            timeout: 10000
+            # Configure headers:
+            headers: {}
+            # Configure temporality preference.
+            temporality_preference: cumulative
+            # Configure default histogram aggregation.
+            default_histogram_aggregation: explicit_bucket_histogram
+
+# Configure logger provider.
+logger_provider:
+  # Configure log record processors.
+  processors:
+    # Configure a batch log record processor.
+    - batch:
+        # Configure delay interval (in milliseconds) between two consecutive exports.
+        schedule_delay: 1000
+        # Configure maximum allowed time (in milliseconds) to export data.
+        export_timeout: 30000
+        # Configure maximum queue size.
+        max_queue_size: 2048
+        # Configure maximum batch size.
+        max_export_batch_size: 512
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP.
+          otlp:
+            # Configure protocol.
+            protocol: http/protobuf
+            # Configure endpoint.
+            endpoint: http://localhost:4318/v1/logs
+            # Configure certificate.
+            certificate:
+            # Configure mTLS private client key.
+            client_key:
+            # Configure mTLS client certificate.
+            client_certificate:
+            # Configure compression.
+            compression: gzip
+            # Configure max time (in milliseconds) to wait for each export.
+            timeout: 10000
+            # Configure headers:
+            headers: {}
+  # Configure log record limits. See also attribute_limits.
+  limits:
+    # Configure max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
+    attribute_value_length_limit:
+    # Configure max log record attribute count. Overrides attribute_limits.attribute_count_limit.
+    attribute_count_limit: 128

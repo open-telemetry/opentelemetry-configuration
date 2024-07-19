@@ -2,7 +2,7 @@
     "$id": "https://opentelemetry.io/otelconfig/tracer_provider.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "TracerProvider",
-    "type": "object",
+    "type": ["object", "null"],
     "additionalProperties": false,
     "properties": {
         "processors": {
@@ -20,24 +20,24 @@
     },
     "$defs": {
         "BatchSpanProcessor": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "title": "BatchSpanProcessor",
             "properties": {
                 "schedule_delay": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "export_timeout": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "max_queue_size": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "max_export_batch_size": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "exporter": {
@@ -49,28 +49,28 @@
             ]
         },
         "Sampler": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
                 "always_off": {
-                    "type": "object",
+                    "type": ["object", "null"],
                     "additionalProperties": false
                 },
                 "always_on": {
-                    "type": "object",
+                    "type": ["object", "null"],
                     "additionalProperties": false
                 },
                 "jaeger_remote": {
-                    "type": "object",
+                    "type": ["object", "null"],
                     "additionalProperties": false,
                     "properties": {
                         "endpoint": {
-                            "type": "string"
+                            "type": ["string", "null"]
                         },
                         "interval": {
-                            "type": "integer",
+                            "type": ["integer", "null"],
                             "minimum": 0
                         },
                         "initial_sampler": {
@@ -79,7 +79,7 @@
                     }
                 },
                 "parent_based": {
-                    "type": "object",
+                    "type": ["object", "null"],
                     "additionalProperties": false,
                     "properties": {
                         "root": {
@@ -100,7 +100,7 @@
                     }
                 },
                 "trace_id_ratio_based": {
-                    "type": "object",
+                    "type": ["object", "null"],
                     "additionalProperties": false,
                     "properties": {
                         "ratio": {
@@ -111,12 +111,12 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": "object"
+                    "type": ["object", "null"]
                 }
             }
         },
         "SimpleSpanProcessor": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "title": "SimpleSpanProcessor",
             "properties": {
@@ -129,7 +129,7 @@
             ]
         },
         "SpanExporter": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
@@ -146,42 +146,42 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": "object"
+                    "type": ["object", "null"]
                 }
             }
         },
         "SpanLimits": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "attribute_count_limit": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "event_count_limit": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "link_count_limit": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "event_attribute_count_limit": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 },
                 "link_attribute_count_limit": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 }
             }
         },
         "SpanProcessor": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
@@ -195,19 +195,19 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": "object"
+                    "type": ["object", "null"]
                 }
             }
         },
         "Zipkin": {
-            "type": "object",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
                 "endpoint": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "timeout": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 0
                 }
             },

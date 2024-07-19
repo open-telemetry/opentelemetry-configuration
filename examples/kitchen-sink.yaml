@@ -61,7 +61,7 @@ logger_provider:
             # Configure endpoint.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_LOGS_ENDPOINT
-            endpoint: http://localhost:4318
+            endpoint: http://localhost:4318/v1/logs
             # Configure certificate.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_CERTIFICATE, OTEL_EXPORTER_OTLP_LOGS_CERTIFICATE
@@ -169,7 +169,7 @@ meter_provider:
             # Configure endpoint.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_METRICS_ENDPOINT
-            endpoint: http://localhost:4318
+            endpoint: http://localhost:4318/v1/metrics
             # Configure certificate.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_CERTIFICATE, OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE
@@ -293,7 +293,7 @@ tracer_provider:
             # Configure endpoint.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
-            endpoint: http://localhost:4318
+            endpoint: http://localhost:4318/v1/traces
             # Configure certificate.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_CERTIFICATE, OTEL_EXPORTER_OTLP_TRACES_CERTIFICATE
