@@ -20,8 +20,7 @@ resource:
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
   # Configure max attribute value size.
-  attribute_value_length_limit: # Configure max attribute count.
-
+  attribute_value_length_limit:
   # Configure max attribute count.
   attribute_count_limit: 128
 
@@ -53,14 +52,11 @@ tracer_provider:
             # Configure endpoint.
             endpoint: http://localhost:4318/v1/traces
             # Configure certificate.
-            certificate: # Configure mTLS private client key.
-
+            certificate:
             # Configure mTLS private client key.
-            client_key: # Configure mTLS client certificate.
-
+            client_key:
             # Configure mTLS client certificate.
-            client_certificate: # Configure compression.
-
+            client_certificate:
             # Configure compression.
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.
@@ -126,14 +122,11 @@ meter_provider:
             # Configure endpoint.
             endpoint: http://localhost:4318/v1/metrics
             # Configure certificate.
-            certificate: # Configure mTLS private client key.
-
+            certificate:
             # Configure mTLS private client key.
-            client_key: # Configure mTLS client certificate.
-
+            client_key:
             # Configure mTLS client certificate.
-            client_certificate: # Configure compression.
-
+            client_certificate:
             # Configure compression.
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.
@@ -168,14 +161,11 @@ logger_provider:
             # Configure endpoint.
             endpoint: http://localhost:4318/v1/logs
             # Configure certificate.
-            certificate: # Configure mTLS private client key.
-
+            certificate:
             # Configure mTLS private client key.
-            client_key: # Configure mTLS client certificate.
-
+            client_key:
             # Configure mTLS client certificate.
-            client_certificate: # Configure compression.
-
+            client_certificate:
             # Configure compression.
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.

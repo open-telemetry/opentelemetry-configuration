@@ -13,7 +13,7 @@ if (!fs.existsSync(inputFile)) {
 
 // Extract output file arg
 let outputFile = null;
-if (process.argv.length >= 4) {
+if (process.argv.length >= 4 && process.argv[3].startsWith("/")) {
     outputFile = process.argv[3];
 }
 
@@ -21,7 +21,7 @@ if (process.argv.length >= 4) {
 const options = {
     debug: false
 }
-for (let i = 4; i < process.argv.length; i++) {
+for (let i = 3; i < process.argv.length; i++) {
     if (process.argv[i] === '--debug') {
         options['debug'] = true;
     }
@@ -57,6 +57,7 @@ typeDescriptionsYaml.forEach(rule => {
 const fileContent = fs.readFileSync(inputFile, "utf-8");
 const fileDoc = yaml.parseDocument(fileContent);
 let counter = 0;
+let lastNode = null;
 // Visit each key/value pair in the input file YAML, attempting to match against description rules
 // and setting a comment with the description from the matching rule
 yaml.visit(fileDoc, {
@@ -64,6 +65,8 @@ yaml.visit(fileDoc, {
         if (yaml.isSeq(node.value)) {
             node.value.items.forEach(item => item.commentBefore = null);
         }
+        let prevLastNode = lastNode;
+        lastNode = node;
         counter++;
         // Compute the parenPath, a string representation of the location of this key/value pair in the document
         // For example, the following sample YAML is annotated with the parentPath at each node
@@ -112,6 +115,12 @@ yaml.visit(fileDoc, {
         // Set the description
         node.key.commentBefore = formattedDescription;
         node.value.commentBefore = null;
+        // yaml parser sometimes misidentifies a pair's commentBefore as the previously processed pair.value.comment
+        // we detect and fix that by keeping a reference to the previous node and looking for this case
+        if (prevLastNode !== null && prevLastNode.value.comment === formattedDescription) {
+            node.key.spaceBefore = null;
+            prevLastNode.value.comment = null;
+        }
     }
 });
 
