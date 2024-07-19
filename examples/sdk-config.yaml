@@ -5,36 +5,37 @@
 # environment variables when interpreting config files. This including ignoring all env
 # vars defined in https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/.
 
-# The file format version
+# The file format version.
 file_format: "0.1"
 
-# Configure if the SDK is disabled or not.
+# Configure if the SDK is disabled or not. This is not required to be provided to ensure the SDK isn't disabled, the default value when this is not provided is for the SDK to be enabled.
 disabled: false
 
 # Configure resource for all signals.
 resource:
   # Configure resource attributes.
   attributes:
-    # Configure `service.name` resource attribute
     service.name: unknown_service
 
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
   # Configure max attribute value size.
-  attribute_value_length_limit:
+  attribute_value_length_limit: # Configure max attribute count.
+
   # Configure max attribute count.
   attribute_count_limit: 128
 
 # Configure text map context propagators.
 propagator:
-  composite: [tracecontext, baggage]
+  # Configure the set of propagators to include in the composite text map propagator.
+  composite: [ tracecontext, baggage ]
 
 # Configure tracer provider.
 tracer_provider:
   # Configure span processors.
   processors:
-    # Configure a batch span processor.
-    - batch:
+    - # Configure a batch span processor.
+      batch:
         # Configure delay interval (in milliseconds) between two consecutive exports.
         schedule_delay: 5000
         # Configure maximum allowed time (in milliseconds) to export data.
@@ -52,22 +53,26 @@ tracer_provider:
             # Configure endpoint.
             endpoint: http://localhost:4318/v1/traces
             # Configure certificate.
-            certificate:
+            certificate: # Configure mTLS private client key.
+
             # Configure mTLS private client key.
-            client_key:
+            client_key: # Configure mTLS client certificate.
+
             # Configure mTLS client certificate.
-            client_certificate:
+            client_certificate: # Configure compression.
+
             # Configure compression.
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.
             timeout: 10000
-            # Configure headers:
+            # Configure headers.
             headers: {}
   # Configure span limits. See also attribute_limits.
   limits:
-    # Configure max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
-    attribute_value_length_limit:
-    # Configure max span attribute count. Overrides attribute_limits.attribute_count_limit.
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+    attribute_value_length_limit: # Configure max span attribute count. Overrides attribute_limits.attribute_count_limit.
+
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
     attribute_count_limit: 128
     # Configure max span event count.
     event_count_limit: 128
@@ -79,7 +84,7 @@ tracer_provider:
     link_attribute_count_limit: 128
   # Configure the sampler.
   sampler:
-    # Configure sampler to be parent_based. Known values include: always_off, always_on, jaeger_remote, parent_based, trace_id_ratio_based.
+    # Configure sampler to be parent_based.
     parent_based:
       # Configure root sampler.
       root:
@@ -106,8 +111,8 @@ tracer_provider:
 meter_provider:
   # Configure metric readers.
   readers:
-    # Configure a periodic metric reader.
-    - periodic:
+    - # Configure a periodic metric reader.
+      periodic:
         # Configure delay interval (in milliseconds) between start of two consecutive exports.
         interval: 60000
         # Configure maximum allowed time (in milliseconds) to export data.
@@ -121,16 +126,19 @@ meter_provider:
             # Configure endpoint.
             endpoint: http://localhost:4318/v1/metrics
             # Configure certificate.
-            certificate:
+            certificate: # Configure mTLS private client key.
+
             # Configure mTLS private client key.
-            client_key:
+            client_key: # Configure mTLS client certificate.
+
             # Configure mTLS client certificate.
-            client_certificate:
+            client_certificate: # Configure compression.
+
             # Configure compression.
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.
             timeout: 10000
-            # Configure headers:
+            # Configure headers.
             headers: {}
             # Configure temporality preference.
             temporality_preference: cumulative
@@ -141,8 +149,8 @@ meter_provider:
 logger_provider:
   # Configure log record processors.
   processors:
-    # Configure a batch log record processor.
-    - batch:
+    - # Configure a batch log record processor.
+      batch:
         # Configure delay interval (in milliseconds) between two consecutive exports.
         schedule_delay: 1000
         # Configure maximum allowed time (in milliseconds) to export data.
@@ -160,20 +168,24 @@ logger_provider:
             # Configure endpoint.
             endpoint: http://localhost:4318/v1/logs
             # Configure certificate.
-            certificate:
+            certificate: # Configure mTLS private client key.
+
             # Configure mTLS private client key.
-            client_key:
+            client_key: # Configure mTLS client certificate.
+
             # Configure mTLS client certificate.
-            client_certificate:
+            client_certificate: # Configure compression.
+
             # Configure compression.
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.
             timeout: 10000
-            # Configure headers:
+            # Configure headers.
             headers: {}
   # Configure log record limits. See also attribute_limits.
   limits:
-    # Configure max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
-    attribute_value_length_limit:
-    # Configure max log record attribute count. Overrides attribute_limits.attribute_count_limit.
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+    attribute_value_length_limit: # Configure max log record attribute count. Overrides attribute_limits.attribute_count_limit.
+
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
     attribute_count_limit: 128

@@ -3,7 +3,7 @@ EXAMPLE_FILES := $(shell find . -path './examples/*.yaml' -exec basename {} \; |
 $(shell mkdir -p out)
 
 .PHONY: all
-all: install-tools compile-schema validate-examples
+all: install-tools compile-schema validate-examples generate-descriptions
 
 .PHONY: compile-schema
 compile-schema:
@@ -20,6 +20,13 @@ validate-examples:
 	    npx envsub ./examples/$$f ./out/$$f || exit 1; \
 		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./schema/opentelemetry_configuration.json -r "./schema/!(opentelemetry_configuration.json)" -d ./out/$$f \
 		    || exit 1; \
+	done
+
+.PHONY: generate-descriptions
+generate-descriptions:
+	@if ! npm ls minimatch yaml; then npm install; fi
+	@for f in $(EXAMPLE_FILES); do \
+	    npm run-script generate-comments -- $(shell pwd)/examples/$$f $(shell pwd)/examples/$$f || exit 1; \
 	done
 
 .PHONY: install-tools
