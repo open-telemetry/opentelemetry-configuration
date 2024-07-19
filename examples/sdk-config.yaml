@@ -1,7 +1,7 @@
 # sdk-config.yaml is a typical starting point for configuring the SDK, including exporting to
 # localhost via OTLP.
 
-# NOTE: With the exception of env var substitution syntax (i.e. ${MY_ENV}) , SDKs ignore
+# NOTE: With the exception of env var substitution syntax (i.e. ${MY_ENV}), SDKs ignore
 # environment variables when interpreting config files. This including ignoring all env
 # vars defined in https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/.
 
