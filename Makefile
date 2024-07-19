@@ -9,7 +9,7 @@ all: install-tools compile-schema validate-examples generate-descriptions
 compile-schema:
 	@if ! npm ls ajv-cli; then npm install; fi
 	@for f in $(SCHEMA_FILES); do \
-	    npx --no ajv-cli compile --spec=draft2020 --allow-matching-properties -s ./schema/$$f -r "./schema/!($$f)" \
+	    npx --no ajv-cli compile --spec=draft2020 --allow-matching-properties -s ./schema/$$f -r "./schema/!($$f|*.yaml)" \
 	        || exit 1; \
 	done
 
@@ -18,7 +18,7 @@ validate-examples:
 	@if ! npm ls ajv-cli; then npm install; fi
 	@for f in $(EXAMPLE_FILES); do \
 	    npx envsub ./examples/$$f ./out/$$f || exit 1; \
-		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./schema/opentelemetry_configuration.json -r "./schema/!(opentelemetry_configuration.json)" -d ./out/$$f \
+		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./schema/opentelemetry_configuration.json -r "./schema/!(opentelemetry_configuration.json|*.yaml)" -d ./out/$$f \
 		    || exit 1; \
 	done
 
