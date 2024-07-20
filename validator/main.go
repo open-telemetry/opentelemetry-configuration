@@ -68,6 +68,9 @@ func validateConfiguration(configFile string) interface{} {
 
 	for _, file := range schemaFiles {
 		schemaURL, err := url.JoinPath("https://opentelemetry.io/otelconfig/", file.Name())
+		if err != nil {
+			log.Fatal(err)
+		}
 		schema, err := schemaFS.ReadFile(filepath.Join("schema", file.Name()))
 		if err != nil {
 			log.Fatal(err)
@@ -138,6 +141,9 @@ func jsonToFile(j interface{}, outFile string) {
 	ext := filepath.Ext(outFile)
 	if ext == ".yaml" || ext == ".yml" {
 		yamlString, err := yaml.Marshal(j)
+		if err != nil {
+			log.Fatalf("Unable to decode yaml: %v", err)
+		}
 		err = os.WriteFile(outFile, yamlString, 0644)
 		if err != nil {
 			log.Fatalf("Unable to write output file: %v", err)
@@ -202,23 +208,37 @@ func expandValues(value any) any {
 	return value
 }
 
-// Replace environment variables ${EXAMPLE} with their value and continue to
-// try replacing variables until there are no more, meaning ${EXAMPLE} could
-// contain another variable ${ANOTHER_VARIABLE}. But stop after 100 iterations
-// to prevent an infinite loop.
-// This does not use os.ExpandVars in order to support defaults like ${VAR:default}
-func expandString(s string) string {
+// Replace environment variables, like ${EXAMPLE}, with their value.
+// This does not use `os.ExpandVars` in order to support defaults
+// for missing variables, ${VAR:-default}
+func expandString(s string) string {	
 	result := s
-	for i := 0; i < 100; i++ {
-		if !strings.Contains(result, "${") || !strings.Contains(result, "}") {
-			break
+
+	allVars := findAllVars(s)
+	for k, v := range allVars {
+		result = strings.ReplaceAll(result, k, v)
+	}
+
+	return result
+}
+
+func findAllVars(s string) map[string]string {
+	result := make(map[string]string)
+	lenS := len(s)
+
+	var substr string
+	for i := 0; i < lenS; {
+		substr = s[i:lenS]
+
+		if !strings.Contains(substr, "${") || !strings.Contains(substr, "}") {
+			return result
 		}
 
-		closeIndex := strings.Index(result, "}")
-		openIndex := strings.LastIndex(result[:closeIndex+1], "${")
+		closeIndex := strings.Index(substr, "}")
+		openIndex := strings.LastIndex(substr[:closeIndex+1], "${")
 
-		fullEnvVar := result[openIndex : closeIndex+1]
-		envVar := result[openIndex+2 : closeIndex]
+		fullEnvVar := substr[openIndex : closeIndex+1]
+		envVar := substr[openIndex+2 : closeIndex]
 
 		maybeDefaultIndex := strings.Index(envVar, ":-")
 
@@ -234,7 +254,9 @@ func expandString(s string) string {
 			newValue = os.Getenv(envVar)
 		}
 
-		result = strings.ReplaceAll(result, fullEnvVar, newValue)
+		result[fullEnvVar] = newValue
+
+		i += closeIndex + 1
 	}
 
 	return result
