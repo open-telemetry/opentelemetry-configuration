@@ -1,18 +1,16 @@
-ROOT_DIR := $(realpath $(shell dirname $(firstword $(MAKEFILE_LIST))))
+ROOT_DIR := $(realpath $(shell dirname $(lastword $(MAKEFILE_LIST))))
 SCHEMA_DIR := ${ROOT_DIR}/../schema
 CURRENT_GIT_REF := $(shell git rev-parse --short HEAD)
 DOCKER_IMAGE_TAG := ${CURRENT_GIT_REF}
 DOCKER_BUILD_ARGS := -t otel_config_validator:${DOCKER_IMAGE_TAG}
 
-all: build
-
-copy-schema:
+validator-copy-schema:
 	cp -R ${SCHEMA_DIR} ${ROOT_DIR}/
 
-build: copy-schema
-	go build
+validator: validator-copy-schema
+	go build -C ${ROOT_DIR} ${ROOT_DIR}
 
-docker: copy-schema
-	docker build . ${DOCKER_BUILD_ARGS}
+validator-docker: validator-copy-schema
+	docker build . ${ROOT_DIR}/${DOCKER_BUILD_ARGS}
 
-.PHONY: all copy-schema build docker
+.PHONY: validator-copy-schema validator validator-docker

@@ -10,13 +10,13 @@ embeds it so a `go build` alone will fail, instead run `make` which will copy
 the schema:
 
 ```
-$ make
+$ make validator
 ```
 
 Same is true for building the docker image:
 
 ```
-$ make docker
+$ make validator-docker
 ```
 
 ### Usage
