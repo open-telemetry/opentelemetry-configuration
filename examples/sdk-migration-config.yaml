@@ -14,7 +14,6 @@
 # for more information. The following spec defined env vars are NOT referenced and are thus
 # ignored:
 #
-# - OTEL_RESOURCE_ATTRIBUTES
 # - OTEL_LOG_LEVEL
 # - OTEL_PROPAGATORS
 # - OTEL_TRACES_SAMPLER
@@ -45,10 +44,14 @@ disabled: ${OTEL_SDK_DISABLED:-false}
 
 # Configure resource for all signals.
 resource:
-  # Configure resource attributes.
+  # Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
   attributes:
     # Configure `service.name` resource attribute
     service.name: ${OTEL_SERVICE_NAME:-unknown_service}
+  # Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
+  #
+  # The value is a list of comma separated key-value pairs, matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+  attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
 
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:

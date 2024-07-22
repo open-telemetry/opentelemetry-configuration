@@ -406,7 +406,7 @@ tracer_provider:
 
 # Configure resource for all signals.
 resource:
-  # Configure resource attributes.
+  # Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
   #
   # Environment variable: OTEL_RESOURCE_ATTRIBUTES
   attributes:
@@ -414,6 +414,10 @@ resource:
     #
     # Environment variable: OTEL_SERVICE_NAME
     service.name: !!str "unknown_service"
+  # Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
+  #
+  # The value is a list of comma separated key-value pairs,  matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+  attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
   # Configure resource detectors.
   detectors:
     # Configure attributes provided by resource detectors.

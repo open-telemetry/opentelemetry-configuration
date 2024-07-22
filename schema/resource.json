@@ -13,6 +13,9 @@
         },
         "schema_url": {
             "type": ["string", "null"]
+        },
+        "attributes_list": {
+            "type": ["string", "null"]
         }
     },
     "$defs": {
