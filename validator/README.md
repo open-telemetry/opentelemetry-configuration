@@ -34,6 +34,18 @@ The format (json or yaml) of the output is based on the extension (`.json` or
 $ ./otel_config_validator -o out.json ../examples/kitchen-sink.yaml
 ```
 
+The docker image creates a directory `/opt/otel_config_validator` and sets it to
+the `WORKDIR`, meaning you can mount your current directory to
+`/opt/otel_config_validator` and then read/write from `./` in the arguments to
+`docker run`:
+
+```
+$ docker run -v $(pwd):/opt/otel_config_validator otel_config_validator:current -o out.yaml examples/kitchen-sink.yaml
+```
+
+With the above docker command the output file, `out.yaml`, will be owned by
+`root:root` but be readable by any user.
+
 Environment variable substitution is supported with the syntax `${VARIABLE}`.
 Default values are supported in the form `${VARIABLE:-default}`.
 
