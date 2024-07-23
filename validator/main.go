@@ -67,7 +67,7 @@ func runAction() func(ctx context.Context, cmd *cli.Command) error {
 }
 
 func validateOutputOption(outFile string) string {
-	if outFile != "" {				
+	if outFile != "" {
 		ext := filepath.Ext(outFile)
 		if !isYamlExt(ext) && !isJsonExt(ext) {
 			log.Fatalf("Unknown extension on output file %v", outFile)
@@ -257,6 +257,7 @@ func handleNode(n *yaml.Node) {
 	}
 }
 
+// loop into all elements of a yaml map
 func handleMappingNode(c *yaml.Node) {
 	lenMap := len(c.Content)
 
@@ -267,6 +268,7 @@ func handleMappingNode(c *yaml.Node) {
 	}
 }
 
+// loop into all values of a yaml sequence
 func handleSequenceNode(c *yaml.Node) {
 	lenMap := len(c.Content)
 	for j := 0; j < lenMap; j++ {
@@ -275,6 +277,50 @@ func handleSequenceNode(c *yaml.Node) {
 	}
 }
 
+func handleScalarNode(n *yaml.Node) {
+	// only a string type can have variable replacement
+	// even if it can turn into another type
+	if n.Tag == "!!str" {
+		v := n.Value
+		if !strings.Contains(v, "${") || !strings.Contains(v, "}") {
+			return
+		}
+
+		newValue := expandString(v)
+		n.Value = newValue
+
+		// Otel Configuration File Spec defines supported values
+		// for converting environment variables to types as being
+		// booleans, integers and floats. Here we check if the
+		// value cleanly parses to one of those types. If it does
+		// and the value isn't quoted style then we set the Style to
+		// TaggedStyle and set the tag to the appropriate type. But
+		// only if the style is already TaggedStyle or no style.
+		// Anything else means it is explicitly a string.
+		if n.Style == 0 || n.Style == yaml.TaggedStyle {
+			if newValue == "" {
+				// be sure tag and style are empty for a null value so we get
+				// quoted empty string
+				n.Style = 0
+				n.Tag = ""
+			} else if _, err := strconv.ParseBool(newValue); err == nil {
+				n.Style = yaml.TaggedStyle
+				n.Tag = "!!bool"
+			} else if _, err := strconv.Atoi(newValue); err == nil {
+				n.Style = yaml.TaggedStyle
+				n.Tag = "!!int"
+			} else if _, err := strconv.ParseFloat(newValue, 64); err == nil {
+				n.Style = yaml.TaggedStyle
+				n.Tag = "!!float"
+			}
+		}
+	}
+
+}
+
+// json variable replacement is basic as the json value that
+// is an environment variable will always be quoted, so only
+// strings are supported
 func replaceJsonVariables(c interface{}) (interface{}, []byte) {
 	expandedConfig := make(map[string]any)
 
@@ -325,47 +371,6 @@ func expandJsonValues(value interface{}) any {
 	return value
 }
 
-func handleScalarNode(n *yaml.Node) {
-	// only a string type can have variable replacement
-	// even if it can turn into another type
-	if n.Tag == "!!str" {
-		v := n.Value
-		if !strings.Contains(v, "${") || !strings.Contains(v, "}") {
-			return
-		}
-
-		newValue := expandString(v)
-		n.Value = newValue
-
-		// Otel Configuration File Spec defines supported values
-		// for converting environment variables to types as being
-		// booleans, integers and floats. Here we check if the
-		// value cleanly parses to one of those types. If it does
-		// and the value isn't quoted style then we set the Style to
-		// TaggedStyle and set the tag to the appropriate type. But
-		// only if the style is already TaggedStyle or no style.
-		// Anything else means it is explicitly a string.
-		if n.Style == 0 || n.Style == yaml.TaggedStyle {
-			if newValue == "" {
-				// be sure tag and style are empty for a null value so we get
-				// quoted empty string
-				n.Style = 0
-				n.Tag = ""
-			} else if _, err := strconv.ParseBool(newValue); err == nil {
-				n.Style = yaml.TaggedStyle
-				n.Tag = "!!bool"
-			} else if _, err := strconv.Atoi(newValue); err == nil {
-				n.Style = yaml.TaggedStyle
-				n.Tag = "!!int"
-			} else if _, err := strconv.ParseFloat(newValue, 64); err == nil {
-				n.Style = yaml.TaggedStyle
-				n.Tag = "!!float"
-			}
-		}
-	}
-
-}
-
 // Replace environment variables, like ${EXAMPLE}, with their value.
 // This does not use `os.ExpandVars` in order to support defaults
 // for missing variables, ${VAR:-default}
@@ -375,7 +380,7 @@ func expandString(s string) string {
 		if v == nil {
 			s = strings.ReplaceAll(s, k, "")
 		} else {
-			return v.(string)
+			s = strings.ReplaceAll(s, k, v.(string))
 		}
 
 	}
@@ -383,6 +388,8 @@ func expandString(s string) string {
 	return s
 }
 
+// iterates over a string to find all environment variables
+// returns a map of variables to strings or nil
 func findAllVars(s string) map[string]interface{} {
 	result := make(map[string]interface{})
 	lenS := len(s)

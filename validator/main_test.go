@@ -30,7 +30,7 @@ func TestExpandString(t *testing.T) {
 	s := expandString("${VARIABLE1} World")
 	expected := "${VARIABLE2} World"
 	if !strings.EqualFold(s, expected) {
-		t.Errorf("String \"%v\" does not contain value %v", s, expected)
+		t.Errorf("String \"%v\" is not equal to \"%v\"", s, expected)
 	}
 
 	s = expandString("${VARIABLE2}")
@@ -41,7 +41,7 @@ func TestExpandString(t *testing.T) {
 	// variables nested in a variable declaration
 	s = expandString("${${VARIABLE3}}")
 	if !strings.Contains(s, "${VARIABLE1}") && !strings.Contains(s, "value2") {
-		t.Errorf("String \"%v\" does not contain value %v", s, v3)
+		t.Errorf("String \"%v\" is not equal to \"${%v}\"", s, v3)
 	}
 
 	// variable with no ending bracket
