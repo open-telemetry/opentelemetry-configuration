@@ -46,7 +46,7 @@ func main() {
 func runAction() func(ctx context.Context, cmd *cli.Command) error {
 	return func(ctx context.Context, cmd *cli.Command) error {
 		if cmd.Args().Len() < 1 {
-			log.Fatalf("Must pass a configuration filename")
+			log.Fatalf("Error: Must pass a configuration filename")
 		} else {
 			configFilePath := cmd.Args().Get(0)
 
@@ -126,26 +126,27 @@ func validateConfiguration(configFile string, outfileExt string) []byte {
 }
 
 func decodeFile(configFile string, outfileExt string) (interface{}, []byte) {
+	var j []byte
+	var d []byte
+	var u interface{}
+	var v interface{}
+	var jsonInterface interface{}
+	
 	data, err := os.ReadFile(configFile)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	var j []byte
-	var d []byte
-
 	ext := filepath.Ext(configFile)
 	if isYamlExt(ext) {
 		y := decodeYaml(configFile)
 		replaceYamlVariables(&y)
-
-		var u interface{}
+		
 		err = y.Decode(&u)
 		if err != nil {
 			log.Fatal(err)
 		}
-
-		var jsonInterface interface{}
+		
 		if len(y.Content) > 0 {
 			d, err = yaml.Marshal(&y.Content[0])
 			if err != nil {
@@ -166,8 +167,7 @@ func decodeFile(configFile string, outfileExt string) (interface{}, []byte) {
 
 		return jsonInterface, toWrite
 	}
-
-	var v interface{}
+	
 	if err := json.Unmarshal(data, &v); err != nil {
 		log.Fatalf("Invalid json file %s: %#v", configFile, err)
 	}
@@ -215,12 +215,13 @@ func convertJsonBytes(jsonBytes []byte, ext string) []byte {
 }
 
 func decodeYaml(file string) yaml.Node {
+	var node yaml.Node
+	
 	body, err := os.ReadFile(file)
 	if err != nil {
 		log.Fatalf("Failed to read configuration file %s: %v", file, err)
 	}
 
-	var node yaml.Node
 	if err := yaml.Unmarshal([]byte(body), &node); err != nil {
 		log.Fatalf("Unable to parse config file %s: %+v", file, err)
 	}
@@ -391,27 +392,35 @@ func expandString(s string) string {
 // iterates over a string to find all environment variables
 // returns a map of variables to strings or nil
 func findAllVars(s string) map[string]interface{} {
+	var envVar string	
+	var newValue interface{}
+	var isSet bool
+	var substr string
+	
 	result := make(map[string]interface{})
 	lenS := len(s)
 
-	var substr string
 	for i := 0; i < lenS; {
 		substr = s[i:lenS]
 
 		if !strings.Contains(substr, "${") || !strings.Contains(substr, "}") {
+			// no more environment variables in string
 			return result
 		}
 
 		closeIndex := strings.Index(substr, "}")
-		openIndex := strings.LastIndex(substr[:closeIndex+1], "${")
-
-		fullEnvVar := substr[openIndex : closeIndex+1]
-		envVar := substr[openIndex+2 : closeIndex]
+		openIndex := strings.LastIndex(substr[:closeIndex+1], "${env:")
+		if openIndex == -1 {
+			openIndex = strings.LastIndex(substr[:closeIndex+1], "${")
+			envVar = substr[openIndex+2 : closeIndex]
+		} else {
+			envVar = substr[openIndex+6 : closeIndex]
+		}
+		
+		fullEnvVar := substr[openIndex : closeIndex+1]	
 
 		maybeDefaultIndex := strings.Index(envVar, ":-")
 
-		var newValue interface{}
-		var isSet bool
 		if maybeDefaultIndex != -1 {
 			d := envVar[maybeDefaultIndex+2:]
 			envVar = envVar[:maybeDefaultIndex]

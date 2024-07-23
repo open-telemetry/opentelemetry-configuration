@@ -38,6 +38,11 @@ func TestExpandString(t *testing.T) {
 		t.Errorf("String \"%v\" does not equal %v", s, v2)
 	}
 
+	s = expandString("${env:VARIABLE2}")
+	if !strings.EqualFold(s, v2) {
+		t.Errorf("String \"%v\" does not equal %v", s, v2)
+	}
+
 	// variables nested in a variable declaration
 	s = expandString("${${VARIABLE3}}")
 	if !strings.Contains(s, "${VARIABLE1}") && !strings.Contains(s, "value2") {
@@ -56,6 +61,12 @@ func TestExpandString(t *testing.T) {
 		t.Errorf("String \"%v\" should be mydefault", s)
 	}
 
+	// replace undefined variable with default
+	s = expandString("${env:UNDEFINED:-mydefault}")
+	if !strings.EqualFold(s, "mydefault") {
+		t.Errorf("String \"%v\" should be mydefault", s)
+	}
+	
 	// replace 2 undefined variables with their particular defaults
 	s = expandString("${UNDEFINED:-firstdefault} ${UNDEFINED:-seconddefault}")
 	if !strings.EqualFold(s, "firstdefault seconddefault") {
