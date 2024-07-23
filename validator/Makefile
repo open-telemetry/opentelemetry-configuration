@@ -3,7 +3,7 @@ SCHEMA_DIR := ${ROOT_DIR}/../schema
 CURRENT_GIT_REF := $(shell git rev-parse --short HEAD)
 DOCKER_IMAGE_TAG := ${CURRENT_GIT_REF}
 DOCKER_BUILD_ARGS := -f ${ROOT_DIR}/Dockerfile -t otel_config_validator:${DOCKER_IMAGE_TAG} -t otel_config_validator:current
-EXAMPLE_FILES := $(shell find ${ROOT_DIR}/../examples -name "*.yaml" -exec basename {} \;)
+EXAMPLE_FILES := $(shell find ${ROOT_DIR}/../examples -name "*.yaml" -exec basename {} \; | sort)
 $(shell mkdir -p out)
 
 validator-copy-schema:
