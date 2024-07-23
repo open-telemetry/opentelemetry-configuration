@@ -21,3 +21,21 @@ jobs:
 
     - name: validate example
       run: make validate-examples
+
+    - name: generate descriptions
+      run: make generate-descriptions
+
+    - name: check for diff
+      run: |
+        # need to "git add" to detect any changes to descriptions which are not checked in
+        # select files from both /examples
+        git add examples**
+        if git diff --cached --quiet
+        then 
+          echo "No diff detected."
+        else 
+          echo "Diff detected - did you run 'make generate-descriptions'?"
+          echo $(git diff --cached --name-only)
+          echo $(git diff --cached)
+          exit 1
+        fi
