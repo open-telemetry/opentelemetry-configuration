@@ -1,2 +1,7 @@
 make validator-validate-examples
+>>>
+Validating anchors.yaml
+Validating kitchen-sink.yaml
+Validating sdk-config.yaml
+Validating sdk-migration-config.yaml
 >>>= 0

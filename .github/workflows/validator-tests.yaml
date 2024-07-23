@@ -18,6 +18,7 @@ jobs:
       with:
         go-version: '~1.22'
 
+    # TODO: Publish releases
     - name: Build
       run: make validator
 
@@ -34,3 +35,7 @@ jobs:
         apt install shelltestrunner
 
         shelltest -c --diff --all shelltests/*.test
+
+    # TODO: Push this to registry on release
+    - name: Build Docker Image
+      run: make validator-docker-image

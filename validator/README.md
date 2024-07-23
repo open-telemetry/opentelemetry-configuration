@@ -1,12 +1,15 @@
 ## OpenTelemetry SDK Configuration Validator
 
-This application will validate a yaml or json file against the [OpenTelemetry
-SDK Configuration schema](https://github.com/open-telemetry/opentelemetry-configuration/).
+This application will replace environment variables in values of valid yaml or
+json files, following the rules of [file configuration environment variable
+substitution](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution),
+before validating that result against the [OpenTelemetry SDK Configuration
+schema](https://github.com/open-telemetry/opentelemetry-configuration/).
 
 ### Build
 
 The `schema` directory is required to be in the directory of the Go file that
-embeds it so a `go build` alone will fail, instead run `make` which will copy
+embeds it, so a `go build` alone will fail, instead run `make` which will copy
 the schema:
 
 ```
@@ -32,7 +35,14 @@ $ ./otel_config_validator -o out.json ../examples/kitchen-sink.yaml
 ```
 
 Environment variable substitution is supported with the syntax `${VARIABLE}`.
-Default values are supported in the form `${VARIABLE:default}`.
+Default values are supported in the form `${VARIABLE:-default}`.
+
+In the case of json input only strings can be the result of substitution. To
+ensure only values are replaced the input must be parsed as valid json or yaml
+and in the case of json a value like `${VARIABLE}` will always have to be double
+quoted as `"${VARIABLE}"` so will always remain double quoted. If you need to
+substitute in a boolean, integer or float please use yaml for the input
+configuration file.
 
 ### Testing
 
