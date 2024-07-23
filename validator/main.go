@@ -307,7 +307,7 @@ func handleScalarNode(n *yaml.Node) {
 			} else if _, err := strconv.ParseBool(newValue); err == nil {
 				n.Style = yaml.TaggedStyle
 				n.Tag = "!!bool"
-			} else if _, err := strconv.Atoi(newValue); err == nil {
+			} else if _, err := strconv.ParseInt(newValue, 0, 64); err == nil {
 				n.Style = yaml.TaggedStyle
 				n.Tag = "!!int"
 			} else if _, err := strconv.ParseFloat(newValue, 64); err == nil {
