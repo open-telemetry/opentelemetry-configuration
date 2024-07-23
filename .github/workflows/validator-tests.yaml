@@ -31,8 +31,8 @@ jobs:
       run: |
         cd validator
 
-        apt update
-        apt install shelltestrunner
+        sudo apt-get update
+        sudo apt-get install shelltestrunner
 
         shelltest -c --diff --all shelltests/*.test
 
