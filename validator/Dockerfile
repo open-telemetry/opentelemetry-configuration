@@ -3,12 +3,16 @@ FROM golang:1.22 AS build
 
 WORKDIR /app
 
+RUN go env -w GOMODCACHE=/root/.cache/go-mod
+RUN go env -w GOCACHE=/root/.cache/go-build
+
 COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /otel_config_validator
+RUN --mount=type=cache,target=/root/.cache/go-build,id=cache-go-build --mount=type=cache,target=/root/.cache/go-mod,id=cache-go-mod \
+    CGO_ENABLED=0 GOOS=linux go build -o /otel_config_validator
 
 FROM gcr.io/distroless/base-debian12
 
