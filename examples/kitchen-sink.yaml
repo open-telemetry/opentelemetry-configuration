@@ -142,6 +142,8 @@ meter_provider:
               # Configure resource attributes to be excluded, in this example attribute service.attr1.
               excluded:
                 - "service.attr1"
+            # Configure default aggregation as a function of instrument kind.
+            default_aggregation_by_instrument_kind:
       # Configure metric producers.
       producers:
         # Configure metric producer to be opencensus
@@ -203,10 +205,13 @@ meter_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
             temporality_preference: delta
-            # Configure default histogram aggregation.
+            # Configure default aggregation as a function of instrument kind.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION
-            default_histogram_aggregation: base2_exponential_bucket_histogram
+            default_aggregation_by_instrument_kind:
+              # Configure default aggregation for histograms.
+              histogram:
+                base2_exponential_bucket_histogram:
       # Configure metric producers.
       producers:
         # Configure metric producer to be prometheus
@@ -216,7 +221,29 @@ meter_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be console.
-          console: {}
+          console:
+            # Configure temporality preference.
+            temporality_preference: delta
+            # Configure default aggregation as a function of instrument kind.
+            default_aggregation_by_instrument_kind:
+              # Configure default aggregation for counters.
+              counter:
+                sum:
+              # Configure default aggregation for histograms.
+              histogram:
+                base2_exponential_bucket_histogram:
+              # Configure default aggregation for observable counters.
+              observable_counter:
+                sum:
+              # Configure default aggregation for observable gauges.
+              observable_gauge:
+                last_value:
+              # Configure default aggregation for observable up down counters.
+              observable_up_down_counter:
+                sum:
+              # Configure default aggregation for up down counters.
+              up_down_counter:
+                sum:
   # Configure views. Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
   views:
     # Configure a view.
@@ -442,13 +469,13 @@ instrumentation:
   # Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
   general:
     # Configure instrumentations following the peer semantic conventions.
-    # 
+    #
     # See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
     peer:
       # Configure the service mapping for instrumentations following peer.service semantic conventions.
       #
       # Each entry is a key value pair where "peer" defines the IP address and "service" defines the corresponding logical name of the service.
-      # 
+      #
       # See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
       service_mapping:
         - peer: 1.2.3.4
@@ -456,7 +483,7 @@ instrumentation:
         - peer: 2.3.4.5
           service: BarService
     # Configure instrumentations following the http semantic conventions.
-    # 
+    #
     # See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
     http:
       # Configure instrumentations following the http client semantic conventions.

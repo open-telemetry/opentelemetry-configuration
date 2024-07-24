@@ -36,6 +36,7 @@
 # - OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_{SIGNAL}_HEADERS
 # - OTEL_EXPORTER_OTLP_COMPRESSION
 # - OTEL_EXPORTER_OTLP_TIMEOUT
+# - OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION
 
 # The file format version
 file_format: "0.1"
@@ -166,8 +167,8 @@ meter_provider:
             headers: {}
             # Configure temporality preference.
             temporality_preference: ${OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:-cumulative}
-            # Configure default histogram aggregation.
-            default_histogram_aggregation: ${OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION:-explicit_bucket_histogram}
+            # Configure default aggregation by instrument kind.
+            default_aggregation_by_instrument_kind:
 
 # Configure logger provider.
 logger_provider:

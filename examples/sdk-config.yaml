@@ -134,8 +134,8 @@ meter_provider:
             headers: {}
             # Configure temporality preference.
             temporality_preference: cumulative
-            # Configure default histogram aggregation.
-            default_histogram_aggregation: explicit_bucket_histogram
+            # Configure default aggregation by instrument kind.
+            default_aggregation_by_instrument_kind:
 
 # Configure logger provider.
 logger_provider:

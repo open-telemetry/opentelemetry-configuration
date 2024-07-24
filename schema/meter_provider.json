@@ -63,7 +63,7 @@
                     "$ref": "#/$defs/OtlpMetric"
                 },
                 "console": {
-                    "$ref": "common.json#/$defs/Console"
+                    "$ref": "#/$defs/ConsoleMetric"
                 },
                 "prometheus": {
                     "$ref": "#/$defs/Prometheus"
@@ -113,6 +113,9 @@
                 },
                 "with_resource_constant_labels": {
                     "$ref": "common.json#/$defs/IncludeExclude"
+                },
+                "default_aggregation_by_instrument_kind": {
+                    "$ref": "#/$defs/DefaultAggregationByInstrumentKind"
                 }
             }
         },
@@ -167,14 +170,10 @@
                     "minimum": 0
                 },
                 "temporality_preference": {
-                    "type": ["string", "null"]
+                    "$ref": "#/$defs/AggregationTemporalityPreference"
                 },
-                "default_histogram_aggregation": {
-                    "type": ["string", "null"],
-                    "enum": [
-                        "explicit_bucket_histogram",
-                        "base2_exponential_bucket_histogram"
-                    ]
+                "default_aggregation_by_instrument_kind": {
+                    "$ref": "#/$defs/DefaultAggregationByInstrumentKind"
                 },
                 "insecure": {
                     "type": ["boolean", "null"]
@@ -185,6 +184,116 @@
                 "protocol"
             ],
             "title": "OtlpMetric"
+        },
+        "AggregationTemporalityPreferenceByInstrumentKind": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "counter": {
+                    "$ref": "#/$defs/AggregationTemporality"
+                },
+                "histogram": {
+                    "$ref": "#/$defs/AggregationTemporality"
+                },
+                "observable_counter": {
+                    "$ref": "#/$defs/AggregationTemporality"
+                },
+                "observable_gauge": {
+                    "$ref": "#/$defs/AggregationTemporality"
+                },
+                "observable_up_down_counter": {
+                    "$ref": "#/$defs/AggregationTemporality"
+                },
+                "up_down_counter": {
+                    "$ref": "#/$defs/AggregationTemporality"
+                }
+            }
+        },
+        "AggregationTemporalityPreference": {
+            "type": ["string", "null"],
+            "enum": [
+                "delta",
+                "cumulative",
+                "low_memory"
+            ]
+        },
+        "DefaultAggregationByInstrumentKind": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "counter": {
+                    "$ref": "#/$defs/Aggregation"
+                },
+                "histogram": {
+                    "$ref": "#/$defs/Aggregation"
+                },
+                "observable_counter": {
+                    "$ref": "#/$defs/Aggregation"
+                },
+                "observable_gauge": {
+                    "$ref": "#/$defs/Aggregation"
+                },
+                "observable_up_down_counter": {
+                    "$ref": "#/$defs/Aggregation"
+                },
+                "up_down_counter": {
+                    "$ref": "#/$defs/Aggregation"
+                }
+            }
+        },
+        "Aggregation": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "default": {
+                    "type": ["object", "null"],
+                    "additionalProperties": false
+                },
+                "drop": {
+                    "type": ["object", "null"],
+                    "additionalProperties": false
+                },
+                "explicit_bucket_histogram": {
+                    "type": ["object", "null"],
+                    "additionalProperties": false,
+                    "properties": {
+                        "boundaries": {
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "record_min_max": {
+                            "type": ["boolean", "null"]
+                        }
+                    }
+                },
+                "base2_exponential_bucket_histogram": {
+                    "type": ["object", "null"],
+                    "additionalProperties": false,
+                    "properties": {
+                        "max_scale": {
+                            "type": ["integer", "null"]
+                        },
+                        "max_size": {
+                            "type": ["integer", "null"]
+                        },
+                        "record_min_max": {
+                            "type": ["boolean", "null"]
+                        }
+                    }
+                },
+                "last_value": {
+                    "type": ["object", "null"],
+                    "additionalProperties": false
+                },
+                "sum": {
+                    "type": ["object", "null"],
+                    "additionalProperties": false
+                }
+            }
         },
         "View": {
             "type": ["object", "null"],
@@ -235,58 +344,7 @@
                             "type": ["string", "null"]
                         },
                         "aggregation": {
-                            "type": ["object", "null"],
-                            "additionalProperties": false,
-                            "minProperties": 1,
-                            "maxProperties": 1,
-                            "properties": {
-                                "default": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false
-                                },
-                                "drop": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false
-                                },
-                                "explicit_bucket_histogram": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "boundaries": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "number"
-                                            }
-                                        },
-                                        "record_min_max": {
-                                            "type": ["boolean", "null"]
-                                        }
-                                    }
-                                },
-                                "base2_exponential_bucket_histogram": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "max_scale": {
-                                            "type": ["integer", "null"]
-                                        },
-                                        "max_size": {
-                                            "type": ["integer", "null"]
-                                        },
-                                        "record_min_max": {
-                                            "type": ["boolean", "null"]
-                                        }
-                                    }
-                                },
-                                "last_value": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false
-                                },
-                                "sum": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false
-                                }
-                            }
+                            "$ref": "#/$defs/Aggregation"
                         },
                         "attribute_keys": {
                             "type": "array",
@@ -295,6 +353,18 @@
                             }
                         }
                     }
+                }
+            }
+        },
+        "ConsoleMetric": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "temporality_preference": {
+                    "$ref": "#/$defs/AggregationTemporalityPreference"
+                },
+                "default_aggregation_by_instrument_kind": {
+                    "$ref": "#/$defs/DefaultAggregationByInstrumentKind"
                 }
             }
         }
