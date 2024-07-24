@@ -185,30 +185,6 @@
             ],
             "title": "OtlpMetric"
         },
-        "AggregationTemporalityPreferenceByInstrumentKind": {
-            "type": ["object", "null"],
-            "additionalProperties": false,
-            "properties": {
-                "counter": {
-                    "$ref": "#/$defs/AggregationTemporality"
-                },
-                "histogram": {
-                    "$ref": "#/$defs/AggregationTemporality"
-                },
-                "observable_counter": {
-                    "$ref": "#/$defs/AggregationTemporality"
-                },
-                "observable_gauge": {
-                    "$ref": "#/$defs/AggregationTemporality"
-                },
-                "observable_up_down_counter": {
-                    "$ref": "#/$defs/AggregationTemporality"
-                },
-                "up_down_counter": {
-                    "$ref": "#/$defs/AggregationTemporality"
-                }
-            }
-        },
         "AggregationTemporalityPreference": {
             "type": ["string", "null"],
             "enum": [
