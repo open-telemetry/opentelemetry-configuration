@@ -2,6 +2,8 @@ SCHEMA_FILES := $(shell find . -path './schema/*.json' -exec basename {} \; | so
 EXAMPLE_FILES := $(shell find . -path './examples/*.yaml' -exec basename {} \; | sort)
 $(shell mkdir -p out)
 
+include validator/Makefile
+
 .PHONY: all
 all: install-tools compile-schema validate-examples
 
