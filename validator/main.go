@@ -129,54 +129,35 @@ func decodeFile(configFile string, outfileExt string) (interface{}, []byte) {
 	var j []byte
 	var d []byte
 	var u interface{}
-	var v interface{}
 	var jsonInterface interface{}
-	
-	data, err := os.ReadFile(configFile)
+
+	y := decodeYaml(configFile)
+	replaceYamlVariables(&y)
+
+	err := y.Decode(&u)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	ext := filepath.Ext(configFile)
-	if isYamlExt(ext) {
-		y := decodeYaml(configFile)
-		replaceYamlVariables(&y)
-		
-		err = y.Decode(&u)
+	if len(y.Content) > 0 {
+		d, err = yaml.Marshal(&y.Content[0])
 		if err != nil {
 			log.Fatal(err)
 		}
-		
-		if len(y.Content) > 0 {
-			d, err = yaml.Marshal(&y.Content[0])
-			if err != nil {
-				log.Fatal(err)
-			}
 
-			j, err = k8syaml.YAMLToJSON(d)
-			if err != nil {
-				log.Fatalf("Error encoding yaml to json for validation: %+v", err)
-			}
-
-			if err := json.Unmarshal(j, &jsonInterface); err != nil {
-				log.Fatalf("Invalid json file from yaml file %s: %+v", configFile, err)
-			}
+		j, err = k8syaml.YAMLToJSON(d)
+		if err != nil {
+			log.Fatalf("Error encoding yaml to json for validation: %+v", err)
 		}
 
-		toWrite := convertYamlNode(y, outfileExt)
-
-		return jsonInterface, toWrite
-	}
-	
-	if err := json.Unmarshal(data, &v); err != nil {
-		log.Fatalf("Invalid json file %s: %#v", configFile, err)
+		if err := json.Unmarshal(j, &jsonInterface); err != nil {
+			log.Fatalf("Invalid json from yaml file %s: %+v", configFile, err)
+		}
 	}
 
-	expandedConfig, b := replaceJsonVariables(v)
+	toWrite := convertYamlNode(y, outfileExt)
 
-	toWrite := convertJsonBytes(b, outfileExt)
-
-	return expandedConfig, toWrite
+	return jsonInterface, toWrite
 }
 
 func isYamlExt(ext string) bool {
@@ -205,18 +186,9 @@ func convertYamlNode(n yaml.Node, ext string) []byte {
 	return d
 }
 
-func convertJsonBytes(jsonBytes []byte, ext string) []byte {
-	if isYamlExt(ext) {
-		b, _ := k8syaml.JSONToYAML(jsonBytes)
-		return b
-	}
-
-	return jsonBytes
-}
-
 func decodeYaml(file string) yaml.Node {
 	var node yaml.Node
-	
+
 	body, err := os.ReadFile(file)
 	if err != nil {
 		log.Fatalf("Failed to read configuration file %s: %v", file, err)
@@ -319,59 +291,6 @@ func handleScalarNode(n *yaml.Node) {
 
 }
 
-// json variable replacement is basic as the json value that
-// is an environment variable will always be quoted, so only
-// strings are supported
-func replaceJsonVariables(c interface{}) (interface{}, []byte) {
-	expandedConfig := make(map[string]any)
-
-	m, _ := c.(map[string]any)
-	for k := range m {
-		val := expandJsonValues(m[k])
-		expandedConfig[k] = val
-	}
-	b, err := json.Marshal(expandedConfig)
-	if err != nil {
-		log.Fatalf("json.Marshal: %+v", err)
-	}
-
-	y, err := k8syaml.JSONToYAML(b)
-	if err != nil {
-		log.Fatalf("Error converting json result to yaml: %+v", err)
-	}
-
-	return expandedConfig, y
-}
-
-func expandJsonValues(value interface{}) any {
-	switch v := value.(type) {
-	case string:
-		if !strings.Contains(v, "${") || !strings.Contains(v, "}") {
-			return v
-		}
-
-		return expandString(v)
-	case []any:
-		l := []any{}
-		for _, e := range v {
-			newElement := expandJsonValues(e)
-			l = append(l, newElement)
-		}
-		return l
-	case map[string]any:
-		newMap := make(map[string]any)
-
-		for k, v := range v {
-			updated := expandJsonValues(v)
-			newMap[k] = updated
-		}
-
-		return newMap
-	}
-
-	return value
-}
-
 // Replace environment variables, like ${EXAMPLE}, with their value.
 // This does not use `os.ExpandVars` in order to support defaults
 // for missing variables, ${VAR:-default}
@@ -392,11 +311,11 @@ func expandString(s string) string {
 // iterates over a string to find all environment variables
 // returns a map of variables to strings or nil
 func findAllVars(s string) map[string]interface{} {
-	var envVar string	
+	var envVar string
 	var newValue interface{}
 	var isSet bool
 	var substr string
-	
+
 	result := make(map[string]interface{})
 	lenS := len(s)
 
@@ -416,8 +335,8 @@ func findAllVars(s string) map[string]interface{} {
 		} else {
 			envVar = substr[openIndex+6 : closeIndex]
 		}
-		
-		fullEnvVar := substr[openIndex : closeIndex+1]	
+
+		fullEnvVar := substr[openIndex : closeIndex+1]
 
 		maybeDefaultIndex := strings.Index(envVar, ":-")
 

@@ -1,3 +1,0 @@
-./otel_config_validator -o out/out.json shelltests/json_replacement.json
->>>
->>>= 0
