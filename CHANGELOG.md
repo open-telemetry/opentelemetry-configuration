@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Adding initial instrumentation configuration schema
+* [SCHEMA] The MetricExporter schema is unsafe [#110](https://github.com/open-telemetry/opentelemetry-configuration/pull/110)
 
 ## [v0.2.0] - 2024-05-08
 
