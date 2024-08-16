@@ -11,5 +11,6 @@ COMMANDS:
 
 GLOBAL OPTIONS:
    --output value, -o value  optionally where to output the configuration (as json or yaml) after variable expansion and validation
+   --schema value, -s value  directory containing the json schema to use instead of the compiled in version
    --help, -h                show help (default: false)
 >>>= 0

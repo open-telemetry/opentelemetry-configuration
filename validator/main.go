@@ -34,6 +34,12 @@ func main() {
 				OnlyOnce: true,
 				Usage:    "optionally where to output the configuration (as json or yaml) after variable expansion and validation",
 			},
+			&cli.StringFlag{
+				Name:     "schema",
+				Aliases:  []string{"s"},
+				OnlyOnce: true,
+				Usage:    "directory containing the json schema to use instead of the compiled in version",
+			},
 		},
 		Action: runAction(),
 	}
@@ -48,14 +54,23 @@ func runAction() func(ctx context.Context, cmd *cli.Command) error {
 		if cmd.Args().Len() < 1 {
 			log.Fatalf("Error: Must pass a configuration filename")
 		} else {
+			isOutputSet := cmd.IsSet("output")
 			configFilePath := cmd.Args().Get(0)
 
+			//make schemaDir able to be nil if not set
+			var schemaDir *string
+			schemaDir = nil
+			if cmd.IsSet("schema") {
+				tmp := cmd.String("schema")
+				schemaDir = &tmp
+			}
+
 			outFile := cmd.String("output")
-			ext := validateOutputOption(outFile)
+			ext := validateOutputOption(isOutputSet, outFile)
 
-			yaml := validateConfiguration(configFilePath, ext)
+			yaml := validateConfiguration(configFilePath, ext, schemaDir)
 
-			if outFile != "" {
+			if isOutputSet {
 				toFile(yaml, outFile)
 			}
 
@@ -66,31 +81,55 @@ func runAction() func(ctx context.Context, cmd *cli.Command) error {
 	}
 }
 
-func validateOutputOption(outFile string) string {
-	if outFile != "" {
-		ext := filepath.Ext(outFile)
-		if !isYamlExt(ext) && !isJsonExt(ext) {
-			log.Fatalf("Unknown extension on output file %v", outFile)
-		}
+func validateOutputOption(isOutputSet bool, outFile string) string {
+	if isOutputSet {
+		if outFile != "" {
+			ext := filepath.Ext(outFile)
+			if !isYamlExt(ext) && !isJsonExt(ext) {
+				log.Fatalf("Unknown extension on output file %v", outFile)
+			}
 
-		err := os.MkdirAll(filepath.Dir(outFile), 0700)
-		if err != nil {
-			log.Fatalf("Unable to create dir for output file %s: %+v", outFile, err)
-		}
+			err := os.MkdirAll(filepath.Dir(outFile), 0700)
+			if err != nil {
+				log.Fatalf("Unable to create dir for output file %s: %+v", outFile, err)
+			}
 
-		return ext
+			return ext
+		} else  {
+			log.Fatal("Output can not be an empty string")
+		}
 	}
 
 	return ""
 }
 
-func validateConfiguration(configFile string, outfileExt string) []byte {
-	schemaFiles, err := schemaFS.ReadDir("schema")
+func add_resources_from_dir(c *jsonschema.Compiler, schemaDir string) {
+	schemaFiles, err :=os.ReadDir(schemaDir)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	c := jsonschema.NewCompiler()
+	for _, file := range schemaFiles {
+		schemaURL, err := url.JoinPath("https://opentelemetry.io/otelconfig/", file.Name())
+		if err != nil {
+			log.Fatal(err)
+		}
+		schema, err := os.ReadFile(filepath.Join(schemaDir, file.Name()))
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if err := c.AddResource(schemaURL, bytes.NewReader(schema)); err != nil {
+			log.Fatal(err)
+		}
+	}
+}
+
+func add_resources_from_embed(c *jsonschema.Compiler) {
+	schemaFiles, err :=schemaFS.ReadDir("schema")
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	for _, file := range schemaFiles {
 		schemaURL, err := url.JoinPath("https://opentelemetry.io/otelconfig/", file.Name())
@@ -105,6 +144,17 @@ func validateConfiguration(configFile string, outfileExt string) []byte {
 		if err := c.AddResource(schemaURL, bytes.NewReader(schema)); err != nil {
 			log.Fatal(err)
 		}
+	}
+
+}
+
+
+func validateConfiguration(configFile string, outfileExt string, schemaDir *string) []byte {
+	c := jsonschema.NewCompiler()
+	if schemaDir != nil {
+		add_resources_from_dir(c, *schemaDir)
+	} else {
+		add_resources_from_embed(c)
 	}
 
 	schema, err := c.Compile("https://opentelemetry.io/otelconfig/opentelemetry_configuration.json")
