@@ -249,8 +249,10 @@ meter_provider:
             record_min_max: true
         # Configure attribute keys retained in the resulting stream(s).
         attribute_keys:
-          - key1
-          - key2
+          # Configure list of attribute key patterns attribute keys retained in the resulting stream(s).
+          included:
+            - key1
+            - key2
 
 # Configure text map context propagators.
 #
