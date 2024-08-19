@@ -46,11 +46,11 @@ typeDescriptionsYaml.forEach(rule => {
     if (!('path_patterns' in rule)) {
         throw new Error("rule missing path_patterns:" + JSON.stringify(rule));
     }
-    maybeDebugLog("\nRule for type: " + type);
-    maybeDebugLog("  property_descriptions:")
+    debug("\nRule for type: " + type);
+    debug("  property_descriptions:")
     Object.entries(rule.property_descriptions)
-        .forEach(([property, description]) => maybeDebugLog("    " +  property + ": " + description));
-    maybeDebugLog("  path_patterns: \n" + rule.path_patterns.map(entry => "  - " + toRegex(entry)).join("\n"));
+        .forEach(([property, description]) => debug("    " +  property + ": " + description));
+    debug("  path_patterns: \n" + rule.path_patterns.map(entry => "  - " + toRegex(entry)).join("\n"));
 })
 
 // Read in the input file
@@ -76,10 +76,10 @@ yaml.visit(fileDoc, {
         //     - arr_key: value         # .parent.child_arr[]
         const parentPath = pathToString(path);
         const propertyKey = node.key.value;
-        maybeDebugLog("");
-        maybeDebugLog("parentPath: " + parentPath );
-        maybeDebugLog("propertyKey: " + propertyKey);
-        maybeDebugLog("currentNodePath: " + parentPath + (parentPath === "." ? "" : ".") + propertyKey);
+        debug("");
+        debug("parentPath: " + parentPath );
+        debug("propertyKey: " + propertyKey);
+        debug("currentNodePath: " + parentPath + (parentPath === "." ? "" : ".") + propertyKey);
         // Iterate through the rules and find the first with a matching entry in rule.path_patterns
         const matchingRule = typeDescriptionsYaml.find((rule) => {
             const matchingPathPattern = rule['path_patterns'].find((pathPattern) => {
@@ -90,15 +90,15 @@ yaml.visit(fileDoc, {
         });
         // Exit early if no matching rule
         if (matchingRule === undefined) {
-            maybeDebugLog("no matching rule")
+            debug("no matching rule")
             return;
         }
-        maybeDebugLog("matched rule: " + matchingRule.type);
+        debug("matched rule: " + matchingRule.type);
         // Check if there is a description for the current propertyKey in the matching rule
         // Exit early if none registered
         const description = matchingRule['property_descriptions'][propertyKey];
         if (description === undefined) {
-            maybeDebugLog("no matching property")
+            debug("no matching property")
             return;
         }
         // Format the description
@@ -110,8 +110,8 @@ yaml.visit(fileDoc, {
                 ? node.key.commentBefore + formattedDescription
                 : node.key.commentBefore.substring(0, index) + formattedDescription;
         }
-        maybeDebugLog("description previously set to:\n" + node.key.commentBefore);
-        maybeDebugLog("updating description to:\n" + formattedDescription)
+        debug("description previously set to:\n" + node.key.commentBefore);
+        debug("updating description to:\n" + formattedDescription)
         // Set the description
         node.key.commentBefore = formattedDescription;
         node.value.commentBefore = null;
@@ -149,7 +149,7 @@ function toRegex(pattern) {
 }
 
 // Log the message to the console if the script was run with `--debug` argument
-function maybeDebugLog(message) {
+function debug(message) {
     if (options.debug) {
         console.debug(message);
     }
