@@ -1,7 +1,7 @@
 [package]
 name = "otel_config_validator"
 description = "Releaser for otel_config_validator"
-version = "0.2.0"
+version = "0.1.0"
 license = "Apache-2.0"
 repository = "https://github.com/open-telemetry/opentelemetry-configuration"
 homepage = "https://opentelemetry.io/"
@@ -19,7 +19,7 @@ installers = ["shell", "powershell"]
 # Target platforms to build apps for (Rust target-triple syntax)
 targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-unknown-linux-musl", "x86_64-pc-windows-msvc"]
 # Path that installers should place binaries in
-install-path = ["$OTEL_CONFIG_VALIDATOR_HOME/bin", "~/.otel_config_validator/bin"]
+install-path = ["$OTEL_CONFIG_VALIDATOR_HOME/bin", "~/.local/bin"]
 # Publish jobs to run in CI
 pr-run-mode = "plan"
 # Whether to install an updater program
