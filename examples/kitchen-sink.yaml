@@ -249,7 +249,7 @@ meter_provider:
             record_min_max: true
         # Configure attribute keys retained in the resulting stream(s).
         attribute_keys:
-          # Configure list of attribute key patterns that are retained in the resulting stream(s).
+          # Configure list of attribute keys that are retained in the resulting stream(s).
           # All other attributes not matching will be dropped.
           included:
             - key1
