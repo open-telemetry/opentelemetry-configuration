@@ -80,3 +80,13 @@ Running the tests of the compiled CLI requires
 $ shelltest -c --diff --all shelltests/*.test
 ```
 
+### Releasing
+
+To release a new version of `otel_config_validator` the version in `dist.toml`
+and the `Version` property of `cli.Comamnd` in `main.go` must be bumped. Next, a
+tag prefixed with `validator-` must be created and pushed to the repository, for
+example `validator-0.1.0`. Then, the `cargo-dist` Github Action will create a
+Github release, build binaries for multiple platforms and publish them to the
+new release.
+
+Docker image are published on merge to `main`.

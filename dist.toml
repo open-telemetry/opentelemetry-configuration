@@ -22,6 +22,8 @@ targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-
 install-path = ["$OTEL_CONFIG_VALIDATOR_HOME/bin", "~/.local/bin"]
 # Publish jobs to run in CI
 pr-run-mode = "plan"
+# A prefix git tags must include for cargo-dist to care about them
+tag-namespace = "validator"
 # Whether to install an updater program
 install-updater = false
 

@@ -27,6 +27,7 @@ func main() {
 	cmd := &cli.Command{
 		Name:  "otel_config_validator",
 		Usage: "Validate a configuration file against the OpenTelemetry Configuration Schema",
+		Version: "0.1.0",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:     "output",
