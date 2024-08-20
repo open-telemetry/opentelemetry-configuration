@@ -1,8 +1,10 @@
 ## OpenTelemetry SDK Configuration Validator
 
-This application will replace environment variables in values of valid yaml files, following the rules of [file configuration environment variable
+This application will replace environment variables in values of valid yaml
+files, following the rules of [file configuration environment variable
 substitution](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution),
-before validating that result against the [OpenTelemetry SDK Configuration
+before validating that result against a version of the [OpenTelemetry SDK
+Configuration
 schema](https://github.com/open-telemetry/opentelemetry-configuration/).
 
 ### Build
@@ -20,6 +22,10 @@ Same is true for building the docker image:
 ```
 $ make validator-docker
 ```
+
+The schema in the `schema` directory is the default that will be used when
+running the validator. To use a different schema a directory containing the
+schema can be passed with `-s`/`--schema`.
 
 ### Usage
 
@@ -48,6 +54,15 @@ With the above docker command the output file, `out.yaml`, will be owned by
 Environment variable substitution is supported with the syntax `${VARIABLE}` or
 `${env:VARIABLE}`. Default values are supported in the form
 `${VARIABLE:-default}`.
+
+#### Using a Different Schema Version
+
+To use a version of of the schema other than the one builtin to the
+`otel_config_validator` executable pass the `-s <directory>` option:
+
+```
+$ ./otel_config_validator -o out.json -s .../some/path/opentelemetry-configuration-0.1.0/ ../examples/kitchen-sink.yaml
+```
 
 ### Testing
 
