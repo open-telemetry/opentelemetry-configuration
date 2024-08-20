@@ -6,6 +6,9 @@ NAME:
 USAGE:
    otel_config_validator [global options] [command [command options]] [arguments...]
 
+VERSION:
+   0.1.0
+
 COMMANDS:
    help, h  Shows a list of commands or help for one command
 
@@ -13,4 +16,5 @@ GLOBAL OPTIONS:
    --output value, -o value  optionally where to output the configuration (as json or yaml) after variable expansion and validation
    --schema value, -s value  directory containing the json schema to use instead of the compiled in version
    --help, -h                show help (default: false)
+   --version, -v             print the version (default: false)
 >>>= 0
