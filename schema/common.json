@@ -31,6 +31,18 @@
                 }
             }
         },
+        "Include": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "included": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "Otlp": {
             "type": ["object", "null"],
             "additionalProperties": false,

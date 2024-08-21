@@ -302,10 +302,7 @@
                             }
                         },
                         "attribute_keys": {
-                            "type": "array",
-                            "items": {
-                                "type": ["string", "null"]
-                            }
+                            "$ref": "common.json#/$defs/Include"
                         }
                     }
                 }
