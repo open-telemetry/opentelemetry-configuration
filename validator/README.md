@@ -25,7 +25,7 @@ $ make validator
 Same is true for building the docker image:
 
 ```
-$ make validator-docker
+$ make validator-docker-image
 ```
 
 The schema in the `schema` directory is the default that will be used when
