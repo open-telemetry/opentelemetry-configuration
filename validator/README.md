@@ -81,10 +81,12 @@ $ go test .
 
 Running the tests of the compiled CLI requires
 [shelltest](https://github.com/simonmichael/shelltestrunner),
-[jq](https://github.com/jqlang/jq/) and [yq](https://github.com/mikefarah/yq):
+[jq](https://github.com/jqlang/jq/) and [yq](https://github.com/mikefarah/yq)
+and setting the `$PATH` to include `otel_config_validator`, but you can just use
+the `Makefile` target `validator-run-shelltests` to run them in Docker:
 
 ```
-$ shelltest -c --diff --all shelltests/*.test
+$ make validator-run-shelltests
 ```
 
 ### Releasing

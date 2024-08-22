@@ -29,13 +29,5 @@ jobs:
 
     - name: Run ShellTests
       run: |
-        cd validator
+        make validator-run-shelltests
 
-        sudo apt-get update
-        sudo apt-get install shelltestrunner
-
-        shelltest -c --diff --all shelltests/*.test
-
-    # TODO: Push this to registry on release
-    - name: Build Docker Image
-      run: make validator-docker-image

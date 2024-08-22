@@ -1,4 +1,4 @@
-./otel_config_validator --help
+otel_config_validator --help
 >>>
 NAME:
    otel_config_validator - Validate a configuration file against the OpenTelemetry Configuration Schema
