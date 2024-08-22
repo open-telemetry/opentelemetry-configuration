@@ -77,6 +77,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 Approvers ([@open-telemetry/configuration-approvers](https://github.com/orgs/open-telemetry/teams/configuration-approvers)):
 
 - [Brett McBride](https://github.com/brettmc), Deakin University
+- [Marc Alff](https://github.com/marcalff), Oracle
 
 *Find more about the approver role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).*
 
