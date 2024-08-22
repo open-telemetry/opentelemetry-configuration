@@ -54,7 +54,9 @@ With the above docker command the output file, `out.yaml`, will be owned by
 
 Environment variable substitution is supported with the syntax `${VARIABLE}` or
 `${env:VARIABLE}`. Default values are supported in the form
-`${VARIABLE:-default}`.
+`${VARIABLE:-default}`. The full specification for variable substitution can be
+found in the
+[opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution).
 
 #### Using a Different Schema Version
 
