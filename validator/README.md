@@ -6,9 +6,13 @@ substitution](https://github.com/open-telemetry/opentelemetry-specification/blob
 before validating that result against a version of the [OpenTelemetry SDK
 Configuration
 schema](https://github.com/open-telemetry/opentelemetry-configuration/) and
-optionally outputting to a yaml or json file..
+optionally outputting to a yaml or json file.
 
 ### Build
+
+Requirements:
+
+- Go 1.20 or above
 
 The `schema` directory is required to be in the directory of the Go file that
 embeds it, so a `go build` alone will fail, instead run `make` which will copy
