@@ -5,7 +5,8 @@ files, following the rules of [file configuration environment variable
 substitution](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution),
 before validating that result against a version of the [OpenTelemetry SDK
 Configuration
-schema](https://github.com/open-telemetry/opentelemetry-configuration/).
+schema](https://github.com/open-telemetry/opentelemetry-configuration/) and
+optionally outputting to a yaml or json file..
 
 ### Build
 
