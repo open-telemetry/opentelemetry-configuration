@@ -69,3 +69,23 @@ When a property requires pattern matching, use wildcard `*` (match any number of
 Properties should be modeled using the most appropriate data structures and types to represent the information. This may result in a schema which doesn't support env var substitution for the [standard env vars](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md) where a type mismatch occurs. For example, the `OTEL_RESOURCE_ATTRIBUTES` env var is modeled as a string, consisting of a comma separated list of key-value pairs, which is not the natural way to model a mapping of key-value pairs in JSON schema. 
 
 In instances where there is a type mismatch between the JSON schema and equivalent standard env var, an alternative version of the property may be provided to resolve the mismatch. For example, resource attributes are configured at `.resource.attributes`, but `.resource.attributes_list` is available with a format matching that of `OTEL_RESOURCE_ATTRIBUTES`. Alternative properties are reserved for cases where there is a demonstrated need for platforms to be able to participate in configuration and there is no reasonable alternative.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+Approvers ([@open-telemetry/configuration-approvers](https://github.com/orgs/open-telemetry/teams/configuration-approvers)):
+
+- [Brett McBride](https://github.com/brettmc), Deakin University
+- [Marc Alff](https://github.com/marcalff), Oracle
+
+*Find more about the approver role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).*
+
+Maintainers ([@open-telemetry/configuration-maintainers](https://github.com/orgs/open-telemetry/teams/configuration-maintainers)):
+
+- [Alex Boten](https://github.com/codeboten), Honeycomb
+- [Jack Berg](https://github.com/jack-berg), New Relic
+- [Tristan Sloughter](https://github.com/tsloughter), Splunk
+- [Tyler Yahn](https://github.com/tsloughter), Splunk
+
+*Find more about the maintainer role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).*
