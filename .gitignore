@@ -24,3 +24,7 @@ package-lock.json
 
 # Output directory after applying env substitution
 out
+
+# validator binary
+otel_config_validator
+validator/schema

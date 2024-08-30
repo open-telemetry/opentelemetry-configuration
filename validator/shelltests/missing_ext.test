@@ -1,0 +1,4 @@
+otel_config_validator -o out shelltests/multiple_defaults.yaml
+>>>2
+Unknown extension on output file out
+>>>= 1
