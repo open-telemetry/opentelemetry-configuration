@@ -47,7 +47,8 @@ resource:
   # Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
   attributes:
     # Configure `service.name` resource attribute
-    service.name: ${OTEL_SERVICE_NAME:-unknown_service}
+    - name: service.name
+      string_value: ${OTEL_SERVICE_NAME:-unknown_service}
   # Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
   #
   # The value is a list of comma separated key-value pairs, matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
@@ -97,7 +98,7 @@ tracer_provider:
             # Configure max time (in milliseconds) to wait for each export.
             timeout: ${OTEL_EXPORTER_OTLP_TRACES_TIMEOUT:-10000}
             # Configure headers:
-            headers: {}
+            headers: []
   # Configure span limits. See also attribute_limits.
   limits:
     # Configure max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
@@ -166,7 +167,7 @@ meter_provider:
             # Configure max time (in milliseconds) to wait for each export.
             timeout: ${OTEL_EXPORTER_OTLP_METRICS_TIMEOUT:-10000}
             # Configure headers:
-            headers: {}
+            headers: []
             # Configure temporality preference.
             temporality_preference: ${OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:-cumulative}
             # Configure default histogram aggregation.
@@ -205,7 +206,7 @@ logger_provider:
             # Configure max time (in milliseconds) to wait for each export.
             timeout: ${OTEL_EXPORTER_OTLP_LOGS_TIMEOUT:-10000}
             # Configure headers:
-            headers: {}
+            headers: []
   # Configure log record limits. See also attribute_limits.
   limits:
     # Configure max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.

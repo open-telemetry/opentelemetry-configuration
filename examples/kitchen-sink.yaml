@@ -78,7 +78,8 @@ logger_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_LOGS_HEADERS
             headers:
-              api-key: "1234"
+              - name: api-key
+                value: "1234"
             # Configure compression.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_LOGS_COMPRESSION
@@ -186,7 +187,8 @@ meter_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_METRICS_HEADERS
             headers:
-              api-key: !!str 1234
+              - name: api-key
+                value: "1234"
             # Configure compression.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_METRICS_COMPRESSION
@@ -313,7 +315,8 @@ tracer_provider:
             #
             # Environment variable: OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_TRACES_HEADERS
             headers:
-              api-key: !!str 1234
+              - name: api-key
+                value: "1234"
             # Configure compression.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_TRACES_COMPRESSION
@@ -416,7 +419,23 @@ resource:
     # Configure `service.name` resource attribute
     #
     # Environment variable: OTEL_SERVICE_NAME
-    service.name: !!str "unknown_service"
+    - name: service-name
+      string_value: "unknown_service"
+    # Configure other resource attributes with explicit types.
+    - name: bool_key
+      bool_value: true
+    - name: int_key
+      int_value: 1
+    - name: double_key
+      double_value: 1.1
+    - name: string_array_key
+      string_array_value: ["value1", "value2"]
+    - name: bool_array_key
+      bool_array_value: [ true, false ]
+    - name: int_array_key
+      int_array_value: [ 1, 2 ]
+    - name: double_array_key
+      double_array_value: [ 1.1, 2.2 ]
   # Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
   #
   # The value is a list of comma separated key-value pairs,  matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.

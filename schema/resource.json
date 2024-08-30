@@ -6,7 +6,10 @@
     "additionalProperties": false,
     "properties": {
         "attributes": {
-            "$ref": "#/$defs/Attributes"
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/AttributeNameValue"
+            }
         },
         "detectors": {
             "$ref": "#/$defs/Detectors"
@@ -19,10 +22,56 @@
         }
     },
     "$defs": {
-        "Attributes": {
-            "title": "Attributes",
-            "type": ["object", "null"],
-            "additionalProperties": true
+        "AttributeNameValue": {
+            "title": "AttributeNameValue",
+            "type": "object",
+            "additionalProperties": false,
+            "minProperties": 2,
+            "maxProperties": 2,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "string_value": {
+                    "type": "string"
+                },
+                "bool_value": {
+                    "type": "boolean"
+                },
+                "int_value": {
+                    "type": "integer"
+                },
+                "double_value": {
+                    "type": "number"
+                },
+                "string_array_value": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "bool_array_value": {
+                    "type": "array",
+                    "items": {
+                        "type": "boolean"
+                    }
+                },
+                "int_array_value": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "double_array_value": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            },
+            "required": [
+                "name"
+            ]
         },
         "Detectors": {
             "title": "Detectors",
