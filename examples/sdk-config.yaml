@@ -17,7 +17,7 @@ resource:
   attributes:
     # Configure `service.name` resource attribute
     - name: service.name
-      string_value: unknown_service
+      value: unknown_service
 
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
