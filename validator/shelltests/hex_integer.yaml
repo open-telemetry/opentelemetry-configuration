@@ -9,7 +9,8 @@ resource:
   # Configure resource attributes.
   attributes:
     # Configure `service.name` resource attribute
-    service.name: "${OTEL_SERVICE_NAME:-unknown_service}"
+    - name: service.name
+      value: "${OTEL_SERVICE_NAME:-unknown_service}"
 
 attribute_limits:
   # Configure max attribute value size.
