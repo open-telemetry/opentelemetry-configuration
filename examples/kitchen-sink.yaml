@@ -254,6 +254,8 @@ meter_provider:
           included:
             - key1
             - key2
+          excluded:
+            - key3
 
 # Configure text map context propagators.
 #
