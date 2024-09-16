@@ -14,7 +14,6 @@
 # for more information. The following spec defined env vars are NOT referenced and are thus
 # ignored:
 #
-# - OTEL_LOG_LEVEL
 # - OTEL_PROPAGATORS
 # - OTEL_TRACES_SAMPLER
 # - OTEL_TRACES_SAMPLER_ARG
@@ -41,6 +40,9 @@ file_format: "0.3"
 # Configure if the SDK is disabled or not.
 # If omitted or null, false is used.
 disabled: ${OTEL_SDK_DISABLED:-false}
+# Configure the log level used by the SDK logger
+# If omitted, info is used.
+log_level: ${OTEL_LOG_LEVEL:-info}
 # Configure resource for all signals.
 # If omitted, the default resource is used.
 resource:
