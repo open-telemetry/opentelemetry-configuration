@@ -66,6 +66,9 @@
                 "headers": {
                     "$ref": "#/$defs/Headers"
                 },
+                "headers_list": {
+                    "type": ["string", "null"]
+                },
                 "compression": {
                     "type": ["string", "null"]
                 },
