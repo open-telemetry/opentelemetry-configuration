@@ -79,6 +79,10 @@ logger_provider:
             # Environment variable: OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_LOGS_HEADERS
             headers:
               api-key: "1234"
+            # Configure headers. Entries have lower priority than entries from .headers.
+            #
+            # The value is a list of comma separated key-value pairs,  matching the format of OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_LOGS_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+            headers_list: "api-key=1234"
             # Configure compression.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_LOGS_COMPRESSION
@@ -187,6 +191,10 @@ meter_provider:
             # Environment variable: OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_METRICS_HEADERS
             headers:
               api-key: !!str 1234
+            # Configure headers. Entries have lower priority than entries from .headers.
+            #
+            # The value is a list of comma separated key-value pairs,  matching the format of OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_METRICS_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+            headers_list: "api-key=1234"
             # Configure compression.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_METRICS_COMPRESSION
@@ -316,6 +324,10 @@ tracer_provider:
             # Environment variable: OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_TRACES_HEADERS
             headers:
               api-key: !!str 1234
+            # Configure headers. Entries have lower priority than entries from .headers.
+            #
+            # The value is a list of comma separated key-value pairs,  matching the format of OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_TRACES_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+            headers_list: "api-key=1234"
             # Configure compression.
             #
             # Environment variable: OTEL_EXPORTER_OTLP_COMPRESSION, OTEL_EXPORTER_OTLP_TRACES_COMPRESSION

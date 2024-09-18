@@ -32,7 +32,6 @@
 # - OTEL_EXPORTER_OTLP_CERTIFICATE
 # - OTEL_EXPORTER_OTLP_CLIENT_KEY
 # - OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE
-# - OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_{SIGNAL}_HEADERS
 # - OTEL_EXPORTER_OTLP_COMPRESSION
 # - OTEL_EXPORTER_OTLP_TIMEOUT
 
@@ -98,6 +97,10 @@ tracer_provider:
             timeout: ${OTEL_EXPORTER_OTLP_TRACES_TIMEOUT:-10000}
             # Configure headers:
             headers: {}
+            # Configure headers. Entries have lower priority than entries from .headers.
+            #
+            # The value is a list of comma separated key-value pairs,  matching the format of OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_TRACES_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+            headers_list: ${OTEL_EXPORTER_OTLP_TRACES_HEADERS}
   # Configure span limits. See also attribute_limits.
   limits:
     # Configure max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
@@ -167,6 +170,10 @@ meter_provider:
             timeout: ${OTEL_EXPORTER_OTLP_METRICS_TIMEOUT:-10000}
             # Configure headers:
             headers: {}
+            # Configure headers. Entries have lower priority than entries from .headers.
+            #
+            # The value is a list of comma separated key-value pairs,  matching the format of OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_METRICS_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+            headers_list: "{OTEL_EXPORTER_OTLP_METRICS_HEADERS}"
             # Configure temporality preference.
             temporality_preference: ${OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:-cumulative}
             # Configure default histogram aggregation.
@@ -206,6 +213,10 @@ logger_provider:
             timeout: ${OTEL_EXPORTER_OTLP_LOGS_TIMEOUT:-10000}
             # Configure headers:
             headers: {}
+            # Configure headers. Entries have lower priority than entries from .headers.
+            #
+            # The value is a list of comma separated key-value pairs,  matching the format of OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_LOGS_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+            headers_list: "{OTEL_EXPORTER_OTLP_LOGS_HEADERS}"
   # Configure log record limits. See also attribute_limits.
   limits:
     # Configure max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
