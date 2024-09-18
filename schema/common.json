@@ -75,6 +75,9 @@
                         "$ref": "common.json#/$defs/NameStringValuePair"
                     }
                 },
+                "headers_list": {
+                    "type": ["string", "null"]
+                },
                 "compression": {
                     "type": ["string", "null"]
                 },
