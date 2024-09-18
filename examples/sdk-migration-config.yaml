@@ -40,7 +40,7 @@ file_format: "0.3"
 # Configure if the SDK is disabled or not.
 # If omitted or null, false is used.
 disabled: ${OTEL_SDK_DISABLED:-false}
-# Configure the log level used by the SDK logger
+# Configure the log level of the internal logger used by the SDK
 # If omitted, info is used.
 log_level: ${OTEL_LOG_LEVEL:-info}
 # Configure resource for all signals.

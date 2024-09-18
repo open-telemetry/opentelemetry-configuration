@@ -12,7 +12,7 @@ file_format: "0.3"
 # Configure if the SDK is disabled or not.
 # If omitted or null, false is used.
 disabled: false
-# Configure the log level used by the SDK logger
+# Configure the log level of the internal logger used by the SDK
 # If omitted, info is used.
 log_level: info
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
