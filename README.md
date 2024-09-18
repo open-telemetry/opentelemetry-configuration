@@ -70,7 +70,7 @@ In instances where there is a type mismatch between the JSON schema and equivale
 
 ### Name-value pairs
 
-When a type requires a configurable list of name-value pairs (i.e. resource attributes, HTTP headers), model using an array of objects, each with `name` and `value` properties. While an arrays of name-value objects is slightly more verbose an object where each key-value is an entry, it is preferred because:
+When a type requires a configurable list of name-value pairs (i.e. resource attributes, HTTP headers), model using an array of objects, each with `name` and `value` properties. While an array of name-value objects is slightly more verbose than an object where each key-value is an entry, the latter is preferred because:
 
 * Avoids user input as keys, which ensures conformity with the [snake_case properties](#property-name-case) rule.
 * Allows both the names and the values to be targets for [env var substitution]. For example:
