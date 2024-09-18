@@ -143,7 +143,7 @@ meter_provider:
               # Configure resource attributes to be included, in this example attributes starting with service.
               included:
                 - "service*"
-              # Configure resource attributes to be excluded, in this example attribute service.attr1.
+              # Configure resource attributes to be excluded, in this example attribute service.attr1. Applies after .with_resource_constant_labels.included (i.e. excluded has higher priority than included).
               excluded:
                 - "service.attr1"
       # Configure metric producers.
@@ -262,6 +262,7 @@ meter_provider:
           included:
             - key1
             - key2
+          # Configure resource attributes to be excluded, in this example attribute service.attr1.
           excluded:
             - key3
 
