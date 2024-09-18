@@ -433,7 +433,7 @@ resource:
     # Configure `service.name` resource attribute
     #
     # Environment variable: OTEL_SERVICE_NAME
-    - name: service-name
+    - name: service.name
       value: unknown_service
     # Configure other resource attributes with explicit types.
     - name: string_key
