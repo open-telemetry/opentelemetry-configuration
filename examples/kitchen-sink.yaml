@@ -262,7 +262,7 @@ meter_provider:
           included:
             - key1
             - key2
-          # Configure resource attributes to be excluded, in this example attribute service.attr1.
+          # Configure list of attribute keys that are excluded in the resulting stream(s), in this example attribute key3. Applies after .attribute_keys.included (i.e. excluded has higher priority than included).
           excluded:
             - key3
 
