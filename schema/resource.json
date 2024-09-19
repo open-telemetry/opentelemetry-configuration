@@ -6,7 +6,10 @@
     "additionalProperties": false,
     "properties": {
         "attributes": {
-            "$ref": "#/$defs/Attributes"
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/AttributeNameValue"
+            }
         },
         "detectors": {
             "$ref": "#/$defs/Detectors"
@@ -19,10 +22,42 @@
         }
     },
     "$defs": {
-        "Attributes": {
-            "title": "Attributes",
-            "type": ["object", "null"],
-            "additionalProperties": true
+        "AttributeNameValue": {
+            "title": "AttributeNameValue",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "oneOf": [
+                        {"type": "string"},
+                        {"type": "number"},
+                        {"type": "boolean"},
+                        {"type": "null"},
+                        {"type": "array", "items": {"type": "string"}},
+                        {"type": "array", "items": {"type": "boolean"}},
+                        {"type": "array", "items": {"type": "number"}}
+                    ]
+                },
+                "type": {
+                    "enum": [
+                        null,
+                        "string",
+                        "bool",
+                        "int",
+                        "double",
+                        "string_array",
+                        "bool_array",
+                        "int_array",
+                        "double_array"
+                    ]
+                }
+            },
+            "required": [
+                "name", "value"
+            ]
         },
         "Detectors": {
             "title": "Detectors",

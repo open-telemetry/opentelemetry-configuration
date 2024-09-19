@@ -170,7 +170,10 @@
                     "type": ["string", "null"]
                 },
                 "headers": {
-                    "$ref": "common.json#/$defs/Headers"
+                    "type": "array",
+                    "items": {
+                        "$ref": "common.json#/$defs/NameStringValuePair"
+                    }
                 },
                 "headers_list": {
                     "type": ["string", "null"]
