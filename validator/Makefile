@@ -52,7 +52,7 @@ validator-run-shelltests: validator-build-shelltest-image
 	docker run -v ${PARENT_DIR}:/root shelltest:${CURRENT_GIT_REF} -- --plain /root/validator/shelltests
 
 .PHONY: govulncheck
-govulncheck: $(OTEL_GO_MOD_DIRS:%=govulncheck/%)
+govulncheck: $(TOOLS)/govulncheck
 	$(GOVULNCHECK) ./...
 
 .PHONY: validator-validate-examples validator-copy-schema validator validator-docker-image
