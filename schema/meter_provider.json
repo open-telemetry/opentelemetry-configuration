@@ -308,7 +308,7 @@
                             }
                         },
                         "attribute_keys": {
-                            "$ref": "common.json#/$defs/Include"
+                            "$ref": "common.json#/$defs/IncludeExclude"
                         }
                     }
                 }

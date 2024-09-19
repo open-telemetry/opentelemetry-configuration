@@ -22,18 +22,6 @@
                 }
             }
         },
-        "Include": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "included": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            }
-        },
         "NameStringValuePair": {
             "type": "object",
             "additionalProperties": false,
