@@ -255,8 +255,18 @@
     - .meter_provider.readers[].pull.exporter.prometheus
 - type: PrometheusIncludeExclude
   property_descriptions:
-    included: Configure resource attributes to be included.
-    excluded: Configure resource attributes to be excluded.
+    included: >
+      Configure resource attributes to be included. If not set, no resource attributes are included.
+      
+      Attribute keys from resources are evaluated to match as follows:
+       * If the value of the attribute key exactly matches.
+       * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+    excluded: >
+      Configure resource attributes to be excluded. Applies after .with_resource_constant_labels.included (i.e. excluded has higher priority than included).
+      
+      Attribute keys from resources are evaluated to match as follows:
+       * If the value of the attribute key exactly matches.
+       * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
   path_patterns:
     - .meter_provider.readers[].pull.exporter.prometheus.with_resource_constant_labels
 
@@ -291,9 +301,9 @@
 - type: StreamIncludeExclude
   property_descriptions:
     included: >
-      Configure list of attribute keys to retain in the resulting stream(s).
-      
-      All other attributes are dropped.
+      Configure list of attribute keys to include in the resulting stream(s). All other attributes are dropped. If not set, stream attributes are not configured.
+    excluded: >
+      Configure list of attribute keys to exclude from the resulting stream(s). Applies after .attribute_keys.included (i.e. excluded has higher priority than included).
   path_patterns:
     - .meter_provider.views[].stream.attribute_keys
 

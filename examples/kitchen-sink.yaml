@@ -94,10 +94,16 @@ meter_provider:
             without_scope_info: false
             # Configure Prometheus Exporter to add resource attributes as metrics attributes.
             with_resource_constant_labels:
-              # Configure resource attributes to be included.
+              # Configure resource attributes to be included. If not set, no resource attributes are included.
+              # Attribute keys from resources are evaluated to match as follows:
+              #  * If the value of the attribute key exactly matches.
+              #  * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
               included:
                 - "service*"
-              # Configure resource attributes to be excluded, in this example attribute service.attr1. Applies after .with_resource_constant_labels.included (i.e. excluded has higher priority than included).
+              # Configure resource attributes to be excluded. Applies after .with_resource_constant_labels.included (i.e. excluded has higher priority than included).
+              # Attribute keys from resources are evaluated to match as follows:
+              #  * If the value of the attribute key exactly matches.
+              #  * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
               excluded:
                 - "service.attr1"
       # Configure metric producers.
@@ -200,12 +206,11 @@ meter_provider:
             record_min_max: true
         # Configure attribute keys retained in the resulting stream(s).
         attribute_keys:
-          # Configure list of attribute keys to retain in the resulting stream(s).
-          # All other attributes are dropped.
+          # Configure list of attribute keys to include in the resulting stream(s). All other attributes are dropped. If not set, stream attributes are not configured.
           included:
             - key1
             - key2
-          # Configure list of attribute keys that are excluded in the resulting stream(s), in this example attribute key3. Applies after .attribute_keys.included (i.e. excluded has higher priority than included).
+          # Configure list of attribute keys to exclude from the resulting stream(s). Applies after .attribute_keys.included (i.e. excluded has higher priority than included).
           excluded:
             - key3
 
