@@ -28,3 +28,4 @@ out
 # validator binary
 otel_config_validator
 validator/schema
+validator/.tools
