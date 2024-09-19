@@ -15,8 +15,6 @@ The [examples](./examples) repository contains a variety of sample configuration
 - [sdk-migration-config.yaml](./examples/sdk-migration-config.yaml): Includes env var substitution references to all [standard env vars](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md) which map cleanly to file configuration (see notes in the example for the set of env vars which are not referenced). Note, SDKs parsing configuration files ignore all env vars besides those referenced via [env var substitution][]. This is a great starting point for transitioning from env var based configuration to file based configuration.
 - [sdk-config.yaml](./examples/sdk-config.yaml): Represents the typical default configuration. This is a good starting point if you are not using env var based configuration or wish to transition fully to file based configuration. Note, SDKs parsing configuration files ignore all env vars besides those referenced via [env var substitution][].
 
-[env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution
-
 ## Code generation
 
 There are [several tools](https://json-schema.org/implementations.html) available to generate code from a JSON schema. The following shows an example for generating code from the JSON schema in Go:
@@ -70,6 +68,24 @@ Properties should be modeled using the most appropriate data structures and type
 
 In instances where there is a type mismatch between the JSON schema and equivalent standard env var, an alternative version of the property may be provided to resolve the mismatch. For example, resource attributes are configured at `.resource.attributes`, but `.resource.attributes_list` is available with a format matching that of `OTEL_RESOURCE_ATTRIBUTES`. Alternative properties are reserved for cases where there is a demonstrated need for platforms to be able to participate in configuration and there is no reasonable alternative.
 
+### Name-value pairs
+
+When a type requires a configurable list of name-value pairs (i.e. resource attributes, HTTP headers), model using an array of objects, each with `name` and `value` properties. While an array of name-value objects is slightly more verbose than an object where each key-value is an entry, the latter is preferred because:
+
+* Avoids user input as keys, which ensures conformity with the [snake_case properties](#property-name-case) rule.
+* Allows both the names and the values to be targets for [env var substitution]. For example:
+
+    ```yaml
+   tracer_provider:
+     processors:
+       - batch:
+           exporter:
+             otlp:
+               headers:
+                - name: ${AUTHORIZATION_HEADER_NAME:-api-key}
+                  value: ${AUTHORIZATION_HEADER_VALUE}
+    ```
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
@@ -89,3 +105,6 @@ Maintainers ([@open-telemetry/configuration-maintainers](https://github.com/orgs
 - [Tyler Yahn](https://github.com/tsloughter), Splunk
 
 *Find more about the maintainer role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).*
+
+[env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution
+

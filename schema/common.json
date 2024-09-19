@@ -4,15 +4,6 @@
     "title": "Common",
     "type": ["object", "null"],
     "$defs": {
-        "Headers": {
-            "type": ["object", "null"],
-            "title": "Headers",
-            "patternProperties": {
-                ".*": {
-                    "type": ["string", "null"]
-                }
-            }
-        },
         "IncludeExclude": {
             "type": "object",
             "additionalProperties": false,
@@ -30,6 +21,21 @@
                     }
                 }
             }
+        },
+        "NameStringValuePair": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": ["string", "null"]
+                }
+            },
+            "required": [
+                "name", "value"
+            ]
         },
         "Otlp": {
             "type": ["object", "null"],
@@ -52,7 +58,10 @@
                     "type": ["string", "null"]
                 },
                 "headers": {
-                    "$ref": "#/$defs/Headers"
+                    "type": "array",
+                    "items": {
+                        "$ref": "common.json#/$defs/NameStringValuePair"
+                    }
                 },
                 "headers_list": {
                     "type": ["string", "null"]
