@@ -1,0 +1,4 @@
+otel_config_validator -s shelltests/false_schema shelltests/schema_option.yaml
+>>>2
+jsonschema: '' does not validate with https://opentelemetry.io/otelconfig/opentelemetry_configuration.json#: not allowed
+>>>= 1

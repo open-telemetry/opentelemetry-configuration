@@ -1,0 +1,4 @@
+otel_config_validator -o out/out.json shelltests/string_for_int.yaml
+>>>2
+jsonschema: '/attribute_limits/attribute_value_length_limit' does not validate with https://opentelemetry.io/otelconfig/opentelemetry_configuration.json#/properties/attribute_limits/$ref/properties/attribute_value_length_limit/type: expected integer or null, but got string
+>>>= 1

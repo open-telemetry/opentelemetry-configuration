@@ -1,0 +1,4 @@
+otel_config_validator shelltests/missing_required.yaml
+>>>2
+jsonschema: '' does not validate with https://opentelemetry.io/otelconfig/opentelemetry_configuration.json#/required: missing properties: 'file_format'
+>>>= 1

@@ -1,0 +1,3 @@
+otel_config_validator -o out/out.json shelltests/env_prefix.yaml
+>>>
+>>>= 0

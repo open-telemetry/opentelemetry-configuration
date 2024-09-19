@@ -5,6 +5,8 @@ $(shell mkdir -p out)
 .PHONY: all
 all: install-tools compile-schema generate-descriptions validate-examples
 
+include validator/Makefile
+
 .PHONY: compile-schema
 compile-schema:
 	@if ! npm ls ajv-cli; then npm install; fi

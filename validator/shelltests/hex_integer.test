@@ -1,0 +1,8 @@
+OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT="0xdeadbeef" otel_config_validator -o out/hex_integer.json shelltests/hex_integer.yaml
+>>>
+>>>= 0
+
+jq '.attribute_limits.attribute_value_length_limit' out/hex_integer.json
+>>>
+3735928559
+>>>= 0

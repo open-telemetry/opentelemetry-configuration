@@ -1,0 +1,19 @@
+# The file format version
+file_format: "0.1"
+
+# Configure if the SDK is disabled or not.
+disabled: ${OTEL_SDK_DISABLED:-false}
+
+# Configure resource for all signals.
+resource:
+  # Configure resource attributes.
+  attributes:
+    # Configure `service.name` resource attribute
+    - name: service.name
+      value: "${OTEL_SERVICE_NAME:-unknown_service}"
+
+attribute_limits:
+  # Configure max attribute value size.
+  attribute_value_length_limit: ${OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT:-"hello"}
+  # Configure max attribute count.
+  attribute_count_limit: ${OTEL_ATTRIBUTE_COUNT_LIMIT:-128}

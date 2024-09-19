@@ -1,0 +1,8 @@
+FILE_FORMAT=0.1 otel_config_validator -o out/out.json shelltests/test.yaml
+>>>
+>>>= 0
+
+jq '.file_format' out/out.json
+>>>
+"0.1"
+>>>= 0

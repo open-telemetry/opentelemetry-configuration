@@ -3,6 +3,8 @@
 ## Unreleased
 
 * Adding initial instrumentation configuration schema
+* Split MetricExporter into PullMetricExporter and PushMetricExporter and ensure only PushMetricExporters can be associated with PeriodicMetricReader [#110](https://github.com/open-telemetry/opentelemetry-configuration/pull/110)
+* Update `attribute_keys` from array to to Include type [#111](https://github.com/open-telemetry/opentelemetry-configuration/pull/111)
 
 ## [v0.2.0] - 2024-05-08
 

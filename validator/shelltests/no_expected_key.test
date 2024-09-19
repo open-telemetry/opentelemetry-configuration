@@ -1,0 +1,2 @@
+FILE_FORMAT=0.1 otel_config_validator shelltests/no_expected_key.yaml
+>>>= 1

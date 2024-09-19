@@ -32,7 +32,7 @@
                     "minimum": 0
                 },
                 "exporter": {
-                    "$ref": "#/$defs/MetricExporter"
+                    "$ref": "#/$defs/PushMetricExporter"
                 }
             },
             "required": [
@@ -45,7 +45,7 @@
             "additionalProperties": false,
             "properties": {
                 "exporter": {
-                    "$ref": "#/$defs/MetricExporter"
+                    "$ref": "#/$defs/PullMetricExporter"
                 }
             },
             "required": [
@@ -53,7 +53,7 @@
             ],
             "title": "PullMetricReader"
         },
-        "MetricExporter": {
+        "PushMetricExporter": {
             "type": ["object", "null"],
             "additionalProperties": true,
             "minProperties": 1,
@@ -64,7 +64,20 @@
                 },
                 "console": {
                     "$ref": "common.json#/$defs/Console"
-                },
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": ["object", "null"]
+                }
+            }
+        },
+        "PullMetricExporter": {
+            "type": ["object", "null"],
+            "additionalProperties": true,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
                 "prometheus": {
                     "$ref": "#/$defs/Prometheus"
                 }
@@ -157,7 +170,13 @@
                     "type": ["string", "null"]
                 },
                 "headers": {
-                    "$ref": "common.json#/$defs/Headers"
+                    "type": "array",
+                    "items": {
+                        "$ref": "common.json#/$defs/NameStringValuePair"
+                    }
+                },
+                "headers_list": {
+                    "type": ["string", "null"]
                 },
                 "compression": {
                     "type": ["string", "null"]
@@ -289,10 +308,7 @@
                             }
                         },
                         "attribute_keys": {
-                            "type": "array",
-                            "items": {
-                                "type": ["string", "null"]
-                            }
+                            "$ref": "common.json#/$defs/Include"
                         }
                     }
                 }

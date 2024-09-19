@@ -12,10 +12,8 @@ This repository contains the JSON schema that defines the OpenTelemetry configur
 
 The [examples](./examples) repository contains a variety of sample configuration files to help get started and illustrate useful patterns. The following are noteworthy:
 
-- [sdk-migration-config.yaml](./examples/sdk-migration-config.yaml): Includes env var substitution references to all [standard environment variables](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md) which map cleanly to file configuration (see notes in the example for the set of env vars which are not referenced). Note, SDKs parsing configuration files ignore all env vars besides those referenced via [env var substitution][]. This is a great starting point for transitioning from env var based configuration to file based configuration.
+- [sdk-migration-config.yaml](./examples/sdk-migration-config.yaml): Includes env var substitution references to all [standard env vars](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md) which map cleanly to file configuration (see notes in the example for the set of env vars which are not referenced). Note, SDKs parsing configuration files ignore all env vars besides those referenced via [env var substitution][]. This is a great starting point for transitioning from env var based configuration to file based configuration.
 - [sdk-config.yaml](./examples/sdk-config.yaml): Represents the typical default configuration. This is a good starting point if you are not using env var based configuration or wish to transition fully to file based configuration. Note, SDKs parsing configuration files ignore all env vars besides those referenced via [env var substitution][].
-
-[env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution
 
 ## Code generation
 
@@ -63,3 +61,50 @@ When a property requires pattern matching, use wildcard `*` (match any number of
 * Given `excluded: ["a*"]`: Match all except values starting with `a`.
 * Given `included: ["a*", "b*"]`, `excluded: ["ab*"]`: Match any value starting with `a` or `b`, excluding values starting with `ab`.
 * Given `included: ["a", "b"]`, `excluded: ["a"]`: Match values equal to `b`.
+
+### Data modeling and environment variable substitution
+
+Properties should be modeled using the most appropriate data structures and types to represent the information. This may result in a schema which doesn't support env var substitution for the [standard env vars](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md) where a type mismatch occurs. For example, the `OTEL_RESOURCE_ATTRIBUTES` env var is modeled as a string, consisting of a comma separated list of key-value pairs, which is not the natural way to model a mapping of key-value pairs in JSON schema. 
+
+In instances where there is a type mismatch between the JSON schema and equivalent standard env var, an alternative version of the property may be provided to resolve the mismatch. For example, resource attributes are configured at `.resource.attributes`, but `.resource.attributes_list` is available with a format matching that of `OTEL_RESOURCE_ATTRIBUTES`. Alternative properties are reserved for cases where there is a demonstrated need for platforms to be able to participate in configuration and there is no reasonable alternative.
+
+### Name-value pairs
+
+When a type requires a configurable list of name-value pairs (i.e. resource attributes, HTTP headers), model using an array of objects, each with `name` and `value` properties. While an array of name-value objects is slightly more verbose than an object where each key-value is an entry, the latter is preferred because:
+
+* Avoids user input as keys, which ensures conformity with the [snake_case properties](#property-name-case) rule.
+* Allows both the names and the values to be targets for [env var substitution]. For example:
+
+    ```yaml
+   tracer_provider:
+     processors:
+       - batch:
+           exporter:
+             otlp:
+               headers:
+                - name: ${AUTHORIZATION_HEADER_NAME:-api-key}
+                  value: ${AUTHORIZATION_HEADER_VALUE}
+    ```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+Approvers ([@open-telemetry/configuration-approvers](https://github.com/orgs/open-telemetry/teams/configuration-approvers)):
+
+- [Brett McBride](https://github.com/brettmc), Deakin University
+- [Marc Alff](https://github.com/marcalff), Oracle
+
+*Find more about the approver role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).*
+
+Maintainers ([@open-telemetry/configuration-maintainers](https://github.com/orgs/open-telemetry/teams/configuration-maintainers)):
+
+- [Alex Boten](https://github.com/codeboten), Honeycomb
+- [Jack Berg](https://github.com/jack-berg), New Relic
+- [Tristan Sloughter](https://github.com/tsloughter), Splunk
+- [Tyler Yahn](https://github.com/tsloughter), Splunk
+
+*Find more about the maintainer role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).*
+
+[env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution
+
