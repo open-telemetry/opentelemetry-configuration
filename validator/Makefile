@@ -1,6 +1,5 @@
 ROOT_DIR :=$(realpath $(shell dirname $(lastword $(MAKEFILE_LIST))))
 PARENT_DIR :=$(realpath ${ROOT_DIR}/../)
-SCHEMA_DIR :=${ROOT_DIR}/../schema
 CURRENT_GIT_REF :=$(shell git rev-parse --short HEAD)
 DOCKER_IMAGE_TAG :=${CURRENT_GIT_REF}
 DOCKER_BUILD_ARGS :=-f ${ROOT_DIR}/Dockerfile -t otel_config_validator:${DOCKER_IMAGE_TAG} -t otel_config_validator:current
@@ -9,7 +8,8 @@ EXAMPLE_FILES := $(shell find ${ROOT_DIR}/../examples -name "*.yaml" -exec basen
 $(shell mkdir -p out)
 
 validator-copy-schema:
-	cp -R ${SCHEMA_DIR} ${ROOT_DIR}/
+	mkdir -p ${ROOT_DIR}/schema
+	find ${PARENT_DIR} -path '*/schema/*.json' ! -path '*/validator/schema/*.json' -exec cp '{}' "${ROOT_DIR}/schema/" ';'
 
 validator: validator-copy-schema
 	go build -C ${ROOT_DIR} ${ROOT_DIR}
