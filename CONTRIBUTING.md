@@ -39,7 +39,7 @@ How it works:
 * The [./schema/type_descriptions.yaml](./schema/type_descriptions.yaml) file
   defines descriptions for each of the properties of each type defines in
   the [JSON schema](./schema) data model.
-* The [./scripts/generate-comments.js](./scripts/generate-comments.js) is a
+* The [./scripts/generate-descriptions.js](./scripts/generate-comments.js) is a
   script which for a given input configuration file will:
   * Parse the YAML.
   * Walk through each key / value pair, and for each:
@@ -77,7 +77,7 @@ To run against a single file:
 - Run the script:
 
 ```shell
-npm run-script generate-comments -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml
+npm run-script generate-descriptions -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml
 ```
 
 Optionally, include the `--debug` parameter. This prints out information about

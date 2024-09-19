@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "generate-comments": "node scripts/generate-comments.js"
+    "generate-descriptions": "node scripts/generate-descriptions.js"
   },
   "devDependencies": {
     "ajv-cli": "^5.0.0"
