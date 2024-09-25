@@ -35,22 +35,21 @@
 # - OTEL_EXPORTER_OTLP_COMPRESSION
 # - OTEL_EXPORTER_OTLP_TIMEOUT
 
-# The file format version
+# The file format version The file format version.
 file_format: "0.1"
 
-# Configure if the SDK is disabled or not.
+# Configure if the SDK is disabled or not. This is not required to be provided to ensure the SDK isn't disabled, the default value when this is not provided is for the SDK to be enabled.
 disabled: ${OTEL_SDK_DISABLED:-false}
 
 # Configure resource for all signals.
 resource:
   # Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
+  # Entries must contain .name nand .value, and may optionally include .type, which defaults ot "string" if not set. The value must match the type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
   attributes:
-    # Configure `service.name` resource attribute
     - name: service.name
       value: ${OTEL_SERVICE_NAME:-unknown_service}
   # Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
-  #
-  # The value is a list of comma separated key-value pairs, matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+  # The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
 
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
@@ -62,14 +61,15 @@ attribute_limits:
 
 # Configure text map context propagators.
 propagator:
-  composite: [tracecontext, baggage]
+  # Configure the set of propagators to include in the composite text map propagator.
+  composite: [ tracecontext, baggage ]
 
 # Configure tracer provider.
 tracer_provider:
   # Configure span processors.
   processors:
-    # Configure a batch span processor.
-    - batch:
+    - # Configure a batch span processor.
+      batch:
         # Configure delay interval (in milliseconds) between two consecutive exports.
         schedule_delay: ${OTEL_BSP_SCHEDULE_DELAY:-5000}
         # Configure maximum allowed time (in milliseconds) to export data.
@@ -96,17 +96,16 @@ tracer_provider:
             compression: ${OTEL_EXPORTER_OTLP_TRACES_COMPRESSION:-gzip}
             # Configure max time (in milliseconds) to wait for each export.
             timeout: ${OTEL_EXPORTER_OTLP_TRACES_TIMEOUT:-10000}
-            # Configure headers:
+            # Configure headers. Entries have higher priority than entries from .headers_list.
             headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
-            #
-            # The value is a list of comma separated key-value pairs,  matching the format of OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_TRACES_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+            # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             headers_list: ${OTEL_EXPORTER_OTLP_TRACES_HEADERS}
   # Configure span limits. See also attribute_limits.
   limits:
-    # Configure max span attribute value size. Overrides attribute_limits.attribute_value_length_limit.
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
     attribute_value_length_limit: ${OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT}
-    # Configure max span attribute count. Overrides attribute_limits.attribute_count_limit.
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
     attribute_count_limit: ${OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT:-128}
     # Configure max span event count.
     event_count_limit: ${OTEL_SPAN_EVENT_COUNT_LIMIT:-128}
@@ -118,7 +117,7 @@ tracer_provider:
     link_attribute_count_limit: ${OTEL_LINK_ATTRIBUTE_COUNT_LIMIT:-128}
   # Configure the sampler.
   sampler:
-    # Configure sampler to be parent_based. Known values include: always_off, always_on, jaeger_remote, parent_based, trace_id_ratio_based.
+    # Configure sampler to be parent_based.
     parent_based:
       # Configure root sampler.
       root:
@@ -145,8 +144,8 @@ tracer_provider:
 meter_provider:
   # Configure metric readers.
   readers:
-    # Configure a periodic metric reader.
-    - periodic:
+    - # Configure a periodic metric reader.
+      periodic:
         # Configure delay interval (in milliseconds) between start of two consecutive exports.
         interval: ${OTEL_METRIC_EXPORT_INTERVAL:-60000}
         # Configure maximum allowed time (in milliseconds) to export data.
@@ -169,11 +168,10 @@ meter_provider:
             compression: ${OTEL_EXPORTER_OTLP_METRICS_COMPRESSION:-gzip}
             # Configure max time (in milliseconds) to wait for each export.
             timeout: ${OTEL_EXPORTER_OTLP_METRICS_TIMEOUT:-10000}
-            # Configure headers.
+            # Configure headers. Entries have higher priority than entries from .headers_list.
             headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
-            #
-            # The value is a list of comma separated key-value pairs,  matching the format of OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_METRICS_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+            # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             headers_list: ${OTEL_EXPORTER_OTLP_METRICS_HEADERS}
             # Configure temporality preference.
             temporality_preference: ${OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:-cumulative}
@@ -184,8 +182,8 @@ meter_provider:
 logger_provider:
   # Configure log record processors.
   processors:
-    # Configure a batch log record processor.
-    - batch:
+    - # Configure a batch log record processor.
+      batch:
         # Configure delay interval (in milliseconds) between two consecutive exports.
         schedule_delay: ${OTEL_BLRP_SCHEDULE_DELAY:-1000}
         # Configure maximum allowed time (in milliseconds) to export data.
@@ -212,15 +210,14 @@ logger_provider:
             compression: ${OTEL_EXPORTER_OTLP_LOGS_COMPRESSION:-gzip}
             # Configure max time (in milliseconds) to wait for each export.
             timeout: ${OTEL_EXPORTER_OTLP_LOGS_TIMEOUT:-10000}
-            # Configure headers.
+            # Configure headers. Entries have higher priority than entries from .headers_list.
             headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
-            #
-            # The value is a list of comma separated key-value pairs,  matching the format of OTEL_EXPORTER_OTLP_HEADERS, OTEL_EXPORTER_OTLP_LOGS_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+            # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             headers_list: ${OTEL_EXPORTER_OTLP_LOGS_HEADERS}
   # Configure log record limits. See also attribute_limits.
   limits:
-    # Configure max log record attribute value size. Overrides attribute_limits.attribute_value_length_limit.
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
     attribute_value_length_limit: ${OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT}
-    # Configure max log record attribute count. Overrides attribute_limits.attribute_count_limit.
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
     attribute_count_limit: ${OTEL_LOGRECORD_ATTRIBUTE_COUNT_LIMIT:-128}

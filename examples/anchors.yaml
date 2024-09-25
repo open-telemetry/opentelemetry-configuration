@@ -1,5 +1,6 @@
 # anchors.yaml demonstrates anchor substitution to reuse OTLP exporter configuration across signals.
 
+# The file format version.
 file_format: "0.1"
 exporters:
   otlp: &otlp-exporter
@@ -13,33 +14,52 @@ exporters:
     compression: gzip
     timeout: 10000
 
+# Configure logger provider.
 logger_provider:
+  # Configure log record processors.
   processors:
-    - batch:
+    - # Configure a batch log record processor.
+      batch:
+        # Configure exporter.
         exporter:
+          # Configure exporter to be OTLP.
           otlp:
-            # expand the otlp-exporter anchor
             <<: *otlp-exporter
+            # Configure endpoint.
             endpoint: http://localhost:4318/v1/logs
 
+# Configure meter provider.
 meter_provider:
+  # Configure metric readers.
   readers:
-    - periodic:
+    - # Configure a periodic metric reader.
+      periodic:
+        # Configure delay interval (in milliseconds) between start of two consecutive exports.
         interval: 5000
+        # Configure maximum allowed time (in milliseconds) to export data.
         timeout: 30000
+        # Configure exporter.
         exporter:
+          # Configure exporter to be OTLP.
           otlp:
-            # expand the otlp-exporter anchor and add metric specific configuration
             <<: *otlp-exporter
+            # Configure endpoint.
             endpoint: http://localhost:4318/v1/metrics
+            # Configure temporality preference.
             temporality_preference: delta
+            # Configure default histogram aggregation.
             default_histogram_aggregation: base2_exponential_bucket_histogram
 
+# Configure tracer provider.
 tracer_provider:
+  # Configure span processors.
   processors:
-    - batch:
+    - # Configure a batch span processor.
+      batch:
+        # Configure exporter.
         exporter:
+          # Configure exporter to be OTLP.
           otlp:
-            # expand the otlp-exporter anchor
             <<: *otlp-exporter
+            # Configure endpoint.
             endpoint: http://localhost:4318/v1/traces

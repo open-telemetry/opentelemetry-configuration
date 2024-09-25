@@ -1,0 +1,420 @@
+# This file contains an array of objects defining the descriptions of properties for types defined in the schema.
+# See "description generation" in CONTRIBUTING.md for more details.
+#
+# Example rule:
+# - type: MyType                              # The type name corresponding to the JSON Schema Title.
+#   property_descriptions:                    # Mapping of the type's properties and their descriptions.
+#     propertyA: The propertyA description.   # The description for MyType.propertyA.
+#     propertyB: The propertyB description.   # The description for MyType.propertyB
+#   path_patterns:                            # Array of patterns where this type occurs in the schema. Each key-value in an example configuration file is transformed
+#     - .foo                                  # into its JSON dot-notation location in the file, which is matched against these patterns. Each pattern is turned in a regex,
+                                              # after escaping special characters and replacing "*" with ".*".
+
+# START OpenTelemetryConfiguration
+- type: OpenTelemetryConfiguration
+  property_descriptions:
+    file_format: The file format version.
+    disabled: Configure if the SDK is disabled or not. This is not required to be provided to ensure the SDK isn't disabled, the default value when this is not provided is for the SDK to be enabled.
+    resource: Configure resource for all signals.
+    propagator: Configure text map context propagators.
+    attribute_limits: Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
+    logger_provider: Configure logger provider.
+    tracer_provider: Configure tracer provider.
+    meter_provider: Configure meter provider.
+    instrumentation: Configure instrumentation.
+  path_patterns:
+    - .
+
+- type: Resource
+  property_descriptions:
+    attributes: >
+      Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
+      
+      Entries must contain .name nand .value, and may optionally include .type, which defaults ot "string" if not set. The value must match the type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+    attributes_list: >
+      Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
+      
+      The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+    detectors: Configure resource detectors.
+    schema_url: Configure resource schema URL.
+  path_patterns:
+    - .resource
+
+- type: Detectors
+  property_descriptions:
+    attributes: Configure attributes provided by resource detectors.
+  path_patterns:
+    - .resource.detectors
+
+- type: DetectorAttributes
+  property_descriptions:
+    included: >
+      Configure list of attribute key patterns to include from resource detectors. If not set, all attributes are included.
+      
+      Attribute keys from resource detectors are evaluated to match as follows:
+       * If the value of the attribute key exactly matches.
+       * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+    excluded: >
+      Configure list of attribute key patterns to exclude from resource detectors. Applies after .resource.detectors.attributes.included (i.e. excluded has higher priority than included).
+      
+      Attribute keys from resource detectors are evaluated to match as follows:
+       * If the value of the attribute key exactly matches.
+       * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+  path_patterns:
+    - .resource.detectors.attributes
+
+- type: AttributeLimits
+  property_descriptions:
+    attribute_value_length_limit: Configure max attribute value size.
+    attribute_count_limit:  Configure max attribute count.
+  path_patterns:
+    - .attribute_limits
+
+- type: Propagator
+  property_descriptions:
+    composite: Configure the set of propagators to include in the composite text map propagator.
+  path_patterns:
+    - .propagator
+# END OpenTelemetryConfiguration
+
+# START LoggerProvider
+- type: LoggerProvider
+  property_descriptions:
+    processors: Configure log record processors.
+    limits: Configure log record limits. See also attribute_limits.
+  path_patterns:
+    - .logger_provider
+
+- type: LogRecordProcessor
+  property_descriptions:
+    batch: Configure a batch log record processor.
+    simple: Configure a simple log record processor.
+  path_patterns:
+    - .logger_provider.processors[]
+
+- type: BatchLogRecordProcessor
+  property_descriptions:
+    schedule_delay: Configure delay interval (in milliseconds) between two consecutive exports.
+    export_timeout: Configure maximum allowed time (in milliseconds) to export data.
+    max_queue_size: Configure maximum queue size.
+    max_export_batch_size: Configure maximum batch size.
+    exporter: Configure exporter.
+  path_patterns:
+    - .logger_provider.processors[].batch
+
+- type: SimpleLogRecordProcessor
+  property_descriptions:
+    exporter: Configure exporter.
+  path_patterns:
+    - .logger_provider.processors[].simple
+
+- type: LogRecordExporter
+  property_descriptions:
+    otlp: Configure exporter to be OTLP.
+    console: Configure exporter to be console.
+  path_patterns:
+    - .logger_provider.processors[].*.exporter
+
+- type: LogRecordLimits
+  property_descriptions:
+    attribute_value_length_limit: Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+    attribute_count_limit:  Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+  path_patterns:
+    - .logger_provider.limits
+# END LoggerProvider
+
+# START TracerProvider
+- type: TracerProvider
+  property_descriptions:
+    processors: Configure span processors.
+    limits: Configure span limits. See also attribute_limits.
+    sampler: Configure the sampler.
+  path_patterns:
+    - .tracer_provider
+
+- type: SpanProcessor
+  property_descriptions:
+    batch: Configure a batch span processor.
+    simple: Configure a simple span processor.
+  path_patterns:
+    - .tracer_provider.processors[]
+
+- type: BatchSpanProcessor
+  property_descriptions:
+    schedule_delay: Configure delay interval (in milliseconds) between two consecutive exports.
+    export_timeout: Configure maximum allowed time (in milliseconds) to export data.
+    max_queue_size: Configure maximum queue size.
+    max_export_batch_size: Configure maximum batch size.
+    exporter: Configure exporter.
+  path_patterns:
+    - .tracer_provider.processors[].batch
+
+- type: SimpleSpanProcessor
+  property_descriptions:
+    exporter: Configure exporter.
+  path_patterns:
+    - .tracer_provider.processors[].simple
+
+- type: SpanExporter
+  property_descriptions:
+    otlp: Configure exporter to be OTLP.
+    zipkin: Configure exporter to be zipkin.
+    console: Configure exporter to be console.
+  path_patterns:
+    - .tracer_provider.processors[].*.exporter
+
+- type: Zipkin
+  property_descriptions:
+    endpoint: Configure endpoint.
+    timeout: Configure max time (in milliseconds) to wait for each export.
+  path_patterns:
+    - .tracer_provider.processors[].*.exporter.zipkin
+
+- type: SpanLimits
+  property_descriptions:
+    attribute_value_length_limit: Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+    attribute_count_limit:  Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+    event_count_limit: Configure max span event count.
+    link_count_limit: Configure max span link count.
+    event_attribute_count_limit: Configure max attributes per span event.
+    link_attribute_count_limit: Configure max attributes per span link.
+  path_patterns:
+    - .tracer_provider.limits
+
+- type: Sampler
+  property_descriptions:
+    parent_based: Configure sampler to be parent_based.
+    trace_id_ratio_based: Configure sampler to be trace_id_ratio_based.
+    always_on: Configure sampler to be always_on.
+    always_off: Configure sampler to be always_off.
+    root: Configure root sampler.
+    remote_parent_sampled: Configure remote_parent_sampled sampler.
+    remote_parent_not_sampled: Configure remote_parent_not_sampled sampler.
+    local_parent_sampled: Configure local_parent_sampled sampler.
+    local_parent_not_sampled: Configure local_parent_not_sampled sampler.
+    ratio: Configure trace_id_ratio.
+  path_patterns:
+    - .tracer_provider.sampler
+    - .tracer_provider.sampler.*
+# END TracerProvider
+
+# START MeterProvider
+- type: MeterProvider
+  property_descriptions:
+    readers: Configure metric readers.
+    views: Configure views. Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
+  path_patterns:
+    - .meter_provider
+
+- type: MetricReader
+  property_descriptions:
+    pull: Configure a pull based metric reader.
+    periodic: Configure a periodic metric reader.
+    producers: Configure metric producers.
+  path_patterns:
+    - .meter_provider.readers[]
+
+- type: PullMetricReader
+  property_descriptions:
+    exporter: Configure exporter.
+  path_patterns:
+    - .meter_provider.readers[].pull
+
+- type: PeriodicMetricReader
+  property_descriptions:
+    interval: Configure delay interval (in milliseconds) between start of two consecutive exports.
+    timeout: Configure maximum allowed time (in milliseconds) to export data.
+    exporter: Configure exporter.
+  path_patterns:
+    - .meter_provider.readers[].periodic
+
+- type: MetricProducer
+  property_descriptions:
+    opencensus: Configure metric producer to be opencensus.
+    prometheus: Configure metric producer to be prometheus.
+  path_patterns:
+    - .meter_provider.readers[].producers[]
+
+- type: MetricExporter
+  property_descriptions:
+    prometheus: Configure exporter to be prometheus.
+    otlp: Configure exporter to be OTLP.
+    console: Configure exporter to be console.
+  path_patterns:
+    - .meter_provider.readers[].*.exporter
+
+- type: Prometheus
+  property_descriptions:
+    host: Configure host.
+    port: Configure port.
+    without_units: Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.
+    without_type_suffix: Configure Prometheus Exporter to produce metrics without a type suffix.
+    without_scope_info: Configure Prometheus Exporter to produce metrics without a scope info metric.
+    with_resource_constant_labels: Configure Prometheus Exporter to add resource attributes as metrics attributes.
+  path_patterns:
+    - .meter_provider.readers[].pull.exporter.prometheus
+- type: PrometheusIncludeExclude
+  property_descriptions:
+    included: >
+      Configure resource attributes to be included. If not set, no resource attributes are included.
+      
+      Attribute keys from resources are evaluated to match as follows:
+       * If the value of the attribute key exactly matches.
+       * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+    excluded: >
+      Configure resource attributes to be excluded. Applies after .with_resource_constant_labels.included (i.e. excluded has higher priority than included).
+      
+      Attribute keys from resources are evaluated to match as follows:
+       * If the value of the attribute key exactly matches.
+       * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+  path_patterns:
+    - .meter_provider.readers[].pull.exporter.prometheus.with_resource_constant_labels
+
+- type: View
+  property_descriptions:
+    selector: Configure view selector.
+    stream: Configure view stream.
+  path_patterns:
+    - .meter_provider.views[]
+
+- type: Selector
+  property_descriptions:
+    instrument_name: Configure instrument name selection criteria.
+    instrument_type: Configure instrument type selection criteria.
+    unit: Configure the instrument unit selection criteria.
+    meter_name: Configure meter name selection criteria.
+    meter_version: Configure meter version selection criteria.
+    meter_schema_url: Configure meter schema url selection criteria.
+  path_patterns:
+    - .meter_provider.views[].selector
+
+- type: Stream
+  property_descriptions:
+    name: Configure metric name of the resulting stream(s).
+    description: Configure metric description of the resulting stream(s).
+    aggregation: > 
+      Configure aggregation of the resulting stream(s). Known values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum.
+    attribute_keys: Configure attribute keys retained in the resulting stream(s).
+  path_patterns:
+    - .meter_provider.views[].stream
+
+- type: StreamIncludeExclude
+  property_descriptions:
+    included: >
+      Configure list of attribute keys to include in the resulting stream(s). All other attributes are dropped. If not set, stream attributes are not configured.
+    excluded: >
+      Configure list of attribute keys to exclude from the resulting stream(s). Applies after .attribute_keys.included (i.e. excluded has higher priority than included).
+  path_patterns:
+    - .meter_provider.views[].stream.attribute_keys
+
+- type: StreamAggregation
+  property_descriptions:
+    explicit_bucket_histogram: Configure aggregation to be explicit_bucket_histogram.
+  path_patterns:
+    - .meter_provider.views[].stream.aggregation
+
+- type: StreamAggregationExplicitBucketHistogram
+  property_descriptions:
+    boundaries: Configure bucket boundaries.
+    record_min_max: Configure record min and max.
+  path_patterns:
+    - .meter_provider.views[].stream.aggregation.explicit_bucket_histogram
+# END meter_provider
+
+# START common
+- type: Otlp
+  property_descriptions:
+    protocol: Configure protocol.
+    endpoint: Configure endpoint.
+    certificate: Configure certificate.
+    client_key: Configure mTLS private client key.
+    client_certificate: Configure mTLS client certificate.
+    headers: Configure headers. Entries have higher priority than entries from .headers_list.
+    headers_list: >
+      Configure headers. Entries have lower priority than entries from .headers.
+      
+      The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+    compression: Configure compression.
+    timeout: Configure max time (in milliseconds) to wait for each export.
+    insecure: Configure client transport security for the exporter's connection.
+    temporality_preference: Configure temporality preference.
+    default_histogram_aggregation: Configure default histogram aggregation.
+  path_patterns:
+    - .tracer_provider.processors[].*.exporter.otlp
+    - .logger_provider.processors[].*.exporter.otlp
+    - .meter_provider.readers[].periodic.exporter.otlp
+# END common
+
+# START Instrumentation
+- type: Instrumentation
+  property_descriptions:
+    general: >
+      Configure general SemConv options that may apply to multiple languages and instrumentations.
+      
+      Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
+    cpp: Configure C++ language-specific instrumentation libraries.
+    dotnet: Configure .NET language-specific instrumentation libraries.
+    erlang: Configure Erlang language-specific instrumentation libraries.
+    go: Configure Go language-specific instrumentation libraries.
+    java: Configure Java language-specific instrumentation libraries.
+    js: Configure JavaScript language-specific instrumentation libraries.
+    php: Configure PHP language-specific instrumentation libraries.
+    python: Configure Python language-specific instrumentation libraries.
+    ruby: Configure Ruby language-specific instrumentation libraries.
+    rust: Configure Rust language-specific instrumentation libraries.
+    swift: Configure Swift language-specific instrumentation libraries.
+  path_patterns:
+    - .instrumentation
+
+- type: GeneralInstrumentation
+  property_descriptions:
+    peer: >
+      Configure instrumentations following the peer semantic conventions.
+      
+      See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
+    http: >
+      Configure instrumentations following the http semantic conventions.
+      
+      See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
+  path_patterns:
+    - .instrumentation.general
+
+- type: GeneralInstrumentationPeer
+  property_descriptions:
+    service_mapping: >
+      Configure the service mapping for instrumentations following peer.service semantic conventions.
+      
+      Each entry is a key value pair where "peer" defines the IP address and "service" defines the corresponding logical name of the service.
+      
+      See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
+  path_patterns:
+    - .instrumentation.general.peer
+
+- type: GeneralInstrumentationHttp
+  property_descriptions:
+    client: Configure instrumentations following the http client semantic conventions.
+    server: Configure instrumentations following the http server semantic conventions.
+  path_patterns:
+    - .instrumentation.general.http
+
+- type: GeneralInstrumentationHttpClient
+  property_descriptions:
+    request_captured_headers: Configure headers to capture for outbound http requests.
+    response_captured_headers: Configure headers to capture for outbound http responses.
+  path_patterns:
+    - .instrumentation.general.http.client
+
+- type: GeneralInstrumentationHttpServer
+  property_descriptions:
+    request_captured_headers: Configure headers to capture for inbound http requests.
+    response_captured_headers: Configure headers to capture for outbound http responses.
+  path_patterns:
+    - .instrumentation.general.http.server
+
+- type: LanguageSpecificInstrumentation
+  property_descriptions:
+    example: Configure the instrumentation corresponding to key "example".
+  path_patterns:
+    - .instrumentation.*
+# END Instrumentation
+
