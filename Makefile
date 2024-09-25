@@ -1,3 +1,6 @@
+# Copyright The OpenTelemetry Authors
+# SPDX-License-Identifier: Apache-2.0
+
 SCHEMA_FILES := $(shell find . -path './schema/*.json' -exec basename {} \; | sort)
 EXAMPLE_FILES := $(shell find . -path './examples/*.yaml' -exec basename {} \; | sort)
 $(shell mkdir -p out)
