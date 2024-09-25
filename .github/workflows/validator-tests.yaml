@@ -18,6 +18,10 @@ jobs:
         with:
           go-version: "~1.22"
 
+      - name: Run govulncheck
+        run: |
+          make -C validator govulncheck
+
       # TODO: Publish releases
       - name: Build
         run: make validator
@@ -30,7 +34,3 @@ jobs:
       - name: Run ShellTests
         run: |
           make validator-run-shelltests
-
-      - name: Run govulncheck
-        run: |
-          make -C validator govulncheck
