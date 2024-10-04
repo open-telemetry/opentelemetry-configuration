@@ -36,7 +36,7 @@
 # - OTEL_EXPORTER_OTLP_TIMEOUT
 
 # The file format version The file format version.
-file_format: "0.1"
+file_format: "0.3"
 
 # Configure if the SDK is disabled or not. This is not required to be provided to ensure the SDK isn't disabled, the default value when this is not provided is for the SDK to be enabled.
 disabled: ${OTEL_SDK_DISABLED:-false}
