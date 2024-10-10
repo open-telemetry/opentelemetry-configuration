@@ -18,14 +18,12 @@
             }
         },
         "exemplar_filter": {
-            "type": {
-                "enum": [
-                    null,
-                    "always_on",
-                    "always_off",
-                    "trace_based"
-                ]
-            }
+            "type": ["string", "null"],
+            "enum": [
+                "always_on",
+                "always_off",
+                "trace_based"
+            ]
         }
     },
     "$defs": {
