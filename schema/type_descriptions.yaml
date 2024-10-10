@@ -203,6 +203,7 @@
   property_descriptions:
     readers: Configure metric readers.
     views: Configure views. Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
+    exemplar_filter: "Configure the exemplar filter. Known values include: trace_based, always_on, always_off."
   path_patterns:
     - .meter_provider
 
