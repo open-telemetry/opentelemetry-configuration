@@ -23,6 +23,10 @@
       Configure if the SDK is disabled or not.
       
       If omitted or null, false is used.
+    log_level: >
+      Configure the log level of the internal logger used by the SDK.
+
+      If omitted, info is used.
     resource: >
       Configure resource for all signals.
       
