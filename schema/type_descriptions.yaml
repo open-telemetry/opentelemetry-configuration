@@ -15,6 +15,7 @@
   property_descriptions:
     file_format: The file format version.
     disabled: Configure if the SDK is disabled or not. This is not required to be provided to ensure the SDK isn't disabled, the default value when this is not provided is for the SDK to be enabled.
+    log_level: Configure the log level of the internal logger used by the SDK
     resource: Configure resource for all signals.
     propagator: Configure text map context propagators.
     attribute_limits: Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
