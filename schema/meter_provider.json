@@ -16,6 +16,14 @@
             "items": {
                 "$ref": "#/$defs/View"
             }
+        },
+        "exemplar_filter": {
+            "type": ["string", "null"],
+            "enum": [
+                "always_on",
+                "always_off",
+                "trace_based"
+            ]
         }
     },
     "$defs": {

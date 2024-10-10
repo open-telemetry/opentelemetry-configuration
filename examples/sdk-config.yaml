@@ -139,6 +139,8 @@ meter_provider:
             temporality_preference: cumulative
             # Configure default histogram aggregation.
             default_histogram_aggregation: explicit_bucket_histogram
+  # Configure the exemplar filter. Known values include: trace_based, always_on, always_off.
+  exemplar_filter: trace_based
 
 # Configure logger provider.
 logger_provider:

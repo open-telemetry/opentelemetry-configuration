@@ -213,6 +213,8 @@ meter_provider:
           # Configure list of attribute keys to exclude from the resulting stream(s). Applies after .attribute_keys.included (i.e. excluded has higher priority than included).
           excluded:
             - key3
+  # Configure the exemplar filter. Known values include: trace_based, always_on, always_off.
+  exemplar_filter: trace_based
 
 # Configure text map context propagators.
 propagator:
