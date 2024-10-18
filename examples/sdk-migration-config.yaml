@@ -10,7 +10,7 @@
 # NOTE: With the exception of env var substitution syntax, SDKs ignore environment variables
 # when interpreting config files. For example, if "disabled: ${OTEL_SDK_DISABLED:-false}"
 # is replaced with "disabled: false", then setting the env var OTEL_SDK_DISABLED will have
-# no effect. See https://opentelemetry.io/docs/specs/otel/configuration/file-configuration/
+# no effect. See https://opentelemetry.io/docs/specs/otel/configuration/data-model/
 # for more information. The following spec defined env vars are NOT referenced and are thus
 # ignored:
 #
