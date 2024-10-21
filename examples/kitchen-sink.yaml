@@ -64,7 +64,7 @@ logger_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be console.
-          console: {}
+          console:
   # Configure log record limits. See also attribute_limits.
   limits:
     # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
@@ -109,7 +109,7 @@ meter_provider:
       # Configure metric producers.
       producers:
         - # Configure metric producer to be opencensus.
-          opencensus: {}
+          opencensus:
     - # Configure a periodic metric reader.
       periodic:
         # Configure delay interval (in milliseconds) between start of two consecutive exports.
@@ -150,13 +150,13 @@ meter_provider:
       # Configure metric producers.
       producers:
         - # Configure metric producer to be prometheus.
-          prometheus: {}
+          prometheus:
     - # Configure a periodic metric reader.
       periodic:
         # Configure exporter.
         exporter:
           # Configure exporter to be console.
-          console: {}
+          console:
   # Configure views. Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
   views:
     - # Configure view selector.
@@ -277,7 +277,7 @@ tracer_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be console.
-          console: {}
+          console:
   # Configure span limits. See also attribute_limits.
   limits:
     # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
@@ -305,19 +305,20 @@ tracer_provider:
       # Configure remote_parent_sampled sampler.
       remote_parent_sampled:
         # Configure sampler to be always_on.
-        always_on: {}
+        always_on:
       # Configure remote_parent_not_sampled sampler.
       remote_parent_not_sampled:
         # Configure sampler to be always_off.
-        always_off: {}
+        always_off:
       # Configure local_parent_sampled sampler.
       local_parent_sampled:
         # Configure sampler to be always_on.
-        always_on: {}
+        always_on:
       # Configure local_parent_not_sampled sampler.
       local_parent_not_sampled:
         # Configure sampler to be always_off.
-        always_off: {}
+        always_off:
+
 
 # Configure resource for all signals.
 resource:

@@ -87,23 +87,24 @@ tracer_provider:
       # Configure root sampler.
       root:
         # Configure sampler to be always_on.
-        always_on: {}
+        always_on:
       # Configure remote_parent_sampled sampler.
       remote_parent_sampled:
         # Configure sampler to be always_on.
-        always_on: {}
+        always_on:
       # Configure remote_parent_not_sampled sampler.
       remote_parent_not_sampled:
         # Configure sampler to be always_off.
-        always_off: {}
+        always_off:
       # Configure local_parent_sampled sampler.
       local_parent_sampled:
         # Configure sampler to be always_on.
-        always_on: {}
+        always_on:
       # Configure local_parent_not_sampled sampler.
       local_parent_not_sampled:
         # Configure sampler to be always_off.
-        always_off: {}
+        always_off:
+
 
 # Configure meter provider.
 meter_provider:
