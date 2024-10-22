@@ -103,13 +103,13 @@
             "maxProperties": 1,
             "properties": {
                 "opencensus": {
-                    "type": "object",
+                    "type": ["object", "null"],
                     "additionalProperties": false
                 }
             },
             "patternProperties": {
                 ".*": {
-                    "type": "object"
+                    "type": ["object", "null"]
                 }
             }
         },
