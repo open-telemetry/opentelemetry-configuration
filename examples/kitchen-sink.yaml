@@ -325,7 +325,7 @@ tracer_provider:
 # Configure resource for all signals.
 resource:
   # Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
-  # Entries must contain .name and .value, and may optionally include .type, which defaults ot "string" if not set. The value must match the type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+  # Entries must contain .name and .value, and may optionally include .type, which defaults to "string" if not set. The value must match the type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
   attributes:
     - name: service.name
       value: unknown_service
