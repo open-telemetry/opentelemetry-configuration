@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Improved file_format documentation. [#137](https://github.com/open-telemetry/opentelemetry-configuration/pull/137)
+
 ## [v0.3.0] - 2024-05-08
 
 * Add metric producers to meter_provider configuration. [#90](https://github.com/open-telemetry/opentelemetry-configuration/pull/90)
