@@ -87,6 +87,7 @@
   property_descriptions:
     processors: Configure log record processors.
     limits: Configure log record limits. See also attribute_limits.
+    logger_configurator: Configure loggers.
   path_patterns:
     - .logger_provider
 
@@ -126,6 +127,31 @@
     attribute_count_limit:  Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
   path_patterns:
     - .logger_provider.limits
+
+- type: LoggerConfigurator
+  property_descriptions:
+    default_config: Configure the default logger config used there is no matching entry in .logger_configurator.loggers.
+    loggers: Configure loggers.
+  path_patterns:
+    - .logger_provider.logger_configurator
+
+- type: LoggerConfigAndMatcher
+  property_descriptions:
+    name: >
+      Configure logger names to match, evaluated as follows:
+
+       * If the logger name exactly matches.
+       * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+    config: The logger config.
+  path_patterns:
+    - .logger_provider.logger_configurator.loggers[]
+
+- type: LoggerConfig
+  property_descriptions:
+    disabled: Configure if the logger is enabled or not.
+  path_patterns:
+    - .logger_provider.logger_configurator.default_config
+    - .logger_provider.logger_configurator.loggers[].config
 # END LoggerProvider
 
 # START TracerProvider
@@ -134,6 +160,7 @@
     processors: Configure span processors.
     limits: Configure span limits. See also attribute_limits.
     sampler: Configure the sampler.
+    tracer_configurator: Configure tracers.
   path_patterns:
     - .tracer_provider
 
@@ -201,6 +228,31 @@
   path_patterns:
     - .tracer_provider.sampler
     - .tracer_provider.sampler.*
+
+- type: TracerConfigurator
+  property_descriptions:
+    default_config: Configure the default tracer config used there is no matching entry in .tracer_configurator.tracers.
+    tracers: Configure tracers.
+  path_patterns:
+    - .tracer_provider.tracer_configurator
+
+- type: TracerConfigAndMatcher
+  property_descriptions:
+    name: >
+      Configure tracer names to match, evaluated as follows:
+
+       * If the tracer name exactly matches.
+       * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+    config: The tracer config.
+  path_patterns:
+    - .tracer_provider.tracer_configurator.tracers[]
+
+- type: TracerConfig
+  property_descriptions:
+    disabled: Configure if the tracer is enabled or not.
+  path_patterns:
+    - .tracer_provider.tracer_configurator.default_config
+    - .tracer_provider.tracer_configurator.tracers[].config
 # END TracerProvider
 
 # START MeterProvider
@@ -209,6 +261,7 @@
     readers: Configure metric readers.
     views: Configure views. Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
     exemplar_filter: "Configure the exemplar filter. Known values include: trace_based, always_on, always_off."
+    meter_configurator: Configure meters.
   path_patterns:
     - .meter_provider
 
@@ -325,6 +378,31 @@
     record_min_max: Configure record min and max.
   path_patterns:
     - .meter_provider.views[].stream.aggregation.explicit_bucket_histogram
+
+- type: MeterConfigurator
+  property_descriptions:
+    default_config: Configure the default meter config used there is no matching entry in .meter_configurator.meters.
+    meters: Configure meters.
+  path_patterns:
+    - .meter_provider.meter_configurator
+
+- type: MeterConfigAndMatcher
+  property_descriptions:
+    name: >
+      Configure meter names to match, evaluated as follows:
+
+       * If the meter name exactly matches.
+       * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+    config: The meter config.
+  path_patterns:
+    - .meter_provider.meter_configurator.meters[]
+
+- type: MeterConfig
+  property_descriptions:
+    disabled: Configure if the meter is enabled or not.
+  path_patterns:
+    - .meter_provider.meter_configurator.default_config
+    - .meter_provider.meter_configurator.meters[].config
 # END meter_provider
 
 # START common

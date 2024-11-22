@@ -73,6 +73,23 @@ logger_provider:
     attribute_value_length_limit: 4096
     # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
     attribute_count_limit: 128
+  # Configure loggers.
+  logger_configurator:
+    # Configure the default logger config used there is no matching entry in .logger_configurator.loggers.
+    default_config:
+      # Configure if the logger is enabled or not.
+      disabled: true
+    # Configure loggers.
+    loggers:
+      - # Configure logger names to match, evaluated as follows:
+        #
+        #  * If the logger name exactly matches.
+        #  * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        name: io.opentelemetry.contrib.*
+        # The logger config.
+        config:
+          # Configure if the logger is enabled or not.
+          disabled: false
 
 # Configure meter provider.
 meter_provider:
@@ -217,6 +234,23 @@ meter_provider:
             - key3
   # Configure the exemplar filter. Known values include: trace_based, always_on, always_off.
   exemplar_filter: trace_based
+  # Configure meters.
+  meter_configurator:
+    # Configure the default meter config used there is no matching entry in .meter_configurator.meters.
+    default_config:
+      # Configure if the meter is enabled or not.
+      disabled: true
+    # Configure meters.
+    meters:
+      - # Configure meter names to match, evaluated as follows:
+        #
+        #  * If the meter name exactly matches.
+        #  * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        name: io.opentelemetry.contrib.*
+        # The meter config.
+        config:
+          # Configure if the meter is enabled or not.
+          disabled: false
 
 # Configure text map context propagators.
 propagator:
@@ -320,7 +354,23 @@ tracer_provider:
       local_parent_not_sampled:
         # Configure sampler to be always_off.
         always_off:
-
+  # Configure tracers.
+  tracer_configurator:
+    # Configure the default tracer config used there is no matching entry in .tracer_configurator.tracers.
+    default_config:
+      # Configure if the tracer is enabled or not.
+      disabled: true
+    # Configure tracers.
+    tracers:
+      - # Configure tracer names to match, evaluated as follows:
+        #
+        #  * If the tracer name exactly matches.
+        #  * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        name: io.opentelemetry.contrib.*
+        # The tracer config.
+        config:
+          # Configure if the tracer is enabled or not.
+          disabled: false
 
 # Configure resource for all signals.
 resource:

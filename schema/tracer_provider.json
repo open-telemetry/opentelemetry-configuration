@@ -16,6 +16,9 @@
         },
         "sampler": {
             "$ref": "#/$defs/Sampler"
+        },
+        "tracer_configurator": {
+            "$ref": "#/$defs/TracerConfigurator"
         }
     },
     "$defs": {
@@ -215,6 +218,45 @@
                 "endpoint"
             ],
             "title": "Zipkin"
+        },
+        "TracerConfigurator": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "title": "TracerConfigurator",
+            "properties": {
+                "default_config": {
+                    "$ref": "#/$defs/TracerConfig"
+                },
+                "tracers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/TracerMatcherAndConfig"
+                    }
+                }
+            }
+        },
+        "TracerMatcherAndConfig": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "title": "MeterMatcherAndConfig",
+            "properties": {
+                "name": {
+                    "type": ["string", "null"]
+                },
+                "config": {
+                    "$ref": "#/$defs/TracerConfig"
+                }
+            }
+        },
+        "TracerConfig": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "title": "TracerConfig",
+            "properties": {
+                "disabled": {
+                    "type": ["boolean", "null"]
+                }
+            }
         }
     }
 }
