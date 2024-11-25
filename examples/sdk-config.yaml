@@ -9,180 +9,227 @@
 # The yaml format is documented at
 # https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
 file_format: "0.3"
-
-# Configure if the SDK is disabled or not. This is not required to be provided to ensure the SDK isn't disabled, the default value when this is not provided is for the SDK to be enabled.
+# Configure if the SDK is disabled or not.
+# If omitted or null, false is used.
 disabled: false
-
 # Configure resource for all signals.
+# If omitted, the default resource is used.
 resource:
   # Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
-  # Entries must contain .name and .value, and may optionally include .type, which defaults to "string" if not set. The value must match the type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+  # Entries must contain .name and .value, and may optionally include .type. If an entry's .type omitted or null, string is used.
+  # The .value's type must match the .type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
   attributes:
     - name: service.name
       value: unknown_service
-
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
   # Configure max attribute value size.
+  # If omitted or null, there is no limit.
   attribute_value_length_limit:
   # Configure max attribute count.
+  # If omitted or null, 128 is used.
   attribute_count_limit: 128
-
 # Configure text map context propagators.
+# If omitted, tracecontext and baggage are used.
 propagator:
-  # Configure the set of propagators to include in the composite text map propagator.
+  # Configure the set of propagators to include in the composite text map propagator. Values include: tracecontext, baggage, b3, b3multi, jaeger, xray, ottrace, none. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration.
   composite: [ tracecontext, baggage ]
-
 # Configure tracer provider.
+# If omitted, a noop tracer provider is used.
 tracer_provider:
   # Configure span processors.
   processors:
     - # Configure a batch span processor.
       batch:
         # Configure delay interval (in milliseconds) between two consecutive exports.
+        # If omitted or null, 5000 is used.
         schedule_delay: 5000
         # Configure maximum allowed time (in milliseconds) to export data.
+        # If omitted or null, 30000 is used.
         export_timeout: 30000
         # Configure maximum queue size.
+        # If omitted or null, 2048 is used.
         max_queue_size: 2048
         # Configure maximum batch size.
+        # If omitted or null, 512 is used.
         max_export_batch_size: 512
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP.
           otlp:
-            # Configure protocol.
+            # Configure protocol. Values include: http/protobuf, http/json, grpc.
             protocol: http/protobuf
             # Configure endpoint.
+            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
             endpoint: http://localhost:4318/v1/traces
-            # Configure certificate.
+            # Configure certificate. Absolute path to certificate file.
+            # If omitted or null, system default certificate verification is used for secure connections.
             certificate:
-            # Configure mTLS private client key.
+            # Configure mTLS private client key. Absolute path to client key in PEM format. If set, .client_certificate must also be set.
+            # If omitted or null, mTLS is not used.
             client_key:
-            # Configure mTLS client certificate.
+            # Configure mTLS client certificate. Absolute path to certificate file. If set, .client_key must also be set.
+            # If omitted or null, mTLS is not used.
             client_certificate:
-            # Configure compression.
+            # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.
+            # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure headers. Entries have higher priority than entries from .headers_list.
+            # If an entry's .value is null, the entry is ignored.
             headers: []
   # Configure span limits. See also attribute_limits.
   limits:
     # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
-    attribute_value_length_limit: # Configure max span attribute count. Overrides attribute_limits.attribute_count_limit.
-
+    # If omitted or null, there is no limit.
+    attribute_value_length_limit:
     # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+    # If omitted or null, 128 is used.
     attribute_count_limit: 128
     # Configure max span event count.
+    # If omitted or null, 128 is used.
     event_count_limit: 128
     # Configure max span link count.
+    # If omitted or null, 128 is used.
     link_count_limit: 128
     # Configure max attributes per span event.
+    # If omitted or null, 128 is used.
     event_attribute_count_limit: 128
     # Configure max attributes per span link.
+    # If omitted or null, 128 is used.
     link_attribute_count_limit: 128
   # Configure the sampler.
+  # If omitted, parent based sampler with a root of always_on is used.
   sampler:
     # Configure sampler to be parent_based.
     parent_based:
       # Configure root sampler.
+      # If omitted or null, always_on is used.
       root:
         # Configure sampler to be always_on.
         always_on:
       # Configure remote_parent_sampled sampler.
+      # If omitted or null, always_on is used.
       remote_parent_sampled:
         # Configure sampler to be always_on.
         always_on:
       # Configure remote_parent_not_sampled sampler.
+      # If omitted or null, always_off is used.
       remote_parent_not_sampled:
         # Configure sampler to be always_off.
         always_off:
       # Configure local_parent_sampled sampler.
+      # If omitted or null, always_on is used.
       local_parent_sampled:
         # Configure sampler to be always_on.
         always_on:
       # Configure local_parent_not_sampled sampler.
+      # If omitted or null, always_off is used.
       local_parent_not_sampled:
         # Configure sampler to be always_off.
         always_off:
-
-
 # Configure meter provider.
+# If omitted, a noop meter provider is used.
 meter_provider:
   # Configure metric readers.
   readers:
     - # Configure a periodic metric reader.
       periodic:
         # Configure delay interval (in milliseconds) between start of two consecutive exports.
+        # If omitted or null, 60000 is used.
         interval: 60000
         # Configure maximum allowed time (in milliseconds) to export data.
+        # If omitted or null, 30000 is used.
         timeout: 30000
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP.
           otlp:
-            # Configure protocol.
+            # Configure protocol. Values include: http/protobuf, http/json, grpc.
             protocol: http/protobuf
             # Configure endpoint.
+            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
             endpoint: http://localhost:4318/v1/metrics
-            # Configure certificate.
+            # Configure certificate. Absolute path to certificate file.
+            # If omitted or null, system default certificate verification is used for secure connections.
             certificate:
-            # Configure mTLS private client key.
+            # Configure mTLS private client key. Absolute path to client key in PEM format. If set, .client_certificate must also be set.
+            # If omitted or null, mTLS is not used.
             client_key:
-            # Configure mTLS client certificate.
+            # Configure mTLS client certificate. Absolute path to certificate file. If set, .client_key must also be set.
+            # If omitted or null, mTLS is not used.
             client_certificate:
-            # Configure compression.
+            # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.
+            # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure headers. Entries have higher priority than entries from .headers_list.
+            # If an entry's .value is null, the entry is ignored.
             headers: []
-            # Configure temporality preference.
+            # Configure temporality preference. Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, cumulative is used.
             temporality_preference: cumulative
-            # Configure default histogram aggregation.
+            # Configure default histogram aggregation. Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, explicit_bucket_histogram is used.
             default_histogram_aggregation: explicit_bucket_histogram
-  # Configure the exemplar filter. Known values include: trace_based, always_on, always_off.
+  # Configure the exemplar filter. Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
+  # If omitted or null, trace_based is used.
   exemplar_filter: trace_based
-
 # Configure logger provider.
+# If omitted, a noop logger provider is used.
 logger_provider:
   # Configure log record processors.
   processors:
     - # Configure a batch log record processor.
       batch:
         # Configure delay interval (in milliseconds) between two consecutive exports.
+        # If omitted or null, 1000 is used.
         schedule_delay: 1000
         # Configure maximum allowed time (in milliseconds) to export data.
+        # If omitted or null, 30000 is used.
         export_timeout: 30000
         # Configure maximum queue size.
+        # If omitted or null, 2048 is used.
         max_queue_size: 2048
         # Configure maximum batch size.
+        # If omitted or null, 512 is used.
         max_export_batch_size: 512
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP.
           otlp:
-            # Configure protocol.
+            # Configure protocol. Values include: http/protobuf, http/json, grpc.
             protocol: http/protobuf
             # Configure endpoint.
+            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
             endpoint: http://localhost:4318/v1/logs
-            # Configure certificate.
+            # Configure certificate. Absolute path to certificate file.
+            # If omitted or null, system default certificate verification is used for secure connections.
             certificate:
-            # Configure mTLS private client key.
+            # Configure mTLS private client key. Absolute path to client key in PEM format. If set, .client_certificate must also be set.
+            # If omitted or null, mTLS is not used.
             client_key:
-            # Configure mTLS client certificate.
+            # Configure mTLS client certificate. Absolute path to certificate file. If set, .client_key must also be set.
+            # If omitted or null, mTLS is not used.
             client_certificate:
-            # Configure compression.
+            # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: gzip
             # Configure max time (in milliseconds) to wait for each export.
+            # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure headers. Entries have higher priority than entries from .headers_list.
+            # If an entry's .value is null, the entry is ignored.
             headers: []
   # Configure log record limits. See also attribute_limits.
   limits:
     # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
-    attribute_value_length_limit: # Configure max log record attribute count. Overrides attribute_limits.attribute_count_limit.
-
+    # If omitted or null, there is no limit.
+    attribute_value_length_limit:
     # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+    # If omitted or null, 128 is used.
     attribute_count_limit: 128

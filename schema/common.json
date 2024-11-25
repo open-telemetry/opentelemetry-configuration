@@ -2,7 +2,6 @@
     "$id": "https://opentelemetry.io/otelconfig/common.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Common",
-    "type": ["object", "null"],
     "$defs": {
         "IncludeExclude": {
             "type": "object",
@@ -38,15 +37,15 @@
             ]
         },
         "Otlp": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "protocol": {
-                    "type": ["string", "null"],
+                    "type": "string",
                     "pattern": "^(http|grpc)\\/(protobuf|json)"
                 },
                 "endpoint": {
-                    "type": ["string", "null"]
+                    "type": "string"
                 },
                 "certificate": {
                     "type": ["string", "null"]

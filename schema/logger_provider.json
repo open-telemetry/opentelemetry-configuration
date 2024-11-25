@@ -2,7 +2,7 @@
     "$id": "https://opentelemetry.io/otelconfig/logger_provider.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "LoggerProvider",
-    "type": ["object", "null"],
+    "type": "object",
     "additionalProperties": false,
     "properties": {
         "processors": {
@@ -15,9 +15,12 @@
             "$ref": "#/$defs/LogRecordLimits"
         }
     },
+    "required": [
+        "processors"
+    ],
     "$defs": {
         "SimpleLogRecordProcessor": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "exporter": {
@@ -29,7 +32,7 @@
             ]
         },
         "BatchLogRecordProcessor": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "schedule_delay": {
@@ -57,7 +60,7 @@
             ]
         },
         "LogRecordExporter": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
@@ -76,7 +79,7 @@
             }
         },
         "LogRecordLimits": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
@@ -90,7 +93,7 @@
             }
         },
         "LogRecordProcessor": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
@@ -104,7 +107,7 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object", "null"]
+                    "type": ["object"]
                 }
             }
         }
