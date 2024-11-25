@@ -246,17 +246,24 @@
                 "config": {
                     "$ref": "#/$defs/TracerConfig"
                 }
-            }
+            },
+            "required": [
+                "name",
+                "config"
+            ]
         },
         "TracerConfig": {
-            "type": ["object"],
+            "type": ["object", "null"],
             "additionalProperties": false,
             "title": "TracerConfig",
             "properties": {
                 "disabled": {
-                    "type": ["boolean", "null"]
+                    "type": ["boolean"]
                 }
-            }
+            },
+            "required": [
+                "disabled"
+            ]
         }
     }
 }
