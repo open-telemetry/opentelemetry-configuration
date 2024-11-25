@@ -238,10 +238,10 @@
         "TracerMatcherAndConfig": {
             "type": ["object", "null"],
             "additionalProperties": false,
-            "title": "MeterMatcherAndConfig",
+            "title": "TracerMatcherAndConfig",
             "properties": {
                 "name": {
-                    "type": ["string", "null"]
+                    "type": ["string"]
                 },
                 "config": {
                     "$ref": "#/$defs/TracerConfig"
@@ -249,7 +249,7 @@
             }
         },
         "TracerConfig": {
-            "type": ["object", "null"],
+            "type": ["object"],
             "additionalProperties": false,
             "title": "TracerConfig",
             "properties": {
