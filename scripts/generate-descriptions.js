@@ -116,8 +116,9 @@ yaml.visit(fileDoc, {
         node.key.commentBefore = formattedDescription;
         node.value.commentBefore = null;
         // yaml parser sometimes misidentifies a pair's commentBefore as the previously processed pair.value.comment
-        // we detect and fix that by keeping a reference to the previous node and looking for this case
-        if (prevLastNode !== null && prevLastNode.value.comment === formattedDescription) {
+        // we detect and fix that by keeping a reference to the previous node and setting the comment to null
+        // this works because we only use commentBefore in this project
+        if (prevLastNode !== null) {
             node.key.spaceBefore = null;
             prevLastNode.value.comment = null;
         }

@@ -156,6 +156,41 @@ When a type requires a configurable list of name-value pairs (i.e. resource attr
                   value: ${AUTHORIZATION_HEADER_VALUE}
     ```
 
+### Required and null properties
+
+JSON schema has two related but subtly different concepts involved in indicating the requirement level of properties and values:
+
+* [`type` of `null`](https://json-schema.org/understanding-json-schema/reference/null): When a property includes a type of `null` along with other allowed types (i.e. `"type": ["string", "null"]`), it indicates that even if the property key is present, the value may be omitted. This is useful in a variety of situations:
+  * When modeling properties with primitive types which are candidates for [env var substitution][], since allowing `null` means that the configuration is valid even if the referenced env var is undefined.
+  * When modeling objects which do not require any properties. In these cases, either no properties are required, or there are no properties and the presence of the property key expresses the desired state.
+* [required](https://json-schema.org/understanding-json-schema/reference/object#required): When a property is `required`, the key must be included in the object or the configuration is invalid. Properties should be required when there is no well default semantic (i.e. it's not clear what the behavior is when the property is absent).
+
+For example:
+
+```
+tracer_provider:
+ processors:
+   - simple:
+       exporter:
+         console:
+ limits:
+   attribute_value_length_limit: ${OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT}
+```
+
+* `tracer_provider` is not required. When omitted, a noop tracer provider is used.
+* `tracer_provider`'s type is `object`. There's no sensible tracer provider which does not minimally set one entry in `processors`. 
+* `exporter` is required. A simple processor without an exporter is invalid.
+* `exporter`'s type is `object`. Setting `exporter` to `null` or any non-object value is invalid.
+* `console`'s type is `["object", "null"]`. The console exporter has no properties, and we should not force the user to set an empty object (i.e `console: {}`).
+* `limits` is not required. When omitted, default span limits are used.
+* `limits`'s type is `object`. If a user includes the `limits` property, they must set at least one property. Settings `limits` to `null` is invalid.
+* `attributes_value_length_limit` is not required. If omitted, no attribute length limits are applied.
+* `attributes_value_length_limit`'s type is `["integer", "null]`. If null (i.e. because the `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` env var is unset), no attribute length limits are applied.
+
+If a property is _not_ required, it should include a [comment](./CONTRIBUTING.md#description-generation) describing the semantics when it is omitted.
+
+If a property `type` includes `null`, it must include a [comment](./CONTRIBUTING.md#description-generation) describing the semantics when the value is `null`. It's common for properties with primitive types to allow `null`. `object` types allow `null` if no properties are required and the presence of the property key is meaningful. 
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)

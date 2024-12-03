@@ -2,11 +2,11 @@
     "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "OpenTelemetryConfiguration",
-    "type": ["object", "null"],
+    "type": "object",
     "additionalProperties": true,
     "properties": {
         "file_format": {
-            "type": ["string", "null"]
+            "type": "string"
         },
         "disabled": {
             "type": ["boolean", "null"]
@@ -38,7 +38,7 @@
     ],
     "$defs": {
         "AttributeLimits": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "properties": {
                 "attribute_value_length_limit": {
