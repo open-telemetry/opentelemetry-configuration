@@ -139,7 +139,7 @@ meter_provider:
       periodic:
         # Configure delay interval (in milliseconds) between start of two consecutive exports.
         # If omitted or null, 60000 is used.
-        interval: 5000
+        interval: 60000
         # Configure maximum allowed time (in milliseconds) to export data.
         # If omitted or null, 30000 is used.
         timeout: 30000
