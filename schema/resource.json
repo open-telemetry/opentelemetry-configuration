@@ -2,7 +2,7 @@
     "$id": "https://opentelemetry.io/otelconfig/resource.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Resource",
-    "type": ["object", "null"],
+    "type": "object",
     "additionalProperties": false,
     "properties": {
         "attributes": {
@@ -42,6 +42,7 @@
                     ]
                 },
                 "type": {
+                    "type": ["string", "null"],
                     "enum": [
                         null,
                         "string",
@@ -65,23 +66,7 @@
             "additionalProperties": false,
             "properties": {
                 "attributes": {
-                    "title": "DetectorAttributes",
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "included": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "excluded": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    }
+                    "$ref": "common.json#/$defs/IncludeExclude"
                 }
             }
         }

@@ -2,7 +2,7 @@
     "$id": "https://opentelemetry.io/otelconfig/tracer_provider.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "TracerProvider",
-    "type": ["object", "null"],
+    "type": "object",
     "additionalProperties": false,
     "properties": {
         "processors": {
@@ -18,9 +18,12 @@
             "$ref": "#/$defs/Sampler"
         }
     },
+    "required": [
+        "processors"
+    ],
     "$defs": {
         "BatchSpanProcessor": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
             "title": "BatchSpanProcessor",
             "properties": {
@@ -49,7 +52,7 @@
             ]
         },
         "Sampler": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
@@ -104,7 +107,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "ratio": {
-                            "type": "number"
+                            "type": ["number", "null"]
                         }
                     }
                 }
@@ -116,7 +119,7 @@
             }
         },
         "SimpleSpanProcessor": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
             "title": "SimpleSpanProcessor",
             "properties": {
@@ -129,7 +132,7 @@
             ]
         },
         "SpanExporter": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
@@ -151,7 +154,7 @@
             }
         },
         "SpanLimits": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
@@ -181,7 +184,7 @@
             }
         },
         "SpanProcessor": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
@@ -211,9 +214,6 @@
                     "minimum": 0
                 }
             },
-            "required": [
-                "endpoint"
-            ],
             "title": "Zipkin"
         }
     }
