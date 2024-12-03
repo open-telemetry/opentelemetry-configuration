@@ -24,6 +24,9 @@
                 "always_off",
                 "trace_based"
             ]
+        },
+        "meter_configurator": {
+            "$ref": "#/$defs/MeterConfigurator"
         }
     },
     "$defs": {
@@ -319,6 +322,45 @@
                             "$ref": "common.json#/$defs/IncludeExclude"
                         }
                     }
+                }
+            }
+        },
+        "MeterConfigurator": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "title": "MeterConfigurator",
+            "properties": {
+                "default_config": {
+                    "$ref": "#/$defs/MeterConfig"
+                },
+                "meters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/MeterMatcherAndConfig"
+                    }
+                }
+            }
+        },
+        "MeterMatcherAndConfig": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "title": "MeterMatcherAndConfig",
+            "properties": {
+                "name": {
+                    "type": ["string", "null"]
+                },
+                "config": {
+                    "$ref": "#/$defs/MeterConfig"
+                }
+            }
+        },
+        "MeterConfig": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "title": "MeterConfig",
+            "properties": {
+                "disabled": {
+                    "type": ["boolean", "null"]
                 }
             }
         }

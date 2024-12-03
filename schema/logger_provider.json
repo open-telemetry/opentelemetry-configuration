@@ -13,6 +13,9 @@
         },
         "limits": {
             "$ref": "#/$defs/LogRecordLimits"
+        },
+        "logger_configurator": {
+            "$ref": "#/$defs/LoggerConfigurator"
         }
     },
     "$defs": {
@@ -105,6 +108,45 @@
             "patternProperties": {
                 ".*": {
                     "type": ["object", "null"]
+                }
+            }
+        },
+        "LoggerConfigurator": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "title": "LoggerConfigurator",
+            "properties": {
+                "default_config": {
+                    "$ref": "#/$defs/LoggerConfig"
+                },
+                "loggers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/LoggerMatcherAndConfig"
+                    }
+                }
+            }
+        },
+        "LoggerMatcherAndConfig": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "title": "LoggerMatcherAndConfig",
+            "properties": {
+                "name": {
+                    "type": ["string", "null"]
+                },
+                "config": {
+                    "$ref": "#/$defs/LoggerConfig"
+                }
+            }
+        },
+        "LoggerConfig": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "title": "LoggerConfig",
+            "properties": {
+                "disabled": {
+                    "type": ["boolean", "null"]
                 }
             }
         }
