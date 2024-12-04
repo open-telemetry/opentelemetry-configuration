@@ -138,13 +138,13 @@
             "maxProperties": 1,
             "properties": {
                 "otlp_http": {
-                    "$ref": "#/$defs/OtlpHttpSpanExporter"
+                    "$ref": "common.json#/$defs/OtlpHttpExporter"
                 },
                 "otlp_grpc": {
-                    "$ref": "#/$defs/OtlpGrpcSpanExporter"
+                    "$ref": "common.json#/$defs/OtlpGrpcExporter"
                 },
                 "console": {
-                    "$ref": "#/$defs/ConsoleSpanExporter"
+                    "$ref": "common.json#/$defs/ConsoleExporter"
                 },
                 "zipkin": {
                     "$ref": "#/$defs/ZipkinSpanExporter"
@@ -218,36 +218,6 @@
                     "minimum": 0
                 }
             }
-        },
-        "OtlpHttpSpanExporter": {
-            "title": "OtlpHttpSpanExporter",
-            "type": ["object", "null"],
-            "unevaluatedProperties": false,
-            "allOf": [
-                {
-                    "$ref": "common.json#/$defs/BaseOtlpHttpExporter"
-                }
-            ]
-        },
-        "OtlpGrpcSpanExporter": {
-            "title": "OtlpGrpcSpanExporter",
-            "type": ["object", "null"],
-            "unevaluatedProperties": false,
-            "allOf": [
-                {
-                    "$ref": "common.json#/$defs/BaseOtlpGrpcExporter"
-                }
-            ]
-        },
-        "ConsoleSpanExporter": {
-            "title": "ConsoleSpanExporter",
-            "type": ["object", "null"],
-            "unevaluatedProperties": false,
-            "allOf": [
-                {
-                    "$ref": "common.json#/$defs/BaseConsoleExporter"
-                }
-            ]
         }
     }
 }

@@ -77,7 +77,7 @@
                     "$ref": "#/$defs/OtlpGrpcMetricExporter"
                 },
                 "console": {
-                    "$ref": "#/$defs/ConsoleMetricExporter"
+                    "$ref": "common.json#/$defs/ConsoleExporter"
                 }
             },
             "patternProperties": {
@@ -184,13 +184,43 @@
         "OtlpHttpMetricExporter": {
             "title": "OtlpHttpMetricExporter",
             "type": ["object", "null"],
-            "unevaluatedProperties": false,
-            "allOf": [
-                {
-                    "$ref": "common.json#/$defs/BaseOtlpHttpExporter"
-                }
-            ],
+            "additionalProperties": false,
             "properties": {
+                "endpoint": {
+                    "type": ["string", "null"]
+                },
+                "certificate": {
+                    "type": ["string", "null"]
+                },
+                "client_key": {
+                    "type": ["string", "null"]
+                },
+                "client_certificate": {
+                    "type": ["string", "null"]
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "common.json#/$defs/NameStringValuePair"
+                    }
+                },
+                "headers_list": {
+                    "type": ["string", "null"]
+                },
+                "compression": {
+                    "type": ["string", "null"]
+                },
+                "timeout": {
+                    "type": ["integer", "null"],
+                    "minimum": 0
+                },
+                "encoding": {
+                    "type": ["string", "null"],
+                    "enum": [
+                        "proto",
+                        "json"
+                    ]
+                },
                 "temporality_preference": {
                     "$ref": "#/$defs/ExporterTemporalityPreference"
                 },
@@ -202,13 +232,39 @@
         "OtlpGrpcMetricExporter": {
             "title": "OtlpGrpcMetricExporter",
             "type": ["object", "null"],
-            "unevaluatedProperties": false,
-            "allOf": [
-                {
-                    "$ref": "common.json#/$defs/BaseOtlpGrpcExporter"
-                }
-            ],
+            "additionalProperties": false,
             "properties": {
+                "endpoint": {
+                    "type": ["string", "null"]
+                },
+                "certificate": {
+                    "type": ["string", "null"]
+                },
+                "client_key": {
+                    "type": ["string", "null"]
+                },
+                "client_certificate": {
+                    "type": ["string", "null"]
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "common.json#/$defs/NameStringValuePair"
+                    }
+                },
+                "headers_list": {
+                    "type": ["string", "null"]
+                },
+                "compression": {
+                    "type": ["string", "null"]
+                },
+                "timeout": {
+                    "type": ["integer", "null"],
+                    "minimum": 0
+                },
+                "insecure": {
+                    "type": ["boolean", "null"]
+                },
                 "temporality_preference": {
                     "$ref": "#/$defs/ExporterTemporalityPreference"
                 },
@@ -216,16 +272,6 @@
                     "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
                 }
             }
-        },
-        "ConsoleMetricExporter": {
-            "title": "ConsoleMetricExporter",
-            "type": ["object", "null"],
-            "unevaluatedProperties": false,
-            "allOf": [
-                {
-                    "$ref": "common.json#/$defs/BaseConsoleExporter"
-                }
-            ]
         },
         "View": {
             "type": "object",

@@ -36,9 +36,10 @@
                 "name", "value"
             ]
         },
-        "BaseOtlpHttpExporter": {
-            "title": "BaseOtlpHttpExporter",
-            "type": "object",
+        "OtlpHttpExporter": {
+            "title": "OtlpHttpExporter",
+            "type": ["object", "null"],
+            "additionalProperties": false,
             "properties": {
                 "endpoint": {
                     "type": ["string", "null"]
@@ -77,9 +78,10 @@
                 }
             }
         },
-        "BaseOtlpGrpcExporter": {
-            "title": "BaseOtlpGrpcExporter",
-            "type": "object",
+        "OtlpGrpcExporter": {
+            "title": "OtlpGrpcExporter",
+            "type": ["object", "null"],
+            "additionalProperties": false,
             "properties": {
                 "endpoint": {
                     "type": ["string", "null"]
@@ -114,8 +116,9 @@
                 }
             }
         },
-        "BaseConsoleExporter": {
-            "type": ["object", "null"]
+        "ConsoleExporter": {
+            "type": ["object", "null"],
+            "additionalProperties": false
         }
     }
 }
