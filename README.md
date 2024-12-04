@@ -78,6 +78,7 @@ The following additive changes are allowed:
 * Adding of new properties to existing types.
 * Adding new types.
 * Changes that make property validation less strict. See above for examples.
+* Removing a property from `required`.
 
 ### Applicability
 
@@ -104,7 +105,7 @@ The top level `.file_format` property is special in that it conveys the version 
 Given the [guarantees and allowed changes](#guarantees-and-allowed-changes), implementations may encounter the following scenarios:
 
 * The `file_format` major version aligns with the implementation major version, AND:
-  * The `file_format` minor version is less than or equal to the implementation minor version: This is idea, with versions maximally aligned. Despite this, an implementation might not support every property and type of its target version.
+  * The `file_format` minor version is less than or equal to the implementation minor version: This is ideal, with versions maximally aligned. Despite this, an implementation might not support every property and type of its target version.
   * The `file_format` minor version is greater than the implementation minor version: The implementation should detect and emit a warning since there may be configuration features the user specifies which the implementation does not understand. However, this is acceptable in many cases, and not terribly different from the ideal path where an implementation also might not support every configuration feature.
 * The `file_format` major version does not align with the implementation major version. The implementation should produce an error, since there may be breaking changes in the properties and semantics on how they are interpreted. Implementations may choose to temporarily support multiple major version to accommodate transitioning users.
 
