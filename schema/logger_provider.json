@@ -65,11 +65,14 @@
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
-                "otlp": {
-                    "$ref": "common.json#/$defs/Otlp"
+                "otlp_http": {
+                    "$ref": "#/$defs/OtlpHttpLogRecordExporter"
+                },
+                "otlp_grpc": {
+                    "$ref": "#/$defs/OtlpGrpcLogRecordExporter"
                 },
                 "console": {
-                    "$ref": "common.json#/$defs/Console"
+                    "$ref": "#/$defs/ConsoleLogRecordExporter"
                 }
             },
             "patternProperties": {
@@ -110,6 +113,36 @@
                     "type": ["object"]
                 }
             }
+        },
+        "OtlpHttpLogRecordExporter": {
+            "title": "OtlpHttpLogRecordExporter",
+            "type": ["object", "null"],
+            "unevaluatedProperties": false,
+            "allOf": [
+                {
+                    "$ref": "common.json#/$defs/BaseOtlpHttpExporter"
+                }
+            ]
+        },
+        "OtlpGrpcLogRecordExporter": {
+            "title": "OtlpGrpcLogRecordExporter",
+            "type": ["object", "null"],
+            "unevaluatedProperties": false,
+            "allOf": [
+                {
+                    "$ref": "common.json#/$defs/BaseOtlpGrpcExporter"
+                }
+            ]
+        },
+        "ConsoleLogRecordExporter": {
+            "title": "ConsoleLogRecordExporter",
+            "type": ["object", "null"],
+            "unevaluatedProperties": false,
+            "allOf": [
+                {
+                    "$ref": "common.json#/$defs/BaseConsoleExporter"
+                }
+            ]
         }
     }
 }

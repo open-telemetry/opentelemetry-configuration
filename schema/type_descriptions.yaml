@@ -161,7 +161,8 @@
 
 - type: LogRecordExporter
   property_descriptions:
-    otlp: Configure exporter to be OTLP.
+    otlp_http: Configure exporter to be OTLP with HTTP transport.
+    otlp_grpc: Configure exporter to be OTLP with gRPC transport.
     console: Configure exporter to be console.
   path_patterns:
     - .logger_provider.processors[].*.exporter
@@ -229,13 +230,14 @@
 
 - type: SpanExporter
   property_descriptions:
-    otlp: Configure exporter to be OTLP.
+    otlp_http: Configure exporter to be OTLP with HTTP transport.
+    otlp_grpc: Configure exporter to be OTLP with gRPC transport.
     zipkin: Configure exporter to be zipkin.
     console: Configure exporter to be console.
   path_patterns:
     - .tracer_provider.processors[].*.exporter
 
-- type: Zipkin
+- type: ZipkinSpanExporter
   property_descriptions:
     endpoint: >
       Configure endpoint.
@@ -362,12 +364,13 @@
 - type: MetricExporter
   property_descriptions:
     prometheus: Configure exporter to be prometheus.
-    otlp: Configure exporter to be OTLP.
+    otlp_http: Configure exporter to be OTLP with HTTP transport.
+    otlp_grpc: Configure exporter to be OTLP with gRPC transport.
     console: Configure exporter to be console.
   path_patterns:
     - .meter_provider.readers[].*.exporter
 
-- type: Prometheus
+- type: PrometheusMetricExporter
   property_descriptions:
     host: >
       Configure host.
@@ -500,14 +503,8 @@
 # END meter_provider
 
 # START common
-- type: Otlp
+- type: OtlpExporterCommon
   property_descriptions:
-    protocol: >
-      Configure protocol. Values include: http/protobuf, http/json, grpc.
-    endpoint: >
-      Configure endpoint.
-      
-      If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
     certificate: >
       Configure certificate. Absolute path to certificate file.
       
@@ -538,10 +535,6 @@
       Configure max time (in milliseconds) to wait for each export.
       
       If omitted or null, 10000 is used.
-    insecure: >
-      Configure client transport security for the exporter's connection. Only applicable when .protocol is grpc and .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
-      
-      If omitted or null, false is used.
     temporality_preference: >
       Configure temporality preference. Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
       
@@ -551,9 +544,60 @@
       
       If omitted or null, explicit_bucket_histogram is used.
   path_patterns:
-    - .tracer_provider.processors[].*.exporter.otlp
-    - .logger_provider.processors[].*.exporter.otlp
-    - .meter_provider.readers[].periodic.exporter.otlp
+    - .tracer_provider.processors[].*.exporter.otlp_http
+    - .logger_provider.processors[].*.exporter.otlp_http
+    - .meter_provider.readers[].periodic.exporter.otlp_http
+    - .tracer_provider.processors[].*.exporter.otlp_grpc
+    - .logger_provider.processors[].*.exporter.otlp_grpc
+    - .meter_provider.readers[].periodic.exporter.otlp_grpc
+- type: OtlpHttpExporter
+  property_descriptions:
+    encoding: >
+      Configure the encoding used for messages. Values include: proto, json. Implementations may not support json.
+      
+      If omitted or null, proto is used.
+  path_patterns:
+    - .tracer_provider.processors[].*.exporter.otlp_http
+    - .logger_provider.processors[].*.exporter.otlp_http
+    - .meter_provider.readers[].periodic.exporter.otlp_http
+- type: OtlpHttpSpanExporter
+  property_descriptions:
+    endpoint: >
+      Configure endpoint, including the trace specific path.
+      
+      If omitted or null, http://localhost:4318/v1/traces is used.
+  path_patterns:
+    - .tracer_provider.processors[].*.exporter.otlp_http
+- type: OtlpHttpMetricExporter
+  property_descriptions:
+    endpoint: >
+      Configure endpoint, including the metric specific path.
+      
+      If omitted or null, http://localhost:4318/v1/metrics is used.
+  path_patterns:
+    - .meter_provider.readers[].periodic.exporter.otlp_http
+- type: OtlpHttpLogRecordExporter
+  property_descriptions:
+    endpoint: >
+      Configure endpoint, including the log specific path.
+      
+      If omitted or null, http://localhost:4318/v1/logs is used.
+  path_patterns:
+    - .meter_provider.readers[].periodic.exporter.otlp_http
+- type: OtlpGrpcExporter
+  property_descriptions:
+    endpoint: >
+      Configure endpoint.
+      
+      If omitted or null, http://localhost:4317 is used.
+    insecure: >
+      Configure client transport security for the exporter's connection. Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
+      
+      If omitted or null, false is used.
+  path_patterns:
+    - .tracer_provider.processors[].*.exporter.otlp_grpc
+    - .logger_provider.processors[].*.exporter.otlp_grpc
+    - .meter_provider.readers[].periodic.exporter.otlp_grpc
 # END common
 
 # START Instrumentation

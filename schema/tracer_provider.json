@@ -137,14 +137,17 @@
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
-                "otlp": {
-                    "$ref": "common.json#/$defs/Otlp"
+                "otlp_http": {
+                    "$ref": "#/$defs/OtlpHttpSpanExporter"
+                },
+                "otlp_grpc": {
+                    "$ref": "#/$defs/OtlpGrpcSpanExporter"
                 },
                 "console": {
-                    "$ref": "common.json#/$defs/Console"
+                    "$ref": "#/$defs/ConsoleSpanExporter"
                 },
                 "zipkin": {
-                    "$ref": "#/$defs/Zipkin"
+                    "$ref": "#/$defs/ZipkinSpanExporter"
                 }
             },
             "patternProperties": {
@@ -202,7 +205,8 @@
                 }
             }
         },
-        "Zipkin": {
+        "ZipkinSpanExporter": {
+            "title": "ZipkinSpanExporter",
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -213,8 +217,37 @@
                     "type": ["integer", "null"],
                     "minimum": 0
                 }
-            },
-            "title": "Zipkin"
+            }
+        },
+        "OtlpHttpSpanExporter": {
+            "title": "OtlpHttpSpanExporter",
+            "type": ["object", "null"],
+            "unevaluatedProperties": false,
+            "allOf": [
+                {
+                    "$ref": "common.json#/$defs/BaseOtlpHttpExporter"
+                }
+            ]
+        },
+        "OtlpGrpcSpanExporter": {
+            "title": "OtlpGrpcSpanExporter",
+            "type": ["object", "null"],
+            "unevaluatedProperties": false,
+            "allOf": [
+                {
+                    "$ref": "common.json#/$defs/BaseOtlpGrpcExporter"
+                }
+            ]
+        },
+        "ConsoleSpanExporter": {
+            "title": "ConsoleSpanExporter",
+            "type": ["object", "null"],
+            "unevaluatedProperties": false,
+            "allOf": [
+                {
+                    "$ref": "common.json#/$defs/BaseConsoleExporter"
+                }
+            ]
         }
     }
 }
