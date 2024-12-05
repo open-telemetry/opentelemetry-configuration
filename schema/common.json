@@ -72,7 +72,7 @@
                 "encoding": {
                     "type": ["string", "null"],
                     "enum": [
-                        "proto",
+                        "protobuf",
                         "json"
                     ]
                 }

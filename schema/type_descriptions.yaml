@@ -553,9 +553,9 @@
 - type: OtlpHttpExporter
   property_descriptions:
     encoding: >
-      Configure the encoding used for messages. Values include: proto, json. Implementations may not support json.
+      Configure the encoding used for messages. Values include: protobuf, json. Implementations may not support json.
       
-      If omitted or null, proto is used.
+      If omitted or null, protobuf is used.
   path_patterns:
     - .tracer_provider.processors[].*.exporter.otlp_http
     - .logger_provider.processors[].*.exporter.otlp_http

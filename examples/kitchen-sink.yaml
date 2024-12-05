@@ -68,9 +68,9 @@ logger_provider:
             # Configure max time (in milliseconds) to wait for each export.
             # If omitted or null, 10000 is used.
             timeout: 10000
-            # Configure the encoding used for messages. Values include: proto, json. Implementations may not support json.
-            # If omitted or null, proto is used.
-            encoding: proto
+            # Configure the encoding used for messages. Values include: protobuf, json. Implementations may not support json.
+            # If omitted or null, protobuf is used.
+            encoding: protobuf
     - # Configure a batch log record processor.
       batch:
         # Configure exporter.
@@ -206,9 +206,9 @@ meter_provider:
             # Configure max time (in milliseconds) to wait for each export.
             # If omitted or null, 10000 is used.
             timeout: 10000
-            # Configure the encoding used for messages. Values include: proto, json. Implementations may not support json.
-            # If omitted or null, proto is used.
-            encoding: proto
+            # Configure the encoding used for messages. Values include: protobuf, json. Implementations may not support json.
+            # If omitted or null, protobuf is used.
+            encoding: protobuf
             # Configure temporality preference. Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
             # If omitted or null, cumulative is used.
             temporality_preference: delta
@@ -390,9 +390,9 @@ tracer_provider:
             # Configure max time (in milliseconds) to wait for each export.
             # If omitted or null, 10000 is used.
             timeout: 10000
-            # Configure the encoding used for messages. Values include: proto, json. Implementations may not support json.
-            # If omitted or null, proto is used.
-            encoding: proto
+            # Configure the encoding used for messages. Values include: protobuf, json. Implementations may not support json.
+            # If omitted or null, protobuf is used.
+            encoding: protobuf
     - # Configure a batch span processor.
       batch:
         # Configure exporter.
