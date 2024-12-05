@@ -328,13 +328,13 @@
   property_descriptions:
     pull: Configure a pull based metric reader.
     periodic: Configure a periodic metric reader.
-    producers: Configure metric producers.
   path_patterns:
     - .meter_provider.readers[]
 
 - type: PullMetricReader
   property_descriptions:
     exporter: Configure exporter.
+    producers: Configure metric producers.
   path_patterns:
     - .meter_provider.readers[].pull
 
@@ -349,6 +349,7 @@
       
       If omitted or null, 30000 is used.
     exporter: Configure exporter.
+    producers: Configure metric producers.
   path_patterns:
     - .meter_provider.readers[].periodic
 
@@ -357,7 +358,8 @@
     opencensus: Configure metric producer to be opencensus.
     prometheus: Configure metric producer to be prometheus.
   path_patterns:
-    - .meter_provider.readers[].producers[]
+    - .meter_provider.readers[].producers[].pull
+    - .meter_provider.readers[].producers[].periodic
 
 - type: MetricExporter
   property_descriptions:

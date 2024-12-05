@@ -131,10 +131,9 @@ meter_provider:
               # If omitted, .included resource attributes are included.
               excluded:
                 - "service.attr1"
-      # Configure metric producers.
-      producers:
-        - # Configure metric producer to be opencensus.
-          opencensus:
+        # Configure metric producers.
+        producers:
+          - opencensus:
     - # Configure a periodic metric reader.
       periodic:
         # Configure delay interval (in milliseconds) between start of two consecutive exports.
@@ -185,10 +184,9 @@ meter_provider:
             # Configure default histogram aggregation. Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
             # If omitted or null, explicit_bucket_histogram is used.
             default_histogram_aggregation: base2_exponential_bucket_histogram
-      # Configure metric producers.
-      producers:
-        - # Configure metric producer to be prometheus.
-          prometheus:
+        # Configure metric producers.
+        producers:
+          - prometheus:
     - # Configure a periodic metric reader.
       periodic:
         # Configure exporter.
