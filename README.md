@@ -121,6 +121,70 @@ If a property is _not_ required, it should include a [comment](./CONTRIBUTING.md
 
 If a property `type` includes `null`, it must include a [comment](./CONTRIBUTING.md#description-generation) describing the semantics when the value is `null`. It's common for properties with primitive types to allow `null`. `object` types allow `null` if no properties are required and the presence of the property key is meaningful. 
 
+### Polymorphic types
+
+JSON schema's [schema composition](https://json-schema.org/understanding-json-schema/reference/combining) keywords (`allOf`, `anyOf`, `oneOf`) offer a tempting mechanism for object-oriented style inheritance and polymorphic patterns. However, JSON schema code generation tools may struggle or not support these keywords. Therefore, these keywords should be used judiciously, and should not be used to extend `object` types.
+
+For example:
+
+```json
+{
+  "Shape": {
+    "title": "Shape",
+    "type": "object",
+    "properties": {
+      "sides": { "type": "integer"}
+    }
+  },
+  "Square": {
+    "title": "Square",
+    "type": "object",
+    "allOf": [{"$ref": "#/$defs/Shape"}],
+    "properties": {
+      "side_length": {"type": "integer"}
+    }
+  }
+}
+```
+
+`allOf` is used in the `Square` type to extend the parent `Shape` type, such that `Square` has properties `sides` and `side_length`. Avoid this type of use.
+
+Another example:
+
+```json
+{
+  "AttributeNameValue": {
+    "title": "AttributeNameValue",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "value": {
+        "oneOf": [
+          {"type": "string"},
+          {"type": "number"},
+          {"type": "boolean"},
+          {"type": "null"},
+          {"type": "array", "items": {"type": "string"}},
+          {"type": "array", "items": {"type": "boolean"}},
+          {"type": "array", "items": {"type": "number"}}
+        ]
+      },
+      "type": {
+        "type": ["string", "null"],
+        "enum": [null, "string", "bool", "int", "double", "string_array", "bool_array", "int_array", "double_array"]
+      }
+    },
+    "required": [
+      "name", "value"
+    ]
+  }
+}
+```
+
+`oneOf` is used to specify that the `value` property matches the [standard attribute](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/common#standard-attribute) definition, and is either a primitive or array of primitives. This type of use is acceptable but should be used judiciously.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
