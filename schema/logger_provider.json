@@ -65,11 +65,14 @@
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
-                "otlp": {
-                    "$ref": "common.json#/$defs/Otlp"
+                "otlp_http": {
+                    "$ref": "common.json#/$defs/OtlpHttpExporter"
+                },
+                "otlp_grpc": {
+                    "$ref": "common.json#/$defs/OtlpGrpcExporter"
                 },
                 "console": {
-                    "$ref": "common.json#/$defs/Console"
+                    "$ref": "common.json#/$defs/ConsoleExporter"
                 }
             },
             "patternProperties": {

@@ -36,16 +36,55 @@
                 "name", "value"
             ]
         },
-        "Otlp": {
-            "type": "object",
+        "OtlpHttpExporter": {
+            "title": "OtlpHttpExporter",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
-                "protocol": {
-                    "type": "string",
-                    "pattern": "^(http|grpc)\\/(protobuf|json)"
-                },
                 "endpoint": {
-                    "type": "string"
+                    "type": ["string", "null"]
+                },
+                "certificate": {
+                    "type": ["string", "null"]
+                },
+                "client_key": {
+                    "type": ["string", "null"]
+                },
+                "client_certificate": {
+                    "type": ["string", "null"]
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "common.json#/$defs/NameStringValuePair"
+                    }
+                },
+                "headers_list": {
+                    "type": ["string", "null"]
+                },
+                "compression": {
+                    "type": ["string", "null"]
+                },
+                "timeout": {
+                    "type": ["integer", "null"],
+                    "minimum": 0
+                },
+                "encoding": {
+                    "type": ["string", "null"],
+                    "enum": [
+                        "protobuf",
+                        "json"
+                    ]
+                }
+            }
+        },
+        "OtlpGrpcExporter": {
+            "title": "OtlpGrpcExporter",
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "endpoint": {
+                    "type": ["string", "null"]
                 },
                 "certificate": {
                     "type": ["string", "null"]
@@ -75,14 +114,9 @@
                 "insecure": {
                     "type": ["boolean", "null"]
                 }
-            },
-            "required": [
-                "endpoint",
-                "protocol"
-            ],
-            "title": "Otlp"
+            }
         },
-        "Console": {
+        "ConsoleExporter": {
             "type": ["object", "null"],
             "additionalProperties": false
         }
