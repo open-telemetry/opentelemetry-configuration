@@ -44,6 +44,12 @@
                 },
                 "exporter": {
                     "$ref": "#/$defs/PushMetricExporter"
+                },
+                "producers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/MetricProducer"
+                    }
                 }
             },
             "required": [
@@ -57,6 +63,12 @@
             "properties": {
                 "exporter": {
                     "$ref": "#/$defs/PullMetricExporter"
+                },
+                "producers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/MetricProducer"
+                    }
                 }
             },
             "required": [
@@ -144,19 +156,13 @@
             "type": "object",
             "additionalProperties": false,
             "minProperties": 1,
-            "maxProperties": 2,
+            "maxProperties": 1,
             "properties": {
                 "periodic": {
                     "$ref": "#/$defs/PeriodicMetricReader"
                 },
                 "pull": {
                     "$ref": "#/$defs/PullMetricReader"
-                },
-                "producers": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/MetricProducer"
-                    }
                 }
             }
         },
