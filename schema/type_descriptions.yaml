@@ -360,8 +360,8 @@
     opencensus: Configure metric producer to be opencensus.
     prometheus: Configure metric producer to be prometheus.
   path_patterns:
-    - .meter_provider.readers[].producers[].pull
-    - .meter_provider.readers[].producers[].periodic
+    - .meter_provider.readers[].pull.producers[]
+    - .meter_provider.readers[].periodic.producers[]
 
 - type: MetricExporter
   property_descriptions:
