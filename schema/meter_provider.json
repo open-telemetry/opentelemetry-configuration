@@ -36,11 +36,11 @@
             "properties": {
                 "interval": {
                     "type": ["integer", "null"],
-                    "exclusiveMinimum": 0
+                    "minimum": 0
                 },
                 "timeout": {
                     "type": ["integer", "null"],
-                    "exclusiveMinimum": 0
+                    "minimum": 0
                 },
                 "exporter": {
                     "$ref": "#/$defs/PushMetricExporter"
@@ -218,7 +218,7 @@
                 },
                 "timeout": {
                     "type": ["integer", "null"],
-                    "exclusiveMinimum": 0
+                    "minimum": 0
                 },
                 "encoding": {
                     "type": ["string", "null"],

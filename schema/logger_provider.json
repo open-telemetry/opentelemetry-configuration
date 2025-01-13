@@ -37,11 +37,11 @@
             "properties": {
                 "schedule_delay": {
                     "type": ["integer", "null"],
-                    "exclusiveMinimum": 0
+                    "minimum": 0
                 },
                 "export_timeout": {
                     "type": ["integer", "null"],
-                    "exclusiveMinimum": 0
+                    "minimum": 0
                 },
                 "max_queue_size": {
                     "type": ["integer", "null"],

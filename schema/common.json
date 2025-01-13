@@ -109,7 +109,7 @@
                 },
                 "timeout": {
                     "type": ["integer", "null"],
-                    "exclusiveMinimum": 0
+                    "minimum": 0
                 },
                 "insecure": {
                     "type": ["boolean", "null"]

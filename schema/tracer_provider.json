@@ -29,11 +29,11 @@
             "properties": {
                 "schedule_delay": {
                     "type": ["integer", "null"],
-                    "exclusiveMinimum": 0
+                    "minimum": 0
                 },
                 "export_timeout": {
                     "type": ["integer", "null"],
-                    "exclusiveMinimum": 0
+                    "minimum": 0
                 },
                 "max_queue_size": {
                     "type": ["integer", "null"],
@@ -74,7 +74,7 @@
                         },
                         "interval": {
                             "type": ["integer", "null"],
-                            "exclusiveMinimum": 0
+                            "minimum": 0
                         },
                         "initial_sampler": {
                             "$ref": "#/$defs/Sampler"
@@ -215,7 +215,7 @@
                 },
                 "timeout": {
                     "type": ["integer", "null"],
-                    "exclusiveMinimum": 0
+                    "minimum": 0
                 }
             }
         }

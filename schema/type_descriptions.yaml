@@ -98,11 +98,11 @@
 - type: AttributeLimits
   property_descriptions:
     attribute_value_length_limit: >
-      Configure max attribute value size.
+      Configure max attribute value size. Value must be non-negative.
       
       If omitted or null, there is no limit.
     attribute_count_limit: >
-      Configure max attribute count.
+      Configure max attribute count. Value must be non-negative.
       
       If omitted or null, 128 is used.
   path_patterns:
@@ -134,19 +134,19 @@
 - type: BatchLogRecordProcessor
   property_descriptions:
     schedule_delay: >
-      Configure delay interval (in milliseconds) between two consecutive exports. Value must be > 0.
+      Configure delay interval (in milliseconds) between two consecutive exports. Value must be non-negative.
       
       If omitted or null, 1000 is used.
     export_timeout: >
-      Configure maximum allowed time (in milliseconds) to export data. Value must be > 0.
+      Configure maximum allowed time (in milliseconds) to export data. Value must be non-negative. A value of 0 indicates indefinite.
       
       If omitted or null, 30000 is used.
     max_queue_size: >
-      Configure maximum queue size. Value must be > 0.
+      Configure maximum queue size. Value must be positive.
       
       If omitted or null, 2048 is used.
     max_export_batch_size: >
-      Configure maximum batch size. Value must be > 0.
+      Configure maximum batch size. Value must be positive.
       
       If omitted or null, 512 is used.
     exporter: Configure exporter.
@@ -170,11 +170,11 @@
 - type: LogRecordLimits
   property_descriptions:
     attribute_value_length_limit: >
-      Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+      Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. Value must be non-negative.
       
       If omitted or null, there is no limit.
     attribute_count_limit: >
-      Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+      Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. Value must be non-negative.
       
       If omitted or null, 128 is used.
   path_patterns:
@@ -203,19 +203,19 @@
 - type: BatchSpanProcessor
   property_descriptions:
     schedule_delay: >
-      Configure delay interval (in milliseconds) between two consecutive exports. Value must be > 0.
+      Configure delay interval (in milliseconds) between two consecutive exports. Value must be non-negative.
       
       If omitted or null, 5000 is used.
     export_timeout: >
-      Configure maximum allowed time (in milliseconds) to export data. Value must be > 0.
+      Configure maximum allowed time (in milliseconds) to export data. Value must be non-negative. A value of 0 indicates indefinite.
       
       If omitted or null, 30000 is used.
     max_queue_size: >
-      Configure maximum queue size. Value must be > 0.
+      Configure maximum queue size. Value must be positive.
       
       If omitted or null, 2048 is used.
     max_export_batch_size: >
-      Configure maximum batch size. Value must be > 0.
+      Configure maximum batch size. Value must be positive.
       
       If omitted or null, 512 is used.
     exporter: Configure exporter.
@@ -244,7 +244,7 @@
       
       If omitted or null, http://localhost:9411/api/v2/spans is used.
     timeout: >
-      Configure max time (in milliseconds) to wait for each export. Value must be > 0.
+      Configure max time (in milliseconds) to wait for each export. Value must be non-negative. A value of 0 indicates indefinite.
       
       If omitted or null, 10000 is used.
   path_patterns:
@@ -253,27 +253,27 @@
 - type: SpanLimits
   property_descriptions:
     attribute_value_length_limit: >
-      Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+      Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. Value must be non-negative.
       
       If omitted or null, there is no limit.
     attribute_count_limit: >
-      Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+      Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. Value must be non-negative.
       
       If omitted or null, 128 is used.
     event_count_limit: >
-      Configure max span event count.
+      Configure max span event count. Value must be non-negative.
       
       If omitted or null, 128 is used.
     link_count_limit: >
-      Configure max span link count.
+      Configure max span link count. Value must be non-negative.
       
       If omitted or null, 128 is used.
     event_attribute_count_limit: >
-      Configure max attributes per span event.
+      Configure max attributes per span event. Value must be non-negative.
       
       If omitted or null, 128 is used.
     link_attribute_count_limit: >
-      Configure max attributes per span link.
+      Configure max attributes per span link. Value must be non-negative.
       
       If omitted or null, 128 is used.
   path_patterns:
@@ -343,11 +343,11 @@
 - type: PeriodicMetricReader
   property_descriptions:
     interval: >
-      Configure delay interval (in milliseconds) between start of two consecutive exports. Value must be > 0.
+      Configure delay interval (in milliseconds) between start of two consecutive exports. Value must be non-negative.
       
       If omitted or null, 60000 is used.
     timeout: >
-      Configure maximum allowed time (in milliseconds) to export data. Value must be > 0.
+      Configure maximum allowed time (in milliseconds) to export data. Value must be non-negative. A value of 0 indicates indefinite.
       
       If omitted or null, 30000 is used.
     exporter: Configure exporter.
@@ -534,7 +534,7 @@
       
       If omitted or null, none is used.
     timeout: >
-      Configure max time (in milliseconds) to wait for each export. Value must be > 0.
+      Configure max time (in milliseconds) to wait for each export. Value must be non-negative. A value of 0 indicates indefinite.
       
       If omitted or null, 10000 is used.
     temporality_preference: >

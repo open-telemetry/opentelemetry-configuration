@@ -14,10 +14,10 @@ file_format: "0.3"
 disabled: false
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
-  # Configure max attribute value size.
+  # Configure max attribute value size. Value must be non-negative.
   # If omitted or null, there is no limit.
   attribute_value_length_limit: 4096
-  # Configure max attribute count.
+  # Configure max attribute count. Value must be non-negative.
   # If omitted or null, 128 is used.
   attribute_count_limit: 128
 # Configure logger provider.
@@ -27,16 +27,16 @@ logger_provider:
   processors:
     - # Configure a batch log record processor.
       batch:
-        # Configure delay interval (in milliseconds) between two consecutive exports. Value must be > 0.
+        # Configure delay interval (in milliseconds) between two consecutive exports. Value must be non-negative.
         # If omitted or null, 1000 is used.
         schedule_delay: 5000
-        # Configure maximum allowed time (in milliseconds) to export data. Value must be > 0.
+        # Configure maximum allowed time (in milliseconds) to export data. Value must be non-negative. A value of 0 indicates indefinite.
         # If omitted or null, 30000 is used.
         export_timeout: 30000
-        # Configure maximum queue size. Value must be > 0.
+        # Configure maximum queue size. Value must be positive.
         # If omitted or null, 2048 is used.
         max_queue_size: 2048
-        # Configure maximum batch size. Value must be > 0.
+        # Configure maximum batch size. Value must be positive.
         # If omitted or null, 512 is used.
         max_export_batch_size: 512
         # Configure exporter.
@@ -65,7 +65,7 @@ logger_provider:
             # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export. Value must be > 0.
+            # Configure max time (in milliseconds) to wait for each export. Value must be non-negative. A value of 0 indicates indefinite.
             # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure the encoding used for messages. Values include: protobuf, json. Implementations may not support json.
@@ -101,7 +101,7 @@ logger_provider:
             # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export.
+            # Configure max time (in milliseconds) to wait for each export. Value must be non-negative. A value of 0 indicates indefinite.
             # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure client transport security for the exporter's connection. Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
@@ -115,10 +115,10 @@ logger_provider:
           console:
   # Configure log record limits. See also attribute_limits.
   limits:
-    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. Value must be non-negative.
     # If omitted or null, there is no limit.
     attribute_value_length_limit: 4096
-    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. Value must be non-negative.
     # If omitted or null, 128 is used.
     attribute_count_limit: 128
 # Configure meter provider.
@@ -169,10 +169,10 @@ meter_provider:
             opencensus:
     - # Configure a periodic metric reader.
       periodic:
-        # Configure delay interval (in milliseconds) between start of two consecutive exports. Value must be > 0.
+        # Configure delay interval (in milliseconds) between start of two consecutive exports. Value must be non-negative.
         # If omitted or null, 60000 is used.
         interval: 60000
-        # Configure maximum allowed time (in milliseconds) to export data. Value must be > 0.
+        # Configure maximum allowed time (in milliseconds) to export data. Value must be non-negative. A value of 0 indicates indefinite.
         # If omitted or null, 30000 is used.
         timeout: 30000
         # Configure exporter.
@@ -203,7 +203,7 @@ meter_provider:
             # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export. Value must be > 0.
+            # Configure max time (in milliseconds) to wait for each export. Value must be non-negative. A value of 0 indicates indefinite.
             # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure the encoding used for messages. Values include: protobuf, json. Implementations may not support json.
@@ -249,7 +249,7 @@ meter_provider:
             # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export.
+            # Configure max time (in milliseconds) to wait for each export. Value must be non-negative. A value of 0 indicates indefinite.
             # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure client transport security for the exporter's connection. Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
@@ -351,16 +351,16 @@ tracer_provider:
   processors:
     - # Configure a batch span processor.
       batch:
-        # Configure delay interval (in milliseconds) between two consecutive exports. Value must be > 0.
+        # Configure delay interval (in milliseconds) between two consecutive exports. Value must be non-negative.
         # If omitted or null, 5000 is used.
         schedule_delay: 5000
-        # Configure maximum allowed time (in milliseconds) to export data. Value must be > 0.
+        # Configure maximum allowed time (in milliseconds) to export data. Value must be non-negative. A value of 0 indicates indefinite.
         # If omitted or null, 30000 is used.
         export_timeout: 30000
-        # Configure maximum queue size. Value must be > 0.
+        # Configure maximum queue size. Value must be positive.
         # If omitted or null, 2048 is used.
         max_queue_size: 2048
-        # Configure maximum batch size. Value must be > 0.
+        # Configure maximum batch size. Value must be positive.
         # If omitted or null, 512 is used.
         max_export_batch_size: 512
         # Configure exporter.
@@ -391,7 +391,7 @@ tracer_provider:
             # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export. Value must be > 0.
+            # Configure max time (in milliseconds) to wait for each export. Value must be non-negative. A value of 0 indicates indefinite.
             # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure the encoding used for messages. Values include: protobuf, json. Implementations may not support json.
@@ -427,7 +427,7 @@ tracer_provider:
             # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export.
+            # Configure max time (in milliseconds) to wait for each export. Value must be non-negative. A value of 0 indicates indefinite.
             # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure client transport security for the exporter's connection. Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
@@ -442,7 +442,7 @@ tracer_provider:
             # Configure endpoint.
             # If omitted or null, http://localhost:9411/api/v2/spans is used.
             endpoint: http://localhost:9411/api/v2/spans
-            # Configure max time (in milliseconds) to wait for each export. Value must be > 0.
+            # Configure max time (in milliseconds) to wait for each export. Value must be non-negative. A value of 0 indicates indefinite.
             # If omitted or null, 10000 is used.
             timeout: 10000
     - # Configure a simple span processor.
@@ -453,22 +453,22 @@ tracer_provider:
           console:
   # Configure span limits. See also attribute_limits.
   limits:
-    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. Value must be non-negative.
     # If omitted or null, there is no limit.
     attribute_value_length_limit: 4096
-    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. Value must be non-negative.
     # If omitted or null, 128 is used.
     attribute_count_limit: 128
-    # Configure max span event count.
+    # Configure max span event count. Value must be non-negative.
     # If omitted or null, 128 is used.
     event_count_limit: 128
-    # Configure max span link count.
+    # Configure max span link count. Value must be non-negative.
     # If omitted or null, 128 is used.
     link_count_limit: 128
-    # Configure max attributes per span event.
+    # Configure max attributes per span event. Value must be non-negative.
     # If omitted or null, 128 is used.
     event_attribute_count_limit: 128
-    # Configure max attributes per span link.
+    # Configure max attributes per span link. Value must be non-negative.
     # If omitted or null, 128 is used.
     link_attribute_count_limit: 128
   # Configure the sampler.
