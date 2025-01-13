@@ -25,7 +25,7 @@
 # - OTEL_TRACES_EXPORTER
 # - OTEL_METRICS_EXPORTER
 # - OTEL_LOGS_EXPORTER
-# - OTEL_EXPORTER_OTLP_PROTOCOL
+# - OTEL_EXPORTER_OTLP_PROTOCOL, OTEL_EXPORTER_OTLP_{SIGNAL}_PROTOCOL
 # - OTEL_EXPORTER_OTLP_ENDPOINT
 # - OTEL_EXPORTER_OTLP_INSECURE, OTEL_EXPORTER_OTLP_{SIGNAL}_INSECURE
 # - OTEL_EXPORTER_OTLP_CERTIFICATE
@@ -88,12 +88,10 @@ tracer_provider:
         max_export_batch_size: ${OTEL_BSP_MAX_EXPORT_BATCH_SIZE:-512}
         # Configure exporter.
         exporter:
-          # Configure exporter to be OTLP.
-          otlp:
-            # Configure protocol. Values include: http/protobuf, http/json, grpc.
-            protocol: ${OTEL_EXPORTER_OTLP_TRACES_PROTOCOL:-http/protobuf}
-            # Configure endpoint.
-            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
+          # Configure exporter to be OTLP with HTTP transport.
+          otlp_http:
+            # Configure endpoint, including the trace specific path.
+            # If omitted or null, http://localhost:4318/v1/traces is used.
             endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}
             # Configure certificate. Absolute path to certificate file.
             # If omitted or null, system default certificate verification is used for secure connections.
@@ -184,12 +182,10 @@ meter_provider:
         timeout: ${OTEL_METRIC_EXPORT_TIMEOUT:-30000}
         # Configure exporter.
         exporter:
-          # Configure exporter to be OTLP.
-          otlp:
-            # Configure protocol. Values include: http/protobuf, http/json, grpc.
-            protocol: ${OTEL_EXPORTER_OTLP_METRICS_PROTOCOL:-http/protobuf}
-            # Configure endpoint.
-            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
+          # Configure exporter to be OTLP with HTTP transport.
+          otlp_http:
+            # Configure endpoint, including the metric specific path.
+            # If omitted or null, http://localhost:4318/v1/metrics is used.
             endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
             # Configure certificate. Absolute path to certificate file.
             # If omitted or null, system default certificate verification is used for secure connections.
@@ -243,12 +239,8 @@ logger_provider:
         max_export_batch_size: ${OTEL_BLRP_MAX_EXPORT_BATCH_SIZE:-512}
         # Configure exporter.
         exporter:
-          # Configure exporter to be OTLP.
-          otlp:
-            # Configure protocol. Values include: http/protobuf, http/json, grpc.
-            protocol: ${OTEL_EXPORTER_OTLP_LOGS_PROTOCOL:-http/protobuf}
-            # Configure endpoint.
-            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
+          # Configure exporter to be OTLP with HTTP transport.
+          otlp_http:
             endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}
             # Configure certificate. Absolute path to certificate file.
             # If omitted or null, system default certificate verification is used for secure connections.
