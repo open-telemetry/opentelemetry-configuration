@@ -200,8 +200,8 @@ Maintainers ([@open-telemetry/configuration-maintainers](https://github.com/orgs
 
 - [Alex Boten](https://github.com/codeboten), Honeycomb
 - [Jack Berg](https://github.com/jack-berg), New Relic
-- [Tristan Sloughter](https://github.com/tsloughter), Splunk
-- [Tyler Yahn](https://github.com/tsloughter), Splunk
+- [Tristan Sloughter](https://github.com/tsloughter), MyDecisiveAI
+- [Tyler Yahn](https://github.com/MrAlias), Splunk
 
 *Find more about the maintainer role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).*
 

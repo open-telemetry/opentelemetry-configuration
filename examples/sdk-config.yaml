@@ -55,12 +55,10 @@ tracer_provider:
         max_export_batch_size: 512
         # Configure exporter.
         exporter:
-          # Configure exporter to be OTLP.
-          otlp:
-            # Configure protocol. Values include: http/protobuf, http/json, grpc.
-            protocol: http/protobuf
-            # Configure endpoint.
-            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
+          # Configure exporter to be OTLP with HTTP transport.
+          otlp_http:
+            # Configure endpoint, including the trace specific path.
+            # If omitted or null, http://localhost:4318/v1/traces is used.
             endpoint: http://localhost:4318/v1/traces
             # Configure certificate. Absolute path to certificate file.
             # If omitted or null, system default certificate verification is used for secure connections.
@@ -145,12 +143,10 @@ meter_provider:
         timeout: 30000
         # Configure exporter.
         exporter:
-          # Configure exporter to be OTLP.
-          otlp:
-            # Configure protocol. Values include: http/protobuf, http/json, grpc.
-            protocol: http/protobuf
-            # Configure endpoint.
-            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
+          # Configure exporter to be OTLP with HTTP transport.
+          otlp_http:
+            # Configure endpoint, including the metric specific path.
+            # If omitted or null, http://localhost:4318/v1/metrics is used.
             endpoint: http://localhost:4318/v1/metrics
             # Configure certificate. Absolute path to certificate file.
             # If omitted or null, system default certificate verification is used for secure connections.
@@ -200,12 +196,8 @@ logger_provider:
         max_export_batch_size: 512
         # Configure exporter.
         exporter:
-          # Configure exporter to be OTLP.
-          otlp:
-            # Configure protocol. Values include: http/protobuf, http/json, grpc.
-            protocol: http/protobuf
-            # Configure endpoint.
-            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
+          # Configure exporter to be OTLP with HTTP transport.
+          otlp_http:
             endpoint: http://localhost:4318/v1/logs
             # Configure certificate. Absolute path to certificate file.
             # If omitted or null, system default certificate verification is used for secure connections.

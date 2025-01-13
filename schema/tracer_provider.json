@@ -137,14 +137,17 @@
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
-                "otlp": {
-                    "$ref": "common.json#/$defs/Otlp"
+                "otlp_http": {
+                    "$ref": "common.json#/$defs/OtlpHttpExporter"
+                },
+                "otlp_grpc": {
+                    "$ref": "common.json#/$defs/OtlpGrpcExporter"
                 },
                 "console": {
-                    "$ref": "common.json#/$defs/Console"
+                    "$ref": "common.json#/$defs/ConsoleExporter"
                 },
                 "zipkin": {
-                    "$ref": "#/$defs/Zipkin"
+                    "$ref": "#/$defs/ZipkinSpanExporter"
                 }
             },
             "patternProperties": {
@@ -202,7 +205,8 @@
                 }
             }
         },
-        "Zipkin": {
+        "ZipkinSpanExporter": {
+            "title": "ZipkinSpanExporter",
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -213,8 +217,7 @@
                     "type": ["integer", "null"],
                     "exclusiveMinimum": 0
                 }
-            },
-            "title": "Zipkin"
+            }
         }
     }
 }

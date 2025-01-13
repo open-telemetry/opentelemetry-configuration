@@ -82,11 +82,14 @@
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
-                "otlp": {
-                    "$ref": "#/$defs/OtlpMetric"
+                "otlp_http": {
+                    "$ref": "#/$defs/OtlpHttpMetricExporter"
+                },
+                "otlp_grpc": {
+                    "$ref": "#/$defs/OtlpGrpcMetricExporter"
                 },
                 "console": {
-                    "$ref": "common.json#/$defs/Console"
+                    "$ref": "common.json#/$defs/ConsoleExporter"
                 }
             },
             "patternProperties": {
@@ -102,7 +105,7 @@
             "maxProperties": 1,
             "properties": {
                 "prometheus": {
-                    "$ref": "#/$defs/Prometheus"
+                    "$ref": "#/$defs/PrometheusMetricExporter"
                 }
             },
             "patternProperties": {
@@ -128,7 +131,8 @@
                 }
             }
         },
-        "Prometheus": {
+        "PrometheusMetricExporter": {
+            "title": "PrometheusMetricExporter",
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -166,16 +170,30 @@
                 }
             }
         },
-        "OtlpMetric": {
-            "type": "object",
+        "ExporterTemporalityPreference": {
+            "title": "ExporterTemporalityPreference",
+            "type": ["string", "null"],
+            "enum": [
+                "cumulative",
+                "delta",
+                "low_memory"
+            ]
+        },
+        "ExporterDefaultHistogramAggregation": {
+            "title": "ExporterDefaultHistogramAggregation",
+            "type": ["string", "null"],
+            "enum": [
+                "explicit_bucket_histogram",
+                "base2_exponential_bucket_histogram"
+            ]
+        },
+        "OtlpHttpMetricExporter": {
+            "title": "OtlpHttpMetricExporter",
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
-                "protocol": {
-                    "type": "string",
-                    "pattern": "^(http|grpc)\\/(protobuf|json)"
-                },
                 "endpoint": {
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "certificate": {
                     "type": ["string", "null"]
@@ -202,30 +220,64 @@
                     "type": ["integer", "null"],
                     "exclusiveMinimum": 0
                 },
-                "temporality_preference": {
+                "encoding": {
                     "type": ["string", "null"],
                     "enum": [
-                        "cumulative",
-                        "delta",
-                        "low_memory"
+                        "protobuf",
+                        "json"
                     ]
                 },
+                "temporality_preference": {
+                    "$ref": "#/$defs/ExporterTemporalityPreference"
+                },
                 "default_histogram_aggregation": {
-                    "type": ["string", "null"],
-                    "enum": [
-                        "explicit_bucket_histogram",
-                        "base2_exponential_bucket_histogram"
-                    ]
+                    "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+                }
+            }
+        },
+        "OtlpGrpcMetricExporter": {
+            "title": "OtlpGrpcMetricExporter",
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "endpoint": {
+                    "type": ["string", "null"]
+                },
+                "certificate": {
+                    "type": ["string", "null"]
+                },
+                "client_key": {
+                    "type": ["string", "null"]
+                },
+                "client_certificate": {
+                    "type": ["string", "null"]
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "common.json#/$defs/NameStringValuePair"
+                    }
+                },
+                "headers_list": {
+                    "type": ["string", "null"]
+                },
+                "compression": {
+                    "type": ["string", "null"]
+                },
+                "timeout": {
+                    "type": ["integer", "null"],
+                    "minimum": 0
                 },
                 "insecure": {
                     "type": ["boolean", "null"]
+                },
+                "temporality_preference": {
+                    "$ref": "#/$defs/ExporterTemporalityPreference"
+                },
+                "default_histogram_aggregation": {
+                    "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
                 }
-            },
-            "required": [
-                "endpoint",
-                "protocol"
-            ],
-            "title": "OtlpMetric"
+            }
         },
         "View": {
             "type": "object",
