@@ -185,6 +185,15 @@ Another example:
 
 `oneOf` is used to specify that the `value` property matches the [standard attribute](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/common#standard-attribute) definition, and is either a primitive or array of primitives. This type of use is acceptable but should be used judiciously.
 
+### Annotations - title and description
+
+The JSON schema [`title` and `description` annotations](https://json-schema.org/understanding-json-schema/reference/annotations) are keywords which are not involved in validation. Instead, they act as a mechanism to help schemas be self-documenting, and may be used by code generation tools.
+
+Despite these potential benefits, these keywords should be omitted:
+
+* The titles of `object` and `enum` types produced by code generation tools should be defined using key values in [$defs](https://json-schema.org/understanding-json-schema/structuring#defs). Setting the `title` keyword introduces multiple sources of truth and possible conflict.
+* As described in [description generation](./CONTRIBUTING.md#description-generation), we use a different mechanism to describe the semantics of types and properties. Setting the `description` keyword introduces multiple sources of truth and possible conflict.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)

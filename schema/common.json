@@ -1,7 +1,6 @@
 {
     "$id": "https://opentelemetry.io/otelconfig/common.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Common",
     "$defs": {
         "IncludeExclude": {
             "type": "object",
@@ -37,7 +36,6 @@
             ]
         },
         "OtlpHttpExporter": {
-            "title": "OtlpHttpExporter",
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -79,7 +77,6 @@
             }
         },
         "OtlpGrpcExporter": {
-            "title": "OtlpGrpcExporter",
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {

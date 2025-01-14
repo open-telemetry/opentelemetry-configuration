@@ -15,22 +15,22 @@
             "$ref": "#/$defs/AttributeLimits"
         },
         "logger_provider": {
-            "$ref": "logger_provider.json"
+            "$ref": "#/$defs/LoggerProvider"
         },
         "meter_provider": {
-            "$ref": "meter_provider.json"
+            "$ref": "#/$defs/MeterProvider"
         },
         "propagator": {
-            "$ref": "propagator.json"
+            "$ref": "#/$defs/Propagator"
         },
         "tracer_provider": {
-            "$ref": "tracer_provider.json"
+            "$ref": "#/$defs/TracerProvider"
         },
         "resource": {
-            "$ref": "resource.json"
+            "$ref": "#/$defs/Resource"
         },
         "instrumentation": {
-            "$ref": "instrumentation.json"
+            "$ref": "#/$defs/Instrumentation"
         }
     },
     "required": [
@@ -48,6 +48,24 @@
                     "type": ["integer", "null"]
                 }
             }
+        },
+        "LoggerProvider": {
+            "$ref": "logger_provider.json"
+        },
+        "MeterProvider": {
+            "$ref": "meter_provider.json"
+        },
+        "TracerProvider": {
+            "$ref": "tracer_provider.json"
+        },
+        "Propagator": {
+            "$ref": "propagator.json"
+        },
+        "Resource": {
+            "$ref": "resource.json"
+        },
+        "Instrumentation": {
+            "$ref": "instrumentation.json"
         }
     }
 }
