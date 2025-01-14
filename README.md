@@ -172,18 +172,74 @@ Another example:
         ]
       },
       "type": {
-        "type": ["string", "null"],
-        "enum": [null, "string", "bool", "int", "double", "string_array", "bool_array", "int_array", "double_array"]
+        "$ref": "#/$defs/AttributeType"
       }
     },
     "required": [
       "name", "value"
+    ]
+  },
+  "AttributeType": {
+    "type": ["string", "null"],
+    "enum": [
+      null,
+      "string",
+      "bool",
+      "int",
+      "double",
+      "string_array",
+      "bool_array",
+      "int_array",
+      "double_array"
     ]
   }
 }
 ```
 
 `oneOf` is used to specify that the `value` property matches the [standard attribute](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/common#standard-attribute) definition, and is either a primitive or array of primitives. This type of use is acceptable but should be used judiciously.
+
+## Schemas and subschemas
+
+In JSON Schema, a [schema](https://json-schema.org/learn/glossary#schema) is a document, and a [subschema](https://json-schema.org/learn/glossary#subschema) is contained in surrounding parent schema. Subschemas can be nested in various ways:
+
+A property can directly describe a complex set of requirements including nested structures:
+
+```json
+{
+  "properties": {
+    "shape": {
+      "type": "object",
+      "properties": {
+        "color": { "type": "string" },
+        "sides": { "type": "int" }
+      }
+    }
+  }
+}
+```
+
+Or a property can reference a subschema residing in a schema document's [$defs](https://json-schema.org/understanding-json-schema/structuring#defs):
+
+```json
+{
+  "properties": {
+    "shape": {
+      "$ref": "#/$defs/Sampler"
+    }
+  },
+  "$defs": {
+    "Shape": {
+      "type": "object",
+      "properties": {
+        "color": { "type": "string" },
+        "sides": { "type": "int" }
+      }
+    }
+  }
+}
+```
+
+In order to promote stylistic consistency and allow for reuse of concepts, `object` and `enum` types should be defined in either as a top level schema document or as a subschema in a schema document's `$defs`.
 
 ## Contributing
 

@@ -42,22 +42,25 @@
                     ]
                 },
                 "type": {
-                    "type": ["string", "null"],
-                    "enum": [
-                        null,
-                        "string",
-                        "bool",
-                        "int",
-                        "double",
-                        "string_array",
-                        "bool_array",
-                        "int_array",
-                        "double_array"
-                    ]
+                    "$ref": "#/$defs/AttributeType"
                 }
             },
             "required": [
                 "name", "value"
+            ]
+        },
+        "AttributeType": {
+            "type": ["string", "null"],
+            "enum": [
+                null,
+                "string",
+                "bool",
+                "int",
+                "double",
+                "string_array",
+                "bool_array",
+                "int_array",
+                "double_array"
             ]
         },
         "Detectors": {
