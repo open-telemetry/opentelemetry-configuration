@@ -283,7 +283,6 @@
             }
         },
         "OtlpFileMetricExporter": {
-            "title": "OtlpFileMetricExporter",
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {

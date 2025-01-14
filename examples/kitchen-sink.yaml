@@ -113,9 +113,18 @@ logger_provider:
         exporter:
           # Configure exporter to be OTLP with file transport.
           otlp_file:
-            # Configure output stream.
+            # Configure output stream. Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
-            output_stream: logs.jsonl
+            output_stream: file:///var/log/logs.jsonl
+    - # Configure a batch log record processor.
+      batch:
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP with file transport.
+          otlp_file:
+            # Configure output stream. Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+            # If omitted or null, stdout is used.
+            output_stream: stdout
     - # Configure a simple log record processor.
       simple:
         # Configure exporter.
@@ -276,9 +285,30 @@ meter_provider:
         exporter:
           # Configure exporter to be OTLP with file transport.
           otlp_file:
-            # Configure output stream.
+            # Configure output stream. Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
-            output_stream: metrics.jsonl
+            output_stream: file:///var/log/metrics.jsonl
+            # Configure temporality preference. Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, cumulative is used.
+            temporality_preference: delta
+            # Configure default histogram aggregation. Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, explicit_bucket_histogram is used.
+            default_histogram_aggregation: base2_exponential_bucket_histogram
+    - # Configure a periodic metric reader.
+      periodic:
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP with file transport.
+          otlp_file:
+            # Configure output stream. Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+            # If omitted or null, stdout is used.
+            output_stream: stdout
+            # Configure temporality preference. Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, cumulative is used.
+            temporality_preference: delta
+            # Configure default histogram aggregation. Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, explicit_bucket_histogram is used.
+            default_histogram_aggregation: base2_exponential_bucket_histogram
     - # Configure a periodic metric reader.
       periodic:
         # Configure exporter.
@@ -457,9 +487,18 @@ tracer_provider:
         exporter:
           # Configure exporter to be OTLP with file transport.
           otlp_file:
-            # Configure output stream.
+            # Configure output stream. Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
-            output_stream: traces.jsonl
+            output_stream: file:///var/log/traces.jsonl
+    - # Configure a batch span processor.
+      batch:
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP with file transport.
+          otlp_file:
+            # Configure output stream. Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+            # If omitted or null, stdout is used.
+            output_stream: stdout
     - # Configure a batch span processor.
       batch:
         # Configure exporter.

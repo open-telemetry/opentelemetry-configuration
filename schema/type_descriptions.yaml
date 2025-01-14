@@ -606,7 +606,7 @@
 - type: OtlpFileExporter
   property_descriptions:
     output_stream: >
-      Configure output stream.
+      Configure output stream. Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
 
       If omitted or null, stdout is used.
   path_patterns:
