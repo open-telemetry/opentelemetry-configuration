@@ -107,6 +107,15 @@ logger_provider:
             # Configure client transport security for the exporter's connection. Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
             # If omitted or null, false is used.
             insecure: false
+    - # Configure a batch log record processor.
+      batch:
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP with file transport.
+          otlp_file:
+            # Configure output stream.
+            # If omitted or null, stdout is used.
+            output_stream: logs.jsonl
     - # Configure a simple log record processor.
       simple:
         # Configure exporter.
@@ -261,6 +270,15 @@ meter_provider:
             # Configure default histogram aggregation. Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
             # If omitted or null, explicit_bucket_histogram is used.
             default_histogram_aggregation: base2_exponential_bucket_histogram
+    - # Configure a periodic metric reader.
+      periodic:
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP with file transport.
+          otlp_file:
+            # Configure output stream.
+            # If omitted or null, stdout is used.
+            output_stream: metrics.jsonl
     - # Configure a periodic metric reader.
       periodic:
         # Configure exporter.
@@ -433,6 +451,15 @@ tracer_provider:
             # Configure client transport security for the exporter's connection. Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
             # If omitted or null, false is used.
             insecure: false
+    - # Configure a batch span processor.
+      batch:
+        # Configure exporter.
+        exporter:
+          # Configure exporter to be OTLP with file transport.
+          otlp_file:
+            # Configure output stream.
+            # If omitted or null, stdout is used.
+            output_stream: traces.jsonl
     - # Configure a batch span processor.
       batch:
         # Configure exporter.
