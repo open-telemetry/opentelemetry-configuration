@@ -98,11 +98,15 @@
 - type: AttributeLimits
   property_descriptions:
     attribute_value_length_limit: >
-      Configure max attribute value size.
+      Configure max attribute value size. 
+      
+      Value must be non-negative.
       
       If omitted or null, there is no limit.
     attribute_count_limit: >
-      Configure max attribute count.
+      Configure max attribute count. 
+      
+      Value must be non-negative.
       
       If omitted or null, 128 is used.
   path_patterns:
@@ -111,7 +115,9 @@
 - type: Propagator
   property_descriptions:
     composite: >
-      Configure the set of propagators to include in the composite text map propagator. Built-in values include: tracecontext, baggage, b3, b3multi, jaeger, none. Known third party values include: xray, ottrace. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration.
+      Configure the set of propagators to include in the composite text map propagator. 
+      
+      Built-in values include: tracecontext, baggage, b3, b3multi, jaeger, none. Known third party values include: xray, ottrace. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration.
   path_patterns:
     - .propagator
 # END OpenTelemetryConfiguration
@@ -134,19 +140,23 @@
 - type: BatchLogRecordProcessor
   property_descriptions:
     schedule_delay: >
-      Configure delay interval (in milliseconds) between two consecutive exports.
+      Configure delay interval (in milliseconds) between two consecutive exports. 
+      
+      Value must be non-negative.
       
       If omitted or null, 1000 is used.
     export_timeout: >
-      Configure maximum allowed time (in milliseconds) to export data.
+      Configure maximum allowed time (in milliseconds) to export data. 
+      
+      Value must be non-negative. A value of 0 indicates no limit (infinity).
       
       If omitted or null, 30000 is used.
     max_queue_size: >
-      Configure maximum queue size.
+      Configure maximum queue size. Value must be positive.
       
       If omitted or null, 2048 is used.
     max_export_batch_size: >
-      Configure maximum batch size.
+      Configure maximum batch size. Value must be positive.
       
       If omitted or null, 512 is used.
     exporter: Configure exporter.
@@ -170,11 +180,15 @@
 - type: LogRecordLimits
   property_descriptions:
     attribute_value_length_limit: >
-      Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+      Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
+      
+      Value must be non-negative.
       
       If omitted or null, there is no limit.
     attribute_count_limit: >
-      Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+      Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
+      
+      Value must be non-negative.
       
       If omitted or null, 128 is used.
   path_patterns:
@@ -203,19 +217,23 @@
 - type: BatchSpanProcessor
   property_descriptions:
     schedule_delay: >
-      Configure delay interval (in milliseconds) between two consecutive exports.
+      Configure delay interval (in milliseconds) between two consecutive exports. 
+      
+      Value must be non-negative.
       
       If omitted or null, 5000 is used.
     export_timeout: >
-      Configure maximum allowed time (in milliseconds) to export data.
+      Configure maximum allowed time (in milliseconds) to export data. 
+      
+      Value must be non-negative. A value of 0 indicates no limit (infinity).
       
       If omitted or null, 30000 is used.
     max_queue_size: >
-      Configure maximum queue size.
+      Configure maximum queue size. Value must be positive.
       
       If omitted or null, 2048 is used.
     max_export_batch_size: >
-      Configure maximum batch size.
+      Configure maximum batch size. Value must be positive.
       
       If omitted or null, 512 is used.
     exporter: Configure exporter.
@@ -244,7 +262,9 @@
       
       If omitted or null, http://localhost:9411/api/v2/spans is used.
     timeout: >
-      Configure max time (in milliseconds) to wait for each export.
+      Configure max time (in milliseconds) to wait for each export. 
+      
+      Value must be non-negative. A value of 0 indicates indefinite.
       
       If omitted or null, 10000 is used.
   path_patterns:
@@ -253,27 +273,39 @@
 - type: SpanLimits
   property_descriptions:
     attribute_value_length_limit: >
-      Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+      Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
+      
+      Value must be non-negative.
       
       If omitted or null, there is no limit.
     attribute_count_limit: >
-      Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+      Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
+      
+      Value must be non-negative.
       
       If omitted or null, 128 is used.
     event_count_limit: >
-      Configure max span event count.
+      Configure max span event count. 
+      
+      Value must be non-negative.
       
       If omitted or null, 128 is used.
     link_count_limit: >
-      Configure max span link count.
+      Configure max span link count. 
+      
+      Value must be non-negative.
       
       If omitted or null, 128 is used.
     event_attribute_count_limit: >
-      Configure max attributes per span event.
+      Configure max attributes per span event. 
+      
+      Value must be non-negative.
       
       If omitted or null, 128 is used.
     link_attribute_count_limit: >
-      Configure max attributes per span link.
+      Configure max attributes per span link. 
+      
+      Value must be non-negative.
       
       If omitted or null, 128 is used.
   path_patterns:
@@ -318,9 +350,14 @@
 - type: MeterProvider
   property_descriptions:
     readers: Configure metric readers.
-    views: Configure views. Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
+    views: >
+      Configure views. 
+      
+      Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
     exemplar_filter: >
-      Configure the exemplar filter. Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
+      Configure the exemplar filter. 
+      
+      Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
       
       If omitted or null, trace_based is used.
   path_patterns:
@@ -343,11 +380,15 @@
 - type: PeriodicMetricReader
   property_descriptions:
     interval: >
-      Configure delay interval (in milliseconds) between start of two consecutive exports.
+      Configure delay interval (in milliseconds) between start of two consecutive exports. 
+      
+      Value must be non-negative.
       
       If omitted or null, 60000 is used.
     timeout: >
-      Configure maximum allowed time (in milliseconds) to export data.
+      Configure maximum allowed time (in milliseconds) to export data. 
+      
+      Value must be non-negative. A value of 0 indicates no limit (infinity).
       
       If omitted or null, 30000 is used.
     exporter: Configure exporter.
@@ -418,7 +459,10 @@
 
 - type: View
   property_descriptions:
-    selector: Configure view selector. Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.
+    selector: >
+      Configure view selector. 
+      
+      Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.
     stream: Configure view stream.
   path_patterns:
     - .meter_provider.views[]
@@ -463,7 +507,9 @@
       
       If omitted or null, the instrument's origin description is used.
     aggregation: > 
-      Configure aggregation of the resulting stream(s). Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
+      Configure aggregation of the resulting stream(s). 
+      
+      Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
       
       If omitted, default is used.
     attribute_keys: >
@@ -508,15 +554,21 @@
 - type: OtlpExporterCommon
   property_descriptions:
     certificate: >
-      Configure certificate. Absolute path to certificate file.
+      Configure certificate. 
+      
+      Absolute path to certificate file.
       
       If omitted or null, system default certificate verification is used for secure connections.
     client_key: >
-      Configure mTLS private client key. Absolute path to client key in PEM format. If set, .client_certificate must also be set.
+      Configure mTLS private client key. 
+      
+      Absolute path to client key in PEM format. If set, .client_certificate must also be set.
       
       If omitted or null, mTLS is not used.
     client_certificate: >
-      Configure mTLS client certificate. Absolute path to certificate file. If set, .client_key must also be set.
+      Configure mTLS client certificate. 
+      
+      Absolute path to certificate file. If set, .client_key must also be set.
       
       If omitted or null, mTLS is not used.
     headers: >
@@ -530,19 +582,27 @@
       
       If omitted or null, no headers are added.
     compression: >
-      Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
+      Configure compression.
+      
+      Values include: gzip, none. Implementations may support other compression algorithms.
       
       If omitted or null, none is used.
     timeout: >
-      Configure max time (in milliseconds) to wait for each export.
+      Configure max time (in milliseconds) to wait for each export. 
+      
+      Value must be non-negative. A value of 0 indicates no limit (infinity).
       
       If omitted or null, 10000 is used.
     temporality_preference: >
-      Configure temporality preference. Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+      Configure temporality preference. 
+      
+      Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
       
       If omitted or null, cumulative is used.
     default_histogram_aggregation: >
-      Configure default histogram aggregation. Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+      Configure default histogram aggregation. 
+      
+      Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
       
       If omitted or null, explicit_bucket_histogram is used.
   path_patterns:
@@ -555,7 +615,9 @@
 - type: OtlpHttpExporter
   property_descriptions:
     encoding: >
-      Configure the encoding used for messages. Values include: protobuf, json. Implementations may not support json.
+      Configure the encoding used for messages. 
+      
+      Values include: protobuf, json. Implementations may not support json.
       
       If omitted or null, protobuf is used.
   path_patterns:
@@ -593,7 +655,9 @@
       
       If omitted or null, http://localhost:4317 is used.
     insecure: >
-      Configure client transport security for the exporter's connection. Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
+      Configure client transport security for the exporter's connection. 
+      
+      Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
       
       If omitted or null, false is used.
   path_patterns:

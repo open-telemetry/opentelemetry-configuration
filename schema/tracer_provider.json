@@ -37,11 +37,11 @@
                 },
                 "max_queue_size": {
                     "type": ["integer", "null"],
-                    "minimum": 0
+                    "exclusiveMinimum": 0
                 },
                 "max_export_batch_size": {
                     "type": ["integer", "null"],
-                    "minimum": 0
+                    "exclusiveMinimum": 0
                 },
                 "exporter": {
                     "$ref": "#/$defs/SpanExporter"
