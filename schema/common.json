@@ -54,7 +54,7 @@
                 "headers": {
                     "type": "array",
                     "items": {
-                        "$ref": "common.json#/$defs/NameStringValuePair"
+                        "$ref": "#/$defs/NameStringValuePair"
                     }
                 },
                 "headers_list": {
@@ -68,13 +68,16 @@
                     "minimum": 0
                 },
                 "encoding": {
-                    "type": ["string", "null"],
-                    "enum": [
-                        "protobuf",
-                        "json"
-                    ]
+                    "$ref": "#/$defs/OtlpHttpEncoding"
                 }
             }
+        },
+        "OtlpHttpEncoding": {
+            "type": ["string", "null"],
+            "enum": [
+                "protobuf",
+                "json"
+            ]
         },
         "OtlpGrpcExporter": {
             "type": ["object", "null"],
@@ -110,6 +113,15 @@
                 },
                 "insecure": {
                     "type": ["boolean", "null"]
+                }
+            }
+        },
+        "OtlpFileExporter": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "output_stream": {
+                    "type": ["string", "null"]
                 }
             }
         },

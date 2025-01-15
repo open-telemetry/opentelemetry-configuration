@@ -35,11 +35,11 @@
                 },
                 "max_queue_size": {
                     "type": ["integer", "null"],
-                    "minimum": 0
+                    "exclusiveMinimum": 0
                 },
                 "max_export_batch_size": {
                     "type": ["integer", "null"],
-                    "minimum": 0
+                    "exclusiveMinimum": 0
                 },
                 "exporter": {
                     "$ref": "#/$defs/SpanExporter"
@@ -56,63 +56,78 @@
             "maxProperties": 1,
             "properties": {
                 "always_off": {
-                    "type": ["object", "null"],
-                    "additionalProperties": false
+                    "$ref": "#/$defs/AlwaysOffSampler"
                 },
                 "always_on": {
-                    "type": ["object", "null"],
-                    "additionalProperties": false
+                    "$ref": "#/$defs/AlwaysOnSampler"
                 },
                 "jaeger_remote": {
-                    "type": ["object", "null"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "endpoint": {
-                            "type": ["string", "null"]
-                        },
-                        "interval": {
-                            "type": ["integer", "null"],
-                            "minimum": 0
-                        },
-                        "initial_sampler": {
-                            "$ref": "#/$defs/Sampler"
-                        }
-                    }
+                    "$ref": "#/$defs/JaegerRemoteSampler"
                 },
                 "parent_based": {
-                    "type": ["object", "null"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "root": {
-                            "$ref": "#/$defs/Sampler"
-                        },
-                        "remote_parent_sampled": {
-                            "$ref": "#/$defs/Sampler"
-                        },
-                        "remote_parent_not_sampled": {
-                            "$ref": "#/$defs/Sampler"
-                        },
-                        "local_parent_sampled": {
-                            "$ref": "#/$defs/Sampler"
-                        },
-                        "local_parent_not_sampled": {
-                            "$ref": "#/$defs/Sampler"
-                        }
-                    }
+                    "$ref": "#/$defs/ParentBasedSampler"
                 },
                 "trace_id_ratio_based": {
-                    "type": ["object", "null"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "ratio": {
-                            "type": ["number", "null"]
-                        }
-                    }
+                    "$ref": "#/$defs/TraceIdRatioBasedSampler"
                 }
             },
             "patternProperties": {
                 ".*": {
                     "type": ["object", "null"]
+                }
+            }
+        },
+        "AlwaysOffSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "AlwaysOnSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "JaegerRemoteSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "endpoint": {
+                    "type": ["string", "null"]
+                },
+                "interval": {
+                    "type": ["integer", "null"],
+                    "minimum": 0
+                },
+                "initial_sampler": {
+                    "$ref": "#/$defs/Sampler"
+                }
+            }
+        },
+        "ParentBasedSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "root": {
+                    "$ref": "#/$defs/Sampler"
+                },
+                "remote_parent_sampled": {
+                    "$ref": "#/$defs/Sampler"
+                },
+                "remote_parent_not_sampled": {
+                    "$ref": "#/$defs/Sampler"
+                },
+                "local_parent_sampled": {
+                    "$ref": "#/$defs/Sampler"
+                },
+                "local_parent_not_sampled": {
+                    "$ref": "#/$defs/Sampler"
+                }
+            }
+        },
+        "TraceIdRatioBasedSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "ratio": {
+                    "type": ["number", "null"]
                 }
             }
         },
@@ -139,6 +154,9 @@
                 },
                 "otlp_grpc": {
                     "$ref": "common.json#/$defs/OtlpGrpcExporter"
+                },
+                "otlp_file": {
+                    "$ref": "common.json#/$defs/OtlpFileExporter"
                 },
                 "console": {
                     "$ref": "common.json#/$defs/ConsoleExporter"

@@ -42,6 +42,12 @@ Allowable changes:
 
 The following rules are enforced when modeling the configuration schema:
 
+### Which JSON schema version?
+
+The schema is modeled using JSON schema [draft 2020-12](https://json-schema.org/draft/2020-12).
+
+This is reflected in top level schema documents by setting `"$schema": "https://json-schema.org/draft/2020-12/schema"`.
+
 ### What properties are part of schema?
 
 Only properties which are described in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification) or [semantic-conventions](https://github.com/open-telemetry/semantic-conventions) are modeled in the schema. However, it's acceptable to allow additional properties specific to a particular language or implementation, and not covered by the schema. Model these by setting `"additionalProperties": true` (see [JSON schema additionalProperties](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties)). Types should set `"additionalProperties": false` by default unless requested by an opentelemetry component [maintainer](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer) which supports additional options.
@@ -172,12 +178,25 @@ Another example:
         ]
       },
       "type": {
-        "type": ["string", "null"],
-        "enum": [null, "string", "bool", "int", "double", "string_array", "bool_array", "int_array", "double_array"]
+        "$ref": "#/$defs/AttributeType"
       }
     },
     "required": [
       "name", "value"
+    ]
+  },
+  "AttributeType": {
+    "type": ["string", "null"],
+    "enum": [
+      null,
+      "string",
+      "bool",
+      "int",
+      "double",
+      "string_array",
+      "bool_array",
+      "int_array",
+      "double_array"
     ]
   }
 }
@@ -193,6 +212,49 @@ Despite these potential benefits, these keywords should be omitted:
 
 * The titles of `object` and `enum` types produced by code generation tools should be defined using key values in [$defs](https://json-schema.org/understanding-json-schema/structuring#defs). Setting the `title` keyword introduces multiple sources of truth and possible conflict.
 * As described in [description generation](./CONTRIBUTING.md#description-generation), we use a different mechanism to describe the semantics of types and properties. Setting the `description` keyword introduces multiple sources of truth and possible conflict.
+
+## Schemas and subschemas
+
+In JSON Schema, a [schema](https://json-schema.org/learn/glossary#schema) is a document, and a [subschema](https://json-schema.org/learn/glossary#subschema) is contained in surrounding parent schema. Subschemas can be nested in various ways:
+
+A property can directly describe a complex set of requirements including nested structures:
+
+```json
+{
+  "properties": {
+    "shape": {
+      "type": "object",
+      "properties": {
+        "color": { "type": "string" },
+        "sides": { "type": "int" }
+      }
+    }
+  }
+}
+```
+
+Or a property can reference a subschema residing in a schema document's [$defs](https://json-schema.org/understanding-json-schema/structuring#defs):
+
+```json
+{
+  "properties": {
+    "shape": {
+      "$ref": "#/$defs/Shape"
+    }
+  },
+  "$defs": {
+    "Shape": {
+      "type": "object",
+      "properties": {
+        "color": { "type": "string" },
+        "sides": { "type": "int" }
+      }
+    }
+  }
+}
+```
+
+In order to promote stylistic consistency and allow for reuse of concepts, `object` and `enum` types should be defined in either as a top level schema document or as a subschema in a schema document's `$defs`.
 
 ## Contributing
 
