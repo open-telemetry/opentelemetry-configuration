@@ -71,6 +71,9 @@
                 "otlp_grpc": {
                     "$ref": "common.json#/$defs/OtlpGrpcExporter"
                 },
+                "otlp_file": {
+                    "$ref": "common.json#/$defs/OtlpFileExporter"
+                },
                 "console": {
                     "$ref": "common.json#/$defs/ConsoleExporter"
                 }
