@@ -119,6 +119,15 @@
                 }
             }
         },
+        "OtlpFileExporter": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "output_stream": {
+                    "type": ["string", "null"]
+                }
+            }
+        },
         "ConsoleExporter": {
             "type": ["object", "null"],
             "additionalProperties": false

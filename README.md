@@ -42,6 +42,12 @@ Allowable changes:
 
 The following rules are enforced when modeling the configuration schema:
 
+### Which JSON schema version?
+
+The schema is modeled using JSON schema [draft 2020-12](https://json-schema.org/draft/2020-12).
+
+This is reflected in top level schema documents by setting `"$schema": "https://json-schema.org/draft/2020-12/schema"`.
+
 ### What properties are part of schema?
 
 Only properties which are described in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification) or [semantic-conventions](https://github.com/open-telemetry/semantic-conventions) are modeled in the schema. However, it's acceptable to allow additional properties specific to a particular language or implementation, and not covered by the schema. Model these by setting `"additionalProperties": true` (see [JSON schema additionalProperties](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties)). Types should set `"additionalProperties": false` by default unless requested by an opentelemetry component [maintainer](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer) which supports additional options.
