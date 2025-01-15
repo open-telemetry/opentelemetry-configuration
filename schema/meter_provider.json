@@ -1,7 +1,6 @@
 {
     "$id": "https://opentelemetry.io/otelconfig/meter_provider.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "MeterProvider",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -57,8 +56,7 @@
             },
             "required": [
                 "exporter"
-            ],
-            "title": "PeriodicMetricReader"
+            ]
         },
         "PullMetricReader": {
             "type": "object",
@@ -76,8 +74,7 @@
             },
             "required": [
                 "exporter"
-            ],
-            "title": "PullMetricReader"
+            ]
         },
         "PushMetricExporter": {
             "type": "object",
@@ -141,7 +138,6 @@
             "additionalProperties": false
         },
         "PrometheusMetricExporter": {
-            "title": "PrometheusMetricExporter",
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -180,7 +176,6 @@
             }
         },
         "ExporterTemporalityPreference": {
-            "title": "ExporterTemporalityPreference",
             "type": ["string", "null"],
             "enum": [
                 "cumulative",
@@ -189,7 +184,6 @@
             ]
         },
         "ExporterDefaultHistogramAggregation": {
-            "title": "ExporterDefaultHistogramAggregation",
             "type": ["string", "null"],
             "enum": [
                 "explicit_bucket_histogram",
@@ -197,7 +191,6 @@
             ]
         },
         "OtlpHttpMetricExporter": {
-            "title": "OtlpHttpMetricExporter",
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -241,7 +234,6 @@
             }
         },
         "OtlpGrpcMetricExporter": {
-            "title": "OtlpGrpcMetricExporter",
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -312,7 +304,6 @@
             }
         },
         "ViewSelector": {
-            "title": "Selector",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -348,7 +339,6 @@
             ]
         },
         "ViewStream": {
-            "title": "Stream",
             "type": "object",
             "additionalProperties": false,
             "properties": {
