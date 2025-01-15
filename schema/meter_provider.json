@@ -88,6 +88,9 @@
                 "otlp_grpc": {
                     "$ref": "#/$defs/OtlpGrpcMetricExporter"
                 },
+                "otlp_file": {
+                    "$ref": "#/$defs/OtlpFileMetricExporter"
+                },
                 "console": {
                     "$ref": "common.json#/$defs/ConsoleExporter"
                 }
@@ -270,6 +273,21 @@
                 },
                 "insecure": {
                     "type": ["boolean", "null"]
+                },
+                "temporality_preference": {
+                    "$ref": "#/$defs/ExporterTemporalityPreference"
+                },
+                "default_histogram_aggregation": {
+                    "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+                }
+            }
+        },
+        "OtlpFileMetricExporter": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "output_stream": {
+                    "type": ["string", "null"]
                 },
                 "temporality_preference": {
                     "$ref": "#/$defs/ExporterTemporalityPreference"
