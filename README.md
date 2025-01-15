@@ -224,7 +224,7 @@ Or a property can reference a subschema residing in a schema document's [$defs](
 {
   "properties": {
     "shape": {
-      "$ref": "#/$defs/Sampler"
+      "$ref": "#/$defs/Shape"
     }
   },
   "$defs": {
