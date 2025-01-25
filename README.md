@@ -213,7 +213,7 @@ Despite these potential benefits, these keywords should be omitted:
 * The titles of `object` and `enum` types produced by code generation tools should be defined using key values in [$defs](https://json-schema.org/understanding-json-schema/structuring#defs). Setting the `title` keyword introduces multiple sources of truth and possible conflict.
 * As described in [description generation](./CONTRIBUTING.md#description-generation), we use a different mechanism to describe the semantics of types and properties. Setting the `description` keyword introduces multiple sources of truth and possible conflict.
 
-## Schemas and subschemas
+## Schemas, subschemas, and $id
 
 In JSON Schema, a [schema](https://json-schema.org/learn/glossary#schema) is a document, and a [subschema](https://json-schema.org/learn/glossary#subschema) is contained in surrounding parent schema. Subschemas can be nested in various ways:
 
@@ -255,6 +255,10 @@ Or a property can reference a subschema residing in a schema document's [$defs](
 ```
 
 In order to promote stylistic consistency and allow for reuse of concepts, `object` and `enum` types should be defined in either as a top level schema document or as a subschema in a schema document's `$defs`.
+
+Each schema has an optional [`$id`](https://json-schema.org/understanding-json-schema/basics#declaring-a-unique-identifier) defining a unique identifier for the schema. Schemas and subschemas can be referenced in other schemas using the [`$ref`](https://json-schema.org/understanding-json-schema/structuring#dollarref) keyword, which resolves against the schema's [base URI](https://json-schema.org/understanding-json-schema/structuring#base-uri) (i.e. the `$id` of the top level schema document) using [JSON pointer](https://json-schema.org/understanding-json-schema/structuring#json-pointer) syntax.
+
+All top level schema documents should contain a `$id` field following the form `https://opentelemetry.io/otelconfig/<name>.json`. Subschemas nested in `$defs` should not include an `$id`, and should be resolved using `$ref`s relative to their top level schema document.
 
 ## Contributing
 
