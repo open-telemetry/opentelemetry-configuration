@@ -23,16 +23,19 @@ resource:
       value: unknown_service
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
-  # Configure max attribute value size.
+  # Configure max attribute value size. 
+  # Value must be non-negative.
   # If omitted or null, there is no limit.
   attribute_value_length_limit:
-  # Configure max attribute count.
+  # Configure max attribute count. 
+  # Value must be non-negative.
   # If omitted or null, 128 is used.
   attribute_count_limit: 128
 # Configure text map context propagators.
 # If omitted, tracecontext and baggage are used.
 propagator:
-  # Configure the set of propagators to include in the composite text map propagator. Built-in values include: tracecontext, baggage, b3, b3multi, jaeger, none. Known third party values include: xray, ottrace. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration.
+  # Configure the set of propagators to include in the composite text map propagator. 
+  # Built-in values include: tracecontext, baggage, b3, b3multi, jaeger, none. Known third party values include: xray, ottrace. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration.
   composite: [ tracecontext, baggage ]
 # Configure tracer provider.
 # If omitted, a noop tracer provider is used.
@@ -41,40 +44,45 @@ tracer_provider:
   processors:
     - # Configure a batch span processor.
       batch:
-        # Configure delay interval (in milliseconds) between two consecutive exports.
+        # Configure delay interval (in milliseconds) between two consecutive exports. 
+        # Value must be non-negative.
         # If omitted or null, 5000 is used.
         schedule_delay: 5000
-        # Configure maximum allowed time (in milliseconds) to export data.
+        # Configure maximum allowed time (in milliseconds) to export data. 
+        # Value must be non-negative. A value of 0 indicates no limit (infinity).
         # If omitted or null, 30000 is used.
         export_timeout: 30000
-        # Configure maximum queue size.
+        # Configure maximum queue size. Value must be positive.
         # If omitted or null, 2048 is used.
         max_queue_size: 2048
-        # Configure maximum batch size.
+        # Configure maximum batch size. Value must be positive.
         # If omitted or null, 512 is used.
         max_export_batch_size: 512
         # Configure exporter.
         exporter:
-          # Configure exporter to be OTLP.
-          otlp:
-            # Configure protocol. Values include: http/protobuf, http/json, grpc.
-            protocol: http/protobuf
-            # Configure endpoint.
-            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
+          # Configure exporter to be OTLP with HTTP transport.
+          otlp_http:
+            # Configure endpoint, including the trace specific path.
+            # If omitted or null, http://localhost:4318/v1/traces is used.
             endpoint: http://localhost:4318/v1/traces
-            # Configure certificate. Absolute path to certificate file.
+            # Configure certificate. 
+            # Absolute path to certificate file.
             # If omitted or null, system default certificate verification is used for secure connections.
             certificate:
-            # Configure mTLS private client key. Absolute path to client key in PEM format. If set, .client_certificate must also be set.
+            # Configure mTLS private client key. 
+            # Absolute path to client key in PEM format. If set, .client_certificate must also be set.
             # If omitted or null, mTLS is not used.
             client_key:
-            # Configure mTLS client certificate. Absolute path to certificate file. If set, .client_key must also be set.
+            # Configure mTLS client certificate. 
+            # Absolute path to certificate file. If set, .client_key must also be set.
             # If omitted or null, mTLS is not used.
             client_certificate:
-            # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export.
+            # Configure max time (in milliseconds) to wait for each export. 
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure headers. Entries have higher priority than entries from .headers_list.
@@ -82,22 +90,28 @@ tracer_provider:
             headers: []
   # Configure span limits. See also attribute_limits.
   limits:
-    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
+    # Value must be non-negative.
     # If omitted or null, there is no limit.
     attribute_value_length_limit:
-    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
+    # Value must be non-negative.
     # If omitted or null, 128 is used.
     attribute_count_limit: 128
-    # Configure max span event count.
+    # Configure max span event count. 
+    # Value must be non-negative.
     # If omitted or null, 128 is used.
     event_count_limit: 128
-    # Configure max span link count.
+    # Configure max span link count. 
+    # Value must be non-negative.
     # If omitted or null, 128 is used.
     link_count_limit: 128
-    # Configure max attributes per span event.
+    # Configure max attributes per span event. 
+    # Value must be non-negative.
     # If omitted or null, 128 is used.
     event_attribute_count_limit: 128
-    # Configure max attributes per span link.
+    # Configure max attributes per span link. 
+    # Value must be non-negative.
     # If omitted or null, 128 is used.
     link_attribute_count_limit: 128
   # Configure the sampler.
@@ -137,46 +151,54 @@ meter_provider:
   readers:
     - # Configure a periodic metric reader.
       periodic:
-        # Configure delay interval (in milliseconds) between start of two consecutive exports.
+        # Configure delay interval (in milliseconds) between start of two consecutive exports. 
+        # Value must be non-negative.
         # If omitted or null, 60000 is used.
         interval: 60000
-        # Configure maximum allowed time (in milliseconds) to export data.
+        # Configure maximum allowed time (in milliseconds) to export data. 
+        # Value must be non-negative. A value of 0 indicates no limit (infinity).
         # If omitted or null, 30000 is used.
         timeout: 30000
         # Configure exporter.
         exporter:
-          # Configure exporter to be OTLP.
-          otlp:
-            # Configure protocol. Values include: http/protobuf, http/json, grpc.
-            protocol: http/protobuf
-            # Configure endpoint.
-            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
+          # Configure exporter to be OTLP with HTTP transport.
+          otlp_http:
+            # Configure endpoint, including the metric specific path.
+            # If omitted or null, http://localhost:4318/v1/metrics is used.
             endpoint: http://localhost:4318/v1/metrics
-            # Configure certificate. Absolute path to certificate file.
+            # Configure certificate. 
+            # Absolute path to certificate file.
             # If omitted or null, system default certificate verification is used for secure connections.
             certificate:
-            # Configure mTLS private client key. Absolute path to client key in PEM format. If set, .client_certificate must also be set.
+            # Configure mTLS private client key. 
+            # Absolute path to client key in PEM format. If set, .client_certificate must also be set.
             # If omitted or null, mTLS is not used.
             client_key:
-            # Configure mTLS client certificate. Absolute path to certificate file. If set, .client_key must also be set.
+            # Configure mTLS client certificate. 
+            # Absolute path to certificate file. If set, .client_key must also be set.
             # If omitted or null, mTLS is not used.
             client_certificate:
-            # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export.
+            # Configure max time (in milliseconds) to wait for each export. 
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure headers. Entries have higher priority than entries from .headers_list.
             # If an entry's .value is null, the entry is ignored.
             headers: []
-            # Configure temporality preference. Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # Configure temporality preference. 
+            # Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
             # If omitted or null, cumulative is used.
             temporality_preference: cumulative
-            # Configure default histogram aggregation. Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # Configure default histogram aggregation. 
+            # Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
             # If omitted or null, explicit_bucket_histogram is used.
             default_histogram_aggregation: explicit_bucket_histogram
-  # Configure the exemplar filter. Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
+  # Configure the exemplar filter. 
+  # Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
   # If omitted or null, trace_based is used.
   exemplar_filter: trace_based
 # Configure logger provider.
@@ -186,40 +208,43 @@ logger_provider:
   processors:
     - # Configure a batch log record processor.
       batch:
-        # Configure delay interval (in milliseconds) between two consecutive exports.
+        # Configure delay interval (in milliseconds) between two consecutive exports. 
+        # Value must be non-negative.
         # If omitted or null, 1000 is used.
         schedule_delay: 1000
-        # Configure maximum allowed time (in milliseconds) to export data.
+        # Configure maximum allowed time (in milliseconds) to export data. 
+        # Value must be non-negative. A value of 0 indicates no limit (infinity).
         # If omitted or null, 30000 is used.
         export_timeout: 30000
-        # Configure maximum queue size.
+        # Configure maximum queue size. Value must be positive.
         # If omitted or null, 2048 is used.
         max_queue_size: 2048
-        # Configure maximum batch size.
+        # Configure maximum batch size. Value must be positive.
         # If omitted or null, 512 is used.
         max_export_batch_size: 512
         # Configure exporter.
         exporter:
-          # Configure exporter to be OTLP.
-          otlp:
-            # Configure protocol. Values include: http/protobuf, http/json, grpc.
-            protocol: http/protobuf
-            # Configure endpoint.
-            # If .protocol is http/protobuf or http/json, the signal specific path must be included (i.e. http://localhost:4318/v1/{signal}). If .protocol is grpc, a path should not be included (i.e. http://localhost:4317).
+          # Configure exporter to be OTLP with HTTP transport.
+          otlp_http:
             endpoint: http://localhost:4318/v1/logs
-            # Configure certificate. Absolute path to certificate file.
+            # Configure certificate. 
+            # Absolute path to certificate file.
             # If omitted or null, system default certificate verification is used for secure connections.
             certificate:
-            # Configure mTLS private client key. Absolute path to client key in PEM format. If set, .client_certificate must also be set.
+            # Configure mTLS private client key. 
+            # Absolute path to client key in PEM format. If set, .client_certificate must also be set.
             # If omitted or null, mTLS is not used.
             client_key:
-            # Configure mTLS client certificate. Absolute path to certificate file. If set, .client_key must also be set.
+            # Configure mTLS client certificate. 
+            # Absolute path to certificate file. If set, .client_key must also be set.
             # If omitted or null, mTLS is not used.
             client_certificate:
-            # Configure compression. Values include: gzip, none. Implementations may support other compression algorithms.
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export.
+            # Configure max time (in milliseconds) to wait for each export. 
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure headers. Entries have higher priority than entries from .headers_list.
@@ -227,9 +252,11 @@ logger_provider:
             headers: []
   # Configure log record limits. See also attribute_limits.
   limits:
-    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
+    # Value must be non-negative.
     # If omitted or null, there is no limit.
     attribute_value_length_limit:
-    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
+    # Value must be non-negative.
     # If omitted or null, 128 is used.
     attribute_count_limit: 128

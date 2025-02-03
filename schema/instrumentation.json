@@ -1,7 +1,6 @@
 {
     "$id": "https://opentelemetry.io/otelconfig/instrumentation.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Instrumentation",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -53,68 +52,74 @@
             "additionalProperties": false,
             "properties": {
                 "peer": {
+                    "$ref": "#/$defs/PeerInstrumentation"
+                },
+                "http": {
+                    "$ref": "#/$defs/HttpInstrumentation"
+                }
+            }
+        },
+        "PeerInstrumentation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "service_mapping": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "peer": {
+                                "type": "string"
+                            },
+                            "service": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "peer",
+                            "service"
+                        ]
+                    }
+                }
+            }
+        },
+        "HttpInstrumentation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "client": {
                     "type": "object",
                     "additionalProperties": false,
                     "properties": {
-                        "service_mapping": {
+                        "request_captured_headers": {
                             "type": "array",
                             "items": {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "peer": {
-                                        "type": "string"
-                                    },
-                                    "service": {
-                                        "type": "string"
-                                    }
-                                },
-                                "required": [
-                                    "peer",
-                                    "service"
-                                ]
+                                "type": "string"
+                            }
+                        },
+                        "response_captured_headers": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
                             }
                         }
                     }
                 },
-                "http": {
+                "server": {
                     "type": "object",
                     "additionalProperties": false,
                     "properties": {
-                        "client": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "request_captured_headers": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                },
-                                "response_captured_headers": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
+                        "request_captured_headers": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
                             }
                         },
-                        "server": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "request_captured_headers": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                },
-                                "response_captured_headers": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
+                        "response_captured_headers": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
                             }
                         }
                     }

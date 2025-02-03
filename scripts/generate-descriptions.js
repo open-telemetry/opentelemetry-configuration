@@ -80,13 +80,16 @@ yaml.visit(fileDoc, {
         debug("parentPath: " + parentPath );
         debug("propertyKey: " + propertyKey);
         debug("currentNodePath: " + parentPath + (parentPath === "." ? "" : ".") + propertyKey);
-        // Iterate through the rules and find the first with a matching entry in rule.path_patterns
+        // Iterate through the rules and find the first with a matching entry in rule.path_patterns and with defined property key
         const matchingRule = typeDescriptionsYaml.find((rule) => {
             const matchingPathPattern = rule['path_patterns'].find((pathPattern) => {
                 const regex = new RegExp(toRegex(pathPattern));
                 return regex.test(parentPath);
             });
-            return matchingPathPattern !== undefined;
+            if (matchingPathPattern === undefined) {
+                return false;
+            }
+            return rule['property_descriptions'][propertyKey] !== undefined;
         });
         // Exit early if no matching rule
         if (matchingRule === undefined) {
@@ -94,13 +97,8 @@ yaml.visit(fileDoc, {
             return;
         }
         debug("matched rule: " + matchingRule.type);
-        // Check if there is a description for the current propertyKey in the matching rule
-        // Exit early if none registered
+        // We already guarantee that the propertyKey is defined for the rule above
         const description = matchingRule['property_descriptions'][propertyKey];
-        if (description === undefined) {
-            debug("no matching property")
-            return;
-        }
         // Format the description
         let formattedDescription = description.replace(/\n$/, '').split('\n').map(line => ' ' + line).join('\n');
         // If we're on the first element, prefix the formatted description with the existing commentBefore to retain the comments at the top of the file

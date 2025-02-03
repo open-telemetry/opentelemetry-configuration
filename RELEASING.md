@@ -1,5 +1,17 @@
 # How to Create a Release of OpenTelemetry Configuration (for Maintainers Only)
 
+## Update `file_format`
+
+Update the `file_format: "<verison>` of [./examples](./examples) as follows:
+
+```shell
+# Set FILE_FORMAT env var to target version of the release
+export FILE_FORMAT=0.4
+make update-file-format
+```
+
+Merge a PR with the changes to `main`.
+
 ## Tagging the Release
 
 Our release tags follow the convention `v<major>.<minor>.<patch>`. For example,

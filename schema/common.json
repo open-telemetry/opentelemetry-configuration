@@ -1,7 +1,6 @@
 {
     "$id": "https://opentelemetry.io/otelconfig/common.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Common",
     "$defs": {
         "IncludeExclude": {
             "type": "object",
@@ -36,16 +35,56 @@
                 "name", "value"
             ]
         },
-        "Otlp": {
-            "type": "object",
+        "OtlpHttpExporter": {
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
-                "protocol": {
-                    "type": "string",
-                    "pattern": "^(http|grpc)\\/(protobuf|json)"
-                },
                 "endpoint": {
-                    "type": "string"
+                    "type": ["string", "null"]
+                },
+                "certificate": {
+                    "type": ["string", "null"]
+                },
+                "client_key": {
+                    "type": ["string", "null"]
+                },
+                "client_certificate": {
+                    "type": ["string", "null"]
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/NameStringValuePair"
+                    }
+                },
+                "headers_list": {
+                    "type": ["string", "null"]
+                },
+                "compression": {
+                    "type": ["string", "null"]
+                },
+                "timeout": {
+                    "type": ["integer", "null"],
+                    "minimum": 0
+                },
+                "encoding": {
+                    "$ref": "#/$defs/OtlpHttpEncoding"
+                }
+            }
+        },
+        "OtlpHttpEncoding": {
+            "type": ["string", "null"],
+            "enum": [
+                "protobuf",
+                "json"
+            ]
+        },
+        "OtlpGrpcExporter": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "endpoint": {
+                    "type": ["string", "null"]
                 },
                 "certificate": {
                     "type": ["string", "null"]
@@ -75,14 +114,18 @@
                 "insecure": {
                     "type": ["boolean", "null"]
                 }
-            },
-            "required": [
-                "endpoint",
-                "protocol"
-            ],
-            "title": "Otlp"
+            }
         },
-        "Console": {
+        "OtlpFileExporter": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "output_stream": {
+                    "type": ["string", "null"]
+                }
+            }
+        },
+        "ConsoleExporter": {
             "type": ["object", "null"],
             "additionalProperties": false
         }

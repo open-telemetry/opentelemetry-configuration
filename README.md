@@ -113,6 +113,12 @@ Given the [guarantees and allowed changes](#guarantees-and-allowed-changes), imp
 
 The following rules are enforced when modeling the configuration schema:
 
+### Which JSON schema version?
+
+The schema is modeled using JSON schema [draft 2020-12](https://json-schema.org/draft/2020-12).
+
+This is reflected in top level schema documents by setting `"$schema": "https://json-schema.org/draft/2020-12/schema"`.
+
 ### What properties are part of schema?
 
 Only properties which are described in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification) or [semantic-conventions](https://github.com/open-telemetry/semantic-conventions) are modeled in the schema. However, it's acceptable to allow additional properties specific to a particular language or implementation, and not covered by the schema. Model these by setting `"additionalProperties": true` (see [JSON schema additionalProperties](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties)). Types should set `"additionalProperties": false` by default unless requested by an opentelemetry component [maintainer](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer) which supports additional options.
@@ -192,6 +198,135 @@ If a property is _not_ required, it should include a [comment](./CONTRIBUTING.md
 
 If a property `type` includes `null`, it must include a [comment](./CONTRIBUTING.md#description-generation) describing the semantics when the value is `null`. It's common for properties with primitive types to allow `null`. `object` types allow `null` if no properties are required and the presence of the property key is meaningful. 
 
+### Polymorphic types
+
+JSON schema's [schema composition](https://json-schema.org/understanding-json-schema/reference/combining) keywords (`allOf`, `anyOf`, `oneOf`) offer a tempting mechanism for object-oriented style inheritance and polymorphic patterns. However, JSON schema code generation tools may struggle or not support these keywords. Therefore, these keywords should be used judiciously, and should not be used to extend `object` types.
+
+For example:
+
+```json
+{
+  "Shape": {
+    "title": "Shape",
+    "type": "object",
+    "properties": {
+      "sides": { "type": "integer"}
+    }
+  },
+  "Square": {
+    "title": "Square",
+    "type": "object",
+    "allOf": [{"$ref": "#/$defs/Shape"}],
+    "properties": {
+      "side_length": {"type": "integer"}
+    }
+  }
+}
+```
+
+`allOf` is used in the `Square` type to extend the parent `Shape` type, such that `Square` has properties `sides` and `side_length`. Avoid this type of use.
+
+Another example:
+
+```json
+{
+  "AttributeNameValue": {
+    "title": "AttributeNameValue",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "value": {
+        "oneOf": [
+          {"type": "string"},
+          {"type": "number"},
+          {"type": "boolean"},
+          {"type": "null"},
+          {"type": "array", "items": {"type": "string"}},
+          {"type": "array", "items": {"type": "boolean"}},
+          {"type": "array", "items": {"type": "number"}}
+        ]
+      },
+      "type": {
+        "$ref": "#/$defs/AttributeType"
+      }
+    },
+    "required": [
+      "name", "value"
+    ]
+  },
+  "AttributeType": {
+    "type": ["string", "null"],
+    "enum": [
+      null,
+      "string",
+      "bool",
+      "int",
+      "double",
+      "string_array",
+      "bool_array",
+      "int_array",
+      "double_array"
+    ]
+  }
+}
+```
+
+`oneOf` is used to specify that the `value` property matches the [standard attribute](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/common#standard-attribute) definition, and is either a primitive or array of primitives. This type of use is acceptable but should be used judiciously.
+
+### Annotations - title and description
+
+The JSON schema [`title` and `description` annotations](https://json-schema.org/understanding-json-schema/reference/annotations) are keywords which are not involved in validation. Instead, they act as a mechanism to help schemas be self-documenting, and may be used by code generation tools.
+
+Despite these potential benefits, these keywords should be omitted:
+
+* The titles of `object` and `enum` types produced by code generation tools should be defined using key values in [$defs](https://json-schema.org/understanding-json-schema/structuring#defs). Setting the `title` keyword introduces multiple sources of truth and possible conflict.
+* As described in [description generation](./CONTRIBUTING.md#description-generation), we use a different mechanism to describe the semantics of types and properties. Setting the `description` keyword introduces multiple sources of truth and possible conflict.
+
+## Schemas and subschemas
+
+In JSON Schema, a [schema](https://json-schema.org/learn/glossary#schema) is a document, and a [subschema](https://json-schema.org/learn/glossary#subschema) is contained in surrounding parent schema. Subschemas can be nested in various ways:
+
+A property can directly describe a complex set of requirements including nested structures:
+
+```json
+{
+  "properties": {
+    "shape": {
+      "type": "object",
+      "properties": {
+        "color": { "type": "string" },
+        "sides": { "type": "int" }
+      }
+    }
+  }
+}
+```
+
+Or a property can reference a subschema residing in a schema document's [$defs](https://json-schema.org/understanding-json-schema/structuring#defs):
+
+```json
+{
+  "properties": {
+    "shape": {
+      "$ref": "#/$defs/Shape"
+    }
+  },
+  "$defs": {
+    "Shape": {
+      "type": "object",
+      "properties": {
+        "color": { "type": "string" },
+        "sides": { "type": "int" }
+      }
+    }
+  }
+}
+```
+
+In order to promote stylistic consistency and allow for reuse of concepts, `object` and `enum` types should be defined in either as a top level schema document or as a subschema in a schema document's `$defs`.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
@@ -207,8 +342,8 @@ Maintainers ([@open-telemetry/configuration-maintainers](https://github.com/orgs
 
 - [Alex Boten](https://github.com/codeboten), Honeycomb
 - [Jack Berg](https://github.com/jack-berg), New Relic
-- [Tristan Sloughter](https://github.com/tsloughter), Splunk
-- [Tyler Yahn](https://github.com/tsloughter), Splunk
+- [Tristan Sloughter](https://github.com/tsloughter), MyDecisiveAI
+- [Tyler Yahn](https://github.com/MrAlias), Splunk
 
 *Find more about the maintainer role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).*
 
