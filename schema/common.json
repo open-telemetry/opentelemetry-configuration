@@ -42,13 +42,13 @@
                 "endpoint": {
                     "type": ["string", "null"]
                 },
-                "certificate": {
+                "certificate_file": {
                     "type": ["string", "null"]
                 },
-                "client_key": {
+                "client_key_file": {
                     "type": ["string", "null"]
                 },
-                "client_certificate": {
+                "client_certificate_file": {
                     "type": ["string", "null"]
                 },
                 "headers": {
@@ -86,13 +86,13 @@
                 "endpoint": {
                     "type": ["string", "null"]
                 },
-                "certificate": {
+                "certificate_file": {
                     "type": ["string", "null"]
                 },
-                "client_key": {
+                "client_key_file": {
                     "type": ["string", "null"]
                 },
-                "client_certificate": {
+                "client_certificate_file": {
                     "type": ["string", "null"]
                 },
                 "headers": {
