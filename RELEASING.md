@@ -21,13 +21,13 @@
   to [CHANGELOG.md](CHANGELOG.md) for a list of changes since last release.
 * Click "Publish Release".
 
-Our tags follow the naming convention of `v1.<minor>.<patch>`. Increment `minor` by 1
+Our tags follow the naming convention of `v<major>.<minor>.<patch>`. Increment `minor` by 1
 and use `patch` value of 0 for new minor version releases. For patch releases keep `minor`
 unchanged and increment the `patch`.
 
 ## Update `file_format`
 
-Update the `file_format: "<verison>` of [./examples](./examples) as follows:
+Update the `file_format: "<major>.<minor>` of [./examples](./examples) as follows:
 
 ```shell
 # Set FILE_FORMAT env var to target version of the release
