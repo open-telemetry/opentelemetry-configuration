@@ -128,6 +128,10 @@
         "ConsoleExporter": {
             "type": ["object", "null"],
             "additionalProperties": false
+        },
+        "NonEmptyString": {
+            "type": "string",
+            "minLength": 1
         }
     }
 }
