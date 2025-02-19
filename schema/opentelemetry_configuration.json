@@ -11,6 +11,9 @@
         "disabled": {
             "type": ["boolean", "null"]
         },
+        "log_level": {
+            "type": ["string", "null"]
+        },
         "attribute_limits": {
             "$ref": "#/$defs/AttributeLimits"
         },

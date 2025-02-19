@@ -12,6 +12,9 @@ file_format: "0.3"
 # Configure if the SDK is disabled or not.
 # If omitted or null, false is used.
 disabled: false
+# Configure the log level of the internal logger used by the SDK.
+# If omitted, info is used.
+log_level: info
 # Configure resource for all signals.
 # If omitted, the default resource is used.
 resource:
