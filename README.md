@@ -71,7 +71,7 @@ Stable types provide the following guarantees. All types except those excluded i
   * [required](https://json-schema.org/understanding-json-schema/reference/object#required): will not add additional entries.
   * [contains, minContains, maxContains](https://json-schema.org/understanding-json-schema/reference/array#contains): will not become stricter.
   * [minItems, maxItems](https://json-schema.org/understanding-json-schema/reference/array#length): `minItems` will not increase, `maxItems` will not decrease.
-  * [uniqueItems](https://json-schema.org/understanding-json-schema/reference/array#uniqueItems): will not go from `true` to `false`.
+  * [uniqueItems](https://json-schema.org/understanding-json-schema/reference/array#uniqueItems): will not go from `false` to `true`.
   * [enum](https://json-schema.org/understanding-json-schema/reference/enum): will not remove entries.
   * [const](https://json-schema.org/understanding-json-schema/reference/const): will not change.
 * No existing type will be deleted.
