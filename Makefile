@@ -34,6 +34,13 @@ generate-descriptions:
 	    npm run-script generate-descriptions -- $(shell pwd)/examples/$$f $(shell pwd)/examples/$$f || exit 1; \
 	done
 
+.PHONY: update-file-format
+update-file-format:
+	@echo "Updating \"file_format:\" in ./examples/* to: $(FILE_FORMAT)"
+	@for f in $(EXAMPLE_FILES); do \
+	    sed -e 's/file_format:.*/file_format: \"$(FILE_FORMAT)\"/g' -i '' ./examples/$$f; \
+	done
+
 .PHONY: install-tools
 install-tools:
 	npm install

@@ -109,89 +109,6 @@ Given the [guarantees and allowed changes](#guarantees-and-allowed-changes), imp
   * The `file_format` minor version is greater than the implementation minor version: The implementation should detect and emit a warning since there may be configuration features the user specifies which the implementation does not understand. However, this is acceptable in many cases, and not terribly different from the ideal path where an implementation also might not support every configuration feature.
 * The `file_format` major version does not align with the implementation major version. The implementation should produce an error, since there may be breaking changes in the properties and semantics on how they are interpreted. Implementations may choose to temporarily support multiple major version to accommodate transitioning users.
 
-## Schema modeling rules
-
-The following rules are enforced when modeling the configuration schema:
-
-### What properties are part of schema?
-
-Only properties which are described in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification) or [semantic-conventions](https://github.com/open-telemetry/semantic-conventions) are modeled in the schema. However, it's acceptable to allow additional properties specific to a particular language or implementation, and not covered by the schema. Model these by setting `"additionalProperties": true` (see [JSON schema additionalProperties](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties)). Types should set `"additionalProperties": false` by default unless requested by an opentelemetry component [maintainer](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer) which supports additional options.
-
-### Property naming
-
-To remove redundant information from the configuration file, prefixes for data produced by each of the providers will be removed from configuration options. For example, under the `meter_provider` configuration, metric readers are identified by the word `readers` rather than by `metric_readers`. Similarly, the prefix `span_` will be dropped for tracer provider configuration, and `logrecord` for logger provider.
-
-### Property name case
-
-Properties defined in the schema should be lower [snake case](https://en.wikipedia.org/wiki/Snake_case).
-
-### Properties which pattern matching
-
-When a property requires pattern matching, use wildcard `*` (match any number of any character, including none) and `?` (match any single character) instead of regex. If a single property with wildcards is likely to be insufficient to model the configuration requirements, accept `included` and `excluded` properties, each with an array of strings with wildcard entries. The wildcard entries should be joined with a logical OR. If `included` is not specified, assume that all entries are included. Apply `excluded` after applying `included`. Examples:
-
-* Given `excluded: ["a*"]`: Match all except values starting with `a`.
-* Given `included: ["a*", "b*"]`, `excluded: ["ab*"]`: Match any value starting with `a` or `b`, excluding values starting with `ab`.
-* Given `included: ["a", "b"]`, `excluded: ["a"]`: Match values equal to `b`.
-
-### Data modeling and environment variable substitution
-
-Properties should be modeled using the most appropriate data structures and types to represent the information. This may result in a schema which doesn't support env var substitution for the [standard env vars](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md) where a type mismatch occurs. For example, the `OTEL_RESOURCE_ATTRIBUTES` env var is modeled as a string, consisting of a comma separated list of key-value pairs, which is not the natural way to model a mapping of key-value pairs in JSON schema. 
-
-In instances where there is a type mismatch between the JSON schema and equivalent standard env var, an alternative version of the property may be provided to resolve the mismatch. For example, resource attributes are configured at `.resource.attributes`, but `.resource.attributes_list` is available with a format matching that of `OTEL_RESOURCE_ATTRIBUTES`. Alternative properties are reserved for cases where there is a demonstrated need for platforms to be able to participate in configuration and there is no reasonable alternative.
-
-### Name-value pairs
-
-When a type requires a configurable list of name-value pairs (i.e. resource attributes, HTTP headers), model using an array of objects, each with `name` and `value` properties. While an array of name-value objects is slightly more verbose than an object where each key-value is an entry, the latter is preferred because:
-
-* Avoids user input as keys, which ensures conformity with the [snake_case properties](#property-name-case) rule.
-* Allows both the names and the values to be targets for [env var substitution]. For example:
-
-    ```yaml
-   tracer_provider:
-     processors:
-       - batch:
-           exporter:
-             otlp:
-               headers:
-                - name: ${AUTHORIZATION_HEADER_NAME:-api-key}
-                  value: ${AUTHORIZATION_HEADER_VALUE}
-    ```
-
-### Required and null properties
-
-JSON schema has two related but subtly different concepts involved in indicating the requirement level of properties and values:
-
-* [`type` of `null`](https://json-schema.org/understanding-json-schema/reference/null): When a property includes a type of `null` along with other allowed types (i.e. `"type": ["string", "null"]`), it indicates that even if the property key is present, the value may be omitted. This is useful in a variety of situations:
-  * When modeling properties with primitive types which are candidates for [env var substitution][], since allowing `null` means that the configuration is valid even if the referenced env var is undefined.
-  * When modeling objects which do not require any properties. In these cases, either no properties are required, or there are no properties and the presence of the property key expresses the desired state.
-* [required](https://json-schema.org/understanding-json-schema/reference/object#required): When a property is `required`, the key must be included in the object or the configuration is invalid. Properties should be required when there is no well default semantic (i.e. it's not clear what the behavior is when the property is absent).
-
-For example:
-
-```
-tracer_provider:
- processors:
-   - simple:
-       exporter:
-         console:
- limits:
-   attribute_value_length_limit: ${OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT}
-```
-
-* `tracer_provider` is not required. When omitted, a noop tracer provider is used.
-* `tracer_provider`'s type is `object`. There's no sensible tracer provider which does not minimally set one entry in `processors`. 
-* `exporter` is required. A simple processor without an exporter is invalid.
-* `exporter`'s type is `object`. Setting `exporter` to `null` or any non-object value is invalid.
-* `console`'s type is `["object", "null"]`. The console exporter has no properties, and we should not force the user to set an empty object (i.e `console: {}`).
-* `limits` is not required. When omitted, default span limits are used.
-* `limits`'s type is `object`. If a user includes the `limits` property, they must set at least one property. Settings `limits` to `null` is invalid.
-* `attributes_value_length_limit` is not required. If omitted, no attribute length limits are applied.
-* `attributes_value_length_limit`'s type is `["integer", "null]`. If null (i.e. because the `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` env var is unset), no attribute length limits are applied.
-
-If a property is _not_ required, it should include a [comment](./CONTRIBUTING.md#description-generation) describing the semantics when it is omitted.
-
-If a property `type` includes `null`, it must include a [comment](./CONTRIBUTING.md#description-generation) describing the semantics when the value is `null`. It's common for properties with primitive types to allow `null`. `object` types allow `null` if no properties are required and the presence of the property key is meaningful. 
-
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
@@ -207,8 +124,8 @@ Maintainers ([@open-telemetry/configuration-maintainers](https://github.com/orgs
 
 - [Alex Boten](https://github.com/codeboten), Honeycomb
 - [Jack Berg](https://github.com/jack-berg), New Relic
-- [Tristan Sloughter](https://github.com/tsloughter), Splunk
-- [Tyler Yahn](https://github.com/tsloughter), Splunk
+- [Tristan Sloughter](https://github.com/tsloughter), MyDecisiveAI
+- [Tyler Yahn](https://github.com/MrAlias), Splunk
 
 *Find more about the maintainer role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).*
 

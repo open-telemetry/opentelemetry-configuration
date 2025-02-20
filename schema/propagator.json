@@ -1,7 +1,6 @@
 {
     "$id": "https://opentelemetry.io/otelconfig/propagator.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Propagator",
     "type": "object",
     "properties": {
         "composite": {

@@ -1,7 +1,6 @@
 {
     "$id": "https://opentelemetry.io/otelconfig/resource.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Resource",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -23,7 +22,6 @@
     },
     "$defs": {
         "AttributeNameValue": {
-            "title": "AttributeNameValue",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -42,26 +40,28 @@
                     ]
                 },
                 "type": {
-                    "type": ["string", "null"],
-                    "enum": [
-                        null,
-                        "string",
-                        "bool",
-                        "int",
-                        "double",
-                        "string_array",
-                        "bool_array",
-                        "int_array",
-                        "double_array"
-                    ]
+                    "$ref": "#/$defs/AttributeType"
                 }
             },
             "required": [
                 "name", "value"
             ]
         },
+        "AttributeType": {
+            "type": ["string", "null"],
+            "enum": [
+                null,
+                "string",
+                "bool",
+                "int",
+                "double",
+                "string_array",
+                "bool_array",
+                "int_array",
+                "double_array"
+            ]
+        },
         "Detectors": {
-            "title": "Detectors",
             "type": "object",
             "additionalProperties": false,
             "properties": {

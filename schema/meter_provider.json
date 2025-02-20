@@ -1,7 +1,6 @@
 {
     "$id": "https://opentelemetry.io/otelconfig/meter_provider.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "MeterProvider",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -18,18 +17,21 @@
             }
         },
         "exemplar_filter": {
-            "type": ["string", "null"],
-            "enum": [
-                "always_on",
-                "always_off",
-                "trace_based"
-            ]
+            "$ref": "#/$defs/ExemplarFilter"
         }
     },
     "required": [
         "readers"
     ],
     "$defs": {
+        "ExemplarFilter": {
+            "type": ["string", "null"],
+            "enum": [
+                "always_on",
+                "always_off",
+                "trace_based"
+            ]
+        },
         "PeriodicMetricReader": {
             "type": "object",
             "additionalProperties": false,
@@ -44,12 +46,17 @@
                 },
                 "exporter": {
                     "$ref": "#/$defs/PushMetricExporter"
+                },
+                "producers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/MetricProducer"
+                    }
                 }
             },
             "required": [
                 "exporter"
-            ],
-            "title": "PeriodicMetricReader"
+            ]
         },
         "PullMetricReader": {
             "type": "object",
@@ -57,12 +64,17 @@
             "properties": {
                 "exporter": {
                     "$ref": "#/$defs/PullMetricExporter"
+                },
+                "producers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/MetricProducer"
+                    }
                 }
             },
             "required": [
                 "exporter"
-            ],
-            "title": "PullMetricReader"
+            ]
         },
         "PushMetricExporter": {
             "type": "object",
@@ -70,11 +82,17 @@
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
-                "otlp": {
-                    "$ref": "#/$defs/OtlpMetric"
+                "otlp_http": {
+                    "$ref": "#/$defs/OtlpHttpMetricExporter"
+                },
+                "otlp_grpc": {
+                    "$ref": "#/$defs/OtlpGrpcMetricExporter"
+                },
+                "otlp_file": {
+                    "$ref": "#/$defs/OtlpFileMetricExporter"
                 },
                 "console": {
-                    "$ref": "common.json#/$defs/Console"
+                    "$ref": "common.json#/$defs/ConsoleExporter"
                 }
             },
             "patternProperties": {
@@ -90,7 +108,7 @@
             "maxProperties": 1,
             "properties": {
                 "prometheus": {
-                    "$ref": "#/$defs/Prometheus"
+                    "$ref": "#/$defs/PrometheusMetricExporter"
                 }
             },
             "patternProperties": {
@@ -106,8 +124,7 @@
             "maxProperties": 1,
             "properties": {
                 "opencensus": {
-                    "type": ["object", "null"],
-                    "additionalProperties": false
+                    "$ref": "#/$defs/OpenCensusMetricProducer"
                 }
             },
             "patternProperties": {
@@ -116,7 +133,11 @@
                 }
             }
         },
-        "Prometheus": {
+        "OpenCensusMetricProducer": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "PrometheusMetricExporter": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -144,40 +165,45 @@
             "type": "object",
             "additionalProperties": false,
             "minProperties": 1,
-            "maxProperties": 2,
+            "maxProperties": 1,
             "properties": {
                 "periodic": {
                     "$ref": "#/$defs/PeriodicMetricReader"
                 },
                 "pull": {
                     "$ref": "#/$defs/PullMetricReader"
-                },
-                "producers": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/MetricProducer"
-                    }
                 }
             }
         },
-        "OtlpMetric": {
-            "type": "object",
+        "ExporterTemporalityPreference": {
+            "type": ["string", "null"],
+            "enum": [
+                "cumulative",
+                "delta",
+                "low_memory"
+            ]
+        },
+        "ExporterDefaultHistogramAggregation": {
+            "type": ["string", "null"],
+            "enum": [
+                "explicit_bucket_histogram",
+                "base2_exponential_bucket_histogram"
+            ]
+        },
+        "OtlpHttpMetricExporter": {
+            "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
-                "protocol": {
-                    "type": "string",
-                    "pattern": "^(http|grpc)\\/(protobuf|json)"
-                },
                 "endpoint": {
-                    "type": "string"
-                },
-                "certificate": {
                     "type": ["string", "null"]
                 },
-                "client_key": {
+                "certificate_file": {
                     "type": ["string", "null"]
                 },
-                "client_certificate": {
+                "client_key_file": {
+                    "type": ["string", "null"]
+                },
+                "client_certificate_file": {
                     "type": ["string", "null"]
                 },
                 "headers": {
@@ -196,139 +222,211 @@
                     "type": ["integer", "null"],
                     "minimum": 0
                 },
+                "encoding": {
+                    "$ref": "common.json#/$defs/OtlpHttpEncoding"
+                },
                 "temporality_preference": {
-                    "type": ["string", "null"],
-                    "enum": [
-                        "cumulative",
-                        "delta",
-                        "low_memory"
-                    ]
+                    "$ref": "#/$defs/ExporterTemporalityPreference"
                 },
                 "default_histogram_aggregation": {
-                    "type": ["string", "null"],
-                    "enum": [
-                        "explicit_bucket_histogram",
-                        "base2_exponential_bucket_histogram"
-                    ]
+                    "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+                }
+            }
+        },
+        "OtlpGrpcMetricExporter": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "endpoint": {
+                    "type": ["string", "null"]
+                },
+                "certificate_file": {
+                    "type": ["string", "null"]
+                },
+                "client_key_file": {
+                    "type": ["string", "null"]
+                },
+                "client_certificate_file": {
+                    "type": ["string", "null"]
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "common.json#/$defs/NameStringValuePair"
+                    }
+                },
+                "headers_list": {
+                    "type": ["string", "null"]
+                },
+                "compression": {
+                    "type": ["string", "null"]
+                },
+                "timeout": {
+                    "type": ["integer", "null"],
+                    "minimum": 0
                 },
                 "insecure": {
                     "type": ["boolean", "null"]
+                },
+                "temporality_preference": {
+                    "$ref": "#/$defs/ExporterTemporalityPreference"
+                },
+                "default_histogram_aggregation": {
+                    "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
                 }
-            },
-            "required": [
-                "endpoint",
-                "protocol"
-            ],
-            "title": "OtlpMetric"
+            }
+        },
+        "OtlpFileMetricExporter": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "output_stream": {
+                    "type": ["string", "null"]
+                },
+                "temporality_preference": {
+                    "$ref": "#/$defs/ExporterTemporalityPreference"
+                },
+                "default_histogram_aggregation": {
+                    "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+                }
+            }
         },
         "View": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "selector": {
-                    "title": "Selector",
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "instrument_name": {
-                            "type": ["string", "null"]
-                        },
-                        "instrument_type": {
-                            "type": ["string", "null"],
-                            "enum": [
-                                "counter",
-                                "histogram",
-                                "observable_counter",
-                                "observable_gauge",
-                                "observable_up_down_counter",
-                                "up_down_counter"
-                            ]
-                        },
-                        "unit": {
-                            "type": ["string", "null"]
-                        },
-                        "meter_name": {
-                            "type": ["string", "null"]
-                        },
-                        "meter_version": {
-                            "type": ["string", "null"]
-                        },
-                        "meter_schema_url": {
-                            "type": ["string", "null"]
-                        }
-                    }
+                    "$ref": "#/$defs/ViewSelector"
                 },
                 "stream": {
-                    "title": "Stream",
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "name": {
-                            "type": ["string", "null"]
-                        },
-                        "description": {
-                            "type": ["string", "null"]
-                        },
-                        "aggregation": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "minProperties": 1,
-                            "maxProperties": 1,
-                            "properties": {
-                                "default": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false
-                                },
-                                "drop": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false
-                                },
-                                "explicit_bucket_histogram": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "boundaries": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "number"
-                                            }
-                                        },
-                                        "record_min_max": {
-                                            "type": ["boolean", "null"]
-                                        }
-                                    }
-                                },
-                                "base2_exponential_bucket_histogram": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "max_scale": {
-                                            "type": ["integer", "null"]
-                                        },
-                                        "max_size": {
-                                            "type": ["integer", "null"]
-                                        },
-                                        "record_min_max": {
-                                            "type": ["boolean", "null"]
-                                        }
-                                    }
-                                },
-                                "last_value": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false
-                                },
-                                "sum": {
-                                    "type": ["object", "null"],
-                                    "additionalProperties": false
-                                }
-                            }
-                        },
-                        "attribute_keys": {
-                            "$ref": "common.json#/$defs/IncludeExclude"
-                        }
-                    }
+                    "$ref": "#/$defs/ViewStream"
                 }
             }
+        },
+        "ViewSelector": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "instrument_name": {
+                    "type": ["string", "null"]
+                },
+                "instrument_type": {
+                    "$ref": "#/$defs/InstrumentType"
+                },
+                "unit": {
+                    "type": ["string", "null"]
+                },
+                "meter_name": {
+                    "type": ["string", "null"]
+                },
+                "meter_version": {
+                    "type": ["string", "null"]
+                },
+                "meter_schema_url": {
+                    "type": ["string", "null"]
+                }
+            }
+        },
+        "InstrumentType": {
+            "type": ["string", "null"],
+            "enum": [
+                "counter",
+                "histogram",
+                "observable_counter",
+                "observable_gauge",
+                "observable_up_down_counter",
+                "up_down_counter"
+            ]
+        },
+        "ViewStream": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": ["string", "null"]
+                },
+                "description": {
+                    "type": ["string", "null"]
+                },
+                "aggregation": {
+                    "$ref": "#/$defs/Aggregation"
+                },
+                "attribute_keys": {
+                    "$ref": "common.json#/$defs/IncludeExclude"
+                }
+            }
+        },
+        "Aggregation": {
+            "type": "object",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "default": {
+                    "$ref": "#/$defs/DefaultAggregation"
+                },
+                "drop": {
+                    "$ref": "#/$defs/DropAggregation"
+                },
+                "explicit_bucket_histogram": {
+                    "$ref": "#/$defs/ExplicitBucketHistogramAggregation"
+                },
+                "base2_exponential_bucket_histogram": {
+                    "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation"
+                },
+                "last_value": {
+                    "$ref": "#/$defs/LastValueAggregation"
+                },
+                "sum": {
+                    "$ref": "#/$defs/SumAggregation"
+                }
+            }
+        },
+        "DefaultAggregation": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "DropAggregation": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "ExplicitBucketHistogramAggregation": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "boundaries": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "record_min_max": {
+                    "type": ["boolean", "null"]
+                }
+            }
+        },
+        "Base2ExponentialBucketHistogramAggregation": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "max_scale": {
+                    "type": ["integer", "null"]
+                },
+                "max_size": {
+                    "type": ["integer", "null"]
+                },
+                "record_min_max": {
+                    "type": ["boolean", "null"]
+                }
+            }
+        },
+        "LastValueAggregation": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "SumAggregation": {
+            "type": ["object", "null"],
+            "additionalProperties": false
         }
     }
 }
