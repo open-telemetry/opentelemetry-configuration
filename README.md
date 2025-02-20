@@ -30,30 +30,34 @@ go-jsonschema \
 
 **NOTICE**: The stability definitions are applicable after this repository publishes a stable release (1.0.0). Currently, this repository is experimental and makes no stability guarantees. 
 
+This repository strictly follows [Semantic Versioning 2.0.0](https://semver.org/). This means that all releases have a version following the format `MAJOR.MINOR.PATCH`.
+
 Stability definition consists of the following sections:
 
 * [Objectives](#objectives): Overview of the motivation behind stability.
-* [Guarantees and allowed changes](#guarantees-and-allowed-changes): Specific details on allowed and disallowed changed.
+* [Guarantees and allowed changes](#guarantees-and-allowed-changes): Specific details on allowed and disallowed changes within stability guarantees.
 * [Applicability](#applicability): Limits of stability definitions, including experimental features and extension points.
 * [File format](#file-format): The `file_format` property and implementation behavior when schema versions are not aligned.
 
-### Objectives
+### Objective
 
-The primary objective of stability is to protect users from breaking changes. That is, users providing configuration conforming to a particular stable version of the schema should be able to reliably upgrade minor and patch versions without risk that their configuration becomes invalid, or that the interpretation changes.
+The objective of stability is to protect users from breaking changes. That is, users providing configuration conforming to a particular stable `MAJOR` version of the schema expect to reliably upgrade `MINOR` and `PATCH` versions without risk that their configuration becomes invalid, or that the interpretation changes.
 
-A secondary objective is to allow for stable code generation from the JSON schema for language implementations of the [in-memory configuration model](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#in-memory-configuration-model). With stability guarantees in mind, maintainers should be able to write code generation logic (or handcraft an in-memory configuration model) without risk that allowed changes to the schema will break stable implementations. **NOTE**: There is _no_ guarantee that the output of off-the-shelf [code generation](#code-generation) tools will be stable when allowed changes are made. Maintainers are responsible for understanding how code generation tools work (and evolve) and intersect with the guarantees made here.
+Similarly, language implementations are expected to provide [in-memory configuration model](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#in-memory-configuration-model) representations, which have their own stability guarantees as defined by respective language SIGs, and which users expect to reliably upgrade. The stability guarantees inform maintainers on the types of changes they need to consider when creating these representations, which may be produced "by hand" or with code generation logic. **NOTE**: There is _no_ guarantee that the output of off-the-shelf [code generation](#code-generation) tools will be stable when allowed changes are made.
 
-All schema changes are considered through the lens of maintaining these objectives.
+All schema changes are considered through the lens of maintaining this objective.
 
 ### Guarantees and allowed changes
 
-A type is the JSON schema analog to a [protobuf message](https://protobuf.dev/programming-guides/proto3/#simple). Types have a [`type`](https://json-schema.org/understanding-json-schema/reference/type) of `object`, and use various keywords to describe their properties and conditions which constitute valid data.
+The following guarantees apply to `MINOR` version changes. There are no guarantees for `MAJOR` version changes.
+
+A type is the JSON schema analog to a [protobuf message](https://protobuf.dev/programming-guides/proto3/#simple). Types have a [type](https://json-schema.org/understanding-json-schema/reference/type) of `object`, and use various keywords to describe their properties and conditions which constitute valid data.
 
 Stable types provide the following guarantees. All types except those excluded in [applicability](#applicability) are considered stable after a 1.0.0 release.
 
 * Type property names will not change.
 * The `type` of properties will not change, except the allowed addition of `null`.
-* Type [title](https://json-schema.org/understanding-json-schema/reference/annotations) will not change.
+* Type [title][annotation] will not change.
 * Types will be not change to make validation more strict. Changes may occur if they make validation less strict. This applies to the following keywords. Examples are given, but they are not exhaustive.
   * [minLength, maxLength](https://json-schema.org/understanding-json-schema/reference/string): `minLength` will not increase and `maxLength` will not decrease.
   * [pattern](https://json-schema.org/understanding-json-schema/reference/string#regexp): pattern will not become stricter.
@@ -79,6 +83,8 @@ The following additive changes are allowed:
 * Adding new types.
 * Changes that make property validation less strict. See above for examples.
 * Removing a property from `required`.
+* Adding, removing, or modifying `description` [annotation][].
+* Adding, removing, or modifying `deprecated` [annotation][].
 
 ### Applicability
 
@@ -90,9 +96,9 @@ Sometimes we need to experiment with new types and properties. For example, to e
 
 Experimental properties are denoted by a `*/(development|alpha|beta)` suffix (e.g.`foo/development`). The suffix indicates the property value and all types nested within it are exempt from stability guarantees, and are subject to breaking changes in minor versions. Experimental types have a [title](https://json-schema.org/understanding-json-schema/reference/annotations) prefixed with `Experimental*` (e.g. `ExperimentalFoo`).
 
-Maintainers are not obligated to implement support for experimental properties and types. When they do, they are under no obligation to maintain any stability guarantees. 
+Maintainers are not obligated to implement support for experimental properties and types. When they do, they are no obligated to maintain any stability guarantees. 
 
-End users should be cautious of adopting experimental properties and types, since in doing so they are subject to breaking changes in minor versions. 
+End users should be cautious of adopting experimental properties and types, since in doing so they are subject to breaking changes in `MINOR` versions. 
 
 #### Extension points
 
@@ -104,10 +110,10 @@ The top level `.file_format` property is special in that it conveys the version 
 
 Given the [guarantees and allowed changes](#guarantees-and-allowed-changes), implementations may encounter the following scenarios:
 
-* The `file_format` major version aligns with the implementation major version, AND:
-  * The `file_format` minor version is less than or equal to the implementation minor version: This is ideal, with versions maximally aligned. Despite this, an implementation might not support every property and type of its target version.
-  * The `file_format` minor version is greater than the implementation minor version: The implementation should detect and emit a warning since there may be configuration features the user specifies which the implementation does not understand. However, this is acceptable in many cases, and not terribly different from the ideal path where an implementation also might not support every configuration feature.
-* The `file_format` major version does not align with the implementation major version. The implementation should produce an error, since there may be breaking changes in the properties and semantics on how they are interpreted. Implementations may choose to temporarily support multiple major version to accommodate transitioning users.
+* The `file_format` `MAJOR` version aligns with the implementation `MAJOR` version, AND:
+  * The `file_format` `MINOR` version is less than or equal to the implementation `MINOR` version: This is ideal, with versions maximally aligned. Despite this, an implementation might not support every property and type of its target version.
+  * The `file_format` `MINOR` version is greater than the implementation `MINOR` version: The implementation should detect and emit a warning since there may be configuration features the user specifies which the implementation does not understand. However, this is acceptable in many cases, and not terribly different from the ideal path where an implementation also might not support every configuration feature.
+* The `file_format` `MAJOR` version does not align with the implementation `MAJOR` version. The implementation should produce an error, since there may be breaking changes in the properties and semantics on how they are interpreted. Implementations may choose to temporarily support multiple major version to accommodate transitioning users.
 
 ## Contributing
 
@@ -129,5 +135,6 @@ Maintainers ([@open-telemetry/configuration-maintainers](https://github.com/orgs
 
 *Find more about the maintainer role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).*
 
+[annotation]: https://json-schema.org/understanding-json-schema/reference/annotations
 [env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution
 
