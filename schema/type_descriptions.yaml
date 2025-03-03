@@ -412,7 +412,10 @@
 
 - type: MetricExporter
   property_descriptions:
-    prometheus: Configure exporter to be prometheus.
+    prometheus/development: >
+      Configure exporter to be prometheus.
+      
+      This type is in development and subject to breaking changes in minor versions.
     otlp_http: Configure exporter to be OTLP with HTTP transport.
     otlp_grpc: Configure exporter to be OTLP with gRPC transport.
     otlp_file: Configure exporter to be OTLP with file transport.
@@ -444,7 +447,7 @@
       If omitted or null, false is used.
     with_resource_constant_labels: Configure Prometheus Exporter to add resource attributes as metrics attributes.
   path_patterns:
-    - .meter_provider.readers[].pull.exporter.prometheus
+    - .meter_provider.readers[].pull.exporter.prometheus/development
 - type: PrometheusIncludeExclude
   property_descriptions:
     included: >
@@ -462,7 +465,7 @@
        * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
       If omitted, .included resource attributes are included.
   path_patterns:
-    - .meter_provider.readers[].pull.exporter.prometheus.with_resource_constant_labels
+    - .meter_provider.readers[].pull.exporter.prometheus/development.with_resource_constant_labels
 
 - type: View
   property_descriptions:

@@ -172,7 +172,8 @@ meter_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be prometheus.
-          prometheus:
+          # This type is in development and subject to breaking changes in minor versions.
+          prometheus/development:
             # Configure host.
             # If omitted or null, localhost is used.
             host: localhost
