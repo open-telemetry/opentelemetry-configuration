@@ -28,63 +28,92 @@ go-jsonschema \
 
 ## Stability definition
 
-Before reaching 1.0, each minor version change is equivalent to major version change. That is, there are no guarantees about compatibility and all changes are permitted. As of 1.0, we provide the following stability guarantees:
+**NOTICE**: The stability definitions are applicable after this repository publishes a stable release (1.0.0). Currently, this repository is experimental and makes no stability guarantees. 
 
-- For major version: No guarantees.
-- For minor versions: TBD
+This repository strictly follows [Semantic Versioning 2.0.0](https://semver.org/). This means that all releases have a version following the format `MAJOR.MINOR.PATCH`.
 
-Allowable changes:
+Stability definition consists of the following sections:
 
-- For major versions: All changes are permitted.
-- For minor versions: TBD
+* [Objectives](#objectives): Overview of the motivation behind stability.
+* [Guarantees and allowed changes](#guarantees-and-allowed-changes): Specific details on allowed and disallowed changes within stability guarantees.
+* [Applicability](#applicability): Limits of stability definitions, including experimental features and extension points.
+* [File format](#file-format): The `file_format` property and implementation behavior when schema versions are not aligned.
 
-## Schema modeling rules
+### Objective
 
-The following rules are enforced when modeling the configuration schema:
+The objective of stability is to protect users from breaking changes. That is, users providing configuration conforming to a particular stable `MAJOR` version of the schema expect to reliably upgrade `MINOR` and `PATCH` versions without risk that their configuration becomes invalid, or that the interpretation changes.
 
-### What properties are part of schema?
+Similarly, language implementations are expected to provide [in-memory configuration model](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#in-memory-configuration-model) representations, which have their own stability guarantees as defined by respective language SIGs, and which users expect to reliably upgrade. The stability guarantees inform maintainers on the types of changes they need to consider when creating these representations, which may be produced "by hand" or with code generation logic. **NOTE**: There is _no_ guarantee that the output of off-the-shelf [code generation](#code-generation) tools will be stable when allowed changes are made.
 
-Only properties which are described in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification) or [semantic-conventions](https://github.com/open-telemetry/semantic-conventions) are modeled in the schema. However, it's acceptable to allow additional properties specific to a particular language or implementation, and not covered by the schema. Model these by setting `"additionalProperties": true` (see [JSON schema additionalProperties](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties)). Types should set `"additionalProperties": false` by default unless requested by an opentelemetry component [maintainer](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer) which supports additional options.
+All schema changes are considered through the lens of maintaining this objective.
 
-### Property naming
+### Guarantees and allowed changes
 
-To remove redundant information from the configuration file, prefixes for data produced by each of the providers will be removed from configuration options. For example, under the `meter_provider` configuration, metric readers are identified by the word `readers` rather than by `metric_readers`. Similarly, the prefix `span_` will be dropped for tracer provider configuration, and `logrecord` for logger provider.
+The following guarantees apply to `MINOR` version changes. There are no guarantees for `MAJOR` version changes.
 
-### Property name case
+A type is the JSON schema analog to a [protobuf message](https://protobuf.dev/programming-guides/proto3/#simple). Types have a [type](https://json-schema.org/understanding-json-schema/reference/type) of `object`, and use various keywords to describe their properties and conditions which constitute valid data.
 
-Properties defined in the schema should be lower [snake case](https://en.wikipedia.org/wiki/Snake_case).
+Stable types provide the following guarantees. All types except those excluded in [applicability](#applicability) are considered stable after a 1.0.0 release.
 
-### Properties which pattern matching
+* Type property names will not change.
+* The `type` of properties will not change, except the allowed addition of `null`.
+* Type [title][annotation] will not change.
+* Types will be not change to make validation more strict. Changes may occur if they make validation less strict. This applies to the following keywords. Examples are given, but they are not exhaustive.
+  * [minLength, maxLength](https://json-schema.org/understanding-json-schema/reference/string): `minLength` will not increase and `maxLength` will not decrease.
+  * [pattern](https://json-schema.org/understanding-json-schema/reference/string#regexp): pattern will not become stricter.
+  * [format](https://json-schema.org/understanding-json-schema/reference/string#built-in-formats): will not change.
+  * [multipleOf](https://json-schema.org/understanding-json-schema/reference/numeric#multiples): will not change.
+  * [minimum, exclusiveMinimum, maximum, exclusiveMaximum](https://json-schema.org/understanding-json-schema/reference/numeric#range): `minimum`, `exclusiveMinimum` will not increase; `maximum`, `exclusiveMaximum` will not decrease.
+  * [patternProperties](https://json-schema.org/understanding-json-schema/reference/object#patternProperties): will not expand scope to restrict additional properties.
+  * [additionalProperties](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties): will not go from `true` to `false`.
+  * [propertyNames](https://json-schema.org/understanding-json-schema/reference/object#propertyNames): will not become stricter.
+  * [minProperties, maxProperties](https://json-schema.org/understanding-json-schema/reference/object#size): `minProperties` will not increase, `maxProperties` will not decrease.
+  * [required](https://json-schema.org/understanding-json-schema/reference/object#required): will not add additional entries.
+  * [contains, minContains, maxContains](https://json-schema.org/understanding-json-schema/reference/array#contains): will not become stricter.
+  * [minItems, maxItems](https://json-schema.org/understanding-json-schema/reference/array#length): `minItems` will not increase, `maxItems` will not decrease.
+  * [uniqueItems](https://json-schema.org/understanding-json-schema/reference/array#uniqueItems): will not go from `false` to `true`.
+  * [enum](https://json-schema.org/understanding-json-schema/reference/enum): will not remove entries.
+  * [const](https://json-schema.org/understanding-json-schema/reference/const): will not change.
+* No existing type will be deleted.
+* No type property will be deleted.
 
-When a property requires pattern matching, use wildcard `*` (match any number of any character, including none) and `?` (match any single character) instead of regex. If a single property with wildcards is likely to be insufficient to model the configuration requirements, accept `included` and `excluded` properties, each with an array of strings with wildcard entries. The wildcard entries should be joined with a logical OR. If `included` is not specified, assume that all entries are included. Apply `excluded` after applying `included`. Examples:
+The following additive changes are allowed:
 
-* Given `excluded: ["a*"]`: Match all except values starting with `a`.
-* Given `included: ["a*", "b*"]`, `excluded: ["ab*"]`: Match any value starting with `a` or `b`, excluding values starting with `ab`.
-* Given `included: ["a", "b"]`, `excluded: ["a"]`: Match values equal to `b`.
+* Adding of new properties to existing types.
+* Adding new types.
+* Changes that make property validation less strict. See above for examples.
+* Removing a property from `required`.
+* Adding, removing, or modifying `description` [annotation][].
+* Adding, removing, or modifying `deprecated` [annotation][].
 
-### Data modeling and environment variable substitution
+### Applicability
 
-Properties should be modeled using the most appropriate data structures and types to represent the information. This may result in a schema which doesn't support env var substitution for the [standard env vars](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md) where a type mismatch occurs. For example, the `OTEL_RESOURCE_ATTRIBUTES` env var is modeled as a string, consisting of a comma separated list of key-value pairs, which is not the natural way to model a mapping of key-value pairs in JSON schema. 
+Stability guarantees do not apply to [experimental features](#experimental-features) and [extension points](#extension-points).
 
-In instances where there is a type mismatch between the JSON schema and equivalent standard env var, an alternative version of the property may be provided to resolve the mismatch. For example, resource attributes are configured at `.resource.attributes`, but `.resource.attributes_list` is available with a format matching that of `OTEL_RESOURCE_ATTRIBUTES`. Alternative properties are reserved for cases where there is a demonstrated need for platforms to be able to participate in configuration and there is no reasonable alternative.
+#### Experimental features
 
-### Name-value pairs
+Sometimes we need to experiment with new types and properties. For example, to evaluate the configuration experience for experimental features in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification).
 
-When a type requires a configurable list of name-value pairs (i.e. resource attributes, HTTP headers), model using an array of objects, each with `name` and `value` properties. While an array of name-value objects is slightly more verbose than an object where each key-value is an entry, the latter is preferred because:
+Experimental properties are denoted by a `*/(development|alpha|beta)` suffix (e.g.`foo/development`). The suffix indicates the property value and all types nested within it are exempt from stability guarantees, and are subject to breaking changes in minor versions. Experimental types have a [title](https://json-schema.org/understanding-json-schema/reference/annotations) prefixed with `Experimental*` (e.g. `ExperimentalFoo`).
 
-* Avoids user input as keys, which ensures conformity with the [snake_case properties](#property-name-case) rule.
-* Allows both the names and the values to be targets for [env var substitution]. For example:
+Maintainers are not obligated to implement support for experimental properties and types. When they do, they are no obligated to maintain any stability guarantees. 
 
-    ```yaml
-   tracer_provider:
-     processors:
-       - batch:
-           exporter:
-             otlp:
-               headers:
-                - name: ${AUTHORIZATION_HEADER_NAME:-api-key}
-                  value: ${AUTHORIZATION_HEADER_VALUE}
-    ```
+End users should be cautious of adopting experimental properties and types, since in doing so they are subject to breaking changes in `MINOR` versions. 
+
+#### Extension points
+
+The schema contains types which are designed for extension, as indicated by the presence of `"additionalProperties": true`. For example, [component provider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-componentprovider) provides mechanisms for referencing custom SDK extension components like exporters, processors, samplers, etc. The stability guarantees surrounding properties not explicitly defined in this repository is out of scope. Users should consult documentation for the components interpreting these additional properties and decide if their stability guarantees are sufficient for adoption.
+
+### File format
+
+The top level `.file_format` property is special in that it conveys the version of the schema a user's configuration conforms to. Implementations also target a particular version of the schema, which may or may not align with the version specified by the user.
+
+Given the [guarantees and allowed changes](#guarantees-and-allowed-changes), implementations may encounter the following scenarios:
+
+* The `file_format` `MAJOR` version aligns with the implementation `MAJOR` version, AND:
+  * The `file_format` `MINOR` version is less than or equal to the implementation `MINOR` version: This is ideal, with versions maximally aligned. Despite this, an implementation might not support every property and type of its target version.
+  * The `file_format` `MINOR` version is greater than the implementation `MINOR` version: The implementation should detect and emit a warning since there may be configuration features the user specifies which the implementation does not understand. However, this is acceptable in many cases, and not terribly different from the ideal path where an implementation also might not support every configuration feature.
+* The `file_format` `MAJOR` version does not align with the implementation `MAJOR` version. The implementation should produce an error, since there may be breaking changes in the properties and semantics on how they are interpreted. Implementations may choose to temporarily support multiple major version to accommodate transitioning users.
 
 ## Contributing
 
@@ -101,10 +130,11 @@ Maintainers ([@open-telemetry/configuration-maintainers](https://github.com/orgs
 
 - [Alex Boten](https://github.com/codeboten), Honeycomb
 - [Jack Berg](https://github.com/jack-berg), New Relic
-- [Tristan Sloughter](https://github.com/tsloughter), Splunk
-- [Tyler Yahn](https://github.com/tsloughter), Splunk
+- [Tristan Sloughter](https://github.com/tsloughter), MyDecisiveAI
+- [Tyler Yahn](https://github.com/MrAlias), Splunk
 
 *Find more about the maintainer role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).*
 
+[annotation]: https://json-schema.org/understanding-json-schema/reference/annotations
 [env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution
 

@@ -2,35 +2,38 @@
     "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "OpenTelemetryConfiguration",
-    "type": ["object", "null"],
+    "type": "object",
     "additionalProperties": true,
     "properties": {
         "file_format": {
-            "type": ["string", "null"]
+            "type": "string"
         },
         "disabled": {
             "type": ["boolean", "null"]
+        },
+        "log_level": {
+            "type": ["string", "null"]
         },
         "attribute_limits": {
             "$ref": "#/$defs/AttributeLimits"
         },
         "logger_provider": {
-            "$ref": "logger_provider.json"
+            "$ref": "#/$defs/LoggerProvider"
         },
         "meter_provider": {
-            "$ref": "meter_provider.json"
+            "$ref": "#/$defs/MeterProvider"
         },
         "propagator": {
-            "$ref": "propagator.json"
+            "$ref": "#/$defs/Propagator"
         },
         "tracer_provider": {
-            "$ref": "tracer_provider.json"
+            "$ref": "#/$defs/TracerProvider"
         },
         "resource": {
-            "$ref": "resource.json"
+            "$ref": "#/$defs/Resource"
         },
         "instrumentation": {
-            "$ref": "instrumentation.json"
+            "$ref": "#/$defs/Instrumentation"
         }
     },
     "required": [
@@ -38,7 +41,7 @@
     ],
     "$defs": {
         "AttributeLimits": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "properties": {
                 "attribute_value_length_limit": {
@@ -48,6 +51,24 @@
                     "type": ["integer", "null"]
                 }
             }
+        },
+        "LoggerProvider": {
+            "$ref": "logger_provider.json"
+        },
+        "MeterProvider": {
+            "$ref": "meter_provider.json"
+        },
+        "TracerProvider": {
+            "$ref": "tracer_provider.json"
+        },
+        "Propagator": {
+            "$ref": "propagator.json"
+        },
+        "Resource": {
+            "$ref": "resource.json"
+        },
+        "Instrumentation": {
+            "$ref": "instrumentation.json"
         }
     }
 }

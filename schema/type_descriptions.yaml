@@ -19,13 +19,35 @@
       The yaml format is documented at
 
       https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
-    disabled: Configure if the SDK is disabled or not. This is not required to be provided to ensure the SDK isn't disabled, the default value when this is not provided is for the SDK to be enabled.
-    resource: Configure resource for all signals.
-    propagator: Configure text map context propagators.
+    disabled: >
+      Configure if the SDK is disabled or not.
+      
+      If omitted or null, false is used.
+    log_level: >
+      Configure the log level of the internal logger used by the SDK.
+
+      If omitted, info is used.
+    resource: >
+      Configure resource for all signals.
+      
+      If omitted, the default resource is used.
+    propagator: >
+      Configure text map context propagators.
+      
+      If omitted, tracecontext and baggage are used.
     attribute_limits: Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
-    logger_provider: Configure logger provider.
-    tracer_provider: Configure tracer provider.
-    meter_provider: Configure meter provider.
+    logger_provider: >
+      Configure logger provider.
+      
+      If omitted, a noop logger provider is used.
+    tracer_provider: >
+      Configure tracer provider.
+      
+      If omitted, a noop tracer provider is used.
+    meter_provider: >
+      Configure meter provider.
+      
+      If omitted, a noop meter provider is used.
     instrumentation: Configure instrumentation.
   path_patterns:
     - .
@@ -35,13 +57,20 @@
     attributes: >
       Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
       
-      Entries must contain .name and .value, and may optionally include .type, which defaults to "string" if not set. The value must match the type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+      Entries must contain .name and .value, and may optionally include .type. If an entry's .type omitted or null, string is used.
+      
+      The .value's type must match the .type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
     attributes_list: >
       Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
       
       The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+      
+      If omitted or null, no resource attributes are added.
     detectors: Configure resource detectors.
-    schema_url: Configure resource schema URL.
+    schema_url: >
+      Configure resource schema URL.
+      
+      If omitted or null, no schema URL is used.
   path_patterns:
     - .resource
 
@@ -54,30 +83,45 @@
 - type: DetectorAttributes
   property_descriptions:
     included: >
-      Configure list of attribute key patterns to include from resource detectors. If not set, all attributes are included.
+      Configure list of attribute key patterns to include from resource detectors.
       
       Attribute keys from resource detectors are evaluated to match as follows:
        * If the value of the attribute key exactly matches.
        * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+      If omitted, all attributes are included.
     excluded: >
       Configure list of attribute key patterns to exclude from resource detectors. Applies after .resource.detectors.attributes.included (i.e. excluded has higher priority than included).
       
       Attribute keys from resource detectors are evaluated to match as follows:
        * If the value of the attribute key exactly matches.
        * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+      If omitted, .included attributes are included.
   path_patterns:
     - .resource.detectors.attributes
 
 - type: AttributeLimits
   property_descriptions:
-    attribute_value_length_limit: Configure max attribute value size.
-    attribute_count_limit:  Configure max attribute count.
+    attribute_value_length_limit: >
+      Configure max attribute value size. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, there is no limit.
+    attribute_count_limit: >
+      Configure max attribute count. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, 128 is used.
   path_patterns:
     - .attribute_limits
 
 - type: Propagator
   property_descriptions:
-    composite: Configure the set of propagators to include in the composite text map propagator.
+    composite: >
+      Configure the set of propagators to include in the composite text map propagator. 
+      
+      Built-in values include: tracecontext, baggage, b3, b3multi, jaeger, none. Known third party values include: xray, ottrace. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration.
   path_patterns:
     - .propagator
 # END OpenTelemetryConfiguration
@@ -100,10 +144,26 @@
 
 - type: BatchLogRecordProcessor
   property_descriptions:
-    schedule_delay: Configure delay interval (in milliseconds) between two consecutive exports.
-    export_timeout: Configure maximum allowed time (in milliseconds) to export data.
-    max_queue_size: Configure maximum queue size.
-    max_export_batch_size: Configure maximum batch size.
+    schedule_delay: >
+      Configure delay interval (in milliseconds) between two consecutive exports. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, 1000 is used.
+    export_timeout: >
+      Configure maximum allowed time (in milliseconds) to export data. 
+      
+      Value must be non-negative. A value of 0 indicates no limit (infinity).
+      
+      If omitted or null, 30000 is used.
+    max_queue_size: >
+      Configure maximum queue size. Value must be positive.
+      
+      If omitted or null, 2048 is used.
+    max_export_batch_size: >
+      Configure maximum batch size. Value must be positive.
+      
+      If omitted or null, 512 is used.
     exporter: Configure exporter.
   path_patterns:
     - .logger_provider.processors[].batch
@@ -116,15 +176,27 @@
 
 - type: LogRecordExporter
   property_descriptions:
-    otlp: Configure exporter to be OTLP.
+    otlp_http: Configure exporter to be OTLP with HTTP transport.
+    otlp_grpc: Configure exporter to be OTLP with gRPC transport.
+    otlp_file: Configure exporter to be OTLP with file transport.
     console: Configure exporter to be console.
   path_patterns:
     - .logger_provider.processors[].*.exporter
 
 - type: LogRecordLimits
   property_descriptions:
-    attribute_value_length_limit: Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
-    attribute_count_limit:  Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+    attribute_value_length_limit: >
+      Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, there is no limit.
+    attribute_count_limit: >
+      Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, 128 is used.
   path_patterns:
     - .logger_provider.limits
 
@@ -159,7 +231,10 @@
   property_descriptions:
     processors: Configure span processors.
     limits: Configure span limits. See also attribute_limits.
-    sampler: Configure the sampler.
+    sampler: >
+      Configure the sampler.
+      
+      If omitted, parent based sampler with a root of always_on is used.
     tracer_configurator: Configure tracers.
   path_patterns:
     - .tracer_provider
@@ -173,10 +248,26 @@
 
 - type: BatchSpanProcessor
   property_descriptions:
-    schedule_delay: Configure delay interval (in milliseconds) between two consecutive exports.
-    export_timeout: Configure maximum allowed time (in milliseconds) to export data.
-    max_queue_size: Configure maximum queue size.
-    max_export_batch_size: Configure maximum batch size.
+    schedule_delay: >
+      Configure delay interval (in milliseconds) between two consecutive exports. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, 5000 is used.
+    export_timeout: >
+      Configure maximum allowed time (in milliseconds) to export data. 
+      
+      Value must be non-negative. A value of 0 indicates no limit (infinity).
+      
+      If omitted or null, 30000 is used.
+    max_queue_size: >
+      Configure maximum queue size. Value must be positive.
+      
+      If omitted or null, 2048 is used.
+    max_export_batch_size: >
+      Configure maximum batch size. Value must be positive.
+      
+      If omitted or null, 512 is used.
     exporter: Configure exporter.
   path_patterns:
     - .tracer_provider.processors[].batch
@@ -189,27 +280,67 @@
 
 - type: SpanExporter
   property_descriptions:
-    otlp: Configure exporter to be OTLP.
+    otlp_http: Configure exporter to be OTLP with HTTP transport.
+    otlp_grpc: Configure exporter to be OTLP with gRPC transport.
+    otlp_file: Configure exporter to be OTLP with file transport.
     zipkin: Configure exporter to be zipkin.
     console: Configure exporter to be console.
   path_patterns:
     - .tracer_provider.processors[].*.exporter
 
-- type: Zipkin
+- type: ZipkinSpanExporter
   property_descriptions:
-    endpoint: Configure endpoint.
-    timeout: Configure max time (in milliseconds) to wait for each export.
+    endpoint: >
+      Configure endpoint.
+      
+      If omitted or null, http://localhost:9411/api/v2/spans is used.
+    timeout: >
+      Configure max time (in milliseconds) to wait for each export. 
+      
+      Value must be non-negative. A value of 0 indicates indefinite.
+      
+      If omitted or null, 10000 is used.
   path_patterns:
     - .tracer_provider.processors[].*.exporter.zipkin
 
 - type: SpanLimits
   property_descriptions:
-    attribute_value_length_limit: Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
-    attribute_count_limit:  Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
-    event_count_limit: Configure max span event count.
-    link_count_limit: Configure max span link count.
-    event_attribute_count_limit: Configure max attributes per span event.
-    link_attribute_count_limit: Configure max attributes per span link.
+    attribute_value_length_limit: >
+      Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, there is no limit.
+    attribute_count_limit: >
+      Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, 128 is used.
+    event_count_limit: >
+      Configure max span event count. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, 128 is used.
+    link_count_limit: >
+      Configure max span link count. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, 128 is used.
+    event_attribute_count_limit: >
+      Configure max attributes per span event. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, 128 is used.
+    link_attribute_count_limit: >
+      Configure max attributes per span link. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, 128 is used.
   path_patterns:
     - .tracer_provider.limits
 
@@ -219,12 +350,30 @@
     trace_id_ratio_based: Configure sampler to be trace_id_ratio_based.
     always_on: Configure sampler to be always_on.
     always_off: Configure sampler to be always_off.
-    root: Configure root sampler.
-    remote_parent_sampled: Configure remote_parent_sampled sampler.
-    remote_parent_not_sampled: Configure remote_parent_not_sampled sampler.
-    local_parent_sampled: Configure local_parent_sampled sampler.
-    local_parent_not_sampled: Configure local_parent_not_sampled sampler.
-    ratio: Configure trace_id_ratio.
+    root: >
+      Configure root sampler.
+      
+      If omitted or null, always_on is used.
+    remote_parent_sampled: >
+      Configure remote_parent_sampled sampler.
+      
+      If omitted or null, always_on is used.
+    remote_parent_not_sampled: >
+      Configure remote_parent_not_sampled sampler.
+      
+      If omitted or null, always_off is used.
+    local_parent_sampled: >
+      Configure local_parent_sampled sampler.
+      
+      If omitted or null, always_on is used.
+    local_parent_not_sampled: >
+      Configure local_parent_not_sampled sampler.
+      
+      If omitted or null, always_off is used.
+    ratio: >
+      Configure trace_id_ratio.
+      
+      If omitted or null, 1.0 is used.
   path_patterns:
     - .tracer_provider.sampler
     - .tracer_provider.sampler.*
@@ -259,8 +408,16 @@
 - type: MeterProvider
   property_descriptions:
     readers: Configure metric readers.
-    views: Configure views. Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
-    exemplar_filter: "Configure the exemplar filter. Known values include: trace_based, always_on, always_off."
+    views: >
+      Configure views. 
+      
+      Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
+    exemplar_filter: >
+      Configure the exemplar filter. 
+      
+      Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
+      
+      If omitted or null, trace_based is used.
     meter_configurator: Configure meters.
   path_patterns:
     - .meter_provider
@@ -269,21 +426,32 @@
   property_descriptions:
     pull: Configure a pull based metric reader.
     periodic: Configure a periodic metric reader.
-    producers: Configure metric producers.
   path_patterns:
     - .meter_provider.readers[]
 
 - type: PullMetricReader
   property_descriptions:
     exporter: Configure exporter.
+    producers: Configure metric producers.
   path_patterns:
     - .meter_provider.readers[].pull
 
 - type: PeriodicMetricReader
   property_descriptions:
-    interval: Configure delay interval (in milliseconds) between start of two consecutive exports.
-    timeout: Configure maximum allowed time (in milliseconds) to export data.
+    interval: >
+      Configure delay interval (in milliseconds) between start of two consecutive exports. 
+      
+      Value must be non-negative.
+      
+      If omitted or null, 60000 is used.
+    timeout: >
+      Configure maximum allowed time (in milliseconds) to export data. 
+      
+      Value must be non-negative. A value of 0 indicates no limit (infinity).
+      
+      If omitted or null, 30000 is used.
     exporter: Configure exporter.
+    producers: Configure metric producers.
   path_patterns:
     - .meter_provider.readers[].periodic
 
@@ -292,77 +460,133 @@
     opencensus: Configure metric producer to be opencensus.
     prometheus: Configure metric producer to be prometheus.
   path_patterns:
-    - .meter_provider.readers[].producers[]
+    - .meter_provider.readers[].pull.producers[]
+    - .meter_provider.readers[].periodic.producers[]
 
 - type: MetricExporter
   property_descriptions:
     prometheus: Configure exporter to be prometheus.
-    otlp: Configure exporter to be OTLP.
+    otlp_http: Configure exporter to be OTLP with HTTP transport.
+    otlp_grpc: Configure exporter to be OTLP with gRPC transport.
+    otlp_file: Configure exporter to be OTLP with file transport.
     console: Configure exporter to be console.
   path_patterns:
     - .meter_provider.readers[].*.exporter
 
-- type: Prometheus
+- type: PrometheusMetricExporter
   property_descriptions:
-    host: Configure host.
-    port: Configure port.
-    without_units: Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.
-    without_type_suffix: Configure Prometheus Exporter to produce metrics without a type suffix.
-    without_scope_info: Configure Prometheus Exporter to produce metrics without a scope info metric.
+    host: >
+      Configure host.
+      
+      If omitted or null, localhost is used.
+    port: >
+      Configure port.
+      
+      If omitted or null, 9464 is used.
+    without_units: >
+      Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.
+      
+      If omitted or null, false is used.
+    without_type_suffix: >
+      Configure Prometheus Exporter to produce metrics without a type suffix.
+      
+      If omitted or null, false is used.
+    without_scope_info: >
+      Configure Prometheus Exporter to produce metrics without a scope info metric.
+      
+      If omitted or null, false is used.
     with_resource_constant_labels: Configure Prometheus Exporter to add resource attributes as metrics attributes.
   path_patterns:
     - .meter_provider.readers[].pull.exporter.prometheus
 - type: PrometheusIncludeExclude
   property_descriptions:
     included: >
-      Configure resource attributes to be included. If not set, no resource attributes are included.
+      Configure resource attributes to be included.
       
       Attribute keys from resources are evaluated to match as follows:
        * If the value of the attribute key exactly matches.
        * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+      If omitted, no resource attributes are included.
     excluded: >
       Configure resource attributes to be excluded. Applies after .with_resource_constant_labels.included (i.e. excluded has higher priority than included).
       
       Attribute keys from resources are evaluated to match as follows:
        * If the value of the attribute key exactly matches.
        * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+      If omitted, .included resource attributes are included.
   path_patterns:
     - .meter_provider.readers[].pull.exporter.prometheus.with_resource_constant_labels
 
 - type: View
   property_descriptions:
-    selector: Configure view selector.
+    selector: >
+      Configure view selector. 
+      
+      Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.
     stream: Configure view stream.
   path_patterns:
     - .meter_provider.views[]
 
 - type: Selector
   property_descriptions:
-    instrument_name: Configure instrument name selection criteria.
-    instrument_type: Configure instrument type selection criteria.
-    unit: Configure the instrument unit selection criteria.
-    meter_name: Configure meter name selection criteria.
-    meter_version: Configure meter version selection criteria.
-    meter_schema_url: Configure meter schema url selection criteria.
+    instrument_name: >
+      Configure instrument name selection criteria.
+      
+      If omitted or null, all instrument names match.
+    instrument_type: >
+      Configure instrument type selection criteria.
+      
+      If omitted or null, all instrument types match.
+    unit: >
+      Configure the instrument unit selection criteria.
+      
+      If omitted or null, all instrument units match.
+    meter_name: >
+      Configure meter name selection criteria.
+      
+      If omitted or null, all meter names match.
+    meter_version: >
+      Configure meter version selection criteria.
+      
+      If omitted or null, all meter versions match.
+    meter_schema_url: >
+      Configure meter schema url selection criteria.
+      
+      If omitted or null, all meter schema URLs match.
   path_patterns:
     - .meter_provider.views[].selector
 
 - type: Stream
   property_descriptions:
-    name: Configure metric name of the resulting stream(s).
-    description: Configure metric description of the resulting stream(s).
+    name: >
+      Configure metric name of the resulting stream(s).
+      
+      If omitted or null, the instrument's original name is used.
+    description: >
+      Configure metric description of the resulting stream(s).
+      
+      If omitted or null, the instrument's origin description is used.
     aggregation: > 
-      Configure aggregation of the resulting stream(s). Known values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum.
-    attribute_keys: Configure attribute keys retained in the resulting stream(s).
+      Configure aggregation of the resulting stream(s). 
+      
+      Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
+      
+      If omitted, default is used.
+    attribute_keys: >
+      Configure attribute keys retained in the resulting stream(s).
   path_patterns:
     - .meter_provider.views[].stream
 
 - type: StreamIncludeExclude
   property_descriptions:
     included: >
-      Configure list of attribute keys to include in the resulting stream(s). All other attributes are dropped. If not set, stream attributes are not configured.
+      Configure list of attribute keys to include in the resulting stream(s). All other attributes are dropped. 
+      
+      If omitted, all attributes are included.
     excluded: >
       Configure list of attribute keys to exclude from the resulting stream(s). Applies after .attribute_keys.included (i.e. excluded has higher priority than included).
+      
+      If omitted, .attribute_keys.included are included.
   path_patterns:
     - .meter_provider.views[].stream.attribute_keys
 
@@ -374,8 +598,14 @@
 
 - type: StreamAggregationExplicitBucketHistogram
   property_descriptions:
-    boundaries: Configure bucket boundaries.
-    record_min_max: Configure record min and max.
+    boundaries: >
+      Configure bucket boundaries.
+      
+      If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.
+    record_min_max: >
+      Configure record min and max.
+      
+      If omitted or null, true is used.
   path_patterns:
     - .meter_provider.views[].stream.aggregation.explicit_bucket_histogram
 
@@ -406,27 +636,131 @@
 # END meter_provider
 
 # START common
-- type: Otlp
+- type: OtlpExporterCommon
   property_descriptions:
-    protocol: Configure protocol.
-    endpoint: Configure endpoint.
-    certificate: Configure certificate.
-    client_key: Configure mTLS private client key.
-    client_certificate: Configure mTLS client certificate.
-    headers: Configure headers. Entries have higher priority than entries from .headers_list.
+    certificate_file: >
+      Configure certificate used to verify a server's TLS credentials. 
+      
+      Absolute path to certificate file in PEM format.
+      
+      If omitted or null, system default certificate verification is used for secure connections.
+    client_key_file: >
+      Configure mTLS private client key. 
+      
+      Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+      
+      If omitted or null, mTLS is not used.
+    client_certificate_file: >
+      Configure mTLS client certificate. 
+      
+      Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+      
+      If omitted or null, mTLS is not used.
+    headers: >
+      Configure headers. Entries have higher priority than entries from .headers_list.
+      
+      If an entry's .value is null, the entry is ignored.
     headers_list: >
       Configure headers. Entries have lower priority than entries from .headers.
       
       The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
-    compression: Configure compression.
-    timeout: Configure max time (in milliseconds) to wait for each export.
-    insecure: Configure client transport security for the exporter's connection.
-    temporality_preference: Configure temporality preference.
-    default_histogram_aggregation: Configure default histogram aggregation.
+      
+      If omitted or null, no headers are added.
+    compression: >
+      Configure compression.
+      
+      Values include: gzip, none. Implementations may support other compression algorithms.
+      
+      If omitted or null, none is used.
+    timeout: >
+      Configure max time (in milliseconds) to wait for each export. 
+      
+      Value must be non-negative. A value of 0 indicates no limit (infinity).
+      
+      If omitted or null, 10000 is used.
+    temporality_preference: >
+      Configure temporality preference. 
+      
+      Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+      
+      If omitted or null, cumulative is used.
+    default_histogram_aggregation: >
+      Configure default histogram aggregation. 
+      
+      Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+      
+      If omitted or null, explicit_bucket_histogram is used.
   path_patterns:
-    - .tracer_provider.processors[].*.exporter.otlp
-    - .logger_provider.processors[].*.exporter.otlp
-    - .meter_provider.readers[].periodic.exporter.otlp
+    - .tracer_provider.processors[].*.exporter.otlp_http
+    - .logger_provider.processors[].*.exporter.otlp_http
+    - .meter_provider.readers[].periodic.exporter.otlp_http
+    - .tracer_provider.processors[].*.exporter.otlp_grpc
+    - .logger_provider.processors[].*.exporter.otlp_grpc
+    - .meter_provider.readers[].periodic.exporter.otlp_grpc
+- type: OtlpHttpExporter
+  property_descriptions:
+    encoding: >
+      Configure the encoding used for messages. 
+      
+      Values include: protobuf, json. Implementations may not support json.
+      
+      If omitted or null, protobuf is used.
+  path_patterns:
+    - .tracer_provider.processors[].*.exporter.otlp_http
+    - .logger_provider.processors[].*.exporter.otlp_http
+    - .meter_provider.readers[].periodic.exporter.otlp_http
+- type: OtlpHttpSpanExporter
+  property_descriptions:
+    endpoint: >
+      Configure endpoint, including the trace specific path.
+      
+      If omitted or null, http://localhost:4318/v1/traces is used.
+  path_patterns:
+    - .tracer_provider.processors[].*.exporter.otlp_http
+- type: OtlpHttpMetricExporter
+  property_descriptions:
+    endpoint: >
+      Configure endpoint, including the metric specific path.
+      
+      If omitted or null, http://localhost:4318/v1/metrics is used.
+  path_patterns:
+    - .meter_provider.readers[].periodic.exporter.otlp_http
+- type: OtlpHttpLogRecordExporter
+  property_descriptions:
+    endpoint: >
+      Configure endpoint, including the log specific path.
+      
+      If omitted or null, http://localhost:4318/v1/logs is used.
+  path_patterns:
+    - .meter_provider.readers[].periodic.exporter.otlp_http
+- type: OtlpGrpcExporter
+  property_descriptions:
+    endpoint: >
+      Configure endpoint.
+      
+      If omitted or null, http://localhost:4317 is used.
+    insecure: >
+      Configure client transport security for the exporter's connection. 
+      
+      Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
+      
+      If omitted or null, false is used.
+  path_patterns:
+    - .tracer_provider.processors[].*.exporter.otlp_grpc
+    - .logger_provider.processors[].*.exporter.otlp_grpc
+    - .meter_provider.readers[].periodic.exporter.otlp_grpc
+- type: OtlpFileExporter
+  property_descriptions:
+    output_stream: >
+      Configure output stream. 
+      
+      Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+
+      If omitted or null, stdout is used.
+  path_patterns:
+    - .tracer_provider.processors[].*.exporter.otlp_file
+    - .logger_provider.processors[].*.exporter.otlp_file
+    - .meter_provider.readers[].periodic.exporter.otlp_file
 # END common
 
 # START Instrumentation

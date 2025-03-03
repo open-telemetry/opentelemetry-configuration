@@ -1,8 +1,7 @@
 {
     "$id": "https://opentelemetry.io/otelconfig/logger_provider.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "LoggerProvider",
-    "type": ["object", "null"],
+    "type": "object",
     "additionalProperties": false,
     "properties": {
         "processors": {
@@ -18,9 +17,12 @@
             "$ref": "#/$defs/LoggerConfigurator"
         }
     },
+    "required": [
+        "processors"
+    ],
     "$defs": {
         "SimpleLogRecordProcessor": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "exporter": {
@@ -32,7 +34,7 @@
             ]
         },
         "BatchLogRecordProcessor": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "schedule_delay": {
@@ -45,11 +47,11 @@
                 },
                 "max_queue_size": {
                     "type": ["integer", "null"],
-                    "minimum": 0
+                    "exclusiveMinimum": 0
                 },
                 "max_export_batch_size": {
                     "type": ["integer", "null"],
-                    "minimum": 0
+                    "exclusiveMinimum": 0
                 },
                 "exporter": {
                     "$ref": "#/$defs/LogRecordExporter"
@@ -60,16 +62,22 @@
             ]
         },
         "LogRecordExporter": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
-                "otlp": {
-                    "$ref": "common.json#/$defs/Otlp"
+                "otlp_http": {
+                    "$ref": "common.json#/$defs/OtlpHttpExporter"
+                },
+                "otlp_grpc": {
+                    "$ref": "common.json#/$defs/OtlpGrpcExporter"
+                },
+                "otlp_file": {
+                    "$ref": "common.json#/$defs/OtlpFileExporter"
                 },
                 "console": {
-                    "$ref": "common.json#/$defs/Console"
+                    "$ref": "common.json#/$defs/ConsoleExporter"
                 }
             },
             "patternProperties": {
@@ -79,7 +87,7 @@
             }
         },
         "LogRecordLimits": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
@@ -93,7 +101,7 @@
             }
         },
         "LogRecordProcessor": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
@@ -107,7 +115,7 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object", "null"]
+                    "type": ["object"]
                 }
             }
         },

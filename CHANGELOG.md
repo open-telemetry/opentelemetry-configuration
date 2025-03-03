@@ -3,6 +3,8 @@
 ## Unreleased
 
 * Improved file_format documentation. [#137](https://github.com/open-telemetry/opentelemetry-configuration/pull/137)
+* Periodic exporter interval default value is inconsistent [#143](https://github.com/open-telemetry/opentelemetry-configuration/pull/143)
+* Fix MetricReader invalid configurations [#148](https://github.com/open-telemetry/opentelemetry-configuration/pull/148)
 
 ## [v0.3.0] - 2024-05-08
 

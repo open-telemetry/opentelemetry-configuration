@@ -1,8 +1,7 @@
 {
     "$id": "https://opentelemetry.io/otelconfig/tracer_provider.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "TracerProvider",
-    "type": ["object", "null"],
+    "type": "object",
     "additionalProperties": false,
     "properties": {
         "processors": {
@@ -21,11 +20,13 @@
             "$ref": "#/$defs/TracerConfigurator"
         }
     },
+    "required": [
+        "processors"
+    ],
     "$defs": {
         "BatchSpanProcessor": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
-            "title": "BatchSpanProcessor",
             "properties": {
                 "schedule_delay": {
                     "type": ["integer", "null"],
@@ -37,11 +38,11 @@
                 },
                 "max_queue_size": {
                     "type": ["integer", "null"],
-                    "minimum": 0
+                    "exclusiveMinimum": 0
                 },
                 "max_export_batch_size": {
                     "type": ["integer", "null"],
-                    "minimum": 0
+                    "exclusiveMinimum": 0
                 },
                 "exporter": {
                     "$ref": "#/$defs/SpanExporter"
@@ -52,64 +53,25 @@
             ]
         },
         "Sampler": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
                 "always_off": {
-                    "type": ["object", "null"],
-                    "additionalProperties": false
+                    "$ref": "#/$defs/AlwaysOffSampler"
                 },
                 "always_on": {
-                    "type": ["object", "null"],
-                    "additionalProperties": false
+                    "$ref": "#/$defs/AlwaysOnSampler"
                 },
                 "jaeger_remote": {
-                    "type": ["object", "null"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "endpoint": {
-                            "type": ["string", "null"]
-                        },
-                        "interval": {
-                            "type": ["integer", "null"],
-                            "minimum": 0
-                        },
-                        "initial_sampler": {
-                            "$ref": "#/$defs/Sampler"
-                        }
-                    }
+                    "$ref": "#/$defs/JaegerRemoteSampler"
                 },
                 "parent_based": {
-                    "type": ["object", "null"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "root": {
-                            "$ref": "#/$defs/Sampler"
-                        },
-                        "remote_parent_sampled": {
-                            "$ref": "#/$defs/Sampler"
-                        },
-                        "remote_parent_not_sampled": {
-                            "$ref": "#/$defs/Sampler"
-                        },
-                        "local_parent_sampled": {
-                            "$ref": "#/$defs/Sampler"
-                        },
-                        "local_parent_not_sampled": {
-                            "$ref": "#/$defs/Sampler"
-                        }
-                    }
+                    "$ref": "#/$defs/ParentBasedSampler"
                 },
                 "trace_id_ratio_based": {
-                    "type": ["object", "null"],
-                    "additionalProperties": false,
-                    "properties": {
-                        "ratio": {
-                            "type": "number"
-                        }
-                    }
+                    "$ref": "#/$defs/TraceIdRatioBasedSampler"
                 }
             },
             "patternProperties": {
@@ -118,10 +80,63 @@
                 }
             }
         },
-        "SimpleSpanProcessor": {
+        "AlwaysOffSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "AlwaysOnSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "JaegerRemoteSampler": {
             "type": ["object", "null"],
             "additionalProperties": false,
-            "title": "SimpleSpanProcessor",
+            "properties": {
+                "endpoint": {
+                    "type": ["string", "null"]
+                },
+                "interval": {
+                    "type": ["integer", "null"],
+                    "minimum": 0
+                },
+                "initial_sampler": {
+                    "$ref": "#/$defs/Sampler"
+                }
+            }
+        },
+        "ParentBasedSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "root": {
+                    "$ref": "#/$defs/Sampler"
+                },
+                "remote_parent_sampled": {
+                    "$ref": "#/$defs/Sampler"
+                },
+                "remote_parent_not_sampled": {
+                    "$ref": "#/$defs/Sampler"
+                },
+                "local_parent_sampled": {
+                    "$ref": "#/$defs/Sampler"
+                },
+                "local_parent_not_sampled": {
+                    "$ref": "#/$defs/Sampler"
+                }
+            }
+        },
+        "TraceIdRatioBasedSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "ratio": {
+                    "type": ["number", "null"]
+                }
+            }
+        },
+        "SimpleSpanProcessor": {
+            "type": "object",
+            "additionalProperties": false,
             "properties": {
                 "exporter": {
                     "$ref": "#/$defs/SpanExporter"
@@ -132,19 +147,25 @@
             ]
         },
         "SpanExporter": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
-                "otlp": {
-                    "$ref": "common.json#/$defs/Otlp"
+                "otlp_http": {
+                    "$ref": "common.json#/$defs/OtlpHttpExporter"
+                },
+                "otlp_grpc": {
+                    "$ref": "common.json#/$defs/OtlpGrpcExporter"
+                },
+                "otlp_file": {
+                    "$ref": "common.json#/$defs/OtlpFileExporter"
                 },
                 "console": {
-                    "$ref": "common.json#/$defs/Console"
+                    "$ref": "common.json#/$defs/ConsoleExporter"
                 },
                 "zipkin": {
-                    "$ref": "#/$defs/Zipkin"
+                    "$ref": "#/$defs/ZipkinSpanExporter"
                 }
             },
             "patternProperties": {
@@ -154,7 +175,7 @@
             }
         },
         "SpanLimits": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
@@ -184,7 +205,7 @@
             }
         },
         "SpanProcessor": {
-            "type": ["object", "null"],
+            "type": "object",
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
@@ -202,7 +223,7 @@
                 }
             }
         },
-        "Zipkin": {
+        "ZipkinSpanExporter": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -213,16 +234,11 @@
                     "type": ["integer", "null"],
                     "minimum": 0
                 }
-            },
-            "required": [
-                "endpoint"
-            ],
-            "title": "Zipkin"
+            }
         },
         "TracerConfigurator": {
             "type": ["object", "null"],
             "additionalProperties": false,
-            "title": "TracerConfigurator",
             "properties": {
                 "default_config": {
                     "$ref": "#/$defs/TracerConfig"
@@ -238,7 +254,6 @@
         "TracerMatcherAndConfig": {
             "type": ["object", "null"],
             "additionalProperties": false,
-            "title": "TracerMatcherAndConfig",
             "properties": {
                 "name": {
                     "type": ["string"]
@@ -255,7 +270,6 @@
         "TracerConfig": {
             "type": ["object", "null"],
             "additionalProperties": false,
-            "title": "TracerConfig",
             "properties": {
                 "disabled": {
                     "type": ["boolean"]
