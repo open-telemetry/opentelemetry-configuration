@@ -13,8 +13,8 @@
         "limits": {
             "$ref": "#/$defs/LogRecordLimits"
         },
-        "logger_configurator": {
-            "$ref": "#/$defs/LoggerConfigurator"
+        "logger_configurator/development": {
+            "$ref": "#/$defs/ExperimentalLoggerConfigurator"
         }
     },
     "required": [
@@ -119,37 +119,37 @@
                 }
             }
         },
-        "LoggerConfigurator": {
-            "type": ["object", "null"],
+        "ExperimentalLoggerConfigurator": {
+            "type": ["object"],
             "additionalProperties": false,
             "title": "LoggerConfigurator",
             "properties": {
                 "default_config": {
-                    "$ref": "#/$defs/LoggerConfig"
+                    "$ref": "#/$defs/ExperimentalLoggerConfig"
                 },
                 "loggers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/LoggerMatcherAndConfig"
+                        "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
                     }
                 }
             }
         },
-        "LoggerMatcherAndConfig": {
-            "type": ["object", "null"],
+        "ExperimentalLoggerMatcherAndConfig": {
+            "type": ["object"],
             "additionalProperties": false,
             "title": "LoggerMatcherAndConfig",
             "properties": {
                 "name": {
-                    "type": ["string", "null"]
+                    "type": ["string"]
                 },
                 "config": {
-                    "$ref": "#/$defs/LoggerConfig"
+                    "$ref": "#/$defs/ExperimentalLoggerConfig"
                 }
             }
         },
-        "LoggerConfig": {
-            "type": ["object", "null"],
+        "ExperimentalLoggerConfig": {
+            "type": ["object"],
             "additionalProperties": false,
             "title": "LoggerConfig",
             "properties": {

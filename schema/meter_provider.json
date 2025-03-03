@@ -19,8 +19,8 @@
         "exemplar_filter": {
             "$ref": "#/$defs/ExemplarFilter"
         },
-        "meter_configurator": {
-            "$ref": "#/$defs/MeterConfigurator"
+        "meter_configurator/development": {
+            "$ref": "#/$defs/ExperimentalMeterConfigurator"
         }
     },
     "required": [
@@ -431,35 +431,35 @@
             "type": ["object", "null"],
             "additionalProperties": false
         },
-        "MeterConfigurator": {
-            "type": ["object", "null"],
+        "ExperimentalMeterConfigurator": {
+            "type": ["object"],
             "additionalProperties": false,
             "properties": {
                 "default_config": {
-                    "$ref": "#/$defs/MeterConfig"
+                    "$ref": "#/$defs/ExperimentalMeterConfig"
                 },
                 "meters": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/MeterMatcherAndConfig"
+                        "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
                     }
                 }
             }
         },
-        "MeterMatcherAndConfig": {
-            "type": ["object", "null"],
+        "ExperimentalMeterMatcherAndConfig": {
+            "type": ["object"],
             "additionalProperties": false,
             "properties": {
                 "name": {
-                    "type": ["string", "null"]
+                    "type": ["string"]
                 },
                 "config": {
-                    "$ref": "#/$defs/MeterConfig"
+                    "$ref": "#/$defs/ExperimentalMeterConfig"
                 }
             }
         },
-        "MeterConfig": {
-            "type": ["object", "null"],
+        "ExperimentalMeterConfig": {
+            "type": ["object"],
             "additionalProperties": false,
             "properties": {
                 "disabled": {

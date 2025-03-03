@@ -163,8 +163,9 @@ logger_provider:
     # If omitted or null, 128 is used.
     attribute_count_limit: 128
   # Configure loggers.
-  logger_configurator:
-    # Configure the default logger config used there is no matching entry in .logger_configurator.loggers.
+  # This type is in development and subject to breaking changes in minor versions.
+  logger_configurator/development:
+    # Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
     default_config:
       # Configure if the logger is enabled or not.
       disabled: true
@@ -452,8 +453,9 @@ meter_provider:
   # If omitted or null, trace_based is used.
   exemplar_filter: trace_based
   # Configure meters.
-  meter_configurator:
-    # Configure the default meter config used there is no matching entry in .meter_configurator.meters.
+  # This type is in development and subject to breaking changes in minor versions.
+  meter_configurator/development:
+    # Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
     default_config:
       # Configure if the meter is enabled or not.
       disabled: true
@@ -676,8 +678,9 @@ tracer_provider:
         # Configure sampler to be always_off.
         always_off:
   # Configure tracers.
-  tracer_configurator:
-    # Configure the default tracer config used there is no matching entry in .tracer_configurator.tracers.
+  # This type is in development and subject to breaking changes in minor versions.
+  tracer_configurator/development:
+    # Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
     default_config:
       # Configure if the tracer is enabled or not.
       disabled: true

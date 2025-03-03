@@ -131,7 +131,10 @@
   property_descriptions:
     processors: Configure log record processors.
     limits: Configure log record limits. See also attribute_limits.
-    logger_configurator: Configure loggers.
+    logger_configurator/development: >
+      Configure loggers.
+      
+      This type is in development and subject to breaking changes in minor versions.
   path_patterns:
     - .logger_provider
 
@@ -202,10 +205,10 @@
 
 - type: LoggerConfigurator
   property_descriptions:
-    default_config: Configure the default logger config used there is no matching entry in .logger_configurator.loggers.
+    default_config: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
     loggers: Configure loggers.
   path_patterns:
-    - .logger_provider.logger_configurator
+    - .logger_provider.logger_configurator/development
 
 - type: LoggerConfigAndMatcher
   property_descriptions:
@@ -216,14 +219,14 @@
        * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
     config: The logger config.
   path_patterns:
-    - .logger_provider.logger_configurator.loggers[]
+    - .logger_provider.logger_configurator/development.loggers[]
 
 - type: LoggerConfig
   property_descriptions:
     disabled: Configure if the logger is enabled or not.
   path_patterns:
-    - .logger_provider.logger_configurator.default_config
-    - .logger_provider.logger_configurator.loggers[].config
+    - .logger_provider.logger_configurator/development.default_config
+    - .logger_provider.logger_configurator/development.loggers[].config
 # END LoggerProvider
 
 # START TracerProvider
@@ -235,7 +238,10 @@
       Configure the sampler.
       
       If omitted, parent based sampler with a root of always_on is used.
-    tracer_configurator: Configure tracers.
+    tracer_configurator/development: >
+      Configure tracers.
+      
+      This type is in development and subject to breaking changes in minor versions.
   path_patterns:
     - .tracer_provider
 
@@ -380,10 +386,10 @@
 
 - type: TracerConfigurator
   property_descriptions:
-    default_config: Configure the default tracer config used there is no matching entry in .tracer_configurator.tracers.
+    default_config: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
     tracers: Configure tracers.
   path_patterns:
-    - .tracer_provider.tracer_configurator
+    - .tracer_provider.tracer_configurator/development
 
 - type: TracerConfigAndMatcher
   property_descriptions:
@@ -394,14 +400,14 @@
        * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
     config: The tracer config.
   path_patterns:
-    - .tracer_provider.tracer_configurator.tracers[]
+    - .tracer_provider.tracer_configurator/development.tracers[]
 
 - type: TracerConfig
   property_descriptions:
     disabled: Configure if the tracer is enabled or not.
   path_patterns:
-    - .tracer_provider.tracer_configurator.default_config
-    - .tracer_provider.tracer_configurator.tracers[].config
+    - .tracer_provider.tracer_configurator/development.default_config
+    - .tracer_provider.tracer_configurator/development.tracers[].config
 # END TracerProvider
 
 # START MeterProvider
@@ -418,7 +424,10 @@
       Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
       
       If omitted or null, trace_based is used.
-    meter_configurator: Configure meters.
+    meter_configurator/development: >
+      Configure meters.
+      
+      This type is in development and subject to breaking changes in minor versions.
   path_patterns:
     - .meter_provider
 
@@ -611,10 +620,10 @@
 
 - type: MeterConfigurator
   property_descriptions:
-    default_config: Configure the default meter config used there is no matching entry in .meter_configurator.meters.
+    default_config: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
     meters: Configure meters.
   path_patterns:
-    - .meter_provider.meter_configurator
+    - .meter_provider.meter_configurator/development
 
 - type: MeterConfigAndMatcher
   property_descriptions:
@@ -625,14 +634,14 @@
        * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
     config: The meter config.
   path_patterns:
-    - .meter_provider.meter_configurator.meters[]
+    - .meter_provider.meter_configurator/development.meters[]
 
 - type: MeterConfig
   property_descriptions:
     disabled: Configure if the meter is enabled or not.
   path_patterns:
-    - .meter_provider.meter_configurator.default_config
-    - .meter_provider.meter_configurator.meters[].config
+    - .meter_provider.meter_configurator/development.default_config
+    - .meter_provider.meter_configurator/development.meters[].config
 # END meter_provider
 
 # START common

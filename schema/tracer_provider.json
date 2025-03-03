@@ -16,8 +16,8 @@
         "sampler": {
             "$ref": "#/$defs/Sampler"
         },
-        "tracer_configurator": {
-            "$ref": "#/$defs/TracerConfigurator"
+        "tracer_configurator/development": {
+            "$ref": "#/$defs/ExperimentalTracerConfigurator"
         }
     },
     "required": [
@@ -236,30 +236,30 @@
                 }
             }
         },
-        "TracerConfigurator": {
-            "type": ["object", "null"],
+        "ExperimentalTracerConfigurator": {
+            "type": ["object"],
             "additionalProperties": false,
             "properties": {
                 "default_config": {
-                    "$ref": "#/$defs/TracerConfig"
+                    "$ref": "#/$defs/ExperimentalTracerConfig"
                 },
                 "tracers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/$defs/TracerMatcherAndConfig"
+                        "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
                     }
                 }
             }
         },
-        "TracerMatcherAndConfig": {
-            "type": ["object", "null"],
+        "ExperimentalTracerMatcherAndConfig": {
+            "type": ["object"],
             "additionalProperties": false,
             "properties": {
                 "name": {
                     "type": ["string"]
                 },
                 "config": {
-                    "$ref": "#/$defs/TracerConfig"
+                    "$ref": "#/$defs/ExperimentalTracerConfig"
                 }
             },
             "required": [
@@ -267,8 +267,8 @@
                 "config"
             ]
         },
-        "TracerConfig": {
-            "type": ["object", "null"],
+        "ExperimentalTracerConfig": {
+            "type": ["object"],
             "additionalProperties": false,
             "properties": {
                 "disabled": {
