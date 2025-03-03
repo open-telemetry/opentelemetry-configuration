@@ -12,6 +12,9 @@
         },
         "limits": {
             "$ref": "#/$defs/LogRecordLimits"
+        },
+        "logger_configurator/development": {
+            "$ref": "#/$defs/ExperimentalLoggerConfigurator"
         }
     },
     "required": [
@@ -113,6 +116,45 @@
             "patternProperties": {
                 ".*": {
                     "type": ["object"]
+                }
+            }
+        },
+        "ExperimentalLoggerConfigurator": {
+            "type": ["object"],
+            "additionalProperties": false,
+            "title": "LoggerConfigurator",
+            "properties": {
+                "default_config": {
+                    "$ref": "#/$defs/ExperimentalLoggerConfig"
+                },
+                "loggers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
+                    }
+                }
+            }
+        },
+        "ExperimentalLoggerMatcherAndConfig": {
+            "type": ["object"],
+            "additionalProperties": false,
+            "title": "LoggerMatcherAndConfig",
+            "properties": {
+                "name": {
+                    "type": ["string"]
+                },
+                "config": {
+                    "$ref": "#/$defs/ExperimentalLoggerConfig"
+                }
+            }
+        },
+        "ExperimentalLoggerConfig": {
+            "type": ["object"],
+            "additionalProperties": false,
+            "title": "LoggerConfig",
+            "properties": {
+                "disabled": {
+                    "type": ["boolean"]
                 }
             }
         }

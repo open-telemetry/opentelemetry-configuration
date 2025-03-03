@@ -15,6 +15,9 @@
         },
         "sampler": {
             "$ref": "#/$defs/Sampler"
+        },
+        "tracer_configurator/development": {
+            "$ref": "#/$defs/ExperimentalTracerConfigurator"
         }
     },
     "required": [
@@ -232,6 +235,49 @@
                     "minimum": 0
                 }
             }
+        },
+        "ExperimentalTracerConfigurator": {
+            "type": ["object"],
+            "additionalProperties": false,
+            "properties": {
+                "default_config": {
+                    "$ref": "#/$defs/ExperimentalTracerConfig"
+                },
+                "tracers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
+                    }
+                }
+            }
+        },
+        "ExperimentalTracerMatcherAndConfig": {
+            "type": ["object"],
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": ["string"]
+                },
+                "config": {
+                    "$ref": "#/$defs/ExperimentalTracerConfig"
+                }
+            },
+            "required": [
+                "name",
+                "config"
+            ]
+        },
+        "ExperimentalTracerConfig": {
+            "type": ["object"],
+            "additionalProperties": false,
+            "properties": {
+                "disabled": {
+                    "type": ["boolean"]
+                }
+            },
+            "required": [
+                "disabled"
+            ]
         }
     }
 }
