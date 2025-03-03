@@ -154,7 +154,7 @@
             "title": "LoggerConfig",
             "properties": {
                 "disabled": {
-                    "type": ["boolean", "null"]
+                    "type": ["boolean"]
                 }
             }
         }

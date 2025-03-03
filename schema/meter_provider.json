@@ -463,7 +463,7 @@
             "additionalProperties": false,
             "properties": {
                 "disabled": {
-                    "type": ["boolean", "null"]
+                    "type": ["boolean"]
                 }
             }
         }
