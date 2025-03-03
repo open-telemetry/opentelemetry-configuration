@@ -48,7 +48,10 @@
       Configure meter provider.
       
       If omitted, a noop meter provider is used.
-    instrumentation: Configure instrumentation.
+    instrumentation: >
+      Configure instrumentation.
+      
+      This type is in development and subject to breaking changes in minor versions.
   path_patterns:
     - .
 
