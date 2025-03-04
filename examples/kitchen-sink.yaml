@@ -131,7 +131,8 @@ logger_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          otlp_file:
+          # This type is in development and subject to breaking changes in minor versions.
+          otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
@@ -141,7 +142,8 @@ logger_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          otlp_file:
+          # This type is in development and subject to breaking changes in minor versions.
+          otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
@@ -325,7 +327,8 @@ meter_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          otlp_file:
+          # This type is in development and subject to breaking changes in minor versions.
+          otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
@@ -341,7 +344,8 @@ meter_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          otlp_file:
+          # This type is in development and subject to breaking changes in minor versions.
+          otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
@@ -548,7 +552,8 @@ tracer_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          otlp_file:
+          # This type is in development and subject to breaking changes in minor versions.
+          otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
@@ -558,7 +563,8 @@ tracer_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          otlp_file:
+          # This type is in development and subject to breaking changes in minor versions.
+          otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.

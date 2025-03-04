@@ -116,7 +116,7 @@
                 }
             }
         },
-        "OtlpFileExporter": {
+        "ExperimentalOtlpFileExporter": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
