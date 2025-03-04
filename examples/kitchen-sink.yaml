@@ -419,6 +419,9 @@ meter_provider:
             # Configure record min and max.
             # If omitted or null, true is used.
             record_min_max: true
+        # Configure the aggregation cardinality limit.
+        # If omitted or null, the metric reader's default cardinality limit is used.
+        aggregation_cardinality_limit: 2000
         # Configure attribute keys retained in the resulting stream(s).
         attribute_keys:
           # Configure list of attribute keys to include in the resulting stream(s). All other attributes are dropped. 

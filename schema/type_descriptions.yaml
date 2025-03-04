@@ -522,6 +522,10 @@
       Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
       
       If omitted, default is used.
+    aggregation_cardinality_limit: >
+      Configure the aggregation cardinality limit.
+      
+      If omitted or null, the metric reader's default cardinality limit is used.
     attribute_keys: >
       Configure attribute keys retained in the resulting stream(s).
   path_patterns:

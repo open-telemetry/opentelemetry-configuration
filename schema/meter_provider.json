@@ -351,6 +351,10 @@
                 "aggregation": {
                     "$ref": "#/$defs/Aggregation"
                 },
+                "aggregation_cardinality_limit": {
+                    "type": ["integer", "null"],
+                    "exclusiveMinimum": 0
+                },
                 "attribute_keys": {
                     "$ref": "common.json#/$defs/IncludeExclude"
                 }
