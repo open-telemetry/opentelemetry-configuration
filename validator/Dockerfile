@@ -22,7 +22,7 @@ COPY --from=build /otel_config_validator /otel_config_validator
 
 ENTRYPOINT ["/otel_config_validator"]
 
-FROM ubuntu:24.04 AS shelltest
+FROM ubuntu:22.04 AS shelltest
 
 ENV YQ_VERSION="v4.45.1"
 
