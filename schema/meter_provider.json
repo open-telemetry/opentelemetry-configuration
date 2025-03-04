@@ -88,8 +88,8 @@
                 "otlp_grpc": {
                     "$ref": "#/$defs/OtlpGrpcMetricExporter"
                 },
-                "otlp_file": {
-                    "$ref": "#/$defs/OtlpFileMetricExporter"
+                "otlp_file/development": {
+                    "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
                 },
                 "console": {
                     "$ref": "common.json#/$defs/ConsoleExporter"
@@ -276,7 +276,7 @@
                 }
             }
         },
-        "OtlpFileMetricExporter": {
+        "ExperimentalOtlpFileMetricExporter": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
