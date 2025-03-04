@@ -48,7 +48,10 @@
       Configure meter provider.
       
       If omitted, a noop meter provider is used.
-    instrumentation: Configure instrumentation.
+    instrumentation/development: >
+      Configure instrumentation.
+      
+      This type is in development and subject to breaking changes in minor versions.
   path_patterns:
     - .
 
@@ -177,7 +180,10 @@
   property_descriptions:
     otlp_http: Configure exporter to be OTLP with HTTP transport.
     otlp_grpc: Configure exporter to be OTLP with gRPC transport.
-    otlp_file: Configure exporter to be OTLP with file transport.
+    otlp_file/development: >
+      Configure exporter to be OTLP with file transport.
+      
+      This type is in development and subject to breaking changes in minor versions.
     console: Configure exporter to be console.
   path_patterns:
     - .logger_provider.processors[].*.exporter
@@ -255,7 +261,10 @@
   property_descriptions:
     otlp_http: Configure exporter to be OTLP with HTTP transport.
     otlp_grpc: Configure exporter to be OTLP with gRPC transport.
-    otlp_file: Configure exporter to be OTLP with file transport.
+    otlp_file/development: >
+      Configure exporter to be OTLP with file transport.
+      
+      This type is in development and subject to breaking changes in minor versions.
     zipkin: Configure exporter to be zipkin.
     console: Configure exporter to be console.
   path_patterns:
@@ -418,7 +427,10 @@
       This type is in development and subject to breaking changes in minor versions.
     otlp_http: Configure exporter to be OTLP with HTTP transport.
     otlp_grpc: Configure exporter to be OTLP with gRPC transport.
-    otlp_file: Configure exporter to be OTLP with file transport.
+    otlp_file/development: >
+      Configure exporter to be OTLP with file transport.
+      
+      This type is in development and subject to breaking changes in minor versions.
     console: Configure exporter to be console.
   path_patterns:
     - .meter_provider.readers[].*.exporter
@@ -683,9 +695,9 @@
 
       If omitted or null, stdout is used.
   path_patterns:
-    - .tracer_provider.processors[].*.exporter.otlp_file
-    - .logger_provider.processors[].*.exporter.otlp_file
-    - .meter_provider.readers[].periodic.exporter.otlp_file
+    - .tracer_provider.processors[].*.exporter.otlp_file/development
+    - .logger_provider.processors[].*.exporter.otlp_file/development
+    - .meter_provider.readers[].periodic.exporter.otlp_file/development
 # END common
 
 # START Instrumentation
@@ -707,7 +719,7 @@
     rust: Configure Rust language-specific instrumentation libraries.
     swift: Configure Swift language-specific instrumentation libraries.
   path_patterns:
-    - .instrumentation
+    - .instrumentation/development
 
 - type: GeneralInstrumentation
   property_descriptions:
@@ -720,7 +732,7 @@
       
       See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
   path_patterns:
-    - .instrumentation.general
+    - .instrumentation/development.general
 
 - type: GeneralInstrumentationPeer
   property_descriptions:
@@ -731,33 +743,33 @@
       
       See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
   path_patterns:
-    - .instrumentation.general.peer
+    - .instrumentation/development.general.peer
 
 - type: GeneralInstrumentationHttp
   property_descriptions:
     client: Configure instrumentations following the http client semantic conventions.
     server: Configure instrumentations following the http server semantic conventions.
   path_patterns:
-    - .instrumentation.general.http
+    - .instrumentation/development.general.http
 
 - type: GeneralInstrumentationHttpClient
   property_descriptions:
     request_captured_headers: Configure headers to capture for outbound http requests.
     response_captured_headers: Configure headers to capture for outbound http responses.
   path_patterns:
-    - .instrumentation.general.http.client
+    - .instrumentation/development.general.http.client
 
 - type: GeneralInstrumentationHttpServer
   property_descriptions:
     request_captured_headers: Configure headers to capture for inbound http requests.
     response_captured_headers: Configure headers to capture for outbound http responses.
   path_patterns:
-    - .instrumentation.general.http.server
+    - .instrumentation/development.general.http.server
 
 - type: LanguageSpecificInstrumentation
   property_descriptions:
     example: Configure the instrumentation corresponding to key "example".
   path_patterns:
-    - .instrumentation.*
+    - .instrumentation/development.*
 # END Instrumentation
 
