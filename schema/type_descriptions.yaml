@@ -48,7 +48,10 @@
       Configure meter provider.
       
       If omitted, a noop meter provider is used.
-    instrumentation: Configure instrumentation.
+    instrumentation/development: >
+      Configure instrumentation.
+      
+      This type is in development and subject to breaking changes in minor versions.
   path_patterns:
     - .
 
@@ -713,7 +716,7 @@
     rust: Configure Rust language-specific instrumentation libraries.
     swift: Configure Swift language-specific instrumentation libraries.
   path_patterns:
-    - .instrumentation
+    - .instrumentation/development
 
 - type: GeneralInstrumentation
   property_descriptions:
@@ -726,7 +729,7 @@
       
       See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
   path_patterns:
-    - .instrumentation.general
+    - .instrumentation/development.general
 
 - type: GeneralInstrumentationPeer
   property_descriptions:
@@ -737,33 +740,33 @@
       
       See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
   path_patterns:
-    - .instrumentation.general.peer
+    - .instrumentation/development.general.peer
 
 - type: GeneralInstrumentationHttp
   property_descriptions:
     client: Configure instrumentations following the http client semantic conventions.
     server: Configure instrumentations following the http server semantic conventions.
   path_patterns:
-    - .instrumentation.general.http
+    - .instrumentation/development.general.http
 
 - type: GeneralInstrumentationHttpClient
   property_descriptions:
     request_captured_headers: Configure headers to capture for outbound http requests.
     response_captured_headers: Configure headers to capture for outbound http responses.
   path_patterns:
-    - .instrumentation.general.http.client
+    - .instrumentation/development.general.http.client
 
 - type: GeneralInstrumentationHttpServer
   property_descriptions:
     request_captured_headers: Configure headers to capture for inbound http requests.
     response_captured_headers: Configure headers to capture for outbound http responses.
   path_patterns:
-    - .instrumentation.general.http.server
+    - .instrumentation/development.general.http.server
 
 - type: LanguageSpecificInstrumentation
   property_descriptions:
     example: Configure the instrumentation corresponding to key "example".
   path_patterns:
-    - .instrumentation.*
+    - .instrumentation/development.*
 # END Instrumentation
 

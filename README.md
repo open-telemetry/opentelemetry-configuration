@@ -94,7 +94,7 @@ Stability guarantees do not apply to [experimental features](#experimental-featu
 
 Sometimes we need to experiment with new types and properties. For example, to evaluate the configuration experience for experimental features in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification).
 
-Experimental properties are denoted by a `*/(development|alpha|beta)` suffix (e.g.`foo/development`). The suffix indicates the property value and all types nested within it are exempt from stability guarantees, and are subject to breaking changes in minor versions. Experimental types have a [title](https://json-schema.org/understanding-json-schema/reference/annotations) prefixed with `Experimental*` (e.g. `ExperimentalFoo`).
+Experimental properties are denoted by a `*/(development|alpha|beta)` suffix (e.g.`foo/development`). The suffix indicates the property value and all types nested within it are exempt from stability guarantees, and are subject to breaking changes in minor versions. Experimental type key values in `$defs` should be prefixed with `Experimental*` (e.g. `ExperimentalFoo`). Note that because we [omit the title annotation](./CONTRIBUTING.md#annotations---title-and-description), the `$defs` key value effectively acts as the type title for code generation tools. 
 
 Maintainers are not obligated to implement support for experimental properties and types. When they do, they are no obligated to maintain any stability guarantees. 
 
