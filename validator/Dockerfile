@@ -22,14 +22,17 @@ COPY --from=build /otel_config_validator /otel_config_validator
 
 ENTRYPOINT ["/otel_config_validator"]
 
-FROM ubuntu:22.04 AS shelltest
+FROM ubuntu:24.04 AS shelltest
+
+ENV YQ_VERSION="v4.45.1"
 
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update \
-    && apt-get install -y software-properties-common \
-    && apt-add-repository ppa:rmescandon/yq \
+    && apt-get install -y software-properties-common wget \
+    && wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 \
+        && chmod +x /usr/local/bin/yq \
     && apt-get update \
-    && apt-get install -y shelltestrunner jq yq make \
+    && apt-get install -y shelltestrunner jq make \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/validator
