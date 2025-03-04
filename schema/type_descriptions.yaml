@@ -383,6 +383,7 @@
   property_descriptions:
     exporter: Configure exporter.
     producers: Configure metric producers.
+    cardinality_limits: Configure cardinality limits.
   path_patterns:
     - .meter_provider.readers[].pull
 
@@ -402,6 +403,7 @@
       If omitted or null, 30000 is used.
     exporter: Configure exporter.
     producers: Configure metric producers.
+    cardinality_limits: Configure cardinality limits.
   path_patterns:
     - .meter_provider.readers[].periodic
 
@@ -412,6 +414,46 @@
   path_patterns:
     - .meter_provider.readers[].pull.producers[]
     - .meter_provider.readers[].periodic.producers[]
+
+- type: CardinalityLimits
+  property_descriptions:
+    default: >
+      Configure default cardinality limit for all instrument types.
+      
+      Instrument-specific cardinality limits take priority. 
+      
+      If omitted or null, 2000 is used.
+    counter: >
+      Configure default cardinality limit for counter instruments.
+      
+      If omitted or null, the value from .default is used.
+    gauge: >
+      Configure default cardinality limit for gauge instruments.
+      
+      If omitted or null, the value from .default is used.
+    histogram: >
+      Configure default cardinality limit for histogram instruments.
+      
+      If omitted or null, the value from .default is used.
+    observable_counter: >
+      Configure default cardinality limit for observable_counter instruments.
+      
+      If omitted or null, the value from .default is used.
+    observable_gauge: >
+      Configure default cardinality limit for observable_gauge instruments.
+      
+      If omitted or null, the value from .default is used.
+    observable_up_down_counter: >
+      Configure default cardinality limit for observable_up_down_counter instruments.
+      
+      If omitted or null, the value from .default is used.
+    up_down_counter: >
+      Configure default cardinality limit for up_down_counter instruments.
+      
+      If omitted or null, the value from .default is used.
+  path_patterns:
+    - .meter_provider.readers[].pull.cardinality_limits
+    - .meter_provider.readers[].periodic.cardinality_limits
 
 - type: MetricExporter
   property_descriptions:
