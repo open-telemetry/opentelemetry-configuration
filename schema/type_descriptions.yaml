@@ -486,6 +486,8 @@
     instrument_type: >
       Configure instrument type selection criteria.
       
+      Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.
+      
       If omitted or null, all instrument types match.
     unit: >
       Configure the instrument unit selection criteria.

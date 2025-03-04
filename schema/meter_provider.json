@@ -331,6 +331,7 @@
             "type": ["string", "null"],
             "enum": [
                 "counter",
+                "gauge",
                 "histogram",
                 "observable_counter",
                 "observable_gauge",
