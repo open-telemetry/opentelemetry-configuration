@@ -10,8 +10,8 @@
                 "$ref": "#/$defs/AttributeNameValue"
             }
         },
-        "detectors": {
-            "$ref": "#/$defs/Detectors"
+        "detectors/development": {
+            "$ref": "#/$defs/ExperimentalDetectors"
         },
         "schema_url": {
             "type": ["string", "null"]
@@ -61,7 +61,7 @@
                 "double_array"
             ]
         },
-        "Detectors": {
+        "ExperimentalDetectors": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
