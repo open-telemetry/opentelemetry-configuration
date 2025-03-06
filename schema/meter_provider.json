@@ -151,8 +151,8 @@
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
-                "prometheus": {
-                    "$ref": "#/$defs/PrometheusMetricExporter"
+                "prometheus/development": {
+                    "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
                 }
             },
             "patternProperties": {
@@ -181,7 +181,7 @@
             "type": ["object", "null"],
             "additionalProperties": false
         },
-        "PrometheusMetricExporter": {
+        "ExperimentalPrometheusMetricExporter": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
