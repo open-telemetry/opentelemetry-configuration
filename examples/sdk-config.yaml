@@ -35,11 +35,16 @@ attribute_limits:
   # If omitted or null, 128 is used.
   attribute_count_limit: 128
 # Configure text map context propagators.
-# If omitted, tracecontext and baggage are used.
+# If omitted, a noop propagator is used.
 propagator:
-  # Configure the set of propagators to include in the composite text map propagator. 
-  # Built-in values include: tracecontext, baggage, b3, b3multi, jaeger, none. Known third party values include: xray, ottrace. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration.
-  composite: [ tracecontext, baggage ]
+  # Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.
+  # Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. 
+  # If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
+  composite:
+    - # Include the w3c trace context propagator.
+      tracecontext:
+    - # Include the w3c baggage propagator.
+      baggage:
 # Configure tracer provider.
 # If omitted, a noop tracer provider is used.
 tracer_provider:
