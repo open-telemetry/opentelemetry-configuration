@@ -743,7 +743,8 @@ resource:
   # If omitted or null, no resource attributes are added.
   attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
   # Configure resource detectors.
-  detectors:
+  # This type is in development and subject to breaking changes in minor versions.
+  detectors/development:
     # Configure attributes provided by resource detectors.
     attributes:
       # Configure list of attribute key patterns to include from resource detectors.
