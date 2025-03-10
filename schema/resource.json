@@ -10,8 +10,8 @@
                 "$ref": "#/$defs/AttributeNameValue"
             }
         },
-        "detectors/development": {
-            "$ref": "#/$defs/ExperimentalDetectors"
+        "detection/development": {
+            "$ref": "#/$defs/ExperimentalResourceDetection"
         },
         "schema_url": {
             "type": ["string", "null"]
@@ -61,14 +61,42 @@
                 "double_array"
             ]
         },
-        "ExperimentalDetectors": {
+        "ExperimentalResourceDetection": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
+                "enabled_detectors_strategy": {
+                    "$ref": "#/$defs/ExperimentalEnabledResourceDetectorsStrategy"
+                },
                 "attributes": {
                     "$ref": "common.json#/$defs/IncludeExclude"
+                },
+                "detectors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/ExperimentalResourceDetector"
+                    }
                 }
             }
+        },
+        "ExperimentalResourceDetector": {
+            "type": "object",
+            "additionalProperties": true,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "patternProperties": {
+                ".*": {
+                    "type": ["object", "null"]
+                }
+            }
+        },
+        "ExperimentalEnabledResourceDetectorsStrategy": {
+            "type": ["string", "null"],
+            "enum": [
+                "opt_in",
+                "enable_all",
+                "disable_all"
+            ]
         }
     }
 }

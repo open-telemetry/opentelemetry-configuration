@@ -69,10 +69,12 @@
       The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
       
       If omitted or null, no resource attributes are added.
-    detectors/development: >
-      Configure resource detectors.
+    detection/development: >
+      Configure resource detection.
       
       This type is in development and subject to breaking changes in minor versions.
+      
+      If omitted or null, resource detection is disabled.
     schema_url: >
       Configure resource schema URL.
       
@@ -80,11 +82,46 @@
   path_patterns:
     - .resource
 
-- type: Detectors
+- type: ResourceDetection
   property_descriptions:
+    enabled_detectors_strategy: >
+      Configure the strategy for enabling resource detectors.
+      
+      Values include:
+       * opt_in: Resource detectors configured in .detectors are enabled and applied in the order specified. Other resource detectors are disabled. 
+       * enable_all: All resource detectors are enabled and applied in an unspecified order. Configuration in .detectors is passed to respective detectors.
+       * disable_all: All resource detectors are disabled, including any configured in .detectors.
+      If omitted or null, opt_in is used.
     attributes: Configure attributes provided by resource detectors.
+    detectors: >
+      Configure resource detectors. See also enabled_detectors_strategy.
+      
+      Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
+      
+      If omitted or null and enabled_detectors_strategy=opt_in, no resource detectors are enabled.
   path_patterns:
-    - .resource.detectors/development
+    - .resource.detection/development
+
+- type: Detector
+  property_descriptions:
+    container: >
+      Enable the container resource detector.
+      
+      Note, the key "container" is an example and detector names may vary by SDK language ecosystem.
+    host: >
+      Enable the host resource detector.
+      
+      Note, the key "host" is an example and detector names may vary by SDK language ecosystem.
+    os: >
+      Enable the os resource detector.
+      
+      Note, the key "os" is an example and detector names may vary by SDK language ecosystem.
+    process: >
+      Enable the process resource detector.
+      
+      Note, the key "process" is an example and detector names may vary by SDK language ecosystem.
+  path_patterns:
+    - .resource.detection/development.detectors[]
 
 - type: DetectorAttributes
   property_descriptions:
@@ -103,7 +140,7 @@
        * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
       If omitted, .included attributes are included.
   path_patterns:
-    - .resource.detectors/development.attributes
+    - .resource.detection/development.attributes
 
 - type: AttributeLimits
   property_descriptions:
