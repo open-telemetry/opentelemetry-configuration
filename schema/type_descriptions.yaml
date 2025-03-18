@@ -34,7 +34,7 @@
     propagator: >
       Configure text map context propagators.
       
-      If omitted, tracecontext and baggage are used.
+      If omitted, a noop propagator is used.
     attribute_limits: Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
     logger_provider: >
       Configure logger provider.
@@ -154,11 +154,31 @@
 - type: Propagator
   property_descriptions:
     composite: >
-      Configure the set of propagators to include in the composite text map propagator. 
+      Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.
       
-      Built-in values include: tracecontext, baggage, b3, b3multi, jaeger, none. Known third party values include: xray, ottrace. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration.
+      Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. 
+      
+      If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
+    composite_list: >
+      Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.
+      
+      The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+      
+      Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. 
+      
+      If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
   path_patterns:
     - .propagator
+- type: CompositePropagator
+  property_descriptions:
+    tracecontext: Include the w3c trace context propagator.
+    baggage: Include the w3c baggage propagator.
+    b3: Include the zipkin b3 propagator.
+    b3multi: Include the zipkin b3 multi propagator.
+    jaeger: Include the jaeger propagator.
+    ottrace: Include the opentracing propagator.
+  path_patterns:
+    - .propagator.composite[]
 # END OpenTelemetryConfiguration
 
 # START LoggerProvider
