@@ -747,13 +747,6 @@ resource:
   # This type is in development and subject to breaking changes in minor versions.
   # If omitted or null, resource detection is disabled.
   detection/development:
-    # Configure the strategy for enabling resource detectors.
-    # Values include:
-    #  * opt_in: Resource detectors configured in .detectors are enabled and applied in the order specified. Other resource detectors are disabled. 
-    #  * enable_all: All resource detectors are enabled and applied in an unspecified order. Configuration in .detectors is passed to respective detectors.
-    #  * disable_all: All resource detectors are disabled, including any configured in .detectors.
-    # If omitted or null, opt_in is used.
-    enabled_detectors_strategy: opt_in
     # Configure attributes provided by resource detectors.
     attributes:
       # Configure list of attribute key patterns to include from resource detectors.
@@ -770,9 +763,9 @@ resource:
       # If omitted, .included attributes are included.
       excluded:
         - process.command_args
-    # Configure resource detectors. See also enabled_detectors_strategy.
+    # Configure resource detectors.
     # Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
-    # If omitted or null and enabled_detectors_strategy=opt_in, no resource detectors are enabled.
+    # If omitted or null, no resource detectors are enabled.
     detectors:
       - # Enable the container resource detector.
         # Note, the key "container" is an example and detector names may vary by SDK language ecosystem.
