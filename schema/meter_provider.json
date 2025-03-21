@@ -18,6 +18,9 @@
         },
         "exemplar_filter": {
             "$ref": "#/$defs/ExemplarFilter"
+        },
+        "meter_configurator/development": {
+            "$ref": "#/$defs/ExperimentalMeterConfigurator"
         }
     },
     "required": [
@@ -476,6 +479,42 @@
         "SumAggregation": {
             "type": ["object", "null"],
             "additionalProperties": false
+        },
+        "ExperimentalMeterConfigurator": {
+            "type": ["object"],
+            "additionalProperties": false,
+            "properties": {
+                "default_config": {
+                    "$ref": "#/$defs/ExperimentalMeterConfig"
+                },
+                "meters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
+                    }
+                }
+            }
+        },
+        "ExperimentalMeterMatcherAndConfig": {
+            "type": ["object"],
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": ["string"]
+                },
+                "config": {
+                    "$ref": "#/$defs/ExperimentalMeterConfig"
+                }
+            }
+        },
+        "ExperimentalMeterConfig": {
+            "type": ["object"],
+            "additionalProperties": false,
+            "properties": {
+                "disabled": {
+                    "type": ["boolean"]
+                }
+            }
         }
     }
 }
