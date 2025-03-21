@@ -164,6 +164,24 @@ logger_provider:
     # Value must be non-negative.
     # If omitted or null, 128 is used.
     attribute_count_limit: 128
+  # Configure loggers.
+  # This type is in development and subject to breaking changes in minor versions.
+  logger_configurator/development:
+    # Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
+    default_config:
+      # Configure if the logger is enabled or not.
+      disabled: true
+    # Configure loggers.
+    loggers:
+      - # Configure logger names to match, evaluated as follows:
+        #
+        #  * If the logger name exactly matches.
+        #  * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        name: io.opentelemetry.contrib.*
+        # The logger config.
+        config:
+          # Configure if the logger is enabled or not.
+          disabled: false
 # Configure meter provider.
 # If omitted, a noop meter provider is used.
 meter_provider:
@@ -497,6 +515,24 @@ meter_provider:
   # Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
   # If omitted or null, trace_based is used.
   exemplar_filter: trace_based
+  # Configure meters.
+  # This type is in development and subject to breaking changes in minor versions.
+  meter_configurator/development:
+    # Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
+    default_config:
+      # Configure if the meter is enabled or not.
+      disabled: true
+    # Configure meters.
+    meters:
+      - # Configure meter names to match, evaluated as follows:
+        #
+        #  * If the meter name exactly matches.
+        #  * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        name: io.opentelemetry.contrib.*
+        # The meter config.
+        config:
+          # Configure if the meter is enabled or not.
+          disabled: false
 # Configure text map context propagators.
 # If omitted, a noop propagator is used.
 propagator:
@@ -724,6 +760,24 @@ tracer_provider:
       local_parent_not_sampled:
         # Configure sampler to be always_off.
         always_off:
+  # Configure tracers.
+  # This type is in development and subject to breaking changes in minor versions.
+  tracer_configurator/development:
+    # Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
+    default_config:
+      # Configure if the tracer is enabled or not.
+      disabled: true
+    # Configure tracers.
+    tracers:
+      - # Configure tracer names to match, evaluated as follows:
+        #
+        #  * If the tracer name exactly matches.
+        #  * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        name: io.opentelemetry.contrib.*
+        # The tracer config.
+        config:
+          # Configure if the tracer is enabled or not.
+          disabled: false
 # Configure resource for all signals.
 # If omitted, the default resource is used.
 resource:
