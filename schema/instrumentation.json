@@ -5,61 +5,61 @@
     "additionalProperties": false,
     "properties": {
         "general": {
-            "$ref": "#/$defs/GeneralInstrumentation"
+            "$ref": "#/$defs/ExperimentalGeneralInstrumentation"
         },
         "cpp": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "dotnet": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "erlang": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "go": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "java": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "js": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "php": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "python": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "ruby": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "rust": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "swift": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         }
     },
     "patternProperties": {
         ".*": {
-            "$ref": "#/$defs/LanguageSpecificInstrumentation"
+            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         }
     },
     "$defs": {
-        "GeneralInstrumentation": {
+        "ExperimentalGeneralInstrumentation": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "peer": {
-                    "$ref": "#/$defs/PeerInstrumentation"
+                    "$ref": "#/$defs/ExperimentalPeerInstrumentation"
                 },
                 "http": {
-                    "$ref": "#/$defs/HttpInstrumentation"
+                    "$ref": "#/$defs/ExperimentalHttpInstrumentation"
                 }
             }
         },
-        "PeerInstrumentation": {
+        "ExperimentalPeerInstrumentation": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -84,7 +84,7 @@
                 }
             }
         },
-        "HttpInstrumentation": {
+        "ExperimentalHttpInstrumentation": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -126,7 +126,7 @@
                 }
             }
         },
-        "LanguageSpecificInstrumentation": {
+        "ExperimentalLanguageSpecificInstrumentation": {
             "type": "object",
             "additionalProperties": true,
             "patternProperties": {

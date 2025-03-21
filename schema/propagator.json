@@ -6,11 +6,68 @@
         "composite": {
             "type": "array",
             "items": {
-                "type": ["string"]
+                "$ref": "#/$defs/TextMapPropagator"
             }
+        },
+        "composite_list": {
+            "type": ["string", "null"]
         }
     },
-    "required": [
-        "composite"
-    ]
+    "$defs": {
+        "TextMapPropagator": {
+            "type": "object",
+            "additionalProperties": true,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "tracecontext": {
+                    "$ref": "#/$defs/TraceContextPropagator"
+                },
+                "baggage": {
+                    "$ref": "#/$defs/BaggagePropagator"
+                },
+                "b3": {
+                    "$ref": "#/$defs/B3Propagator"
+                },
+                "b3multi": {
+                    "$ref": "#/$defs/B3MultiPropagator"
+                },
+                "jaeger": {
+                    "$ref": "#/$defs/JaegerPropagator"
+                },
+                "ottrace": {
+                    "$ref": "#/$defs/OpenTracingPropagator"
+                }
+            },
+            "patternProperties": {
+                ".*": {
+                    "type": ["object", "null"]
+                }
+            }
+        },
+        "TraceContextPropagator": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "BaggagePropagator": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "B3Propagator": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "B3MultiPropagator": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "JaegerPropagator": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "OpenTracingPropagator": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        }
+    }
 }

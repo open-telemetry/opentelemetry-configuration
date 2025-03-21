@@ -34,7 +34,7 @@
     propagator: >
       Configure text map context propagators.
       
-      If omitted, tracecontext and baggage are used.
+      If omitted, a noop propagator is used.
     attribute_limits: Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
     logger_provider: >
       Configure logger provider.
@@ -48,7 +48,10 @@
       Configure meter provider.
       
       If omitted, a noop meter provider is used.
-    instrumentation: Configure instrumentation.
+    instrumentation/development: >
+      Configure instrumentation.
+      
+      This type is in development and subject to breaking changes in minor versions.
   path_patterns:
     - .
 
@@ -66,7 +69,12 @@
       The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
       
       If omitted or null, no resource attributes are added.
-    detectors: Configure resource detectors.
+    detection/development: >
+      Configure resource detection.
+      
+      This type is in development and subject to breaking changes in minor versions.
+      
+      If omitted or null, resource detection is disabled.
     schema_url: >
       Configure resource schema URL.
       
@@ -74,11 +82,38 @@
   path_patterns:
     - .resource
 
-- type: Detectors
+- type: ResourceDetection
   property_descriptions:
     attributes: Configure attributes provided by resource detectors.
+    detectors: >
+      Configure resource detectors.
+      
+      Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
+      
+      If omitted or null, no resource detectors are enabled.
   path_patterns:
-    - .resource.detectors
+    - .resource.detection/development
+
+- type: Detector
+  property_descriptions:
+    container: >
+      Enable the container resource detector.
+      
+      Note, the key "container" is an example and detector names may vary by SDK language ecosystem.
+    host: >
+      Enable the host resource detector.
+      
+      Note, the key "host" is an example and detector names may vary by SDK language ecosystem.
+    os: >
+      Enable the os resource detector.
+      
+      Note, the key "os" is an example and detector names may vary by SDK language ecosystem.
+    process: >
+      Enable the process resource detector.
+      
+      Note, the key "process" is an example and detector names may vary by SDK language ecosystem.
+  path_patterns:
+    - .resource.detection/development.detectors[]
 
 - type: DetectorAttributes
   property_descriptions:
@@ -97,7 +132,7 @@
        * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
       If omitted, .included attributes are included.
   path_patterns:
-    - .resource.detectors.attributes
+    - .resource.detection/development.attributes
 
 - type: AttributeLimits
   property_descriptions:
@@ -119,11 +154,31 @@
 - type: Propagator
   property_descriptions:
     composite: >
-      Configure the set of propagators to include in the composite text map propagator. 
+      Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.
       
-      Built-in values include: tracecontext, baggage, b3, b3multi, jaeger, none. Known third party values include: xray, ottrace. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration.
+      Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. 
+      
+      If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
+    composite_list: >
+      Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.
+      
+      The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+      
+      Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. 
+      
+      If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
   path_patterns:
     - .propagator
+- type: CompositePropagator
+  property_descriptions:
+    tracecontext: Include the w3c trace context propagator.
+    baggage: Include the w3c baggage propagator.
+    b3: Include the zipkin b3 propagator.
+    b3multi: Include the zipkin b3 multi propagator.
+    jaeger: Include the jaeger propagator.
+    ottrace: Include the opentracing propagator.
+  path_patterns:
+    - .propagator.composite[]
 # END OpenTelemetryConfiguration
 
 # START LoggerProvider
@@ -181,7 +236,10 @@
   property_descriptions:
     otlp_http: Configure exporter to be OTLP with HTTP transport.
     otlp_grpc: Configure exporter to be OTLP with gRPC transport.
-    otlp_file: Configure exporter to be OTLP with file transport.
+    otlp_file/development: >
+      Configure exporter to be OTLP with file transport.
+      
+      This type is in development and subject to breaking changes in minor versions.
     console: Configure exporter to be console.
   path_patterns:
     - .logger_provider.processors[].*.exporter
@@ -288,7 +346,10 @@
   property_descriptions:
     otlp_http: Configure exporter to be OTLP with HTTP transport.
     otlp_grpc: Configure exporter to be OTLP with gRPC transport.
-    otlp_file: Configure exporter to be OTLP with file transport.
+    otlp_file/development: >
+      Configure exporter to be OTLP with file transport.
+      
+      This type is in development and subject to breaking changes in minor versions.
     zipkin: Configure exporter to be zipkin.
     console: Configure exporter to be console.
   path_patterns:
@@ -442,6 +503,7 @@
   property_descriptions:
     exporter: Configure exporter.
     producers: Configure metric producers.
+    cardinality_limits: Configure cardinality limits.
   path_patterns:
     - .meter_provider.readers[].pull
 
@@ -461,6 +523,7 @@
       If omitted or null, 30000 is used.
     exporter: Configure exporter.
     producers: Configure metric producers.
+    cardinality_limits: Configure cardinality limits.
   path_patterns:
     - .meter_provider.readers[].periodic
 
@@ -472,12 +535,58 @@
     - .meter_provider.readers[].pull.producers[]
     - .meter_provider.readers[].periodic.producers[]
 
+- type: CardinalityLimits
+  property_descriptions:
+    default: >
+      Configure default cardinality limit for all instrument types.
+      
+      Instrument-specific cardinality limits take priority. 
+      
+      If omitted or null, 2000 is used.
+    counter: >
+      Configure default cardinality limit for counter instruments.
+      
+      If omitted or null, the value from .default is used.
+    gauge: >
+      Configure default cardinality limit for gauge instruments.
+      
+      If omitted or null, the value from .default is used.
+    histogram: >
+      Configure default cardinality limit for histogram instruments.
+      
+      If omitted or null, the value from .default is used.
+    observable_counter: >
+      Configure default cardinality limit for observable_counter instruments.
+      
+      If omitted or null, the value from .default is used.
+    observable_gauge: >
+      Configure default cardinality limit for observable_gauge instruments.
+      
+      If omitted or null, the value from .default is used.
+    observable_up_down_counter: >
+      Configure default cardinality limit for observable_up_down_counter instruments.
+      
+      If omitted or null, the value from .default is used.
+    up_down_counter: >
+      Configure default cardinality limit for up_down_counter instruments.
+      
+      If omitted or null, the value from .default is used.
+  path_patterns:
+    - .meter_provider.readers[].pull.cardinality_limits
+    - .meter_provider.readers[].periodic.cardinality_limits
+
 - type: MetricExporter
   property_descriptions:
-    prometheus: Configure exporter to be prometheus.
+    prometheus/development: >
+      Configure exporter to be prometheus.
+      
+      This type is in development and subject to breaking changes in minor versions.
     otlp_http: Configure exporter to be OTLP with HTTP transport.
     otlp_grpc: Configure exporter to be OTLP with gRPC transport.
-    otlp_file: Configure exporter to be OTLP with file transport.
+    otlp_file/development: >
+      Configure exporter to be OTLP with file transport.
+      
+      This type is in development and subject to breaking changes in minor versions.
     console: Configure exporter to be console.
   path_patterns:
     - .meter_provider.readers[].*.exporter
@@ -506,7 +615,7 @@
       If omitted or null, false is used.
     with_resource_constant_labels: Configure Prometheus Exporter to add resource attributes as metrics attributes.
   path_patterns:
-    - .meter_provider.readers[].pull.exporter.prometheus
+    - .meter_provider.readers[].pull.exporter.prometheus/development
 - type: PrometheusIncludeExclude
   property_descriptions:
     included: >
@@ -524,7 +633,7 @@
        * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
       If omitted, .included resource attributes are included.
   path_patterns:
-    - .meter_provider.readers[].pull.exporter.prometheus.with_resource_constant_labels
+    - .meter_provider.readers[].pull.exporter.prometheus/development.with_resource_constant_labels
 
 - type: View
   property_descriptions:
@@ -544,6 +653,8 @@
       If omitted or null, all instrument names match.
     instrument_type: >
       Configure instrument type selection criteria.
+      
+      Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.
       
       If omitted or null, all instrument types match.
     unit: >
@@ -581,6 +692,10 @@
       Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
       
       If omitted, default is used.
+    aggregation_cardinality_limit: >
+      Configure the aggregation cardinality limit.
+      
+      If omitted or null, the metric reader's default cardinality limit is used.
     attribute_keys: >
       Configure attribute keys retained in the resulting stream(s).
   path_patterns:
@@ -767,9 +882,9 @@
 
       If omitted or null, stdout is used.
   path_patterns:
-    - .tracer_provider.processors[].*.exporter.otlp_file
-    - .logger_provider.processors[].*.exporter.otlp_file
-    - .meter_provider.readers[].periodic.exporter.otlp_file
+    - .tracer_provider.processors[].*.exporter.otlp_file/development
+    - .logger_provider.processors[].*.exporter.otlp_file/development
+    - .meter_provider.readers[].periodic.exporter.otlp_file/development
 # END common
 
 # START Instrumentation
@@ -791,7 +906,7 @@
     rust: Configure Rust language-specific instrumentation libraries.
     swift: Configure Swift language-specific instrumentation libraries.
   path_patterns:
-    - .instrumentation
+    - .instrumentation/development
 
 - type: GeneralInstrumentation
   property_descriptions:
@@ -804,7 +919,7 @@
       
       See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
   path_patterns:
-    - .instrumentation.general
+    - .instrumentation/development.general
 
 - type: GeneralInstrumentationPeer
   property_descriptions:
@@ -815,33 +930,33 @@
       
       See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
   path_patterns:
-    - .instrumentation.general.peer
+    - .instrumentation/development.general.peer
 
 - type: GeneralInstrumentationHttp
   property_descriptions:
     client: Configure instrumentations following the http client semantic conventions.
     server: Configure instrumentations following the http server semantic conventions.
   path_patterns:
-    - .instrumentation.general.http
+    - .instrumentation/development.general.http
 
 - type: GeneralInstrumentationHttpClient
   property_descriptions:
     request_captured_headers: Configure headers to capture for outbound http requests.
     response_captured_headers: Configure headers to capture for outbound http responses.
   path_patterns:
-    - .instrumentation.general.http.client
+    - .instrumentation/development.general.http.client
 
 - type: GeneralInstrumentationHttpServer
   property_descriptions:
     request_captured_headers: Configure headers to capture for inbound http requests.
     response_captured_headers: Configure headers to capture for outbound http responses.
   path_patterns:
-    - .instrumentation.general.http.server
+    - .instrumentation/development.general.http.server
 
 - type: LanguageSpecificInstrumentation
   property_descriptions:
     example: Configure the instrumentation corresponding to key "example".
   path_patterns:
-    - .instrumentation.*
+    - .instrumentation/development.*
 # END Instrumentation
 

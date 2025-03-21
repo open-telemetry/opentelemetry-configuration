@@ -55,6 +55,9 @@
                     "items": {
                         "$ref": "#/$defs/MetricProducer"
                     }
+                },
+                "cardinality_limits": {
+                    "$ref": "#/$defs/CardinalityLimits"
                 }
             },
             "required": [
@@ -73,11 +76,52 @@
                     "items": {
                         "$ref": "#/$defs/MetricProducer"
                     }
+                },
+                "cardinality_limits": {
+                    "$ref": "#/$defs/CardinalityLimits"
                 }
             },
             "required": [
                 "exporter"
             ]
+        },
+        "CardinalityLimits": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "default": {
+                    "type": ["integer", "null"],
+                    "exclusiveMinimum": 0
+                },
+                "counter": {
+                    "type": ["integer", "null"],
+                    "exclusiveMinimum": 0
+                },
+                "gauge": {
+                    "type": ["integer", "null"],
+                    "exclusiveMinimum": 0
+                },
+                "histogram": {
+                    "type": ["integer", "null"],
+                    "exclusiveMinimum": 0
+                },
+                "observable_counter": {
+                    "type": ["integer", "null"],
+                    "exclusiveMinimum": 0
+                },
+                "observable_gauge": {
+                    "type": ["integer", "null"],
+                    "exclusiveMinimum": 0
+                },
+                "observable_up_down_counter": {
+                    "type": ["integer", "null"],
+                    "exclusiveMinimum": 0
+                },
+                "up_down_counter": {
+                    "type": ["integer", "null"],
+                    "exclusiveMinimum": 0
+                }
+            }
         },
         "PushMetricExporter": {
             "type": "object",
@@ -91,8 +135,8 @@
                 "otlp_grpc": {
                     "$ref": "#/$defs/OtlpGrpcMetricExporter"
                 },
-                "otlp_file": {
-                    "$ref": "#/$defs/OtlpFileMetricExporter"
+                "otlp_file/development": {
+                    "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
                 },
                 "console": {
                     "$ref": "common.json#/$defs/ConsoleExporter"
@@ -110,8 +154,8 @@
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
-                "prometheus": {
-                    "$ref": "#/$defs/PrometheusMetricExporter"
+                "prometheus/development": {
+                    "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
                 }
             },
             "patternProperties": {
@@ -140,7 +184,7 @@
             "type": ["object", "null"],
             "additionalProperties": false
         },
-        "PrometheusMetricExporter": {
+        "ExperimentalPrometheusMetricExporter": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -279,7 +323,7 @@
                 }
             }
         },
-        "OtlpFileMetricExporter": {
+        "ExperimentalOtlpFileMetricExporter": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -334,6 +378,7 @@
             "type": ["string", "null"],
             "enum": [
                 "counter",
+                "gauge",
                 "histogram",
                 "observable_counter",
                 "observable_gauge",
@@ -353,6 +398,10 @@
                 },
                 "aggregation": {
                     "$ref": "#/$defs/Aggregation"
+                },
+                "aggregation_cardinality_limit": {
+                    "type": ["integer", "null"],
+                    "exclusiveMinimum": 0
                 },
                 "attribute_keys": {
                     "$ref": "common.json#/$defs/IncludeExclude"

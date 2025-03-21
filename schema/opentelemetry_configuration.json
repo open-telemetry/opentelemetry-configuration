@@ -32,8 +32,8 @@
         "resource": {
             "$ref": "#/$defs/Resource"
         },
-        "instrumentation": {
-            "$ref": "#/$defs/Instrumentation"
+        "instrumentation/development": {
+            "$ref": "#/$defs/ExperimentalInstrumentation"
         }
     },
     "required": [
@@ -67,7 +67,7 @@
         "Resource": {
             "$ref": "resource.json"
         },
-        "Instrumentation": {
+        "ExperimentalInstrumentation": {
             "$ref": "instrumentation.json"
         }
     }
