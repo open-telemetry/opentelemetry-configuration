@@ -761,9 +761,10 @@ resource:
   # The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
   # If omitted or null, no resource attributes are added.
   attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
-  # Configure resource detectors.
+  # Configure resource detection.
   # This type is in development and subject to breaking changes in minor versions.
-  detectors/development:
+  # If omitted or null, resource detection is disabled.
+  detection/development:
     # Configure attributes provided by resource detectors.
     attributes:
       # Configure list of attribute key patterns to include from resource detectors.
@@ -780,6 +781,22 @@ resource:
       # If omitted, .included attributes are included.
       excluded:
         - process.command_args
+    # Configure resource detectors.
+    # Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
+    # If omitted or null, no resource detectors are enabled.
+    detectors:
+      - # Enable the container resource detector.
+        # Note, the key "container" is an example and detector names may vary by SDK language ecosystem.
+        container:
+      - # Enable the host resource detector.
+        # Note, the key "host" is an example and detector names may vary by SDK language ecosystem.
+        host:
+      - # Enable the os resource detector.
+        # Note, the key "os" is an example and detector names may vary by SDK language ecosystem.
+        os:
+      - # Enable the process resource detector.
+        # Note, the key "process" is an example and detector names may vary by SDK language ecosystem.
+        process:
   # Configure resource schema URL.
   # If omitted or null, no schema URL is used.
   schema_url: https://opentelemetry.io/schemas/1.16.0
