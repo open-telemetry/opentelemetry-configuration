@@ -7,7 +7,7 @@
     should be listed under a heading of the
     form `## v{Major}.{Minor}.{Patch} - YYYY-MM-DD` under `## Unreleased`.
     Maintainers should highlight any breaking changes. You can
-    use `git log upstream/v$MAJOR.$((MINOR-1)).x..upstream/v$MAJOR.$MINOR.x --graph --first-parent`
+    use `./.github/scripts/draft-change-log-entries.sh <previous_version_tag>`
     or the
     Github [compare tool](https://github.com/open-telemetry/opentelemetry-configuration/compare/)
     to view a summary of all commits since last release as a reference. From
