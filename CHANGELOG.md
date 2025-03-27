@@ -176,7 +176,8 @@ we'll conform to in versions 1.0.0+.
 * Provide guidance on required and null properties. Update schema types to
   reflect guidance, including documenting behavior when properties are omitted
   or null.
-  ([#141](https://github.com/open-telemetry/opentelemetry-configuration/pull/141))
+  ([#141](https://github.com/open-telemetry/opentelemetry-configuration/pull/141)
+   [#192](https://github.com/open-telemetry/opentelemetry-configuration/pull/192))
 * Add guidance around use of polymorphic types
   ([#147](https://github.com/open-telemetry/opentelemetry-configuration/pull/147))
 * Fix MetricProducer type descriptions
