@@ -1,6 +1,8 @@
 # Changelog
 
-## v0.4.0 - 2025-03-21
+## Unreleased
+
+## [v0.4.0] - 2025-03-21
 
 This release has a significant number of breaking changes, new additions and
 fixes. The breaking changes reflect a higher degree of scrutiny on consistency
@@ -215,6 +217,8 @@ we'll conform to in versions 1.0.0+.
   ([#171](https://github.com/open-telemetry/opentelemetry-configuration/pull/171))
 * Add a variety of key definitions surrounding stability
   ([#142](https://github.com/open-telemetry/opentelemetry-configuration/pull/142))
+
+[v0.4.0]: https://github.com/open-telemetry/opentelemetry-configuration/releases/tag/v0.4.0
 
 ## [v0.3.0] - 2024-09-20
 
