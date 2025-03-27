@@ -193,7 +193,8 @@ we'll conform to in versions 1.0.0+.
 * Add cardinality limits configuration to `PullMetricReader`, `PeriodicMetricReader`
   ([#185](https://github.com/open-telemetry/opentelemetry-configuration/pull/185))
 * Add scope configuration to disable loggers, tracers, meters
-  ([#140](https://github.com/open-telemetry/opentelemetry-configuration/pull/140))
+  ([#140](https://github.com/open-telemetry/opentelemetry-configuration/pull/140),
+  [#191](https://github.com/open-telemetry/opentelemetry-configuration/pull/191))
 
 ### Tooling
 
