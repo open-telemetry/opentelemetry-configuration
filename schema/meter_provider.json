@@ -79,7 +79,7 @@
                 },
                 "cardinality_limits": {
                     "$ref": "#/$defs/CardinalityLimits"
-                },
+                }
             },
             "required": [
                 "exporter"
