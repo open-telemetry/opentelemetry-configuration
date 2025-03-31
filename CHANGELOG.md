@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## [v0.4.0] - 2025-03-21
+## [v0.4.0] - 2025-03-31
 
 This release has a significant number of breaking changes, new additions and
 fixes. The breaking changes reflect a higher degree of scrutiny on consistency
