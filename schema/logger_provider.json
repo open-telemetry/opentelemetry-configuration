@@ -6,6 +6,7 @@
     "properties": {
         "processors": {
             "type": "array",
+            "minItems": 1,
             "items": {
                 "$ref": "#/$defs/LogRecordProcessor"
             }
@@ -122,7 +123,6 @@
         "ExperimentalLoggerConfigurator": {
             "type": ["object"],
             "additionalProperties": false,
-            "title": "LoggerConfigurator",
             "properties": {
                 "default_config": {
                     "$ref": "#/$defs/ExperimentalLoggerConfig"
@@ -138,7 +138,6 @@
         "ExperimentalLoggerMatcherAndConfig": {
             "type": ["object"],
             "additionalProperties": false,
-            "title": "LoggerMatcherAndConfig",
             "properties": {
                 "name": {
                     "type": ["string"]
@@ -151,7 +150,6 @@
         "ExperimentalLoggerConfig": {
             "type": ["object"],
             "additionalProperties": false,
-            "title": "LoggerConfig",
             "properties": {
                 "disabled": {
                     "type": ["boolean"]
