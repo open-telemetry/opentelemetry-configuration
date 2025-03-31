@@ -2,11 +2,226 @@
 
 ## Unreleased
 
-* Improved file_format documentation. [#137](https://github.com/open-telemetry/opentelemetry-configuration/pull/137)
-* Periodic exporter interval default value is inconsistent [#143](https://github.com/open-telemetry/opentelemetry-configuration/pull/143)
-* Fix MetricReader invalid configurations [#148](https://github.com/open-telemetry/opentelemetry-configuration/pull/148)
+## [v0.4.0] - 2025-03-31
 
-## [v0.3.0] - 2024-05-08
+This release has a significant number of breaking changes, new additions and
+fixes. The breaking changes reflect a higher degree of scrutiny on consistency
+and correct data modeling as we approach a stable
+release ([#161](https://github.com/open-telemetry/opentelemetry-configuration/issues/161), [#4374](https://github.com/open-telemetry/opentelemetry-specification/issues/4374)).
+We anticipate limited churn going forward. Additionally, once we do have a
+stable release, users can rely on
+the [strong compatibility guarantees](https://github.com/open-telemetry/opentelemetry-configuration?tab=readme-ov-file#stability-definition)
+we'll conform to in versions 1.0.0+.
+
+### Schema
+
+* **BREAKING:** Refactor otlp exporter to separate `otlp_http` and `otlp_grpc`
+  exporters, add `_file` suffix to OTLP exporter certificate properties
+  ([#146](https://github.com/open-telemetry/opentelemetry-configuration/pull/146),
+  [#166](https://github.com/open-telemetry/opentelemetry-configuration/pull/166))
+
+  <details>
+  
+  <summary>Migration steps</summary>
+  
+  ```yaml
+  # Before
+  tracer_provider:
+    processors:
+      - batch:
+          exporter:
+            otlp: 
+              protocol: http/protobuf
+              endpoint: http://localhost:4318/v1/traces
+              certificate: /app/cert.pem
+  ---
+  # After
+  tracer_provider:
+    processors:
+      - batch:
+          exporter:
+            otlp_http: 
+              endpoint: http://localhost:4318/v1/traces
+              certificate_file: /app/cert.pem
+  ```
+  </details>
+
+* **BREAKING:** Refactor propagator schema, add `composite_list` for
+  compatibility with `OTEL_PROPAGATORS`.
+  ([#187](https://github.com/open-telemetry/opentelemetry-configuration/pull/187))
+
+  <details>
+
+  <summary>Migration steps</summary>
+
+  ```yaml
+  # Before
+  propagator:
+    composite:
+      - tracecontext
+      - baggage
+  ---
+  # After
+  propagator:
+    composite:
+      - tracecontext:
+      - baggage:
+    ```
+  </details>
+
+* **BREAKING:**  Refactor resource detection and mark experimental
+  ([#182](https://github.com/open-telemetry/opentelemetry-configuration/pull/182),
+  [#188](https://github.com/open-telemetry/opentelemetry-configuration/pull/188))
+
+  <details>
+
+  <summary>Migration steps</summary>
+  
+  ```yaml
+  # Before
+  resource:
+    attributes: # ...omitted for brevity
+    detectors:
+      excluded:
+        - process.command_args
+  ---
+  # After
+  resource:
+    attributes: # ...omitted for brevity
+    detection/development:
+      detectors:
+        - container:
+        - host:
+        - os:
+        - process:
+      attributes:
+        excluded:
+          - process.command_args
+  ```
+  </details>
+
+* **BREAKING:** Mark prometheus exporter as experimental
+  ([#180](https://github.com/open-telemetry/opentelemetry-configuration/pull/180))
+
+  <details>
+
+  <summary>Migration steps</summary>
+  
+  ```yaml
+  # Before
+  meter_provider:
+    readers:
+      - pull:
+          prometheus: # ...omitted for brevity
+  ---
+  # After
+  meter_provider:
+    readers:
+      - pull:
+          prometheus/development: # ...omitted for brevity
+  ```
+  </details>
+
+* **BREAKING:**  Mark `.instrumentation` as experimental
+  ([#179](https://github.com/open-telemetry/opentelemetry-configuration/pull/179))
+
+  <details>
+
+  <summary>Migration steps</summary>
+  
+  ```yaml
+  # Before
+  instrumentation: # ...omitted for brevity
+  ---
+  # After
+  instrumentation/development: # ...omitted for brevity
+  ```
+  </details>
+
+* **BREAKING:** Move metric producers from `MetricReader`
+  to `PullMetricReader`, `PeriodicMetricReader`
+  ([#148](https://github.com/open-telemetry/opentelemetry-configuration/pull/148))
+
+  <details>
+
+  <summary>Migration steps</summary>
+  
+  ```yaml
+  # Before
+  meter_provider:
+    readers:
+      - periodic: # ...omitted for brevity
+        producers:
+          - opencensus:
+  ---
+  # After
+  meter_provider:
+    readers:
+      - periodic: # ...omitted for brevity
+          producers:
+            - opencensus:
+  ```
+  </details>
+
+* **BREAKING:** Change various usages of minimum to exclusiveMinimum
+  ([#151](https://github.com/open-telemetry/opentelemetry-configuration/pull/151))
+* Add `.meter_provider.exemplar_filter` property
+  ([#131](https://github.com/open-telemetry/opentelemetry-configuration/pull/131))
+* Don't require empty objects
+  ([#134](https://github.com/open-telemetry/opentelemetry-configuration/pull/134))
+* Improve `.file_format` documentation
+  ([#137](https://github.com/open-telemetry/opentelemetry-configuration/pull/137))
+* Fix periodic exporter interval default value in `kitchen-sink.yaml`
+  ([#143](https://github.com/open-telemetry/opentelemetry-configuration/pull/143))
+* Provide guidance on required and null properties. Update schema types to
+  reflect guidance, including documenting behavior when properties are omitted
+  or null.
+  ([#141](https://github.com/open-telemetry/opentelemetry-configuration/pull/141)
+   [#192](https://github.com/open-telemetry/opentelemetry-configuration/pull/192))
+* Add guidance around use of polymorphic types
+  ([#147](https://github.com/open-telemetry/opentelemetry-configuration/pull/147))
+* Fix MetricProducer type descriptions
+  ([#150](https://github.com/open-telemetry/opentelemetry-configuration/pull/150))
+* Add `otlp_file/development` exporter
+  ([#154](https://github.com/open-telemetry/opentelemetry-configuration/pull/154),
+  [#181](https://github.com/open-telemetry/opentelemetry-configuration/pull/181))
+* Object and enum types should be defined in `$defs`
+  ([#155](https://github.com/open-telemetry/opentelemetry-configuration/pull/155))
+* Add guidance around use of title and description keywords
+  ([#157](https://github.com/open-telemetry/opentelemetry-configuration/pull/157))
+* Add `log_level` configuration
+  ([#121](https://github.com/open-telemetry/opentelemetry-configuration/pull/121))
+* Add missing gauge value to InstrumentType enum
+  ([#186](https://github.com/open-telemetry/opentelemetry-configuration/pull/186))
+* Add cardinality limits configuration to `PullMetricReader`, `PeriodicMetricReader`
+  ([#185](https://github.com/open-telemetry/opentelemetry-configuration/pull/185))
+* Add scope configuration to disable loggers, tracers, meters
+  ([#140](https://github.com/open-telemetry/opentelemetry-configuration/pull/140),
+  [#191](https://github.com/open-telemetry/opentelemetry-configuration/pull/191))
+
+### Tooling
+
+* chore: add govulncheck check for validator
+  ([#126](https://github.com/open-telemetry/opentelemetry-configuration/pull/126))
+* Drop anchors.yaml example
+  ([#130](https://github.com/open-telemetry/opentelemetry-configuration/pull/130))
+* Rebrand file configuration to declarative configuration
+  ([#135](https://github.com/open-telemetry/opentelemetry-configuration/pull/135))
+* Rework release process
+  ([#149](https://github.com/open-telemetry/opentelemetry-configuration/pull/149),
+  [#167](https://github.com/open-telemetry/opentelemetry-configuration/pull/167))
+* Clarify JSON schema draft 2020-12
+  ([#156](https://github.com/open-telemetry/opentelemetry-configuration/pull/156))
+* Move modeling rules to CONTRIBUTING.md
+  ([#170](https://github.com/open-telemetry/opentelemetry-configuration/pull/170))
+* Add FOSSA scanning workflow
+  ([#171](https://github.com/open-telemetry/opentelemetry-configuration/pull/171))
+* Add a variety of key definitions surrounding stability
+  ([#142](https://github.com/open-telemetry/opentelemetry-configuration/pull/142))
+
+[v0.4.0]: https://github.com/open-telemetry/opentelemetry-configuration/releases/tag/v0.4.0
+
+## [v0.3.0] - 2024-09-20
 
 * Add metric producers to meter_provider configuration. [#90](https://github.com/open-telemetry/opentelemetry-configuration/pull/90)
 * Document what configuration options are covered in the schema. [92](https://github.com/open-telemetry/opentelemetry-configuration/pull/92)
