@@ -17,7 +17,7 @@ The [examples](./examples) directory contains a variety of sample configuration 
 
 ## Code generation
 
-There are [several tools](https://json-schema.org/implementations.html) available to generate code from a JSON schema. The following shows an example for generating code from the JSON schema in Go:
+There are [several tools](https://json-schema.org/tools) available to generate code from a JSON schema. The following shows an example for generating code from the JSON schema in Go:
 
 ```bash
 go-jsonschema \

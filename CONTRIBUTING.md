@@ -325,5 +325,5 @@ A PR is ready to merge when:
 
 ```
 
-[env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution
+[env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
