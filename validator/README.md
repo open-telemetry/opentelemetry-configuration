@@ -2,7 +2,7 @@
 
 This application will replace environment variables in values of valid yaml
 files, following the rules of [file configuration environment variable
-substitution](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution),
+substitution](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution),
 before validating that result against a version of the [OpenTelemetry SDK
 Configuration
 schema](https://github.com/open-telemetry/opentelemetry-configuration/) and

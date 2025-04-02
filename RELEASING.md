@@ -2,7 +2,7 @@
 
 * Prepare the release by:
   * If preparing a minor or major release, merge a PR to `main`
-    to [update `file_format`](#update-fileformat).
+    to [update `file_format`](#update-file-format).
   * Merge a PR to `main` to update the [CHANGELOG.md](CHANGELOG.md). Changes
     should be listed under a heading of the
     form `## v{Major}.{Minor}.{Patch} - YYYY-MM-DD` under `## Unreleased`.
@@ -25,7 +25,7 @@ Our tags follow the naming convention of `v<major>.<minor>.<patch>`. Increment `
 and use `patch` value of 0 for new minor version releases. For patch releases keep `minor`
 unchanged and increment the `patch`.
 
-## Update `file_format`
+## Update `file_format` {#update-file-format}
 
 Update the `file_format: "<major>.<minor>` of [./examples](./examples) as follows:
 
