@@ -25,7 +25,7 @@ Our tags follow the naming convention of `v<major>.<minor>.<patch>`. Increment `
 and use `patch` value of 0 for new minor version releases. For patch releases keep `minor`
 unchanged and increment the `patch`.
 
-## Update `file_format`
+## Update file_format
 
 Update the `file_format: "<major>.<minor>` of [./examples](./examples) as follows:
 
