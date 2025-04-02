@@ -2,11 +2,7 @@
 
 [![Build Check](https://github.com/open-telemetry/opentelemetry-configuration/actions/workflows/build-check.yaml/badge.svg?branch=main)](https://github.com/open-telemetry/opentelemetry-configuration/actions/workflows/build-check.yaml)
 
-This repository contains the JSON schema that defines the OpenTelemetry configuration. This schema can be utilized to generate model code for implementations and to validate the structure of a configuration file. The repository comes as a result of [OTEP #225](https://github.com/open-telemetry/oteps/blob/976c9395e4cbb3ea933d3b51589eba94b87a17bd/text/0225-configuration.md), where JSON schema was chosen for the following reasons:
-
-- support for client-side validation
-- code generation
-- broad support across languages
+This repository contains the JSON schema definitions of the OpenTelemetry [declarative configuration](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/README.md#declarative-configuration) [data model](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md).
 
 ## Starter templates
 
