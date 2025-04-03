@@ -259,7 +259,7 @@ How it works:
 * The [./schema/type_descriptions.yaml](./schema/type_descriptions.yaml) file
   defines descriptions for each of the properties of each type defines in
   the [JSON schema](./schema) data model.
-* The [./scripts/generate-descriptions.js](./scripts/generate-comments.js) is a
+* The [./scripts/generate-descriptions.js](./scripts/generate-descriptions.js) is a
   script which for a given input configuration file will:
   * Parse the YAML.
   * Walk through each key / value pair, and for each:
@@ -305,7 +305,7 @@ each key value pair, including the computed dot notation location, the matched
 rule, the previous description, the new description, etc.
 
 ```shell
-npm run-script generate-comments -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml --debug
+npm run-script generate-descriptions -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml --debug
 ```
 
 ## Pull requests
@@ -325,5 +325,5 @@ A PR is ready to merge when:
 
 ```
 
-[env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution
+[env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating

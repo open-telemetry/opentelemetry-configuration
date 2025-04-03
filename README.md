@@ -13,7 +13,7 @@ The [examples](./examples) directory contains a variety of sample configuration 
 
 ## Code generation
 
-There are [several tools](https://json-schema.org/implementations.html) available to generate code from a JSON schema. The following shows an example for generating code from the JSON schema in Go:
+There are [several tools](https://json-schema.org/tools) available to generate code from a JSON schema. The following shows an example for generating code from the JSON schema in Go:
 
 ```bash
 go-jsonschema \
@@ -30,7 +30,7 @@ This repository strictly follows [Semantic Versioning 2.0.0](https://semver.org/
 
 Stability definition consists of the following sections:
 
-* [Objectives](#objectives): Overview of the motivation behind stability.
+* [Objectives](#objective): Overview of the motivation behind stability.
 * [Guarantees and allowed changes](#guarantees-and-allowed-changes): Specific details on allowed and disallowed changes within stability guarantees.
 * [Applicability](#applicability): Limits of stability definitions, including experimental features and extension points.
 * [File format](#file-format): The `file_format` property and implementation behavior when schema versions are not aligned.
@@ -132,5 +132,5 @@ Maintainers ([@open-telemetry/configuration-maintainers](https://github.com/orgs
 *Find more about the maintainer role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).*
 
 [annotation]: https://json-schema.org/understanding-json-schema/reference/annotations
-[env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md#environment-variable-substitution
+[env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution
 
