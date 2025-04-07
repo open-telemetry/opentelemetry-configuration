@@ -4,8 +4,8 @@ The following table shows the implementation of each feature supported by the
 configuration model:
 
 
-| Top Level | C++|Java|Go|PHP |
-| --------- | -|-|-|- | 
+| Config Option | C++|Java|Go|PHP |
+| ------------- | -|-|-|- | 
 | `file_format` | -|-|-|- | 
 | `disabled` | -|-|-|- | 
 | `log_level` | -|-|-|- | 
