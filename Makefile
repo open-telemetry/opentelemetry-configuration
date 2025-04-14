@@ -41,6 +41,10 @@ update-file-format:
 	    sed -e 's/file_format:.*/file_format: \"$(FILE_FORMAT)\"/g' -i '' ./examples/$$f; \
 	done
 
+.PHONY: generate-compliance-matrix
+generate-compliance-matrix:
+	npm run-script generate-compliance-matrix || exit 1; \
+
 .PHONY: install-tools
 install-tools:
 	npm install

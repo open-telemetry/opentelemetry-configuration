@@ -1,8 +1,10 @@
 {
   "scripts": {
-    "generate-descriptions": "node scripts/generate-descriptions.js"
+    "generate-descriptions": "node scripts/generate-descriptions.js",
+    "generate-compliance-matrix": "node scripts/compliance-matrix.js"
   },
   "devDependencies": {
+    "@json-schema-tools/traverse": "^1.10.4",
     "ajv-cli": "^5.0.0"
   },
   "dependencies": {
