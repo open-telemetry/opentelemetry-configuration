@@ -20,7 +20,6 @@ fs.readdirSync(schemaDirPath)
         }
 
         traverse(schema, (schema) => {
-            console.log()
             const defs = schema['$defs'];
             if (defs) {
                 Object.entries(defs).forEach(([name, schema]) => {
