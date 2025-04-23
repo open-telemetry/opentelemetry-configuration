@@ -97,21 +97,13 @@
 - type: Detector
   property_descriptions:
     container: >
-      Enable the container resource detector.
-      
-      Note, the key "container" is an example and detector names may vary by SDK language ecosystem.
+      Enable the container resource detector, which populates container.* attributes.
     host: >
-      Enable the host resource detector.
-      
-      Note, the key "host" is an example and detector names may vary by SDK language ecosystem.
-    os: >
-      Enable the os resource detector.
-      
-      Note, the key "os" is an example and detector names may vary by SDK language ecosystem.
+      Enable the host resource detector, which populates host.* and os.* attributes.
     process: >
-      Enable the process resource detector.
-      
-      Note, the key "process" is an example and detector names may vary by SDK language ecosystem.
+      Enable the process resource detector, which populates process.* attributes.
+    service: >
+      Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.
   path_patterns:
     - .resource.detection/development.detectors[]
 
