@@ -45,6 +45,14 @@ update-file-format:
 generate-compliance-matrix:
 	npm run-script generate-compliance-matrix || exit 1; \
 
+.PHONY: generate-meta-schema
+generate-meta-schema:
+	npm run-script generate-meta-schema || exit 1; \
+
+.PHONY: validate-meta-schema
+validate-meta-schema:
+	npm run-script validate-meta-schema || exit 1; \
+
 .PHONY: install-tools
 install-tools:
 	npm install

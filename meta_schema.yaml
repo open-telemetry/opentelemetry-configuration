@@ -1,0 +1,1268 @@
+Aggregation:
+  definitionSource: meter_provider.json#/$defs/Aggregation
+  paths:
+    - .meter_provider.views[].stream.aggregation
+  properties:
+    base2_exponential_bucket_histogram:
+      description: unknown
+      implementationStatus: {}
+    default:
+      description: unknown
+      implementationStatus: {}
+    drop:
+      description: unknown
+      implementationStatus: {}
+    explicit_bucket_histogram:
+      description: Configure aggregation to be explicit_bucket_histogram.
+      implementationStatus: {}
+    last_value:
+      description: unknown
+      implementationStatus: {}
+    sum:
+      description: unknown
+      implementationStatus: {}
+AlwaysOffSampler:
+  definitionSource: tracer_provider.json#/$defs/AlwaysOffSampler
+  paths: []
+  properties: {}
+AlwaysOnSampler:
+  definitionSource: tracer_provider.json#/$defs/AlwaysOnSampler
+  paths: []
+  properties: {}
+AttributeLimits:
+  definitionSource: opentelemetry_configuration.json#/$defs/AttributeLimits
+  paths:
+    - .attribute_limits
+  properties:
+    attribute_count_limit:
+      description: |
+        Configure max attribute count. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
+      implementationStatus: {}
+    attribute_value_length_limit:
+      description: |
+        Configure max attribute value size. 
+        Value must be non-negative.
+        If omitted or null, there is no limit.
+      implementationStatus: {}
+AttributeNameValue:
+  definitionSource: resource.json#/$defs/AttributeNameValue
+  paths: []
+  properties:
+    name:
+      description: unknown
+      implementationStatus: {}
+    type:
+      description: unknown
+      implementationStatus: {}
+    value:
+      description: unknown
+      implementationStatus: {}
+AttributeType:
+  definitionSource: resource.json#/$defs/AttributeType
+  paths: []
+  properties: {}
+B3MultiPropagator:
+  definitionSource: propagator.json#/$defs/B3MultiPropagator
+  paths: []
+  properties: {}
+B3Propagator:
+  definitionSource: propagator.json#/$defs/B3Propagator
+  paths: []
+  properties: {}
+BaggagePropagator:
+  definitionSource: propagator.json#/$defs/BaggagePropagator
+  paths: []
+  properties: {}
+Base2ExponentialBucketHistogramAggregation:
+  definitionSource: meter_provider.json#/$defs/Base2ExponentialBucketHistogramAggregation
+  paths: []
+  properties:
+    max_scale:
+      description: unknown
+      implementationStatus: {}
+    max_size:
+      description: unknown
+      implementationStatus: {}
+    record_min_max:
+      description: unknown
+      implementationStatus: {}
+BatchLogRecordProcessor:
+  definitionSource: logger_provider.json#/$defs/BatchLogRecordProcessor
+  paths:
+    - .logger_provider.processors[].batch
+  properties:
+    export_timeout:
+      description: |
+        Configure maximum allowed time (in milliseconds) to export data. 
+        Value must be non-negative. A value of 0 indicates no limit (infinity).
+        If omitted or null, 30000 is used.
+      implementationStatus: {}
+    exporter:
+      description: Configure exporter.
+      implementationStatus: {}
+    max_export_batch_size:
+      description: |
+        Configure maximum batch size. Value must be positive.
+        If omitted or null, 512 is used.
+      implementationStatus: {}
+    max_queue_size:
+      description: |
+        Configure maximum queue size. Value must be positive.
+        If omitted or null, 2048 is used.
+      implementationStatus: {}
+    schedule_delay:
+      description: |
+        Configure delay interval (in milliseconds) between two consecutive exports. 
+        Value must be non-negative.
+        If omitted or null, 1000 is used.
+      implementationStatus: {}
+BatchSpanProcessor:
+  definitionSource: tracer_provider.json#/$defs/BatchSpanProcessor
+  paths:
+    - .tracer_provider.processors[].batch
+  properties:
+    export_timeout:
+      description: |
+        Configure maximum allowed time (in milliseconds) to export data. 
+        Value must be non-negative. A value of 0 indicates no limit (infinity).
+        If omitted or null, 30000 is used.
+      implementationStatus: {}
+    exporter:
+      description: Configure exporter.
+      implementationStatus: {}
+    max_export_batch_size:
+      description: |
+        Configure maximum batch size. Value must be positive.
+        If omitted or null, 512 is used.
+      implementationStatus: {}
+    max_queue_size:
+      description: |
+        Configure maximum queue size. Value must be positive.
+        If omitted or null, 2048 is used.
+      implementationStatus: {}
+    schedule_delay:
+      description: |
+        Configure delay interval (in milliseconds) between two consecutive exports. 
+        Value must be non-negative.
+        If omitted or null, 5000 is used.
+      implementationStatus: {}
+CardinalityLimits:
+  definitionSource: meter_provider.json#/$defs/CardinalityLimits
+  paths:
+    - .meter_provider.readers[].pull.cardinality_limits
+    - .meter_provider.readers[].periodic.cardinality_limits
+  properties:
+    counter:
+      description: |
+        Configure default cardinality limit for counter instruments.
+        If omitted or null, the value from .default is used.
+      implementationStatus: {}
+    default:
+      description: |
+        Configure default cardinality limit for all instrument types.
+        Instrument-specific cardinality limits take priority. 
+        If omitted or null, 2000 is used.
+      implementationStatus: {}
+    gauge:
+      description: |
+        Configure default cardinality limit for gauge instruments.
+        If omitted or null, the value from .default is used.
+      implementationStatus: {}
+    histogram:
+      description: |
+        Configure default cardinality limit for histogram instruments.
+        If omitted or null, the value from .default is used.
+      implementationStatus: {}
+    observable_counter:
+      description: |
+        Configure default cardinality limit for observable_counter instruments.
+        If omitted or null, the value from .default is used.
+      implementationStatus: {}
+    observable_gauge:
+      description: |
+        Configure default cardinality limit for observable_gauge instruments.
+        If omitted or null, the value from .default is used.
+      implementationStatus: {}
+    observable_up_down_counter:
+      description: |
+        Configure default cardinality limit for observable_up_down_counter instruments.
+        If omitted or null, the value from .default is used.
+      implementationStatus: {}
+    up_down_counter:
+      description: |
+        Configure default cardinality limit for up_down_counter instruments.
+        If omitted or null, the value from .default is used.
+      implementationStatus: {}
+ConsoleExporter:
+  definitionSource: common.json#/$defs/ConsoleExporter
+  paths: []
+  properties: {}
+DefaultAggregation:
+  definitionSource: meter_provider.json#/$defs/DefaultAggregation
+  paths: []
+  properties: {}
+DropAggregation:
+  definitionSource: meter_provider.json#/$defs/DropAggregation
+  paths: []
+  properties: {}
+ExemplarFilter:
+  definitionSource: meter_provider.json#/$defs/ExemplarFilter
+  paths: []
+  properties: {}
+ExperimentalGeneralInstrumentation:
+  definitionSource: instrumentation.json#/$defs/ExperimentalGeneralInstrumentation
+  paths:
+    - .instrumentation/development.general
+  properties:
+    http:
+      description: |
+        Configure instrumentations following the http semantic conventions.
+        See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
+      implementationStatus: {}
+    peer:
+      description: |
+        Configure instrumentations following the peer semantic conventions.
+        See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
+      implementationStatus: {}
+ExperimentalHttpInstrumentation:
+  definitionSource: instrumentation.json#/$defs/ExperimentalHttpInstrumentation
+  paths:
+    - .instrumentation/development.general.http
+  properties:
+    client:
+      description: Configure instrumentations following the http client semantic conventions.
+      implementationStatus: {}
+    server:
+      description: Configure instrumentations following the http server semantic conventions.
+      implementationStatus: {}
+ExperimentalInstrumentation:
+  definitionSource: opentelemetry_configuration.json#/$defs/ExperimentalInstrumentation
+  paths:
+    - .instrumentation/development
+  properties:
+    cpp:
+      description: Configure C++ language-specific instrumentation libraries.
+      implementationStatus: {}
+    dotnet:
+      description: Configure .NET language-specific instrumentation libraries.
+      implementationStatus: {}
+    erlang:
+      description: Configure Erlang language-specific instrumentation libraries.
+      implementationStatus: {}
+    general:
+      description: |
+        Configure general SemConv options that may apply to multiple languages and instrumentations.
+        Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
+      implementationStatus: {}
+    go:
+      description: Configure Go language-specific instrumentation libraries.
+      implementationStatus: {}
+    java:
+      description: Configure Java language-specific instrumentation libraries.
+      implementationStatus: {}
+    js:
+      description: Configure JavaScript language-specific instrumentation libraries.
+      implementationStatus: {}
+    php:
+      description: Configure PHP language-specific instrumentation libraries.
+      implementationStatus: {}
+    python:
+      description: Configure Python language-specific instrumentation libraries.
+      implementationStatus: {}
+    ruby:
+      description: Configure Ruby language-specific instrumentation libraries.
+      implementationStatus: {}
+    rust:
+      description: Configure Rust language-specific instrumentation libraries.
+      implementationStatus: {}
+    swift:
+      description: Configure Swift language-specific instrumentation libraries.
+      implementationStatus: {}
+ExperimentalLanguageSpecificInstrumentation:
+  definitionSource: instrumentation.json#/$defs/ExperimentalLanguageSpecificInstrumentation
+  paths: []
+  properties: {}
+ExperimentalLoggerConfig:
+  definitionSource: logger_provider.json#/$defs/ExperimentalLoggerConfig
+  paths:
+    - .logger_provider.logger_configurator/development.default_config
+    - .logger_provider.logger_configurator/development.loggers[].config
+  properties:
+    disabled:
+      description: Configure if the logger is enabled or not.
+      implementationStatus: {}
+ExperimentalLoggerConfigurator:
+  definitionSource: logger_provider.json#/$defs/ExperimentalLoggerConfigurator
+  paths:
+    - .logger_provider.logger_configurator/development
+  properties:
+    default_config:
+      description: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
+      implementationStatus: {}
+    loggers:
+      description: Configure loggers.
+      implementationStatus: {}
+ExperimentalLoggerMatcherAndConfig:
+  definitionSource: logger_provider.json#/$defs/ExperimentalLoggerMatcherAndConfig
+  paths:
+    - .logger_provider.logger_configurator/development.loggers[]
+  properties:
+    config:
+      description: The logger config.
+      implementationStatus: {}
+    name:
+      description: |
+        Configure logger names to match, evaluated as follows:
+
+         * If the logger name exactly matches.
+         * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+      implementationStatus: {}
+ExperimentalMeterConfig:
+  definitionSource: meter_provider.json#/$defs/ExperimentalMeterConfig
+  paths:
+    - .meter_provider.meter_configurator/development.default_config
+    - .meter_provider.meter_configurator/development.meters[].config
+  properties:
+    disabled:
+      description: Configure if the meter is enabled or not.
+      implementationStatus: {}
+ExperimentalMeterConfigurator:
+  definitionSource: meter_provider.json#/$defs/ExperimentalMeterConfigurator
+  paths:
+    - .meter_provider.meter_configurator/development
+  properties:
+    default_config:
+      description: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
+      implementationStatus: {}
+    meters:
+      description: Configure meters.
+      implementationStatus: {}
+ExperimentalMeterMatcherAndConfig:
+  definitionSource: meter_provider.json#/$defs/ExperimentalMeterMatcherAndConfig
+  paths:
+    - .meter_provider.meter_configurator/development.meters[]
+  properties:
+    config:
+      description: The meter config.
+      implementationStatus: {}
+    name:
+      description: |
+        Configure meter names to match, evaluated as follows:
+
+         * If the meter name exactly matches.
+         * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+      implementationStatus: {}
+ExperimentalOtlpFileExporter:
+  definitionSource: common.json#/$defs/ExperimentalOtlpFileExporter
+  paths: []
+  properties:
+    output_stream:
+      description: unknown
+      implementationStatus: {}
+ExperimentalOtlpFileMetricExporter:
+  definitionSource: meter_provider.json#/$defs/ExperimentalOtlpFileMetricExporter
+  paths: []
+  properties:
+    default_histogram_aggregation:
+      description: unknown
+      implementationStatus: {}
+    output_stream:
+      description: unknown
+      implementationStatus: {}
+    temporality_preference:
+      description: unknown
+      implementationStatus: {}
+ExperimentalPeerInstrumentation:
+  definitionSource: instrumentation.json#/$defs/ExperimentalPeerInstrumentation
+  paths: []
+  properties:
+    service_mapping:
+      description: unknown
+      implementationStatus: {}
+ExperimentalPrometheusMetricExporter:
+  definitionSource: meter_provider.json#/$defs/ExperimentalPrometheusMetricExporter
+  paths:
+    - .meter_provider.readers[].pull.exporter.prometheus/development
+  properties:
+    host:
+      description: |
+        Configure host.
+        If omitted or null, localhost is used.
+      implementationStatus: {}
+    port:
+      description: |
+        Configure port.
+        If omitted or null, 9464 is used.
+      implementationStatus: {}
+    with_resource_constant_labels:
+      description: Configure Prometheus Exporter to add resource attributes as metrics attributes.
+      implementationStatus: {}
+    without_scope_info:
+      description: |
+        Configure Prometheus Exporter to produce metrics without a scope info metric.
+        If omitted or null, false is used.
+      implementationStatus: {}
+    without_type_suffix:
+      description: |
+        Configure Prometheus Exporter to produce metrics without a type suffix.
+        If omitted or null, false is used.
+      implementationStatus: {}
+    without_units:
+      description: |
+        Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.
+        If omitted or null, false is used.
+      implementationStatus: {}
+ExperimentalResourceDetection:
+  definitionSource: resource.json#/$defs/ExperimentalResourceDetection
+  paths:
+    - .resource.detection/development
+  properties:
+    attributes:
+      description: Configure attributes provided by resource detectors.
+      implementationStatus: {}
+    detectors:
+      description: |
+        Configure resource detectors.
+        Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
+        If omitted or null, no resource detectors are enabled.
+      implementationStatus: {}
+ExperimentalResourceDetector:
+  definitionSource: resource.json#/$defs/ExperimentalResourceDetector
+  paths:
+    - .resource.detection/development.detectors[]
+  properties: {}
+ExperimentalTracerConfig:
+  definitionSource: tracer_provider.json#/$defs/ExperimentalTracerConfig
+  paths:
+    - .tracer_provider.tracer_configurator/development.default_config
+    - .tracer_provider.tracer_configurator/development.tracers[].config
+  properties:
+    disabled:
+      description: Configure if the tracer is enabled or not.
+      implementationStatus: {}
+ExperimentalTracerConfigurator:
+  definitionSource: tracer_provider.json#/$defs/ExperimentalTracerConfigurator
+  paths:
+    - .tracer_provider.tracer_configurator/development
+  properties:
+    default_config:
+      description: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
+      implementationStatus: {}
+    tracers:
+      description: Configure tracers.
+      implementationStatus: {}
+ExperimentalTracerMatcherAndConfig:
+  definitionSource: tracer_provider.json#/$defs/ExperimentalTracerMatcherAndConfig
+  paths:
+    - .tracer_provider.tracer_configurator/development.tracers[]
+  properties:
+    config:
+      description: The tracer config.
+      implementationStatus: {}
+    name:
+      description: |
+        Configure tracer names to match, evaluated as follows:
+
+         * If the tracer name exactly matches.
+         * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+      implementationStatus: {}
+ExplicitBucketHistogramAggregation:
+  definitionSource: meter_provider.json#/$defs/ExplicitBucketHistogramAggregation
+  paths:
+    - .meter_provider.views[].stream.aggregation.explicit_bucket_histogram
+  properties:
+    boundaries:
+      description: |
+        Configure bucket boundaries.
+        If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.
+      implementationStatus: {}
+    record_min_max:
+      description: |
+        Configure record min and max.
+        If omitted or null, true is used.
+      implementationStatus: {}
+ExporterDefaultHistogramAggregation:
+  definitionSource: meter_provider.json#/$defs/ExporterDefaultHistogramAggregation
+  paths: []
+  properties: {}
+ExporterTemporalityPreference:
+  definitionSource: meter_provider.json#/$defs/ExporterTemporalityPreference
+  paths: []
+  properties: {}
+IncludeExclude:
+  definitionSource: common.json#/$defs/IncludeExclude
+  paths:
+    - .resource.detection/development.attributes
+  properties:
+    excluded:
+      description: |
+        Configure list of attribute key patterns to exclude from resource detectors. Applies after .resource.detectors.attributes.included (i.e. excluded has higher priority than included).
+        Attribute keys from resource detectors are evaluated to match as follows:
+         * If the value of the attribute key exactly matches.
+         * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        If omitted, .included attributes are included.
+      implementationStatus: {}
+    included:
+      description: |
+        Configure list of attribute key patterns to include from resource detectors.
+        Attribute keys from resource detectors are evaluated to match as follows:
+         * If the value of the attribute key exactly matches.
+         * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        If omitted, all attributes are included.
+      implementationStatus: {}
+InstrumentType:
+  definitionSource: meter_provider.json#/$defs/InstrumentType
+  paths: []
+  properties: {}
+JaegerPropagator:
+  definitionSource: propagator.json#/$defs/JaegerPropagator
+  paths: []
+  properties: {}
+JaegerRemoteSampler:
+  definitionSource: tracer_provider.json#/$defs/JaegerRemoteSampler
+  paths: []
+  properties:
+    endpoint:
+      description: unknown
+      implementationStatus: {}
+    initial_sampler:
+      description: unknown
+      implementationStatus: {}
+    interval:
+      description: unknown
+      implementationStatus: {}
+LastValueAggregation:
+  definitionSource: meter_provider.json#/$defs/LastValueAggregation
+  paths: []
+  properties: {}
+LogRecordExporter:
+  definitionSource: logger_provider.json#/$defs/LogRecordExporter
+  paths:
+    - .logger_provider.processors[].*.exporter
+  properties:
+    console:
+      description: Configure exporter to be console.
+      implementationStatus: {}
+    otlp_file/development:
+      description: |
+        Configure exporter to be OTLP with file transport.
+        This type is in development and subject to breaking changes in minor versions.
+      implementationStatus: {}
+    otlp_grpc:
+      description: Configure exporter to be OTLP with gRPC transport.
+      implementationStatus: {}
+    otlp_http:
+      description: Configure exporter to be OTLP with HTTP transport.
+      implementationStatus: {}
+LogRecordLimits:
+  definitionSource: logger_provider.json#/$defs/LogRecordLimits
+  paths:
+    - .logger_provider.limits
+  properties:
+    attribute_count_limit:
+      description: |
+        Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
+      implementationStatus: {}
+    attribute_value_length_limit:
+      description: |
+        Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
+        Value must be non-negative.
+        If omitted or null, there is no limit.
+      implementationStatus: {}
+LogRecordProcessor:
+  definitionSource: logger_provider.json#/$defs/LogRecordProcessor
+  paths:
+    - .logger_provider.processors[]
+  properties:
+    batch:
+      description: Configure a batch log record processor.
+      implementationStatus: {}
+    simple:
+      description: Configure a simple log record processor.
+      implementationStatus: {}
+LoggerProvider:
+  definitionSource: opentelemetry_configuration.json#/$defs/LoggerProvider
+  paths:
+    - .logger_provider
+  properties:
+    limits:
+      description: Configure log record limits. See also attribute_limits.
+      implementationStatus: {}
+    logger_configurator/development:
+      description: |
+        Configure loggers.
+        This type is in development and subject to breaking changes in minor versions.
+      implementationStatus: {}
+    processors:
+      description: Configure log record processors.
+      implementationStatus: {}
+MeterProvider:
+  definitionSource: opentelemetry_configuration.json#/$defs/MeterProvider
+  paths:
+    - .meter_provider
+  properties:
+    exemplar_filter:
+      description: |
+        Configure the exemplar filter. 
+        Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
+        If omitted or null, trace_based is used.
+      implementationStatus: {}
+    meter_configurator/development:
+      description: |
+        Configure meters.
+        This type is in development and subject to breaking changes in minor versions.
+      implementationStatus: {}
+    readers:
+      description: Configure metric readers.
+      implementationStatus: {}
+    views:
+      description: |
+        Configure views. 
+        Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
+      implementationStatus: {}
+MetricProducer:
+  definitionSource: meter_provider.json#/$defs/MetricProducer
+  paths:
+    - .meter_provider.readers[].pull.producers[]
+    - .meter_provider.readers[].periodic.producers[]
+  properties:
+    opencensus:
+      description: Configure metric producer to be opencensus.
+      implementationStatus: {}
+MetricReader:
+  definitionSource: meter_provider.json#/$defs/MetricReader
+  paths:
+    - .meter_provider.readers[]
+  properties:
+    periodic:
+      description: Configure a periodic metric reader.
+      implementationStatus: {}
+    pull:
+      description: Configure a pull based metric reader.
+      implementationStatus: {}
+NameStringValuePair:
+  definitionSource: common.json#/$defs/NameStringValuePair
+  paths: []
+  properties:
+    name:
+      description: unknown
+      implementationStatus: {}
+    value:
+      description: unknown
+      implementationStatus: {}
+OpenCensusMetricProducer:
+  definitionSource: meter_provider.json#/$defs/OpenCensusMetricProducer
+  paths: []
+  properties: {}
+OpenTelemetryConfiguration:
+  definitionSource: opentelemetry_configuration.json.
+  paths:
+    - .
+  properties:
+    attribute_limits:
+      description: Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
+      implementationStatus: {}
+    disabled:
+      description: |
+        Configure if the SDK is disabled or not.
+        If omitted or null, false is used.
+      implementationStatus: {}
+    file_format:
+      description: |
+        The file format version.
+        The yaml format is documented at
+        https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
+      implementationStatus: {}
+    instrumentation/development:
+      description: |
+        Configure instrumentation.
+        This type is in development and subject to breaking changes in minor versions.
+      implementationStatus: {}
+    log_level:
+      description: |
+        Configure the log level of the internal logger used by the SDK.
+        If omitted, info is used.
+      implementationStatus: {}
+    logger_provider:
+      description: |
+        Configure logger provider.
+        If omitted, a noop logger provider is used.
+      implementationStatus: {}
+    meter_provider:
+      description: |
+        Configure meter provider.
+        If omitted, a noop meter provider is used.
+      implementationStatus: {}
+    propagator:
+      description: |
+        Configure text map context propagators.
+        If omitted, a noop propagator is used.
+      implementationStatus: {}
+    resource:
+      description: |
+        Configure resource for all signals.
+        If omitted, the default resource is used.
+      implementationStatus: {}
+    tracer_provider:
+      description: |
+        Configure tracer provider.
+        If omitted, a noop tracer provider is used.
+      implementationStatus: {}
+OpenTracingPropagator:
+  definitionSource: propagator.json#/$defs/OpenTracingPropagator
+  paths: []
+  properties: {}
+OtlpGrpcExporter:
+  definitionSource: common.json#/$defs/OtlpGrpcExporter
+  paths:
+    - .tracer_provider.processors[].*.exporter.otlp_grpc
+    - .logger_provider.processors[].*.exporter.otlp_grpc
+    - .meter_provider.readers[].periodic.exporter.otlp_grpc
+  properties:
+    certificate_file:
+      description: unknown
+      implementationStatus: {}
+    client_certificate_file:
+      description: unknown
+      implementationStatus: {}
+    client_key_file:
+      description: unknown
+      implementationStatus: {}
+    compression:
+      description: unknown
+      implementationStatus: {}
+    endpoint:
+      description: |
+        Configure endpoint.
+        If omitted or null, http://localhost:4317 is used.
+      implementationStatus: {}
+    headers:
+      description: unknown
+      implementationStatus: {}
+    headers_list:
+      description: unknown
+      implementationStatus: {}
+    insecure:
+      description: |
+        Configure client transport security for the exporter's connection. 
+        Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
+        If omitted or null, false is used.
+      implementationStatus: {}
+    timeout:
+      description: unknown
+      implementationStatus: {}
+OtlpGrpcMetricExporter:
+  definitionSource: meter_provider.json#/$defs/OtlpGrpcMetricExporter
+  paths: []
+  properties:
+    certificate_file:
+      description: unknown
+      implementationStatus: {}
+    client_certificate_file:
+      description: unknown
+      implementationStatus: {}
+    client_key_file:
+      description: unknown
+      implementationStatus: {}
+    compression:
+      description: unknown
+      implementationStatus: {}
+    default_histogram_aggregation:
+      description: unknown
+      implementationStatus: {}
+    endpoint:
+      description: unknown
+      implementationStatus: {}
+    headers:
+      description: unknown
+      implementationStatus: {}
+    headers_list:
+      description: unknown
+      implementationStatus: {}
+    insecure:
+      description: unknown
+      implementationStatus: {}
+    temporality_preference:
+      description: unknown
+      implementationStatus: {}
+    timeout:
+      description: unknown
+      implementationStatus: {}
+OtlpHttpEncoding:
+  definitionSource: common.json#/$defs/OtlpHttpEncoding
+  paths: []
+  properties: {}
+OtlpHttpExporter:
+  definitionSource: common.json#/$defs/OtlpHttpExporter
+  paths:
+    - .tracer_provider.processors[].*.exporter.otlp_http
+    - .logger_provider.processors[].*.exporter.otlp_http
+    - .meter_provider.readers[].periodic.exporter.otlp_http
+  properties:
+    certificate_file:
+      description: unknown
+      implementationStatus: {}
+    client_certificate_file:
+      description: unknown
+      implementationStatus: {}
+    client_key_file:
+      description: unknown
+      implementationStatus: {}
+    compression:
+      description: unknown
+      implementationStatus: {}
+    encoding:
+      description: |
+        Configure the encoding used for messages. 
+        Values include: protobuf, json. Implementations may not support json.
+        If omitted or null, protobuf is used.
+      implementationStatus: {}
+    endpoint:
+      description: unknown
+      implementationStatus: {}
+    headers:
+      description: unknown
+      implementationStatus: {}
+    headers_list:
+      description: unknown
+      implementationStatus: {}
+    timeout:
+      description: unknown
+      implementationStatus: {}
+OtlpHttpMetricExporter:
+  definitionSource: meter_provider.json#/$defs/OtlpHttpMetricExporter
+  paths:
+    - .meter_provider.readers[].periodic.exporter.otlp_http
+  properties:
+    certificate_file:
+      description: unknown
+      implementationStatus: {}
+    client_certificate_file:
+      description: unknown
+      implementationStatus: {}
+    client_key_file:
+      description: unknown
+      implementationStatus: {}
+    compression:
+      description: unknown
+      implementationStatus: {}
+    default_histogram_aggregation:
+      description: unknown
+      implementationStatus: {}
+    encoding:
+      description: unknown
+      implementationStatus: {}
+    endpoint:
+      description: |
+        Configure endpoint, including the metric specific path.
+        If omitted or null, http://localhost:4318/v1/metrics is used.
+      implementationStatus: {}
+    headers:
+      description: unknown
+      implementationStatus: {}
+    headers_list:
+      description: unknown
+      implementationStatus: {}
+    temporality_preference:
+      description: unknown
+      implementationStatus: {}
+    timeout:
+      description: unknown
+      implementationStatus: {}
+ParentBasedSampler:
+  definitionSource: tracer_provider.json#/$defs/ParentBasedSampler
+  paths: []
+  properties:
+    local_parent_not_sampled:
+      description: unknown
+      implementationStatus: {}
+    local_parent_sampled:
+      description: unknown
+      implementationStatus: {}
+    remote_parent_not_sampled:
+      description: unknown
+      implementationStatus: {}
+    remote_parent_sampled:
+      description: unknown
+      implementationStatus: {}
+    root:
+      description: unknown
+      implementationStatus: {}
+PeriodicMetricReader:
+  definitionSource: meter_provider.json#/$defs/PeriodicMetricReader
+  paths:
+    - .meter_provider.readers[].periodic
+  properties:
+    cardinality_limits:
+      description: Configure cardinality limits.
+      implementationStatus: {}
+    exporter:
+      description: Configure exporter.
+      implementationStatus: {}
+    interval:
+      description: |
+        Configure delay interval (in milliseconds) between start of two consecutive exports. 
+        Value must be non-negative.
+        If omitted or null, 60000 is used.
+      implementationStatus: {}
+    producers:
+      description: Configure metric producers.
+      implementationStatus: {}
+    timeout:
+      description: |
+        Configure maximum allowed time (in milliseconds) to export data. 
+        Value must be non-negative. A value of 0 indicates no limit (infinity).
+        If omitted or null, 30000 is used.
+      implementationStatus: {}
+Propagator:
+  definitionSource: opentelemetry_configuration.json#/$defs/Propagator
+  paths:
+    - .propagator
+  properties:
+    composite:
+      description: |
+        Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.
+        Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. 
+        If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
+      implementationStatus: {}
+    composite_list:
+      description: |
+        Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.
+        The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+        Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. 
+        If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
+      implementationStatus: {}
+PullMetricExporter:
+  definitionSource: meter_provider.json#/$defs/PullMetricExporter
+  paths: []
+  properties:
+    prometheus/development:
+      description: unknown
+      implementationStatus: {}
+PullMetricReader:
+  definitionSource: meter_provider.json#/$defs/PullMetricReader
+  paths:
+    - .meter_provider.readers[].pull
+  properties:
+    cardinality_limits:
+      description: Configure cardinality limits.
+      implementationStatus: {}
+    exporter:
+      description: Configure exporter.
+      implementationStatus: {}
+    producers:
+      description: Configure metric producers.
+      implementationStatus: {}
+PushMetricExporter:
+  definitionSource: meter_provider.json#/$defs/PushMetricExporter
+  paths: []
+  properties:
+    console:
+      description: unknown
+      implementationStatus: {}
+    otlp_file/development:
+      description: unknown
+      implementationStatus: {}
+    otlp_grpc:
+      description: unknown
+      implementationStatus: {}
+    otlp_http:
+      description: unknown
+      implementationStatus: {}
+Resource:
+  definitionSource: opentelemetry_configuration.json#/$defs/Resource
+  paths:
+    - .resource
+  properties:
+    attributes:
+      description: |
+        Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
+        Entries must contain .name and .value, and may optionally include .type. If an entry's .type omitted or null, string is used.
+        The .value's type must match the .type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+      implementationStatus: {}
+    attributes_list:
+      description: |
+        Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
+        The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+        If omitted or null, no resource attributes are added.
+      implementationStatus: {}
+    detection/development:
+      description: |
+        Configure resource detection.
+        This type is in development and subject to breaking changes in minor versions.
+        If omitted or null, resource detection is disabled.
+      implementationStatus: {}
+    schema_url:
+      description: |
+        Configure resource schema URL.
+        If omitted or null, no schema URL is used.
+      implementationStatus: {}
+Sampler:
+  definitionSource: tracer_provider.json#/$defs/Sampler
+  paths:
+    - .tracer_provider.sampler
+    - .tracer_provider.sampler.*
+  properties:
+    always_off:
+      description: Configure sampler to be always_off.
+      implementationStatus: {}
+    always_on:
+      description: Configure sampler to be always_on.
+      implementationStatus: {}
+    jaeger_remote:
+      description: unknown
+      implementationStatus: {}
+    parent_based:
+      description: Configure sampler to be parent_based.
+      implementationStatus: {}
+    trace_id_ratio_based:
+      description: Configure sampler to be trace_id_ratio_based.
+      implementationStatus: {}
+SimpleLogRecordProcessor:
+  definitionSource: logger_provider.json#/$defs/SimpleLogRecordProcessor
+  paths:
+    - .logger_provider.processors[].simple
+  properties:
+    exporter:
+      description: Configure exporter.
+      implementationStatus: {}
+SimpleSpanProcessor:
+  definitionSource: tracer_provider.json#/$defs/SimpleSpanProcessor
+  paths:
+    - .tracer_provider.processors[].simple
+  properties:
+    exporter:
+      description: Configure exporter.
+      implementationStatus: {}
+SpanExporter:
+  definitionSource: tracer_provider.json#/$defs/SpanExporter
+  paths:
+    - .tracer_provider.processors[].*.exporter
+  properties:
+    console:
+      description: Configure exporter to be console.
+      implementationStatus: {}
+    otlp_file/development:
+      description: |
+        Configure exporter to be OTLP with file transport.
+        This type is in development and subject to breaking changes in minor versions.
+      implementationStatus: {}
+    otlp_grpc:
+      description: Configure exporter to be OTLP with gRPC transport.
+      implementationStatus: {}
+    otlp_http:
+      description: Configure exporter to be OTLP with HTTP transport.
+      implementationStatus: {}
+    zipkin:
+      description: Configure exporter to be zipkin.
+      implementationStatus: {}
+SpanLimits:
+  definitionSource: tracer_provider.json#/$defs/SpanLimits
+  paths:
+    - .tracer_provider.limits
+  properties:
+    attribute_count_limit:
+      description: |
+        Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
+      implementationStatus: {}
+    attribute_value_length_limit:
+      description: |
+        Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
+        Value must be non-negative.
+        If omitted or null, there is no limit.
+      implementationStatus: {}
+    event_attribute_count_limit:
+      description: |
+        Configure max attributes per span event. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
+      implementationStatus: {}
+    event_count_limit:
+      description: |
+        Configure max span event count. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
+      implementationStatus: {}
+    link_attribute_count_limit:
+      description: |
+        Configure max attributes per span link. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
+      implementationStatus: {}
+    link_count_limit:
+      description: |
+        Configure max span link count. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
+      implementationStatus: {}
+SpanProcessor:
+  definitionSource: tracer_provider.json#/$defs/SpanProcessor
+  paths:
+    - .tracer_provider.processors[]
+  properties:
+    batch:
+      description: Configure a batch span processor.
+      implementationStatus: {}
+    simple:
+      description: Configure a simple span processor.
+      implementationStatus: {}
+SumAggregation:
+  definitionSource: meter_provider.json#/$defs/SumAggregation
+  paths: []
+  properties: {}
+TextMapPropagator:
+  definitionSource: propagator.json#/$defs/TextMapPropagator
+  paths:
+    - .propagator.composite[]
+  properties:
+    b3:
+      description: Include the zipkin b3 propagator.
+      implementationStatus: {}
+    b3multi:
+      description: Include the zipkin b3 multi propagator.
+      implementationStatus: {}
+    baggage:
+      description: Include the w3c baggage propagator.
+      implementationStatus: {}
+    jaeger:
+      description: Include the jaeger propagator.
+      implementationStatus: {}
+    ottrace:
+      description: Include the opentracing propagator.
+      implementationStatus: {}
+    tracecontext:
+      description: Include the w3c trace context propagator.
+      implementationStatus: {}
+TraceContextPropagator:
+  definitionSource: propagator.json#/$defs/TraceContextPropagator
+  paths: []
+  properties: {}
+TraceIdRatioBasedSampler:
+  definitionSource: tracer_provider.json#/$defs/TraceIdRatioBasedSampler
+  paths: []
+  properties:
+    ratio:
+      description: unknown
+      implementationStatus: {}
+TracerProvider:
+  definitionSource: opentelemetry_configuration.json#/$defs/TracerProvider
+  paths:
+    - .tracer_provider
+  properties:
+    limits:
+      description: Configure span limits. See also attribute_limits.
+      implementationStatus: {}
+    processors:
+      description: Configure span processors.
+      implementationStatus: {}
+    sampler:
+      description: |
+        Configure the sampler.
+        If omitted, parent based sampler with a root of always_on is used.
+      implementationStatus: {}
+    tracer_configurator/development:
+      description: |
+        Configure tracers.
+        This type is in development and subject to breaking changes in minor versions.
+      implementationStatus: {}
+View:
+  definitionSource: meter_provider.json#/$defs/View
+  paths:
+    - .meter_provider.views[]
+  properties:
+    selector:
+      description: |
+        Configure view selector. 
+        Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.
+      implementationStatus: {}
+    stream:
+      description: Configure view stream.
+      implementationStatus: {}
+ViewSelector:
+  definitionSource: meter_provider.json#/$defs/ViewSelector
+  paths:
+    - .meter_provider.views[].selector
+  properties:
+    instrument_name:
+      description: |
+        Configure instrument name selection criteria.
+        If omitted or null, all instrument names match.
+      implementationStatus: {}
+    instrument_type:
+      description: |
+        Configure instrument type selection criteria.
+        Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.
+        If omitted or null, all instrument types match.
+      implementationStatus: {}
+    meter_name:
+      description: |
+        Configure meter name selection criteria.
+        If omitted or null, all meter names match.
+      implementationStatus: {}
+    meter_schema_url:
+      description: |
+        Configure meter schema url selection criteria.
+        If omitted or null, all meter schema URLs match.
+      implementationStatus: {}
+    meter_version:
+      description: |
+        Configure meter version selection criteria.
+        If omitted or null, all meter versions match.
+      implementationStatus: {}
+    unit:
+      description: |
+        Configure the instrument unit selection criteria.
+        If omitted or null, all instrument units match.
+      implementationStatus: {}
+ViewStream:
+  definitionSource: meter_provider.json#/$defs/ViewStream
+  paths:
+    - .meter_provider.views[].stream
+  properties:
+    aggregation:
+      description: |
+        Configure aggregation of the resulting stream(s). 
+        Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
+        If omitted, default is used.
+      implementationStatus: {}
+    aggregation_cardinality_limit:
+      description: |
+        Configure the aggregation cardinality limit.
+        If omitted or null, the metric reader's default cardinality limit is used.
+      implementationStatus: {}
+    attribute_keys:
+      description: |
+        Configure attribute keys retained in the resulting stream(s).
+      implementationStatus: {}
+    description:
+      description: |
+        Configure metric description of the resulting stream(s).
+        If omitted or null, the instrument's origin description is used.
+      implementationStatus: {}
+    name:
+      description: |
+        Configure metric name of the resulting stream(s).
+        If omitted or null, the instrument's original name is used.
+      implementationStatus: {}
+ZipkinSpanExporter:
+  definitionSource: tracer_provider.json#/$defs/ZipkinSpanExporter
+  paths:
+    - .tracer_provider.processors[].*.exporter.zipkin
+  properties:
+    endpoint:
+      description: |
+        Configure endpoint.
+        If omitted or null, http://localhost:9411/api/v2/spans is used.
+      implementationStatus: {}
+    timeout:
+      description: |
+        Configure max time (in milliseconds) to wait for each export. 
+        Value must be non-negative. A value of 0 indicates indefinite.
+        If omitted or null, 10000 is used.
+      implementationStatus: {}

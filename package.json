@@ -1,7 +1,9 @@
 {
   "scripts": {
     "generate-descriptions": "node scripts/generate-descriptions.js",
-    "generate-compliance-matrix": "node scripts/compliance-matrix.js"
+    "generate-compliance-matrix": "node scripts/compliance-matrix.js",
+    "generate-meta-schema": "node scripts/generate-meta-schema.js",
+    "validate-meta-schema": "node scripts/validate-meta-schema.js"
   },
   "devDependencies": {
     "@json-schema-tools/traverse": "^1.10.4",

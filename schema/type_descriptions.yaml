@@ -82,7 +82,7 @@
   path_patterns:
     - .resource
 
-- type: ResourceDetection
+- type: ExperimentalResourceDetection
   property_descriptions:
     attributes: Configure attributes provided by resource detectors.
     detectors: >
@@ -94,7 +94,7 @@
   path_patterns:
     - .resource.detection/development
 
-- type: Detector
+- type: ExperimentalResourceDetector
   property_descriptions:
     container: >
       Enable the container resource detector.
@@ -115,7 +115,7 @@
   path_patterns:
     - .resource.detection/development.detectors[]
 
-- type: DetectorAttributes
+- type: IncludeExclude
   property_descriptions:
     included: >
       Configure list of attribute key patterns to include from resource detectors.
@@ -169,7 +169,7 @@
       If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
   path_patterns:
     - .propagator
-- type: CompositePropagator
+- type: TextMapPropagator
   property_descriptions:
     tracecontext: Include the w3c trace context propagator.
     baggage: Include the w3c baggage propagator.
@@ -261,14 +261,14 @@
   path_patterns:
     - .logger_provider.limits
 
-- type: LoggerConfigurator
+- type: ExperimentalLoggerConfigurator
   property_descriptions:
     default_config: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
     loggers: Configure loggers.
   path_patterns:
     - .logger_provider.logger_configurator/development
 
-- type: LoggerConfigAndMatcher
+- type: ExperimentalLoggerMatcherAndConfig
   property_descriptions:
     name: >
       Configure logger names to match, evaluated as follows:
@@ -279,7 +279,7 @@
   path_patterns:
     - .logger_provider.logger_configurator/development.loggers[]
 
-- type: LoggerConfig
+- type: ExperimentalLoggerConfig
   property_descriptions:
     disabled: Configure if the logger is enabled or not.
   path_patterns:
@@ -445,14 +445,14 @@
     - .tracer_provider.sampler
     - .tracer_provider.sampler.*
 
-- type: TracerConfigurator
+- type: ExperimentalTracerConfigurator
   property_descriptions:
     default_config: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
     tracers: Configure tracers.
   path_patterns:
     - .tracer_provider.tracer_configurator/development
 
-- type: TracerConfigAndMatcher
+- type: ExperimentalTracerMatcherAndConfig
   property_descriptions:
     name: >
       Configure tracer names to match, evaluated as follows:
@@ -463,7 +463,7 @@
   path_patterns:
     - .tracer_provider.tracer_configurator/development.tracers[]
 
-- type: TracerConfig
+- type: ExperimentalTracerConfig
   property_descriptions:
     disabled: Configure if the tracer is enabled or not.
   path_patterns:
@@ -591,7 +591,7 @@
   path_patterns:
     - .meter_provider.readers[].*.exporter
 
-- type: PrometheusMetricExporter
+- type: ExperimentalPrometheusMetricExporter
   property_descriptions:
     host: >
       Configure host.
@@ -645,7 +645,7 @@
   path_patterns:
     - .meter_provider.views[]
 
-- type: Selector
+- type: ViewSelector
   property_descriptions:
     instrument_name: >
       Configure instrument name selection criteria.
@@ -676,7 +676,7 @@
   path_patterns:
     - .meter_provider.views[].selector
 
-- type: Stream
+- type: ViewStream
   property_descriptions:
     name: >
       Configure metric name of the resulting stream(s).
@@ -714,13 +714,13 @@
   path_patterns:
     - .meter_provider.views[].stream.attribute_keys
 
-- type: StreamAggregation
+- type: Aggregation
   property_descriptions:
     explicit_bucket_histogram: Configure aggregation to be explicit_bucket_histogram.
   path_patterns:
     - .meter_provider.views[].stream.aggregation
 
-- type: StreamAggregationExplicitBucketHistogram
+- type: ExplicitBucketHistogramAggregation
   property_descriptions:
     boundaries: >
       Configure bucket boundaries.
@@ -733,14 +733,14 @@
   path_patterns:
     - .meter_provider.views[].stream.aggregation.explicit_bucket_histogram
 
-- type: MeterConfigurator
+- type: ExperimentalMeterConfigurator
   property_descriptions:
     default_config: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
     meters: Configure meters.
   path_patterns:
     - .meter_provider.meter_configurator/development
 
-- type: MeterConfigAndMatcher
+- type: ExperimentalMeterMatcherAndConfig
   property_descriptions:
     name: >
       Configure meter names to match, evaluated as follows:
@@ -751,7 +751,7 @@
   path_patterns:
     - .meter_provider.meter_configurator/development.meters[]
 
-- type: MeterConfig
+- type: ExperimentalMeterConfig
   property_descriptions:
     disabled: Configure if the meter is enabled or not.
   path_patterns:
@@ -888,7 +888,7 @@
 # END common
 
 # START Instrumentation
-- type: Instrumentation
+- type: ExperimentalInstrumentation
   property_descriptions:
     general: >
       Configure general SemConv options that may apply to multiple languages and instrumentations.
@@ -908,7 +908,7 @@
   path_patterns:
     - .instrumentation/development
 
-- type: GeneralInstrumentation
+- type: ExperimentalGeneralInstrumentation
   property_descriptions:
     peer: >
       Configure instrumentations following the peer semantic conventions.
@@ -932,7 +932,7 @@
   path_patterns:
     - .instrumentation/development.general.peer
 
-- type: GeneralInstrumentationHttp
+- type: ExperimentalHttpInstrumentation
   property_descriptions:
     client: Configure instrumentations following the http client semantic conventions.
     server: Configure instrumentations following the http server semantic conventions.
