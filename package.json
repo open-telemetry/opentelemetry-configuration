@@ -1,7 +1,7 @@
 {
   "scripts": {
     "generate-descriptions": "node scripts/generate-descriptions.js",
-    "generate-compliance-matrix": "node scripts/compliance-matrix.js",
+    "generate-markdown": "node scripts/generate-markdown.js",
     "generate-meta-schema": "node scripts/generate-meta-schema.js",
     "validate-meta-schema": "node scripts/validate-meta-schema.js"
   },
