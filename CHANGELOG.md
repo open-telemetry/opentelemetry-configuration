@@ -2,6 +2,27 @@
 
 ## Unreleased
 
+## [v1.0.0-rc.1] - 2025-06-12
+
+### Schema
+
+* Standardize container, host, process, and service resource detectors
+  ([#199](https://github.com/open-telemetry/opentelemetry-configuration/pull/199))
+
+### Tooling
+
+* Add mark down link checking build step
+  ([#196](https://github.com/open-telemetry/opentelemetry-configuration/pull/196),
+  [#198](https://github.com/open-telemetry/opentelemetry-configuration/pull/198))
+* Add ossf-scorecard scanning workflow
+  ([#194](https://github.com/open-telemetry/opentelemetry-configuration/pull/194))
+* Update validator-release.yml to use ubuntu-latest
+  ([#200](https://github.com/open-telemetry/opentelemetry-configuration/pull/200))
+* Add Renovate configuration
+  ([#202](https://github.com/open-telemetry/opentelemetry-configuration/pull/202))
+* [StepSecurity] ci: Harden GitHub Actions
+  ([#206](https://github.com/open-telemetry/opentelemetry-configuration/pull/206))
+
 ## [v0.4.0] - 2025-03-31
 
 This release has a significant number of breaking changes, new additions and
