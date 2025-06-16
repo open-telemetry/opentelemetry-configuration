@@ -26,6 +26,11 @@ pr-run-mode = "plan"
 tag-namespace = "validator"
 # Whether to install an updater program
 install-updater = false
+# Renovate starting pinning dependencies to a particular in https://github.com/open-telemetry/opentelemetry-configuration/pull/204
+# This caused build failures since .github/workflows/validator-release.yml is generated and fails if the file contents have been
+# modified. Right now, dist does not support pinned versions tags and thus we allow dirty as a workaround.
+# See https://github.com/axodotdev/cargo-dist/issues/1800.
+allow-dirty = ["ci"]
 
 [dist.github-custom-runners]
 global = "ubuntu-latest"
