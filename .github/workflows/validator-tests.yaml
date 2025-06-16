@@ -23,7 +23,7 @@ jobs:
 
       - name: Run govulncheck
         run: |
-#          make -C validator govulncheck
+          make -C validator govulncheck
 
       # TODO: Publish releases
       - name: Build
