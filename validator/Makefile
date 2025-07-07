@@ -45,7 +45,7 @@ validator-validate-examples:
 	    PATH=${PATH}:${ROOT_DIR}/ otel_config_validator -o  ${ROOT_DIR}/out/$$f ${ROOT_DIR}/../examples/$$f ; \
 	done
 
-validator-build-shelltest-image:
+validator-build-shelltest-image: validator
 	docker build ${DOCKER_SHELLTEST_BUILD_ARGS} ${ROOT_DIR}
 
 validator-run-shelltests: validator-build-shelltest-image
