@@ -5,7 +5,7 @@ go 1.22.0
 require (
 	github.com/santhosh-tekuri/jsonschema/v5 v5.3.1
 	github.com/stretchr/testify v1.10.0
-	github.com/urfave/cli/v3 v3.0.0-alpha9
+	github.com/urfave/cli/v3 v3.3.8
 	gopkg.in/yaml.v3 v3.0.1
 	sigs.k8s.io/yaml v1.5.0
 )
