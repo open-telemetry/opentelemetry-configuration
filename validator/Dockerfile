@@ -28,11 +28,9 @@ ENV YQ_VERSION="v4.45.1"
 
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update \
-    && apt-get install -y software-properties-common wget \
+    && apt-get install -y software-properties-common wget shelltestrunner jq make \
     && wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 \
         && chmod +x /usr/local/bin/yq \
-    && apt-get update \
-    && apt-get install -y shelltestrunner jq make \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/validator
