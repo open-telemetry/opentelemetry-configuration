@@ -10,6 +10,9 @@ DOCKER_SHELLTEST_BUILD_ARGS :=-f ${ROOT_DIR}/Dockerfile --target shelltest -t sh
 EXAMPLE_FILES := $(shell find ${ROOT_DIR}/../examples -name "*.yaml" -exec basename {} \; | sort)
 $(shell mkdir -p out)
 
+# User to run as in docker images.
+DOCKER_USER=$(shell id -u):$(shell id -g)
+
 GO = go
 
 TOOLS = $(CURDIR)/.tools
@@ -49,7 +52,7 @@ validator-build-shelltest-image: validator
 	docker build ${DOCKER_SHELLTEST_BUILD_ARGS} ${ROOT_DIR}
 
 validator-run-shelltests: validator-build-shelltest-image
-	docker run -v ${PARENT_DIR}:/root shelltest:${CURRENT_GIT_REF} -- --plain /root/validator/shelltests
+	docker run -u $(DOCKER_USER) -v ${PARENT_DIR}:/root shelltest:${CURRENT_GIT_REF} -- --plain /root/validator/shelltests
 
 .PHONY: govulncheck
 govulncheck: $(TOOLS)/govulncheck
