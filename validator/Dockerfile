@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1@sha256:9857836c9ee4268391bb5b09f9f157f3c91bb15821bb77969642813b0d00518d
-FROM golang:1.24-alpine@sha256:ddf52008bce1be455fe2b22d780b6693259aaf97b16383b6372f4b22dd33ad66 AS build
+FROM golang:1.24-alpine@sha256:48ee313931980110b5a91bbe04abdf640b9a67ca5dea3a620f01bacf50593396 AS build
 
 WORKDIR /app
 
@@ -28,11 +28,9 @@ ENV YQ_VERSION="v4.45.1"
 
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update \
-    && apt-get install -y software-properties-common wget \
+    && apt-get install -y software-properties-common wget shelltestrunner jq make \
     && wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 \
         && chmod +x /usr/local/bin/yq \
-    && apt-get update \
-    && apt-get install -y shelltestrunner jq make \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/validator
