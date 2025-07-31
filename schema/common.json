@@ -28,28 +28,47 @@
                     "type": "string"
                 },
                 "value": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
-                "name", "value"
+                "name",
+                "value"
             ]
         },
         "OtlpHttpExporter": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "endpoint": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "certificate_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "client_key_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "client_certificate_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "headers": {
                     "type": "array",
@@ -58,13 +77,22 @@
                     }
                 },
                 "headers_list": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "compression": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "timeout": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "encoding": {
@@ -73,27 +101,45 @@
             }
         },
         "OtlpHttpEncoding": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "enum": [
                 "protobuf",
                 "json"
             ]
         },
         "OtlpGrpcExporter": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "endpoint": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "certificate_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "client_key_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "client_certificate_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "headers": {
                     "type": "array",
@@ -102,31 +148,52 @@
                     }
                 },
                 "headers_list": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "compression": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "timeout": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "insecure": {
-                    "type": ["boolean", "null"]
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 }
             }
         },
         "ExperimentalOtlpFileExporter": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "output_stream": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             }
         },
         "ConsoleExporter": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         }
     }

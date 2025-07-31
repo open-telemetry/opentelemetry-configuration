@@ -10,7 +10,10 @@
             }
         },
         "composite_list": {
-            "type": ["string", "null"]
+            "type": [
+                "string",
+                "null"
+            ]
         }
     },
     "$defs": {
@@ -41,32 +44,53 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object", "null"]
+                    "type": [
+                        "object",
+                        "null"
+                    ]
                 }
             }
         },
         "TraceContextPropagator": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "BaggagePropagator": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "B3Propagator": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "B3MultiPropagator": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "JaegerPropagator": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "OpenTracingPropagator": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         }
     }
