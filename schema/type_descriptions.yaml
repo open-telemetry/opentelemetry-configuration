@@ -597,15 +597,28 @@
       Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.
       
       If omitted or null, false is used.
+
+      Deprecated: Use .translation_strategy instead.
     without_type_suffix: >
       Configure Prometheus Exporter to produce metrics without a type suffix.
       
       If omitted or null, false is used.
+
+      Deprecated: Use .translation_strategy instead.
     without_scope_info: >
       Configure Prometheus Exporter to produce metrics without a scope info metric.
       
       If omitted or null, false is used.
     with_resource_constant_labels: Configure Prometheus Exporter to add resource attributes as metrics attributes.
+    translation_strategy: >
+      Configure how Prometheus metrics are exposed. Values include:
+
+       * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.
+       * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.
+       * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.
+       * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.
+
+      If omitted or null, UnderscoreEscapingWithSuffixes is used.
   path_patterns:
     - .meter_provider.readers[].pull.exporter.prometheus/development
 - type: PrometheusIncludeExclude
