@@ -206,6 +206,15 @@
                 },
                 "with_resource_constant_labels": {
                     "$ref": "common.json#/$defs/IncludeExclude"
+                },
+                "translation_strategy": {
+                    "type": ["string", "null"],
+                    "enum": [
+                        "UnderscoreEscapingWithSuffixes",
+                        "UnderscoreEscapingWithoutSuffixes",
+                        "NoUTF8EscapingWithSuffixes",
+                        "NoTranslation"
+                    ]
                 }
             }
         },
