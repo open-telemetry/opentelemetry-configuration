@@ -202,11 +202,11 @@ meter_provider:
             port: 9464
             # Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.
             # If omitted or null, false is used.
-            # Deprecated: Use .translation_strategy instead.
+            # Deprecated: Use .translation_strategy instead. When both are set, .translation_strategy takes precedence.
             without_units: false
             # Configure Prometheus Exporter to produce metrics without a type suffix.
             # If omitted or null, false is used.
-            # Deprecated: Use .translation_strategy instead.
+            # Deprecated: Use .translation_strategy instead. When both are set, .translation_strategy takes precedence.
             without_type_suffix: false
             # Configure Prometheus Exporter to produce metrics without a scope info metric.
             # If omitted or null, false is used.
