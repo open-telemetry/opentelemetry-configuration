@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1@sha256:9857836c9ee4268391bb5b09f9f157f3c91bb15821bb77969642813b0d00518d
-FROM golang:1.24-alpine@sha256:daae04ebad0c21149979cd8e9db38f565ecefd8547cf4a591240dc1972cf1399 AS build
+FROM golang:1.24-alpine@sha256:c8c5f95d64aa79b6547f3b626eb84b16a7ce18a139e3e9ca19a8c078b85ba80d AS build
 
 WORKDIR /app
 
@@ -22,7 +22,7 @@ COPY --from=build /otel_config_validator /otel_config_validator
 
 ENTRYPOINT ["/otel_config_validator"]
 
-FROM ubuntu:24.04@sha256:a08e551cb33850e4740772b38217fc1796a66da2506d312abe51acda354ff061 AS shelltest
+FROM ubuntu:24.04@sha256:7c06e91f61fa88c08cc74f7e1b7c69ae24910d745357e0dfe1d2c0322aaf20f9 AS shelltest
 
 ENV YQ_VERSION="v4.45.1"
 
