@@ -39,19 +39,31 @@
             "additionalProperties": false,
             "properties": {
                 "schedule_delay": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "export_timeout": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "max_queue_size": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "max_export_batch_size": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "exporter": {
@@ -83,7 +95,10 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object", "null"]
+                    "type": [
+                        "object",
+                        "null"
+                    ]
                 }
             }
         },
@@ -92,11 +107,17 @@
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "attribute_count_limit": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 }
             }
@@ -116,12 +137,16 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object"]
+                    "type": [
+                        "object"
+                    ]
                 }
             }
         },
         "ExperimentalLoggerConfigurator": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "default_config": {
@@ -136,11 +161,15 @@
             }
         },
         "ExperimentalLoggerMatcherAndConfig": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "name": {
-                    "type": ["string"]
+                    "type": [
+                        "string"
+                    ]
                 },
                 "config": {
                     "$ref": "#/$defs/ExperimentalLoggerConfig"
@@ -148,11 +177,15 @@
             }
         },
         "ExperimentalLoggerConfig": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "disabled": {
-                    "type": ["boolean"]
+                    "type": [
+                        "boolean"
+                    ]
                 }
             }
         }

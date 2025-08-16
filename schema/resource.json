@@ -3,6 +3,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "additionalProperties": false,
+    "title": "Declaritive Config - Resource",
     "properties": {
         "attributes": {
             "type": "array",
@@ -14,10 +15,16 @@
             "$ref": "#/$defs/ExperimentalResourceDetection"
         },
         "schema_url": {
-            "type": ["string", "null"]
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "attributes_list": {
-            "type": ["string", "null"]
+            "type": [
+                "string",
+                "null"
+            ]
         }
     },
     "$defs": {
@@ -30,13 +37,36 @@
                 },
                 "value": {
                     "oneOf": [
-                        {"type": "string"},
-                        {"type": "number"},
-                        {"type": "boolean"},
-                        {"type": "null"},
-                        {"type": "array", "items": {"type": "string"}},
-                        {"type": "array", "items": {"type": "boolean"}},
-                        {"type": "array", "items": {"type": "number"}}
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "boolean"
+                            }
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        }
                     ]
                 },
                 "type": {
@@ -44,11 +74,15 @@
                 }
             },
             "required": [
-                "name", "value"
+                "name",
+                "value"
             ]
         },
         "AttributeType": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "enum": [
                 null,
                 "string",
@@ -97,24 +131,39 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object", "null"]
+                    "type": [
+                        "object",
+                        "null"
+                    ]
                 }
             }
         },
         "ExperimentalContainerResourceDetector": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "ExperimentalHostResourceDetector": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "ExperimentalProcessResourceDetector": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "ExperimentalServiceResourceDetector": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         }
     }
