@@ -30,19 +30,31 @@
             "additionalProperties": false,
             "properties": {
                 "schedule_delay": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "export_timeout": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "max_queue_size": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "max_export_batch_size": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "exporter": {
@@ -77,27 +89,45 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object", "null"]
+                    "type": [
+                        "object",
+                        "null"
+                    ]
                 }
             }
         },
         "AlwaysOffSampler": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "AlwaysOnSampler": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "JaegerRemoteSampler": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "endpoint": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "interval": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "initial_sampler": {
@@ -106,7 +136,10 @@
             }
         },
         "ParentBasedSampler": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "root": {
@@ -127,11 +160,17 @@
             }
         },
         "TraceIdRatioBasedSampler": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "ratio": {
-                    "type": ["number", "null"]
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 }
             }
         },
@@ -171,7 +210,10 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object", "null"]
+                    "type": [
+                        "object",
+                        "null"
+                    ]
                 }
             }
         },
@@ -180,27 +222,45 @@
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "attribute_count_limit": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "event_count_limit": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "link_count_limit": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "event_attribute_count_limit": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "link_attribute_count_limit": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 }
             }
@@ -220,25 +280,39 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object", "null"]
+                    "type": [
+                        "object",
+                        "null"
+                    ]
                 }
             }
         },
         "ZipkinSpanExporter": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "endpoint": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "timeout": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 }
             }
         },
         "ExperimentalTracerConfigurator": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "default_config": {
@@ -253,11 +327,15 @@
             }
         },
         "ExperimentalTracerMatcherAndConfig": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "name": {
-                    "type": ["string"]
+                    "type": [
+                        "string"
+                    ]
                 },
                 "config": {
                     "$ref": "#/$defs/ExperimentalTracerConfig"
@@ -269,11 +347,15 @@
             ]
         },
         "ExperimentalTracerConfig": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "disabled": {
-                    "type": ["boolean"]
+                    "type": [
+                        "boolean"
+                    ]
                 }
             },
             "required": [
