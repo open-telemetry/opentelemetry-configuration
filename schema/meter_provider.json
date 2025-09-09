@@ -29,7 +29,10 @@
     ],
     "$defs": {
         "ExemplarFilter": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "enum": [
                 "always_on",
                 "always_off",
@@ -41,11 +44,17 @@
             "additionalProperties": false,
             "properties": {
                 "interval": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "timeout": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "exporter": {
@@ -91,35 +100,59 @@
             "additionalProperties": false,
             "properties": {
                 "default": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "counter": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "gauge": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "histogram": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "observable_counter": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "observable_gauge": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "observable_up_down_counter": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "up_down_counter": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 }
             }
@@ -145,12 +178,17 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object", "null"]
+                    "type": [
+                        "object",
+                        "null"
+                    ]
                 }
             }
         },
         "PullMetricExporter": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
@@ -161,7 +199,10 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object", "null"]
+                    "type": [
+                        "object",
+                        "null"
+                    ]
                 }
             }
         },
@@ -177,32 +218,56 @@
             },
             "patternProperties": {
                 ".*": {
-                    "type": ["object", "null"]
+                    "type": [
+                        "object",
+                        "null"
+                    ]
                 }
             }
         },
         "OpenCensusMetricProducer": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "ExperimentalPrometheusMetricExporter": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "host": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "port": {
-                    "type": ["integer", "null"]
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "without_units": {
-                    "type": ["boolean", "null"]
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "without_type_suffix": {
-                    "type": ["boolean", "null"]
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "without_scope_info": {
-                    "type": ["boolean", "null"]
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "with_resource_constant_labels": {
                     "$ref": "common.json#/$defs/IncludeExclude"
@@ -224,7 +289,10 @@
             }
         },
         "ExporterTemporalityPreference": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "enum": [
                 "cumulative",
                 "delta",
@@ -232,27 +300,45 @@
             ]
         },
         "ExporterDefaultHistogramAggregation": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "enum": [
                 "explicit_bucket_histogram",
                 "base2_exponential_bucket_histogram"
             ]
         },
         "OtlpHttpMetricExporter": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "endpoint": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "certificate_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "client_key_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "client_certificate_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "headers": {
                     "type": "array",
@@ -261,13 +347,22 @@
                     }
                 },
                 "headers_list": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "compression": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "timeout": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "encoding": {
@@ -282,20 +377,35 @@
             }
         },
         "OtlpGrpcMetricExporter": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "endpoint": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "certificate_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "client_key_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "client_certificate_file": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "headers": {
                     "type": "array",
@@ -304,17 +414,29 @@
                     }
                 },
                 "headers_list": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "compression": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "timeout": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "insecure": {
-                    "type": ["boolean", "null"]
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "temporality_preference": {
                     "$ref": "#/$defs/ExporterTemporalityPreference"
@@ -325,11 +447,17 @@
             }
         },
         "ExperimentalOtlpFileMetricExporter": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "output_stream": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "temporality_preference": {
                     "$ref": "#/$defs/ExporterTemporalityPreference"
@@ -356,27 +484,45 @@
             "additionalProperties": false,
             "properties": {
                 "instrument_name": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "instrument_type": {
                     "$ref": "#/$defs/InstrumentType"
                 },
                 "unit": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "meter_name": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "meter_version": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "meter_schema_url": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             }
         },
         "InstrumentType": {
-            "type": ["string", "null"],
+            "type": [
+                "string",
+                "null"
+            ],
             "enum": [
                 "counter",
                 "gauge",
@@ -392,16 +538,25 @@
             "additionalProperties": false,
             "properties": {
                 "name": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "description": {
-                    "type": ["string", "null"]
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "aggregation": {
                     "$ref": "#/$defs/Aggregation"
                 },
                 "aggregation_cardinality_limit": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "attribute_keys": {
@@ -436,15 +591,24 @@
             }
         },
         "DefaultAggregation": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "DropAggregation": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "ExplicitBucketHistogramAggregation": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "boundaries": {
@@ -454,35 +618,58 @@
                     }
                 },
                 "record_min_max": {
-                    "type": ["boolean", "null"]
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 }
             }
         },
         "Base2ExponentialBucketHistogramAggregation": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false,
             "properties": {
                 "max_scale": {
-                    "type": ["integer", "null"]
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "max_size": {
-                    "type": ["integer", "null"]
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
                 },
                 "record_min_max": {
-                    "type": ["boolean", "null"]
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 }
             }
         },
         "LastValueAggregation": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "SumAggregation": {
-            "type": ["object", "null"],
+            "type": [
+                "object",
+                "null"
+            ],
             "additionalProperties": false
         },
         "ExperimentalMeterConfigurator": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "default_config": {
@@ -497,11 +684,15 @@
             }
         },
         "ExperimentalMeterMatcherAndConfig": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "name": {
-                    "type": ["string"]
+                    "type": [
+                        "string"
+                    ]
                 },
                 "config": {
                     "$ref": "#/$defs/ExperimentalMeterConfig"
@@ -509,11 +700,15 @@
             }
         },
         "ExperimentalMeterConfig": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "disabled": {
-                    "type": ["boolean"]
+                    "type": [
+                        "boolean"
+                    ]
                 }
             }
         }
