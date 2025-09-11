@@ -57,7 +57,7 @@ Stable types provide the following guarantees. All types except those excluded i
 * Types will be not change to make validation more strict. Changes may occur if they make validation less strict. This applies to the following keywords. Examples are given, but they are not exhaustive.
   * [minLength, maxLength](https://json-schema.org/understanding-json-schema/reference/string): `minLength` will not increase and `maxLength` will not decrease.
   * [pattern](https://json-schema.org/understanding-json-schema/reference/string#regexp): pattern will not become stricter.
-  * [format](https://json-schema.org/understanding-json-schema/reference/string#built-in-formats): will not change.
+  * [format](https://json-schema.org/understanding-json-schema/reference/type#built-in-formats): will not change.
   * [multipleOf](https://json-schema.org/understanding-json-schema/reference/numeric#multiples): will not change.
   * [minimum, exclusiveMinimum, maximum, exclusiveMaximum](https://json-schema.org/understanding-json-schema/reference/numeric#range): `minimum`, `exclusiveMinimum` will not increase; `maximum`, `exclusiveMaximum` will not decrease.
   * [patternProperties](https://json-schema.org/understanding-json-schema/reference/object#patternProperties): will not expand scope to restrict additional properties.
