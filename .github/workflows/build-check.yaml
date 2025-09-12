@@ -54,5 +54,6 @@ jobs:
           args: >
             --include-fragments
             --exclude "^https://github.com/open-telemetry/opentelemetry-configuration/(issues|pull)/\\d+$"
+            --config .github/.lychee.toml
             --max-retries 6
             .
