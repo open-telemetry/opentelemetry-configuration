@@ -195,12 +195,6 @@
                 "port": {
                     "type": ["integer", "null"]
                 },
-                "without_units": {
-                    "type": ["boolean", "null"]
-                },
-                "without_type_suffix": {
-                    "type": ["boolean", "null"]
-                },
                 "without_scope_info": {
                     "type": ["boolean", "null"]
                 },

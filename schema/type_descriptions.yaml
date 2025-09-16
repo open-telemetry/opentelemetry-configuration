@@ -593,18 +593,6 @@
       Configure port.
       
       If omitted or null, 9464 is used.
-    without_units: >
-      Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.
-      
-      If omitted or null, false is used.
-
-      Deprecated: Use .translation_strategy instead. When both are set, .translation_strategy takes precedence.
-    without_type_suffix: >
-      Configure Prometheus Exporter to produce metrics without a type suffix.
-      
-      If omitted or null, false is used.
-
-      Deprecated: Use .translation_strategy instead. When both are set, .translation_strategy takes precedence.
     without_scope_info: >
       Configure Prometheus Exporter to produce metrics without a scope info metric.
       
