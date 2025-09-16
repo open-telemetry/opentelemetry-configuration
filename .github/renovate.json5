@@ -13,6 +13,10 @@
     {
       "matchUpdateTypes": ["minor", "major"],
       "schedule": ["before 8am on Monday"]
+    },
+    {
+      "matchPackageNames": ["lycheeverse/lychee-action"],
+      "enabled": false
     }
   ],
   "labels": [
