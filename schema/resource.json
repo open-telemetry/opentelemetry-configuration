@@ -81,7 +81,7 @@
             "additionalProperties": true,
             "minProperties": 1,
             "maxProperties": 1,
-            "properties": {
+            "patternProperties": {
                 "container": {
                     "$ref": "#/$defs/ExperimentalContainerResourceDetector"
                 },
@@ -93,9 +93,7 @@
                 },
                 "service": {
                     "$ref": "#/$defs/ExperimentalServiceResourceDetector"
-                }
-            },
-            "patternProperties": {
+                },
                 ".*": {
                     "type": ["object", "null"]
                 }
