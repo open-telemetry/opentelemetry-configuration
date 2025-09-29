@@ -10,6 +10,11 @@
   ([#220](https://github.com/open-telemetry/opentelemetry-configuration/pull/220))
 * Add 'translation_strategy' to PrometheusMetricExporter 
   ([#262](https://github.com/open-telemetry/opentelemetry-configuration/pull/262))
+* bugfix: remove requirement for disabled field for ExperimentalTracerConfig
+  ([#307](https://github.com/open-telemetry/opentelemetry-configuration/pull/307))
+* bugfix: remove name/config as required in ExperimentalTracerMatcherAndConfig 
+  ([#308](https://github.com/open-telemetry/opentelemetry-configuration/pull/308))
+
 
 ### Tooling
 
