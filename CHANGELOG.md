@@ -2,6 +2,35 @@
 
 ## Unreleased
 
+## [v1.0.0-rc.2] - 2025-09-26
+
+### Schema
+
+* Move known resource detectors to properties 
+  ([#220](https://github.com/open-telemetry/opentelemetry-configuration/pull/220))
+* Add 'translation_strategy' to PrometheusMetricExporter 
+  ([#262](https://github.com/open-telemetry/opentelemetry-configuration/pull/262))
+* bugfix: remove requirement for disabled field for ExperimentalTracerConfig
+  ([#307](https://github.com/open-telemetry/opentelemetry-configuration/pull/307))
+* bugfix: remove name/config as required in ExperimentalTracerMatcherAndConfig 
+  ([#308](https://github.com/open-telemetry/opentelemetry-configuration/pull/308))
+
+
+### Tooling
+
+* Update community member listings 
+  ([#225](https://github.com/open-telemetry/opentelemetry-configuration/pull/225))
+* Fix outdated community membership link 
+  ([#226](https://github.com/open-telemetry/opentelemetry-configuration/pull/226))
+* Add minimum token permissions for all github workflow files 
+  ([#231](https://github.com/open-telemetry/opentelemetry-configuration/pull/231))
+* Run docker image as current user 
+  ([#240](https://github.com/open-telemetry/opentelemetry-configuration/pull/240))
+* Install all dependencies in one step 
+  ([#241](https://github.com/open-telemetry/opentelemetry-configuration/pull/241))
+* Dep validator for validator-build-shelltest-image 
+  ([#239](https://github.com/open-telemetry/opentelemetry-configuration/pull/239))
+
 ## [v1.0.0-rc.1] - 2025-06-18
 
 ### Schema
