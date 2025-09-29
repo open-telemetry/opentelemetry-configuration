@@ -275,10 +275,7 @@
                 "disabled": {
                     "type": ["boolean"]
                 }
-            },
-            "required": [
-                "disabled"
-            ]
+            }
         }
     }
 }
