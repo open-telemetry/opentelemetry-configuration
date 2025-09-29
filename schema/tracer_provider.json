@@ -262,11 +262,7 @@
                 "config": {
                     "$ref": "#/$defs/ExperimentalTracerConfig"
                 }
-            },
-            "required": [
-                "name",
-                "config"
-            ]
+            }
         },
         "ExperimentalTracerConfig": {
             "type": ["object"],
