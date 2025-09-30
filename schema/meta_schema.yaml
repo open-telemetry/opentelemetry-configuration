@@ -1,0 +1,610 @@
+- type: Aggregation
+  properties:
+    - property: default
+      description: TODO
+    - property: drop
+      description: TODO
+    - property: explicit_bucket_histogram
+      description: TODO
+    - property: base2_exponential_bucket_histogram
+      description: TODO
+    - property: last_value
+      description: TODO
+    - property: sum
+      description: TODO
+- type: AlwaysOffSampler
+  properties: []
+- type: AlwaysOnSampler
+  properties: []
+- type: AttributeLimits
+  properties:
+    - property: attribute_value_length_limit
+      description: TODO
+    - property: attribute_count_limit
+      description: TODO
+- type: AttributeNameValue
+  properties:
+    - property: name
+      description: TODO
+    - property: value
+      description: TODO
+    - property: type
+      description: TODO
+- type: AttributeType
+  properties: []
+- type: B3MultiPropagator
+  properties: []
+- type: B3Propagator
+  properties: []
+- type: BaggagePropagator
+  properties: []
+- type: Base2ExponentialBucketHistogramAggregation
+  properties:
+    - property: max_scale
+      description: TODO
+    - property: max_size
+      description: TODO
+    - property: record_min_max
+      description: TODO
+- type: BatchLogRecordProcessor
+  properties:
+    - property: schedule_delay
+      description: TODO
+    - property: export_timeout
+      description: TODO
+    - property: max_queue_size
+      description: TODO
+    - property: max_export_batch_size
+      description: TODO
+    - property: exporter
+      description: TODO
+- type: BatchSpanProcessor
+  properties:
+    - property: schedule_delay
+      description: TODO
+    - property: export_timeout
+      description: TODO
+    - property: max_queue_size
+      description: TODO
+    - property: max_export_batch_size
+      description: TODO
+    - property: exporter
+      description: TODO
+- type: CardinalityLimits
+  properties:
+    - property: default
+      description: TODO
+    - property: counter
+      description: TODO
+    - property: gauge
+      description: TODO
+    - property: histogram
+      description: TODO
+    - property: observable_counter
+      description: TODO
+    - property: observable_gauge
+      description: TODO
+    - property: observable_up_down_counter
+      description: TODO
+    - property: up_down_counter
+      description: TODO
+- type: ConsoleExporter
+  properties: []
+- type: DefaultAggregation
+  properties: []
+- type: DropAggregation
+  properties: []
+- type: ExemplarFilter
+  properties: []
+- type: ExperimentalGeneralInstrumentation
+  properties:
+    - property: peer
+      description: TODO
+    - property: http
+      description: TODO
+- type: ExperimentalHttpInstrumentation
+  properties:
+    - property: client
+      description: TODO
+    - property: server
+      description: TODO
+- type: ExperimentalInstrumentation
+  properties:
+    - property: general
+      description: TODO
+    - property: cpp
+      description: TODO
+    - property: dotnet
+      description: TODO
+    - property: erlang
+      description: TODO
+    - property: go
+      description: TODO
+    - property: java
+      description: TODO
+    - property: js
+      description: TODO
+    - property: php
+      description: TODO
+    - property: python
+      description: TODO
+    - property: ruby
+      description: TODO
+    - property: rust
+      description: TODO
+    - property: swift
+      description: TODO
+- type: ExperimentalLanguageSpecificInstrumentation
+  properties: []
+- type: ExperimentalLoggerConfig
+  properties:
+    - property: disabled
+      description: TODO
+- type: ExperimentalLoggerConfigurator
+  properties:
+    - property: default_config
+      description: TODO
+    - property: loggers
+      description: TODO
+- type: ExperimentalLoggerMatcherAndConfig
+  properties:
+    - property: name
+      description: TODO
+    - property: config
+      description: TODO
+- type: ExperimentalMeterConfig
+  properties:
+    - property: disabled
+      description: TODO
+- type: ExperimentalMeterConfigurator
+  properties:
+    - property: default_config
+      description: TODO
+    - property: meters
+      description: TODO
+- type: ExperimentalMeterMatcherAndConfig
+  properties:
+    - property: name
+      description: TODO
+    - property: config
+      description: TODO
+- type: ExperimentalOtlpFileExporter
+  properties:
+    - property: output_stream
+      description: TODO
+- type: ExperimentalOtlpFileMetricExporter
+  properties:
+    - property: output_stream
+      description: TODO
+    - property: temporality_preference
+      description: TODO
+    - property: default_histogram_aggregation
+      description: TODO
+- type: ExperimentalPeerInstrumentation
+  properties:
+    - property: service_mapping
+      description: TODO
+- type: ExperimentalPrometheusMetricExporter
+  properties:
+    - property: host
+      description: TODO
+    - property: port
+      description: TODO
+    - property: without_units
+      description: TODO
+    - property: without_type_suffix
+      description: TODO
+    - property: without_scope_info
+      description: TODO
+    - property: with_resource_constant_labels
+      description: TODO
+- type: ExperimentalResourceDetection
+  properties:
+    - property: attributes
+      description: TODO
+    - property: detectors
+      description: TODO
+- type: ExperimentalResourceDetector
+  properties: []
+- type: ExperimentalTracerConfig
+  properties:
+    - property: disabled
+      description: TODO
+- type: ExperimentalTracerConfigurator
+  properties:
+    - property: default_config
+      description: TODO
+    - property: tracers
+      description: TODO
+- type: ExperimentalTracerMatcherAndConfig
+  properties:
+    - property: name
+      description: TODO
+    - property: config
+      description: TODO
+- type: ExplicitBucketHistogramAggregation
+  properties:
+    - property: boundaries
+      description: TODO
+    - property: record_min_max
+      description: TODO
+- type: ExporterDefaultHistogramAggregation
+  properties: []
+- type: ExporterTemporalityPreference
+  properties: []
+- type: IncludeExclude
+  properties:
+    - property: included
+      description: TODO
+    - property: excluded
+      description: TODO
+- type: InstrumentType
+  properties: []
+- type: JaegerPropagator
+  properties: []
+- type: JaegerRemoteSampler
+  properties:
+    - property: endpoint
+      description: TODO
+    - property: interval
+      description: TODO
+    - property: initial_sampler
+      description: TODO
+- type: LastValueAggregation
+  properties: []
+- type: LoggerProvider
+  properties:
+    - property: processors
+      description: TODO
+    - property: limits
+      description: TODO
+    - property: logger_configurator/development
+      description: TODO
+- type: LogRecordExporter
+  properties:
+    - property: otlp_http
+      description: TODO
+    - property: otlp_grpc
+      description: TODO
+    - property: otlp_file/development
+      description: TODO
+    - property: console
+      description: TODO
+- type: LogRecordLimits
+  properties:
+    - property: attribute_value_length_limit
+      description: TODO
+    - property: attribute_count_limit
+      description: TODO
+- type: LogRecordProcessor
+  properties:
+    - property: batch
+      description: TODO
+    - property: simple
+      description: TODO
+- type: MeterProvider
+  properties:
+    - property: readers
+      description: TODO
+    - property: views
+      description: TODO
+    - property: exemplar_filter
+      description: TODO
+    - property: meter_configurator/development
+      description: TODO
+- type: MetricProducer
+  properties:
+    - property: opencensus
+      description: TODO
+- type: MetricReader
+  properties:
+    - property: periodic
+      description: TODO
+    - property: pull
+      description: TODO
+- type: NameStringValuePair
+  properties:
+    - property: name
+      description: TODO
+    - property: value
+      description: TODO
+- type: OpenCensusMetricProducer
+  properties: []
+- type: OpentelemetryConfiguration
+  properties:
+    - property: file_format
+      description: TODO
+    - property: disabled
+      description: TODO
+    - property: log_level
+      description: TODO
+    - property: attribute_limits
+      description: TODO
+    - property: logger_provider
+      description: TODO
+    - property: meter_provider
+      description: TODO
+    - property: propagator
+      description: TODO
+    - property: tracer_provider
+      description: TODO
+    - property: resource
+      description: TODO
+    - property: instrumentation/development
+      description: TODO
+- type: OpenTracingPropagator
+  properties: []
+- type: OtlpGrpcExporter
+  properties:
+    - property: endpoint
+      description: TODO
+    - property: certificate_file
+      description: TODO
+    - property: client_key_file
+      description: TODO
+    - property: client_certificate_file
+      description: TODO
+    - property: headers
+      description: TODO
+    - property: headers_list
+      description: TODO
+    - property: compression
+      description: TODO
+    - property: timeout
+      description: TODO
+    - property: insecure
+      description: TODO
+- type: OtlpGrpcMetricExporter
+  properties:
+    - property: endpoint
+      description: TODO
+    - property: certificate_file
+      description: TODO
+    - property: client_key_file
+      description: TODO
+    - property: client_certificate_file
+      description: TODO
+    - property: headers
+      description: TODO
+    - property: headers_list
+      description: TODO
+    - property: compression
+      description: TODO
+    - property: timeout
+      description: TODO
+    - property: insecure
+      description: TODO
+    - property: temporality_preference
+      description: TODO
+    - property: default_histogram_aggregation
+      description: TODO
+- type: OtlpHttpEncoding
+  properties: []
+- type: OtlpHttpExporter
+  properties:
+    - property: endpoint
+      description: TODO
+    - property: certificate_file
+      description: TODO
+    - property: client_key_file
+      description: TODO
+    - property: client_certificate_file
+      description: TODO
+    - property: headers
+      description: TODO
+    - property: headers_list
+      description: TODO
+    - property: compression
+      description: TODO
+    - property: timeout
+      description: TODO
+    - property: encoding
+      description: TODO
+- type: OtlpHttpMetricExporter
+  properties:
+    - property: endpoint
+      description: TODO
+    - property: certificate_file
+      description: TODO
+    - property: client_key_file
+      description: TODO
+    - property: client_certificate_file
+      description: TODO
+    - property: headers
+      description: TODO
+    - property: headers_list
+      description: TODO
+    - property: compression
+      description: TODO
+    - property: timeout
+      description: TODO
+    - property: encoding
+      description: TODO
+    - property: temporality_preference
+      description: TODO
+    - property: default_histogram_aggregation
+      description: TODO
+- type: ParentBasedSampler
+  properties:
+    - property: root
+      description: TODO
+    - property: remote_parent_sampled
+      description: TODO
+    - property: remote_parent_not_sampled
+      description: TODO
+    - property: local_parent_sampled
+      description: TODO
+    - property: local_parent_not_sampled
+      description: TODO
+- type: PeriodicMetricReader
+  properties:
+    - property: interval
+      description: TODO
+    - property: timeout
+      description: TODO
+    - property: exporter
+      description: TODO
+    - property: producers
+      description: TODO
+    - property: cardinality_limits
+      description: TODO
+- type: Propagator
+  properties:
+    - property: composite
+      description: TODO
+    - property: composite_list
+      description: TODO
+- type: PullMetricExporter
+  properties:
+    - property: prometheus/development
+      description: TODO
+- type: PullMetricReader
+  properties:
+    - property: exporter
+      description: TODO
+    - property: producers
+      description: TODO
+    - property: cardinality_limits
+      description: TODO
+- type: PushMetricExporter
+  properties:
+    - property: otlp_http
+      description: TODO
+    - property: otlp_grpc
+      description: TODO
+    - property: otlp_file/development
+      description: TODO
+    - property: console
+      description: TODO
+- type: Resource
+  properties:
+    - property: attributes
+      description: TODO
+    - property: detection/development
+      description: TODO
+    - property: schema_url
+      description: TODO
+    - property: attributes_list
+      description: TODO
+- type: Sampler
+  properties:
+    - property: always_off
+      description: TODO
+    - property: always_on
+      description: TODO
+    - property: jaeger_remote
+      description: TODO
+    - property: parent_based
+      description: TODO
+    - property: trace_id_ratio_based
+      description: TODO
+- type: SimpleLogRecordProcessor
+  properties:
+    - property: exporter
+      description: TODO
+- type: SimpleSpanProcessor
+  properties:
+    - property: exporter
+      description: TODO
+- type: SpanExporter
+  properties:
+    - property: otlp_http
+      description: TODO
+    - property: otlp_grpc
+      description: TODO
+    - property: otlp_file/development
+      description: TODO
+    - property: console
+      description: TODO
+    - property: zipkin
+      description: TODO
+- type: SpanLimits
+  properties:
+    - property: attribute_value_length_limit
+      description: TODO
+    - property: attribute_count_limit
+      description: TODO
+    - property: event_count_limit
+      description: TODO
+    - property: link_count_limit
+      description: TODO
+    - property: event_attribute_count_limit
+      description: TODO
+    - property: link_attribute_count_limit
+      description: TODO
+- type: SpanProcessor
+  properties:
+    - property: batch
+      description: TODO
+    - property: simple
+      description: TODO
+- type: SumAggregation
+  properties: []
+- type: TextMapPropagator
+  properties:
+    - property: tracecontext
+      description: TODO
+    - property: baggage
+      description: TODO
+    - property: b3
+      description: TODO
+    - property: b3multi
+      description: TODO
+    - property: jaeger
+      description: TODO
+    - property: ottrace
+      description: TODO
+- type: TraceContextPropagator
+  properties: []
+- type: TraceIdRatioBasedSampler
+  properties:
+    - property: ratio
+      description: TODO
+- type: TracerProvider
+  properties:
+    - property: processors
+      description: TODO
+    - property: limits
+      description: TODO
+    - property: sampler
+      description: TODO
+    - property: tracer_configurator/development
+      description: TODO
+- type: View
+  properties:
+    - property: selector
+      description: TODO
+    - property: stream
+      description: TODO
+- type: ViewSelector
+  properties:
+    - property: instrument_name
+      description: TODO
+    - property: instrument_type
+      description: TODO
+    - property: unit
+      description: TODO
+    - property: meter_name
+      description: TODO
+    - property: meter_version
+      description: TODO
+    - property: meter_schema_url
+      description: TODO
+- type: ViewStream
+  properties:
+    - property: name
+      description: TODO
+    - property: description
+      description: TODO
+    - property: aggregation
+      description: TODO
+    - property: aggregation_cardinality_limit
+      description: TODO
+    - property: attribute_keys
+      description: TODO
+- type: ZipkinSpanExporter
+  properties:
+    - property: endpoint
+      description: TODO
+    - property: timeout
+      description: TODO

@@ -63,7 +63,7 @@ function resolveType(schema, formatter) {
         if (!match) {
             throw new Error("Could not resolve $ref: " + ref);
         }
-        return formatter(match.name);
+        return formatter(match.type);
     }
     const type = schema.type;
     if (type === 'array') {

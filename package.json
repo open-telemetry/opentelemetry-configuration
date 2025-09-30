@@ -1,9 +1,12 @@
 {
+  "type": "module",
   "scripts": {
     "generate-descriptions": "node scripts/generate-descriptions.js",
     "generate-markdown": "node scripts/generate-markdown.js",
     "generate-meta-schema": "node scripts/generate-meta-schema.js",
-    "validate-meta-schema": "node scripts/validate-meta-schema.js"
+    "validate-meta-schema": "node scripts/validate-meta-schema.js",
+    "fix-meta-schema": "node scripts1/fix-meta-schema.js",
+    "generate-meta-schema-new": "node scripts1/generate-meta-schema.js"
   },
   "devDependencies": {
     "@json-schema-tools/traverse": "^1.10.4",
