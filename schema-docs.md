@@ -4,7 +4,7 @@
 |---|---|---|---|
 | `default` | TODO | [`DefaultAggregation`](#DefaultAggregation) | `false` |
 | `drop` | TODO | [`DropAggregation`](#DropAggregation) | `false` |
-| `explicit_bucket_histogram` | TODO | [`ExplicitBucketHistogramAggregation`](#ExplicitBucketHistogramAggregation) | `false` |
+| `explicit_bucket_histogram` | Configure aggregation to be explicit_bucket_histogram. | [`ExplicitBucketHistogramAggregation`](#ExplicitBucketHistogramAggregation) | `false` |
 | `base2_exponential_bucket_histogram` | TODO | [`Base2ExponentialBucketHistogramAggregation`](#Base2ExponentialBucketHistogramAggregation) | `false` |
 | `last_value` | TODO | [`LastValueAggregation`](#LastValueAggregation) | `false` |
 | `sum` | TODO | [`SumAggregation`](#SumAggregation) | `false` |
@@ -94,8 +94,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attribute_value_length_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `attribute_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `attribute_value_length_limit` | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | * `integer`<br>* `null`<br> | `false` |
+| `attribute_count_limit` | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -290,9 +290,9 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `max_scale` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `max_size` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `record_min_max` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
+| `max_scale` | TODO | * `integer`<br>* `null`<br> | `false` |
+| `max_size` | TODO | * `integer`<br>* `null`<br> | `false` |
+| `record_min_max` | TODO | * `boolean`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -339,11 +339,11 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `schedule_delay` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `export_timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `max_queue_size` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `max_export_batch_size` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `exporter` | TODO | [`LogRecordExporter`](#LogRecordExporter) | `true` |
+| `schedule_delay` | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 1000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `exporter` | Configure exporter. | [`LogRecordExporter`](#LogRecordExporter) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -405,11 +405,11 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `schedule_delay` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `export_timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `max_queue_size` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `max_export_batch_size` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `exporter` | TODO | [`SpanExporter`](#SpanExporter) | `true` |
+| `schedule_delay` | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 5000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `exporter` | Configure exporter. | [`SpanExporter`](#SpanExporter) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -471,14 +471,14 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `default` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `counter` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `gauge` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `histogram` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `observable_counter` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `observable_gauge` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `observable_up_down_counter` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `up_down_counter` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `default` | Configure default cardinality limit for all instrument types.<br>Instrument-specific cardinality limits take priority. <br>If omitted or null, 2000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `counter` | Configure default cardinality limit for counter instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `gauge` | Configure default cardinality limit for gauge instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `histogram` | Configure default cardinality limit for histogram instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `observable_counter` | Configure default cardinality limit for observable_counter instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `observable_gauge` | Configure default cardinality limit for observable_gauge instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `observable_up_down_counter` | Configure default cardinality limit for observable_up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `up_down_counter` | Configure default cardinality limit for up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -645,8 +645,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `peer` | TODO | [`ExperimentalPeerInstrumentation`](#ExperimentalPeerInstrumentation) | `false` |
-| `http` | TODO | [`ExperimentalHttpInstrumentation`](#ExperimentalHttpInstrumentation) | `false` |
+| `peer` | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> | [`ExperimentalPeerInstrumentation`](#ExperimentalPeerInstrumentation) | `false` |
+| `http` | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> | [`ExperimentalHttpInstrumentation`](#ExperimentalHttpInstrumentation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -677,8 +677,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `client` | TODO | `object` | `false` |
-| `server` | TODO | `object` | `false` |
+| `client` | Configure instrumentations following the http client semantic conventions. | `object` | `false` |
+| `server` | Configure instrumentations following the http server semantic conventions. | `object` | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -739,18 +739,18 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `general` | TODO | [`ExperimentalGeneralInstrumentation`](#ExperimentalGeneralInstrumentation) | `false` |
-| `cpp` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `dotnet` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `erlang` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `go` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `java` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `js` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `php` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `python` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `ruby` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `rust` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `swift` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `general` | Configure general SemConv options that may apply to multiple languages and instrumentations.<br>Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.<br> | [`ExperimentalGeneralInstrumentation`](#ExperimentalGeneralInstrumentation) | `false` |
+| `cpp` | Configure C++ language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `dotnet` | Configure .NET language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `erlang` | Configure Erlang language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `go` | Configure Go language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `java` | Configure Java language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `js` | Configure JavaScript language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `php` | Configure PHP language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `python` | Configure Python language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `ruby` | Configure Ruby language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `rust` | Configure Rust language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `swift` | Configure Swift language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -939,7 +939,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `disabled` | TODO | `boolean` | `false` |
+| `disabled` | Configure if the logger is enabled or not. | `boolean` | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -970,8 +970,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `default_config` | TODO | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
-| `loggers` | TODO | `array` of [`ExperimentalLoggerMatcherAndConfig`](#ExperimentalLoggerMatcherAndConfig) | `false` |
+| `default_config` | Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers. | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
+| `loggers` | Configure loggers. | `array` of [`ExperimentalLoggerMatcherAndConfig`](#ExperimentalLoggerMatcherAndConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1007,8 +1007,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | TODO | `string` | `false` |
-| `config` | TODO | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
+| `name` | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `false` |
+| `config` | The logger config. | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1043,7 +1043,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `disabled` | TODO | `boolean` | `false` |
+| `disabled` | Configure if the meter is enabled or not. | `boolean` | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1074,8 +1074,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `default_config` | TODO | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
-| `meters` | TODO | `array` of [`ExperimentalMeterMatcherAndConfig`](#ExperimentalMeterMatcherAndConfig) | `false` |
+| `default_config` | Configure the default meter config used there is no matching entry in .meter_configurator/development.meters. | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
+| `meters` | Configure meters. | `array` of [`ExperimentalMeterMatcherAndConfig`](#ExperimentalMeterMatcherAndConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1111,8 +1111,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | TODO | `string` | `false` |
-| `config` | TODO | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
+| `name` | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `false` |
+| `config` | The meter config. | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1147,7 +1147,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `output_stream` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `output_stream` | TODO | * `string`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1180,7 +1180,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `output_stream` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `output_stream` | TODO | * `string`<br>* `null`<br> | `false` |
 | `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
@@ -1266,12 +1266,12 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `host` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `port` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `without_units` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
-| `without_type_suffix` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
-| `without_scope_info` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
-| `with_resource_constant_labels` | TODO | [`IncludeExclude`](#IncludeExclude) | `false` |
+| `host` | Configure host.<br>If omitted or null, localhost is used.<br> | * `string`<br>* `null`<br> | `false` |
+| `port` | Configure port.<br>If omitted or null, 9464 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `without_units` | Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.<br>If omitted or null, false is used.<br> | * `boolean`<br>* `null`<br> | `false` |
+| `without_type_suffix` | Configure Prometheus Exporter to produce metrics without a type suffix.<br>If omitted or null, false is used.<br> | * `boolean`<br>* `null`<br> | `false` |
+| `without_scope_info` | Configure Prometheus Exporter to produce metrics without a scope info metric.<br>If omitted or null, false is used.<br> | * `boolean`<br>* `null`<br> | `false` |
+| `with_resource_constant_labels` | Configure Prometheus Exporter to add resource attributes as metrics attributes. | [`IncludeExclude`](#IncludeExclude) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1336,8 +1336,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attributes` | TODO | [`IncludeExclude`](#IncludeExclude) | `false` |
-| `detectors` | TODO | `array` of [`ExperimentalResourceDetector`](#ExperimentalResourceDetector) | `false` |
+| `attributes` | Configure attributes provided by resource detectors. | [`IncludeExclude`](#IncludeExclude) | `false` |
+| `detectors` | Configure resource detectors.<br>Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. <br>If omitted or null, no resource detectors are enabled.<br> | `array` of [`ExperimentalResourceDetector`](#ExperimentalResourceDetector) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1397,7 +1397,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `disabled` | TODO | `boolean` | `true` |
+| `disabled` | Configure if the tracer is enabled or not. | `boolean` | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1431,8 +1431,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `default_config` | TODO | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `false` |
-| `tracers` | TODO | `array` of [`ExperimentalTracerMatcherAndConfig`](#ExperimentalTracerMatcherAndConfig) | `false` |
+| `default_config` | Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers. | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `false` |
+| `tracers` | Configure tracers. | `array` of [`ExperimentalTracerMatcherAndConfig`](#ExperimentalTracerMatcherAndConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1468,8 +1468,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | TODO | `string` | `true` |
-| `config` | TODO | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `true` |
+| `name` | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `true` |
+| `config` | The tracer config. | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1508,8 +1508,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `boundaries` | TODO | `array` of `array` | `false` |
-| `record_min_max` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
+| `boundaries` | Configure bucket boundaries.<br>If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.<br> | `array` of `array` | `false` |
+| `record_min_max` | Configure record min and max.<br>If omitted or null, true is used.<br> | * `boolean`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1594,8 +1594,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `included` | TODO | `array` of `array` | `false` |
-| `excluded` | TODO | `array` of `array` | `false` |
+| `included` | Configure list of attribute key patterns to include from resource detectors.<br>Attribute keys from resource detectors are evaluated to match as follows:<br> * If the value of the attribute key exactly matches.<br> * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all attributes are included.<br> | `array` of `array` | `false` |
+| `excluded` | Configure list of attribute key patterns to exclude from resource detectors. Applies after .resource.detectors.attributes.included (i.e. excluded has higher priority than included).<br>Attribute keys from resource detectors are evaluated to match as follows:<br> * If the value of the attribute key exactly matches.<br> * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> | `array` of `array` | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1678,8 +1678,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `interval` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `endpoint` | TODO | * `string`<br>* `null`<br> | `false` |
+| `interval` | TODO | * `integer`<br>* `null`<br> | `false` |
 | `initial_sampler` | TODO | [`Sampler`](#Sampler) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
@@ -1744,9 +1744,9 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `processors` | TODO | `array` of [`LogRecordProcessor`](#LogRecordProcessor) | `true` |
-| `limits` | TODO | [`LogRecordLimits`](#LogRecordLimits) | `false` |
-| `logger_configurator/development` | TODO | [`ExperimentalLoggerConfigurator`](#ExperimentalLoggerConfigurator) | `false` |
+| `processors` | Configure log record processors. | `array` of [`LogRecordProcessor`](#LogRecordProcessor) | `true` |
+| `limits` | Configure log record limits. See also attribute_limits. | [`LogRecordLimits`](#LogRecordLimits) | `false` |
+| `logger_configurator/development` | Configure loggers.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalLoggerConfigurator`](#ExperimentalLoggerConfigurator) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1959,10 +1959,10 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `otlp_http` | TODO | [`OtlpHttpExporter`](#OtlpHttpExporter) | `false` |
-| `otlp_grpc` | TODO | [`OtlpGrpcExporter`](#OtlpGrpcExporter) | `false` |
-| `otlp_file/development` | TODO | [`ExperimentalOtlpFileExporter`](#ExperimentalOtlpFileExporter) | `false` |
-| `console` | TODO | [`ConsoleExporter`](#ConsoleExporter) | `false` |
+| `otlp_http` | Configure exporter to be OTLP with HTTP transport. | [`OtlpHttpExporter`](#OtlpHttpExporter) | `false` |
+| `otlp_grpc` | Configure exporter to be OTLP with gRPC transport. | [`OtlpGrpcExporter`](#OtlpGrpcExporter) | `false` |
+| `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileExporter`](#ExperimentalOtlpFileExporter) | `false` |
+| `console` | Configure exporter to be console. | [`ConsoleExporter`](#ConsoleExporter) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -2011,8 +2011,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attribute_value_length_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `attribute_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `attribute_value_length_limit` | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | * `integer`<br>* `null`<br> | `false` |
+| `attribute_count_limit` | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -2051,8 +2051,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `batch` | TODO | [`BatchLogRecordProcessor`](#BatchLogRecordProcessor) | `false` |
-| `simple` | TODO | [`SimpleLogRecordProcessor`](#SimpleLogRecordProcessor) | `false` |
+| `batch` | Configure a batch log record processor. | [`BatchLogRecordProcessor`](#BatchLogRecordProcessor) | `false` |
+| `simple` | Configure a simple log record processor. | [`SimpleLogRecordProcessor`](#SimpleLogRecordProcessor) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -2092,10 +2092,10 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `readers` | TODO | `array` of [`MetricReader`](#MetricReader) | `true` |
-| `views` | TODO | `array` of [`View`](#View) | `false` |
-| `exemplar_filter` | TODO | [`ExemplarFilter`](#ExemplarFilter) | `false` |
-| `meter_configurator/development` | TODO | [`ExperimentalMeterConfigurator`](#ExperimentalMeterConfigurator) | `false` |
+| `readers` | Configure metric readers. | `array` of [`MetricReader`](#MetricReader) | `true` |
+| `views` | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> | `array` of [`View`](#View) | `false` |
+| `exemplar_filter` | Configure the exemplar filter. <br>Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br>If omitted or null, trace_based is used.<br> | [`ExemplarFilter`](#ExemplarFilter) | `false` |
+| `meter_configurator/development` | Configure meters.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalMeterConfigurator`](#ExperimentalMeterConfigurator) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -2832,7 +2832,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `opencensus` | TODO | [`OpenCensusMetricProducer`](#OpenCensusMetricProducer) | `false` |
+| `opencensus` | Configure metric producer to be opencensus. | [`OpenCensusMetricProducer`](#OpenCensusMetricProducer) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -2869,8 +2869,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `periodic` | TODO | [`PeriodicMetricReader`](#PeriodicMetricReader) | `false` |
-| `pull` | TODO | [`PullMetricReader`](#PullMetricReader) | `false` |
+| `periodic` | Configure a periodic metric reader. | [`PeriodicMetricReader`](#PeriodicMetricReader) | `false` |
+| `pull` | Configure a pull based metric reader. | [`PullMetricReader`](#PullMetricReader) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -2904,7 +2904,7 @@ No properties.
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `name` | TODO | `string` | `true` |
-| `value` | TODO | * `string`<br/>* `null`<br/> | `true` |
+| `value` | TODO | * `string`<br>* `null`<br> | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -2962,8 +2962,8 @@ No properties.
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `file_format` | TODO | `string` | `true` |
-| `disabled` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
-| `log_level` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `disabled` | TODO | * `boolean`<br>* `null`<br> | `false` |
+| `log_level` | TODO | * `string`<br>* `null`<br> | `false` |
 | `attribute_limits` | TODO | [`AttributeLimits`](#AttributeLimits) | `false` |
 | `logger_provider` | TODO | [`LoggerProvider`](#LoggerProvider) | `false` |
 | `meter_provider` | TODO | [`MeterProvider`](#MeterProvider) | `false` |
@@ -3102,15 +3102,15 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `client_key_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `client_certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | * `string`<br>* `null`<br> | `false` |
+| `certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `client_key_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
 | `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `compression` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `insecure` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
+| `headers_list` | TODO | * `string`<br>* `null`<br> | `false` |
+| `compression` | TODO | * `string`<br>* `null`<br> | `false` |
+| `timeout` | TODO | * `integer`<br>* `null`<br> | `false` |
+| `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | * `boolean`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3200,15 +3200,15 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `client_key_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `client_certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `endpoint` | TODO | * `string`<br>* `null`<br> | `false` |
+| `certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `client_key_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
 | `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `compression` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `insecure` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
+| `headers_list` | TODO | * `string`<br>* `null`<br> | `false` |
+| `compression` | TODO | * `string`<br>* `null`<br> | `false` |
+| `timeout` | TODO | * `integer`<br>* `null`<br> | `false` |
+| `insecure` | TODO | * `boolean`<br>* `null`<br> | `false` |
 | `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
@@ -3330,15 +3330,15 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `client_key_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `client_certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `endpoint` | TODO | * `string`<br>* `null`<br> | `false` |
+| `certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `client_key_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
 | `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `compression` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `encoding` | TODO | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
+| `headers_list` | TODO | * `string`<br>* `null`<br> | `false` |
+| `compression` | TODO | * `string`<br>* `null`<br> | `false` |
+| `timeout` | TODO | * `integer`<br>* `null`<br> | `false` |
+| `encoding` | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3425,14 +3425,14 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `client_key_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `client_certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `endpoint` | Configure endpoint, including the metric specific path.<br>If omitted or null, http://localhost:4318/v1/metrics is used.<br> | * `string`<br>* `null`<br> | `false` |
+| `certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `client_key_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
 | `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `compression` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `headers_list` | TODO | * `string`<br>* `null`<br> | `false` |
+| `compression` | TODO | * `string`<br>* `null`<br> | `false` |
+| `timeout` | TODO | * `integer`<br>* `null`<br> | `false` |
 | `encoding` | TODO | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
 | `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
@@ -3580,11 +3580,11 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `interval` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `exporter` | TODO | [`PushMetricExporter`](#PushMetricExporter) | `true` |
-| `producers` | TODO | `array` of [`MetricProducer`](#MetricProducer) | `false` |
-| `cardinality_limits` | TODO | [`CardinalityLimits`](#CardinalityLimits) | `false` |
+| `interval` | Configure delay interval (in milliseconds) between start of two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 60000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `exporter` | Configure exporter. | [`PushMetricExporter`](#PushMetricExporter) | `true` |
+| `producers` | Configure metric producers. | `array` of [`MetricProducer`](#MetricProducer) | `false` |
+| `cardinality_limits` | Configure cardinality limits. | [`CardinalityLimits`](#CardinalityLimits) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3641,8 +3641,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `composite` | TODO | `array` of [`TextMapPropagator`](#TextMapPropagator) | `false` |
-| `composite_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `composite` | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | `array` of [`TextMapPropagator`](#TextMapPropagator) | `false` |
+| `composite_list` | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | * `string`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3797,9 +3797,9 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `exporter` | TODO | [`PullMetricExporter`](#PullMetricExporter) | `true` |
-| `producers` | TODO | `array` of [`MetricProducer`](#MetricProducer) | `false` |
-| `cardinality_limits` | TODO | [`CardinalityLimits`](#CardinalityLimits) | `false` |
+| `exporter` | Configure exporter. | [`PullMetricExporter`](#PullMetricExporter) | `true` |
+| `producers` | Configure metric producers. | `array` of [`MetricProducer`](#MetricProducer) | `false` |
+| `cardinality_limits` | Configure cardinality limits. | [`CardinalityLimits`](#CardinalityLimits) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3892,10 +3892,10 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attributes` | TODO | `array` of [`AttributeNameValue`](#AttributeNameValue) | `false` |
-| `detection/development` | TODO | [`ExperimentalResourceDetection`](#ExperimentalResourceDetection) | `false` |
-| `schema_url` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `attributes_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `attributes` | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br>Entries must contain .name and .value, and may optionally include .type. If an entry's .type omitted or null, string is used.<br>The .value's type must match the .type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br> | `array` of [`AttributeNameValue`](#AttributeNameValue) | `false` |
+| `detection/development` | Configure resource detection.<br>This type is in development and subject to breaking changes in minor versions.<br>If omitted or null, resource detection is disabled.<br> | [`ExperimentalResourceDetection`](#ExperimentalResourceDetection) | `false` |
+| `schema_url` | Configure resource schema URL.<br>If omitted or null, no schema URL is used.<br> | * `string`<br>* `null`<br> | `false` |
+| `attributes_list` | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>If omitted or null, no resource attributes are added.<br> | * `string`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4043,11 +4043,11 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `always_off` | TODO | [`AlwaysOffSampler`](#AlwaysOffSampler) | `false` |
-| `always_on` | TODO | [`AlwaysOnSampler`](#AlwaysOnSampler) | `false` |
+| `always_off` | Configure sampler to be always_off. | [`AlwaysOffSampler`](#AlwaysOffSampler) | `false` |
+| `always_on` | Configure sampler to be always_on. | [`AlwaysOnSampler`](#AlwaysOnSampler) | `false` |
 | `jaeger_remote` | TODO | [`JaegerRemoteSampler`](#JaegerRemoteSampler) | `false` |
-| `parent_based` | TODO | [`ParentBasedSampler`](#ParentBasedSampler) | `false` |
-| `trace_id_ratio_based` | TODO | [`TraceIdRatioBasedSampler`](#TraceIdRatioBasedSampler) | `false` |
+| `parent_based` | Configure sampler to be parent_based. | [`ParentBasedSampler`](#ParentBasedSampler) | `false` |
+| `trace_id_ratio_based` | Configure sampler to be trace_id_ratio_based. | [`TraceIdRatioBasedSampler`](#TraceIdRatioBasedSampler) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4100,7 +4100,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `exporter` | TODO | [`LogRecordExporter`](#LogRecordExporter) | `true` |
+| `exporter` | Configure exporter. | [`LogRecordExporter`](#LogRecordExporter) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4130,7 +4130,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `exporter` | TODO | [`SpanExporter`](#SpanExporter) | `true` |
+| `exporter` | Configure exporter. | [`SpanExporter`](#SpanExporter) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4160,11 +4160,11 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `otlp_http` | TODO | [`OtlpHttpExporter`](#OtlpHttpExporter) | `false` |
-| `otlp_grpc` | TODO | [`OtlpGrpcExporter`](#OtlpGrpcExporter) | `false` |
-| `otlp_file/development` | TODO | [`ExperimentalOtlpFileExporter`](#ExperimentalOtlpFileExporter) | `false` |
-| `console` | TODO | [`ConsoleExporter`](#ConsoleExporter) | `false` |
-| `zipkin` | TODO | [`ZipkinSpanExporter`](#ZipkinSpanExporter) | `false` |
+| `otlp_http` | Configure exporter to be OTLP with HTTP transport. | [`OtlpHttpExporter`](#OtlpHttpExporter) | `false` |
+| `otlp_grpc` | Configure exporter to be OTLP with gRPC transport. | [`OtlpGrpcExporter`](#OtlpGrpcExporter) | `false` |
+| `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileExporter`](#ExperimentalOtlpFileExporter) | `false` |
+| `console` | Configure exporter to be console. | [`ConsoleExporter`](#ConsoleExporter) | `false` |
+| `zipkin` | Configure exporter to be zipkin. | [`ZipkinSpanExporter`](#ZipkinSpanExporter) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4217,12 +4217,12 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attribute_value_length_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `attribute_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `event_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `link_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `event_attribute_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `link_attribute_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `attribute_value_length_limit` | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | * `integer`<br>* `null`<br> | `false` |
+| `attribute_count_limit` | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `event_count_limit` | Configure max span event count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `link_count_limit` | Configure max span link count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `event_attribute_count_limit` | Configure max attributes per span event. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `link_attribute_count_limit` | Configure max attributes per span link. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4293,8 +4293,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `batch` | TODO | [`BatchSpanProcessor`](#BatchSpanProcessor) | `false` |
-| `simple` | TODO | [`SimpleSpanProcessor`](#SimpleSpanProcessor) | `false` |
+| `batch` | Configure a batch span processor. | [`BatchSpanProcessor`](#BatchSpanProcessor) | `false` |
+| `simple` | Configure a simple span processor. | [`SimpleSpanProcessor`](#SimpleSpanProcessor) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4354,12 +4354,12 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `tracecontext` | TODO | [`TraceContextPropagator`](#TraceContextPropagator) | `false` |
-| `baggage` | TODO | [`BaggagePropagator`](#BaggagePropagator) | `false` |
-| `b3` | TODO | [`B3Propagator`](#B3Propagator) | `false` |
-| `b3multi` | TODO | [`B3MultiPropagator`](#B3MultiPropagator) | `false` |
-| `jaeger` | TODO | [`JaegerPropagator`](#JaegerPropagator) | `false` |
-| `ottrace` | TODO | [`OpenTracingPropagator`](#OpenTracingPropagator) | `false` |
+| `tracecontext` | Include the w3c trace context propagator. | [`TraceContextPropagator`](#TraceContextPropagator) | `false` |
+| `baggage` | Include the w3c baggage propagator. | [`BaggagePropagator`](#BaggagePropagator) | `false` |
+| `b3` | Include the zipkin b3 propagator. | [`B3Propagator`](#B3Propagator) | `false` |
+| `b3multi` | Include the zipkin b3 multi propagator. | [`B3MultiPropagator`](#B3MultiPropagator) | `false` |
+| `jaeger` | Include the jaeger propagator. | [`JaegerPropagator`](#JaegerPropagator) | `false` |
+| `ottrace` | Include the opentracing propagator. | [`OpenTracingPropagator`](#OpenTracingPropagator) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4435,7 +4435,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `ratio` | TODO | * `number`<br/>* `null`<br/> | `false` |
+| `ratio` | TODO | * `number`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4468,10 +4468,10 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `processors` | TODO | `array` of [`SpanProcessor`](#SpanProcessor) | `true` |
-| `limits` | TODO | [`SpanLimits`](#SpanLimits) | `false` |
-| `sampler` | TODO | [`Sampler`](#Sampler) | `false` |
-| `tracer_configurator/development` | TODO | [`ExperimentalTracerConfigurator`](#ExperimentalTracerConfigurator) | `false` |
+| `processors` | Configure span processors. | `array` of [`SpanProcessor`](#SpanProcessor) | `true` |
+| `limits` | Configure span limits. See also attribute_limits. | [`SpanLimits`](#SpanLimits) | `false` |
+| `sampler` | Configure the sampler.<br>If omitted, parent based sampler with a root of always_on is used.<br> | [`Sampler`](#Sampler) | `false` |
+| `tracer_configurator/development` | Configure tracers.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalTracerConfigurator`](#ExperimentalTracerConfigurator) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4858,8 +4858,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `selector` | TODO | [`ViewSelector`](#ViewSelector) | `false` |
-| `stream` | TODO | [`ViewStream`](#ViewStream) | `false` |
+| `selector` | Configure view selector. <br>Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.<br> | [`ViewSelector`](#ViewSelector) | `false` |
+| `stream` | Configure view stream. | [`ViewStream`](#ViewStream) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4890,12 +4890,12 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `instrument_name` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `instrument_type` | TODO | [`InstrumentType`](#InstrumentType) | `false` |
-| `unit` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `meter_name` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `meter_version` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `meter_schema_url` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `instrument_name` | Configure instrument name selection criteria.<br>If omitted or null, all instrument names match.<br> | * `string`<br>* `null`<br> | `false` |
+| `instrument_type` | Configure instrument type selection criteria.<br>Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.<br>If omitted or null, all instrument types match.<br> | [`InstrumentType`](#InstrumentType) | `false` |
+| `unit` | Configure the instrument unit selection criteria.<br>If omitted or null, all instrument units match.<br> | * `string`<br>* `null`<br> | `false` |
+| `meter_name` | Configure meter name selection criteria.<br>If omitted or null, all meter names match.<br> | * `string`<br>* `null`<br> | `false` |
+| `meter_version` | Configure meter version selection criteria.<br>If omitted or null, all meter versions match.<br> | * `string`<br>* `null`<br> | `false` |
+| `meter_schema_url` | Configure meter schema url selection criteria.<br>If omitted or null, all meter schema URLs match.<br> | * `string`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4957,11 +4957,11 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `description` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `aggregation` | TODO | [`Aggregation`](#Aggregation) | `false` |
-| `aggregation_cardinality_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
-| `attribute_keys` | TODO | [`IncludeExclude`](#IncludeExclude) | `false` |
+| `name` | Configure metric name of the resulting stream(s).<br>If omitted or null, the instrument's original name is used.<br> | * `string`<br>* `null`<br> | `false` |
+| `description` | Configure metric description of the resulting stream(s).<br>If omitted or null, the instrument's origin description is used.<br> | * `string`<br>* `null`<br> | `false` |
+| `aggregation` | Configure aggregation of the resulting stream(s). <br>Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.<br>If omitted, default is used.<br> | [`Aggregation`](#Aggregation) | `false` |
+| `aggregation_cardinality_limit` | Configure the aggregation cardinality limit.<br>If omitted or null, the metric reader's default cardinality limit is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `attribute_keys` | Configure attribute keys retained in the resulting stream(s).<br> | [`IncludeExclude`](#IncludeExclude) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -5014,8 +5014,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
-| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:9411/api/v2/spans is used.<br> | * `string`<br>* `null`<br> | `false` |
+| `timeout` | Configure max time (in milliseconds) to wait for each export. <br>Value must be non-negative. A value of 0 indicates indefinite.<br>If omitted or null, 10000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|

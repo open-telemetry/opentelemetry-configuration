@@ -108,12 +108,12 @@ types.forEach(metaSchemaType => {
                         formatted.push(' (see JSON schema for details)');
                     }
                     if (propertyTypes.length > 1) {
-                        formatted.push('<br/>');
+                        formatted.push('<br>');
                     }
                 });
             const isRequired = required !== undefined && required.includes(property.property);
 
-            output.push(`| \`${property.property}\` | ${property.description} | ${formatted.join("")} | \`${isRequired}\` |\n`);
+            output.push(`| \`${property.property}\` | ${property.description.split("\n").join("<br>")} | ${formatted.join("")} | \`${isRequired}\` |\n`);
         });
         output.push('\n');
 

@@ -5,7 +5,7 @@
     - property: drop
       description: TODO
     - property: explicit_bucket_histogram
-      description: TODO
+      description: Configure aggregation to be explicit_bucket_histogram.
     - property: base2_exponential_bucket_histogram
       description: TODO
     - property: last_value
@@ -19,9 +19,15 @@
 - type: AttributeLimits
   properties:
     - property: attribute_value_length_limit
-      description: TODO
+      description: |
+        Configure max attribute value size. 
+        Value must be non-negative.
+        If omitted or null, there is no limit.
     - property: attribute_count_limit
-      description: TODO
+      description: |
+        Configure max attribute count. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
 - type: AttributeNameValue
   properties:
     - property: name
@@ -49,45 +55,82 @@
 - type: BatchLogRecordProcessor
   properties:
     - property: schedule_delay
-      description: TODO
+      description: |
+        Configure delay interval (in milliseconds) between two consecutive exports. 
+        Value must be non-negative.
+        If omitted or null, 1000 is used.
     - property: export_timeout
-      description: TODO
+      description: |
+        Configure maximum allowed time (in milliseconds) to export data. 
+        Value must be non-negative. A value of 0 indicates no limit (infinity).
+        If omitted or null, 30000 is used.
     - property: max_queue_size
-      description: TODO
+      description: |
+        Configure maximum queue size. Value must be positive.
+        If omitted or null, 2048 is used.
     - property: max_export_batch_size
-      description: TODO
+      description: |
+        Configure maximum batch size. Value must be positive.
+        If omitted or null, 512 is used.
     - property: exporter
-      description: TODO
+      description: Configure exporter.
 - type: BatchSpanProcessor
   properties:
     - property: schedule_delay
-      description: TODO
+      description: |
+        Configure delay interval (in milliseconds) between two consecutive exports. 
+        Value must be non-negative.
+        If omitted or null, 5000 is used.
     - property: export_timeout
-      description: TODO
+      description: |
+        Configure maximum allowed time (in milliseconds) to export data. 
+        Value must be non-negative. A value of 0 indicates no limit (infinity).
+        If omitted or null, 30000 is used.
     - property: max_queue_size
-      description: TODO
+      description: |
+        Configure maximum queue size. Value must be positive.
+        If omitted or null, 2048 is used.
     - property: max_export_batch_size
-      description: TODO
+      description: |
+        Configure maximum batch size. Value must be positive.
+        If omitted or null, 512 is used.
     - property: exporter
-      description: TODO
+      description: Configure exporter.
 - type: CardinalityLimits
   properties:
     - property: default
-      description: TODO
+      description: |
+        Configure default cardinality limit for all instrument types.
+        Instrument-specific cardinality limits take priority. 
+        If omitted or null, 2000 is used.
     - property: counter
-      description: TODO
+      description: |
+        Configure default cardinality limit for counter instruments.
+        If omitted or null, the value from .default is used.
     - property: gauge
-      description: TODO
+      description: |
+        Configure default cardinality limit for gauge instruments.
+        If omitted or null, the value from .default is used.
     - property: histogram
-      description: TODO
+      description: |
+        Configure default cardinality limit for histogram instruments.
+        If omitted or null, the value from .default is used.
     - property: observable_counter
-      description: TODO
+      description: |
+        Configure default cardinality limit for observable_counter instruments.
+        If omitted or null, the value from .default is used.
     - property: observable_gauge
-      description: TODO
+      description: |
+        Configure default cardinality limit for observable_gauge instruments.
+        If omitted or null, the value from .default is used.
     - property: observable_up_down_counter
-      description: TODO
+      description: |
+        Configure default cardinality limit for observable_up_down_counter instruments.
+        If omitted or null, the value from .default is used.
     - property: up_down_counter
-      description: TODO
+      description: |
+        Configure default cardinality limit for up_down_counter instruments.
+        If omitted or null, the value from .default is used.
 - type: ConsoleExporter
   properties: []
 - type: DefaultAggregation
@@ -99,75 +142,89 @@
 - type: ExperimentalGeneralInstrumentation
   properties:
     - property: peer
-      description: TODO
+      description: |
+        Configure instrumentations following the peer semantic conventions.
+        See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
     - property: http
-      description: TODO
+      description: |
+        Configure instrumentations following the http semantic conventions.
+        See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
 - type: ExperimentalHttpInstrumentation
   properties:
     - property: client
-      description: TODO
+      description: Configure instrumentations following the http client semantic conventions.
     - property: server
-      description: TODO
+      description: Configure instrumentations following the http server semantic conventions.
 - type: ExperimentalInstrumentation
   properties:
     - property: general
-      description: TODO
+      description: |
+        Configure general SemConv options that may apply to multiple languages and instrumentations.
+        Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
     - property: cpp
-      description: TODO
+      description: Configure C++ language-specific instrumentation libraries.
     - property: dotnet
-      description: TODO
+      description: Configure .NET language-specific instrumentation libraries.
     - property: erlang
-      description: TODO
+      description: Configure Erlang language-specific instrumentation libraries.
     - property: go
-      description: TODO
+      description: Configure Go language-specific instrumentation libraries.
     - property: java
-      description: TODO
+      description: Configure Java language-specific instrumentation libraries.
     - property: js
-      description: TODO
+      description: Configure JavaScript language-specific instrumentation libraries.
     - property: php
-      description: TODO
+      description: Configure PHP language-specific instrumentation libraries.
     - property: python
-      description: TODO
+      description: Configure Python language-specific instrumentation libraries.
     - property: ruby
-      description: TODO
+      description: Configure Ruby language-specific instrumentation libraries.
     - property: rust
-      description: TODO
+      description: Configure Rust language-specific instrumentation libraries.
     - property: swift
-      description: TODO
+      description: Configure Swift language-specific instrumentation libraries.
 - type: ExperimentalLanguageSpecificInstrumentation
   properties: []
 - type: ExperimentalLoggerConfig
   properties:
     - property: disabled
-      description: TODO
+      description: Configure if the logger is enabled or not.
 - type: ExperimentalLoggerConfigurator
   properties:
     - property: default_config
-      description: TODO
+      description: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
     - property: loggers
-      description: TODO
+      description: Configure loggers.
 - type: ExperimentalLoggerMatcherAndConfig
   properties:
     - property: name
-      description: TODO
+      description: |
+        Configure logger names to match, evaluated as follows:
+
+         * If the logger name exactly matches.
+         * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
     - property: config
-      description: TODO
+      description: The logger config.
 - type: ExperimentalMeterConfig
   properties:
     - property: disabled
-      description: TODO
+      description: Configure if the meter is enabled or not.
 - type: ExperimentalMeterConfigurator
   properties:
     - property: default_config
-      description: TODO
+      description: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
     - property: meters
-      description: TODO
+      description: Configure meters.
 - type: ExperimentalMeterMatcherAndConfig
   properties:
     - property: name
-      description: TODO
+      description: |
+        Configure meter names to match, evaluated as follows:
+
+         * If the meter name exactly matches.
+         * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
     - property: config
-      description: TODO
+      description: The meter config.
 - type: ExperimentalOtlpFileExporter
   properties:
     - property: output_stream
@@ -187,47 +244,68 @@
 - type: ExperimentalPrometheusMetricExporter
   properties:
     - property: host
-      description: TODO
+      description: |
+        Configure host.
+        If omitted or null, localhost is used.
     - property: port
-      description: TODO
+      description: |
+        Configure port.
+        If omitted or null, 9464 is used.
     - property: without_units
-      description: TODO
+      description: |
+        Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.
+        If omitted or null, false is used.
     - property: without_type_suffix
-      description: TODO
+      description: |
+        Configure Prometheus Exporter to produce metrics without a type suffix.
+        If omitted or null, false is used.
     - property: without_scope_info
-      description: TODO
+      description: |
+        Configure Prometheus Exporter to produce metrics without a scope info metric.
+        If omitted or null, false is used.
     - property: with_resource_constant_labels
-      description: TODO
+      description: Configure Prometheus Exporter to add resource attributes as metrics attributes.
 - type: ExperimentalResourceDetection
   properties:
     - property: attributes
-      description: TODO
+      description: Configure attributes provided by resource detectors.
     - property: detectors
-      description: TODO
+      description: |
+        Configure resource detectors.
+        Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
+        If omitted or null, no resource detectors are enabled.
 - type: ExperimentalResourceDetector
   properties: []
 - type: ExperimentalTracerConfig
   properties:
     - property: disabled
-      description: TODO
+      description: Configure if the tracer is enabled or not.
 - type: ExperimentalTracerConfigurator
   properties:
     - property: default_config
-      description: TODO
+      description: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
     - property: tracers
-      description: TODO
+      description: Configure tracers.
 - type: ExperimentalTracerMatcherAndConfig
   properties:
     - property: name
-      description: TODO
+      description: |
+        Configure tracer names to match, evaluated as follows:
+
+         * If the tracer name exactly matches.
+         * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
     - property: config
-      description: TODO
+      description: The tracer config.
 - type: ExplicitBucketHistogramAggregation
   properties:
     - property: boundaries
-      description: TODO
+      description: |
+        Configure bucket boundaries.
+        If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.
     - property: record_min_max
-      description: TODO
+      description: |
+        Configure record min and max.
+        If omitted or null, true is used.
 - type: ExporterDefaultHistogramAggregation
   properties: []
 - type: ExporterTemporalityPreference
@@ -235,9 +313,19 @@
 - type: IncludeExclude
   properties:
     - property: included
-      description: TODO
+      description: |
+        Configure list of attribute key patterns to include from resource detectors.
+        Attribute keys from resource detectors are evaluated to match as follows:
+         * If the value of the attribute key exactly matches.
+         * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        If omitted, all attributes are included.
     - property: excluded
-      description: TODO
+      description: |
+        Configure list of attribute key patterns to exclude from resource detectors. Applies after .resource.detectors.attributes.included (i.e. excluded has higher priority than included).
+        Attribute keys from resource detectors are evaluated to match as follows:
+         * If the value of the attribute key exactly matches.
+         * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        If omitted, .included attributes are included.
 - type: InstrumentType
   properties: []
 - type: JaegerPropagator
@@ -255,53 +343,70 @@
 - type: LoggerProvider
   properties:
     - property: processors
-      description: TODO
+      description: Configure log record processors.
     - property: limits
-      description: TODO
+      description: Configure log record limits. See also attribute_limits.
     - property: logger_configurator/development
-      description: TODO
+      description: |
+        Configure loggers.
+        This type is in development and subject to breaking changes in minor versions.
 - type: LogRecordExporter
   properties:
     - property: otlp_http
-      description: TODO
+      description: Configure exporter to be OTLP with HTTP transport.
     - property: otlp_grpc
-      description: TODO
+      description: Configure exporter to be OTLP with gRPC transport.
     - property: otlp_file/development
-      description: TODO
+      description: |
+        Configure exporter to be OTLP with file transport.
+        This type is in development and subject to breaking changes in minor versions.
     - property: console
-      description: TODO
+      description: Configure exporter to be console.
 - type: LogRecordLimits
   properties:
     - property: attribute_value_length_limit
-      description: TODO
+      description: |
+        Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
+        Value must be non-negative.
+        If omitted or null, there is no limit.
     - property: attribute_count_limit
-      description: TODO
+      description: |
+        Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
 - type: LogRecordProcessor
   properties:
     - property: batch
-      description: TODO
+      description: Configure a batch log record processor.
     - property: simple
-      description: TODO
+      description: Configure a simple log record processor.
 - type: MeterProvider
   properties:
     - property: readers
-      description: TODO
+      description: Configure metric readers.
     - property: views
-      description: TODO
+      description: |
+        Configure views. 
+        Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
     - property: exemplar_filter
-      description: TODO
+      description: |
+        Configure the exemplar filter. 
+        Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
+        If omitted or null, trace_based is used.
     - property: meter_configurator/development
-      description: TODO
+      description: |
+        Configure meters.
+        This type is in development and subject to breaking changes in minor versions.
 - type: MetricProducer
   properties:
     - property: opencensus
-      description: TODO
+      description: Configure metric producer to be opencensus.
 - type: MetricReader
   properties:
     - property: periodic
-      description: TODO
+      description: Configure a periodic metric reader.
     - property: pull
-      description: TODO
+      description: Configure a pull based metric reader.
 - type: NameStringValuePair
   properties:
     - property: name
@@ -337,7 +442,9 @@
 - type: OtlpGrpcExporter
   properties:
     - property: endpoint
-      description: TODO
+      description: |
+        Configure endpoint.
+        If omitted or null, http://localhost:4317 is used.
     - property: certificate_file
       description: TODO
     - property: client_key_file
@@ -353,7 +460,10 @@
     - property: timeout
       description: TODO
     - property: insecure
-      description: TODO
+      description: |
+        Configure client transport security for the exporter's connection. 
+        Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
+        If omitted or null, false is used.
 - type: OtlpGrpcMetricExporter
   properties:
     - property: endpoint
@@ -399,11 +509,16 @@
     - property: timeout
       description: TODO
     - property: encoding
-      description: TODO
+      description: |
+        Configure the encoding used for messages. 
+        Values include: protobuf, json. Implementations may not support json.
+        If omitted or null, protobuf is used.
 - type: OtlpHttpMetricExporter
   properties:
     - property: endpoint
-      description: TODO
+      description: |
+        Configure endpoint, including the metric specific path.
+        If omitted or null, http://localhost:4318/v1/metrics is used.
     - property: certificate_file
       description: TODO
     - property: client_key_file
@@ -439,21 +554,34 @@
 - type: PeriodicMetricReader
   properties:
     - property: interval
-      description: TODO
+      description: |
+        Configure delay interval (in milliseconds) between start of two consecutive exports. 
+        Value must be non-negative.
+        If omitted or null, 60000 is used.
     - property: timeout
-      description: TODO
+      description: |
+        Configure maximum allowed time (in milliseconds) to export data. 
+        Value must be non-negative. A value of 0 indicates no limit (infinity).
+        If omitted or null, 30000 is used.
     - property: exporter
-      description: TODO
+      description: Configure exporter.
     - property: producers
-      description: TODO
+      description: Configure metric producers.
     - property: cardinality_limits
-      description: TODO
+      description: Configure cardinality limits.
 - type: Propagator
   properties:
     - property: composite
-      description: TODO
+      description: |
+        Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.
+        Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. 
+        If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
     - property: composite_list
-      description: TODO
+      description: |
+        Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.
+        The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+        Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. 
+        If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
 - type: PullMetricExporter
   properties:
     - property: prometheus/development
@@ -461,11 +589,11 @@
 - type: PullMetricReader
   properties:
     - property: exporter
-      description: TODO
+      description: Configure exporter.
     - property: producers
-      description: TODO
+      description: Configure metric producers.
     - property: cardinality_limits
-      description: TODO
+      description: Configure cardinality limits.
 - type: PushMetricExporter
   properties:
     - property: otlp_http
@@ -479,81 +607,112 @@
 - type: Resource
   properties:
     - property: attributes
-      description: TODO
+      description: |
+        Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
+        Entries must contain .name and .value, and may optionally include .type. If an entry's .type omitted or null, string is used.
+        The .value's type must match the .type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
     - property: detection/development
-      description: TODO
+      description: |
+        Configure resource detection.
+        This type is in development and subject to breaking changes in minor versions.
+        If omitted or null, resource detection is disabled.
     - property: schema_url
-      description: TODO
+      description: |
+        Configure resource schema URL.
+        If omitted or null, no schema URL is used.
     - property: attributes_list
-      description: TODO
+      description: |
+        Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
+        The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+        If omitted or null, no resource attributes are added.
 - type: Sampler
   properties:
     - property: always_off
-      description: TODO
+      description: Configure sampler to be always_off.
     - property: always_on
-      description: TODO
+      description: Configure sampler to be always_on.
     - property: jaeger_remote
       description: TODO
     - property: parent_based
-      description: TODO
+      description: Configure sampler to be parent_based.
     - property: trace_id_ratio_based
-      description: TODO
+      description: Configure sampler to be trace_id_ratio_based.
 - type: SimpleLogRecordProcessor
   properties:
     - property: exporter
-      description: TODO
+      description: Configure exporter.
 - type: SimpleSpanProcessor
   properties:
     - property: exporter
-      description: TODO
+      description: Configure exporter.
 - type: SpanExporter
   properties:
     - property: otlp_http
-      description: TODO
+      description: Configure exporter to be OTLP with HTTP transport.
     - property: otlp_grpc
-      description: TODO
+      description: Configure exporter to be OTLP with gRPC transport.
     - property: otlp_file/development
-      description: TODO
+      description: |
+        Configure exporter to be OTLP with file transport.
+        This type is in development and subject to breaking changes in minor versions.
     - property: console
-      description: TODO
+      description: Configure exporter to be console.
     - property: zipkin
-      description: TODO
+      description: Configure exporter to be zipkin.
 - type: SpanLimits
   properties:
     - property: attribute_value_length_limit
-      description: TODO
+      description: |
+        Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
+        Value must be non-negative.
+        If omitted or null, there is no limit.
     - property: attribute_count_limit
-      description: TODO
+      description: |
+        Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
     - property: event_count_limit
-      description: TODO
+      description: |
+        Configure max span event count. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
     - property: link_count_limit
-      description: TODO
+      description: |
+        Configure max span link count. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
     - property: event_attribute_count_limit
-      description: TODO
+      description: |
+        Configure max attributes per span event. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
     - property: link_attribute_count_limit
-      description: TODO
+      description: |
+        Configure max attributes per span link. 
+        Value must be non-negative.
+        If omitted or null, 128 is used.
 - type: SpanProcessor
   properties:
     - property: batch
-      description: TODO
+      description: Configure a batch span processor.
     - property: simple
-      description: TODO
+      description: Configure a simple span processor.
 - type: SumAggregation
   properties: []
 - type: TextMapPropagator
   properties:
     - property: tracecontext
-      description: TODO
+      description: Include the w3c trace context propagator.
     - property: baggage
-      description: TODO
+      description: Include the w3c baggage propagator.
     - property: b3
-      description: TODO
+      description: Include the zipkin b3 propagator.
     - property: b3multi
-      description: TODO
+      description: Include the zipkin b3 multi propagator.
     - property: jaeger
-      description: TODO
+      description: Include the jaeger propagator.
     - property: ottrace
-      description: TODO
+      description: Include the opentracing propagator.
 - type: TraceContextPropagator
   properties: []
 - type: TraceIdRatioBasedSampler
@@ -563,48 +722,82 @@
 - type: TracerProvider
   properties:
     - property: processors
-      description: TODO
+      description: Configure span processors.
     - property: limits
-      description: TODO
+      description: Configure span limits. See also attribute_limits.
     - property: sampler
-      description: TODO
+      description: |
+        Configure the sampler.
+        If omitted, parent based sampler with a root of always_on is used.
     - property: tracer_configurator/development
-      description: TODO
+      description: |
+        Configure tracers.
+        This type is in development and subject to breaking changes in minor versions.
 - type: View
   properties:
     - property: selector
-      description: TODO
+      description: |
+        Configure view selector. 
+        Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.
     - property: stream
-      description: TODO
+      description: Configure view stream.
 - type: ViewSelector
   properties:
     - property: instrument_name
-      description: TODO
+      description: |
+        Configure instrument name selection criteria.
+        If omitted or null, all instrument names match.
     - property: instrument_type
-      description: TODO
+      description: |
+        Configure instrument type selection criteria.
+        Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.
+        If omitted or null, all instrument types match.
     - property: unit
-      description: TODO
+      description: |
+        Configure the instrument unit selection criteria.
+        If omitted or null, all instrument units match.
     - property: meter_name
-      description: TODO
+      description: |
+        Configure meter name selection criteria.
+        If omitted or null, all meter names match.
     - property: meter_version
-      description: TODO
+      description: |
+        Configure meter version selection criteria.
+        If omitted or null, all meter versions match.
     - property: meter_schema_url
-      description: TODO
+      description: |
+        Configure meter schema url selection criteria.
+        If omitted or null, all meter schema URLs match.
 - type: ViewStream
   properties:
     - property: name
-      description: TODO
+      description: |
+        Configure metric name of the resulting stream(s).
+        If omitted or null, the instrument's original name is used.
     - property: description
-      description: TODO
+      description: |
+        Configure metric description of the resulting stream(s).
+        If omitted or null, the instrument's origin description is used.
     - property: aggregation
-      description: TODO
+      description: |
+        Configure aggregation of the resulting stream(s). 
+        Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
+        If omitted, default is used.
     - property: aggregation_cardinality_limit
-      description: TODO
+      description: |
+        Configure the aggregation cardinality limit.
+        If omitted or null, the metric reader's default cardinality limit is used.
     - property: attribute_keys
-      description: TODO
+      description: |
+        Configure attribute keys retained in the resulting stream(s).
 - type: ZipkinSpanExporter
   properties:
     - property: endpoint
-      description: TODO
+      description: |
+        Configure endpoint.
+        If omitted or null, http://localhost:9411/api/v2/spans is used.
     - property: timeout
-      description: TODO
+      description: |
+        Configure max time (in milliseconds) to wait for each export. 
+        Value must be non-negative. A value of 0 indicates indefinite.
+        If omitted or null, 10000 is used.
