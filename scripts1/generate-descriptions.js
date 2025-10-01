@@ -1,6 +1,6 @@
 import {
     readJsonSchemaTypes
-} from "./schema.js";
+} from "./json-schema.js";
 
 const jsonSchemaTypes = readJsonSchemaTypes();
 

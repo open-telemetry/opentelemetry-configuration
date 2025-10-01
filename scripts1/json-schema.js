@@ -1,23 +1,8 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
 import fs from 'fs';
-import yaml from 'yaml';
+import {MetaSchemaProperty, MetaSchemaType} from "./meta-schema.js";
+import {schemaDirPath} from "./util.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-export const metaSchemaFileName = "meta_schema.yaml";
-const schemaDirPath = __dirname + "/../schema/";
-const metaSchemaPath = schemaDirPath + metaSchemaFileName;
-
-export function readMetaSchemaDoc() {
-    const metaSchemaContent = fs.readFileSync(metaSchemaPath, "utf-8");
-    return yaml.parse(metaSchemaContent);
-};
-
-export function writeMetaSchemaTypes(metaSchemaTypes) {
-    fs.writeFileSync(metaSchemaPath, yaml.stringify(metaSchemaTypes, { lineWidth: 0 }));
-}
+const localDefPrefix = '#/$defs/';
 
 export function readJsonSchemaTypes() {
     const schemasByType = {};
@@ -69,8 +54,6 @@ export function readJsonSchemaTypes() {
     return Object.values(schemasByType);
 }
 
-const localDefPrefix = '#/$defs/';
-
 function resolveRef(ref, schemasByType) {
     if (ref.startsWith(localDefPrefix)) {
         const type = ref.substring(localDefPrefix.length);
@@ -88,9 +71,6 @@ function getDefs(jsonSchema) {
 }
 
 function recursiveAddPathPatterns(currentJsonSchemaType, schemasByType, currentPath, parentTypes) {
-    if (currentJsonSchemaType.type === 'Sampler') {
-        console.log("Sampler!");
-    }
     currentJsonSchemaType.pathPatterns.push(currentPath);
 
     const properties = currentJsonSchemaType.schema['properties'];
@@ -159,36 +139,5 @@ export class JsonSchemaType {
             });
         }
         return new MetaSchemaType(this.type, properties);
-    }
-}
-
-export class MetaSchemaProperty {
-    property;
-    description;
-
-    constructor(property, description) {
-        this.property = property;
-        this.description = description;
-    }
-
-    toJson() {
-        return { property: this.property, description: this.description };
-    }
-}
-
-export class MetaSchemaType {
-    type;
-    properties;
-
-    constructor(type, properties) {
-        this.type = type;
-        this.properties = properties;
-    }
-
-    toJson() {
-        const properties = this.properties.map(property => property.toJson());
-        properties.sort((a, b) => a.property.localeCompare(b.property));
-
-        return { type: this.type, properties: this.properties };
     }
 }

@@ -6,7 +6,8 @@
     "generate-meta-schema": "node scripts/generate-meta-schema.js",
     "validate-meta-schema": "node scripts/validate-meta-schema.js",
     "fix-meta-schema": "node scripts1/fix-meta-schema.js",
-    "generate-descriptions-new": "node scripts1/generate-descriptions.js"
+    "generate-descriptions-new": "node scripts1/generate-descriptions.js",
+    "generate-markdown-new": "node scripts1/generate-markdown.js"
   },
   "devDependencies": {
     "@json-schema-tools/traverse": "^1.10.4",
