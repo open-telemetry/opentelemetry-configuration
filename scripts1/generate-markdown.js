@@ -1,5 +1,5 @@
 import {
-    readJsonSchemaTypes
+    readJsonSchemaTypes, resolveRef
 } from "./json-schema.js";
 import {readAndFixMetaSchemaTypes} from "./meta-schema.js";
 import fs from "node:fs";
@@ -17,6 +17,59 @@ readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type);
 const output = [];
 const languages = ['c++', 'c#', 'erlang', 'go', 'java', 'js', 'php', 'python', 'ruby', 'rust', 'swift']
 
+class JsonSchemaType {
+    type;
+    isPrimitive;
+    isArray;
+    isOneOf;
+
+    constructor(type, isPrimitive, isArray, isOneOf) {
+        this.type = type;
+        this.isPrimitive = isPrimitive;
+        this.isArray = isArray;
+        this.isOneOf = isOneOf;
+    }
+}
+
+function resolvePropertyTypes(jsonSchemaType, property, jsonSchemaTypesByType) {
+    const properties = jsonSchemaType.schema['properties'];
+    if (!properties) {
+        throw new Error(`Unable to resolve property ${property} for ${jsonSchemaType.type}. Type doesn't have properties.`)
+    }
+    const jsonSchemaProperty = properties[property];
+    if (!jsonSchemaProperty) {
+        throw new Error(`Unable to resolve property ${property} for ${jsonSchemaType.type}. Type doesn't have ${property}.`);
+    }
+    const type = jsonSchemaProperty['type'];
+    const ref = jsonSchemaProperty['$ref'];
+    const items = jsonSchemaProperty['items'];
+    const oneOf = jsonSchemaProperty['oneOf'];
+    if (type === 'array' && items) {
+        const itemsType = items['type'];
+        const itemsRef = items['$ref'];
+        if (itemsType) {
+            const typeArr = Array.isArray(type) ? type : [type];
+            return typeArr.map(item => new JsonSchemaType(item, true, true, false));
+        }
+        if (itemsRef) {
+            const resolvedRef = resolveRef(itemsRef, jsonSchemaTypesByType);
+            return [new JsonSchemaType(resolvedRef.type, false, true, false)];
+        }
+    }
+    if (type) {
+        const typeArr = Array.isArray(type) ? type : [type];
+        return typeArr.map(item => new JsonSchemaType(item, true, false, false));
+    }
+    if (ref) {
+        const resolvedRef = resolveRef(ref, jsonSchemaTypesByType);
+        return [new JsonSchemaType(resolvedRef.type, false, false, false)];
+    }
+    if (oneOf) {
+        return [new JsonSchemaType('oneOf', false, false, true)];
+    }
+    throw new Error(`Unable to resolve types of property ${property}: ${JSON.stringify(jsonSchemaType)}.`)
+}
+
 types.sort((a, b) => a.type.localeCompare(b.type));
 types.forEach(metaSchemaType => {
     const type = metaSchemaType.type;
@@ -24,6 +77,7 @@ types.forEach(metaSchemaType => {
     if (!jsonSchemaType) {
         throw new Error(`JSON schema type not found for meta schema type ${type}.`);
     }
+    const required = jsonSchemaType.schema['required'];
 
     // Heading
     output.push(`### ${type} <a id="${type}"></a>\n\n`);
@@ -33,10 +87,33 @@ types.forEach(metaSchemaType => {
         output.push("No properties.\n\n");
     } else {
         // Property type and description table
-        output.push(`| Property | Type | Description |\n`);
-        output.push("|---|---|---|\n");
+        output.push(`| Property | Description | Type | Required? |\n`);
+        output.push("|---|---|---|---|\n");
         metaSchemaType.properties.forEach(property => {
-           output.push(`| ${property.property} | TODO | ${property.description} |\n`);
+            const formatted = [];
+            const propertyTypes = resolvePropertyTypes(jsonSchemaType, property.property, jsonSchemaTypesByType);
+            propertyTypes.forEach(type => {
+                    if (propertyTypes.length > 1) {
+                        formatted.push('* ');
+                    }
+                    if (type.isArray) {
+                        formatted.push('`array` of ')
+                    }
+                    if (type.isPrimitive || type.isOneOf) {
+                        formatted.push(`\`${type.type}\``);
+                    } else {
+                        formatted.push(`[\`${type.type}\`](#${type.type})`);
+                    }
+                    if (type.isOneOf) {
+                        formatted.push(' (see JSON schema for details)');
+                    }
+                    if (propertyTypes.length > 1) {
+                        formatted.push('<br/>');
+                    }
+                });
+            const isRequired = required !== undefined && required.includes(property.property);
+
+            output.push(`| \`${property.property}\` | ${property.description} | ${formatted.join("")} | \`${isRequired}\` |\n`);
         });
         output.push('\n');
 
@@ -48,8 +125,8 @@ types.forEach(metaSchemaType => {
         languages.forEach(language => output.push(`---|`));
         output.push('\n');
         metaSchemaType.properties.forEach(property => {
-            output.push(`| ${property.property} |`);
-            languages.forEach(language => output.push(`TODO |`));
+            output.push(`| \`${property.property}\` |`);
+            languages.forEach(language => output.push(`unknown |`));
             output.push('\n');
         });
         output.push('\n');

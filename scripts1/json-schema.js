@@ -5,7 +5,7 @@ import {schemaDirPath} from "./util.js";
 const localDefPrefix = '#/$defs/';
 
 export function readJsonSchemaTypes() {
-    const schemasByType = {};
+    const typesByType = {};
     const topLevelSchemas = {};
 
     fs.readdirSync(schemaDirPath)
@@ -16,20 +16,20 @@ export function readJsonSchemaTypes() {
             topLevelSchemas[file] = fileContent;
 
             if (file === 'opentelemetry_configuration.json') {
-                schemasByType['OpenTelemetryConfiguration'] = new JsonSchemaType('OpentelemetryConfiguration', file, fileContent, '.', fileContent);
+                typesByType['OpenTelemetryConfiguration'] = new JsonSchemaType('OpentelemetryConfiguration', file, fileContent, '.', fileContent);
             }
 
             Object.entries(getDefs(fileContent)).forEach(([type, schema]) => {
                 const jsonSchemaPath = `${localDefPrefix}${type}`;
-                if (type in schemasByType) {
-                    throw new Error(`${type} already exists in schemasByName with definition: ` + schemasByType[type]);
+                if (type in typesByType) {
+                    throw new Error(`${type} already exists in schemasByName with definition: ` + typesByType[type]);
                 }
-                schemasByType[type] = new JsonSchemaType(type, file, fileContent, jsonSchemaPath, schema);
+                typesByType[type] = new JsonSchemaType(type, file, fileContent, jsonSchemaPath, schema);
             });
         });
 
     // Resolve refs to top-level types
-    Object.values(schemasByType).forEach(jsonSchemaType => {
+    Object.values(typesByType).forEach(jsonSchemaType => {
         const ref = jsonSchemaType.schema['$ref'];
         if (!ref) {
             return;
@@ -45,21 +45,27 @@ export function readJsonSchemaTypes() {
 
     // Compute path patterns for types
     // DFS starting at OpenTelemetryConfigurationType
-    let current = schemasByType['OpenTelemetryConfiguration'];
+    let current = typesByType['OpenTelemetryConfiguration'];
     if (current === null) {
         throw new Error("Missing OpenTelemetryConfiguration type");
     }
-    recursiveAddPathPatterns(current, schemasByType, ".", []);
+    recursiveAddPathPatterns(current, typesByType, ".", []);
 
-    return Object.values(schemasByType);
+    return Object.values(typesByType);
 }
 
-function resolveRef(ref, schemasByType) {
+export function resolveRef(ref, typesByType) {
+    let response;
     if (ref.startsWith(localDefPrefix)) {
         const type = ref.substring(localDefPrefix.length);
-        return schemasByType[type];
+        response = typesByType[type];
+    } else {
+        response = Object.values(typesByType).find(jsonSchemaType => jsonSchemaType.jsonSchemaRef() === ref);
     }
-    return Object.values(schemasByType).find(jsonSchemaType => jsonSchemaType.jsonSchemaRef() === ref);
+    if (!response) {
+        throw new Error(`Unable to find type for JSON schema ref ${ref}`);
+    }
+    return response;
 }
 
 function getDefs(jsonSchema) {
@@ -70,7 +76,7 @@ function getDefs(jsonSchema) {
     return defs;
 }
 
-function recursiveAddPathPatterns(currentJsonSchemaType, schemasByType, currentPath, parentTypes) {
+function recursiveAddPathPatterns(currentJsonSchemaType, typesByType, currentPath, parentTypes) {
     currentJsonSchemaType.pathPatterns.push(currentPath);
 
     const properties = currentJsonSchemaType.schema['properties'];
@@ -90,10 +96,7 @@ function recursiveAddPathPatterns(currentJsonSchemaType, schemasByType, currentP
         if (!ref) {
             return;
         }
-        const resolvedRef = resolveRef(ref, schemasByType);
-        if (!resolvedRef) {
-            throw new Error(`Failed to find type for json schema ref ${ref}`);
-        }
+        const resolvedRef = resolveRef(ref, typesByType);
         if (parentTypes.find(type => type.type === resolvedRef.type)) {
             return; // Recursive reference
         }
@@ -102,7 +105,7 @@ function recursiveAddPathPatterns(currentJsonSchemaType, schemasByType, currentP
         if (isArray) {
             nextPath += '[]';
         }
-        recursiveAddPathPatterns(resolvedRef, schemasByType, nextPath, nextParentTypes);
+        recursiveAddPathPatterns(resolvedRef, typesByType, nextPath, nextParentTypes);
     });
 }
 

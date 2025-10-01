@@ -1,22 +1,22 @@
 ### Aggregation <a id="Aggregation"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| default | TODO | TODO |
-| drop | TODO | TODO |
-| explicit_bucket_histogram | TODO | TODO |
-| base2_exponential_bucket_histogram | TODO | TODO |
-| last_value | TODO | TODO |
-| sum | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `default` | TODO | [`DefaultAggregation`](#DefaultAggregation) | `false` |
+| `drop` | TODO | [`DropAggregation`](#DropAggregation) | `false` |
+| `explicit_bucket_histogram` | TODO | [`ExplicitBucketHistogramAggregation`](#ExplicitBucketHistogramAggregation) | `false` |
+| `base2_exponential_bucket_histogram` | TODO | [`Base2ExponentialBucketHistogramAggregation`](#Base2ExponentialBucketHistogramAggregation) | `false` |
+| `last_value` | TODO | [`LastValueAggregation`](#LastValueAggregation) | `false` |
+| `sum` | TODO | [`SumAggregation`](#SumAggregation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| default |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| drop |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| explicit_bucket_histogram |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| base2_exponential_bucket_histogram |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| last_value |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| sum |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `default` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `drop` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `explicit_bucket_histogram` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `base2_exponential_bucket_histogram` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `last_value` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `sum` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -92,15 +92,15 @@ No properties.
 * `.tracer_provider.sampler.always_on`</details>
 ### AttributeLimits <a id="AttributeLimits"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| attribute_value_length_limit | TODO | TODO |
-| attribute_count_limit | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `attribute_value_length_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `attribute_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| attribute_value_length_limit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| attribute_count_limit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `attribute_value_length_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `attribute_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -130,17 +130,17 @@ No properties.
 * `.attribute_limits`</details>
 ### AttributeNameValue <a id="AttributeNameValue"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| name | TODO | TODO |
-| value | TODO | TODO |
-| type | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `name` | TODO | `string` | `true` |
+| `value` | TODO | `oneOf` (see JSON schema for details) | `true` |
+| `type` | TODO | [`AttributeType`](#AttributeType) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| name |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| value |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| type |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `value` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `type` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -288,17 +288,17 @@ No properties.
 * `.propagator.composite[].baggage`</details>
 ### Base2ExponentialBucketHistogramAggregation <a id="Base2ExponentialBucketHistogramAggregation"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| max_scale | TODO | TODO |
-| max_size | TODO | TODO |
-| record_min_max | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `max_scale` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `max_size` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `record_min_max` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| max_scale |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| max_size |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| record_min_max |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `max_scale` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `max_size` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `record_min_max` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -337,21 +337,21 @@ No properties.
 * `.meter_provider.views[].stream.aggregation.base2_exponential_bucket_histogram`</details>
 ### BatchLogRecordProcessor <a id="BatchLogRecordProcessor"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| schedule_delay | TODO | TODO |
-| export_timeout | TODO | TODO |
-| max_queue_size | TODO | TODO |
-| max_export_batch_size | TODO | TODO |
-| exporter | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `schedule_delay` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `export_timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `max_queue_size` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `max_export_batch_size` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `exporter` | TODO | [`LogRecordExporter`](#LogRecordExporter) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| schedule_delay |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| export_timeout |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| max_queue_size |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| max_export_batch_size |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| exporter |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `schedule_delay` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `export_timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `max_queue_size` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `max_export_batch_size` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -403,21 +403,21 @@ No properties.
 * `.logger_provider.processors[].batch`</details>
 ### BatchSpanProcessor <a id="BatchSpanProcessor"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| schedule_delay | TODO | TODO |
-| export_timeout | TODO | TODO |
-| max_queue_size | TODO | TODO |
-| max_export_batch_size | TODO | TODO |
-| exporter | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `schedule_delay` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `export_timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `max_queue_size` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `max_export_batch_size` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `exporter` | TODO | [`SpanExporter`](#SpanExporter) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| schedule_delay |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| export_timeout |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| max_queue_size |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| max_export_batch_size |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| exporter |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `schedule_delay` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `export_timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `max_queue_size` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `max_export_batch_size` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -469,27 +469,27 @@ No properties.
 * `.tracer_provider.processors[].batch`</details>
 ### CardinalityLimits <a id="CardinalityLimits"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| default | TODO | TODO |
-| counter | TODO | TODO |
-| gauge | TODO | TODO |
-| histogram | TODO | TODO |
-| observable_counter | TODO | TODO |
-| observable_gauge | TODO | TODO |
-| observable_up_down_counter | TODO | TODO |
-| up_down_counter | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `default` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `counter` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `gauge` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `histogram` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `observable_counter` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `observable_gauge` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `observable_up_down_counter` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `up_down_counter` | TODO | * `integer`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| default |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| counter |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| gauge |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| histogram |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| observable_counter |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| observable_gauge |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| observable_up_down_counter |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| up_down_counter |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `default` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `counter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `gauge` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `histogram` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `observable_counter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `observable_gauge` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `observable_up_down_counter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `up_down_counter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -643,15 +643,15 @@ No properties.
 * `.meter_provider.exemplar_filter`</details>
 ### ExperimentalGeneralInstrumentation <a id="ExperimentalGeneralInstrumentation"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| peer | TODO | TODO |
-| http | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `peer` | TODO | [`ExperimentalPeerInstrumentation`](#ExperimentalPeerInstrumentation) | `false` |
+| `http` | TODO | [`ExperimentalHttpInstrumentation`](#ExperimentalHttpInstrumentation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| peer |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| http |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `peer` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `http` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -675,15 +675,15 @@ No properties.
 * `.instrumentation/development.general`</details>
 ### ExperimentalHttpInstrumentation <a id="ExperimentalHttpInstrumentation"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| client | TODO | TODO |
-| server | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `client` | TODO | `object` | `false` |
+| `server` | TODO | `object` | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| client |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| server |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `client` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `server` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -737,35 +737,35 @@ No properties.
 * `.instrumentation/development.general.http`</details>
 ### ExperimentalInstrumentation <a id="ExperimentalInstrumentation"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| general | TODO | TODO |
-| cpp | TODO | TODO |
-| dotnet | TODO | TODO |
-| erlang | TODO | TODO |
-| go | TODO | TODO |
-| java | TODO | TODO |
-| js | TODO | TODO |
-| php | TODO | TODO |
-| python | TODO | TODO |
-| ruby | TODO | TODO |
-| rust | TODO | TODO |
-| swift | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `general` | TODO | [`ExperimentalGeneralInstrumentation`](#ExperimentalGeneralInstrumentation) | `false` |
+| `cpp` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `dotnet` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `erlang` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `go` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `java` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `js` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `php` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `python` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `ruby` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `rust` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `swift` | TODO | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| general |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| cpp |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| dotnet |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| erlang |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| go |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| java |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| js |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| php |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| python |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| ruby |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| rust |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| swift |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `general` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `cpp` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `dotnet` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `erlang` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `go` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `java` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `js` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `php` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `python` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `ruby` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `rust` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `swift` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -937,13 +937,13 @@ No properties.
 * `.instrumentation/development.cpp`* `.instrumentation/development.dotnet`* `.instrumentation/development.erlang`* `.instrumentation/development.go`* `.instrumentation/development.java`* `.instrumentation/development.js`* `.instrumentation/development.php`* `.instrumentation/development.python`* `.instrumentation/development.ruby`* `.instrumentation/development.rust`* `.instrumentation/development.swift`</details>
 ### ExperimentalLoggerConfig <a id="ExperimentalLoggerConfig"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| disabled | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `disabled` | TODO | `boolean` | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| disabled |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `disabled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -968,15 +968,15 @@ No properties.
 * `.logger_provider.logger_configurator/development.default_config`* `.logger_provider.logger_configurator/development.loggers[].config`</details>
 ### ExperimentalLoggerConfigurator <a id="ExperimentalLoggerConfigurator"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| default_config | TODO | TODO |
-| loggers | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `default_config` | TODO | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
+| `loggers` | TODO | `array` of [`ExperimentalLoggerMatcherAndConfig`](#ExperimentalLoggerMatcherAndConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| default_config |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| loggers |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `default_config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `loggers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1005,15 +1005,15 @@ No properties.
 * `.logger_provider.logger_configurator/development`</details>
 ### ExperimentalLoggerMatcherAndConfig <a id="ExperimentalLoggerMatcherAndConfig"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| name | TODO | TODO |
-| config | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `name` | TODO | `string` | `false` |
+| `config` | TODO | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| name |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| config |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1041,13 +1041,13 @@ No properties.
 * `.logger_provider.logger_configurator/development.loggers[]`</details>
 ### ExperimentalMeterConfig <a id="ExperimentalMeterConfig"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| disabled | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `disabled` | TODO | `boolean` | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| disabled |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `disabled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1072,15 +1072,15 @@ No properties.
 * `.meter_provider.meter_configurator/development.default_config`* `.meter_provider.meter_configurator/development.meters[].config`</details>
 ### ExperimentalMeterConfigurator <a id="ExperimentalMeterConfigurator"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| default_config | TODO | TODO |
-| meters | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `default_config` | TODO | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
+| `meters` | TODO | `array` of [`ExperimentalMeterMatcherAndConfig`](#ExperimentalMeterMatcherAndConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| default_config |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| meters |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `default_config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `meters` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1109,15 +1109,15 @@ No properties.
 * `.meter_provider.meter_configurator/development`</details>
 ### ExperimentalMeterMatcherAndConfig <a id="ExperimentalMeterMatcherAndConfig"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| name | TODO | TODO |
-| config | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `name` | TODO | `string` | `false` |
+| `config` | TODO | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| name |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| config |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1145,13 +1145,13 @@ No properties.
 * `.meter_provider.meter_configurator/development.meters[]`</details>
 ### ExperimentalOtlpFileExporter <a id="ExperimentalOtlpFileExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| output_stream | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `output_stream` | TODO | * `string`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| output_stream |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `output_stream` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1178,17 +1178,17 @@ No properties.
 * `.logger_provider.processors[].batch.exporter.otlp_file/development`* `.logger_provider.processors[].simple.exporter.otlp_file/development`* `.tracer_provider.processors[].batch.exporter.otlp_file/development`* `.tracer_provider.processors[].simple.exporter.otlp_file/development`</details>
 ### ExperimentalOtlpFileMetricExporter <a id="ExperimentalOtlpFileMetricExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| output_stream | TODO | TODO |
-| temporality_preference | TODO | TODO |
-| default_histogram_aggregation | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `output_stream` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
+| `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| output_stream |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| temporality_preference |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| default_histogram_aggregation |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `output_stream` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `temporality_preference` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `default_histogram_aggregation` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1221,13 +1221,13 @@ No properties.
 * `.meter_provider.readers[].periodic.exporter.otlp_file/development`</details>
 ### ExperimentalPeerInstrumentation <a id="ExperimentalPeerInstrumentation"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| service_mapping | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `service_mapping` | TODO | `array` of `array` | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| service_mapping |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `service_mapping` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1264,23 +1264,23 @@ No properties.
 * `.instrumentation/development.general.peer`</details>
 ### ExperimentalPrometheusMetricExporter <a id="ExperimentalPrometheusMetricExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| host | TODO | TODO |
-| port | TODO | TODO |
-| without_units | TODO | TODO |
-| without_type_suffix | TODO | TODO |
-| without_scope_info | TODO | TODO |
-| with_resource_constant_labels | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `host` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `port` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `without_units` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
+| `without_type_suffix` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
+| `without_scope_info` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
+| `with_resource_constant_labels` | TODO | [`IncludeExclude`](#IncludeExclude) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| host |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| port |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| without_units |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| without_type_suffix |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| without_scope_info |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| with_resource_constant_labels |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `host` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `port` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `without_units` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `without_type_suffix` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `without_scope_info` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `with_resource_constant_labels` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1334,15 +1334,15 @@ No properties.
 * `.meter_provider.readers[].pull.exporter.prometheus/development`</details>
 ### ExperimentalResourceDetection <a id="ExperimentalResourceDetection"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| attributes | TODO | TODO |
-| detectors | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `attributes` | TODO | [`IncludeExclude`](#IncludeExclude) | `false` |
+| `detectors` | TODO | `array` of [`ExperimentalResourceDetector`](#ExperimentalResourceDetector) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| attributes |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| detectors |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `attributes` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `detectors` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1395,13 +1395,13 @@ No properties.
 * `.resource.detection/development.detectors[]`</details>
 ### ExperimentalTracerConfig <a id="ExperimentalTracerConfig"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| disabled | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `disabled` | TODO | `boolean` | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| disabled |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `disabled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1429,15 +1429,15 @@ No properties.
 * `.tracer_provider.tracer_configurator/development.default_config`* `.tracer_provider.tracer_configurator/development.tracers[].config`</details>
 ### ExperimentalTracerConfigurator <a id="ExperimentalTracerConfigurator"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| default_config | TODO | TODO |
-| tracers | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `default_config` | TODO | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `false` |
+| `tracers` | TODO | `array` of [`ExperimentalTracerMatcherAndConfig`](#ExperimentalTracerMatcherAndConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| default_config |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| tracers |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `default_config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `tracers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1466,15 +1466,15 @@ No properties.
 * `.tracer_provider.tracer_configurator/development`</details>
 ### ExperimentalTracerMatcherAndConfig <a id="ExperimentalTracerMatcherAndConfig"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| name | TODO | TODO |
-| config | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `name` | TODO | `string` | `true` |
+| `config` | TODO | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| name |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| config |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1506,15 +1506,15 @@ No properties.
 * `.tracer_provider.tracer_configurator/development.tracers[]`</details>
 ### ExplicitBucketHistogramAggregation <a id="ExplicitBucketHistogramAggregation"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| boundaries | TODO | TODO |
-| record_min_max | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `boundaries` | TODO | `array` of `array` | `false` |
+| `record_min_max` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| boundaries |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| record_min_max |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `boundaries` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `record_min_max` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1592,15 +1592,15 @@ No properties.
 * `.meter_provider.readers[].periodic.exporter.otlp_http.temporality_preference`* `.meter_provider.readers[].periodic.exporter.otlp_grpc.temporality_preference`* `.meter_provider.readers[].periodic.exporter.otlp_file/development.temporality_preference`</details>
 ### IncludeExclude <a id="IncludeExclude"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| included | TODO | TODO |
-| excluded | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `included` | TODO | `array` of `array` | `false` |
+| `excluded` | TODO | `array` of `array` | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| included |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| excluded |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `included` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `excluded` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1676,17 +1676,17 @@ No properties.
 * `.propagator.composite[].jaeger`</details>
 ### JaegerRemoteSampler <a id="JaegerRemoteSampler"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| endpoint | TODO | TODO |
-| interval | TODO | TODO |
-| initial_sampler | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `interval` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `initial_sampler` | TODO | [`Sampler`](#Sampler) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| endpoint |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| interval |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| initial_sampler |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `interval` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `initial_sampler` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1742,17 +1742,17 @@ No properties.
 * `.meter_provider.views[].stream.aggregation.last_value`</details>
 ### LoggerProvider <a id="LoggerProvider"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| processors | TODO | TODO |
-| limits | TODO | TODO |
-| logger_configurator/development | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `processors` | TODO | `array` of [`LogRecordProcessor`](#LogRecordProcessor) | `true` |
+| `limits` | TODO | [`LogRecordLimits`](#LogRecordLimits) | `false` |
+| `logger_configurator/development` | TODO | [`ExperimentalLoggerConfigurator`](#ExperimentalLoggerConfigurator) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| processors |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| limits |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| logger_configurator/development |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `processors` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `limits` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `logger_configurator/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1957,19 +1957,19 @@ No properties.
 * `.logger_provider`</details>
 ### LogRecordExporter <a id="LogRecordExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| otlp_http | TODO | TODO |
-| otlp_grpc | TODO | TODO |
-| otlp_file/development | TODO | TODO |
-| console | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `otlp_http` | TODO | [`OtlpHttpExporter`](#OtlpHttpExporter) | `false` |
+| `otlp_grpc` | TODO | [`OtlpGrpcExporter`](#OtlpGrpcExporter) | `false` |
+| `otlp_file/development` | TODO | [`ExperimentalOtlpFileExporter`](#ExperimentalOtlpFileExporter) | `false` |
+| `console` | TODO | [`ConsoleExporter`](#ConsoleExporter) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| otlp_http |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| otlp_grpc |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| otlp_file/development |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| console |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `otlp_http` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `otlp_grpc` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `otlp_file/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `console` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2009,15 +2009,15 @@ No properties.
 * `.logger_provider.processors[].batch.exporter`* `.logger_provider.processors[].simple.exporter`</details>
 ### LogRecordLimits <a id="LogRecordLimits"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| attribute_value_length_limit | TODO | TODO |
-| attribute_count_limit | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `attribute_value_length_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `attribute_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| attribute_value_length_limit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| attribute_count_limit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `attribute_value_length_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `attribute_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2049,15 +2049,15 @@ No properties.
 * `.logger_provider.limits`</details>
 ### LogRecordProcessor <a id="LogRecordProcessor"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| batch | TODO | TODO |
-| simple | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `batch` | TODO | [`BatchLogRecordProcessor`](#BatchLogRecordProcessor) | `false` |
+| `simple` | TODO | [`SimpleLogRecordProcessor`](#SimpleLogRecordProcessor) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| batch |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| simple |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `batch` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `simple` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2090,19 +2090,19 @@ No properties.
 * `.logger_provider.processors[]`</details>
 ### MeterProvider <a id="MeterProvider"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| readers | TODO | TODO |
-| views | TODO | TODO |
-| exemplar_filter | TODO | TODO |
-| meter_configurator/development | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `readers` | TODO | `array` of [`MetricReader`](#MetricReader) | `true` |
+| `views` | TODO | `array` of [`View`](#View) | `false` |
+| `exemplar_filter` | TODO | [`ExemplarFilter`](#ExemplarFilter) | `false` |
+| `meter_configurator/development` | TODO | [`ExperimentalMeterConfigurator`](#ExperimentalMeterConfigurator) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| readers |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| views |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| exemplar_filter |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| meter_configurator/development |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `readers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `views` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `exemplar_filter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `meter_configurator/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2830,13 +2830,13 @@ No properties.
 * `.meter_provider`</details>
 ### MetricProducer <a id="MetricProducer"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| opencensus | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `opencensus` | TODO | [`OpenCensusMetricProducer`](#OpenCensusMetricProducer) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| opencensus |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `opencensus` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2867,15 +2867,15 @@ No properties.
 * `.meter_provider.readers[].periodic.producers[]`* `.meter_provider.readers[].pull.producers[]`</details>
 ### MetricReader <a id="MetricReader"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| periodic | TODO | TODO |
-| pull | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `periodic` | TODO | [`PeriodicMetricReader`](#PeriodicMetricReader) | `false` |
+| `pull` | TODO | [`PullMetricReader`](#PullMetricReader) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| periodic |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| pull |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `periodic` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `pull` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2901,15 +2901,15 @@ No properties.
 * `.meter_provider.readers[]`</details>
 ### NameStringValuePair <a id="NameStringValuePair"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| name | TODO | TODO |
-| value | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `name` | TODO | `string` | `true` |
+| `value` | TODO | * `string`<br/>* `null`<br/> | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| name |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| value |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `value` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2959,31 +2959,31 @@ No properties.
 * `.meter_provider.readers[].periodic.producers[].opencensus`* `.meter_provider.readers[].pull.producers[].opencensus`</details>
 ### OpentelemetryConfiguration <a id="OpentelemetryConfiguration"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| file_format | TODO | TODO |
-| disabled | TODO | TODO |
-| log_level | TODO | TODO |
-| attribute_limits | TODO | TODO |
-| logger_provider | TODO | TODO |
-| meter_provider | TODO | TODO |
-| propagator | TODO | TODO |
-| tracer_provider | TODO | TODO |
-| resource | TODO | TODO |
-| instrumentation/development | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `file_format` | TODO | `string` | `true` |
+| `disabled` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
+| `log_level` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `attribute_limits` | TODO | [`AttributeLimits`](#AttributeLimits) | `false` |
+| `logger_provider` | TODO | [`LoggerProvider`](#LoggerProvider) | `false` |
+| `meter_provider` | TODO | [`MeterProvider`](#MeterProvider) | `false` |
+| `propagator` | TODO | [`Propagator`](#Propagator) | `false` |
+| `tracer_provider` | TODO | [`TracerProvider`](#TracerProvider) | `false` |
+| `resource` | TODO | [`Resource`](#Resource) | `false` |
+| `instrumentation/development` | TODO | [`ExperimentalInstrumentation`](#ExperimentalInstrumentation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| file_format |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| disabled |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| log_level |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| attribute_limits |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| logger_provider |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| meter_provider |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| propagator |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| tracer_provider |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| resource |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| instrumentation/development |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `file_format` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `disabled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `log_level` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `attribute_limits` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `logger_provider` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `meter_provider` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `propagator` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `tracer_provider` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `resource` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `instrumentation/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3100,29 +3100,29 @@ No properties.
 * `.propagator.composite[].ottrace`</details>
 ### OtlpGrpcExporter <a id="OtlpGrpcExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| endpoint | TODO | TODO |
-| certificate_file | TODO | TODO |
-| client_key_file | TODO | TODO |
-| client_certificate_file | TODO | TODO |
-| headers | TODO | TODO |
-| headers_list | TODO | TODO |
-| compression | TODO | TODO |
-| timeout | TODO | TODO |
-| insecure | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `client_key_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `client_certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `compression` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `insecure` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| endpoint |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| certificate_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| client_key_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| client_certificate_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| headers |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| headers_list |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| compression |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| timeout |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| insecure |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `client_key_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `client_certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `headers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `headers_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `compression` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `insecure` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3198,33 +3198,33 @@ No properties.
 * `.logger_provider.processors[].batch.exporter.otlp_grpc`* `.logger_provider.processors[].simple.exporter.otlp_grpc`* `.tracer_provider.processors[].batch.exporter.otlp_grpc`* `.tracer_provider.processors[].simple.exporter.otlp_grpc`</details>
 ### OtlpGrpcMetricExporter <a id="OtlpGrpcMetricExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| endpoint | TODO | TODO |
-| certificate_file | TODO | TODO |
-| client_key_file | TODO | TODO |
-| client_certificate_file | TODO | TODO |
-| headers | TODO | TODO |
-| headers_list | TODO | TODO |
-| compression | TODO | TODO |
-| timeout | TODO | TODO |
-| insecure | TODO | TODO |
-| temporality_preference | TODO | TODO |
-| default_histogram_aggregation | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `client_key_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `client_certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `compression` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `insecure` | TODO | * `boolean`<br/>* `null`<br/> | `false` |
+| `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
+| `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| endpoint |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| certificate_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| client_key_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| client_certificate_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| headers |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| headers_list |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| compression |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| timeout |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| insecure |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| temporality_preference |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| default_histogram_aggregation |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `client_key_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `client_certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `headers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `headers_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `compression` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `insecure` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `temporality_preference` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `default_histogram_aggregation` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3328,29 +3328,29 @@ No properties.
 * `.logger_provider.processors[].batch.exporter.otlp_http.encoding`* `.logger_provider.processors[].simple.exporter.otlp_http.encoding`* `.meter_provider.readers[].periodic.exporter.otlp_http.encoding`* `.tracer_provider.processors[].batch.exporter.otlp_http.encoding`* `.tracer_provider.processors[].simple.exporter.otlp_http.encoding`</details>
 ### OtlpHttpExporter <a id="OtlpHttpExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| endpoint | TODO | TODO |
-| certificate_file | TODO | TODO |
-| client_key_file | TODO | TODO |
-| client_certificate_file | TODO | TODO |
-| headers | TODO | TODO |
-| headers_list | TODO | TODO |
-| compression | TODO | TODO |
-| timeout | TODO | TODO |
-| encoding | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `client_key_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `client_certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `compression` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `encoding` | TODO | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| endpoint |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| certificate_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| client_key_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| client_certificate_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| headers |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| headers_list |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| compression |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| timeout |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| encoding |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `client_key_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `client_certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `headers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `headers_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `compression` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `encoding` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3423,33 +3423,33 @@ No properties.
 * `.logger_provider.processors[].batch.exporter.otlp_http`* `.logger_provider.processors[].simple.exporter.otlp_http`* `.tracer_provider.processors[].batch.exporter.otlp_http`* `.tracer_provider.processors[].simple.exporter.otlp_http`</details>
 ### OtlpHttpMetricExporter <a id="OtlpHttpMetricExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| endpoint | TODO | TODO |
-| certificate_file | TODO | TODO |
-| client_key_file | TODO | TODO |
-| client_certificate_file | TODO | TODO |
-| headers | TODO | TODO |
-| headers_list | TODO | TODO |
-| compression | TODO | TODO |
-| timeout | TODO | TODO |
-| encoding | TODO | TODO |
-| temporality_preference | TODO | TODO |
-| default_histogram_aggregation | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `client_key_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `client_certificate_file` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `compression` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `encoding` | TODO | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
+| `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
+| `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| endpoint |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| certificate_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| client_key_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| client_certificate_file |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| headers |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| headers_list |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| compression |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| timeout |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| encoding |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| temporality_preference |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| default_histogram_aggregation |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `client_key_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `client_certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `headers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `headers_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `compression` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `encoding` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `temporality_preference` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `default_histogram_aggregation` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3528,21 +3528,21 @@ No properties.
 * `.meter_provider.readers[].periodic.exporter.otlp_http`</details>
 ### ParentBasedSampler <a id="ParentBasedSampler"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| root | TODO | TODO |
-| remote_parent_sampled | TODO | TODO |
-| remote_parent_not_sampled | TODO | TODO |
-| local_parent_sampled | TODO | TODO |
-| local_parent_not_sampled | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `root` | TODO | [`Sampler`](#Sampler) | `false` |
+| `remote_parent_sampled` | TODO | [`Sampler`](#Sampler) | `false` |
+| `remote_parent_not_sampled` | TODO | [`Sampler`](#Sampler) | `false` |
+| `local_parent_sampled` | TODO | [`Sampler`](#Sampler) | `false` |
+| `local_parent_not_sampled` | TODO | [`Sampler`](#Sampler) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| root |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| remote_parent_sampled |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| remote_parent_not_sampled |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| local_parent_sampled |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| local_parent_not_sampled |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `root` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `remote_parent_sampled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `remote_parent_not_sampled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `local_parent_sampled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `local_parent_not_sampled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3578,21 +3578,21 @@ No properties.
 * `.tracer_provider.sampler.parent_based`</details>
 ### PeriodicMetricReader <a id="PeriodicMetricReader"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| interval | TODO | TODO |
-| timeout | TODO | TODO |
-| exporter | TODO | TODO |
-| producers | TODO | TODO |
-| cardinality_limits | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `interval` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `exporter` | TODO | [`PushMetricExporter`](#PushMetricExporter) | `true` |
+| `producers` | TODO | `array` of [`MetricProducer`](#MetricProducer) | `false` |
+| `cardinality_limits` | TODO | [`CardinalityLimits`](#CardinalityLimits) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| interval |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| timeout |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| exporter |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| producers |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| cardinality_limits |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `interval` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `producers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `cardinality_limits` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3639,15 +3639,15 @@ No properties.
 * `.meter_provider.readers[].periodic`</details>
 ### Propagator <a id="Propagator"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| composite | TODO | TODO |
-| composite_list | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `composite` | TODO | `array` of [`TextMapPropagator`](#TextMapPropagator) | `false` |
+| `composite_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| composite |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| composite_list |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `composite` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `composite_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3756,13 +3756,13 @@ No properties.
 * `.propagator`</details>
 ### PullMetricExporter <a id="PullMetricExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| prometheus/development | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `prometheus/development` | TODO | [`ExperimentalPrometheusMetricExporter`](#ExperimentalPrometheusMetricExporter) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| prometheus/development |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `prometheus/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3795,17 +3795,17 @@ No properties.
 * `.meter_provider.readers[].pull.exporter`</details>
 ### PullMetricReader <a id="PullMetricReader"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| exporter | TODO | TODO |
-| producers | TODO | TODO |
-| cardinality_limits | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `exporter` | TODO | [`PullMetricExporter`](#PullMetricExporter) | `true` |
+| `producers` | TODO | `array` of [`MetricProducer`](#MetricProducer) | `false` |
+| `cardinality_limits` | TODO | [`CardinalityLimits`](#CardinalityLimits) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| exporter |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| producers |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| cardinality_limits |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `producers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `cardinality_limits` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3838,19 +3838,19 @@ No properties.
 * `.meter_provider.readers[].pull`</details>
 ### PushMetricExporter <a id="PushMetricExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| otlp_http | TODO | TODO |
-| otlp_grpc | TODO | TODO |
-| otlp_file/development | TODO | TODO |
-| console | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `otlp_http` | TODO | [`OtlpHttpMetricExporter`](#OtlpHttpMetricExporter) | `false` |
+| `otlp_grpc` | TODO | [`OtlpGrpcMetricExporter`](#OtlpGrpcMetricExporter) | `false` |
+| `otlp_file/development` | TODO | [`ExperimentalOtlpFileMetricExporter`](#ExperimentalOtlpFileMetricExporter) | `false` |
+| `console` | TODO | [`ConsoleExporter`](#ConsoleExporter) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| otlp_http |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| otlp_grpc |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| otlp_file/development |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| console |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `otlp_http` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `otlp_grpc` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `otlp_file/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `console` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3890,19 +3890,19 @@ No properties.
 * `.meter_provider.readers[].periodic.exporter`</details>
 ### Resource <a id="Resource"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| attributes | TODO | TODO |
-| detection/development | TODO | TODO |
-| schema_url | TODO | TODO |
-| attributes_list | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `attributes` | TODO | `array` of [`AttributeNameValue`](#AttributeNameValue) | `false` |
+| `detection/development` | TODO | [`ExperimentalResourceDetection`](#ExperimentalResourceDetection) | `false` |
+| `schema_url` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `attributes_list` | TODO | * `string`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| attributes |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| detection/development |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| schema_url |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| attributes_list |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `attributes` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `detection/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `schema_url` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `attributes_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4041,21 +4041,21 @@ No properties.
 * `.resource`</details>
 ### Sampler <a id="Sampler"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| always_off | TODO | TODO |
-| always_on | TODO | TODO |
-| jaeger_remote | TODO | TODO |
-| parent_based | TODO | TODO |
-| trace_id_ratio_based | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `always_off` | TODO | [`AlwaysOffSampler`](#AlwaysOffSampler) | `false` |
+| `always_on` | TODO | [`AlwaysOnSampler`](#AlwaysOnSampler) | `false` |
+| `jaeger_remote` | TODO | [`JaegerRemoteSampler`](#JaegerRemoteSampler) | `false` |
+| `parent_based` | TODO | [`ParentBasedSampler`](#ParentBasedSampler) | `false` |
+| `trace_id_ratio_based` | TODO | [`TraceIdRatioBasedSampler`](#TraceIdRatioBasedSampler) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| always_off |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| always_on |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| jaeger_remote |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| parent_based |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| trace_id_ratio_based |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `always_off` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `always_on` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `jaeger_remote` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `parent_based` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `trace_id_ratio_based` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4098,13 +4098,13 @@ No properties.
 * `.tracer_provider.sampler`</details>
 ### SimpleLogRecordProcessor <a id="SimpleLogRecordProcessor"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| exporter | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `exporter` | TODO | [`LogRecordExporter`](#LogRecordExporter) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| exporter |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4128,13 +4128,13 @@ No properties.
 * `.logger_provider.processors[].simple`</details>
 ### SimpleSpanProcessor <a id="SimpleSpanProcessor"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| exporter | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `exporter` | TODO | [`SpanExporter`](#SpanExporter) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| exporter |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4158,21 +4158,21 @@ No properties.
 * `.tracer_provider.processors[].simple`</details>
 ### SpanExporter <a id="SpanExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| otlp_http | TODO | TODO |
-| otlp_grpc | TODO | TODO |
-| otlp_file/development | TODO | TODO |
-| console | TODO | TODO |
-| zipkin | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `otlp_http` | TODO | [`OtlpHttpExporter`](#OtlpHttpExporter) | `false` |
+| `otlp_grpc` | TODO | [`OtlpGrpcExporter`](#OtlpGrpcExporter) | `false` |
+| `otlp_file/development` | TODO | [`ExperimentalOtlpFileExporter`](#ExperimentalOtlpFileExporter) | `false` |
+| `console` | TODO | [`ConsoleExporter`](#ConsoleExporter) | `false` |
+| `zipkin` | TODO | [`ZipkinSpanExporter`](#ZipkinSpanExporter) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| otlp_http |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| otlp_grpc |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| otlp_file/development |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| console |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| zipkin |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `otlp_http` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `otlp_grpc` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `otlp_file/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `console` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `zipkin` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4215,23 +4215,23 @@ No properties.
 * `.tracer_provider.processors[].batch.exporter`* `.tracer_provider.processors[].simple.exporter`</details>
 ### SpanLimits <a id="SpanLimits"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| attribute_value_length_limit | TODO | TODO |
-| attribute_count_limit | TODO | TODO |
-| event_count_limit | TODO | TODO |
-| link_count_limit | TODO | TODO |
-| event_attribute_count_limit | TODO | TODO |
-| link_attribute_count_limit | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `attribute_value_length_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `attribute_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `event_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `link_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `event_attribute_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `link_attribute_count_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| attribute_value_length_limit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| attribute_count_limit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| event_count_limit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| link_count_limit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| event_attribute_count_limit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| link_attribute_count_limit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `attribute_value_length_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `attribute_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `event_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `link_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `event_attribute_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `link_attribute_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4291,15 +4291,15 @@ No properties.
 * `.tracer_provider.limits`</details>
 ### SpanProcessor <a id="SpanProcessor"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| batch | TODO | TODO |
-| simple | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `batch` | TODO | [`BatchSpanProcessor`](#BatchSpanProcessor) | `false` |
+| `simple` | TODO | [`SimpleSpanProcessor`](#SimpleSpanProcessor) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| batch |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| simple |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `batch` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `simple` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4352,23 +4352,23 @@ No properties.
 * `.meter_provider.views[].stream.aggregation.sum`</details>
 ### TextMapPropagator <a id="TextMapPropagator"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| tracecontext | TODO | TODO |
-| baggage | TODO | TODO |
-| b3 | TODO | TODO |
-| b3multi | TODO | TODO |
-| jaeger | TODO | TODO |
-| ottrace | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `tracecontext` | TODO | [`TraceContextPropagator`](#TraceContextPropagator) | `false` |
+| `baggage` | TODO | [`BaggagePropagator`](#BaggagePropagator) | `false` |
+| `b3` | TODO | [`B3Propagator`](#B3Propagator) | `false` |
+| `b3multi` | TODO | [`B3MultiPropagator`](#B3MultiPropagator) | `false` |
+| `jaeger` | TODO | [`JaegerPropagator`](#JaegerPropagator) | `false` |
+| `ottrace` | TODO | [`OpenTracingPropagator`](#OpenTracingPropagator) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| tracecontext |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| baggage |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| b3 |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| b3multi |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| jaeger |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| ottrace |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `tracecontext` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `baggage` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `b3` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `b3multi` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `jaeger` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `ottrace` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4433,13 +4433,13 @@ No properties.
 * `.propagator.composite[].tracecontext`</details>
 ### TraceIdRatioBasedSampler <a id="TraceIdRatioBasedSampler"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| ratio | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `ratio` | TODO | * `number`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| ratio |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `ratio` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4466,19 +4466,19 @@ No properties.
 * `.tracer_provider.sampler.trace_id_ratio_based`</details>
 ### TracerProvider <a id="TracerProvider"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| processors | TODO | TODO |
-| limits | TODO | TODO |
-| sampler | TODO | TODO |
-| tracer_configurator/development | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `processors` | TODO | `array` of [`SpanProcessor`](#SpanProcessor) | `true` |
+| `limits` | TODO | [`SpanLimits`](#SpanLimits) | `false` |
+| `sampler` | TODO | [`Sampler`](#Sampler) | `false` |
+| `tracer_configurator/development` | TODO | [`ExperimentalTracerConfigurator`](#ExperimentalTracerConfigurator) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| processors |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| limits |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| sampler |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| tracer_configurator/development |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `processors` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `limits` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `sampler` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `tracer_configurator/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4856,15 +4856,15 @@ No properties.
 * `.tracer_provider`</details>
 ### View <a id="View"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| selector | TODO | TODO |
-| stream | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `selector` | TODO | [`ViewSelector`](#ViewSelector) | `false` |
+| `stream` | TODO | [`ViewStream`](#ViewStream) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| selector |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| stream |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `selector` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `stream` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4888,23 +4888,23 @@ No properties.
 * `.meter_provider.views[]`</details>
 ### ViewSelector <a id="ViewSelector"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| instrument_name | TODO | TODO |
-| instrument_type | TODO | TODO |
-| unit | TODO | TODO |
-| meter_name | TODO | TODO |
-| meter_version | TODO | TODO |
-| meter_schema_url | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `instrument_name` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `instrument_type` | TODO | [`InstrumentType`](#InstrumentType) | `false` |
+| `unit` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `meter_name` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `meter_version` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `meter_schema_url` | TODO | * `string`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| instrument_name |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| instrument_type |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| unit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| meter_name |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| meter_version |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| meter_schema_url |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `instrument_name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `instrument_type` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `unit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `meter_name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `meter_version` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `meter_schema_url` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4955,21 +4955,21 @@ No properties.
 * `.meter_provider.views[].selector`</details>
 ### ViewStream <a id="ViewStream"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| name | TODO | TODO |
-| description | TODO | TODO |
-| aggregation | TODO | TODO |
-| aggregation_cardinality_limit | TODO | TODO |
-| attribute_keys | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `name` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `description` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `aggregation` | TODO | [`Aggregation`](#Aggregation) | `false` |
+| `aggregation_cardinality_limit` | TODO | * `integer`<br/>* `null`<br/> | `false` |
+| `attribute_keys` | TODO | [`IncludeExclude`](#IncludeExclude) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| name |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| description |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| aggregation |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| aggregation_cardinality_limit |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| attribute_keys |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `description` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `aggregation` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `aggregation_cardinality_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `attribute_keys` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -5012,15 +5012,15 @@ No properties.
 * `.meter_provider.views[].stream`</details>
 ### ZipkinSpanExporter <a id="ZipkinSpanExporter"></a>
 
-| Property | Type | Description |
-|---|---|---|
-| endpoint | TODO | TODO |
-| timeout | TODO | TODO |
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `endpoint` | TODO | * `string`<br/>* `null`<br/> | `false` |
+| `timeout` | TODO | * `integer`<br/>* `null`<br/> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| endpoint |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
-| timeout |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |TODO |
+| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
 
 <details>
 <summary>JSON Schema</summary>
