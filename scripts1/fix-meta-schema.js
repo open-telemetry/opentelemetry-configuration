@@ -103,7 +103,7 @@ Object.entries(metaSchemaTypesByType).forEach(([type, unused]) => {
 // Find and add any types in json schema not in meta schema
 Object.entries(jsonSchemaTypesByType).forEach(([type, jsonSchemaType]) => {
     if (!(type in metaSchemaTypesByType)) {
-        messages.push(`Type ${type} in ${jsonSchemaType.file} and path ${jsonSchemaType.path} is missing from ${metaSchemaFileName}. Adding.`);
+        messages.push(`Type ${type} in ${jsonSchemaType.file} and path ${jsonSchemaType.jsonSchemaPath} is missing from ${metaSchemaFileName}. Adding.`);
         const metaSchemaType = jsonSchemaType.toMetaSchemaType();
         metaSchemaTypesByType[metaSchemaType.type] = metaSchemaType;
     }
