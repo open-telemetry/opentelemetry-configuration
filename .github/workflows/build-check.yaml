@@ -22,19 +22,21 @@ jobs:
     - name: validate example
       run: make validate-examples
 
-    - name: generate descriptions
-      run: make generate-descriptions
+    - name: meta schema
+      run: make all-meta-schema
 
     - name: check for diff
       run: |
         # need to "git add" to detect any changes to descriptions which are not checked in
-        # select files from both /examples
+        # select files from locations managed by meta schema
         git add examples**
+        git add schema/meta_schema.yaml
+        git add schema-docs.md
         if git diff --cached --quiet
         then 
           echo "No diff detected."
         else 
-          echo "Diff detected - did you run 'make generate-descriptions'?"
+          echo "Diff detected - did you run 'make all-meta-schema'?"
           echo $(git diff --cached --name-only)
           echo $(git diff --cached)
           exit 1

@@ -133,6 +133,7 @@ export class MetaSchemaProperty {
 export class MetaSchemaType {
     type;
     properties;
+    // TODO: track language implementation status
 
     constructor(type, properties) {
         this.type = type;

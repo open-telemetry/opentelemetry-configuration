@@ -109,8 +109,6 @@ export function resolveJsonSchemaPropertyType(jsonSchemaType, property, jsonSche
     throw new Error(`Unable to resolve types of property ${property}: ${JSON.stringify(jsonSchemaType)}.`)
 }
 
-const scalarTypes = ['boolean', 'string', 'null', 'integer', 'number'];
-
 export class JsonSchemaPropertyType {
     type;
     isScalar;

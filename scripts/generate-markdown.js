@@ -1,5 +1,5 @@
 import {
-    readJsonSchemaTypes, resolveJsonSchemaPropertyType, resolveRef
+    readJsonSchemaTypes, resolveJsonSchemaPropertyType
 } from "./json-schema.js";
 import {readAndFixMetaSchemaTypes} from "./meta-schema.js";
 import fs from "node:fs";
@@ -15,29 +15,8 @@ const jsonSchemaTypesByType = {};
 readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type);
 
 const output = [];
-const languages = ['c++', 'c#', 'erlang', 'go', 'java', 'js', 'php', 'python', 'ruby', 'rust', 'swift']
 
-function formatJsonSchemaPropertyType(type, prefix, suffix) {
-    const output = [];
-    output.push(prefix);
-    if (type.isOneOf) {
-        output.push('One of:<br>');
-        type.oneOfTypes.forEach(item => {
-            output.push(formatJsonSchemaPropertyType(item, '* ', '<br>'));
-        });
-        return output.join('');
-    }
-    if (type.isSeq) {
-        output.push('`array` of ');
-    }
-    if (type.isScalar) {
-        output.push(`\`${type.type}\``);
-    } else {
-        output.push(`[\`${type.type}\`](#${type.type})`);
-    }
-    output.push(suffix);
-    return output.join('');
-}
+output.push('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
 
 types.sort((a, b) => a.type.localeCompare(b.type));
 types.forEach(metaSchemaType => {
@@ -67,19 +46,7 @@ types.forEach(metaSchemaType => {
         });
         output.push('\n');
 
-        // Property language support table
-        output.push('| Property |')
-        languages.forEach(language => output.push(`${language} |`));
-        output.push('\n');
-        output.push('|---|');
-        languages.forEach(language => output.push(`---|`));
-        output.push('\n');
-        metaSchemaType.properties.forEach(property => {
-            output.push(`| \`${property.property}\` |`);
-            languages.forEach(language => output.push(` unknown |`));
-            output.push('\n');
-        });
-        output.push('\n');
+        // TODO: print language implementation status
     }
 
     // JSON schema collapsible section
@@ -92,3 +59,26 @@ types.forEach(metaSchemaType => {
 });
 
 fs.writeFileSync(markdownDocPath, output.join(""));
+
+// Helper functions
+function formatJsonSchemaPropertyType(type, prefix, suffix) {
+    const output = [];
+    output.push(prefix);
+    if (type.isOneOf) {
+        output.push('One of:<br>');
+        type.oneOfTypes.forEach(item => {
+            output.push(formatJsonSchemaPropertyType(item, '* ', '<br>'));
+        });
+        return output.join('');
+    }
+    if (type.isSeq) {
+        output.push('`array` of ');
+    }
+    if (type.isScalar) {
+        output.push(`\`${type.type}\``);
+    } else {
+        output.push(`[\`${type.type}\`](#${type.type})`);
+    }
+    output.push(suffix);
+    return output.join('');
+}

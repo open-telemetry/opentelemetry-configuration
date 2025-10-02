@@ -313,6 +313,10 @@ rule, the previous description, the new description, etc.
 npm run-script generate-descriptions -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml --debug
 ```
 
+### `make all-meta-schema`
+
+A composite task which runs all meta schema tasks.
+
 ## Pull requests
 
 A PR is ready to merge when:

@@ -1,3 +1,5 @@
+<!-- This file is generated using "make generate-markdown". Do not edit directly. -->
+
 ### Aggregation <a id="Aggregation"></a>
 
 | Property | Description | Type | Required? |
@@ -8,15 +10,6 @@
 | `base2_exponential_bucket_histogram` | TODO | [`Base2ExponentialBucketHistogramAggregation`](#Base2ExponentialBucketHistogramAggregation) | `false` |
 | `last_value` | TODO | [`LastValueAggregation`](#LastValueAggregation) | `false` |
 | `sum` | TODO | [`SumAggregation`](#SumAggregation) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `default` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `drop` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `explicit_bucket_histogram` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `base2_exponential_bucket_histogram` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `last_value` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `sum` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -91,11 +84,6 @@ No properties.
 | `attribute_value_length_limit` | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `attribute_count_limit` | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `attribute_value_length_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `attribute_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -127,12 +115,6 @@ No properties.
 | `name` | The attribute name.<br> | `string` | `true` |
 | `value` | The attribute value.<br>The type of value must match .type.<br> | One of:<br>* [`see JSON schema`](#see JSON schema)<br> | `true` |
 | `type` | The attribute type.<br>Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br>If omitted or null, string is used.<br> | [`AttributeType`](#AttributeType) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `value` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `type` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -276,12 +258,6 @@ No properties.
 | `max_size` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `record_min_max` | TODO | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `max_scale` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `max_size` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `record_min_max` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -324,14 +300,6 @@ No properties.
 | `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `exporter` | Configure exporter. | [`LogRecordExporter`](#LogRecordExporter) | `true` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `schedule_delay` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `export_timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `max_queue_size` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `max_export_batch_size` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -388,14 +356,6 @@ No properties.
 | `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `exporter` | Configure exporter. | [`SpanExporter`](#SpanExporter) | `true` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `schedule_delay` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `export_timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `max_queue_size` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `max_export_batch_size` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -455,17 +415,6 @@ No properties.
 | `observable_gauge` | Configure default cardinality limit for observable_gauge instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `observable_up_down_counter` | Configure default cardinality limit for observable_up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `up_down_counter` | Configure default cardinality limit for up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `default` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `counter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `gauge` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `histogram` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `observable_counter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `observable_gauge` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `observable_up_down_counter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `up_down_counter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -614,11 +563,6 @@ No properties.
 | `peer` | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> | [`ExperimentalPeerInstrumentation`](#ExperimentalPeerInstrumentation) | `false` |
 | `http` | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> | [`ExperimentalHttpInstrumentation`](#ExperimentalHttpInstrumentation) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `peer` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `http` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -643,11 +587,6 @@ No properties.
 |---|---|---|---|
 | `request_captured_headers` | Configure headers to capture for outbound http requests.<br> | `array` of [`string`](#string) | `false` |
 | `response_captured_headers` | Configure headers to capture for inbound http responses.<br> | `array` of [`string`](#string) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `request_captured_headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `response_captured_headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -680,11 +619,6 @@ No properties.
 | `client` | Configure instrumentations following the http client semantic conventions. | [`ExperimentalHttpClientInstrumentation`](#ExperimentalHttpClientInstrumentation) | `false` |
 | `server` | Configure instrumentations following the http server semantic conventions. | [`ExperimentalHttpServerInstrumentation`](#ExperimentalHttpServerInstrumentation) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `client` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `server` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -709,11 +643,6 @@ No properties.
 |---|---|---|---|
 | `request_captured_headers` | Configure headers to capture for inbound http requests.<br> | `array` of [`string`](#string) | `false` |
 | `response_captured_headers` | Configure headers to capture for outbound http responses.<br> | `array` of [`string`](#string) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `request_captured_headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `response_captured_headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -755,21 +684,6 @@ No properties.
 | `ruby` | Configure Ruby language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
 | `rust` | Configure Rust language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
 | `swift` | Configure Swift language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `general` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `cpp` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `dotnet` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `erlang` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `go` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `java` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `js` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `php` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `python` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `ruby` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `rust` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `swift` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -950,10 +864,6 @@ No properties.
 |---|---|---|---|
 | `disabled` | Configure if the logger is enabled or not. | One of:<br>* `boolean`<br> | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `disabled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -979,11 +889,6 @@ No properties.
 |---|---|---|---|
 | `default_config` | Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers. | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
 | `loggers` | Configure loggers. | `array` of [`ExperimentalLoggerMatcherAndConfig`](#ExperimentalLoggerMatcherAndConfig) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `default_config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `loggers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1015,11 +920,6 @@ No properties.
 | `name` | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | One of:<br>* `string`<br> | `false` |
 | `config` | The logger config. | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -1048,10 +948,6 @@ No properties.
 |---|---|---|---|
 | `disabled` | Configure if the meter is enabled or not. | One of:<br>* `boolean`<br> | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `disabled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -1077,11 +973,6 @@ No properties.
 |---|---|---|---|
 | `default_config` | Configure the default meter config used there is no matching entry in .meter_configurator/development.meters. | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
 | `meters` | Configure meters. | `array` of [`ExperimentalMeterMatcherAndConfig`](#ExperimentalMeterMatcherAndConfig) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `default_config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `meters` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1113,11 +1004,6 @@ No properties.
 | `name` | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | One of:<br>* `string`<br> | `false` |
 | `config` | The meter config. | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -1145,10 +1031,6 @@ No properties.
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `output_stream` | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `output_stream` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1178,12 +1060,6 @@ No properties.
 | `output_stream` | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `output_stream` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `temporality_preference` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `default_histogram_aggregation` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1218,10 +1094,6 @@ No properties.
 |---|---|---|---|
 | `service_mapping` | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> | `array` of [`ExperimentalPeerServiceMapping`](#ExperimentalPeerServiceMapping) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `service_mapping` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -1246,11 +1118,6 @@ No properties.
 |---|---|---|---|
 | `peer` | The IP address to map.<br> | `string` | `true` |
 | `service` | The logical name corresponding to the IP address of .peer.<br> | `string` | `true` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `peer` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `service` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1284,15 +1151,6 @@ No properties.
 | `without_type_suffix` | Configure Prometheus Exporter to produce metrics without a type suffix.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `without_scope_info` | Configure Prometheus Exporter to produce metrics without a scope info metric.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `with_resource_constant_labels` | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. | [`IncludeExclude`](#IncludeExclude) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `host` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `port` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `without_units` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `without_type_suffix` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `without_scope_info` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `with_resource_constant_labels` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1349,11 +1207,6 @@ No properties.
 | `attributes` | Configure attributes provided by resource detectors. | [`IncludeExclude`](#IncludeExclude) | `false` |
 | `detectors` | Configure resource detectors.<br>Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. <br>If omitted or null, no resource detectors are enabled.<br> | `array` of [`ExperimentalResourceDetector`](#ExperimentalResourceDetector) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `attributes` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `detectors` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -1405,10 +1258,6 @@ No properties.
 |---|---|---|---|
 | `disabled` | Configure if the tracer is enabled or not. | One of:<br>* `boolean`<br> | `true` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `disabled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -1437,11 +1286,6 @@ No properties.
 |---|---|---|---|
 | `default_config` | Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers. | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `false` |
 | `tracers` | Configure tracers. | `array` of [`ExperimentalTracerMatcherAndConfig`](#ExperimentalTracerMatcherAndConfig) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `default_config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `tracers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1472,11 +1316,6 @@ No properties.
 |---|---|---|---|
 | `name` | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | One of:<br>* `string`<br> | `true` |
 | `config` | The tracer config. | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `true` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1510,11 +1349,6 @@ No properties.
 |---|---|---|---|
 | `boundaries` | Configure bucket boundaries.<br>If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.<br> | `array` of [`number`](#number) | `false` |
 | `record_min_max` | Configure record min and max.<br>If omitted or null, true is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `boundaries` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `record_min_max` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1591,11 +1425,6 @@ No properties.
 | `included` | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all values are included.<br> | `array` of [`string`](#string) | `false` |
 | `excluded` | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> | `array` of [`string`](#string) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `included` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `excluded` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -1670,12 +1499,6 @@ No properties.
 | `interval` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `initial_sampler` | TODO | [`Sampler`](#Sampler) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `interval` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `initial_sampler` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -1731,12 +1554,6 @@ No properties.
 | `processors` | Configure log record processors. | `array` of [`LogRecordProcessor`](#LogRecordProcessor) | `true` |
 | `limits` | Configure log record limits. See also attribute_limits. | [`LogRecordLimits`](#LogRecordLimits) | `false` |
 | `logger_configurator/development` | Configure loggers.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalLoggerConfigurator`](#ExperimentalLoggerConfigurator) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `processors` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `limits` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `logger_configurator/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1946,13 +1763,6 @@ No properties.
 | `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileExporter`](#ExperimentalOtlpFileExporter) | `false` |
 | `console` | Configure exporter to be console. | [`ConsoleExporter`](#ConsoleExporter) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `otlp_http` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `otlp_grpc` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `otlp_file/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `console` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -1994,11 +1804,6 @@ No properties.
 | `attribute_value_length_limit` | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `attribute_count_limit` | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `attribute_value_length_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `attribute_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -2031,11 +1836,6 @@ No properties.
 |---|---|---|---|
 | `batch` | Configure a batch log record processor. | [`BatchLogRecordProcessor`](#BatchLogRecordProcessor) | `false` |
 | `simple` | Configure a simple log record processor. | [`SimpleLogRecordProcessor`](#SimpleLogRecordProcessor) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `batch` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `simple` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2072,13 +1872,6 @@ No properties.
 | `views` | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> | `array` of [`View`](#View) | `false` |
 | `exemplar_filter` | Configure the exemplar filter. <br>Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br>If omitted or null, trace_based is used.<br> | [`ExemplarFilter`](#ExemplarFilter) | `false` |
 | `meter_configurator/development` | Configure meters.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalMeterConfigurator`](#ExperimentalMeterConfigurator) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `readers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `views` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `exemplar_filter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `meter_configurator/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2808,10 +2601,6 @@ No properties.
 |---|---|---|---|
 | `opencensus` | Configure metric producer to be opencensus. | [`OpenCensusMetricProducer`](#OpenCensusMetricProducer) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `opencensus` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -2844,11 +2633,6 @@ No properties.
 | `periodic` | Configure a periodic metric reader. | [`PeriodicMetricReader`](#PeriodicMetricReader) | `false` |
 | `pull` | Configure a pull based metric reader. | [`PullMetricReader`](#PullMetricReader) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `periodic` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `pull` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -2875,11 +2659,6 @@ No properties.
 |---|---|---|---|
 | `name` | The name of the pair. | `string` | `true` |
 | `value` | The value of the pair. | One of:<br>* `string`<br>* `null`<br> | `true` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `value` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2937,19 +2716,6 @@ No properties.
 | `tracer_provider` | Configure tracer provider.<br>If omitted, a noop tracer provider is used.<br> | [`TracerProvider`](#TracerProvider) | `false` |
 | `resource` | Configure resource for all signals.<br>If omitted, the default resource is used.<br> | [`Resource`](#Resource) | `false` |
 | `instrumentation/development` | Configure instrumentation.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalInstrumentation`](#ExperimentalInstrumentation) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `file_format` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `disabled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `log_level` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `attribute_limits` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `logger_provider` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `meter_provider` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `propagator` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `tracer_provider` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `resource` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `instrumentation/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3074,18 +2840,6 @@ No properties.
 | `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `client_key_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `client_certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `headers_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `compression` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `insecure` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -3171,20 +2925,6 @@ No properties.
 | `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `client_key_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `client_certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `headers_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `compression` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `insecure` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `temporality_preference` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `default_histogram_aggregation` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3296,18 +3036,6 @@ No properties.
 | `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `encoding` | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `client_key_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `client_certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `headers_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `compression` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `encoding` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -3392,21 +3120,6 @@ No properties.
 | `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `client_key_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `client_certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `headers_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `compression` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `encoding` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `temporality_preference` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `default_histogram_aggregation` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -3490,14 +3203,6 @@ No properties.
 | `local_parent_sampled` | Configure local_parent_sampled sampler.<br>If omitted or null, always_on is used.<br> | [`Sampler`](#Sampler) | `false` |
 | `local_parent_not_sampled` | Configure local_parent_not_sampled sampler.<br>If omitted or null, always_off is used.<br> | [`Sampler`](#Sampler) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `root` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `remote_parent_sampled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `remote_parent_not_sampled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `local_parent_sampled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `local_parent_not_sampled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -3537,14 +3242,6 @@ No properties.
 | `exporter` | Configure exporter. | [`PushMetricExporter`](#PushMetricExporter) | `true` |
 | `producers` | Configure metric producers. | `array` of [`MetricProducer`](#MetricProducer) | `false` |
 | `cardinality_limits` | Configure cardinality limits. | [`CardinalityLimits`](#CardinalityLimits) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `interval` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `producers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `cardinality_limits` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3593,11 +3290,6 @@ No properties.
 |---|---|---|---|
 | `composite` | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | `array` of [`TextMapPropagator`](#TextMapPropagator) | `false` |
 | `composite_list` | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `composite` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `composite_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3708,10 +3400,6 @@ No properties.
 |---|---|---|---|
 | `prometheus/development` | Configure exporter to be prometheus.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalPrometheusMetricExporter`](#ExperimentalPrometheusMetricExporter) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `prometheus/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -3746,12 +3434,6 @@ No properties.
 | `exporter` | Configure exporter. | [`PullMetricExporter`](#PullMetricExporter) | `true` |
 | `producers` | Configure metric producers. | `array` of [`MetricProducer`](#MetricProducer) | `false` |
 | `cardinality_limits` | Configure cardinality limits. | [`CardinalityLimits`](#CardinalityLimits) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `producers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `cardinality_limits` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3788,13 +3470,6 @@ No properties.
 | `otlp_grpc` | Configure exporter to be OTLP with gRPC transport.<br> | [`OtlpGrpcMetricExporter`](#OtlpGrpcMetricExporter) | `false` |
 | `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileMetricExporter`](#ExperimentalOtlpFileMetricExporter) | `false` |
 | `console` | Configure exporter to be console.<br> | [`ConsoleExporter`](#ConsoleExporter) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `otlp_http` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `otlp_grpc` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `otlp_file/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `console` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3838,13 +3513,6 @@ No properties.
 | `detection/development` | Configure resource detection.<br>This type is in development and subject to breaking changes in minor versions.<br>If omitted or null, resource detection is disabled.<br> | [`ExperimentalResourceDetection`](#ExperimentalResourceDetection) | `false` |
 | `schema_url` | Configure resource schema URL.<br>If omitted or null, no schema URL is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `attributes_list` | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>If omitted or null, no resource attributes are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `attributes` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `detection/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `schema_url` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `attributes_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3989,14 +3657,6 @@ No properties.
 | `parent_based` | Configure sampler to be parent_based. | [`ParentBasedSampler`](#ParentBasedSampler) | `false` |
 | `trace_id_ratio_based` | Configure sampler to be trace_id_ratio_based. | [`TraceIdRatioBasedSampler`](#TraceIdRatioBasedSampler) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `always_off` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `always_on` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `jaeger_remote` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `parent_based` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `trace_id_ratio_based` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -4040,10 +3700,6 @@ No properties.
 |---|---|---|---|
 | `exporter` | Configure exporter. | [`LogRecordExporter`](#LogRecordExporter) | `true` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -4067,10 +3723,6 @@ No properties.
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `exporter` | Configure exporter. | [`SpanExporter`](#SpanExporter) | `true` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4099,14 +3751,6 @@ No properties.
 | `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileExporter`](#ExperimentalOtlpFileExporter) | `false` |
 | `console` | Configure exporter to be console. | [`ConsoleExporter`](#ConsoleExporter) | `false` |
 | `zipkin` | Configure exporter to be zipkin. | [`ZipkinSpanExporter`](#ZipkinSpanExporter) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `otlp_http` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `otlp_grpc` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `otlp_file/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `console` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `zipkin` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4155,15 +3799,6 @@ No properties.
 | `link_count_limit` | Configure max span link count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `event_attribute_count_limit` | Configure max attributes per span event. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `link_attribute_count_limit` | Configure max attributes per span link. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `attribute_value_length_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `attribute_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `event_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `link_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `event_attribute_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `link_attribute_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4226,11 +3861,6 @@ No properties.
 | `batch` | Configure a batch span processor. | [`BatchSpanProcessor`](#BatchSpanProcessor) | `false` |
 | `simple` | Configure a simple span processor. | [`SimpleSpanProcessor`](#SimpleSpanProcessor) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `batch` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `simple` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -4286,15 +3916,6 @@ No properties.
 | `b3multi` | Include the zipkin b3 multi propagator. | [`B3MultiPropagator`](#B3MultiPropagator) | `false` |
 | `jaeger` | Include the jaeger propagator. | [`JaegerPropagator`](#JaegerPropagator) | `false` |
 | `ottrace` | Include the opentracing propagator. | [`OpenTracingPropagator`](#OpenTracingPropagator) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `tracecontext` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `baggage` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `b3` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `b3multi` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `jaeger` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `ottrace` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4359,10 +3980,6 @@ No properties.
 |---|---|---|---|
 | `ratio` | Configure trace_id_ratio.<br>If omitted or null, 1.0 is used.<br> | One of:<br>* `number`<br>* `null`<br> | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `ratio` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -4392,13 +4009,6 @@ No properties.
 | `limits` | Configure span limits. See also attribute_limits. | [`SpanLimits`](#SpanLimits) | `false` |
 | `sampler` | Configure the sampler.<br>If omitted, parent based sampler with a root of always_on is used.<br> | [`Sampler`](#Sampler) | `false` |
 | `tracer_configurator/development` | Configure tracers.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalTracerConfigurator`](#ExperimentalTracerConfigurator) | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `processors` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `limits` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `sampler` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `tracer_configurator/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4779,11 +4389,6 @@ No properties.
 | `selector` | Configure view selector. <br>Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.<br> | [`ViewSelector`](#ViewSelector) | `false` |
 | `stream` | Configure view stream. | [`ViewStream`](#ViewStream) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `selector` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `stream` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -4812,15 +4417,6 @@ No properties.
 | `meter_name` | Configure meter name selection criteria.<br>If omitted or null, all meter names match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `meter_version` | Configure meter version selection criteria.<br>If omitted or null, all meter versions match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `meter_schema_url` | Configure meter schema url selection criteria.<br>If omitted or null, all meter schema URLs match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `instrument_name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `instrument_type` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `unit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `meter_name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `meter_version` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `meter_schema_url` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4877,14 +4473,6 @@ No properties.
 | `aggregation_cardinality_limit` | Configure the aggregation cardinality limit.<br>If omitted or null, the metric reader's default cardinality limit is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `attribute_keys` | Configure attribute keys retained in the resulting stream(s).<br> | [`IncludeExclude`](#IncludeExclude) | `false` |
 
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `description` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `aggregation` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `aggregation_cardinality_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `attribute_keys` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-
 <details>
 <summary>JSON Schema</summary>
 
@@ -4928,11 +4516,6 @@ No properties.
 |---|---|---|---|
 | `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:9411/api/v2/spans is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `timeout` | Configure max time (in milliseconds) to wait for each export. <br>Value must be non-negative. A value of 0 indicates indefinite.<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-
-| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
-| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
