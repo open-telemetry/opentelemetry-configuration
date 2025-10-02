@@ -31,7 +31,7 @@ validate-examples:
 generate-descriptions:
 	@if ! npm ls minimatch yaml; then npm install; fi
 	@for f in $(EXAMPLE_FILES); do \
-	    npm run-script generate-descriptions -- $(shell pwd)/examples/$$f $(shell pwd)/examples/$$f || exit 1; \
+	    npm run-script generate-descriptions-new -- $(shell pwd)/examples/$$f $(shell pwd)/examples/$$f || exit 1; \
 	done
 
 .PHONY: update-file-format

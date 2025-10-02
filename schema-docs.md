@@ -51,7 +51,8 @@
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.views[].stream.aggregation`</details>
+* `.meter_provider.views[].stream.aggregation`
+</details>
 ### AlwaysOffSampler <a id="AlwaysOffSampler"></a>
 
 No properties.
@@ -70,7 +71,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.sampler.always_off`</details>
+* `.tracer_provider.sampler.always_off`
+</details>
 ### AlwaysOnSampler <a id="AlwaysOnSampler"></a>
 
 No properties.
@@ -89,13 +91,14 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.sampler.always_on`</details>
+* `.tracer_provider.sampler.always_on`
+</details>
 ### AttributeLimits <a id="AttributeLimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attribute_value_length_limit` | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | * `integer`<br>* `null`<br> | `false` |
-| `attribute_count_limit` | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `attribute_value_length_limit` | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `attribute_count_limit` | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -127,13 +130,14 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.attribute_limits`</details>
+* `.attribute_limits`
+</details>
 ### AttributeNameValue <a id="AttributeNameValue"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `name` | TODO | `string` | `true` |
-| `value` | TODO | `oneOf` (see JSON schema for details) | `true` |
+| `value` | TODO | One of:<br>* [`see JSON schema`](#see JSON schema)<br> | `true` |
 | `type` | TODO | [`AttributeType`](#AttributeType) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
@@ -199,7 +203,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.resource.attributes[]`</details>
+* `.resource.attributes[]`
+</details>
 ### AttributeType <a id="AttributeType"></a>
 
 No properties.
@@ -228,7 +233,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.resource.attributes[].type`</details>
+* `.resource.attributes[].type`
+</details>
 ### B3MultiPropagator <a id="B3MultiPropagator"></a>
 
 No properties.
@@ -247,7 +253,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.propagator.composite[].b3multi`</details>
+* `.propagator.composite[].b3multi`
+</details>
 ### B3Propagator <a id="B3Propagator"></a>
 
 No properties.
@@ -266,7 +273,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.propagator.composite[].b3`</details>
+* `.propagator.composite[].b3`
+</details>
 ### BaggagePropagator <a id="BaggagePropagator"></a>
 
 No properties.
@@ -285,14 +293,15 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.propagator.composite[].baggage`</details>
+* `.propagator.composite[].baggage`
+</details>
 ### Base2ExponentialBucketHistogramAggregation <a id="Base2ExponentialBucketHistogramAggregation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `max_scale` | TODO | * `integer`<br>* `null`<br> | `false` |
-| `max_size` | TODO | * `integer`<br>* `null`<br> | `false` |
-| `record_min_max` | TODO | * `boolean`<br>* `null`<br> | `false` |
+| `max_scale` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `max_size` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `record_min_max` | TODO | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -334,15 +343,16 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.views[].stream.aggregation.base2_exponential_bucket_histogram`</details>
+* `.meter_provider.views[].stream.aggregation.base2_exponential_bucket_histogram`
+</details>
 ### BatchLogRecordProcessor <a id="BatchLogRecordProcessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `schedule_delay` | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 1000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `schedule_delay` | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 1000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `exporter` | Configure exporter. | [`LogRecordExporter`](#LogRecordExporter) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
@@ -400,15 +410,16 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.processors[].batch`</details>
+* `.logger_provider.processors[].batch`
+</details>
 ### BatchSpanProcessor <a id="BatchSpanProcessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `schedule_delay` | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 5000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `schedule_delay` | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 5000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `exporter` | Configure exporter. | [`SpanExporter`](#SpanExporter) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
@@ -466,19 +477,20 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.processors[].batch`</details>
+* `.tracer_provider.processors[].batch`
+</details>
 ### CardinalityLimits <a id="CardinalityLimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `default` | Configure default cardinality limit for all instrument types.<br>Instrument-specific cardinality limits take priority. <br>If omitted or null, 2000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `counter` | Configure default cardinality limit for counter instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `gauge` | Configure default cardinality limit for gauge instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `histogram` | Configure default cardinality limit for histogram instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `observable_counter` | Configure default cardinality limit for observable_counter instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `observable_gauge` | Configure default cardinality limit for observable_gauge instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `observable_up_down_counter` | Configure default cardinality limit for observable_up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `up_down_counter` | Configure default cardinality limit for up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `default` | Configure default cardinality limit for all instrument types.<br>Instrument-specific cardinality limits take priority. <br>If omitted or null, 2000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `counter` | Configure default cardinality limit for counter instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `gauge` | Configure default cardinality limit for gauge instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `histogram` | Configure default cardinality limit for histogram instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `observable_counter` | Configure default cardinality limit for observable_counter instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `observable_gauge` | Configure default cardinality limit for observable_gauge instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `observable_up_down_counter` | Configure default cardinality limit for observable_up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `up_down_counter` | Configure default cardinality limit for up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -560,7 +572,9 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].periodic.cardinality_limits`* `.meter_provider.readers[].pull.cardinality_limits`</details>
+* `.meter_provider.readers[].periodic.cardinality_limits`
+* `.meter_provider.readers[].pull.cardinality_limits`
+</details>
 ### ConsoleExporter <a id="ConsoleExporter"></a>
 
 No properties.
@@ -579,7 +593,12 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.processors[].batch.exporter.console`* `.logger_provider.processors[].simple.exporter.console`* `.meter_provider.readers[].periodic.exporter.console`* `.tracer_provider.processors[].batch.exporter.console`* `.tracer_provider.processors[].simple.exporter.console`</details>
+* `.logger_provider.processors[].batch.exporter.console`
+* `.logger_provider.processors[].simple.exporter.console`
+* `.meter_provider.readers[].periodic.exporter.console`
+* `.tracer_provider.processors[].batch.exporter.console`
+* `.tracer_provider.processors[].simple.exporter.console`
+</details>
 ### DefaultAggregation <a id="DefaultAggregation"></a>
 
 No properties.
@@ -598,7 +617,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.views[].stream.aggregation.default`</details>
+* `.meter_provider.views[].stream.aggregation.default`
+</details>
 ### DropAggregation <a id="DropAggregation"></a>
 
 No properties.
@@ -617,7 +637,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.views[].stream.aggregation.drop`</details>
+* `.meter_provider.views[].stream.aggregation.drop`
+</details>
 ### ExemplarFilter <a id="ExemplarFilter"></a>
 
 No properties.
@@ -640,7 +661,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.exemplar_filter`</details>
+* `.meter_provider.exemplar_filter`
+</details>
 ### ExperimentalGeneralInstrumentation <a id="ExperimentalGeneralInstrumentation"></a>
 
 | Property | Description | Type | Required? |
@@ -672,7 +694,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.instrumentation/development.general`</details>
+* `.instrumentation/development.general`
+</details>
 ### ExperimentalHttpInstrumentation <a id="ExperimentalHttpInstrumentation"></a>
 
 | Property | Description | Type | Required? |
@@ -734,7 +757,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.instrumentation/development.general.http`</details>
+* `.instrumentation/development.general.http`
+</details>
 ### ExperimentalInstrumentation <a id="ExperimentalInstrumentation"></a>
 
 | Property | Description | Type | Required? |
@@ -913,7 +937,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.instrumentation/development`</details>
+* `.instrumentation/development`
+</details>
 ### ExperimentalLanguageSpecificInstrumentation <a id="ExperimentalLanguageSpecificInstrumentation"></a>
 
 No properties.
@@ -934,12 +959,23 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.instrumentation/development.cpp`* `.instrumentation/development.dotnet`* `.instrumentation/development.erlang`* `.instrumentation/development.go`* `.instrumentation/development.java`* `.instrumentation/development.js`* `.instrumentation/development.php`* `.instrumentation/development.python`* `.instrumentation/development.ruby`* `.instrumentation/development.rust`* `.instrumentation/development.swift`</details>
+* `.instrumentation/development.cpp`
+* `.instrumentation/development.dotnet`
+* `.instrumentation/development.erlang`
+* `.instrumentation/development.go`
+* `.instrumentation/development.java`
+* `.instrumentation/development.js`
+* `.instrumentation/development.php`
+* `.instrumentation/development.python`
+* `.instrumentation/development.ruby`
+* `.instrumentation/development.rust`
+* `.instrumentation/development.swift`
+</details>
 ### ExperimentalLoggerConfig <a id="ExperimentalLoggerConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `disabled` | Configure if the logger is enabled or not. | `boolean` | `false` |
+| `disabled` | Configure if the logger is enabled or not. | One of:<br>* `boolean`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -965,7 +1001,9 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.logger_configurator/development.default_config`* `.logger_provider.logger_configurator/development.loggers[].config`</details>
+* `.logger_provider.logger_configurator/development.default_config`
+* `.logger_provider.logger_configurator/development.loggers[].config`
+</details>
 ### ExperimentalLoggerConfigurator <a id="ExperimentalLoggerConfigurator"></a>
 
 | Property | Description | Type | Required? |
@@ -1002,12 +1040,13 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.logger_configurator/development`</details>
+* `.logger_provider.logger_configurator/development`
+</details>
 ### ExperimentalLoggerMatcherAndConfig <a id="ExperimentalLoggerMatcherAndConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `false` |
+| `name` | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | One of:<br>* `string`<br> | `false` |
 | `config` | The logger config. | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
@@ -1038,12 +1077,13 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.logger_configurator/development.loggers[]`</details>
+* `.logger_provider.logger_configurator/development.loggers[]`
+</details>
 ### ExperimentalMeterConfig <a id="ExperimentalMeterConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `disabled` | Configure if the meter is enabled or not. | `boolean` | `false` |
+| `disabled` | Configure if the meter is enabled or not. | One of:<br>* `boolean`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1069,7 +1109,9 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.meter_configurator/development.default_config`* `.meter_provider.meter_configurator/development.meters[].config`</details>
+* `.meter_provider.meter_configurator/development.default_config`
+* `.meter_provider.meter_configurator/development.meters[].config`
+</details>
 ### ExperimentalMeterConfigurator <a id="ExperimentalMeterConfigurator"></a>
 
 | Property | Description | Type | Required? |
@@ -1106,12 +1148,13 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.meter_configurator/development`</details>
+* `.meter_provider.meter_configurator/development`
+</details>
 ### ExperimentalMeterMatcherAndConfig <a id="ExperimentalMeterMatcherAndConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `false` |
+| `name` | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | One of:<br>* `string`<br> | `false` |
 | `config` | The meter config. | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
@@ -1142,12 +1185,13 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.meter_configurator/development.meters[]`</details>
+* `.meter_provider.meter_configurator/development.meters[]`
+</details>
 ### ExperimentalOtlpFileExporter <a id="ExperimentalOtlpFileExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `output_stream` | TODO | * `string`<br>* `null`<br> | `false` |
+| `output_stream` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1175,12 +1219,16 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.processors[].batch.exporter.otlp_file/development`* `.logger_provider.processors[].simple.exporter.otlp_file/development`* `.tracer_provider.processors[].batch.exporter.otlp_file/development`* `.tracer_provider.processors[].simple.exporter.otlp_file/development`</details>
+* `.logger_provider.processors[].batch.exporter.otlp_file/development`
+* `.logger_provider.processors[].simple.exporter.otlp_file/development`
+* `.tracer_provider.processors[].batch.exporter.otlp_file/development`
+* `.tracer_provider.processors[].simple.exporter.otlp_file/development`
+</details>
 ### ExperimentalOtlpFileMetricExporter <a id="ExperimentalOtlpFileMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `output_stream` | TODO | * `string`<br>* `null`<br> | `false` |
+| `output_stream` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
@@ -1218,12 +1266,13 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].periodic.exporter.otlp_file/development`</details>
+* `.meter_provider.readers[].periodic.exporter.otlp_file/development`
+</details>
 ### ExperimentalPeerInstrumentation <a id="ExperimentalPeerInstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `service_mapping` | TODO | `array` of `array` | `false` |
+| `service_mapping` | TODO | `array` of [`object`](#object) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1261,16 +1310,17 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.instrumentation/development.general.peer`</details>
+* `.instrumentation/development.general.peer`
+</details>
 ### ExperimentalPrometheusMetricExporter <a id="ExperimentalPrometheusMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `host` | Configure host.<br>If omitted or null, localhost is used.<br> | * `string`<br>* `null`<br> | `false` |
-| `port` | Configure port.<br>If omitted or null, 9464 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `without_units` | Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.<br>If omitted or null, false is used.<br> | * `boolean`<br>* `null`<br> | `false` |
-| `without_type_suffix` | Configure Prometheus Exporter to produce metrics without a type suffix.<br>If omitted or null, false is used.<br> | * `boolean`<br>* `null`<br> | `false` |
-| `without_scope_info` | Configure Prometheus Exporter to produce metrics without a scope info metric.<br>If omitted or null, false is used.<br> | * `boolean`<br>* `null`<br> | `false` |
+| `host` | Configure host.<br>If omitted or null, localhost is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `port` | Configure port.<br>If omitted or null, 9464 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `without_units` | Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
+| `without_type_suffix` | Configure Prometheus Exporter to produce metrics without a type suffix.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
+| `without_scope_info` | Configure Prometheus Exporter to produce metrics without a scope info metric.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `with_resource_constant_labels` | Configure Prometheus Exporter to add resource attributes as metrics attributes. | [`IncludeExclude`](#IncludeExclude) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
@@ -1331,7 +1381,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].pull.exporter.prometheus/development`</details>
+* `.meter_provider.readers[].pull.exporter.prometheus/development`
+</details>
 ### ExperimentalResourceDetection <a id="ExperimentalResourceDetection"></a>
 
 | Property | Description | Type | Required? |
@@ -1366,7 +1417,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.resource.detection/development`</details>
+* `.resource.detection/development`
+</details>
 ### ExperimentalResourceDetector <a id="ExperimentalResourceDetector"></a>
 
 No properties.
@@ -1392,12 +1444,13 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.resource.detection/development.detectors[]`</details>
+* `.resource.detection/development.detectors[]`
+</details>
 ### ExperimentalTracerConfig <a id="ExperimentalTracerConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `disabled` | Configure if the tracer is enabled or not. | `boolean` | `true` |
+| `disabled` | Configure if the tracer is enabled or not. | One of:<br>* `boolean`<br> | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1426,7 +1479,9 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.tracer_configurator/development.default_config`* `.tracer_provider.tracer_configurator/development.tracers[].config`</details>
+* `.tracer_provider.tracer_configurator/development.default_config`
+* `.tracer_provider.tracer_configurator/development.tracers[].config`
+</details>
 ### ExperimentalTracerConfigurator <a id="ExperimentalTracerConfigurator"></a>
 
 | Property | Description | Type | Required? |
@@ -1463,12 +1518,13 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.tracer_configurator/development`</details>
+* `.tracer_provider.tracer_configurator/development`
+</details>
 ### ExperimentalTracerMatcherAndConfig <a id="ExperimentalTracerMatcherAndConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `true` |
+| `name` | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | One of:<br>* `string`<br> | `true` |
 | `config` | The tracer config. | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
@@ -1503,13 +1559,14 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.tracer_configurator/development.tracers[]`</details>
+* `.tracer_provider.tracer_configurator/development.tracers[]`
+</details>
 ### ExplicitBucketHistogramAggregation <a id="ExplicitBucketHistogramAggregation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `boundaries` | Configure bucket boundaries.<br>If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.<br> | `array` of `array` | `false` |
-| `record_min_max` | Configure record min and max.<br>If omitted or null, true is used.<br> | * `boolean`<br>* `null`<br> | `false` |
+| `boundaries` | Configure bucket boundaries.<br>If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.<br> | `array` of [`number`](#number) | `false` |
+| `record_min_max` | Configure record min and max.<br>If omitted or null, true is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1544,7 +1601,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.views[].stream.aggregation.explicit_bucket_histogram`</details>
+* `.meter_provider.views[].stream.aggregation.explicit_bucket_histogram`
+</details>
 ### ExporterDefaultHistogramAggregation <a id="ExporterDefaultHistogramAggregation"></a>
 
 No properties.
@@ -1566,7 +1624,10 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].periodic.exporter.otlp_http.default_histogram_aggregation`* `.meter_provider.readers[].periodic.exporter.otlp_grpc.default_histogram_aggregation`* `.meter_provider.readers[].periodic.exporter.otlp_file/development.default_histogram_aggregation`</details>
+* `.meter_provider.readers[].periodic.exporter.otlp_http.default_histogram_aggregation`
+* `.meter_provider.readers[].periodic.exporter.otlp_grpc.default_histogram_aggregation`
+* `.meter_provider.readers[].periodic.exporter.otlp_file/development.default_histogram_aggregation`
+</details>
 ### ExporterTemporalityPreference <a id="ExporterTemporalityPreference"></a>
 
 No properties.
@@ -1589,13 +1650,16 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].periodic.exporter.otlp_http.temporality_preference`* `.meter_provider.readers[].periodic.exporter.otlp_grpc.temporality_preference`* `.meter_provider.readers[].periodic.exporter.otlp_file/development.temporality_preference`</details>
+* `.meter_provider.readers[].periodic.exporter.otlp_http.temporality_preference`
+* `.meter_provider.readers[].periodic.exporter.otlp_grpc.temporality_preference`
+* `.meter_provider.readers[].periodic.exporter.otlp_file/development.temporality_preference`
+</details>
 ### IncludeExclude <a id="IncludeExclude"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `included` | Configure list of attribute key patterns to include from resource detectors.<br>Attribute keys from resource detectors are evaluated to match as follows:<br> * If the value of the attribute key exactly matches.<br> * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all attributes are included.<br> | `array` of `array` | `false` |
-| `excluded` | Configure list of attribute key patterns to exclude from resource detectors. Applies after .resource.detectors.attributes.included (i.e. excluded has higher priority than included).<br>Attribute keys from resource detectors are evaluated to match as follows:<br> * If the value of the attribute key exactly matches.<br> * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> | `array` of `array` | `false` |
+| `included` | Configure list of attribute key patterns to include from resource detectors.<br>Attribute keys from resource detectors are evaluated to match as follows:<br> * If the value of the attribute key exactly matches.<br> * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all attributes are included.<br> | `array` of [`string`](#string) | `false` |
+| `excluded` | Configure list of attribute key patterns to exclude from resource detectors. Applies after .resource.detectors.attributes.included (i.e. excluded has higher priority than included).<br>Attribute keys from resource detectors are evaluated to match as follows:<br> * If the value of the attribute key exactly matches.<br> * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> | `array` of [`string`](#string) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -1627,7 +1691,10 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].pull.exporter.prometheus/development.with_resource_constant_labels`* `.meter_provider.views[].stream.attribute_keys`* `.resource.detection/development.attributes`</details>
+* `.meter_provider.readers[].pull.exporter.prometheus/development.with_resource_constant_labels`
+* `.meter_provider.views[].stream.attribute_keys`
+* `.resource.detection/development.attributes`
+</details>
 ### InstrumentType <a id="InstrumentType"></a>
 
 No properties.
@@ -1654,7 +1721,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.views[].selector.instrument_type`</details>
+* `.meter_provider.views[].selector.instrument_type`
+</details>
 ### JaegerPropagator <a id="JaegerPropagator"></a>
 
 No properties.
@@ -1673,13 +1741,14 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.propagator.composite[].jaeger`</details>
+* `.propagator.composite[].jaeger`
+</details>
 ### JaegerRemoteSampler <a id="JaegerRemoteSampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | * `string`<br>* `null`<br> | `false` |
-| `interval` | TODO | * `integer`<br>* `null`<br> | `false` |
+| `endpoint` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `interval` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `initial_sampler` | TODO | [`Sampler`](#Sampler) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
@@ -1720,7 +1789,9 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.sampler.jaeger_remote`</details>
+* `.tracer_provider.sampler.jaeger_remote`
+* `.tracer_provider.*.jaeger_remote`
+</details>
 ### LastValueAggregation <a id="LastValueAggregation"></a>
 
 No properties.
@@ -1739,7 +1810,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.views[].stream.aggregation.last_value`</details>
+* `.meter_provider.views[].stream.aggregation.last_value`
+</details>
 ### LoggerProvider <a id="LoggerProvider"></a>
 
 | Property | Description | Type | Required? |
@@ -1954,7 +2026,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider`</details>
+* `.logger_provider`
+</details>
 ### LogRecordExporter <a id="LogRecordExporter"></a>
 
 | Property | Description | Type | Required? |
@@ -2006,13 +2079,15 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.processors[].batch.exporter`* `.logger_provider.processors[].simple.exporter`</details>
+* `.logger_provider.processors[].batch.exporter`
+* `.logger_provider.processors[].simple.exporter`
+</details>
 ### LogRecordLimits <a id="LogRecordLimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attribute_value_length_limit` | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | * `integer`<br>* `null`<br> | `false` |
-| `attribute_count_limit` | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `attribute_value_length_limit` | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `attribute_count_limit` | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -2046,7 +2121,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.limits`</details>
+* `.logger_provider.limits`
+</details>
 ### LogRecordProcessor <a id="LogRecordProcessor"></a>
 
 | Property | Description | Type | Required? |
@@ -2087,7 +2163,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.processors[]`</details>
+* `.logger_provider.processors[]`
+</details>
 ### MeterProvider <a id="MeterProvider"></a>
 
 | Property | Description | Type | Required? |
@@ -2827,7 +2904,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider`</details>
+* `.meter_provider`
+</details>
 ### MetricProducer <a id="MetricProducer"></a>
 
 | Property | Description | Type | Required? |
@@ -2864,7 +2942,9 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].periodic.producers[]`* `.meter_provider.readers[].pull.producers[]`</details>
+* `.meter_provider.readers[].periodic.producers[]`
+* `.meter_provider.readers[].pull.producers[]`
+</details>
 ### MetricReader <a id="MetricReader"></a>
 
 | Property | Description | Type | Required? |
@@ -2898,13 +2978,14 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[]`</details>
+* `.meter_provider.readers[]`
+</details>
 ### NameStringValuePair <a id="NameStringValuePair"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `name` | TODO | `string` | `true` |
-| `value` | TODO | * `string`<br>* `null`<br> | `true` |
+| `value` | TODO | One of:<br>* `string`<br>* `null`<br> | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -2937,7 +3018,17 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.processors[].batch.exporter.otlp_http.headers[]`* `.logger_provider.processors[].batch.exporter.otlp_grpc.headers[]`* `.logger_provider.processors[].simple.exporter.otlp_http.headers[]`* `.logger_provider.processors[].simple.exporter.otlp_grpc.headers[]`* `.meter_provider.readers[].periodic.exporter.otlp_http.headers[]`* `.meter_provider.readers[].periodic.exporter.otlp_grpc.headers[]`* `.tracer_provider.processors[].batch.exporter.otlp_http.headers[]`* `.tracer_provider.processors[].batch.exporter.otlp_grpc.headers[]`* `.tracer_provider.processors[].simple.exporter.otlp_http.headers[]`* `.tracer_provider.processors[].simple.exporter.otlp_grpc.headers[]`</details>
+* `.logger_provider.processors[].batch.exporter.otlp_http.headers[]`
+* `.logger_provider.processors[].batch.exporter.otlp_grpc.headers[]`
+* `.logger_provider.processors[].simple.exporter.otlp_http.headers[]`
+* `.logger_provider.processors[].simple.exporter.otlp_grpc.headers[]`
+* `.meter_provider.readers[].periodic.exporter.otlp_http.headers[]`
+* `.meter_provider.readers[].periodic.exporter.otlp_grpc.headers[]`
+* `.tracer_provider.processors[].batch.exporter.otlp_http.headers[]`
+* `.tracer_provider.processors[].batch.exporter.otlp_grpc.headers[]`
+* `.tracer_provider.processors[].simple.exporter.otlp_http.headers[]`
+* `.tracer_provider.processors[].simple.exporter.otlp_grpc.headers[]`
+</details>
 ### OpenCensusMetricProducer <a id="OpenCensusMetricProducer"></a>
 
 No properties.
@@ -2956,14 +3047,16 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].periodic.producers[].opencensus`* `.meter_provider.readers[].pull.producers[].opencensus`</details>
+* `.meter_provider.readers[].periodic.producers[].opencensus`
+* `.meter_provider.readers[].pull.producers[].opencensus`
+</details>
 ### OpentelemetryConfiguration <a id="OpentelemetryConfiguration"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `file_format` | TODO | `string` | `true` |
-| `disabled` | TODO | * `boolean`<br>* `null`<br> | `false` |
-| `log_level` | TODO | * `string`<br>* `null`<br> | `false` |
+| `disabled` | TODO | One of:<br>* `boolean`<br>* `null`<br> | `false` |
+| `log_level` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `attribute_limits` | TODO | [`AttributeLimits`](#AttributeLimits) | `false` |
 | `logger_provider` | TODO | [`LoggerProvider`](#LoggerProvider) | `false` |
 | `meter_provider` | TODO | [`MeterProvider`](#MeterProvider) | `false` |
@@ -3078,7 +3171,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.`</details>
+* `.`
+</details>
 ### OpenTracingPropagator <a id="OpenTracingPropagator"></a>
 
 No properties.
@@ -3097,20 +3191,21 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.propagator.composite[].ottrace`</details>
+* `.propagator.composite[].ottrace`
+</details>
 ### OtlpGrpcExporter <a id="OtlpGrpcExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | * `string`<br>* `null`<br> | `false` |
-| `certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
-| `client_key_file` | TODO | * `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | * `string`<br>* `null`<br> | `false` |
-| `compression` | TODO | * `string`<br>* `null`<br> | `false` |
-| `timeout` | TODO | * `integer`<br>* `null`<br> | `false` |
-| `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | * `boolean`<br>* `null`<br> | `false` |
+| `headers_list` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3195,20 +3290,24 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.processors[].batch.exporter.otlp_grpc`* `.logger_provider.processors[].simple.exporter.otlp_grpc`* `.tracer_provider.processors[].batch.exporter.otlp_grpc`* `.tracer_provider.processors[].simple.exporter.otlp_grpc`</details>
+* `.logger_provider.processors[].batch.exporter.otlp_grpc`
+* `.logger_provider.processors[].simple.exporter.otlp_grpc`
+* `.tracer_provider.processors[].batch.exporter.otlp_grpc`
+* `.tracer_provider.processors[].simple.exporter.otlp_grpc`
+</details>
 ### OtlpGrpcMetricExporter <a id="OtlpGrpcMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | * `string`<br>* `null`<br> | `false` |
-| `certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
-| `client_key_file` | TODO | * `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `endpoint` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | * `string`<br>* `null`<br> | `false` |
-| `compression` | TODO | * `string`<br>* `null`<br> | `false` |
-| `timeout` | TODO | * `integer`<br>* `null`<br> | `false` |
-| `insecure` | TODO | * `boolean`<br>* `null`<br> | `false` |
+| `headers_list` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `insecure` | TODO | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
@@ -3303,7 +3402,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].periodic.exporter.otlp_grpc`</details>
+* `.meter_provider.readers[].periodic.exporter.otlp_grpc`
+</details>
 ### OtlpHttpEncoding <a id="OtlpHttpEncoding"></a>
 
 No properties.
@@ -3325,19 +3425,24 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.processors[].batch.exporter.otlp_http.encoding`* `.logger_provider.processors[].simple.exporter.otlp_http.encoding`* `.meter_provider.readers[].periodic.exporter.otlp_http.encoding`* `.tracer_provider.processors[].batch.exporter.otlp_http.encoding`* `.tracer_provider.processors[].simple.exporter.otlp_http.encoding`</details>
+* `.logger_provider.processors[].batch.exporter.otlp_http.encoding`
+* `.logger_provider.processors[].simple.exporter.otlp_http.encoding`
+* `.meter_provider.readers[].periodic.exporter.otlp_http.encoding`
+* `.tracer_provider.processors[].batch.exporter.otlp_http.encoding`
+* `.tracer_provider.processors[].simple.exporter.otlp_http.encoding`
+</details>
 ### OtlpHttpExporter <a id="OtlpHttpExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | * `string`<br>* `null`<br> | `false` |
-| `certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
-| `client_key_file` | TODO | * `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `endpoint` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | * `string`<br>* `null`<br> | `false` |
-| `compression` | TODO | * `string`<br>* `null`<br> | `false` |
-| `timeout` | TODO | * `integer`<br>* `null`<br> | `false` |
+| `headers_list` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `encoding` | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
@@ -3420,19 +3525,23 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.processors[].batch.exporter.otlp_http`* `.logger_provider.processors[].simple.exporter.otlp_http`* `.tracer_provider.processors[].batch.exporter.otlp_http`* `.tracer_provider.processors[].simple.exporter.otlp_http`</details>
+* `.logger_provider.processors[].batch.exporter.otlp_http`
+* `.logger_provider.processors[].simple.exporter.otlp_http`
+* `.tracer_provider.processors[].batch.exporter.otlp_http`
+* `.tracer_provider.processors[].simple.exporter.otlp_http`
+</details>
 ### OtlpHttpMetricExporter <a id="OtlpHttpMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | Configure endpoint, including the metric specific path.<br>If omitted or null, http://localhost:4318/v1/metrics is used.<br> | * `string`<br>* `null`<br> | `false` |
-| `certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
-| `client_key_file` | TODO | * `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | TODO | * `string`<br>* `null`<br> | `false` |
+| `endpoint` | Configure endpoint, including the metric specific path.<br>If omitted or null, http://localhost:4318/v1/metrics is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | * `string`<br>* `null`<br> | `false` |
-| `compression` | TODO | * `string`<br>* `null`<br> | `false` |
-| `timeout` | TODO | * `integer`<br>* `null`<br> | `false` |
+| `headers_list` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `encoding` | TODO | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
 | `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
@@ -3525,7 +3634,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].periodic.exporter.otlp_http`</details>
+* `.meter_provider.readers[].periodic.exporter.otlp_http`
+</details>
 ### ParentBasedSampler <a id="ParentBasedSampler"></a>
 
 | Property | Description | Type | Required? |
@@ -3575,13 +3685,15 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.sampler.parent_based`</details>
+* `.tracer_provider.sampler.parent_based`
+* `.tracer_provider.*.parent_based`
+</details>
 ### PeriodicMetricReader <a id="PeriodicMetricReader"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `interval` | Configure delay interval (in milliseconds) between start of two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 60000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `interval` | Configure delay interval (in milliseconds) between start of two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 60000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `exporter` | Configure exporter. | [`PushMetricExporter`](#PushMetricExporter) | `true` |
 | `producers` | Configure metric producers. | `array` of [`MetricProducer`](#MetricProducer) | `false` |
 | `cardinality_limits` | Configure cardinality limits. | [`CardinalityLimits`](#CardinalityLimits) | `false` |
@@ -3636,13 +3748,14 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].periodic`</details>
+* `.meter_provider.readers[].periodic`
+</details>
 ### Propagator <a id="Propagator"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `composite` | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | `array` of [`TextMapPropagator`](#TextMapPropagator) | `false` |
-| `composite_list` | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | * `string`<br>* `null`<br> | `false` |
+| `composite_list` | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3753,7 +3866,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.propagator`</details>
+* `.propagator`
+</details>
 ### PullMetricExporter <a id="PullMetricExporter"></a>
 
 | Property | Description | Type | Required? |
@@ -3792,7 +3906,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].pull.exporter`</details>
+* `.meter_provider.readers[].pull.exporter`
+</details>
 ### PullMetricReader <a id="PullMetricReader"></a>
 
 | Property | Description | Type | Required? |
@@ -3835,7 +3950,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].pull`</details>
+* `.meter_provider.readers[].pull`
+</details>
 ### PushMetricExporter <a id="PushMetricExporter"></a>
 
 | Property | Description | Type | Required? |
@@ -3887,15 +4003,16 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.readers[].periodic.exporter`</details>
+* `.meter_provider.readers[].periodic.exporter`
+</details>
 ### Resource <a id="Resource"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `attributes` | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br>Entries must contain .name and .value, and may optionally include .type. If an entry's .type omitted or null, string is used.<br>The .value's type must match the .type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br> | `array` of [`AttributeNameValue`](#AttributeNameValue) | `false` |
 | `detection/development` | Configure resource detection.<br>This type is in development and subject to breaking changes in minor versions.<br>If omitted or null, resource detection is disabled.<br> | [`ExperimentalResourceDetection`](#ExperimentalResourceDetection) | `false` |
-| `schema_url` | Configure resource schema URL.<br>If omitted or null, no schema URL is used.<br> | * `string`<br>* `null`<br> | `false` |
-| `attributes_list` | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>If omitted or null, no resource attributes are added.<br> | * `string`<br>* `null`<br> | `false` |
+| `schema_url` | Configure resource schema URL.<br>If omitted or null, no schema URL is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `attributes_list` | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>If omitted or null, no resource attributes are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4038,7 +4155,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.resource`</details>
+* `.resource`
+</details>
 ### Sampler <a id="Sampler"></a>
 
 | Property | Description | Type | Required? |
@@ -4095,7 +4213,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.sampler`</details>
+* `.tracer_provider.sampler`
+</details>
 ### SimpleLogRecordProcessor <a id="SimpleLogRecordProcessor"></a>
 
 | Property | Description | Type | Required? |
@@ -4125,7 +4244,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.logger_provider.processors[].simple`</details>
+* `.logger_provider.processors[].simple`
+</details>
 ### SimpleSpanProcessor <a id="SimpleSpanProcessor"></a>
 
 | Property | Description | Type | Required? |
@@ -4155,7 +4275,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.processors[].simple`</details>
+* `.tracer_provider.processors[].simple`
+</details>
 ### SpanExporter <a id="SpanExporter"></a>
 
 | Property | Description | Type | Required? |
@@ -4212,17 +4333,19 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.processors[].batch.exporter`* `.tracer_provider.processors[].simple.exporter`</details>
+* `.tracer_provider.processors[].batch.exporter`
+* `.tracer_provider.processors[].simple.exporter`
+</details>
 ### SpanLimits <a id="SpanLimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attribute_value_length_limit` | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | * `integer`<br>* `null`<br> | `false` |
-| `attribute_count_limit` | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `event_count_limit` | Configure max span event count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `link_count_limit` | Configure max span link count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `event_attribute_count_limit` | Configure max attributes per span event. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
-| `link_attribute_count_limit` | Configure max attributes per span link. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `attribute_value_length_limit` | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `attribute_count_limit` | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `event_count_limit` | Configure max span event count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `link_count_limit` | Configure max span link count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `event_attribute_count_limit` | Configure max attributes per span event. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `link_attribute_count_limit` | Configure max attributes per span link. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4288,7 +4411,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.limits`</details>
+* `.tracer_provider.limits`
+</details>
 ### SpanProcessor <a id="SpanProcessor"></a>
 
 | Property | Description | Type | Required? |
@@ -4330,7 +4454,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.processors[]`</details>
+* `.tracer_provider.processors[]`
+</details>
 ### SumAggregation <a id="SumAggregation"></a>
 
 No properties.
@@ -4349,7 +4474,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.views[].stream.aggregation.sum`</details>
+* `.meter_provider.views[].stream.aggregation.sum`
+</details>
 ### TextMapPropagator <a id="TextMapPropagator"></a>
 
 | Property | Description | Type | Required? |
@@ -4411,7 +4537,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.propagator.composite[]`</details>
+* `.propagator.composite[]`
+</details>
 ### TraceContextPropagator <a id="TraceContextPropagator"></a>
 
 No properties.
@@ -4430,12 +4557,13 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.propagator.composite[].tracecontext`</details>
+* `.propagator.composite[].tracecontext`
+</details>
 ### TraceIdRatioBasedSampler <a id="TraceIdRatioBasedSampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `ratio` | TODO | * `number`<br>* `null`<br> | `false` |
+| `ratio` | TODO | One of:<br>* `number`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4463,7 +4591,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.sampler.trace_id_ratio_based`</details>
+* `.tracer_provider.sampler.trace_id_ratio_based`
+</details>
 ### TracerProvider <a id="TracerProvider"></a>
 
 | Property | Description | Type | Required? |
@@ -4853,7 +4982,8 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider`</details>
+* `.tracer_provider`
+</details>
 ### View <a id="View"></a>
 
 | Property | Description | Type | Required? |
@@ -4885,17 +5015,18 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.views[]`</details>
+* `.meter_provider.views[]`
+</details>
 ### ViewSelector <a id="ViewSelector"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `instrument_name` | Configure instrument name selection criteria.<br>If omitted or null, all instrument names match.<br> | * `string`<br>* `null`<br> | `false` |
+| `instrument_name` | Configure instrument name selection criteria.<br>If omitted or null, all instrument names match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `instrument_type` | Configure instrument type selection criteria.<br>Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.<br>If omitted or null, all instrument types match.<br> | [`InstrumentType`](#InstrumentType) | `false` |
-| `unit` | Configure the instrument unit selection criteria.<br>If omitted or null, all instrument units match.<br> | * `string`<br>* `null`<br> | `false` |
-| `meter_name` | Configure meter name selection criteria.<br>If omitted or null, all meter names match.<br> | * `string`<br>* `null`<br> | `false` |
-| `meter_version` | Configure meter version selection criteria.<br>If omitted or null, all meter versions match.<br> | * `string`<br>* `null`<br> | `false` |
-| `meter_schema_url` | Configure meter schema url selection criteria.<br>If omitted or null, all meter schema URLs match.<br> | * `string`<br>* `null`<br> | `false` |
+| `unit` | Configure the instrument unit selection criteria.<br>If omitted or null, all instrument units match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `meter_name` | Configure meter name selection criteria.<br>If omitted or null, all meter names match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `meter_version` | Configure meter version selection criteria.<br>If omitted or null, all meter versions match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `meter_schema_url` | Configure meter schema url selection criteria.<br>If omitted or null, all meter schema URLs match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4952,15 +5083,16 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.views[].selector`</details>
+* `.meter_provider.views[].selector`
+</details>
 ### ViewStream <a id="ViewStream"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | Configure metric name of the resulting stream(s).<br>If omitted or null, the instrument's original name is used.<br> | * `string`<br>* `null`<br> | `false` |
-| `description` | Configure metric description of the resulting stream(s).<br>If omitted or null, the instrument's origin description is used.<br> | * `string`<br>* `null`<br> | `false` |
+| `name` | Configure metric name of the resulting stream(s).<br>If omitted or null, the instrument's original name is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `description` | Configure metric description of the resulting stream(s).<br>If omitted or null, the instrument's origin description is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `aggregation` | Configure aggregation of the resulting stream(s). <br>Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.<br>If omitted, default is used.<br> | [`Aggregation`](#Aggregation) | `false` |
-| `aggregation_cardinality_limit` | Configure the aggregation cardinality limit.<br>If omitted or null, the metric reader's default cardinality limit is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `aggregation_cardinality_limit` | Configure the aggregation cardinality limit.<br>If omitted or null, the metric reader's default cardinality limit is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `attribute_keys` | Configure attribute keys retained in the resulting stream(s).<br> | [`IncludeExclude`](#IncludeExclude) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
@@ -5009,13 +5141,14 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.meter_provider.views[].stream`</details>
+* `.meter_provider.views[].stream`
+</details>
 ### ZipkinSpanExporter <a id="ZipkinSpanExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:9411/api/v2/spans is used.<br> | * `string`<br>* `null`<br> | `false` |
-| `timeout` | Configure max time (in milliseconds) to wait for each export. <br>Value must be non-negative. A value of 0 indicates indefinite.<br>If omitted or null, 10000 is used.<br> | * `integer`<br>* `null`<br> | `false` |
+| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:9411/api/v2/spans is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | Configure max time (in milliseconds) to wait for each export. <br>Value must be non-negative. A value of 0 indicates indefinite.<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -5051,4 +5184,6 @@ No properties.
 <details>
 <summary>Path patterns</summary>
 
-* `.tracer_provider.processors[].batch.exporter.zipkin`* `.tracer_provider.processors[].simple.exporter.zipkin`</details>
+* `.tracer_provider.processors[].batch.exporter.zipkin`
+* `.tracer_provider.processors[].simple.exporter.zipkin`
+</details>

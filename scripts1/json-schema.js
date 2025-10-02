@@ -43,14 +43,6 @@ export function readJsonSchemaTypes() {
         jsonSchemaType.schema = topLevelSchema;
     });
 
-    // Compute path patterns for types
-    // DFS starting at OpenTelemetryConfigurationType
-    let current = typesByType['OpenTelemetryConfiguration'];
-    if (current === null) {
-        throw new Error("Missing OpenTelemetryConfiguration type");
-    }
-    recursiveAddPathPatterns(current, typesByType, ".", []);
-
     return Object.values(typesByType);
 }
 
@@ -76,37 +68,63 @@ function getDefs(jsonSchema) {
     return defs;
 }
 
-function recursiveAddPathPatterns(currentJsonSchemaType, typesByType, currentPath, parentTypes) {
-    currentJsonSchemaType.pathPatterns.push(currentPath);
-
-    const properties = currentJsonSchemaType.schema['properties'];
+export function resolveJsonSchemaPropertyType(jsonSchemaType, property, jsonSchemaTypesByType) {
+    const properties = jsonSchemaType.schema['properties'];
     if (!properties) {
-        return;
+        throw new Error(`Unable to resolve property ${property} for ${jsonSchemaType.type}. Type doesn't have properties.`)
     }
-    const nextParentTypes = [...parentTypes, currentJsonSchemaType];
-    Object.entries(properties).forEach(([property, schema]) => {
-        let ref = schema['$ref'];
-        const isArray = schema['type'] === 'array';
-        if (!ref && isArray) {
-            const items = schema['items'];
-            if (items) {
-                ref = items['$ref'];
-            }
+    const jsonSchemaProperty = properties[property];
+    if (!jsonSchemaProperty) {
+        throw new Error(`Unable to resolve property ${property} for ${jsonSchemaType.type}. Type doesn't have ${property}.`);
+    }
+    const type = jsonSchemaProperty['type'];
+    const ref = jsonSchemaProperty['$ref'];
+    const items = jsonSchemaProperty['items'];
+    const oneOf = jsonSchemaProperty['oneOf'];
+    if (type === 'array' && items) {
+        const itemsType = items['type'];
+        const itemsRef = items['$ref'];
+        if (itemsType) {
+            return Array.isArray(itemsType)
+                ? new JsonSchemaPropertyType('oneOf', false, true, itemsType.map(item => new JsonSchemaPropertyType(item, true, false, [])))
+                : new JsonSchemaPropertyType(itemsType, false, true, []);
         }
-        if (!ref) {
-            return;
+        if (itemsRef) {
+            const resolvedRef = resolveRef(itemsRef, jsonSchemaTypesByType);
+            return new JsonSchemaPropertyType(resolvedRef.type, false, true, []);
         }
-        const resolvedRef = resolveRef(ref, typesByType);
-        if (parentTypes.find(type => type.type === resolvedRef.type)) {
-            return; // Recursive reference
-        }
-        let nextPath = currentPath;
-        nextPath += (currentPath === '.') ? property : ('.' + property)
-        if (isArray) {
-            nextPath += '[]';
-        }
-        recursiveAddPathPatterns(resolvedRef, typesByType, nextPath, nextParentTypes);
-    });
+    }
+    if (type) {
+        return Array.isArray(type)
+            ? new JsonSchemaPropertyType('oneOf', true, false, type.map(item => new JsonSchemaPropertyType(item, true, false, [])))
+            : new JsonSchemaPropertyType(type, true, false, []);
+    }
+    if (ref) {
+        const resolvedRef = resolveRef(ref, jsonSchemaTypesByType);
+        return new JsonSchemaPropertyType(resolvedRef.type, false, false, []);
+    }
+    if (oneOf) {
+        return new JsonSchemaPropertyType('oneOf', false, false, [new JsonSchemaPropertyType('see JSON schema', false, false, [])]);
+    }
+    throw new Error(`Unable to resolve types of property ${property}: ${JSON.stringify(jsonSchemaType)}.`)
+}
+
+const scalarTypes = ['boolean', 'string', 'null', 'integer', 'number'];
+
+export class JsonSchemaPropertyType {
+    type;
+    isScalar;
+    isSeq;
+    isOneOf;
+    oneOfTypes;
+
+    constructor(type, isScalar, isSeq, oneOfTypes) {
+        this.type = type;
+        this.isScalar = isScalar;
+        this.isSeq = isSeq;
+        this.isOneOf = oneOfTypes.length !== 0;
+        this.oneOfTypes = oneOfTypes;
+    }
 }
 
 export class JsonSchemaType {

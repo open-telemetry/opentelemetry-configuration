@@ -317,7 +317,7 @@ meter_provider:
         # Configure metric producers.
         producers:
           - # Configure metric producer to be prometheus.
-            prometheus:
+            opencensus:
         # Configure cardinality limits.
         cardinality_limits:
           # Configure default cardinality limit for all instrument types.

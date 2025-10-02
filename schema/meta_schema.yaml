@@ -149,12 +149,24 @@
       description: |
         Configure instrumentations following the http semantic conventions.
         See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
+- type: ExperimentalHttpClientInstrumentation
+  properties:
+    - property: request_captured_headers
+      description: TODO
+    - property: response_captured_headers
+      description: TODO
 - type: ExperimentalHttpInstrumentation
   properties:
     - property: client
       description: Configure instrumentations following the http client semantic conventions.
     - property: server
       description: Configure instrumentations following the http server semantic conventions.
+- type: ExperimentalHttpServerInstrumentation
+  properties:
+    - property: request_captured_headers
+      description: TODO
+    - property: response_captured_headers
+      description: TODO
 - type: ExperimentalInstrumentation
   properties:
     - property: general
@@ -240,6 +252,12 @@
 - type: ExperimentalPeerInstrumentation
   properties:
     - property: service_mapping
+      description: TODO
+- type: ExperimentalPeerServiceMapping
+  properties:
+    - property: peer
+      description: TODO
+    - property: service
       description: TODO
 - type: ExperimentalPrometheusMetricExporter
   properties:
