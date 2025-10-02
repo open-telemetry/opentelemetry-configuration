@@ -556,6 +556,23 @@ No properties.
 }</pre>
 </details>
 
+### ExperimentalContainerResourceDetector <a id="ExperimentalContainerResourceDetector"></a>
+
+No properties.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/resource.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false
+}</pre>
+</details>
+
 ### ExperimentalGeneralInstrumentation <a id="ExperimentalGeneralInstrumentation"></a>
 
 | Property | Description | Type | Required? |
@@ -578,6 +595,23 @@ No properties.
       "$ref": "#/$defs/ExperimentalHttpInstrumentation"
     }
   }
+}</pre>
+</details>
+
+### ExperimentalHostResourceDetector <a id="ExperimentalHostResourceDetector"></a>
+
+No properties.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/resource.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false
 }</pre>
 </details>
 
@@ -1141,16 +1175,32 @@ No properties.
 }</pre>
 </details>
 
+### ExperimentalProcessResourceDetector <a id="ExperimentalProcessResourceDetector"></a>
+
+No properties.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/resource.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false
+}</pre>
+</details>
+
 ### ExperimentalPrometheusMetricExporter <a id="ExperimentalPrometheusMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `host` | Configure host.<br>If omitted or null, localhost is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `port` | Configure port.<br>If omitted or null, 9464 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `without_units` | Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
-| `without_type_suffix` | Configure Prometheus Exporter to produce metrics without a type suffix.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `without_scope_info` | Configure Prometheus Exporter to produce metrics without a scope info metric.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `with_resource_constant_labels` | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. | [`IncludeExclude`](#IncludeExclude) | `false` |
+| `translation_strategy` | Configure how Prometheus metrics are exposed. Values include:<br><br> * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br> * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.<br> * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br> * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.<br><br>If omitted or null, UnderscoreEscapingWithSuffixes is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1175,18 +1225,6 @@ No properties.
         "null"
       ]
     },
-    "without_units": {
-      "type": [
-        "boolean",
-        "null"
-      ]
-    },
-    "without_type_suffix": {
-      "type": [
-        "boolean",
-        "null"
-      ]
-    },
     "without_scope_info": {
       "type": [
         "boolean",
@@ -1195,6 +1233,18 @@ No properties.
     },
     "with_resource_constant_labels": {
       "$ref": "common.json#/$defs/IncludeExclude"
+    },
+    "translation_strategy": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "UnderscoreEscapingWithSuffixes",
+        "UnderscoreEscapingWithoutSuffixes",
+        "NoUTF8EscapingWithSuffixes",
+        "NoTranslation"
+      ]
     }
   }
 }</pre>
@@ -1230,7 +1280,12 @@ No properties.
 
 ### ExperimentalResourceDetector <a id="ExperimentalResourceDetector"></a>
 
-No properties.
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `container` | Enable the container resource detector, which populates container.* attributes.<br> | [`ExperimentalContainerResourceDetector`](#ExperimentalContainerResourceDetector) | `false` |
+| `host` | Enable the host resource detector, which populates host.* and os.* attributes.<br> | [`ExperimentalHostResourceDetector`](#ExperimentalHostResourceDetector) | `false` |
+| `process` | Enable the process resource detector, which populates process.* attributes.<br> | [`ExperimentalProcessResourceDetector`](#ExperimentalProcessResourceDetector) | `false` |
+| `service` | Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.<br> | [`ExperimentalServiceResourceDetector`](#ExperimentalServiceResourceDetector) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1241,6 +1296,20 @@ No properties.
   "additionalProperties": true,
   "minProperties": 1,
   "maxProperties": 1,
+  "properties": {
+    "container": {
+      "$ref": "#/$defs/ExperimentalContainerResourceDetector"
+    },
+    "host": {
+      "$ref": "#/$defs/ExperimentalHostResourceDetector"
+    },
+    "process": {
+      "$ref": "#/$defs/ExperimentalProcessResourceDetector"
+    },
+    "service": {
+      "$ref": "#/$defs/ExperimentalServiceResourceDetector"
+    }
+  },
   "patternProperties": {
     ".*": {
       "type": [
@@ -1252,11 +1321,28 @@ No properties.
 }</pre>
 </details>
 
+### ExperimentalServiceResourceDetector <a id="ExperimentalServiceResourceDetector"></a>
+
+No properties.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/resource.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false
+}</pre>
+</details>
+
 ### ExperimentalTracerConfig <a id="ExperimentalTracerConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `disabled` | Configure if the tracer is enabled or not. | One of:<br>* `boolean`<br> | `true` |
+| `disabled` | Configure if the tracer is enabled or not. | One of:<br>* `boolean`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1273,10 +1359,7 @@ No properties.
         "boolean"
       ]
     }
-  },
-  "required": [
-    "disabled"
-  ]
+  }
 }</pre>
 </details>
 
@@ -1314,8 +1397,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | One of:<br>* `string`<br> | `true` |
-| `config` | The tracer config. | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `true` |
+| `name` | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | One of:<br>* `string`<br> | `false` |
+| `config` | The tracer config. | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1335,11 +1418,7 @@ No properties.
     "config": {
       "$ref": "#/$defs/ExperimentalTracerConfig"
     }
-  },
-  "required": [
-    "name",
-    "config"
-  ]
+  }
 }</pre>
 </details>
 
@@ -2130,18 +2209,6 @@ No properties.
             "null"
           ]
         },
-        "without_units": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "without_type_suffix": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
         "without_scope_info": {
           "type": [
             "boolean",
@@ -2150,6 +2217,18 @@ No properties.
         },
         "with_resource_constant_labels": {
           "$ref": "common.json#/$defs/IncludeExclude"
+        },
+        "translation_strategy": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "UnderscoreEscapingWithSuffixes",
+            "UnderscoreEscapingWithoutSuffixes",
+            "NoUTF8EscapingWithSuffixes",
+            "NoTranslation"
+          ]
         }
       }
     },
@@ -3634,6 +3713,20 @@ No properties.
       "additionalProperties": true,
       "minProperties": 1,
       "maxProperties": 1,
+      "properties": {
+        "container": {
+          "$ref": "#/$defs/ExperimentalContainerResourceDetector"
+        },
+        "host": {
+          "$ref": "#/$defs/ExperimentalHostResourceDetector"
+        },
+        "process": {
+          "$ref": "#/$defs/ExperimentalProcessResourceDetector"
+        },
+        "service": {
+          "$ref": "#/$defs/ExperimentalServiceResourceDetector"
+        }
+      },
       "patternProperties": {
         ".*": {
           "type": [
@@ -3642,6 +3735,34 @@ No properties.
           ]
         }
       }
+    },
+    "ExperimentalContainerResourceDetector": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalHostResourceDetector": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalProcessResourceDetector": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalServiceResourceDetector": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
     }
   }
 }</pre>
@@ -4356,11 +4477,7 @@ No properties.
         "config": {
           "$ref": "#/$defs/ExperimentalTracerConfig"
         }
-      },
-      "required": [
-        "name",
-        "config"
-      ]
+      }
     },
     "ExperimentalTracerConfig": {
       "type": [
@@ -4373,10 +4490,7 @@ No properties.
             "boolean"
           ]
         }
-      },
-      "required": [
-        "disabled"
-      ]
+      }
     }
   }
 }</pre>

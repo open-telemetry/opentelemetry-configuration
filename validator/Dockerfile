@@ -1,5 +1,5 @@
-# syntax=docker/dockerfile:1
-FROM golang:1.22-alpine AS build
+# syntax=docker/dockerfile:1@sha256:dabfc0969b935b2080555ace70ee69a5261af8a8f1b4df97b9e7fbcf6722eddf
+FROM golang:1.25-alpine@sha256:b6ed3fd0452c0e9bcdef5597f29cc1418f61672e9d3a2f55bf02e7222c014abd AS build
 
 WORKDIR /app
 
@@ -22,17 +22,15 @@ COPY --from=build /otel_config_validator /otel_config_validator
 
 ENTRYPOINT ["/otel_config_validator"]
 
-FROM ubuntu:24.04 AS shelltest
+FROM ubuntu:24.04@sha256:fdb6c9ceb1293dcb0b7eda5df195b15303b01857d7b10f98489e7691d20aa2a1 AS shelltest
 
 ENV YQ_VERSION="v4.45.1"
 
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update \
-    && apt-get install -y software-properties-common wget \
+    && apt-get install -y software-properties-common wget shelltestrunner jq make \
     && wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 \
         && chmod +x /usr/local/bin/yq \
-    && apt-get update \
-    && apt-get install -y shelltestrunner jq make \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/validator

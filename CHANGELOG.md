@@ -2,6 +2,56 @@
 
 ## Unreleased
 
+## [v1.0.0-rc.2] - 2025-09-26
+
+### Schema
+
+* Move known resource detectors to properties 
+  ([#220](https://github.com/open-telemetry/opentelemetry-configuration/pull/220))
+* Add 'translation_strategy' to PrometheusMetricExporter 
+  ([#262](https://github.com/open-telemetry/opentelemetry-configuration/pull/262))
+* bugfix: remove requirement for disabled field for ExperimentalTracerConfig
+  ([#307](https://github.com/open-telemetry/opentelemetry-configuration/pull/307))
+* bugfix: remove name/config as required in ExperimentalTracerMatcherAndConfig 
+  ([#308](https://github.com/open-telemetry/opentelemetry-configuration/pull/308))
+
+
+### Tooling
+
+* Update community member listings 
+  ([#225](https://github.com/open-telemetry/opentelemetry-configuration/pull/225))
+* Fix outdated community membership link 
+  ([#226](https://github.com/open-telemetry/opentelemetry-configuration/pull/226))
+* Add minimum token permissions for all github workflow files 
+  ([#231](https://github.com/open-telemetry/opentelemetry-configuration/pull/231))
+* Run docker image as current user 
+  ([#240](https://github.com/open-telemetry/opentelemetry-configuration/pull/240))
+* Install all dependencies in one step 
+  ([#241](https://github.com/open-telemetry/opentelemetry-configuration/pull/241))
+* Dep validator for validator-build-shelltest-image 
+  ([#239](https://github.com/open-telemetry/opentelemetry-configuration/pull/239))
+
+## [v1.0.0-rc.1] - 2025-06-18
+
+### Schema
+
+* Standardize container, host, process, and service resource detectors
+  ([#199](https://github.com/open-telemetry/opentelemetry-configuration/pull/199))
+
+### Tooling
+
+* Add mark down link checking build step
+  ([#196](https://github.com/open-telemetry/opentelemetry-configuration/pull/196),
+  [#198](https://github.com/open-telemetry/opentelemetry-configuration/pull/198))
+* Add ossf-scorecard scanning workflow
+  ([#194](https://github.com/open-telemetry/opentelemetry-configuration/pull/194))
+* Update validator-release.yml to use ubuntu-latest
+  ([#200](https://github.com/open-telemetry/opentelemetry-configuration/pull/200))
+* Add Renovate configuration
+  ([#202](https://github.com/open-telemetry/opentelemetry-configuration/pull/202))
+* [StepSecurity] ci: Harden GitHub Actions
+  ([#206](https://github.com/open-telemetry/opentelemetry-configuration/pull/206))
+
 ## [v0.4.0] - 2025-03-31
 
 This release has a significant number of breaking changes, new additions and

@@ -6,12 +6,15 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   check-schema:
     runs-on: ubuntu-latest
     steps:
     - name: check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
     - name: install dependencies
       run: npm install
@@ -45,13 +48,13 @@ jobs:
   markdown-link-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
-      - uses: lycheeverse/lychee-action@f613c4a64e50d792e0b31ec34bbcbba12263c6a6 # v2.3.0
+      # pinning this to v2.4.1 as newer versions break things
+      - uses: lycheeverse/lychee-action@82202e5e9c2f4ef1a55a3d02563e1cb6041e5332 # v2.4.1
         with:
           # excluding links to pull requests and issues is done for performance
           args: >
-            --include-fragments
-            --exclude "^https://github.com/open-telemetry/opentelemetry-configuration/(issue|pull)/\\d+$"
-            --max-retries 6
+            --config .github/.lychee.toml
+            -v
             .

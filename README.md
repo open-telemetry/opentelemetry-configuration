@@ -57,7 +57,7 @@ Stable types provide the following guarantees. All types except those excluded i
 * Types will be not change to make validation more strict. Changes may occur if they make validation less strict. This applies to the following keywords. Examples are given, but they are not exhaustive.
   * [minLength, maxLength](https://json-schema.org/understanding-json-schema/reference/string): `minLength` will not increase and `maxLength` will not decrease.
   * [pattern](https://json-schema.org/understanding-json-schema/reference/string#regexp): pattern will not become stricter.
-  * [format](https://json-schema.org/understanding-json-schema/reference/string#built-in-formats): will not change.
+  * [format](https://json-schema.org/understanding-json-schema/reference/type#built-in-formats): will not change.
   * [multipleOf](https://json-schema.org/understanding-json-schema/reference/numeric#multiples): will not change.
   * [minimum, exclusiveMinimum, maximum, exclusiveMaximum](https://json-schema.org/understanding-json-schema/reference/numeric#range): `minimum`, `exclusiveMinimum` will not increase; `maximum`, `exclusiveMaximum` will not decrease.
   * [patternProperties](https://json-schema.org/understanding-json-schema/reference/object#patternProperties): will not expand scope to restrict additional properties.
@@ -115,21 +115,21 @@ Given the [guarantees and allowed changes](#guarantees-and-allowed-changes), imp
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
 
-Approvers ([@open-telemetry/configuration-approvers](https://github.com/orgs/open-telemetry/teams/configuration-approvers)):
-
-- [Brett McBride](https://github.com/brettmc), Deakin University
-- [Marc Alff](https://github.com/marcalff), Oracle
-
-*Find more about the approver role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).*
-
-Maintainers ([@open-telemetry/configuration-maintainers](https://github.com/orgs/open-telemetry/teams/configuration-maintainers)):
+### Maintainers
 
 - [Alex Boten](https://github.com/codeboten), Honeycomb
 - [Jack Berg](https://github.com/jack-berg), New Relic
 - [Tristan Sloughter](https://github.com/tsloughter), MyDecisiveAI
 - [Tyler Yahn](https://github.com/MrAlias), Splunk
 
-*Find more about the maintainer role in [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).*
+For more information about the maintainer role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).
+
+### Approvers
+
+- [Brett McBride](https://github.com/brettmc), Deakin University
+- [Marc Alff](https://github.com/marcalff), Oracle
+
+For more information about the approver role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).
 
 [annotation]: https://json-schema.org/understanding-json-schema/reference/annotations
 [env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution

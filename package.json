@@ -6,7 +6,6 @@
     "fix-meta-schema": "node scripts/fix-meta-schema.js"
   },
   "devDependencies": {
-    "@json-schema-tools/traverse": "^1.10.4",
     "ajv-cli": "^5.0.0"
   },
   "dependencies": {
