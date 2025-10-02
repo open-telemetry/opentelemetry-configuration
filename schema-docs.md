@@ -11,12 +11,12 @@
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `default` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `drop` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `explicit_bucket_histogram` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `base2_exponential_bucket_histogram` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `last_value` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `sum` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `default` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `drop` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `explicit_bucket_histogram` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `base2_exponential_bucket_histogram` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `last_value` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `sum` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -47,12 +47,9 @@
       "$ref": "#/$defs/SumAggregation"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.views[].stream.aggregation`
+}</pre>
 </details>
+
 ### AlwaysOffSampler <a id="AlwaysOffSampler"></a>
 
 No properties.
@@ -67,12 +64,9 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.sampler.always_off`
+}</pre>
 </details>
+
 ### AlwaysOnSampler <a id="AlwaysOnSampler"></a>
 
 No properties.
@@ -87,12 +81,9 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.sampler.always_on`
+}</pre>
 </details>
+
 ### AttributeLimits <a id="AttributeLimits"></a>
 
 | Property | Description | Type | Required? |
@@ -102,8 +93,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `attribute_value_length_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `attribute_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `attribute_value_length_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `attribute_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -126,25 +117,22 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.attribute_limits`
+}</pre>
 </details>
+
 ### AttributeNameValue <a id="AttributeNameValue"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | TODO | `string` | `true` |
-| `value` | TODO | One of:<br>* [`see JSON schema`](#see JSON schema)<br> | `true` |
-| `type` | TODO | [`AttributeType`](#AttributeType) | `false` |
+| `name` | The attribute name.<br> | `string` | `true` |
+| `value` | The attribute value.<br>The type of value must match .type.<br> | One of:<br>* [`see JSON schema`](#see JSON schema)<br> | `true` |
+| `type` | The attribute type.<br>Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br>If omitted or null, string is used.<br> | [`AttributeType`](#AttributeType) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `value` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `type` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `value` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `type` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -199,12 +187,9 @@ No properties.
     "name",
     "value"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.resource.attributes[]`
+}</pre>
 </details>
+
 ### AttributeType <a id="AttributeType"></a>
 
 No properties.
@@ -229,12 +214,9 @@ No properties.
     "int_array",
     "double_array"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.resource.attributes[].type`
+}</pre>
 </details>
+
 ### B3MultiPropagator <a id="B3MultiPropagator"></a>
 
 No properties.
@@ -249,12 +231,9 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.propagator.composite[].b3multi`
+}</pre>
 </details>
+
 ### B3Propagator <a id="B3Propagator"></a>
 
 No properties.
@@ -269,12 +248,9 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.propagator.composite[].b3`
+}</pre>
 </details>
+
 ### BaggagePropagator <a id="BaggagePropagator"></a>
 
 No properties.
@@ -289,12 +265,9 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.propagator.composite[].baggage`
+}</pre>
 </details>
+
 ### Base2ExponentialBucketHistogramAggregation <a id="Base2ExponentialBucketHistogramAggregation"></a>
 
 | Property | Description | Type | Required? |
@@ -305,9 +278,9 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `max_scale` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `max_size` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `record_min_max` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `max_scale` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `max_size` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `record_min_max` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -339,12 +312,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.views[].stream.aggregation.base2_exponential_bucket_histogram`
+}</pre>
 </details>
+
 ### BatchLogRecordProcessor <a id="BatchLogRecordProcessor"></a>
 
 | Property | Description | Type | Required? |
@@ -357,11 +327,11 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `schedule_delay` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `export_timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `max_queue_size` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `max_export_batch_size` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `schedule_delay` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `export_timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `max_queue_size` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `max_export_batch_size` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -406,12 +376,9 @@ No properties.
   "required": [
     "exporter"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.processors[].batch`
+}</pre>
 </details>
+
 ### BatchSpanProcessor <a id="BatchSpanProcessor"></a>
 
 | Property | Description | Type | Required? |
@@ -424,11 +391,11 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `schedule_delay` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `export_timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `max_queue_size` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `max_export_batch_size` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `schedule_delay` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `export_timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `max_queue_size` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `max_export_batch_size` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -473,12 +440,9 @@ No properties.
   "required": [
     "exporter"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.processors[].batch`
+}</pre>
 </details>
+
 ### CardinalityLimits <a id="CardinalityLimits"></a>
 
 | Property | Description | Type | Required? |
@@ -494,14 +458,14 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `default` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `counter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `gauge` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `histogram` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `observable_counter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `observable_gauge` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `observable_up_down_counter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `up_down_counter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `default` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `counter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `gauge` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `histogram` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `observable_counter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `observable_gauge` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `observable_up_down_counter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `up_down_counter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -568,13 +532,9 @@ No properties.
       "exclusiveMinimum": 0
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].periodic.cardinality_limits`
-* `.meter_provider.readers[].pull.cardinality_limits`
+}</pre>
 </details>
+
 ### ConsoleExporter <a id="ConsoleExporter"></a>
 
 No properties.
@@ -589,16 +549,9 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.processors[].batch.exporter.console`
-* `.logger_provider.processors[].simple.exporter.console`
-* `.meter_provider.readers[].periodic.exporter.console`
-* `.tracer_provider.processors[].batch.exporter.console`
-* `.tracer_provider.processors[].simple.exporter.console`
+}</pre>
 </details>
+
 ### DefaultAggregation <a id="DefaultAggregation"></a>
 
 No properties.
@@ -613,12 +566,9 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.views[].stream.aggregation.default`
+}</pre>
 </details>
+
 ### DropAggregation <a id="DropAggregation"></a>
 
 No properties.
@@ -633,12 +583,9 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.views[].stream.aggregation.drop`
+}</pre>
 </details>
+
 ### ExemplarFilter <a id="ExemplarFilter"></a>
 
 No properties.
@@ -657,12 +604,9 @@ No properties.
     "always_off",
     "trace_based"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.exemplar_filter`
+}</pre>
 </details>
+
 ### ExperimentalGeneralInstrumentation <a id="ExperimentalGeneralInstrumentation"></a>
 
 | Property | Description | Type | Required? |
@@ -672,8 +616,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `peer` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `http` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `peer` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `http` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -690,23 +634,56 @@ No properties.
       "$ref": "#/$defs/ExperimentalHttpInstrumentation"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.instrumentation/development.general`
+}</pre>
 </details>
+
+### ExperimentalHttpClientInstrumentation <a id="ExperimentalHttpClientInstrumentation"></a>
+
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `request_captured_headers` | Configure headers to capture for outbound http requests.<br> | `array` of [`string`](#string) | `false` |
+| `response_captured_headers` | Configure headers to capture for inbound http responses.<br> | `array` of [`string`](#string) | `false` |
+
+| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| `request_captured_headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `response_captured_headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.json)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "request_captured_headers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "response_captured_headers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}</pre>
+</details>
+
 ### ExperimentalHttpInstrumentation <a id="ExperimentalHttpInstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `client` | Configure instrumentations following the http client semantic conventions. | `object` | `false` |
-| `server` | Configure instrumentations following the http server semantic conventions. | `object` | `false` |
+| `client` | Configure instrumentations following the http client semantic conventions. | [`ExperimentalHttpClientInstrumentation`](#ExperimentalHttpClientInstrumentation) | `false` |
+| `server` | Configure instrumentations following the http server semantic conventions. | [`ExperimentalHttpServerInstrumentation`](#ExperimentalHttpServerInstrumentation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `client` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `server` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `client` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `server` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -717,79 +694,82 @@ No properties.
   "additionalProperties": false,
   "properties": {
     "client": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "request_captured_headers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "response_captured_headers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
+      "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
     },
     "server": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "request_captured_headers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "response_captured_headers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
+      "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
+    }
+  }
+}</pre>
+</details>
+
+### ExperimentalHttpServerInstrumentation <a id="ExperimentalHttpServerInstrumentation"></a>
+
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `request_captured_headers` | Configure headers to capture for inbound http requests.<br> | `array` of [`string`](#string) | `false` |
+| `response_captured_headers` | Configure headers to capture for outbound http responses.<br> | `array` of [`string`](#string) | `false` |
+
+| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| `request_captured_headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `response_captured_headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.json)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "request_captured_headers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "response_captured_headers": {
+      "type": "array",
+      "items": {
+        "type": "string"
       }
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.instrumentation/development.general.http`
+}</pre>
 </details>
+
 ### ExperimentalInstrumentation <a id="ExperimentalInstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `general` | Configure general SemConv options that may apply to multiple languages and instrumentations.<br>Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.<br> | [`ExperimentalGeneralInstrumentation`](#ExperimentalGeneralInstrumentation) | `false` |
 | `cpp` | Configure C++ language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `dotnet` | Configure .NET language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `erlang` | Configure Erlang language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `go` | Configure Go language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `java` | Configure Java language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `js` | Configure JavaScript language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `php` | Configure PHP language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `python` | Configure Python language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `ruby` | Configure Ruby language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `rust` | Configure Rust language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `swift` | Configure Swift language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `dotnet` | Configure .NET language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `erlang` | Configure Erlang language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `go` | Configure Go language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `java` | Configure Java language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `js` | Configure JavaScript language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `php` | Configure PHP language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `python` | Configure Python language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `ruby` | Configure Ruby language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `rust` | Configure Rust language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `swift` | Configure Swift language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `general` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `cpp` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `dotnet` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `erlang` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `go` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `java` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `js` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `php` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `python` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `ruby` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `rust` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `swift` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `general` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `cpp` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `dotnet` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `erlang` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `go` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `java` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `js` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `php` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `python` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `ruby` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `rust` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `swift` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -863,20 +843,59 @@ No properties.
         "service_mapping": {
           "type": "array",
           "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "peer": {
-                "type": "string"
-              },
-              "service": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "peer",
-              "service"
-            ]
+            "$ref": "#/$defs/ExperimentalPeerServiceMapping"
+          }
+        }
+      }
+    },
+    "ExperimentalPeerServiceMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "peer": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "peer",
+        "service"
+      ]
+    },
+    "ExperimentalHttpClientInstrumentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request_captured_headers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "response_captured_headers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ExperimentalHttpServerInstrumentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request_captured_headers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "response_captured_headers": {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         }
       }
@@ -886,40 +905,10 @@ No properties.
       "additionalProperties": false,
       "properties": {
         "client": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "request_captured_headers": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "response_captured_headers": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
+          "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
         },
         "server": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "request_captured_headers": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "response_captured_headers": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
+          "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
         }
       }
     },
@@ -933,12 +922,9 @@ No properties.
       }
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.instrumentation/development`
+}</pre>
 </details>
+
 ### ExperimentalLanguageSpecificInstrumentation <a id="ExperimentalLanguageSpecificInstrumentation"></a>
 
 No properties.
@@ -955,22 +941,9 @@ No properties.
       "type": "object"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.instrumentation/development.cpp`
-* `.instrumentation/development.dotnet`
-* `.instrumentation/development.erlang`
-* `.instrumentation/development.go`
-* `.instrumentation/development.java`
-* `.instrumentation/development.js`
-* `.instrumentation/development.php`
-* `.instrumentation/development.python`
-* `.instrumentation/development.ruby`
-* `.instrumentation/development.rust`
-* `.instrumentation/development.swift`
+}</pre>
 </details>
+
 ### ExperimentalLoggerConfig <a id="ExperimentalLoggerConfig"></a>
 
 | Property | Description | Type | Required? |
@@ -979,7 +952,7 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `disabled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `disabled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -997,13 +970,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.logger_configurator/development.default_config`
-* `.logger_provider.logger_configurator/development.loggers[].config`
+}</pre>
 </details>
+
 ### ExperimentalLoggerConfigurator <a id="ExperimentalLoggerConfigurator"></a>
 
 | Property | Description | Type | Required? |
@@ -1013,8 +982,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `default_config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `loggers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `default_config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `loggers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1036,12 +1005,9 @@ No properties.
       }
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.logger_configurator/development`
+}</pre>
 </details>
+
 ### ExperimentalLoggerMatcherAndConfig <a id="ExperimentalLoggerMatcherAndConfig"></a>
 
 | Property | Description | Type | Required? |
@@ -1051,8 +1017,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1073,12 +1039,9 @@ No properties.
       "$ref": "#/$defs/ExperimentalLoggerConfig"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.logger_configurator/development.loggers[]`
+}</pre>
 </details>
+
 ### ExperimentalMeterConfig <a id="ExperimentalMeterConfig"></a>
 
 | Property | Description | Type | Required? |
@@ -1087,7 +1050,7 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `disabled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `disabled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1105,13 +1068,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.meter_configurator/development.default_config`
-* `.meter_provider.meter_configurator/development.meters[].config`
+}</pre>
 </details>
+
 ### ExperimentalMeterConfigurator <a id="ExperimentalMeterConfigurator"></a>
 
 | Property | Description | Type | Required? |
@@ -1121,8 +1080,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `default_config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `meters` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `default_config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `meters` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1144,12 +1103,9 @@ No properties.
       }
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.meter_configurator/development`
+}</pre>
 </details>
+
 ### ExperimentalMeterMatcherAndConfig <a id="ExperimentalMeterMatcherAndConfig"></a>
 
 | Property | Description | Type | Required? |
@@ -1159,8 +1115,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1181,21 +1137,18 @@ No properties.
       "$ref": "#/$defs/ExperimentalMeterConfig"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.meter_configurator/development.meters[]`
+}</pre>
 </details>
+
 ### ExperimentalOtlpFileExporter <a id="ExperimentalOtlpFileExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `output_stream` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `output_stream` | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `output_stream` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `output_stream` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1215,28 +1168,22 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.processors[].batch.exporter.otlp_file/development`
-* `.logger_provider.processors[].simple.exporter.otlp_file/development`
-* `.tracer_provider.processors[].batch.exporter.otlp_file/development`
-* `.tracer_provider.processors[].simple.exporter.otlp_file/development`
+}</pre>
 </details>
+
 ### ExperimentalOtlpFileMetricExporter <a id="ExperimentalOtlpFileMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `output_stream` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
-| `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
+| `output_stream` | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
+| `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `output_stream` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `temporality_preference` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `default_histogram_aggregation` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `output_stream` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `temporality_preference` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `default_histogram_aggregation` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1262,21 +1209,18 @@ No properties.
       "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].periodic.exporter.otlp_file/development`
+}</pre>
 </details>
+
 ### ExperimentalPeerInstrumentation <a id="ExperimentalPeerInstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `service_mapping` | TODO | `array` of [`object`](#object) | `false` |
+| `service_mapping` | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> | `array` of [`ExperimentalPeerServiceMapping`](#ExperimentalPeerServiceMapping) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `service_mapping` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `service_mapping` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1289,29 +1233,47 @@ No properties.
     "service_mapping": {
       "type": "array",
       "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "peer": {
-            "type": "string"
-          },
-          "service": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "peer",
-          "service"
-        ]
+        "$ref": "#/$defs/ExperimentalPeerServiceMapping"
       }
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.instrumentation/development.general.peer`
+}</pre>
 </details>
+
+### ExperimentalPeerServiceMapping <a id="ExperimentalPeerServiceMapping"></a>
+
+| Property | Description | Type | Required? |
+|---|---|---|---|
+| `peer` | The IP address to map.<br> | `string` | `true` |
+| `service` | The logical name corresponding to the IP address of .peer.<br> | `string` | `true` |
+
+| Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| `peer` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `service` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.json)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "peer": {
+      "type": "string"
+    },
+    "service": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "peer",
+    "service"
+  ]
+}</pre>
+</details>
+
 ### ExperimentalPrometheusMetricExporter <a id="ExperimentalPrometheusMetricExporter"></a>
 
 | Property | Description | Type | Required? |
@@ -1321,16 +1283,16 @@ No properties.
 | `without_units` | Configure Prometheus Exporter to produce metrics without a unit suffix or UNIT metadata.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `without_type_suffix` | Configure Prometheus Exporter to produce metrics without a type suffix.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `without_scope_info` | Configure Prometheus Exporter to produce metrics without a scope info metric.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
-| `with_resource_constant_labels` | Configure Prometheus Exporter to add resource attributes as metrics attributes. | [`IncludeExclude`](#IncludeExclude) | `false` |
+| `with_resource_constant_labels` | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. | [`IncludeExclude`](#IncludeExclude) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `host` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `port` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `without_units` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `without_type_suffix` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `without_scope_info` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `with_resource_constant_labels` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `host` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `port` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `without_units` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `without_type_suffix` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `without_scope_info` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `with_resource_constant_labels` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1377,12 +1339,9 @@ No properties.
       "$ref": "common.json#/$defs/IncludeExclude"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].pull.exporter.prometheus/development`
+}</pre>
 </details>
+
 ### ExperimentalResourceDetection <a id="ExperimentalResourceDetection"></a>
 
 | Property | Description | Type | Required? |
@@ -1392,8 +1351,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `attributes` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `detectors` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `attributes` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `detectors` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1413,12 +1372,9 @@ No properties.
       }
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.resource.detection/development`
+}</pre>
 </details>
+
 ### ExperimentalResourceDetector <a id="ExperimentalResourceDetector"></a>
 
 No properties.
@@ -1440,12 +1396,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.resource.detection/development.detectors[]`
+}</pre>
 </details>
+
 ### ExperimentalTracerConfig <a id="ExperimentalTracerConfig"></a>
 
 | Property | Description | Type | Required? |
@@ -1454,7 +1407,7 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `disabled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `disabled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1475,13 +1428,9 @@ No properties.
   "required": [
     "disabled"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.tracer_configurator/development.default_config`
-* `.tracer_provider.tracer_configurator/development.tracers[].config`
+}</pre>
 </details>
+
 ### ExperimentalTracerConfigurator <a id="ExperimentalTracerConfigurator"></a>
 
 | Property | Description | Type | Required? |
@@ -1491,8 +1440,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `default_config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `tracers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `default_config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `tracers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1514,12 +1463,9 @@ No properties.
       }
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.tracer_configurator/development`
+}</pre>
 </details>
+
 ### ExperimentalTracerMatcherAndConfig <a id="ExperimentalTracerMatcherAndConfig"></a>
 
 | Property | Description | Type | Required? |
@@ -1529,8 +1475,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `config` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `config` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1555,12 +1501,9 @@ No properties.
     "name",
     "config"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.tracer_configurator/development.tracers[]`
+}</pre>
 </details>
+
 ### ExplicitBucketHistogramAggregation <a id="ExplicitBucketHistogramAggregation"></a>
 
 | Property | Description | Type | Required? |
@@ -1570,8 +1513,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `boundaries` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `record_min_max` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `boundaries` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `record_min_max` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1597,12 +1540,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.views[].stream.aggregation.explicit_bucket_histogram`
+}</pre>
 </details>
+
 ### ExporterDefaultHistogramAggregation <a id="ExporterDefaultHistogramAggregation"></a>
 
 No properties.
@@ -1620,14 +1560,9 @@ No properties.
     "explicit_bucket_histogram",
     "base2_exponential_bucket_histogram"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].periodic.exporter.otlp_http.default_histogram_aggregation`
-* `.meter_provider.readers[].periodic.exporter.otlp_grpc.default_histogram_aggregation`
-* `.meter_provider.readers[].periodic.exporter.otlp_file/development.default_histogram_aggregation`
+}</pre>
 </details>
+
 ### ExporterTemporalityPreference <a id="ExporterTemporalityPreference"></a>
 
 No properties.
@@ -1646,25 +1581,20 @@ No properties.
     "delta",
     "low_memory"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].periodic.exporter.otlp_http.temporality_preference`
-* `.meter_provider.readers[].periodic.exporter.otlp_grpc.temporality_preference`
-* `.meter_provider.readers[].periodic.exporter.otlp_file/development.temporality_preference`
+}</pre>
 </details>
+
 ### IncludeExclude <a id="IncludeExclude"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `included` | Configure list of attribute key patterns to include from resource detectors.<br>Attribute keys from resource detectors are evaluated to match as follows:<br> * If the value of the attribute key exactly matches.<br> * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all attributes are included.<br> | `array` of [`string`](#string) | `false` |
-| `excluded` | Configure list of attribute key patterns to exclude from resource detectors. Applies after .resource.detectors.attributes.included (i.e. excluded has higher priority than included).<br>Attribute keys from resource detectors are evaluated to match as follows:<br> * If the value of the attribute key exactly matches.<br> * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> | `array` of [`string`](#string) | `false` |
+| `included` | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all values are included.<br> | `array` of [`string`](#string) | `false` |
+| `excluded` | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> | `array` of [`string`](#string) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `included` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `excluded` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `included` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `excluded` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1687,14 +1617,9 @@ No properties.
       }
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].pull.exporter.prometheus/development.with_resource_constant_labels`
-* `.meter_provider.views[].stream.attribute_keys`
-* `.resource.detection/development.attributes`
+}</pre>
 </details>
+
 ### InstrumentType <a id="InstrumentType"></a>
 
 No properties.
@@ -1717,12 +1642,9 @@ No properties.
     "observable_up_down_counter",
     "up_down_counter"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.views[].selector.instrument_type`
+}</pre>
 </details>
+
 ### JaegerPropagator <a id="JaegerPropagator"></a>
 
 No properties.
@@ -1737,12 +1659,9 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.propagator.composite[].jaeger`
+}</pre>
 </details>
+
 ### JaegerRemoteSampler <a id="JaegerRemoteSampler"></a>
 
 | Property | Description | Type | Required? |
@@ -1753,9 +1672,9 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `interval` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `initial_sampler` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `interval` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `initial_sampler` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1785,13 +1704,9 @@ No properties.
       "$ref": "#/$defs/Sampler"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.sampler.jaeger_remote`
-* `.tracer_provider.*.jaeger_remote`
+}</pre>
 </details>
+
 ### LastValueAggregation <a id="LastValueAggregation"></a>
 
 No properties.
@@ -1806,12 +1721,9 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.views[].stream.aggregation.last_value`
+}</pre>
 </details>
+
 ### LoggerProvider <a id="LoggerProvider"></a>
 
 | Property | Description | Type | Required? |
@@ -1822,9 +1734,9 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `processors` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `limits` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `logger_configurator/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `processors` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `limits` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `logger_configurator/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2022,12 +1934,9 @@ No properties.
       }
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider`
+}</pre>
 </details>
+
 ### LogRecordExporter <a id="LogRecordExporter"></a>
 
 | Property | Description | Type | Required? |
@@ -2039,10 +1948,10 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `otlp_http` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `otlp_grpc` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `otlp_file/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `console` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `otlp_http` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `otlp_grpc` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `otlp_file/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `console` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2075,13 +1984,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.processors[].batch.exporter`
-* `.logger_provider.processors[].simple.exporter`
+}</pre>
 </details>
+
 ### LogRecordLimits <a id="LogRecordLimits"></a>
 
 | Property | Description | Type | Required? |
@@ -2091,8 +1996,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `attribute_value_length_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `attribute_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `attribute_value_length_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `attribute_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2117,12 +2022,9 @@ No properties.
       "minimum": 0
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.limits`
+}</pre>
 </details>
+
 ### LogRecordProcessor <a id="LogRecordProcessor"></a>
 
 | Property | Description | Type | Required? |
@@ -2132,8 +2034,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `batch` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `simple` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `batch` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `simple` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2159,12 +2061,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.processors[]`
+}</pre>
 </details>
+
 ### MeterProvider <a id="MeterProvider"></a>
 
 | Property | Description | Type | Required? |
@@ -2176,10 +2075,10 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `readers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `views` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `exemplar_filter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `meter_configurator/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `readers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `views` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `exemplar_filter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `meter_configurator/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2900,12 +2799,9 @@ No properties.
       }
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider`
+}</pre>
 </details>
+
 ### MetricProducer <a id="MetricProducer"></a>
 
 | Property | Description | Type | Required? |
@@ -2914,7 +2810,7 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `opencensus` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `opencensus` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2938,13 +2834,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].periodic.producers[]`
-* `.meter_provider.readers[].pull.producers[]`
+}</pre>
 </details>
+
 ### MetricReader <a id="MetricReader"></a>
 
 | Property | Description | Type | Required? |
@@ -2954,8 +2846,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `periodic` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `pull` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `periodic` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `pull` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2974,23 +2866,20 @@ No properties.
       "$ref": "#/$defs/PullMetricReader"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[]`
+}</pre>
 </details>
+
 ### NameStringValuePair <a id="NameStringValuePair"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | TODO | `string` | `true` |
-| `value` | TODO | One of:<br>* `string`<br>* `null`<br> | `true` |
+| `name` | The name of the pair. | `string` | `true` |
+| `value` | The value of the pair. | One of:<br>* `string`<br>* `null`<br> | `true` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `value` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `value` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3014,21 +2903,9 @@ No properties.
     "name",
     "value"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.processors[].batch.exporter.otlp_http.headers[]`
-* `.logger_provider.processors[].batch.exporter.otlp_grpc.headers[]`
-* `.logger_provider.processors[].simple.exporter.otlp_http.headers[]`
-* `.logger_provider.processors[].simple.exporter.otlp_grpc.headers[]`
-* `.meter_provider.readers[].periodic.exporter.otlp_http.headers[]`
-* `.meter_provider.readers[].periodic.exporter.otlp_grpc.headers[]`
-* `.tracer_provider.processors[].batch.exporter.otlp_http.headers[]`
-* `.tracer_provider.processors[].batch.exporter.otlp_grpc.headers[]`
-* `.tracer_provider.processors[].simple.exporter.otlp_http.headers[]`
-* `.tracer_provider.processors[].simple.exporter.otlp_grpc.headers[]`
+}</pre>
 </details>
+
 ### OpenCensusMetricProducer <a id="OpenCensusMetricProducer"></a>
 
 No properties.
@@ -3043,40 +2920,36 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].periodic.producers[].opencensus`
-* `.meter_provider.readers[].pull.producers[].opencensus`
+}</pre>
 </details>
+
 ### OpentelemetryConfiguration <a id="OpentelemetryConfiguration"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `file_format` | TODO | `string` | `true` |
-| `disabled` | TODO | One of:<br>* `boolean`<br>* `null`<br> | `false` |
-| `log_level` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `attribute_limits` | TODO | [`AttributeLimits`](#AttributeLimits) | `false` |
-| `logger_provider` | TODO | [`LoggerProvider`](#LoggerProvider) | `false` |
-| `meter_provider` | TODO | [`MeterProvider`](#MeterProvider) | `false` |
-| `propagator` | TODO | [`Propagator`](#Propagator) | `false` |
-| `tracer_provider` | TODO | [`TracerProvider`](#TracerProvider) | `false` |
-| `resource` | TODO | [`Resource`](#Resource) | `false` |
-| `instrumentation/development` | TODO | [`ExperimentalInstrumentation`](#ExperimentalInstrumentation) | `false` |
+| `file_format` | The file format version.<br>The yaml format is documented at<br>https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema<br> | `string` | `true` |
+| `disabled` | Configure if the SDK is disabled or not.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
+| `log_level` | Configure the log level of the internal logger used by the SDK.<br>If omitted, info is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `attribute_limits` | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br> | [`AttributeLimits`](#AttributeLimits) | `false` |
+| `logger_provider` | Configure logger provider.<br>If omitted, a noop logger provider is used.<br> | [`LoggerProvider`](#LoggerProvider) | `false` |
+| `meter_provider` | Configure meter provider.<br>If omitted, a noop meter provider is used.<br> | [`MeterProvider`](#MeterProvider) | `false` |
+| `propagator` | Configure text map context propagators.<br>If omitted, a noop propagator is used.<br> | [`Propagator`](#Propagator) | `false` |
+| `tracer_provider` | Configure tracer provider.<br>If omitted, a noop tracer provider is used.<br> | [`TracerProvider`](#TracerProvider) | `false` |
+| `resource` | Configure resource for all signals.<br>If omitted, the default resource is used.<br> | [`Resource`](#Resource) | `false` |
+| `instrumentation/development` | Configure instrumentation.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalInstrumentation`](#ExperimentalInstrumentation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `file_format` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `disabled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `log_level` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `attribute_limits` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `logger_provider` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `meter_provider` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `propagator` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `tracer_provider` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `resource` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `instrumentation/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `file_format` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `disabled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `log_level` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `attribute_limits` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `logger_provider` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `meter_provider` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `propagator` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `tracer_provider` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `resource` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `instrumentation/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3167,12 +3040,9 @@ No properties.
       "$ref": "instrumentation.json"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.`
+}</pre>
 </details>
+
 ### OpenTracingPropagator <a id="OpenTracingPropagator"></a>
 
 No properties.
@@ -3187,37 +3057,34 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.propagator.composite[].ottrace`
+}</pre>
 </details>
+
 ### OtlpGrpcExporter <a id="OtlpGrpcExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_key_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `compression` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `timeout` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `client_key_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `client_certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `headers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `headers_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `compression` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `insecure` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `client_key_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `client_certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `headers_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `compression` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `insecure` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3286,44 +3153,38 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.processors[].batch.exporter.otlp_grpc`
-* `.logger_provider.processors[].simple.exporter.otlp_grpc`
-* `.tracer_provider.processors[].batch.exporter.otlp_grpc`
-* `.tracer_provider.processors[].simple.exporter.otlp_grpc`
+}</pre>
 </details>
+
 ### OtlpGrpcMetricExporter <a id="OtlpGrpcMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_key_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `compression` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `timeout` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `insecure` | TODO | One of:<br>* `boolean`<br>* `null`<br> | `false` |
-| `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
-| `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
+| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
+| `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
+| `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `client_key_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `client_certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `headers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `headers_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `compression` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `insecure` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `temporality_preference` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `default_histogram_aggregation` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `client_key_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `client_certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `headers_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `compression` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `insecure` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `temporality_preference` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `default_histogram_aggregation` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3398,12 +3259,9 @@ No properties.
       "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].periodic.exporter.otlp_grpc`
+}</pre>
 </details>
+
 ### OtlpHttpEncoding <a id="OtlpHttpEncoding"></a>
 
 No properties.
@@ -3421,41 +3279,34 @@ No properties.
     "protobuf",
     "json"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.processors[].batch.exporter.otlp_http.encoding`
-* `.logger_provider.processors[].simple.exporter.otlp_http.encoding`
-* `.meter_provider.readers[].periodic.exporter.otlp_http.encoding`
-* `.tracer_provider.processors[].batch.exporter.otlp_http.encoding`
-* `.tracer_provider.processors[].simple.exporter.otlp_http.encoding`
+}</pre>
 </details>
+
 ### OtlpHttpExporter <a id="OtlpHttpExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_key_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `compression` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `timeout` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `endpoint` | Configure endpoint, including the signal specific path.<br>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
 | `encoding` | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `client_key_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `client_certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `headers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `headers_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `compression` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `encoding` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `client_key_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `client_certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `headers_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `compression` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `encoding` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3521,44 +3372,40 @@ No properties.
       "$ref": "#/$defs/OtlpHttpEncoding"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.processors[].batch.exporter.otlp_http`
-* `.logger_provider.processors[].simple.exporter.otlp_http`
-* `.tracer_provider.processors[].batch.exporter.otlp_http`
-* `.tracer_provider.processors[].simple.exporter.otlp_http`
+}</pre>
 </details>
+
 ### OtlpHttpMetricExporter <a id="OtlpHttpMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | Configure endpoint, including the metric specific path.<br>If omitted or null, http://localhost:4318/v1/metrics is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_key_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `headers` | TODO | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `compression` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `timeout` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `encoding` | TODO | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
-| `temporality_preference` | TODO | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
-| `default_histogram_aggregation` | TODO | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
+| `endpoint` | Configure endpoint, including the signal specific path.<br>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `encoding` | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
+| `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
+| `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `client_key_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `client_certificate_file` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `headers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `headers_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `compression` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `encoding` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `temporality_preference` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `default_histogram_aggregation` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `client_key_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `client_certificate_file` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `headers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `headers_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `compression` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `encoding` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `temporality_preference` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `default_histogram_aggregation` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3630,29 +3477,26 @@ No properties.
       "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].periodic.exporter.otlp_http`
+}</pre>
 </details>
+
 ### ParentBasedSampler <a id="ParentBasedSampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `root` | TODO | [`Sampler`](#Sampler) | `false` |
-| `remote_parent_sampled` | TODO | [`Sampler`](#Sampler) | `false` |
-| `remote_parent_not_sampled` | TODO | [`Sampler`](#Sampler) | `false` |
-| `local_parent_sampled` | TODO | [`Sampler`](#Sampler) | `false` |
-| `local_parent_not_sampled` | TODO | [`Sampler`](#Sampler) | `false` |
+| `root` | Configure root sampler.<br>If omitted or null, always_on is used.<br> | [`Sampler`](#Sampler) | `false` |
+| `remote_parent_sampled` | Configure remote_parent_sampled sampler.<br>If omitted or null, always_on is used.<br> | [`Sampler`](#Sampler) | `false` |
+| `remote_parent_not_sampled` | Configure remote_parent_not_sampled sampler.<br>If omitted or null, always_off is used.<br> | [`Sampler`](#Sampler) | `false` |
+| `local_parent_sampled` | Configure local_parent_sampled sampler.<br>If omitted or null, always_on is used.<br> | [`Sampler`](#Sampler) | `false` |
+| `local_parent_not_sampled` | Configure local_parent_not_sampled sampler.<br>If omitted or null, always_off is used.<br> | [`Sampler`](#Sampler) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `root` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `remote_parent_sampled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `remote_parent_not_sampled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `local_parent_sampled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `local_parent_not_sampled` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `root` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `remote_parent_sampled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `remote_parent_not_sampled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `local_parent_sampled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `local_parent_not_sampled` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3681,13 +3525,9 @@ No properties.
       "$ref": "#/$defs/Sampler"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.sampler.parent_based`
-* `.tracer_provider.*.parent_based`
+}</pre>
 </details>
+
 ### PeriodicMetricReader <a id="PeriodicMetricReader"></a>
 
 | Property | Description | Type | Required? |
@@ -3700,11 +3540,11 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `interval` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `producers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `cardinality_limits` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `interval` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `producers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `cardinality_limits` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3744,12 +3584,9 @@ No properties.
   "required": [
     "exporter"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].periodic`
+}</pre>
 </details>
+
 ### Propagator <a id="Propagator"></a>
 
 | Property | Description | Type | Required? |
@@ -3759,8 +3596,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `composite` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `composite_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `composite` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `composite_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3862,21 +3699,18 @@ No properties.
       "additionalProperties": false
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.propagator`
+}</pre>
 </details>
+
 ### PullMetricExporter <a id="PullMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `prometheus/development` | TODO | [`ExperimentalPrometheusMetricExporter`](#ExperimentalPrometheusMetricExporter) | `false` |
+| `prometheus/development` | Configure exporter to be prometheus.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalPrometheusMetricExporter`](#ExperimentalPrometheusMetricExporter) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `prometheus/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `prometheus/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3902,12 +3736,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].pull.exporter`
+}</pre>
 </details>
+
 ### PullMetricReader <a id="PullMetricReader"></a>
 
 | Property | Description | Type | Required? |
@@ -3918,9 +3749,9 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `producers` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `cardinality_limits` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `producers` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `cardinality_limits` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3946,27 +3777,24 @@ No properties.
   "required": [
     "exporter"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].pull`
+}</pre>
 </details>
+
 ### PushMetricExporter <a id="PushMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `otlp_http` | TODO | [`OtlpHttpMetricExporter`](#OtlpHttpMetricExporter) | `false` |
-| `otlp_grpc` | TODO | [`OtlpGrpcMetricExporter`](#OtlpGrpcMetricExporter) | `false` |
-| `otlp_file/development` | TODO | [`ExperimentalOtlpFileMetricExporter`](#ExperimentalOtlpFileMetricExporter) | `false` |
-| `console` | TODO | [`ConsoleExporter`](#ConsoleExporter) | `false` |
+| `otlp_http` | Configure exporter to be OTLP with HTTP transport.<br> | [`OtlpHttpMetricExporter`](#OtlpHttpMetricExporter) | `false` |
+| `otlp_grpc` | Configure exporter to be OTLP with gRPC transport.<br> | [`OtlpGrpcMetricExporter`](#OtlpGrpcMetricExporter) | `false` |
+| `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileMetricExporter`](#ExperimentalOtlpFileMetricExporter) | `false` |
+| `console` | Configure exporter to be console.<br> | [`ConsoleExporter`](#ConsoleExporter) | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `otlp_http` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `otlp_grpc` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `otlp_file/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `console` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `otlp_http` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `otlp_grpc` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `otlp_file/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `console` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3999,27 +3827,24 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.readers[].periodic.exporter`
+}</pre>
 </details>
+
 ### Resource <a id="Resource"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attributes` | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br>Entries must contain .name and .value, and may optionally include .type. If an entry's .type omitted or null, string is used.<br>The .value's type must match the .type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br> | `array` of [`AttributeNameValue`](#AttributeNameValue) | `false` |
+| `attributes` | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br> | `array` of [`AttributeNameValue`](#AttributeNameValue) | `false` |
 | `detection/development` | Configure resource detection.<br>This type is in development and subject to breaking changes in minor versions.<br>If omitted or null, resource detection is disabled.<br> | [`ExperimentalResourceDetection`](#ExperimentalResourceDetection) | `false` |
 | `schema_url` | Configure resource schema URL.<br>If omitted or null, no schema URL is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 | `attributes_list` | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>If omitted or null, no resource attributes are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `attributes` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `detection/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `schema_url` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `attributes_list` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `attributes` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `detection/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `schema_url` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `attributes_list` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4151,12 +3976,9 @@ No properties.
       }
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.resource`
+}</pre>
 </details>
+
 ### Sampler <a id="Sampler"></a>
 
 | Property | Description | Type | Required? |
@@ -4169,11 +3991,11 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `always_off` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `always_on` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `jaeger_remote` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `parent_based` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `trace_id_ratio_based` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `always_off` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `always_on` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `jaeger_remote` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `parent_based` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `trace_id_ratio_based` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4209,12 +4031,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.sampler`
+}</pre>
 </details>
+
 ### SimpleLogRecordProcessor <a id="SimpleLogRecordProcessor"></a>
 
 | Property | Description | Type | Required? |
@@ -4223,7 +4042,7 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4240,12 +4059,9 @@ No properties.
   "required": [
     "exporter"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.logger_provider.processors[].simple`
+}</pre>
 </details>
+
 ### SimpleSpanProcessor <a id="SimpleSpanProcessor"></a>
 
 | Property | Description | Type | Required? |
@@ -4254,7 +4070,7 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `exporter` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `exporter` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4271,12 +4087,9 @@ No properties.
   "required": [
     "exporter"
   ]
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.processors[].simple`
+}</pre>
 </details>
+
 ### SpanExporter <a id="SpanExporter"></a>
 
 | Property | Description | Type | Required? |
@@ -4289,11 +4102,11 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `otlp_http` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `otlp_grpc` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `otlp_file/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `console` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `zipkin` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `otlp_http` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `otlp_grpc` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `otlp_file/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `console` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `zipkin` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4329,13 +4142,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.processors[].batch.exporter`
-* `.tracer_provider.processors[].simple.exporter`
+}</pre>
 </details>
+
 ### SpanLimits <a id="SpanLimits"></a>
 
 | Property | Description | Type | Required? |
@@ -4349,12 +4158,12 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `attribute_value_length_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `attribute_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `event_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `link_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `event_attribute_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `link_attribute_count_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `attribute_value_length_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `attribute_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `event_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `link_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `event_attribute_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `link_attribute_count_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4407,12 +4216,9 @@ No properties.
       "minimum": 0
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.limits`
+}</pre>
 </details>
+
 ### SpanProcessor <a id="SpanProcessor"></a>
 
 | Property | Description | Type | Required? |
@@ -4422,8 +4228,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `batch` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `simple` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `batch` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `simple` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4450,12 +4256,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.processors[]`
+}</pre>
 </details>
+
 ### SumAggregation <a id="SumAggregation"></a>
 
 No properties.
@@ -4470,12 +4273,9 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.views[].stream.aggregation.sum`
+}</pre>
 </details>
+
 ### TextMapPropagator <a id="TextMapPropagator"></a>
 
 | Property | Description | Type | Required? |
@@ -4489,12 +4289,12 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `tracecontext` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `baggage` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `b3` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `b3multi` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `jaeger` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `ottrace` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `tracecontext` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `baggage` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `b3` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `b3multi` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `jaeger` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `ottrace` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4533,12 +4333,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.propagator.composite[]`
+}</pre>
 </details>
+
 ### TraceContextPropagator <a id="TraceContextPropagator"></a>
 
 No properties.
@@ -4553,21 +4350,18 @@ No properties.
     "null"
   ],
   "additionalProperties": false
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.propagator.composite[].tracecontext`
+}</pre>
 </details>
+
 ### TraceIdRatioBasedSampler <a id="TraceIdRatioBasedSampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `ratio` | TODO | One of:<br>* `number`<br>* `null`<br> | `false` |
+| `ratio` | Configure trace_id_ratio.<br>If omitted or null, 1.0 is used.<br> | One of:<br>* `number`<br>* `null`<br> | `false` |
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `ratio` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `ratio` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4587,12 +4381,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.sampler.trace_id_ratio_based`
+}</pre>
 </details>
+
 ### TracerProvider <a id="TracerProvider"></a>
 
 | Property | Description | Type | Required? |
@@ -4604,10 +4395,10 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `processors` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `limits` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `sampler` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `tracer_configurator/development` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `processors` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `limits` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `sampler` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `tracer_configurator/development` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4978,12 +4769,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider`
+}</pre>
 </details>
+
 ### View <a id="View"></a>
 
 | Property | Description | Type | Required? |
@@ -4993,8 +4781,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `selector` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `stream` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `selector` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `stream` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -5011,12 +4799,9 @@ No properties.
       "$ref": "#/$defs/ViewStream"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.views[]`
+}</pre>
 </details>
+
 ### ViewSelector <a id="ViewSelector"></a>
 
 | Property | Description | Type | Required? |
@@ -5030,12 +4815,12 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `instrument_name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `instrument_type` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `unit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `meter_name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `meter_version` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `meter_schema_url` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `instrument_name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `instrument_type` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `unit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `meter_name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `meter_version` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `meter_schema_url` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -5079,12 +4864,9 @@ No properties.
       ]
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.views[].selector`
+}</pre>
 </details>
+
 ### ViewStream <a id="ViewStream"></a>
 
 | Property | Description | Type | Required? |
@@ -5097,11 +4879,11 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `name` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `description` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `aggregation` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `aggregation_cardinality_limit` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `attribute_keys` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `name` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `description` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `aggregation` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `aggregation_cardinality_limit` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `attribute_keys` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -5137,12 +4919,9 @@ No properties.
       "$ref": "common.json#/$defs/IncludeExclude"
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.meter_provider.views[].stream`
+}</pre>
 </details>
+
 ### ZipkinSpanExporter <a id="ZipkinSpanExporter"></a>
 
 | Property | Description | Type | Required? |
@@ -5152,8 +4931,8 @@ No properties.
 
 | Property |c++ |c# |erlang |go |java |js |php |python |ruby |rust |swift |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `endpoint` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
-| `timeout` |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |unknown |
+| `endpoint` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
+| `timeout` | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown | unknown |
 
 <details>
 <summary>JSON Schema</summary>
@@ -5180,10 +4959,6 @@ No properties.
       "minimum": 0
     }
   }
-}</pre></details>
-<details>
-<summary>Path patterns</summary>
-
-* `.tracer_provider.processors[].batch.exporter.zipkin`
-* `.tracer_provider.processors[].simple.exporter.zipkin`
+}</pre>
 </details>
+

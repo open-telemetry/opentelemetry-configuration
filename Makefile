@@ -45,13 +45,9 @@ update-file-format:
 generate-markdown:
 	npm run-script generate-markdown || exit 1; \
 
-.PHONY: generate-meta-schema
-generate-meta-schema:
-	npm run-script generate-meta-schema || exit 1; \
-
-.PHONY: validate-meta-schema
-validate-meta-schema:
-	npm run-script validate-meta-schema || exit 1; \
+.PHONY: fix-meta-schema
+fix-meta-schema:
+	npm run-script fix-meta-schema || exit 1; \
 
 .PHONY: install-tools
 install-tools:

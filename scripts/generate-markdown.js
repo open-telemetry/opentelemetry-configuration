@@ -1,43 +1,94 @@
-const fs = require("node:fs");
-const traverse = require("@json-schema-tools/traverse").default;
-const yaml = require('yaml');
-const schema = require('./schema');
+import {
+    readJsonSchemaTypes, resolveJsonSchemaPropertyType, resolveRef
+} from "./json-schema.js";
+import {readAndFixMetaSchemaTypes} from "./meta-schema.js";
+import fs from "node:fs";
+import {markdownDocPath} from "./util.js";
 
-const resolvePropertyType = schema.resolvePropertyType;
+const { messages, types } = readAndFixMetaSchemaTypes();
 
-const metaSchema = yaml.parse(fs.readFileSync(__dirname + "/../meta_schema.yaml", "utf-8"));
+if (messages.length > 0) {
+    throw new Error("Meta schema has problems. Please run fix-meta-schema and try again.");
+}
+
+const jsonSchemaTypesByType = {};
+readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type);
 
 const output = [];
 const languages = ['c++', 'c#', 'erlang', 'go', 'java', 'js', 'php', 'python', 'ruby', 'rust', 'swift']
 
-Object.entries(metaSchema).forEach(([typeName, typeMeta]) => {
-    output.push("### " + typeName + " <a id=\"" + typeName + "\"></a>\n\n");
+function formatJsonSchemaPropertyType(type, prefix, suffix) {
+    const output = [];
+    output.push(prefix);
+    if (type.isOneOf) {
+        output.push('One of:<br>');
+        type.oneOfTypes.forEach(item => {
+            output.push(formatJsonSchemaPropertyType(item, '* ', '<br>'));
+        });
+        return output.join('');
+    }
+    if (type.isSeq) {
+        output.push('`array` of ');
+    }
+    if (type.isScalar) {
+        output.push(`\`${type.type}\``);
+    } else {
+        output.push(`[\`${type.type}\`](#${type.type})`);
+    }
+    output.push(suffix);
+    return output.join('');
+}
 
-    // TODO: print raw JSON schema
-    // TODO: link to definition in source code
+types.sort((a, b) => a.type.localeCompare(b.type));
+types.forEach(metaSchemaType => {
+    const type = metaSchemaType.type;
+    const jsonSchemaType = jsonSchemaTypesByType[type];
+    if (!jsonSchemaType) {
+        throw new Error(`JSON schema type not found for meta schema type ${type}.`);
+    }
+    const required = jsonSchemaType.schema['required'];
 
-    if (Object.keys(typeMeta.properties).length === 0) {
-        output.push("No properties\n\n");
-        return;
+    // Heading
+    output.push(`### ${type} <a id="${type}"></a>\n\n`);
+
+    // Properties
+    if (metaSchemaType.properties.length === 0) {
+        output.push("No properties.\n\n");
+    } else {
+        // Property type and description table
+        output.push(`| Property | Description | Type | Required? |\n`);
+        output.push("|---|---|---|---|\n");
+        metaSchemaType.properties.forEach(property => {
+            const propertyType = resolveJsonSchemaPropertyType(jsonSchemaType, property.property, jsonSchemaTypesByType);
+            const formattedPropertyType = formatJsonSchemaPropertyType(propertyType, '', '');
+            const isRequired = required !== undefined && required.includes(property.property);
+
+            output.push(`| \`${property.property}\` | ${property.description.split("\n").join("<br>")} | ${formattedPropertyType} | \`${isRequired}\` |\n`);
+        });
+        output.push('\n');
+
+        // Property language support table
+        output.push('| Property |')
+        languages.forEach(language => output.push(`${language} |`));
+        output.push('\n');
+        output.push('|---|');
+        languages.forEach(language => output.push(`---|`));
+        output.push('\n');
+        metaSchemaType.properties.forEach(property => {
+            output.push(`| \`${property.property}\` |`);
+            languages.forEach(language => output.push(` unknown |`));
+            output.push('\n');
+        });
+        output.push('\n');
     }
 
-    output.push("| Property | Type | Description |");
-    languages.forEach(language => output.push(language + " |"));
-    output.push("\n");
-
-    output.push("|---|---|---|");
-    languages.forEach(language => output.push("---|"));
-    output.push("\n");
-
-    Object.entries(typeMeta.properties).forEach(([propertyName, property]) => {
-        const propertyType = resolvePropertyType(typeName, propertyName, type => `<a href="#${type}">${type}</a>`);
-        output.push("| " + propertyName + " | ");
-        output.push(propertyType + " | ");
-        output.push(property.description.split("\n").join("<br>") + " | ");
-        languages.forEach(language => output.push(" |"));
-        output.push("\n");
-    });
-    output.push("\n");
+    // JSON schema collapsible section
+    output.push(`<details>\n`);
+    output.push(`<summary>JSON Schema</summary>\n\n`);
+    output.push(`[JSON Schema Source File](./schema/${jsonSchemaType.file})\n`)
+    output.push(`<pre>${JSON.stringify(jsonSchemaType.schema, null, 2)}</pre>\n`);
+    output.push(`</details>\n`);
+    output.push('\n');
 });
 
-fs.writeFileSync(__dirname + "/../schema.md", output.join(""));
+fs.writeFileSync(markdownDocPath, output.join(""));
