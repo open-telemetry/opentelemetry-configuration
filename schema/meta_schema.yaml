@@ -31,11 +31,17 @@
 - type: AttributeNameValue
   properties:
     - property: name
-      description: TODO
+      description: |
+        The attribute name.
     - property: value
-      description: TODO
+      description: |
+        The attribute value.
+        The type of value must match .type.
     - property: type
-      description: TODO
+      description: |
+        The attribute type.
+        Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+        If omitted or null, string is used.
 - type: AttributeType
   properties: []
 - type: B3MultiPropagator
@@ -152,9 +158,11 @@
 - type: ExperimentalHttpClientInstrumentation
   properties:
     - property: request_captured_headers
-      description: TODO
+      description: |
+        Configure headers to capture for outbound http requests.
     - property: response_captured_headers
-      description: TODO
+      description: |
+        Configure headers to capture for inbound http responses.
 - type: ExperimentalHttpInstrumentation
   properties:
     - property: client
@@ -164,9 +172,11 @@
 - type: ExperimentalHttpServerInstrumentation
   properties:
     - property: request_captured_headers
-      description: TODO
+      description: |
+        Configure headers to capture for inbound http requests.
     - property: response_captured_headers
-      description: TODO
+      description: |
+        Configure headers to capture for outbound http responses.
 - type: ExperimentalInstrumentation
   properties:
     - property: general
@@ -176,25 +186,45 @@
     - property: cpp
       description: Configure C++ language-specific instrumentation libraries.
     - property: dotnet
-      description: Configure .NET language-specific instrumentation libraries.
+      description: |
+        Configure .NET language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
     - property: erlang
-      description: Configure Erlang language-specific instrumentation libraries.
+      description: |
+        Configure Erlang language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
     - property: go
-      description: Configure Go language-specific instrumentation libraries.
+      description: |
+        Configure Go language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
     - property: java
-      description: Configure Java language-specific instrumentation libraries.
+      description: |
+        Configure Java language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
     - property: js
-      description: Configure JavaScript language-specific instrumentation libraries.
+      description: |
+        Configure JavaScript language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
     - property: php
-      description: Configure PHP language-specific instrumentation libraries.
+      description: |
+        Configure PHP language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
     - property: python
-      description: Configure Python language-specific instrumentation libraries.
+      description: |
+        Configure Python language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
     - property: ruby
-      description: Configure Ruby language-specific instrumentation libraries.
+      description: |
+        Configure Ruby language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
     - property: rust
-      description: Configure Rust language-specific instrumentation libraries.
+      description: |
+        Configure Rust language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
     - property: swift
-      description: Configure Swift language-specific instrumentation libraries.
+      description: |
+        Configure Swift language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
 - type: ExperimentalLanguageSpecificInstrumentation
   properties: []
 - type: ExperimentalLoggerConfig
@@ -240,25 +270,41 @@
 - type: ExperimentalOtlpFileExporter
   properties:
     - property: output_stream
-      description: TODO
+      description: |
+        Configure output stream. 
+        Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+        If omitted or null, stdout is used.
 - type: ExperimentalOtlpFileMetricExporter
   properties:
     - property: output_stream
-      description: TODO
+      description: |
+        Configure output stream. 
+        Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+        If omitted or null, stdout is used.
     - property: temporality_preference
-      description: TODO
+      description: |
+        Configure temporality preference.
+        Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, cumulative is used.
     - property: default_histogram_aggregation
-      description: TODO
+      description: |
+        Configure default histogram aggregation.
+        Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, explicit_bucket_histogram is used.
 - type: ExperimentalPeerInstrumentation
   properties:
     - property: service_mapping
-      description: TODO
+      description: |
+        Configure the service mapping for instrumentations following peer.service semantic conventions.
+        See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
 - type: ExperimentalPeerServiceMapping
   properties:
     - property: peer
-      description: TODO
+      description: |
+        The IP address to map.
     - property: service
-      description: TODO
+      description: |
+        The logical name corresponding to the IP address of .peer.
 - type: ExperimentalPrometheusMetricExporter
   properties:
     - property: host
@@ -282,7 +328,7 @@
         Configure Prometheus Exporter to produce metrics without a scope info metric.
         If omitted or null, false is used.
     - property: with_resource_constant_labels
-      description: Configure Prometheus Exporter to add resource attributes as metrics attributes.
+      description: Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
 - type: ExperimentalResourceDetection
   properties:
     - property: attributes
@@ -332,17 +378,17 @@
   properties:
     - property: included
       description: |
-        Configure list of attribute key patterns to include from resource detectors.
-        Attribute keys from resource detectors are evaluated to match as follows:
-         * If the value of the attribute key exactly matches.
-         * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-        If omitted, all attributes are included.
+        Configure list of value patterns to include.
+        Values are evaluated to match as follows:
+         * If the value exactly matches.
+         * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        If omitted, all values are included.
     - property: excluded
       description: |
-        Configure list of attribute key patterns to exclude from resource detectors. Applies after .resource.detectors.attributes.included (i.e. excluded has higher priority than included).
-        Attribute keys from resource detectors are evaluated to match as follows:
-         * If the value of the attribute key exactly matches.
-         * If the value of the attribute key matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).
+        Values are evaluated to match as follows:
+         * If the value exactly matches.
+         * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
         If omitted, .included attributes are included.
 - type: InstrumentType
   properties: []
@@ -428,33 +474,53 @@
 - type: NameStringValuePair
   properties:
     - property: name
-      description: TODO
+      description: The name of the pair.
     - property: value
-      description: TODO
+      description: The value of the pair.
 - type: OpenCensusMetricProducer
   properties: []
 - type: OpentelemetryConfiguration
   properties:
     - property: file_format
-      description: TODO
+      description: |
+        The file format version.
+        The yaml format is documented at
+        https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
     - property: disabled
-      description: TODO
+      description: |
+        Configure if the SDK is disabled or not.
+        If omitted or null, false is used.
     - property: log_level
-      description: TODO
+      description: |
+        Configure the log level of the internal logger used by the SDK.
+        If omitted, info is used.
     - property: attribute_limits
-      description: TODO
+      description: |
+        Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
     - property: logger_provider
-      description: TODO
+      description: |
+        Configure logger provider.
+        If omitted, a noop logger provider is used.
     - property: meter_provider
-      description: TODO
+      description: |
+        Configure meter provider.
+        If omitted, a noop meter provider is used.
     - property: propagator
-      description: TODO
+      description: |
+        Configure text map context propagators.
+        If omitted, a noop propagator is used.
     - property: tracer_provider
-      description: TODO
+      description: |
+        Configure tracer provider.
+        If omitted, a noop tracer provider is used.
     - property: resource
-      description: TODO
+      description: |
+        Configure resource for all signals.
+        If omitted, the default resource is used.
     - property: instrumentation/development
-      description: TODO
+      description: |
+        Configure instrumentation.
+        This type is in development and subject to breaking changes in minor versions.
 - type: OpenTracingPropagator
   properties: []
 - type: OtlpGrpcExporter
@@ -464,19 +530,39 @@
         Configure endpoint.
         If omitted or null, http://localhost:4317 is used.
     - property: certificate_file
-      description: TODO
+      description: |
+        Configure certificate used to verify a server's TLS credentials.
+        Absolute path to certificate file in PEM format.
+        If omitted or null, system default certificate verification is used for secure connections.
     - property: client_key_file
-      description: TODO
+      description: |
+        Configure mTLS private client key. 
+        Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+        If omitted or null, mTLS is not used.
     - property: client_certificate_file
-      description: TODO
+      description: |
+        Configure mTLS client certificate.
+        Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+        If omitted or null, mTLS is not used.
     - property: headers
-      description: TODO
+      description: |
+        Configure headers. Entries have higher priority than entries from .headers_list.
+        If an entry's .value is null, the entry is ignored.
     - property: headers_list
-      description: TODO
+      description: |
+        Configure headers. Entries have lower priority than entries from .headers.
+        The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+        If omitted or null, no headers are added.
     - property: compression
-      description: TODO
+      description: |
+        Configure compression.
+        Values include: gzip, none. Implementations may support other compression algorithms.
+        If omitted or null, none is used.
     - property: timeout
-      description: TODO
+      description: |
+        Configure max time (in milliseconds) to wait for each export.
+        Value must be non-negative. A value of 0 indicates no limit (infinity).
+        If omitted or null, 10000 is used.
     - property: insecure
       description: |
         Configure client transport security for the exporter's connection. 
@@ -485,47 +571,100 @@
 - type: OtlpGrpcMetricExporter
   properties:
     - property: endpoint
-      description: TODO
+      description: |
+        Configure endpoint.
+        If omitted or null, http://localhost:4317 is used.
     - property: certificate_file
-      description: TODO
+      description: |
+        Configure certificate used to verify a server's TLS credentials.
+        Absolute path to certificate file in PEM format.
+        If omitted or null, system default certificate verification is used for secure connections.
     - property: client_key_file
-      description: TODO
+      description: |
+        Configure mTLS private client key. 
+        Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+        If omitted or null, mTLS is not used.
     - property: client_certificate_file
-      description: TODO
+      description: |
+        Configure mTLS client certificate.
+        Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+        If omitted or null, mTLS is not used.
     - property: headers
-      description: TODO
+      description: |
+        Configure headers. Entries have higher priority than entries from .headers_list.
+        If an entry's .value is null, the entry is ignored.
     - property: headers_list
-      description: TODO
+      description: |
+        Configure headers. Entries have lower priority than entries from .headers.
+        The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+        If omitted or null, no headers are added.
     - property: compression
-      description: TODO
+      description: |
+        Configure compression.
+        Values include: gzip, none. Implementations may support other compression algorithms.
+        If omitted or null, none is used.
     - property: timeout
-      description: TODO
+      description: |
+        Configure max time (in milliseconds) to wait for each export.
+        Value must be non-negative. A value of 0 indicates no limit (infinity).
+        If omitted or null, 10000 is used.
     - property: insecure
-      description: TODO
+      description: |
+        Configure client transport security for the exporter's connection. 
+        Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
+        If omitted or null, false is used.
     - property: temporality_preference
-      description: TODO
+      description: |
+        Configure temporality preference.
+        Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, cumulative is used.
     - property: default_histogram_aggregation
-      description: TODO
+      description: |
+        Configure default histogram aggregation.
+        Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, explicit_bucket_histogram is used.
 - type: OtlpHttpEncoding
   properties: []
 - type: OtlpHttpExporter
   properties:
     - property: endpoint
-      description: TODO
+      description: |
+        Configure endpoint, including the signal specific path.
+        If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
     - property: certificate_file
-      description: TODO
+      description: |
+        Configure certificate used to verify a server's TLS credentials.
+        Absolute path to certificate file in PEM format.
+        If omitted or null, system default certificate verification is used for secure connections.
     - property: client_key_file
-      description: TODO
+      description: |
+        Configure mTLS private client key. 
+        Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+        If omitted or null, mTLS is not used.
     - property: client_certificate_file
-      description: TODO
+      description: |
+        Configure mTLS client certificate.
+        Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+        If omitted or null, mTLS is not used.
     - property: headers
-      description: TODO
+      description: |
+        Configure headers. Entries have higher priority than entries from .headers_list.
+        If an entry's .value is null, the entry is ignored.
     - property: headers_list
-      description: TODO
+      description: |
+        Configure headers. Entries have lower priority than entries from .headers.
+        The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+        If omitted or null, no headers are added.
     - property: compression
-      description: TODO
+      description: |
+        Configure compression.
+        Values include: gzip, none. Implementations may support other compression algorithms.
+        If omitted or null, none is used.
     - property: timeout
-      description: TODO
+      description: |
+        Configure max time (in milliseconds) to wait for each export.
+        Value must be non-negative. A value of 0 indicates no limit (infinity).
+        If omitted or null, 10000 is used.
     - property: encoding
       description: |
         Configure the encoding used for messages. 
@@ -535,40 +674,83 @@
   properties:
     - property: endpoint
       description: |
-        Configure endpoint, including the metric specific path.
-        If omitted or null, http://localhost:4318/v1/metrics is used.
+        Configure endpoint, including the signal specific path.
+        If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
+    - property: endpoint
+      description: |
+        Configure endpoint.
+        If omitted or null, http://localhost:4317 is used.
     - property: certificate_file
-      description: TODO
+      description: |
+        Configure certificate used to verify a server's TLS credentials.
+        Absolute path to certificate file in PEM format.
+        If omitted or null, system default certificate verification is used for secure connections.
     - property: client_key_file
-      description: TODO
+      description: |
+        Configure mTLS private client key. 
+        Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+        If omitted or null, mTLS is not used.
     - property: client_certificate_file
-      description: TODO
+      description: |
+        Configure mTLS client certificate.
+        Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+        If omitted or null, mTLS is not used.
     - property: headers
-      description: TODO
+      description: |
+        Configure headers. Entries have higher priority than entries from .headers_list.
+        If an entry's .value is null, the entry is ignored.
     - property: headers_list
-      description: TODO
+      description: |
+        Configure headers. Entries have lower priority than entries from .headers.
+        The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+        If omitted or null, no headers are added.
     - property: compression
-      description: TODO
+      description: |
+        Configure compression.
+        Values include: gzip, none. Implementations may support other compression algorithms.
+        If omitted or null, none is used.
     - property: timeout
-      description: TODO
+      description: |
+        Configure max time (in milliseconds) to wait for each export.
+        Value must be non-negative. A value of 0 indicates no limit (infinity).
+        If omitted or null, 10000 is used.
     - property: encoding
-      description: TODO
+      description: |
+        Configure the encoding used for messages. 
+        Values include: protobuf, json. Implementations may not support json.
+        If omitted or null, protobuf is used.
     - property: temporality_preference
-      description: TODO
+      description: |
+        Configure temporality preference.
+        Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, cumulative is used.
     - property: default_histogram_aggregation
-      description: TODO
+      description: |
+        Configure default histogram aggregation.
+        Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, explicit_bucket_histogram is used.
 - type: ParentBasedSampler
   properties:
     - property: root
-      description: TODO
+      description: |
+        Configure root sampler.
+        If omitted or null, always_on is used.
     - property: remote_parent_sampled
-      description: TODO
+      description: |
+        Configure remote_parent_sampled sampler.
+        If omitted or null, always_on is used.
     - property: remote_parent_not_sampled
-      description: TODO
+      description: |
+        Configure remote_parent_not_sampled sampler.
+        If omitted or null, always_off is used.
     - property: local_parent_sampled
-      description: TODO
+      description: |
+        Configure local_parent_sampled sampler.
+        If omitted or null, always_on is used.
     - property: local_parent_not_sampled
-      description: TODO
+      description: |
+        Configure local_parent_not_sampled sampler.
+        If omitted or null, always_off is used.
 - type: PeriodicMetricReader
   properties:
     - property: interval
@@ -603,7 +785,9 @@
 - type: PullMetricExporter
   properties:
     - property: prometheus/development
-      description: TODO
+      description: |
+        Configure exporter to be prometheus.
+        This type is in development and subject to breaking changes in minor versions.
 - type: PullMetricReader
   properties:
     - property: exporter
@@ -615,20 +799,23 @@
 - type: PushMetricExporter
   properties:
     - property: otlp_http
-      description: TODO
+      description: |
+        Configure exporter to be OTLP with HTTP transport.
     - property: otlp_grpc
-      description: TODO
+      description: |
+        Configure exporter to be OTLP with gRPC transport.
     - property: otlp_file/development
-      description: TODO
+      description: |
+        Configure exporter to be OTLP with file transport.
+        This type is in development and subject to breaking changes in minor versions.
     - property: console
-      description: TODO
+      description: |
+        Configure exporter to be console.
 - type: Resource
   properties:
     - property: attributes
       description: |
         Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
-        Entries must contain .name and .value, and may optionally include .type. If an entry's .type omitted or null, string is used.
-        The .value's type must match the .type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
     - property: detection/development
       description: |
         Configure resource detection.
@@ -736,7 +923,9 @@
 - type: TraceIdRatioBasedSampler
   properties:
     - property: ratio
-      description: TODO
+      description: |
+        Configure trace_id_ratio.
+        If omitted or null, 1.0 is used.
 - type: TracerProvider
   properties:
     - property: processors

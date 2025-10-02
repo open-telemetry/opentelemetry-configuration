@@ -5,8 +5,16 @@ import {readAndFixMetaSchemaTypes} from "./meta-schema.js";
 import {readJsonSchemaTypes, resolveJsonSchemaPropertyType, resolveRef} from "./json-schema.js";
 
 let inputFile = '/Users/bergfamily/code/opentelemetry-configuration/examples/kitchen-sink.yaml';
-let outputFile = null; // '/Users/bergfamily/code/opentelemetry-configuration/examples/kitchen-sink-new.yaml';
-
+let outputFile = '/Users/bergfamily/code/opentelemetry-configuration/examples/kitchen-sink.yaml';
+// Extract options
+const options = {
+    debug: true // TODO
+}
+for (let i = 3; i < process.argv.length; i++) {
+    if (process.argv[i] === '--debug') {
+        options['debug'] = true;
+    }
+}
 
 const { messages, types } = readAndFixMetaSchemaTypes();
 const metaSchemaTypesByType = {};
@@ -35,27 +43,51 @@ yaml.visit(fileDoc, {
         let prevLastNode = lastNode;
         lastNode = node;
         counter++;
-
-        const parentPath = pathToString(path);
         const propertyKey = node.key.value;
+        const jsonPath = yamlPathToJsonPath(path, propertyKey);
 
-        const parentJsonSchemaType = resolveParentNodeType(jsonSchemaTypesByType, path);
-        const type = parentJsonSchemaType ? parentJsonSchemaType.type : null;
-
-        console.log(`${parentPath} - ${propertyKey} - ${type}`);
-
-        if (!parentJsonSchemaType) {
+        // Resolve jsonSchemaType, metaSchemaType, metaSchemaProperty, or return
+        debug("");
+        debug(`Resolving description for ${jsonPath}`);
+        let jsonSchemaType;
+        try {
+            jsonSchemaType =resolveJsonSchemaType(jsonSchemaTypesByType, path);
+        } catch (error) {
+            debug(`Unable to resolve JSON schema type: ${error.message}`);
             return;
         }
-
-        const parentMetaSchemaType = metaSchemaTypesByType[parentJsonSchemaType.type];
-        if (!parentMetaSchemaType) {
+        const metaSchemaType = metaSchemaTypesByType[jsonSchemaType.type];
+        if (!metaSchemaType) {
+            throw new Error(`JSON schema type not found for meta schema type ${jsonSchemaType.type}.`);
+        }
+        const metaSchemaProperty = metaSchemaType.properties.find(item => item.property === propertyKey);
+        if (!metaSchemaProperty) {
+            debug(`No meta schema property ${propertyKey} for type ${metaSchemaType.type}.`);
             return;
         }
-        const property = parentMetaSchemaType.properties.find(item => item.property === propertyKey);
-        const hasAdditionalProperties = parentJsonSchemaType.schema['additionalProperties'] || false;
-        if (!property && !hasAdditionalProperties) {
-            throw new Error(`Unable to find property ${propertyKey} for type ${parentMetaSchemaType.type}`);
+        debug(`Resolved type ${jsonSchemaType.type}, property ${metaSchemaProperty.property}, description:\n${metaSchemaProperty.description}`);
+
+        // Set the description
+        let formattedDescription = metaSchemaProperty.description
+            .replace(/\n$/, '')
+            .split('\n')
+            .map(line => ' ' + line)
+            .join('\n');
+        // If we're on the first element, prefix the formatted description with the existing commentBefore to retain the comments at the top of the file
+        if (counter === 1 && node.key.commentBefore) {
+            const index = node.key.commentBefore.lastIndexOf(formattedDescription);
+            formattedDescription = (index === -1)
+                ? node.key.commentBefore + formattedDescription
+                : node.key.commentBefore.substring(0, index) + formattedDescription;
+        }
+        node.key.commentBefore = formattedDescription;
+        node.value.commentBefore = null;
+        // yaml parser sometimes misidentifies a pair's commentBefore as the previously processed pair.value.comment
+        // we detect and fix that by keeping a reference to the previous node and setting the comment to null
+        // this works because we only use commentBefore in this project
+        if (prevLastNode !== null) {
+            node.key.spaceBefore = null;
+            prevLastNode.value.comment = null;
         }
     }
 });
@@ -70,11 +102,16 @@ if (outputFile === null) {
 }
 
 // Helper functions
+// Log the message to the console if the script was run with `--debug` argument
+function debug(message) {
+    if (options.debug) {
+        console.debug(message);
+    }
+}
 
-// Convert an array of path elements JSON dot notation
-function pathToString(path) {
+function yamlPathToJsonPath(yamlPath, propertyKey) {
     const elements = []
-    path.slice().forEach(entry => {
+    yamlPath.slice().forEach(entry => {
         if (yaml.isSeq(entry)) {
             elements.push("[]");
         }
@@ -83,28 +120,21 @@ function pathToString(path) {
             elements.push(entry.key.value);
         }
     });
-    return elements.length === 0 ? "." : elements.join("");
+    return (elements.length === 0 ? "." : elements.join("")) + propertyKey;
 }
 
-function resolveParentNodeType(jsonSchemaTypesByType, path) {
-    let last = jsonSchemaTypesByType['OpentelemetryConfiguration'];
+function resolveJsonSchemaType(jsonSchemaTypesByType, yamlPath) {
+    let last = jsonSchemaTypesByType['OpentelemetryConfiguration']; // TODO: make constant
     if (!last) {
         throw new Error(`JSON schema missing root type 'OpenTelemetryConfiguration'`);
     }
-    for (let i = 0; i < path.length; i++) {
-        const entry = path[i];
+    for (let i = 0; i < yamlPath.length; i++) {
+        const entry = yamlPath[i];
         if (yaml.isPair(entry)) {
-            const propertyKey = entry.key.value;
-            let jsonSchemaPropertyType;
-            try {
-                jsonSchemaPropertyType = resolveJsonSchemaPropertyType(last, propertyKey, jsonSchemaTypesByType);
-            } catch (error) {
-                return null;
-            }
+            const jsonSchemaPropertyType = resolveJsonSchemaPropertyType(last, entry.key.value, jsonSchemaTypesByType);
             last = jsonSchemaTypesByType[jsonSchemaPropertyType.type];
             if (!last) {
-                console.log(`No type for ${jsonSchemaPropertyType.type}`);
-                return null;
+                throw new Error(`No JSON schema type for ${jsonSchemaPropertyType.type}`);
             }
         }
     }
