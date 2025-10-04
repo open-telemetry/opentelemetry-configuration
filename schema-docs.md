@@ -2,95 +2,95 @@
 
 * [Overview](#overview)
 * [Types](#types)
-  * [Aggregation](#Aggregation)
-  * [AlwaysOffSampler](#AlwaysOffSampler)
-  * [AlwaysOnSampler](#AlwaysOnSampler)
-  * [AttributeLimits](#AttributeLimits)
-  * [AttributeNameValue](#AttributeNameValue)
-  * [AttributeType](#AttributeType)
-  * [B3MultiPropagator](#B3MultiPropagator)
-  * [B3Propagator](#B3Propagator)
-  * [BaggagePropagator](#BaggagePropagator)
-  * [Base2ExponentialBucketHistogramAggregation](#Base2ExponentialBucketHistogramAggregation)
-  * [BatchLogRecordProcessor](#BatchLogRecordProcessor)
-  * [BatchSpanProcessor](#BatchSpanProcessor)
-  * [CardinalityLimits](#CardinalityLimits)
-  * [ConsoleExporter](#ConsoleExporter)
-  * [DefaultAggregation](#DefaultAggregation)
-  * [DropAggregation](#DropAggregation)
-  * [ExemplarFilter](#ExemplarFilter)
-  * [ExperimentalContainerResourceDetector](#ExperimentalContainerResourceDetector)
-  * [ExperimentalGeneralInstrumentation](#ExperimentalGeneralInstrumentation)
-  * [ExperimentalHostResourceDetector](#ExperimentalHostResourceDetector)
-  * [ExperimentalHttpClientInstrumentation](#ExperimentalHttpClientInstrumentation)
-  * [ExperimentalHttpInstrumentation](#ExperimentalHttpInstrumentation)
-  * [ExperimentalHttpServerInstrumentation](#ExperimentalHttpServerInstrumentation)
-  * [ExperimentalInstrumentation](#ExperimentalInstrumentation)
-  * [ExperimentalLanguageSpecificInstrumentation](#ExperimentalLanguageSpecificInstrumentation)
-  * [ExperimentalLoggerConfig](#ExperimentalLoggerConfig)
-  * [ExperimentalLoggerConfigurator](#ExperimentalLoggerConfigurator)
-  * [ExperimentalLoggerMatcherAndConfig](#ExperimentalLoggerMatcherAndConfig)
-  * [ExperimentalMeterConfig](#ExperimentalMeterConfig)
-  * [ExperimentalMeterConfigurator](#ExperimentalMeterConfigurator)
-  * [ExperimentalMeterMatcherAndConfig](#ExperimentalMeterMatcherAndConfig)
-  * [ExperimentalOtlpFileExporter](#ExperimentalOtlpFileExporter)
-  * [ExperimentalOtlpFileMetricExporter](#ExperimentalOtlpFileMetricExporter)
-  * [ExperimentalPeerInstrumentation](#ExperimentalPeerInstrumentation)
-  * [ExperimentalPeerServiceMapping](#ExperimentalPeerServiceMapping)
-  * [ExperimentalProcessResourceDetector](#ExperimentalProcessResourceDetector)
-  * [ExperimentalPrometheusMetricExporter](#ExperimentalPrometheusMetricExporter)
-  * [ExperimentalResourceDetection](#ExperimentalResourceDetection)
-  * [ExperimentalResourceDetector](#ExperimentalResourceDetector)
-  * [ExperimentalServiceResourceDetector](#ExperimentalServiceResourceDetector)
-  * [ExperimentalTracerConfig](#ExperimentalTracerConfig)
-  * [ExperimentalTracerConfigurator](#ExperimentalTracerConfigurator)
-  * [ExperimentalTracerMatcherAndConfig](#ExperimentalTracerMatcherAndConfig)
-  * [ExplicitBucketHistogramAggregation](#ExplicitBucketHistogramAggregation)
-  * [ExporterDefaultHistogramAggregation](#ExporterDefaultHistogramAggregation)
-  * [ExporterTemporalityPreference](#ExporterTemporalityPreference)
-  * [IncludeExclude](#IncludeExclude)
-  * [InstrumentType](#InstrumentType)
-  * [JaegerPropagator](#JaegerPropagator)
-  * [JaegerRemoteSampler](#JaegerRemoteSampler)
-  * [LastValueAggregation](#LastValueAggregation)
-  * [LoggerProvider](#LoggerProvider)
-  * [LogRecordExporter](#LogRecordExporter)
-  * [LogRecordLimits](#LogRecordLimits)
-  * [LogRecordProcessor](#LogRecordProcessor)
-  * [MeterProvider](#MeterProvider)
-  * [MetricProducer](#MetricProducer)
-  * [MetricReader](#MetricReader)
-  * [NameStringValuePair](#NameStringValuePair)
-  * [OpenCensusMetricProducer](#OpenCensusMetricProducer)
-  * [OpentelemetryConfiguration](#OpentelemetryConfiguration)
-  * [OpenTracingPropagator](#OpenTracingPropagator)
-  * [OtlpGrpcExporter](#OtlpGrpcExporter)
-  * [OtlpGrpcMetricExporter](#OtlpGrpcMetricExporter)
-  * [OtlpHttpEncoding](#OtlpHttpEncoding)
-  * [OtlpHttpExporter](#OtlpHttpExporter)
-  * [OtlpHttpMetricExporter](#OtlpHttpMetricExporter)
-  * [ParentBasedSampler](#ParentBasedSampler)
-  * [PeriodicMetricReader](#PeriodicMetricReader)
-  * [Propagator](#Propagator)
-  * [PullMetricExporter](#PullMetricExporter)
-  * [PullMetricReader](#PullMetricReader)
-  * [PushMetricExporter](#PushMetricExporter)
-  * [Resource](#Resource)
-  * [Sampler](#Sampler)
-  * [SimpleLogRecordProcessor](#SimpleLogRecordProcessor)
-  * [SimpleSpanProcessor](#SimpleSpanProcessor)
-  * [SpanExporter](#SpanExporter)
-  * [SpanLimits](#SpanLimits)
-  * [SpanProcessor](#SpanProcessor)
-  * [SumAggregation](#SumAggregation)
-  * [TextMapPropagator](#TextMapPropagator)
-  * [TraceContextPropagator](#TraceContextPropagator)
-  * [TraceIdRatioBasedSampler](#TraceIdRatioBasedSampler)
-  * [TracerProvider](#TracerProvider)
-  * [View](#View)
-  * [ViewSelector](#ViewSelector)
-  * [ViewStream](#ViewStream)
-  * [ZipkinSpanExporter](#ZipkinSpanExporter)
+  * [Aggregation](#aggregation)
+  * [AlwaysOffSampler](#alwaysoffsampler)
+  * [AlwaysOnSampler](#alwaysonsampler)
+  * [AttributeLimits](#attributelimits)
+  * [AttributeNameValue](#attributenamevalue)
+  * [AttributeType](#attributetype)
+  * [B3MultiPropagator](#b3multipropagator)
+  * [B3Propagator](#b3propagator)
+  * [BaggagePropagator](#baggagepropagator)
+  * [Base2ExponentialBucketHistogramAggregation](#base2exponentialbuckethistogramaggregation)
+  * [BatchLogRecordProcessor](#batchlogrecordprocessor)
+  * [BatchSpanProcessor](#batchspanprocessor)
+  * [CardinalityLimits](#cardinalitylimits)
+  * [ConsoleExporter](#consoleexporter)
+  * [DefaultAggregation](#defaultaggregation)
+  * [DropAggregation](#dropaggregation)
+  * [ExemplarFilter](#exemplarfilter)
+  * [ExperimentalContainerResourceDetector](#experimentalcontainerresourcedetector)
+  * [ExperimentalGeneralInstrumentation](#experimentalgeneralinstrumentation)
+  * [ExperimentalHostResourceDetector](#experimentalhostresourcedetector)
+  * [ExperimentalHttpClientInstrumentation](#experimentalhttpclientinstrumentation)
+  * [ExperimentalHttpInstrumentation](#experimentalhttpinstrumentation)
+  * [ExperimentalHttpServerInstrumentation](#experimentalhttpserverinstrumentation)
+  * [ExperimentalInstrumentation](#experimentalinstrumentation)
+  * [ExperimentalLanguageSpecificInstrumentation](#experimentallanguagespecificinstrumentation)
+  * [ExperimentalLoggerConfig](#experimentalloggerconfig)
+  * [ExperimentalLoggerConfigurator](#experimentalloggerconfigurator)
+  * [ExperimentalLoggerMatcherAndConfig](#experimentalloggermatcherandconfig)
+  * [ExperimentalMeterConfig](#experimentalmeterconfig)
+  * [ExperimentalMeterConfigurator](#experimentalmeterconfigurator)
+  * [ExperimentalMeterMatcherAndConfig](#experimentalmetermatcherandconfig)
+  * [ExperimentalOtlpFileExporter](#experimentalotlpfileexporter)
+  * [ExperimentalOtlpFileMetricExporter](#experimentalotlpfilemetricexporter)
+  * [ExperimentalPeerInstrumentation](#experimentalpeerinstrumentation)
+  * [ExperimentalPeerServiceMapping](#experimentalpeerservicemapping)
+  * [ExperimentalProcessResourceDetector](#experimentalprocessresourcedetector)
+  * [ExperimentalPrometheusMetricExporter](#experimentalprometheusmetricexporter)
+  * [ExperimentalResourceDetection](#experimentalresourcedetection)
+  * [ExperimentalResourceDetector](#experimentalresourcedetector)
+  * [ExperimentalServiceResourceDetector](#experimentalserviceresourcedetector)
+  * [ExperimentalTracerConfig](#experimentaltracerconfig)
+  * [ExperimentalTracerConfigurator](#experimentaltracerconfigurator)
+  * [ExperimentalTracerMatcherAndConfig](#experimentaltracermatcherandconfig)
+  * [ExplicitBucketHistogramAggregation](#explicitbuckethistogramaggregation)
+  * [ExporterDefaultHistogramAggregation](#exporterdefaulthistogramaggregation)
+  * [ExporterTemporalityPreference](#exportertemporalitypreference)
+  * [IncludeExclude](#includeexclude)
+  * [InstrumentType](#instrumenttype)
+  * [JaegerPropagator](#jaegerpropagator)
+  * [JaegerRemoteSampler](#jaegerremotesampler)
+  * [LastValueAggregation](#lastvalueaggregation)
+  * [LoggerProvider](#loggerprovider)
+  * [LogRecordExporter](#logrecordexporter)
+  * [LogRecordLimits](#logrecordlimits)
+  * [LogRecordProcessor](#logrecordprocessor)
+  * [MeterProvider](#meterprovider)
+  * [MetricProducer](#metricproducer)
+  * [MetricReader](#metricreader)
+  * [NameStringValuePair](#namestringvaluepair)
+  * [OpenCensusMetricProducer](#opencensusmetricproducer)
+  * [OpentelemetryConfiguration](#opentelemetryconfiguration)
+  * [OpenTracingPropagator](#opentracingpropagator)
+  * [OtlpGrpcExporter](#otlpgrpcexporter)
+  * [OtlpGrpcMetricExporter](#otlpgrpcmetricexporter)
+  * [OtlpHttpEncoding](#otlphttpencoding)
+  * [OtlpHttpExporter](#otlphttpexporter)
+  * [OtlpHttpMetricExporter](#otlphttpmetricexporter)
+  * [ParentBasedSampler](#parentbasedsampler)
+  * [PeriodicMetricReader](#periodicmetricreader)
+  * [Propagator](#propagator)
+  * [PullMetricExporter](#pullmetricexporter)
+  * [PullMetricReader](#pullmetricreader)
+  * [PushMetricExporter](#pushmetricexporter)
+  * [Resource](#resource)
+  * [Sampler](#sampler)
+  * [SimpleLogRecordProcessor](#simplelogrecordprocessor)
+  * [SimpleSpanProcessor](#simplespanprocessor)
+  * [SpanExporter](#spanexporter)
+  * [SpanLimits](#spanlimits)
+  * [SpanProcessor](#spanprocessor)
+  * [SumAggregation](#sumaggregation)
+  * [TextMapPropagator](#textmappropagator)
+  * [TraceContextPropagator](#tracecontextpropagator)
+  * [TraceIdRatioBasedSampler](#traceidratiobasedsampler)
+  * [TracerProvider](#tracerprovider)
+  * [View](#view)
+  * [ViewSelector](#viewselector)
+  * [ViewStream](#viewstream)
+  * [ZipkinSpanExporter](#zipkinspanexporter)
 * [SDK Extension Plugins](#sdk-extension-plugins)
 
 
@@ -99,16 +99,16 @@
 TODO
 # Types <a id="types"></a>
 
-## Aggregation <a id="Aggregation"></a>
+## Aggregation <a id="aggregation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `default` | TODO | [`DefaultAggregation`](#DefaultAggregation) | `false` |
-| `drop` | TODO | [`DropAggregation`](#DropAggregation) | `false` |
-| `explicit_bucket_histogram` | Configure aggregation to be explicit_bucket_histogram. | [`ExplicitBucketHistogramAggregation`](#ExplicitBucketHistogramAggregation) | `false` |
-| `base2_exponential_bucket_histogram` | TODO | [`Base2ExponentialBucketHistogramAggregation`](#Base2ExponentialBucketHistogramAggregation) | `false` |
-| `last_value` | TODO | [`LastValueAggregation`](#LastValueAggregation) | `false` |
-| `sum` | TODO | [`SumAggregation`](#SumAggregation) | `false` |
+| `default` | TODO | [`DefaultAggregation`](#defaultaggregation) | `false` |
+| `drop` | TODO | [`DropAggregation`](#dropaggregation) | `false` |
+| `explicit_bucket_histogram` | Configure aggregation to be explicit_bucket_histogram. | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | `false` |
+| `base2_exponential_bucket_histogram` | TODO | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | `false` |
+| `last_value` | TODO | [`LastValueAggregation`](#lastvalueaggregation) | `false` |
+| `sum` | TODO | [`SumAggregation`](#sumaggregation) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -142,7 +142,7 @@ TODO
 }</pre>
 </details>
 
-## AlwaysOffSampler <a id="AlwaysOffSampler"></a>
+## AlwaysOffSampler <a id="alwaysoffsampler"></a>
 
 No properties.
 
@@ -159,7 +159,7 @@ No properties.
 }</pre>
 </details>
 
-## AlwaysOnSampler <a id="AlwaysOnSampler"></a>
+## AlwaysOnSampler <a id="alwaysonsampler"></a>
 
 No properties.
 
@@ -176,7 +176,7 @@ No properties.
 }</pre>
 </details>
 
-## AttributeLimits <a id="AttributeLimits"></a>
+## AttributeLimits <a id="attributelimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -207,13 +207,13 @@ No properties.
 }</pre>
 </details>
 
-## AttributeNameValue <a id="AttributeNameValue"></a>
+## AttributeNameValue <a id="attributenamevalue"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `name` | The attribute name.<br> | `string` | `true` |
 | `value` | The attribute value.<br>The type of value must match .type.<br> | `oneOf` | `true` |
-| `type` | The attribute type.<br>Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br>If omitted or null, string is used.<br> | [`AttributeType`](#AttributeType) | `false` |
+| `type` | The attribute type.<br>Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br>If omitted or null, string is used.<br> | [`AttributeType`](#attributetype) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -271,7 +271,7 @@ No properties.
 }</pre>
 </details>
 
-## AttributeType <a id="AttributeType"></a>
+## AttributeType <a id="attributetype"></a>
 
 No properties.
 
@@ -298,7 +298,7 @@ No properties.
 }</pre>
 </details>
 
-## B3MultiPropagator <a id="B3MultiPropagator"></a>
+## B3MultiPropagator <a id="b3multipropagator"></a>
 
 No properties.
 
@@ -315,7 +315,7 @@ No properties.
 }</pre>
 </details>
 
-## B3Propagator <a id="B3Propagator"></a>
+## B3Propagator <a id="b3propagator"></a>
 
 No properties.
 
@@ -332,7 +332,7 @@ No properties.
 }</pre>
 </details>
 
-## BaggagePropagator <a id="BaggagePropagator"></a>
+## BaggagePropagator <a id="baggagepropagator"></a>
 
 No properties.
 
@@ -349,7 +349,7 @@ No properties.
 }</pre>
 </details>
 
-## Base2ExponentialBucketHistogramAggregation <a id="Base2ExponentialBucketHistogramAggregation"></a>
+## Base2ExponentialBucketHistogramAggregation <a id="base2exponentialbuckethistogramaggregation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -390,7 +390,7 @@ No properties.
 }</pre>
 </details>
 
-## BatchLogRecordProcessor <a id="BatchLogRecordProcessor"></a>
+## BatchLogRecordProcessor <a id="batchlogrecordprocessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -398,7 +398,7 @@ No properties.
 | `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
-| `exporter` | Configure exporter. | [`LogRecordExporter`](#LogRecordExporter) | `true` |
+| `exporter` | Configure exporter. | [`LogRecordExporter`](#logrecordexporter) | `true` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -446,7 +446,7 @@ No properties.
 }</pre>
 </details>
 
-## BatchSpanProcessor <a id="BatchSpanProcessor"></a>
+## BatchSpanProcessor <a id="batchspanprocessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -454,7 +454,7 @@ No properties.
 | `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
-| `exporter` | Configure exporter. | [`SpanExporter`](#SpanExporter) | `true` |
+| `exporter` | Configure exporter. | [`SpanExporter`](#spanexporter) | `true` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -502,7 +502,7 @@ No properties.
 }</pre>
 </details>
 
-## CardinalityLimits <a id="CardinalityLimits"></a>
+## CardinalityLimits <a id="cardinalitylimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -583,7 +583,7 @@ No properties.
 }</pre>
 </details>
 
-## ConsoleExporter <a id="ConsoleExporter"></a>
+## ConsoleExporter <a id="consoleexporter"></a>
 
 No properties.
 
@@ -600,7 +600,7 @@ No properties.
 }</pre>
 </details>
 
-## DefaultAggregation <a id="DefaultAggregation"></a>
+## DefaultAggregation <a id="defaultaggregation"></a>
 
 No properties.
 
@@ -617,7 +617,7 @@ No properties.
 }</pre>
 </details>
 
-## DropAggregation <a id="DropAggregation"></a>
+## DropAggregation <a id="dropaggregation"></a>
 
 No properties.
 
@@ -634,7 +634,7 @@ No properties.
 }</pre>
 </details>
 
-## ExemplarFilter <a id="ExemplarFilter"></a>
+## ExemplarFilter <a id="exemplarfilter"></a>
 
 No properties.
 
@@ -655,7 +655,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalContainerResourceDetector <a id="ExperimentalContainerResourceDetector"></a>
+## ExperimentalContainerResourceDetector <a id="experimentalcontainerresourcedetector"></a>
 
 No properties.
 
@@ -672,12 +672,12 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalGeneralInstrumentation <a id="ExperimentalGeneralInstrumentation"></a>
+## ExperimentalGeneralInstrumentation <a id="experimentalgeneralinstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `peer` | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> | [`ExperimentalPeerInstrumentation`](#ExperimentalPeerInstrumentation) | `false` |
-| `http` | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> | [`ExperimentalHttpInstrumentation`](#ExperimentalHttpInstrumentation) | `false` |
+| `peer` | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` |
+| `http` | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -697,7 +697,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalHostResourceDetector <a id="ExperimentalHostResourceDetector"></a>
+## ExperimentalHostResourceDetector <a id="experimentalhostresourcedetector"></a>
 
 No properties.
 
@@ -714,7 +714,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalHttpClientInstrumentation <a id="ExperimentalHttpClientInstrumentation"></a>
+## ExperimentalHttpClientInstrumentation <a id="experimentalhttpclientinstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -745,12 +745,12 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalHttpInstrumentation <a id="ExperimentalHttpInstrumentation"></a>
+## ExperimentalHttpInstrumentation <a id="experimentalhttpinstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `client` | Configure instrumentations following the http client semantic conventions. | [`ExperimentalHttpClientInstrumentation`](#ExperimentalHttpClientInstrumentation) | `false` |
-| `server` | Configure instrumentations following the http server semantic conventions. | [`ExperimentalHttpServerInstrumentation`](#ExperimentalHttpServerInstrumentation) | `false` |
+| `client` | Configure instrumentations following the http client semantic conventions. | [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | `false` |
+| `server` | Configure instrumentations following the http server semantic conventions. | [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -770,7 +770,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalHttpServerInstrumentation <a id="ExperimentalHttpServerInstrumentation"></a>
+## ExperimentalHttpServerInstrumentation <a id="experimentalhttpserverinstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -801,22 +801,22 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalInstrumentation <a id="ExperimentalInstrumentation"></a>
+## ExperimentalInstrumentation <a id="experimentalinstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `general` | Configure general SemConv options that may apply to multiple languages and instrumentations.<br>Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.<br> | [`ExperimentalGeneralInstrumentation`](#ExperimentalGeneralInstrumentation) | `false` |
-| `cpp` | Configure C++ language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `dotnet` | Configure .NET language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `erlang` | Configure Erlang language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `go` | Configure Go language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `java` | Configure Java language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `js` | Configure JavaScript language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `php` | Configure PHP language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `python` | Configure Python language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `ruby` | Configure Ruby language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `rust` | Configure Rust language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
-| `swift` | Configure Swift language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#ExperimentalLanguageSpecificInstrumentation) | `false` |
+| `general` | Configure general SemConv options that may apply to multiple languages and instrumentations.<br>Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.<br> | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | `false` |
+| `cpp` | Configure C++ language-specific instrumentation libraries. | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` |
+| `dotnet` | Configure .NET language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` |
+| `erlang` | Configure Erlang language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` |
+| `go` | Configure Go language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` |
+| `java` | Configure Java language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` |
+| `js` | Configure JavaScript language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` |
+| `php` | Configure PHP language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` |
+| `python` | Configure Python language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` |
+| `ruby` | Configure Ruby language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` |
+| `rust` | Configure Rust language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` |
+| `swift` | Configure Swift language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -972,7 +972,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalLanguageSpecificInstrumentation <a id="ExperimentalLanguageSpecificInstrumentation"></a>
+## ExperimentalLanguageSpecificInstrumentation <a id="experimentallanguagespecificinstrumentation"></a>
 
 No properties.
 
@@ -991,7 +991,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalLoggerConfig <a id="ExperimentalLoggerConfig"></a>
+## ExperimentalLoggerConfig <a id="experimentalloggerconfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1016,12 +1016,12 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalLoggerConfigurator <a id="ExperimentalLoggerConfigurator"></a>
+## ExperimentalLoggerConfigurator <a id="experimentalloggerconfigurator"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `default_config` | Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers. | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
-| `loggers` | Configure loggers. | `array` of [`ExperimentalLoggerMatcherAndConfig`](#ExperimentalLoggerMatcherAndConfig) | `false` |
+| `default_config` | Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers. | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `false` |
+| `loggers` | Configure loggers. | `array` of [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1046,12 +1046,12 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalLoggerMatcherAndConfig <a id="ExperimentalLoggerMatcherAndConfig"></a>
+## ExperimentalLoggerMatcherAndConfig <a id="experimentalloggermatcherandconfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `name` | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `false` |
-| `config` | The logger config. | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
+| `config` | The logger config. | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1075,7 +1075,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalMeterConfig <a id="ExperimentalMeterConfig"></a>
+## ExperimentalMeterConfig <a id="experimentalmeterconfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1100,12 +1100,12 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalMeterConfigurator <a id="ExperimentalMeterConfigurator"></a>
+## ExperimentalMeterConfigurator <a id="experimentalmeterconfigurator"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `default_config` | Configure the default meter config used there is no matching entry in .meter_configurator/development.meters. | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
-| `meters` | Configure meters. | `array` of [`ExperimentalMeterMatcherAndConfig`](#ExperimentalMeterMatcherAndConfig) | `false` |
+| `default_config` | Configure the default meter config used there is no matching entry in .meter_configurator/development.meters. | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` |
+| `meters` | Configure meters. | `array` of [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1130,12 +1130,12 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalMeterMatcherAndConfig <a id="ExperimentalMeterMatcherAndConfig"></a>
+## ExperimentalMeterMatcherAndConfig <a id="experimentalmetermatcherandconfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `name` | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `false` |
-| `config` | The meter config. | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
+| `config` | The meter config. | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1159,7 +1159,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalOtlpFileExporter <a id="ExperimentalOtlpFileExporter"></a>
+## ExperimentalOtlpFileExporter <a id="experimentalotlpfileexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1186,13 +1186,13 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalOtlpFileMetricExporter <a id="ExperimentalOtlpFileMetricExporter"></a>
+## ExperimentalOtlpFileMetricExporter <a id="experimentalotlpfilemetricexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `output_stream` | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
-| `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
-| `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
+| `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` |
+| `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1221,11 +1221,11 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalPeerInstrumentation <a id="ExperimentalPeerInstrumentation"></a>
+## ExperimentalPeerInstrumentation <a id="experimentalpeerinstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `service_mapping` | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> | `array` of [`ExperimentalPeerServiceMapping`](#ExperimentalPeerServiceMapping) | `false` |
+| `service_mapping` | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1245,7 +1245,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalPeerServiceMapping <a id="ExperimentalPeerServiceMapping"></a>
+## ExperimentalPeerServiceMapping <a id="experimentalpeerservicemapping"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1274,7 +1274,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalProcessResourceDetector <a id="ExperimentalProcessResourceDetector"></a>
+## ExperimentalProcessResourceDetector <a id="experimentalprocessresourcedetector"></a>
 
 No properties.
 
@@ -1291,14 +1291,14 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalPrometheusMetricExporter <a id="ExperimentalPrometheusMetricExporter"></a>
+## ExperimentalPrometheusMetricExporter <a id="experimentalprometheusmetricexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `host` | Configure host.<br>If omitted or null, localhost is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `port` | Configure port.<br>If omitted or null, 9464 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `without_scope_info` | Configure Prometheus Exporter to produce metrics without a scope info metric.<br>If omitted or null, false is used.<br> | one of:<br>* `boolean`<br>* `null`<br> | `false` |
-| `with_resource_constant_labels` | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. | [`IncludeExclude`](#IncludeExclude) | `false` |
+| `with_resource_constant_labels` | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. | [`IncludeExclude`](#includeexclude) | `false` |
 | `translation_strategy` | Configure how Prometheus metrics are exposed. Values include:<br><br> * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br> * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.<br> * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br> * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.<br><br>If omitted or null, UnderscoreEscapingWithSuffixes is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 
 <details>
@@ -1349,12 +1349,12 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalResourceDetection <a id="ExperimentalResourceDetection"></a>
+## ExperimentalResourceDetection <a id="experimentalresourcedetection"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attributes` | Configure attributes provided by resource detectors. | [`IncludeExclude`](#IncludeExclude) | `false` |
-| `detectors` | Configure resource detectors.<br>Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. <br>If omitted or null, no resource detectors are enabled.<br> | `array` of [`ExperimentalResourceDetector`](#ExperimentalResourceDetector) | `false` |
+| `attributes` | Configure attributes provided by resource detectors. | [`IncludeExclude`](#includeexclude) | `false` |
+| `detectors` | Configure resource detectors.<br>Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. <br>If omitted or null, no resource detectors are enabled.<br> | `array` of [`ExperimentalResourceDetector`](#experimentalresourcedetector) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1377,14 +1377,14 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalResourceDetector <a id="ExperimentalResourceDetector"></a>
+## ExperimentalResourceDetector <a id="experimentalresourcedetector"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `container` | Enable the container resource detector, which populates container.* attributes.<br> | [`ExperimentalContainerResourceDetector`](#ExperimentalContainerResourceDetector) | `false` |
-| `host` | Enable the host resource detector, which populates host.* and os.* attributes.<br> | [`ExperimentalHostResourceDetector`](#ExperimentalHostResourceDetector) | `false` |
-| `process` | Enable the process resource detector, which populates process.* attributes.<br> | [`ExperimentalProcessResourceDetector`](#ExperimentalProcessResourceDetector) | `false` |
-| `service` | Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.<br> | [`ExperimentalServiceResourceDetector`](#ExperimentalServiceResourceDetector) | `false` |
+| `container` | Enable the container resource detector, which populates container.* attributes.<br> | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | `false` |
+| `host` | Enable the host resource detector, which populates host.* and os.* attributes.<br> | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | `false` |
+| `process` | Enable the process resource detector, which populates process.* attributes.<br> | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | `false` |
+| `service` | Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.<br> | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1420,7 +1420,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalServiceResourceDetector <a id="ExperimentalServiceResourceDetector"></a>
+## ExperimentalServiceResourceDetector <a id="experimentalserviceresourcedetector"></a>
 
 No properties.
 
@@ -1437,7 +1437,7 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalTracerConfig <a id="ExperimentalTracerConfig"></a>
+## ExperimentalTracerConfig <a id="experimentaltracerconfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1462,12 +1462,12 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalTracerConfigurator <a id="ExperimentalTracerConfigurator"></a>
+## ExperimentalTracerConfigurator <a id="experimentaltracerconfigurator"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `default_config` | Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers. | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `false` |
-| `tracers` | Configure tracers. | `array` of [`ExperimentalTracerMatcherAndConfig`](#ExperimentalTracerMatcherAndConfig) | `false` |
+| `default_config` | Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers. | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` |
+| `tracers` | Configure tracers. | `array` of [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1492,12 +1492,12 @@ No properties.
 }</pre>
 </details>
 
-## ExperimentalTracerMatcherAndConfig <a id="ExperimentalTracerMatcherAndConfig"></a>
+## ExperimentalTracerMatcherAndConfig <a id="experimentaltracermatcherandconfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `name` | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `false` |
-| `config` | The tracer config. | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `false` |
+| `config` | The tracer config. | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1521,7 +1521,7 @@ No properties.
 }</pre>
 </details>
 
-## ExplicitBucketHistogramAggregation <a id="ExplicitBucketHistogramAggregation"></a>
+## ExplicitBucketHistogramAggregation <a id="explicitbuckethistogramaggregation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1555,7 +1555,7 @@ No properties.
 }</pre>
 </details>
 
-## ExporterDefaultHistogramAggregation <a id="ExporterDefaultHistogramAggregation"></a>
+## ExporterDefaultHistogramAggregation <a id="exporterdefaulthistogramaggregation"></a>
 
 No properties.
 
@@ -1575,7 +1575,7 @@ No properties.
 }</pre>
 </details>
 
-## ExporterTemporalityPreference <a id="ExporterTemporalityPreference"></a>
+## ExporterTemporalityPreference <a id="exportertemporalitypreference"></a>
 
 No properties.
 
@@ -1596,7 +1596,7 @@ No properties.
 }</pre>
 </details>
 
-## IncludeExclude <a id="IncludeExclude"></a>
+## IncludeExclude <a id="includeexclude"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1627,7 +1627,7 @@ No properties.
 }</pre>
 </details>
 
-## InstrumentType <a id="InstrumentType"></a>
+## InstrumentType <a id="instrumenttype"></a>
 
 No properties.
 
@@ -1652,7 +1652,7 @@ No properties.
 }</pre>
 </details>
 
-## JaegerPropagator <a id="JaegerPropagator"></a>
+## JaegerPropagator <a id="jaegerpropagator"></a>
 
 No properties.
 
@@ -1669,13 +1669,13 @@ No properties.
 }</pre>
 </details>
 
-## JaegerRemoteSampler <a id="JaegerRemoteSampler"></a>
+## JaegerRemoteSampler <a id="jaegerremotesampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `endpoint` | TODO | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `interval` | TODO | one of:<br>* `integer`<br>* `null`<br> | `false` |
-| `initial_sampler` | TODO | [`Sampler`](#Sampler) | `false` |
+| `initial_sampler` | TODO | [`Sampler`](#sampler) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1708,7 +1708,7 @@ No properties.
 }</pre>
 </details>
 
-## LastValueAggregation <a id="LastValueAggregation"></a>
+## LastValueAggregation <a id="lastvalueaggregation"></a>
 
 No properties.
 
@@ -1725,13 +1725,13 @@ No properties.
 }</pre>
 </details>
 
-## LoggerProvider <a id="LoggerProvider"></a>
+## LoggerProvider <a id="loggerprovider"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `processors` | Configure log record processors. | `array` of [`LogRecordProcessor`](#LogRecordProcessor) | `true` |
-| `limits` | Configure log record limits. See also attribute_limits. | [`LogRecordLimits`](#LogRecordLimits) | `false` |
-| `logger_configurator/development` | Configure loggers.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalLoggerConfigurator`](#ExperimentalLoggerConfigurator) | `false` |
+| `processors` | Configure log record processors. | `array` of [`LogRecordProcessor`](#logrecordprocessor) | `true` |
+| `limits` | Configure log record limits. See also attribute_limits. | [`LogRecordLimits`](#logrecordlimits) | `false` |
+| `logger_configurator/development` | Configure loggers.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1932,14 +1932,14 @@ No properties.
 }</pre>
 </details>
 
-## LogRecordExporter <a id="LogRecordExporter"></a>
+## LogRecordExporter <a id="logrecordexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `otlp_http` | Configure exporter to be OTLP with HTTP transport. | [`OtlpHttpExporter`](#OtlpHttpExporter) | `false` |
-| `otlp_grpc` | Configure exporter to be OTLP with gRPC transport. | [`OtlpGrpcExporter`](#OtlpGrpcExporter) | `false` |
-| `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileExporter`](#ExperimentalOtlpFileExporter) | `false` |
-| `console` | Configure exporter to be console. | [`ConsoleExporter`](#ConsoleExporter) | `false` |
+| `otlp_http` | Configure exporter to be OTLP with HTTP transport. | [`OtlpHttpExporter`](#otlphttpexporter) | `false` |
+| `otlp_grpc` | Configure exporter to be OTLP with gRPC transport. | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` |
+| `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` |
+| `console` | Configure exporter to be console. | [`ConsoleExporter`](#consoleexporter) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1975,7 +1975,7 @@ No properties.
 }</pre>
 </details>
 
-## LogRecordLimits <a id="LogRecordLimits"></a>
+## LogRecordLimits <a id="logrecordlimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -2008,12 +2008,12 @@ No properties.
 }</pre>
 </details>
 
-## LogRecordProcessor <a id="LogRecordProcessor"></a>
+## LogRecordProcessor <a id="logrecordprocessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `batch` | Configure a batch log record processor. | [`BatchLogRecordProcessor`](#BatchLogRecordProcessor) | `false` |
-| `simple` | Configure a simple log record processor. | [`SimpleLogRecordProcessor`](#SimpleLogRecordProcessor) | `false` |
+| `batch` | Configure a batch log record processor. | [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | `false` |
+| `simple` | Configure a simple log record processor. | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2042,14 +2042,14 @@ No properties.
 }</pre>
 </details>
 
-## MeterProvider <a id="MeterProvider"></a>
+## MeterProvider <a id="meterprovider"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `readers` | Configure metric readers. | `array` of [`MetricReader`](#MetricReader) | `true` |
-| `views` | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> | `array` of [`View`](#View) | `false` |
-| `exemplar_filter` | Configure the exemplar filter. <br>Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br>If omitted or null, trace_based is used.<br> | [`ExemplarFilter`](#ExemplarFilter) | `false` |
-| `meter_configurator/development` | Configure meters.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalMeterConfigurator`](#ExperimentalMeterConfigurator) | `false` |
+| `readers` | Configure metric readers. | `array` of [`MetricReader`](#metricreader) | `true` |
+| `views` | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> | `array` of [`View`](#view) | `false` |
+| `exemplar_filter` | Configure the exemplar filter. <br>Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br>If omitted or null, trace_based is used.<br> | [`ExemplarFilter`](#exemplarfilter) | `false` |
+| `meter_configurator/development` | Configure meters.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2773,11 +2773,11 @@ No properties.
 }</pre>
 </details>
 
-## MetricProducer <a id="MetricProducer"></a>
+## MetricProducer <a id="metricproducer"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `opencensus` | Configure metric producer to be opencensus. | [`OpenCensusMetricProducer`](#OpenCensusMetricProducer) | `false` |
+| `opencensus` | Configure metric producer to be opencensus. | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2804,12 +2804,12 @@ No properties.
 }</pre>
 </details>
 
-## MetricReader <a id="MetricReader"></a>
+## MetricReader <a id="metricreader"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `periodic` | Configure a periodic metric reader. | [`PeriodicMetricReader`](#PeriodicMetricReader) | `false` |
-| `pull` | Configure a pull based metric reader. | [`PullMetricReader`](#PullMetricReader) | `false` |
+| `periodic` | Configure a periodic metric reader. | [`PeriodicMetricReader`](#periodicmetricreader) | `false` |
+| `pull` | Configure a pull based metric reader. | [`PullMetricReader`](#pullmetricreader) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2831,7 +2831,7 @@ No properties.
 }</pre>
 </details>
 
-## NameStringValuePair <a id="NameStringValuePair"></a>
+## NameStringValuePair <a id="namestringvaluepair"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -2863,7 +2863,7 @@ No properties.
 }</pre>
 </details>
 
-## OpenCensusMetricProducer <a id="OpenCensusMetricProducer"></a>
+## OpenCensusMetricProducer <a id="opencensusmetricproducer"></a>
 
 No properties.
 
@@ -2880,20 +2880,20 @@ No properties.
 }</pre>
 </details>
 
-## OpentelemetryConfiguration <a id="OpentelemetryConfiguration"></a>
+## OpentelemetryConfiguration <a id="opentelemetryconfiguration"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `file_format` | The file format version.<br>The yaml format is documented at<br>https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema<br> | `string` | `true` |
 | `disabled` | Configure if the SDK is disabled or not.<br>If omitted or null, false is used.<br> | one of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `log_level` | Configure the log level of the internal logger used by the SDK.<br>If omitted, info is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
-| `attribute_limits` | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br> | [`AttributeLimits`](#AttributeLimits) | `false` |
-| `logger_provider` | Configure logger provider.<br>If omitted, a noop logger provider is used.<br> | [`LoggerProvider`](#LoggerProvider) | `false` |
-| `meter_provider` | Configure meter provider.<br>If omitted, a noop meter provider is used.<br> | [`MeterProvider`](#MeterProvider) | `false` |
-| `propagator` | Configure text map context propagators.<br>If omitted, a noop propagator is used.<br> | [`Propagator`](#Propagator) | `false` |
-| `tracer_provider` | Configure tracer provider.<br>If omitted, a noop tracer provider is used.<br> | [`TracerProvider`](#TracerProvider) | `false` |
-| `resource` | Configure resource for all signals.<br>If omitted, the default resource is used.<br> | [`Resource`](#Resource) | `false` |
-| `instrumentation/development` | Configure instrumentation.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalInstrumentation`](#ExperimentalInstrumentation) | `false` |
+| `attribute_limits` | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br> | [`AttributeLimits`](#attributelimits) | `false` |
+| `logger_provider` | Configure logger provider.<br>If omitted, a noop logger provider is used.<br> | [`LoggerProvider`](#loggerprovider) | `false` |
+| `meter_provider` | Configure meter provider.<br>If omitted, a noop meter provider is used.<br> | [`MeterProvider`](#meterprovider) | `false` |
+| `propagator` | Configure text map context propagators.<br>If omitted, a noop propagator is used.<br> | [`Propagator`](#propagator) | `false` |
+| `tracer_provider` | Configure tracer provider.<br>If omitted, a noop tracer provider is used.<br> | [`TracerProvider`](#tracerprovider) | `false` |
+| `resource` | Configure resource for all signals.<br>If omitted, the default resource is used.<br> | [`Resource`](#resource) | `false` |
+| `instrumentation/development` | Configure instrumentation.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2987,7 +2987,7 @@ No properties.
 }</pre>
 </details>
 
-## OpenTracingPropagator <a id="OpenTracingPropagator"></a>
+## OpenTracingPropagator <a id="opentracingpropagator"></a>
 
 No properties.
 
@@ -3004,7 +3004,7 @@ No properties.
 }</pre>
 </details>
 
-## OtlpGrpcExporter <a id="OtlpGrpcExporter"></a>
+## OtlpGrpcExporter <a id="otlpgrpcexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3012,7 +3012,7 @@ No properties.
 | `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
-| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` |
 | `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
@@ -3088,7 +3088,7 @@ No properties.
 }</pre>
 </details>
 
-## OtlpGrpcMetricExporter <a id="OtlpGrpcMetricExporter"></a>
+## OtlpGrpcMetricExporter <a id="otlpgrpcmetricexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3096,13 +3096,13 @@ No properties.
 | `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
-| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` |
 | `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | one of:<br>* `boolean`<br>* `null`<br> | `false` |
-| `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
-| `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
+| `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` |
+| `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3180,7 +3180,7 @@ No properties.
 }</pre>
 </details>
 
-## OtlpHttpEncoding <a id="OtlpHttpEncoding"></a>
+## OtlpHttpEncoding <a id="otlphttpencoding"></a>
 
 No properties.
 
@@ -3200,7 +3200,7 @@ No properties.
 }</pre>
 </details>
 
-## OtlpHttpExporter <a id="OtlpHttpExporter"></a>
+## OtlpHttpExporter <a id="otlphttpexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3208,11 +3208,11 @@ No properties.
 | `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
-| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` |
 | `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
-| `encoding` | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
+| `encoding` | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3281,7 +3281,7 @@ No properties.
 }</pre>
 </details>
 
-## OtlpHttpMetricExporter <a id="OtlpHttpMetricExporter"></a>
+## OtlpHttpMetricExporter <a id="otlphttpmetricexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3290,13 +3290,13 @@ No properties.
 | `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
-| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
+| `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` |
 | `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
-| `encoding` | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
-| `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
-| `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
+| `encoding` | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` |
+| `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` |
+| `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3371,15 +3371,15 @@ No properties.
 }</pre>
 </details>
 
-## ParentBasedSampler <a id="ParentBasedSampler"></a>
+## ParentBasedSampler <a id="parentbasedsampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `root` | Configure root sampler.<br>If omitted or null, always_on is used.<br> | [`Sampler`](#Sampler) | `false` |
-| `remote_parent_sampled` | Configure remote_parent_sampled sampler.<br>If omitted or null, always_on is used.<br> | [`Sampler`](#Sampler) | `false` |
-| `remote_parent_not_sampled` | Configure remote_parent_not_sampled sampler.<br>If omitted or null, always_off is used.<br> | [`Sampler`](#Sampler) | `false` |
-| `local_parent_sampled` | Configure local_parent_sampled sampler.<br>If omitted or null, always_on is used.<br> | [`Sampler`](#Sampler) | `false` |
-| `local_parent_not_sampled` | Configure local_parent_not_sampled sampler.<br>If omitted or null, always_off is used.<br> | [`Sampler`](#Sampler) | `false` |
+| `root` | Configure root sampler.<br>If omitted or null, always_on is used.<br> | [`Sampler`](#sampler) | `false` |
+| `remote_parent_sampled` | Configure remote_parent_sampled sampler.<br>If omitted or null, always_on is used.<br> | [`Sampler`](#sampler) | `false` |
+| `remote_parent_not_sampled` | Configure remote_parent_not_sampled sampler.<br>If omitted or null, always_off is used.<br> | [`Sampler`](#sampler) | `false` |
+| `local_parent_sampled` | Configure local_parent_sampled sampler.<br>If omitted or null, always_on is used.<br> | [`Sampler`](#sampler) | `false` |
+| `local_parent_not_sampled` | Configure local_parent_not_sampled sampler.<br>If omitted or null, always_off is used.<br> | [`Sampler`](#sampler) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3411,15 +3411,15 @@ No properties.
 }</pre>
 </details>
 
-## PeriodicMetricReader <a id="PeriodicMetricReader"></a>
+## PeriodicMetricReader <a id="periodicmetricreader"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `interval` | Configure delay interval (in milliseconds) between start of two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 60000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
-| `exporter` | Configure exporter. | [`PushMetricExporter`](#PushMetricExporter) | `true` |
-| `producers` | Configure metric producers. | `array` of [`MetricProducer`](#MetricProducer) | `false` |
-| `cardinality_limits` | Configure cardinality limits. | [`CardinalityLimits`](#CardinalityLimits) | `false` |
+| `exporter` | Configure exporter. | [`PushMetricExporter`](#pushmetricexporter) | `true` |
+| `producers` | Configure metric producers. | `array` of [`MetricProducer`](#metricproducer) | `false` |
+| `cardinality_limits` | Configure cardinality limits. | [`CardinalityLimits`](#cardinalitylimits) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3462,11 +3462,11 @@ No properties.
 }</pre>
 </details>
 
-## Propagator <a id="Propagator"></a>
+## Propagator <a id="propagator"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `composite` | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | `array` of [`TextMapPropagator`](#TextMapPropagator) | `false` |
+| `composite` | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | `array` of [`TextMapPropagator`](#textmappropagator) | `false` |
 | `composite_list` | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 
 <details>
@@ -3572,11 +3572,11 @@ No properties.
 }</pre>
 </details>
 
-## PullMetricExporter <a id="PullMetricExporter"></a>
+## PullMetricExporter <a id="pullmetricexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `prometheus/development` | Configure exporter to be prometheus.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalPrometheusMetricExporter`](#ExperimentalPrometheusMetricExporter) | `false` |
+| `prometheus/development` | Configure exporter to be prometheus.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3605,13 +3605,13 @@ No properties.
 }</pre>
 </details>
 
-## PullMetricReader <a id="PullMetricReader"></a>
+## PullMetricReader <a id="pullmetricreader"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `exporter` | Configure exporter. | [`PullMetricExporter`](#PullMetricExporter) | `true` |
-| `producers` | Configure metric producers. | `array` of [`MetricProducer`](#MetricProducer) | `false` |
-| `cardinality_limits` | Configure cardinality limits. | [`CardinalityLimits`](#CardinalityLimits) | `false` |
+| `exporter` | Configure exporter. | [`PullMetricExporter`](#pullmetricexporter) | `true` |
+| `producers` | Configure metric producers. | `array` of [`MetricProducer`](#metricproducer) | `false` |
+| `cardinality_limits` | Configure cardinality limits. | [`CardinalityLimits`](#cardinalitylimits) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3640,14 +3640,14 @@ No properties.
 }</pre>
 </details>
 
-## PushMetricExporter <a id="PushMetricExporter"></a>
+## PushMetricExporter <a id="pushmetricexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `otlp_http` | Configure exporter to be OTLP with HTTP transport.<br> | [`OtlpHttpMetricExporter`](#OtlpHttpMetricExporter) | `false` |
-| `otlp_grpc` | Configure exporter to be OTLP with gRPC transport.<br> | [`OtlpGrpcMetricExporter`](#OtlpGrpcMetricExporter) | `false` |
-| `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileMetricExporter`](#ExperimentalOtlpFileMetricExporter) | `false` |
-| `console` | Configure exporter to be console.<br> | [`ConsoleExporter`](#ConsoleExporter) | `false` |
+| `otlp_http` | Configure exporter to be OTLP with HTTP transport.<br> | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` |
+| `otlp_grpc` | Configure exporter to be OTLP with gRPC transport.<br> | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` |
+| `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` |
+| `console` | Configure exporter to be console.<br> | [`ConsoleExporter`](#consoleexporter) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3683,12 +3683,12 @@ No properties.
 }</pre>
 </details>
 
-## Resource <a id="Resource"></a>
+## Resource <a id="resource"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attributes` | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br> | `array` of [`AttributeNameValue`](#AttributeNameValue) | `false` |
-| `detection/development` | Configure resource detection.<br>This type is in development and subject to breaking changes in minor versions.<br>If omitted or null, resource detection is disabled.<br> | [`ExperimentalResourceDetection`](#ExperimentalResourceDetection) | `false` |
+| `attributes` | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br> | `array` of [`AttributeNameValue`](#attributenamevalue) | `false` |
+| `detection/development` | Configure resource detection.<br>This type is in development and subject to breaking changes in minor versions.<br>If omitted or null, resource detection is disabled.<br> | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` |
 | `schema_url` | Configure resource schema URL.<br>If omitted or null, no schema URL is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `attributes_list` | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>If omitted or null, no resource attributes are added.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 
@@ -3867,15 +3867,15 @@ No properties.
 }</pre>
 </details>
 
-## Sampler <a id="Sampler"></a>
+## Sampler <a id="sampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `always_off` | Configure sampler to be always_off. | [`AlwaysOffSampler`](#AlwaysOffSampler) | `false` |
-| `always_on` | Configure sampler to be always_on. | [`AlwaysOnSampler`](#AlwaysOnSampler) | `false` |
-| `jaeger_remote` | TODO | [`JaegerRemoteSampler`](#JaegerRemoteSampler) | `false` |
-| `parent_based` | Configure sampler to be parent_based. | [`ParentBasedSampler`](#ParentBasedSampler) | `false` |
-| `trace_id_ratio_based` | Configure sampler to be trace_id_ratio_based. | [`TraceIdRatioBasedSampler`](#TraceIdRatioBasedSampler) | `false` |
+| `always_off` | Configure sampler to be always_off. | [`AlwaysOffSampler`](#alwaysoffsampler) | `false` |
+| `always_on` | Configure sampler to be always_on. | [`AlwaysOnSampler`](#alwaysonsampler) | `false` |
+| `jaeger_remote` | TODO | [`JaegerRemoteSampler`](#jaegerremotesampler) | `false` |
+| `parent_based` | Configure sampler to be parent_based. | [`ParentBasedSampler`](#parentbasedsampler) | `false` |
+| `trace_id_ratio_based` | Configure sampler to be trace_id_ratio_based. | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3914,11 +3914,11 @@ No properties.
 }</pre>
 </details>
 
-## SimpleLogRecordProcessor <a id="SimpleLogRecordProcessor"></a>
+## SimpleLogRecordProcessor <a id="simplelogrecordprocessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `exporter` | Configure exporter. | [`LogRecordExporter`](#LogRecordExporter) | `true` |
+| `exporter` | Configure exporter. | [`LogRecordExporter`](#logrecordexporter) | `true` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3938,11 +3938,11 @@ No properties.
 }</pre>
 </details>
 
-## SimpleSpanProcessor <a id="SimpleSpanProcessor"></a>
+## SimpleSpanProcessor <a id="simplespanprocessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `exporter` | Configure exporter. | [`SpanExporter`](#SpanExporter) | `true` |
+| `exporter` | Configure exporter. | [`SpanExporter`](#spanexporter) | `true` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3962,15 +3962,15 @@ No properties.
 }</pre>
 </details>
 
-## SpanExporter <a id="SpanExporter"></a>
+## SpanExporter <a id="spanexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `otlp_http` | Configure exporter to be OTLP with HTTP transport. | [`OtlpHttpExporter`](#OtlpHttpExporter) | `false` |
-| `otlp_grpc` | Configure exporter to be OTLP with gRPC transport. | [`OtlpGrpcExporter`](#OtlpGrpcExporter) | `false` |
-| `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileExporter`](#ExperimentalOtlpFileExporter) | `false` |
-| `console` | Configure exporter to be console. | [`ConsoleExporter`](#ConsoleExporter) | `false` |
-| `zipkin` | Configure exporter to be zipkin. | [`ZipkinSpanExporter`](#ZipkinSpanExporter) | `false` |
+| `otlp_http` | Configure exporter to be OTLP with HTTP transport. | [`OtlpHttpExporter`](#otlphttpexporter) | `false` |
+| `otlp_grpc` | Configure exporter to be OTLP with gRPC transport. | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` |
+| `otlp_file/development` | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` |
+| `console` | Configure exporter to be console. | [`ConsoleExporter`](#consoleexporter) | `false` |
+| `zipkin` | Configure exporter to be zipkin. | [`ZipkinSpanExporter`](#zipkinspanexporter) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4009,7 +4009,7 @@ No properties.
 }</pre>
 </details>
 
-## SpanLimits <a id="SpanLimits"></a>
+## SpanLimits <a id="spanlimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -4074,12 +4074,12 @@ No properties.
 }</pre>
 </details>
 
-## SpanProcessor <a id="SpanProcessor"></a>
+## SpanProcessor <a id="spanprocessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `batch` | Configure a batch span processor. | [`BatchSpanProcessor`](#BatchSpanProcessor) | `false` |
-| `simple` | Configure a simple span processor. | [`SimpleSpanProcessor`](#SimpleSpanProcessor) | `false` |
+| `batch` | Configure a batch span processor. | [`BatchSpanProcessor`](#batchspanprocessor) | `false` |
+| `simple` | Configure a simple span processor. | [`SimpleSpanProcessor`](#simplespanprocessor) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4109,7 +4109,7 @@ No properties.
 }</pre>
 </details>
 
-## SumAggregation <a id="SumAggregation"></a>
+## SumAggregation <a id="sumaggregation"></a>
 
 No properties.
 
@@ -4126,16 +4126,16 @@ No properties.
 }</pre>
 </details>
 
-## TextMapPropagator <a id="TextMapPropagator"></a>
+## TextMapPropagator <a id="textmappropagator"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `tracecontext` | Include the w3c trace context propagator. | [`TraceContextPropagator`](#TraceContextPropagator) | `false` |
-| `baggage` | Include the w3c baggage propagator. | [`BaggagePropagator`](#BaggagePropagator) | `false` |
-| `b3` | Include the zipkin b3 propagator. | [`B3Propagator`](#B3Propagator) | `false` |
-| `b3multi` | Include the zipkin b3 multi propagator. | [`B3MultiPropagator`](#B3MultiPropagator) | `false` |
-| `jaeger` | Include the jaeger propagator. | [`JaegerPropagator`](#JaegerPropagator) | `false` |
-| `ottrace` | Include the opentracing propagator. | [`OpenTracingPropagator`](#OpenTracingPropagator) | `false` |
+| `tracecontext` | Include the w3c trace context propagator. | [`TraceContextPropagator`](#tracecontextpropagator) | `false` |
+| `baggage` | Include the w3c baggage propagator. | [`BaggagePropagator`](#baggagepropagator) | `false` |
+| `b3` | Include the zipkin b3 propagator. | [`B3Propagator`](#b3propagator) | `false` |
+| `b3multi` | Include the zipkin b3 multi propagator. | [`B3MultiPropagator`](#b3multipropagator) | `false` |
+| `jaeger` | Include the jaeger propagator. | [`JaegerPropagator`](#jaegerpropagator) | `false` |
+| `ottrace` | Include the opentracing propagator. | [`OpenTracingPropagator`](#opentracingpropagator) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4177,7 +4177,7 @@ No properties.
 }</pre>
 </details>
 
-## TraceContextPropagator <a id="TraceContextPropagator"></a>
+## TraceContextPropagator <a id="tracecontextpropagator"></a>
 
 No properties.
 
@@ -4194,7 +4194,7 @@ No properties.
 }</pre>
 </details>
 
-## TraceIdRatioBasedSampler <a id="TraceIdRatioBasedSampler"></a>
+## TraceIdRatioBasedSampler <a id="traceidratiobasedsampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -4221,14 +4221,14 @@ No properties.
 }</pre>
 </details>
 
-## TracerProvider <a id="TracerProvider"></a>
+## TracerProvider <a id="tracerprovider"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `processors` | Configure span processors. | `array` of [`SpanProcessor`](#SpanProcessor) | `true` |
-| `limits` | Configure span limits. See also attribute_limits. | [`SpanLimits`](#SpanLimits) | `false` |
-| `sampler` | Configure the sampler.<br>If omitted, parent based sampler with a root of always_on is used.<br> | [`Sampler`](#Sampler) | `false` |
-| `tracer_configurator/development` | Configure tracers.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalTracerConfigurator`](#ExperimentalTracerConfigurator) | `false` |
+| `processors` | Configure span processors. | `array` of [`SpanProcessor`](#spanprocessor) | `true` |
+| `limits` | Configure span limits. See also attribute_limits. | [`SpanLimits`](#spanlimits) | `false` |
+| `sampler` | Configure the sampler.<br>If omitted, parent based sampler with a root of always_on is used.<br> | [`Sampler`](#sampler) | `false` |
+| `tracer_configurator/development` | Configure tracers.<br>This type is in development and subject to breaking changes in minor versions.<br> | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4595,12 +4595,12 @@ No properties.
 }</pre>
 </details>
 
-## View <a id="View"></a>
+## View <a id="view"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `selector` | Configure view selector. <br>Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.<br> | [`ViewSelector`](#ViewSelector) | `false` |
-| `stream` | Configure view stream. | [`ViewStream`](#ViewStream) | `false` |
+| `selector` | Configure view selector. <br>Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.<br> | [`ViewSelector`](#viewselector) | `false` |
+| `stream` | Configure view stream. | [`ViewStream`](#viewstream) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4620,12 +4620,12 @@ No properties.
 }</pre>
 </details>
 
-## ViewSelector <a id="ViewSelector"></a>
+## ViewSelector <a id="viewselector"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `instrument_name` | Configure instrument name selection criteria.<br>If omitted or null, all instrument names match.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
-| `instrument_type` | Configure instrument type selection criteria.<br>Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.<br>If omitted or null, all instrument types match.<br> | [`InstrumentType`](#InstrumentType) | `false` |
+| `instrument_type` | Configure instrument type selection criteria.<br>Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.<br>If omitted or null, all instrument types match.<br> | [`InstrumentType`](#instrumenttype) | `false` |
 | `unit` | Configure the instrument unit selection criteria.<br>If omitted or null, all instrument units match.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `meter_name` | Configure meter name selection criteria.<br>If omitted or null, all meter names match.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `meter_version` | Configure meter version selection criteria.<br>If omitted or null, all meter versions match.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
@@ -4676,15 +4676,15 @@ No properties.
 }</pre>
 </details>
 
-## ViewStream <a id="ViewStream"></a>
+## ViewStream <a id="viewstream"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `name` | Configure metric name of the resulting stream(s).<br>If omitted or null, the instrument's original name is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `description` | Configure metric description of the resulting stream(s).<br>If omitted or null, the instrument's origin description is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
-| `aggregation` | Configure aggregation of the resulting stream(s). <br>Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.<br>If omitted, default is used.<br> | [`Aggregation`](#Aggregation) | `false` |
+| `aggregation` | Configure aggregation of the resulting stream(s). <br>Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.<br>If omitted, default is used.<br> | [`Aggregation`](#aggregation) | `false` |
 | `aggregation_cardinality_limit` | Configure the aggregation cardinality limit.<br>If omitted or null, the metric reader's default cardinality limit is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
-| `attribute_keys` | Configure attribute keys retained in the resulting stream(s).<br> | [`IncludeExclude`](#IncludeExclude) | `false` |
+| `attribute_keys` | Configure attribute keys retained in the resulting stream(s).<br> | [`IncludeExclude`](#includeexclude) | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4723,7 +4723,7 @@ No properties.
 }</pre>
 </details>
 
-## ZipkinSpanExporter <a id="ZipkinSpanExporter"></a>
+## ZipkinSpanExporter <a id="zipkinspanexporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|

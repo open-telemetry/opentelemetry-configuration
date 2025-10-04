@@ -31,7 +31,7 @@ types.forEach(metaSchemaType => {
     const required = jsonSchemaType.schema['required'];
 
     // Heading
-    addHeader(type, type, 2);
+    addHeader(type, type.toLowerCase(), 2);
 
     // Properties
     if (metaSchemaType.properties.length === 0) {
@@ -104,7 +104,7 @@ function formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType)
     jsonSchemaProperty.types.forEach(type => {
         let resolvedType = jsonSchemaTypesByType[type];
         output.push(prefix);
-        output.push(resolvedType ? `[\`${resolvedType.type}\`](#${resolvedType.type})` : `\`${type}\``)
+        output.push(resolvedType ? `[\`${resolvedType.type}\`](#${resolvedType.type.toLowerCase()})` : `\`${type}\``)
         output.push(suffix);
     });
     return output.join('');
