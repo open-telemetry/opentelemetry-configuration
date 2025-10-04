@@ -1,6 +1,4 @@
-import {
-    readJsonSchemaTypes, resolveJsonSchemaPropertyType
-} from "./json-schema.js";
+import {readJsonSchemaTypes} from "./json-schema.js";
 import {readAndFixMetaSchemaTypes} from "./meta-schema.js";
 import fs from "node:fs";
 import {markdownDocPath} from "./util.js";
@@ -38,8 +36,11 @@ types.forEach(metaSchemaType => {
         output.push(`| Property | Description | Type | Required? |\n`);
         output.push("|---|---|---|---|\n");
         metaSchemaType.properties.forEach(property => {
-            const propertyType = resolveJsonSchemaPropertyType(jsonSchemaType, property.property, jsonSchemaTypesByType);
-            const formattedPropertyType = formatJsonSchemaPropertyType(propertyType, '', '');
+            const jsonSchemaProperty = jsonSchemaType.properties.find(item => item.property === property.property);
+            if (!jsonSchemaProperty) {
+                throw new Error(`JSON schema property not found for property ${property.property} and type ${type}.`);
+            }
+            const formattedPropertyType = formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType);
             const isRequired = required !== undefined && required.includes(property.property);
 
             output.push(`| \`${property.property}\` | ${property.description.split("\n").join("<br>")} | ${formattedPropertyType} | \`${isRequired}\` |\n`);
@@ -61,24 +62,25 @@ types.forEach(metaSchemaType => {
 fs.writeFileSync(markdownDocPath, output.join(""));
 
 // Helper functions
-function formatJsonSchemaPropertyType(type, prefix, suffix) {
+function formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType) {
     const output = [];
-    output.push(prefix);
-    if (type.isOneOf) {
-        output.push('One of:<br>');
-        type.oneOfTypes.forEach(item => {
-            output.push(formatJsonSchemaPropertyType(item, '* ', '<br>'));
-        });
-        return output.join('');
+    if (jsonSchemaProperty.isSeq) {
+        if (jsonSchemaProperty.isSeq) {
+            output.push('`array` of ');
+        }
     }
-    if (type.isSeq) {
-        output.push('`array` of ');
+    let prefix = '';
+    let suffix = '';
+    if (jsonSchemaProperty.types.length > 1) {
+        output.push('one of:<br>');
+        prefix = '* ';
+        suffix = '<br>';
     }
-    if (type.isScalar) {
-        output.push(`\`${type.type}\``);
-    } else {
-        output.push(`[\`${type.type}\`](#${type.type})`);
-    }
-    output.push(suffix);
+    jsonSchemaProperty.types.forEach(type => {
+        let resolvedType = jsonSchemaTypesByType[type];
+        output.push(prefix);
+        output.push(resolvedType ? `[\`${resolvedType.type}\`](#${resolvedType.type})` : `\`${type}\``)
+        output.push(suffix);
+    });
     return output.join('');
 }

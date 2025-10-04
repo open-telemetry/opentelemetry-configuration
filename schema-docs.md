@@ -81,8 +81,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attribute_value_length_limit` | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `attribute_count_limit` | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `attribute_value_length_limit` | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `attribute_count_limit` | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -113,7 +113,7 @@ No properties.
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `name` | The attribute name.<br> | `string` | `true` |
-| `value` | The attribute value.<br>The type of value must match .type.<br> | One of:<br>* [`see JSON schema`](#see JSON schema)<br> | `true` |
+| `value` | The attribute value.<br>The type of value must match .type.<br> | `oneOf` | `true` |
 | `type` | The attribute type.<br>Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br>If omitted or null, string is used.<br> | [`AttributeType`](#AttributeType) | `false` |
 
 <details>
@@ -254,9 +254,9 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `max_scale` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `max_size` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `record_min_max` | TODO | One of:<br>* `boolean`<br>* `null`<br> | `false` |
+| `max_scale` | TODO | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `max_size` | TODO | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `record_min_max` | TODO | one of:<br>* `boolean`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -295,10 +295,10 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `schedule_delay` | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 1000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `schedule_delay` | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 1000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `exporter` | Configure exporter. | [`LogRecordExporter`](#LogRecordExporter) | `true` |
 
 <details>
@@ -351,10 +351,10 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `schedule_delay` | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 5000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `schedule_delay` | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 5000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `export_timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `max_queue_size` | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `max_export_batch_size` | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `exporter` | Configure exporter. | [`SpanExporter`](#SpanExporter) | `true` |
 
 <details>
@@ -407,14 +407,14 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `default` | Configure default cardinality limit for all instrument types.<br>Instrument-specific cardinality limits take priority. <br>If omitted or null, 2000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `counter` | Configure default cardinality limit for counter instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `gauge` | Configure default cardinality limit for gauge instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `histogram` | Configure default cardinality limit for histogram instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `observable_counter` | Configure default cardinality limit for observable_counter instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `observable_gauge` | Configure default cardinality limit for observable_gauge instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `observable_up_down_counter` | Configure default cardinality limit for observable_up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `up_down_counter` | Configure default cardinality limit for up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `default` | Configure default cardinality limit for all instrument types.<br>Instrument-specific cardinality limits take priority. <br>If omitted or null, 2000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `counter` | Configure default cardinality limit for counter instruments.<br>If omitted or null, the value from .default is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `gauge` | Configure default cardinality limit for gauge instruments.<br>If omitted or null, the value from .default is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `histogram` | Configure default cardinality limit for histogram instruments.<br>If omitted or null, the value from .default is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `observable_counter` | Configure default cardinality limit for observable_counter instruments.<br>If omitted or null, the value from .default is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `observable_gauge` | Configure default cardinality limit for observable_gauge instruments.<br>If omitted or null, the value from .default is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `observable_up_down_counter` | Configure default cardinality limit for observable_up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `up_down_counter` | Configure default cardinality limit for up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -619,8 +619,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `request_captured_headers` | Configure headers to capture for outbound http requests.<br> | `array` of [`string`](#string) | `false` |
-| `response_captured_headers` | Configure headers to capture for inbound http responses.<br> | `array` of [`string`](#string) | `false` |
+| `request_captured_headers` | Configure headers to capture for outbound http requests.<br> | `array` of `string` | `false` |
+| `response_captured_headers` | Configure headers to capture for inbound http responses.<br> | `array` of `string` | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -675,8 +675,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `request_captured_headers` | Configure headers to capture for inbound http requests.<br> | `array` of [`string`](#string) | `false` |
-| `response_captured_headers` | Configure headers to capture for outbound http responses.<br> | `array` of [`string`](#string) | `false` |
+| `request_captured_headers` | Configure headers to capture for inbound http requests.<br> | `array` of `string` | `false` |
+| `response_captured_headers` | Configure headers to capture for outbound http responses.<br> | `array` of `string` | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -896,7 +896,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `disabled` | Configure if the logger is enabled or not. | One of:<br>* `boolean`<br> | `false` |
+| `disabled` | Configure if the logger is enabled or not. | `boolean` | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -951,7 +951,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | One of:<br>* `string`<br> | `false` |
+| `name` | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `false` |
 | `config` | The logger config. | [`ExperimentalLoggerConfig`](#ExperimentalLoggerConfig) | `false` |
 
 <details>
@@ -980,7 +980,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `disabled` | Configure if the meter is enabled or not. | One of:<br>* `boolean`<br> | `false` |
+| `disabled` | Configure if the meter is enabled or not. | `boolean` | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1035,7 +1035,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | One of:<br>* `string`<br> | `false` |
+| `name` | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `false` |
 | `config` | The meter config. | [`ExperimentalMeterConfig`](#ExperimentalMeterConfig) | `false` |
 
 <details>
@@ -1064,7 +1064,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `output_stream` | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `output_stream` | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1091,7 +1091,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `output_stream` | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `output_stream` | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
@@ -1196,11 +1196,11 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `host` | Configure host.<br>If omitted or null, localhost is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `port` | Configure port.<br>If omitted or null, 9464 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `without_scope_info` | Configure Prometheus Exporter to produce metrics without a scope info metric.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
+| `host` | Configure host.<br>If omitted or null, localhost is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `port` | Configure port.<br>If omitted or null, 9464 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `without_scope_info` | Configure Prometheus Exporter to produce metrics without a scope info metric.<br>If omitted or null, false is used.<br> | one of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `with_resource_constant_labels` | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. | [`IncludeExclude`](#IncludeExclude) | `false` |
-| `translation_strategy` | Configure how Prometheus metrics are exposed. Values include:<br><br> * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br> * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.<br> * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br> * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.<br><br>If omitted or null, UnderscoreEscapingWithSuffixes is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `translation_strategy` | Configure how Prometheus metrics are exposed. Values include:<br><br> * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br> * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.<br> * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br> * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.<br><br>If omitted or null, UnderscoreEscapingWithSuffixes is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1342,7 +1342,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `disabled` | Configure if the tracer is enabled or not. | One of:<br>* `boolean`<br> | `false` |
+| `disabled` | Configure if the tracer is enabled or not. | `boolean` | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1397,7 +1397,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | One of:<br>* `string`<br> | `false` |
+| `name` | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> | `string` | `false` |
 | `config` | The tracer config. | [`ExperimentalTracerConfig`](#ExperimentalTracerConfig) | `false` |
 
 <details>
@@ -1426,8 +1426,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `boundaries` | Configure bucket boundaries.<br>If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.<br> | `array` of [`number`](#number) | `false` |
-| `record_min_max` | Configure record min and max.<br>If omitted or null, true is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
+| `boundaries` | Configure bucket boundaries.<br>If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.<br> | `array` of `number` | `false` |
+| `record_min_max` | Configure record min and max.<br>If omitted or null, true is used.<br> | one of:<br>* `boolean`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1501,8 +1501,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `included` | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all values are included.<br> | `array` of [`string`](#string) | `false` |
-| `excluded` | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> | `array` of [`string`](#string) | `false` |
+| `included` | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all values are included.<br> | `array` of `string` | `false` |
+| `excluded` | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> | `array` of `string` | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -1574,8 +1574,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | TODO | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `interval` | TODO | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `endpoint` | TODO | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `interval` | TODO | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `initial_sampler` | TODO | [`Sampler`](#Sampler) | `false` |
 
 <details>
@@ -1880,8 +1880,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attribute_value_length_limit` | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `attribute_count_limit` | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `attribute_value_length_limit` | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `attribute_count_limit` | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2737,7 +2737,7 @@ No properties.
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `name` | The name of the pair. | `string` | `true` |
-| `value` | The value of the pair. | One of:<br>* `string`<br>* `null`<br> | `true` |
+| `value` | The value of the pair. | one of:<br>* `string`<br>* `null`<br> | `true` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2786,8 +2786,8 @@ No properties.
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `file_format` | The file format version.<br>The yaml format is documented at<br>https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema<br> | `string` | `true` |
-| `disabled` | Configure if the SDK is disabled or not.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
-| `log_level` | Configure the log level of the internal logger used by the SDK.<br>If omitted, info is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `disabled` | Configure if the SDK is disabled or not.<br>If omitted or null, false is used.<br> | one of:<br>* `boolean`<br>* `null`<br> | `false` |
+| `log_level` | Configure the log level of the internal logger used by the SDK.<br>If omitted, info is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `attribute_limits` | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br> | [`AttributeLimits`](#AttributeLimits) | `false` |
 | `logger_provider` | Configure logger provider.<br>If omitted, a noop logger provider is used.<br> | [`LoggerProvider`](#LoggerProvider) | `false` |
 | `meter_provider` | Configure meter provider.<br>If omitted, a noop meter provider is used.<br> | [`MeterProvider`](#MeterProvider) | `false` |
@@ -2909,15 +2909,15 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
+| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | one of:<br>* `boolean`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -2993,15 +2993,15 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | One of:<br>* `boolean`<br>* `null`<br> | `false` |
+| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `insecure` | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> | one of:<br>* `boolean`<br>* `null`<br> | `false` |
 | `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
 
@@ -3105,14 +3105,14 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | Configure endpoint, including the signal specific path.<br>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `endpoint` | Configure endpoint, including the signal specific path.<br>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `encoding` | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
 
 <details>
@@ -3186,15 +3186,15 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | Configure endpoint, including the signal specific path.<br>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `endpoint` | Configure endpoint, including the signal specific path.<br>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `certificate_file` | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_key_file` | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `client_certificate_file` | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `headers` | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> | `array` of [`NameStringValuePair`](#NameStringValuePair) | `false` |
-| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `headers_list` | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `compression` | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `encoding` | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> | [`OtlpHttpEncoding`](#OtlpHttpEncoding) | `false` |
 | `temporality_preference` | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> | [`ExporterTemporalityPreference`](#ExporterTemporalityPreference) | `false` |
 | `default_histogram_aggregation` | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> | [`ExporterDefaultHistogramAggregation`](#ExporterDefaultHistogramAggregation) | `false` |
@@ -3316,8 +3316,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `interval` | Configure delay interval (in milliseconds) between start of two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 60000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `interval` | Configure delay interval (in milliseconds) between start of two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 60000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `timeout` | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `exporter` | Configure exporter. | [`PushMetricExporter`](#PushMetricExporter) | `true` |
 | `producers` | Configure metric producers. | `array` of [`MetricProducer`](#MetricProducer) | `false` |
 | `cardinality_limits` | Configure cardinality limits. | [`CardinalityLimits`](#CardinalityLimits) | `false` |
@@ -3368,7 +3368,7 @@ No properties.
 | Property | Description | Type | Required? |
 |---|---|---|---|
 | `composite` | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | `array` of [`TextMapPropagator`](#TextMapPropagator) | `false` |
-| `composite_list` | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `composite_list` | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3590,8 +3590,8 @@ No properties.
 |---|---|---|---|
 | `attributes` | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br> | `array` of [`AttributeNameValue`](#AttributeNameValue) | `false` |
 | `detection/development` | Configure resource detection.<br>This type is in development and subject to breaking changes in minor versions.<br>If omitted or null, resource detection is disabled.<br> | [`ExperimentalResourceDetection`](#ExperimentalResourceDetection) | `false` |
-| `schema_url` | Configure resource schema URL.<br>If omitted or null, no schema URL is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `attributes_list` | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>If omitted or null, no resource attributes are added.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `schema_url` | Configure resource schema URL.<br>If omitted or null, no schema URL is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `attributes_list` | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>If omitted or null, no resource attributes are added.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -3914,12 +3914,12 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `attribute_value_length_limit` | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `attribute_count_limit` | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `event_count_limit` | Configure max span event count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `link_count_limit` | Configure max span link count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `event_attribute_count_limit` | Configure max attributes per span event. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
-| `link_attribute_count_limit` | Configure max attributes per span link. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `attribute_value_length_limit` | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `attribute_count_limit` | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `event_count_limit` | Configure max span event count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `link_count_limit` | Configure max span link count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `event_attribute_count_limit` | Configure max attributes per span event. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
+| `link_attribute_count_limit` | Configure max attributes per span link. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4099,7 +4099,7 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `ratio` | Configure trace_id_ratio.<br>If omitted or null, 1.0 is used.<br> | One of:<br>* `number`<br>* `null`<br> | `false` |
+| `ratio` | Configure trace_id_ratio.<br>If omitted or null, 1.0 is used.<br> | one of:<br>* `number`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4525,12 +4525,12 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `instrument_name` | Configure instrument name selection criteria.<br>If omitted or null, all instrument names match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `instrument_name` | Configure instrument name selection criteria.<br>If omitted or null, all instrument names match.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `instrument_type` | Configure instrument type selection criteria.<br>Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.<br>If omitted or null, all instrument types match.<br> | [`InstrumentType`](#InstrumentType) | `false` |
-| `unit` | Configure the instrument unit selection criteria.<br>If omitted or null, all instrument units match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `meter_name` | Configure meter name selection criteria.<br>If omitted or null, all meter names match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `meter_version` | Configure meter version selection criteria.<br>If omitted or null, all meter versions match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `meter_schema_url` | Configure meter schema url selection criteria.<br>If omitted or null, all meter schema URLs match.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `unit` | Configure the instrument unit selection criteria.<br>If omitted or null, all instrument units match.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `meter_name` | Configure meter name selection criteria.<br>If omitted or null, all meter names match.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `meter_version` | Configure meter version selection criteria.<br>If omitted or null, all meter versions match.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `meter_schema_url` | Configure meter schema url selection criteria.<br>If omitted or null, all meter schema URLs match.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>
@@ -4581,10 +4581,10 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `name` | Configure metric name of the resulting stream(s).<br>If omitted or null, the instrument's original name is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `description` | Configure metric description of the resulting stream(s).<br>If omitted or null, the instrument's origin description is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
+| `name` | Configure metric name of the resulting stream(s).<br>If omitted or null, the instrument's original name is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `description` | Configure metric description of the resulting stream(s).<br>If omitted or null, the instrument's origin description is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
 | `aggregation` | Configure aggregation of the resulting stream(s). <br>Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.<br>If omitted, default is used.<br> | [`Aggregation`](#Aggregation) | `false` |
-| `aggregation_cardinality_limit` | Configure the aggregation cardinality limit.<br>If omitted or null, the metric reader's default cardinality limit is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `aggregation_cardinality_limit` | Configure the aggregation cardinality limit.<br>If omitted or null, the metric reader's default cardinality limit is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 | `attribute_keys` | Configure attribute keys retained in the resulting stream(s).<br> | [`IncludeExclude`](#IncludeExclude) | `false` |
 
 <details>
@@ -4628,8 +4628,8 @@ No properties.
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
-| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:9411/api/v2/spans is used.<br> | One of:<br>* `string`<br>* `null`<br> | `false` |
-| `timeout` | Configure max time (in milliseconds) to wait for each export. <br>Value must be non-negative. A value of 0 indicates indefinite.<br>If omitted or null, 10000 is used.<br> | One of:<br>* `integer`<br>* `null`<br> | `false` |
+| `endpoint` | Configure endpoint.<br>If omitted or null, http://localhost:9411/api/v2/spans is used.<br> | one of:<br>* `string`<br>* `null`<br> | `false` |
+| `timeout` | Configure max time (in milliseconds) to wait for each export. <br>Value must be non-negative. A value of 0 indicates indefinite.<br>If omitted or null, 10000 is used.<br> | one of:<br>* `integer`<br>* `null`<br> | `false` |
 
 <details>
 <summary>JSON Schema</summary>

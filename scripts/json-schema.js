@@ -43,7 +43,59 @@ export function readJsonSchemaTypes() {
         jsonSchemaType.schema = topLevelSchema;
     });
 
+    // Resolve properties
+    Object.values(typesByType).forEach(jsonSchemaType => {
+        jsonSchemaType.properties = resolveJsonSchemaProperties(jsonSchemaType.schema, typesByType);
+    });
+
     return Object.values(typesByType);
+}
+
+function resolveJsonSchemaProperties(jsonSchema, typesByType) {
+    const properties = jsonSchema['properties'];
+    if (!properties) {
+        return [];
+    }
+    const requiredProperties = jsonSchema['required'] || [];
+    const resolvedProperties = [];
+    Object.entries(properties).forEach(([propertyKey, propertySchema]) => {
+        const type = propertySchema['type'];
+        const items = propertySchema['items'];
+        const ref = propertySchema['$ref'];
+        const oneOf = propertySchema['oneOf'];
+
+        let isSeq = false;
+        const isRequired = requiredProperties.includes(propertyKey);
+        const types = [];
+
+        if (type === 'array' && items) {
+            isSeq = true;
+            const itemsType = items['type'];
+            const itemsRef = items['$ref'];
+            if (itemsType) {
+                if (Array.isArray(itemsType)) {
+                    types.push(...itemsType);
+                } else {
+                    types.push(itemsType);
+                }
+            } else if (itemsRef) {
+                types.push(resolveRef(itemsRef, typesByType).type);
+            }
+        } else if (type) {
+            if (Array.isArray(type)) {
+                types.push(...type);
+            } else {
+                types.push(type);
+            }
+        } else if (ref) {
+            types.push(resolveRef(ref, typesByType).type);
+        } else if (oneOf) {
+            types.push('oneOf');
+        }
+        resolvedProperties.push(new JsonSchemaProperty(propertyKey, types, isSeq, isRequired));
+    });
+
+    return resolvedProperties;
 }
 
 export function resolveRef(ref, typesByType) {
@@ -68,60 +120,17 @@ function getDefs(jsonSchema) {
     return defs;
 }
 
-export function resolveJsonSchemaPropertyType(jsonSchemaType, property, jsonSchemaTypesByType) {
-    const properties = jsonSchemaType.schema['properties'];
-    if (!properties) {
-        throw new Error(`Unable to resolve property ${property} for ${jsonSchemaType.type}. Type doesn't have properties.`)
-    }
-    const jsonSchemaProperty = properties[property];
-    if (!jsonSchemaProperty) {
-        throw new Error(`Unable to resolve property ${property} for ${jsonSchemaType.type}. Type doesn't have ${property}.`);
-    }
-    const type = jsonSchemaProperty['type'];
-    const ref = jsonSchemaProperty['$ref'];
-    const items = jsonSchemaProperty['items'];
-    const oneOf = jsonSchemaProperty['oneOf'];
-    if (type === 'array' && items) {
-        const itemsType = items['type'];
-        const itemsRef = items['$ref'];
-        if (itemsType) {
-            return Array.isArray(itemsType)
-                ? new JsonSchemaPropertyType('oneOf', false, true, itemsType.map(item => new JsonSchemaPropertyType(item, true, false, [])))
-                : new JsonSchemaPropertyType(itemsType, false, true, []);
-        }
-        if (itemsRef) {
-            const resolvedRef = resolveRef(itemsRef, jsonSchemaTypesByType);
-            return new JsonSchemaPropertyType(resolvedRef.type, false, true, []);
-        }
-    }
-    if (type) {
-        return Array.isArray(type)
-            ? new JsonSchemaPropertyType('oneOf', true, false, type.map(item => new JsonSchemaPropertyType(item, true, false, [])))
-            : new JsonSchemaPropertyType(type, true, false, []);
-    }
-    if (ref) {
-        const resolvedRef = resolveRef(ref, jsonSchemaTypesByType);
-        return new JsonSchemaPropertyType(resolvedRef.type, false, false, []);
-    }
-    if (oneOf) {
-        return new JsonSchemaPropertyType('oneOf', false, false, [new JsonSchemaPropertyType('see JSON schema', false, false, [])]);
-    }
-    throw new Error(`Unable to resolve types of property ${property}: ${JSON.stringify(jsonSchemaType)}.`)
-}
-
-export class JsonSchemaPropertyType {
-    type;
-    isScalar;
+export class JsonSchemaProperty {
+    property;
+    types;
     isSeq;
-    isOneOf;
-    oneOfTypes;
+    isRequired;
 
-    constructor(type, isScalar, isSeq, oneOfTypes) {
-        this.type = type;
-        this.isScalar = isScalar;
+    constructor(property, types, isSeq, isRequired) {
+        this.property = property;
+        this.types = types;
         this.isSeq = isSeq;
-        this.isOneOf = oneOfTypes.length !== 0;
-        this.oneOfTypes = oneOfTypes;
+        this.isRequired = isRequired;
     }
 }
 
@@ -131,7 +140,7 @@ export class JsonSchemaType {
     fileContent;
     jsonSchemaPath;
     schema;
-    pathPatterns;
+    properties;
 
     constructor(type, file, fileContent, jsonSchemaPath, schema) {
         this.type = type;
@@ -139,7 +148,7 @@ export class JsonSchemaType {
         this.fileContent = fileContent;
         this.jsonSchemaPath = jsonSchemaPath;
         this.schema = schema;
-        this.pathPatterns = [];
+        this.properties = [];
     }
 
     jsonSchemaRef() {
@@ -151,12 +160,9 @@ export class JsonSchemaType {
     }
 
     toMetaSchemaType() {
-        const properties = [];
-        if (this.schema.properties) {
-            Object.entries(this.schema.properties).forEach(([propertyName, schema]) => {
-                properties.push(new MetaSchemaProperty(propertyName, "TODO"));
-            });
-        }
-        return new MetaSchemaType(this.type, properties);
+        return new MetaSchemaType(
+            this.type,
+            this.properties.map(jsonSchemaProperty => new MetaSchemaProperty(jsonSchemaProperty.property, "TODO"))
+        );
     }
 }

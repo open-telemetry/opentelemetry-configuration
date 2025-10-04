@@ -1,12 +1,12 @@
 import fs from 'fs';
 import yaml from 'yaml';
 import {readAndFixMetaSchemaTypes} from "./meta-schema.js";
-import {readJsonSchemaTypes, resolveJsonSchemaPropertyType} from "./json-schema.js";
+import {readJsonSchemaTypes} from "./json-schema.js";
 
 // Extract input file arg or throw
-const usageString = "Usage: \n npm run-script generate-comments -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml";
+const usageString = "Usage: \n npm run-script generate-descriptions -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml [--debug]";
 if (process.argv.length < 3) {
-    throw new Error("Missing file to generate comments for. " + usageString);
+    throw new Error("Missing file to generate descriptions for. " + usageString);
 }
 const inputFile = process.argv[2];
 if (!fs.existsSync(inputFile)) {
@@ -62,7 +62,7 @@ yaml.visit(fileDoc, {
         debug(`Resolving description for ${jsonPath}`);
         let jsonSchemaType;
         try {
-            jsonSchemaType =resolveJsonSchemaType(jsonSchemaTypesByType, path);
+            jsonSchemaType = resolveJsonSchemaType(jsonSchemaTypesByType, path);
         } catch (error) {
             debug(`Unable to resolve JSON schema type: ${error.message}`);
             return;
@@ -108,7 +108,7 @@ if (outputFile === null) {
     console.log("No output file arg set, logging to console.");
     console.log(String(fileDoc))
 } else {
-    console.log("Writing output to \"" + outputFile + "\"");
+    console.log(`Writing output to ${outputFile}`);
     fs.writeFileSync(outputFile, String(fileDoc))
 }
 
@@ -131,7 +131,12 @@ function yamlPathToJsonPath(yamlPath, propertyKey) {
             elements.push(entry.key.value);
         }
     });
-    return (elements.length === 0 ? "." : elements.join("")) + propertyKey;
+    let jsonPath = elements.join('');
+    if (!jsonPath.endsWith('.')) {
+        jsonPath += '.';
+    }
+    jsonPath += propertyKey;
+    return jsonPath;
 }
 
 function resolveJsonSchemaType(jsonSchemaTypesByType, yamlPath) {
@@ -142,10 +147,16 @@ function resolveJsonSchemaType(jsonSchemaTypesByType, yamlPath) {
     for (let i = 0; i < yamlPath.length; i++) {
         const entry = yamlPath[i];
         if (yaml.isPair(entry)) {
-            const jsonSchemaPropertyType = resolveJsonSchemaPropertyType(last, entry.key.value, jsonSchemaTypesByType);
-            last = jsonSchemaTypesByType[jsonSchemaPropertyType.type];
-            if (!last) {
-                throw new Error(`No JSON schema type for ${jsonSchemaPropertyType.type}`);
+            const jsonSchemaProperty = last.properties.find(property => property.property === entry.key.value);
+            if (!jsonSchemaProperty) {
+                throw new Error(`Unknown property ${entry.key.value} in type ${last.type}.`);
+            }
+            // A property may have multiple types. Naively, resolve the type to be the first one that exists in jsonSchemaTypesByType.
+            const resolvedTypes = jsonSchemaProperty.types.map(type => jsonSchemaTypesByType[type]).filter(Boolean);
+            if (resolvedTypes.length > 0) {
+                last = resolvedTypes[0];
+            } else {
+                throw new Error(`Unable to resolve JSON schema type for property ${entry.key.value} in type ${last.type}.`);
             }
         }
     }
