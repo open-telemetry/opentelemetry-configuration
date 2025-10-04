@@ -12,10 +12,13 @@
       description: TODO
     - property: sum
       description: TODO
+  isSdkExtensionPlugin: false
 - type: AlwaysOffSampler
   properties: []
+  isSdkExtensionPlugin: false
 - type: AlwaysOnSampler
   properties: []
+  isSdkExtensionPlugin: false
 - type: AttributeLimits
   properties:
     - property: attribute_value_length_limit
@@ -28,6 +31,7 @@
         Configure max attribute count. 
         Value must be non-negative.
         If omitted or null, 128 is used.
+  isSdkExtensionPlugin: false
 - type: AttributeNameValue
   properties:
     - property: name
@@ -42,14 +46,19 @@
         The attribute type.
         Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
         If omitted or null, string is used.
+  isSdkExtensionPlugin: false
 - type: AttributeType
   properties: []
+  isSdkExtensionPlugin: false
 - type: B3MultiPropagator
   properties: []
+  isSdkExtensionPlugin: false
 - type: B3Propagator
   properties: []
+  isSdkExtensionPlugin: false
 - type: BaggagePropagator
   properties: []
+  isSdkExtensionPlugin: false
 - type: Base2ExponentialBucketHistogramAggregation
   properties:
     - property: max_scale
@@ -58,6 +67,7 @@
       description: TODO
     - property: record_min_max
       description: TODO
+  isSdkExtensionPlugin: false
 - type: BatchLogRecordProcessor
   properties:
     - property: schedule_delay
@@ -80,6 +90,7 @@
         If omitted or null, 512 is used.
     - property: exporter
       description: Configure exporter.
+  isSdkExtensionPlugin: false
 - type: BatchSpanProcessor
   properties:
     - property: schedule_delay
@@ -102,6 +113,7 @@
         If omitted or null, 512 is used.
     - property: exporter
       description: Configure exporter.
+  isSdkExtensionPlugin: false
 - type: CardinalityLimits
   properties:
     - property: default
@@ -137,16 +149,22 @@
       description: |
         Configure default cardinality limit for up_down_counter instruments.
         If omitted or null, the value from .default is used.
+  isSdkExtensionPlugin: false
 - type: ConsoleExporter
   properties: []
+  isSdkExtensionPlugin: false
 - type: DefaultAggregation
   properties: []
+  isSdkExtensionPlugin: false
 - type: DropAggregation
   properties: []
+  isSdkExtensionPlugin: false
 - type: ExemplarFilter
   properties: []
+  isSdkExtensionPlugin: false
 - type: ExperimentalContainerResourceDetector
   properties: []
+  isSdkExtensionPlugin: false
 - type: ExperimentalGeneralInstrumentation
   properties:
     - property: peer
@@ -157,8 +175,10 @@
       description: |
         Configure instrumentations following the http semantic conventions.
         See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
+  isSdkExtensionPlugin: false
 - type: ExperimentalHostResourceDetector
   properties: []
+  isSdkExtensionPlugin: false
 - type: ExperimentalHttpClientInstrumentation
   properties:
     - property: request_captured_headers
@@ -167,12 +187,14 @@
     - property: response_captured_headers
       description: |
         Configure headers to capture for inbound http responses.
+  isSdkExtensionPlugin: false
 - type: ExperimentalHttpInstrumentation
   properties:
     - property: client
       description: Configure instrumentations following the http client semantic conventions.
     - property: server
       description: Configure instrumentations following the http server semantic conventions.
+  isSdkExtensionPlugin: false
 - type: ExperimentalHttpServerInstrumentation
   properties:
     - property: request_captured_headers
@@ -181,6 +203,7 @@
     - property: response_captured_headers
       description: |
         Configure headers to capture for outbound http responses.
+  isSdkExtensionPlugin: false
 - type: ExperimentalInstrumentation
   properties:
     - property: general
@@ -229,18 +252,22 @@
       description: |
         Configure Swift language-specific instrumentation libraries.
         Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+  isSdkExtensionPlugin: false
 - type: ExperimentalLanguageSpecificInstrumentation
   properties: []
+  isSdkExtensionPlugin: false
 - type: ExperimentalLoggerConfig
   properties:
     - property: disabled
       description: Configure if the logger is enabled or not.
+  isSdkExtensionPlugin: false
 - type: ExperimentalLoggerConfigurator
   properties:
     - property: default_config
       description: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
     - property: loggers
       description: Configure loggers.
+  isSdkExtensionPlugin: false
 - type: ExperimentalLoggerMatcherAndConfig
   properties:
     - property: name
@@ -251,16 +278,19 @@
          * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
     - property: config
       description: The logger config.
+  isSdkExtensionPlugin: false
 - type: ExperimentalMeterConfig
   properties:
     - property: disabled
       description: Configure if the meter is enabled or not.
+  isSdkExtensionPlugin: false
 - type: ExperimentalMeterConfigurator
   properties:
     - property: default_config
       description: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
     - property: meters
       description: Configure meters.
+  isSdkExtensionPlugin: false
 - type: ExperimentalMeterMatcherAndConfig
   properties:
     - property: name
@@ -271,6 +301,7 @@
          * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
     - property: config
       description: The meter config.
+  isSdkExtensionPlugin: false
 - type: ExperimentalOtlpFileExporter
   properties:
     - property: output_stream
@@ -278,6 +309,7 @@
         Configure output stream. 
         Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
         If omitted or null, stdout is used.
+  isSdkExtensionPlugin: false
 - type: ExperimentalOtlpFileMetricExporter
   properties:
     - property: output_stream
@@ -295,12 +327,14 @@
         Configure default histogram aggregation.
         Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         If omitted or null, explicit_bucket_histogram is used.
+  isSdkExtensionPlugin: false
 - type: ExperimentalPeerInstrumentation
   properties:
     - property: service_mapping
       description: |
         Configure the service mapping for instrumentations following peer.service semantic conventions.
         See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
+  isSdkExtensionPlugin: false
 - type: ExperimentalPeerServiceMapping
   properties:
     - property: peer
@@ -309,8 +343,10 @@
     - property: service
       description: |
         The logical name corresponding to the IP address of .peer.
+  isSdkExtensionPlugin: false
 - type: ExperimentalProcessResourceDetector
   properties: []
+  isSdkExtensionPlugin: false
 - type: ExperimentalPrometheusMetricExporter
   properties:
     - property: host
@@ -337,6 +373,7 @@
          * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.
 
         If omitted or null, UnderscoreEscapingWithSuffixes is used.
+  isSdkExtensionPlugin: false
 - type: ExperimentalResourceDetection
   properties:
     - property: attributes
@@ -346,6 +383,7 @@
         Configure resource detectors.
         Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
         If omitted or null, no resource detectors are enabled.
+  isSdkExtensionPlugin: false
 - type: ExperimentalResourceDetector
   properties:
     - property: container
@@ -360,18 +398,22 @@
     - property: service
       description: |
         Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.
+  isSdkExtensionPlugin: true
 - type: ExperimentalServiceResourceDetector
   properties: []
+  isSdkExtensionPlugin: false
 - type: ExperimentalTracerConfig
   properties:
     - property: disabled
       description: Configure if the tracer is enabled or not.
+  isSdkExtensionPlugin: false
 - type: ExperimentalTracerConfigurator
   properties:
     - property: default_config
       description: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
     - property: tracers
       description: Configure tracers.
+  isSdkExtensionPlugin: false
 - type: ExperimentalTracerMatcherAndConfig
   properties:
     - property: name
@@ -382,6 +424,7 @@
          * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
     - property: config
       description: The tracer config.
+  isSdkExtensionPlugin: false
 - type: ExplicitBucketHistogramAggregation
   properties:
     - property: boundaries
@@ -392,10 +435,13 @@
       description: |
         Configure record min and max.
         If omitted or null, true is used.
+  isSdkExtensionPlugin: false
 - type: ExporterDefaultHistogramAggregation
   properties: []
+  isSdkExtensionPlugin: false
 - type: ExporterTemporalityPreference
   properties: []
+  isSdkExtensionPlugin: false
 - type: IncludeExclude
   properties:
     - property: included
@@ -412,10 +458,13 @@
          * If the value exactly matches.
          * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
         If omitted, .included attributes are included.
+  isSdkExtensionPlugin: false
 - type: InstrumentType
   properties: []
+  isSdkExtensionPlugin: false
 - type: JaegerPropagator
   properties: []
+  isSdkExtensionPlugin: false
 - type: JaegerRemoteSampler
   properties:
     - property: endpoint
@@ -424,8 +473,10 @@
       description: TODO
     - property: initial_sampler
       description: TODO
+  isSdkExtensionPlugin: false
 - type: LastValueAggregation
   properties: []
+  isSdkExtensionPlugin: false
 - type: LoggerProvider
   properties:
     - property: processors
@@ -436,6 +487,7 @@
       description: |
         Configure loggers.
         This type is in development and subject to breaking changes in minor versions.
+  isSdkExtensionPlugin: false
 - type: LogRecordExporter
   properties:
     - property: otlp_http
@@ -448,6 +500,7 @@
         This type is in development and subject to breaking changes in minor versions.
     - property: console
       description: Configure exporter to be console.
+  isSdkExtensionPlugin: true
 - type: LogRecordLimits
   properties:
     - property: attribute_value_length_limit
@@ -460,12 +513,14 @@
         Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
         Value must be non-negative.
         If omitted or null, 128 is used.
+  isSdkExtensionPlugin: false
 - type: LogRecordProcessor
   properties:
     - property: batch
       description: Configure a batch log record processor.
     - property: simple
       description: Configure a simple log record processor.
+  isSdkExtensionPlugin: true
 - type: MeterProvider
   properties:
     - property: readers
@@ -483,24 +538,29 @@
       description: |
         Configure meters.
         This type is in development and subject to breaking changes in minor versions.
+  isSdkExtensionPlugin: false
 - type: MetricProducer
   properties:
     - property: opencensus
       description: Configure metric producer to be opencensus.
+  isSdkExtensionPlugin: true
 - type: MetricReader
   properties:
     - property: periodic
       description: Configure a periodic metric reader.
     - property: pull
       description: Configure a pull based metric reader.
+  isSdkExtensionPlugin: false
 - type: NameStringValuePair
   properties:
     - property: name
       description: The name of the pair.
     - property: value
       description: The value of the pair.
+  isSdkExtensionPlugin: false
 - type: OpenCensusMetricProducer
   properties: []
+  isSdkExtensionPlugin: false
 - type: OpentelemetryConfiguration
   properties:
     - property: file_format
@@ -543,8 +603,10 @@
       description: |
         Configure instrumentation.
         This type is in development and subject to breaking changes in minor versions.
+  isSdkExtensionPlugin: false
 - type: OpenTracingPropagator
   properties: []
+  isSdkExtensionPlugin: false
 - type: OtlpGrpcExporter
   properties:
     - property: endpoint
@@ -590,6 +652,7 @@
         Configure client transport security for the exporter's connection. 
         Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
         If omitted or null, false is used.
+  isSdkExtensionPlugin: false
 - type: OtlpGrpcMetricExporter
   properties:
     - property: endpoint
@@ -645,8 +708,10 @@
         Configure default histogram aggregation.
         Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         If omitted or null, explicit_bucket_histogram is used.
+  isSdkExtensionPlugin: false
 - type: OtlpHttpEncoding
   properties: []
+  isSdkExtensionPlugin: false
 - type: OtlpHttpExporter
   properties:
     - property: endpoint
@@ -692,6 +757,7 @@
         Configure the encoding used for messages. 
         Values include: protobuf, json. Implementations may not support json.
         If omitted or null, protobuf is used.
+  isSdkExtensionPlugin: false
 - type: OtlpHttpMetricExporter
   properties:
     - property: endpoint
@@ -751,6 +817,7 @@
         Configure default histogram aggregation.
         Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         If omitted or null, explicit_bucket_histogram is used.
+  isSdkExtensionPlugin: false
 - type: ParentBasedSampler
   properties:
     - property: root
@@ -773,6 +840,7 @@
       description: |
         Configure local_parent_not_sampled sampler.
         If omitted or null, always_off is used.
+  isSdkExtensionPlugin: false
 - type: PeriodicMetricReader
   properties:
     - property: interval
@@ -791,6 +859,7 @@
       description: Configure metric producers.
     - property: cardinality_limits
       description: Configure cardinality limits.
+  isSdkExtensionPlugin: false
 - type: Propagator
   properties:
     - property: composite
@@ -804,12 +873,14 @@
         The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
         Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. 
         If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
+  isSdkExtensionPlugin: false
 - type: PullMetricExporter
   properties:
     - property: prometheus/development
       description: |
         Configure exporter to be prometheus.
         This type is in development and subject to breaking changes in minor versions.
+  isSdkExtensionPlugin: true
 - type: PullMetricReader
   properties:
     - property: exporter
@@ -818,6 +889,7 @@
       description: Configure metric producers.
     - property: cardinality_limits
       description: Configure cardinality limits.
+  isSdkExtensionPlugin: false
 - type: PushMetricExporter
   properties:
     - property: otlp_http
@@ -833,6 +905,7 @@
     - property: console
       description: |
         Configure exporter to be console.
+  isSdkExtensionPlugin: true
 - type: Resource
   properties:
     - property: attributes
@@ -852,6 +925,7 @@
         Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
         The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
         If omitted or null, no resource attributes are added.
+  isSdkExtensionPlugin: false
 - type: Sampler
   properties:
     - property: always_off
@@ -864,14 +938,17 @@
       description: Configure sampler to be parent_based.
     - property: trace_id_ratio_based
       description: Configure sampler to be trace_id_ratio_based.
+  isSdkExtensionPlugin: true
 - type: SimpleLogRecordProcessor
   properties:
     - property: exporter
       description: Configure exporter.
+  isSdkExtensionPlugin: false
 - type: SimpleSpanProcessor
   properties:
     - property: exporter
       description: Configure exporter.
+  isSdkExtensionPlugin: false
 - type: SpanExporter
   properties:
     - property: otlp_http
@@ -886,6 +963,7 @@
       description: Configure exporter to be console.
     - property: zipkin
       description: Configure exporter to be zipkin.
+  isSdkExtensionPlugin: true
 - type: SpanLimits
   properties:
     - property: attribute_value_length_limit
@@ -918,14 +996,17 @@
         Configure max attributes per span link. 
         Value must be non-negative.
         If omitted or null, 128 is used.
+  isSdkExtensionPlugin: false
 - type: SpanProcessor
   properties:
     - property: batch
       description: Configure a batch span processor.
     - property: simple
       description: Configure a simple span processor.
+  isSdkExtensionPlugin: true
 - type: SumAggregation
   properties: []
+  isSdkExtensionPlugin: false
 - type: TextMapPropagator
   properties:
     - property: tracecontext
@@ -940,14 +1021,17 @@
       description: Include the jaeger propagator.
     - property: ottrace
       description: Include the opentracing propagator.
+  isSdkExtensionPlugin: true
 - type: TraceContextPropagator
   properties: []
+  isSdkExtensionPlugin: false
 - type: TraceIdRatioBasedSampler
   properties:
     - property: ratio
       description: |
         Configure trace_id_ratio.
         If omitted or null, 1.0 is used.
+  isSdkExtensionPlugin: false
 - type: TracerProvider
   properties:
     - property: processors
@@ -962,6 +1046,7 @@
       description: |
         Configure tracers.
         This type is in development and subject to breaking changes in minor versions.
+  isSdkExtensionPlugin: false
 - type: View
   properties:
     - property: selector
@@ -970,6 +1055,7 @@
         Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.
     - property: stream
       description: Configure view stream.
+  isSdkExtensionPlugin: false
 - type: ViewSelector
   properties:
     - property: instrument_name
@@ -997,6 +1083,7 @@
       description: |
         Configure meter schema url selection criteria.
         If omitted or null, all meter schema URLs match.
+  isSdkExtensionPlugin: false
 - type: ViewStream
   properties:
     - property: name
@@ -1019,6 +1106,7 @@
     - property: attribute_keys
       description: |
         Configure attribute keys retained in the resulting stream(s).
+  isSdkExtensionPlugin: false
 - type: ZipkinSpanExporter
   properties:
     - property: endpoint
@@ -1030,3 +1118,4 @@
         Configure max time (in milliseconds) to wait for each export. 
         Value must be non-negative. A value of 0 indicates indefinite.
         If omitted or null, 10000 is used.
+  isSdkExtensionPlugin: false

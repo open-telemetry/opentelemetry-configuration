@@ -1,6 +1,105 @@
 <!-- This file is generated using "make generate-markdown". Do not edit directly. -->
 
-### Aggregation <a id="Aggregation"></a>
+* [Overview](#overview)
+* [Types](#types)
+  * [Aggregation](#Aggregation)
+  * [AlwaysOffSampler](#AlwaysOffSampler)
+  * [AlwaysOnSampler](#AlwaysOnSampler)
+  * [AttributeLimits](#AttributeLimits)
+  * [AttributeNameValue](#AttributeNameValue)
+  * [AttributeType](#AttributeType)
+  * [B3MultiPropagator](#B3MultiPropagator)
+  * [B3Propagator](#B3Propagator)
+  * [BaggagePropagator](#BaggagePropagator)
+  * [Base2ExponentialBucketHistogramAggregation](#Base2ExponentialBucketHistogramAggregation)
+  * [BatchLogRecordProcessor](#BatchLogRecordProcessor)
+  * [BatchSpanProcessor](#BatchSpanProcessor)
+  * [CardinalityLimits](#CardinalityLimits)
+  * [ConsoleExporter](#ConsoleExporter)
+  * [DefaultAggregation](#DefaultAggregation)
+  * [DropAggregation](#DropAggregation)
+  * [ExemplarFilter](#ExemplarFilter)
+  * [ExperimentalContainerResourceDetector](#ExperimentalContainerResourceDetector)
+  * [ExperimentalGeneralInstrumentation](#ExperimentalGeneralInstrumentation)
+  * [ExperimentalHostResourceDetector](#ExperimentalHostResourceDetector)
+  * [ExperimentalHttpClientInstrumentation](#ExperimentalHttpClientInstrumentation)
+  * [ExperimentalHttpInstrumentation](#ExperimentalHttpInstrumentation)
+  * [ExperimentalHttpServerInstrumentation](#ExperimentalHttpServerInstrumentation)
+  * [ExperimentalInstrumentation](#ExperimentalInstrumentation)
+  * [ExperimentalLanguageSpecificInstrumentation](#ExperimentalLanguageSpecificInstrumentation)
+  * [ExperimentalLoggerConfig](#ExperimentalLoggerConfig)
+  * [ExperimentalLoggerConfigurator](#ExperimentalLoggerConfigurator)
+  * [ExperimentalLoggerMatcherAndConfig](#ExperimentalLoggerMatcherAndConfig)
+  * [ExperimentalMeterConfig](#ExperimentalMeterConfig)
+  * [ExperimentalMeterConfigurator](#ExperimentalMeterConfigurator)
+  * [ExperimentalMeterMatcherAndConfig](#ExperimentalMeterMatcherAndConfig)
+  * [ExperimentalOtlpFileExporter](#ExperimentalOtlpFileExporter)
+  * [ExperimentalOtlpFileMetricExporter](#ExperimentalOtlpFileMetricExporter)
+  * [ExperimentalPeerInstrumentation](#ExperimentalPeerInstrumentation)
+  * [ExperimentalPeerServiceMapping](#ExperimentalPeerServiceMapping)
+  * [ExperimentalProcessResourceDetector](#ExperimentalProcessResourceDetector)
+  * [ExperimentalPrometheusMetricExporter](#ExperimentalPrometheusMetricExporter)
+  * [ExperimentalResourceDetection](#ExperimentalResourceDetection)
+  * [ExperimentalResourceDetector](#ExperimentalResourceDetector)
+  * [ExperimentalServiceResourceDetector](#ExperimentalServiceResourceDetector)
+  * [ExperimentalTracerConfig](#ExperimentalTracerConfig)
+  * [ExperimentalTracerConfigurator](#ExperimentalTracerConfigurator)
+  * [ExperimentalTracerMatcherAndConfig](#ExperimentalTracerMatcherAndConfig)
+  * [ExplicitBucketHistogramAggregation](#ExplicitBucketHistogramAggregation)
+  * [ExporterDefaultHistogramAggregation](#ExporterDefaultHistogramAggregation)
+  * [ExporterTemporalityPreference](#ExporterTemporalityPreference)
+  * [IncludeExclude](#IncludeExclude)
+  * [InstrumentType](#InstrumentType)
+  * [JaegerPropagator](#JaegerPropagator)
+  * [JaegerRemoteSampler](#JaegerRemoteSampler)
+  * [LastValueAggregation](#LastValueAggregation)
+  * [LoggerProvider](#LoggerProvider)
+  * [LogRecordExporter](#LogRecordExporter)
+  * [LogRecordLimits](#LogRecordLimits)
+  * [LogRecordProcessor](#LogRecordProcessor)
+  * [MeterProvider](#MeterProvider)
+  * [MetricProducer](#MetricProducer)
+  * [MetricReader](#MetricReader)
+  * [NameStringValuePair](#NameStringValuePair)
+  * [OpenCensusMetricProducer](#OpenCensusMetricProducer)
+  * [OpentelemetryConfiguration](#OpentelemetryConfiguration)
+  * [OpenTracingPropagator](#OpenTracingPropagator)
+  * [OtlpGrpcExporter](#OtlpGrpcExporter)
+  * [OtlpGrpcMetricExporter](#OtlpGrpcMetricExporter)
+  * [OtlpHttpEncoding](#OtlpHttpEncoding)
+  * [OtlpHttpExporter](#OtlpHttpExporter)
+  * [OtlpHttpMetricExporter](#OtlpHttpMetricExporter)
+  * [ParentBasedSampler](#ParentBasedSampler)
+  * [PeriodicMetricReader](#PeriodicMetricReader)
+  * [Propagator](#Propagator)
+  * [PullMetricExporter](#PullMetricExporter)
+  * [PullMetricReader](#PullMetricReader)
+  * [PushMetricExporter](#PushMetricExporter)
+  * [Resource](#Resource)
+  * [Sampler](#Sampler)
+  * [SimpleLogRecordProcessor](#SimpleLogRecordProcessor)
+  * [SimpleSpanProcessor](#SimpleSpanProcessor)
+  * [SpanExporter](#SpanExporter)
+  * [SpanLimits](#SpanLimits)
+  * [SpanProcessor](#SpanProcessor)
+  * [SumAggregation](#SumAggregation)
+  * [TextMapPropagator](#TextMapPropagator)
+  * [TraceContextPropagator](#TraceContextPropagator)
+  * [TraceIdRatioBasedSampler](#TraceIdRatioBasedSampler)
+  * [TracerProvider](#TracerProvider)
+  * [View](#View)
+  * [ViewSelector](#ViewSelector)
+  * [ViewStream](#ViewStream)
+  * [ZipkinSpanExporter](#ZipkinSpanExporter)
+* [SDK Extension Plugins](#sdk-extension-plugins)
+
+
+# Overview <a id="overview"></a>
+
+TODO
+# Types <a id="types"></a>
+
+## Aggregation <a id="Aggregation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -43,7 +142,7 @@
 }</pre>
 </details>
 
-### AlwaysOffSampler <a id="AlwaysOffSampler"></a>
+## AlwaysOffSampler <a id="AlwaysOffSampler"></a>
 
 No properties.
 
@@ -60,7 +159,7 @@ No properties.
 }</pre>
 </details>
 
-### AlwaysOnSampler <a id="AlwaysOnSampler"></a>
+## AlwaysOnSampler <a id="AlwaysOnSampler"></a>
 
 No properties.
 
@@ -77,7 +176,7 @@ No properties.
 }</pre>
 </details>
 
-### AttributeLimits <a id="AttributeLimits"></a>
+## AttributeLimits <a id="AttributeLimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -108,7 +207,7 @@ No properties.
 }</pre>
 </details>
 
-### AttributeNameValue <a id="AttributeNameValue"></a>
+## AttributeNameValue <a id="AttributeNameValue"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -172,7 +271,7 @@ No properties.
 }</pre>
 </details>
 
-### AttributeType <a id="AttributeType"></a>
+## AttributeType <a id="AttributeType"></a>
 
 No properties.
 
@@ -199,7 +298,7 @@ No properties.
 }</pre>
 </details>
 
-### B3MultiPropagator <a id="B3MultiPropagator"></a>
+## B3MultiPropagator <a id="B3MultiPropagator"></a>
 
 No properties.
 
@@ -216,7 +315,7 @@ No properties.
 }</pre>
 </details>
 
-### B3Propagator <a id="B3Propagator"></a>
+## B3Propagator <a id="B3Propagator"></a>
 
 No properties.
 
@@ -233,7 +332,7 @@ No properties.
 }</pre>
 </details>
 
-### BaggagePropagator <a id="BaggagePropagator"></a>
+## BaggagePropagator <a id="BaggagePropagator"></a>
 
 No properties.
 
@@ -250,7 +349,7 @@ No properties.
 }</pre>
 </details>
 
-### Base2ExponentialBucketHistogramAggregation <a id="Base2ExponentialBucketHistogramAggregation"></a>
+## Base2ExponentialBucketHistogramAggregation <a id="Base2ExponentialBucketHistogramAggregation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -291,7 +390,7 @@ No properties.
 }</pre>
 </details>
 
-### BatchLogRecordProcessor <a id="BatchLogRecordProcessor"></a>
+## BatchLogRecordProcessor <a id="BatchLogRecordProcessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -347,7 +446,7 @@ No properties.
 }</pre>
 </details>
 
-### BatchSpanProcessor <a id="BatchSpanProcessor"></a>
+## BatchSpanProcessor <a id="BatchSpanProcessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -403,7 +502,7 @@ No properties.
 }</pre>
 </details>
 
-### CardinalityLimits <a id="CardinalityLimits"></a>
+## CardinalityLimits <a id="CardinalityLimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -484,7 +583,7 @@ No properties.
 }</pre>
 </details>
 
-### ConsoleExporter <a id="ConsoleExporter"></a>
+## ConsoleExporter <a id="ConsoleExporter"></a>
 
 No properties.
 
@@ -501,7 +600,7 @@ No properties.
 }</pre>
 </details>
 
-### DefaultAggregation <a id="DefaultAggregation"></a>
+## DefaultAggregation <a id="DefaultAggregation"></a>
 
 No properties.
 
@@ -518,7 +617,7 @@ No properties.
 }</pre>
 </details>
 
-### DropAggregation <a id="DropAggregation"></a>
+## DropAggregation <a id="DropAggregation"></a>
 
 No properties.
 
@@ -535,7 +634,7 @@ No properties.
 }</pre>
 </details>
 
-### ExemplarFilter <a id="ExemplarFilter"></a>
+## ExemplarFilter <a id="ExemplarFilter"></a>
 
 No properties.
 
@@ -556,7 +655,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalContainerResourceDetector <a id="ExperimentalContainerResourceDetector"></a>
+## ExperimentalContainerResourceDetector <a id="ExperimentalContainerResourceDetector"></a>
 
 No properties.
 
@@ -573,7 +672,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalGeneralInstrumentation <a id="ExperimentalGeneralInstrumentation"></a>
+## ExperimentalGeneralInstrumentation <a id="ExperimentalGeneralInstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -598,7 +697,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalHostResourceDetector <a id="ExperimentalHostResourceDetector"></a>
+## ExperimentalHostResourceDetector <a id="ExperimentalHostResourceDetector"></a>
 
 No properties.
 
@@ -615,7 +714,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalHttpClientInstrumentation <a id="ExperimentalHttpClientInstrumentation"></a>
+## ExperimentalHttpClientInstrumentation <a id="ExperimentalHttpClientInstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -646,7 +745,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalHttpInstrumentation <a id="ExperimentalHttpInstrumentation"></a>
+## ExperimentalHttpInstrumentation <a id="ExperimentalHttpInstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -671,7 +770,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalHttpServerInstrumentation <a id="ExperimentalHttpServerInstrumentation"></a>
+## ExperimentalHttpServerInstrumentation <a id="ExperimentalHttpServerInstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -702,7 +801,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalInstrumentation <a id="ExperimentalInstrumentation"></a>
+## ExperimentalInstrumentation <a id="ExperimentalInstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -873,7 +972,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalLanguageSpecificInstrumentation <a id="ExperimentalLanguageSpecificInstrumentation"></a>
+## ExperimentalLanguageSpecificInstrumentation <a id="ExperimentalLanguageSpecificInstrumentation"></a>
 
 No properties.
 
@@ -892,7 +991,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalLoggerConfig <a id="ExperimentalLoggerConfig"></a>
+## ExperimentalLoggerConfig <a id="ExperimentalLoggerConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -917,7 +1016,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalLoggerConfigurator <a id="ExperimentalLoggerConfigurator"></a>
+## ExperimentalLoggerConfigurator <a id="ExperimentalLoggerConfigurator"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -947,7 +1046,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalLoggerMatcherAndConfig <a id="ExperimentalLoggerMatcherAndConfig"></a>
+## ExperimentalLoggerMatcherAndConfig <a id="ExperimentalLoggerMatcherAndConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -976,7 +1075,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalMeterConfig <a id="ExperimentalMeterConfig"></a>
+## ExperimentalMeterConfig <a id="ExperimentalMeterConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1001,7 +1100,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalMeterConfigurator <a id="ExperimentalMeterConfigurator"></a>
+## ExperimentalMeterConfigurator <a id="ExperimentalMeterConfigurator"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1031,7 +1130,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalMeterMatcherAndConfig <a id="ExperimentalMeterMatcherAndConfig"></a>
+## ExperimentalMeterMatcherAndConfig <a id="ExperimentalMeterMatcherAndConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1060,7 +1159,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalOtlpFileExporter <a id="ExperimentalOtlpFileExporter"></a>
+## ExperimentalOtlpFileExporter <a id="ExperimentalOtlpFileExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1087,7 +1186,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalOtlpFileMetricExporter <a id="ExperimentalOtlpFileMetricExporter"></a>
+## ExperimentalOtlpFileMetricExporter <a id="ExperimentalOtlpFileMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1122,7 +1221,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalPeerInstrumentation <a id="ExperimentalPeerInstrumentation"></a>
+## ExperimentalPeerInstrumentation <a id="ExperimentalPeerInstrumentation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1146,7 +1245,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalPeerServiceMapping <a id="ExperimentalPeerServiceMapping"></a>
+## ExperimentalPeerServiceMapping <a id="ExperimentalPeerServiceMapping"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1175,7 +1274,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalProcessResourceDetector <a id="ExperimentalProcessResourceDetector"></a>
+## ExperimentalProcessResourceDetector <a id="ExperimentalProcessResourceDetector"></a>
 
 No properties.
 
@@ -1192,7 +1291,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalPrometheusMetricExporter <a id="ExperimentalPrometheusMetricExporter"></a>
+## ExperimentalPrometheusMetricExporter <a id="ExperimentalPrometheusMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1250,7 +1349,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalResourceDetection <a id="ExperimentalResourceDetection"></a>
+## ExperimentalResourceDetection <a id="ExperimentalResourceDetection"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1278,7 +1377,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalResourceDetector <a id="ExperimentalResourceDetector"></a>
+## ExperimentalResourceDetector <a id="ExperimentalResourceDetector"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1321,7 +1420,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalServiceResourceDetector <a id="ExperimentalServiceResourceDetector"></a>
+## ExperimentalServiceResourceDetector <a id="ExperimentalServiceResourceDetector"></a>
 
 No properties.
 
@@ -1338,7 +1437,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalTracerConfig <a id="ExperimentalTracerConfig"></a>
+## ExperimentalTracerConfig <a id="ExperimentalTracerConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1363,7 +1462,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalTracerConfigurator <a id="ExperimentalTracerConfigurator"></a>
+## ExperimentalTracerConfigurator <a id="ExperimentalTracerConfigurator"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1393,7 +1492,7 @@ No properties.
 }</pre>
 </details>
 
-### ExperimentalTracerMatcherAndConfig <a id="ExperimentalTracerMatcherAndConfig"></a>
+## ExperimentalTracerMatcherAndConfig <a id="ExperimentalTracerMatcherAndConfig"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1422,7 +1521,7 @@ No properties.
 }</pre>
 </details>
 
-### ExplicitBucketHistogramAggregation <a id="ExplicitBucketHistogramAggregation"></a>
+## ExplicitBucketHistogramAggregation <a id="ExplicitBucketHistogramAggregation"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1456,7 +1555,7 @@ No properties.
 }</pre>
 </details>
 
-### ExporterDefaultHistogramAggregation <a id="ExporterDefaultHistogramAggregation"></a>
+## ExporterDefaultHistogramAggregation <a id="ExporterDefaultHistogramAggregation"></a>
 
 No properties.
 
@@ -1476,7 +1575,7 @@ No properties.
 }</pre>
 </details>
 
-### ExporterTemporalityPreference <a id="ExporterTemporalityPreference"></a>
+## ExporterTemporalityPreference <a id="ExporterTemporalityPreference"></a>
 
 No properties.
 
@@ -1497,7 +1596,7 @@ No properties.
 }</pre>
 </details>
 
-### IncludeExclude <a id="IncludeExclude"></a>
+## IncludeExclude <a id="IncludeExclude"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1528,7 +1627,7 @@ No properties.
 }</pre>
 </details>
 
-### InstrumentType <a id="InstrumentType"></a>
+## InstrumentType <a id="InstrumentType"></a>
 
 No properties.
 
@@ -1553,7 +1652,7 @@ No properties.
 }</pre>
 </details>
 
-### JaegerPropagator <a id="JaegerPropagator"></a>
+## JaegerPropagator <a id="JaegerPropagator"></a>
 
 No properties.
 
@@ -1570,7 +1669,7 @@ No properties.
 }</pre>
 </details>
 
-### JaegerRemoteSampler <a id="JaegerRemoteSampler"></a>
+## JaegerRemoteSampler <a id="JaegerRemoteSampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1609,7 +1708,7 @@ No properties.
 }</pre>
 </details>
 
-### LastValueAggregation <a id="LastValueAggregation"></a>
+## LastValueAggregation <a id="LastValueAggregation"></a>
 
 No properties.
 
@@ -1626,7 +1725,7 @@ No properties.
 }</pre>
 </details>
 
-### LoggerProvider <a id="LoggerProvider"></a>
+## LoggerProvider <a id="LoggerProvider"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1833,7 +1932,7 @@ No properties.
 }</pre>
 </details>
 
-### LogRecordExporter <a id="LogRecordExporter"></a>
+## LogRecordExporter <a id="LogRecordExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1876,7 +1975,7 @@ No properties.
 }</pre>
 </details>
 
-### LogRecordLimits <a id="LogRecordLimits"></a>
+## LogRecordLimits <a id="LogRecordLimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1909,7 +2008,7 @@ No properties.
 }</pre>
 </details>
 
-### LogRecordProcessor <a id="LogRecordProcessor"></a>
+## LogRecordProcessor <a id="LogRecordProcessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -1943,7 +2042,7 @@ No properties.
 }</pre>
 </details>
 
-### MeterProvider <a id="MeterProvider"></a>
+## MeterProvider <a id="MeterProvider"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -2674,7 +2773,7 @@ No properties.
 }</pre>
 </details>
 
-### MetricProducer <a id="MetricProducer"></a>
+## MetricProducer <a id="MetricProducer"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -2705,7 +2804,7 @@ No properties.
 }</pre>
 </details>
 
-### MetricReader <a id="MetricReader"></a>
+## MetricReader <a id="MetricReader"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -2732,7 +2831,7 @@ No properties.
 }</pre>
 </details>
 
-### NameStringValuePair <a id="NameStringValuePair"></a>
+## NameStringValuePair <a id="NameStringValuePair"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -2764,7 +2863,7 @@ No properties.
 }</pre>
 </details>
 
-### OpenCensusMetricProducer <a id="OpenCensusMetricProducer"></a>
+## OpenCensusMetricProducer <a id="OpenCensusMetricProducer"></a>
 
 No properties.
 
@@ -2781,7 +2880,7 @@ No properties.
 }</pre>
 </details>
 
-### OpentelemetryConfiguration <a id="OpentelemetryConfiguration"></a>
+## OpentelemetryConfiguration <a id="OpentelemetryConfiguration"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -2888,7 +2987,7 @@ No properties.
 }</pre>
 </details>
 
-### OpenTracingPropagator <a id="OpenTracingPropagator"></a>
+## OpenTracingPropagator <a id="OpenTracingPropagator"></a>
 
 No properties.
 
@@ -2905,7 +3004,7 @@ No properties.
 }</pre>
 </details>
 
-### OtlpGrpcExporter <a id="OtlpGrpcExporter"></a>
+## OtlpGrpcExporter <a id="OtlpGrpcExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -2989,7 +3088,7 @@ No properties.
 }</pre>
 </details>
 
-### OtlpGrpcMetricExporter <a id="OtlpGrpcMetricExporter"></a>
+## OtlpGrpcMetricExporter <a id="OtlpGrpcMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3081,7 +3180,7 @@ No properties.
 }</pre>
 </details>
 
-### OtlpHttpEncoding <a id="OtlpHttpEncoding"></a>
+## OtlpHttpEncoding <a id="OtlpHttpEncoding"></a>
 
 No properties.
 
@@ -3101,7 +3200,7 @@ No properties.
 }</pre>
 </details>
 
-### OtlpHttpExporter <a id="OtlpHttpExporter"></a>
+## OtlpHttpExporter <a id="OtlpHttpExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3182,7 +3281,7 @@ No properties.
 }</pre>
 </details>
 
-### OtlpHttpMetricExporter <a id="OtlpHttpMetricExporter"></a>
+## OtlpHttpMetricExporter <a id="OtlpHttpMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3272,7 +3371,7 @@ No properties.
 }</pre>
 </details>
 
-### ParentBasedSampler <a id="ParentBasedSampler"></a>
+## ParentBasedSampler <a id="ParentBasedSampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3312,7 +3411,7 @@ No properties.
 }</pre>
 </details>
 
-### PeriodicMetricReader <a id="PeriodicMetricReader"></a>
+## PeriodicMetricReader <a id="PeriodicMetricReader"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3363,7 +3462,7 @@ No properties.
 }</pre>
 </details>
 
-### Propagator <a id="Propagator"></a>
+## Propagator <a id="Propagator"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3473,7 +3572,7 @@ No properties.
 }</pre>
 </details>
 
-### PullMetricExporter <a id="PullMetricExporter"></a>
+## PullMetricExporter <a id="PullMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3506,7 +3605,7 @@ No properties.
 }</pre>
 </details>
 
-### PullMetricReader <a id="PullMetricReader"></a>
+## PullMetricReader <a id="PullMetricReader"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3541,7 +3640,7 @@ No properties.
 }</pre>
 </details>
 
-### PushMetricExporter <a id="PushMetricExporter"></a>
+## PushMetricExporter <a id="PushMetricExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3584,7 +3683,7 @@ No properties.
 }</pre>
 </details>
 
-### Resource <a id="Resource"></a>
+## Resource <a id="Resource"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3768,7 +3867,7 @@ No properties.
 }</pre>
 </details>
 
-### Sampler <a id="Sampler"></a>
+## Sampler <a id="Sampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3815,7 +3914,7 @@ No properties.
 }</pre>
 </details>
 
-### SimpleLogRecordProcessor <a id="SimpleLogRecordProcessor"></a>
+## SimpleLogRecordProcessor <a id="SimpleLogRecordProcessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3839,7 +3938,7 @@ No properties.
 }</pre>
 </details>
 
-### SimpleSpanProcessor <a id="SimpleSpanProcessor"></a>
+## SimpleSpanProcessor <a id="SimpleSpanProcessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3863,7 +3962,7 @@ No properties.
 }</pre>
 </details>
 
-### SpanExporter <a id="SpanExporter"></a>
+## SpanExporter <a id="SpanExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3910,7 +4009,7 @@ No properties.
 }</pre>
 </details>
 
-### SpanLimits <a id="SpanLimits"></a>
+## SpanLimits <a id="SpanLimits"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -3975,7 +4074,7 @@ No properties.
 }</pre>
 </details>
 
-### SpanProcessor <a id="SpanProcessor"></a>
+## SpanProcessor <a id="SpanProcessor"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -4010,7 +4109,7 @@ No properties.
 }</pre>
 </details>
 
-### SumAggregation <a id="SumAggregation"></a>
+## SumAggregation <a id="SumAggregation"></a>
 
 No properties.
 
@@ -4027,7 +4126,7 @@ No properties.
 }</pre>
 </details>
 
-### TextMapPropagator <a id="TextMapPropagator"></a>
+## TextMapPropagator <a id="TextMapPropagator"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -4078,7 +4177,7 @@ No properties.
 }</pre>
 </details>
 
-### TraceContextPropagator <a id="TraceContextPropagator"></a>
+## TraceContextPropagator <a id="TraceContextPropagator"></a>
 
 No properties.
 
@@ -4095,7 +4194,7 @@ No properties.
 }</pre>
 </details>
 
-### TraceIdRatioBasedSampler <a id="TraceIdRatioBasedSampler"></a>
+## TraceIdRatioBasedSampler <a id="TraceIdRatioBasedSampler"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -4122,7 +4221,7 @@ No properties.
 }</pre>
 </details>
 
-### TracerProvider <a id="TracerProvider"></a>
+## TracerProvider <a id="TracerProvider"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -4496,7 +4595,7 @@ No properties.
 }</pre>
 </details>
 
-### View <a id="View"></a>
+## View <a id="View"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -4521,7 +4620,7 @@ No properties.
 }</pre>
 </details>
 
-### ViewSelector <a id="ViewSelector"></a>
+## ViewSelector <a id="ViewSelector"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -4577,7 +4676,7 @@ No properties.
 }</pre>
 </details>
 
-### ViewStream <a id="ViewStream"></a>
+## ViewStream <a id="ViewStream"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -4624,7 +4723,7 @@ No properties.
 }</pre>
 </details>
 
-### ZipkinSpanExporter <a id="ZipkinSpanExporter"></a>
+## ZipkinSpanExporter <a id="ZipkinSpanExporter"></a>
 
 | Property | Description | Type | Required? |
 |---|---|---|---|
@@ -4659,3 +4758,23 @@ No properties.
 }</pre>
 </details>
 
+# SDK Extension Plugins <a id="sdk-extension-plugins"></a>
+
+[SDK extension plugins](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#supported-sdk-extension-plugins) are places where custom interface implementations can be referenced and configured.
+
+For example, you could write a custom `SpanExporter`, and indicate that it should be paired with a `BatchSpanProcessor`.
+
+Each of the following types support referencing custom interface implementations. Each type is an object type containing exactly one property whose value is type `object` or `null`. The property key refers to the name of the custom implementation, and must be the same as the `name` of a corresponding registered [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-componentprovider). The value passed as configuration when the [ComponentProvider.create](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create) is called.
+
+SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the `otlp_http` property of `SpanExporter` defines the OTLP http/protobuf exporter.
+
+* [ExperimentalResourceDetector](#ExperimentalResourceDetector)
+* [LogRecordExporter](#LogRecordExporter)
+* [LogRecordProcessor](#LogRecordProcessor)
+* [MetricProducer](#MetricProducer)
+* [PullMetricExporter](#PullMetricExporter)
+* [PushMetricExporter](#PushMetricExporter)
+* [Sampler](#Sampler)
+* [SpanExporter](#SpanExporter)
+* [SpanProcessor](#SpanProcessor)
+* [TextMapPropagator](#TextMapPropagator)

@@ -162,7 +162,8 @@ export class JsonSchemaType {
     toMetaSchemaType() {
         return new MetaSchemaType(
             this.type,
-            this.properties.map(jsonSchemaProperty => new MetaSchemaProperty(jsonSchemaProperty.property, "TODO"))
+            this.properties.map(jsonSchemaProperty => new MetaSchemaProperty(jsonSchemaProperty.property, "TODO")),
+            false
         );
     }
 }

@@ -13,10 +13,15 @@ const jsonSchemaTypesByType = {};
 readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type);
 
 const output = [];
-
-output.push('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
+const headers = [];
 
 types.sort((a, b) => a.type.localeCompare(b.type));
+
+addHeader('Overview', 'overview', 1);
+output.push('TODO\n');
+
+// Write types
+addHeader('Types', 'types', 1);
 types.forEach(metaSchemaType => {
     const type = metaSchemaType.type;
     const jsonSchemaType = jsonSchemaTypesByType[type];
@@ -26,7 +31,7 @@ types.forEach(metaSchemaType => {
     const required = jsonSchemaType.schema['required'];
 
     // Heading
-    output.push(`### ${type} <a id="${type}"></a>\n\n`);
+    addHeader(type, type, 2);
 
     // Properties
     if (metaSchemaType.properties.length === 0) {
@@ -59,6 +64,26 @@ types.forEach(metaSchemaType => {
     output.push('\n');
 });
 
+// Write SDK extension plugins
+addHeader('SDK Extension Plugins', 'sdk-extension-plugins', 1);
+output.push(
+`[SDK extension plugins](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#supported-sdk-extension-plugins) are places where custom interface implementations can be referenced and configured.
+
+For example, you could write a custom \`SpanExporter\`, and indicate that it should be paired with a \`BatchSpanProcessor\`.
+
+Each of the following types support referencing custom interface implementations. Each type is an object type containing exactly one property whose value is type \`object\` or \`null\`. The property key refers to the name of the custom implementation, and must be the same as the \`name\` of a corresponding registered [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-componentprovider). The value passed as configuration when the [ComponentProvider.create](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create) is called.
+
+SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the \`otlp_http\` property of \`SpanExporter\` defines the OTLP http/protobuf exporter.
+
+`);
+types.filter(metaSchemaType => metaSchemaType.isSdkExtensionPlugin)
+    .forEach(metaSchemaType => {
+        output.push(`* [${metaSchemaType.type}](#${metaSchemaType.type})\n`)
+    });
+
+headers.push('\n\n');
+output.unshift(...headers);
+output.unshift('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
 fs.writeFileSync(markdownDocPath, output.join(""));
 
 // Helper functions
@@ -84,3 +109,9 @@ function formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType)
     });
     return output.join('');
 }
+
+function addHeader(title, id, level) {
+    headers.push(`${'  '.repeat(level - 1)}* [${title}](#${id})\n`);
+    output.push(`${'#'.repeat(level)} ${title} <a id="${id}"></a>\n\n`);
+}
+

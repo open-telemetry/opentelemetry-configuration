@@ -27,6 +27,7 @@ export function readAndFixMetaSchemaTypes() {
             }
 
             const rawProperties = rawMetaSchemaType['properties'];
+            const isSdkExtensionPlugin = Boolean(rawMetaSchemaType['isSdkExtensionPlugin']);
             const metaSchemaProperties = [];
 
             if (Array.isArray(rawProperties)) {
@@ -49,7 +50,7 @@ export function readAndFixMetaSchemaTypes() {
                 messages.push(`${metaSchemaFileName} contains entry ${JSON.stringify(rawMetaSchemaType)} with invalid properties. Ignoring properties.`);
             }
 
-            metaSchemaTypes.push(new MetaSchemaType(type, metaSchemaProperties));
+            metaSchemaTypes.push(new MetaSchemaType(type, metaSchemaProperties, isSdkExtensionPlugin));
         });
     } else {
         messages.push(`${metaSchemaFileName} must be array of types.`);
@@ -133,17 +134,20 @@ export class MetaSchemaProperty {
 export class MetaSchemaType {
     type;
     properties;
+    isSdkExtensionPlugin;
     // TODO: track language implementation status
 
-    constructor(type, properties) {
+    constructor(type, properties, isSdkExtensionPlugin) {
         this.type = type;
         this.properties = properties;
+        this.isSdkExtensionPlugin = isSdkExtensionPlugin;
+
     }
 
     toJson() {
         const properties = this.properties.map(property => property.toJson());
         properties.sort((a, b) => a.property.localeCompare(b.property));
 
-        return { type: this.type, properties: this.properties };
+        return { type: this.type, properties: this.properties, isSdkExtensionPlugin: this.isSdkExtensionPlugin };
     }
 }

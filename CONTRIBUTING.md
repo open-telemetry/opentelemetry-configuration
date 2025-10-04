@@ -252,6 +252,7 @@ make all
 [meta_schema.yaml](./schema/meta_schema.yaml) tracks schema details that don't fit neatly into the JSON schema including:
 
 * Property descriptions and semantics
+* Track which types are SDK extension plugins
 * Implementation support status (TODO)
 
 There are variety of tasks which intersect with the meta schema:
