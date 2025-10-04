@@ -91,7 +91,7 @@ tracer_provider:
 * `attributes_value_length_limit` is not required. If omitted, no attribute length limits are applied.
 * `attributes_value_length_limit`'s type is `["integer", "null]`. If null (i.e. because the `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` env var is unset), no attribute length limits are applied.
 
-If a property is _not_ required, it should include a [comment](./CONTRIBUTING.md#description-generation) describing the semantics when it is omitted.
+If a property is _not_ required, it should include a [meta schema comment](./CONTRIBUTING.md#meta-schema) describing the semantics when it is omitted.
 
 If a property `type` includes `null`, it must include a [comment](./CONTRIBUTING.md#description-generation) describing the semantics when the value is `null`. It's common for properties with primitive types to allow `null`. `object` types allow `null` if no properties are required and the presence of the property key is meaningful.
 
