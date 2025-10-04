@@ -93,7 +93,7 @@ tracer_provider:
 
 If a property is _not_ required, it should include a [meta schema comment](./CONTRIBUTING.md#meta-schema) describing the semantics when it is omitted.
 
-If a property `type` includes `null`, it must include a [comment](./CONTRIBUTING.md#description-generation) describing the semantics when the value is `null`. It's common for properties with primitive types to allow `null`. `object` types allow `null` if no properties are required and the presence of the property key is meaningful.
+If a property `type` includes `null`, it must include a [meta schema comment](./CONTRIBUTING.md#meta-schema) describing the semantics when the value is `null`. It's common for properties with primitive types to allow `null`. `object` types allow `null` if no properties are required and the presence of the property key is meaningful.
 
 ### Polymorphic types
 
