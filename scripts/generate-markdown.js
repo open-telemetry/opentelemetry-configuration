@@ -9,8 +9,9 @@ if (messages.length > 0) {
     throw new Error("Meta schema has problems. Please run fix-meta-schema and try again.");
 }
 
+const jsonSchemaTypes = readJsonSchemaTypes();
 const jsonSchemaTypesByType = {};
-readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type);
+jsonSchemaTypes.forEach(type => jsonSchemaTypesByType[type.type] = type);
 
 const output = [];
 const headers = [];
@@ -33,13 +34,18 @@ types.forEach(metaSchemaType => {
     // Heading
     addHeader(type, type.toLowerCase(), 2);
 
+    // SDK extension plugin
+    if (metaSchemaType.isSdkExtensionPlugin) {
+        output.push(`\`${type}\` is an [SDK extension plugin](#sdk-extension-plugins).\n\n`);
+    }
+
     // Properties
     if (metaSchemaType.properties.length === 0) {
         output.push("No properties.\n\n");
     } else {
         // Property type and description table
-        output.push(`| Property | Description | Type | Required? |\n`);
-        output.push("|---|---|---|---|\n");
+        output.push(`| Property | Type | Required? | Constraints | Description |\n`);
+        output.push("|---|---|---|---|---|\n");
         metaSchemaType.properties.forEach(property => {
             const jsonSchemaProperty = jsonSchemaType.properties.find(item => item.property === property.property);
             if (!jsonSchemaProperty) {
@@ -47,12 +53,43 @@ types.forEach(metaSchemaType => {
             }
             const formattedPropertyType = formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType);
             const isRequired = required !== undefined && required.includes(property.property);
+            let formattedConstraints = resolveAndFormatConstraints(jsonSchemaProperty.schema, '<br>');
+            if (formattedConstraints.length === 0) {
+                formattedConstraints = 'No constraints.';
+            }
+            const formattedDescription = property.description.split("\n").join("<br>");
 
-            output.push(`| \`${property.property}\` | ${property.description.split("\n").join("<br>")} | ${formattedPropertyType} | \`${isRequired}\` |\n`);
+            output.push(`| \`${property.property}\` | ${formattedPropertyType} | \`${isRequired}\` | ${formattedConstraints} | ${formattedDescription} |\n`);
         });
         output.push('\n');
-
         // TODO: print language implementation status
+    }
+
+    // Constraints
+    const formattedConstraints = resolveAndFormatConstraints(jsonSchemaType.schema, '\n');
+    if (formattedConstraints.length > 0) {
+        output.push('Constraints: \n\n');
+        output.push(formattedConstraints);
+        output.push('\n');
+    } else {
+        output.push('No constraints.\n\n');
+    }
+
+    // Usages
+    const usages = [];
+    jsonSchemaTypes.forEach(otherJsonSchemaType => {
+       otherJsonSchemaType.properties.forEach(property => {
+           if (property.types.find(item => item === type)) {
+               usages.push([ otherJsonSchemaType, property ]);
+           }
+       });
+    });
+    if (usages.length > 0) {
+        output.push('Usages:\n\n');
+        usages.forEach(usage => output.push(`* [\`${usage[0].type}.${usage[1].property}\`](#${usage[0].type.toLowerCase()})\n`));
+        output.push('\n');
+    } else {
+        output.push('No usages.\n\n');
     }
 
     // JSON schema collapsible section
@@ -90,9 +127,7 @@ fs.writeFileSync(markdownDocPath, output.join(""));
 function formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType) {
     const output = [];
     if (jsonSchemaProperty.isSeq) {
-        if (jsonSchemaProperty.isSeq) {
-            output.push('`array` of ');
-        }
+        output.push('`array` of ');
     }
     let prefix = '';
     let suffix = '';
@@ -115,3 +150,38 @@ function addHeader(title, id, level) {
     output.push(`${'#'.repeat(level)} ${title} <a id="${id}"></a>\n\n`);
 }
 
+function resolveAndFormatConstraints(schema, linebreak) {
+    const constraints = [];
+    const constraintPropertyNames = [
+        'minLength',
+        'maxLength',
+        'pattern',
+        'format',
+        'multipleOf',
+        'minimum',
+        'exclusiveMinimum',
+        'maximum',
+        'exclusiveMaximum',
+        'patternProperties',
+        'additionalProperties',
+        'propertyNames',
+        'minProperties',
+        'maxProperties',
+        'required',
+        'contains',
+        'minContains',
+        'maxContains',
+        'uniqueItems',
+        'enum',
+        'const',
+    ];
+
+    constraintPropertyNames.forEach(propertyName => {
+        const property = schema[propertyName];
+        if (property !== undefined && property !== null) {
+            constraints.push(`* \`${propertyName}\`: \`${JSON.stringify(property)}\`${linebreak}`);
+        }
+    });
+
+    return constraints.join('');
+}

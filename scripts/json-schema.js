@@ -92,7 +92,7 @@ function resolveJsonSchemaProperties(jsonSchema, typesByType) {
         } else if (oneOf) {
             types.push('oneOf');
         }
-        resolvedProperties.push(new JsonSchemaProperty(propertyKey, types, isSeq, isRequired));
+        resolvedProperties.push(new JsonSchemaProperty(propertyKey, types, isSeq, isRequired, propertySchema));
     });
 
     return resolvedProperties;
@@ -125,12 +125,14 @@ export class JsonSchemaProperty {
     types;
     isSeq;
     isRequired;
+    schema;
 
-    constructor(property, types, isSeq, isRequired) {
+    constructor(property, types, isSeq, isRequired, schema) {
         this.property = property;
         this.types = types;
         this.isSeq = isSeq;
         this.isRequired = isRequired;
+        this.schema = schema;
     }
 }
 
