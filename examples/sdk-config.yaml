@@ -19,10 +19,11 @@ log_level: info
 # If omitted, the default resource is used.
 resource:
   # Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
-  # Entries must contain .name and .value, and may optionally include .type. If an entry's .type omitted or null, string is used.
-  # The .value's type must match the .type. Values for .type include: string, bool, int, double, string_array, bool_array, int_array, double_array.
   attributes:
-    - name: service.name
+    - # The attribute name.
+      name: service.name
+      # The attribute value.
+      # The type of value must match .type.
       value: unknown_service
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
@@ -70,10 +71,10 @@ tracer_provider:
         exporter:
           # Configure exporter to be OTLP with HTTP transport.
           otlp_http:
-            # Configure endpoint, including the trace specific path.
-            # If omitted or null, http://localhost:4318/v1/traces is used.
+            # Configure endpoint, including the signal specific path.
+            # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: http://localhost:4318/v1/traces
-            # Configure certificate used to verify a server's TLS credentials. 
+            # Configure certificate used to verify a server's TLS credentials.
             # Absolute path to certificate file in PEM format.
             # If omitted or null, system default certificate verification is used for secure connections.
             certificate_file:
@@ -81,7 +82,7 @@ tracer_provider:
             # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
             # If omitted or null, mTLS is not used.
             client_key_file:
-            # Configure mTLS client certificate. 
+            # Configure mTLS client certificate.
             # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
             # If omitted or null, mTLS is not used.
             client_certificate_file:
@@ -89,7 +90,7 @@ tracer_provider:
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export. 
+            # Configure max time (in milliseconds) to wait for each export.
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
@@ -171,10 +172,10 @@ meter_provider:
         exporter:
           # Configure exporter to be OTLP with HTTP transport.
           otlp_http:
-            # Configure endpoint, including the metric specific path.
-            # If omitted or null, http://localhost:4318/v1/metrics is used.
+            # Configure endpoint, including the signal specific path.
+            # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: http://localhost:4318/v1/metrics
-            # Configure certificate used to verify a server's TLS credentials. 
+            # Configure certificate used to verify a server's TLS credentials.
             # Absolute path to certificate file in PEM format.
             # If omitted or null, system default certificate verification is used for secure connections.
             certificate_file:
@@ -182,7 +183,7 @@ meter_provider:
             # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
             # If omitted or null, mTLS is not used.
             client_key_file:
-            # Configure mTLS client certificate. 
+            # Configure mTLS client certificate.
             # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
             # If omitted or null, mTLS is not used.
             client_certificate_file:
@@ -190,18 +191,18 @@ meter_provider:
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export. 
+            # Configure max time (in milliseconds) to wait for each export.
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
             # Configure headers. Entries have higher priority than entries from .headers_list.
             # If an entry's .value is null, the entry is ignored.
             headers: []
-            # Configure temporality preference. 
+            # Configure temporality preference.
             # Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
             # If omitted or null, cumulative is used.
             temporality_preference: cumulative
-            # Configure default histogram aggregation. 
+            # Configure default histogram aggregation.
             # Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
             # If omitted or null, explicit_bucket_histogram is used.
             default_histogram_aggregation: explicit_bucket_histogram
@@ -234,8 +235,10 @@ logger_provider:
         exporter:
           # Configure exporter to be OTLP with HTTP transport.
           otlp_http:
+            # Configure endpoint, including the signal specific path.
+            # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: http://localhost:4318/v1/logs
-            # Configure certificate used to verify a server's TLS credentials. 
+            # Configure certificate used to verify a server's TLS credentials.
             # Absolute path to certificate file in PEM format.
             # If omitted or null, system default certificate verification is used for secure connections.
             certificate_file:
@@ -243,7 +246,7 @@ logger_provider:
             # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
             # If omitted or null, mTLS is not used.
             client_key_file:
-            # Configure mTLS client certificate. 
+            # Configure mTLS client certificate.
             # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
             # If omitted or null, mTLS is not used.
             client_certificate_file:
@@ -251,7 +254,7 @@ logger_provider:
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
             compression: gzip
-            # Configure max time (in milliseconds) to wait for each export. 
+            # Configure max time (in milliseconds) to wait for each export.
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000

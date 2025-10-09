@@ -1,9 +1,12 @@
 {
+  "type": "module",
   "scripts": {
-    "generate-descriptions": "node scripts/generate-descriptions.js"
+    "generate-descriptions": "node scripts/generate-descriptions.js",
+    "generate-markdown": "node scripts/generate-markdown.js",
+    "fix-meta-schema": "node scripts/fix-meta-schema.js"
   },
   "devDependencies": {
-    "ajv-cli": "5.0.0"
+    "ajv-cli": "^5.0.0"
   },
   "dependencies": {
     "envsub": "^4.1.0",

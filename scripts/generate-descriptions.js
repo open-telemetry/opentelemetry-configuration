@@ -1,10 +1,12 @@
-const fs = require('node:fs');
-const yaml = require('yaml');
+import fs from 'fs';
+import yaml from 'yaml';
+import {readAndFixMetaSchemaTypes} from "./meta-schema.js";
+import {readJsonSchemaTypes} from "./json-schema.js";
 
 // Extract input file arg or throw
-const usageString = "Usage: \n npm run-script generate-comments -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml";
+const usageString = "Usage: \n npm run-script generate-descriptions -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml [--debug]";
 if (process.argv.length < 3) {
-    throw new Error("Missing file to generate comments for. " + usageString);
+    throw new Error("Missing file to generate descriptions for. " + usageString);
 }
 const inputFile = process.argv[2];
 if (!fs.existsSync(inputFile)) {
@@ -27,39 +29,23 @@ for (let i = 3; i < process.argv.length; i++) {
     }
 }
 
-// Read and validate description rules
-const typeDescriptionsContent = fs.readFileSync(__dirname + "/../schema/type_descriptions.yaml", "utf-8");
-const typeDescriptionsYaml = yaml.parse(typeDescriptionsContent);
-const rulesByType = {};
-typeDescriptionsYaml.forEach(rule => {
-    const type = rule.type;
-    if (!(typeof type === 'string') && !(type instanceof String)) {
-        throw new Error("rule must have type: " + JSON.stringify(rule));
-    }
-    if (type in rulesByType) {
-        throw new Error("multiple rules with type: " + type);
-    }
-    rulesByType[type] = rule;
-    if (!('property_descriptions' in rule)) {
-        throw new Error("rule missing property_description:" + JSON.stringify(rule));
-    }
-    if (!('path_patterns' in rule)) {
-        throw new Error("rule missing path_patterns:" + JSON.stringify(rule));
-    }
-    debug("\nRule for type: " + type);
-    debug("  property_descriptions:")
-    Object.entries(rule.property_descriptions)
-        .forEach(([property, description]) => debug("    " +  property + ": " + description));
-    debug("  path_patterns: \n" + rule.path_patterns.map(entry => "  - " + toRegex(entry)).join("\n"));
-})
+// Read JSON schema and meta schema
+const { messages, types } = readAndFixMetaSchemaTypes();
+const metaSchemaTypesByType = {};
+types.forEach(type => metaSchemaTypesByType[type.type] = type);
+if (messages.length > 0) {
+    throw new Error("Meta schema has problems. Please run fix-meta-schema and try again.");
+}
+const jsonSchemaTypesByType = {};
+readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type);
 
-// Read in the input file
+// Read and process the input file
+// Visit each key/value pair in the input file YAML, attempting to match against description rules
+// and setting a comment with the description from the matching rule
 const fileContent = fs.readFileSync(inputFile, "utf-8");
 const fileDoc = yaml.parseDocument(fileContent);
 let counter = 0;
 let lastNode = null;
-// Visit each key/value pair in the input file YAML, attempting to match against description rules
-// and setting a comment with the description from the matching rule
 yaml.visit(fileDoc, {
     Pair: (key, node, path) => {
         if (yaml.isSeq(node.value)) {
@@ -68,39 +54,36 @@ yaml.visit(fileDoc, {
         let prevLastNode = lastNode;
         lastNode = node;
         counter++;
-        // Compute the parenPath, a string representation of the location of this key/value pair in the document
-        // For example, the following sample YAML is annotated with the parentPath at each node
-        // parent:                      # .
-        //   child: value               # .parent
-        //   child_arr:                 # .parent
-        //     - arr_key: value         # .parent.child_arr[]
-        const parentPath = pathToString(path);
         const propertyKey = node.key.value;
+        const jsonPath = yamlPathToJsonPath(path, propertyKey);
+
+        // Resolve jsonSchemaType, metaSchemaType, metaSchemaProperty, or return
         debug("");
-        debug("parentPath: " + parentPath );
-        debug("propertyKey: " + propertyKey);
-        debug("currentNodePath: " + parentPath + (parentPath === "." ? "" : ".") + propertyKey);
-        // Iterate through the rules and find the first with a matching entry in rule.path_patterns and with defined property key
-        const matchingRule = typeDescriptionsYaml.find((rule) => {
-            const matchingPathPattern = rule['path_patterns'].find((pathPattern) => {
-                const regex = new RegExp(toRegex(pathPattern));
-                return regex.test(parentPath);
-            });
-            if (matchingPathPattern === undefined) {
-                return false;
-            }
-            return rule['property_descriptions'][propertyKey] !== undefined;
-        });
-        // Exit early if no matching rule
-        if (matchingRule === undefined) {
-            debug("no matching rule")
+        debug(`Resolving description for ${jsonPath}`);
+        let jsonSchemaType;
+        try {
+            jsonSchemaType = resolveJsonSchemaType(jsonSchemaTypesByType, path);
+        } catch (error) {
+            debug(`Unable to resolve JSON schema type: ${error.message}`);
             return;
         }
-        debug("matched rule: " + matchingRule.type);
-        // We already guarantee that the propertyKey is defined for the rule above
-        const description = matchingRule['property_descriptions'][propertyKey];
-        // Format the description
-        let formattedDescription = description.replace(/\n$/, '').split('\n').map(line => ' ' + line).join('\n');
+        const metaSchemaType = metaSchemaTypesByType[jsonSchemaType.type];
+        if (!metaSchemaType) {
+            throw new Error(`JSON schema type not found for meta schema type ${jsonSchemaType.type}.`);
+        }
+        const metaSchemaProperty = metaSchemaType.properties.find(item => item.property === propertyKey);
+        if (!metaSchemaProperty) {
+            debug(`No meta schema property ${propertyKey} for type ${metaSchemaType.type}.`);
+            return;
+        }
+        debug(`Resolved type ${jsonSchemaType.type}, property ${metaSchemaProperty.property}, description:\n${metaSchemaProperty.description}`);
+
+        // Set the description
+        let formattedDescription = metaSchemaProperty.description
+            .replace(/\n$/, '')
+            .split('\n')
+            .map(line => ' ' + line)
+            .join('\n');
         // If we're on the first element, prefix the formatted description with the existing commentBefore to retain the comments at the top of the file
         if (counter === 1 && node.key.commentBefore) {
             const index = node.key.commentBefore.lastIndexOf(formattedDescription);
@@ -108,9 +91,6 @@ yaml.visit(fileDoc, {
                 ? node.key.commentBefore + formattedDescription
                 : node.key.commentBefore.substring(0, index) + formattedDescription;
         }
-        debug("description previously set to:\n" + node.key.commentBefore);
-        debug("updating description to:\n" + formattedDescription)
-        // Set the description
         node.key.commentBefore = formattedDescription;
         node.value.commentBefore = null;
         // yaml parser sometimes misidentifies a pair's commentBefore as the previously processed pair.value.comment
@@ -128,25 +108,11 @@ if (outputFile === null) {
     console.log("No output file arg set, logging to console.");
     console.log(String(fileDoc))
 } else {
-    console.log("Writing output to \"" + outputFile + "\"");
+    console.log(`Writing output to ${outputFile}`);
     fs.writeFileSync(outputFile, String(fileDoc))
 }
 
 // Helper functions
-
-// Converts an input pattern to a regular expression.
-// Converts any "*" to a ".*".
-// Escapes all other regex special characters.
-// Prefixes with "^", and adds "$" suffix.
-function toRegex(pattern) {
-    let parts = pattern.split("*");
-    if (parts.length === 0) parts = [pattern];
-    const escaped = parts
-        .map(chunk => chunk.replace(/[-[\]{}()*+?.,\\^$|]/g, "\\$&"))
-        .join("(.*)");
-    return "^" + escaped + "$";
-}
-
 // Log the message to the console if the script was run with `--debug` argument
 function debug(message) {
     if (options.debug) {
@@ -154,10 +120,9 @@ function debug(message) {
     }
 }
 
-// Convert an array of path elements JSON dot notation
-function pathToString(path) {
+function yamlPathToJsonPath(yamlPath, propertyKey) {
     const elements = []
-    path.slice().forEach(entry => {
+    yamlPath.slice().forEach(entry => {
         if (yaml.isSeq(entry)) {
             elements.push("[]");
         }
@@ -166,5 +131,34 @@ function pathToString(path) {
             elements.push(entry.key.value);
         }
     });
-    return elements.length === 0 ? "." : elements.join("");
+    let jsonPath = elements.join('');
+    if (!jsonPath.endsWith('.')) {
+        jsonPath += '.';
+    }
+    jsonPath += propertyKey;
+    return jsonPath;
+}
+
+function resolveJsonSchemaType(jsonSchemaTypesByType, yamlPath) {
+    let last = jsonSchemaTypesByType['OpentelemetryConfiguration']; // TODO: make constant
+    if (!last) {
+        throw new Error(`JSON schema missing root type 'OpenTelemetryConfiguration'`);
+    }
+    for (let i = 0; i < yamlPath.length; i++) {
+        const entry = yamlPath[i];
+        if (yaml.isPair(entry)) {
+            const jsonSchemaProperty = last.properties.find(property => property.property === entry.key.value);
+            if (!jsonSchemaProperty) {
+                throw new Error(`Unknown property ${entry.key.value} in type ${last.type}.`);
+            }
+            // A property may have multiple types. Naively, resolve the type to be the first one that exists in jsonSchemaTypesByType.
+            const resolvedTypes = jsonSchemaProperty.types.map(type => jsonSchemaTypesByType[type]).filter(Boolean);
+            if (resolvedTypes.length > 0) {
+                last = resolvedTypes[0];
+            } else {
+                throw new Error(`Unable to resolve JSON schema type for property ${entry.key.value} in type ${last.type}.`);
+            }
+        }
+    }
+    return last;
 }
