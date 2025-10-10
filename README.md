@@ -118,7 +118,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 ### Maintainers
 
 - [Alex Boten](https://github.com/codeboten), Honeycomb
-- [Jack Berg](https://github.com/jack-berg), New Relic
+- [Jack Berg](https://github.com/jack-berg), Grafana Labs
 - [Tristan Sloughter](https://github.com/tsloughter), MyDecisiveAI
 - [Tyler Yahn](https://github.com/MrAlias), Splunk
 
