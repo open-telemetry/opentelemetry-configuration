@@ -42,14 +42,8 @@
                 "endpoint": {
                     "type": ["string", "null"]
                 },
-                "certificate_file": {
-                    "type": ["string", "null"]
-                },
-                "client_key_file": {
-                    "type": ["string", "null"]
-                },
-                "client_certificate_file": {
-                    "type": ["string", "null"]
+                "tls": {
+                    "$ref": "common.json#/$defs/TLS"
                 },
                 "headers": {
                     "type": "array",
@@ -86,14 +80,8 @@
                 "endpoint": {
                     "type": ["string", "null"]
                 },
-                "certificate_file": {
-                    "type": ["string", "null"]
-                },
-                "client_key_file": {
-                    "type": ["string", "null"]
-                },
-                "client_certificate_file": {
-                    "type": ["string", "null"]
+                "tls": {
+                    "$ref": "common.json#/$defs/TLS"
                 },
                 "headers": {
                     "type": "array",
@@ -128,6 +116,21 @@
         "ConsoleExporter": {
             "type": ["object", "null"],
             "additionalProperties": false
+        },
+        "TLS": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "certificate_file": {
+                    "type": ["string", "null"]
+                },
+                "client_key_file": {
+                    "type": ["string", "null"]
+                },
+                "client_certificate_file": {
+                    "type": ["string", "null"]
+                }
+            }
         }
     }
 }

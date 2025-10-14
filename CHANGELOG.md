@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Schema
+
+* Move certificate configuration under `tls` block
+  ()
+
 ## [v1.0.0-rc.2] - 2025-09-26
 
 ### Schema
