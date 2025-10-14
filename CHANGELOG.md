@@ -5,7 +5,7 @@
 ### Schema
 
 * Move certificate configuration under `tls` block
-  ()
+  ([#331](https://github.com/open-telemetry/opentelemetry-configuration/pull/331))
 
 ## [v1.0.0-rc.2] - 2025-09-26
 
