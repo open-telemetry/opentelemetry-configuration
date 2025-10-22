@@ -72,6 +72,14 @@ logger_provider:
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
             headers_list: "api-key=1234"
+            # Configure a user provided authenticator.
+            # The authenticator is a component that is loaded like any other components, e.g. custom exporter.
+            # The authenticator is asked to provide authentication headers for each export, so it can be used for
+            # rotating credentials.
+            authenticator:
+              rainy_cloud:
+                tenant: foo
+                region: bar
             # Configure compression.
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
@@ -114,6 +122,14 @@ logger_provider:
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
             headers_list: "api-key=1234"
+            # Configure a user provided authenticator.
+            # The authenticator is a component that is loaded like any other components, e.g. custom exporter.
+            # The authenticator is asked to provide authentication headers for each export, so it can be used for
+            # rotating credentials.
+            authenticator:
+              rainy_cloud:
+                tenant: foo
+                region: bar
             # Configure compression.
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
@@ -297,6 +313,14 @@ meter_provider:
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
             headers_list: "api-key=1234"
+            # Configure a user provided authenticator.
+            # The authenticator is a component that is loaded like any other components, e.g. custom exporter.
+            # The authenticator is asked to provide authentication headers for each export, so it can be used for
+            # rotating credentials.
+            authenticator:
+              rainy_cloud:
+                tenant: foo
+                region: bar
             # Configure compression.
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
@@ -378,6 +402,14 @@ meter_provider:
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
             headers_list: "api-key=1234"
+            # Configure a user provided authenticator.
+            # The authenticator is a component that is loaded like any other components, e.g. custom exporter.
+            # The authenticator is asked to provide authentication headers for each export, so it can be used for
+            # rotating credentials.
+            authenticator:
+              rainy_cloud:
+                tenant: foo
+                region: bar
             # Configure compression.
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
@@ -609,6 +641,14 @@ tracer_provider:
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
             headers_list: "api-key=1234"
+            # Configure a user provided authenticator.
+            # The authenticator is a component that is loaded like any other components, e.g. custom exporter.
+            # The authenticator is asked to provide authentication headers for each export, so it can be used for
+            # rotating credentials.
+            authenticator:
+              rainy_cloud:
+                tenant: foo
+                region: bar
             # Configure compression.
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
@@ -651,6 +691,14 @@ tracer_provider:
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
             headers_list: "api-key=1234"
+            # Configure a user provided authenticator.
+            # The authenticator is a component that is loaded like any other components, e.g. custom exporter.
+            # The authenticator is asked to provide authentication headers for each export, so it can be used for
+            # rotating credentials.
+            authenticator:
+              rainy_cloud:
+                tenant: foo
+                region: bar
             # Configure compression.
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.

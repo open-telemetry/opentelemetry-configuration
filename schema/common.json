@@ -60,6 +60,9 @@
                 "headers_list": {
                     "type": ["string", "null"]
                 },
+                "authenticator": {
+                    "$ref": "#/$defs/Authenticator"
+                },
                 "compression": {
                     "type": ["string", "null"]
                 },
@@ -104,6 +107,9 @@
                 "headers_list": {
                     "type": ["string", "null"]
                 },
+                "authenticator": {
+                    "$ref": "#/$defs/Authenticator"
+                },
                 "compression": {
                     "type": ["string", "null"]
                 },
@@ -128,6 +134,17 @@
         "ConsoleExporter": {
             "type": ["object", "null"],
             "additionalProperties": false
+        },
+        "Authenticator": {
+            "type": "object",
+            "additionalProperties": true,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "patternProperties": {
+                ".*": {
+                    "type": ["object"]
+                }
+            }
         }
     }
 }

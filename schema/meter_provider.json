@@ -266,6 +266,9 @@
                 "headers_list": {
                     "type": ["string", "null"]
                 },
+                "authenticator": {
+                    "$ref": "common.json#/$defs/Authenticator"
+                },
                 "compression": {
                     "type": ["string", "null"]
                 },
@@ -308,6 +311,9 @@
                 },
                 "headers_list": {
                     "type": ["string", "null"]
+                },
+                "authenticator": {
+                    "$ref": "common.json#/$defs/Authenticator"
                 },
                 "compression": {
                     "type": ["string", "null"]
