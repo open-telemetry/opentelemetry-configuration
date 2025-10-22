@@ -249,7 +249,7 @@
                     "type": ["string", "null"]
                 },
                 "tls": {
-                    "$ref": "common.json#/$defs/TLS"
+                    "$ref": "common.json#/$defs/HttpTls"
                 },
                 "headers": {
                     "type": "array",
@@ -286,7 +286,7 @@
                     "type": ["string", "null"]
                 },
                 "tls": {
-                    "$ref": "common.json#/$defs/TLS"
+                    "$ref": "common.json#/$defs/GrpcTls"
                 },
                 "headers": {
                     "type": "array",
@@ -303,9 +303,6 @@
                 "timeout": {
                     "type": ["integer", "null"],
                     "minimum": 0
-                },
-                "insecure": {
-                    "type": ["boolean", "null"]
                 },
                 "temporality_preference": {
                     "$ref": "#/$defs/ExporterTemporalityPreference"

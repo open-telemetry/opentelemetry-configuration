@@ -43,7 +43,7 @@
                     "type": ["string", "null"]
                 },
                 "tls": {
-                    "$ref": "common.json#/$defs/TLS"
+                    "$ref": "common.json#/$defs/HttpTls"
                 },
                 "headers": {
                     "type": "array",
@@ -81,7 +81,7 @@
                     "type": ["string", "null"]
                 },
                 "tls": {
-                    "$ref": "common.json#/$defs/TLS"
+                    "$ref": "common.json#/$defs/GrpcTls"
                 },
                 "headers": {
                     "type": "array",
@@ -98,9 +98,6 @@
                 "timeout": {
                     "type": ["integer", "null"],
                     "minimum": 0
-                },
-                "insecure": {
-                    "type": ["boolean", "null"]
                 }
             }
         },
@@ -117,7 +114,7 @@
             "type": ["object", "null"],
             "additionalProperties": false
         },
-        "TLS": {
+        "HttpTls": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -129,6 +126,24 @@
                 },
                 "client_certificate_file": {
                     "type": ["string", "null"]
+                }
+            }
+        },
+        "GrpcTls": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "certificate_file": {
+                    "type": ["string", "null"]
+                },
+                "client_key_file": {
+                    "type": ["string", "null"]
+                },
+                "client_certificate_file": {
+                    "type": ["string", "null"]
+                },
+                "insecure": {
+                    "type": ["boolean", "null"]
                 }
             }
         }
