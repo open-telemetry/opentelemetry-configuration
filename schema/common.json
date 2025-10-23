@@ -43,7 +43,7 @@
                     "type": ["string", "null"]
                 },
                 "tls": {
-                    "$ref": "common.json#/$defs/HttpTls"
+                    "$ref": "#/$defs/HttpTls"
                 },
                 "headers": {
                     "type": "array",
@@ -81,12 +81,12 @@
                     "type": ["string", "null"]
                 },
                 "tls": {
-                    "$ref": "common.json#/$defs/GrpcTls"
+                    "$ref": "#/$defs/GrpcTls"
                 },
                 "headers": {
                     "type": "array",
                     "items": {
-                        "$ref": "common.json#/$defs/NameStringValuePair"
+                        "$ref": "#/$defs/NameStringValuePair"
                     }
                 },
                 "headers_list": {
