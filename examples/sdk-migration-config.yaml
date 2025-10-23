@@ -105,18 +105,20 @@ tracer_provider:
             # Configure endpoint, including the trace specific path.
             # If omitted or null, http://localhost:4318/v1/traces is used.
             endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}
-            # Configure certificate used to verify a server's TLS credentials. 
-            # Absolute path to certificate file in PEM format.
-            # If omitted or null, system default certificate verification is used for secure connections.
-            certificate_file: ${OTEL_EXPORTER_OTLP_TRACES_CERTIFICATE}
-            # Configure mTLS private client key. 
-            # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
-            # If omitted or null, mTLS is not used.
-            client_key_file: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_KEY}
-            # Configure mTLS client certificate. 
-            # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
-            # If omitted or null, mTLS is not used.
-            client_certificate_file: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_CERTIFICATE}
+            # Configure TLS settings for the exporter.
+            tls:
+              # Configure certificate used to verify a server's TLS credentials. 
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
+              certificate_file: ${OTEL_EXPORTER_OTLP_TRACES_CERTIFICATE}
+              # Configure mTLS private client key. 
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
+              client_key_file: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_KEY}
+              # Configure mTLS client certificate. 
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
+              client_certificate_file: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_CERTIFICATE}
             # Configure compression.
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
@@ -212,18 +214,20 @@ meter_provider:
             # Configure endpoint, including the metric specific path.
             # If omitted or null, http://localhost:4318/v1/metrics is used.
             endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
-            # Configure certificate used to verify a server's TLS credentials. 
-            # Absolute path to certificate file in PEM format.
-            # If omitted or null, system default certificate verification is used for secure connections.
-            certificate_file: ${OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE}
-            # Configure mTLS private client key. 
-            # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
-            # If omitted or null, mTLS is not used.
-            client_key_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_KEY}
-            # Configure mTLS client certificate. 
-            # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
-            # If omitted or null, mTLS is not used.
-            client_certificate_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_CERTIFICATE}
+            # Configure TLS settings for the exporter.
+            tls:
+              # Configure certificate used to verify a server's TLS credentials. 
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
+              certificate_file: ${OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE}
+              # Configure mTLS private client key. 
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
+              client_key_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_KEY}
+              # Configure mTLS client certificate. 
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
+              client_certificate_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_CERTIFICATE}
             # Configure compression.
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.
@@ -277,18 +281,20 @@ logger_provider:
           # Configure exporter to be OTLP with HTTP transport.
           otlp_http:
             endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}
-            # Configure certificate used to verify a server's TLS credentials. 
-            # Absolute path to certificate file in PEM format.
-            # If omitted or null, system default certificate verification is used for secure connections.
-            certificate_file: ${OTEL_EXPORTER_OTLP_LOGS_CERTIFICATE}
-            # Configure mTLS private client key. 
-            # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
-            # If omitted or null, mTLS is not used.
-            client_key_file: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_KEY}
-            # Configure mTLS client certificate. 
-            # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
-            # If omitted or null, mTLS is not used.
-            client_certificate_file: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_CERTIFICATE}
+            # Configure TLS settings for the exporter.
+            tls:
+              # Configure certificate used to verify a server's TLS credentials. 
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
+              certificate_file: ${OTEL_EXPORTER_OTLP_LOGS_CERTIFICATE}
+              # Configure mTLS private client key. 
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
+              client_key_file: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_KEY}
+              # Configure mTLS client certificate. 
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
+              client_certificate_file: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_CERTIFICATE}
             # Configure compression.
             # Values include: gzip, none. Implementations may support other compression algorithms.
             # If omitted or null, none is used.

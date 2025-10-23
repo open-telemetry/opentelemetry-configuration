@@ -753,7 +753,7 @@
 # END meter_provider
 
 # START common
-- type: OtlpExporterCommon
+- type: TLSCommon
   property_descriptions:
     certificate_file: >
       Configure certificate used to verify a server's TLS credentials. 
@@ -773,6 +773,21 @@
       Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
       
       If omitted or null, mTLS is not used.
+    insecure: >
+      Configure client transport security for the exporter's connection. 
+      
+      Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
+      
+      If omitted or null, false is used.
+  path_patterns:
+    - .tracer_provider.processors[].*.exporter.otlp_http.tls
+    - .logger_provider.processors[].*.exporter.otlp_http.tls
+    - .meter_provider.readers[].periodic.exporter.otlp_http.tls
+    - .tracer_provider.processors[].*.exporter.otlp_grpc.tls
+    - .logger_provider.processors[].*.exporter.otlp_grpc.tls
+    - .meter_provider.readers[].periodic.exporter.otlp_grpc.tls
+- type: OtlpExporterCommon
+  property_descriptions:
     headers: >
       Configure headers. Entries have higher priority than entries from .headers_list.
       
@@ -801,6 +816,8 @@
       Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
       
       If omitted or null, cumulative is used.
+    tls: >
+      Configure TLS settings for the exporter.
     default_histogram_aggregation: >
       Configure default histogram aggregation. 
       
@@ -856,12 +873,6 @@
       Configure endpoint.
       
       If omitted or null, http://localhost:4317 is used.
-    insecure: >
-      Configure client transport security for the exporter's connection. 
-      
-      Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
-      
-      If omitted or null, false is used.
   path_patterns:
     - .tracer_provider.processors[].*.exporter.otlp_grpc
     - .logger_provider.processors[].*.exporter.otlp_grpc
