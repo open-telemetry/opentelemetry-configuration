@@ -8,7 +8,7 @@
 #     propertyB: The propertyB description.   # The description for MyType.propertyB
 #   path_patterns:                            # Array of patterns where this type occurs in the schema. Each key-value in an example configuration file is transformed
 #     - .foo                                  # into its JSON dot-notation location in the file, which is matched against these patterns. Each pattern is turned in a regex,
-                                              # after escaping special characters and replacing "*" with ".*".
+                                              # after escaping special characters and replacing "*" with ".+".
 
 # START OpenTelemetryConfiguration
 - type: OpenTelemetryConfiguration

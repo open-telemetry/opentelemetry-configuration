@@ -78,7 +78,9 @@
         },
         "ExperimentalResourceDetector": {
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
@@ -93,11 +95,6 @@
                 },
                 "service": {
                     "$ref": "#/$defs/ExperimentalServiceResourceDetector"
-                }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": ["object", "null"]
                 }
             }
         },

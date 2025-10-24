@@ -126,7 +126,9 @@
         },
         "PushMetricExporter": {
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
@@ -142,42 +144,31 @@
                 "console": {
                     "$ref": "common.json#/$defs/ConsoleExporter"
                 }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": ["object", "null"]
-                }
             }
         },
         "PullMetricExporter": {
             "type": ["object"],
-            "additionalProperties": true,
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
                 "prometheus/development": {
                     "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
                 }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": ["object", "null"]
-                }
             }
         },
         "MetricProducer": {
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
                 "opencensus": {
                     "$ref": "#/$defs/OpenCensusMetricProducer"
-                }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": ["object", "null"]
                 }
             }
         },

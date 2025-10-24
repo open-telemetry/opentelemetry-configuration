@@ -16,7 +16,9 @@
     "$defs": {
         "TextMapPropagator": {
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
@@ -37,11 +39,6 @@
                 },
                 "ottrace": {
                     "$ref": "#/$defs/OpenTracingPropagator"
-                }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": ["object", "null"]
                 }
             }
         },

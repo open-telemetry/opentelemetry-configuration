@@ -64,7 +64,9 @@
         },
         "LogRecordExporter": {
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
@@ -79,11 +81,6 @@
                 },
                 "console": {
                     "$ref": "common.json#/$defs/ConsoleExporter"
-                }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": ["object", "null"]
                 }
             }
         },
@@ -103,7 +100,9 @@
         },
         "LogRecordProcessor": {
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": {
+                "type": ["object"]
+            },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
@@ -112,11 +111,6 @@
                 },
                 "simple": {
                     "$ref": "#/$defs/SimpleLogRecordProcessor"
-                }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": ["object"]
                 }
             }
         },

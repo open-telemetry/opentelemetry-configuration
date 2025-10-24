@@ -135,7 +135,7 @@ if (outputFile === null) {
 // Helper functions
 
 // Converts an input pattern to a regular expression.
-// Converts any "*" to a ".*".
+// Converts any "*" to a ".+".
 // Escapes all other regex special characters.
 // Prefixes with "^", and adds "$" suffix.
 function toRegex(pattern) {
@@ -143,7 +143,7 @@ function toRegex(pattern) {
     if (parts.length === 0) parts = [pattern];
     const escaped = parts
         .map(chunk => chunk.replace(/[-[\]{}()*+?.,\\^$|]/g, "\\$&"))
-        .join("(.*)");
+        .join("(.+)");
     return "^" + escaped + "$";
 }
 
