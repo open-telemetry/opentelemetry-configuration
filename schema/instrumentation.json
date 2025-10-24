@@ -88,6 +88,12 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
+                "known_methods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "client": {
                     "type": "object",
                     "additionalProperties": false,
