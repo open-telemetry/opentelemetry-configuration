@@ -2,9 +2,7 @@
     "$id": "https://opentelemetry.io/otelconfig/instrumentation.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
-    "additionalProperties": {
-        "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
-    },
+    "additionalProperties": false,
     "properties": {
         "general": {
             "$ref": "#/$defs/ExperimentalGeneralInstrumentation"
