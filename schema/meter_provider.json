@@ -239,14 +239,8 @@
                 "endpoint": {
                     "type": ["string", "null"]
                 },
-                "certificate_file": {
-                    "type": ["string", "null"]
-                },
-                "client_key_file": {
-                    "type": ["string", "null"]
-                },
-                "client_certificate_file": {
-                    "type": ["string", "null"]
+                "tls": {
+                    "$ref": "common.json#/$defs/HttpTls"
                 },
                 "headers": {
                     "type": "array",
@@ -282,14 +276,8 @@
                 "endpoint": {
                     "type": ["string", "null"]
                 },
-                "certificate_file": {
-                    "type": ["string", "null"]
-                },
-                "client_key_file": {
-                    "type": ["string", "null"]
-                },
-                "client_certificate_file": {
-                    "type": ["string", "null"]
+                "tls": {
+                    "$ref": "common.json#/$defs/GrpcTls"
                 },
                 "headers": {
                     "type": "array",
@@ -306,9 +294,6 @@
                 "timeout": {
                     "type": ["integer", "null"],
                     "minimum": 0
-                },
-                "insecure": {
-                    "type": ["boolean", "null"]
                 },
                 "temporality_preference": {
                     "$ref": "#/$defs/ExporterTemporalityPreference"
