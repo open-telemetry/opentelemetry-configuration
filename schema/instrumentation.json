@@ -2,7 +2,9 @@
     "$id": "https://opentelemetry.io/otelconfig/instrumentation.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
-    "additionalProperties": false,
+    "additionalProperties": {
+        "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    },
     "properties": {
         "general": {
             "$ref": "#/$defs/ExperimentalGeneralInstrumentation"
@@ -38,11 +40,6 @@
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "swift": {
-            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
-        }
-    },
-    "patternProperties": {
-        ".*": {
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         }
     },
@@ -128,11 +125,8 @@
         },
         "ExperimentalLanguageSpecificInstrumentation": {
             "type": "object",
-            "additionalProperties": true,
-            "patternProperties": {
-                ".*": {
-                    "type": "object"
-                }
+            "additionalProperties": {
+                "type": "object"
             }
         }
     }
