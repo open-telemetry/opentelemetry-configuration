@@ -1,0 +1,22 @@
+timeout = 30
+retry_wait_time = 5
+max_retries = 6
+max_concurrency = 4
+
+# Check link anchors
+include_fragments = true
+
+remap = [
+  # workaround for https://github.com/lycheeverse/lychee/issues/1729
+  'https://github.com/(.*?)/(.*?)/blob/(.*?)/(.*#.*)$ https://raw.githubusercontent.com/$1/$2/$3/$4',
+]
+
+accept = ["200..=299", "403"]
+
+exclude = [
+    # excluding links to pull requests and issues is done for performance
+    '^https://github.com/open-telemetry/opentelemetry-configuration/(issues|pull)/\d+$',
+    # exclude localhost, file references from schema-docs.md
+    "^http://localhost",
+    "^file://",
+]

@@ -42,14 +42,8 @@
                 "endpoint": {
                     "type": ["string", "null"]
                 },
-                "certificate_file": {
-                    "type": ["string", "null"]
-                },
-                "client_key_file": {
-                    "type": ["string", "null"]
-                },
-                "client_certificate_file": {
-                    "type": ["string", "null"]
+                "tls": {
+                    "$ref": "#/$defs/HttpTls"
                 },
                 "headers": {
                     "type": "array",
@@ -86,19 +80,13 @@
                 "endpoint": {
                     "type": ["string", "null"]
                 },
-                "certificate_file": {
-                    "type": ["string", "null"]
-                },
-                "client_key_file": {
-                    "type": ["string", "null"]
-                },
-                "client_certificate_file": {
-                    "type": ["string", "null"]
+                "tls": {
+                    "$ref": "#/$defs/GrpcTls"
                 },
                 "headers": {
                     "type": "array",
                     "items": {
-                        "$ref": "common.json#/$defs/NameStringValuePair"
+                        "$ref": "#/$defs/NameStringValuePair"
                     }
                 },
                 "headers_list": {
@@ -110,9 +98,6 @@
                 "timeout": {
                     "type": ["integer", "null"],
                     "minimum": 0
-                },
-                "insecure": {
-                    "type": ["boolean", "null"]
                 }
             }
         },
@@ -128,6 +113,39 @@
         "ConsoleExporter": {
             "type": ["object", "null"],
             "additionalProperties": false
+        },
+        "HttpTls": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "certificate_file": {
+                    "type": ["string", "null"]
+                },
+                "client_key_file": {
+                    "type": ["string", "null"]
+                },
+                "client_certificate_file": {
+                    "type": ["string", "null"]
+                }
+            }
+        },
+        "GrpcTls": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "certificate_file": {
+                    "type": ["string", "null"]
+                },
+                "client_key_file": {
+                    "type": ["string", "null"]
+                },
+                "client_certificate_file": {
+                    "type": ["string", "null"]
+                },
+                "insecure": {
+                    "type": ["boolean", "null"]
+                }
+            }
         }
     }
 }

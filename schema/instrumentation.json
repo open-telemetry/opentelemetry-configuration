@@ -41,11 +41,6 @@
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         }
     },
-    "patternProperties": {
-        ".*": {
-            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
-        }
-    },
     "$defs": {
         "ExperimentalGeneralInstrumentation": {
             "type": "object",
@@ -137,11 +132,8 @@
         },
         "ExperimentalLanguageSpecificInstrumentation": {
             "type": "object",
-            "additionalProperties": true,
-            "patternProperties": {
-                ".*": {
-                    "type": "object"
-                }
+            "additionalProperties": {
+                "type": "object"
             }
         }
     }

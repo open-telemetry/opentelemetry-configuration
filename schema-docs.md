@@ -48,6 +48,8 @@
   * [ExplicitBucketHistogramAggregation](#explicitbuckethistogramaggregation)
   * [ExporterDefaultHistogramAggregation](#exporterdefaulthistogramaggregation)
   * [ExporterTemporalityPreference](#exportertemporalitypreference)
+  * [GrpcTls](#grpctls)
+  * [HttpTls](#httptls)
   * [IncludeExclude](#includeexclude)
   * [InstrumentType](#instrumenttype)
   * [JaegerPropagator](#jaegerpropagator)
@@ -1012,7 +1014,6 @@ Usages:
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"$ref":"#/$defs/ExperimentalLanguageSpecificInstrumentation"}}`
 * `additionalProperties`: `false`
 
 Usages:
@@ -1063,11 +1064,6 @@ Usages:
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "swift": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
-    }
-  },
-  "patternProperties": {
-    ".*": {
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     }
   },
@@ -1162,11 +1158,8 @@ Usages:
     },
     "ExperimentalLanguageSpecificInstrumentation": {
       "type": "object",
-      "additionalProperties": true,
-      "patternProperties": {
-        ".*": {
-          "type": "object"
-        }
+      "additionalProperties": {
+        "type": "object"
       }
     }
   }
@@ -1179,8 +1172,7 @@ No properties.
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"type":"object"}}`
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":"object"}`
 
 Usages:
 
@@ -1202,11 +1194,8 @@ Usages:
 [JSON Schema Source File](./schema/instrumentation.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
-  "patternProperties": {
-    ".*": {
-      "type": "object"
-    }
+  "additionalProperties": {
+    "type": "object"
   }
 }</pre>
 </details>
@@ -1718,8 +1707,7 @@ Usages:
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"type":["object","null"]}}`
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":["object","null"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
@@ -1733,7 +1721,12 @@ Usages:
 [JSON Schema Source File](./schema/resource.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ]
+  },
   "minProperties": 1,
   "maxProperties": 1,
   "properties": {
@@ -1748,14 +1741,6 @@ Usages:
     },
     "service": {
       "$ref": "#/$defs/ExperimentalServiceResourceDetector"
-    }
-  },
-  "patternProperties": {
-    ".*": {
-      "type": [
-        "object",
-        "null"
-      ]
     }
   }
 }</pre>
@@ -1995,6 +1980,113 @@ Usages:
     "delta",
     "low_memory"
   ]
+}</pre>
+</details>
+
+## GrpcTls <a id="grpctls"></a>
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
+| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
+| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
+| `insecure` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> |
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`OtlpGrpcExporter.tls`](#otlpgrpcexporter)
+* [`OtlpGrpcMetricExporter.tls`](#otlpgrpcmetricexporter)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/common.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "certificate_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "client_key_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "client_certificate_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "insecure": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  }
+}</pre>
+</details>
+
+## HttpTls <a id="httptls"></a>
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
+| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
+| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`OtlpHttpExporter.tls`](#otlphttpexporter)
+* [`OtlpHttpMetricExporter.tls`](#otlphttpmetricexporter)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/common.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "certificate_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "client_key_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "client_certificate_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
 }</pre>
 </details>
 
@@ -2268,7 +2360,12 @@ Usages:
     },
     "LogRecordExporter": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
       "minProperties": 1,
       "maxProperties": 1,
       "properties": {
@@ -2283,14 +2380,6 @@ Usages:
         },
         "console": {
           "$ref": "common.json#/$defs/ConsoleExporter"
-        }
-      },
-      "patternProperties": {
-        ".*": {
-          "type": [
-            "object",
-            "null"
-          ]
         }
       }
     },
@@ -2316,7 +2405,11 @@ Usages:
     },
     "LogRecordProcessor": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": {
+        "type": [
+          "object"
+        ]
+      },
       "minProperties": 1,
       "maxProperties": 1,
       "properties": {
@@ -2325,13 +2418,6 @@ Usages:
         },
         "simple": {
           "$ref": "#/$defs/SimpleLogRecordProcessor"
-        }
-      },
-      "patternProperties": {
-        ".*": {
-          "type": [
-            "object"
-          ]
         }
       }
     },
@@ -2398,8 +2484,7 @@ Usages:
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"type":["object","null"]}}`
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":["object","null"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
@@ -2414,7 +2499,12 @@ Usages:
 [JSON Schema Source File](./schema/logger_provider.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ]
+  },
   "minProperties": 1,
   "maxProperties": 1,
   "properties": {
@@ -2429,14 +2519,6 @@ Usages:
     },
     "console": {
       "$ref": "common.json#/$defs/ConsoleExporter"
-    }
-  },
-  "patternProperties": {
-    ".*": {
-      "type": [
-        "object",
-        "null"
-      ]
     }
   }
 }</pre>
@@ -2494,8 +2576,7 @@ Usages:
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"type":["object"]}}`
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":["object"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
@@ -2509,7 +2590,11 @@ Usages:
 [JSON Schema Source File](./schema/logger_provider.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": {
+    "type": [
+      "object"
+    ]
+  },
   "minProperties": 1,
   "maxProperties": 1,
   "properties": {
@@ -2518,13 +2603,6 @@ Usages:
     },
     "simple": {
       "$ref": "#/$defs/SimpleLogRecordProcessor"
-    }
-  },
-  "patternProperties": {
-    ".*": {
-      "type": [
-        "object"
-      ]
     }
   }
 }</pre>
@@ -2713,7 +2791,12 @@ Usages:
     },
     "PushMetricExporter": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
       "minProperties": 1,
       "maxProperties": 1,
       "properties": {
@@ -2729,53 +2812,39 @@ Usages:
         "console": {
           "$ref": "common.json#/$defs/ConsoleExporter"
         }
-      },
-      "patternProperties": {
-        ".*": {
-          "type": [
-            "object",
-            "null"
-          ]
-        }
       }
     },
     "PullMetricExporter": {
       "type": [
         "object"
       ],
-      "additionalProperties": true,
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
       "minProperties": 1,
       "maxProperties": 1,
       "properties": {
         "prometheus/development": {
           "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
         }
-      },
-      "patternProperties": {
-        ".*": {
-          "type": [
-            "object",
-            "null"
-          ]
-        }
       }
     },
     "MetricProducer": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
       "minProperties": 1,
       "maxProperties": 1,
       "properties": {
         "opencensus": {
           "$ref": "#/$defs/OpenCensusMetricProducer"
-        }
-      },
-      "patternProperties": {
-        ".*": {
-          "type": [
-            "object",
-            "null"
-          ]
         }
       }
     },
@@ -2876,23 +2945,8 @@ Usages:
             "null"
           ]
         },
-        "certificate_file": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "client_key_file": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "client_certificate_file": {
-          "type": [
-            "string",
-            "null"
-          ]
+        "tls": {
+          "$ref": "common.json#/$defs/HttpTls"
         },
         "headers": {
           "type": "array",
@@ -2943,23 +2997,8 @@ Usages:
             "null"
           ]
         },
-        "certificate_file": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "client_key_file": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "client_certificate_file": {
-          "type": [
-            "string",
-            "null"
-          ]
+        "tls": {
+          "$ref": "common.json#/$defs/GrpcTls"
         },
         "headers": {
           "type": "array",
@@ -2985,12 +3024,6 @@ Usages:
             "null"
           ],
           "minimum": 0
-        },
-        "insecure": {
-          "type": [
-            "boolean",
-            "null"
-          ]
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference"
@@ -3280,8 +3313,7 @@ Usages:
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"type":["object","null"]}}`
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":["object","null"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
@@ -3296,20 +3328,17 @@ Usages:
 [JSON Schema Source File](./schema/meter_provider.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ]
+  },
   "minProperties": 1,
   "maxProperties": 1,
   "properties": {
     "opencensus": {
       "$ref": "#/$defs/OpenCensusMetricProducer"
-    }
-  },
-  "patternProperties": {
-    ".*": {
-      "type": [
-        "object",
-        "null"
-      ]
     }
   }
 }</pre>
@@ -3565,14 +3594,11 @@ Usages:
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> |
-| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
-| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
-| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> |
 | `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> |
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> |
-| `insecure` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> |
+| `tls` | [`GrpcTls`](#grpctls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
 Constraints: 
 
@@ -3600,28 +3626,13 @@ Usages:
         "null"
       ]
     },
-    "certificate_file": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "client_key_file": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "client_certificate_file": {
-      "type": [
-        "string",
-        "null"
-      ]
+    "tls": {
+      "$ref": "#/$defs/GrpcTls"
     },
     "headers": {
       "type": "array",
       "items": {
-        "$ref": "common.json#/$defs/NameStringValuePair"
+        "$ref": "#/$defs/NameStringValuePair"
       }
     },
     "headers_list": {
@@ -3642,12 +3653,6 @@ Usages:
         "null"
       ],
       "minimum": 0
-    },
-    "insecure": {
-      "type": [
-        "boolean",
-        "null"
-      ]
     }
   }
 }</pre>
@@ -3658,16 +3663,13 @@ Usages:
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> |
-| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
-| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
-| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> |
 | `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> |
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> |
-| `insecure` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> |
 | `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
 | `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
+| `tls` | [`GrpcTls`](#grpctls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
 Constraints: 
 
@@ -3694,23 +3696,8 @@ Usages:
         "null"
       ]
     },
-    "certificate_file": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "client_key_file": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "client_certificate_file": {
-      "type": [
-        "string",
-        "null"
-      ]
+    "tls": {
+      "$ref": "common.json#/$defs/GrpcTls"
     },
     "headers": {
       "type": "array",
@@ -3736,12 +3723,6 @@ Usages:
         "null"
       ],
       "minimum": 0
-    },
-    "insecure": {
-      "type": [
-        "boolean",
-        "null"
-      ]
     },
     "temporality_preference": {
       "$ref": "#/$defs/ExporterTemporalityPreference"
@@ -3787,14 +3768,12 @@ Usages:
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint, including the signal specific path.<br>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.<br> |
-| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
-| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
-| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> |
 | `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> |
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> |
 | `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> |
+| `tls` | [`HttpTls`](#httptls) | `false` | No constraints. | TODO |
 
 Constraints: 
 
@@ -3822,23 +3801,8 @@ Usages:
         "null"
       ]
     },
-    "certificate_file": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "client_key_file": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "client_certificate_file": {
-      "type": [
-        "string",
-        "null"
-      ]
+    "tls": {
+      "$ref": "#/$defs/HttpTls"
     },
     "headers": {
       "type": "array",
@@ -3878,9 +3842,6 @@ Usages:
 |---|---|---|---|---|
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint, including the signal specific path.<br>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.<br> |
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> |
-| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials.<br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
-| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
-| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate.<br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> |
 | `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> |
@@ -3888,6 +3849,7 @@ Usages:
 | `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> |
 | `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
 | `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
+| `tls` | [`HttpTls`](#httptls) | `false` | No constraints. | TODO |
 
 Constraints: 
 
@@ -3914,23 +3876,8 @@ Usages:
         "null"
       ]
     },
-    "certificate_file": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "client_key_file": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "client_certificate_file": {
-      "type": [
-        "string",
-        "null"
-      ]
+    "tls": {
+      "$ref": "common.json#/$defs/HttpTls"
     },
     "headers": {
       "type": "array",
@@ -4116,7 +4063,12 @@ Usages:
   "$defs": {
     "TextMapPropagator": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
       "minProperties": 1,
       "maxProperties": 1,
       "properties": {
@@ -4137,14 +4089,6 @@ Usages:
         },
         "ottrace": {
           "$ref": "#/$defs/OpenTracingPropagator"
-        }
-      },
-      "patternProperties": {
-        ".*": {
-          "type": [
-            "object",
-            "null"
-          ]
         }
       }
     },
@@ -4204,8 +4148,7 @@ Usages:
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"type":["object","null"]}}`
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":["object","null"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
@@ -4221,20 +4164,17 @@ Usages:
   "type": [
     "object"
   ],
-  "additionalProperties": true,
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ]
+  },
   "minProperties": 1,
   "maxProperties": 1,
   "properties": {
     "prometheus/development": {
       "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
-    }
-  },
-  "patternProperties": {
-    ".*": {
-      "type": [
-        "object",
-        "null"
-      ]
     }
   }
 }</pre>
@@ -4297,8 +4237,7 @@ Usages:
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"type":["object","null"]}}`
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":["object","null"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
@@ -4312,7 +4251,12 @@ Usages:
 [JSON Schema Source File](./schema/meter_provider.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ]
+  },
   "minProperties": 1,
   "maxProperties": 1,
   "properties": {
@@ -4327,14 +4271,6 @@ Usages:
     },
     "console": {
       "$ref": "common.json#/$defs/ConsoleExporter"
-    }
-  },
-  "patternProperties": {
-    ".*": {
-      "type": [
-        "object",
-        "null"
-      ]
     }
   }
 }</pre>
@@ -4474,7 +4410,12 @@ Usages:
     },
     "ExperimentalResourceDetector": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
       "minProperties": 1,
       "maxProperties": 1,
       "properties": {
@@ -4489,14 +4430,6 @@ Usages:
         },
         "service": {
           "$ref": "#/$defs/ExperimentalServiceResourceDetector"
-        }
-      },
-      "patternProperties": {
-        ".*": {
-          "type": [
-            "object",
-            "null"
-          ]
         }
       }
     },
@@ -4546,8 +4479,7 @@ Usages:
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"type":["object","null"]}}`
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":["object","null"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
@@ -4567,7 +4499,12 @@ Usages:
 [JSON Schema Source File](./schema/tracer_provider.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ]
+  },
   "minProperties": 1,
   "maxProperties": 1,
   "properties": {
@@ -4585,14 +4522,6 @@ Usages:
     },
     "trace_id_ratio_based": {
       "$ref": "#/$defs/TraceIdRatioBasedSampler"
-    }
-  },
-  "patternProperties": {
-    ".*": {
-      "type": [
-        "object",
-        "null"
-      ]
     }
   }
 }</pre>
@@ -4678,8 +4607,7 @@ Usages:
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"type":["object","null"]}}`
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":["object","null"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
@@ -4694,7 +4622,12 @@ Usages:
 [JSON Schema Source File](./schema/tracer_provider.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ]
+  },
   "minProperties": 1,
   "maxProperties": 1,
   "properties": {
@@ -4712,14 +4645,6 @@ Usages:
     },
     "zipkin": {
       "$ref": "#/$defs/ZipkinSpanExporter"
-    }
-  },
-  "patternProperties": {
-    ".*": {
-      "type": [
-        "object",
-        "null"
-      ]
     }
   }
 }</pre>
@@ -4809,8 +4734,7 @@ Usages:
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"type":["object","null"]}}`
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":["object","null"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
@@ -4824,7 +4748,12 @@ Usages:
 [JSON Schema Source File](./schema/tracer_provider.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ]
+  },
   "minProperties": 1,
   "maxProperties": 1,
   "properties": {
@@ -4833,14 +4762,6 @@ Usages:
     },
     "simple": {
       "$ref": "#/$defs/SimpleSpanProcessor"
-    }
-  },
-  "patternProperties": {
-    ".*": {
-      "type": [
-        "object",
-        "null"
-      ]
     }
   }
 }</pre>
@@ -4886,8 +4807,7 @@ Usages:
 
 Constraints: 
 
-* `patternProperties`: `{".*":{"type":["object","null"]}}`
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":["object","null"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
@@ -4901,7 +4821,12 @@ Usages:
 [JSON Schema Source File](./schema/propagator.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ]
+  },
   "minProperties": 1,
   "maxProperties": 1,
   "properties": {
@@ -4922,14 +4847,6 @@ Usages:
     },
     "ottrace": {
       "$ref": "#/$defs/OpenTracingPropagator"
-    }
-  },
-  "patternProperties": {
-    ".*": {
-      "type": [
-        "object",
-        "null"
-      ]
     }
   }
 }</pre>
@@ -5086,7 +5003,12 @@ Usages:
     },
     "Sampler": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
       "minProperties": 1,
       "maxProperties": 1,
       "properties": {
@@ -5104,14 +5026,6 @@ Usages:
         },
         "trace_id_ratio_based": {
           "$ref": "#/$defs/TraceIdRatioBasedSampler"
-        }
-      },
-      "patternProperties": {
-        ".*": {
-          "type": [
-            "object",
-            "null"
-          ]
         }
       }
     },
@@ -5207,7 +5121,12 @@ Usages:
     },
     "SpanExporter": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
       "minProperties": 1,
       "maxProperties": 1,
       "properties": {
@@ -5225,14 +5144,6 @@ Usages:
         },
         "zipkin": {
           "$ref": "#/$defs/ZipkinSpanExporter"
-        }
-      },
-      "patternProperties": {
-        ".*": {
-          "type": [
-            "object",
-            "null"
-          ]
         }
       }
     },
@@ -5286,7 +5197,12 @@ Usages:
     },
     "SpanProcessor": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
       "minProperties": 1,
       "maxProperties": 1,
       "properties": {
@@ -5295,14 +5211,6 @@ Usages:
         },
         "simple": {
           "$ref": "#/$defs/SimpleSpanProcessor"
-        }
-      },
-      "patternProperties": {
-        ".*": {
-          "type": [
-            "object",
-            "null"
-          ]
         }
       }
     },

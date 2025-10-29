@@ -442,6 +442,47 @@
 - type: ExporterTemporalityPreference
   properties: []
   isSdkExtensionPlugin: false
+- type: GrpcTls
+  properties:
+    - property: certificate_file
+      description: |
+        Configure certificate used to verify a server's TLS credentials. 
+        Absolute path to certificate file in PEM format.
+        If omitted or null, system default certificate verification is used for secure connections.
+    - property: client_key_file
+      description: |
+        Configure mTLS private client key. 
+        Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+        If omitted or null, mTLS is not used.
+    - property: client_certificate_file
+      description: |
+        Configure mTLS client certificate. 
+        Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+        If omitted or null, mTLS is not used.
+    - property: insecure
+      description: |
+        Configure client transport security for the exporter's connection. 
+        Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
+        If omitted or null, false is used.
+  isSdkExtensionPlugin: false
+- type: HttpTls
+  properties:
+    - property: certificate_file
+      description: |
+        Configure certificate used to verify a server's TLS credentials. 
+        Absolute path to certificate file in PEM format.
+        If omitted or null, system default certificate verification is used for secure connections.
+    - property: client_key_file
+      description: |
+        Configure mTLS private client key. 
+        Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+        If omitted or null, mTLS is not used.
+    - property: client_certificate_file
+      description: |
+        Configure mTLS client certificate. 
+        Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+        If omitted or null, mTLS is not used.
+  isSdkExtensionPlugin: false
 - type: IncludeExclude
   properties:
     - property: included
@@ -613,21 +654,6 @@
       description: |
         Configure endpoint.
         If omitted or null, http://localhost:4317 is used.
-    - property: certificate_file
-      description: |
-        Configure certificate used to verify a server's TLS credentials.
-        Absolute path to certificate file in PEM format.
-        If omitted or null, system default certificate verification is used for secure connections.
-    - property: client_key_file
-      description: |
-        Configure mTLS private client key. 
-        Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
-        If omitted or null, mTLS is not used.
-    - property: client_certificate_file
-      description: |
-        Configure mTLS client certificate.
-        Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
-        If omitted or null, mTLS is not used.
     - property: headers
       description: |
         Configure headers. Entries have higher priority than entries from .headers_list.
@@ -647,11 +673,8 @@
         Configure max time (in milliseconds) to wait for each export.
         Value must be non-negative. A value of 0 indicates no limit (infinity).
         If omitted or null, 10000 is used.
-    - property: insecure
-      description: |
-        Configure client transport security for the exporter's connection. 
-        Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
-        If omitted or null, false is used.
+    - property: tls
+      description: Configure TLS settings for the exporter.
   isSdkExtensionPlugin: false
 - type: OtlpGrpcMetricExporter
   properties:
@@ -659,21 +682,6 @@
       description: |
         Configure endpoint.
         If omitted or null, http://localhost:4317 is used.
-    - property: certificate_file
-      description: |
-        Configure certificate used to verify a server's TLS credentials.
-        Absolute path to certificate file in PEM format.
-        If omitted or null, system default certificate verification is used for secure connections.
-    - property: client_key_file
-      description: |
-        Configure mTLS private client key. 
-        Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
-        If omitted or null, mTLS is not used.
-    - property: client_certificate_file
-      description: |
-        Configure mTLS client certificate.
-        Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
-        If omitted or null, mTLS is not used.
     - property: headers
       description: |
         Configure headers. Entries have higher priority than entries from .headers_list.
@@ -693,11 +701,6 @@
         Configure max time (in milliseconds) to wait for each export.
         Value must be non-negative. A value of 0 indicates no limit (infinity).
         If omitted or null, 10000 is used.
-    - property: insecure
-      description: |
-        Configure client transport security for the exporter's connection. 
-        Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
-        If omitted or null, false is used.
     - property: temporality_preference
       description: |
         Configure temporality preference.
@@ -708,6 +711,8 @@
         Configure default histogram aggregation.
         Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         If omitted or null, explicit_bucket_histogram is used.
+    - property: tls
+      description: Configure TLS settings for the exporter.
   isSdkExtensionPlugin: false
 - type: OtlpHttpEncoding
   properties: []
@@ -718,21 +723,6 @@
       description: |
         Configure endpoint, including the signal specific path.
         If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
-    - property: certificate_file
-      description: |
-        Configure certificate used to verify a server's TLS credentials.
-        Absolute path to certificate file in PEM format.
-        If omitted or null, system default certificate verification is used for secure connections.
-    - property: client_key_file
-      description: |
-        Configure mTLS private client key. 
-        Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
-        If omitted or null, mTLS is not used.
-    - property: client_certificate_file
-      description: |
-        Configure mTLS client certificate.
-        Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
-        If omitted or null, mTLS is not used.
     - property: headers
       description: |
         Configure headers. Entries have higher priority than entries from .headers_list.
@@ -757,6 +747,8 @@
         Configure the encoding used for messages. 
         Values include: protobuf, json. Implementations may not support json.
         If omitted or null, protobuf is used.
+    - property: tls
+      description: TODO
   isSdkExtensionPlugin: false
 - type: OtlpHttpMetricExporter
   properties:
@@ -768,21 +760,6 @@
       description: |
         Configure endpoint.
         If omitted or null, http://localhost:4317 is used.
-    - property: certificate_file
-      description: |
-        Configure certificate used to verify a server's TLS credentials.
-        Absolute path to certificate file in PEM format.
-        If omitted or null, system default certificate verification is used for secure connections.
-    - property: client_key_file
-      description: |
-        Configure mTLS private client key. 
-        Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
-        If omitted or null, mTLS is not used.
-    - property: client_certificate_file
-      description: |
-        Configure mTLS client certificate.
-        Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
-        If omitted or null, mTLS is not used.
     - property: headers
       description: |
         Configure headers. Entries have higher priority than entries from .headers_list.
@@ -817,6 +794,8 @@
         Configure default histogram aggregation.
         Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         If omitted or null, explicit_bucket_histogram is used.
+    - property: tls
+      description: TODO
   isSdkExtensionPlugin: false
 - type: ParentBasedSampler
   properties:
