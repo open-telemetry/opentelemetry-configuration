@@ -748,7 +748,7 @@
         Values include: protobuf, json. Implementations may not support json.
         If omitted or null, protobuf is used.
     - property: tls
-      description: TODO
+      description: Configure TLS settings for the exporter.
   isSdkExtensionPlugin: false
 - type: OtlpHttpMetricExporter
   properties:
@@ -795,7 +795,7 @@
         Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         If omitted or null, explicit_bucket_histogram is used.
     - property: tls
-      description: TODO
+      description: Configure TLS settings for the exporter.
   isSdkExtensionPlugin: false
 - type: ParentBasedSampler
   properties:

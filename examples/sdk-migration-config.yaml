@@ -106,7 +106,7 @@ tracer_provider:
             # Configure endpoint, including the signal specific path.
             # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
               # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
@@ -215,7 +215,7 @@ meter_provider:
             # Configure endpoint, including the signal specific path.
             # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
               # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
@@ -284,7 +284,7 @@ logger_provider:
             # Configure endpoint, including the signal specific path.
             # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
               # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
