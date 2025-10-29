@@ -17,6 +17,6 @@ exclude = [
     # excluding links to pull requests and issues is done for performance
     '^https://github.com/open-telemetry/opentelemetry-configuration/(issues|pull)/\d+$',
     # exclude localhost, file references from schema-docs.md
-    "^http://localhost",
-    "^file://",
+    "^http://localhost.*",
+    "^file://.*",
 ]

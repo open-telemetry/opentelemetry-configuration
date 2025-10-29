@@ -179,7 +179,7 @@ The JSON schema [`title` and `description` annotations](https://json-schema.org/
 Despite these potential benefits, these keywords should be omitted:
 
 * The titles of `object` and `enum` types produced by code generation tools should be defined using key values in [$defs](https://json-schema.org/understanding-json-schema/structuring#defs). Setting the `title` keyword introduces multiple sources of truth and possible conflict.
-* As described in [description generation](./CONTRIBUTING.md#description-generation), we use a different mechanism to describe the semantics of types and properties. Setting the `description` keyword introduces multiple sources of truth and possible conflict.
+* As described in [description generation](./CONTRIBUTING.md#make-generate-descriptions), we use a different mechanism to describe the semantics of types and properties. Setting the `description` keyword introduces multiple sources of truth and possible conflict.
 
 ## Schemas and subschemas
 
