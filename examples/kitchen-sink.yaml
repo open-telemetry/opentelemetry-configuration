@@ -787,9 +787,9 @@ tracer_provider:
       # Configure remote_parent_not_sampled sampler.
       # If omitted or null, always_off is used.
       remote_parent_not_sampled:
-        # Configure sampler to be probability.
+        # Configure sampler to be trace_id_ratio_based.
         probability/development:
-          # Configure trace_id_ratio.
+          # Configure ratio.
           # If omitted or null, 1.0 is used.
           ratio: 0.01
       # Configure local_parent_sampled sampler.

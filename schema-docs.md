@@ -37,6 +37,7 @@
   * [ExperimentalOtlpFileMetricExporter](#experimentalotlpfilemetricexporter)
   * [ExperimentalPeerInstrumentation](#experimentalpeerinstrumentation)
   * [ExperimentalPeerServiceMapping](#experimentalpeerservicemapping)
+  * [ExperimentalProbabilitySampler](#experimentalprobabilitysampler)
   * [ExperimentalProcessResourceDetector](#experimentalprocessresourcedetector)
   * [ExperimentalPrometheusMetricExporter](#experimentalprometheusmetricexporter)
   * [ExperimentalResourceDetection](#experimentalresourcedetection)
@@ -1564,6 +1565,41 @@ Usages:
     "peer",
     "service"
   ]
+}</pre>
+</details>
+
+## ExperimentalProbabilitySampler <a id="experimentalprobabilitysampler"></a>
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | No constraints. | TODO |
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`Sampler.probability/development`](#sampler)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "ratio": {
+      "type": [
+        "number",
+        "null"
+      ]
+    }
+  }
 }</pre>
 </details>
 
@@ -4476,6 +4512,7 @@ Usages:
 | `jaeger_remote` | [`JaegerRemoteSampler`](#jaegerremotesampler) | `false` | No constraints. | TODO |
 | `parent_based` | [`ParentBasedSampler`](#parentbasedsampler) | `false` | No constraints. | Configure sampler to be parent_based. |
 | `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | No constraints. | Configure sampler to be trace_id_ratio_based. |
+| `probability/development` | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | No constraints. | TODO |
 
 Constraints: 
 
@@ -4519,6 +4556,9 @@ Usages:
     },
     "parent_based": {
       "$ref": "#/$defs/ParentBasedSampler"
+    },
+    "probability/development": {
+      "$ref": "#/$defs/ExperimentalProbabilitySampler"
     },
     "trace_id_ratio_based": {
       "$ref": "#/$defs/TraceIdRatioBasedSampler"
@@ -5024,6 +5064,9 @@ Usages:
         "parent_based": {
           "$ref": "#/$defs/ParentBasedSampler"
         },
+        "probability/development": {
+          "$ref": "#/$defs/ExperimentalProbabilitySampler"
+        },
         "trace_id_ratio_based": {
           "$ref": "#/$defs/TraceIdRatioBasedSampler"
         }
@@ -5089,6 +5132,21 @@ Usages:
         },
         "local_parent_not_sampled": {
           "$ref": "#/$defs/Sampler"
+        }
+      }
+    },
+    "ExperimentalProbabilitySampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ratio": {
+          "type": [
+            "number",
+            "null"
+          ]
         }
       }
     },
