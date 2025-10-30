@@ -475,7 +475,7 @@ Usages:
 |---|---|
 | `max_scale` | supported |
 | `max_size` | supported |
-| `record_min_max` | supported |
+| `record_min_max` | ignored |
 </details>
 
 Constraints: 
@@ -1834,9 +1834,9 @@ Usages:
 |---|---|
 | `host` | supported |
 | `port` | supported |
-| `without_scope_info` | supported |
+| `without_scope_info` | ignored |
 | `with_resource_constant_labels` | supported |
-| `translation_strategy` | supported |
+| `translation_strategy` | not_implemented |
 </details>
 
 Constraints: 
@@ -2292,7 +2292,7 @@ Usages:
 | `certificate_file` | unknown |
 | `client_key_file` | unknown |
 | `client_certificate_file` | unknown |
-| `insecure` | unknown |
+| `insecure` | not_applicable |
 </details>
 
 Constraints: 
