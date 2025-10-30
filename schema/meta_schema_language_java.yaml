@@ -2,365 +2,373 @@ latestSupportedFileFormat: 1.0.0-rc.1
 typeSupportStatuses:
   - type: Aggregation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: AlwaysOffSampler
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: AlwaysOnSampler
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: AttributeLimits
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: AttributeNameValue
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: AttributeType
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: B3MultiPropagator
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: B3Propagator
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: BaggagePropagator
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: Base2ExponentialBucketHistogramAggregation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides:
+      - property: record_min_max
+        status: ignored
   - type: BatchLogRecordProcessor
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: BatchSpanProcessor
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: CardinalityLimits
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ConsoleExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: DefaultAggregation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: DropAggregation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExemplarFilter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalHostResourceDetector
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalHttpClientInstrumentation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalHttpInstrumentation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalHttpServerInstrumentation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalInstrumentation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalLoggerConfig
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalLoggerConfigurator
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalLoggerMatcherAndConfig
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalMeterConfig
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalMeterConfigurator
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalMeterMatcherAndConfig
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalOtlpFileExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalOtlpFileMetricExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalPeerInstrumentation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalPeerServiceMapping
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalPrometheusMetricExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides:
+      - property: translation_strategy
+        status: not_implemented
+      - property: without_scope_info
+        status: ignored
   - type: ExperimentalResourceDetection
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalResourceDetector
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalTracerConfig
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalTracerConfigurator
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExplicitBucketHistogramAggregation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExporterDefaultHistogramAggregation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ExporterTemporalityPreference
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: GrpcTls
     status: unknown
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides:
+      - property: insecure
+        status: not_applicable
   - type: HttpTls
     status: unknown
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: IncludeExclude
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: InstrumentType
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: JaegerPropagator
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: JaegerRemoteSampler
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: LastValueAggregation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: LoggerProvider
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: LogRecordExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: LogRecordLimits
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: LogRecordProcessor
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: MeterProvider
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: MetricProducer
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: MetricReader
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: NameStringValuePair
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: OpenCensusMetricProducer
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: OpentelemetryConfiguration
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: OpenTracingPropagator
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: OtlpGrpcExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: OtlpGrpcMetricExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: OtlpHttpEncoding
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: OtlpHttpExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: OtlpHttpMetricExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ParentBasedSampler
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: PeriodicMetricReader
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: Propagator
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: PullMetricExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: PullMetricReader
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: PushMetricExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: Resource
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: Sampler
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: SimpleLogRecordProcessor
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: SimpleSpanProcessor
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: SpanExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: SpanLimits
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: SpanProcessor
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: SumAggregation
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: TextMapPropagator
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: TraceContextPropagator
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: TraceIdRatioBasedSampler
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: TracerProvider
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: View
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ViewSelector
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ViewStream
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []
   - type: ZipkinSpanExporter
     status: supported
-    unsupportedProperties: []
     notes: ""
+    propertyOverrides: []

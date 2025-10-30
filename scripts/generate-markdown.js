@@ -86,7 +86,7 @@ metaSchema.types.forEach(metaSchemaType => {
                 if (!typeSupportStatus) {
                     throw new Error(`Meta schema LanguageImplementation for language ${language} missing type ${type}.`);
                 }
-                const status = typeSupportStatus.unsupportedProperties.includes(property) ? 'unsupported' : typeSupportStatus.status;
+                const status = typeSupportStatus.propertyOverrides.includes(property) ? 'unsupported' : typeSupportStatus.status;
                 output.push(` ${status} |`);
             });
             output.push('\n');
@@ -150,7 +150,8 @@ KNOWN_LANGUAGES.forEach(language => {
 
         const propertySupportStatus = [];
         metaSchemaType.properties.forEach(metaSchemaProperty => {
-            const status = typeSupportStatus.unsupportedProperties.includes(metaSchemaProperty.property) ? 'unsupported' : typeSupportStatus.status;
+            const propertyOverride = typeSupportStatus.propertyOverrides.find(propertyOverride => propertyOverride.property === metaSchemaProperty.property);
+            const status = propertyOverride ? propertyOverride.status : typeSupportStatus.status;
             propertySupportStatus.push(`* \`${metaSchemaProperty.property}\`: ${status}<br>`) ;
         });
 

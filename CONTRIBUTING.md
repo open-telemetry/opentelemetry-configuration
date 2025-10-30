@@ -257,10 +257,74 @@ make all
 
 The meta schema is broken across multiple files for improved maintainability:
 
-* [meta_schema_types.yaml](schema/meta_schema_types.yaml) contains property descriptions, semantics, and SDK extension plugin information.
-* `meta_schema_language_{language}.yaml` (e.g. [meta_schema_language_java.yaml](schema/meta_schema_language_java.yaml)) files track language implementation status for a particular language.
+* [meta_schema_types.yaml](#meta_schema_typesyaml)
+* [meta_schema_language_{language}.yaml](#meta_schema_language_languageyaml)
 
-There are variety of tasks which intersect with the meta schema:
+There are a variety of build tasks which intersect with the meta schema:
+
+* [make fix-meta-schema](#make-fix-meta-schema)
+* [make generate-markdown](#make-generate-markdown)
+* [make generate-descriptions](#make-generate-descriptions)
+* [make all-meta-schema](#make-all-meta-schema)
+
+### `meta_schema_types.yaml`
+
+[meta_schema_types.yaml](schema/meta_schema_types.yaml) contains property descriptions, semantics, and SDK extension plugin information.
+
+Content looks like:
+
+```yaml
+- type: AttributeLimits
+  properties:
+    - property: attribute_value_length_limit
+      description: |
+        Configure max attribute value size. 
+        Value must be non-negative.
+        If omitted or null, there is no limit.
+# other types omitted for brevity
+```
+
+Notes:
+
+* `[]` the document is an array of entries for each type in the JSON schema.
+  * `[].type` is the name of the JSON schema type. **Maintained automatically by build tooling.**
+  * `[].properties` is an array of entries for each property in the JSON schema type.
+    * `[].properties[].property` the name of the property. **Maintained automatically by build tooling.**
+    * `[].properties[].description` the property description, including semantics and default behavior.
+
+### `meta_schema_language_{language}.yaml`
+
+These files track language implementation status for a particular language. See [fix-meta-schema](#fix-meta-schema) for details on adding a new language.
+
+Content looks like:
+
+```yaml
+latestSupportedFileFormat: 1.0.0-rc.1
+typeSupportStatuses:
+  - type: Base2ExponentialBucketHistogramAggregation
+    status: supported # the support status, see below for allowed enum values
+    notes: ""
+    propertyOverrides:
+      - property: record_min_max
+        status: ignored
+  # other types omitted for brevity
+ ```
+
+Notes:
+
+* `.latestSupportedFileFormat` is the latest version of `opentelemetry-configuration` supported by the `{language}`
+* `.typeSupportStatuses` is an array with entries for each type in the JSON schema.
+  * `.typeSupportStatuses[].type` is the name of the JSON schema type. **Maintained automatically by build tooling.**
+  * `.typeSupportStatuses[].status` captures the support status of the type and all properties except overrides in `.typeSupportStatuses[].propertyOverrides`. See enum options below.
+  * `.typeSupportStatuses[].propertyOverrides` an array of properties which have different support statuses than the overall type as recorded in `.typeSupportStatuses[].status.
+    * `.typeSupportStatuses[].propertyOverrides[].property` the name of the property whose support status is overridden.
+    * `.typeSupportStatuses[].propertyOverrides[].status` the overridden support status. See enum options below.
+* Status enum options, applicable to `.typeSupportStatuses[].status`, `.typeSupportStatuses[].propertyOverrides[].status`:
+  * `unknown`: Language maintainer has not yet recorded a status.
+  * `suppported`: The type / property is supported by the language implementation.
+  * `not_implemented`: The type / property is not parsed / recognized by the language implementation because the concept is not yet implemented but should be eventually.
+  * `not_applicable`: The type / property is not parsed / recognized by the language implementation because the concept is not applicable. E.g. C++ specific instrumentation for Java. 
+  * `ignored`: The type / property is not parsed / recognized by the language implementation despite the concept being available in the language's programmatic configuration API.
 
 ### `make fix-meta-schema`
 
@@ -276,6 +340,8 @@ Ensures that the JSON schema and the meta schema are kept in sync:
 * For each language implementation:
   * If a type exists in the JSON schema and not in the language implementation's type support status of the meta schema, add it.
   * If a type exists in the language implementation's type support status of the meta schema and no in the JSON schema, delete it.
+  * For each property in a type's propertyOverrides:
+    * If the property does not exist in the JSON schema, delete it.
 
 When this task adds new entries to the meta schema, they are stubbed out with `TODO` placeholders. Contributors should update these with sensible values.
 
