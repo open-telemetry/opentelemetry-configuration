@@ -170,7 +170,7 @@ Another example:
 }
 ```
 
-`oneOf` is used to specify that the `value` property matches the [standard attribute](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/README.md#standard-attribute) definition, and is either a primitive or array of primitives. This type of use is acceptable but should be used judiciously.
+`oneOf` is used to specify that the `value` property matches the [Attribute AnyValue](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/README.md#anyvalue) definition, and is either a primitive or array of primitives. This type of use is acceptable but should be used judiciously.
 
 ### Annotations - title and description
 
