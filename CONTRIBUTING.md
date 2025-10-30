@@ -294,7 +294,7 @@ Notes:
 
 ### `meta_schema_language_{language}.yaml`
 
-These files track language implementation status for a particular language. See [fix-meta-schema](#fix-meta-schema) for details on adding a new language.
+These files track language implementation status for a particular language. See [fix-meta-schema](#make-fix-meta-schema) for details on adding a new language.
 
 Content looks like:
 
