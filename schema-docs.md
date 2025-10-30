@@ -1572,7 +1572,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | No constraints. | Configure ratio.<br>If omitted or null, 1.0 is used.<br> |
 
 Constraints: 
 
@@ -4512,7 +4512,7 @@ Usages:
 | `jaeger_remote` | [`JaegerRemoteSampler`](#jaegerremotesampler) | `false` | No constraints. | TODO |
 | `parent_based` | [`ParentBasedSampler`](#parentbasedsampler) | `false` | No constraints. | Configure sampler to be parent_based. |
 | `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | No constraints. | Configure sampler to be trace_id_ratio_based. |
-| `probability/development` | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | No constraints. | TODO |
+| `probability/development` | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | No constraints. | Configure sampler to be probability. |
 
 Constraints: 
 
