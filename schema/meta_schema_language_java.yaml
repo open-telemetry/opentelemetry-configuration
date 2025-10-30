@@ -1,0 +1,366 @@
+latestSupportedFileFormat: 1.0.0-rc.1
+typeSupportStatuses:
+  - type: Aggregation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: AlwaysOffSampler
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: AlwaysOnSampler
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: AttributeLimits
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: AttributeNameValue
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: AttributeType
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: B3MultiPropagator
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: B3Propagator
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: BaggagePropagator
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: Base2ExponentialBucketHistogramAggregation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: BatchLogRecordProcessor
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: BatchSpanProcessor
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: CardinalityLimits
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ConsoleExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: DefaultAggregation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: DropAggregation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExemplarFilter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalContainerResourceDetector
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalGeneralInstrumentation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalHostResourceDetector
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalHttpClientInstrumentation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalHttpInstrumentation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalHttpServerInstrumentation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalInstrumentation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalLanguageSpecificInstrumentation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalLoggerConfig
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalLoggerConfigurator
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalLoggerMatcherAndConfig
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalMeterConfig
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalMeterConfigurator
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalMeterMatcherAndConfig
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalOtlpFileExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalOtlpFileMetricExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalPeerInstrumentation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalPeerServiceMapping
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalProcessResourceDetector
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalPrometheusMetricExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalResourceDetection
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalResourceDetector
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalServiceResourceDetector
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalTracerConfig
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalTracerConfigurator
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExperimentalTracerMatcherAndConfig
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExplicitBucketHistogramAggregation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExporterDefaultHistogramAggregation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ExporterTemporalityPreference
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: GrpcTls
+    status: unknown
+    unsupportedProperties: []
+    notes: ""
+  - type: HttpTls
+    status: unknown
+    unsupportedProperties: []
+    notes: ""
+  - type: IncludeExclude
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: InstrumentType
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: JaegerPropagator
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: JaegerRemoteSampler
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: LastValueAggregation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: LoggerProvider
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: LogRecordExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: LogRecordLimits
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: LogRecordProcessor
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: MeterProvider
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: MetricProducer
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: MetricReader
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: NameStringValuePair
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: OpenCensusMetricProducer
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: OpentelemetryConfiguration
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: OpenTracingPropagator
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: OtlpGrpcExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: OtlpGrpcMetricExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: OtlpHttpEncoding
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: OtlpHttpExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: OtlpHttpMetricExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ParentBasedSampler
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: PeriodicMetricReader
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: Propagator
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: PullMetricExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: PullMetricReader
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: PushMetricExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: Resource
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: Sampler
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: SimpleLogRecordProcessor
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: SimpleSpanProcessor
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: SpanExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: SpanLimits
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: SpanProcessor
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: SumAggregation
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: TextMapPropagator
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: TraceContextPropagator
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: TraceIdRatioBasedSampler
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: TracerProvider
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: View
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ViewSelector
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ViewStream
+    status: supported
+    unsupportedProperties: []
+    notes: ""
+  - type: ZipkinSpanExporter
+    status: supported
+    unsupportedProperties: []
+    notes: ""

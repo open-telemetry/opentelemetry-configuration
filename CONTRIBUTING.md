@@ -249,11 +249,16 @@ make all
 
 ## Meta schema
 
-[meta_schema.yaml](./schema/meta_schema.yaml) tracks schema details that don't fit neatly into the JSON schema including:
+[meta_schema_*.yaml](schema) files track schema details that don't fit neatly into the JSON schema including:
 
 * Property descriptions and semantics
 * Track which types are SDK extension plugins
 * Implementation support status
+
+The meta schema is broken across multiple files for improved maintainability:
+
+* [meta_schema_types.yaml](schema/meta_schema_types.yaml) contains property descriptions, semantics, and SDK extension plugin information.
+* `meta_schema_language_{language}.yaml` (e.g. [meta_schema_language_java.yaml](schema/meta_schema_language_java.yaml)) files track language implementation status for a particular language.
 
 There are variety of tasks which intersect with the meta schema:
 

@@ -1,22 +1,56 @@
 import {readJsonSchemaTypes} from "./json-schema.js";
 import fs from 'fs';
 import yaml from 'yaml';
-import {metaSchemaFileName, metaSchemaPath} from "./util.js";
+import {
+    metaSchemaTypesFileName,
+    metaSchemaLanguageStatusPath,
+    metaSchemaTypesPath,
+    metaSchemaLanguageStatusFileName,
+    schemaDirPath,
+    metaSchemaLanguageFilePrefix
+} from "./util.js";
 
 export const KNOWN_LANGUAGES = ['java'];
 
 export function writeMetaSchema(metaSchema) {
-    fs.writeFileSync(metaSchemaPath, yaml.stringify(metaSchema.toJson(), {lineWidth: 0}));
+    fs.writeFileSync(metaSchemaTypesPath, yaml.stringify(metaSchema.types.map(type => type.toJson()), {lineWidth: 0}));
+
+    metaSchema.languageImplementations.forEach(languageImplementation => {
+        fs.writeFileSync(metaSchemaLanguageStatusPath(languageImplementation.language), yaml.stringify(languageImplementation.toJson(), {lineWidth: 0}));
+    });
 }
 
 export function readAndFixMetaSchema() {
     // Track messages tracking schema fixes
     const messages = [];
 
-    // Parse meta schema and sanitize
-    const metaSchemaContent = fs.readFileSync(metaSchemaPath, "utf-8");
-    const metaSchemaDoc = yaml.parse(metaSchemaContent);
-    let metaSchema = MetaSchema.parseJson(metaSchemaDoc, messages);
+    // Parse meta schema types and sanitize
+    const metaSchemaTypesContent = fs.readFileSync(metaSchemaTypesPath, "utf-8");
+    const metaSchemaTypesDoc = yaml.parse(metaSchemaTypesContent);
+    const metaSchemaTypes = parseArrayValue(
+        metaSchemaTypesDoc,
+        entryJson => MetaSchemaType.parseJson(entryJson, messages),
+        `${metaSchemaTypesFileName} is invalid`,
+        error => `${metaSchemaTypesFileName} has invalid MetaSchemaType: ${error.message}. Skipping.`,
+        messages);
+
+    // Parse meta schema language implementations and sanitize
+    const metaSchemaLanguageImplementations = [];
+    KNOWN_LANGUAGES.forEach(language => {
+        let metaSchemaLanguageStatusContent;
+        try {
+            metaSchemaLanguageStatusContent = fs.readFileSync(metaSchemaLanguageStatusPath(language), "utf-8");
+        } catch (error) {
+            messages.push(`Error reading ${metaSchemaLanguageStatusFileName(language)}: ${error.message}. Skipping.`);
+            return;
+        }
+        const metaSchemaLanguageStatusDoc = yaml.parse(metaSchemaLanguageStatusContent);
+        const languageImplementation = LanguageImplementation.parseJson(language, metaSchemaLanguageStatusDoc, messages);
+        metaSchemaLanguageImplementations.push(languageImplementation);
+    });
+
+    // Create full MetaSchema from meta schema types and language implementations
+    let metaSchema = new MetaSchema(metaSchemaTypes, metaSchemaLanguageImplementations);
 
     const jsonSchemaTypesByType = {};
     readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type);
@@ -47,24 +81,6 @@ export class MetaSchema {
         sortedLanguageImplementations.sort((a, b) => a.language.localeCompare(b.language));
 
         return {types: sortedTypes, languageImplementations: sortedLanguageImplementations};
-    }
-
-    static parseJson(rawJson, messages) {
-        const types = parseArray(
-            rawJson,
-            'types',
-            entryJson => MetaSchemaType.parseJson(entryJson, messages),
-            `MetaSchema has invalid 'types'`,
-            error => `MetaSchema has invalid MetaSchemaType: ${error.message}. Skipping.`,
-            messages);
-        const languageImplementations = parseArray(
-            rawJson,
-            'languageImplementations',
-            entryJson => LanguageImplementation.parseJson(entryJson, messages),
-            `MetaSchema has invalid 'languageImplementations'`,
-            error => `MetaSchema has invalid LanguageImplementation: ${error.message}. Skipping.`,
-            messages);
-        return new MetaSchema(types, languageImplementations);
     }
 }
 
@@ -137,14 +153,12 @@ export class LanguageImplementation {
         typeSupportStatuses.sort((a, b) => a.type.localeCompare(b.type));
 
         return {
-            language: this.language,
             latestSupportedFileFormat: this.latestSupportedFileFormat,
             typeSupportStatuses
         };
     }
 
-    static parseJson(rawJson, messages) {
-        const language = parseString(rawJson, 'language', `LanguageImplementation has invalid 'language'`);
+    static parseJson(language, rawJson, messages) {
         const latestSupportedFileFormat = parseString(rawJson, 'latestSupportedFileFormat', `LanguageImplementation has invalid 'latestSupportedFileFormat'`);
         const typeSupportStatuses = parseArray(
             rawJson,
@@ -246,7 +260,7 @@ function reconcileTypes(metaSchema, jsonSchemaTypesByType, messages) {
     // Find and remove any types in meta schema not in json schema
     Object.entries(metaSchemaTypesByType).forEach(([type, unused]) => {
         if (!(type in jsonSchemaTypesByType)) {
-            messages.push(`Type ${type} found in ${metaSchemaFileName} but not in JSON schema. Removing.`);
+            messages.push(`Type ${type} found in ${metaSchemaTypesFileName} but not in JSON schema. Removing.`);
             delete metaSchemaTypesByType[type];
         }
     });
@@ -254,7 +268,7 @@ function reconcileTypes(metaSchema, jsonSchemaTypesByType, messages) {
     // Find and add any types in json schema not in meta schema
     Object.entries(jsonSchemaTypesByType).forEach(([type, jsonSchemaType]) => {
         if (!(type in metaSchemaTypesByType)) {
-            messages.push(`Type ${type} in ${jsonSchemaType.file} and path ${jsonSchemaType.jsonSchemaPath} is missing from ${metaSchemaFileName}. Adding.`);
+            messages.push(`Type ${type} in ${jsonSchemaType.file} and path ${jsonSchemaType.jsonSchemaPath} is missing from ${metaSchemaTypesFileName}. Adding.`);
             const metaSchemaType = jsonSchemaType.toMetaSchemaType();
             metaSchemaTypesByType[metaSchemaType.type] = metaSchemaType;
         }
@@ -296,18 +310,19 @@ function reconcileLanguageImplementations(metaSchema, jsonSchemaTypesByType, mes
     });
 
     // Find and remove any language implementations which are extra
-    Object.keys(languageImplementationsByLanguage).forEach(language => {
-        if (!KNOWN_LANGUAGES.includes(language)) {
-            messages.push(`LanguageImplementation ${language} found in ${metaSchemaFileName} but is not recognized. Removing.`);
-            delete languageImplementationsByLanguage[language];
-        }
-    });
+    fs.readdirSync(schemaDirPath)
+        .filter(file => file.startsWith(metaSchemaLanguageFilePrefix))
+        .filter(file => !KNOWN_LANGUAGES.some(language => metaSchemaLanguageStatusFileName(language) === file))
+        .forEach(file => {
+            messages.push(`LanguageImplementation file ${file} found for unrecognized language. Removing.`);
+            fs.unlinkSync(schemaDirPath + file);
+        });
 
     // Find and add any language implementations not in missing schema
     KNOWN_LANGUAGES.forEach(language => {
         const languageImplementation = languageImplementationsByLanguage[language];
         if (!languageImplementation) {
-            messages.push(`LanguageImplementation ${language} not found in ${metaSchemaFileName}. Adding.`);
+            messages.push(`LanguageImplementation ${language} not found. Adding.`);
             languageImplementationsByLanguage[language] = emptyLanguageImplementation(language, metaSchema);
         }
     });
@@ -340,11 +355,15 @@ function parseBoolean(rawJson, propertyName, errorMessage) {
 
 function parseArray(rawJson, propertyName, entryParser, errorMessage, entryErrorFormatter, messages) {
     const property = rawJson[propertyName];
-    if (!Array.isArray(property)) {
+    return parseArrayValue(property, entryParser, errorMessage, entryErrorFormatter, messages);
+}
+
+function parseArrayValue(arrayValue, entryParser, errorMessage, entryErrorFormatter, messages) {
+    if (!Array.isArray(arrayValue)) {
         throw new Error(errorMessage);
     }
     const entries = [];
-    property.forEach(entry => {
+    arrayValue.forEach(entry => {
         try {
             entries.push(entryParser(entry));
         } catch (error) {
