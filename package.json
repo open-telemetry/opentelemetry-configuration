@@ -6,7 +6,7 @@
     "fix-meta-schema": "node scripts/fix-meta-schema.js"
   },
   "devDependencies": {
-    "ajv-cli": "^5.0.0"
+    "ajv-cli": "5.0.0"
   },
   "dependencies": {
     "envsub": "^4.1.0",
