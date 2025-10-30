@@ -91,9 +91,9 @@ tracer_provider:
 * `attributes_value_length_limit` is not required. If omitted, no attribute length limits are applied.
 * `attributes_value_length_limit`'s type is `["integer", "null]`. If null (i.e. because the `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` env var is unset), no attribute length limits are applied.
 
-If a property is _not_ required, it should include a [comment](./CONTRIBUTING.md#description-generation) describing the semantics when it is omitted.
+If a property is _not_ required, it should include a [meta schema comment](./CONTRIBUTING.md#meta-schema) describing the semantics when it is omitted.
 
-If a property `type` includes `null`, it must include a [comment](./CONTRIBUTING.md#description-generation) describing the semantics when the value is `null`. It's common for properties with primitive types to allow `null`. `object` types allow `null` if no properties are required and the presence of the property key is meaningful.
+If a property `type` includes `null`, it must include a [meta schema comment](./CONTRIBUTING.md#meta-schema) describing the semantics when the value is `null`. It's common for properties with primitive types to allow `null`. `object` types allow `null` if no properties are required and the presence of the property key is meaningful.
 
 ### Polymorphic types
 
@@ -179,7 +179,7 @@ The JSON schema [`title` and `description` annotations](https://json-schema.org/
 Despite these potential benefits, these keywords should be omitted:
 
 * The titles of `object` and `enum` types produced by code generation tools should be defined using key values in [$defs](https://json-schema.org/understanding-json-schema/structuring#defs). Setting the `title` keyword introduces multiple sources of truth and possible conflict.
-* As described in [description generation](./CONTRIBUTING.md#description-generation), we use a different mechanism to describe the semantics of types and properties. Setting the `description` keyword introduces multiple sources of truth and possible conflict.
+* As described in [description generation](./CONTRIBUTING.md#make-generate-descriptions), we use a different mechanism to describe the semantics of types and properties. Setting the `description` keyword introduces multiple sources of truth and possible conflict.
 
 ## Schemas and subschemas
 
@@ -247,37 +247,43 @@ You can perform all checks locally using this command:
 make all
 ```
 
-## Description generation
+## Meta schema
 
-The [./examples](./examples) directory contains a variety of examples, which
-include important comments describing the semantics of the configuration
-properties. In order to keep these comments consistent across examples, we have
-tooling which automatically generates comments for each property.
+[meta_schema.yaml](./schema/meta_schema.yaml) tracks schema details that don't fit neatly into the JSON schema including:
 
-How it works:
+* Property descriptions and semantics
+* Track which types are SDK extension plugins
+* Implementation support status (TODO)
 
-* The [./schema/type_descriptions.yaml](./schema/type_descriptions.yaml) file
-  defines descriptions for each of the properties of each type defines in
-  the [JSON schema](./schema) data model.
-* The [./scripts/generate-descriptions.js](./scripts/generate-descriptions.js) is a
-  script which for a given input configuration file will:
-  * Parse the YAML.
-  * Walk through each key / value pair, and for each:
-    * Compute the JSON dot notation location of the current key / value pair.
-    * Find the first matching rule
-      in [type_description.yaml](./schema/type_descriptions.yaml). Iterate
-      through the rules and evaluate the key / value pair dot notation location
-      against each of the rule's `path_patterns`.
-    * Inject / overwrite comments for its properties according
-      to `type_descriptions.yaml`.
-  * Write the resulting content to specified output file or to the console.
+There are variety of tasks which intersect with the meta schema:
 
-The `make generate-descriptions` command runs this process against each file
-in `./examples` and overwrites each file in the process. 
+### `make fix-meta-schema`
 
-**NOTE:** The [build](./.github/workflows/build-check.yaml) will fail
-if `make generate-descriptions` produces any changes which are not checked into
-version control.
+Ensures that the JSON schema and the meta schema are kept in sync:
+
+* If a type exists in the JSON schema and not the meta schema, add it.
+* If a type exists in the meta schema and not the JSON schema, delete it.
+* For each meta schema type:
+  * If a property exists in the JSON schema and not the meta schema, add it.
+  * If a property exists in the meta schema and not the JSON schema, delete it.
+
+When this task adds new entries to the meta schema, they are stubbed out with `TODO` placeholders. Contributors should update these with sensible values.
+
+**NOTE:** This task is run as part of build automation. If it produces changes which are not checked into version control, the build will fail.
+
+### `make generate-markdown`
+
+Generates markdown at [schema-docs.md](./schema-docs.md) which summarizes a variety of useful information about JSON schema and meta schema in an easy to consume format.
+
+**NOTE:** This task is run as part of build automation. If it produces changes which are not checked into version control, the build will fail.
+
+### `make generate-descriptions`
+
+Annotates files in [./examples](./examples) with comments derived from the JSON schema and meta schema.
+
+The `/examples` directory contains a variety of examples which are expected to be used as starter templates and as references. The JSON schema is insufficient in describing the expected behavior of a given config file. It's missing key details describing behavior semantics (such as defaults) which are essential for both users and implementers. This task ensures that all examples are correctly and consistently commented.
+
+**NOTE:** This task is run as part of build automation. If it produces changes which are not checked into version control, the build will fail.
 
 To run against a single file:
 
@@ -293,7 +299,7 @@ To run against a single file:
   ```bash
   npm install
   ```
-  
+
 - Run the script:
 
 ```shell
@@ -307,6 +313,10 @@ rule, the previous description, the new description, etc.
 ```shell
 npm run-script generate-descriptions -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml --debug
 ```
+
+### `make all-meta-schema`
+
+A composite task which runs all meta schema tasks.
 
 ## Pull requests
 

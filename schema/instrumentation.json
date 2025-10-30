@@ -41,11 +41,6 @@
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         }
     },
-    "patternProperties": {
-        ".*": {
-            "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
-        }
-    },
     "$defs": {
         "ExperimentalGeneralInstrumentation": {
             "type": "object",
@@ -66,20 +61,59 @@
                 "service_mapping": {
                     "type": "array",
                     "items": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "properties": {
-                            "peer": {
-                                "type": "string"
-                            },
-                            "service": {
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "peer",
-                            "service"
-                        ]
+                        "$ref": "#/$defs/ExperimentalPeerServiceMapping"
+                    }
+                }
+            }
+        },
+        "ExperimentalPeerServiceMapping": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "peer": {
+                    "type": "string"
+                },
+                "service": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "peer",
+                "service"
+            ]
+        },
+        "ExperimentalHttpClientInstrumentation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "request_captured_headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "response_captured_headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "ExperimentalHttpServerInstrumentation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "request_captured_headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "response_captured_headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
                     }
                 }
             }
@@ -89,50 +123,17 @@
             "additionalProperties": false,
             "properties": {
                 "client": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "request_captured_headers": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "response_captured_headers": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    }
+                    "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
                 },
                 "server": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "request_captured_headers": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "response_captured_headers": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    }
+                    "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
                 }
             }
         },
         "ExperimentalLanguageSpecificInstrumentation": {
             "type": "object",
-            "additionalProperties": true,
-            "patternProperties": {
-                ".*": {
-                    "type": "object"
-                }
+            "additionalProperties": {
+                "type": "object"
             }
         }
     }

@@ -55,7 +55,9 @@
         },
         "Sampler": {
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
@@ -76,11 +78,6 @@
                 },
                 "trace_id_ratio_based": {
                     "$ref": "#/$defs/TraceIdRatioBasedSampler"
-                }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": ["object", "null"]
                 }
             }
         },
@@ -161,7 +158,9 @@
         },
         "SpanExporter": {
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
@@ -179,11 +178,6 @@
                 },
                 "zipkin": {
                     "$ref": "#/$defs/ZipkinSpanExporter"
-                }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": ["object", "null"]
                 }
             }
         },
@@ -219,7 +213,9 @@
         },
         "SpanProcessor": {
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
@@ -228,11 +224,6 @@
                 },
                 "simple": {
                     "$ref": "#/$defs/SimpleSpanProcessor"
-                }
-            },
-            "patternProperties": {
-                ".*": {
-                    "type": ["object", "null"]
                 }
             }
         },
