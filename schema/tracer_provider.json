@@ -71,8 +71,8 @@
                 "parent_based": {
                     "$ref": "#/$defs/ParentBasedSampler"
                 },
-                "probability": {
-                    "$ref": "#/$defs/ProbabilitySampler"
+                "probability/development": {
+                    "$ref": "#/$defs/ExperimentalProbabilitySampler"
                 },
                 "trace_id_ratio_based": {
                     "$ref": "#/$defs/TraceIdRatioBasedSampler"
@@ -129,7 +129,7 @@
                 }
             }
         },
-        "ProbabilitySampler": {
+        "ExperimentalProbabilitySampler": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
