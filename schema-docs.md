@@ -5513,7 +5513,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | No constraints. | Configure trace_id_ratio.<br>If omitted or null, 1.0 is used.<br> |
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure trace_id_ratio.<br>If omitted or null, 1.0 is used.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -5546,7 +5546,9 @@ Usages:
       "type": [
         "number",
         "null"
-      ]
+      ],
+      "minimum": 0,
+      "maximum": 1
     }
   }
 }</pre>
@@ -5754,7 +5756,9 @@ Usages:
           "type": [
             "number",
             "null"
-          ]
+          ],
+          "minimum": 0,
+          "maximum": 1
         }
       }
     },
