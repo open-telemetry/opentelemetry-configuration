@@ -26,6 +26,7 @@
   * [ExperimentalHttpInstrumentation](#experimentalhttpinstrumentation)
   * [ExperimentalHttpServerInstrumentation](#experimentalhttpserverinstrumentation)
   * [ExperimentalInstrumentation](#experimentalinstrumentation)
+  * [ExperimentalJaegerRemoteSampler](#experimentaljaegerremotesampler)
   * [ExperimentalLanguageSpecificInstrumentation](#experimentallanguagespecificinstrumentation)
   * [ExperimentalLoggerConfig](#experimentalloggerconfig)
   * [ExperimentalLoggerConfigurator](#experimentalloggerconfigurator)
@@ -54,7 +55,6 @@
   * [IncludeExclude](#includeexclude)
   * [InstrumentType](#instrumenttype)
   * [JaegerPropagator](#jaegerpropagator)
-  * [JaegerRemoteSampler](#jaegerremotesampler)
   * [LastValueAggregation](#lastvalueaggregation)
   * [LoggerProvider](#loggerprovider)
   * [LogRecordExporter](#logrecordexporter)
@@ -1300,6 +1300,63 @@ Usages:
       "additionalProperties": {
         "type": "object"
       }
+    }
+  }
+}</pre>
+</details>
+
+## ExperimentalJaegerRemoteSampler <a id="experimentaljaegerremotesampler"></a>
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
+| `initial_sampler` | [`Sampler`](#sampler) | `false` | No constraints. | TODO |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `endpoint` | unknown |
+| `interval` | unknown |
+| `initial_sampler` | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`Sampler.jaeger_remote/development`](#sampler)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "endpoint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "interval": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "initial_sampler": {
+      "$ref": "#/$defs/Sampler"
     }
   }
 }</pre>
@@ -2554,63 +2611,6 @@ Usages:
     "null"
   ],
   "additionalProperties": false
-}</pre>
-</details>
-
-## JaegerRemoteSampler <a id="jaegerremotesampler"></a>
-
-| Property | Type | Required? | Constraints | Description |
-|---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `initial_sampler` | [`Sampler`](#sampler) | `false` | No constraints. | TODO |
-
-<details>
-<summary>Language support status</summary>
-
-| Property | [java](#java) |
-|---|---|
-| `endpoint` | supported |
-| `interval` | supported |
-| `initial_sampler` | supported |
-</details>
-
-Constraints: 
-
-* `additionalProperties`: `false`
-
-Usages:
-
-* [`Sampler.jaeger_remote`](#sampler)
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/tracer_provider.json)
-<pre>{
-  "type": [
-    "object",
-    "null"
-  ],
-  "additionalProperties": false,
-  "properties": {
-    "endpoint": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "interval": {
-      "type": [
-        "integer",
-        "null"
-      ],
-      "minimum": 0
-    },
-    "initial_sampler": {
-      "$ref": "#/$defs/Sampler"
-    }
-  }
 }</pre>
 </details>
 
@@ -5076,10 +5076,10 @@ Usages:
 |---|---|---|---|---|
 | `always_off` | [`AlwaysOffSampler`](#alwaysoffsampler) | `false` | No constraints. | Configure sampler to be always_off. |
 | `always_on` | [`AlwaysOnSampler`](#alwaysonsampler) | `false` | No constraints. | Configure sampler to be always_on. |
-| `jaeger_remote` | [`JaegerRemoteSampler`](#jaegerremotesampler) | `false` | No constraints. | TODO |
 | `parent_based` | [`ParentBasedSampler`](#parentbasedsampler) | `false` | No constraints. | Configure sampler to be parent_based. |
 | `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | No constraints. | Configure sampler to be trace_id_ratio_based. |
 | `probability/development` | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | No constraints. | Configure sampler to be probability. |
+| `jaeger_remote/development` | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | `false` | No constraints. | TODO |
 
 <details>
 <summary>Language support status</summary>
@@ -5088,10 +5088,10 @@ Usages:
 |---|---|
 | `always_off` | supported |
 | `always_on` | supported |
-| `jaeger_remote` | supported |
 | `parent_based` | supported |
 | `trace_id_ratio_based` | supported |
 | `probability/development` | supported |
+| `jaeger_remote/development` | supported |
 </details>
 
 Constraints: 
@@ -5103,7 +5103,7 @@ Constraints:
 Usages:
 
 * [`TracerProvider.sampler`](#tracerprovider)
-* [`JaegerRemoteSampler.initial_sampler`](#jaegerremotesampler)
+* [`ExperimentalJaegerRemoteSampler.initial_sampler`](#experimentaljaegerremotesampler)
 * [`ParentBasedSampler.root`](#parentbasedsampler)
 * [`ParentBasedSampler.remote_parent_sampled`](#parentbasedsampler)
 * [`ParentBasedSampler.remote_parent_not_sampled`](#parentbasedsampler)
@@ -5131,8 +5131,8 @@ Usages:
     "always_on": {
       "$ref": "#/$defs/AlwaysOnSampler"
     },
-    "jaeger_remote": {
-      "$ref": "#/$defs/JaegerRemoteSampler"
+    "jaeger_remote/development": {
+      "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
     },
     "parent_based": {
       "$ref": "#/$defs/ParentBasedSampler"
@@ -5720,8 +5720,8 @@ Usages:
         "always_on": {
           "$ref": "#/$defs/AlwaysOnSampler"
         },
-        "jaeger_remote": {
-          "$ref": "#/$defs/JaegerRemoteSampler"
+        "jaeger_remote/development": {
+          "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
         },
         "parent_based": {
           "$ref": "#/$defs/ParentBasedSampler"
@@ -5748,7 +5748,7 @@ Usages:
       ],
       "additionalProperties": false
     },
-    "JaegerRemoteSampler": {
+    "ExperimentalJaegerRemoteSampler": {
       "type": [
         "object",
         "null"
@@ -6278,6 +6278,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | supported |  | * `client`: supported<br>* `server`: supported<br> |
 | [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | supported |  | * `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
 | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | supported |  | * `general`: supported<br>* `cpp`: supported<br>* `dotnet`: supported<br>* `erlang`: supported<br>* `go`: supported<br>* `java`: supported<br>* `js`: supported<br>* `php`: supported<br>* `python`: supported<br>* `ruby`: supported<br>* `rust`: supported<br>* `swift`: supported<br> |
+| [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `interval`: unknown<br>* `initial_sampler`: unknown<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | supported |  |  |
 | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | supported |  | * `disabled`: supported<br> |
 | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |
@@ -6306,7 +6307,6 @@ Latest supported file format: `1.0.0-rc.1`
 | [`IncludeExclude`](#includeexclude) | supported |  | * `included`: supported<br>* `excluded`: supported<br> |
 | [`InstrumentType`](#instrumenttype) | supported |  |  |
 | [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
-| [`JaegerRemoteSampler`](#jaegerremotesampler) | supported |  | * `endpoint`: supported<br>* `interval`: supported<br>* `initial_sampler`: supported<br> |
 | [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
 | [`LoggerProvider`](#loggerprovider) | supported |  | * `processors`: supported<br>* `limits`: supported<br>* `logger_configurator/development`: supported<br> |
 | [`LogRecordExporter`](#logrecordexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br> |
@@ -6331,7 +6331,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`PullMetricReader`](#pullmetricreader) | supported |  | * `exporter`: supported<br>* `producers`: supported<br>* `cardinality_limits`: supported<br> |
 | [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br> |
 | [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `detection/development`: supported<br>* `schema_url`: supported<br>* `attributes_list`: supported<br> |
-| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `jaeger_remote`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `probability/development`: supported<br> |
+| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `probability/development`: supported<br>* `jaeger_remote/development`: supported<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br>* `zipkin`: supported<br> |

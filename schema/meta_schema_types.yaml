@@ -513,15 +513,6 @@
 - type: JaegerPropagator
   properties: []
   isSdkExtensionPlugin: false
-- type: JaegerRemoteSampler
-  properties:
-    - property: endpoint
-      description: TODO
-    - property: interval
-      description: TODO
-    - property: initial_sampler
-      description: TODO
-  isSdkExtensionPlugin: false
 - type: LastValueAggregation
   properties: []
   isSdkExtensionPlugin: false
@@ -918,14 +909,14 @@
       description: Configure sampler to be always_off.
     - property: always_on
       description: Configure sampler to be always_on.
-    - property: jaeger_remote
-      description: TODO
     - property: parent_based
       description: Configure sampler to be parent_based.
     - property: trace_id_ratio_based
       description: Configure sampler to be trace_id_ratio_based.
     - property: probability/development
       description: Configure sampler to be probability.
+    - property: jaeger_remote/development
+      description: TODO
   isSdkExtensionPlugin: true
 - type: SimpleLogRecordProcessor
   properties:
@@ -1106,4 +1097,13 @@
         Configure max time (in milliseconds) to wait for each export. 
         Value must be non-negative. A value of 0 indicates indefinite.
         If omitted or null, 10000 is used.
+  isSdkExtensionPlugin: false
+- type: ExperimentalJaegerRemoteSampler
+  properties:
+    - property: endpoint
+      description: TODO
+    - property: interval
+      description: TODO
+    - property: initial_sampler
+      description: TODO
   isSdkExtensionPlugin: false
