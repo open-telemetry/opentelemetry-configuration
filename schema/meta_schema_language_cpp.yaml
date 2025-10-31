@@ -1,0 +1,370 @@
+latestSupportedFileFormat: 1.0.0-rc.2
+typeSupportStatuses:
+  - type: Aggregation
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: AlwaysOffSampler
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: AlwaysOnSampler
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: AttributeLimits
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: AttributeNameValue
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: AttributeType
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: B3MultiPropagator
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: B3Propagator
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: BaggagePropagator
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: Base2ExponentialBucketHistogramAggregation
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: BatchLogRecordProcessor
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: BatchSpanProcessor
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: CardinalityLimits
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ConsoleExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: DefaultAggregation
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: DropAggregation
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ExemplarFilter
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalContainerResourceDetector
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalGeneralInstrumentation
+    status: not_applicable
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalHostResourceDetector
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalHttpClientInstrumentation
+    status: not_applicable
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalHttpInstrumentation
+    status: not_applicable
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalHttpServerInstrumentation
+    status: not_applicable
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalInstrumentation
+    status: not_applicable
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalLanguageSpecificInstrumentation
+    status: not_applicable
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalLoggerConfig
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalLoggerConfigurator
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalLoggerMatcherAndConfig
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalMeterConfig
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalMeterConfigurator
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalMeterMatcherAndConfig
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalOtlpFileExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalOtlpFileMetricExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalPeerInstrumentation
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalPeerServiceMapping
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalProbabilitySampler
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalProcessResourceDetector
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalPrometheusMetricExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalResourceDetection
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalResourceDetector
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalServiceResourceDetector
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalTracerConfig
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalTracerConfigurator
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalTracerMatcherAndConfig
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: ExplicitBucketHistogramAggregation
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ExporterDefaultHistogramAggregation
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ExporterTemporalityPreference
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: GrpcTls
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: HttpTls
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: IncludeExclude
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: InstrumentType
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: JaegerPropagator
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: JaegerRemoteSampler
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: LastValueAggregation
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: LoggerProvider
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: LogRecordExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: LogRecordLimits
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: LogRecordProcessor
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: MeterProvider
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: MetricProducer
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: MetricReader
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: NameStringValuePair
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: OpenCensusMetricProducer
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: OpentelemetryConfiguration
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: OpenTracingPropagator
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
+  - type: OtlpGrpcExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: OtlpGrpcMetricExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: OtlpHttpEncoding
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: OtlpHttpExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: OtlpHttpMetricExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ParentBasedSampler
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: PeriodicMetricReader
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: Propagator
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: PullMetricExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: PullMetricReader
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: PushMetricExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: Resource
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: Sampler
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: SimpleLogRecordProcessor
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: SimpleSpanProcessor
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: SpanExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: SpanLimits
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: SpanProcessor
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: SumAggregation
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: TextMapPropagator
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: TraceContextPropagator
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: TraceIdRatioBasedSampler
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: TracerProvider
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: View
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ViewSelector
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ViewStream
+    status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ZipkinSpanExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
