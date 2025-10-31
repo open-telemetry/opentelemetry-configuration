@@ -344,6 +344,13 @@
       description: |
         The logical name corresponding to the IP address of .peer.
   isSdkExtensionPlugin: false
+- type: ExperimentalProbabilitySampler
+  properties:
+    - property: ratio
+      description: |
+        Configure ratio.
+        If omitted or null, 1.0 is used.
+  isSdkExtensionPlugin: false
 - type: ExperimentalProcessResourceDetector
   properties: []
   isSdkExtensionPlugin: false
@@ -917,6 +924,8 @@
       description: Configure sampler to be parent_based.
     - property: trace_id_ratio_based
       description: Configure sampler to be trace_id_ratio_based.
+    - property: probability/development
+      description: Configure sampler to be probability.
   isSdkExtensionPlugin: true
 - type: SimpleLogRecordProcessor
   properties:

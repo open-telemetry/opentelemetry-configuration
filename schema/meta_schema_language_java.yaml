@@ -142,6 +142,10 @@ typeSupportStatuses:
     status: supported
     notes: ""
     propertyOverrides: []
+  - type: ExperimentalProbabilitySampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
     status: supported
     notes: ""
