@@ -58,7 +58,7 @@ metaSchema.types.forEach(metaSchemaType => {
             }
             const formattedDescription = property.description.split("\n").join("<br>");
 
-            output.push(`| \`${property.property}\` | ${formattedPropertyType} | ${jsonSchemaProperty.isRequired} | ${formattedDefaultAndNullBehavior} | ${formattedConstraints} | ${formattedDescription} |\n`);
+            output.push(`| \`${property.property}\` | ${formattedPropertyType} | \`${jsonSchemaProperty.isRequired}\` | ${formattedDefaultAndNullBehavior} | ${formattedConstraints} | ${formattedDescription} |\n`);
         });
         output.push('\n');
 
