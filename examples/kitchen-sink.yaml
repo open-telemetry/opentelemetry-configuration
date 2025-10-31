@@ -141,7 +141,7 @@ logger_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          # This type is in development and subject to breaking changes in minor versions.
+          # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
@@ -152,7 +152,7 @@ logger_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          # This type is in development and subject to breaking changes in minor versions.
+          # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
@@ -175,7 +175,7 @@ logger_provider:
     # If omitted or null, 128 is used.
     attribute_count_limit: 128
   # Configure loggers.
-  # This type is in development and subject to breaking changes in minor versions.
+  # This property is experimental and subject to breaking changes in minor versions.
   logger_configurator/development:
     # Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
     default_config:
@@ -202,7 +202,7 @@ meter_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be prometheus.
-          # This type is in development and subject to breaking changes in minor versions.
+          # This property is experimental and subject to breaking changes in minor versions.
           prometheus/development:
             # Configure host.
             # If omitted or null, localhost is used.
@@ -421,7 +421,7 @@ meter_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          # This type is in development and subject to breaking changes in minor versions.
+          # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
@@ -440,7 +440,7 @@ meter_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          # This type is in development and subject to breaking changes in minor versions.
+          # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
@@ -547,7 +547,7 @@ meter_provider:
   # If omitted or null, trace_based is used.
   exemplar_filter: trace_based
   # Configure meters.
-  # This type is in development and subject to breaking changes in minor versions.
+  # This property is experimental and subject to breaking changes in minor versions.
   meter_configurator/development:
     # Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
     default_config:
@@ -704,7 +704,7 @@ tracer_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          # This type is in development and subject to breaking changes in minor versions.
+          # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
@@ -715,7 +715,7 @@ tracer_provider:
         # Configure exporter.
         exporter:
           # Configure exporter to be OTLP with file transport.
-          # This type is in development and subject to breaking changes in minor versions.
+          # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
             # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
@@ -788,6 +788,7 @@ tracer_provider:
       # If omitted or null, always_off is used.
       remote_parent_not_sampled:
         # Configure sampler to be probability.
+        # This property is experimental and subject to breaking changes in minor versions.
         probability/development:
           # Configure ratio.
           # If omitted or null, 1.0 is used.
@@ -803,7 +804,7 @@ tracer_provider:
         # Configure sampler to be always_off.
         always_off:
   # Configure tracers.
-  # This type is in development and subject to breaking changes in minor versions.
+  # This property is experimental and subject to breaking changes in minor versions.
   tracer_configurator/development:
     # Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
     default_config:
@@ -907,8 +908,9 @@ resource:
   # If omitted or null, no resource attributes are added.
   attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
   # Configure resource detection.
-  # This type is in development and subject to breaking changes in minor versions.
+  #
   # If omitted or null, resource detection is disabled.
+  # This property is experimental and subject to breaking changes in minor versions.
   detection/development:
     # Configure attributes provided by resource detectors.
     attributes:
@@ -942,7 +944,7 @@ resource:
   # If omitted or null, no schema URL is used.
   schema_url: https://opentelemetry.io/schemas/1.16.0
 # Configure instrumentation.
-# This type is in development and subject to breaking changes in minor versions.
+# This property is experimental and subject to breaking changes in minor versions.
 instrumentation/development:
   # Configure general SemConv options that may apply to multiple languages and instrumentations.
   # Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
