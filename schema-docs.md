@@ -37,6 +37,7 @@
   * [ExperimentalOtlpFileMetricExporter](#experimentalotlpfilemetricexporter)
   * [ExperimentalPeerInstrumentation](#experimentalpeerinstrumentation)
   * [ExperimentalPeerServiceMapping](#experimentalpeerservicemapping)
+  * [ExperimentalProbabilitySampler](#experimentalprobabilitysampler)
   * [ExperimentalProcessResourceDetector](#experimentalprocessresourcedetector)
   * [ExperimentalPrometheusMetricExporter](#experimentalprometheusmetricexporter)
   * [ExperimentalResourceDetection](#experimentalresourcedetection)
@@ -1789,6 +1790,51 @@ Usages:
     "peer",
     "service"
   ]
+}</pre>
+</details>
+
+## ExperimentalProbabilitySampler <a id="experimentalprobabilitysampler"></a>
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | If omitted or null, 1.0 is used. | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `ratio` | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`Sampler.probability/development`](#sampler)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "ratio": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    }
+  }
 }</pre>
 </details>
 
@@ -5033,6 +5079,7 @@ Usages:
 | `jaeger_remote` | [`JaegerRemoteSampler`](#jaegerremotesampler) | `false` | If omitted, ignore. | No constraints. | TODO |
 | `parent_based` | [`ParentBasedSampler`](#parentbasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be parent_based. |
 | `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be trace_id_ratio_based. |
+| `probability/development` | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be probability. |
 
 <details>
 <summary>Language support status</summary>
@@ -5044,6 +5091,7 @@ Usages:
 | `jaeger_remote` | supported |
 | `parent_based` | supported |
 | `trace_id_ratio_based` | supported |
+| `probability/development` | supported |
 </details>
 
 Constraints: 
@@ -5088,6 +5136,9 @@ Usages:
     },
     "parent_based": {
       "$ref": "#/$defs/ParentBasedSampler"
+    },
+    "probability/development": {
+      "$ref": "#/$defs/ExperimentalProbabilitySampler"
     },
     "trace_id_ratio_based": {
       "$ref": "#/$defs/TraceIdRatioBasedSampler"
@@ -5675,6 +5726,9 @@ Usages:
         "parent_based": {
           "$ref": "#/$defs/ParentBasedSampler"
         },
+        "probability/development": {
+          "$ref": "#/$defs/ExperimentalProbabilitySampler"
+        },
         "trace_id_ratio_based": {
           "$ref": "#/$defs/TraceIdRatioBasedSampler"
         }
@@ -5740,6 +5794,23 @@ Usages:
         },
         "local_parent_not_sampled": {
           "$ref": "#/$defs/Sampler"
+        }
+      }
+    },
+    "ExperimentalProbabilitySampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
         }
       }
     },
@@ -6218,6 +6289,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | supported |  | * `output_stream`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br> |
 | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | supported |  | * `service_mapping`: supported<br> |
 | [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | supported |  | * `peer`: supported<br>* `service`: supported<br> |
+| [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | supported |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `without_scope_info`: ignored<br>* `with_resource_constant_labels`: supported<br>* `translation_strategy`: not_implemented<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
@@ -6259,7 +6331,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`PullMetricReader`](#pullmetricreader) | supported |  | * `exporter`: supported<br>* `producers`: supported<br>* `cardinality_limits`: supported<br> |
 | [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br> |
 | [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `detection/development`: supported<br>* `schema_url`: supported<br>* `attributes_list`: supported<br> |
-| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `jaeger_remote`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br> |
+| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `jaeger_remote`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `probability/development`: supported<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br>* `zipkin`: supported<br> |
