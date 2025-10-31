@@ -35,28 +35,33 @@
 # The file format version.
 # The yaml format is documented at
 # https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
+# Property is required and must be non-null.
 file_format: "1.0-rc.2"
 # Configure if the SDK is disabled or not.
 # If omitted or null, false is used.
 disabled: ${OTEL_SDK_DISABLED:-false}
 # Configure the log level of the internal logger used by the SDK.
-# If omitted, info is used.
+# If omitted or null, info is used.
 log_level: ${OTEL_LOG_LEVEL:-info}
 # Configure resource for all signals.
 # If omitted, the default resource is used.
 resource:
   # Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
+  # If omitted, no resource attributes are added.
   attributes:
     - # The attribute name.
+      # Property is required and must be non-null.
       name: service.name
       # The attribute value.
       # The type of value must match .type.
+      # Property is required and must be non-null.
       value: ${OTEL_SERVICE_NAME:-unknown_service}
   # Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
   # The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
   # If omitted or null, no resource attributes are added.
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
+# If omitted, default values for general attributes are used.
 attribute_limits:
   # Configure max attribute value size. 
   # Value must be non-negative.
@@ -71,19 +76,21 @@ attribute_limits:
 propagator:
   # Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.
   # Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. 
-  # If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
+  # If omitted, and .composite_list is empty, a noop propagator is used.
   composite: []
   # Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.
   # The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
   # Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. 
-  # If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
+  # If omitted or null, and .composite is empty, a noop propagator is used.
   composite_list: ${OTEL_PROPAGATORS:-tracecontext,baggage}
 # Configure tracer provider.
 # If omitted, a noop tracer provider is used.
 tracer_provider:
   # Configure span processors.
+  # Property is required and must be non-null.
   processors:
     - # Configure a batch span processor.
+      # If omitted, ignore.
       batch:
         # Configure delay interval (in milliseconds) between two consecutive exports. 
         # Value must be non-negative.
@@ -100,13 +107,16 @@ tracer_provider:
         # If omitted or null, 512 is used.
         max_export_batch_size: ${OTEL_BSP_MAX_EXPORT_BATCH_SIZE:-512}
         # Configure exporter.
+        # Property is required and must be non-null.
         exporter:
           # Configure exporter to be OTLP with HTTP transport.
+          # If omitted, ignore.
           otlp_http:
             # Configure endpoint, including the signal specific path.
             # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}
             # Configure TLS settings for the exporter.
+            # If omitted, system default TLS settings are used.
             tls:
               # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
@@ -130,12 +140,14 @@ tracer_provider:
             timeout: ${OTEL_EXPORTER_OTLP_TRACES_TIMEOUT:-10000}
             # Configure headers. Entries have higher priority than entries from .headers_list.
             # If an entry's .value is null, the entry is ignored.
+            # If omitted, no headers are added.
             headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
             headers_list: ${OTEL_EXPORTER_OTLP_TRACES_HEADERS}
   # Configure span limits. See also attribute_limits.
+  # If omitted, default span limits are used.
   limits:
     # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
     # Value must be non-negative.
@@ -165,31 +177,37 @@ tracer_provider:
   # If omitted, parent based sampler with a root of always_on is used.
   sampler:
     # Configure sampler to be parent_based.
+    # If omitted, ignore.
     parent_based:
       # Configure root sampler.
-      # If omitted or null, always_on is used.
+      # If omitted, always_on is used.
       root:
         # Configure sampler to be always_on.
+        # If omitted, ignore.
         always_on:
       # Configure remote_parent_sampled sampler.
-      # If omitted or null, always_on is used.
+      # If omitted, always_on is used.
       remote_parent_sampled:
         # Configure sampler to be always_on.
+        # If omitted, ignore.
         always_on:
       # Configure remote_parent_not_sampled sampler.
-      # If omitted or null, always_off is used.
+      # If omitted, always_off is used.
       remote_parent_not_sampled:
         # Configure sampler to be always_off.
+        # If omitted, ignore.
         always_off:
       # Configure local_parent_sampled sampler.
-      # If omitted or null, always_on is used.
+      # If omitted, always_on is used.
       local_parent_sampled:
         # Configure sampler to be always_on.
+        # If omitted, ignore.
         always_on:
       # Configure local_parent_not_sampled sampler.
-      # If omitted or null, always_off is used.
+      # If omitted, always_off is used.
       local_parent_not_sampled:
         # Configure sampler to be always_off.
+        # If omitted, ignore.
         always_off:
 
 
@@ -197,8 +215,10 @@ tracer_provider:
 # If omitted, a noop meter provider is used.
 meter_provider:
   # Configure metric readers.
+  # Property is required and must be non-null.
   readers:
     - # Configure a periodic metric reader.
+      # If omitted, ignore.
       periodic:
         # Configure delay interval (in milliseconds) between start of two consecutive exports. 
         # Value must be non-negative.
@@ -209,13 +229,16 @@ meter_provider:
         # If omitted or null, 30000 is used.
         timeout: ${OTEL_METRIC_EXPORT_TIMEOUT:-30000}
         # Configure exporter.
+        # Property is required and must be non-null.
         exporter:
           # Configure exporter to be OTLP with HTTP transport.
+          # If omitted, ignore.
           otlp_http:
             # Configure endpoint, including the signal specific path.
             # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
             # Configure TLS settings for the exporter.
+            # If omitted, system default TLS settings are used.
             tls:
               # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
@@ -239,6 +262,7 @@ meter_provider:
             timeout: ${OTEL_EXPORTER_OTLP_METRICS_TIMEOUT:-10000}
             # Configure headers. Entries have higher priority than entries from .headers_list.
             # If an entry's .value is null, the entry is ignored.
+            # If omitted, no headers are added.
             headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
@@ -246,22 +270,24 @@ meter_provider:
             headers_list: ${OTEL_EXPORTER_OTLP_METRICS_HEADERS}
             # Configure temporality preference.
             # Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-            # If omitted or null, cumulative is used.
+            # If omitted, cumulative is used.
             temporality_preference: ${OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:-cumulative}
             # Configure default histogram aggregation.
             # Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-            # If omitted or null, explicit_bucket_histogram is used.
+            # If omitted, explicit_bucket_histogram is used.
             default_histogram_aggregation: ${OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION:-explicit_bucket_histogram}
   # Configure the exemplar filter. 
   # Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
-  # If omitted or null, trace_based is used.
+  # If omitted, trace_based is used.
   exemplar_filter: ${OTEL_METRICS_EXEMPLAR_FILTER:-trace_based}
 # Configure logger provider.
 # If omitted, a noop logger provider is used.
 logger_provider:
   # Configure log record processors.
+  # Property is required and must be non-null.
   processors:
     - # Configure a batch log record processor.
+      # If omitted, ignore.
       batch:
         # Configure delay interval (in milliseconds) between two consecutive exports. 
         # Value must be non-negative.
@@ -278,13 +304,16 @@ logger_provider:
         # If omitted or null, 512 is used.
         max_export_batch_size: ${OTEL_BLRP_MAX_EXPORT_BATCH_SIZE:-512}
         # Configure exporter.
+        # Property is required and must be non-null.
         exporter:
           # Configure exporter to be OTLP with HTTP transport.
+          # If omitted, ignore.
           otlp_http:
             # Configure endpoint, including the signal specific path.
             # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}
             # Configure TLS settings for the exporter.
+            # If omitted, system default TLS settings are used.
             tls:
               # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
@@ -308,12 +337,14 @@ logger_provider:
             timeout: ${OTEL_EXPORTER_OTLP_LOGS_TIMEOUT:-10000}
             # Configure headers. Entries have higher priority than entries from .headers_list.
             # If an entry's .value is null, the entry is ignored.
+            # If omitted, no headers are added.
             headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
             headers_list: ${OTEL_EXPORTER_OTLP_LOGS_HEADERS}
   # Configure log record limits. See also attribute_limits.
+  # If omitted, default log record limits are used.
   limits:
     # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
     # Value must be non-negative.

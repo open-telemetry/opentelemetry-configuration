@@ -29,7 +29,6 @@ metaSchema.types.forEach(metaSchemaType => {
     if (!jsonSchemaType) {
         throw new Error(`JSON schema type not found for meta schema type ${type}.`);
     }
-    const required = jsonSchemaType.schema['required'];
 
     // Heading
     addHeader(type, type.toLowerCase(), 2);
@@ -44,7 +43,7 @@ metaSchema.types.forEach(metaSchemaType => {
         output.push("No properties.\n\n");
     } else {
         // Property type and description table
-        output.push(`| Property | Type | Required? | Constraints | Description |\n`);
+        output.push(`| Property | Type | Required? | Default and Null Behavior | Constraints | Description |\n`);
         output.push("|---|---|---|---|---|\n");
         metaSchemaType.properties.forEach(property => {
             const jsonSchemaProperty = jsonSchemaType.properties.find(item => item.property === property.property);
@@ -52,14 +51,14 @@ metaSchema.types.forEach(metaSchemaType => {
                 throw new Error(`JSON schema property not found for property ${property.property} and type ${type}.`);
             }
             const formattedPropertyType = formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType);
-            const isRequired = required !== undefined && required.includes(property.property);
+            const formattedDefaultAndNullBehavior = property.defaultAndNullBehavior(jsonSchemaProperty);
             let formattedConstraints = resolveAndFormatConstraints(jsonSchemaProperty.schema, '<br>');
             if (formattedConstraints.length === 0) {
                 formattedConstraints = 'No constraints.';
             }
             const formattedDescription = property.description.split("\n").join("<br>");
 
-            output.push(`| \`${property.property}\` | ${formattedPropertyType} | \`${isRequired}\` | ${formattedConstraints} | ${formattedDescription} |\n`);
+            output.push(`| \`${property.property}\` | ${formattedPropertyType} | ${jsonSchemaProperty.isRequired} | ${formattedDefaultAndNullBehavior} | ${formattedConstraints} | ${formattedDescription} |\n`);
         });
         output.push('\n');
 
