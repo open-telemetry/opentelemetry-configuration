@@ -460,6 +460,14 @@ meter_provider:
         exporter:
           # Configure exporter to be console.
           console:
+            # Configure temporality preference.
+            # Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, cumulative is used.
+            temporality_preference: delta
+            # Configure default histogram aggregation.
+            # Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, explicit_bucket_histogram is used.
+            default_histogram_aggregation: base2_exponential_bucket_histogram
   # Configure views. 
   # Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
   views:
