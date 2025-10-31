@@ -1,9 +1,9 @@
 import {readJsonSchemaTypes} from "./json-schema.js";
-import {readAndFixMetaSchemaTypes} from "./meta-schema.js";
+import {KNOWN_LANGUAGES, readAndFixMetaSchema} from "./meta-schema.js";
 import fs from "node:fs";
 import {markdownDocPath} from "./util.js";
 
-const { messages, types } = readAndFixMetaSchemaTypes();
+const { messages, metaSchema } = readAndFixMetaSchema();
 
 if (messages.length > 0) {
     throw new Error("Meta schema has problems. Please run fix-meta-schema and try again.");
@@ -16,14 +16,14 @@ jsonSchemaTypes.forEach(type => jsonSchemaTypesByType[type.type] = type);
 const output = [];
 const headers = [];
 
-types.sort((a, b) => a.type.localeCompare(b.type));
+metaSchema.types.sort((a, b) => a.type.localeCompare(b.type));
 
 addHeader('Overview', 'overview', 1);
 output.push('TODO\n');
 
 // Write types
 addHeader('Types', 'types', 1);
-types.forEach(metaSchemaType => {
+metaSchema.types.forEach(metaSchemaType => {
     const type = metaSchemaType.type;
     const jsonSchemaType = jsonSchemaTypesByType[type];
     if (!jsonSchemaType) {
@@ -62,7 +62,37 @@ types.forEach(metaSchemaType => {
             output.push(`| \`${property.property}\` | ${formattedPropertyType} | \`${isRequired}\` | ${formattedConstraints} | ${formattedDescription} |\n`);
         });
         output.push('\n');
-        // TODO: print language implementation status
+
+        // Write language support status for type
+        output.push(`<details>\n`);
+        output.push('<summary>Language support status</summary>\n\n');
+        const languageImplementationsByLanguage = {};
+        metaSchema.languageImplementations.forEach(languageImplementation => languageImplementationsByLanguage[languageImplementation.language] = languageImplementation);
+        output.push('| Property |');
+        KNOWN_LANGUAGES.forEach(language => {
+            output.push(` [${language}](#${language}) |`);
+            if (!languageImplementationsByLanguage[language]) {
+                throw new Error(`Meta schema LanguageImplementation not found for language ${language}.`);
+            }
+        });
+        output.push('\n');
+        output.push('|---|');
+        KNOWN_LANGUAGES.forEach(language => output.push(`---|`));
+        output.push('\n');
+        metaSchemaType.properties.forEach(property => {
+            output.push(`| \`${property.property}\` |`);
+            KNOWN_LANGUAGES.forEach(language => {
+                const typeSupportStatus = languageImplementationsByLanguage[language].typeSupportStatuses.find(item => item.type === type);
+                if (!typeSupportStatus) {
+                    throw new Error(`Meta schema LanguageImplementation for language ${language} missing type ${type}.`);
+                }
+                const propertyOverride = typeSupportStatus.propertyOverrides.find(propertyOverride => propertyOverride.property === property.property);
+                const status = propertyOverride ? propertyOverride.status : typeSupportStatus.status;
+                output.push(` ${status} |`);
+            });
+            output.push('\n');
+        });
+        output.push(`</details>\n\n`)
     }
 
     // Constraints
@@ -101,6 +131,36 @@ types.forEach(metaSchemaType => {
     output.push('\n');
 });
 
+// Write language support status
+addHeader('Language Support Status', 'language-support-status', 1);
+KNOWN_LANGUAGES.forEach(language => {
+    addHeader(language, language, 2);
+    const languageImplementation = metaSchema.languageImplementations.find(item => item.language === language);
+    if (!languageImplementation) {
+        throw new Error(`Meta schema LanguageImplementation not found for language ${language}.`);
+    }
+    output.push(`Latest supported file format: \`${languageImplementation.latestSupportedFileFormat}\`\n\n`);
+
+    output.push(`| Type | Status | Notes | Property Support Status |\n`);
+    output.push(`|---|---|---|---|\n`);
+    languageImplementation.typeSupportStatuses.forEach(typeSupportStatus => {
+        const metaSchemaType = metaSchema.types.find(item => item.type === typeSupportStatus.type);
+        if (!metaSchemaType) {
+            throw new Error(`MetaSchemaType not found for type ${typeSupportStatus.type}.`);
+        }
+
+        const propertySupportStatus = [];
+        metaSchemaType.properties.forEach(metaSchemaProperty => {
+            const propertyOverride = typeSupportStatus.propertyOverrides.find(propertyOverride => propertyOverride.property === metaSchemaProperty.property);
+            const status = propertyOverride ? propertyOverride.status : typeSupportStatus.status;
+            propertySupportStatus.push(`* \`${metaSchemaProperty.property}\`: ${status}<br>`) ;
+        });
+
+        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${typeSupportStatus.notes} | ${propertySupportStatus.join('')} |\n`);
+    });
+    output.push(`\n\n`);
+});
+
 // Write SDK extension plugins
 addHeader('SDK Extension Plugins', 'sdk-extension-plugins', 1);
 output.push(
@@ -113,7 +173,7 @@ Each of the following types support referencing custom interface implementations
 SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the \`otlp_http\` property of \`SpanExporter\` defines the OTLP http/protobuf exporter.
 
 `);
-types.filter(metaSchemaType => metaSchemaType.isSdkExtensionPlugin)
+metaSchema.types.filter(metaSchemaType => metaSchemaType.isSdkExtensionPlugin)
     .forEach(metaSchemaType => {
         output.push(`* [${metaSchemaType.type}](#${metaSchemaType.type})\n`)
     });

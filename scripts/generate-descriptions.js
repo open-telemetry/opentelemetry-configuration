@@ -1,6 +1,6 @@
 import fs from 'fs';
 import yaml from 'yaml';
-import {readAndFixMetaSchemaTypes} from "./meta-schema.js";
+import {readAndFixMetaSchema} from "./meta-schema.js";
 import {readJsonSchemaTypes} from "./json-schema.js";
 
 // Extract input file arg or throw
@@ -30,9 +30,9 @@ for (let i = 3; i < process.argv.length; i++) {
 }
 
 // Read JSON schema and meta schema
-const { messages, types } = readAndFixMetaSchemaTypes();
+const { messages, metaSchema } = readAndFixMetaSchema();
 const metaSchemaTypesByType = {};
-types.forEach(type => metaSchemaTypesByType[type.type] = type);
+metaSchema.types.forEach(type => metaSchemaTypesByType[type.type] = type);
 if (messages.length > 0) {
     throw new Error("Meta schema has problems. Please run fix-meta-schema and try again.");
 }
