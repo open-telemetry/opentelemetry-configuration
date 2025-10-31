@@ -4,7 +4,13 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export const metaSchemaFileName = "meta_schema.yaml";
+export const metaSchemaFilePrefix = "meta_schema";
 export const schemaDirPath = __dirname + "/../schema/";
-export const metaSchemaPath = schemaDirPath + metaSchemaFileName;
 export const markdownDocPath = __dirname + "/../schema-docs.md";
+
+export const metaSchemaTypesFileName = `${metaSchemaFilePrefix}_types.yaml`;
+export const metaSchemaTypesPath = schemaDirPath + metaSchemaTypesFileName;
+
+export const metaSchemaLanguageFilePrefix = `${metaSchemaFilePrefix}_language`;
+export const metaSchemaLanguageStatusFileName = (language) => `${metaSchemaLanguageFilePrefix}_${language}.yaml`;
+export const metaSchemaLanguageStatusPath = (language) => schemaDirPath + metaSchemaLanguageStatusFileName(language);

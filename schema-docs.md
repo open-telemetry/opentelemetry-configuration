@@ -94,6 +94,8 @@
   * [ViewSelector](#viewselector)
   * [ViewStream](#viewstream)
   * [ZipkinSpanExporter](#zipkinspanexporter)
+* [Language Support Status](#language-support-status)
+  * [java](#java)
 * [SDK Extension Plugins](#sdk-extension-plugins)
 
 
@@ -112,6 +114,19 @@ TODO
 | `base2_exponential_bucket_histogram` | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | `false` | No constraints. | TODO |
 | `last_value` | [`LastValueAggregation`](#lastvalueaggregation) | `false` | No constraints. | TODO |
 | `sum` | [`SumAggregation`](#sumaggregation) | `false` | No constraints. | TODO |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `default` | supported |
+| `drop` | supported |
+| `explicit_bucket_histogram` | supported |
+| `base2_exponential_bucket_histogram` | supported |
+| `last_value` | supported |
+| `sum` | supported |
+</details>
 
 Constraints: 
 
@@ -212,6 +227,15 @@ Usages:
 | `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> |
 | `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `attribute_value_length_limit` | supported |
+| `attribute_count_limit` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `true`
@@ -251,6 +275,16 @@ Usages:
 | `name` | `string` | `true` | No constraints. | The attribute name.<br> |
 | `value` | `oneOf` | `true` | No constraints. | The attribute value.<br>The type of value must match .type.<br> |
 | `type` | [`AttributeType`](#attributetype) | `false` | No constraints. | The attribute type.<br>Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br>If omitted or null, string is used.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `name` | supported |
+| `value` | supported |
+| `type` | supported |
+</details>
 
 Constraints: 
 
@@ -435,6 +469,16 @@ Usages:
 | `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | TODO |
 | `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | TODO |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `max_scale` | supported |
+| `max_size` | supported |
+| `record_min_max` | ignored |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -485,6 +529,18 @@ Usages:
 | `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> |
 | `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> |
 | `exporter` | [`LogRecordExporter`](#logrecordexporter) | `true` | No constraints. | Configure exporter. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `schedule_delay` | supported |
+| `export_timeout` | supported |
+| `max_queue_size` | supported |
+| `max_export_batch_size` | supported |
+| `exporter` | supported |
+</details>
 
 Constraints: 
 
@@ -550,6 +606,18 @@ Usages:
 | `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> |
 | `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> |
 | `exporter` | [`SpanExporter`](#spanexporter) | `true` | No constraints. | Configure exporter. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `schedule_delay` | supported |
+| `export_timeout` | supported |
+| `max_queue_size` | supported |
+| `max_export_batch_size` | supported |
+| `exporter` | supported |
+</details>
 
 Constraints: 
 
@@ -618,6 +686,21 @@ Usages:
 | `observable_gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_gauge instruments.<br>If omitted or null, the value from .default is used.<br> |
 | `observable_up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> |
 | `up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `default` | supported |
+| `counter` | supported |
+| `gauge` | supported |
+| `histogram` | supported |
+| `observable_counter` | supported |
+| `observable_gauge` | supported |
+| `observable_up_down_counter` | supported |
+| `up_down_counter` | supported |
+</details>
 
 Constraints: 
 
@@ -834,6 +917,15 @@ Usages:
 | `peer` | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` | No constraints. | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> |
 | `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `peer` | supported |
+| `http` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -892,6 +984,15 @@ Usages:
 | `request_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for outbound http requests.<br> |
 | `response_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for inbound http responses.<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `request_captured_headers` | supported |
+| `response_captured_headers` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -931,6 +1032,15 @@ Usages:
 | `client` | [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | `false` | No constraints. | Configure instrumentations following the http client semantic conventions. |
 | `server` | [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | `false` | No constraints. | Configure instrumentations following the http server semantic conventions. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `client` | supported |
+| `server` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -963,6 +1073,15 @@ Usages:
 |---|---|---|---|---|
 | `request_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for inbound http requests.<br> |
 | `response_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for outbound http responses.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `request_captured_headers` | supported |
+| `response_captured_headers` | supported |
+</details>
 
 Constraints: 
 
@@ -1012,6 +1131,25 @@ Usages:
 | `ruby` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Ruby language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
 | `rust` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Rust language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
 | `swift` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Swift language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `general` | supported |
+| `cpp` | supported |
+| `dotnet` | supported |
+| `erlang` | supported |
+| `go` | supported |
+| `java` | supported |
+| `js` | supported |
+| `php` | supported |
+| `python` | supported |
+| `ruby` | supported |
+| `rust` | supported |
+| `swift` | supported |
+</details>
 
 Constraints: 
 
@@ -1207,6 +1345,14 @@ Usages:
 |---|---|---|---|---|
 | `disabled` | `boolean` | `false` | No constraints. | Configure if the logger is enabled or not. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `disabled` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -1241,6 +1387,15 @@ Usages:
 |---|---|---|---|---|
 | `default_config` | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `false` | No constraints. | Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers. |
 | `loggers` | `array` of [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | `false` | No constraints. | Configure loggers. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `default_config` | supported |
+| `loggers` | supported |
+</details>
 
 Constraints: 
 
@@ -1280,6 +1435,15 @@ Usages:
 | `name` | `string` | `false` | No constraints. | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
 | `config` | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `false` | No constraints. | The logger config. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `name` | supported |
+| `config` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -1316,6 +1480,14 @@ Usages:
 |---|---|---|---|---|
 | `disabled` | `boolean` | `false` | No constraints. | Configure if the meter is enabled or not. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `disabled` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -1350,6 +1522,15 @@ Usages:
 |---|---|---|---|---|
 | `default_config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` | No constraints. | Configure the default meter config used there is no matching entry in .meter_configurator/development.meters. |
 | `meters` | `array` of [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | `false` | No constraints. | Configure meters. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `default_config` | supported |
+| `meters` | supported |
+</details>
 
 Constraints: 
 
@@ -1389,6 +1570,15 @@ Usages:
 | `name` | `string` | `false` | No constraints. | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
 | `config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` | No constraints. | The meter config. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `name` | supported |
+| `config` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -1424,6 +1614,14 @@ Usages:
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `output_stream` | supported |
+</details>
 
 Constraints: 
 
@@ -1462,6 +1660,16 @@ Usages:
 | `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> |
 | `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
 | `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `output_stream` | supported |
+| `temporality_preference` | supported |
+| `default_histogram_aggregation` | supported |
+</details>
 
 Constraints: 
 
@@ -1504,6 +1712,14 @@ Usages:
 |---|---|---|---|---|
 | `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` | No constraints. | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `service_mapping` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -1536,6 +1752,15 @@ Usages:
 |---|---|---|---|---|
 | `peer` | `string` | `true` | No constraints. | The IP address to map.<br> |
 | `service` | `string` | `true` | No constraints. | The logical name corresponding to the IP address of .peer.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `peer` | supported |
+| `service` | supported |
+</details>
 
 Constraints: 
 
@@ -1573,6 +1798,14 @@ Usages:
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br>If omitted or null, 1.0 is used.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `ratio` | unknown |
+</details>
 
 Constraints: 
 
@@ -1640,6 +1873,18 @@ Usages:
 | `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
 | `translation_strategy` | one of:<br>* `string`<br>* `null`<br> | `false` | * `enum`: `["UnderscoreEscapingWithSuffixes","UnderscoreEscapingWithoutSuffixes","NoUTF8EscapingWithSuffixes","NoTranslation"]`<br> | Configure how Prometheus metrics are exposed. Values include:<br><br> * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br> * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.<br> * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br> * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.<br><br>If omitted or null, UnderscoreEscapingWithSuffixes is used.<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `host` | supported |
+| `port` | supported |
+| `without_scope_info` | ignored |
+| `with_resource_constant_labels` | supported |
+| `translation_strategy` | not_implemented |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -1703,6 +1948,15 @@ Usages:
 | `attributes` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure attributes provided by resource detectors. |
 | `detectors` | `array` of [`ExperimentalResourceDetector`](#experimentalresourcedetector) | `false` | No constraints. | Configure resource detectors.<br>Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. <br>If omitted or null, no resource detectors are enabled.<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `attributes` | supported |
+| `detectors` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -1742,6 +1996,17 @@ Usages:
 | `host` | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | `false` | No constraints. | Enable the host resource detector, which populates host.* and os.* attributes.<br> |
 | `process` | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | `false` | No constraints. | Enable the process resource detector, which populates process.* attributes.<br> |
 | `service` | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | `false` | No constraints. | Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `container` | supported |
+| `host` | supported |
+| `process` | supported |
+| `service` | supported |
+</details>
 
 Constraints: 
 
@@ -1815,6 +2080,14 @@ Usages:
 |---|---|---|---|---|
 | `disabled` | `boolean` | `false` | No constraints. | Configure if the tracer is enabled or not. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `disabled` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -1849,6 +2122,15 @@ Usages:
 |---|---|---|---|---|
 | `default_config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` | No constraints. | Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers. |
 | `tracers` | `array` of [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | `false` | No constraints. | Configure tracers. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `default_config` | supported |
+| `tracers` | supported |
+</details>
 
 Constraints: 
 
@@ -1888,6 +2170,15 @@ Usages:
 | `name` | `string` | `false` | No constraints. | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
 | `config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` | No constraints. | The tracer config. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `name` | supported |
+| `config` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -1924,6 +2215,15 @@ Usages:
 |---|---|---|---|---|
 | `boundaries` | `array` of `number` | `false` | No constraints. | Configure bucket boundaries.<br>If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.<br> |
 | `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure record min and max.<br>If omitted or null, true is used.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `boundaries` | supported |
+| `record_min_max` | supported |
+</details>
 
 Constraints: 
 
@@ -2030,6 +2330,17 @@ Usages:
 | `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
 | `insecure` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `certificate_file` | unknown |
+| `client_key_file` | unknown |
+| `client_certificate_file` | unknown |
+| `insecure` | not_applicable |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -2086,6 +2397,16 @@ Usages:
 | `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
 | `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `certificate_file` | unknown |
+| `client_key_file` | unknown |
+| `client_certificate_file` | unknown |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -2134,6 +2455,15 @@ Usages:
 |---|---|---|---|---|
 | `included` | `array` of `string` | `false` | No constraints. | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all values are included.<br> |
 | `excluded` | `array` of `string` | `false` | No constraints. | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `included` | supported |
+| `excluded` | supported |
+</details>
 
 Constraints: 
 
@@ -2235,6 +2565,16 @@ Usages:
 | `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
 | `initial_sampler` | [`Sampler`](#sampler) | `false` | No constraints. | TODO |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `endpoint` | supported |
+| `interval` | supported |
+| `initial_sampler` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -2306,6 +2646,16 @@ Usages:
 | `processors` | `array` of [`LogRecordProcessor`](#logrecordprocessor) | `true` | No constraints. | Configure log record processors. |
 | `limits` | [`LogRecordLimits`](#logrecordlimits) | `false` | No constraints. | Configure log record limits. See also attribute_limits. |
 | `logger_configurator/development` | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` | No constraints. | Configure loggers.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `processors` | supported |
+| `limits` | supported |
+| `logger_configurator/development` | supported |
+</details>
 
 Constraints: 
 
@@ -2520,6 +2870,17 @@ Usages:
 | `otlp_file/development` | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> |
 | `console` | [`ConsoleExporter`](#consoleexporter) | `false` | No constraints. | Configure exporter to be console. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `otlp_http` | supported |
+| `otlp_grpc` | supported |
+| `otlp_file/development` | supported |
+| `console` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `{"type":["object","null"]}`
@@ -2569,6 +2930,15 @@ Usages:
 | `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> |
 | `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `attribute_value_length_limit` | supported |
+| `attribute_count_limit` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -2612,6 +2982,15 @@ Usages:
 | `batch` | [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | `false` | No constraints. | Configure a batch log record processor. |
 | `simple` | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | `false` | No constraints. | Configure a simple log record processor. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `batch` | supported |
+| `simple` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `{"type":["object"]}`
@@ -2654,6 +3033,17 @@ Usages:
 | `views` | `array` of [`View`](#view) | `false` | No constraints. | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> |
 | `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | No constraints. | Configure the exemplar filter. <br>Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br>If omitted or null, trace_based is used.<br> |
 | `meter_configurator/development` | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | No constraints. | Configure meters.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `readers` | supported |
+| `views` | supported |
+| `exemplar_filter` | supported |
+| `meter_configurator/development` | supported |
+</details>
 
 Constraints: 
 
@@ -3349,6 +3739,14 @@ Usages:
 |---|---|---|---|---|
 | `opencensus` | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | `false` | No constraints. | Configure metric producer to be opencensus. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `opencensus` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `{"type":["object","null"]}`
@@ -3389,6 +3787,15 @@ Usages:
 | `periodic` | [`PeriodicMetricReader`](#periodicmetricreader) | `false` | No constraints. | Configure a periodic metric reader. |
 | `pull` | [`PullMetricReader`](#pullmetricreader) | `false` | No constraints. | Configure a pull based metric reader. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `periodic` | supported |
+| `pull` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -3425,6 +3832,15 @@ Usages:
 |---|---|---|---|---|
 | `name` | `string` | `true` | No constraints. | The name of the pair. |
 | `value` | one of:<br>* `string`<br>* `null`<br> | `true` | No constraints. | The value of the pair. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `name` | supported |
+| `value` | supported |
+</details>
 
 Constraints: 
 
@@ -3502,6 +3918,23 @@ Usages:
 | `tracer_provider` | [`TracerProvider`](#tracerprovider) | `false` | No constraints. | Configure tracer provider.<br>If omitted, a noop tracer provider is used.<br> |
 | `resource` | [`Resource`](#resource) | `false` | No constraints. | Configure resource for all signals.<br>If omitted, the default resource is used.<br> |
 | `instrumentation/development` | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | No constraints. | Configure instrumentation.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `file_format` | supported |
+| `disabled` | supported |
+| `log_level` | supported |
+| `attribute_limits` | supported |
+| `logger_provider` | supported |
+| `meter_provider` | supported |
+| `propagator` | supported |
+| `tracer_provider` | supported |
+| `resource` | supported |
+| `instrumentation/development` | supported |
+</details>
 
 Constraints: 
 
@@ -3638,6 +4071,19 @@ Usages:
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> |
 | `tls` | [`GrpcTls`](#grpctls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `endpoint` | supported |
+| `headers` | supported |
+| `headers_list` | supported |
+| `compression` | supported |
+| `timeout` | supported |
+| `tls` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -3708,6 +4154,21 @@ Usages:
 | `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
 | `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
 | `tls` | [`GrpcTls`](#grpctls) | `false` | No constraints. | Configure TLS settings for the exporter. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `endpoint` | supported |
+| `headers` | supported |
+| `headers_list` | supported |
+| `compression` | supported |
+| `timeout` | supported |
+| `temporality_preference` | supported |
+| `default_histogram_aggregation` | supported |
+| `tls` | supported |
+</details>
 
 Constraints: 
 
@@ -3813,6 +4274,20 @@ Usages:
 | `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> |
 | `tls` | [`HttpTls`](#httptls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `endpoint` | supported |
+| `headers` | supported |
+| `headers_list` | supported |
+| `compression` | supported |
+| `timeout` | supported |
+| `encoding` | supported |
+| `tls` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -3888,6 +4363,23 @@ Usages:
 | `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
 | `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
 | `tls` | [`HttpTls`](#httptls) | `false` | No constraints. | Configure TLS settings for the exporter. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `endpoint` | supported |
+| `endpoint` | supported |
+| `headers` | supported |
+| `headers_list` | supported |
+| `compression` | supported |
+| `timeout` | supported |
+| `encoding` | supported |
+| `temporality_preference` | supported |
+| `default_histogram_aggregation` | supported |
+| `tls` | supported |
+</details>
 
 Constraints: 
 
@@ -3965,6 +4457,18 @@ Usages:
 | `local_parent_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure local_parent_sampled sampler.<br>If omitted or null, always_on is used.<br> |
 | `local_parent_not_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure local_parent_not_sampled sampler.<br>If omitted or null, always_off is used.<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `root` | supported |
+| `remote_parent_sampled` | supported |
+| `remote_parent_not_sampled` | supported |
+| `local_parent_sampled` | supported |
+| `local_parent_not_sampled` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -4012,6 +4516,18 @@ Usages:
 | `exporter` | [`PushMetricExporter`](#pushmetricexporter) | `true` | No constraints. | Configure exporter. |
 | `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | No constraints. | Configure metric producers. |
 | `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | No constraints. | Configure cardinality limits. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `interval` | supported |
+| `timeout` | supported |
+| `exporter` | supported |
+| `producers` | supported |
+| `cardinality_limits` | supported |
+</details>
 
 Constraints: 
 
@@ -4069,6 +4585,15 @@ Usages:
 |---|---|---|---|---|
 | `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | No constraints. | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> |
 | `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `composite` | supported |
+| `composite_list` | supported |
+</details>
 
 No constraints.
 
@@ -4184,6 +4709,14 @@ Usages:
 |---|---|---|---|---|
 | `prometheus/development` | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | No constraints. | Configure exporter to be prometheus.<br>This type is in development and subject to breaking changes in minor versions.<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `prometheus/development` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `{"type":["object","null"]}`
@@ -4225,6 +4758,16 @@ Usages:
 | `exporter` | [`PullMetricExporter`](#pullmetricexporter) | `true` | No constraints. | Configure exporter. |
 | `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | No constraints. | Configure metric producers. |
 | `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | No constraints. | Configure cardinality limits. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `exporter` | supported |
+| `producers` | supported |
+| `cardinality_limits` | supported |
+</details>
 
 Constraints: 
 
@@ -4272,6 +4815,17 @@ Usages:
 | `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport.<br> |
 | `otlp_file/development` | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> |
 | `console` | [`ConsoleExporter`](#consoleexporter) | `false` | No constraints. | Configure exporter to be console.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `otlp_http` | supported |
+| `otlp_grpc` | supported |
+| `otlp_file/development` | supported |
+| `console` | supported |
+</details>
 
 Constraints: 
 
@@ -4322,6 +4876,17 @@ Usages:
 | `detection/development` | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | No constraints. | Configure resource detection.<br>This type is in development and subject to breaking changes in minor versions.<br>If omitted or null, resource detection is disabled.<br> |
 | `schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure resource schema URL.<br>If omitted or null, no schema URL is used.<br> |
 | `attributes_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>If omitted or null, no resource attributes are added.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `attributes` | supported |
+| `detection/development` | supported |
+| `schema_url` | supported |
+| `attributes_list` | supported |
+</details>
 
 Constraints: 
 
@@ -4516,6 +5081,19 @@ Usages:
 | `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | No constraints. | Configure sampler to be trace_id_ratio_based. |
 | `probability/development` | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | No constraints. | Configure sampler to be probability. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `always_off` | supported |
+| `always_on` | supported |
+| `jaeger_remote` | supported |
+| `parent_based` | supported |
+| `trace_id_ratio_based` | supported |
+| `probability/development` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `{"type":["object","null"]}`
@@ -4575,6 +5153,14 @@ Usages:
 |---|---|---|---|---|
 | `exporter` | [`LogRecordExporter`](#logrecordexporter) | `true` | No constraints. | Configure exporter. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `exporter` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -4607,6 +5193,14 @@ Usages:
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `exporter` | [`SpanExporter`](#spanexporter) | `true` | No constraints. | Configure exporter. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `exporter` | supported |
+</details>
 
 Constraints: 
 
@@ -4646,6 +5240,18 @@ Usages:
 | `otlp_file/development` | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> |
 | `console` | [`ConsoleExporter`](#consoleexporter) | `false` | No constraints. | Configure exporter to be console. |
 | `zipkin` | [`ZipkinSpanExporter`](#zipkinspanexporter) | `false` | No constraints. | Configure exporter to be zipkin. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `otlp_http` | supported |
+| `otlp_grpc` | supported |
+| `otlp_file/development` | supported |
+| `console` | supported |
+| `zipkin` | supported |
+</details>
 
 Constraints: 
 
@@ -4702,6 +5308,19 @@ Usages:
 | `link_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max span link count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
 | `event_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attributes per span event. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
 | `link_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attributes per span link. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `attribute_value_length_limit` | supported |
+| `attribute_count_limit` | supported |
+| `event_count_limit` | supported |
+| `link_count_limit` | supported |
+| `event_attribute_count_limit` | supported |
+| `link_attribute_count_limit` | supported |
+</details>
 
 Constraints: 
 
@@ -4773,6 +5392,15 @@ Usages:
 |---|---|---|---|---|
 | `batch` | [`BatchSpanProcessor`](#batchspanprocessor) | `false` | No constraints. | Configure a batch span processor. |
 | `simple` | [`SimpleSpanProcessor`](#simplespanprocessor) | `false` | No constraints. | Configure a simple span processor. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `batch` | supported |
+| `simple` | supported |
+</details>
 
 Constraints: 
 
@@ -4846,6 +5474,19 @@ Usages:
 | `b3multi` | [`B3MultiPropagator`](#b3multipropagator) | `false` | No constraints. | Include the zipkin b3 multi propagator. |
 | `jaeger` | [`JaegerPropagator`](#jaegerpropagator) | `false` | No constraints. | Include the jaeger propagator. |
 | `ottrace` | [`OpenTracingPropagator`](#opentracingpropagator) | `false` | No constraints. | Include the opentracing propagator. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `tracecontext` | supported |
+| `baggage` | supported |
+| `b3` | supported |
+| `b3multi` | supported |
+| `jaeger` | supported |
+| `ottrace` | supported |
+</details>
 
 Constraints: 
 
@@ -4925,6 +5566,14 @@ Usages:
 |---|---|---|---|---|
 | `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | No constraints. | Configure trace_id_ratio.<br>If omitted or null, 1.0 is used.<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `ratio` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -4962,6 +5611,17 @@ Usages:
 | `limits` | [`SpanLimits`](#spanlimits) | `false` | No constraints. | Configure span limits. See also attribute_limits. |
 | `sampler` | [`Sampler`](#sampler) | `false` | No constraints. | Configure the sampler.<br>If omitted, parent based sampler with a root of always_on is used.<br> |
 | `tracer_configurator/development` | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | No constraints. | Configure tracers.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `processors` | supported |
+| `limits` | supported |
+| `sampler` | supported |
+| `tracer_configurator/development` | supported |
+</details>
 
 Constraints: 
 
@@ -5355,6 +6015,15 @@ Usages:
 | `selector` | [`ViewSelector`](#viewselector) | `false` | No constraints. | Configure view selector. <br>Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.<br> |
 | `stream` | [`ViewStream`](#viewstream) | `false` | No constraints. | Configure view stream. |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `selector` | supported |
+| `stream` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -5391,6 +6060,19 @@ Usages:
 | `meter_name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter name selection criteria.<br>If omitted or null, all meter names match.<br> |
 | `meter_version` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter version selection criteria.<br>If omitted or null, all meter versions match.<br> |
 | `meter_schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter schema url selection criteria.<br>If omitted or null, all meter schema URLs match.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `instrument_name` | supported |
+| `instrument_type` | supported |
+| `unit` | supported |
+| `meter_name` | supported |
+| `meter_version` | supported |
+| `meter_schema_url` | supported |
+</details>
 
 Constraints: 
 
@@ -5455,6 +6137,18 @@ Usages:
 | `aggregation_cardinality_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure the aggregation cardinality limit.<br>If omitted or null, the metric reader's default cardinality limit is used.<br> |
 | `attribute_keys` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure attribute keys retained in the resulting stream(s).<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `name` | supported |
+| `description` | supported |
+| `aggregation` | supported |
+| `aggregation_cardinality_limit` | supported |
+| `attribute_keys` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -5507,6 +6201,15 @@ Usages:
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br>If omitted or null, http://localhost:9411/api/v2/spans is used.<br> |
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export. <br>Value must be non-negative. A value of 0 indicates indefinite.<br>If omitted or null, 10000 is used.<br> |
 
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `endpoint` | supported |
+| `timeout` | supported |
+</details>
+
 Constraints: 
 
 * `additionalProperties`: `false`
@@ -5542,6 +6245,108 @@ Usages:
   }
 }</pre>
 </details>
+
+# Language Support Status <a id="language-support-status"></a>
+
+## java <a id="java"></a>
+
+Latest supported file format: `1.0.0-rc.1`
+
+| Type | Status | Notes | Property Support Status |
+|---|---|---|---|
+| [`Aggregation`](#aggregation) | supported |  | * `default`: supported<br>* `drop`: supported<br>* `explicit_bucket_histogram`: supported<br>* `base2_exponential_bucket_histogram`: supported<br>* `last_value`: supported<br>* `sum`: supported<br> |
+| [`AlwaysOffSampler`](#alwaysoffsampler) | supported |  |  |
+| [`AlwaysOnSampler`](#alwaysonsampler) | supported |  |  |
+| [`AttributeLimits`](#attributelimits) | supported |  | * `attribute_value_length_limit`: supported<br>* `attribute_count_limit`: supported<br> |
+| [`AttributeNameValue`](#attributenamevalue) | supported |  | * `name`: supported<br>* `value`: supported<br>* `type`: supported<br> |
+| [`AttributeType`](#attributetype) | supported |  |  |
+| [`B3MultiPropagator`](#b3multipropagator) | supported |  |  |
+| [`B3Propagator`](#b3propagator) | supported |  |  |
+| [`BaggagePropagator`](#baggagepropagator) | supported |  |  |
+| [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: ignored<br> |
+| [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | supported |  | * `schedule_delay`: supported<br>* `export_timeout`: supported<br>* `max_queue_size`: supported<br>* `max_export_batch_size`: supported<br>* `exporter`: supported<br> |
+| [`BatchSpanProcessor`](#batchspanprocessor) | supported |  | * `schedule_delay`: supported<br>* `export_timeout`: supported<br>* `max_queue_size`: supported<br>* `max_export_batch_size`: supported<br>* `exporter`: supported<br> |
+| [`CardinalityLimits`](#cardinalitylimits) | supported |  | * `default`: supported<br>* `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
+| [`ConsoleExporter`](#consoleexporter) | supported |  |  |
+| [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
+| [`DropAggregation`](#dropaggregation) | supported |  |  |
+| [`ExemplarFilter`](#exemplarfilter) | supported |  |  |
+| [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | supported |  |  |
+| [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | supported |  | * `peer`: supported<br>* `http`: supported<br> |
+| [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | supported |  |  |
+| [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | supported |  | * `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
+| [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | supported |  | * `client`: supported<br>* `server`: supported<br> |
+| [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | supported |  | * `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
+| [`ExperimentalInstrumentation`](#experimentalinstrumentation) | supported |  | * `general`: supported<br>* `cpp`: supported<br>* `dotnet`: supported<br>* `erlang`: supported<br>* `go`: supported<br>* `java`: supported<br>* `js`: supported<br>* `php`: supported<br>* `python`: supported<br>* `ruby`: supported<br>* `rust`: supported<br>* `swift`: supported<br> |
+| [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | supported |  |  |
+| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | supported |  | * `disabled`: supported<br> |
+| [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |
+| [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | supported |  | * `name`: supported<br>* `config`: supported<br> |
+| [`ExperimentalMeterConfig`](#experimentalmeterconfig) | supported |  | * `disabled`: supported<br> |
+| [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | supported |  | * `default_config`: supported<br>* `meters`: supported<br> |
+| [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | supported |  | * `name`: supported<br>* `config`: supported<br> |
+| [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | supported |  | * `output_stream`: supported<br> |
+| [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | supported |  | * `output_stream`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br> |
+| [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | supported |  | * `service_mapping`: supported<br> |
+| [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | supported |  | * `peer`: supported<br>* `service`: supported<br> |
+| [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
+| [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | supported |  |  |
+| [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `without_scope_info`: ignored<br>* `with_resource_constant_labels`: supported<br>* `translation_strategy`: not_implemented<br> |
+| [`ExperimentalResourceDetection`](#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
+| [`ExperimentalResourceDetector`](#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
+| [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | supported |  |  |
+| [`ExperimentalTracerConfig`](#experimentaltracerconfig) | supported |  | * `disabled`: supported<br> |
+| [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
+| [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | supported |  | * `name`: supported<br>* `config`: supported<br> |
+| [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  |  |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  |  |
+| [`GrpcTls`](#grpctls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br>* `insecure`: not_applicable<br> |
+| [`HttpTls`](#httptls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br> |
+| [`IncludeExclude`](#includeexclude) | supported |  | * `included`: supported<br>* `excluded`: supported<br> |
+| [`InstrumentType`](#instrumenttype) | supported |  |  |
+| [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
+| [`JaegerRemoteSampler`](#jaegerremotesampler) | supported |  | * `endpoint`: supported<br>* `interval`: supported<br>* `initial_sampler`: supported<br> |
+| [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
+| [`LoggerProvider`](#loggerprovider) | supported |  | * `processors`: supported<br>* `limits`: supported<br>* `logger_configurator/development`: supported<br> |
+| [`LogRecordExporter`](#logrecordexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br> |
+| [`LogRecordLimits`](#logrecordlimits) | supported |  | * `attribute_value_length_limit`: supported<br>* `attribute_count_limit`: supported<br> |
+| [`LogRecordProcessor`](#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
+| [`MeterProvider`](#meterprovider) | supported |  | * `readers`: supported<br>* `views`: supported<br>* `exemplar_filter`: supported<br>* `meter_configurator/development`: supported<br> |
+| [`MetricProducer`](#metricproducer) | supported |  | * `opencensus`: supported<br> |
+| [`MetricReader`](#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
+| [`NameStringValuePair`](#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
+| [`OpenCensusMetricProducer`](#opencensusmetricproducer) | supported |  |  |
+| [`OpentelemetryConfiguration`](#opentelemetryconfiguration) | supported |  | * `file_format`: supported<br>* `disabled`: supported<br>* `log_level`: supported<br>* `attribute_limits`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `tracer_provider`: supported<br>* `resource`: supported<br>* `instrumentation/development`: supported<br> |
+| [`OpenTracingPropagator`](#opentracingpropagator) | supported |  |  |
+| [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  |  |
+| [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `tls`: supported<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `endpoint`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
+| [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `root`: supported<br>* `remote_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `local_parent_not_sampled`: supported<br> |
+| [`PeriodicMetricReader`](#periodicmetricreader) | supported |  | * `interval`: supported<br>* `timeout`: supported<br>* `exporter`: supported<br>* `producers`: supported<br>* `cardinality_limits`: supported<br> |
+| [`Propagator`](#propagator) | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
+| [`PullMetricExporter`](#pullmetricexporter) | supported |  | * `prometheus/development`: supported<br> |
+| [`PullMetricReader`](#pullmetricreader) | supported |  | * `exporter`: supported<br>* `producers`: supported<br>* `cardinality_limits`: supported<br> |
+| [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br> |
+| [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `detection/development`: supported<br>* `schema_url`: supported<br>* `attributes_list`: supported<br> |
+| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `jaeger_remote`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `probability/development`: supported<br> |
+| [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
+| [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
+| [`SpanExporter`](#spanexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br>* `zipkin`: supported<br> |
+| [`SpanLimits`](#spanlimits) | supported |  | * `attribute_value_length_limit`: supported<br>* `attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_count_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br> |
+| [`SpanProcessor`](#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
+| [`SumAggregation`](#sumaggregation) | supported |  |  |
+| [`TextMapPropagator`](#textmappropagator) | supported |  | * `tracecontext`: supported<br>* `baggage`: supported<br>* `b3`: supported<br>* `b3multi`: supported<br>* `jaeger`: supported<br>* `ottrace`: supported<br> |
+| [`TraceContextPropagator`](#tracecontextpropagator) | supported |  |  |
+| [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
+| [`TracerProvider`](#tracerprovider) | supported |  | * `processors`: supported<br>* `limits`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
+| [`View`](#view) | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
+| [`ViewSelector`](#viewselector) | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `unit`: supported<br>* `meter_name`: supported<br>* `meter_version`: supported<br>* `meter_schema_url`: supported<br> |
+| [`ViewStream`](#viewstream) | supported |  | * `name`: supported<br>* `description`: supported<br>* `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br> |
+| [`ZipkinSpanExporter`](#zipkinspanexporter) | supported |  | * `endpoint`: supported<br>* `timeout`: supported<br> |
+
 
 # SDK Extension Plugins <a id="sdk-extension-plugins"></a>
 
