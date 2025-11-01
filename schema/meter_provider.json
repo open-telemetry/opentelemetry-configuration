@@ -142,7 +142,7 @@
                     "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
                 },
                 "console": {
-                    "$ref": "common.json#/$defs/ConsoleExporter"
+                    "$ref": "#/$defs/ConsoleMetricExporter"
                 }
             }
         },
@@ -310,6 +310,18 @@
                 "output_stream": {
                     "type": ["string", "null"]
                 },
+                "temporality_preference": {
+                    "$ref": "#/$defs/ExporterTemporalityPreference"
+                },
+                "default_histogram_aggregation": {
+                    "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+                }
+            }
+        },
+        "ConsoleMetricExporter": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
                 "temporality_preference": {
                     "$ref": "#/$defs/ExporterTemporalityPreference"
                 },

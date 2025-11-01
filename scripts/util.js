@@ -14,3 +14,6 @@ export const metaSchemaTypesPath = schemaDirPath + metaSchemaTypesFileName;
 export const metaSchemaLanguageFilePrefix = `${metaSchemaFilePrefix}_language`;
 export const metaSchemaLanguageStatusFileName = (language) => `${metaSchemaLanguageFilePrefix}_${language}.yaml`;
 export const metaSchemaLanguageStatusPath = (language) => schemaDirPath + metaSchemaLanguageStatusFileName(language);
+
+export const isExperimentalProperty = (property) => property.endsWith('/development');
+export const isExperimentalType = (type) => type.startsWith('Experimental');
