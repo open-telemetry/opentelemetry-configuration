@@ -303,7 +303,6 @@ latestSupportedFileFormat: 1.0.0-rc.1
 typeSupportStatuses:
   - type: Base2ExponentialBucketHistogramAggregation
     status: supported # the support status, see below for allowed enum values
-    notes: ""
     propertyOverrides:
       - property: record_min_max
         status: ignored

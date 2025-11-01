@@ -178,13 +178,11 @@ export class TypeSupportStatus {
     type;
     status;
     propertyOverrides;
-    notes;
 
-    constructor(type, status, propertyOverrides, notes) {
+    constructor(type, status, propertyOverrides) {
         this.type = type;
         this.status = status;
         this.propertyOverrides = propertyOverrides;
-        this.notes = notes;
     }
 
     toJson() {
@@ -194,7 +192,6 @@ export class TypeSupportStatus {
         return {
             type: this.type,
             status: this.status,
-            notes: this.notes,
             propertyOverrides
         };
     }
@@ -209,8 +206,7 @@ export class TypeSupportStatus {
             `TypeSupportStatus '${type}' has invalid 'propertyOverrides'`,
             error => `TypeSupportStatus '${type}' has invalid PropertyStatus: ${error.message}. Skipping.`,
             messages)
-        const notes = parseString(rawJson, 'notes', `TypeSupportStatus has invalid 'notes'`);
-        return new TypeSupportStatus(type, status, propertyOverrides, notes);
+        return new TypeSupportStatus(type, status, propertyOverrides);
     }
 }
 
