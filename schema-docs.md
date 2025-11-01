@@ -1,107 +1,14 @@
 <!-- This file is generated using "make generate-markdown". Do not edit directly. -->
 
-* [Overview](#overview)
-* [Types](#types)
-  * [Aggregation](#aggregation)
-  * [AlwaysOffSampler](#alwaysoffsampler)
-  * [AlwaysOnSampler](#alwaysonsampler)
-  * [AttributeLimits](#attributelimits)
-  * [AttributeNameValue](#attributenamevalue)
-  * [AttributeType](#attributetype)
-  * [B3MultiPropagator](#b3multipropagator)
-  * [B3Propagator](#b3propagator)
-  * [BaggagePropagator](#baggagepropagator)
-  * [Base2ExponentialBucketHistogramAggregation](#base2exponentialbuckethistogramaggregation)
-  * [BatchLogRecordProcessor](#batchlogrecordprocessor)
-  * [BatchSpanProcessor](#batchspanprocessor)
-  * [CardinalityLimits](#cardinalitylimits)
-  * [ConsoleExporter](#consoleexporter)
-  * [DefaultAggregation](#defaultaggregation)
-  * [DropAggregation](#dropaggregation)
-  * [ExemplarFilter](#exemplarfilter)
-  * [ExperimentalContainerResourceDetector](#experimentalcontainerresourcedetector)
-  * [ExperimentalGeneralInstrumentation](#experimentalgeneralinstrumentation)
-  * [ExperimentalHostResourceDetector](#experimentalhostresourcedetector)
-  * [ExperimentalHttpClientInstrumentation](#experimentalhttpclientinstrumentation)
-  * [ExperimentalHttpInstrumentation](#experimentalhttpinstrumentation)
-  * [ExperimentalHttpServerInstrumentation](#experimentalhttpserverinstrumentation)
-  * [ExperimentalInstrumentation](#experimentalinstrumentation)
-  * [ExperimentalLanguageSpecificInstrumentation](#experimentallanguagespecificinstrumentation)
-  * [ExperimentalLoggerConfig](#experimentalloggerconfig)
-  * [ExperimentalLoggerConfigurator](#experimentalloggerconfigurator)
-  * [ExperimentalLoggerMatcherAndConfig](#experimentalloggermatcherandconfig)
-  * [ExperimentalMeterConfig](#experimentalmeterconfig)
-  * [ExperimentalMeterConfigurator](#experimentalmeterconfigurator)
-  * [ExperimentalMeterMatcherAndConfig](#experimentalmetermatcherandconfig)
-  * [ExperimentalOtlpFileExporter](#experimentalotlpfileexporter)
-  * [ExperimentalOtlpFileMetricExporter](#experimentalotlpfilemetricexporter)
-  * [ExperimentalPeerInstrumentation](#experimentalpeerinstrumentation)
-  * [ExperimentalPeerServiceMapping](#experimentalpeerservicemapping)
-  * [ExperimentalProbabilitySampler](#experimentalprobabilitysampler)
-  * [ExperimentalProcessResourceDetector](#experimentalprocessresourcedetector)
-  * [ExperimentalPrometheusMetricExporter](#experimentalprometheusmetricexporter)
-  * [ExperimentalResourceDetection](#experimentalresourcedetection)
-  * [ExperimentalResourceDetector](#experimentalresourcedetector)
-  * [ExperimentalServiceResourceDetector](#experimentalserviceresourcedetector)
-  * [ExperimentalTracerConfig](#experimentaltracerconfig)
-  * [ExperimentalTracerConfigurator](#experimentaltracerconfigurator)
-  * [ExperimentalTracerMatcherAndConfig](#experimentaltracermatcherandconfig)
-  * [ExplicitBucketHistogramAggregation](#explicitbuckethistogramaggregation)
-  * [ExporterDefaultHistogramAggregation](#exporterdefaulthistogramaggregation)
-  * [ExporterTemporalityPreference](#exportertemporalitypreference)
-  * [GrpcTls](#grpctls)
-  * [HttpTls](#httptls)
-  * [IncludeExclude](#includeexclude)
-  * [InstrumentType](#instrumenttype)
-  * [JaegerPropagator](#jaegerpropagator)
-  * [JaegerRemoteSampler](#jaegerremotesampler)
-  * [LastValueAggregation](#lastvalueaggregation)
-  * [LoggerProvider](#loggerprovider)
-  * [LogRecordExporter](#logrecordexporter)
-  * [LogRecordLimits](#logrecordlimits)
-  * [LogRecordProcessor](#logrecordprocessor)
-  * [MeterProvider](#meterprovider)
-  * [MetricProducer](#metricproducer)
-  * [MetricReader](#metricreader)
-  * [NameStringValuePair](#namestringvaluepair)
-  * [OpenCensusMetricProducer](#opencensusmetricproducer)
-  * [OpentelemetryConfiguration](#opentelemetryconfiguration)
-  * [OpenTracingPropagator](#opentracingpropagator)
-  * [OtlpGrpcExporter](#otlpgrpcexporter)
-  * [OtlpGrpcMetricExporter](#otlpgrpcmetricexporter)
-  * [OtlpHttpEncoding](#otlphttpencoding)
-  * [OtlpHttpExporter](#otlphttpexporter)
-  * [OtlpHttpMetricExporter](#otlphttpmetricexporter)
-  * [ParentBasedSampler](#parentbasedsampler)
-  * [PeriodicMetricReader](#periodicmetricreader)
-  * [Propagator](#propagator)
-  * [PullMetricExporter](#pullmetricexporter)
-  * [PullMetricReader](#pullmetricreader)
-  * [PushMetricExporter](#pushmetricexporter)
-  * [Resource](#resource)
-  * [Sampler](#sampler)
-  * [SimpleLogRecordProcessor](#simplelogrecordprocessor)
-  * [SimpleSpanProcessor](#simplespanprocessor)
-  * [SpanExporter](#spanexporter)
-  * [SpanLimits](#spanlimits)
-  * [SpanProcessor](#spanprocessor)
-  * [SumAggregation](#sumaggregation)
-  * [TextMapPropagator](#textmappropagator)
-  * [TraceContextPropagator](#tracecontextpropagator)
-  * [TraceIdRatioBasedSampler](#traceidratiobasedsampler)
-  * [TracerProvider](#tracerprovider)
-  * [View](#view)
-  * [ViewSelector](#viewselector)
-  * [ViewStream](#viewstream)
-  * [ZipkinSpanExporter](#zipkinspanexporter)
-* [Language Support Status](#language-support-status)
-  * [java](#java)
-* [SDK Extension Plugins](#sdk-extension-plugins)
-
-
 # Overview <a id="overview"></a>
 
-TODO
+
+This document is an auto-generated view of the declarative configuration JSON schema and meta schema meant for improved consumability by humans.
+
+* [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [OpenTelemetryConfiguration](#opentelemetryconfiguration) is the root type and is a good starting point.
+* [Language Support Status](#language-support-status) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
+* [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
+
 # Types <a id="types"></a>
 
 ## Aggregation <a id="aggregation"></a>
@@ -790,7 +697,6 @@ Constraints:
 Usages:
 
 * [`LogRecordExporter.console`](#logrecordexporter)
-* [`PushMetricExporter.console`](#pushmetricexporter)
 * [`SpanExporter.console`](#spanexporter)
 
 <details>
@@ -803,6 +709,51 @@ Usages:
     "null"
   ],
   "additionalProperties": false
+}</pre>
+</details>
+
+## ConsoleMetricExporter <a id="consolemetricexporter"></a>
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `temporality_preference` | unknown |
+| `default_histogram_aggregation` | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`PushMetricExporter.console`](#pushmetricexporter)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/meter_provider.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "temporality_preference": {
+      "$ref": "#/$defs/ExporterTemporalityPreference"
+    },
+    "default_histogram_aggregation": {
+      "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+    }
+  }
 }</pre>
 </details>
 
@@ -2354,6 +2305,7 @@ Usages:
 * [`OtlpHttpMetricExporter.default_histogram_aggregation`](#otlphttpmetricexporter)
 * [`OtlpGrpcMetricExporter.default_histogram_aggregation`](#otlpgrpcmetricexporter)
 * [`ExperimentalOtlpFileMetricExporter.default_histogram_aggregation`](#experimentalotlpfilemetricexporter)
+* [`ConsoleMetricExporter.default_histogram_aggregation`](#consolemetricexporter)
 
 <details>
 <summary>JSON Schema</summary>
@@ -2384,6 +2336,7 @@ Usages:
 * [`OtlpHttpMetricExporter.temporality_preference`](#otlphttpmetricexporter)
 * [`OtlpGrpcMetricExporter.temporality_preference`](#otlpgrpcmetricexporter)
 * [`ExperimentalOtlpFileMetricExporter.temporality_preference`](#experimentalotlpfilemetricexporter)
+* [`ConsoleMetricExporter.temporality_preference`](#consolemetricexporter)
 
 <details>
 <summary>JSON Schema</summary>
@@ -3319,7 +3272,7 @@ Usages:
           "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
         },
         "console": {
-          "$ref": "common.json#/$defs/ConsoleExporter"
+          "$ref": "#/$defs/ConsoleMetricExporter"
         }
       }
     },
@@ -3555,6 +3508,21 @@ Usages:
             "null"
           ]
         },
+        "temporality_preference": {
+          "$ref": "#/$defs/ExporterTemporalityPreference"
+        },
+        "default_histogram_aggregation": {
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+        }
+      }
+    },
+    "ConsoleMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference"
         },
@@ -4895,7 +4863,7 @@ Usages:
 | `otlp_http` | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with HTTP transport.<br> |
 | `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport.<br> |
 | `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br> |
-| `console` | [`ConsoleExporter`](#consoleexporter) | `false` | No constraints. | Configure exporter to be console.<br> |
+| `console` | [`ConsoleMetricExporter`](#consolemetricexporter) | `false` | No constraints. | Configure exporter to be console.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4943,7 +4911,7 @@ Usages:
       "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
     },
     "console": {
-      "$ref": "common.json#/$defs/ConsoleExporter"
+      "$ref": "#/$defs/ConsoleMetricExporter"
     }
   }
 }</pre>
@@ -6349,6 +6317,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`BatchSpanProcessor`](#batchspanprocessor) | supported |  | * `schedule_delay`: supported<br>* `export_timeout`: supported<br>* `max_queue_size`: supported<br>* `max_export_batch_size`: supported<br>* `exporter`: supported<br> |
 | [`CardinalityLimits`](#cardinalitylimits) | supported |  | * `default`: supported<br>* `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
 | [`ConsoleExporter`](#consoleexporter) | supported |  |  |
+| [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
 | [`DropAggregation`](#dropaggregation) | supported |  |  |
 | [`ExemplarFilter`](#exemplarfilter) | supported |  |  |
