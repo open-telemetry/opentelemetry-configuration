@@ -916,7 +916,6 @@ resource:
   # If omitted or null, no resource attributes are added.
   attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
   # Configure resource detection.
-  #
   # If omitted or null, resource detection is disabled.
   # This property is experimental and subject to breaking changes in minor versions.
   detection/development:

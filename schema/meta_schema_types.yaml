@@ -894,7 +894,6 @@
     - property: detection/development
       description: |
         Configure resource detection.
-
         If omitted or null, resource detection is disabled.
     - property: schema_url
       description: |
