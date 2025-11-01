@@ -1107,3 +1107,16 @@
         Value must be non-negative. A value of 0 indicates indefinite.
         If omitted or null, 10000 is used.
   isSdkExtensionPlugin: false
+- type: ConsoleMetricExporter
+  properties:
+    - property: temporality_preference
+      description: |
+        Configure temporality preference.
+        Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, cumulative is used.
+    - property: default_histogram_aggregation
+      description: |
+        Configure default histogram aggregation.
+        Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, explicit_bucket_histogram is used.
+  isSdkExtensionPlugin: false

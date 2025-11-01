@@ -56,6 +56,10 @@ typeSupportStatuses:
     status: supported
     notes: ""
     propertyOverrides: []
+  - type: ConsoleMetricExporter
+    status: supported
+    notes: ""
+    propertyOverrides: []
   - type: DefaultAggregation
     status: supported
     notes: ""
