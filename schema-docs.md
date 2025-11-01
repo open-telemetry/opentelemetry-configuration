@@ -697,7 +697,6 @@ Constraints:
 Usages:
 
 * [`LogRecordExporter.console`](#logrecordexporter)
-* [`PushMetricExporter.console`](#pushmetricexporter)
 * [`SpanExporter.console`](#spanexporter)
 
 <details>
@@ -710,6 +709,51 @@ Usages:
     "null"
   ],
   "additionalProperties": false
+}</pre>
+</details>
+
+## ConsoleMetricExporter <a id="consolemetricexporter"></a>
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [java](#java) |
+|---|---|
+| `temporality_preference` | unknown |
+| `default_histogram_aggregation` | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`PushMetricExporter.console`](#pushmetricexporter)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/meter_provider.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "temporality_preference": {
+      "$ref": "#/$defs/ExporterTemporalityPreference"
+    },
+    "default_histogram_aggregation": {
+      "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+    }
+  }
 }</pre>
 </details>
 
@@ -2180,6 +2224,7 @@ Usages:
 * [`OtlpHttpMetricExporter.default_histogram_aggregation`](#otlphttpmetricexporter)
 * [`OtlpGrpcMetricExporter.default_histogram_aggregation`](#otlpgrpcmetricexporter)
 * [`ExperimentalOtlpFileMetricExporter.default_histogram_aggregation`](#experimentalotlpfilemetricexporter)
+* [`ConsoleMetricExporter.default_histogram_aggregation`](#consolemetricexporter)
 
 <details>
 <summary>JSON Schema</summary>
@@ -2210,6 +2255,7 @@ Usages:
 * [`OtlpHttpMetricExporter.temporality_preference`](#otlphttpmetricexporter)
 * [`OtlpGrpcMetricExporter.temporality_preference`](#otlpgrpcmetricexporter)
 * [`ExperimentalOtlpFileMetricExporter.temporality_preference`](#experimentalotlpfilemetricexporter)
+* [`ConsoleMetricExporter.temporality_preference`](#consolemetricexporter)
 
 <details>
 <summary>JSON Schema</summary>
@@ -3145,7 +3191,7 @@ Usages:
           "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
         },
         "console": {
-          "$ref": "common.json#/$defs/ConsoleExporter"
+          "$ref": "#/$defs/ConsoleMetricExporter"
         }
       }
     },
@@ -3381,6 +3427,21 @@ Usages:
             "null"
           ]
         },
+        "temporality_preference": {
+          "$ref": "#/$defs/ExporterTemporalityPreference"
+        },
+        "default_histogram_aggregation": {
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+        }
+      }
+    },
+    "ConsoleMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference"
         },
@@ -4721,7 +4782,7 @@ Usages:
 | `otlp_http` | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with HTTP transport.<br> |
 | `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport.<br> |
 | `otlp_file/development` | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> |
-| `console` | [`ConsoleExporter`](#consoleexporter) | `false` | No constraints. | Configure exporter to be console.<br> |
+| `console` | [`ConsoleMetricExporter`](#consolemetricexporter) | `false` | No constraints. | Configure exporter to be console.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4769,7 +4830,7 @@ Usages:
       "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
     },
     "console": {
-      "$ref": "common.json#/$defs/ConsoleExporter"
+      "$ref": "#/$defs/ConsoleMetricExporter"
     }
   }
 }</pre>
@@ -6175,6 +6236,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`BatchSpanProcessor`](#batchspanprocessor) | supported |  | * `schedule_delay`: supported<br>* `export_timeout`: supported<br>* `max_queue_size`: supported<br>* `max_export_batch_size`: supported<br>* `exporter`: supported<br> |
 | [`CardinalityLimits`](#cardinalitylimits) | supported |  | * `default`: supported<br>* `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
 | [`ConsoleExporter`](#consoleexporter) | supported |  |  |
+| [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
 | [`DropAggregation`](#dropaggregation) | supported |  |  |
 | [`ExemplarFilter`](#exemplarfilter) | supported |  |  |
