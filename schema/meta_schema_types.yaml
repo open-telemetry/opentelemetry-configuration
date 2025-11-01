@@ -487,8 +487,7 @@
     - property: boundaries
       description: |
         Configure bucket boundaries.
-        If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.
-      defaultBehavior: TODO
+      defaultBehavior: "[0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used"
     - property: record_min_max
       description: |
         Configure record min and max.
@@ -549,16 +548,14 @@
         Values are evaluated to match as follows:
          * If the value exactly matches.
          * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-        If omitted, all values are included.
-      defaultBehavior: TODO
+      defaultBehavior: all values are included
     - property: excluded
       description: |
         Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).
         Values are evaluated to match as follows:
          * If the value exactly matches.
          * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-        If omitted, .included attributes are included.
-      defaultBehavior: TODO
+      defaultBehavior: all values matching .included are included
   isSdkExtensionPlugin: false
 - type: InstrumentType
   properties: []
@@ -1190,8 +1187,7 @@
       description: |
         Configure aggregation of the resulting stream(s). 
         Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
-        If omitted, default is used.
-      defaultBehavior: TODO
+      defaultBehavior: default is used
     - property: aggregation_cardinality_limit
       description: |
         Configure the aggregation cardinality limit.
@@ -1219,12 +1215,10 @@
       description: |
         Configure temporality preference.
         Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-        If omitted or null, cumulative is used.
-      defaultBehavior: TODO
+      defaultBehavior: cumulative is used
     - property: default_histogram_aggregation
       description: |
         Configure default histogram aggregation.
         Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-        If omitted or null, explicit_bucket_histogram is used.
-      defaultBehavior: TODO
+      defaultBehavior: explicit_bucket_histogram
   isSdkExtensionPlugin: false

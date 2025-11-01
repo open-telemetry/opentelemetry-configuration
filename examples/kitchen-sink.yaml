@@ -259,15 +259,13 @@ meter_provider:
               #  * If the value exactly matches.
               #  * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
               # If omitted, all values are included.
-              # If omitted, TODO.
               included:
                 - "service*"
               # Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).
               # Values are evaluated to match as follows:
               #  * If the value exactly matches.
               #  * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-              # If omitted, .included attributes are included.
-              # If omitted, TODO.
+              # If omitted, all values matching .included are included.
               excluded:
                 - "service.attr1"
             # Configure how Prometheus metrics are exposed. Values include:
@@ -531,13 +529,11 @@ meter_provider:
           console:
             # Configure temporality preference.
             # Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-            # If omitted or null, cumulative is used.
-            # If omitted, TODO.
+            # If omitted, cumulative is used.
             temporality_preference: delta
             # Configure default histogram aggregation.
             # Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-            # If omitted or null, explicit_bucket_histogram is used.
-            # If omitted, TODO.
+            # If omitted, explicit_bucket_histogram.
             default_histogram_aggregation: base2_exponential_bucket_histogram
   # Configure views. 
   # Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
@@ -578,14 +574,12 @@ meter_provider:
         # Configure aggregation of the resulting stream(s). 
         # Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
         # If omitted, default is used.
-        # If omitted, TODO.
         aggregation:
           # Configure aggregation to be explicit_bucket_histogram.
           # If omitted, TODO.
           explicit_bucket_histogram:
             # Configure bucket boundaries.
             # If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.
-            # If omitted, TODO.
             boundaries:
               [
                 0.0,
@@ -618,7 +612,6 @@ meter_provider:
           #  * If the value exactly matches.
           #  * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
           # If omitted, all values are included.
-          # If omitted, TODO.
           included:
             - key1
             - key2
@@ -626,8 +619,7 @@ meter_provider:
           # Values are evaluated to match as follows:
           #  * If the value exactly matches.
           #  * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-          # If omitted, .included attributes are included.
-          # If omitted, TODO.
+          # If omitted, all values matching .included are included.
           excluded:
             - key3
   # Configure the exemplar filter. 
@@ -1080,15 +1072,13 @@ resource:
       #  * If the value exactly matches.
       #  * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
       # If omitted, all values are included.
-      # If omitted, TODO.
       included:
         - process.*
       # Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).
       # Values are evaluated to match as follows:
       #  * If the value exactly matches.
       #  * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-      # If omitted, .included attributes are included.
-      # If omitted, TODO.
+      # If omitted, all values matching .included are included.
       excluded:
         - process.command_args
     # Configure resource detectors.
