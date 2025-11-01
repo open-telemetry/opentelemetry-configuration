@@ -58,6 +58,10 @@ typeSupportStatuses:
     status: supported
     notes: ""
     propertyOverrides: []
+  - type: ConsoleMetricExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
   - type: DefaultAggregation
     status: supported
     notes: ""
@@ -140,6 +144,10 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalPeerServiceMapping
     status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalProbabilitySampler
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
