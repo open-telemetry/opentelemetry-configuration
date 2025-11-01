@@ -340,7 +340,8 @@
                 "stream": {
                     "$ref": "#/$defs/ViewStream"
                 }
-            }
+            },
+            "required": ["selector", "stream"]
         },
         "ViewSelector": {
             "type": "object",
