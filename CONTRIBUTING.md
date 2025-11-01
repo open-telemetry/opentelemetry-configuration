@@ -91,9 +91,11 @@ tracer_provider:
 * `attributes_value_length_limit` is not required. If omitted, no attribute length limits are applied.
 * `attributes_value_length_limit`'s type is `["integer", "null]`. If null (i.e. because the `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` env var is unset), no attribute length limits are applied.
 
-If a property is _not_ required, it should include a [meta schema comment](./CONTRIBUTING.md#meta-schema) describing the semantics when it is omitted.
+If a property is _not_ required, it must include `defaultBehavior` in the [meta schema](#meta_schema_typesyaml) describing the semantics when it is omitted.
 
-If a property `type` includes `null`, it must include a [meta schema comment](./CONTRIBUTING.md#meta-schema) describing the semantics when the value is `null`. It's common for properties with primitive types to allow `null`. `object` types allow `null` if no properties are required and the presence of the property key is meaningful.
+If a property is required and `type` includes `null`, it must include `nullBehavior` in the [meta schema](#meta_schema_typesyaml) describing the semantics when it is null.
+
+Optionally, a property which is _not_ required and `type` includes `null` may specify `nullBehavior` to differentiate between cases where it is `null` and omitted.
 
 ### Polymorphic types
 
@@ -274,13 +276,12 @@ There are a variety of build tasks which intersect with the meta schema:
 Content looks like:
 
 ```yaml
-- type: AttributeLimits
+- type: SpanExporter
   properties:
-    - property: attribute_value_length_limit
-      description: |
-        Configure max attribute value size. 
-        Value must be non-negative.
-        If omitted or null, there is no limit.
+    - property: otlp_http
+      description: Configure exporter to be OTLP with HTTP transport.
+      defaultBehavior: OTLP HTTP exporter is not used
+      nullBehavior: OTLP HTTP exporter is used with defaults
 # other types omitted for brevity
 ```
 
@@ -291,6 +292,8 @@ Notes:
   * `[].properties` is an array of entries for each property in the JSON schema type.
     * `[].properties[].property` the name of the property. **Maintained automatically by build tooling.**
     * `[].properties[].description` the property description, including semantics and default behavior.
+    * `[].properties[].defaultBehavior` the behavior if the property is omitted. Required if the property is not `required`. Must not be present if property is `required`.
+    * `[].properties[].nullBehavior` the behavior if the property is present and null. Required if the property is `required` and may be `null`. Optional to override `defaultBehavior` if the property is not `required`. 
 
 ### `meta_schema_language_{language}.yaml`
 
@@ -335,6 +338,8 @@ Ensures that the JSON schema and the meta schema are kept in sync:
 * For each meta schema type:
   * If a property exists in the JSON schema and not the meta schema, add it.
   * If a property exists in the meta schema and not the JSON schema, delete it.
+  * If a property is required in the JSON schema and has defaultBehavior in the meta schema, delete it. If a property is not required in the JSON schema and does not have defaultBehavior in the meta schema, add it.
+  * If a property is required and nullable in the JSON schema and does not have nullBehavior in the meta schema, add it.
 * If a language implementation is known (i.e. defined in constant array `KNOWN_LANGUAGES` in [meta-schema.js](./scripts/meta-schema.js)) but not in meta schema, add it.
 * If a language implementation exists in meta schema but is not known, delete it.
 * For each language implementation:

@@ -16,7 +16,8 @@ const IMPLEMENTATION_STATUS_UNKNOWN = 'unknown';
 const IMPLEMENTATION_STATUSES = ['supported', IMPLEMENTATION_STATUS_UNKNOWN, 'not_implemented', 'ignored', 'not_applicable']
 
 export function writeMetaSchema(metaSchema) {
-    fs.writeFileSync(metaSchemaTypesPath, yaml.stringify(metaSchema.types.map(type => type.toJson()), {lineWidth: 0}));
+    const typesJson = metaSchema.types.map(type => type.toJson());
+    fs.writeFileSync(metaSchemaTypesPath, yaml.stringify(typesJson, {lineWidth: 0}));
 
     metaSchema.languageImplementations.forEach(languageImplementation => {
         fs.writeFileSync(metaSchemaLanguageStatusPath(languageImplementation.language), yaml.stringify(languageImplementation.toJson(), {lineWidth: 0}));
@@ -101,9 +102,10 @@ export class MetaSchemaType {
 
     toJson() {
         const properties = this.properties.map(property => property.toJson());
-        properties.sort((a, b) => a.property.localeCompare(b.property));
+        // TODO(jack-berg): sort in separate PR to make review easier
+        // properties.sort((a, b) => a.property.localeCompare(b.property));
 
-        return {type: this.type, properties: this.properties, isSdkExtensionPlugin: this.isSdkExtensionPlugin};
+        return {type: this.type, properties, isSdkExtensionPlugin: this.isSdkExtensionPlugin};
     }
 
     static parseJson(rawJson, messages) {
@@ -123,20 +125,56 @@ export class MetaSchemaType {
 export class MetaSchemaProperty {
     property;
     description;
+    defaultBehavior;
+    nullBehavior;
 
-    constructor(property, description) {
+    constructor(property, description, defaultBehavior, nullBehavior) {
         this.property = property;
         this.description = description;
+        this.defaultBehavior = defaultBehavior;
+        this.nullBehavior = nullBehavior;
     }
 
     toJson() {
-        return {property: this.property, description: this.description};
+        const json = {property: this.property, description: this.description};
+        // Only include defaultBehavior, nullBehavior if non-null
+        if (this.defaultBehavior !== null) {
+            json.defaultBehavior = this.defaultBehavior;
+        }
+        if (this.nullBehavior !== null) {
+            json.nullBehavior = this.nullBehavior;
+        }
+        return json;
+    }
+
+    defaultAndNullBehavior(jsonSchemaProperty) {
+        if (jsonSchemaProperty.isRequired) {
+            if (!jsonSchemaProperty.isNullable) {
+                return 'Property is required and must be non-null.';
+            }
+            if (this.nullBehavior === null) {
+                throw new Error(`MetaSchemaProperty ${this.property} is required and nullable but is missing nullBehavior. This is a programming error.`);
+            }
+            return `Property must be present, but if null ${this.nullBehavior}.`;
+        }
+        if (this.defaultBehavior === null) {
+            throw new Error(`MetaSchemaProperty ${this.property} is not required but is missing defaultBehavior. This is a programming error.`);
+        }
+        if (this.nullBehavior === null) {
+            if (jsonSchemaProperty.isNullable) {
+                return `If omitted or null, ${this.defaultBehavior}.`;
+            }
+            return `If omitted, ${this.defaultBehavior}.`;
+        }
+        return `If omitted, ${this.defaultBehavior}. If present and null, ${this.nullBehavior}.`;
     }
 
     static parseJson(rawJson, messages) {
         const property = parseString(rawJson, 'property', `MetaSchemaProperty has invalid 'property'`);
         const description = parseString(rawJson, 'description', `MetaSchemaProperty has invalid 'description'`);
-        return new MetaSchemaProperty(property, description);
+        const defaultBehavior = parseString(rawJson, 'defaultBehavior', `MetaSchemaProperty has invalid 'defaultBehavior'`, true);
+        const nullBehavior = parseString(rawJson, 'nullBehavior', `MetaSchemaProperty has invalid 'nullBehavior'`, true);
+        return new MetaSchemaProperty(property, description, defaultBehavior, nullBehavior);
     }
 }
 
@@ -250,16 +288,29 @@ function reconcileTypes(metaSchema, jsonSchemaTypesByType, messages) {
             return;
         }
         const sanitizedProperties = [];
-        const jsonSchemaProperties = jsonSchemaType.toMetaSchemaType().properties;
 
         // Remove properties in meta schema and not in json schema
         const jsonSchemaPropertiesByProperty = {};
-        jsonSchemaProperties.forEach(property => jsonSchemaPropertiesByProperty[property.property] = property);
+        jsonSchemaType.properties.forEach(property => jsonSchemaPropertiesByProperty[property.property] = property);
         metaSchemaType.properties.forEach(property => {
             const propertyName = property.property;
-            if (!(propertyName in jsonSchemaPropertiesByProperty)) {
+            const jsonSchemaProperty = jsonSchemaPropertiesByProperty[propertyName];
+            if (!(jsonSchemaProperty)) {
                 messages.push(`Type ${type} has property ${propertyName} in meta schema and not in JSON schema. Removing.`);
                 return;
+            }
+            // Ensure meta schema property has defaultBehavior, nullBehavior if needed
+            if (jsonSchemaProperty.isRequired && property.defaultBehavior !== null) {
+                messages.push(`Type ${type} has property ${propertyName} in meta schema with non-null defaultBehavior, but property is required. Removing.`);
+                property.defaultBehavior = null;
+            }
+            if (!jsonSchemaProperty.isRequired && property.defaultBehavior === null) {
+                messages.push(`Type ${type} has property ${propertyName} in meta schema which is required, but defaultBehavior is not set. Adding.`);
+                property.defaultBehavior = "TODO";
+            }
+            if (jsonSchemaProperty.isRequired && jsonSchemaProperty.isNullable && property.nullBehavior === null) {
+                messages.push(`Type ${type} has property ${propertyName} in meta schema which is required and nullable, but nullBehavior is not set. Adding.`);
+                property.nullBehavior = "TODO";
             }
             sanitizedProperties.push(property);
         });
@@ -267,11 +318,11 @@ function reconcileTypes(metaSchema, jsonSchemaTypesByType, messages) {
         // Add properties in json schema and not in meta schema
         const metaSchemaPropertiesByProperty = {};
         metaSchemaType.properties.forEach(property => metaSchemaPropertiesByProperty[property.property] = property);
-        jsonSchemaProperties.forEach(property => {
+        jsonSchemaType.properties.forEach(property => {
             const propertyName = property.property;
             if (!(propertyName in metaSchemaPropertiesByProperty)) {
                 messages.push(`Type ${type} has property ${propertyName} in JSON schema and not in meta schema. Adding.`);
-                sanitizedProperties.push(property);
+                sanitizedProperties.push(property.toMetaSchemaProperty());
             }
         });
 
@@ -377,8 +428,11 @@ function parseEnum(rawJson, propertyName, errorMessage, knownValues) {
     return string;
 }
 
-function parseString(rawJson, propertyName, errorMessage) {
+function parseString(rawJson, propertyName, errorMessage, nullable = false) {
     const property = rawJson[propertyName];
+    if ((property === null || property === undefined) && nullable) {
+        return null;
+    }
     if (typeof property !== 'string') {
         throw new Error(errorMessage);
     }

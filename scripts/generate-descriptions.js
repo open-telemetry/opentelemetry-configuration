@@ -77,6 +77,11 @@ yaml.visit(fileDoc, {
             debug(`No meta schema property ${propertyKey} for type ${metaSchemaType.type}.`);
             return;
         }
+        const jsonSchemaProperty = jsonSchemaType.properties.find(item => item.property === propertyKey);
+        if (!jsonSchemaProperty) {
+            debug(`No json schema property ${propertyKey} for type ${jsonSchemaType.type}.`);
+            return;
+        }
         let fullDescription = metaSchemaProperty.description;
         if (isExperimentalProperty(metaSchemaProperty.property)) {
             if (!fullDescription.endsWith('\n')) {
@@ -84,6 +89,10 @@ yaml.visit(fileDoc, {
             }
             fullDescription += `This property is experimental and subject to breaking changes in minor versions.`;
         }
+        if (!fullDescription.endsWith('\n')) {
+            fullDescription += '\n';
+        }
+        fullDescription += metaSchemaProperty.defaultAndNullBehavior(jsonSchemaProperty);
         debug(`Resolved type ${jsonSchemaType.type}, property ${metaSchemaProperty.property}, description:\n${fullDescription}`);
 
         // Set the description
