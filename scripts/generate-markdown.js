@@ -157,8 +157,8 @@ KNOWN_LANGUAGES.forEach(language => {
     }
     output.push(`Latest supported file format: \`${languageImplementation.latestSupportedFileFormat}\`\n\n`);
 
-    output.push(`| Type | Status | Notes | Property Support Status |\n`);
-    output.push(`|---|---|---|---|\n`);
+    output.push(`| Type | Status | Property Support Status |\n`);
+    output.push(`|---|---|---|\n`);
     languageImplementation.typeSupportStatuses.forEach(typeSupportStatus => {
         const metaSchemaType = metaSchema.types.find(item => item.type === typeSupportStatus.type);
         if (!metaSchemaType) {
@@ -172,7 +172,7 @@ KNOWN_LANGUAGES.forEach(language => {
             propertySupportStatus.push(`* \`${metaSchemaProperty.property}\`: ${status}<br>`) ;
         });
 
-        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${typeSupportStatus.notes} | ${propertySupportStatus.join('')} |\n`);
+        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${propertySupportStatus.join('')} |\n`);
     });
     output.push(`\n\n`);
 });
