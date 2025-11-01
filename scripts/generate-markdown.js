@@ -1,7 +1,7 @@
 import {readJsonSchemaTypes} from "./json-schema.js";
 import {KNOWN_LANGUAGES, readAndFixMetaSchema} from "./meta-schema.js";
 import fs from "node:fs";
-import {markdownDocPath} from "./util.js";
+import {isExperimentalProperty, isExperimentalType, markdownDocPath} from "./util.js";
 
 const { messages, metaSchema } = readAndFixMetaSchema();
 
@@ -14,12 +14,18 @@ const jsonSchemaTypesByType = {};
 jsonSchemaTypes.forEach(type => jsonSchemaTypesByType[type.type] = type);
 
 const output = [];
-const headers = [];
 
 metaSchema.types.sort((a, b) => a.type.localeCompare(b.type));
 
 addHeader('Overview', 'overview', 1);
-output.push('TODO\n');
+output.push(`
+This document is an auto-generated view of the declarative configuration JSON schema and meta schema meant for improved consumability by humans.
+
+* [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [OpenTelemetryConfiguration](#opentelemetryconfiguration) is the root type and is a good starting point.
+* [Language Support Status](#language-support-status) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
+* [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
+
+`);
 
 // Write types
 addHeader('Types', 'types', 1);
@@ -32,6 +38,12 @@ metaSchema.types.forEach(metaSchemaType => {
 
     // Heading
     addHeader(type, type.toLowerCase(), 2);
+
+    // Experimental type warning
+    if (isExperimentalType(type)) {
+        output.push('> [!WARNING]\n');
+        output.push('> This type is [experimental](README.md#experimental-features).\n\n');
+    }
 
     // SDK extension plugin
     if (metaSchemaType.isSdkExtensionPlugin) {
@@ -50,6 +62,10 @@ metaSchema.types.forEach(metaSchemaType => {
             if (!jsonSchemaProperty) {
                 throw new Error(`JSON schema property not found for property ${property.property} and type ${type}.`);
             }
+            let formattedProperty = `\`${property.property}\``
+            if (isExperimentalProperty(property.property)) {
+                formattedProperty += '<br>**WARNING:** This property is [experimental](README.md#experimental-features).'
+            }
             const formattedPropertyType = formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType);
             const formattedDefaultAndNullBehavior = property.defaultAndNullBehavior(jsonSchemaProperty);
             let formattedConstraints = resolveAndFormatConstraints(jsonSchemaProperty.schema, '<br>');
@@ -58,7 +74,7 @@ metaSchema.types.forEach(metaSchemaType => {
             }
             const formattedDescription = property.description.split("\n").join("<br>");
 
-            output.push(`| \`${property.property}\` | ${formattedPropertyType} | \`${jsonSchemaProperty.isRequired}\` | ${formattedDefaultAndNullBehavior} | ${formattedConstraints} | ${formattedDescription} |\n`);
+            output.push(`| ${formattedProperty} | ${formattedPropertyType} | \`${jsonSchemaProperty.isRequired}\` | ${formattedDefaultAndNullBehavior} | ${formattedConstraints} | ${formattedDescription} |\n`);
         });
         output.push('\n');
 
@@ -177,8 +193,6 @@ metaSchema.types.filter(metaSchemaType => metaSchemaType.isSdkExtensionPlugin)
         output.push(`* [${metaSchemaType.type}](#${metaSchemaType.type})\n`)
     });
 
-headers.push('\n\n');
-output.unshift(...headers);
 output.unshift('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
 fs.writeFileSync(markdownDocPath, output.join(""));
 
@@ -205,7 +219,6 @@ function formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType)
 }
 
 function addHeader(title, id, level) {
-    headers.push(`${'  '.repeat(level - 1)}* [${title}](#${id})\n`);
     output.push(`${'#'.repeat(level)} ${title} <a id="${id}"></a>\n\n`);
 }
 

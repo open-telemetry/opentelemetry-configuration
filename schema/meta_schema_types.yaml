@@ -591,7 +591,6 @@
     - property: logger_configurator/development
       description: |
         Configure loggers.
-        This type is in development and subject to breaking changes in minor versions.
       defaultBehavior: TODO
   isSdkExtensionPlugin: false
 - type: LogRecordExporter
@@ -605,7 +604,6 @@
     - property: otlp_file/development
       description: |
         Configure exporter to be OTLP with file transport.
-        This type is in development and subject to breaking changes in minor versions.
       defaultBehavior: ignore
     - property: console
       description: Configure exporter to be console.
@@ -650,7 +648,6 @@
     - property: meter_configurator/development
       description: |
         Configure meters.
-        This type is in development and subject to breaking changes in minor versions.
       defaultBehavior: TODO
   isSdkExtensionPlugin: false
 - type: MetricProducer
@@ -721,7 +718,6 @@
     - property: instrumentation/development
       description: |
         Configure instrumentation.
-        This type is in development and subject to breaking changes in minor versions.
       defaultBehavior: TODO
   isSdkExtensionPlugin: false
 - type: OpenTracingPropagator
@@ -947,7 +943,6 @@
     - property: prometheus/development
       description: |
         Configure exporter to be prometheus.
-        This type is in development and subject to breaking changes in minor versions.
       defaultBehavior: TODO
   isSdkExtensionPlugin: true
 - type: PullMetricReader
@@ -974,7 +969,6 @@
     - property: otlp_file/development
       description: |
         Configure exporter to be OTLP with file transport.
-        This type is in development and subject to breaking changes in minor versions.
       defaultBehavior: ignore
     - property: console
       description: |
@@ -990,7 +984,6 @@
     - property: detection/development
       description: |
         Configure resource detection.
-        This type is in development and subject to breaking changes in minor versions.
       defaultBehavior: resource detection is disabled
     - property: schema_url
       description: |
@@ -1044,7 +1037,6 @@
     - property: otlp_file/development
       description: |
         Configure exporter to be OTLP with file transport.
-        This type is in development and subject to breaking changes in minor versions.
       defaultBehavior: ignore
     - property: console
       description: Configure exporter to be console.
@@ -1143,7 +1135,6 @@
     - property: tracer_configurator/development
       description: |
         Configure tracers.
-        This type is in development and subject to breaking changes in minor versions.
       defaultBehavior: TODO
   isSdkExtensionPlugin: false
 - type: View
@@ -1221,4 +1212,19 @@
         Configure max time (in milliseconds) to wait for each export. 
         Value must be non-negative. A value of 0 indicates indefinite.
       defaultBehavior: 10000 is used
+  isSdkExtensionPlugin: false
+- type: ConsoleMetricExporter
+  properties:
+    - property: temporality_preference
+      description: |
+        Configure temporality preference.
+        Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, cumulative is used.
+      defaultBehavior: TODO
+    - property: default_histogram_aggregation
+      description: |
+        Configure default histogram aggregation.
+        Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, explicit_bucket_histogram is used.
+      defaultBehavior: TODO
   isSdkExtensionPlugin: false

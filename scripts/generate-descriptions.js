@@ -2,6 +2,7 @@ import fs from 'fs';
 import yaml from 'yaml';
 import {readAndFixMetaSchema} from "./meta-schema.js";
 import {readJsonSchemaTypes} from "./json-schema.js";
+import {isExperimentalProperty} from "./util.js";
 
 // Extract input file arg or throw
 const usageString = "Usage: \n npm run-script generate-descriptions -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml [--debug]";
@@ -82,6 +83,12 @@ yaml.visit(fileDoc, {
             return;
         }
         let fullDescription = metaSchemaProperty.description;
+        if (isExperimentalProperty(metaSchemaProperty.property)) {
+            if (!fullDescription.endsWith('\n')) {
+                fullDescription += '\n';
+            }
+            fullDescription += `This property is experimental and subject to breaking changes in minor versions.`;
+        }
         if (!fullDescription.endsWith('\n')) {
             fullDescription += '\n';
         }
