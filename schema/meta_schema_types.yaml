@@ -534,7 +534,6 @@
     - property: logger_configurator/development
       description: |
         Configure loggers.
-        This type is in development and subject to breaking changes in minor versions.
   isSdkExtensionPlugin: false
 - type: LogRecordExporter
   properties:
@@ -545,7 +544,6 @@
     - property: otlp_file/development
       description: |
         Configure exporter to be OTLP with file transport.
-        This type is in development and subject to breaking changes in minor versions.
     - property: console
       description: Configure exporter to be console.
   isSdkExtensionPlugin: true
@@ -585,7 +583,6 @@
     - property: meter_configurator/development
       description: |
         Configure meters.
-        This type is in development and subject to breaking changes in minor versions.
   isSdkExtensionPlugin: false
 - type: MetricProducer
   properties:
@@ -650,7 +647,6 @@
     - property: instrumentation/development
       description: |
         Configure instrumentation.
-        This type is in development and subject to breaking changes in minor versions.
   isSdkExtensionPlugin: false
 - type: OpenTracingPropagator
   properties: []
@@ -865,7 +861,6 @@
     - property: prometheus/development
       description: |
         Configure exporter to be prometheus.
-        This type is in development and subject to breaking changes in minor versions.
   isSdkExtensionPlugin: true
 - type: PullMetricReader
   properties:
@@ -887,7 +882,6 @@
     - property: otlp_file/development
       description: |
         Configure exporter to be OTLP with file transport.
-        This type is in development and subject to breaking changes in minor versions.
     - property: console
       description: |
         Configure exporter to be console.
@@ -900,7 +894,6 @@
     - property: detection/development
       description: |
         Configure resource detection.
-        This type is in development and subject to breaking changes in minor versions.
         If omitted or null, resource detection is disabled.
     - property: schema_url
       description: |
@@ -946,7 +939,6 @@
     - property: otlp_file/development
       description: |
         Configure exporter to be OTLP with file transport.
-        This type is in development and subject to breaking changes in minor versions.
     - property: console
       description: Configure exporter to be console.
     - property: zipkin
@@ -1033,7 +1025,6 @@
     - property: tracer_configurator/development
       description: |
         Configure tracers.
-        This type is in development and subject to breaking changes in minor versions.
   isSdkExtensionPlugin: false
 - type: View
   properties:

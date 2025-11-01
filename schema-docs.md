@@ -838,6 +838,9 @@ Usages:
 
 ## ExperimentalContainerResourceDetector <a id="experimentalcontainerresourcedetector"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 No properties.
 
 Constraints: 
@@ -862,6 +865,9 @@ Usages:
 </details>
 
 ## ExperimentalGeneralInstrumentation <a id="experimentalgeneralinstrumentation"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -905,6 +911,9 @@ Usages:
 
 ## ExperimentalHostResourceDetector <a id="experimentalhostresourcedetector"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 No properties.
 
 Constraints: 
@@ -929,6 +938,9 @@ Usages:
 </details>
 
 ## ExperimentalHttpClientInstrumentation <a id="experimentalhttpclientinstrumentation"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -978,6 +990,9 @@ Usages:
 
 ## ExperimentalHttpInstrumentation <a id="experimentalhttpinstrumentation"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `client` | [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | `false` | No constraints. | Configure instrumentations following the http client semantic conventions. |
@@ -1019,6 +1034,9 @@ Usages:
 </details>
 
 ## ExperimentalHttpServerInstrumentation <a id="experimentalhttpserverinstrumentation"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -1067,6 +1085,9 @@ Usages:
 </details>
 
 ## ExperimentalInstrumentation <a id="experimentalinstrumentation"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -1258,6 +1279,9 @@ Usages:
 
 ## ExperimentalLanguageSpecificInstrumentation <a id="experimentallanguagespecificinstrumentation"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 No properties.
 
 Constraints: 
@@ -1291,6 +1315,9 @@ Usages:
 </details>
 
 ## ExperimentalLoggerConfig <a id="experimentalloggerconfig"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -1333,6 +1360,9 @@ Usages:
 </details>
 
 ## ExperimentalLoggerConfigurator <a id="experimentalloggerconfigurator"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -1381,6 +1411,9 @@ Usages:
 
 ## ExperimentalLoggerMatcherAndConfig <a id="experimentalloggermatcherandconfig"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `name` | `string` | `false` | No constraints. | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
@@ -1427,6 +1460,9 @@ Usages:
 
 ## ExperimentalMeterConfig <a id="experimentalmeterconfig"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `disabled` | `boolean` | `false` | No constraints. | Configure if the meter is enabled or not. |
@@ -1468,6 +1504,9 @@ Usages:
 </details>
 
 ## ExperimentalMeterConfigurator <a id="experimentalmeterconfigurator"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -1516,6 +1555,9 @@ Usages:
 
 ## ExperimentalMeterMatcherAndConfig <a id="experimentalmetermatcherandconfig"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `name` | `string` | `false` | No constraints. | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
@@ -1562,6 +1604,9 @@ Usages:
 
 ## ExperimentalOtlpFileExporter <a id="experimentalotlpfileexporter"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> |
@@ -1605,6 +1650,9 @@ Usages:
 </details>
 
 ## ExperimentalOtlpFileMetricExporter <a id="experimentalotlpfilemetricexporter"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -1659,6 +1707,9 @@ Usages:
 
 ## ExperimentalPeerInstrumentation <a id="experimentalpeerinstrumentation"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` | No constraints. | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> |
@@ -1698,6 +1749,9 @@ Usages:
 </details>
 
 ## ExperimentalPeerServiceMapping <a id="experimentalpeerservicemapping"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -1746,6 +1800,9 @@ Usages:
 
 ## ExperimentalProbabilitySampler <a id="experimentalprobabilitysampler"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br>If omitted or null, 1.0 is used.<br> |
@@ -1791,6 +1848,9 @@ Usages:
 
 ## ExperimentalProcessResourceDetector <a id="experimentalprocessresourcedetector"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 No properties.
 
 Constraints: 
@@ -1815,6 +1875,9 @@ Usages:
 </details>
 
 ## ExperimentalPrometheusMetricExporter <a id="experimentalprometheusmetricexporter"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -1894,6 +1957,9 @@ Usages:
 
 ## ExperimentalResourceDetection <a id="experimentalresourcedetection"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `attributes` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure attributes provided by resource detectors. |
@@ -1938,6 +2004,9 @@ Usages:
 </details>
 
 ## ExperimentalResourceDetector <a id="experimentalresourcedetector"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 `ExperimentalResourceDetector` is an [SDK extension plugin](#sdk-extension-plugins).
 
@@ -2002,6 +2071,9 @@ Usages:
 
 ## ExperimentalServiceResourceDetector <a id="experimentalserviceresourcedetector"></a>
 
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
 No properties.
 
 Constraints: 
@@ -2026,6 +2098,9 @@ Usages:
 </details>
 
 ## ExperimentalTracerConfig <a id="experimentaltracerconfig"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -2068,6 +2143,9 @@ Usages:
 </details>
 
 ## ExperimentalTracerConfigurator <a id="experimentaltracerconfigurator"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -2115,6 +2193,9 @@ Usages:
 </details>
 
 ## ExperimentalTracerMatcherAndConfig <a id="experimentaltracermatcherandconfig"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
@@ -2598,7 +2679,7 @@ Usages:
 |---|---|---|---|---|
 | `processors` | `array` of [`LogRecordProcessor`](#logrecordprocessor) | `true` | No constraints. | Configure log record processors. |
 | `limits` | [`LogRecordLimits`](#logrecordlimits) | `false` | No constraints. | Configure log record limits. See also attribute_limits. |
-| `logger_configurator/development` | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` | No constraints. | Configure loggers.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+| `logger_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` | No constraints. | Configure loggers.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2820,7 +2901,7 @@ Usages:
 |---|---|---|---|---|
 | `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | No constraints. | Configure exporter to be OTLP with HTTP transport. |
 | `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport. |
-| `otlp_file/development` | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br> |
 | `console` | [`ConsoleExporter`](#consoleexporter) | `false` | No constraints. | Configure exporter to be console. |
 
 <details>
@@ -2985,7 +3066,7 @@ Usages:
 | `readers` | `array` of [`MetricReader`](#metricreader) | `true` | No constraints. | Configure metric readers. |
 | `views` | `array` of [`View`](#view) | `false` | No constraints. | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> |
 | `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | No constraints. | Configure the exemplar filter. <br>Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br>If omitted or null, trace_based is used.<br> |
-| `meter_configurator/development` | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | No constraints. | Configure meters.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+| `meter_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | No constraints. | Configure meters.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -3885,7 +3966,7 @@ Usages:
 | `propagator` | [`Propagator`](#propagator) | `false` | No constraints. | Configure text map context propagators.<br>If omitted, a noop propagator is used.<br> |
 | `tracer_provider` | [`TracerProvider`](#tracerprovider) | `false` | No constraints. | Configure tracer provider.<br>If omitted, a noop tracer provider is used.<br> |
 | `resource` | [`Resource`](#resource) | `false` | No constraints. | Configure resource for all signals.<br>If omitted, the default resource is used.<br> |
-| `instrumentation/development` | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | No constraints. | Configure instrumentation.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+| `instrumentation/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | No constraints. | Configure instrumentation.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4675,7 +4756,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `prometheus/development` | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | No constraints. | Configure exporter to be prometheus.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+| `prometheus/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | No constraints. | Configure exporter to be prometheus.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4781,7 +4862,7 @@ Usages:
 |---|---|---|---|---|
 | `otlp_http` | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with HTTP transport.<br> |
 | `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport.<br> |
-| `otlp_file/development` | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br> |
 | `console` | [`ConsoleMetricExporter`](#consolemetricexporter) | `false` | No constraints. | Configure exporter to be console.<br> |
 
 <details>
@@ -4841,7 +4922,7 @@ Usages:
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `attributes` | `array` of [`AttributeNameValue`](#attributenamevalue) | `false` | No constraints. | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br> |
-| `detection/development` | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | No constraints. | Configure resource detection.<br>This type is in development and subject to breaking changes in minor versions.<br>If omitted or null, resource detection is disabled.<br> |
+| `detection/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | No constraints. | Configure resource detection.<br>If omitted or null, resource detection is disabled.<br> |
 | `schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure resource schema URL.<br>If omitted or null, no schema URL is used.<br> |
 | `attributes_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>If omitted or null, no resource attributes are added.<br> |
 
@@ -5047,7 +5128,7 @@ Usages:
 | `jaeger_remote` | [`JaegerRemoteSampler`](#jaegerremotesampler) | `false` | No constraints. | TODO |
 | `parent_based` | [`ParentBasedSampler`](#parentbasedsampler) | `false` | No constraints. | Configure sampler to be parent_based. |
 | `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | No constraints. | Configure sampler to be trace_id_ratio_based. |
-| `probability/development` | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | No constraints. | Configure sampler to be probability. |
+| `probability/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | No constraints. | Configure sampler to be probability. |
 
 <details>
 <summary>Language support status</summary>
@@ -5205,7 +5286,7 @@ Usages:
 |---|---|---|---|---|
 | `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | No constraints. | Configure exporter to be OTLP with HTTP transport. |
 | `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport. |
-| `otlp_file/development` | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br> |
 | `console` | [`ConsoleExporter`](#consoleexporter) | `false` | No constraints. | Configure exporter to be console. |
 | `zipkin` | [`ZipkinSpanExporter`](#zipkinspanexporter) | `false` | No constraints. | Configure exporter to be zipkin. |
 
@@ -5532,7 +5613,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | No constraints. | Configure trace_id_ratio.<br>If omitted or null, 1.0 is used.<br> |
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure trace_id_ratio.<br>If omitted or null, 1.0 is used.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -5565,7 +5646,9 @@ Usages:
       "type": [
         "number",
         "null"
-      ]
+      ],
+      "minimum": 0,
+      "maximum": 1
     }
   }
 }</pre>
@@ -5578,7 +5661,7 @@ Usages:
 | `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | No constraints. | Configure span processors. |
 | `limits` | [`SpanLimits`](#spanlimits) | `false` | No constraints. | Configure span limits. See also attribute_limits. |
 | `sampler` | [`Sampler`](#sampler) | `false` | No constraints. | Configure the sampler.<br>If omitted, parent based sampler with a root of always_on is used.<br> |
-| `tracer_configurator/development` | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | No constraints. | Configure tracers.<br>This type is in development and subject to breaking changes in minor versions.<br> |
+| `tracer_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | No constraints. | Configure tracers.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -5793,7 +5876,9 @@ Usages:
           "type": [
             "number",
             "null"
-          ]
+          ],
+          "minimum": 0,
+          "maximum": 1
         }
       }
     },
