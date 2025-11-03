@@ -10,7 +10,12 @@ import {
     metaSchemaLanguageFilePrefix
 } from "./util.js";
 
-export const KNOWN_LANGUAGES = ['cpp', 'java', 'js'];
+export const KNOWN_LANGUAGES = [
+    'cpp', 
+    'go', 
+    'java',
+    'js',
+];
 
 const IMPLEMENTATION_STATUS_UNKNOWN = 'unknown';
 const IMPLEMENTATION_STATUSES = ['supported', IMPLEMENTATION_STATUS_UNKNOWN, 'not_implemented', 'ignored', 'not_applicable']
