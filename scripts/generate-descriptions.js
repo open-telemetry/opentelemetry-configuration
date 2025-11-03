@@ -148,7 +148,7 @@ function yamlPathToJsonPath(yamlPath, propertyKey) {
 }
 
 function resolveJsonSchemaType(jsonSchemaTypesByType, yamlPath) {
-    let last = jsonSchemaTypesByType['OpentelemetryConfiguration']; // TODO: make constant
+    let last = jsonSchemaTypesByType['OpenTelemetryConfiguration']; // TODO: make constant
     if (!last) {
         throw new Error(`JSON schema missing root type 'OpenTelemetryConfiguration'`);
     }

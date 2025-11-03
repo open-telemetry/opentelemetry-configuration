@@ -149,7 +149,7 @@ Constraints:
 
 Usages:
 
-* [`OpentelemetryConfiguration.attribute_limits`](#opentelemetryconfiguration)
+* [`OpenTelemetryConfiguration.attribute_limits`](#opentelemetryconfiguration)
 
 <details>
 <summary>JSON Schema</summary>
@@ -1129,7 +1129,7 @@ Constraints:
 
 Usages:
 
-* [`OpentelemetryConfiguration.instrumentation/development`](#opentelemetryconfiguration)
+* [`OpenTelemetryConfiguration.instrumentation/development`](#opentelemetryconfiguration)
 
 <details>
 <summary>JSON Schema</summary>
@@ -2698,7 +2698,7 @@ Constraints:
 
 Usages:
 
-* [`OpentelemetryConfiguration.logger_provider`](#opentelemetryconfiguration)
+* [`OpenTelemetryConfiguration.logger_provider`](#opentelemetryconfiguration)
 
 <details>
 <summary>JSON Schema</summary>
@@ -3086,7 +3086,7 @@ Constraints:
 
 Usages:
 
-* [`OpentelemetryConfiguration.meter_provider`](#opentelemetryconfiguration)
+* [`OpenTelemetryConfiguration.meter_provider`](#opentelemetryconfiguration)
 
 <details>
 <summary>JSON Schema</summary>
@@ -3953,36 +3953,36 @@ Usages:
 }</pre>
 </details>
 
-## OpentelemetryConfiguration <a id="opentelemetryconfiguration"></a>
+## OpenTelemetryConfiguration <a id="opentelemetryconfiguration"></a>
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `file_format` | `string` | `true` | No constraints. | The file format version.<br>The yaml format is documented at<br>https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema<br> |
-| `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure if the SDK is disabled or not.<br>If omitted or null, false is used.<br> |
-| `log_level` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the log level of the internal logger used by the SDK.<br>If omitted, info is used.<br> |
-| `attribute_limits` | [`AttributeLimits`](#attributelimits) | `false` | No constraints. | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br> |
-| `logger_provider` | [`LoggerProvider`](#loggerprovider) | `false` | No constraints. | Configure logger provider.<br>If omitted, a noop logger provider is used.<br> |
-| `meter_provider` | [`MeterProvider`](#meterprovider) | `false` | No constraints. | Configure meter provider.<br>If omitted, a noop meter provider is used.<br> |
-| `propagator` | [`Propagator`](#propagator) | `false` | No constraints. | Configure text map context propagators.<br>If omitted, a noop propagator is used.<br> |
-| `tracer_provider` | [`TracerProvider`](#tracerprovider) | `false` | No constraints. | Configure tracer provider.<br>If omitted, a noop tracer provider is used.<br> |
-| `resource` | [`Resource`](#resource) | `false` | No constraints. | Configure resource for all signals.<br>If omitted, the default resource is used.<br> |
-| `instrumentation/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | No constraints. | Configure instrumentation.<br> |
+| `file_format` | `string` | `true` | No constraints. | TODO |
+| `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `log_level` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `attribute_limits` | [`AttributeLimits`](#attributelimits) | `false` | No constraints. | TODO |
+| `logger_provider` | [`LoggerProvider`](#loggerprovider) | `false` | No constraints. | TODO |
+| `meter_provider` | [`MeterProvider`](#meterprovider) | `false` | No constraints. | TODO |
+| `propagator` | [`Propagator`](#propagator) | `false` | No constraints. | TODO |
+| `tracer_provider` | [`TracerProvider`](#tracerprovider) | `false` | No constraints. | TODO |
+| `resource` | [`Resource`](#resource) | `false` | No constraints. | TODO |
+| `instrumentation/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | No constraints. | TODO |
 
 <details>
 <summary>Language support status</summary>
 
 | Property | [cpp](#cpp) | [java](#java) | [js](#js) |
 |---|---|---|---|
-| `file_format` | supported | supported | unknown |
-| `disabled` | supported | supported | unknown |
-| `log_level` | supported | supported | unknown |
-| `attribute_limits` | supported | supported | unknown |
-| `logger_provider` | supported | supported | unknown |
-| `meter_provider` | supported | supported | unknown |
-| `propagator` | supported | supported | unknown |
-| `tracer_provider` | supported | supported | unknown |
-| `resource` | supported | supported | unknown |
-| `instrumentation/development` | supported | supported | unknown |
+| `file_format` | unknown | unknown | unknown |
+| `disabled` | unknown | unknown | unknown |
+| `log_level` | unknown | unknown | unknown |
+| `attribute_limits` | unknown | unknown | unknown |
+| `logger_provider` | unknown | unknown | unknown |
+| `meter_provider` | unknown | unknown | unknown |
+| `propagator` | unknown | unknown | unknown |
+| `tracer_provider` | unknown | unknown | unknown |
+| `resource` | unknown | unknown | unknown |
+| `instrumentation/development` | unknown | unknown | unknown |
 </details>
 
 Constraints: 
@@ -4648,7 +4648,7 @@ No constraints.
 
 Usages:
 
-* [`OpentelemetryConfiguration.propagator`](#opentelemetryconfiguration)
+* [`OpenTelemetryConfiguration.propagator`](#opentelemetryconfiguration)
 
 <details>
 <summary>JSON Schema</summary>
@@ -4943,7 +4943,7 @@ Constraints:
 
 Usages:
 
-* [`OpentelemetryConfiguration.resource`](#opentelemetryconfiguration)
+* [`OpenTelemetryConfiguration.resource`](#opentelemetryconfiguration)
 
 <details>
 <summary>JSON Schema</summary>
@@ -5681,7 +5681,7 @@ Constraints:
 
 Usages:
 
-* [`OpentelemetryConfiguration.tracer_provider`](#opentelemetryconfiguration)
+* [`OpenTelemetryConfiguration.tracer_provider`](#opentelemetryconfiguration)
 
 <details>
 <summary>JSON Schema</summary>
@@ -6371,7 +6371,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`MetricReader`](#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | [`NameStringValuePair`](#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | supported |  |  |
-| [`OpentelemetryConfiguration`](#opentelemetryconfiguration) | supported |  | * `file_format`: supported<br>* `disabled`: supported<br>* `log_level`: supported<br>* `attribute_limits`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `tracer_provider`: supported<br>* `resource`: supported<br>* `instrumentation/development`: supported<br> |
+| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `file_format`: unknown<br>* `disabled`: unknown<br>* `log_level`: unknown<br>* `attribute_limits`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `tracer_provider`: unknown<br>* `resource`: unknown<br>* `instrumentation/development`: unknown<br> |
 | [`OpenTracingPropagator`](#opentracingpropagator) | not_implemented |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
@@ -6472,7 +6472,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`MetricReader`](#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | [`NameStringValuePair`](#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | supported |  |  |
-| [`OpentelemetryConfiguration`](#opentelemetryconfiguration) | supported |  | * `file_format`: supported<br>* `disabled`: supported<br>* `log_level`: supported<br>* `attribute_limits`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `tracer_provider`: supported<br>* `resource`: supported<br>* `instrumentation/development`: supported<br> |
+| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `file_format`: unknown<br>* `disabled`: unknown<br>* `log_level`: unknown<br>* `attribute_limits`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `tracer_provider`: unknown<br>* `resource`: unknown<br>* `instrumentation/development`: unknown<br> |
 | [`OpenTracingPropagator`](#opentracingpropagator) | supported |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
@@ -6573,7 +6573,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`MetricReader`](#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
 | [`NameStringValuePair`](#namestringvaluepair) | unknown |  | * `name`: unknown<br>* `value`: unknown<br> |
 | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | unknown |  |  |
-| [`OpentelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `file_format`: unknown<br>* `disabled`: unknown<br>* `log_level`: unknown<br>* `attribute_limits`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `tracer_provider`: unknown<br>* `resource`: unknown<br>* `instrumentation/development`: unknown<br> |
+| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `file_format`: unknown<br>* `disabled`: unknown<br>* `log_level`: unknown<br>* `attribute_limits`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `tracer_provider`: unknown<br>* `resource`: unknown<br>* `instrumentation/development`: unknown<br> |
 | [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |

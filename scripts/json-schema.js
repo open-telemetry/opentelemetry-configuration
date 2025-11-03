@@ -16,7 +16,7 @@ export function readJsonSchemaTypes() {
             topLevelSchemas[file] = fileContent;
 
             if (file === 'opentelemetry_configuration.json') {
-                typesByType['OpenTelemetryConfiguration'] = new JsonSchemaType('OpentelemetryConfiguration', file, fileContent, '.', fileContent);
+                typesByType['OpenTelemetryConfiguration'] = new JsonSchemaType('OpenTelemetryConfiguration', file, fileContent, '.', fileContent);
             }
 
             Object.entries(getDefs(fileContent)).forEach(([type, schema]) => {
