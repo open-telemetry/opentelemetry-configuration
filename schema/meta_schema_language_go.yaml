@@ -1,0 +1,374 @@
+latestSupportedFileFormat: 0.3.0
+typeSupportStatuses:
+  - type: Aggregation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: AlwaysOffSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: AlwaysOnSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: AttributeLimits
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: AttributeNameValue
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: AttributeType
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: B3MultiPropagator
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: B3Propagator
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: BaggagePropagator
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: Base2ExponentialBucketHistogramAggregation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: BatchLogRecordProcessor
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: BatchSpanProcessor
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: CardinalityLimits
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ConsoleExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ConsoleMetricExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: DefaultAggregation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: DropAggregation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExemplarFilter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalContainerResourceDetector
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalGeneralInstrumentation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalHostResourceDetector
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalHttpClientInstrumentation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalHttpInstrumentation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalHttpServerInstrumentation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalInstrumentation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalJaegerRemoteSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalLanguageSpecificInstrumentation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalLoggerConfig
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalLoggerConfigurator
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalLoggerMatcherAndConfig
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalMeterConfig
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalMeterConfigurator
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalMeterMatcherAndConfig
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalOtlpFileExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalOtlpFileMetricExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalPeerInstrumentation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalPeerServiceMapping
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalProbabilitySampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalProcessResourceDetector
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalPrometheusMetricExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalResourceDetection
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalResourceDetector
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalServiceResourceDetector
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalTracerConfig
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalTracerConfigurator
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalTracerMatcherAndConfig
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExplicitBucketHistogramAggregation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExporterDefaultHistogramAggregation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExporterTemporalityPreference
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: GrpcTls
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: HttpTls
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: IncludeExclude
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: InstrumentType
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: JaegerPropagator
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: LastValueAggregation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: LoggerProvider
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: LogRecordExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: LogRecordLimits
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: LogRecordProcessor
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: MeterProvider
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: MetricProducer
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: MetricReader
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: NameStringValuePair
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: OpenCensusMetricProducer
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: OpentelemetryConfiguration
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: OpenTracingPropagator
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: OtlpGrpcExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: OtlpGrpcMetricExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: OtlpHttpEncoding
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: OtlpHttpExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: OtlpHttpMetricExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ParentBasedSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: PeriodicMetricReader
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: Propagator
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: PullMetricExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: PullMetricReader
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: PushMetricExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: Resource
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: Sampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: SimpleLogRecordProcessor
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: SimpleSpanProcessor
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: SpanExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: SpanLimits
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: SpanProcessor
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: SumAggregation
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: TextMapPropagator
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: TraceContextPropagator
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: TraceIdRatioBasedSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: TracerProvider
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: View
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ViewSelector
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ViewStream
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ZipkinSpanExporter
+    status: unknown
+    notes: ""
+    propertyOverrides: []
