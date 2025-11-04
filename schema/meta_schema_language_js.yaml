@@ -1,436 +1,374 @@
-latestSupportedFileFormat: 1.0.0-rc.1
+latestSupportedFileFormat: 1.0.0-rc.2
 typeSupportStatuses:
   - type: Aggregation
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: AlwaysOffSampler
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: AlwaysOnSampler
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: AttributeLimits
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: AttributeNameValue
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: AttributeType
-    status: supported
+    status: unknown
     notes: ""
     enumOverrides: []
   - type: B3MultiPropagator
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: B3Propagator
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: BaggagePropagator
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: Base2ExponentialBucketHistogramAggregation
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: record_min_max
-        status: not_implemented
+    propertyOverrides: []
   - type: BatchLogRecordProcessor
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: BatchSpanProcessor
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: CardinalityLimits
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ConsoleExporter
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ConsoleMetricExporter
     status: unknown
     notes: ""
-    propertyOverrides:
-      - property: default_histogram_aggregation
-        status: not_implemented
-      - property: temporality_preference
-        status: ignored
+    propertyOverrides: []
   - type: DefaultAggregation
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: DropAggregation
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExemplarFilter
-    status: supported
+    status: unknown
     notes: ""
     enumOverrides: []
   - type: ExperimentalContainerResourceDetector
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalHostResourceDetector
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalHttpClientInstrumentation
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalHttpInstrumentation
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalHttpServerInstrumentation
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalInstrumentation
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: cpp
-        status: not_applicable
-      - property: dotnet
-        status: not_applicable
-      - property: erlang
-        status: not_applicable
-      - property: go
-        status: not_applicable
-      - property: js
-        status: not_applicable
-      - property: php
-        status: not_applicable
-      - property: python
-        status: not_applicable
-      - property: ruby
-        status: not_applicable
-      - property: rust
-        status: not_applicable
-      - property: swift
-        status: not_applicable
+    propertyOverrides: []
   - type: ExperimentalJaegerRemoteSampler
     status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalLoggerConfig
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalLoggerConfigurator
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalLoggerMatcherAndConfig
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalMeterConfig
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalMeterConfigurator
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalMeterMatcherAndConfig
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalOtlpFileExporter
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: output_stream
-        status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalOtlpFileMetricExporter
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: output_stream
-        status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalPeerInstrumentation
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalPeerServiceMapping
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalProbabilitySampler
-    status: ignored
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalPrometheusMetricExporter
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: translation_strategy
-        status: not_implemented
-      - property: without_scope_info
-        status: ignored
+    propertyOverrides: []
   - type: ExperimentalResourceDetection
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalResourceDetector
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalTracerConfig
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalTracerConfigurator
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExplicitBucketHistogramAggregation
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: record_min_max
-        status: not_implemented
+    propertyOverrides: []
   - type: ExporterDefaultHistogramAggregation
-    status: supported
+    status: unknown
     notes: ""
     enumOverrides: []
   - type: ExporterTemporalityPreference
-    status: supported
+    status: unknown
     notes: ""
     enumOverrides: []
   - type: GrpcTls
-    status: not_implemented
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: HttpTls
-    status: not_implemented
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: IncludeExclude
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: InstrumentType
-    status: supported
+    status: unknown
     notes: ""
     enumOverrides: []
   - type: JaegerPropagator
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: LastValueAggregation
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: LoggerProvider
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: LogRecordExporter
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: LogRecordLimits
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: LogRecordProcessor
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: MeterProvider
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: MetricProducer
-    status: ignored
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: MetricReader
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: NameStringValuePair
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: OpenCensusMetricProducer
-    status: ignored
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: OpentelemetryConfiguration
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: log_level
-        status: not_implemented
+    propertyOverrides: []
   - type: OpenTracingPropagator
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: OtlpGrpcExporter
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: tls
-        status: ignored
+    propertyOverrides: []
   - type: OtlpGrpcMetricExporter
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: tls
-        status: ignored
+    propertyOverrides: []
   - type: OtlpHttpEncoding
-    status: not_implemented
+    status: unknown
     notes: ""
-    enumOverrides:
-      - enumValue: json
-        status: not_implemented
+    enumOverrides: []
   - type: OtlpHttpExporter
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: encoding
-        status: not_implemented
-      - property: tls
-        status: ignored
+    propertyOverrides: []
   - type: OtlpHttpMetricExporter
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: encoding
-        status: not_implemented
-      - property: tls
-        status: ignored
+    propertyOverrides: []
   - type: ParentBasedSampler
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: PeriodicMetricReader
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: producers
-        status: not_implemented
+    propertyOverrides: []
   - type: Propagator
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: PullMetricExporter
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: PullMetricReader
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: producers
-        status: not_implemented
+    propertyOverrides: []
   - type: PushMetricExporter
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: Resource
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: schema_url
-        status: ignored
+    propertyOverrides: []
   - type: Sampler
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: probability/development
-        status: ignored
+    propertyOverrides: []
   - type: SimpleLogRecordProcessor
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: SimpleSpanProcessor
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: SpanExporter
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: SpanLimits
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: SpanProcessor
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: SumAggregation
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: TextMapPropagator
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: TraceContextPropagator
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: TraceIdRatioBasedSampler
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: TracerProvider
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: View
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ViewSelector
-    status: supported
+    status: unknown
     notes: ""
-    propertyOverrides:
-      - property: unit
-        status: ignored
+    propertyOverrides: []
   - type: ViewStream
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ZipkinSpanExporter
-    status: supported
+    status: unknown
     notes: ""
     propertyOverrides: []

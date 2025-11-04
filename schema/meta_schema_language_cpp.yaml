@@ -23,7 +23,7 @@ typeSupportStatuses:
   - type: AttributeType
     status: supported
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: B3MultiPropagator
     status: supported
     notes: ""
@@ -71,7 +71,7 @@ typeSupportStatuses:
   - type: ExemplarFilter
     status: not_implemented
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: not_implemented
     notes: ""
@@ -98,6 +98,10 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalInstrumentation
     status: not_applicable
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalJaegerRemoteSampler
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
@@ -187,11 +191,11 @@ typeSupportStatuses:
   - type: ExporterDefaultHistogramAggregation
     status: supported
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: ExporterTemporalityPreference
     status: supported
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: GrpcTls
     status: unknown
     notes: ""
@@ -207,13 +211,9 @@ typeSupportStatuses:
   - type: InstrumentType
     status: supported
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: JaegerPropagator
     status: supported
-    notes: ""
-    propertyOverrides: []
-  - type: JaegerRemoteSampler
-    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: LastValueAggregation
@@ -275,7 +275,7 @@ typeSupportStatuses:
   - type: OtlpHttpEncoding
     status: supported
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: OtlpHttpExporter
     status: supported
     notes: ""

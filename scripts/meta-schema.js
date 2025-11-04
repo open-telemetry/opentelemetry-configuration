@@ -10,7 +10,12 @@ import {
     metaSchemaLanguageFilePrefix
 } from "./util.js";
 
-export const KNOWN_LANGUAGES = ['cpp', 'java'];
+export const KNOWN_LANGUAGES = [
+    'cpp', 
+    'go', 
+    'java',
+    'js',
+];
 
 const IMPLEMENTATION_STATUS_UNKNOWN = 'unknown';
 const IMPLEMENTATION_STATUSES = ['supported', IMPLEMENTATION_STATUS_UNKNOWN, 'not_implemented', 'ignored', 'not_applicable']
@@ -89,21 +94,36 @@ export class MetaSchema {
 
 export class MetaSchemaType {
     type;
-    properties;
+    properties; // null if enum
+    enumValues; // null if not enum
     isSdkExtensionPlugin;
 
-    constructor(type, properties, isSdkExtensionPlugin) {
+    constructor(type, properties, enumValues, isSdkExtensionPlugin) {
         this.type = type;
         this.properties = properties;
+        this.enumValues = enumValues;
         this.isSdkExtensionPlugin = isSdkExtensionPlugin;
 
     }
 
     toJson() {
-        const properties = this.properties.map(property => property.toJson());
-        properties.sort((a, b) => a.property.localeCompare(b.property));
+        const json = {type: this.type};
 
-        return {type: this.type, properties: this.properties, isSdkExtensionPlugin: this.isSdkExtensionPlugin};
+        if (this.enumValues !== null) {
+            const enumValues = this.enumValues.map(enumValue => enumValue.toJson());
+            enumValues.sort((a, b) => a.enumValue.localeCompare(b.enumValue));
+            json.enumValues = enumValues;
+        }
+        if (this.properties !== null) {
+            const properties = this.properties.map(property => property.toJson());
+            // TODO(jack-berg): sort in separate PR to make review easier
+            // properties.sort((a, b) => a.property.localeCompare(b.property));
+            json.properties = properties;
+        }
+
+        json.isSdkExtensionPlugin = this.isSdkExtensionPlugin;
+
+        return json;
     }
 
     static parseJson(rawJson, messages) {
@@ -114,9 +134,18 @@ export class MetaSchemaType {
             entryJson => MetaSchemaProperty.parseJson(entryJson, messages),
             `MetaSchemaType '${type}' has invalid 'properties'`,
             error => `MetaSchemaType '${type}' has invalid property: ${error.message}. Skipping.`,
-            messages);
+            messages,
+            true);
+        const enumValues = parseArray(
+            rawJson,
+            'enumValues',
+            entryJson => MetaSchemaEnumValue.parseJson(entryJson, messages),
+            `MetaSchemaType '${type}' has invalid 'enumValues'`,
+            error => `MetaSchemaType '${type}' has invalid enumValue: ${error.message}. Skipping.`,
+            messages,
+            true);
         const isSdkExtensionPlugin = parseBoolean(rawJson, 'isSdkExtensionPlugin', `MetaSchemaType has invalid 'isSdkExtensionPlugin'`);
-        return new MetaSchemaType(type, properties, isSdkExtensionPlugin);
+        return new MetaSchemaType(type, properties, enumValues, isSdkExtensionPlugin);
     }
 }
 
@@ -137,6 +166,26 @@ export class MetaSchemaProperty {
         const property = parseString(rawJson, 'property', `MetaSchemaProperty has invalid 'property'`);
         const description = parseString(rawJson, 'description', `MetaSchemaProperty has invalid 'description'`);
         return new MetaSchemaProperty(property, description);
+    }
+}
+
+export class MetaSchemaEnumValue {
+    enumValue;
+    description;
+
+    constructor(enumValue, description) {
+        this.enumValue = enumValue;
+        this.description = description;
+    }
+
+    toJson() {
+        return {enumValue: this.enumValue, description: this.description};
+    }
+
+    static parseJson(rawJson, messages) {
+        const enumValue = parseString(rawJson, 'enumValue', `MetaSchemaEnumValue has invalid 'enumValue'`);
+        const description = parseString(rawJson, 'description', `MetaSchemaEnumValue has invalid 'description'`);
+        return new MetaSchemaEnumValue(enumValue, description);
     }
 }
 
@@ -177,26 +226,33 @@ export class LanguageImplementation {
 export class TypeSupportStatus {
     type;
     status;
-    propertyOverrides;
+    propertyOverrides; // null if enum
+    enumOverrides; // null if not enum
     notes;
 
-    constructor(type, status, propertyOverrides, notes) {
+    constructor(type, status, propertyOverrides, enumOverrides, notes) {
         this.type = type;
         this.status = status;
         this.propertyOverrides = propertyOverrides;
+        this.enumOverrides = enumOverrides;
         this.notes = notes;
     }
 
     toJson() {
-        const propertyOverrides = this.propertyOverrides.map(propertyStatus => propertyStatus.toJson());
-        propertyOverrides.sort((a, b) => a.property.localeCompare(b.property));
+        const json = {type: this.type, status: this.status, notes: this.notes};
 
-        return {
-            type: this.type,
-            status: this.status,
-            notes: this.notes,
-            propertyOverrides
-        };
+        if (this.enumOverrides !== null) {
+            const enumOverrides = this.enumOverrides.map(enumValueStatus => enumValueStatus.toJson());
+            enumOverrides.sort((a, b) => a.enumValue.localeCompare(b.enumValue));
+            json.enumOverrides = enumOverrides;
+        }
+        if (this.propertyOverrides !== null) {
+            const propertyOverrides = this.propertyOverrides.map(propertyStatus => propertyStatus.toJson());
+            propertyOverrides.sort((a, b) => a.property.localeCompare(b.property));
+            json.propertyOverrides = propertyOverrides;
+        }
+
+        return json;
     }
 
     static parseJson(rawJson, messages) {
@@ -208,9 +264,18 @@ export class TypeSupportStatus {
             entryJson => PropertyStatus.parseJson(entryJson, messages),
             `TypeSupportStatus '${type}' has invalid 'propertyOverrides'`,
             error => `TypeSupportStatus '${type}' has invalid PropertyStatus: ${error.message}. Skipping.`,
-            messages)
+            messages,
+            true);
+        const enumOverrides = parseArray(
+            rawJson,
+            'enumOverrides',
+            entryJson => EnumValueStatus.parseJson(entryJson, messages),
+            `TypeSupportStatus '${type}' has invalid 'enumOverrides'`,
+            error => `TypeSupportStatus '${type}' has invalid EnumValueStatus: ${error.message}. Skipping.`,
+            messages,
+            true);
         const notes = parseString(rawJson, 'notes', `TypeSupportStatus has invalid 'notes'`);
-        return new TypeSupportStatus(type, status, propertyOverrides, notes);
+        return new TypeSupportStatus(type, status, propertyOverrides, enumOverrides, notes);
     }
 }
 
@@ -237,6 +302,29 @@ export class PropertyStatus {
     }
 }
 
+export class EnumValueStatus {
+    enumValue;
+    status;
+
+    constructor(enumValue, status) {
+        this.enumValue = enumValue;
+        this.status = status;
+    }
+
+    toJson() {
+        return {
+            enumValue: this.enumValue,
+            status: this.status
+        };
+    }
+
+    static parseJson(rawJson, messages) {
+        const enumValue = parseString(rawJson, 'enumValue', `EnumValueStatus has invalid 'enumValue'`);
+        const status = parseEnum(rawJson, 'status', `EnumValueStatus has invalid 'status'`, IMPLEMENTATION_STATUSES);
+        return new EnumValueStatus(enumValue, status);
+    }
+}
+
 // Helper functions
 
 function reconcileTypes(metaSchema, jsonSchemaTypesByType, messages) {
@@ -250,32 +338,73 @@ function reconcileTypes(metaSchema, jsonSchemaTypesByType, messages) {
             return;
         }
         const sanitizedProperties = [];
-        const jsonSchemaProperties = jsonSchemaType.toMetaSchemaType().properties;
+        const emptyMetaSchemaType = jsonSchemaType.toMetaSchemaType();
+        const jsonSchemaProperties = emptyMetaSchemaType.properties;
 
-        // Remove properties in meta schema and not in json schema
-        const jsonSchemaPropertiesByProperty = {};
-        jsonSchemaProperties.forEach(property => jsonSchemaPropertiesByProperty[property.property] = property);
-        metaSchemaType.properties.forEach(property => {
-            const propertyName = property.property;
-            if (!(propertyName in jsonSchemaPropertiesByProperty)) {
-                messages.push(`Type ${type} has property ${propertyName} in meta schema and not in JSON schema. Removing.`);
-                return;
+        if (!jsonSchemaType.isEnumType()) {
+            if (metaSchemaType.properties === null) {
+                messages.push(`Type ${type} in meta schema is missing properties and is not an enum type. Adding.`);
+                metaSchemaType.properties = [];
             }
-            sanitizedProperties.push(property);
-        });
+            if (metaSchemaType.enumValues !== null) {
+                messages.push(`Type ${type} in meta schema has enumValues but is not an enum type. Removing.`);
+                metaSchemaType.enumValues = null;
+            }
 
-        // Add properties in json schema and not in meta schema
-        const metaSchemaPropertiesByProperty = {};
-        metaSchemaType.properties.forEach(property => metaSchemaPropertiesByProperty[property.property] = property);
-        jsonSchemaProperties.forEach(property => {
-            const propertyName = property.property;
-            if (!(propertyName in metaSchemaPropertiesByProperty)) {
-                messages.push(`Type ${type} has property ${propertyName} in JSON schema and not in meta schema. Adding.`);
+            const jsonSchemaPropertiesByProperty = {};
+
+            // Remove properties in meta schema and not in json schema
+            jsonSchemaProperties.forEach(property => jsonSchemaPropertiesByProperty[property.property] = property);
+            metaSchemaType.properties.forEach(property => {
+                const propertyName = property.property;
+                if (!(propertyName in jsonSchemaPropertiesByProperty)) {
+                    messages.push(`Type ${type} has property ${propertyName} in meta schema and not in JSON schema. Removing.`);
+                    return;
+                }
                 sanitizedProperties.push(property);
-            }
-        });
+            });
+            // Add properties in json schema and not in meta schema
+            const metaSchemaPropertiesByProperty = {};
+            metaSchemaType.properties.forEach(property => metaSchemaPropertiesByProperty[property.property] = property);
+            jsonSchemaProperties.forEach(property => {
+                const propertyName = property.property;
+                if (!(propertyName in metaSchemaPropertiesByProperty)) {
+                    messages.push(`Type ${type} has property ${propertyName} in JSON schema and not in meta schema. Adding.`);
+                    sanitizedProperties.push(property);
+                }
+            });
 
-        metaSchemaType.properties = sanitizedProperties;
+            metaSchemaType.properties = sanitizedProperties;
+        } else {
+            if (metaSchemaType.enumValues === null) {
+                messages.push(`Type ${type} in meta schema is missing enumValues and is an enum type. Adding.`);
+                metaSchemaType.enumValues = [];
+            }
+            if (metaSchemaType.properties !== null) {
+                messages.push(`Type ${type} in meta schema has properties but is an enum type. Removing.`);
+                metaSchemaType.properties = null;
+            }
+
+            const sanitizedEnumValues = [];
+
+            // Remove enumValues in meta schema and not in json schema
+            metaSchemaType.enumValues.forEach(enumValue => {
+                if (!(emptyMetaSchemaType.enumValues.find(item => item.enumValue === enumValue.enumValue))) {
+                    messages.push(`Type ${type} has enumValue ${enumValue.enumValue} in meta schema and not in JSON schema. Removing.`);
+                    return;
+                }
+                sanitizedEnumValues.push(enumValue);
+            });
+            // Add enumValues in json schema and not in meta schema
+            emptyMetaSchemaType.enumValues.forEach(enumValue => {
+                if (!(metaSchemaType.enumValues.find(item => item.enumValue === enumValue.enumValue))) {
+                    messages.push(`Type ${type} has enumValue ${enumValue.enumValue} in JSON schema and not in meta schema. Adding.`);
+                    sanitizedEnumValues.push(enumValue);
+                }
+            });
+
+            metaSchemaType.enumValues = sanitizedEnumValues;
+        }
     });
 
     // Find and remove any types in meta schema not in json schema
@@ -317,16 +446,46 @@ function reconcileLanguageImplementations(metaSchema, jsonSchemaTypesByType, mes
                 messages.push(`LanguageImplementation ${language} has type ${typeSupportStatus.type} in meta schema and not in JSON schema. Removing.`);
                 return;
             }
-            // Remove any propertyOverrides which occur in meta schema but not json schema
-            const reconciledPropertyOverrides = [];
-            typeSupportStatus.propertyOverrides.forEach(propertyStatus => {
-                if (!jsonSchemaType.properties.find(jsonSchemaProperty => jsonSchemaProperty.property === propertyStatus.property)) {
-                    messages.push(`LanguageImplementation ${language} type ${typeSupportStatus.type} has propertyOverride ${propertyStatus.property} in meta schema and not in JSON schema. Removing.`);
-                    return;
+            if (!jsonSchemaType.isEnumType()) {
+                if (typeSupportStatus.propertyOverrides === null) {
+                    messages.push(`LanguageImplementation ${language} type ${typeSupportStatus.type} is missing propertyOverrides in meta schema and is not an enum type. Adding.`);
+                    typeSupportStatus.propertyOverrides = [];
                 }
-                reconciledPropertyOverrides.push(propertyStatus);
-            });
-            typeSupportStatus.propertyOverrides = reconciledPropertyOverrides;
+                if (typeSupportStatus.enumOverrides !== null) {
+                    messages.push(`LanguageImplementation ${language} type ${typeSupportStatus.type} has propertyOverrides in meta schema but is not an enum type. Removing.`);
+                    typeSupportStatus.propertyOverrides = null;
+                }
+                // Remove any propertyOverrides which occur in meta schema but not json schema
+                const reconciledPropertyOverrides = [];
+                typeSupportStatus.propertyOverrides.forEach(propertyStatus => {
+                    if (!jsonSchemaType.properties.find(jsonSchemaProperty => jsonSchemaProperty.property === propertyStatus.property)) {
+                        messages.push(`LanguageImplementation ${language} type ${typeSupportStatus.type} has propertyOverride ${propertyStatus.property} in meta schema and not in JSON schema. Removing.`);
+                        return;
+                    }
+                    reconciledPropertyOverrides.push(propertyStatus);
+                });
+                typeSupportStatus.propertyOverrides = reconciledPropertyOverrides;
+            } else {
+                if (typeSupportStatus.enumOverrides === null) {
+                    messages.push(`LanguageImplementation ${language} type ${typeSupportStatus.type} is missing enumOverrides in meta schema and is an enum type. Adding.`);
+                    typeSupportStatus.enumOverrides = [];
+                }
+                if (typeSupportStatus.propertyOverrides !== null) {
+                    messages.push(`LanguageImplementation ${language} type ${typeSupportStatus.type} has propertyOverrides in meta schema but is an enum type. Removing.`);
+                    typeSupportStatus.propertyOverrides = null;
+                }
+                // Remove any enumOverrides which occur in meta schema but not json schema
+                const reconciledEnumOverrides = [];
+                typeSupportStatus.enumOverrides.forEach(enumValueStatus => {
+                    if (!jsonSchemaType.enumValues.includes(enumValueStatus.enumValue)) {
+                        messages.push(`LanguageImplementation ${language} type ${typeSupportStatus.type} has enumOverride ${enumValueStatus.enumValue} in meta schema and not in JSON schema. Removing.`);
+                        return;
+                    }
+                    reconciledEnumOverrides.push(enumValueStatus);
+                });
+                typeSupportStatus.enumOverrides = reconciledEnumOverrides;
+            }
+
             reconciledTypeSupportStatuses.push(typeSupportStatus);
         });
 
@@ -366,7 +525,7 @@ function emptyLanguageImplementation(language, metaSchema) {
     return new LanguageImplementation(
         language,
         'TODO',
-        metaSchema.types.map(metaSchemaType => new TypeSupportStatus(metaSchemaType.type, IMPLEMENTATION_STATUS_UNKNOWN, [], '')));
+        metaSchema.types.map(metaSchemaType => new TypeSupportStatus(metaSchemaType.type, IMPLEMENTATION_STATUS_UNKNOWN, [], metaSchemaType.enumValues === null ? null : [], '')));
 }
 
 function parseEnum(rawJson, propertyName, errorMessage, knownValues) {
@@ -393,8 +552,11 @@ function parseBoolean(rawJson, propertyName, errorMessage) {
     return property;
 }
 
-function parseArray(rawJson, propertyName, entryParser, errorMessage, entryErrorFormatter, messages) {
+function parseArray(rawJson, propertyName, entryParser, errorMessage, entryErrorFormatter, messages, nullable = false) {
     const property = rawJson[propertyName];
+    if ((property === null  || property === undefined) && nullable) {
+        return null;
+    }
     return parseArrayValue(property, entryParser, errorMessage, entryErrorFormatter, messages);
 }
 
