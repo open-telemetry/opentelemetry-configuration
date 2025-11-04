@@ -260,11 +260,35 @@ Usages:
 
 ## AttributeType <a id="attributetype"></a>
 
-No properties.
+This is a enum type.
 
-Constraints: 
+| Value | Description |
+|---|---|
+| `bool` | TODO |
+| `bool_array` | TODO |
+| `double` | TODO |
+| `double_array` | TODO |
+| `int` | TODO |
+| `int_array` | TODO |
+| `string` | TODO |
+| `string_array` | TODO |
 
-* `enum`: `[null,"string","bool","int","double","string_array","bool_array","int_array","double_array"]`
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `bool` | supported | unknown | supported | unknown |
+| `bool_array` | supported | unknown | supported | unknown |
+| `double` | supported | unknown | supported | unknown |
+| `double_array` | supported | unknown | supported | unknown |
+| `int` | supported | unknown | supported | unknown |
+| `int_array` | supported | unknown | supported | unknown |
+| `string` | supported | unknown | supported | unknown |
+| `string_array` | supported | unknown | supported | unknown |
+</details>
+
+No constraints.
 
 Usages:
 
@@ -280,7 +304,6 @@ Usages:
     "null"
   ],
   "enum": [
-    null,
     "string",
     "bool",
     "int",
@@ -809,11 +832,25 @@ Usages:
 
 ## ExemplarFilter <a id="exemplarfilter"></a>
 
-No properties.
+This is a enum type.
 
-Constraints: 
+| Value | Description |
+|---|---|
+| `always_off` | TODO |
+| `always_on` | TODO |
+| `trace_based` | TODO |
 
-* `enum`: `["always_on","always_off","trace_based"]`
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `always_off` | not_implemented | unknown | supported | unknown |
+| `always_on` | not_implemented | unknown | supported | unknown |
+| `trace_based` | not_implemented | unknown | supported | unknown |
+</details>
+
+No constraints.
 
 Usages:
 
@@ -1945,7 +1982,7 @@ Usages:
 | `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | Configure port.<br>If omitted or null, 9464 is used.<br> |
 | `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure Prometheus Exporter to produce metrics without a scope info metric.<br>If omitted or null, false is used.<br> |
 | `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
-| `translation_strategy` | one of:<br>* `string`<br>* `null`<br> | `false` | * `enum`: `["UnderscoreEscapingWithSuffixes","UnderscoreEscapingWithoutSuffixes","NoUTF8EscapingWithSuffixes","NoTranslation"]`<br> | Configure how Prometheus metrics are exposed. Values include:<br><br> * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br> * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.<br> * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br> * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.<br><br>If omitted or null, UnderscoreEscapingWithSuffixes is used.<br> |
+| `translation_strategy` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure how Prometheus metrics are exposed. Values include:<br><br> * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br> * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.<br> * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br> * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.<br><br>If omitted or null, UnderscoreEscapingWithSuffixes is used.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2354,11 +2391,23 @@ Usages:
 
 ## ExporterDefaultHistogramAggregation <a id="exporterdefaulthistogramaggregation"></a>
 
-No properties.
+This is a enum type.
 
-Constraints: 
+| Value | Description |
+|---|---|
+| `base2_exponential_bucket_histogram` | TODO |
+| `explicit_bucket_histogram` | TODO |
 
-* `enum`: `["explicit_bucket_histogram","base2_exponential_bucket_histogram"]`
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown |
+| `explicit_bucket_histogram` | supported | unknown | supported | unknown |
+</details>
+
+No constraints.
 
 Usages:
 
@@ -2385,11 +2434,25 @@ Usages:
 
 ## ExporterTemporalityPreference <a id="exportertemporalitypreference"></a>
 
-No properties.
+This is a enum type.
 
-Constraints: 
+| Value | Description |
+|---|---|
+| `cumulative` | TODO |
+| `delta` | TODO |
+| `low_memory` | TODO |
 
-* `enum`: `["cumulative","delta","low_memory"]`
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `cumulative` | supported | unknown | supported | unknown |
+| `delta` | supported | unknown | supported | unknown |
+| `low_memory` | supported | unknown | supported | unknown |
+</details>
+
+No constraints.
 
 Usages:
 
@@ -2595,11 +2658,33 @@ Usages:
 
 ## InstrumentType <a id="instrumenttype"></a>
 
-No properties.
+This is a enum type.
 
-Constraints: 
+| Value | Description |
+|---|---|
+| `counter` | TODO |
+| `gauge` | TODO |
+| `histogram` | TODO |
+| `observable_counter` | TODO |
+| `observable_gauge` | TODO |
+| `observable_up_down_counter` | TODO |
+| `up_down_counter` | TODO |
 
-* `enum`: `["counter","gauge","histogram","observable_counter","observable_gauge","observable_up_down_counter","up_down_counter"]`
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `counter` | supported | unknown | supported | unknown |
+| `gauge` | supported | unknown | supported | unknown |
+| `histogram` | supported | unknown | supported | unknown |
+| `observable_counter` | supported | unknown | supported | unknown |
+| `observable_gauge` | supported | unknown | supported | unknown |
+| `observable_up_down_counter` | supported | unknown | supported | unknown |
+| `up_down_counter` | supported | unknown | supported | unknown |
+</details>
+
+No constraints.
 
 Usages:
 
@@ -4287,11 +4372,23 @@ Usages:
 
 ## OtlpHttpEncoding <a id="otlphttpencoding"></a>
 
-No properties.
+This is a enum type.
 
-Constraints: 
+| Value | Description |
+|---|---|
+| `json` | Protobuf JSON encoding. |
+| `protobuf` | Protobuf binary encoding. |
 
-* `enum`: `["protobuf","json"]`
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `json` | supported | unknown | not_implemented | unknown |
+| `protobuf` | supported | unknown | supported | unknown |
+</details>
+
+No constraints.
 
 Usages:
 
@@ -5037,7 +5134,6 @@ Usages:
         "null"
       ],
       "enum": [
-        null,
         "string",
         "bool",
         "int",
@@ -6308,14 +6404,14 @@ Usages:
 
 Latest supported file format: `1.0.0-rc.2`
 
-| Type | Status | Notes | Property Support Status |
+| Type | Status | Notes | Support Status Details |
 |---|---|---|---|
 | [`Aggregation`](#aggregation) | supported |  | * `default`: supported<br>* `drop`: supported<br>* `explicit_bucket_histogram`: supported<br>* `base2_exponential_bucket_histogram`: supported<br>* `last_value`: supported<br>* `sum`: supported<br> |
 | [`AlwaysOffSampler`](#alwaysoffsampler) | supported |  |  |
 | [`AlwaysOnSampler`](#alwaysonsampler) | supported |  |  |
 | [`AttributeLimits`](#attributelimits) | supported |  | * `attribute_value_length_limit`: supported<br>* `attribute_count_limit`: supported<br> |
 | [`AttributeNameValue`](#attributenamevalue) | supported |  | * `name`: supported<br>* `value`: supported<br>* `type`: supported<br> |
-| [`AttributeType`](#attributetype) | supported |  |  |
+| [`AttributeType`](#attributetype) | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | supported |  |  |
 | [`B3Propagator`](#b3propagator) | supported |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | supported |  |  |
@@ -6327,7 +6423,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br> |
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
 | [`DropAggregation`](#dropaggregation) | supported |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | not_implemented |  |  |
+| [`ExemplarFilter`](#exemplarfilter) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `trace_based`: not_implemented<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | not_implemented |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | not_applicable |  | * `peer`: not_applicable<br>* `http`: not_applicable<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | not_implemented |  |  |
@@ -6357,12 +6453,12 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | not_implemented |  | * `name`: not_implemented<br>* `config`: not_implemented<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  |  |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  |  |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br>* `insecure`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | supported |  | * `included`: supported<br>* `excluded`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  |  |
+| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
 | [`LoggerProvider`](#loggerprovider) | supported |  | * `processors`: supported<br>* `limits`: supported<br>* `logger_configurator/development`: supported<br> |
@@ -6378,7 +6474,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`OpenTracingPropagator`](#opentracingpropagator) | not_implemented |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  |  |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `tls`: supported<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `endpoint`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `root`: supported<br>* `remote_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `local_parent_not_sampled`: supported<br> |
@@ -6409,14 +6505,14 @@ Latest supported file format: `1.0.0-rc.2`
 
 Latest supported file format: `0.3.0`
 
-| Type | Status | Notes | Property Support Status |
+| Type | Status | Notes | Support Status Details |
 |---|---|---|---|
 | [`Aggregation`](#aggregation) | unknown |  | * `default`: unknown<br>* `drop`: unknown<br>* `explicit_bucket_histogram`: unknown<br>* `base2_exponential_bucket_histogram`: unknown<br>* `last_value`: unknown<br>* `sum`: unknown<br> |
 | [`AlwaysOffSampler`](#alwaysoffsampler) | unknown |  |  |
 | [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
 | [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_value_length_limit`: unknown<br>* `attribute_count_limit`: unknown<br> |
 | [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `value`: unknown<br>* `type`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  |  |
+| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
 | [`B3Propagator`](#b3propagator) | unknown |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
@@ -6428,7 +6524,7 @@ Latest supported file format: `0.3.0`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
 | [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  |  |
+| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `peer`: unknown<br>* `http`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
@@ -6458,12 +6554,12 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `name`: unknown<br>* `config`: unknown<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  |  |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  |  |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br>* `insecure`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `included`: unknown<br>* `excluded`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  |  |
+| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
 | [`LoggerProvider`](#loggerprovider) | unknown |  | * `processors`: unknown<br>* `limits`: unknown<br>* `logger_configurator/development`: unknown<br> |
@@ -6479,7 +6575,7 @@ Latest supported file format: `0.3.0`
 | [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  |  |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |
@@ -6510,14 +6606,14 @@ Latest supported file format: `0.3.0`
 
 Latest supported file format: `1.0.0-rc.1`
 
-| Type | Status | Notes | Property Support Status |
+| Type | Status | Notes | Support Status Details |
 |---|---|---|---|
 | [`Aggregation`](#aggregation) | supported |  | * `default`: supported<br>* `drop`: supported<br>* `explicit_bucket_histogram`: supported<br>* `base2_exponential_bucket_histogram`: supported<br>* `last_value`: supported<br>* `sum`: supported<br> |
 | [`AlwaysOffSampler`](#alwaysoffsampler) | supported |  |  |
 | [`AlwaysOnSampler`](#alwaysonsampler) | supported |  |  |
 | [`AttributeLimits`](#attributelimits) | supported |  | * `attribute_value_length_limit`: supported<br>* `attribute_count_limit`: supported<br> |
 | [`AttributeNameValue`](#attributenamevalue) | supported |  | * `name`: supported<br>* `value`: supported<br>* `type`: supported<br> |
-| [`AttributeType`](#attributetype) | supported |  |  |
+| [`AttributeType`](#attributetype) | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | supported |  |  |
 | [`B3Propagator`](#b3propagator) | supported |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | supported |  |  |
@@ -6529,7 +6625,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
 | [`DropAggregation`](#dropaggregation) | supported |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | supported |  |  |
+| [`ExemplarFilter`](#exemplarfilter) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `trace_based`: supported<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | supported |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | supported |  | * `peer`: supported<br>* `http`: supported<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | supported |  |  |
@@ -6559,12 +6655,12 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | supported |  | * `name`: supported<br>* `config`: supported<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  |  |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  |  |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br>* `insecure`: not_applicable<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | supported |  | * `included`: supported<br>* `excluded`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  |  |
+| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
 | [`LoggerProvider`](#loggerprovider) | supported |  | * `processors`: supported<br>* `limits`: supported<br>* `logger_configurator/development`: supported<br> |
@@ -6580,7 +6676,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`OpenTracingPropagator`](#opentracingpropagator) | supported |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  |  |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  | * `json`: not_implemented<br>* `protobuf`: supported<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `tls`: supported<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `endpoint`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `root`: supported<br>* `remote_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `local_parent_not_sampled`: supported<br> |
@@ -6611,14 +6707,14 @@ Latest supported file format: `1.0.0-rc.1`
 
 Latest supported file format: `1.0.0-rc.2`
 
-| Type | Status | Notes | Property Support Status |
+| Type | Status | Notes | Support Status Details |
 |---|---|---|---|
 | [`Aggregation`](#aggregation) | unknown |  | * `default`: unknown<br>* `drop`: unknown<br>* `explicit_bucket_histogram`: unknown<br>* `base2_exponential_bucket_histogram`: unknown<br>* `last_value`: unknown<br>* `sum`: unknown<br> |
 | [`AlwaysOffSampler`](#alwaysoffsampler) | unknown |  |  |
 | [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
 | [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_value_length_limit`: unknown<br>* `attribute_count_limit`: unknown<br> |
 | [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `value`: unknown<br>* `type`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  |  |
+| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
 | [`B3Propagator`](#b3propagator) | unknown |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
@@ -6630,7 +6726,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
 | [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  |  |
+| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `peer`: unknown<br>* `http`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
@@ -6660,12 +6756,12 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `name`: unknown<br>* `config`: unknown<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  |  |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  |  |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br>* `insecure`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `included`: unknown<br>* `excluded`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  |  |
+| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
 | [`LoggerProvider`](#loggerprovider) | unknown |  | * `processors`: unknown<br>* `limits`: unknown<br>* `logger_configurator/development`: unknown<br> |
@@ -6681,7 +6777,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  |  |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |

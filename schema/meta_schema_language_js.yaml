@@ -23,7 +23,7 @@ typeSupportStatuses:
   - type: AttributeType
     status: unknown
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: B3MultiPropagator
     status: unknown
     notes: ""
@@ -71,7 +71,7 @@ typeSupportStatuses:
   - type: ExemplarFilter
     status: unknown
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: unknown
     notes: ""
@@ -191,11 +191,11 @@ typeSupportStatuses:
   - type: ExporterDefaultHistogramAggregation
     status: unknown
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: ExporterTemporalityPreference
     status: unknown
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: GrpcTls
     status: unknown
     notes: ""
@@ -211,7 +211,7 @@ typeSupportStatuses:
   - type: InstrumentType
     status: unknown
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: JaegerPropagator
     status: unknown
     notes: ""
@@ -275,7 +275,7 @@ typeSupportStatuses:
   - type: OtlpHttpEncoding
     status: unknown
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: OtlpHttpExporter
     status: unknown
     notes: ""
