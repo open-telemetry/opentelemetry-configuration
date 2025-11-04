@@ -100,6 +100,10 @@ typeSupportStatuses:
     status: not_applicable
     notes: ""
     propertyOverrides: []
+  - type: ExperimentalJaegerRemoteSampler
+    status: not_implemented
+    notes: ""
+    propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
     status: not_applicable
     notes: ""
@@ -210,10 +214,6 @@ typeSupportStatuses:
     enumOverrides: []
   - type: JaegerPropagator
     status: supported
-    notes: ""
-    propertyOverrides: []
-  - type: JaegerRemoteSampler
-    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: LastValueAggregation

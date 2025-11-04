@@ -559,15 +559,6 @@
 - type: JaegerPropagator
   properties: []
   isSdkExtensionPlugin: false
-- type: JaegerRemoteSampler
-  properties:
-    - property: endpoint
-      description: TODO
-    - property: interval
-      description: TODO
-    - property: initial_sampler
-      description: TODO
-  isSdkExtensionPlugin: false
 - type: LastValueAggregation
   properties: []
   isSdkExtensionPlugin: false
@@ -961,14 +952,14 @@
       description: Configure sampler to be always_off.
     - property: always_on
       description: Configure sampler to be always_on.
-    - property: jaeger_remote
-      description: TODO
     - property: parent_based
       description: Configure sampler to be parent_based.
     - property: trace_id_ratio_based
       description: Configure sampler to be trace_id_ratio_based.
     - property: probability/development
       description: Configure sampler to be probability.
+    - property: jaeger_remote/development
+      description: TODO
   isSdkExtensionPlugin: true
 - type: SimpleLogRecordProcessor
   properties:
@@ -1160,4 +1151,13 @@
         Configure default histogram aggregation.
         Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         If omitted or null, explicit_bucket_histogram is used.
+  isSdkExtensionPlugin: false
+- type: ExperimentalJaegerRemoteSampler
+  properties:
+    - property: endpoint
+      description: TODO
+    - property: interval
+      description: TODO
+    - property: initial_sampler
+      description: TODO
   isSdkExtensionPlugin: false
