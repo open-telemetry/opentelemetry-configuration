@@ -3629,7 +3629,11 @@ Usages:
         "stream": {
           "$ref": "#/$defs/ViewStream"
         }
-      }
+      },
+      "required": [
+        "selector",
+        "stream"
+      ]
     },
     "ViewSelector": {
       "type": "object",
@@ -6164,8 +6168,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `selector` | [`ViewSelector`](#viewselector) | `false` | No constraints. | Configure view selector. <br>Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.<br> |
-| `stream` | [`ViewStream`](#viewstream) | `false` | No constraints. | Configure view stream. |
+| `selector` | [`ViewSelector`](#viewselector) | `true` | No constraints. | Configure view selector. <br>Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.<br> |
+| `stream` | [`ViewStream`](#viewstream) | `true` | No constraints. | Configure view stream. |
 
 <details>
 <summary>Language support status</summary>
@@ -6179,6 +6183,7 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+* `required`: `["selector","stream"]`
 
 Usages:
 
@@ -6198,7 +6203,11 @@ Usages:
     "stream": {
       "$ref": "#/$defs/ViewStream"
     }
-  }
+  },
+  "required": [
+    "selector",
+    "stream"
+  ]
 }</pre>
 </details>
 
