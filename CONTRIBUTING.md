@@ -414,14 +414,11 @@ A PR is ready to merge when:
 * There is no `request changes` from the [codeowners](.github/CODEOWNERS)
 * If a change to the schema, at least one [example](examples/) is updated to illustrate change
 * All required status checks pass
-* The PR includes a [CHANGELOG](CHANGELOG.md) entry under `## UNRELEASED` following the form:
+* Has been tagged with any applicable [labels](#labels)
 
-```markdown
+### Labels
 
-* {Brief description of change}
-  ([#{PR Number}]({https://github.com/open-telemetry/opentelemetry-configuration/pull/{PR Number}))
-
-```
+* [`breaking`](https://github.com/open-telemetry/opentelemetry-configuration/pulls?q=is%3Apr+label%3Abreaking+): applied to PRs which qualify as breaking changes according to the [stability definition](README.md#stability-definition), including breaking changes to [experimental features](README.md#experimental-features) which are allowed in minor versions.
 
 [env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
