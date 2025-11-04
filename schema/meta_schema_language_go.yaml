@@ -1,4 +1,4 @@
-latestSupportedFileFormat: 1.0.0-rc.2
+latestSupportedFileFormat: 0.3.0
 typeSupportStatuses:
   - type: Aggregation
     status: unknown

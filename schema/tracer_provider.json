@@ -67,8 +67,8 @@
                 "always_on": {
                     "$ref": "#/$defs/AlwaysOnSampler"
                 },
-                "jaeger_remote": {
-                    "$ref": "#/$defs/JaegerRemoteSampler"
+                "jaeger_remote/development": {
+                    "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
                 },
                 "parent_based": {
                     "$ref": "#/$defs/ParentBasedSampler"
@@ -89,7 +89,7 @@
             "type": ["object", "null"],
             "additionalProperties": false
         },
-        "JaegerRemoteSampler": {
+        "ExperimentalJaegerRemoteSampler": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {

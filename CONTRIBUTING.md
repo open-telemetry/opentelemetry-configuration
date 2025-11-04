@@ -269,7 +269,7 @@ There are a variety of build tasks which intersect with the meta schema:
 
 ### `meta_schema_types.yaml`
 
-[meta_schema_types.yaml](schema/meta_schema_types.yaml) contains property descriptions, semantics, and SDK extension plugin information.
+[meta_schema_types.yaml](schema/meta_schema_types.yaml) contains property descriptions, semantics, enum value descriptions, and SDK extension plugin information.
 
 Content looks like:
 
@@ -281,6 +281,12 @@ Content looks like:
         Configure max attribute value size. 
         Value must be non-negative.
         If omitted or null, there is no limit.
+- type: OtlpHttpEncoding
+  enumValues:
+    - enumValue: json
+      description: Protobuf JSON encoding.
+    - enumValue: protobuf
+      description: Protobuf binary encoding.
 # other types omitted for brevity
 ```
 
@@ -288,9 +294,12 @@ Notes:
 
 * `[]` the document is an array of entries for each type in the JSON schema.
   * `[].type` is the name of the JSON schema type. **Maintained automatically by build tooling.**
-  * `[].properties` is an array of entries for each property in the JSON schema type.
+  * `[].properties` is an array of entries for each property in the JSON schema type. Omitted for enum types.
     * `[].properties[].property` the name of the property. **Maintained automatically by build tooling.**
     * `[].properties[].description` the property description, including semantics and default behavior.
+  * `[].enumValues` is an array of entries for each enum value in the JSON schema type. Omitted for non-enum types.
+      * `[].enumValues[].enumValue` the name of the enum value. **Maintained automatically by build tooling.**
+      * `[].enumValues[].description` the enum value description.
 
 ### `meta_schema_language_{language}.yaml`
 
@@ -316,9 +325,12 @@ Notes:
 * `.typeSupportStatuses` is an array with entries for each type in the JSON schema.
   * `.typeSupportStatuses[].type` is the name of the JSON schema type. **Maintained automatically by build tooling.**
   * `.typeSupportStatuses[].status` captures the support status of the type and all properties except overrides in `.typeSupportStatuses[].propertyOverrides`. See enum options below.
-  * `.typeSupportStatuses[].propertyOverrides` an array of properties which have different support statuses than the overall type as recorded in `.typeSupportStatuses[].status.
+  * `.typeSupportStatuses[].propertyOverrides` an array of properties which have different support statuses than the overall type as recorded in `.typeSupportStatuses[].status. Omitted for enum types.
     * `.typeSupportStatuses[].propertyOverrides[].property` the name of the property whose support status is overridden.
     * `.typeSupportStatuses[].propertyOverrides[].status` the overridden support status. See enum options below.
+  * `.typeSupportStatuses[].enumOverrides` an array of enum values which have different support statuses than the overall type as recorded in `.typeSupportStatuses[].status. Omitted for non-enum types.
+      * `.typeSupportStatuses[].enumOverrides[].enumValue` the name of the enum value whose support status is overridden.
+      * `.typeSupportStatuses[].enumOverrides[].status` the overridden support status. See enum options below.
 * Status enum options, applicable to `.typeSupportStatuses[].status`, `.typeSupportStatuses[].propertyOverrides[].status`:
   * `unknown`: Language maintainer has not yet recorded a status.
   * `suppported`: The type / property is supported by the language implementation.

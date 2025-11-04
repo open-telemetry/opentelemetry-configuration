@@ -23,7 +23,7 @@ typeSupportStatuses:
   - type: AttributeType
     status: supported
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: B3MultiPropagator
     status: supported
     notes: ""
@@ -73,7 +73,7 @@ typeSupportStatuses:
   - type: ExemplarFilter
     status: supported
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: supported
     notes: ""
@@ -100,6 +100,10 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalInstrumentation
     status: supported
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalJaegerRemoteSampler
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
@@ -193,11 +197,11 @@ typeSupportStatuses:
   - type: ExporterDefaultHistogramAggregation
     status: supported
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: ExporterTemporalityPreference
     status: supported
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: GrpcTls
     status: unknown
     notes: ""
@@ -215,12 +219,8 @@ typeSupportStatuses:
   - type: InstrumentType
     status: supported
     notes: ""
-    propertyOverrides: []
+    enumOverrides: []
   - type: JaegerPropagator
-    status: supported
-    notes: ""
-    propertyOverrides: []
-  - type: JaegerRemoteSampler
     status: supported
     notes: ""
     propertyOverrides: []
@@ -264,7 +264,7 @@ typeSupportStatuses:
     status: supported
     notes: ""
     propertyOverrides: []
-  - type: OpentelemetryConfiguration
+  - type: OpenTelemetryConfiguration
     status: supported
     notes: ""
     propertyOverrides: []
@@ -283,7 +283,9 @@ typeSupportStatuses:
   - type: OtlpHttpEncoding
     status: supported
     notes: ""
-    propertyOverrides: []
+    enumOverrides:
+      - enumValue: json
+        status: not_implemented
   - type: OtlpHttpExporter
     status: supported
     notes: ""

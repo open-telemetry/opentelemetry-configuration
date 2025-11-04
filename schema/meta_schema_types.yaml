@@ -48,7 +48,23 @@
         If omitted or null, string is used.
   isSdkExtensionPlugin: false
 - type: AttributeType
-  properties: []
+  enumValues:
+    - enumValue: bool
+      description: TODO
+    - enumValue: bool_array
+      description: TODO
+    - enumValue: double
+      description: TODO
+    - enumValue: double_array
+      description: TODO
+    - enumValue: int
+      description: TODO
+    - enumValue: int_array
+      description: TODO
+    - enumValue: string
+      description: TODO
+    - enumValue: string_array
+      description: TODO
   isSdkExtensionPlugin: false
 - type: B3MultiPropagator
   properties: []
@@ -160,7 +176,13 @@
   properties: []
   isSdkExtensionPlugin: false
 - type: ExemplarFilter
-  properties: []
+  enumValues:
+    - enumValue: always_off
+      description: TODO
+    - enumValue: always_on
+      description: TODO
+    - enumValue: trace_based
+      description: TODO
   isSdkExtensionPlugin: false
 - type: ExperimentalContainerResourceDetector
   properties: []
@@ -444,10 +466,20 @@
         If omitted or null, true is used.
   isSdkExtensionPlugin: false
 - type: ExporterDefaultHistogramAggregation
-  properties: []
+  enumValues:
+    - enumValue: base2_exponential_bucket_histogram
+      description: TODO
+    - enumValue: explicit_bucket_histogram
+      description: TODO
   isSdkExtensionPlugin: false
 - type: ExporterTemporalityPreference
-  properties: []
+  enumValues:
+    - enumValue: cumulative
+      description: TODO
+    - enumValue: delta
+      description: TODO
+    - enumValue: low_memory
+      description: TODO
   isSdkExtensionPlugin: false
 - type: GrpcTls
   properties:
@@ -508,19 +540,24 @@
         If omitted, .included attributes are included.
   isSdkExtensionPlugin: false
 - type: InstrumentType
-  properties: []
+  enumValues:
+    - enumValue: counter
+      description: TODO
+    - enumValue: gauge
+      description: TODO
+    - enumValue: histogram
+      description: TODO
+    - enumValue: observable_counter
+      description: TODO
+    - enumValue: observable_gauge
+      description: TODO
+    - enumValue: observable_up_down_counter
+      description: TODO
+    - enumValue: up_down_counter
+      description: TODO
   isSdkExtensionPlugin: false
 - type: JaegerPropagator
   properties: []
-  isSdkExtensionPlugin: false
-- type: JaegerRemoteSampler
-  properties:
-    - property: endpoint
-      description: TODO
-    - property: interval
-      description: TODO
-    - property: initial_sampler
-      description: TODO
   isSdkExtensionPlugin: false
 - type: LastValueAggregation
   properties: []
@@ -606,7 +643,7 @@
 - type: OpenCensusMetricProducer
   properties: []
   isSdkExtensionPlugin: false
-- type: OpentelemetryConfiguration
+- type: OpenTelemetryConfiguration
   properties:
     - property: file_format
       description: |
@@ -718,7 +755,11 @@
       description: Configure TLS settings for the exporter.
   isSdkExtensionPlugin: false
 - type: OtlpHttpEncoding
-  properties: []
+  enumValues:
+    - enumValue: json
+      description: Protobuf JSON encoding.
+    - enumValue: protobuf
+      description: Protobuf binary encoding.
   isSdkExtensionPlugin: false
 - type: OtlpHttpExporter
   properties:
@@ -911,14 +952,14 @@
       description: Configure sampler to be always_off.
     - property: always_on
       description: Configure sampler to be always_on.
-    - property: jaeger_remote
-      description: TODO
     - property: parent_based
       description: Configure sampler to be parent_based.
     - property: trace_id_ratio_based
       description: Configure sampler to be trace_id_ratio_based.
     - property: probability/development
       description: Configure sampler to be probability.
+    - property: jaeger_remote/development
+      description: TODO
   isSdkExtensionPlugin: true
 - type: SimpleLogRecordProcessor
   properties:
@@ -1110,4 +1151,13 @@
         Configure default histogram aggregation.
         Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         If omitted or null, explicit_bucket_histogram is used.
+  isSdkExtensionPlugin: false
+- type: ExperimentalJaegerRemoteSampler
+  properties:
+    - property: endpoint
+      description: TODO
+    - property: interval
+      description: TODO
+    - property: initial_sampler
+      description: TODO
   isSdkExtensionPlugin: false
