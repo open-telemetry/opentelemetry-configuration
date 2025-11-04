@@ -100,6 +100,10 @@ typeSupportStatuses:
     status: unknown
     notes: ""
     propertyOverrides: []
+  - type: ExperimentalJaegerRemoteSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
     status: unknown
     notes: ""
@@ -209,10 +213,6 @@ typeSupportStatuses:
     notes: ""
     enumOverrides: []
   - type: JaegerPropagator
-    status: unknown
-    notes: ""
-    propertyOverrides: []
-  - type: JaegerRemoteSampler
     status: unknown
     notes: ""
     propertyOverrides: []

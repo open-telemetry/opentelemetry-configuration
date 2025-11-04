@@ -102,6 +102,10 @@ typeSupportStatuses:
     status: supported
     notes: ""
     propertyOverrides: []
+  - type: ExperimentalJaegerRemoteSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
     status: supported
     notes: ""
@@ -217,10 +221,6 @@ typeSupportStatuses:
     notes: ""
     enumOverrides: []
   - type: JaegerPropagator
-    status: supported
-    notes: ""
-    propertyOverrides: []
-  - type: JaegerRemoteSampler
     status: supported
     notes: ""
     propertyOverrides: []
