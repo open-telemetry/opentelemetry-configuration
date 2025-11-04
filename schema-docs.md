@@ -276,16 +276,16 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [java](#java) |
-|---|---|---|
-| `bool` | supported | supported |
-| `bool_array` | supported | supported |
-| `double` | supported | supported |
-| `double_array` | supported | supported |
-| `int` | supported | supported |
-| `int_array` | supported | supported |
-| `string` | supported | supported |
-| `string_array` | supported | supported |
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `bool` | supported | unknown | supported | unknown |
+| `bool_array` | supported | unknown | supported | unknown |
+| `double` | supported | unknown | supported | unknown |
+| `double_array` | supported | unknown | supported | unknown |
+| `int` | supported | unknown | supported | unknown |
+| `int_array` | supported | unknown | supported | unknown |
+| `string` | supported | unknown | supported | unknown |
+| `string_array` | supported | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -843,11 +843,11 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [java](#java) |
-|---|---|---|
-| `always_off` | not_implemented | supported |
-| `always_on` | not_implemented | supported |
-| `trace_based` | not_implemented | supported |
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `always_off` | not_implemented | unknown | supported | unknown |
+| `always_on` | not_implemented | unknown | supported | unknown |
+| `trace_based` | not_implemented | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -2341,10 +2341,10 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [java](#java) |
-|---|---|---|
-| `base2_exponential_bucket_histogram` | supported | supported |
-| `explicit_bucket_histogram` | supported | supported |
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown |
+| `explicit_bucket_histogram` | supported | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -2385,11 +2385,11 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [java](#java) |
-|---|---|---|
-| `cumulative` | supported | supported |
-| `delta` | supported | supported |
-| `low_memory` | supported | supported |
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `cumulative` | supported | unknown | supported | unknown |
+| `delta` | supported | unknown | supported | unknown |
+| `low_memory` | supported | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -2613,15 +2613,15 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [java](#java) |
-|---|---|---|
-| `counter` | supported | supported |
-| `gauge` | supported | supported |
-| `histogram` | supported | supported |
-| `observable_counter` | supported | supported |
-| `observable_gauge` | supported | supported |
-| `observable_up_down_counter` | supported | supported |
-| `up_down_counter` | supported | supported |
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `counter` | supported | unknown | supported | unknown |
+| `gauge` | supported | unknown | supported | unknown |
+| `histogram` | supported | unknown | supported | unknown |
+| `observable_counter` | supported | unknown | supported | unknown |
+| `observable_gauge` | supported | unknown | supported | unknown |
+| `observable_up_down_counter` | supported | unknown | supported | unknown |
+| `up_down_counter` | supported | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -4379,10 +4379,10 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [java](#java) |
-|---|---|---|
-| `json` | supported | not_implemented |
-| `protobuf` | supported | supported |
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `json` | supported | unknown | not_implemented | unknown |
+| `protobuf` | supported | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -6502,14 +6502,14 @@ Latest supported file format: `1.0.0-rc.2`
 
 Latest supported file format: `0.3.0`
 
-| Type | Status | Notes | Property Support Status |
+| Type | Status | Notes | Support Status Details |
 |---|---|---|---|
 | [`Aggregation`](#aggregation) | unknown |  | * `default`: unknown<br>* `drop`: unknown<br>* `explicit_bucket_histogram`: unknown<br>* `base2_exponential_bucket_histogram`: unknown<br>* `last_value`: unknown<br>* `sum`: unknown<br> |
 | [`AlwaysOffSampler`](#alwaysoffsampler) | unknown |  |  |
 | [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
 | [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_value_length_limit`: unknown<br>* `attribute_count_limit`: unknown<br> |
 | [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `value`: unknown<br>* `type`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  |  |
+| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
 | [`B3Propagator`](#b3propagator) | unknown |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
@@ -6521,7 +6521,7 @@ Latest supported file format: `0.3.0`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
 | [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  |  |
+| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `peer`: unknown<br>* `http`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
@@ -6550,12 +6550,12 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `name`: unknown<br>* `config`: unknown<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  |  |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  |  |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br>* `insecure`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `included`: unknown<br>* `excluded`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  |  |
+| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
 | [`JaegerRemoteSampler`](#jaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `interval`: unknown<br>* `initial_sampler`: unknown<br> |
 | [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
@@ -6572,7 +6572,7 @@ Latest supported file format: `0.3.0`
 | [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  |  |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |
@@ -6704,14 +6704,14 @@ Latest supported file format: `1.0.0-rc.1`
 
 Latest supported file format: `1.0.0-rc.2`
 
-| Type | Status | Notes | Property Support Status |
+| Type | Status | Notes | Support Status Details |
 |---|---|---|---|
 | [`Aggregation`](#aggregation) | unknown |  | * `default`: unknown<br>* `drop`: unknown<br>* `explicit_bucket_histogram`: unknown<br>* `base2_exponential_bucket_histogram`: unknown<br>* `last_value`: unknown<br>* `sum`: unknown<br> |
 | [`AlwaysOffSampler`](#alwaysoffsampler) | unknown |  |  |
 | [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
 | [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_value_length_limit`: unknown<br>* `attribute_count_limit`: unknown<br> |
 | [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `value`: unknown<br>* `type`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  |  |
+| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
 | [`B3Propagator`](#b3propagator) | unknown |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
@@ -6723,7 +6723,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
 | [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  |  |
+| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `peer`: unknown<br>* `http`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
@@ -6752,12 +6752,12 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `name`: unknown<br>* `config`: unknown<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  |  |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  |  |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br>* `insecure`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `client_certificate_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `included`: unknown<br>* `excluded`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  |  |
+| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
 | [`JaegerRemoteSampler`](#jaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `interval`: unknown<br>* `initial_sampler`: unknown<br> |
 | [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
@@ -6774,7 +6774,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  |  |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |
