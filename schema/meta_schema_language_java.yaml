@@ -127,7 +127,7 @@ typeSupportStatuses:
       - property: swift
         status: not_applicable
   - type: ExperimentalJaegerRemoteSampler
-    status: unknown
+    status: ignored
     notes: ""
     propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
