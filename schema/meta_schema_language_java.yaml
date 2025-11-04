@@ -17,7 +17,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: AttributeType
     status: supported
-    propertyOverrides: []
+    enumOverrides: []
   - type: B3MultiPropagator
     status: supported
     propertyOverrides: []
@@ -55,7 +55,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExemplarFilter
     status: supported
-    propertyOverrides: []
+    enumOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: supported
     propertyOverrides: []
@@ -146,10 +146,10 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExporterDefaultHistogramAggregation
     status: supported
-    propertyOverrides: []
+    enumOverrides: []
   - type: ExporterTemporalityPreference
     status: supported
-    propertyOverrides: []
+    enumOverrides: []
   - type: GrpcTls
     status: unknown
     propertyOverrides:
@@ -163,7 +163,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: InstrumentType
     status: supported
-    propertyOverrides: []
+    enumOverrides: []
   - type: JaegerPropagator
     status: supported
     propertyOverrides: []
@@ -214,7 +214,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: OtlpHttpEncoding
     status: supported
-    propertyOverrides: []
+    enumOverrides:
+      - enumValue: json
+        status: not_implemented
   - type: OtlpHttpExporter
     status: supported
     propertyOverrides: []
