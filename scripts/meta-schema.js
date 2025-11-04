@@ -228,12 +228,14 @@ export class TypeSupportStatus {
     status;
     propertyOverrides; // null if enum
     enumOverrides; // null if not enum
+    notes;
 
-    constructor(type, status, propertyOverrides, enumOverrides) {
+    constructor(type, status, propertyOverrides, enumOverrides, notes) {
         this.type = type;
         this.status = status;
         this.propertyOverrides = propertyOverrides;
         this.enumOverrides = enumOverrides;
+        this.notes = notes;
     }
 
     toJson() {
@@ -248,6 +250,9 @@ export class TypeSupportStatus {
             const propertyOverrides = this.propertyOverrides.map(propertyStatus => propertyStatus.toJson());
             propertyOverrides.sort((a, b) => a.property.localeCompare(b.property));
             json.propertyOverrides = propertyOverrides;
+        }
+        if(this.notes !== null) {
+            json.notes = this.notes;
         }
 
         return json;
@@ -272,7 +277,8 @@ export class TypeSupportStatus {
             error => `TypeSupportStatus '${type}' has invalid EnumValueStatus: ${error.message}. Skipping.`,
             messages,
             true);
-        return new TypeSupportStatus(type, status, propertyOverrides, enumOverrides);
+        const notes = parseString(rawJson, 'notes', `TypeSupportStatus has invalid 'notes'`, true);
+        return new TypeSupportStatus(type, status, propertyOverrides, enumOverrides, notes);
     }
 }
 
@@ -522,7 +528,7 @@ function emptyLanguageImplementation(language, metaSchema) {
     return new LanguageImplementation(
         language,
         'TODO',
-        metaSchema.types.map(metaSchemaType => new TypeSupportStatus(metaSchemaType.type, IMPLEMENTATION_STATUS_UNKNOWN, [], metaSchemaType.enumValues === null ? null : [], '')));
+        metaSchema.types.map(metaSchemaType => new TypeSupportStatus(metaSchemaType.type, IMPLEMENTATION_STATUS_UNKNOWN, [], metaSchemaType.enumValues === null ? null : [], null)));
 }
 
 function parseEnum(rawJson, propertyName, errorMessage, knownValues) {
@@ -533,8 +539,11 @@ function parseEnum(rawJson, propertyName, errorMessage, knownValues) {
     return string;
 }
 
-function parseString(rawJson, propertyName, errorMessage) {
+function parseString(rawJson, propertyName, errorMessage, nullable = false) {
     const property = rawJson[propertyName];
+    if ((property === null || property === undefined) && nullable) {
+        return null;
+    }
     if (typeof property !== 'string') {
         throw new Error(errorMessage);
     }

@@ -189,12 +189,17 @@ KNOWN_LANGUAGES.forEach(language => {
     }
     output.push(`Latest supported file format: \`${languageImplementation.latestSupportedFileFormat}\`\n\n`);
 
-    output.push(`| Type | Status | Support Status Details |\n`);
-    output.push(`|---|---|---|\n`);
+    output.push(`| Type | Status | Notes | Support Status Details |\n`);
+    output.push(`|---|---|---|---|\n`);
     languageImplementation.typeSupportStatuses.forEach(typeSupportStatus => {
         const metaSchemaType = metaSchema.types.find(item => item.type === typeSupportStatus.type);
         if (!metaSchemaType) {
             throw new Error(`MetaSchemaType not found for type ${typeSupportStatus.type}.`);
+        }
+
+        let formattedNotes = typeSupportStatus.notes;
+        if (!formattedNotes) {
+            formattedNotes = "";
         }
 
         const supportStatusDetails = [];
@@ -213,7 +218,7 @@ KNOWN_LANGUAGES.forEach(language => {
             });
         }
 
-        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${supportStatusDetails.join('')} |\n`);
+        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${formattedNotes} | ${supportStatusDetails.join('')} |\n`);
     });
     output.push(`\n\n`);
 });
