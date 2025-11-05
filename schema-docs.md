@@ -2917,7 +2917,8 @@ Usages:
       "type": "object",
       "additionalProperties": {
         "type": [
-          "object"
+          "object",
+          "null"
         ]
       },
       "minProperties": 1,
@@ -3115,7 +3116,7 @@ Usages:
 
 Constraints: 
 
-* `additionalProperties`: `{"type":["object"]}`
+* `additionalProperties`: `{"type":["object","null"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
@@ -3131,7 +3132,8 @@ Usages:
   "type": "object",
   "additionalProperties": {
     "type": [
-      "object"
+      "object",
+      "null"
     ]
   },
   "minProperties": 1,
@@ -3365,9 +3367,7 @@ Usages:
       }
     },
     "PullMetricExporter": {
-      "type": [
-        "object"
-      ],
+      "type": "object",
       "additionalProperties": {
         "type": [
           "object",
@@ -4885,9 +4885,7 @@ Usages:
 
 [JSON Schema Source File](./schema/meter_provider.json)
 <pre>{
-  "type": [
-    "object"
-  ],
+  "type": "object",
   "additionalProperties": {
     "type": [
       "object",
