@@ -181,7 +181,7 @@ Despite these potential benefits, these keywords should be omitted:
 * The titles of `object` and `enum` types produced by code generation tools should be defined using key values in [$defs](https://json-schema.org/understanding-json-schema/structuring#defs). Setting the `title` keyword introduces multiple sources of truth and possible conflict.
 * As described in [description generation](./CONTRIBUTING.md#make-generate-descriptions), we use a different mechanism to describe the semantics of types and properties. Setting the `description` keyword introduces multiple sources of truth and possible conflict.
 
-## Schemas and subschemas
+### Schemas and subschemas
 
 In JSON Schema, a [schema](https://json-schema.org/learn/glossary#schema) is a document, and a [subschema](https://json-schema.org/learn/glossary#subschema) is contained in surrounding parent schema. Subschemas can be nested in various ways:
 
@@ -223,6 +223,51 @@ Or a property can reference a subschema residing in a schema document's [$defs](
 ```
 
 In order to promote stylistic consistency and allow for reuse of concepts, `object` and `enum` types should be defined in either as a top level schema document or as a subschema in a schema document's `$defs`.
+
+### SDK extension plugins
+
+[SDK extension plugin interfaces](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#sdk-extension-components) should be modeled consistently for improved user experience and to facilitate implementations supporting custom implementations via the [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#componentprovider) mechanism.
+
+The [SpanExporter](schema/tracer_provider.json) schema is typical:
+
+```
+...
+"SpanExporter": {
+    "type": "object",
+    "additionalProperties": {
+        "type": ["object", "null"]
+    },
+    "minProperties": 1,
+    "maxProperties": 1,
+    "properties": {
+        "otlp_http": { "$ref": "common.json#/$defs/OtlpHttpExporter" },
+        // additional built-in exporters omitted for brevity
+    } 
+},
+```
+
+Which results in YAML like:
+
+```yaml
+tracer_provider:
+  processors:
+    - batch:
+        exporter: 
+          otlp_http: # set the span exporter to be the built-in OTLP http exporter
+            endpoint: http://exmaple/v1/traces
+---
+tracer_provider:
+  processors:
+    - batch:
+        exporter:
+          my_custom_exporter: # set the span exporter to be a custom exporter with name my_custom_exporter
+            property: value
+```
+
+* The `SpanExporter` type requires exactly one property to be set (`"minProperties": 1`, `"maxProperties": 1`), and requires that property to have a value of type `object` or `null` (`"additionalProperties": {"type": ["object", "null"]}`).
+* The property key refers to the `name` used to [register a ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-componentprovider). 
+* The property value is passed as configuration as `properties` when [ComponentProvodier Create Plugin](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create-plugin) is called.
+* `SpanExporter` has `properties` describing the names and schemas of built-in span exporters (i.e. those defined explicitly in the specification). 
 
 ## Consistency Checks
 
