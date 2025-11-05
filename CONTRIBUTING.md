@@ -16,6 +16,26 @@ The schema is modeled using JSON schema [draft 2020-12](https://json-schema.org/
 
 This is reflected in top level schema documents by setting `"$schema": "https://json-schema.org/draft/2020-12/schema"`.
 
+## What you see is what you get
+
+The schema semantics should follow a "what you see is what you get" (or WYSIWYG) philosophy. Another way to frame this is that implementations should minimize the amount of magic which occurs as a result of an optional property not being set.
+
+For example, in the following snippet `.meter_provider` is not set and the semantics indicate that a noop meter provider should be used, rather than some default meter provider definitions with a periodic metric reader and OTLP exporter. WYSIWYG: there is no `.meter_provider` and you get the closest equivalent to an empty / null / unset meter provider. 
+
+```yaml
+resource:
+tracer_provider: ...
+# meter_provider: ...
+logger_provider: ...
+propagators: ...
+```
+
+It's not always possible to follow this philosophy. For example, when `.attribute_limits` is not set, the SDK defaults to using `.attribute_limits.attribute_count_limit: 128` where a rigid interpretation of WYSIWYG would suggest the defaults should be no limit. In this case we have competing concerns: WYSIWYG is in tension with a safe default experience for users, and with the defaults as indicated in the specification.
+
+If it seems difficult to define default semantics which satisfy WYSIWYG, consider making the property required, which prevents the need to define default semantics.
+
+NOTE: Doing extra configuration work when properties are not set is attractive because it allows for more terse configuration files. However, it increases the cognitive load on users, who now have to reference potentially multiple external documents to understand what to expect in the absence of a property. WYSIWYG results in configuration files which are more verbose but which are more self-documenting. A terse user experience can be achieved by leveraging a higher order templating tool like [helm](https://helm.sh/), where a simplified set of configuration parameters can be interpreted by a template engine to output the full configuration file. For example, the [OpenTelemetry Collector Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector) accepts a number of presets like `.presets.hostMetrics.enabled: true`, which produce much more verbose collector configuration YAML.
+
 ### What properties are part of schema?
 
 Only properties which are described in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification) or [semantic-conventions](https://github.com/open-telemetry/semantic-conventions) are modeled in the schema. However, it's acceptable to allow additional properties specific to a particular language or implementation, and not covered by the schema. Model these by setting `"additionalProperties": true` (see [JSON schema additionalProperties](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties)). Types should set `"additionalProperties": false` by default unless requested by an opentelemetry component [maintainer](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer) which supports additional options.
@@ -181,7 +201,7 @@ Despite these potential benefits, these keywords should be omitted:
 * The titles of `object` and `enum` types produced by code generation tools should be defined using key values in [$defs](https://json-schema.org/understanding-json-schema/structuring#defs). Setting the `title` keyword introduces multiple sources of truth and possible conflict.
 * As described in [description generation](./CONTRIBUTING.md#make-generate-descriptions), we use a different mechanism to describe the semantics of types and properties. Setting the `description` keyword introduces multiple sources of truth and possible conflict.
 
-## Schemas and subschemas
+### Schemas and subschemas
 
 In JSON Schema, a [schema](https://json-schema.org/learn/glossary#schema) is a document, and a [subschema](https://json-schema.org/learn/glossary#subschema) is contained in surrounding parent schema. Subschemas can be nested in various ways:
 
