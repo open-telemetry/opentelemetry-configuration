@@ -145,7 +145,7 @@ Usages:
 
 Constraints: 
 
-* `additionalProperties`: `true`
+* `additionalProperties`: `false`
 
 Usages:
 
@@ -157,7 +157,7 @@ Usages:
 [JSON Schema Source File](./schema/opentelemetry_configuration.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": false,
   "properties": {
     "attribute_value_length_limit": {
       "type": [
@@ -4138,7 +4138,7 @@ No usages.
   "$defs": {
     "AttributeLimits": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": false,
       "properties": {
         "attribute_value_length_limit": {
           "type": [
