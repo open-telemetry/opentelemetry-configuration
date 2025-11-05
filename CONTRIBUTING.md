@@ -18,7 +18,7 @@ This is reflected in top level schema documents by setting `"$schema": "https://
 
 ## What you see is what you get
 
-The schema semantics should follow a "what you see is what you get" (or WYSIWYG) philosophy. Another way to frame this is that implementations should minimize the amount of magic which occurs as a result of an optional property not being set.
+The schema semantics should follow a "what you see is what you get" (or WYSIWYG) philosophy. Another way to frame this is that implementations should minimize the amount of magic which occurs as a result of the absence of an optional property.
 
 For example, in the following snippet `.meter_provider` is not set and the semantics indicate that a noop meter provider should be used, rather than some default meter provider definitions with a periodic metric reader and OTLP exporter. WYSIWYG: there is no `.meter_provider` and you get the closest equivalent to an empty / null / unset meter provider. 
 
@@ -34,7 +34,7 @@ It's not always possible to follow this philosophy. For example, when `.attribut
 
 If it seems difficult to define default semantics which satisfy WYSIWYG, consider making the property required, which prevents the need to define default semantics.
 
-NOTE: Doing extra configuration work when properties are not set is attractive because it allows for more terse configuration files. However, it increases the cognitive load on users, who now have to reference potentially multiple external documents to understand what to expect in the absence of a property. WYSIWYG results in configuration files which are more verbose but which are more self-documenting. A terse user experience can be achieved by leveraging a higher order templating tool like [helm](https://helm.sh/), where a simplified set of configuration parameters can be interpreted by a template engine to output the full configuration file. For example, the [OpenTelemetry Collector Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector) accepts a number of presets like `.presets.hostMetrics.enabled: true`, which produce much more verbose collector configuration YAML.
+NOTE: Doing extra configuration work when properties are not explicitly configured is attractive because it reduces required configuration. However, it increases the cognitive load on users, who now have to reference potentially multiple external documents to understand what to expect in the absence of a property. WYSIWYG results in configuration files which are more verbose but which are more self-documenting. A terse user experience can be achieved by leveraging a higher order templating tool like [helm](https://helm.sh/), where a simplified set of configuration parameters can be interpreted by a template engine to output the full configuration file. For example, the [OpenTelemetry Collector Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector) accepts a number of presets like `.presets.hostMetrics.enabled: true`, which produce much more verbose collector configuration YAML.
 
 ### What properties are part of schema?
 
