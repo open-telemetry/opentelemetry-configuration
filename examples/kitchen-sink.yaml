@@ -17,11 +17,11 @@ disabled: false
 log_level: info
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
-  # Configure max attribute value size.
+  # Configure max attribute value size. 
   # Value must be non-negative.
   # If omitted or null, there is no limit.
   attribute_value_length_limit: 4096
-  # Configure max attribute count.
+  # Configure max attribute count. 
   # Value must be non-negative.
   # If omitted or null, 128 is used.
   attribute_count_limit: 128
@@ -32,11 +32,11 @@ logger_provider:
   processors:
     - # Configure a batch log record processor.
       batch:
-        # Configure delay interval (in milliseconds) between two consecutive exports.
+        # Configure delay interval (in milliseconds) between two consecutive exports. 
         # Value must be non-negative.
         # If omitted or null, 1000 is used.
         schedule_delay: 5000
-        # Configure maximum allowed time (in milliseconds) to export data.
+        # Configure maximum allowed time (in milliseconds) to export data. 
         # Value must be non-negative. A value of 0 indicates no limit (infinity).
         # If omitted or null, 30000 is used.
         export_timeout: 30000
@@ -55,15 +55,15 @@ logger_provider:
             endpoint: http://localhost:4318/v1/logs
             # Configure TLS settings for the exporter.
             tls:
-              # Configure certificate used to verify a server's TLS credentials.
+              # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
               # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # Configure mTLS private client key.
+              # Configure mTLS private client key. 
               # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
               # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # Configure mTLS client certificate.
+              # Configure mTLS client certificate. 
               # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
               # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
@@ -86,7 +86,7 @@ logger_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
-            # Configure the encoding used for messages.
+            # Configure the encoding used for messages. 
             # Values include: protobuf, json. Implementations may not support json.
             # If omitted or null, protobuf is used.
             encoding: protobuf
@@ -101,19 +101,19 @@ logger_provider:
             endpoint: http://localhost:4317
             # Configure TLS settings for the exporter.
             tls:
-              # Configure certificate used to verify a server's TLS credentials.
+              # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
               # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # Configure mTLS private client key.
+              # Configure mTLS private client key. 
               # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
               # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # Configure mTLS client certificate.
+              # Configure mTLS client certificate. 
               # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
               # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
-              # Configure client transport security for the exporter's connection.
+              # Configure client transport security for the exporter's connection. 
               # Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
               # If omitted or null, false is used.
               insecure: false
@@ -143,7 +143,7 @@ logger_provider:
           # Configure exporter to be OTLP with file transport.
           # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # Configure output stream.
+            # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
             output_stream: file:///var/log/logs.jsonl
@@ -154,7 +154,7 @@ logger_provider:
           # Configure exporter to be OTLP with file transport.
           # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # Configure output stream.
+            # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
             output_stream: stdout
@@ -166,11 +166,11 @@ logger_provider:
           console:
   # Configure log record limits. See also attribute_limits.
   limits:
-    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
     # Value must be non-negative.
     # If omitted or null, there is no limit.
     attribute_value_length_limit: 4096
-    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
     # Value must be non-negative.
     # If omitted or null, 128 is used.
     attribute_count_limit: 128
@@ -242,7 +242,7 @@ meter_provider:
         # Configure cardinality limits.
         cardinality_limits:
           # Configure default cardinality limit for all instrument types.
-          # Instrument-specific cardinality limits take priority.
+          # Instrument-specific cardinality limits take priority. 
           # If omitted or null, 2000 is used.
           default: 2000
           # Configure default cardinality limit for counter instruments.
@@ -268,11 +268,11 @@ meter_provider:
           up_down_counter: 2000
     - # Configure a periodic metric reader.
       periodic:
-        # Configure delay interval (in milliseconds) between start of two consecutive exports.
+        # Configure delay interval (in milliseconds) between start of two consecutive exports. 
         # Value must be non-negative.
         # If omitted or null, 60000 is used.
         interval: 60000
-        # Configure maximum allowed time (in milliseconds) to export data.
+        # Configure maximum allowed time (in milliseconds) to export data. 
         # Value must be non-negative. A value of 0 indicates no limit (infinity).
         # If omitted or null, 30000 is used.
         timeout: 30000
@@ -285,15 +285,15 @@ meter_provider:
             endpoint: http://localhost:4318/v1/metrics
             # Configure TLS settings for the exporter.
             tls:
-              # Configure certificate used to verify a server's TLS credentials.
+              # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
               # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # Configure mTLS private client key.
+              # Configure mTLS private client key. 
               # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
               # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # Configure mTLS client certificate.
+              # Configure mTLS client certificate. 
               # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
               # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
@@ -316,7 +316,7 @@ meter_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
-            # Configure the encoding used for messages.
+            # Configure the encoding used for messages. 
             # Values include: protobuf, json. Implementations may not support json.
             # If omitted or null, protobuf is used.
             encoding: protobuf
@@ -335,7 +335,7 @@ meter_provider:
         # Configure cardinality limits.
         cardinality_limits:
           # Configure default cardinality limit for all instrument types.
-          # Instrument-specific cardinality limits take priority.
+          # Instrument-specific cardinality limits take priority. 
           # If omitted or null, 2000 is used.
           default: 2000
           # Configure default cardinality limit for counter instruments.
@@ -370,19 +370,19 @@ meter_provider:
             endpoint: http://localhost:4317
             # Configure TLS settings for the exporter.
             tls:
-              # Configure certificate used to verify a server's TLS credentials.
+              # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
               # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # Configure mTLS private client key.
+              # Configure mTLS private client key. 
               # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
               # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # Configure mTLS client certificate.
+              # Configure mTLS client certificate. 
               # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
               # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
-              # Configure client transport security for the exporter's connection.
+              # Configure client transport security for the exporter's connection. 
               # Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
               # If omitted or null, false is used.
               insecure: false
@@ -420,7 +420,7 @@ meter_provider:
           # Configure exporter to be OTLP with file transport.
           # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # Configure output stream.
+            # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
             output_stream: file:///var/log/metrics.jsonl
@@ -439,7 +439,7 @@ meter_provider:
           # Configure exporter to be OTLP with file transport.
           # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # Configure output stream.
+            # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
             output_stream: stdout
@@ -465,10 +465,10 @@ meter_provider:
             # Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
             # If omitted or null, explicit_bucket_histogram is used.
             default_histogram_aggregation: base2_exponential_bucket_histogram
-  # Configure views.
+  # Configure views. 
   # Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
   views:
-    - # Configure view selector.
+    - # Configure view selector. 
       # Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.
       selector:
         # Configure instrument name selection criteria.
@@ -498,7 +498,7 @@ meter_provider:
         # Configure metric description of the resulting stream(s).
         # If omitted or null, the instrument's origin description is used.
         description: new_description
-        # Configure aggregation of the resulting stream(s).
+        # Configure aggregation of the resulting stream(s). 
         # Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
         # If omitted, default is used.
         aggregation:
@@ -547,7 +547,7 @@ meter_provider:
           # If omitted, .included attributes are included.
           excluded:
             - key3
-  # Configure the exemplar filter.
+  # Configure the exemplar filter. 
   # Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
   # If omitted or null, trace_based is used.
   exemplar_filter: trace_based
@@ -573,7 +573,7 @@ meter_provider:
 # If omitted, a noop propagator is used.
 propagator:
   # Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.
-  # Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray.
+  # Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. 
   # If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
   composite:
     - # Include the w3c trace context propagator.
@@ -590,7 +590,7 @@ propagator:
       ottrace:
   # Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.
   # The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
-  # Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray.
+  # Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. 
   # If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
   composite_list: "tracecontext,baggage,b3,b3multi,jaeger,ottrace,xray"
 # Configure tracer provider.
@@ -600,11 +600,11 @@ tracer_provider:
   processors:
     - # Configure a batch span processor.
       batch:
-        # Configure delay interval (in milliseconds) between two consecutive exports.
+        # Configure delay interval (in milliseconds) between two consecutive exports. 
         # Value must be non-negative.
         # If omitted or null, 5000 is used.
         schedule_delay: 5000
-        # Configure maximum allowed time (in milliseconds) to export data.
+        # Configure maximum allowed time (in milliseconds) to export data. 
         # Value must be non-negative. A value of 0 indicates no limit (infinity).
         # If omitted or null, 30000 is used.
         export_timeout: 30000
@@ -623,15 +623,15 @@ tracer_provider:
             endpoint: http://localhost:4318/v1/traces
             # Configure TLS settings for the exporter.
             tls:
-              # Configure certificate used to verify a server's TLS credentials.
+              # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
               # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # Configure mTLS private client key.
+              # Configure mTLS private client key. 
               # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
               # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # Configure mTLS client certificate.
+              # Configure mTLS client certificate. 
               # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
               # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
@@ -654,7 +654,7 @@ tracer_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
-            # Configure the encoding used for messages.
+            # Configure the encoding used for messages. 
             # Values include: protobuf, json. Implementations may not support json.
             # If omitted or null, protobuf is used.
             encoding: protobuf
@@ -669,19 +669,19 @@ tracer_provider:
             endpoint: http://localhost:4317
             # Configure TLS settings for the exporter.
             tls:
-              # Configure certificate used to verify a server's TLS credentials.
+              # Configure certificate used to verify a server's TLS credentials. 
               # Absolute path to certificate file in PEM format.
               # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # Configure mTLS private client key.
+              # Configure mTLS private client key. 
               # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
               # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # Configure mTLS client certificate.
+              # Configure mTLS client certificate. 
               # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
               # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
-              # Configure client transport security for the exporter's connection.
+              # Configure client transport security for the exporter's connection. 
               # Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
               # If omitted or null, false is used.
               insecure: false
@@ -711,7 +711,7 @@ tracer_provider:
           # Configure exporter to be OTLP with file transport.
           # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # Configure output stream.
+            # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
             output_stream: file:///var/log/traces.jsonl
@@ -722,7 +722,7 @@ tracer_provider:
           # Configure exporter to be OTLP with file transport.
           # This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # Configure output stream.
+            # Configure output stream. 
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
             output_stream: stdout
@@ -735,7 +735,7 @@ tracer_provider:
             # Configure endpoint.
             # If omitted or null, http://localhost:9411/api/v2/spans is used.
             endpoint: http://localhost:9411/api/v2/spans
-            # Configure max time (in milliseconds) to wait for each export.
+            # Configure max time (in milliseconds) to wait for each export. 
             # Value must be non-negative. A value of 0 indicates indefinite.
             # If omitted or null, 10000 is used.
             timeout: 10000
@@ -747,27 +747,27 @@ tracer_provider:
           console:
   # Configure span limits. See also attribute_limits.
   limits:
-    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
     # Value must be non-negative.
     # If omitted or null, there is no limit.
     attribute_value_length_limit: 4096
-    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
     # Value must be non-negative.
     # If omitted or null, 128 is used.
     attribute_count_limit: 128
-    # Configure max span event count.
+    # Configure max span event count. 
     # Value must be non-negative.
     # If omitted or null, 128 is used.
     event_count_limit: 128
-    # Configure max span link count.
+    # Configure max span link count. 
     # Value must be non-negative.
     # If omitted or null, 128 is used.
     link_count_limit: 128
-    # Configure max attributes per span event.
+    # Configure max attributes per span event. 
     # Value must be non-negative.
     # If omitted or null, 128 is used.
     event_attribute_count_limit: 128
-    # Configure max attributes per span link.
+    # Configure max attributes per span link. 
     # Value must be non-negative.
     # If omitted or null, 128 is used.
     link_attribute_count_limit: 128
@@ -933,7 +933,7 @@ resource:
       excluded:
         - process.command_args
     # Configure resource detectors.
-    # Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language.
+    # Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
     # If omitted or null, no resource detectors are enabled.
     detectors:
       - # Enable the container resource detector, which populates container.* attributes.
