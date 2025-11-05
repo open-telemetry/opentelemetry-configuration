@@ -4748,7 +4748,9 @@ Usages:
 | `composite_list` | supported | unknown | supported | unknown |
 </details>
 
-No constraints.
+Constraints: 
+
+* `additionalProperties`: `false`
 
 Usages:
 
@@ -4762,6 +4764,7 @@ Usages:
   "$id": "https://opentelemetry.io/otelconfig/propagator.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
+  "additionalProperties": false,
   "properties": {
     "composite": {
       "type": "array",
