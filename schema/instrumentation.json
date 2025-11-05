@@ -60,6 +60,7 @@
             "properties": {
                 "service_mapping": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/ExperimentalPeerServiceMapping"
                     }
@@ -88,6 +89,7 @@
             "properties": {
                 "request_captured_headers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "type": "string"
                     }
@@ -106,12 +108,14 @@
             "properties": {
                 "request_captured_headers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "type": "string"
                     }
                 },
                 "response_captured_headers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "type": "string"
                     }

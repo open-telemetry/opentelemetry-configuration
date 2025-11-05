@@ -96,9 +96,6 @@ tracer_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
-            # Configure headers. Entries have higher priority than entries from .headers_list.
-            # If an entry's .value is null, the entry is ignored.
-            headers: []
   # Configure span limits. See also attribute_limits.
   limits:
     # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
@@ -199,9 +196,6 @@ meter_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
-            # Configure headers. Entries have higher priority than entries from .headers_list.
-            # If an entry's .value is null, the entry is ignored.
-            headers: []
             # Configure temporality preference.
             # Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
             # If omitted or null, cumulative is used.
@@ -264,9 +258,6 @@ logger_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
-            # Configure headers. Entries have higher priority than entries from .headers_list.
-            # If an entry's .value is null, the entry is ignored.
-            headers: []
   # Configure log record limits. See also attribute_limits.
   limits:
     # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 

@@ -128,9 +128,6 @@ tracer_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: ${OTEL_EXPORTER_OTLP_TRACES_TIMEOUT:-10000}
-            # Configure headers. Entries have higher priority than entries from .headers_list.
-            # If an entry's .value is null, the entry is ignored.
-            headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
@@ -237,9 +234,6 @@ meter_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: ${OTEL_EXPORTER_OTLP_METRICS_TIMEOUT:-10000}
-            # Configure headers. Entries have higher priority than entries from .headers_list.
-            # If an entry's .value is null, the entry is ignored.
-            headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
@@ -306,9 +300,6 @@ logger_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: ${OTEL_EXPORTER_OTLP_LOGS_TIMEOUT:-10000}
-            # Configure headers. Entries have higher priority than entries from .headers_list.
-            # If an entry's .value is null, the entry is ignored.
-            headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.

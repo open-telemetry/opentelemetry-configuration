@@ -3195,6 +3195,7 @@ Usages:
     },
     "views": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/View"
       }

@@ -13,6 +13,7 @@
         },
         "views": {
             "type": "array",
+            "minItems": 1,
             "items": {
                 "$ref": "#/$defs/View"
             }
@@ -53,6 +54,7 @@
                 },
                 "producers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/MetricProducer"
                     }
@@ -74,6 +76,7 @@
                 },
                 "producers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/MetricProducer"
                     }
@@ -244,6 +247,7 @@
                 },
                 "headers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "common.json#/$defs/NameStringValuePair"
                     }
@@ -281,6 +285,7 @@
                 },
                 "headers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "common.json#/$defs/NameStringValuePair"
                     }
@@ -441,6 +446,7 @@
             "properties": {
                 "boundaries": {
                     "type": "array",
+                    "minItems": 0,
                     "items": {
                         "type": "number"
                     }
@@ -482,6 +488,7 @@
                 },
                 "meters": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
                     }

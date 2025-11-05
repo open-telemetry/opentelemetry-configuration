@@ -172,6 +172,14 @@ Another example:
 
 `oneOf` is used to specify that the `value` property matches the [Attribute AnyValue](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/README.md#anyvalue) definition, and is either a primitive or array of primitives. This type of use is acceptable but should be used judiciously.
 
+### Array minItems
+
+Because properties of type `array` are not candidates for [env var substitution], it typically does not make sense to allow the array to be empty. In some cases, an empty array likely corresponds to an accidental misconfiguration which should be detected and reported as an error. In other cases, an empty array is simply meaningless and the user is better off omitting the property altogether.
+
+For these reasons, [`minItems`](https://json-schema.org/understanding-json-schema/reference/array#length) is typically set to `1`.
+
+NOTE: there are some valid cases where an empty array is semantically meaningful, such as when setting `ExplicitBucketHistogram.boundaries`.
+
 ### Annotations - title and description
 
 The JSON schema [`title` and `description` annotations](https://json-schema.org/understanding-json-schema/reference/annotations) are keywords which are not involved in validation. Instead, they act as a mechanism to help schemas be self-documenting, and may be used by code generation tools.
