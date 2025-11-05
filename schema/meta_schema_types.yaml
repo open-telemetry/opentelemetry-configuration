@@ -43,10 +43,12 @@
     - property: name
       description: |
         The attribute name.
+      defaultBehavior: TODO
     - property: value
       description: |
         The attribute value.
         The type of value must match .type.
+      defaultBehavior: TODO
     - property: type
       description: |
         The attribute type.
@@ -54,7 +56,23 @@
       defaultBehavior: string is used
   isSdkExtensionPlugin: false
 - type: AttributeType
-  properties: []
+  enumValues:
+    - enumValue: bool
+      description: TODO
+    - enumValue: bool_array
+      description: TODO
+    - enumValue: double
+      description: TODO
+    - enumValue: double_array
+      description: TODO
+    - enumValue: int
+      description: TODO
+    - enumValue: int_array
+      description: TODO
+    - enumValue: string
+      description: TODO
+    - enumValue: string_array
+      description: TODO
   isSdkExtensionPlugin: false
 - type: B3MultiPropagator
   properties: []
@@ -99,6 +117,7 @@
       defaultBehavior: 512 is used
     - property: exporter
       description: Configure exporter.
+      defaultBehavior: TODO
   isSdkExtensionPlugin: false
 - type: BatchSpanProcessor
   properties:
@@ -122,6 +141,7 @@
       defaultBehavior: 512 is used
     - property: exporter
       description: Configure exporter.
+      defaultBehavior: TODO
   isSdkExtensionPlugin: false
 - type: CardinalityLimits
   properties:
@@ -169,7 +189,13 @@
   properties: []
   isSdkExtensionPlugin: false
 - type: ExemplarFilter
-  properties: []
+  enumValues:
+    - enumValue: always_off
+      description: TODO
+    - enumValue: always_on
+      description: TODO
+    - enumValue: trace_based
+      description: TODO
   isSdkExtensionPlugin: false
 - type: ExperimentalContainerResourceDetector
   properties: []
@@ -380,9 +406,11 @@
     - property: peer
       description: |
         The IP address to map.
+      defaultBehavior: TODO
     - property: service
       description: |
         The logical name corresponding to the IP address of .peer.
+      defaultBehavior: TODO
   isSdkExtensionPlugin: false
 - type: ExperimentalProbabilitySampler
   properties:
@@ -494,10 +522,20 @@
       defaultBehavior: true is used
   isSdkExtensionPlugin: false
 - type: ExporterDefaultHistogramAggregation
-  properties: []
+  enumValues:
+    - enumValue: base2_exponential_bucket_histogram
+      description: TODO
+    - enumValue: explicit_bucket_histogram
+      description: TODO
   isSdkExtensionPlugin: false
 - type: ExporterTemporalityPreference
-  properties: []
+  enumValues:
+    - enumValue: cumulative
+      description: TODO
+    - enumValue: delta
+      description: TODO
+    - enumValue: low_memory
+      description: TODO
   isSdkExtensionPlugin: false
 - type: GrpcTls
   properties:
@@ -558,22 +596,24 @@
       defaultBehavior: all values matching .included are included
   isSdkExtensionPlugin: false
 - type: InstrumentType
-  properties: []
+  enumValues:
+    - enumValue: counter
+      description: TODO
+    - enumValue: gauge
+      description: TODO
+    - enumValue: histogram
+      description: TODO
+    - enumValue: observable_counter
+      description: TODO
+    - enumValue: observable_gauge
+      description: TODO
+    - enumValue: observable_up_down_counter
+      description: TODO
+    - enumValue: up_down_counter
+      description: TODO
   isSdkExtensionPlugin: false
 - type: JaegerPropagator
   properties: []
-  isSdkExtensionPlugin: false
-- type: JaegerRemoteSampler
-  properties:
-    - property: endpoint
-      description: TODO
-      defaultBehavior: TODO
-    - property: interval
-      description: TODO
-      defaultBehavior: TODO
-    - property: initial_sampler
-      description: TODO
-      defaultBehavior: TODO
   isSdkExtensionPlugin: false
 - type: LastValueAggregation
   properties: []
@@ -582,6 +622,7 @@
   properties:
     - property: processors
       description: Configure log record processors.
+      defaultBehavior: TODO
     - property: limits
       description: Configure log record limits. See also attribute_limits.
       defaultBehavior: default log record limits are used
@@ -632,6 +673,7 @@
   properties:
     - property: readers
       description: Configure metric readers.
+      defaultBehavior: TODO
     - property: views
       description: |
         Configure views. 
@@ -666,8 +708,10 @@
   properties:
     - property: name
       description: The name of the pair.
+      defaultBehavior: TODO
     - property: value
       description: The value of the pair.
+      defaultBehavior: TODO
       nullBehavior: TODO
   isSdkExtensionPlugin: false
 - type: OpenCensusMetricProducer
@@ -680,6 +724,7 @@
         The file format version.
         The yaml format is documented at
         https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
+      defaultBehavior: TODO
     - property: disabled
       description: |
         Configure if the SDK is disabled or not.
@@ -791,7 +836,11 @@
       defaultBehavior: system default TLS settings are used
   isSdkExtensionPlugin: false
 - type: OtlpHttpEncoding
-  properties: []
+  enumValues:
+    - enumValue: json
+      description: Protobuf JSON encoding.
+    - enumValue: protobuf
+      description: Protobuf binary encoding.
   isSdkExtensionPlugin: false
 - type: OtlpHttpExporter
   properties:
@@ -914,6 +963,7 @@
       defaultBehavior: 30000 is used
     - property: exporter
       description: Configure exporter.
+      defaultBehavior: TODO
     - property: producers
       description: Configure metric producers.
       defaultBehavior: TODO
@@ -946,6 +996,7 @@
   properties:
     - property: exporter
       description: Configure exporter.
+      defaultBehavior: TODO
     - property: producers
       description: Configure metric producers.
       defaultBehavior: TODO
@@ -999,10 +1050,7 @@
       defaultBehavior: ignore
     - property: always_on
       description: Configure sampler to be always_on.
-      defaultBehavior: ignore
-    - property: jaeger_remote
-      description: TODO
-      defaultBehavior: ignore
+      defaultBehavior: TODO
     - property: parent_based
       description: Configure sampler to be parent_based.
       defaultBehavior: ignore
@@ -1012,16 +1060,21 @@
     - property: probability/development
       description: Configure sampler to be probability.
       defaultBehavior: ignore
+    - property: jaeger_remote/development
+      description: TODO
+      defaultBehavior: ignore
   isSdkExtensionPlugin: true
 - type: SimpleLogRecordProcessor
   properties:
     - property: exporter
       description: Configure exporter.
+      defaultBehavior: TODO
   isSdkExtensionPlugin: false
 - type: SimpleSpanProcessor
   properties:
     - property: exporter
       description: Configure exporter.
+      defaultBehavior: TODO
   isSdkExtensionPlugin: false
 - type: SpanExporter
   properties:
@@ -1122,6 +1175,7 @@
   properties:
     - property: processors
       description: Configure span processors.
+      defaultBehavior: TODO
     - property: limits
       description: Configure span limits. See also attribute_limits.
       defaultBehavior: default span limits are used
@@ -1221,4 +1275,16 @@
         Configure default histogram aggregation.
         Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
       defaultBehavior: explicit_bucket_histogram
+  isSdkExtensionPlugin: false
+- type: ExperimentalJaegerRemoteSampler
+  properties:
+    - property: endpoint
+      description: TODO
+      defaultBehavior: TODO
+    - property: interval
+      description: TODO
+      defaultBehavior: TODO
+    - property: initial_sampler
+      description: TODO
+      defaultBehavior: TODO
   isSdkExtensionPlugin: false

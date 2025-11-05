@@ -50,7 +50,6 @@
         "AttributeType": {
             "type": ["string", "null"],
             "enum": [
-                null,
                 "string",
                 "bool",
                 "int",

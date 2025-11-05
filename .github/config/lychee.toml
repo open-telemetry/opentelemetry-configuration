@@ -19,4 +19,7 @@ exclude = [
     # exclude localhost, file references from schema-docs.md
     "^http://localhost",
     "file:///path/to/file.jsonl",
+    "file:///var/log/logs.jsonl",
+    "file:///var/log/metrics.jsonl",
+    "file:///var/log/traces.jsonl",
 ]

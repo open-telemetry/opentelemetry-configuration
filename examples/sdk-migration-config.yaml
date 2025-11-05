@@ -183,13 +183,13 @@ tracer_provider:
       # If omitted, always_on is used.
       root:
         # Configure sampler to be always_on.
-        # If omitted, ignore.
+        # If omitted, TODO.
         always_on:
       # Configure remote_parent_sampled sampler.
       # If omitted, always_on is used.
       remote_parent_sampled:
         # Configure sampler to be always_on.
-        # If omitted, ignore.
+        # If omitted, TODO.
         always_on:
       # Configure remote_parent_not_sampled sampler.
       # If omitted, always_off is used.
@@ -201,7 +201,7 @@ tracer_provider:
       # If omitted, always_on is used.
       local_parent_sampled:
         # Configure sampler to be always_on.
-        # If omitted, ignore.
+        # If omitted, TODO.
         always_on:
       # Configure local_parent_not_sampled sampler.
       # If omitted, always_off is used.

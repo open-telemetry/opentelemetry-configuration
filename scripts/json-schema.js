@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {MetaSchemaProperty, MetaSchemaType} from "./meta-schema.js";
+import {MetaSchemaEnumValue, MetaSchemaProperty, MetaSchemaType} from "./meta-schema.js";
 import {schemaDirPath} from "./util.js";
 
 const localDefPrefix = '#/$defs/';
@@ -16,7 +16,7 @@ export function readJsonSchemaTypes() {
             topLevelSchemas[file] = fileContent;
 
             if (file === 'opentelemetry_configuration.json') {
-                typesByType['OpenTelemetryConfiguration'] = new JsonSchemaType('OpentelemetryConfiguration', file, fileContent, '.', fileContent);
+                typesByType['OpenTelemetryConfiguration'] = new JsonSchemaType('OpentelemetryConfiguration', file, fileContent, '.', fileContent, []);
             }
 
             Object.entries(getDefs(fileContent)).forEach(([type, schema]) => {
@@ -43,9 +43,13 @@ export function readJsonSchemaTypes() {
         jsonSchemaType.schema = topLevelSchema;
     });
 
-    // Resolve properties
+    // Resolve properties, enum values
     Object.values(typesByType).forEach(jsonSchemaType => {
         jsonSchemaType.properties = resolveJsonSchemaProperties(jsonSchemaType.schema, typesByType);
+        jsonSchemaType.enumValues = resolveEnumValues(jsonSchemaType);
+        if (jsonSchemaType.properties.length > 0 && jsonSchemaType.enumValues !== null) {
+            throw new Error(`${jsonSchemaType.type} has enum values and properties`);
+        }
     });
 
     return Object.values(typesByType);
@@ -96,6 +100,14 @@ function resolveJsonSchemaProperties(jsonSchema, typesByType) {
     });
 
     return resolvedProperties;
+}
+
+function resolveEnumValues(jsonSchemaType) {
+    const enumValues = jsonSchemaType.schema['enum'];
+    if (!enumValues) {
+        return null;
+    }
+    return enumValues;
 }
 
 export function resolveRef(ref, typesByType) {
@@ -151,6 +163,7 @@ export class JsonSchemaType {
     jsonSchemaPath;
     schema;
     properties;
+    enumValues; // null if not enum
 
     constructor(type, file, fileContent, jsonSchemaPath, schema) {
         this.type = type;
@@ -159,6 +172,11 @@ export class JsonSchemaType {
         this.jsonSchemaPath = jsonSchemaPath;
         this.schema = schema;
         this.properties = [];
+        this.enumValues = null;
+    }
+
+    isEnumType() {
+        return this.enumValues !== null;
     }
 
     jsonSchemaRef() {
@@ -172,7 +190,8 @@ export class JsonSchemaType {
     toMetaSchemaType() {
         return new MetaSchemaType(
             this.type,
-            this.properties.map(property => property.toMetaSchemaProperty()),
+            this.properties.map(jsonSchemaProperty => new MetaSchemaProperty(jsonSchemaProperty.property, "TODO")),
+            this.enumValues === null ? null : this.enumValues.map(enumValue => new MetaSchemaEnumValue(enumValue, "TODO")),
             false
         );
     }

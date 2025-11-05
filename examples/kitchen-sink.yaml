@@ -541,7 +541,7 @@ meter_provider:
   views:
     - # Configure view selector. 
       # Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.
-      # If omitted, TODO.
+      # Property is required and must be non-null.
       selector:
         # Configure instrument name selection criteria.
         # If omitted or null, all instrument names match.
@@ -563,7 +563,7 @@ meter_provider:
         # If omitted or null, all meter schema URLs match.
         meter_schema_url: https://opentelemetry.io/schemas/1.16.0
       # Configure view stream.
-      # If omitted, TODO.
+      # Property is required and must be non-null.
       stream:
         # Configure metric name of the resulting stream(s).
         # If omitted or null, the instrument's original name is used.
@@ -906,7 +906,7 @@ tracer_provider:
       # If omitted, always_on is used.
       remote_parent_sampled:
         # Configure sampler to be always_on.
-        # If omitted, ignore.
+        # If omitted, TODO.
         always_on:
       # Configure remote_parent_not_sampled sampler.
       # If omitted, always_off is used.
@@ -922,7 +922,7 @@ tracer_provider:
       # If omitted, always_on is used.
       local_parent_sampled:
         # Configure sampler to be always_on.
-        # If omitted, ignore.
+        # If omitted, TODO.
         always_on:
       # Configure local_parent_not_sampled sampler.
       # If omitted, always_off is used.

@@ -1,4 +1,4 @@
-latestSupportedFileFormat: 1.0.0-rc.1
+latestSupportedFileFormat: 1.0.0-rc.2
 typeSupportStatuses:
   - type: Aggregation
     status: supported
@@ -39,9 +39,7 @@ typeSupportStatuses:
   - type: Base2ExponentialBucketHistogramAggregation
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: record_min_max
-        status: not_implemented
+    propertyOverrides: []
   - type: BatchLogRecordProcessor
     status: supported
     notes: ""
@@ -51,7 +49,7 @@ typeSupportStatuses:
     notes: ""
     propertyOverrides: []
   - type: CardinalityLimits
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ConsoleExporter
@@ -59,13 +57,9 @@ typeSupportStatuses:
     notes: ""
     propertyOverrides: []
   - type: ConsoleMetricExporter
-    status: unknown
+    status: supported
     notes: ""
-    propertyOverrides:
-      - property: default_histogram_aggregation
-        status: not_implemented
-      - property: temporality_preference
-        status: ignored
+    propertyOverrides: []
   - type: DefaultAggregation
     status: supported
     notes: ""
@@ -75,155 +69,125 @@ typeSupportStatuses:
     notes: ""
     propertyOverrides: []
   - type: ExemplarFilter
-    status: supported
+    status: not_implemented
     notes: ""
     enumOverrides: []
   - type: ExperimentalContainerResourceDetector
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
-    status: supported
+    status: not_applicable
     notes: ""
     propertyOverrides: []
   - type: ExperimentalHostResourceDetector
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalHttpClientInstrumentation
-    status: supported
+    status: not_applicable
     notes: ""
     propertyOverrides: []
   - type: ExperimentalHttpInstrumentation
-    status: supported
+    status: not_applicable
     notes: ""
     propertyOverrides: []
   - type: ExperimentalHttpServerInstrumentation
-    status: supported
+    status: not_applicable
     notes: ""
     propertyOverrides: []
   - type: ExperimentalInstrumentation
-    status: supported
+    status: not_applicable
     notes: ""
-    propertyOverrides:
-      - property: cpp
-        status: not_applicable
-      - property: dotnet
-        status: not_applicable
-      - property: erlang
-        status: not_applicable
-      - property: go
-        status: not_applicable
-      - property: js
-        status: not_applicable
-      - property: php
-        status: not_applicable
-      - property: python
-        status: not_applicable
-      - property: ruby
-        status: not_applicable
-      - property: rust
-        status: not_applicable
-      - property: swift
-        status: not_applicable
+    propertyOverrides: []
   - type: ExperimentalJaegerRemoteSampler
-    status: ignored
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
-    status: supported
+    status: not_applicable
     notes: ""
     propertyOverrides: []
   - type: ExperimentalLoggerConfig
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalLoggerConfigurator
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalLoggerMatcherAndConfig
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalMeterConfig
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalMeterConfigurator
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalMeterMatcherAndConfig
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalOtlpFileExporter
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: output_stream
-        status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalOtlpFileMetricExporter
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: output_stream
-        status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalPeerInstrumentation
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalPeerServiceMapping
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalProbabilitySampler
-    status: ignored
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalPrometheusMetricExporter
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: translation_strategy
-        status: not_implemented
-      - property: without_scope_info
-        status: ignored
+    propertyOverrides: []
   - type: ExperimentalResourceDetection
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalResourceDetector
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalTracerConfig
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalTracerConfigurator
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: ExplicitBucketHistogramAggregation
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: record_min_max
-        status: not_implemented
+    propertyOverrides: []
   - type: ExporterDefaultHistogramAggregation
     status: supported
     notes: ""
@@ -233,11 +197,11 @@ typeSupportStatuses:
     notes: ""
     enumOverrides: []
   - type: GrpcTls
-    status: not_implemented
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: HttpTls
-    status: not_implemented
+    status: unknown
     notes: ""
     propertyOverrides: []
   - type: IncludeExclude
@@ -277,7 +241,7 @@ typeSupportStatuses:
     notes: ""
     propertyOverrides: []
   - type: MetricProducer
-    status: ignored
+    status: supported
     notes: ""
     propertyOverrides: []
   - type: MetricReader
@@ -289,53 +253,37 @@ typeSupportStatuses:
     notes: ""
     propertyOverrides: []
   - type: OpenCensusMetricProducer
-    status: ignored
+    status: supported
     notes: ""
     propertyOverrides: []
   - type: OpentelemetryConfiguration
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: log_level
-        status: not_implemented
+    propertyOverrides: []
   - type: OpenTracingPropagator
-    status: supported
+    status: not_implemented
     notes: ""
     propertyOverrides: []
   - type: OtlpGrpcExporter
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: tls
-        status: ignored
+    propertyOverrides: []
   - type: OtlpGrpcMetricExporter
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: tls
-        status: ignored
+    propertyOverrides: []
   - type: OtlpHttpEncoding
-    status: not_implemented
+    status: supported
     notes: ""
-    enumOverrides:
-      - enumValue: json
-        status: not_implemented
+    enumOverrides: []
   - type: OtlpHttpExporter
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: encoding
-        status: not_implemented
-      - property: tls
-        status: ignored
+    propertyOverrides: []
   - type: OtlpHttpMetricExporter
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: encoding
-        status: not_implemented
-      - property: tls
-        status: ignored
+    propertyOverrides: []
   - type: ParentBasedSampler
     status: supported
     notes: ""
@@ -343,9 +291,7 @@ typeSupportStatuses:
   - type: PeriodicMetricReader
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: producers
-        status: not_implemented
+    propertyOverrides: []
   - type: Propagator
     status: supported
     notes: ""
@@ -357,9 +303,7 @@ typeSupportStatuses:
   - type: PullMetricReader
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: producers
-        status: not_implemented
+    propertyOverrides: []
   - type: PushMetricExporter
     status: supported
     notes: ""
@@ -367,15 +311,11 @@ typeSupportStatuses:
   - type: Resource
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: schema_url
-        status: ignored
+    propertyOverrides: []
   - type: Sampler
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: probability/development
-        status: ignored
+    propertyOverrides: []
   - type: SimpleLogRecordProcessor
     status: supported
     notes: ""
@@ -423,9 +363,7 @@ typeSupportStatuses:
   - type: ViewSelector
     status: supported
     notes: ""
-    propertyOverrides:
-      - property: unit
-        status: ignored
+    propertyOverrides: []
   - type: ViewStream
     status: supported
     notes: ""
