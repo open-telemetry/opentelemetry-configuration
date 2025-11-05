@@ -231,19 +231,22 @@ Usages:
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "minItems": 1
         },
         {
           "type": "array",
           "items": {
             "type": "boolean"
-          }
+          },
+          "minItems": 1
         },
         {
           "type": "array",
           "items": {
             "type": "number"
-          }
+          },
+          "minItems": 1
         }
       ]
     },
@@ -1011,6 +1014,7 @@ Usages:
   "properties": {
     "request_captured_headers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "string"
       }
@@ -1107,12 +1111,14 @@ Usages:
   "properties": {
     "request_captured_headers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "string"
       }
     },
     "response_captured_headers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "string"
       }
@@ -1234,6 +1240,7 @@ Usages:
       "properties": {
         "service_mapping": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "#/$defs/ExperimentalPeerServiceMapping"
           }
@@ -1262,6 +1269,7 @@ Usages:
       "properties": {
         "request_captured_headers": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "string"
           }
@@ -1280,12 +1288,14 @@ Usages:
       "properties": {
         "request_captured_headers": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "string"
           }
         },
         "response_captured_headers": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "string"
           }
@@ -1498,6 +1508,7 @@ Usages:
     },
     "loggers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
       }
@@ -1642,6 +1653,7 @@ Usages:
     },
     "meters": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
       }
@@ -1837,6 +1849,7 @@ Usages:
   "properties": {
     "service_mapping": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalPeerServiceMapping"
       }
@@ -2092,6 +2105,7 @@ Usages:
     },
     "detectors": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalResourceDetector"
       }
@@ -2281,6 +2295,7 @@ Usages:
     },
     "tracers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
       }
@@ -2375,6 +2390,7 @@ Usages:
   "properties": {
     "boundaries": {
       "type": "array",
+      "minItems": 0,
       "items": {
         "type": "number"
       }
@@ -2642,12 +2658,14 @@ Usages:
   "properties": {
     "included": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "string"
       }
     },
     "excluded": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "string"
       }
@@ -2942,6 +2960,7 @@ Usages:
         },
         "loggers": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
           }
@@ -3245,6 +3264,7 @@ Usages:
         },
         "producers": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "#/$defs/MetricProducer"
           }
@@ -3266,6 +3286,7 @@ Usages:
         },
         "producers": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "#/$defs/MetricProducer"
           }
@@ -3501,6 +3522,7 @@ Usages:
         },
         "headers": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "common.json#/$defs/NameStringValuePair"
           }
@@ -3553,6 +3575,7 @@ Usages:
         },
         "headers": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "common.json#/$defs/NameStringValuePair"
           }
@@ -3770,6 +3793,7 @@ Usages:
       "properties": {
         "boundaries": {
           "type": "array",
+          "minItems": 0,
           "items": {
             "type": "number"
           }
@@ -3834,6 +3858,7 @@ Usages:
         },
         "meters": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
           }
@@ -4257,6 +4282,7 @@ Usages:
     },
     "headers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
       }
@@ -4342,6 +4368,7 @@ Usages:
     },
     "headers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "common.json#/$defs/NameStringValuePair"
       }
@@ -4473,6 +4500,7 @@ Usages:
     },
     "headers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
       }
@@ -4565,6 +4593,7 @@ Usages:
     },
     "headers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "common.json#/$defs/NameStringValuePair"
       }
@@ -4719,6 +4748,7 @@ Usages:
     },
     "producers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/MetricProducer"
       }
@@ -4766,6 +4796,7 @@ Usages:
   "properties": {
     "composite": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/TextMapPropagator"
       }
@@ -4945,6 +4976,7 @@ Usages:
     },
     "producers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/MetricProducer"
       }
@@ -5062,6 +5094,7 @@ Usages:
   "properties": {
     "attributes": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/AttributeNameValue"
       }
@@ -5108,19 +5141,22 @@ Usages:
               "type": "array",
               "items": {
                 "type": "string"
-              }
+              },
+              "minItems": 1
             },
             {
               "type": "array",
               "items": {
                 "type": "boolean"
-              }
+              },
+              "minItems": 1
             },
             {
               "type": "array",
               "items": {
                 "type": "number"
-              }
+              },
+              "minItems": 1
             }
           ]
         },
@@ -5158,6 +5194,7 @@ Usages:
         },
         "detectors": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "#/$defs/ExperimentalResourceDetector"
           }
@@ -6126,6 +6163,7 @@ Usages:
         },
         "tracers": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
           }
