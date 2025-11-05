@@ -70,6 +70,7 @@ Stable types provide the following guarantees. All types except those excluded i
   * [uniqueItems](https://json-schema.org/understanding-json-schema/reference/array#uniqueItems): will not go from `false` to `true`.
   * [enum](https://json-schema.org/understanding-json-schema/reference/enum): will not remove entries.
   * [const](https://json-schema.org/understanding-json-schema/reference/const): will not change.
+  * [minItems, maxItems](https://json-schema.org/understanding-json-schema/reference/array#length): `minItesm` will not increase, `maxItems` will not decrease.
 * No existing type will be deleted.
 * No type property will be deleted.
 
