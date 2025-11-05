@@ -1,7 +1,8 @@
 import fs from 'fs';
 import yaml from 'yaml';
-import {readAndFixMetaSchemaTypes} from "./meta-schema.js";
+import {readAndFixMetaSchema} from "./meta-schema.js";
 import {readJsonSchemaTypes} from "./json-schema.js";
+import {isExperimentalProperty} from "./util.js";
 
 // Extract input file arg or throw
 const usageString = "Usage: \n npm run-script generate-descriptions -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml [--debug]";
@@ -30,9 +31,9 @@ for (let i = 3; i < process.argv.length; i++) {
 }
 
 // Read JSON schema and meta schema
-const { messages, types } = readAndFixMetaSchemaTypes();
+const { messages, metaSchema } = readAndFixMetaSchema();
 const metaSchemaTypesByType = {};
-types.forEach(type => metaSchemaTypesByType[type.type] = type);
+metaSchema.types.forEach(type => metaSchemaTypesByType[type.type] = type);
 if (messages.length > 0) {
     throw new Error("Meta schema has problems. Please run fix-meta-schema and try again.");
 }
@@ -76,10 +77,17 @@ yaml.visit(fileDoc, {
             debug(`No meta schema property ${propertyKey} for type ${metaSchemaType.type}.`);
             return;
         }
-        debug(`Resolved type ${jsonSchemaType.type}, property ${metaSchemaProperty.property}, description:\n${metaSchemaProperty.description}`);
+        let fullDescription = metaSchemaProperty.description;
+        if (isExperimentalProperty(metaSchemaProperty.property)) {
+            if (!fullDescription.endsWith('\n')) {
+                fullDescription += '\n';
+            }
+            fullDescription += `This property is experimental and subject to breaking changes in minor versions.`;
+        }
+        debug(`Resolved type ${jsonSchemaType.type}, property ${metaSchemaProperty.property}, description:\n${fullDescription}`);
 
         // Set the description
-        let formattedDescription = metaSchemaProperty.description
+        let formattedDescription = fullDescription
             .replace(/\n$/, '')
             .split('\n')
             .map(line => ' ' + line)

@@ -67,11 +67,14 @@
                 "always_on": {
                     "$ref": "#/$defs/AlwaysOnSampler"
                 },
-                "jaeger_remote": {
-                    "$ref": "#/$defs/JaegerRemoteSampler"
+                "jaeger_remote/development": {
+                    "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
                 },
                 "parent_based": {
                     "$ref": "#/$defs/ParentBasedSampler"
+                },
+                "probability/development": {
+                    "$ref": "#/$defs/ExperimentalProbabilitySampler"
                 },
                 "trace_id_ratio_based": {
                     "$ref": "#/$defs/TraceIdRatioBasedSampler"
@@ -86,7 +89,7 @@
             "type": ["object", "null"],
             "additionalProperties": false
         },
-        "JaegerRemoteSampler": {
+        "ExperimentalJaegerRemoteSampler": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -123,12 +126,25 @@
                 }
             }
         },
+        "ExperimentalProbabilitySampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "ratio": {
+                    "type": ["number", "null"],
+                    "minimum": 0,
+                    "maximum": 1
+                }
+            }
+        },
         "TraceIdRatioBasedSampler": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
                 "ratio": {
-                    "type": ["number", "null"]
+                    "type": ["number", "null"],
+                    "minimum": 0,
+                    "maximum": 1
                 }
             }
         },

@@ -33,7 +33,7 @@ jobs:
         # need to "git add" to detect any changes to descriptions which are not checked in
         # select files from locations managed by meta schema
         git add examples**
-        git add schema/meta_schema.yaml
+        git add schema/meta_schema_*
         git add schema-docs.md
         if git diff --cached --quiet
         then 

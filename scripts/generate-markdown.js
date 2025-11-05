@@ -1,9 +1,9 @@
 import {readJsonSchemaTypes} from "./json-schema.js";
-import {readAndFixMetaSchemaTypes} from "./meta-schema.js";
+import {KNOWN_LANGUAGES, readAndFixMetaSchema} from "./meta-schema.js";
 import fs from "node:fs";
-import {markdownDocPath} from "./util.js";
+import {isExperimentalProperty, isExperimentalType, markdownDocPath} from "./util.js";
 
-const { messages, types } = readAndFixMetaSchemaTypes();
+const { messages, metaSchema } = readAndFixMetaSchema();
 
 if (messages.length > 0) {
     throw new Error("Meta schema has problems. Please run fix-meta-schema and try again.");
@@ -14,16 +14,22 @@ const jsonSchemaTypesByType = {};
 jsonSchemaTypes.forEach(type => jsonSchemaTypesByType[type.type] = type);
 
 const output = [];
-const headers = [];
 
-types.sort((a, b) => a.type.localeCompare(b.type));
+metaSchema.types.sort((a, b) => a.type.localeCompare(b.type));
 
 addHeader('Overview', 'overview', 1);
-output.push('TODO\n');
+output.push(`
+This document is an auto-generated view of the declarative configuration JSON schema and meta schema meant for improved consumability by humans.
+
+* [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [OpenTelemetryConfiguration](#opentelemetryconfiguration) is the root type and is a good starting point.
+* [Language Support Status](#language-support-status) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
+* [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
+
+`);
 
 // Write types
 addHeader('Types', 'types', 1);
-types.forEach(metaSchemaType => {
+metaSchema.types.forEach(metaSchemaType => {
     const type = metaSchemaType.type;
     const jsonSchemaType = jsonSchemaTypesByType[type];
     if (!jsonSchemaType) {
@@ -34,35 +40,107 @@ types.forEach(metaSchemaType => {
     // Heading
     addHeader(type, type.toLowerCase(), 2);
 
+    // Experimental type warning
+    if (isExperimentalType(type)) {
+        output.push('> [!WARNING]\n');
+        output.push('> This type is [experimental](README.md#experimental-features).\n\n');
+    }
+
     // SDK extension plugin
     if (metaSchemaType.isSdkExtensionPlugin) {
         output.push(`\`${type}\` is an [SDK extension plugin](#sdk-extension-plugins).\n\n`);
     }
 
-    // Properties
-    if (metaSchemaType.properties.length === 0) {
-        output.push("No properties.\n\n");
-    } else {
-        // Property type and description table
-        output.push(`| Property | Type | Required? | Constraints | Description |\n`);
-        output.push("|---|---|---|---|---|\n");
-        metaSchemaType.properties.forEach(property => {
-            const jsonSchemaProperty = jsonSchemaType.properties.find(item => item.property === property.property);
-            if (!jsonSchemaProperty) {
-                throw new Error(`JSON schema property not found for property ${property.property} and type ${type}.`);
-            }
-            const formattedPropertyType = formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType);
-            const isRequired = required !== undefined && required.includes(property.property);
-            let formattedConstraints = resolveAndFormatConstraints(jsonSchemaProperty.schema, '<br>');
-            if (formattedConstraints.length === 0) {
-                formattedConstraints = 'No constraints.';
-            }
-            const formattedDescription = property.description.split("\n").join("<br>");
-
-            output.push(`| \`${property.property}\` | ${formattedPropertyType} | \`${isRequired}\` | ${formattedConstraints} | ${formattedDescription} |\n`);
+    if (jsonSchemaType.isEnumType()) {
+        // Enum values
+        output.push("This is a enum type.\n\n");
+        output.push(`| Value | Description |\n`);
+        output.push(`|---|---|\n`);
+        metaSchemaType.enumValues.forEach(enumValue => {
+            const formattedDescription = enumValue.description.split("\n").join("<br>");
+            output.push(`| \`${enumValue.enumValue}\` | ${formattedDescription} |\n`);
         });
         output.push('\n');
-        // TODO: print language implementation status
+    } else {
+        // Properties
+        if (metaSchemaType.properties.length === 0) {
+            output.push("No properties.\n\n");
+        } else {
+            // Property type and description table
+            output.push(`| Property | Type | Required? | Constraints | Description |\n`);
+            output.push("|---|---|---|---|---|\n");
+            metaSchemaType.properties.forEach(property => {
+                const jsonSchemaProperty = jsonSchemaType.properties.find(item => item.property === property.property);
+                if (!jsonSchemaProperty) {
+                    throw new Error(`JSON schema property not found for property ${property.property} and type ${type}.`);
+                }
+                let formattedProperty = `\`${property.property}\``
+                if (isExperimentalProperty(property.property)) {
+                    formattedProperty += '<br>**WARNING:** This property is [experimental](README.md#experimental-features).'
+                }
+                const formattedPropertyType = formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType);
+                const isRequired = required !== undefined && required.includes(property.property);
+                let formattedConstraints = resolveAndFormatConstraints(jsonSchemaProperty.schema, '<br>');
+                if (formattedConstraints.length === 0) {
+                    formattedConstraints = 'No constraints.';
+                }
+                const formattedDescription = property.description.split("\n").join("<br>");
+
+                output.push(`| ${formattedProperty} | ${formattedPropertyType} | \`${isRequired}\` | ${formattedConstraints} | ${formattedDescription} |\n`);
+            });
+            output.push('\n');
+        }
+    }
+
+    // Write language support status for type
+    if ((jsonSchemaType.isEnumType() && metaSchemaType.enumValues.length > 0) || (!jsonSchemaType.isEnumType() && jsonSchemaType.properties.length > 0)) {
+        output.push(`<details>\n`);
+        output.push('<summary>Language support status</summary>\n\n');
+        const languageImplementationsByLanguage = {};
+        metaSchema.languageImplementations.forEach(languageImplementation => languageImplementationsByLanguage[languageImplementation.language] = languageImplementation);
+        const rowHeader = jsonSchemaType.isEnumType() ? 'Value' : 'Property';
+        output.push(`| ${rowHeader} |`);
+        KNOWN_LANGUAGES.forEach(language => {
+            output.push(` [${language}](#${language}) |`);
+            if (!languageImplementationsByLanguage[language]) {
+                throw new Error(`Meta schema LanguageImplementation not found for language ${language}.`);
+            }
+        });
+        output.push('\n');
+        output.push('|---|');
+        KNOWN_LANGUAGES.forEach(language => output.push(`---|`));
+        output.push('\n');
+        if (jsonSchemaType.isEnumType()) {
+            metaSchemaType.enumValues.forEach(enumValue => {
+                output.push(`| \`${enumValue.enumValue}\` |`);
+                KNOWN_LANGUAGES.forEach(language => {
+                    const typeSupportStatus = languageImplementationsByLanguage[language].typeSupportStatuses.find(item => item.type === type);
+                    if (!typeSupportStatus) {
+                        throw new Error(`Meta schema LanguageImplementation for language ${language} missing type ${type}.`);
+                    }
+                    const enumValueOverride = typeSupportStatus.enumOverrides.find(enumOverride => enumOverride.enumValue === enumValue.enumValue);
+                    const status = enumValueOverride ? enumValueOverride.status : typeSupportStatus.status;
+                    output.push(` ${status} |`);
+                });
+                output.push('\n');
+            });
+        } else {
+            metaSchemaType.properties.forEach(property => {
+                output.push(`| \`${property.property}\` |`);
+                KNOWN_LANGUAGES.forEach(language => {
+                    const typeSupportStatus = languageImplementationsByLanguage[language].typeSupportStatuses.find(item => item.type === type);
+                    if (!typeSupportStatus) {
+                        throw new Error(`Meta schema LanguageImplementation for language ${language} missing type ${type}.`);
+                    }
+                    const propertyOverride = typeSupportStatus.propertyOverrides.find(propertyOverride => propertyOverride.property === property.property);
+                    const status = propertyOverride ? propertyOverride.status : typeSupportStatus.status;
+                    output.push(` ${status} |`);
+                });
+                output.push('\n');
+            });
+        }
+
+        output.push(`</details>\n\n`)
     }
 
     // Constraints
@@ -101,6 +179,45 @@ types.forEach(metaSchemaType => {
     output.push('\n');
 });
 
+// Write language support status
+addHeader('Language Support Status', 'language-support-status', 1);
+KNOWN_LANGUAGES.forEach(language => {
+    addHeader(language, language, 2);
+    const languageImplementation = metaSchema.languageImplementations.find(item => item.language === language);
+    if (!languageImplementation) {
+        throw new Error(`Meta schema LanguageImplementation not found for language ${language}.`);
+    }
+    output.push(`Latest supported file format: \`${languageImplementation.latestSupportedFileFormat}\`\n\n`);
+
+    output.push(`| Type | Status | Notes | Support Status Details |\n`);
+    output.push(`|---|---|---|---|\n`);
+    languageImplementation.typeSupportStatuses.forEach(typeSupportStatus => {
+        const metaSchemaType = metaSchema.types.find(item => item.type === typeSupportStatus.type);
+        if (!metaSchemaType) {
+            throw new Error(`MetaSchemaType not found for type ${typeSupportStatus.type}.`);
+        }
+
+        const supportStatusDetails = [];
+
+        if (metaSchemaType.properties !== null) {
+            metaSchemaType.properties.forEach(metaSchemaProperty => {
+                const propertyOverride = typeSupportStatus.propertyOverrides.find(propertyOverride => propertyOverride.property === metaSchemaProperty.property);
+                const status = propertyOverride ? propertyOverride.status : typeSupportStatus.status;
+                supportStatusDetails.push(`* \`${metaSchemaProperty.property}\`: ${status}<br>`);
+            });
+        } else {
+            metaSchemaType.enumValues.forEach(metaSchemaEnumValue => {
+                const enumValueOverride = typeSupportStatus.enumOverrides.find(enumOverride => enumOverride.enumValue === metaSchemaEnumValue.enumValue);
+                const status = enumValueOverride ? enumValueOverride.status : typeSupportStatus.status;
+                supportStatusDetails.push(`* \`${metaSchemaEnumValue.enumValue}\`: ${status}<br>`);
+            });
+        }
+
+        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${typeSupportStatus.notes} | ${supportStatusDetails.join('')} |\n`);
+    });
+    output.push(`\n\n`);
+});
+
 // Write SDK extension plugins
 addHeader('SDK Extension Plugins', 'sdk-extension-plugins', 1);
 output.push(
@@ -113,13 +230,11 @@ Each of the following types support referencing custom interface implementations
 SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the \`otlp_http\` property of \`SpanExporter\` defines the OTLP http/protobuf exporter.
 
 `);
-types.filter(metaSchemaType => metaSchemaType.isSdkExtensionPlugin)
+metaSchema.types.filter(metaSchemaType => metaSchemaType.isSdkExtensionPlugin)
     .forEach(metaSchemaType => {
         output.push(`* [${metaSchemaType.type}](#${metaSchemaType.type})\n`)
     });
 
-headers.push('\n\n');
-output.unshift(...headers);
 output.unshift('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
 fs.writeFileSync(markdownDocPath, output.join(""));
 
@@ -146,7 +261,6 @@ function formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType)
 }
 
 function addHeader(title, id, level) {
-    headers.push(`${'  '.repeat(level - 1)}* [${title}](#${id})\n`);
     output.push(`${'#'.repeat(level)} ${title} <a id="${id}"></a>\n\n`);
 }
 
@@ -172,8 +286,8 @@ function resolveAndFormatConstraints(schema, linebreak) {
         'minContains',
         'maxContains',
         'uniqueItems',
-        'enum',
         'const',
+        // skip enum because we have special formatting for enum types
     ];
 
     constraintPropertyNames.forEach(propertyName => {
