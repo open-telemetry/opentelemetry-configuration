@@ -281,7 +281,9 @@
 - type: ExperimentalLoggerConfig
   properties:
     - property: disabled
-      description: Configure if the logger is enabled or not.
+      description: |
+        Configure if the logger is enabled or not.
+        If omitted or null, false is used.
     - property: minimum_severity
       description: |
         Configure severity filtering.
