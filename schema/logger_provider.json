@@ -146,7 +146,15 @@
             "additionalProperties": false,
             "properties": {
                 "disabled": {
-                    "type": ["boolean"]
+                    "type": ["boolean", "null"]
+                },
+                "minimum_severity": {
+                    "type": ["integer", "null"],
+                    "minimum": 1,
+                    "maximum": 24
+                },
+                "trace_based": {
+                    "type": ["boolean", "null"]
                 }
             }
         }

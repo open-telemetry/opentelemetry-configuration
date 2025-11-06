@@ -192,6 +192,15 @@ logger_provider:
         config:
           # Configure if the logger is enabled or not.
           disabled: false
+          # Configure severity filtering.
+          # Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
+          # For severity number details, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-severitynumber for details
+          # If omitted or null, severity filtering is not applied.
+          minimum_severity: 9
+          # Configure trace based filtering.
+          # If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.
+          # If omitted or null, trace based filtering is not applied.
+          trace_based: true
 # Configure meter provider.
 # If omitted, a noop meter provider is used.
 meter_provider:

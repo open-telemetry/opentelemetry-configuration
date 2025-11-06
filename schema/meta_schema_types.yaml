@@ -282,6 +282,17 @@
   properties:
     - property: disabled
       description: Configure if the logger is enabled or not.
+    - property: minimum_severity
+      description: |
+        Configure severity filtering.
+        Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
+        For severity number details, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-severitynumber for details
+        If omitted or null, severity filtering is not applied.
+    - property: trace_based
+      description: |
+        Configure trace based filtering.
+        If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.
+        If omitted or null, trace based filtering is not applied.
   isSdkExtensionPlugin: false
 - type: ExperimentalLoggerConfigurator
   properties:

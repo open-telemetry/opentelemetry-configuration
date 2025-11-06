@@ -1418,7 +1418,9 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `disabled` | `boolean` | `false` | No constraints. | Configure if the logger is enabled or not. |
+| `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure if the logger is enabled or not. |
+| `minimum_severity` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `1`<br>* `maximum`: `24`<br> | Configure severity filtering.<br>Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.<br>For severity number details, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-severitynumber for details<br>If omitted or null, severity filtering is not applied.<br> |
+| `trace_based` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure trace based filtering.<br>If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.<br>If omitted or null, trace based filtering is not applied.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1426,6 +1428,8 @@ Usages:
 | Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
 | `disabled` | not_implemented | unknown | supported | unknown |
+| `minimum_severity` | not_implemented | unknown | not_implemented | unknown |
+| `trace_based` | not_implemented | unknown | not_implemented | unknown |
 </details>
 
 Constraints: 
@@ -1449,7 +1453,22 @@ Usages:
   "properties": {
     "disabled": {
       "type": [
-        "boolean"
+        "boolean",
+        "null"
+      ]
+    },
+    "minimum_severity": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1,
+      "maximum": 24
+    },
+    "trace_based": {
+      "type": [
+        "boolean",
+        "null"
       ]
     }
   }
@@ -2973,7 +2992,22 @@ Usages:
       "properties": {
         "disabled": {
           "type": [
-            "boolean"
+            "boolean",
+            "null"
+          ]
+        },
+        "minimum_severity": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 24
+        },
+        "trace_based": {
+          "type": [
+            "boolean",
+            "null"
           ]
         }
       }
@@ -6440,7 +6474,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | not_applicable |  | * `general`: not_applicable<br>* `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `go`: not_applicable<br>* `java`: not_applicable<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | not_implemented |  | * `endpoint`: not_implemented<br>* `interval`: not_implemented<br>* `initial_sampler`: not_implemented<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | not_applicable |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
+| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | not_implemented |  | * `disabled`: not_implemented<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
 | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `loggers`: not_implemented<br> |
 | [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | not_implemented |  | * `name`: not_implemented<br>* `config`: not_implemented<br> |
 | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
@@ -6541,7 +6575,7 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | unknown |  | * `general`: unknown<br>* `cpp`: unknown<br>* `dotnet`: unknown<br>* `erlang`: unknown<br>* `go`: unknown<br>* `java`: unknown<br>* `js`: unknown<br>* `php`: unknown<br>* `python`: unknown<br>* `ruby`: unknown<br>* `rust`: unknown<br>* `swift`: unknown<br> |
 | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `interval`: unknown<br>* `initial_sampler`: unknown<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | unknown |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | unknown |  | * `disabled`: unknown<br> |
+| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | unknown |  | * `disabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | unknown |  | * `default_config`: unknown<br>* `loggers`: unknown<br> |
 | [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | unknown |  | * `name`: unknown<br>* `config`: unknown<br> |
 | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | unknown |  | * `disabled`: unknown<br> |
@@ -6642,7 +6676,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | supported |  | * `general`: supported<br>* `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `go`: not_applicable<br>* `java`: supported<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | ignored |  | * `endpoint`: ignored<br>* `interval`: ignored<br>* `initial_sampler`: ignored<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | supported |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | supported |  | * `disabled`: supported<br> |
+| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | supported |  | * `disabled`: supported<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
 | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |
 | [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | supported |  | * `name`: supported<br>* `config`: supported<br> |
 | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | supported |  | * `disabled`: supported<br> |
@@ -6743,7 +6777,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | unknown |  | * `general`: unknown<br>* `cpp`: unknown<br>* `dotnet`: unknown<br>* `erlang`: unknown<br>* `go`: unknown<br>* `java`: unknown<br>* `js`: unknown<br>* `php`: unknown<br>* `python`: unknown<br>* `ruby`: unknown<br>* `rust`: unknown<br>* `swift`: unknown<br> |
 | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `interval`: unknown<br>* `initial_sampler`: unknown<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | unknown |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | unknown |  | * `disabled`: unknown<br> |
+| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | unknown |  | * `disabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | unknown |  | * `default_config`: unknown<br>* `loggers`: unknown<br> |
 | [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | unknown |  | * `name`: unknown<br>* `config`: unknown<br> |
 | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | unknown |  | * `disabled`: unknown<br> |

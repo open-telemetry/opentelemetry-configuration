@@ -137,7 +137,11 @@ typeSupportStatuses:
   - type: ExperimentalLoggerConfig
     status: supported
     notes: ""
-    propertyOverrides: []
+    propertyOverrides:
+      - property: minimum_severity
+        status: not_implemented
+      - property: trace_based
+        status: not_implemented
   - type: ExperimentalLoggerConfigurator
     status: supported
     notes: ""
