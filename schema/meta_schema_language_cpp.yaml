@@ -72,6 +72,14 @@ typeSupportStatuses:
     status: not_implemented
     notes: ""
     enumOverrides: []
+  - type: ExperimentalComposableParentBasedSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalComposableSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: not_implemented
     notes: ""

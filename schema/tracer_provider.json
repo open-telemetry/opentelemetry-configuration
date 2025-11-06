@@ -67,6 +67,9 @@
                 "always_on": {
                     "$ref": "#/$defs/AlwaysOnSampler"
                 },
+                "composite/development": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                },
                 "jaeger_remote/development": {
                     "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
                 },
@@ -88,6 +91,28 @@
         "AlwaysOnSampler": {
             "type": ["object", "null"],
             "additionalProperties": false
+        },
+        "ExperimentalComposableSampler": {
+            "type": "object",
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "always_off": {
+                    "$ref": "#/$defs/AlwaysOffSampler"
+                },
+                "always_on": {
+                    "$ref": "#/$defs/AlwaysOnSampler"
+                },
+                "parent_based": {
+                    "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
+                },
+                "probability": {
+                    "$ref": "#/$defs/ExperimentalProbabilitySampler"
+                }
+            }
         },
         "ExperimentalJaegerRemoteSampler": {
             "type": ["object", "null"],
@@ -123,6 +148,27 @@
                 },
                 "local_parent_not_sampled": {
                     "$ref": "#/$defs/Sampler"
+                }
+            }
+        },
+        "ExperimentalComposableParentBasedSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "root": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                },
+                "remote_parent_sampled": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                },
+                "remote_parent_not_sampled": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                },
+                "local_parent_sampled": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                },
+                "local_parent_not_sampled": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
                 }
             }
         },

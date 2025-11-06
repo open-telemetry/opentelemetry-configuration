@@ -960,6 +960,8 @@
       description: Configure sampler to be probability.
     - property: jaeger_remote/development
       description: TODO
+    - property: composite/development
+      description: Configure sampler to be composite.
   isSdkExtensionPlugin: true
 - type: SimpleLogRecordProcessor
   properties:
@@ -1160,4 +1162,28 @@
       description: TODO
     - property: initial_sampler
       description: TODO
+  isSdkExtensionPlugin: false
+- type: ExperimentalComposableSampler
+  properties:
+    - property: always_off
+      description: Configure sampler to be always_off.
+    - property: always_on
+      description: Configure sampler to be always_on.
+    - property: probability
+      description: Configure sampler to be probability.
+    - property: parent_based
+      description: Configure sampler to be parent_based.
+  isSdkExtensionPlugin: false
+- type: ExperimentalComposableParentBasedSampler
+  properties:
+    - property: root
+      description: Configures the sampler for spans with no parent.
+    - property: remote_parent_sampled
+      description: Configures the sampler for spans with a remote parent that is sampled.
+    - property: remote_parent_not_sampled
+      description: Configures the sampler for spans with a remote parent that is not sampled.
+    - property: local_parent_sampled
+      description: Configures the sampler for spans with a local parent that is sampled.
+    - property: local_parent_not_sampled
+      description: Configures the sampler for spans with a local parent that is not sampled.
   isSdkExtensionPlugin: false
