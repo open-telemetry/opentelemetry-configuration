@@ -6,33 +6,43 @@
     "additionalProperties": true,
     "properties": {
         "file_format": {
+            "description": "The file format version.\nThe yaml format is documented at\nhttps://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema",
             "type": "string"
         },
         "disabled": {
+            "description": "Configure if the SDK is disabled or not.\nIf omitted or null, false is used.",
             "type": ["boolean", "null"]
         },
         "log_level": {
+            "description": "Configure the log level of the internal logger used by the SDK.\nIf omitted, info is used.",
             "type": ["string", "null"]
         },
         "attribute_limits": {
+            "description": "Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.",
             "$ref": "#/$defs/AttributeLimits"
         },
         "logger_provider": {
+            "description": "Configure logger provider.\nIf omitted, a noop logger provider is used.",
             "$ref": "#/$defs/LoggerProvider"
         },
         "meter_provider": {
+            "description": "Configure meter provider.\nIf omitted, a noop meter provider is used.",
             "$ref": "#/$defs/MeterProvider"
         },
         "propagator": {
+            "description": "Configure text map context propagators.\nIf omitted, a noop propagator is used.",
             "$ref": "#/$defs/Propagator"
         },
         "tracer_provider": {
+            "description": "Configure tracer provider.\nIf omitted, a noop tracer provider is used.",
             "$ref": "#/$defs/TracerProvider"
         },
         "resource": {
+            "description": "Configure resource for all signals.\nIf omitted, the default resource is used.",
             "$ref": "#/$defs/Resource"
         },
         "instrumentation/development": {
+            "description": "Configure instrumentation.",
             "$ref": "#/$defs/ExperimentalInstrumentation"
         }
     },
