@@ -181,6 +181,15 @@ logger_provider:
     default_config:
       # Configure if the logger is enabled or not.
       disabled: true
+      # Configure the minimum severity level for log records to be processed. 
+      # Log records with a severity below this level are dropped.
+      # Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.
+      # If omitted or null, no minimum severity filtering is applied.
+      minimum_severity: INFO
+      # Configure whether the logger should only process log records associated with sampled traces. 
+      # When true, log records associated with unsampled traces are dropped.
+      # If omitted or null, false is used.
+      trace_based: true
     # Configure loggers.
     loggers:
       - # Configure logger names to match, evaluated as follows:
@@ -192,6 +201,8 @@ logger_provider:
         config:
           # Configure if the logger is enabled or not.
           disabled: false
+          # Configure the minimum severity level for log records to be processed.
+          minimum_severity: DEBUG
 # Configure meter provider.
 # If omitted, a noop meter provider is used.
 meter_provider:
