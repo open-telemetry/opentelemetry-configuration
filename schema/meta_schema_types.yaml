@@ -288,7 +288,7 @@
       description: |
         Configure severity filtering.
         Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
-        For severity number details, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-severitynumber for details
+        Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.
         If omitted or null, severity filtering is not applied.
     - property: trace_based
       description: |
@@ -1172,5 +1172,56 @@
     - property: interval
       description: TODO
     - property: initial_sampler
+      description: TODO
+  isSdkExtensionPlugin: false
+- type: ExperimentalSeverityNumber
+  enumValues:
+    - enumValue: DEBUG
+      description: TODO
+    - enumValue: DEBUG2
+      description: TODO
+    - enumValue: DEBUG3
+      description: TODO
+    - enumValue: DEBUG4
+      description: TODO
+    - enumValue: ERROR
+      description: TODO
+    - enumValue: ERROR2
+      description: TODO
+    - enumValue: ERROR3
+      description: TODO
+    - enumValue: ERROR4
+      description: TODO
+    - enumValue: FATAL
+      description: TODO
+    - enumValue: FATAL2
+      description: TODO
+    - enumValue: FATAL3
+      description: TODO
+    - enumValue: FATAL4
+      description: TODO
+    - enumValue: INFO
+      description: TODO
+    - enumValue: INFO2
+      description: TODO
+    - enumValue: INFO3
+      description: TODO
+    - enumValue: INFO4
+      description: TODO
+    - enumValue: TRACE
+      description: TODO
+    - enumValue: TRACE2
+      description: TODO
+    - enumValue: TRACE3
+      description: TODO
+    - enumValue: TRACE4
+      description: TODO
+    - enumValue: WARN
+      description: TODO
+    - enumValue: WARN2
+      description: TODO
+    - enumValue: WARN3
+      description: TODO
+    - enumValue: WARN4
       description: TODO
   isSdkExtensionPlugin: false

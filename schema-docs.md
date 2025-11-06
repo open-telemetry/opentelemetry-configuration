@@ -1419,7 +1419,7 @@ Usages:
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure if the logger is enabled or not.<br>If omitted or null, false is used.<br> |
-| `minimum_severity` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `1`<br>* `maximum`: `24`<br> | Configure severity filtering.<br>Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.<br>For severity number details, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-severitynumber for details<br>If omitted or null, severity filtering is not applied.<br> |
+| `minimum_severity` | [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | `false` | No constraints. | Configure severity filtering.<br>Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.<br>Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.<br>If omitted or null, severity filtering is not applied.<br> |
 | `trace_based` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure trace based filtering.<br>If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.<br>If omitted or null, trace based filtering is not applied.<br> |
 
 <details>
@@ -1458,12 +1458,7 @@ Usages:
       ]
     },
     "minimum_severity": {
-      "type": [
-        "integer",
-        "null"
-      ],
-      "minimum": 1,
-      "maximum": 24
+      "$ref": "#/$defs/ExperimentalSeverityNumber"
     },
     "trace_based": {
       "type": [
@@ -2210,6 +2205,115 @@ Usages:
     "null"
   ],
   "additionalProperties": false
+}</pre>
+</details>
+
+## ExperimentalSeverityNumber <a id="experimentalseveritynumber"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
+This is a enum type.
+
+| Value | Description |
+|---|---|
+| `DEBUG` | TODO |
+| `DEBUG2` | TODO |
+| `DEBUG3` | TODO |
+| `DEBUG4` | TODO |
+| `ERROR` | TODO |
+| `ERROR2` | TODO |
+| `ERROR3` | TODO |
+| `ERROR4` | TODO |
+| `FATAL` | TODO |
+| `FATAL2` | TODO |
+| `FATAL3` | TODO |
+| `FATAL4` | TODO |
+| `INFO` | TODO |
+| `INFO2` | TODO |
+| `INFO3` | TODO |
+| `INFO4` | TODO |
+| `TRACE` | TODO |
+| `TRACE2` | TODO |
+| `TRACE3` | TODO |
+| `TRACE4` | TODO |
+| `WARN` | TODO |
+| `WARN2` | TODO |
+| `WARN3` | TODO |
+| `WARN4` | TODO |
+
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `DEBUG` | unknown | unknown | unknown | unknown |
+| `DEBUG2` | unknown | unknown | unknown | unknown |
+| `DEBUG3` | unknown | unknown | unknown | unknown |
+| `DEBUG4` | unknown | unknown | unknown | unknown |
+| `ERROR` | unknown | unknown | unknown | unknown |
+| `ERROR2` | unknown | unknown | unknown | unknown |
+| `ERROR3` | unknown | unknown | unknown | unknown |
+| `ERROR4` | unknown | unknown | unknown | unknown |
+| `FATAL` | unknown | unknown | unknown | unknown |
+| `FATAL2` | unknown | unknown | unknown | unknown |
+| `FATAL3` | unknown | unknown | unknown | unknown |
+| `FATAL4` | unknown | unknown | unknown | unknown |
+| `INFO` | unknown | unknown | unknown | unknown |
+| `INFO2` | unknown | unknown | unknown | unknown |
+| `INFO3` | unknown | unknown | unknown | unknown |
+| `INFO4` | unknown | unknown | unknown | unknown |
+| `TRACE` | unknown | unknown | unknown | unknown |
+| `TRACE2` | unknown | unknown | unknown | unknown |
+| `TRACE3` | unknown | unknown | unknown | unknown |
+| `TRACE4` | unknown | unknown | unknown | unknown |
+| `WARN` | unknown | unknown | unknown | unknown |
+| `WARN2` | unknown | unknown | unknown | unknown |
+| `WARN3` | unknown | unknown | unknown | unknown |
+| `WARN4` | unknown | unknown | unknown | unknown |
+</details>
+
+No constraints.
+
+Usages:
+
+* [`ExperimentalLoggerConfig.minimum_severity`](#experimentalloggerconfig)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/logger_provider.json)
+<pre>{
+  "type": [
+    "string",
+    "null"
+  ],
+  "enum": [
+    "TRACE",
+    "TRACE2",
+    "TRACE3",
+    "TRACE4",
+    "DEBUG",
+    "DEBUG2",
+    "DEBUG3",
+    "DEBUG4",
+    "INFO",
+    "INFO2",
+    "INFO3",
+    "INFO4",
+    "WARN",
+    "WARN2",
+    "WARN3",
+    "WARN4",
+    "ERROR",
+    "ERROR2",
+    "ERROR3",
+    "ERROR4",
+    "FATAL",
+    "FATAL2",
+    "FATAL3",
+    "FATAL4"
+  ]
 }</pre>
 </details>
 
@@ -2997,12 +3101,7 @@ Usages:
           ]
         },
         "minimum_severity": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 1,
-          "maximum": 24
+          "$ref": "#/$defs/ExperimentalSeverityNumber"
         },
         "trace_based": {
           "type": [
@@ -3011,6 +3110,38 @@ Usages:
           ]
         }
       }
+    },
+    "ExperimentalSeverityNumber": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "TRACE",
+        "TRACE2",
+        "TRACE3",
+        "TRACE4",
+        "DEBUG",
+        "DEBUG2",
+        "DEBUG3",
+        "DEBUG4",
+        "INFO",
+        "INFO2",
+        "INFO3",
+        "INFO4",
+        "WARN",
+        "WARN2",
+        "WARN3",
+        "WARN4",
+        "ERROR",
+        "ERROR2",
+        "ERROR3",
+        "ERROR4",
+        "FATAL",
+        "FATAL2",
+        "FATAL3",
+        "FATAL4"
+      ]
     }
   }
 }</pre>
@@ -6490,6 +6621,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | not_implemented |  |  |
+| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | not_implemented |  | * `name`: not_implemented<br>* `config`: not_implemented<br> |
@@ -6591,6 +6723,7 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
+| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `name`: unknown<br>* `config`: unknown<br> |
@@ -6692,6 +6825,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | supported |  |  |
+| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | supported |  | * `disabled`: supported<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | supported |  | * `name`: supported<br>* `config`: supported<br> |
@@ -6793,6 +6927,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
+| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `name`: unknown<br>* `config`: unknown<br> |

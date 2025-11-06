@@ -210,6 +210,10 @@ typeSupportStatuses:
     status: supported
     notes: ""
     propertyOverrides: []
+  - type: ExperimentalSeverityNumber
+    status: unknown
+    notes: ""
+    enumOverrides: []
   - type: ExperimentalTracerConfig
     status: supported
     notes: ""
