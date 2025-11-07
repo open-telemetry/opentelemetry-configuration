@@ -131,8 +131,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> |
-| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
+| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> |
+| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -145,7 +145,7 @@ Usages:
 
 Constraints: 
 
-* `additionalProperties`: `true`
+* `additionalProperties`: `false`
 
 Usages:
 
@@ -157,19 +157,21 @@ Usages:
 [JSON Schema Source File](./schema/opentelemetry_configuration.json)
 <pre>{
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": false,
   "properties": {
     "attribute_value_length_limit": {
       "type": [
         "integer",
         "null"
-      ]
+      ],
+      "minimum": 0
     },
     "attribute_count_limit": {
       "type": [
         "integer",
         "null"
-      ]
+      ],
+      "minimum": 0
     }
   }
 }</pre>
@@ -3001,7 +3003,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `processors` | `array` of [`LogRecordProcessor`](#logrecordprocessor) | `true` | No constraints. | Configure log record processors. |
+| `processors` | `array` of [`LogRecordProcessor`](#logrecordprocessor) | `true` | * `minItems`: `1`<br> | Configure log record processors. |
 | `limits` | [`LogRecordLimits`](#logrecordlimits) | `false` | No constraints. | Configure log record limits. See also attribute_limits. |
 | `logger_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` | No constraints. | Configure loggers.<br> |
 
@@ -3389,7 +3391,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `readers` | `array` of [`MetricReader`](#metricreader) | `true` | No constraints. | Configure metric readers. |
+| `readers` | `array` of [`MetricReader`](#metricreader) | `true` | * `minItems`: `1`<br> | Configure metric readers. |
 | `views` | `array` of [`View`](#view) | `false` | No constraints. | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> |
 | `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | No constraints. | Configure the exemplar filter. <br>Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br>If omitted or null, trace_based is used.<br> |
 | `meter_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | No constraints. | Configure meters.<br> |
@@ -4374,19 +4376,21 @@ No usages.
   "$defs": {
     "AttributeLimits": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": false,
       "properties": {
         "attribute_value_length_limit": {
           "type": [
             "integer",
             "null"
-          ]
+          ],
+          "minimum": 0
         },
         "attribute_count_limit": {
           "type": [
             "integer",
             "null"
-          ]
+          ],
+          "minimum": 0
         }
       }
     },
@@ -6000,7 +6004,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | No constraints. | Configure span processors. |
+| `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | * `minItems`: `1`<br> | Configure span processors. |
 | `limits` | [`SpanLimits`](#spanlimits) | `false` | No constraints. | Configure span limits. See also attribute_limits. |
 | `sampler` | [`Sampler`](#sampler) | `false` | No constraints. | Configure the sampler.<br>If omitted, parent based sampler with a root of always_on is used.<br> |
 | `tracer_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | No constraints. | Configure tracers.<br> |
@@ -6963,7 +6967,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`BatchSpanProcessor`](#batchspanprocessor) | supported |  | * `schedule_delay`: supported<br>* `export_timeout`: supported<br>* `max_queue_size`: supported<br>* `max_export_batch_size`: supported<br>* `exporter`: supported<br> |
 | [`CardinalityLimits`](#cardinalitylimits) | supported |  | * `default`: supported<br>* `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
 | [`ConsoleExporter`](#consoleexporter) | supported |  |  |
-| [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `temporality_preference`: ignored<br>* `default_histogram_aggregation`: not_implemented<br> |
+| [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `temporality_preference`: ignored<br>* `default_histogram_aggregation`: not_implemented<br> |
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
 | [`DropAggregation`](#dropaggregation) | supported |  |  |
 | [`ExemplarFilter`](#exemplarfilter) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `trace_based`: supported<br> |
