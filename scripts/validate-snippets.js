@@ -1,73 +1,68 @@
 import fs from "fs";
-import {schemaDirPath, snippetsDirPath} from "./util.js";
+import {schemaDirPath} from "./util.js";
 import {readJsonSchemaTypes} from "./json-schema.js";
 import Ajv from "ajv/dist/2020.js";
-import yaml from "yaml";
+import {readSnippets} from "./snippets.js";
 
 const jsonSchemaTypesByType = {};
-readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type)
+readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type);
 
-fs.readdirSync(snippetsDirPath)
-    .forEach(file => {
-       const snippetContent = fs.readFileSync(snippetsDirPath + file, "utf-8");
-       const snippetYaml = yaml.parse(snippetContent);
-       const jsonSchemaType = jsonSchemaTypeFromFileName(file, jsonSchemaTypesByType);
-       const jsonSchemaTypeRef = computeJsonSchemaTypeRef(jsonSchemaType);
-
-       console.log(file);
-       console.log(jsonSchemaType.type);
-       console.log(jsonSchemaTypeRef);
-       console.log(jsonSchemaType.schema);
-       console.log(snippetYaml);
-
-        // TODO: use correct json schema version
-        const ajv = new Ajv();
-        //		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text
-        //		-s ./schema/opentelemetry_configuration.json
-        //		-r "./schema/!(opentelemetry_configuration.json|*.yaml)"
-        //		-d ./out/$$f \
-
-       fs.readdirSync(schemaDirPath)
-           .filter(file => file.endsWith('.json'))
-           .forEach(file =>{
-               const rawContent = fs.readFileSync(schemaDirPath + file, "utf-8");
-               const jsonContent = JSON.parse(rawContent);
-               ajv.addSchema(jsonContent);
-           });
-
-       const validate = ajv.getSchema(jsonSchemaTypeRef);
-       if (!validate) {
-           throw new Error(`Unable to resolve schema for JSON schema type ref: ${jsonSchemaTypeRef}`);
-       }
-
-        try {
-           const valid = validate(snippetYaml);
-           if (!valid) {
-               console.error(ajv.errorsText(validate.errors));
-           }
-       } catch (error) {
-           console.error(error.message);
-       }
+// Initialize ajv
+const ajv = new Ajv({ allErrors: true });
+fs.readdirSync(schemaDirPath)
+    .filter(file => file.endsWith('.json'))
+    .forEach(file =>{
+        const rawContent = fs.readFileSync(schemaDirPath + file, "utf-8");
+        const jsonContent = JSON.parse(rawContent);
+        ajv.addSchema(jsonContent);
     });
 
+const messages = [];
+
+readSnippets()
+    .forEach(snippet => {
+        const jsonSchemaType = jsonSchemaTypesByType[snippet.jsonSchemaType];
+        if (!jsonSchemaType) {
+            messages.push(`Error validating snippet ${snippet.file}. Resolved JSON schema type not found: ${snippet.jsonSchemaType}`);
+            return;
+        }
+        const jsonSchemaTypeRef = computeJsonSchemaTypeRef(jsonSchemaType);
+        const validate = ajv.getSchema(jsonSchemaTypeRef);
+        if (!validate) {
+            messages.push(`Error validating snippet ${snippet.file}. Unable to resolve schema for JSON schema type ref: ${jsonSchemaTypeRef}`);
+            return;
+        }
+
+        try {
+            const valid = validate(snippet.parsedContent);
+            if (!valid) {
+                messages.push(`Snippet ${snippet.file} is invalid: `);
+                validate.errors.forEach(error => messages.push(`  ${formatError(error)}`));
+            }
+        } catch (error) {
+            messages.push(`Error validating snippet ${snippet.file}: ${error.message}`);
+        }
+    });
+
+if (messages.length > 0) {
+    messages.forEach(message => console.log(message));
+    process.exit(1);
+} else {
+    console.log("All snippets are valid.");
+    process.exit(0);
+}
 
 // Helper functions
 
-const snippetFileNameFormat = "<json_schema_type>_<snippet_description>.yaml";
-
-function jsonSchemaTypeFromFileName(file, jsonSchemaTypesByType) {
-    const fileParts = file.split('_');
-    if (fileParts.length < 2) {
-        throw new Error(`Invalid snippet file name: ${file}. File names follow the form ${snippetFileNameFormat}`);
-    }
-    const jsonSchemaType = jsonSchemaTypesByType[fileParts[0]];
-    if (!jsonSchemaType) {
-        throw new Error(`Invalid snippet file name: ${file}. Resolved JSON schema type ${jsonSchemaType} not found in jsonSchemaTypesByType.`);
-    }
-    return jsonSchemaType;
-}
-
 function computeJsonSchemaTypeRef(jsonSchemaType) {
     const fileId = jsonSchemaType.fileContent['$id'];
-    return `${fileId}#/$defs/${jsonSchemaType.type}`;
+    if (jsonSchemaType.jsonSchemaPath === '.') {
+        return fileId;
+    }
+    return `${fileId}${jsonSchemaType.jsonSchemaPath}`;
+}
+
+function formatError(error) {
+    const path = error.instancePath.replaceAll('\/', '.');
+    return `${path} ${error.message}`;
 }
