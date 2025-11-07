@@ -101,7 +101,7 @@
         "LogRecordProcessor": {
             "type": "object",
             "additionalProperties": {
-                "type": ["object"]
+                "type": ["object", "null"]
             },
             "minProperties": 1,
             "maxProperties": 1,
