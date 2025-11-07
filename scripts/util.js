@@ -17,3 +17,5 @@ export const metaSchemaLanguageStatusPath = (language) => schemaDirPath + metaSc
 
 export const isExperimentalProperty = (property) => property.endsWith('/development');
 export const isExperimentalType = (type) => type.startsWith('Experimental');
+
+export const snippetsDirPath = __dirname + "/../snippets/";
