@@ -192,6 +192,10 @@ typeSupportStatuses:
     propertyOverrides:
       - property: translation_strategy
         status: not_implemented
+      - property: without_scope_info
+        status: ignored
+      - property: without_target_info
+        status: ignored
   - type: ExperimentalResourceDetection
     status: supported
     notes: ""

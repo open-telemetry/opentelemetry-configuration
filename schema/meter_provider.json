@@ -186,6 +186,12 @@
                 "port": {
                     "type": ["integer", "null"]
                 },
+                "without_scope_info": {
+                    "type": ["boolean", "null"]
+                },
+                "without_target_info": {
+                    "type": ["boolean", "null"]
+                },
                 "with_resource_constant_labels": {
                     "$ref": "common.json#/$defs/IncludeExclude"
                 },

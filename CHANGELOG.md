@@ -6,7 +6,7 @@
 
 * **BREAKING**: Move certificate configuration under `tls` block
   ([#331](https://github.com/open-telemetry/opentelemetry-configuration/pull/331))
-* **BREAKING**: Remove `without_scope_info` from PrometheusMetricExporter
+* Add `without_target_info` to PrometheusMetricExporter
   ([#331](https://github.com/open-telemetry/opentelemetry-configuration/pull/376))
 
 ## [v1.0.0-rc.2] - 2025-09-26

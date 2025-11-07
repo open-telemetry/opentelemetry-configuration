@@ -386,6 +386,14 @@
       description: |
         Configure port.
         If omitted or null, 9464 is used.
+    - property: without_scope_info
+      description: |
+        Configure Prometheus Exporter to produce metrics without a scope info metric.
+        If omitted or null, false is used.
+    - property: without_target_info
+      description: |
+        Configure Prometheus Exporter to produce metrics without a target info metric.
+        If omitted or null, false is used.
     - property: with_resource_constant_labels
       description: Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
     - property: translation_strategy

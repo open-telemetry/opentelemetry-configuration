@@ -210,6 +210,12 @@ meter_provider:
             # Configure port.
             # If omitted or null, 9464 is used.
             port: 9464
+            # Configure Prometheus Exporter to produce metrics without a scope info metric.
+            # If omitted or null, false is used.
+            without_scope_info: false
+            # Configure Prometheus Exporter to produce metrics without a target info metric.
+            # If omitted or null, false is used.
+            without_target_info: false
             # Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
             with_resource_constant_labels:
               # Configure list of value patterns to include.
