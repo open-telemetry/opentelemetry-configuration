@@ -137,6 +137,7 @@ export class JsonSchemaProperty {
     types;
     isSeq;
     isRequired;
+    isNullable;
     schema;
 
     constructor(property, types, isSeq, isRequired, schema) {
@@ -144,7 +145,14 @@ export class JsonSchemaProperty {
         this.types = types;
         this.isSeq = isSeq;
         this.isRequired = isRequired;
+        this.isNullable = types.includes('null');
         this.schema = schema;
+    }
+
+    toMetaSchemaProperty() {
+        const defaultBehavior = this.isRequired ? null : "TODO";
+        const nullBehavior = this.isRequired && this.isNullable ? "TODO" : null;
+        return new MetaSchemaProperty(this.property, "TODO", defaultBehavior, nullBehavior);
     }
 }
 
