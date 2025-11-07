@@ -59,7 +59,7 @@ typeSupportStatuses:
     notes: ""
     propertyOverrides: []
   - type: ConsoleMetricExporter
-    status: unknown
+    status: supported
     notes: ""
     propertyOverrides:
       - property: default_histogram_aggregation
