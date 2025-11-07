@@ -287,6 +287,8 @@ function resolveAndFormatConstraints(schema, linebreak) {
         'maxContains',
         'uniqueItems',
         'const',
+        'minItems',
+        'maxItems',
         // skip enum because we have special formatting for enum types
     ];
 
