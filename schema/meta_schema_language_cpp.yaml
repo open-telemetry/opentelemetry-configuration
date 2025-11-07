@@ -160,6 +160,8 @@ typeSupportStatuses:
     status: supported
     notes: ""
     propertyOverrides:
+      - property: without_scope_info
+        status: unknown
       - property: without_target_info
         status: unknown
   - type: ExperimentalResourceDetection

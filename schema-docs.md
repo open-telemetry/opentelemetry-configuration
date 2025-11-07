@@ -1992,7 +1992,7 @@ Usages:
 |---|---|---|---|---|
 | `host` | supported | unknown | supported | unknown |
 | `port` | supported | unknown | supported | unknown |
-| `without_scope_info` | supported | unknown | ignored | unknown |
+| `without_scope_info` | unknown | unknown | ignored | unknown |
 | `without_target_info` | unknown | unknown | ignored | unknown |
 | `with_resource_constant_labels` | supported | unknown | supported | unknown |
 | `translation_strategy` | supported | unknown | not_implemented | unknown |
@@ -6468,7 +6468,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | not_implemented |  | * `peer`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | not_implemented |  |  |
-| [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `without_scope_info`: supported<br>* `without_target_info`: unknown<br>* `with_resource_constant_labels`: supported<br>* `translation_strategy`: supported<br> |
+| [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br>* `with_resource_constant_labels`: supported<br>* `translation_strategy`: supported<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | not_implemented |  |  |
