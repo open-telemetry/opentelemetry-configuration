@@ -256,7 +256,7 @@ typeSupportStatuses:
     status: unknown
     notes: ""
     propertyOverrides: []
-  - type: OpentelemetryConfiguration
+  - type: OpenTelemetryConfiguration
     status: unknown
     notes: ""
     propertyOverrides: []
