@@ -1187,3 +1187,14 @@
     - property: local_parent_not_sampled
       description: Configures the sampler for spans with a local parent that is not sampled.
   isSdkExtensionPlugin: false
+- type: ExperimentalComposableAlwaysOffSampler
+  properties: []
+  isSdkExtensionPlugin: false
+- type: ExperimentalComposableAlwaysOnSampler
+  properties: []
+  isSdkExtensionPlugin: false
+- type: ExperimentalComposableProbabilitySampler
+  properties:
+    - property: ratio
+      description: TODO
+  isSdkExtensionPlugin: false

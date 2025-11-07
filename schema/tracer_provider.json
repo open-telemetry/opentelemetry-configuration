@@ -92,28 +92,6 @@
             "type": ["object", "null"],
             "additionalProperties": false
         },
-        "ExperimentalComposableSampler": {
-            "type": "object",
-            "additionalProperties": {
-                "type": ["object", "null"]
-            },
-            "minProperties": 1,
-            "maxProperties": 1,
-            "properties": {
-                "always_off": {
-                    "$ref": "#/$defs/AlwaysOffSampler"
-                },
-                "always_on": {
-                    "$ref": "#/$defs/AlwaysOnSampler"
-                },
-                "parent_based": {
-                    "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
-                },
-                "probability": {
-                    "$ref": "#/$defs/ExperimentalProbabilitySampler"
-                }
-            }
-        },
         "ExperimentalJaegerRemoteSampler": {
             "type": ["object", "null"],
             "additionalProperties": false,
@@ -151,6 +129,36 @@
                 }
             }
         },
+        "ExperimentalProbabilitySampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "ratio": {
+                    "type": ["number", "null"],
+                    "minimum": 0,
+                    "maximum": 1
+                }
+            }
+        },
+        "TraceIdRatioBasedSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "ratio": {
+                    "type": ["number", "null"],
+                    "minimum": 0,
+                    "maximum": 1
+                }
+            }
+        },
+        "ExperimentalComposableAlwaysOffSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "ExperimentalComposableAlwaysOnSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
         "ExperimentalComposableParentBasedSampler": {
             "type": ["object", "null"],
             "additionalProperties": false,
@@ -172,7 +180,7 @@
                 }
             }
         },
-        "ExperimentalProbabilitySampler": {
+        "ExperimentalComposableProbabilitySampler": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -183,14 +191,25 @@
                 }
             }
         },
-        "TraceIdRatioBasedSampler": {
-            "type": ["object", "null"],
-            "additionalProperties": false,
+        "ExperimentalComposableSampler": {
+            "type": "object",
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
+            "minProperties": 1,
+            "maxProperties": 1,
             "properties": {
-                "ratio": {
-                    "type": ["number", "null"],
-                    "minimum": 0,
-                    "maximum": 1
+                "always_off": {
+                    "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
+                },
+                "always_on": {
+                    "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
+                },
+                "parent_based": {
+                    "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
+                },
+                "probability": {
+                    "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
                 }
             }
         },

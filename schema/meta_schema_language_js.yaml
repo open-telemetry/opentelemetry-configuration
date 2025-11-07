@@ -72,7 +72,19 @@ typeSupportStatuses:
     status: unknown
     notes: ""
     enumOverrides: []
+  - type: ExperimentalComposableAlwaysOffSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalComposableAlwaysOnSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
   - type: ExperimentalComposableParentBasedSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalComposableProbabilitySampler
     status: unknown
     notes: ""
     propertyOverrides: []
