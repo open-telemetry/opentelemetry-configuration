@@ -875,6 +875,242 @@ Usages:
 }</pre>
 </details>
 
+## ExperimentalComposableAlwaysOffSampler <a id="experimentalcomposablealwaysoffsampler"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
+No properties.
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalComposableSampler.always_off`](#experimentalcomposablesampler)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false
+}</pre>
+</details>
+
+## ExperimentalComposableAlwaysOnSampler <a id="experimentalcomposablealwaysonsampler"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
+No properties.
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalComposableSampler.always_on`](#experimentalcomposablesampler)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false
+}</pre>
+</details>
+
+## ExperimentalComposableParentBasedSampler <a id="experimentalcomposableparentbasedsampler"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `root` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configures the sampler for spans with no parent. |
+| `remote_parent_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configures the sampler for spans with a remote parent that is sampled. |
+| `remote_parent_not_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configures the sampler for spans with a remote parent that is not sampled. |
+| `local_parent_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configures the sampler for spans with a local parent that is sampled. |
+| `local_parent_not_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configures the sampler for spans with a local parent that is not sampled. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `root` | unknown | unknown | unknown | unknown |
+| `remote_parent_sampled` | unknown | unknown | unknown | unknown |
+| `remote_parent_not_sampled` | unknown | unknown | unknown | unknown |
+| `local_parent_sampled` | unknown | unknown | unknown | unknown |
+| `local_parent_not_sampled` | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalComposableSampler.parent_based`](#experimentalcomposablesampler)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "root": {
+      "$ref": "#/$defs/ExperimentalComposableSampler"
+    },
+    "remote_parent_sampled": {
+      "$ref": "#/$defs/ExperimentalComposableSampler"
+    },
+    "remote_parent_not_sampled": {
+      "$ref": "#/$defs/ExperimentalComposableSampler"
+    },
+    "local_parent_sampled": {
+      "$ref": "#/$defs/ExperimentalComposableSampler"
+    },
+    "local_parent_not_sampled": {
+      "$ref": "#/$defs/ExperimentalComposableSampler"
+    }
+  }
+}</pre>
+</details>
+
+## ExperimentalComposableProbabilitySampler <a id="experimentalcomposableprobabilitysampler"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br>If omitted or null, 1.0 is used.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `ratio` | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalComposableSampler.probability`](#experimentalcomposablesampler)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.json)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "ratio": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    }
+  }
+}</pre>
+</details>
+
+## ExperimentalComposableSampler <a id="experimentalcomposablesampler"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `always_off` | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | `false` | No constraints. | Configure sampler to be always_off. |
+| `always_on` | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | `false` | No constraints. | Configure sampler to be always_on. |
+| `probability` | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | `false` | No constraints. | Configure sampler to be probability. |
+| `parent_based` | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | `false` | No constraints. | Configure sampler to be parent_based. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `always_off` | unknown | unknown | unknown | unknown |
+| `always_on` | unknown | unknown | unknown | unknown |
+| `probability` | unknown | unknown | unknown | unknown |
+| `parent_based` | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `{"type":["object","null"]}`
+* `minProperties`: `1`
+* `maxProperties`: `1`
+
+Usages:
+
+* [`Sampler.composite/development`](#sampler)
+* [`ExperimentalComposableParentBasedSampler.root`](#experimentalcomposableparentbasedsampler)
+* [`ExperimentalComposableParentBasedSampler.remote_parent_sampled`](#experimentalcomposableparentbasedsampler)
+* [`ExperimentalComposableParentBasedSampler.remote_parent_not_sampled`](#experimentalcomposableparentbasedsampler)
+* [`ExperimentalComposableParentBasedSampler.local_parent_sampled`](#experimentalcomposableparentbasedsampler)
+* [`ExperimentalComposableParentBasedSampler.local_parent_not_sampled`](#experimentalcomposableparentbasedsampler)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.json)
+<pre>{
+  "type": "object",
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ]
+  },
+  "minProperties": 1,
+  "maxProperties": 1,
+  "properties": {
+    "always_off": {
+      "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
+    },
+    "always_on": {
+      "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
+    },
+    "parent_based": {
+      "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
+    },
+    "probability": {
+      "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
+    }
+  }
+}</pre>
+</details>
+
 ## ExperimentalContainerResourceDetector <a id="experimentalcontainerresourcedetector"></a>
 
 > [!WARNING]
@@ -5234,6 +5470,7 @@ Usages:
 | `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | No constraints. | Configure sampler to be trace_id_ratio_based. |
 | `probability/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | No constraints. | Configure sampler to be probability. |
 | `jaeger_remote/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | `false` | No constraints. | TODO |
+| `composite/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configure sampler to be composite. |
 
 <details>
 <summary>Language support status</summary>
@@ -5246,6 +5483,7 @@ Usages:
 | `trace_id_ratio_based` | supported | unknown | supported | unknown |
 | `probability/development` | supported | unknown | ignored | unknown |
 | `jaeger_remote/development` | supported | unknown | supported | unknown |
+| `composite/development` | supported | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -5284,6 +5522,9 @@ Usages:
     },
     "always_on": {
       "$ref": "#/$defs/AlwaysOnSampler"
+    },
+    "composite/development": {
+      "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "jaeger_remote/development": {
       "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
@@ -5876,6 +6117,9 @@ Usages:
         "always_on": {
           "$ref": "#/$defs/AlwaysOnSampler"
         },
+        "composite/development": {
+          "$ref": "#/$defs/ExperimentalComposableSampler"
+        },
         "jaeger_remote/development": {
           "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
         },
@@ -5984,6 +6228,86 @@ Usages:
           ],
           "minimum": 0,
           "maximum": 1
+        }
+      }
+    },
+    "ExperimentalComposableAlwaysOffSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalComposableAlwaysOnSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalComposableParentBasedSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "$ref": "#/$defs/ExperimentalComposableSampler"
+        },
+        "remote_parent_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler"
+        },
+        "remote_parent_not_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler"
+        },
+        "local_parent_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler"
+        },
+        "local_parent_not_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler"
+        }
+      }
+    },
+    "ExperimentalComposableProbabilitySampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "ExperimentalComposableSampler": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "always_off": {
+          "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
+        },
+        "always_on": {
+          "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
+        },
+        "parent_based": {
+          "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
+        },
+        "probability": {
+          "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
         }
       }
     },
@@ -6435,6 +6759,11 @@ Latest supported file format: `1.0.0-rc.2`
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
 | [`DropAggregation`](#dropaggregation) | supported |  |  |
 | [`ExemplarFilter`](#exemplarfilter) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `trace_based`: not_implemented<br> |
+| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
+| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
+| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |
+| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `probability`: unknown<br>* `parent_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | not_implemented |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | not_applicable |  | * `peer`: not_applicable<br>* `http`: not_applicable<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | not_implemented |  |  |
@@ -6495,7 +6824,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`PullMetricReader`](#pullmetricreader) | supported |  | * `exporter`: supported<br>* `producers`: supported<br>* `cardinality_limits`: supported<br> |
 | [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br> |
 | [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `detection/development`: supported<br>* `schema_url`: supported<br>* `attributes_list`: supported<br> |
-| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `probability/development`: supported<br>* `jaeger_remote/development`: supported<br> |
+| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `probability/development`: supported<br>* `jaeger_remote/development`: supported<br>* `composite/development`: supported<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br>* `zipkin`: supported<br> |
@@ -6536,6 +6865,11 @@ Latest supported file format: `0.3.0`
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
 | [`DropAggregation`](#dropaggregation) | unknown |  |  |
 | [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
+| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
+| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
+| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |
+| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `probability`: unknown<br>* `parent_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `peer`: unknown<br>* `http`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
@@ -6596,7 +6930,7 @@ Latest supported file format: `0.3.0`
 | [`PullMetricReader`](#pullmetricreader) | unknown |  | * `exporter`: unknown<br>* `producers`: unknown<br>* `cardinality_limits`: unknown<br> |
 | [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `otlp_http`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_file/development`: unknown<br>* `console`: unknown<br> |
 | [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `detection/development`: unknown<br>* `schema_url`: unknown<br>* `attributes_list`: unknown<br> |
-| [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `probability/development`: unknown<br>* `jaeger_remote/development`: unknown<br> |
+| [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `probability/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `composite/development`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SpanExporter`](#spanexporter) | unknown |  | * `otlp_http`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_file/development`: unknown<br>* `console`: unknown<br>* `zipkin`: unknown<br> |
@@ -6637,6 +6971,11 @@ Latest supported file format: `1.0.0-rc.1`
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
 | [`DropAggregation`](#dropaggregation) | supported |  |  |
 | [`ExemplarFilter`](#exemplarfilter) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `trace_based`: supported<br> |
+| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
+| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
+| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |
+| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `probability`: unknown<br>* `parent_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | supported |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | supported |  | * `peer`: supported<br>* `http`: supported<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | supported |  |  |
@@ -6697,7 +7036,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`PullMetricReader`](#pullmetricreader) | supported |  | * `exporter`: supported<br>* `producers`: not_implemented<br>* `cardinality_limits`: supported<br> |
 | [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br> |
 | [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `detection/development`: supported<br>* `schema_url`: ignored<br>* `attributes_list`: supported<br> |
-| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `probability/development`: ignored<br>* `jaeger_remote/development`: supported<br> |
+| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `probability/development`: ignored<br>* `jaeger_remote/development`: supported<br>* `composite/development`: supported<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `otlp_http`: supported<br>* `otlp_grpc`: supported<br>* `otlp_file/development`: supported<br>* `console`: supported<br>* `zipkin`: supported<br> |
@@ -6738,6 +7077,11 @@ Latest supported file format: `1.0.0-rc.2`
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
 | [`DropAggregation`](#dropaggregation) | unknown |  |  |
 | [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
+| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
+| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
+| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |
+| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `probability`: unknown<br>* `parent_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `peer`: unknown<br>* `http`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
@@ -6798,7 +7142,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`PullMetricReader`](#pullmetricreader) | unknown |  | * `exporter`: unknown<br>* `producers`: unknown<br>* `cardinality_limits`: unknown<br> |
 | [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `otlp_http`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_file/development`: unknown<br>* `console`: unknown<br> |
 | [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `detection/development`: unknown<br>* `schema_url`: unknown<br>* `attributes_list`: unknown<br> |
-| [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `probability/development`: unknown<br>* `jaeger_remote/development`: unknown<br> |
+| [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `probability/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `composite/development`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SpanExporter`](#spanexporter) | unknown |  | * `otlp_http`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_file/development`: unknown<br>* `console`: unknown<br>* `zipkin`: unknown<br> |
