@@ -131,8 +131,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> |
-| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
+| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> |
+| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -163,13 +163,15 @@ Usages:
       "type": [
         "integer",
         "null"
-      ]
+      ],
+      "minimum": 0
     },
     "attribute_count_limit": {
       "type": [
         "integer",
         "null"
-      ]
+      ],
+      "minimum": 0
     }
   }
 }</pre>
@@ -4144,13 +4146,15 @@ No usages.
           "type": [
             "integer",
             "null"
-          ]
+          ],
+          "minimum": 0
         },
         "attribute_count_limit": {
           "type": [
             "integer",
             "null"
-          ]
+          ],
+          "minimum": 0
         }
       }
     },
