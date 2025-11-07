@@ -292,7 +292,7 @@ typeSupportStatuses:
     status: ignored
     notes: ""
     propertyOverrides: []
-  - type: OpentelemetryConfiguration
+  - type: OpenTelemetryConfiguration
     status: supported
     notes: ""
     propertyOverrides:
