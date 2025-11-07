@@ -809,7 +809,8 @@ tracer_provider:
         composite/development:
           # Configure sampler to be probability.
           probability:
-            # TODO
+            # Configure ratio.
+            # If omitted or null, 1.0 is used.
             ratio: 0.001
       # Configure local_parent_not_sampled sampler.
       # If omitted or null, always_off is used.

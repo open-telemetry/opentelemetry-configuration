@@ -1196,5 +1196,7 @@
 - type: ExperimentalComposableProbabilitySampler
   properties:
     - property: ratio
-      description: TODO
+      description: |
+        Configure ratio.
+        If omitted or null, 1.0 is used.
   isSdkExtensionPlugin: false
