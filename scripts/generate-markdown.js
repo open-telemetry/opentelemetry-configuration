@@ -2,6 +2,7 @@ import {readJsonSchemaTypes} from "./json-schema.js";
 import {KNOWN_LANGUAGES, readAndFixMetaSchema} from "./meta-schema.js";
 import fs from "node:fs";
 import {isExperimentalProperty, isExperimentalType, markdownDocPath} from "./util.js";
+import {readSnippets} from "./snippets.js";
 
 const { messages, metaSchema } = readAndFixMetaSchema();
 
@@ -12,6 +13,14 @@ if (messages.length > 0) {
 const jsonSchemaTypes = readJsonSchemaTypes();
 const jsonSchemaTypesByType = {};
 jsonSchemaTypes.forEach(type => jsonSchemaTypesByType[type.type] = type);
+
+const snippetsByType = {};
+readSnippets().forEach(snippet => {
+    if (!(snippet.jsonSchemaType in snippetsByType)) {
+        snippetsByType[snippet.jsonSchemaType] = [];
+    }
+    snippetsByType[snippet.jsonSchemaType].push(snippet);
+});
 
 const output = [];
 
@@ -151,6 +160,26 @@ metaSchema.types.forEach(metaSchemaType => {
         output.push('\n');
     } else {
         output.push('No constraints.\n\n');
+    }
+
+    // Snippets
+    const snippetsForType = snippetsByType[type];
+    if (!snippetsForType) {
+        output.push("No snippets.\n\n");
+    } else {
+        output.push("Snippets:\n\n");
+        snippetsForType.forEach(snippet => {
+            output.push(`<details>\n`);
+            output.push(`<summary>${snippet.description}</summary>\n\n`);
+            output.push(`[Snippet Source File](./snippets/${snippet.file})\n`)
+            output.push(`\`\`\`yaml\n`);
+            output.push(snippet.rawContent);
+            if (!snippet.rawContent.endsWith('\n')) {
+                output.push('\n');
+            }
+            output.push(`\`\`\`\n`);
+            output.push('</details>\n\n');
+        });
     }
 
     // Usages

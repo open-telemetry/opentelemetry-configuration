@@ -41,6 +41,8 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+No snippets.
+
 Usages:
 
 * [`ViewStream.aggregation`](#viewstream)
@@ -85,6 +87,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`Sampler.always_off`](#sampler)
@@ -109,6 +113,8 @@ No properties.
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -146,6 +152,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -199,6 +207,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["name","value"]`
+
+No snippets.
 
 Usages:
 
@@ -292,6 +302,8 @@ This is a enum type.
 
 No constraints.
 
+No snippets.
+
 Usages:
 
 * [`AttributeNameValue.type`](#attributenamevalue)
@@ -326,6 +338,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`TextMapPropagator.b3multi`](#textmappropagator)
@@ -351,6 +365,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`TextMapPropagator.b3`](#textmappropagator)
@@ -375,6 +391,8 @@ No properties.
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -414,6 +432,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -478,6 +498,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
+
+No snippets.
 
 Usages:
 
@@ -555,6 +577,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
+
+No snippets.
 
 Usages:
 
@@ -638,6 +662,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`PeriodicMetricReader.cardinality_limits`](#periodicmetricreader)
@@ -719,6 +745,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`LogRecordExporter.console`](#logrecordexporter)
@@ -757,6 +785,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`PushMetricExporter.console`](#pushmetricexporter)
@@ -790,6 +820,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`Aggregation.default`](#aggregation)
@@ -814,6 +846,8 @@ No properties.
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -854,6 +888,8 @@ This is a enum type.
 
 No constraints.
 
+No snippets.
+
 Usages:
 
 * [`MeterProvider.exemplar_filter`](#meterprovider)
@@ -885,6 +921,8 @@ No properties.
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -926,6 +964,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`ExperimentalInstrumentation.general`](#experimentalinstrumentation)
@@ -958,6 +998,8 @@ No properties.
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -998,6 +1040,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -1050,6 +1094,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`ExperimentalGeneralInstrumentation.http`](#experimentalgeneralinstrumentation)
@@ -1094,6 +1140,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -1165,6 +1213,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -1341,6 +1391,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`Sampler.jaeger_remote/development`](#sampler)
@@ -1386,6 +1438,8 @@ No properties.
 Constraints: 
 
 * `additionalProperties`: `{"type":"object"}`
+
+No snippets.
 
 Usages:
 
@@ -1434,6 +1488,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`ExperimentalLoggerConfigurator.default_config`](#experimentalloggerconfigurator)
@@ -1480,6 +1536,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -1531,6 +1589,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`ExperimentalLoggerConfigurator.loggers`](#experimentalloggerconfigurator)
@@ -1578,6 +1638,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`ExperimentalMeterConfigurator.default_config`](#experimentalmeterconfigurator)
@@ -1624,6 +1686,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -1675,6 +1739,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`ExperimentalMeterConfigurator.meters`](#experimentalmeterconfigurator)
@@ -1721,6 +1787,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -1772,6 +1840,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -1825,6 +1895,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`ExperimentalGeneralInstrumentation.peer`](#experimentalgeneralinstrumentation)
@@ -1870,6 +1942,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["peer","service"]`
+
+No snippets.
 
 Usages:
 
@@ -1918,6 +1992,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`Sampler.probability/development`](#sampler)
@@ -1955,6 +2031,8 @@ No properties.
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -2001,6 +2079,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -2077,6 +2157,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`Resource.detection/development`](#resource)
@@ -2133,6 +2215,8 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+No snippets.
+
 Usages:
 
 * [`ExperimentalResourceDetection.detectors`](#experimentalresourcedetection)
@@ -2179,6 +2263,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`ExperimentalResourceDetector.service`](#experimentalresourcedetector)
@@ -2216,6 +2302,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -2263,6 +2351,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -2314,6 +2404,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`ExperimentalTracerConfigurator.tracers`](#experimentaltracerconfigurator)
@@ -2359,6 +2451,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -2411,6 +2505,8 @@ This is a enum type.
 
 No constraints.
 
+No snippets.
+
 Usages:
 
 * [`OtlpHttpMetricExporter.default_histogram_aggregation`](#otlphttpmetricexporter)
@@ -2455,6 +2551,8 @@ This is a enum type.
 </details>
 
 No constraints.
+
+No snippets.
 
 Usages:
 
@@ -2503,6 +2601,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -2570,6 +2670,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`OtlpHttpExporter.tls`](#otlphttpexporter)
@@ -2627,6 +2729,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -2688,6 +2792,8 @@ This is a enum type.
 
 No constraints.
 
+No snippets.
+
 Usages:
 
 * [`ViewSelector.instrument_type`](#viewselector)
@@ -2721,6 +2827,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`TextMapPropagator.jaeger`](#textmappropagator)
@@ -2745,6 +2853,8 @@ No properties.
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -2785,6 +2895,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["processors"]`
+
+No snippets.
 
 Usages:
 
@@ -3012,6 +3124,8 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+No snippets.
+
 Usages:
 
 * [`SimpleLogRecordProcessor.exporter`](#simplelogrecordprocessor)
@@ -3068,6 +3182,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`LoggerProvider.limits`](#loggerprovider)
@@ -3122,6 +3238,8 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+No snippets.
+
 Usages:
 
 * [`LoggerProvider.processors`](#loggerprovider)
@@ -3175,6 +3293,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["readers"]`
+
+No snippets.
 
 Usages:
 
@@ -3896,6 +4016,8 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+No snippets.
+
 Usages:
 
 * [`PeriodicMetricReader.producers`](#periodicmetricreader)
@@ -3945,6 +4067,8 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+No snippets.
+
 Usages:
 
 * [`MeterProvider.readers`](#meterprovider)
@@ -3990,6 +4114,8 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["name","value"]`
 
+No snippets.
+
 Usages:
 
 * [`OtlpHttpExporter.headers`](#otlphttpexporter)
@@ -4029,6 +4155,8 @@ No properties.
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -4083,6 +4211,8 @@ Constraints:
 
 * `additionalProperties`: `true`
 * `required`: `["file_format"]`
+
+No snippets.
 
 No usages.
 
@@ -4188,6 +4318,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`TextMapPropagator.ottrace`](#textmappropagator)
@@ -4232,6 +4364,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -4319,6 +4453,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`PushMetricExporter.otlp_grpc`](#pushmetricexporter)
@@ -4398,6 +4534,8 @@ This is a enum type.
 
 No constraints.
 
+No snippets.
+
 Usages:
 
 * [`OtlpHttpExporter.encoding`](#otlphttpexporter)
@@ -4448,6 +4586,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -4542,6 +4682,18 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+Snippets:
+
+<details>
+<summary>Use Base2 Exponential Histogram</summary>
+
+[Snippet Source File](./snippets/OtlpHttpMetricExporter_use_base2_exponential_histogram.yaml)
+```yaml
+endpoint: http://localhost:4317
+default_histogram_aggregation: base2_exponential_bucket_histogram
+```
+</details>
+
 Usages:
 
 * [`PushMetricExporter.otlp_http`](#pushmetricexporter)
@@ -4630,6 +4782,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`Sampler.parent_based`](#sampler)
@@ -4690,6 +4844,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
+
+No snippets.
 
 Usages:
 
@@ -4753,6 +4909,8 @@ Usages:
 </details>
 
 No constraints.
+
+No snippets.
 
 Usages:
 
@@ -4880,6 +5038,8 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+No snippets.
+
 Usages:
 
 * [`PullMetricReader.exporter`](#pullmetricreader)
@@ -4928,6 +5088,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
+
+No snippets.
 
 Usages:
 
@@ -4988,6 +5150,8 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+No snippets.
+
 Usages:
 
 * [`PeriodicMetricReader.exporter`](#periodicmetricreader)
@@ -5046,6 +5210,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -5254,6 +5420,29 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+Snippets:
+
+<details>
+<summary>Parent Based</summary>
+
+[Snippet Source File](./snippets/Sampler_parent_based.yaml)
+```yaml
+parent_based:
+  root:
+    trace_id_ratio_based:
+      ratio: 0.0001
+  remote_parent_sampled:
+    always_on:
+  remote_parent_not_sampled:
+    probability/development:
+      ratio: 0.01
+  local_parent_sampled:
+    always_on:
+  local_parent_not_sampled:
+    always_off:
+```
+</details>
+
 Usages:
 
 * [`TracerProvider.sampler`](#tracerprovider)
@@ -5320,6 +5509,8 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
 
+No snippets.
+
 Usages:
 
 * [`LogRecordProcessor.simple`](#logrecordprocessor)
@@ -5360,6 +5551,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
+
+No snippets.
 
 Usages:
 
@@ -5412,6 +5605,8 @@ Constraints:
 * `additionalProperties`: `{"type":["object","null"]}`
 * `minProperties`: `1`
 * `maxProperties`: `1`
+
+No snippets.
 
 Usages:
 
@@ -5479,6 +5674,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -5562,6 +5759,8 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+No snippets.
+
 Usages:
 
 * [`TracerProvider.processors`](#tracerprovider)
@@ -5598,6 +5797,8 @@ No properties.
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -5648,6 +5849,8 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+No snippets.
+
 Usages:
 
 * [`Propagator.composite`](#propagator)
@@ -5697,6 +5900,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`TextMapPropagator.tracecontext`](#textmappropagator)
@@ -5731,6 +5936,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -5783,6 +5990,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 * `required`: `["processors"]`
+
+No snippets.
 
 Usages:
 
@@ -6187,6 +6396,24 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["selector","stream"]`
 
+Snippets:
+
+<details>
+<summary>Override Default Histogram Buckets</summary>
+
+[Snippet Source File](./snippets/View_override_default_histogram_buckets.yaml)
+```yaml
+# select a specific histogram instrument and override the default buckets
+selector:
+  instrument_name: my.instrument.name
+  instrument_type: histogram
+stream:
+  aggregation:
+    explicit_bucket_histogram:
+      boundaries: [0, 5, 10]
+```
+</details>
+
 Usages:
 
 * [`MeterProvider.views`](#meterprovider)
@@ -6240,6 +6467,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
@@ -6316,6 +6545,8 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+No snippets.
+
 Usages:
 
 * [`View.stream`](#view)
@@ -6376,6 +6607,8 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+
+No snippets.
 
 Usages:
 
