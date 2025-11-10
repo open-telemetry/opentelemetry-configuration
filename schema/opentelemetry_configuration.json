@@ -6,33 +6,49 @@
     "additionalProperties": true,
     "properties": {
         "file_format": {
+            "description": "The file format version. The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema",
             "type": "string"
         },
         "disabled": {
-            "type": ["boolean", "null"]
+            "description": "Configure if the SDK is disabled or not. If omitted or null, false is used.",
+            "type": [
+                "boolean",
+                "null"
+            ]
         },
         "log_level": {
-            "type": ["string", "null"]
+            "description": "Configure the log level of the internal logger used by the SDK. If omitted, info is used.",
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "attribute_limits": {
+            "description": "Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.",
             "$ref": "#/$defs/AttributeLimits"
         },
         "logger_provider": {
+            "description": "Configure logger provider. If omitted, a noop logger provider is used.",
             "$ref": "#/$defs/LoggerProvider"
         },
         "meter_provider": {
+            "description": "Configure meter provider. If omitted, a noop meter provider is used.",
             "$ref": "#/$defs/MeterProvider"
         },
         "propagator": {
+            "description": "Configure text map context propagators. If omitted, a noop propagator is used.",
             "$ref": "#/$defs/Propagator"
         },
         "tracer_provider": {
+            "description": "Configure tracer provider. If omitted, a noop tracer provider is used.",
             "$ref": "#/$defs/TracerProvider"
         },
         "resource": {
+            "description": "Configure resource for all signals. If omitted, the default resource is used.",
             "$ref": "#/$defs/Resource"
         },
         "instrumentation/development": {
+            "description": "Configure instrumentation.",
             "$ref": "#/$defs/ExperimentalInstrumentation"
         }
     },
@@ -45,11 +61,17 @@
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "attribute_count_limit": {
-                    "type": ["integer", "null"],
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 }
             }
