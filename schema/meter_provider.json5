@@ -51,6 +51,9 @@ If omitted or null, trace_based is used.",
             "additionalProperties": false,
             "properties": {
                 "interval": {
+                    description: "Configure delay interval (in milliseconds) between start of two consecutive exports.\n \
+Value must be non-negative.\n \
+If omitted or null, 60000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -58,6 +61,9 @@ If omitted or null, trace_based is used.",
                     "minimum": 0
                 },
                 "timeout": {
+                    description: "Configure maximum allowed time (in milliseconds) to export data.\n \
+Value must be non-negative. A value of 0 indicates no limit (infinity).\n \
+If omitted or null, 30000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -65,15 +71,18 @@ If omitted or null, trace_based is used.",
                     "minimum": 0
                 },
                 "exporter": {
+                    description: "Configure exporter.",
                     "$ref": "#/$defs/PushMetricExporter"
                 },
                 "producers": {
+                    description: "Configure metric producers.",
                     "type": "array",
                     "items": {
                         "$ref": "#/$defs/MetricProducer"
                     }
                 },
                 "cardinality_limits": {
+                    description: "Configure cardinality limits.",
                     "$ref": "#/$defs/CardinalityLimits"
                 }
             },
@@ -86,15 +95,18 @@ If omitted or null, trace_based is used.",
             "additionalProperties": false,
             "properties": {
                 "exporter": {
+                    description: "Configure exporter.",
                     "$ref": "#/$defs/PullMetricExporter"
                 },
                 "producers": {
+                    description: "Configure metric producers.",
                     "type": "array",
                     "items": {
                         "$ref": "#/$defs/MetricProducer"
                     }
                 },
                 "cardinality_limits": {
+                    description: "Configure cardinality limits.",
                     "$ref": "#/$defs/CardinalityLimits"
                 }
             },
@@ -294,9 +306,11 @@ If omitted or null, the value from .default is used.",
             "maxProperties": 1,
             "properties": {
                 "periodic": {
+                    description: "Configure a periodic metric reader.",
                     "$ref": "#/$defs/PeriodicMetricReader"
                 },
                 "pull": {
+                    description: "Configure a pull based metric reader.",
                     "$ref": "#/$defs/PullMetricReader"
                 }
             }

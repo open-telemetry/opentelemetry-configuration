@@ -453,9 +453,7 @@
 - type: MetricReader
   properties:
     - property: periodic
-      description: Configure a periodic metric reader.
     - property: pull
-      description: Configure a pull based metric reader.
   isSdkExtensionPlugin: false
 - type: NameStringValuePair
   properties:
@@ -613,11 +611,8 @@
         Value must be non-negative. A value of 0 indicates no limit (infinity).
         If omitted or null, 30000 is used.
     - property: exporter
-      description: Configure exporter.
     - property: producers
-      description: Configure metric producers.
     - property: cardinality_limits
-      description: Configure cardinality limits.
   isSdkExtensionPlugin: false
 - type: Propagator
   properties:
@@ -633,11 +628,8 @@
 - type: PullMetricReader
   properties:
     - property: exporter
-      description: Configure exporter.
     - property: producers
-      description: Configure metric producers.
     - property: cardinality_limits
-      description: Configure cardinality limits.
   isSdkExtensionPlugin: false
 - type: PushMetricExporter
   properties:

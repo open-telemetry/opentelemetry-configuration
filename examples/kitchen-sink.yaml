@@ -196,9 +196,9 @@ logger_provider:
 meter_provider:
   # Configure metric readers.
   readers:
-    - # TODO
+    - # Configure a pull based metric reader.
       pull:
-        # TODO
+        # Configure exporter.
         exporter:
           # TODO
           #This property is experimental and subject to breaking changes in minor versions.
@@ -227,11 +227,11 @@ meter_provider:
                 - "service.attr1"
             # TODO
             translation_strategy: UnderscoreEscapingWithSuffixes
-        # TODO
+        # Configure metric producers.
         producers:
           - # TODO
             opencensus:
-        # TODO
+        # Configure cardinality limits.
         cardinality_limits:
           # Configure default cardinality limit for all instrument types.
           # Instrument-specific cardinality limits take priority.
@@ -258,13 +258,17 @@ meter_provider:
           # Configure default cardinality limit for up_down_counter instruments.
           # If omitted or null, the value from .default is used.
           up_down_counter: 2000
-    - # TODO
+    - # Configure a periodic metric reader.
       periodic:
-        # TODO
+        # Configure delay interval (in milliseconds) between start of two consecutive exports.
+        # Value must be non-negative.
+        # If omitted or null, 60000 is used.
         interval: 60000
-        # TODO
+        # Configure maximum allowed time (in milliseconds) to export data.
+        # Value must be non-negative. A value of 0 indicates no limit (infinity).
+        # If omitted or null, 30000 is used.
         timeout: 30000
-        # TODO
+        # Configure exporter.
         exporter:
           # TODO
           otlp_http:
@@ -302,11 +306,11 @@ meter_provider:
             temporality_preference: delta
             # TODO
             default_histogram_aggregation: base2_exponential_bucket_histogram
-        # TODO
+        # Configure metric producers.
         producers:
           - # TODO
             opencensus:
-        # TODO
+        # Configure cardinality limits.
         cardinality_limits:
           # Configure default cardinality limit for all instrument types.
           # Instrument-specific cardinality limits take priority.
@@ -333,9 +337,9 @@ meter_provider:
           # Configure default cardinality limit for up_down_counter instruments.
           # If omitted or null, the value from .default is used.
           up_down_counter: 2000
-    - # TODO
+    - # Configure a periodic metric reader.
       periodic:
-        # TODO
+        # Configure exporter.
         exporter:
           # TODO
           otlp_grpc:
@@ -375,9 +379,9 @@ meter_provider:
             temporality_preference: delta
             # TODO
             default_histogram_aggregation: base2_exponential_bucket_histogram
-    - # TODO
+    - # Configure a periodic metric reader.
       periodic:
-        # TODO
+        # Configure exporter.
         exporter:
           # TODO
           #This property is experimental and subject to breaking changes in minor versions.
@@ -388,9 +392,9 @@ meter_provider:
             temporality_preference: delta
             # TODO
             default_histogram_aggregation: base2_exponential_bucket_histogram
-    - # TODO
+    - # Configure a periodic metric reader.
       periodic:
-        # TODO
+        # Configure exporter.
         exporter:
           # TODO
           #This property is experimental and subject to breaking changes in minor versions.
@@ -401,9 +405,9 @@ meter_provider:
             temporality_preference: delta
             # TODO
             default_histogram_aggregation: base2_exponential_bucket_histogram
-    - # TODO
+    - # Configure a periodic metric reader.
       periodic:
-        # TODO
+        # Configure exporter.
         exporter:
           # TODO
           console:

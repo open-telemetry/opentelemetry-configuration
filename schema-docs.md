@@ -3553,6 +3553,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "interval": {
+          "description": "Configure delay interval (in milliseconds) between start of two consecutive exports.\n Value must be non-negative.\n If omitted or null, 60000 is used.",
           "type": [
             "integer",
             "null"
@@ -3560,6 +3561,7 @@ Usages:
           "minimum": 0
         },
         "timeout": {
+          "description": "Configure maximum allowed time (in milliseconds) to export data.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
           "type": [
             "integer",
             "null"
@@ -3567,15 +3569,18 @@ Usages:
           "minimum": 0
         },
         "exporter": {
+          "description": "Configure exporter.",
           "$ref": "#/$defs/PushMetricExporter"
         },
         "producers": {
+          "description": "Configure metric producers.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/MetricProducer"
           }
         },
         "cardinality_limits": {
+          "description": "Configure cardinality limits.",
           "$ref": "#/$defs/CardinalityLimits"
         }
       },
@@ -3588,15 +3593,18 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "exporter": {
+          "description": "Configure exporter.",
           "$ref": "#/$defs/PullMetricExporter"
         },
         "producers": {
+          "description": "Configure metric producers.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/MetricProducer"
           }
         },
         "cardinality_limits": {
+          "description": "Configure cardinality limits.",
           "$ref": "#/$defs/CardinalityLimits"
         }
       },
@@ -3787,9 +3795,11 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "periodic": {
+          "description": "Configure a periodic metric reader.",
           "$ref": "#/$defs/PeriodicMetricReader"
         },
         "pull": {
+          "description": "Configure a pull based metric reader.",
           "$ref": "#/$defs/PullMetricReader"
         }
       }
@@ -4258,8 +4268,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `periodic` | [`PeriodicMetricReader`](#periodicmetricreader) | `false` | No constraints. | TODO |
-| `pull` | [`PullMetricReader`](#pullmetricreader) | `false` | No constraints. | TODO |
+| `periodic` | [`PeriodicMetricReader`](#periodicmetricreader) | `false` | No constraints. | Configure a periodic metric reader. |
+| `pull` | [`PullMetricReader`](#pullmetricreader) | `false` | No constraints. | Configure a pull based metric reader. |
 
 <details>
 <summary>Language support status</summary>
@@ -4291,9 +4301,11 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "periodic": {
+      "description": "Configure a periodic metric reader.",
       "$ref": "#/$defs/PeriodicMetricReader"
     },
     "pull": {
+      "description": "Configure a pull based metric reader.",
       "$ref": "#/$defs/PullMetricReader"
     }
   }
@@ -5031,11 +5043,11 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `exporter` | [`PushMetricExporter`](#pushmetricexporter) | `true` | No constraints. | TODO |
-| `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | No constraints. | TODO |
-| `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | No constraints. | TODO |
+| `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between start of two consecutive exports.<br> Value must be non-negative.<br> If omitted or null, 60000 is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 30000 is used. |
+| `exporter` | [`PushMetricExporter`](#pushmetricexporter) | `true` | No constraints. | Configure exporter. |
+| `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | No constraints. | Configure metric producers. |
+| `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | No constraints. | Configure cardinality limits. |
 
 <details>
 <summary>Language support status</summary>
@@ -5067,6 +5079,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "interval": {
+      "description": "Configure delay interval (in milliseconds) between start of two consecutive exports.\n Value must be non-negative.\n If omitted or null, 60000 is used.",
       "type": [
         "integer",
         "null"
@@ -5074,6 +5087,7 @@ Usages:
       "minimum": 0
     },
     "timeout": {
+      "description": "Configure maximum allowed time (in milliseconds) to export data.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
       "type": [
         "integer",
         "null"
@@ -5081,15 +5095,18 @@ Usages:
       "minimum": 0
     },
     "exporter": {
+      "description": "Configure exporter.",
       "$ref": "#/$defs/PushMetricExporter"
     },
     "producers": {
+      "description": "Configure metric producers.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/MetricProducer"
       }
     },
     "cardinality_limits": {
+      "description": "Configure cardinality limits.",
       "$ref": "#/$defs/CardinalityLimits"
     }
   },
@@ -5281,9 +5298,9 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `exporter` | [`PullMetricExporter`](#pullmetricexporter) | `true` | No constraints. | TODO |
-| `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | No constraints. | TODO |
-| `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | No constraints. | TODO |
+| `exporter` | [`PullMetricExporter`](#pullmetricexporter) | `true` | No constraints. | Configure exporter. |
+| `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | No constraints. | Configure metric producers. |
+| `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | No constraints. | Configure cardinality limits. |
 
 <details>
 <summary>Language support status</summary>
@@ -5313,15 +5330,18 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "exporter": {
+      "description": "Configure exporter.",
       "$ref": "#/$defs/PullMetricExporter"
     },
     "producers": {
+      "description": "Configure metric producers.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/MetricProducer"
       }
     },
     "cardinality_limits": {
+      "description": "Configure cardinality limits.",
       "$ref": "#/$defs/CardinalityLimits"
     }
   },
