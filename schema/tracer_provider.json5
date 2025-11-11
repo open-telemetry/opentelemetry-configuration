@@ -93,24 +93,31 @@ If omitted or null, 512 is used.",
             "maxProperties": 1,
             properties: {
                 "always_off": {
+                    description: "Configure sampler to be always_off.",
                     "$ref": "#/$defs/AlwaysOffSampler"
                 },
                 "always_on": {
+                    description: "Configure sampler to be always_on.",
                     "$ref": "#/$defs/AlwaysOnSampler"
                 },
                 "composite/development": {
+                    description: "Configure sampler to be composite.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 },
                 "jaeger_remote/development": {
+                    description: "TODO",
                     "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
                 },
                 "parent_based": {
+                    description: "Configure sampler to be parent_based.",
                     "$ref": "#/$defs/ParentBasedSampler"
                 },
                 "probability/development": {
+                    description: "Configure sampler to be probability.",
                     "$ref": "#/$defs/ExperimentalProbabilitySampler"
                 },
                 "trace_id_ratio_based": {
+                    description: "Configure sampler to be trace_id_ratio_based.",
                     "$ref": "#/$defs/TraceIdRatioBasedSampler"
                 }
             }
@@ -289,15 +296,19 @@ If omitted or null, always_off is used.",
             "maxProperties": 1,
             properties: {
                 "always_off": {
+                    description: "Configure sampler to be always_off.",
                     "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
                 },
                 "always_on": {
+                    description: "Configure sampler to be always_on.",
                     "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
                 },
                 "parent_based": {
+                    description: "Configure sampler to be parent_based.",
                     "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
                 },
                 "probability": {
+                    description: "Configure sampler to be probability.",
                     "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
                 }
             }

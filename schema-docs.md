@@ -1064,10 +1064,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `always_off` | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | `false` | No constraints. | TODO |
-| `always_on` | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | `false` | No constraints. | TODO |
-| `probability` | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | `false` | No constraints. | TODO |
-| `parent_based` | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | `false` | No constraints. | TODO |
+| `always_off` | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | `false` | No constraints. | Configure sampler to be always_off. |
+| `always_on` | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | `false` | No constraints. | Configure sampler to be always_on. |
+| `probability` | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | `false` | No constraints. | Configure sampler to be probability. |
+| `parent_based` | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | `false` | No constraints. | Configure sampler to be parent_based. |
 
 <details>
 <summary>Language support status</summary>
@@ -1111,15 +1111,19 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "always_off": {
+      "description": "Configure sampler to be always_off.",
       "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
     },
     "always_on": {
+      "description": "Configure sampler to be always_on.",
       "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
     },
     "parent_based": {
+      "description": "Configure sampler to be parent_based.",
       "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
     },
     "probability": {
+      "description": "Configure sampler to be probability.",
       "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
     }
   }
@@ -5588,13 +5592,13 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `always_off` | [`AlwaysOffSampler`](#alwaysoffsampler) | `false` | No constraints. | TODO |
-| `always_on` | [`AlwaysOnSampler`](#alwaysonsampler) | `false` | No constraints. | TODO |
-| `parent_based` | [`ParentBasedSampler`](#parentbasedsampler) | `false` | No constraints. | TODO |
-| `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | No constraints. | TODO |
-| `probability/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | No constraints. | TODO |
+| `always_off` | [`AlwaysOffSampler`](#alwaysoffsampler) | `false` | No constraints. | Configure sampler to be always_off. |
+| `always_on` | [`AlwaysOnSampler`](#alwaysonsampler) | `false` | No constraints. | Configure sampler to be always_on. |
+| `parent_based` | [`ParentBasedSampler`](#parentbasedsampler) | `false` | No constraints. | Configure sampler to be parent_based. |
+| `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | No constraints. | Configure sampler to be trace_id_ratio_based. |
+| `probability/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | No constraints. | Configure sampler to be probability. |
 | `jaeger_remote/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | `false` | No constraints. | TODO |
-| `composite/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | TODO |
+| `composite/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configure sampler to be composite. |
 
 <details>
 <summary>Language support status</summary>
@@ -5642,24 +5646,31 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "always_off": {
+      "description": "Configure sampler to be always_off.",
       "$ref": "#/$defs/AlwaysOffSampler"
     },
     "always_on": {
+      "description": "Configure sampler to be always_on.",
       "$ref": "#/$defs/AlwaysOnSampler"
     },
     "composite/development": {
+      "description": "Configure sampler to be composite.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "jaeger_remote/development": {
+      "description": "TODO",
       "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
     },
     "parent_based": {
+      "description": "Configure sampler to be parent_based.",
       "$ref": "#/$defs/ParentBasedSampler"
     },
     "probability/development": {
+      "description": "Configure sampler to be probability.",
       "$ref": "#/$defs/ExperimentalProbabilitySampler"
     },
     "trace_id_ratio_based": {
+      "description": "Configure sampler to be trace_id_ratio_based.",
       "$ref": "#/$defs/TraceIdRatioBasedSampler"
     }
   }
@@ -6265,24 +6276,31 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "always_off": {
+          "description": "Configure sampler to be always_off.",
           "$ref": "#/$defs/AlwaysOffSampler"
         },
         "always_on": {
+          "description": "Configure sampler to be always_on.",
           "$ref": "#/$defs/AlwaysOnSampler"
         },
         "composite/development": {
+          "description": "Configure sampler to be composite.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "jaeger_remote/development": {
+          "description": "TODO",
           "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
         },
         "parent_based": {
+          "description": "Configure sampler to be parent_based.",
           "$ref": "#/$defs/ParentBasedSampler"
         },
         "probability/development": {
+          "description": "Configure sampler to be probability.",
           "$ref": "#/$defs/ExperimentalProbabilitySampler"
         },
         "trace_id_ratio_based": {
+          "description": "Configure sampler to be trace_id_ratio_based.",
           "$ref": "#/$defs/TraceIdRatioBasedSampler"
         }
       }
@@ -6456,15 +6474,19 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "always_off": {
+          "description": "Configure sampler to be always_off.",
           "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
         },
         "always_on": {
+          "description": "Configure sampler to be always_on.",
           "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
         },
         "parent_based": {
+          "description": "Configure sampler to be parent_based.",
           "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
         },
         "probability": {
+          "description": "Configure sampler to be probability.",
           "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
         }
       }

@@ -697,11 +697,8 @@
 - type: Sampler
   properties:
     - property: always_off
-      description: Configure sampler to be always_off.
     - property: always_on
-      description: Configure sampler to be always_on.
     - property: parent_based
-      description: Configure sampler to be parent_based.
     - property: trace_id_ratio_based
       description: Configure sampler to be trace_id_ratio_based.
     - property: probability/development
@@ -730,35 +727,11 @@
 - type: SpanLimits
   properties:
     - property: attribute_value_length_limit
-      description: |
-        Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
-        Value must be non-negative.
-        If omitted or null, there is no limit.
     - property: attribute_count_limit
-      description: |
-        Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
-        Value must be non-negative.
-        If omitted or null, 128 is used.
     - property: event_count_limit
-      description: |
-        Configure max span event count. 
-        Value must be non-negative.
-        If omitted or null, 128 is used.
     - property: link_count_limit
-      description: |
-        Configure max span link count. 
-        Value must be non-negative.
-        If omitted or null, 128 is used.
     - property: event_attribute_count_limit
-      description: |
-        Configure max attributes per span event. 
-        Value must be non-negative.
-        If omitted or null, 128 is used.
     - property: link_attribute_count_limit
-      description: |
-        Configure max attributes per span link. 
-        Value must be non-negative.
-        If omitted or null, 128 is used.
   isSdkExtensionPlugin: false
 - type: SpanProcessor
   properties:
@@ -891,13 +864,9 @@
 - type: ExperimentalComposableSampler
   properties:
     - property: always_off
-      description: Configure sampler to be always_off.
     - property: always_on
-      description: Configure sampler to be always_on.
     - property: probability
-      description: Configure sampler to be probability.
     - property: parent_based
-      description: Configure sampler to be parent_based.
   isSdkExtensionPlugin: false
 - type: ExperimentalComposableParentBasedSampler
   properties:
