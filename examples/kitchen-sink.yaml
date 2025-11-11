@@ -200,7 +200,7 @@ meter_provider:
       pull:
         # Configure exporter.
         exporter:
-          # TODO
+          # Configure exporter to be prometheus.
           #This property is experimental and subject to breaking changes in minor versions.
           prometheus/development:
             # Configure host.
@@ -239,7 +239,7 @@ meter_provider:
             translation_strategy: UnderscoreEscapingWithSuffixes
         # Configure metric producers.
         producers:
-          - # TODO
+          - # Configure metric producer to be opencensus.
             opencensus:
         # Configure cardinality limits.
         cardinality_limits:
@@ -332,7 +332,7 @@ meter_provider:
             default_histogram_aggregation: base2_exponential_bucket_histogram
         # Configure metric producers.
         producers:
-          - # TODO
+          - # Configure metric producer to be opencensus.
             opencensus:
         # Configure cardinality limits.
         cardinality_limits:
@@ -488,9 +488,10 @@ meter_provider:
         description: new_description
         # TODO
         aggregation:
-          # TODO
+          # Configure aggregation to be explicit_bucket_histogram.
           explicit_bucket_histogram:
-            # TODO
+            # Configure bucket boundaries.
+            # If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.
             boundaries:
               [
                 0.0,
@@ -509,7 +510,8 @@ meter_provider:
                 7500.0,
                 10000.0
               ]
-            # TODO
+            # Configure record min and max.
+            # If omitted or null, true is used.
             record_min_max: true
         # TODO
         aggregation_cardinality_limit: 2000
@@ -774,7 +776,8 @@ tracer_provider:
         # Configure sampler to be probability.
         #This property is experimental and subject to breaking changes in minor versions.
         probability/development:
-          # TODO
+          # Configure ratio.
+          # If omitted or null, 1.0 is used.
           ratio: 0.01
       # Configure local_parent_sampled sampler.
       # If omitted or null, always_on is used.
@@ -784,7 +787,8 @@ tracer_provider:
         composite/development:
           # Configure sampler to be probability.
           probability:
-            # TODO
+            # Configure ratio.
+            # If omitted or null, 1.0 is used.
             ratio: 0.001
       # Configure local_parent_not_sampled sampler.
       # If omitted or null, always_off is used.

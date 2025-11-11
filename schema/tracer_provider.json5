@@ -144,12 +144,14 @@ If omitted or null, 512 is used.",
             "additionalProperties": false,
             properties: {
                 "endpoint": {
+                    description: "TODO",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "interval": {
+                    description: "TODO",
                     "type": [
                         "integer",
                         "null"
@@ -157,6 +159,7 @@ If omitted or null, 512 is used.",
                     "minimum": 0
                 },
                 "initial_sampler": {
+                    description: "TODO",
                     "$ref": "#/$defs/Sampler"
                 }
             }
@@ -203,6 +206,8 @@ If omitted or null, always_off is used.",
             "additionalProperties": false,
             properties: {
                 "ratio": {
+                    description: "Configure ratio.\n \
+If omitted or null, 1.0 is used.",
                     "type": [
                         "number",
                         "null"
@@ -251,18 +256,23 @@ If omitted or null, always_off is used.",
             "additionalProperties": false,
             properties: {
                 "root": {
+                    description: "Configures the sampler for spans with no parent.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 },
                 "remote_parent_sampled": {
+                    description: "Configures the sampler for spans with a remote parent that is sampled.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 },
                 "remote_parent_not_sampled": {
+                    description: "Configures the sampler for spans with a remote parent that is not sampled.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 },
                 "local_parent_sampled": {
+                    description: "Configures the sampler for spans with a local parent that is sampled.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 },
                 "local_parent_not_sampled": {
+                    description: "Configures the sampler for spans with a local parent that is not sampled.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 }
             }
@@ -275,6 +285,8 @@ If omitted or null, always_off is used.",
             "additionalProperties": false,
             properties: {
                 "ratio": {
+                    description: "Configure ratio.\n \
+If omitted or null, 1.0 is used.",
                     "type": [
                         "number",
                         "null"

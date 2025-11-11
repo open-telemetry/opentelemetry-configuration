@@ -17,7 +17,7 @@ This document is an auto-generated view of the declarative configuration JSON sc
 |---|---|---|---|---|
 | `default` | [`DefaultAggregation`](#defaultaggregation) | `false` | No constraints. | TODO |
 | `drop` | [`DropAggregation`](#dropaggregation) | `false` | No constraints. | TODO |
-| `explicit_bucket_histogram` | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | `false` | No constraints. | TODO |
+| `explicit_bucket_histogram` | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | `false` | No constraints. | Configure aggregation to be explicit_bucket_histogram. |
 | `base2_exponential_bucket_histogram` | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | `false` | No constraints. | TODO |
 | `last_value` | [`LastValueAggregation`](#lastvalueaggregation) | `false` | No constraints. | TODO |
 | `sum` | [`SumAggregation`](#sumaggregation) | `false` | No constraints. | TODO |
@@ -56,21 +56,27 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "default": {
+      "description": "TODO",
       "$ref": "#/$defs/DefaultAggregation"
     },
     "drop": {
+      "description": "TODO",
       "$ref": "#/$defs/DropAggregation"
     },
     "explicit_bucket_histogram": {
+      "description": "Configure aggregation to be explicit_bucket_histogram.",
       "$ref": "#/$defs/ExplicitBucketHistogramAggregation"
     },
     "base2_exponential_bucket_histogram": {
+      "description": "TODO",
       "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation"
     },
     "last_value": {
+      "description": "TODO",
       "$ref": "#/$defs/LastValueAggregation"
     },
     "sum": {
+      "description": "TODO",
       "$ref": "#/$defs/SumAggregation"
     }
   }
@@ -436,18 +442,21 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "max_scale": {
+      "description": "TODO",
       "type": [
         "integer",
         "null"
       ]
     },
     "max_size": {
+      "description": "TODO",
       "type": [
         "integer",
         "null"
       ]
     },
     "record_min_max": {
+      "description": "TODO",
       "type": [
         "boolean",
         "null"
@@ -961,11 +970,11 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `root` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | TODO |
-| `remote_parent_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | TODO |
-| `remote_parent_not_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | TODO |
-| `local_parent_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | TODO |
-| `local_parent_not_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | TODO |
+| `root` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configures the sampler for spans with no parent. |
+| `remote_parent_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configures the sampler for spans with a remote parent that is sampled. |
+| `remote_parent_not_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configures the sampler for spans with a remote parent that is not sampled. |
+| `local_parent_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configures the sampler for spans with a local parent that is sampled. |
+| `local_parent_not_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | No constraints. | Configures the sampler for spans with a local parent that is not sampled. |
 
 <details>
 <summary>Language support status</summary>
@@ -999,18 +1008,23 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "root": {
+      "description": "Configures the sampler for spans with no parent.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "remote_parent_sampled": {
+      "description": "Configures the sampler for spans with a remote parent that is sampled.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "remote_parent_not_sampled": {
+      "description": "Configures the sampler for spans with a remote parent that is not sampled.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "local_parent_sampled": {
+      "description": "Configures the sampler for spans with a local parent that is sampled.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "local_parent_not_sampled": {
+      "description": "Configures the sampler for spans with a local parent that is not sampled.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     }
   }
@@ -1024,7 +1038,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | TODO |
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br> If omitted or null, 1.0 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -1054,6 +1068,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "ratio": {
+      "description": "Configure ratio.\n If omitted or null, 1.0 is used.",
       "type": [
         "number",
         "null"
@@ -1651,12 +1666,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "TODO",
       "type": [
         "string",
         "null"
       ]
     },
     "interval": {
+      "description": "TODO",
       "type": [
         "integer",
         "null"
@@ -1664,6 +1681,7 @@ Usages:
       "minimum": 0
     },
     "initial_sampler": {
+      "description": "TODO",
       "$ref": "#/$defs/Sampler"
     }
   }
@@ -2215,7 +2233,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | TODO |
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br> If omitted or null, 1.0 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2245,6 +2263,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "ratio": {
+      "description": "Configure ratio.\n If omitted or null, 1.0 is used.",
       "type": [
         "number",
         "null"
@@ -2671,8 +2690,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `boundaries` | `array` of `number` | `false` | No constraints. | TODO |
-| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `boundaries` | `array` of `number` | `false` | No constraints. | Configure bucket boundaries.<br> If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used. |
+| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure record min and max.<br> If omitted or null, true is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2703,12 +2722,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "boundaries": {
+      "description": "Configure bucket boundaries.\n If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.",
       "type": "array",
       "items": {
         "type": "number"
       }
     },
     "record_min_max": {
+      "description": "Configure record min and max.\n If omitted or null, true is used.",
       "type": [
         "boolean",
         "null"
@@ -3770,6 +3791,7 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "prometheus/development": {
+          "description": "Configure exporter to be prometheus.",
           "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
         }
       }
@@ -3786,6 +3808,7 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "opencensus": {
+          "description": "Configure metric producer to be opencensus.",
           "$ref": "#/$defs/OpenCensusMetricProducer"
         }
       }
@@ -4146,21 +4169,27 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "default": {
+          "description": "TODO",
           "$ref": "#/$defs/DefaultAggregation"
         },
         "drop": {
+          "description": "TODO",
           "$ref": "#/$defs/DropAggregation"
         },
         "explicit_bucket_histogram": {
+          "description": "Configure aggregation to be explicit_bucket_histogram.",
           "$ref": "#/$defs/ExplicitBucketHistogramAggregation"
         },
         "base2_exponential_bucket_histogram": {
+          "description": "TODO",
           "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation"
         },
         "last_value": {
+          "description": "TODO",
           "$ref": "#/$defs/LastValueAggregation"
         },
         "sum": {
+          "description": "TODO",
           "$ref": "#/$defs/SumAggregation"
         }
       }
@@ -4187,12 +4216,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "boundaries": {
+          "description": "Configure bucket boundaries.\n If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.",
           "type": "array",
           "items": {
             "type": "number"
           }
         },
         "record_min_max": {
+          "description": "Configure record min and max.\n If omitted or null, true is used.",
           "type": [
             "boolean",
             "null"
@@ -4208,18 +4239,21 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "max_scale": {
+          "description": "TODO",
           "type": [
             "integer",
             "null"
           ]
         },
         "max_size": {
+          "description": "TODO",
           "type": [
             "integer",
             "null"
           ]
         },
         "record_min_max": {
+          "description": "TODO",
           "type": [
             "boolean",
             "null"
@@ -4302,7 +4336,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `opencensus` | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | `false` | No constraints. | TODO |
+| `opencensus` | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | `false` | No constraints. | Configure metric producer to be opencensus. |
 
 <details>
 <summary>Language support status</summary>
@@ -4339,6 +4373,7 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "opencensus": {
+      "description": "Configure metric producer to be opencensus.",
       "$ref": "#/$defs/OpenCensusMetricProducer"
     }
   }
@@ -5348,7 +5383,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `prometheus/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | No constraints. | TODO |
+| `prometheus/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | No constraints. | Configure exporter to be prometheus. |
 
 <details>
 <summary>Language support status</summary>
@@ -5384,6 +5419,7 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "prometheus/development": {
+      "description": "Configure exporter to be prometheus.",
       "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
     }
   }
@@ -6467,12 +6503,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "endpoint": {
+          "description": "TODO",
           "type": [
             "string",
             "null"
           ]
         },
         "interval": {
+          "description": "TODO",
           "type": [
             "integer",
             "null"
@@ -6480,6 +6518,7 @@ Usages:
           "minimum": 0
         },
         "initial_sampler": {
+          "description": "TODO",
           "$ref": "#/$defs/Sampler"
         }
       }
@@ -6521,6 +6560,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "ratio": {
+          "description": "Configure ratio.\n If omitted or null, 1.0 is used.",
           "type": [
             "number",
             "null"
@@ -6569,18 +6609,23 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "root": {
+          "description": "Configures the sampler for spans with no parent.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "remote_parent_sampled": {
+          "description": "Configures the sampler for spans with a remote parent that is sampled.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "remote_parent_not_sampled": {
+          "description": "Configures the sampler for spans with a remote parent that is not sampled.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "local_parent_sampled": {
+          "description": "Configures the sampler for spans with a local parent that is sampled.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "local_parent_not_sampled": {
+          "description": "Configures the sampler for spans with a local parent that is not sampled.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         }
       }
@@ -6593,6 +6638,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "ratio": {
+          "description": "Configure ratio.\n If omitted or null, 1.0 is used.",
           "type": [
             "number",
             "null"

@@ -218,6 +218,7 @@
             "maxProperties": 1,
             "properties": {
                 "prometheus/development": {
+                    "description": "Configure exporter to be prometheus.",
                     "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
                 }
             }
@@ -234,6 +235,7 @@
             "maxProperties": 1,
             "properties": {
                 "opencensus": {
+                    "description": "Configure metric producer to be opencensus.",
                     "$ref": "#/$defs/OpenCensusMetricProducer"
                 }
             }
@@ -594,21 +596,27 @@
             "maxProperties": 1,
             "properties": {
                 "default": {
+                    "description": "TODO",
                     "$ref": "#/$defs/DefaultAggregation"
                 },
                 "drop": {
+                    "description": "TODO",
                     "$ref": "#/$defs/DropAggregation"
                 },
                 "explicit_bucket_histogram": {
+                    "description": "Configure aggregation to be explicit_bucket_histogram.",
                     "$ref": "#/$defs/ExplicitBucketHistogramAggregation"
                 },
                 "base2_exponential_bucket_histogram": {
+                    "description": "TODO",
                     "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation"
                 },
                 "last_value": {
+                    "description": "TODO",
                     "$ref": "#/$defs/LastValueAggregation"
                 },
                 "sum": {
+                    "description": "TODO",
                     "$ref": "#/$defs/SumAggregation"
                 }
             }
@@ -635,12 +643,14 @@
             "additionalProperties": false,
             "properties": {
                 "boundaries": {
+                    "description": "Configure bucket boundaries.\n If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.",
                     "type": "array",
                     "items": {
                         "type": "number"
                     }
                 },
                 "record_min_max": {
+                    "description": "Configure record min and max.\n If omitted or null, true is used.",
                     "type": [
                         "boolean",
                         "null"
@@ -656,18 +666,21 @@
             "additionalProperties": false,
             "properties": {
                 "max_scale": {
+                    "description": "TODO",
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "max_size": {
+                    "description": "TODO",
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "record_min_max": {
+                    "description": "TODO",
                     "type": [
                         "boolean",
                         "null"

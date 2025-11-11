@@ -1,17 +1,11 @@
 - type: Aggregation
   properties:
     - property: default
-      description: TODO
     - property: drop
-      description: TODO
     - property: explicit_bucket_histogram
-      description: Configure aggregation to be explicit_bucket_histogram.
     - property: base2_exponential_bucket_histogram
-      description: TODO
     - property: last_value
-      description: TODO
     - property: sum
-      description: TODO
   isSdkExtensionPlugin: false
 - type: AlwaysOffSampler
   properties: []
@@ -61,11 +55,8 @@
 - type: Base2ExponentialBucketHistogramAggregation
   properties:
     - property: max_scale
-      description: TODO
     - property: max_size
-      description: TODO
     - property: record_min_max
-      description: TODO
   isSdkExtensionPlugin: false
 - type: BatchLogRecordProcessor
   properties:
@@ -206,9 +197,6 @@
 - type: ExperimentalProbabilitySampler
   properties:
     - property: ratio
-      description: |
-        Configure ratio.
-        If omitted or null, 1.0 is used.
   isSdkExtensionPlugin: false
 - type: ExperimentalProcessResourceDetector
   properties: []
@@ -253,13 +241,7 @@
 - type: ExplicitBucketHistogramAggregation
   properties:
     - property: boundaries
-      description: |
-        Configure bucket boundaries.
-        If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.
     - property: record_min_max
-      description: |
-        Configure record min and max.
-        If omitted or null, true is used.
   isSdkExtensionPlugin: false
 - type: ExporterDefaultHistogramAggregation
   enumValues:
@@ -351,7 +333,6 @@
 - type: MetricProducer
   properties:
     - property: opencensus
-      description: Configure metric producer to be opencensus.
   isSdkExtensionPlugin: true
 - type: MetricReader
   properties:
@@ -455,8 +436,6 @@
 - type: PullMetricExporter
   properties:
     - property: prometheus/development
-      description: |
-        Configure exporter to be prometheus.
   isSdkExtensionPlugin: true
 - type: PullMetricReader
   properties:
@@ -636,11 +615,8 @@
 - type: ExperimentalJaegerRemoteSampler
   properties:
     - property: endpoint
-      description: TODO
     - property: interval
-      description: TODO
     - property: initial_sampler
-      description: TODO
   isSdkExtensionPlugin: false
 - type: ExperimentalComposableSampler
   properties:
@@ -652,15 +628,10 @@
 - type: ExperimentalComposableParentBasedSampler
   properties:
     - property: root
-      description: Configures the sampler for spans with no parent.
     - property: remote_parent_sampled
-      description: Configures the sampler for spans with a remote parent that is sampled.
     - property: remote_parent_not_sampled
-      description: Configures the sampler for spans with a remote parent that is not sampled.
     - property: local_parent_sampled
-      description: Configures the sampler for spans with a local parent that is sampled.
     - property: local_parent_not_sampled
-      description: Configures the sampler for spans with a local parent that is not sampled.
   isSdkExtensionPlugin: false
 - type: ExperimentalComposableAlwaysOffSampler
   properties: []
@@ -671,7 +642,4 @@
 - type: ExperimentalComposableProbabilitySampler
   properties:
     - property: ratio
-      description: |
-        Configure ratio.
-        If omitted or null, 1.0 is used.
   isSdkExtensionPlugin: false
