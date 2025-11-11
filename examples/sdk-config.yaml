@@ -149,13 +149,19 @@ logger_provider:
   processors:
     - # Configure a batch log record processor.
       batch:
-        # Configure delay interval (in milliseconds) between two consecutive exports.  Value must be non-negative. If omitted or null, 1000 is used.
+        # Configure delay interval (in milliseconds) between two consecutive exports. 
+        # Value must be non-negative.
+        # If omitted or null, 1000 is used.
         schedule_delay: 1000
-        # Configure maximum allowed time (in milliseconds) to export data.  Value must be non-negative. A value of 0 indicates no limit (infinity). If omitted or null, 30000 is used.
+        # Configure maximum allowed time (in milliseconds) to export data. 
+        # Value must be non-negative. A value of 0 indicates no limit (infinity).
+        # If omitted or null, 30000 is used.
         export_timeout: 30000
-        # Configure maximum queue size. Value must be positive. If omitted or null, 2048 is used.
+        # Configure maximum queue size. Value must be positive.
+        # If omitted or null, 2048 is used.
         max_queue_size: 2048
-        # Configure maximum batch size. Value must be positive. If omitted or null, 512 is used.
+        # Configure maximum batch size. Value must be positive.
+        # If omitted or null, 512 is used.
         max_export_batch_size: 512
         # Configure exporter.
         exporter:
@@ -179,7 +185,11 @@ logger_provider:
             headers: []
   # Configure log record limits. See also attribute_limits.
   limits:
-    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. Value must be non-negative. If omitted or null, there is no limit.
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.
+    # Value must be non-negative.
+    # If omitted or null, there is no limit.
     attribute_value_length_limit:
-    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. Value must be non-negative. If omitted or null, 128 is used.
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.
+    # Value must be non-negative.
+    # If omitted or null, 128 is used.
     attribute_count_limit: 128

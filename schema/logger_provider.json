@@ -43,7 +43,7 @@
             "additionalProperties": false,
             "properties": {
                 "schedule_delay": {
-                    "description": "Configure delay interval (in milliseconds) between two consecutive exports.  Value must be non-negative. If omitted or null, 1000 is used.",
+                    "description": "Configure delay interval (in milliseconds) between two consecutive exports. \n Value must be non-negative.\n If omitted or null, 1000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -51,7 +51,7 @@
                     "minimum": 0
                 },
                 "export_timeout": {
-                    "description": "Configure maximum allowed time (in milliseconds) to export data.  Value must be non-negative. A value of 0 indicates no limit (infinity). If omitted or null, 30000 is used.",
+                    "description": "Configure maximum allowed time (in milliseconds) to export data. \n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -59,7 +59,7 @@
                     "minimum": 0
                 },
                 "max_queue_size": {
-                    "description": "Configure maximum queue size. Value must be positive. If omitted or null, 2048 is used.",
+                    "description": "Configure maximum queue size. Value must be positive.\n If omitted or null, 2048 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -67,7 +67,7 @@
                     "exclusiveMinimum": 0
                 },
                 "max_export_batch_size": {
-                    "description": "Configure maximum batch size. Value must be positive. If omitted or null, 512 is used.",
+                    "description": "Configure maximum batch size. Value must be positive.\n If omitted or null, 512 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -117,7 +117,7 @@
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
-                    "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. Value must be non-negative. If omitted or null, there is no limit.",
+                    "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.\n Value must be non-negative.\n If omitted or null, there is no limit.",
                     "type": [
                         "integer",
                         "null"
@@ -125,7 +125,7 @@
                     "minimum": 0
                 },
                 "attribute_count_limit": {
-                    "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. Value must be non-negative. If omitted or null, 128 is used.",
+                    "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.\n Value must be non-negative.\n If omitted or null, 128 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -181,7 +181,7 @@
             "additionalProperties": false,
             "properties": {
                 "name": {
-                    "description": "Configure logger names to match, evaluated as follows: * If the logger name exactly matches. * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
+                    "description": "Configure logger names to match, evaluated as follows:\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
                     "type": [
                         "string"
                     ]
