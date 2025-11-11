@@ -49,23 +49,30 @@ propagator:
 # Configure tracer provider.
 # If omitted, a noop tracer provider is used.
 tracer_provider:
-  # TODO
+  # Configure span processors.  
   processors:
-    - # TODO
+    - # Configure a batch span processor.
       batch:
-        # TODO
+        # Configure delay interval (in milliseconds) between two consecutive exports.
+        # Value must be non-negative.
+        # If omitted or null, 5000 is used.
         schedule_delay: 5000
-        # TODO
+        # Configure maximum allowed time (in milliseconds) to export data.
+        # Value must be non-negative. A value of 0 indicates no limit (infinity).
+        # If omitted or null, 30000 is used.
         export_timeout: 30000
-        # TODO
+        # Configure maximum queue size. Value must be positive.
+        # If omitted or null, 2048 is used.
         max_queue_size: 2048
-        # TODO
+        # Configure maximum batch size. Value must be positive.
+        # If omitted or null, 512 is used.
         max_export_batch_size: 512
-        # TODO
+        # Configure exporter.
         exporter:
-          # TODO
+          # Configure exporter to be OTLP with HTTP transport.
           otlp_http:
-            # TODO
+            # Configure endpoint, including the signal specific path.
+            # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: http://localhost:4318/v1/traces
             # Configure TLS settings for the exporter.
             tls:
@@ -89,9 +96,10 @@ tracer_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
-            # TODO
+            # Configure headers. Entries have higher priority than entries from .headers_list.
+            # If an entry's .value is null, the entry is ignored.
             headers: []
-  # TODO
+  # Configure span limits. See also attribute_limits.
   limits:
     # TODO
     attribute_value_length_limit:
@@ -105,27 +113,33 @@ tracer_provider:
     event_attribute_count_limit: 128
     # TODO
     link_attribute_count_limit: 128
-  # TODO
+  # Configure the sampler. 
+  # If omitted, parent based sampler with a root of always_on is used.
   sampler:
     # TODO
     parent_based:
-      # TODO
+      # Configure root sampler.
+      # If omitted or null, always_on is used.
       root:
         # TODO
         always_on:
-      # TODO
+      # Configure remote_parent_sampled sampler.
+      # If omitted or null, always_on is used.
       remote_parent_sampled:
         # TODO
         always_on:
-      # TODO
+      # Configure remote_parent_not_sampled sampler.
+      # If omitted or null, always_off is used.
       remote_parent_not_sampled:
         # TODO
         always_off:
-      # TODO
+      # Configure local_parent_sampled sampler.
+      # If omitted or null, always_on is used.
       local_parent_sampled:
         # TODO
         always_on:
-      # TODO
+      # Configure local_parent_not_sampled sampler.
+      # If omitted or null, always_off is used.
       local_parent_not_sampled:
         # TODO
         always_off:
@@ -197,7 +211,8 @@ logger_provider:
         exporter:
           # Configure exporter to be OTLP with HTTP transport.
           otlp_http:
-            # TODO
+            # Configure endpoint, including the signal specific path.
+            # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: http://localhost:4318/v1/logs
             # Configure TLS settings for the exporter.
             tls:
@@ -221,7 +236,8 @@ logger_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
-            # TODO
+            # Configure headers. Entries have higher priority than entries from .headers_list.
+            # If an entry's .value is null, the entry is ignored.
             headers: []
   # Configure log record limits. See also attribute_limits.
   limits:

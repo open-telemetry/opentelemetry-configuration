@@ -51,6 +51,7 @@
             "additionalProperties": false,
             "properties": {
                 "endpoint": {
+                    "description": "Configure endpoint, including the signal specific path.\n If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.",
                     "type": [
                         "string",
                         "null"
@@ -61,6 +62,7 @@
                     "$ref": "#/$defs/HttpTls"
                 },
                 "headers": {
+                    "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
                     "type": "array",
                     "items": {
                         "$ref": "#/$defs/NameStringValuePair"

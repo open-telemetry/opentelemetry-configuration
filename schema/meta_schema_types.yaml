@@ -78,25 +78,10 @@
 - type: BatchSpanProcessor
   properties:
     - property: schedule_delay
-      description: |
-        Configure delay interval (in milliseconds) between two consecutive exports. 
-        Value must be non-negative.
-        If omitted or null, 5000 is used.
     - property: export_timeout
-      description: |
-        Configure maximum allowed time (in milliseconds) to export data. 
-        Value must be non-negative. A value of 0 indicates no limit (infinity).
-        If omitted or null, 30000 is used.
     - property: max_queue_size
-      description: |
-        Configure maximum queue size. Value must be positive.
-        If omitted or null, 2048 is used.
     - property: max_export_batch_size
-      description: |
-        Configure maximum batch size. Value must be positive.
-        If omitted or null, 512 is used.
     - property: exporter
-      description: Configure exporter.
   isSdkExtensionPlugin: false
 - type: CardinalityLimits
   properties:
@@ -376,25 +361,16 @@
 - type: ExperimentalTracerConfig
   properties:
     - property: disabled
-      description: Configure if the tracer is enabled or not.
   isSdkExtensionPlugin: false
 - type: ExperimentalTracerConfigurator
   properties:
     - property: default_config
-      description: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
     - property: tracers
-      description: Configure tracers.
   isSdkExtensionPlugin: false
 - type: ExperimentalTracerMatcherAndConfig
   properties:
     - property: name
-      description: |
-        Configure tracer names to match, evaluated as follows:
-
-         * If the tracer name exactly matches.
-         * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
     - property: config
-      description: The tracer config.
   isSdkExtensionPlugin: false
 - type: ExplicitBucketHistogramAggregation
   properties:
@@ -597,13 +573,7 @@
 - type: OtlpHttpExporter
   properties:
     - property: endpoint
-      description: |
-        Configure endpoint, including the signal specific path.
-        If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
     - property: headers
-      description: |
-        Configure headers. Entries have higher priority than entries from .headers_list.
-        If an entry's .value is null, the entry is ignored.
     - property: headers_list
     - property: compression
     - property: timeout
@@ -660,25 +630,10 @@
 - type: ParentBasedSampler
   properties:
     - property: root
-      description: |
-        Configure root sampler.
-        If omitted or null, always_on is used.
     - property: remote_parent_sampled
-      description: |
-        Configure remote_parent_sampled sampler.
-        If omitted or null, always_on is used.
     - property: remote_parent_not_sampled
-      description: |
-        Configure remote_parent_not_sampled sampler.
-        If omitted or null, always_off is used.
     - property: local_parent_sampled
-      description: |
-        Configure local_parent_sampled sampler.
-        If omitted or null, always_on is used.
     - property: local_parent_not_sampled
-      description: |
-        Configure local_parent_not_sampled sampler.
-        If omitted or null, always_off is used.
   isSdkExtensionPlugin: false
 - type: PeriodicMetricReader
   properties:
@@ -722,8 +677,6 @@
 - type: PushMetricExporter
   properties:
     - property: otlp_http
-      description: |
-        Configure exporter to be OTLP with HTTP transport.
     - property: otlp_grpc
       description: |
         Configure exporter to be OTLP with gRPC transport.
@@ -769,16 +722,10 @@
 - type: SpanExporter
   properties:
     - property: otlp_http
-      description: Configure exporter to be OTLP with HTTP transport.
     - property: otlp_grpc
-      description: Configure exporter to be OTLP with gRPC transport.
     - property: otlp_file/development
-      description: |
-        Configure exporter to be OTLP with file transport.
     - property: console
-      description: Configure exporter to be console.
     - property: zipkin
-      description: Configure exporter to be zipkin.
   isSdkExtensionPlugin: true
 - type: SpanLimits
   properties:
@@ -816,9 +763,7 @@
 - type: SpanProcessor
   properties:
     - property: batch
-      description: Configure a batch span processor.
     - property: simple
-      description: Configure a simple span processor.
   isSdkExtensionPlugin: true
 - type: SumAggregation
   properties: []
@@ -845,16 +790,9 @@
 - type: TracerProvider
   properties:
     - property: processors
-      description: Configure span processors.
     - property: limits
-      description: Configure span limits. See also attribute_limits.
     - property: sampler
-      description: |
-        Configure the sampler.
-        If omitted, parent based sampler with a root of always_on is used.
     - property: tracer_configurator/development
-      description: |
-        Configure tracers.
   isSdkExtensionPlugin: false
 - type: View
   properties:

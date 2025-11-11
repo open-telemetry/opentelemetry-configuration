@@ -50,7 +50,8 @@ logger_provider:
         exporter:
           # Configure exporter to be OTLP with HTTP transport.
           otlp_http:
-            # TODO
+            # Configure endpoint, including the signal specific path.
+            # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: http://localhost:4318/v1/logs
             # Configure TLS settings for the exporter.
             tls:
@@ -66,7 +67,8 @@ logger_provider:
               # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
               # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
-            # TODO
+            # Configure headers. Entries have higher priority than entries from .headers_list.
+            # If an entry's .value is null, the entry is ignored.
             headers:
               - # The name of the pair.
                 name: api-key
@@ -501,23 +503,30 @@ propagator:
 # Configure tracer provider.
 # If omitted, a noop tracer provider is used.
 tracer_provider:
-  # TODO
+  # Configure span processors.  
   processors:
-    - # TODO
+    - # Configure a batch span processor.
       batch:
-        # TODO
+        # Configure delay interval (in milliseconds) between two consecutive exports.
+        # Value must be non-negative.
+        # If omitted or null, 5000 is used.
         schedule_delay: 5000
-        # TODO
+        # Configure maximum allowed time (in milliseconds) to export data.
+        # Value must be non-negative. A value of 0 indicates no limit (infinity).
+        # If omitted or null, 30000 is used.
         export_timeout: 30000
-        # TODO
+        # Configure maximum queue size. Value must be positive.
+        # If omitted or null, 2048 is used.
         max_queue_size: 2048
-        # TODO
+        # Configure maximum batch size. Value must be positive.
+        # If omitted or null, 512 is used.
         max_export_batch_size: 512
-        # TODO
+        # Configure exporter.
         exporter:
-          # TODO
+          # Configure exporter to be OTLP with HTTP transport.
           otlp_http:
-            # TODO
+            # Configure endpoint, including the signal specific path.
+            # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: http://localhost:4318/v1/traces
             # Configure TLS settings for the exporter.
             tls:
@@ -533,7 +542,8 @@ tracer_provider:
               # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
               # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
-            # TODO
+            # Configure headers. Entries have higher priority than entries from .headers_list.
+            # If an entry's .value is null, the entry is ignored.
             headers:
               - # The name of the pair.
                 name: api-key
@@ -555,11 +565,11 @@ tracer_provider:
             # Values include: protobuf, json. Implementations may not support json.
             # If omitted or null, protobuf is used.
             encoding: protobuf
-    - # TODO
+    - # Configure a batch span processor.
       batch:
-        # TODO
+        # Configure exporter.
         exporter:
-          # TODO
+          # Configure exporter to be OTLP with gRPC transport.
           otlp_grpc:
             # Configure endpoint.
             # If omitted or null, http://localhost:4317 is used.
@@ -601,45 +611,45 @@ tracer_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: 10000
-    - # TODO
+    - # Configure a batch span processor.
       batch:
-        # TODO
+        # Configure exporter.
         exporter:
-          # TODO
+          # Configure exporter to be OTLP with file transport.
           #This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
             # Configure output stream.
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
             output_stream: file:///var/log/traces.jsonl
-    - # TODO
+    - # Configure a batch span processor.
       batch:
-        # TODO
+        # Configure exporter.
         exporter:
-          # TODO
+          # Configure exporter to be OTLP with file transport.
           #This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
             # Configure output stream.
             # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
             # If omitted or null, stdout is used.
             output_stream: stdout
-    - # TODO
+    - # Configure a batch span processor.
       batch:
-        # TODO
+        # Configure exporter.
         exporter:
-          # TODO
+          # Configure exporter to be zipkin.
           zipkin:
             # TODO
             endpoint: http://localhost:9411/api/v2/spans
             # TODO
             timeout: 10000
-    - # TODO
+    - # Configure a simple span processor.
       simple:
         # TODO
         exporter:
-          # TODO
+          # Configure exporter to be console.
           console:
-  # TODO
+  # Configure span limits. See also attribute_limits.
   limits:
     # TODO
     attribute_value_length_limit: 4096
@@ -653,28 +663,33 @@ tracer_provider:
     event_attribute_count_limit: 128
     # TODO
     link_attribute_count_limit: 128
-  # TODO
+  # Configure the sampler. 
+  # If omitted, parent based sampler with a root of always_on is used.
   sampler:
     # TODO
     parent_based:
-      # TODO
+      # Configure root sampler.
+      # If omitted or null, always_on is used.
       root:
         # TODO
         trace_id_ratio_based:
           # TODO
           ratio: 0.0001
-      # TODO
+      # Configure remote_parent_sampled sampler.
+      # If omitted or null, always_on is used.
       remote_parent_sampled:
         # TODO
         always_on:
-      # TODO
+      # Configure remote_parent_not_sampled sampler.
+      # If omitted or null, always_off is used.
       remote_parent_not_sampled:
         # TODO
         #This property is experimental and subject to breaking changes in minor versions.
         probability/development:
           # TODO
           ratio: 0.01
-      # TODO
+      # Configure local_parent_sampled sampler.
+      # If omitted or null, always_on is used.
       local_parent_sampled:
         # TODO
         #This property is experimental and subject to breaking changes in minor versions.
@@ -683,24 +698,28 @@ tracer_provider:
           probability:
             # TODO
             ratio: 0.001
-      # TODO
+      # Configure local_parent_not_sampled sampler.
+      # If omitted or null, always_off is used.
       local_parent_not_sampled:
         # TODO
         always_off:
-  # TODO
+  # Configure tracers.
   #This property is experimental and subject to breaking changes in minor versions.
   tracer_configurator/development:
-    # TODO
+    # Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
     default_config:
-      # TODO
+      # Configure if the tracer is enabled or not.
       disabled: true
-    # TODO
+    # Configure tracers.
     tracers:
-      - # TODO
+      - # Configure tracer names to match, evaluated as follows:
+        #
+        # * If the tracer name exactly matches.
+        # * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
         name: io.opentelemetry.contrib.*
-        # TODO
+        # The tracer config.
         config:
-          # TODO
+          # Configure if the tracer is enabled or not.
           disabled: false
 # Configure resource for all signals.
 # If omitted, the default resource is used.

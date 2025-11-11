@@ -543,11 +543,11 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `schedule_delay` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `export_timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | TODO |
-| `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | TODO |
-| `exporter` | [`SpanExporter`](#spanexporter) | `true` | No constraints. | TODO |
+| `schedule_delay` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between two consecutive exports.<br> Value must be non-negative.<br> If omitted or null, 5000 is used. |
+| `export_timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 30000 is used. |
+| `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum queue size. Value must be positive.<br> If omitted or null, 2048 is used. |
+| `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum batch size. Value must be positive.<br> If omitted or null, 512 is used. |
+| `exporter` | [`SpanExporter`](#spanexporter) | `true` | No constraints. | Configure exporter. |
 
 <details>
 <summary>Language support status</summary>
@@ -579,6 +579,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "schedule_delay": {
+      "description": "Configure delay interval (in milliseconds) between two consecutive exports.\n Value must be non-negative.\n If omitted or null, 5000 is used.",
       "type": [
         "integer",
         "null"
@@ -586,6 +587,7 @@ Usages:
       "minimum": 0
     },
     "export_timeout": {
+      "description": "Configure maximum allowed time (in milliseconds) to export data.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
       "type": [
         "integer",
         "null"
@@ -593,6 +595,7 @@ Usages:
       "minimum": 0
     },
     "max_queue_size": {
+      "description": "Configure maximum queue size. Value must be positive.\n If omitted or null, 2048 is used.",
       "type": [
         "integer",
         "null"
@@ -600,6 +603,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "max_export_batch_size": {
+      "description": "Configure maximum batch size. Value must be positive.\n If omitted or null, 512 is used.",
       "type": [
         "integer",
         "null"
@@ -607,6 +611,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "exporter": {
+      "description": "Configure exporter.",
       "$ref": "#/$defs/SpanExporter"
     }
   },
@@ -2461,7 +2466,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `disabled` | `boolean` | `false` | No constraints. | TODO |
+| `disabled` | `boolean` | `false` | No constraints. | Configure if the tracer is enabled or not. |
 
 <details>
 <summary>Language support status</summary>
@@ -2491,6 +2496,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "disabled": {
+      "description": "Configure if the tracer is enabled or not.",
       "type": [
         "boolean"
       ]
@@ -2506,8 +2512,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `default_config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` | No constraints. | TODO |
-| `tracers` | `array` of [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | `false` | No constraints. | TODO |
+| `default_config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` | No constraints. | Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers. |
+| `tracers` | `array` of [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | `false` | No constraints. | Configure tracers. |
 
 <details>
 <summary>Language support status</summary>
@@ -2537,9 +2543,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "default_config": {
+      "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.",
       "$ref": "#/$defs/ExperimentalTracerConfig"
     },
     "tracers": {
+      "description": "Configure tracers.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
@@ -2556,8 +2564,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `name` | `string` | `false` | No constraints. | TODO |
-| `config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` | No constraints. | TODO |
+| `name` | `string` | `false` | No constraints. | Configure tracer names to match, evaluated as follows:<br> <br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none. |
+| `config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` | No constraints. | The tracer config. |
 
 <details>
 <summary>Language support status</summary>
@@ -2587,11 +2595,13 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "Configure tracer names to match, evaluated as follows:\n \n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
       "type": [
         "string"
       ]
     },
     "config": {
+      "description": "The tracer config.",
       "$ref": "#/$defs/ExperimentalTracerConfig"
     }
   }
@@ -4740,8 +4750,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | TODO |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint, including the signal specific path.<br> If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used. |
+| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br> If an entry's .value is null, the entry is ignored. |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> If omitted or null, no headers are added. |
 | `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br> Values include: gzip, none. Implementations may support other compression algorithms.<br> If omitted or null, none is used. |
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 10000 is used. |
@@ -4783,6 +4793,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "Configure endpoint, including the signal specific path.\n If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.",
       "type": [
         "string",
         "null"
@@ -4793,6 +4804,7 @@ Usages:
       "$ref": "#/$defs/HttpTls"
     },
     "headers": {
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
@@ -4930,11 +4942,11 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `root` | [`Sampler`](#sampler) | `false` | No constraints. | TODO |
-| `remote_parent_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | TODO |
-| `remote_parent_not_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | TODO |
-| `local_parent_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | TODO |
-| `local_parent_not_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | TODO |
+| `root` | [`Sampler`](#sampler) | `false` | No constraints. | Configure root sampler.<br> If omitted or null, always_on is used. |
+| `remote_parent_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure remote_parent_sampled sampler.<br> If omitted or null, always_on is used. |
+| `remote_parent_not_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure remote_parent_not_sampled sampler.<br> If omitted or null, always_off is used. |
+| `local_parent_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure local_parent_sampled sampler.<br> If omitted or null, always_on is used. |
+| `local_parent_not_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure local_parent_not_sampled sampler.<br> If omitted or null, always_off is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -4968,18 +4980,23 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "root": {
+      "description": "Configure root sampler.\n If omitted or null, always_on is used.",
       "$ref": "#/$defs/Sampler"
     },
     "remote_parent_sampled": {
+      "description": "Configure remote_parent_sampled sampler.\n If omitted or null, always_on is used.",
       "$ref": "#/$defs/Sampler"
     },
     "remote_parent_not_sampled": {
+      "description": "Configure remote_parent_not_sampled sampler.\n If omitted or null, always_off is used.",
       "$ref": "#/$defs/Sampler"
     },
     "local_parent_sampled": {
+      "description": "Configure local_parent_sampled sampler.\n If omitted or null, always_on is used.",
       "$ref": "#/$defs/Sampler"
     },
     "local_parent_not_sampled": {
+      "description": "Configure local_parent_not_sampled sampler.\n If omitted or null, always_off is used.",
       "$ref": "#/$defs/Sampler"
     }
   }
@@ -5738,11 +5755,11 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | No constraints. | TODO |
-| `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | No constraints. | TODO |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | TODO |
-| `console` | [`ConsoleExporter`](#consoleexporter) | `false` | No constraints. | TODO |
-| `zipkin` | [`ZipkinSpanExporter`](#zipkinspanexporter) | `false` | No constraints. | TODO |
+| `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | No constraints. | Configure exporter to be OTLP with HTTP transport. |
+| `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport. |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport. |
+| `console` | [`ConsoleExporter`](#consoleexporter) | `false` | No constraints. | Configure exporter to be console. |
+| `zipkin` | [`ZipkinSpanExporter`](#zipkinspanexporter) | `false` | No constraints. | Configure exporter to be zipkin. |
 
 <details>
 <summary>Language support status</summary>
@@ -5783,18 +5800,23 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
+      "description": "Configure exporter to be OTLP with HTTP transport.",
       "$ref": "common.json#/$defs/OtlpHttpExporter"
     },
     "otlp_grpc": {
+      "description": "Configure exporter to be OTLP with gRPC transport.",
       "$ref": "common.json#/$defs/OtlpGrpcExporter"
     },
     "otlp_file/development": {
+      "description": "Configure exporter to be OTLP with file transport.",
       "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
     },
     "console": {
+      "description": "Configure exporter to be console.",
       "$ref": "common.json#/$defs/ConsoleExporter"
     },
     "zipkin": {
+      "description": "Configure exporter to be zipkin.",
       "$ref": "#/$defs/ZipkinSpanExporter"
     }
   }
@@ -5893,8 +5915,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `batch` | [`BatchSpanProcessor`](#batchspanprocessor) | `false` | No constraints. | TODO |
-| `simple` | [`SimpleSpanProcessor`](#simplespanprocessor) | `false` | No constraints. | TODO |
+| `batch` | [`BatchSpanProcessor`](#batchspanprocessor) | `false` | No constraints. | Configure a batch span processor. |
+| `simple` | [`SimpleSpanProcessor`](#simplespanprocessor) | `false` | No constraints. | Configure a simple span processor. |
 
 <details>
 <summary>Language support status</summary>
@@ -5931,9 +5953,11 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "batch": {
+      "description": "Configure a batch span processor.",
       "$ref": "#/$defs/BatchSpanProcessor"
     },
     "simple": {
+      "description": "Configure a simple span processor.",
       "$ref": "#/$defs/SimpleSpanProcessor"
     }
   }
@@ -6118,10 +6142,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | * `minItems`: `1`<br> | TODO |
-| `limits` | [`SpanLimits`](#spanlimits) | `false` | No constraints. | TODO |
-| `sampler` | [`Sampler`](#sampler) | `false` | No constraints. | TODO |
-| `tracer_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | No constraints. | TODO |
+| `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | * `minItems`: `1`<br> | Configure span processors.   |
+| `limits` | [`SpanLimits`](#spanlimits) | `false` | No constraints. | Configure span limits. See also attribute_limits. |
+| `sampler` | [`Sampler`](#sampler) | `false` | No constraints. | Configure the sampler. <br> If omitted, parent based sampler with a root of always_on is used. |
+| `tracer_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | No constraints. | Configure tracers. |
 
 <details>
 <summary>Language support status</summary>
@@ -6154,6 +6178,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "processors": {
+      "description": "Configure span processors.  ",
       "type": "array",
       "minItems": 1,
       "items": {
@@ -6161,12 +6186,15 @@ Usages:
       }
     },
     "limits": {
+      "description": "Configure span limits. See also attribute_limits.",
       "$ref": "#/$defs/SpanLimits"
     },
     "sampler": {
+      "description": "Configure the sampler. \n If omitted, parent based sampler with a root of always_on is used.",
       "$ref": "#/$defs/Sampler"
     },
     "tracer_configurator/development": {
+      "description": "Configure tracers.",
       "$ref": "#/$defs/ExperimentalTracerConfigurator"
     }
   },
@@ -6179,6 +6207,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "schedule_delay": {
+          "description": "Configure delay interval (in milliseconds) between two consecutive exports.\n Value must be non-negative.\n If omitted or null, 5000 is used.",
           "type": [
             "integer",
             "null"
@@ -6186,6 +6215,7 @@ Usages:
           "minimum": 0
         },
         "export_timeout": {
+          "description": "Configure maximum allowed time (in milliseconds) to export data.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
           "type": [
             "integer",
             "null"
@@ -6193,6 +6223,7 @@ Usages:
           "minimum": 0
         },
         "max_queue_size": {
+          "description": "Configure maximum queue size. Value must be positive.\n If omitted or null, 2048 is used.",
           "type": [
             "integer",
             "null"
@@ -6200,6 +6231,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "max_export_batch_size": {
+          "description": "Configure maximum batch size. Value must be positive.\n If omitted or null, 512 is used.",
           "type": [
             "integer",
             "null"
@@ -6207,6 +6239,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "exporter": {
+          "description": "Configure exporter.",
           "$ref": "#/$defs/SpanExporter"
         }
       },
@@ -6295,18 +6328,23 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "root": {
+          "description": "Configure root sampler.\n If omitted or null, always_on is used.",
           "$ref": "#/$defs/Sampler"
         },
         "remote_parent_sampled": {
+          "description": "Configure remote_parent_sampled sampler.\n If omitted or null, always_on is used.",
           "$ref": "#/$defs/Sampler"
         },
         "remote_parent_not_sampled": {
+          "description": "Configure remote_parent_not_sampled sampler.\n If omitted or null, always_off is used.",
           "$ref": "#/$defs/Sampler"
         },
         "local_parent_sampled": {
+          "description": "Configure local_parent_sampled sampler.\n If omitted or null, always_on is used.",
           "$ref": "#/$defs/Sampler"
         },
         "local_parent_not_sampled": {
+          "description": "Configure local_parent_not_sampled sampler.\n If omitted or null, always_off is used.",
           "$ref": "#/$defs/Sampler"
         }
       }
@@ -6449,18 +6487,23 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "otlp_http": {
+          "description": "Configure exporter to be OTLP with HTTP transport.",
           "$ref": "common.json#/$defs/OtlpHttpExporter"
         },
         "otlp_grpc": {
+          "description": "Configure exporter to be OTLP with gRPC transport.",
           "$ref": "common.json#/$defs/OtlpGrpcExporter"
         },
         "otlp_file/development": {
+          "description": "Configure exporter to be OTLP with file transport.",
           "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
         },
         "console": {
+          "description": "Configure exporter to be console.",
           "$ref": "common.json#/$defs/ConsoleExporter"
         },
         "zipkin": {
+          "description": "Configure exporter to be zipkin.",
           "$ref": "#/$defs/ZipkinSpanExporter"
         }
       }
@@ -6525,9 +6568,11 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "batch": {
+          "description": "Configure a batch span processor.",
           "$ref": "#/$defs/BatchSpanProcessor"
         },
         "simple": {
+          "description": "Configure a simple span processor.",
           "$ref": "#/$defs/SimpleSpanProcessor"
         }
       }
@@ -6561,9 +6606,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "default_config": {
+          "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.",
           "$ref": "#/$defs/ExperimentalTracerConfig"
         },
         "tracers": {
+          "description": "Configure tracers.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
@@ -6578,11 +6625,13 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "name": {
+          "description": "Configure tracer names to match, evaluated as follows:\n \n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
           "type": [
             "string"
           ]
         },
         "config": {
+          "description": "The tracer config.",
           "$ref": "#/$defs/ExperimentalTracerConfig"
         }
       }
@@ -6594,6 +6643,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "disabled": {
+          "description": "Configure if the tracer is enabled or not.",
           "type": [
             "boolean"
           ]
