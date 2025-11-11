@@ -1863,7 +1863,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `disabled` | `boolean` | `false` | No constraints. | TODO |
+| `disabled` | `boolean` | `false` | No constraints. | Configure if the meter is enabled or not. |
 
 <details>
 <summary>Language support status</summary>
@@ -1893,6 +1893,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "disabled": {
+      "description": "Configure if the meter is enabled or not.",
       "type": [
         "boolean"
       ]
@@ -1908,8 +1909,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `default_config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` | No constraints. | TODO |
-| `meters` | `array` of [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | `false` | No constraints. | TODO |
+| `default_config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` | No constraints. | Configure the default meter config used there is no matching entry in .meter_configurator/development.meters. |
+| `meters` | `array` of [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | `false` | No constraints. | Configure meters. |
 
 <details>
 <summary>Language support status</summary>
@@ -1939,9 +1940,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "default_config": {
+      "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.",
       "$ref": "#/$defs/ExperimentalMeterConfig"
     },
     "meters": {
+      "description": "Configure meters.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
@@ -1958,8 +1961,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `name` | `string` | `false` | No constraints. | TODO |
-| `config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` | No constraints. | TODO |
+| `name` | `string` | `false` | No constraints. | Configure meter names to match, evaluated as follows:<br> <br>     * If the meter name exactly matches.<br>     * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none. |
+| `config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` | No constraints. | The meter config. |
 
 <details>
 <summary>Language support status</summary>
@@ -1989,11 +1992,13 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "Configure meter names to match, evaluated as follows:\n \n     * If the meter name exactly matches.\n     * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
       "type": [
         "string"
       ]
     },
     "config": {
+      "description": "The meter config.",
       "$ref": "#/$defs/ExperimentalMeterConfig"
     }
   }
@@ -2055,9 +2060,9 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | TODO |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | TODO |
+| `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure output stream.<br> Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br> If omitted or null, stdout is used. |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br> Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, cumulative is used. |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br> Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, explicit_bucket_histogram is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2089,15 +2094,18 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "output_stream": {
+      "description": "Configure output stream.\n Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\n If omitted or null, stdout is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "temporality_preference": {
+      "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
       "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
+      "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
       "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
@@ -2283,11 +2291,11 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `host` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | TODO |
-| `translation_strategy` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `host` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure host.<br> If omitted or null, localhost is used. |
+| `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | Configure port.<br> If omitted or null, 9464 is used. |
+| `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure Prometheus Exporter to produce metrics without a scope info metric.<br> If omitted or null, false is used. |
+| `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
+| `translation_strategy` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure how Prometheus metrics are exposed. Values include:<br> <br>          * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br>          * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.<br>          * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br>          * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.<br> <br>         If omitted or null, UnderscoreEscapingWithSuffixes is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2321,27 +2329,32 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "host": {
+      "description": "Configure host.\n If omitted or null, localhost is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "port": {
+      "description": "Configure port.\n If omitted or null, 9464 is used.",
       "type": [
         "integer",
         "null"
       ]
     },
     "without_scope_info": {
+      "description": "Configure Prometheus Exporter to produce metrics without a scope info metric.\n If omitted or null, false is used.",
       "type": [
         "boolean",
         "null"
       ]
     },
     "with_resource_constant_labels": {
+      "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.",
       "$ref": "common.json#/$defs/IncludeExclude"
     },
     "translation_strategy": {
+      "description": "Configure how Prometheus metrics are exposed. Values include:\n \n          * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n          * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n          * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n          * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\n \n         If omitted or null, UnderscoreEscapingWithSuffixes is used.",
       "type": [
         "string",
         "null"
@@ -3792,27 +3805,32 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "host": {
+          "description": "Configure host.\n If omitted or null, localhost is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "port": {
+          "description": "Configure port.\n If omitted or null, 9464 is used.",
           "type": [
             "integer",
             "null"
           ]
         },
         "without_scope_info": {
+          "description": "Configure Prometheus Exporter to produce metrics without a scope info metric.\n If omitted or null, false is used.",
           "type": [
             "boolean",
             "null"
           ]
         },
         "with_resource_constant_labels": {
+          "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.",
           "$ref": "common.json#/$defs/IncludeExclude"
         },
         "translation_strategy": {
+          "description": "Configure how Prometheus metrics are exposed. Values include:\n \n          * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n          * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n          * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n          * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\n \n         If omitted or null, UnderscoreEscapingWithSuffixes is used.",
           "type": [
             "string",
             "null"
@@ -3989,15 +4007,18 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "output_stream": {
+          "description": "Configure output stream.\n Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\n If omitted or null, stdout is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "temporality_preference": {
+          "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
           "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
+          "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
@@ -4227,9 +4248,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "default_config": {
+          "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.",
           "$ref": "#/$defs/ExperimentalMeterConfig"
         },
         "meters": {
+          "description": "Configure meters.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
@@ -4244,11 +4267,13 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "name": {
+          "description": "Configure meter names to match, evaluated as follows:\n \n     * If the meter name exactly matches.\n     * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
           "type": [
             "string"
           ]
         },
         "config": {
+          "description": "The meter config.",
           "$ref": "#/$defs/ExperimentalMeterConfig"
         }
       }
@@ -4260,6 +4285,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "disabled": {
+          "description": "Configure if the meter is enabled or not.",
           "type": [
             "boolean"
           ]

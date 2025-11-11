@@ -203,13 +203,16 @@ meter_provider:
           # TODO
           #This property is experimental and subject to breaking changes in minor versions.
           prometheus/development:
-            # TODO
+            # Configure host.
+            # If omitted or null, localhost is used.
             host: localhost
-            # TODO
+            # Configure port.
+            # If omitted or null, 9464 is used.
             port: 9464
-            # TODO
+            # Configure Prometheus Exporter to produce metrics without a scope info metric.
+            # If omitted or null, false is used.
             without_scope_info: false
-            # TODO
+            # Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
             with_resource_constant_labels:
               # Configure list of value patterns to include.
               # Values are evaluated to match as follows:
@@ -225,7 +228,14 @@ meter_provider:
               # If omitted, .included attributes are included.
               excluded:
                 - "service.attr1"
-            # TODO
+            # Configure how Prometheus metrics are exposed. Values include:
+            #
+            #          * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.
+            #          * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.
+            #          * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.
+            #          * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.
+            #
+            #         If omitted or null, UnderscoreEscapingWithSuffixes is used.
             translation_strategy: UnderscoreEscapingWithSuffixes
         # Configure metric producers.
         producers:
@@ -412,11 +422,17 @@ meter_provider:
           # Configure exporter to be OTLP with file transport.
           #This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # TODO
+            # Configure output stream.
+            # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+            # If omitted or null, stdout is used.
             output_stream: file:///var/log/metrics.jsonl
-            # TODO
+            # Configure temporality preference.
+            # Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, cumulative is used.
             temporality_preference: delta
-            # TODO
+            # Configure default histogram aggregation.
+            # Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, explicit_bucket_histogram is used.
             default_histogram_aggregation: base2_exponential_bucket_histogram
     - # Configure a periodic metric reader.
       periodic:
@@ -425,11 +441,17 @@ meter_provider:
           # Configure exporter to be OTLP with file transport.
           #This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # TODO
+            # Configure output stream.
+            # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+            # If omitted or null, stdout is used.
             output_stream: stdout
-            # TODO
+            # Configure temporality preference.
+            # Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, cumulative is used.
             temporality_preference: delta
-            # TODO
+            # Configure default histogram aggregation.
+            # Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, explicit_bucket_histogram is used.
             default_histogram_aggregation: base2_exponential_bucket_histogram
     - # Configure a periodic metric reader.
       periodic:
@@ -515,17 +537,20 @@ meter_provider:
   # Configure meters.
   #This property is experimental and subject to breaking changes in minor versions.
   meter_configurator/development:
-    # TODO
+    # Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
     default_config:
-      # TODO
+      # Configure if the meter is enabled or not.
       disabled: true
-    # TODO
+    # Configure meters.
     meters:
-      - # TODO
+      - # Configure meter names to match, evaluated as follows:
+        #
+        #     * If the meter name exactly matches.
+        #     * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
         name: io.opentelemetry.contrib.*
-        # TODO
+        # The meter config.
         config:
-          # TODO
+          # Configure if the meter is enabled or not.
           disabled: false
 # Configure text map context propagators.
 # If omitted, a noop propagator is used.
