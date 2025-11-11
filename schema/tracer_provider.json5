@@ -225,6 +225,8 @@ If omitted or null, 1.0 is used.",
             "additionalProperties": false,
             properties: {
                 "ratio": {
+                    description: "Configure trace_id_ratio.\n \
+If omitted or null, 1.0 is used.",
                     "type": [
                         "number",
                         "null"
@@ -330,6 +332,7 @@ If omitted or null, 1.0 is used.",
             "additionalProperties": false,
             properties: {
                 "exporter": {
+                    description: "Configure exporter.",
                     "$ref": "#/$defs/SpanExporter"
                 }
             },
@@ -465,12 +468,17 @@ If omitted or null, 128 is used.",
             "additionalProperties": false,
             properties: {
                 "endpoint": {
+      description: "Configure endpoint.\n \
+If omitted or null, http://localhost:9411/api/v2/spans is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "timeout": {
+      description: "Configure max time (in milliseconds) to wait for each export.\n \
+Value must be non-negative. A value of 0 indicates indefinite.\n \
+If omitted or null, 10000 is used.",
                     "type": [
                         "integer",
                         "null"

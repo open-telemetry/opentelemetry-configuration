@@ -773,8 +773,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | TODO |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | TODO |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br> Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, cumulative is used. |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br> Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, explicit_bucket_histogram is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -805,9 +805,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "temporality_preference": {
+      "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
       "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
+      "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
       "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
@@ -4054,9 +4056,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "temporality_preference": {
+          "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
           "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
+          "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
@@ -4066,9 +4070,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "selector": {
+          "description": "Configure view selector.\n Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.",
           "$ref": "#/$defs/ViewSelector"
         },
         "stream": {
+          "description": "Configure view stream.",
           "$ref": "#/$defs/ViewStream"
         }
       },
@@ -4082,33 +4088,39 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "instrument_name": {
+          "description": "Configure instrument name selection criteria.\n If omitted or null, all instrument names match.",
           "type": [
             "string",
             "null"
           ]
         },
         "instrument_type": {
+          "description": "Configure instrument type selection criteria.\n Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\n If omitted or null, all instrument types match.",
           "$ref": "#/$defs/InstrumentType"
         },
         "unit": {
+          "description": "Configure the instrument unit selection criteria.\n If omitted or null, all instrument units match.",
           "type": [
             "string",
             "null"
           ]
         },
         "meter_name": {
+          "description": "Configure meter name selection criteria.\n If omitted or null, all meter names match.",
           "type": [
             "string",
             "null"
           ]
         },
         "meter_version": {
+          "description": "Configure meter version selection criteria.\n If omitted or null, all meter versions match.",
           "type": [
             "string",
             "null"
           ]
         },
         "meter_schema_url": {
+          "description": "Configure meter schema url selection criteria.\n If omitted or null, all meter schema URLs match.",
           "type": [
             "string",
             "null"
@@ -4136,21 +4148,25 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "name": {
+          "description": "Configure metric name of the resulting stream(s).\n If omitted or null, the instrument's original name is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "description": {
+          "description": "Configure metric description of the resulting stream(s).\n If omitted or null, the instrument's origin description is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "aggregation": {
+          "description": "Configure aggregation of the resulting stream(s).\n Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.\n If omitted, default is used.",
           "$ref": "#/$defs/Aggregation"
         },
         "aggregation_cardinality_limit": {
+          "description": "Configure the aggregation cardinality limit.\n If omitted or null, the metric reader's default cardinality limit is used.",
           "type": [
             "integer",
             "null"
@@ -4158,6 +4174,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "attribute_keys": {
+          "description": "Configure attribute keys retained in the resulting stream(s).",
           "$ref": "common.json#/$defs/IncludeExclude"
         }
       }
@@ -5899,7 +5916,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `exporter` | [`SpanExporter`](#spanexporter) | `true` | No constraints. | TODO |
+| `exporter` | [`SpanExporter`](#spanexporter) | `true` | No constraints. | Configure exporter. |
 
 <details>
 <summary>Language support status</summary>
@@ -5927,6 +5944,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "exporter": {
+      "description": "Configure exporter.",
       "$ref": "#/$defs/SpanExporter"
     }
   },
@@ -6290,7 +6308,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | TODO |
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure trace_id_ratio.<br> If omitted or null, 1.0 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -6320,6 +6338,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "ratio": {
+      "description": "Configure trace_id_ratio.\n If omitted or null, 1.0 is used.",
       "type": [
         "number",
         "null"
@@ -6578,6 +6597,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "ratio": {
+          "description": "Configure trace_id_ratio.\n If omitted or null, 1.0 is used.",
           "type": [
             "number",
             "null"
@@ -6682,6 +6702,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "exporter": {
+          "description": "Configure exporter.",
           "$ref": "#/$defs/SpanExporter"
         }
       },
@@ -6805,12 +6826,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "endpoint": {
+          "description": "Configure endpoint.\n If omitted or null, http://localhost:9411/api/v2/spans is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "timeout": {
+          "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates indefinite.\n If omitted or null, 10000 is used.",
           "type": [
             "integer",
             "null"
@@ -6878,8 +6901,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `selector` | [`ViewSelector`](#viewselector) | `true` | No constraints. | TODO |
-| `stream` | [`ViewStream`](#viewstream) | `true` | No constraints. | TODO |
+| `selector` | [`ViewSelector`](#viewselector) | `true` | No constraints. | Configure view selector.<br> Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria. |
+| `stream` | [`ViewStream`](#viewstream) | `true` | No constraints. | Configure view stream. |
 
 <details>
 <summary>Language support status</summary>
@@ -6908,9 +6931,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "selector": {
+      "description": "Configure view selector.\n Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.",
       "$ref": "#/$defs/ViewSelector"
     },
     "stream": {
+      "description": "Configure view stream.",
       "$ref": "#/$defs/ViewStream"
     }
   },
@@ -6925,12 +6950,12 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `instrument_name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `instrument_type` | [`InstrumentType`](#instrumenttype) | `false` | No constraints. | TODO |
-| `unit` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `meter_name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `meter_version` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `meter_schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `instrument_name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure instrument name selection criteria.<br> If omitted or null, all instrument names match. |
+| `instrument_type` | [`InstrumentType`](#instrumenttype) | `false` | No constraints. | Configure instrument type selection criteria.<br> Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.<br> If omitted or null, all instrument types match. |
+| `unit` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the instrument unit selection criteria.<br> If omitted or null, all instrument units match. |
+| `meter_name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter name selection criteria.<br> If omitted or null, all meter names match. |
+| `meter_version` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter version selection criteria.<br> If omitted or null, all meter versions match. |
+| `meter_schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter schema url selection criteria.<br> If omitted or null, all meter schema URLs match. |
 
 <details>
 <summary>Language support status</summary>
@@ -6962,33 +6987,39 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "instrument_name": {
+      "description": "Configure instrument name selection criteria.\n If omitted or null, all instrument names match.",
       "type": [
         "string",
         "null"
       ]
     },
     "instrument_type": {
+      "description": "Configure instrument type selection criteria.\n Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\n If omitted or null, all instrument types match.",
       "$ref": "#/$defs/InstrumentType"
     },
     "unit": {
+      "description": "Configure the instrument unit selection criteria.\n If omitted or null, all instrument units match.",
       "type": [
         "string",
         "null"
       ]
     },
     "meter_name": {
+      "description": "Configure meter name selection criteria.\n If omitted or null, all meter names match.",
       "type": [
         "string",
         "null"
       ]
     },
     "meter_version": {
+      "description": "Configure meter version selection criteria.\n If omitted or null, all meter versions match.",
       "type": [
         "string",
         "null"
       ]
     },
     "meter_schema_url": {
+      "description": "Configure meter schema url selection criteria.\n If omitted or null, all meter schema URLs match.",
       "type": [
         "string",
         "null"
@@ -7002,11 +7033,11 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `description` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `aggregation` | [`Aggregation`](#aggregation) | `false` | No constraints. | TODO |
-| `aggregation_cardinality_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | TODO |
-| `attribute_keys` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | TODO |
+| `name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure metric name of the resulting stream(s).<br> If omitted or null, the instrument's original name is used. |
+| `description` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure metric description of the resulting stream(s).<br> If omitted or null, the instrument's origin description is used. |
+| `aggregation` | [`Aggregation`](#aggregation) | `false` | No constraints. | Configure aggregation of the resulting stream(s).<br> Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.<br> If omitted, default is used. |
+| `aggregation_cardinality_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure the aggregation cardinality limit.<br> If omitted or null, the metric reader's default cardinality limit is used. |
+| `attribute_keys` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure attribute keys retained in the resulting stream(s). |
 
 <details>
 <summary>Language support status</summary>
@@ -7037,21 +7068,25 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "Configure metric name of the resulting stream(s).\n If omitted or null, the instrument's original name is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "description": {
+      "description": "Configure metric description of the resulting stream(s).\n If omitted or null, the instrument's origin description is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "aggregation": {
+      "description": "Configure aggregation of the resulting stream(s).\n Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.\n If omitted, default is used.",
       "$ref": "#/$defs/Aggregation"
     },
     "aggregation_cardinality_limit": {
+      "description": "Configure the aggregation cardinality limit.\n If omitted or null, the metric reader's default cardinality limit is used.",
       "type": [
         "integer",
         "null"
@@ -7059,6 +7094,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "attribute_keys": {
+      "description": "Configure attribute keys retained in the resulting stream(s).",
       "$ref": "common.json#/$defs/IncludeExclude"
     }
   }
@@ -7069,8 +7105,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br> If omitted or null, http://localhost:9411/api/v2/spans is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br> Value must be non-negative. A value of 0 indicates indefinite.<br> If omitted or null, 10000 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -7101,12 +7137,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "Configure endpoint.\n If omitted or null, http://localhost:9411/api/v2/spans is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "timeout": {
+      "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates indefinite.\n If omitted or null, 10000 is used.",
       "type": [
         "integer",
         "null"

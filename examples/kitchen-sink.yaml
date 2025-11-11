@@ -459,34 +459,50 @@ meter_provider:
         exporter:
           # Configure exporter to be console.
           console:
-            # TODO
+            # Configure temporality preference.
+            # Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, cumulative is used.
             temporality_preference: delta
-            # TODO
+            # Configure default histogram aggregation.
+            # Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, explicit_bucket_histogram is used.
             default_histogram_aggregation: base2_exponential_bucket_histogram
   # Configure views.
   # Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
   views:
-    - # TODO
+    - # Configure view selector.
+      # Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.
       selector:
-        # TODO
+        # Configure instrument name selection criteria.
+        # If omitted or null, all instrument names match.
         instrument_name: my-instrument
-        # TODO
+        # Configure instrument type selection criteria.
+        # Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.
+        # If omitted or null, all instrument types match.
         instrument_type: histogram
-        # TODO
+        # Configure the instrument unit selection criteria.
+        # If omitted or null, all instrument units match.
         unit: ms
-        # TODO
+        # Configure meter name selection criteria.
+        # If omitted or null, all meter names match.
         meter_name: my-meter
-        # TODO
+        # Configure meter version selection criteria.
+        # If omitted or null, all meter versions match.
         meter_version: 1.0.0
-        # TODO
+        # Configure meter schema url selection criteria.
+        # If omitted or null, all meter schema URLs match.
         meter_schema_url: https://opentelemetry.io/schemas/1.16.0
-      # TODO
+      # Configure view stream.
       stream:
-        # TODO
+        # Configure metric name of the resulting stream(s).
+        # If omitted or null, the instrument's original name is used.
         name: new_instrument_name
-        # TODO
+        # Configure metric description of the resulting stream(s).
+        # If omitted or null, the instrument's origin description is used.
         description: new_description
-        # TODO
+        # Configure aggregation of the resulting stream(s).
+        # Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
+        # If omitted, default is used.
         aggregation:
           # Configure aggregation to be explicit_bucket_histogram.
           explicit_bucket_histogram:
@@ -513,9 +529,10 @@ meter_provider:
             # Configure record min and max.
             # If omitted or null, true is used.
             record_min_max: true
-        # TODO
+        # Configure the aggregation cardinality limit.
+        # If omitted or null, the metric reader's default cardinality limit is used.
         aggregation_cardinality_limit: 2000
-        # TODO
+        # Configure attribute keys retained in the resulting stream(s).
         attribute_keys:
           # Configure list of value patterns to include.
           # Values are evaluated to match as follows:
@@ -717,13 +734,16 @@ tracer_provider:
         exporter:
           # Configure exporter to be zipkin.
           zipkin:
-            # TODO
+            # Configure endpoint.
+            # If omitted or null, http://localhost:9411/api/v2/spans is used.
             endpoint: http://localhost:9411/api/v2/spans
-            # TODO
+            # Configure max time (in milliseconds) to wait for each export.
+            # Value must be non-negative. A value of 0 indicates indefinite.
+            # If omitted or null, 10000 is used.
             timeout: 10000
     - # Configure a simple span processor.
       simple:
-        # TODO
+        # Configure exporter.
         exporter:
           # Configure exporter to be console.
           console:
@@ -763,7 +783,8 @@ tracer_provider:
       root:
         # Configure sampler to be trace_id_ratio_based.
         trace_id_ratio_based:
-          # TODO
+          # Configure trace_id_ratio.
+          # If omitted or null, 1.0 is used.
           ratio: 0.0001
       # Configure remote_parent_sampled sampler.
       # If omitted or null, always_on is used.

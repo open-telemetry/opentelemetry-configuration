@@ -481,9 +481,11 @@
             "additionalProperties": false,
             "properties": {
                 "temporality_preference": {
+                    "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
                     "$ref": "#/$defs/ExporterTemporalityPreference"
                 },
                 "default_histogram_aggregation": {
+                    "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
                     "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
                 }
             }
@@ -493,9 +495,11 @@
             "additionalProperties": false,
             "properties": {
                 "selector": {
+                    "description": "Configure view selector.\n Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.",
                     "$ref": "#/$defs/ViewSelector"
                 },
                 "stream": {
+                    "description": "Configure view stream.",
                     "$ref": "#/$defs/ViewStream"
                 }
             },
@@ -509,33 +513,39 @@
             "additionalProperties": false,
             "properties": {
                 "instrument_name": {
+                    "description": "Configure instrument name selection criteria.\n If omitted or null, all instrument names match.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "instrument_type": {
+                    "description": "Configure instrument type selection criteria.\n Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\n If omitted or null, all instrument types match.",
                     "$ref": "#/$defs/InstrumentType"
                 },
                 "unit": {
+                    "description": "Configure the instrument unit selection criteria.\n If omitted or null, all instrument units match.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "meter_name": {
+                    "description": "Configure meter name selection criteria.\n If omitted or null, all meter names match.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "meter_version": {
+                    "description": "Configure meter version selection criteria.\n If omitted or null, all meter versions match.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "meter_schema_url": {
+                    "description": "Configure meter schema url selection criteria.\n If omitted or null, all meter schema URLs match.",
                     "type": [
                         "string",
                         "null"
@@ -563,21 +573,25 @@
             "additionalProperties": false,
             "properties": {
                 "name": {
+                    "description": "Configure metric name of the resulting stream(s).\n If omitted or null, the instrument's original name is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "description": {
+                    "description": "Configure metric description of the resulting stream(s).\n If omitted or null, the instrument's origin description is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "aggregation": {
+                    "description": "Configure aggregation of the resulting stream(s).\n Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.\n If omitted, default is used.",
                     "$ref": "#/$defs/Aggregation"
                 },
                 "aggregation_cardinality_limit": {
+                    "description": "Configure the aggregation cardinality limit.\n If omitted or null, the metric reader's default cardinality limit is used.",
                     "type": [
                         "integer",
                         "null"
@@ -585,6 +599,7 @@
                     "exclusiveMinimum": 0
                 },
                 "attribute_keys": {
+                    "description": "Configure attribute keys retained in the resulting stream(s).",
                     "$ref": "common.json#/$defs/IncludeExclude"
                 }
             }

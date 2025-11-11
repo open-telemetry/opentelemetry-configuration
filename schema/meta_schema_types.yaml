@@ -474,7 +474,6 @@
 - type: SimpleSpanProcessor
   properties:
     - property: exporter
-      description: Configure exporter.
   isSdkExtensionPlugin: false
 - type: SpanExporter
   properties:
@@ -516,9 +515,6 @@
 - type: TraceIdRatioBasedSampler
   properties:
     - property: ratio
-      description: |
-        Configure trace_id_ratio.
-        If omitted or null, 1.0 is used.
   isSdkExtensionPlugin: false
 - type: TracerProvider
   properties:
@@ -530,87 +526,34 @@
 - type: View
   properties:
     - property: selector
-      description: |
-        Configure view selector. 
-        Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.
-    - property: stream
-      description: Configure view stream.
+    - property: stream  
   isSdkExtensionPlugin: false
 - type: ViewSelector
   properties:
     - property: instrument_name
-      description: |
-        Configure instrument name selection criteria.
-        If omitted or null, all instrument names match.
     - property: instrument_type
-      description: |
-        Configure instrument type selection criteria.
-        Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.
-        If omitted or null, all instrument types match.
     - property: unit
-      description: |
-        Configure the instrument unit selection criteria.
-        If omitted or null, all instrument units match.
     - property: meter_name
-      description: |
-        Configure meter name selection criteria.
-        If omitted or null, all meter names match.
     - property: meter_version
-      description: |
-        Configure meter version selection criteria.
-        If omitted or null, all meter versions match.
     - property: meter_schema_url
-      description: |
-        Configure meter schema url selection criteria.
-        If omitted or null, all meter schema URLs match.
   isSdkExtensionPlugin: false
 - type: ViewStream
   properties:
     - property: name
-      description: |
-        Configure metric name of the resulting stream(s).
-        If omitted or null, the instrument's original name is used.
     - property: description
-      description: |
-        Configure metric description of the resulting stream(s).
-        If omitted or null, the instrument's origin description is used.
     - property: aggregation
-      description: |
-        Configure aggregation of the resulting stream(s). 
-        Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
-        If omitted, default is used.
     - property: aggregation_cardinality_limit
-      description: |
-        Configure the aggregation cardinality limit.
-        If omitted or null, the metric reader's default cardinality limit is used.
     - property: attribute_keys
-      description: |
-        Configure attribute keys retained in the resulting stream(s).
   isSdkExtensionPlugin: false
 - type: ZipkinSpanExporter
   properties:
     - property: endpoint
-      description: |
-        Configure endpoint.
-        If omitted or null, http://localhost:9411/api/v2/spans is used.
     - property: timeout
-      description: |
-        Configure max time (in milliseconds) to wait for each export. 
-        Value must be non-negative. A value of 0 indicates indefinite.
-        If omitted or null, 10000 is used.
   isSdkExtensionPlugin: false
 - type: ConsoleMetricExporter
   properties:
     - property: temporality_preference
-      description: |
-        Configure temporality preference.
-        Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-        If omitted or null, cumulative is used.
     - property: default_histogram_aggregation
-      description: |
-        Configure default histogram aggregation.
-        Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-        If omitted or null, explicit_bucket_histogram is used.
   isSdkExtensionPlugin: false
 - type: ExperimentalJaegerRemoteSampler
   properties:
