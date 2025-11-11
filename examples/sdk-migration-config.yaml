@@ -138,17 +138,29 @@ tracer_provider:
             headers_list: ${OTEL_EXPORTER_OTLP_TRACES_HEADERS}
   # Configure span limits. See also attribute_limits.
   limits:
-    # TODO
+    # Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
+    # Value must be non-negative.
+    # If omitted or null, there is no limit.
     attribute_value_length_limit: ${OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT}
-    # TODO
+    # Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
+    # Value must be non-negative.
+    # If omitted or null, 128 is used.
     attribute_count_limit: ${OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT:-128}
-    # TODO
+    # Configure max span event count. 
+    # Value must be non-negative.
+    # If omitted or null, 128 is used.
     event_count_limit: ${OTEL_SPAN_EVENT_COUNT_LIMIT:-128}
-    # TODO
+    # Configure max span link count. 
+    # Value must be non-negative.
+    # If omitted or null, 128 is used.
     link_count_limit: ${OTEL_SPAN_LINK_COUNT_LIMIT:-128}
-    # TODO
+    # Configure max attributes per span event. 
+    # Value must be non-negative.
+    # If omitted or null, 128 is used.
     event_attribute_count_limit: ${OTEL_EVENT_ATTRIBUTE_COUNT_LIMIT:-128}
-    # TODO
+    # Configure max attributes per span link. 
+    # Value must be non-negative.
+    # If omitted or null, 128 is used.
     link_attribute_count_limit: ${OTEL_LINK_ATTRIBUTE_COUNT_LIMIT:-128}
   # Configure the sampler. 
   # If omitted, parent based sampler with a root of always_on is used.

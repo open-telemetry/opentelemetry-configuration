@@ -5827,12 +5827,12 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `event_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `link_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `event_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `link_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
+| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br> Value must be non-negative.<br> If omitted or null, there is no limit. |
+| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br> Value must be non-negative.<br> If omitted or null, 128 is used. |
+| `event_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max span event count. <br> Value must be non-negative.<br> If omitted or null, 128 is used. |
+| `link_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max span link count. <br> Value must be non-negative.<br> If omitted or null, 128 is used. |
+| `event_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attributes per span event. <br> Value must be non-negative.<br> If omitted or null, 128 is used. |
+| `link_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attributes per span link. <br> Value must be non-negative.<br> If omitted or null, 128 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -5864,6 +5864,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "attribute_value_length_limit": {
+      "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \n Value must be non-negative.\n If omitted or null, there is no limit.",
       "type": [
         "integer",
         "null"
@@ -5871,6 +5872,7 @@ Usages:
       "minimum": 0
     },
     "attribute_count_limit": {
+      "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -5878,6 +5880,7 @@ Usages:
       "minimum": 0
     },
     "event_count_limit": {
+      "description": "Configure max span event count. \n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -5885,6 +5888,7 @@ Usages:
       "minimum": 0
     },
     "link_count_limit": {
+      "description": "Configure max span link count. \n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -5892,6 +5896,7 @@ Usages:
       "minimum": 0
     },
     "event_attribute_count_limit": {
+      "description": "Configure max attributes per span event. \n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -5899,6 +5904,7 @@ Usages:
       "minimum": 0
     },
     "link_attribute_count_limit": {
+      "description": "Configure max attributes per span link. \n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -6513,6 +6519,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "attribute_value_length_limit": {
+          "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \n Value must be non-negative.\n If omitted or null, there is no limit.",
           "type": [
             "integer",
             "null"
@@ -6520,6 +6527,7 @@ Usages:
           "minimum": 0
         },
         "attribute_count_limit": {
+          "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -6527,6 +6535,7 @@ Usages:
           "minimum": 0
         },
         "event_count_limit": {
+          "description": "Configure max span event count. \n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -6534,6 +6543,7 @@ Usages:
           "minimum": 0
         },
         "link_count_limit": {
+          "description": "Configure max span link count. \n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -6541,6 +6551,7 @@ Usages:
           "minimum": 0
         },
         "event_attribute_count_limit": {
+          "description": "Configure max attributes per span event. \n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -6548,6 +6559,7 @@ Usages:
           "minimum": 0
         },
         "link_attribute_count_limit": {
+          "description": "Configure max attributes per span link. \n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
