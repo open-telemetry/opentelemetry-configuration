@@ -6,13 +6,13 @@
 	additionalProperties: true,
 	properties: {
 		file_format: {
-            description: "The file format version. \
-The yaml format is documented at \
+            description: "The file format version.\n \
+The yaml format is documented at\n \
 https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema",
 			type: "string"
 		},
 		disabled: {
-            description: "Configure if the SDK is disabled or not. \
+            description: "Configure if the SDK is disabled or not.\n \
 If omitted or null, false is used.",
 			"type": [
 				"boolean",
@@ -20,7 +20,7 @@ If omitted or null, false is used.",
 			]
 		},
 		log_level: {
-            description: "Configure the log level of the internal logger used by the SDK. \
+            description: "Configure the log level of the internal logger used by the SDK.\n \
 If omitted, info is used.",
 			"type": [
 				"string",
@@ -32,27 +32,27 @@ If omitted, info is used.",
 			$ref: "#/$defs/AttributeLimits"
 		},
 		"logger_provider": {
-            description: "Configure logger provider. \
+            description: "Configure logger provider.\n \
 If omitted, a noop logger provider is used.",
 			$ref: "#/$defs/LoggerProvider"
 		},
 		"meter_provider": {
-            description: "Configure meter provider. \
+            description: "Configure meter provider.\n \
 If omitted, a noop meter provider is used.",
 			$ref: "#/$defs/MeterProvider"
 		},
 		"propagator": {
-            description: "Configure text map context propagators. \
+            description: "Configure text map context propagators.\n \
 If omitted, a noop propagator is used.",
 			$ref: "#/$defs/Propagator"
 		},
 		"tracer_provider": {
-            description: "Configure tracer provider. \
+            description: "Configure tracer provider.\n \
 If omitted, a noop tracer provider is used.",
 			$ref: "#/$defs/TracerProvider"
 		},
 		"resource": {
-            description: "Configure resource for all signals. \
+            description: "Configure resource for all signals.\n \
 If omitted, the default resource is used.",
 			$ref: "#/$defs/Resource"
 		},

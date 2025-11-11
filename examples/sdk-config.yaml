@@ -7,13 +7,16 @@
 
 # The file format version.
 # The yaml format is documented at
-# https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema TODO The file format version. The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
+# https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
 file_format: "1.0-rc.2"
-# Configure if the SDK is disabled or not. If omitted or null, false is used.
+# Configure if the SDK is disabled or not.
+# If omitted or null, false is used.
 disabled: false
-# Configure the log level of the internal logger used by the SDK. If omitted, info is used.
+# Configure the log level of the internal logger used by the SDK.
+# If omitted, info is used.
 log_level: info
-# Configure resource for all signals. If omitted, the default resource is used.
+# Configure resource for all signals.
+# If omitted, the default resource is used.
 resource:
   # TODO
   attributes:
@@ -27,7 +30,8 @@ attribute_limits:
   attribute_value_length_limit:
   # TODO
   attribute_count_limit: 128
-# Configure text map context propagators. If omitted, a noop propagator is used.
+# Configure text map context propagators.
+# If omitted, a noop propagator is used.
 propagator:
   # TODO
   composite:
@@ -35,7 +39,8 @@ propagator:
       tracecontext:
     - # TODO
       baggage:
-# Configure tracer provider. If omitted, a noop tracer provider is used.
+# Configure tracer provider.
+# If omitted, a noop tracer provider is used.
 tracer_provider:
   # TODO
   processors:
@@ -107,7 +112,8 @@ tracer_provider:
       local_parent_not_sampled:
         # TODO
         always_off:
-# Configure meter provider. If omitted, a noop meter provider is used.
+# Configure meter provider.
+# If omitted, a noop meter provider is used.
 meter_provider:
   # TODO
   readers:
@@ -143,7 +149,8 @@ meter_provider:
             default_histogram_aggregation: explicit_bucket_histogram
   # TODO
   exemplar_filter: trace_based
-# Configure logger provider. If omitted, a noop logger provider is used.
+# Configure logger provider.
+# If omitted, a noop logger provider is used.
 logger_provider:
   # Configure log record processors.
   processors:

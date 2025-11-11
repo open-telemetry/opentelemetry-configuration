@@ -6,18 +6,18 @@
     "additionalProperties": true,
     "properties": {
         "file_format": {
-            "description": "The file format version. The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema",
+            "description": "The file format version.\n The yaml format is documented at\n https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema",
             "type": "string"
         },
         "disabled": {
-            "description": "Configure if the SDK is disabled or not. If omitted or null, false is used.",
+            "description": "Configure if the SDK is disabled or not.\n If omitted or null, false is used.",
             "type": [
                 "boolean",
                 "null"
             ]
         },
         "log_level": {
-            "description": "Configure the log level of the internal logger used by the SDK. If omitted, info is used.",
+            "description": "Configure the log level of the internal logger used by the SDK.\n If omitted, info is used.",
             "type": [
                 "string",
                 "null"
@@ -28,23 +28,23 @@
             "$ref": "#/$defs/AttributeLimits"
         },
         "logger_provider": {
-            "description": "Configure logger provider. If omitted, a noop logger provider is used.",
+            "description": "Configure logger provider.\n If omitted, a noop logger provider is used.",
             "$ref": "#/$defs/LoggerProvider"
         },
         "meter_provider": {
-            "description": "Configure meter provider. If omitted, a noop meter provider is used.",
+            "description": "Configure meter provider.\n If omitted, a noop meter provider is used.",
             "$ref": "#/$defs/MeterProvider"
         },
         "propagator": {
-            "description": "Configure text map context propagators. If omitted, a noop propagator is used.",
+            "description": "Configure text map context propagators.\n If omitted, a noop propagator is used.",
             "$ref": "#/$defs/Propagator"
         },
         "tracer_provider": {
-            "description": "Configure tracer provider. If omitted, a noop tracer provider is used.",
+            "description": "Configure tracer provider.\n If omitted, a noop tracer provider is used.",
             "$ref": "#/$defs/TracerProvider"
         },
         "resource": {
-            "description": "Configure resource for all signals. If omitted, the default resource is used.",
+            "description": "Configure resource for all signals.\n If omitted, the default resource is used.",
             "$ref": "#/$defs/Resource"
         },
         "instrumentation/development": {
