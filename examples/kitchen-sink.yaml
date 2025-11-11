@@ -598,66 +598,94 @@ tracer_provider:
 # Configure resource for all signals.
 # If omitted, the default resource is used.
 resource:
-  # TODO
+  # Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
   attributes:
-    - # TODO
+    - # The attribute name.
       name: service.name
-      # TODO
+      # The attribute value.
+      # The type of value must match .type.
       value: unknown_service
-    - # TODO
+    - # The attribute name.
       name: string_key
-      # TODO
+      # The attribute value.
+      # The type of value must match .type.
       value: value
-      # TODO
+      # The attribute type.
+      # Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+      # If omitted or null, string is used.
       type: string
-    - # TODO
+    - # The attribute name.
       name: bool_key
-      # TODO
+      # The attribute value.
+      # The type of value must match .type.
       value: true
-      # TODO
+      # The attribute type.
+      # Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+      # If omitted or null, string is used.
       type: bool
-    - # TODO
+    - # The attribute name.
       name: int_key
-      # TODO
+      # The attribute value.
+      # The type of value must match .type.
       value: 1
-      # TODO
+      # The attribute type.
+      # Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+      # If omitted or null, string is used.
       type: int
-    - # TODO
+    - # The attribute name.
       name: double_key
-      # TODO
+      # The attribute value.
+      # The type of value must match .type.
       value: 1.1
-      # TODO
+      # The attribute type.
+      # Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+      # If omitted or null, string is used.
       type: double
-    - # TODO
+    - # The attribute name.
       name: string_array_key
-      # TODO
+      # The attribute value.
+      # The type of value must match .type.
       value: [ "value1", "value2" ]
-      # TODO
+      # The attribute type.
+      # Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+      # If omitted or null, string is used.
       type: string_array
-    - # TODO
+    - # The attribute name.
       name: bool_array_key
-      # TODO
+      # The attribute value.
+      # The type of value must match .type.
       value: [ true, false ]
-      # TODO
+      # The attribute type.
+      # Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+      # If omitted or null, string is used.
       type: bool_array
-    - # TODO
+    - # The attribute name.
       name: int_array_key
-      # TODO
+      # The attribute value.
+      # The type of value must match .type.
       value: [ 1, 2 ]
-      # TODO
+      # The attribute type.
+      # Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+      # If omitted or null, string is used.
       type: int_array
-    - # TODO
+    - # The attribute name.
       name: double_array_key
-      # TODO
+      # The attribute value.
+      # The type of value must match .type.
       value: [ 1.1, 2.2 ]
-      # TODO
+      # The attribute type.
+      # Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
+      # If omitted or null, string is used.
       type: double_array
-  # TODO
+  # Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
+  # The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+  # If omitted or null, no resource attributes are added.
   attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
-  # TODO
+  # Configure resource detection.
+  # If omitted or null, resource detection is disabled.
   #This property is experimental and subject to breaking changes in minor versions.
   detection/development:
-    # TODO
+    # Configure attributes provided by resource detectors.
     attributes:
       # TODO
       included:
@@ -665,17 +693,20 @@ resource:
       # TODO
       excluded:
         - process.command_args
-    # TODO
+    # Configure resource detectors.
+    # Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language.
+    # If omitted or null, no resource detectors are enabled.
     detectors:
-      - # TODO
+      - # Enable the container resource detector, which populates container.* attributes.
         container:
-      - # TODO
+      - # Enable the host resource detector, which populates host.* and os.* attributes.
         host:
-      - # TODO
+      - # Enable the process resource detector, which populates process.* attributes.
         process:
-      - # TODO
+      - # Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.
         service:
-  # TODO
+  # Configure resource schema URL.
+  # If omitted or null, no schema URL is used.
   schema_url: https://opentelemetry.io/schemas/1.16.0
 # Configure instrumentation.
 #This property is experimental and subject to breaking changes in minor versions.

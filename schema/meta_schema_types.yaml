@@ -35,17 +35,8 @@
 - type: AttributeNameValue
   properties:
     - property: name
-      description: |
-        The attribute name.
     - property: value
-      description: |
-        The attribute value.
-        The type of value must match .type.
     - property: type
-      description: |
-        The attribute type.
-        Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
-        If omitted or null, string is used.
   isSdkExtensionPlugin: false
 - type: AttributeType
   enumValues:
@@ -382,27 +373,14 @@
 - type: ExperimentalResourceDetection
   properties:
     - property: attributes
-      description: Configure attributes provided by resource detectors.
     - property: detectors
-      description: |
-        Configure resource detectors.
-        Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
-        If omitted or null, no resource detectors are enabled.
   isSdkExtensionPlugin: false
 - type: ExperimentalResourceDetector
   properties:
     - property: container
-      description: |
-        Enable the container resource detector, which populates container.* attributes.
     - property: host
-      description: |
-        Enable the host resource detector, which populates host.* and os.* attributes.
     - property: process
-      description: |
-        Enable the process resource detector, which populates process.* attributes.
     - property: service
-      description: |
-        Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.
   isSdkExtensionPlugin: true
 - type: ExperimentalServiceResourceDetector
   properties: []
@@ -858,21 +836,9 @@
 - type: Resource
   properties:
     - property: attributes
-      description: |
-        Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
     - property: detection/development
-      description: |
-        Configure resource detection.
-        If omitted or null, resource detection is disabled.
     - property: schema_url
-      description: |
-        Configure resource schema URL.
-        If omitted or null, no schema URL is used.
     - property: attributes_list
-      description: |
-        Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
-        The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
-        If omitted or null, no resource attributes are added.
   isSdkExtensionPlugin: false
 - type: Sampler
   properties:

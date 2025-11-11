@@ -18,11 +18,12 @@ log_level: info
 # Configure resource for all signals.
 # If omitted, the default resource is used.
 resource:
-  # TODO
+  # Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
   attributes:
-    - # TODO
+    - # The attribute name.
       name: service.name
-      # TODO
+      # The attribute value.
+      # The type of value must match .type.
       value: unknown_service
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:

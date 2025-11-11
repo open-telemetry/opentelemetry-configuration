@@ -181,9 +181,9 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `name` | `string` | `true` | No constraints. | TODO |
-| `value` | `oneOf` | `true` | No constraints. | TODO |
-| `type` | [`AttributeType`](#attributetype) | `false` | No constraints. | TODO |
+| `name` | `string` | `true` | No constraints. | The attribute name. |
+| `value` | `oneOf` | `true` | No constraints. | The attribute value.<br> The type of value must match .type. |
+| `type` | [`AttributeType`](#attributetype) | `false` | No constraints. | The attribute type.<br> Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br> If omitted or null, string is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -213,9 +213,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "The attribute name.",
       "type": "string"
     },
     "value": {
+      "description": "The attribute value.\n The type of value must match .type.",
       "oneOf": [
         {
           "type": "string"
@@ -250,6 +252,7 @@ Usages:
       ]
     },
     "type": {
+      "description": "The attribute type.\n Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.\n If omitted or null, string is used.",
       "$ref": "#/$defs/AttributeType"
     }
   },
@@ -456,10 +459,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `schedule_delay` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between two consecutive exports.  Value must be non-negative. If omitted or null, 1000 is used. |
-| `export_timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data.  Value must be non-negative. A value of 0 indicates no limit (infinity). If omitted or null, 30000 is used. |
-| `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum queue size. Value must be positive. If omitted or null, 2048 is used. |
-| `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum batch size. Value must be positive. If omitted or null, 512 is used. |
+| `schedule_delay` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between two consecutive exports. <br> Value must be non-negative.<br> If omitted or null, 1000 is used. |
+| `export_timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data. <br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 30000 is used. |
+| `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum queue size. Value must be positive.<br> If omitted or null, 2048 is used. |
+| `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum batch size. Value must be positive.<br> If omitted or null, 512 is used. |
 | `exporter` | [`LogRecordExporter`](#logrecordexporter) | `true` | No constraints. | Configure exporter. |
 
 <details>
@@ -492,7 +495,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "schedule_delay": {
-      "description": "Configure delay interval (in milliseconds) between two consecutive exports.  Value must be non-negative. If omitted or null, 1000 is used.",
+      "description": "Configure delay interval (in milliseconds) between two consecutive exports. \n Value must be non-negative.\n If omitted or null, 1000 is used.",
       "type": [
         "integer",
         "null"
@@ -500,7 +503,7 @@ Usages:
       "minimum": 0
     },
     "export_timeout": {
-      "description": "Configure maximum allowed time (in milliseconds) to export data.  Value must be non-negative. A value of 0 indicates no limit (infinity). If omitted or null, 30000 is used.",
+      "description": "Configure maximum allowed time (in milliseconds) to export data. \n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
       "type": [
         "integer",
         "null"
@@ -508,7 +511,7 @@ Usages:
       "minimum": 0
     },
     "max_queue_size": {
-      "description": "Configure maximum queue size. Value must be positive. If omitted or null, 2048 is used.",
+      "description": "Configure maximum queue size. Value must be positive.\n If omitted or null, 2048 is used.",
       "type": [
         "integer",
         "null"
@@ -516,7 +519,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "max_export_batch_size": {
-      "description": "Configure maximum batch size. Value must be positive. If omitted or null, 512 is used.",
+      "description": "Configure maximum batch size. Value must be positive.\n If omitted or null, 512 is used.",
       "type": [
         "integer",
         "null"
@@ -1661,7 +1664,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `disabled` | `boolean` | `false` | No constraints. | TODO |
+| `disabled` | `boolean` | `false` | No constraints. | Configure if the logger is enabled or not. |
 
 <details>
 <summary>Language support status</summary>
@@ -1691,6 +1694,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "disabled": {
+      "description": "Configure if the logger is enabled or not.",
       "type": [
         "boolean"
       ]
@@ -1758,8 +1762,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `name` | `string` | `false` | No constraints. | TODO |
-| `config` | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `false` | No constraints. | TODO |
+| `name` | `string` | `false` | No constraints. | Configure logger names to match, evaluated as follows:<br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none. |
+| `config` | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `false` | No constraints. | The logger config. |
 
 <details>
 <summary>Language support status</summary>
@@ -1789,11 +1793,13 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "Configure logger names to match, evaluated as follows:\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
       "type": [
         "string"
       ]
     },
     "config": {
+      "description": "The logger config.",
       "$ref": "#/$defs/ExperimentalLoggerConfig"
     }
   }
@@ -2304,8 +2310,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `attributes` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | TODO |
-| `detectors` | `array` of [`ExperimentalResourceDetector`](#experimentalresourcedetector) | `false` | No constraints. | TODO |
+| `attributes` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure attributes provided by resource detectors. |
+| `detectors` | `array` of [`ExperimentalResourceDetector`](#experimentalresourcedetector) | `false` | No constraints. | Configure resource detectors.<br> Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language.<br> If omitted or null, no resource detectors are enabled. |
 
 <details>
 <summary>Language support status</summary>
@@ -2333,9 +2339,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "attributes": {
+      "description": "Configure attributes provided by resource detectors.",
       "$ref": "common.json#/$defs/IncludeExclude"
     },
     "detectors": {
+      "description": "Configure resource detectors.\n Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language.\n If omitted or null, no resource detectors are enabled.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/ExperimentalResourceDetector"
@@ -2354,10 +2362,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `container` | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | `false` | No constraints. | TODO |
-| `host` | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | `false` | No constraints. | TODO |
-| `process` | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | `false` | No constraints. | TODO |
-| `service` | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | `false` | No constraints. | TODO |
+| `container` | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | `false` | No constraints. | Enable the container resource detector, which populates container.* attributes. |
+| `host` | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | `false` | No constraints. | Enable the host resource detector, which populates host.* and os.* attributes. |
+| `process` | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | `false` | No constraints. | Enable the process resource detector, which populates process.* attributes. |
+| `service` | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | `false` | No constraints. | Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id. |
 
 <details>
 <summary>Language support status</summary>
@@ -2396,15 +2404,19 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "container": {
+      "description": "Enable the container resource detector, which populates container.* attributes.",
       "$ref": "#/$defs/ExperimentalContainerResourceDetector"
     },
     "host": {
+      "description": "Enable the host resource detector, which populates host.* and os.* attributes.",
       "$ref": "#/$defs/ExperimentalHostResourceDetector"
     },
     "process": {
+      "description": "Enable the process resource detector, which populates process.* attributes.",
       "$ref": "#/$defs/ExperimentalProcessResourceDetector"
     },
     "service": {
+      "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.",
       "$ref": "#/$defs/ExperimentalServiceResourceDetector"
     }
   }
@@ -3082,7 +3094,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "schedule_delay": {
-          "description": "Configure delay interval (in milliseconds) between two consecutive exports.  Value must be non-negative. If omitted or null, 1000 is used.",
+          "description": "Configure delay interval (in milliseconds) between two consecutive exports. \n Value must be non-negative.\n If omitted or null, 1000 is used.",
           "type": [
             "integer",
             "null"
@@ -3090,7 +3102,7 @@ Usages:
           "minimum": 0
         },
         "export_timeout": {
-          "description": "Configure maximum allowed time (in milliseconds) to export data.  Value must be non-negative. A value of 0 indicates no limit (infinity). If omitted or null, 30000 is used.",
+          "description": "Configure maximum allowed time (in milliseconds) to export data. \n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
           "type": [
             "integer",
             "null"
@@ -3098,7 +3110,7 @@ Usages:
           "minimum": 0
         },
         "max_queue_size": {
-          "description": "Configure maximum queue size. Value must be positive. If omitted or null, 2048 is used.",
+          "description": "Configure maximum queue size. Value must be positive.\n If omitted or null, 2048 is used.",
           "type": [
             "integer",
             "null"
@@ -3106,7 +3118,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "max_export_batch_size": {
-          "description": "Configure maximum batch size. Value must be positive. If omitted or null, 512 is used.",
+          "description": "Configure maximum batch size. Value must be positive.\n If omitted or null, 512 is used.",
           "type": [
             "integer",
             "null"
@@ -3156,7 +3168,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "attribute_value_length_limit": {
-          "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. Value must be non-negative. If omitted or null, there is no limit.",
+          "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.\n Value must be non-negative.\n If omitted or null, there is no limit.",
           "type": [
             "integer",
             "null"
@@ -3164,7 +3176,7 @@ Usages:
           "minimum": 0
         },
         "attribute_count_limit": {
-          "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. Value must be non-negative. If omitted or null, 128 is used.",
+          "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.\n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -3220,11 +3232,13 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "name": {
+          "description": "Configure logger names to match, evaluated as follows:\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
           "type": [
             "string"
           ]
         },
         "config": {
+          "description": "The logger config.",
           "$ref": "#/$defs/ExperimentalLoggerConfig"
         }
       }
@@ -3236,6 +3250,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "disabled": {
+          "description": "Configure if the logger is enabled or not.",
           "type": [
             "boolean"
           ]
@@ -3318,8 +3333,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. Value must be non-negative. If omitted or null, there is no limit. |
-| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. Value must be non-negative. If omitted or null, 128 is used. |
+| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.<br> Value must be non-negative.<br> If omitted or null, there is no limit. |
+| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.<br> Value must be non-negative.<br> If omitted or null, 128 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -3347,7 +3362,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "attribute_value_length_limit": {
-      "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. Value must be non-negative. If omitted or null, there is no limit.",
+      "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.\n Value must be non-negative.\n If omitted or null, there is no limit.",
       "type": [
         "integer",
         "null"
@@ -3355,7 +3370,7 @@ Usages:
       "minimum": 0
     },
     "attribute_count_limit": {
-      "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. Value must be non-negative. If omitted or null, 128 is used.",
+      "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.\n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -4321,15 +4336,15 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `file_format` | `string` | `true` | No constraints. | The file format version. The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema |
-| `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure if the SDK is disabled or not. If omitted or null, false is used. |
-| `log_level` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the log level of the internal logger used by the SDK. If omitted, info is used. |
+| `file_format` | `string` | `true` | No constraints. | The file format version.<br> The yaml format is documented at<br> https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema |
+| `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure if the SDK is disabled or not.<br> If omitted or null, false is used. |
+| `log_level` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the log level of the internal logger used by the SDK.<br> If omitted, info is used. |
 | `attribute_limits` | [`AttributeLimits`](#attributelimits) | `false` | No constraints. | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits. |
-| `logger_provider` | [`LoggerProvider`](#loggerprovider) | `false` | No constraints. | Configure logger provider. If omitted, a noop logger provider is used. |
-| `meter_provider` | [`MeterProvider`](#meterprovider) | `false` | No constraints. | Configure meter provider. If omitted, a noop meter provider is used. |
-| `propagator` | [`Propagator`](#propagator) | `false` | No constraints. | Configure text map context propagators. If omitted, a noop propagator is used. |
-| `tracer_provider` | [`TracerProvider`](#tracerprovider) | `false` | No constraints. | Configure tracer provider. If omitted, a noop tracer provider is used. |
-| `resource` | [`Resource`](#resource) | `false` | No constraints. | Configure resource for all signals. If omitted, the default resource is used. |
+| `logger_provider` | [`LoggerProvider`](#loggerprovider) | `false` | No constraints. | Configure logger provider.<br> If omitted, a noop logger provider is used. |
+| `meter_provider` | [`MeterProvider`](#meterprovider) | `false` | No constraints. | Configure meter provider.<br> If omitted, a noop meter provider is used. |
+| `propagator` | [`Propagator`](#propagator) | `false` | No constraints. | Configure text map context propagators.<br> If omitted, a noop propagator is used. |
+| `tracer_provider` | [`TracerProvider`](#tracerprovider) | `false` | No constraints. | Configure tracer provider.<br> If omitted, a noop tracer provider is used. |
+| `resource` | [`Resource`](#resource) | `false` | No constraints. | Configure resource for all signals.<br> If omitted, the default resource is used. |
 | `instrumentation/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | No constraints. | Configure instrumentation. |
 
 <details>
@@ -4368,18 +4383,18 @@ No usages.
   "additionalProperties": true,
   "properties": {
     "file_format": {
-      "description": "The file format version. The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema",
+      "description": "The file format version.\n The yaml format is documented at\n https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema",
       "type": "string"
     },
     "disabled": {
-      "description": "Configure if the SDK is disabled or not. If omitted or null, false is used.",
+      "description": "Configure if the SDK is disabled or not.\n If omitted or null, false is used.",
       "type": [
         "boolean",
         "null"
       ]
     },
     "log_level": {
-      "description": "Configure the log level of the internal logger used by the SDK. If omitted, info is used.",
+      "description": "Configure the log level of the internal logger used by the SDK.\n If omitted, info is used.",
       "type": [
         "string",
         "null"
@@ -4390,23 +4405,23 @@ No usages.
       "$ref": "#/$defs/AttributeLimits"
     },
     "logger_provider": {
-      "description": "Configure logger provider. If omitted, a noop logger provider is used.",
+      "description": "Configure logger provider.\n If omitted, a noop logger provider is used.",
       "$ref": "#/$defs/LoggerProvider"
     },
     "meter_provider": {
-      "description": "Configure meter provider. If omitted, a noop meter provider is used.",
+      "description": "Configure meter provider.\n If omitted, a noop meter provider is used.",
       "$ref": "#/$defs/MeterProvider"
     },
     "propagator": {
-      "description": "Configure text map context propagators. If omitted, a noop propagator is used.",
+      "description": "Configure text map context propagators.\n If omitted, a noop propagator is used.",
       "$ref": "#/$defs/Propagator"
     },
     "tracer_provider": {
-      "description": "Configure tracer provider. If omitted, a noop tracer provider is used.",
+      "description": "Configure tracer provider.\n If omitted, a noop tracer provider is used.",
       "$ref": "#/$defs/TracerProvider"
     },
     "resource": {
-      "description": "Configure resource for all signals. If omitted, the default resource is used.",
+      "description": "Configure resource for all signals.\n If omitted, the default resource is used.",
       "$ref": "#/$defs/Resource"
     },
     "instrumentation/development": {
@@ -5307,10 +5322,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `attributes` | `array` of [`AttributeNameValue`](#attributenamevalue) | `false` | No constraints. | TODO |
-| `detection/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | No constraints. | TODO |
-| `schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `attributes_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `attributes` | `array` of [`AttributeNameValue`](#attributenamevalue) | `false` | No constraints. | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list. |
+| `detection/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | No constraints. | Configure resource detection.<br> If omitted or null, resource detection is disabled. |
+| `schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure resource schema URL.<br> If omitted or null, no schema URL is used. |
+| `attributes_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br> If omitted or null, no resource attributes are added. |
 
 <details>
 <summary>Language support status</summary>
@@ -5342,21 +5357,25 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "attributes": {
+      "description": "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/AttributeNameValue"
       }
     },
     "detection/development": {
+      "description": "Configure resource detection.\n If omitted or null, resource detection is disabled.",
       "$ref": "#/$defs/ExperimentalResourceDetection"
     },
     "schema_url": {
+      "description": "Configure resource schema URL.\n If omitted or null, no schema URL is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "attributes_list": {
+      "description": "Configure resource attributes. Entries have lower priority than entries from .resource.attributes.\n The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\n If omitted or null, no resource attributes are added.",
       "type": [
         "string",
         "null"
@@ -5369,9 +5388,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "name": {
+          "description": "The attribute name.",
           "type": "string"
         },
         "value": {
+          "description": "The attribute value.\n The type of value must match .type.",
           "oneOf": [
             {
               "type": "string"
@@ -5406,6 +5427,7 @@ Usages:
           ]
         },
         "type": {
+          "description": "The attribute type.\n Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.\n If omitted or null, string is used.",
           "$ref": "#/$defs/AttributeType"
         }
       },
@@ -5435,9 +5457,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "attributes": {
+          "description": "Configure attributes provided by resource detectors.",
           "$ref": "common.json#/$defs/IncludeExclude"
         },
         "detectors": {
+          "description": "Configure resource detectors.\n Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language.\n If omitted or null, no resource detectors are enabled.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/ExperimentalResourceDetector"
@@ -5457,15 +5481,19 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "container": {
+          "description": "Enable the container resource detector, which populates container.* attributes.",
           "$ref": "#/$defs/ExperimentalContainerResourceDetector"
         },
         "host": {
+          "description": "Enable the host resource detector, which populates host.* and os.* attributes.",
           "$ref": "#/$defs/ExperimentalHostResourceDetector"
         },
         "process": {
+          "description": "Enable the process resource detector, which populates process.* attributes.",
           "$ref": "#/$defs/ExperimentalProcessResourceDetector"
         },
         "service": {
+          "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.",
           "$ref": "#/$defs/ExperimentalServiceResourceDetector"
         }
       }

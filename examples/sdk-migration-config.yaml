@@ -46,13 +46,16 @@ log_level: ${OTEL_LOG_LEVEL:-info}
 # Configure resource for all signals.
 # If omitted, the default resource is used.
 resource:
-  # TODO
+  # Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
   attributes:
-    - # TODO
+    - # The attribute name.
       name: service.name
-      # TODO
+      # The attribute value.
+      # The type of value must match .type.
       value: ${OTEL_SERVICE_NAME:-unknown_service}
-  # TODO
+  # Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
+  # The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+  # If omitted or null, no resource attributes are added.
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
