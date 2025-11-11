@@ -87,25 +87,10 @@
 - type: BatchLogRecordProcessor
   properties:
     - property: schedule_delay
-      description: |
-        Configure delay interval (in milliseconds) between two consecutive exports. 
-        Value must be non-negative.
-        If omitted or null, 1000 is used.
     - property: export_timeout
-      description: |
-        Configure maximum allowed time (in milliseconds) to export data. 
-        Value must be non-negative. A value of 0 indicates no limit (infinity).
-        If omitted or null, 30000 is used.
     - property: max_queue_size
-      description: |
-        Configure maximum queue size. Value must be positive.
-        If omitted or null, 2048 is used.
     - property: max_export_batch_size
-      description: |
-        Configure maximum batch size. Value must be positive.
-        If omitted or null, 512 is used.
     - property: exporter
-      description: Configure exporter.
   isSdkExtensionPlugin: false
 - type: BatchSpanProcessor
   properties:
@@ -281,25 +266,16 @@
 - type: ExperimentalLoggerConfig
   properties:
     - property: disabled
-      description: Configure if the logger is enabled or not.
   isSdkExtensionPlugin: false
 - type: ExperimentalLoggerConfigurator
   properties:
     - property: default_config
-      description: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
     - property: loggers
-      description: Configure loggers.
   isSdkExtensionPlugin: false
 - type: ExperimentalLoggerMatcherAndConfig
   properties:
     - property: name
-      description: |
-        Configure logger names to match, evaluated as follows:
-
-         * If the logger name exactly matches.
-         * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
     - property: config
-      description: The logger config.
   isSdkExtensionPlugin: false
 - type: ExperimentalMeterConfig
   properties:
@@ -565,44 +541,25 @@
 - type: LoggerProvider
   properties:
     - property: processors
-      description: Configure log record processors.
     - property: limits
-      description: Configure log record limits. See also attribute_limits.
     - property: logger_configurator/development
-      description: |
-        Configure loggers.
   isSdkExtensionPlugin: false
 - type: LogRecordExporter
   properties:
     - property: otlp_http
-      description: Configure exporter to be OTLP with HTTP transport.
     - property: otlp_grpc
-      description: Configure exporter to be OTLP with gRPC transport.
     - property: otlp_file/development
-      description: |
-        Configure exporter to be OTLP with file transport.
     - property: console
-      description: Configure exporter to be console.
   isSdkExtensionPlugin: true
 - type: LogRecordLimits
   properties:
     - property: attribute_value_length_limit
-      description: |
-        Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
-        Value must be non-negative.
-        If omitted or null, there is no limit.
     - property: attribute_count_limit
-      description: |
-        Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
-        Value must be non-negative.
-        If omitted or null, 128 is used.
   isSdkExtensionPlugin: false
 - type: LogRecordProcessor
   properties:
     - property: batch
-      description: Configure a batch log record processor.
     - property: simple
-      description: Configure a simple log record processor.
   isSdkExtensionPlugin: true
 - type: MeterProvider
   properties:
@@ -930,14 +887,12 @@
     - property: probability/development
       description: Configure sampler to be probability.
     - property: jaeger_remote/development
-      description: TODO
     - property: composite/development
       description: Configure sampler to be composite.
   isSdkExtensionPlugin: true
 - type: SimpleLogRecordProcessor
   properties:
     - property: exporter
-      description: Configure exporter.
   isSdkExtensionPlugin: false
 - type: SimpleSpanProcessor
   properties:
