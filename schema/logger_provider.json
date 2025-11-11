@@ -5,6 +5,7 @@
     "additionalProperties": false,
     "properties": {
         "processors": {
+            "description": "Configure log record processors.",
             "type": "array",
             "minItems": 1,
             "items": {
@@ -12,9 +13,11 @@
             }
         },
         "limits": {
+            "description": "Configure log record limits. See also attribute_limits.",
             "$ref": "#/$defs/LogRecordLimits"
         },
         "logger_configurator/development": {
+            "description": "Configure loggers.",
             "$ref": "#/$defs/ExperimentalLoggerConfigurator"
         }
     },
@@ -27,6 +30,7 @@
             "additionalProperties": false,
             "properties": {
                 "exporter": {
+                    "description": "Configure exporter.",
                     "$ref": "#/$defs/LogRecordExporter"
                 }
             },
@@ -39,22 +43,39 @@
             "additionalProperties": false,
             "properties": {
                 "schedule_delay": {
-                    "type": ["integer", "null"],
+                    "description": "Configure delay interval (in milliseconds) between two consecutive exports.  Value must be non-negative. If omitted or null, 1000 is used.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "export_timeout": {
-                    "type": ["integer", "null"],
+                    "description": "Configure maximum allowed time (in milliseconds) to export data.  Value must be non-negative. A value of 0 indicates no limit (infinity). If omitted or null, 30000 is used.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "max_queue_size": {
-                    "type": ["integer", "null"],
+                    "description": "Configure maximum queue size. Value must be positive. If omitted or null, 2048 is used.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "max_export_batch_size": {
-                    "type": ["integer", "null"],
+                    "description": "Configure maximum batch size. Value must be positive. If omitted or null, 512 is used.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "exclusiveMinimum": 0
                 },
                 "exporter": {
+                    "description": "Configure exporter.",
                     "$ref": "#/$defs/LogRecordExporter"
                 }
             },
@@ -65,21 +86,28 @@
         "LogRecordExporter": {
             "type": "object",
             "additionalProperties": {
-                "type": ["object", "null"]
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
                 "otlp_http": {
+                    "description": "Configure exporter to be OTLP with HTTP transport.",
                     "$ref": "common.json#/$defs/OtlpHttpExporter"
                 },
                 "otlp_grpc": {
+                    "description": "Configure exporter to be OTLP with gRPC transport.",
                     "$ref": "common.json#/$defs/OtlpGrpcExporter"
                 },
                 "otlp_file/development": {
+                    "description": "Configure exporter to be OTLP with file transport.",
                     "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
                 },
                 "console": {
+                    "description": "Configure exporter to be console.",
                     "$ref": "common.json#/$defs/ConsoleExporter"
                 }
             }
@@ -89,11 +117,19 @@
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
-                    "type": ["integer", "null"],
+                    "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. Value must be non-negative. If omitted or null, there is no limit.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 },
                 "attribute_count_limit": {
-                    "type": ["integer", "null"],
+                    "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. Value must be non-negative. If omitted or null, 128 is used.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
                     "minimum": 0
                 }
             }
@@ -101,27 +137,36 @@
         "LogRecordProcessor": {
             "type": "object",
             "additionalProperties": {
-                "type": ["object", "null"]
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "minProperties": 1,
             "maxProperties": 1,
             "properties": {
                 "batch": {
+                    "description": "Configure a batch log record processor.",
                     "$ref": "#/$defs/BatchLogRecordProcessor"
                 },
                 "simple": {
+                    "description": "Configure a simple log record processor.",
                     "$ref": "#/$defs/SimpleLogRecordProcessor"
                 }
             }
         },
         "ExperimentalLoggerConfigurator": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "default_config": {
+                    "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.",
                     "$ref": "#/$defs/ExperimentalLoggerConfig"
                 },
                 "loggers": {
+                    "description": "Configure loggers.",
                     "type": "array",
                     "items": {
                         "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
@@ -130,23 +175,34 @@
             }
         },
         "ExperimentalLoggerMatcherAndConfig": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "name": {
-                    "type": ["string"]
+                    "description": "Configure logger names to match, evaluated as follows: * If the logger name exactly matches. * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
+                    "type": [
+                        "string"
+                    ]
                 },
                 "config": {
+                    "description": "The logger config.",
                     "$ref": "#/$defs/ExperimentalLoggerConfig"
                 }
             }
         },
         "ExperimentalLoggerConfig": {
-            "type": ["object"],
+            "type": [
+                "object"
+            ],
             "additionalProperties": false,
             "properties": {
                 "disabled": {
-                    "type": ["boolean"]
+                    "description": "Configure if the logger is enabled or not.",
+                    "type": [
+                        "boolean"
+                    ]
                 }
             }
         }
