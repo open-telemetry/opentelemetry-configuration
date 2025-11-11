@@ -1957,7 +1957,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure output stream.<br> Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br> If omitted or null, stdout is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -1988,6 +1988,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "output_stream": {
+      "description": "Configure output stream.\n Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\n If omitted or null, stdout is used.",
       "type": [
         "string",
         "null"
@@ -2739,10 +2740,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `insecure` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials.<br> Absolute path to certificate file in PEM format.<br> If omitted or null, system default certificate verification is used for secure connections. |
+| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key.<br> Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br> If omitted or null, mTLS is not used. |
+| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate.<br> Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br> If omitted or null, mTLS is not used. |
+| `insecure` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure client transport security for the exporter's connection.<br> Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br> If omitted or null, false is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2776,24 +2777,28 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "certificate_file": {
+      "description": "Configure certificate used to verify a server's TLS credentials.\n Absolute path to certificate file in PEM format.\n If omitted or null, system default certificate verification is used for secure connections.",
       "type": [
         "string",
         "null"
       ]
     },
     "client_key_file": {
+      "description": "Configure mTLS private client key.\n Absolute path to client key file in PEM format. If set, .client_certificate must also be set.\n If omitted or null, mTLS is not used.",
       "type": [
         "string",
         "null"
       ]
     },
     "client_certificate_file": {
+      "description": "Configure mTLS client certificate.\n Absolute path to client certificate file in PEM format. If set, .client_key must also be set.\n If omitted or null, mTLS is not used.",
       "type": [
         "string",
         "null"
       ]
     },
     "insecure": {
+      "description": "Configure client transport security for the exporter's connection.\n Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.\n If omitted or null, false is used.",
       "type": [
         "boolean",
         "null"
@@ -2807,9 +2812,9 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials.<br> Absolute path to certificate file in PEM format.<br> If omitted or null, system default certificate verification is used for secure connections. |
+| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key.<br> Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br> If omitted or null, mTLS is not used. |
+| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate.<br> Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br> If omitted or null, mTLS is not used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2842,18 +2847,21 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "certificate_file": {
+      "description": "Configure certificate used to verify a server's TLS credentials.\n Absolute path to certificate file in PEM format.\n If omitted or null, system default certificate verification is used for secure connections.",
       "type": [
         "string",
         "null"
       ]
     },
     "client_key_file": {
+      "description": "Configure mTLS private client key.\n Absolute path to client key file in PEM format. If set, .client_certificate must also be set.\n If omitted or null, mTLS is not used.",
       "type": [
         "string",
         "null"
       ]
     },
     "client_certificate_file": {
+      "description": "Configure mTLS client certificate.\n Absolute path to client certificate file in PEM format. If set, .client_key must also be set.\n If omitted or null, mTLS is not used.",
       "type": [
         "string",
         "null"
@@ -2867,8 +2875,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `included` | `array` of `string` | `false` | No constraints. | TODO |
-| `excluded` | `array` of `string` | `false` | No constraints. | TODO |
+| `included` | `array` of `string` | `false` | No constraints. | Configure list of value patterns to include.<br> Values are evaluated to match as follows:<br>     * If the value exactly matches.<br>     * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> If omitted, all values are included. |
+| `excluded` | `array` of `string` | `false` | No constraints. | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br> Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> If omitted, .included attributes are included. |
 
 <details>
 <summary>Language support status</summary>
@@ -2898,12 +2906,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "included": {
+      "description": "Configure list of value patterns to include.\n Values are evaluated to match as follows:\n     * If the value exactly matches.\n     * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n If omitted, all values are included.",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "excluded": {
+      "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\n Values are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n If omitted, .included attributes are included.",
       "type": "array",
       "items": {
         "type": "string"
@@ -4258,8 +4268,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `name` | `string` | `true` | No constraints. | TODO |
-| `value` | one of:<br>* `string`<br>* `null`<br> | `true` | No constraints. | TODO |
+| `name` | `string` | `true` | No constraints. | The name of the pair. |
+| `value` | one of:<br>* `string`<br>* `null`<br> | `true` | No constraints. | The value of the pair. |
 
 <details>
 <summary>Language support status</summary>
@@ -4291,9 +4301,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "The name of the pair.",
       "type": "string"
     },
     "value": {
+      "description": "The value of the pair.",
       "type": [
         "string",
         "null"
@@ -4504,12 +4516,12 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | TODO |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `tls` | [`GrpcTls`](#grpctls) | `false` | No constraints. | TODO |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br> If omitted or null, http://localhost:4317 is used. |
+| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br> If an entry's .value is null, the entry is ignored. |
+| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> If omitted or null, no headers are added. |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br> Values include: gzip, none. Implementations may support other compression algorithms.<br> If omitted or null, none is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 10000 is used. |
+| `tls` | [`GrpcTls`](#grpctls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
 <details>
 <summary>Language support status</summary>
@@ -4545,33 +4557,39 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "tls": {
+      "description": "Configure TLS settings for the exporter.",
       "$ref": "#/$defs/GrpcTls"
     },
     "headers": {
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
       }
     },
     "headers_list": {
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
       "type": [
         "string",
         "null"
       ]
     },
     "compression": {
+      "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "timeout": {
+      "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
       "type": [
         "integer",
         "null"
@@ -4720,11 +4738,11 @@ Usages:
 |---|---|---|---|---|
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | TODO |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | TODO |
-| `tls` | [`HttpTls`](#httptls) | `false` | No constraints. | TODO |
+| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> If omitted or null, no headers are added. |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br> Values include: gzip, none. Implementations may support other compression algorithms.<br> If omitted or null, none is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 10000 is used. |
+| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | Configure the encoding used for messages. <br> Values include: protobuf, json. Implementations may not support json.<br> If omitted or null, protobuf is used. |
+| `tls` | [`HttpTls`](#httptls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
 <details>
 <summary>Language support status</summary>
@@ -4767,6 +4785,7 @@ Usages:
       ]
     },
     "tls": {
+      "description": "Configure TLS settings for the exporter.",
       "$ref": "#/$defs/HttpTls"
     },
     "headers": {
@@ -4776,18 +4795,21 @@ Usages:
       }
     },
     "headers_list": {
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
       "type": [
         "string",
         "null"
       ]
     },
     "compression": {
+      "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "timeout": {
+      "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
       "type": [
         "integer",
         "null"
@@ -4795,6 +4817,7 @@ Usages:
       "minimum": 0
     },
     "encoding": {
+      "description": "Configure the encoding used for messages. \n Values include: protobuf, json. Implementations may not support json.\n If omitted or null, protobuf is used.",
       "$ref": "#/$defs/OtlpHttpEncoding"
     }
   }
