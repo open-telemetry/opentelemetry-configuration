@@ -33,7 +33,6 @@
 # - OTEL_EXPORTER_OTLP_TIMEOUT
 
 # The file format version.
-# The yaml format is documented at# https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema TODO The file format version. The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema The file format version.
 # The yaml format is documented at
 # https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
 file_format: "1.0-rc.2"
