@@ -328,33 +328,39 @@
             "additionalProperties": false,
             "properties": {
                 "endpoint": {
+                    "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "tls": {
+                    "description": "Configure TLS settings for the exporter.",
                     "$ref": "common.json#/$defs/HttpTls"
                 },
                 "headers": {
+                    "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
                     "type": "array",
                     "items": {
                         "$ref": "common.json#/$defs/NameStringValuePair"
                     }
                 },
                 "headers_list": {
+                    "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "compression": {
+                    "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "timeout": {
+                    "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -362,12 +368,15 @@
                     "minimum": 0
                 },
                 "encoding": {
+                    "description": "Configure the encoding used for messages. \n Values include: protobuf, json. Implementations may not support json.\n If omitted or null, protobuf is used.",
                     "$ref": "common.json#/$defs/OtlpHttpEncoding"
                 },
                 "temporality_preference": {
+                    "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
                     "$ref": "#/$defs/ExporterTemporalityPreference"
                 },
                 "default_histogram_aggregation": {
+                    "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
                     "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
                 }
             }
@@ -380,33 +389,39 @@
             "additionalProperties": false,
             "properties": {
                 "endpoint": {
+                    "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "tls": {
+                    "description": "Configure TLS settings for the exporter.",
                     "$ref": "common.json#/$defs/GrpcTls"
                 },
                 "headers": {
+                    "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
                     "type": "array",
                     "items": {
                         "$ref": "common.json#/$defs/NameStringValuePair"
                     }
                 },
                 "headers_list": {
+                    "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "compression": {
+                    "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "timeout": {
+                    "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -414,9 +429,11 @@
                     "minimum": 0
                 },
                 "temporality_preference": {
+                    "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
                     "$ref": "#/$defs/ExporterTemporalityPreference"
                 },
                 "default_histogram_aggregation": {
+                    "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
                     "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
                 }
             }

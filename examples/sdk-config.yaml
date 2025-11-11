@@ -174,9 +174,10 @@ meter_provider:
         exporter:
           # TODO
           otlp_http:
-            # TODO
+            # Configure endpoint.
+            # If omitted or null, http://localhost:4317 is used.
             endpoint: http://localhost:4318/v1/metrics
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
               # Configure certificate used to verify a server's TLS credentials.
               # Absolute path to certificate file in PEM format.
@@ -190,15 +191,24 @@ meter_provider:
               # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
               # If omitted or null, mTLS is not used.
               client_certificate_file:
-            # TODO
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: gzip
-            # TODO
+            # Configure max time (in milliseconds) to wait for each export.
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
+            # If omitted or null, 10000 is used.
             timeout: 10000
-            # TODO
+            # Configure headers. Entries have higher priority than entries from .headers_list.
+            # If an entry's .value is null, the entry is ignored.
             headers: []
-            # TODO
+            # Configure temporality preference.
+            # Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, cumulative is used.
             temporality_preference: cumulative
-            # TODO
+            # Configure default histogram aggregation.
+            # Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, explicit_bucket_histogram is used.
             default_histogram_aggregation: explicit_bucket_histogram
   # Configure the exemplar filter.
   # Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.

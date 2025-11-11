@@ -213,9 +213,10 @@ meter_provider:
         exporter:
           # TODO
           otlp_http:
-            # TODO
+            # Configure endpoint.
+            # If omitted or null, http://localhost:4317 is used.
             endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
               # Configure certificate used to verify a server's TLS credentials.
               # Absolute path to certificate file in PEM format.
@@ -229,17 +230,28 @@ meter_provider:
               # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
               # If omitted or null, mTLS is not used.
               client_certificate_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_CERTIFICATE}
-            # TODO
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: ${OTEL_EXPORTER_OTLP_METRICS_COMPRESSION:-gzip}
-            # TODO
+            # Configure max time (in milliseconds) to wait for each export.
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
+            # If omitted or null, 10000 is used.
             timeout: ${OTEL_EXPORTER_OTLP_METRICS_TIMEOUT:-10000}
-            # TODO
+            # Configure headers. Entries have higher priority than entries from .headers_list.
+            # If an entry's .value is null, the entry is ignored.
             headers: []
-            # TODO
+            # Configure headers. Entries have lower priority than entries from .headers.
+            # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+            # If omitted or null, no headers are added.
             headers_list: ${OTEL_EXPORTER_OTLP_METRICS_HEADERS}
-            # TODO
+            # Configure temporality preference.
+            # Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, cumulative is used.
             temporality_preference: ${OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:-cumulative}
-            # TODO
+            # Configure default histogram aggregation.
+            # Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+            # If omitted or null, explicit_bucket_histogram is used.
             default_histogram_aggregation: ${OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION:-explicit_bucket_histogram}
   # Configure the exemplar filter.
   # Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.

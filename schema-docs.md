@@ -3833,33 +3833,39 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "endpoint": {
+          "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "tls": {
+          "description": "Configure TLS settings for the exporter.",
           "$ref": "common.json#/$defs/HttpTls"
         },
         "headers": {
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
           "type": "array",
           "items": {
             "$ref": "common.json#/$defs/NameStringValuePair"
           }
         },
         "headers_list": {
+          "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
           "type": [
             "string",
             "null"
           ]
         },
         "compression": {
+          "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "timeout": {
+          "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
           "type": [
             "integer",
             "null"
@@ -3867,12 +3873,15 @@ Usages:
           "minimum": 0
         },
         "encoding": {
+          "description": "Configure the encoding used for messages. \n Values include: protobuf, json. Implementations may not support json.\n If omitted or null, protobuf is used.",
           "$ref": "common.json#/$defs/OtlpHttpEncoding"
         },
         "temporality_preference": {
+          "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
           "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
+          "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
@@ -3885,33 +3894,39 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "endpoint": {
+          "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "tls": {
+          "description": "Configure TLS settings for the exporter.",
           "$ref": "common.json#/$defs/GrpcTls"
         },
         "headers": {
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
           "type": "array",
           "items": {
             "$ref": "common.json#/$defs/NameStringValuePair"
           }
         },
         "headers_list": {
+          "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
           "type": [
             "string",
             "null"
           ]
         },
         "compression": {
+          "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "timeout": {
+          "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
           "type": [
             "integer",
             "null"
@@ -3919,9 +3934,11 @@ Usages:
           "minimum": 0
         },
         "temporality_preference": {
+          "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
           "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
+          "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
@@ -4654,14 +4671,14 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | TODO |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | TODO |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | TODO |
-| `tls` | [`GrpcTls`](#grpctls) | `false` | No constraints. | TODO |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br> If omitted or null, http://localhost:4317 is used. |
+| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br> If an entry's .value is null, the entry is ignored. |
+| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> If omitted or null, no headers are added. |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br> Values include: gzip, none. Implementations may support other compression algorithms.<br> If omitted or null, none is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 10000 is used. |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br> Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, cumulative is used. |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br> Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, explicit_bucket_histogram is used. |
+| `tls` | [`GrpcTls`](#grpctls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
 <details>
 <summary>Language support status</summary>
@@ -4698,33 +4715,39 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "tls": {
+      "description": "Configure TLS settings for the exporter.",
       "$ref": "common.json#/$defs/GrpcTls"
     },
     "headers": {
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
       "type": "array",
       "items": {
         "$ref": "common.json#/$defs/NameStringValuePair"
       }
     },
     "headers_list": {
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
       "type": [
         "string",
         "null"
       ]
     },
     "compression": {
+      "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "timeout": {
+      "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
       "type": [
         "integer",
         "null"
@@ -4732,9 +4755,11 @@ Usages:
       "minimum": 0
     },
     "temporality_preference": {
+      "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
       "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
+      "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
       "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
@@ -4880,23 +4905,21 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | TODO |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | TODO |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | TODO |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | TODO |
-| `tls` | [`HttpTls`](#httptls) | `false` | No constraints. | TODO |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br> If omitted or null, http://localhost:4317 is used. |
+| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br> If an entry's .value is null, the entry is ignored. |
+| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> If omitted or null, no headers are added. |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br> Values include: gzip, none. Implementations may support other compression algorithms.<br> If omitted or null, none is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 10000 is used. |
+| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | Configure the encoding used for messages. <br> Values include: protobuf, json. Implementations may not support json.<br> If omitted or null, protobuf is used. |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br> Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, cumulative is used. |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br> Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, explicit_bucket_histogram is used. |
+| `tls` | [`HttpTls`](#httptls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
 <details>
 <summary>Language support status</summary>
 
 | Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `endpoint` | supported | unknown | supported | unknown |
 | `endpoint` | supported | unknown | supported | unknown |
 | `headers` | supported | unknown | supported | unknown |
 | `headers_list` | supported | unknown | supported | unknown |
@@ -4928,33 +4951,39 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "tls": {
+      "description": "Configure TLS settings for the exporter.",
       "$ref": "common.json#/$defs/HttpTls"
     },
     "headers": {
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
       "type": "array",
       "items": {
         "$ref": "common.json#/$defs/NameStringValuePair"
       }
     },
     "headers_list": {
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
       "type": [
         "string",
         "null"
       ]
     },
     "compression": {
+      "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "timeout": {
+      "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
       "type": [
         "integer",
         "null"
@@ -4962,12 +4991,15 @@ Usages:
       "minimum": 0
     },
     "encoding": {
+      "description": "Configure the encoding used for messages. \n Values include: protobuf, json. Implementations may not support json.\n If omitted or null, protobuf is used.",
       "$ref": "common.json#/$defs/OtlpHttpEncoding"
     },
     "temporality_preference": {
+      "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
       "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
+      "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
       "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
@@ -7054,7 +7086,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `tls`: supported<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `endpoint`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `root`: supported<br>* `remote_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `local_parent_not_sampled`: supported<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | supported |  | * `interval`: supported<br>* `timeout`: supported<br>* `exporter`: supported<br>* `producers`: supported<br>* `cardinality_limits`: supported<br> |
 | [`Propagator`](#propagator) | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
@@ -7160,7 +7192,7 @@ Latest supported file format: `0.3.0`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | unknown |  | * `interval`: unknown<br>* `timeout`: unknown<br>* `exporter`: unknown<br>* `producers`: unknown<br>* `cardinality_limits`: unknown<br> |
 | [`Propagator`](#propagator) | unknown |  | * `composite`: unknown<br>* `composite_list`: unknown<br> |
@@ -7266,7 +7298,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: ignored<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: not_implemented<br>* `tls`: ignored<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `endpoint`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: not_implemented<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: ignored<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: not_implemented<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: ignored<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `root`: supported<br>* `remote_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `local_parent_not_sampled`: supported<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | supported |  | * `interval`: supported<br>* `timeout`: supported<br>* `exporter`: supported<br>* `producers`: not_implemented<br>* `cardinality_limits`: supported<br> |
 | [`Propagator`](#propagator) | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
@@ -7372,7 +7404,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | unknown |  | * `interval`: unknown<br>* `timeout`: unknown<br>* `exporter`: unknown<br>* `producers`: unknown<br>* `cardinality_limits`: unknown<br> |
 | [`Propagator`](#propagator) | unknown |  | * `composite`: unknown<br>* `composite_list`: unknown<br> |
