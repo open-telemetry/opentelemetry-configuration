@@ -908,83 +908,97 @@ resource:
 # Configure instrumentation.
 #This property is experimental and subject to breaking changes in minor versions.
 instrumentation/development:
-  # TODO
+  # Configure general SemConv options that may apply to multiple languages and instrumentations.
+  # Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
   general:
-    # TODO
+    # Configure instrumentations following the peer semantic conventions.
+    # See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
     peer:
-      # TODO
+      # Configure the service mapping for instrumentations following peer.service semantic conventions.
+      # See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
       service_mapping:
-        - # TODO
+        - # The IP address to map.
           peer: 1.2.3.4
-          # TODO
+          # The logical name corresponding to the IP address of .peer.
           service: FooService
-        - # TODO
+        - # The IP address to map.
           peer: 2.3.4.5
-          # TODO
+          # The logical name corresponding to the IP address of .peer.
           service: BarService
-    # TODO
+    # Configure instrumentations following the http semantic conventions.
+    # See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
     http:
-      # TODO
+      # Configure instrumentations following the http client semantic conventions.
       client:
-        # TODO
+        # Configure headers to capture for outbound http requests.
         request_captured_headers:
           - Content-Type
           - Accept
-        # TODO
+        # Configure headers to capture for inbound http responses.
         response_captured_headers:
           - Content-Type
           - Content-Encoding
-      # TODO
+      # Configure instrumentations following the http server semantic conventions.
       server:
-        # TODO
+        # Configure headers to capture for inbound http requests.
         request_captured_headers:
           - Content-Type
           - Accept
-        # TODO
+        # Configure headers to capture for outbound http responses.
         response_captured_headers:
           - Content-Type
           - Content-Encoding
-  # TODO
+  # Configure C++ language-specific instrumentation libraries.
   cpp:
     example:
       property: "value"
-  # TODO
+  # Configure .NET language-specific instrumentation libraries.
+  # Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   dotnet:
     example:
       property: "value"
-  # TODO
+  # Configure Erlang language-specific instrumentation libraries.
+  # Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   erlang:
     example:
       property: "value"
-  # TODO
+  # Configure Go language-specific instrumentation libraries.
+  # Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   go:
     example:
       property: "value"
-  # TODO
+  # Configure Java language-specific instrumentation libraries.
+  # Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   java:
     example:
       property: "value"
-  # TODO
+  # Configure JavaScript language-specific instrumentation libraries.
+  # Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   js:
     example:
       property: "value"
-  # TODO
+  # Configure PHP language-specific instrumentation libraries.
+  # Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   php:
     example:
       property: "value"
-  # TODO
+  # Configure Python language-specific instrumentation libraries.
+  # Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   python:
     example:
       property: "value"
-  # TODO
+  # Configure Ruby language-specific instrumentation libraries.
+  # Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   ruby:
     example:
       property: "value"
-  # TODO
+  # Configure Rust language-specific instrumentation libraries.
+  # Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   rust:
     example:
       property: "value"
-  # TODO
+  # Configure Swift language-specific instrumentation libraries.
+  # Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   swift:
     example:
       property: "value"

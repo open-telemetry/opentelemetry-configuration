@@ -1173,8 +1173,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `peer` | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` | No constraints. | TODO |
-| `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | No constraints. | TODO |
+| `peer` | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` | No constraints. | Configure instrumentations following the peer semantic conventions.<br> See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/ |
+| `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | No constraints. | Configure instrumentations following the http semantic conventions.<br> See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/ |
 
 <details>
 <summary>Language support status</summary>
@@ -1202,9 +1202,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "peer": {
+      "description": "Configure instrumentations following the peer semantic conventions.\n See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/",
       "$ref": "#/$defs/ExperimentalPeerInstrumentation"
     },
     "http": {
+      "description": "Configure instrumentations following the http semantic conventions.\n See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/",
       "$ref": "#/$defs/ExperimentalHttpInstrumentation"
     }
   }
@@ -1246,8 +1248,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `request_captured_headers` | `array` of `string` | `false` | No constraints. | TODO |
-| `response_captured_headers` | `array` of `string` | `false` | No constraints. | TODO |
+| `request_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for outbound http requests. |
+| `response_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for inbound http responses. |
 
 <details>
 <summary>Language support status</summary>
@@ -1275,12 +1277,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "request_captured_headers": {
+      "description": "Configure headers to capture for outbound http requests.",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "response_captured_headers": {
+      "description": "Configure headers to capture for inbound http responses.",
       "type": "array",
       "items": {
         "type": "string"
@@ -1297,8 +1301,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `client` | [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | `false` | No constraints. | TODO |
-| `server` | [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | `false` | No constraints. | TODO |
+| `client` | [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | `false` | No constraints. | Configure instrumentations following the http client semantic conventions. |
+| `server` | [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | `false` | No constraints. | Configure instrumentations following the http server semantic conventions. |
 
 <details>
 <summary>Language support status</summary>
@@ -1326,9 +1330,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "client": {
+      "description": "Configure instrumentations following the http client semantic conventions.",
       "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
     },
     "server": {
+      "description": "Configure instrumentations following the http server semantic conventions.",
       "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
     }
   }
@@ -1342,8 +1348,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `request_captured_headers` | `array` of `string` | `false` | No constraints. | TODO |
-| `response_captured_headers` | `array` of `string` | `false` | No constraints. | TODO |
+| `request_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for inbound http requests. |
+| `response_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for outbound http responses. |
 
 <details>
 <summary>Language support status</summary>
@@ -1371,12 +1377,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "request_captured_headers": {
+      "description": "Configure headers to capture for inbound http requests.",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "response_captured_headers": {
+      "description": "Configure headers to capture for outbound http responses.",
       "type": "array",
       "items": {
         "type": "string"
@@ -1393,18 +1401,18 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `general` | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | `false` | No constraints. | TODO |
-| `cpp` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | TODO |
-| `dotnet` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | TODO |
-| `erlang` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | TODO |
-| `go` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | TODO |
-| `java` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | TODO |
-| `js` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | TODO |
-| `php` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | TODO |
-| `python` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | TODO |
-| `ruby` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | TODO |
-| `rust` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | TODO |
-| `swift` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | TODO |
+| `general` | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | `false` | No constraints. | Configure general SemConv options that may apply to multiple languages and instrumentations.<br> Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>. |
+| `cpp` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure C++ language-specific instrumentation libraries. |
+| `dotnet` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure .NET language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `erlang` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Erlang language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `go` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Go language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `java` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Java language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `js` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure JavaScript language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `php` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure PHP language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `python` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Python language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `ruby` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Ruby language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `rust` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Rust language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `swift` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Swift language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
 
 <details>
 <summary>Language support status</summary>
@@ -1444,39 +1452,51 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "general": {
+      "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\n Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.",
       "$ref": "#/$defs/ExperimentalGeneralInstrumentation"
     },
     "cpp": {
+      "description": "Configure C++ language-specific instrumentation libraries.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "dotnet": {
+      "description": "Configure .NET language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "erlang": {
+      "description": "Configure Erlang language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "go": {
+      "description": "Configure Go language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "java": {
+      "description": "Configure Java language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "js": {
+      "description": "Configure JavaScript language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "php": {
+      "description": "Configure PHP language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "python": {
+      "description": "Configure Python language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "ruby": {
+      "description": "Configure Ruby language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "rust": {
+      "description": "Configure Rust language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "swift": {
+      "description": "Configure Swift language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     }
   },
@@ -1486,9 +1506,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "peer": {
+          "description": "Configure instrumentations following the peer semantic conventions.\n See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/",
           "$ref": "#/$defs/ExperimentalPeerInstrumentation"
         },
         "http": {
+          "description": "Configure instrumentations following the http semantic conventions.\n See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/",
           "$ref": "#/$defs/ExperimentalHttpInstrumentation"
         }
       }
@@ -1498,6 +1520,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "service_mapping": {
+          "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\n See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes",
           "type": "array",
           "items": {
             "$ref": "#/$defs/ExperimentalPeerServiceMapping"
@@ -1510,9 +1533,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "peer": {
+          "description": "The IP address to map.",
           "type": "string"
         },
         "service": {
+          "description": "The logical name corresponding to the IP address of .peer.",
           "type": "string"
         }
       },
@@ -1526,12 +1551,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "request_captured_headers": {
+          "description": "Configure headers to capture for outbound http requests.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "response_captured_headers": {
+          "description": "Configure headers to capture for inbound http responses.",
           "type": "array",
           "items": {
             "type": "string"
@@ -1544,12 +1571,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "request_captured_headers": {
+          "description": "Configure headers to capture for inbound http requests.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "response_captured_headers": {
+          "description": "Configure headers to capture for outbound http responses.",
           "type": "array",
           "items": {
             "type": "string"
@@ -1562,9 +1591,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "client": {
+          "description": "Configure instrumentations following the http client semantic conventions.",
           "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
         },
         "server": {
+          "description": "Configure instrumentations following the http server semantic conventions.",
           "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
         }
       }
@@ -2080,7 +2111,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` | No constraints. | TODO |
+| `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` | No constraints. | Configure the service mapping for instrumentations following peer.service semantic conventions.<br> See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes |
 
 <details>
 <summary>Language support status</summary>
@@ -2107,6 +2138,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "service_mapping": {
+      "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\n See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes",
       "type": "array",
       "items": {
         "$ref": "#/$defs/ExperimentalPeerServiceMapping"
@@ -2123,8 +2155,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `peer` | `string` | `true` | No constraints. | TODO |
-| `service` | `string` | `true` | No constraints. | TODO |
+| `peer` | `string` | `true` | No constraints. | The IP address to map. |
+| `service` | `string` | `true` | No constraints. | The logical name corresponding to the IP address of .peer. |
 
 <details>
 <summary>Language support status</summary>
@@ -2153,9 +2185,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "peer": {
+      "description": "The IP address to map.",
       "type": "string"
     },
     "service": {
+      "description": "The logical name corresponding to the IP address of .peer.",
       "type": "string"
     }
   },
