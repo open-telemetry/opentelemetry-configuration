@@ -59,9 +59,13 @@ resource:
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
 # Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
 attribute_limits:
-  # TODO
+  # Configure max attribute value size.
+  # Value must be non-negative.
+  # If omitted or null, there is no limit.
   attribute_value_length_limit: ${OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT}
-  # TODO
+  # Configure max attribute count.
+  # Value must be non-negative.
+  # If omitted or null, 128 is used.
   attribute_count_limit: ${OTEL_ATTRIBUTE_COUNT_LIMIT:-128}
 # Configure text map context propagators.
 # If omitted, a noop propagator is used.

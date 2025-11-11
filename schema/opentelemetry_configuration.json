@@ -61,6 +61,7 @@
             "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
+                    "description": "Configure max attribute value size.\n Value must be non-negative.\n If omitted or null, there is no limit.",
                     "type": [
                         "integer",
                         "null"
@@ -68,6 +69,7 @@
                     "minimum": 0
                 },
                 "attribute_count_limit": {
+                    "description": "Configure max attribute count.\n Value must be non-negative.\n If omitted or null, 128 is used.",
                     "type": [
                         "integer",
                         "null"

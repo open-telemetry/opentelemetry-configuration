@@ -22,15 +22,7 @@
 - type: AttributeLimits
   properties:
     - property: attribute_value_length_limit
-      description: |
-        Configure max attribute value size. 
-        Value must be non-negative.
-        If omitted or null, there is no limit.
     - property: attribute_count_limit
-      description: |
-        Configure max attribute count. 
-        Value must be non-negative.
-        If omitted or null, 128 is used.
   isSdkExtensionPlugin: false
 - type: AttributeNameValue
   properties:

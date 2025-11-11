@@ -68,8 +68,11 @@ If omitted, the default resource is used.",
 		"AttributeLimits": {
 			"type": "object",
 			"additionalProperties": false,
-			"properties": {
+			properties: {
 				"attribute_value_length_limit": {
+                    description: "Configure max attribute value size.\n \
+Value must be non-negative.\n \
+If omitted or null, there is no limit.",
 					"type": [
 						"integer",
 						"null"
@@ -77,6 +80,9 @@ If omitted, the default resource is used.",
 					"minimum": 0
 				},
 				"attribute_count_limit": {
+                    description: "Configure max attribute count.\n \
+Value must be non-negative.\n \
+If omitted or null, 128 is used.",
 					"type": [
 						"integer",
 						"null"

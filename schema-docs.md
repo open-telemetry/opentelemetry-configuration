@@ -131,8 +131,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
-| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | TODO |
+| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size.<br> Value must be non-negative.<br> If omitted or null, there is no limit. |
+| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count.<br> Value must be non-negative.<br> If omitted or null, 128 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -160,6 +160,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "attribute_value_length_limit": {
+      "description": "Configure max attribute value size.\n Value must be non-negative.\n If omitted or null, there is no limit.",
       "type": [
         "integer",
         "null"
@@ -167,6 +168,7 @@ Usages:
       "minimum": 0
     },
     "attribute_count_limit": {
+      "description": "Configure max attribute count.\n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -4450,6 +4452,7 @@ No usages.
       "additionalProperties": false,
       "properties": {
         "attribute_value_length_limit": {
+          "description": "Configure max attribute value size.\n Value must be non-negative.\n If omitted or null, there is no limit.",
           "type": [
             "integer",
             "null"
@@ -4457,6 +4460,7 @@ No usages.
           "minimum": 0
         },
         "attribute_count_limit": {
+          "description": "Configure max attribute count.\n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
