@@ -3694,15 +3694,19 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "otlp_http": {
+          "description": "Configure exporter to be OTLP with HTTP transport.",
           "$ref": "#/$defs/OtlpHttpMetricExporter"
         },
         "otlp_grpc": {
+          "description": "Configure exporter to be OTLP with gRPC transport.",
           "$ref": "#/$defs/OtlpGrpcMetricExporter"
         },
         "otlp_file/development": {
+          "description": "Configure exporter to be OTLP with file transport.",
           "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
         },
         "console": {
+          "description": "Configure exporter to be console.",
           "$ref": "#/$defs/ConsoleMetricExporter"
         }
       }
@@ -3833,7 +3837,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "endpoint": {
-          "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
+          "description": "Configure endpoint, including the signal specific path.\n If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.",
           "type": [
             "string",
             "null"
@@ -4905,7 +4909,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br> If omitted or null, http://localhost:4317 is used. |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint, including the signal specific path.<br> If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used. |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br> If an entry's .value is null, the entry is ignored. |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> If omitted or null, no headers are added. |
 | `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br> Values include: gzip, none. Implementations may support other compression algorithms.<br> If omitted or null, none is used. |
@@ -4951,7 +4955,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
-      "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
+      "description": "Configure endpoint, including the signal specific path.\n If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.",
       "type": [
         "string",
         "null"
@@ -5389,10 +5393,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `otlp_http` | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` | No constraints. | TODO |
-| `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | No constraints. | TODO |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | No constraints. | TODO |
-| `console` | [`ConsoleMetricExporter`](#consolemetricexporter) | `false` | No constraints. | TODO |
+| `otlp_http` | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with HTTP transport. |
+| `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport. |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport. |
+| `console` | [`ConsoleMetricExporter`](#consolemetricexporter) | `false` | No constraints. | Configure exporter to be console. |
 
 <details>
 <summary>Language support status</summary>
@@ -5431,15 +5435,19 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
+      "description": "Configure exporter to be OTLP with HTTP transport.",
       "$ref": "#/$defs/OtlpHttpMetricExporter"
     },
     "otlp_grpc": {
+      "description": "Configure exporter to be OTLP with gRPC transport.",
       "$ref": "#/$defs/OtlpGrpcMetricExporter"
     },
     "otlp_file/development": {
+      "description": "Configure exporter to be OTLP with file transport.",
       "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
     },
     "console": {
+      "description": "Configure exporter to be console.",
       "$ref": "#/$defs/ConsoleMetricExporter"
     }
   }

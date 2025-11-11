@@ -565,14 +565,8 @@
   properties:
     - property: otlp_http
     - property: otlp_grpc
-      description: |
-        Configure exporter to be OTLP with gRPC transport.
     - property: otlp_file/development
-      description: |
-        Configure exporter to be OTLP with file transport.
     - property: console
-      description: |
-        Configure exporter to be console.
   isSdkExtensionPlugin: true
 - type: Resource
   properties:

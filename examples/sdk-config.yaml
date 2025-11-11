@@ -172,10 +172,10 @@ meter_provider:
         timeout: 30000
         # Configure exporter.
         exporter:
-          # TODO
+          # Configure exporter to be OTLP with HTTP transport.
           otlp_http:
-            # Configure endpoint.
-            # If omitted or null, http://localhost:4317 is used.
+            # Configure endpoint, including the signal specific path.
+            # If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
             endpoint: http://localhost:4318/v1/metrics
             # Configure TLS settings for the exporter.
             tls:

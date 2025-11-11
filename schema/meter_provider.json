@@ -189,15 +189,19 @@
             "maxProperties": 1,
             "properties": {
                 "otlp_http": {
+                    "description": "Configure exporter to be OTLP with HTTP transport.",
                     "$ref": "#/$defs/OtlpHttpMetricExporter"
                 },
                 "otlp_grpc": {
+                    "description": "Configure exporter to be OTLP with gRPC transport.",
                     "$ref": "#/$defs/OtlpGrpcMetricExporter"
                 },
                 "otlp_file/development": {
+                    "description": "Configure exporter to be OTLP with file transport.",
                     "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
                 },
                 "console": {
+                    "description": "Configure exporter to be console.",
                     "$ref": "#/$defs/ConsoleMetricExporter"
                 }
             }
@@ -328,7 +332,7 @@
             "additionalProperties": false,
             "properties": {
                 "endpoint": {
-                    "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
+                    "description": "Configure endpoint, including the signal specific path.\n If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.",
                     "type": [
                         "string",
                         "null"
