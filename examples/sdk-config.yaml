@@ -38,11 +38,13 @@ attribute_limits:
 # Configure text map context propagators.
 # If omitted, a noop propagator is used.
 propagator:
-  # TODO
+  # Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.
+  # Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray.
+  # If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
   composite:
-    - # TODO
+    - # Include the w3c trace context propagator.
       tracecontext:
-    - # TODO
+    - # Include the w3c baggage propagator.
       baggage:
 # Configure tracer provider.
 # If omitted, a noop tracer provider is used.

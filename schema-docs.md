@@ -5062,8 +5062,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | No constraints. | TODO |
-| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | No constraints. | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br> Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray.<br> If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used. |
+| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br> The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br> Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray.<br> If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -5090,12 +5090,14 @@ Usages:
   "type": "object",
   "properties": {
     "composite": {
+      "description": "Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.\n Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray.\n If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/TextMapPropagator"
       }
     },
     "composite_list": {
+      "description": "Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.\n The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\n Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray.\n If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.",
       "type": [
         "string",
         "null"
@@ -5115,21 +5117,27 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "tracecontext": {
+          "description": "Include the w3c trace context propagator.",
           "$ref": "#/$defs/TraceContextPropagator"
         },
         "baggage": {
+          "description": "Include the w3c baggage propagator.",
           "$ref": "#/$defs/BaggagePropagator"
         },
         "b3": {
+          "description": "Include the zipkin b3 propagator.",
           "$ref": "#/$defs/B3Propagator"
         },
         "b3multi": {
+          "description": "Include the zipkin b3 multi propagator.",
           "$ref": "#/$defs/B3MultiPropagator"
         },
         "jaeger": {
+          "description": "Include the jaeger propagator.",
           "$ref": "#/$defs/JaegerPropagator"
         },
         "ottrace": {
+          "description": "Include the opentracing propagator.",
           "$ref": "#/$defs/OpenTracingPropagator"
         }
       }
@@ -5963,12 +5971,12 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `tracecontext` | [`TraceContextPropagator`](#tracecontextpropagator) | `false` | No constraints. | TODO |
-| `baggage` | [`BaggagePropagator`](#baggagepropagator) | `false` | No constraints. | TODO |
-| `b3` | [`B3Propagator`](#b3propagator) | `false` | No constraints. | TODO |
-| `b3multi` | [`B3MultiPropagator`](#b3multipropagator) | `false` | No constraints. | TODO |
-| `jaeger` | [`JaegerPropagator`](#jaegerpropagator) | `false` | No constraints. | TODO |
-| `ottrace` | [`OpenTracingPropagator`](#opentracingpropagator) | `false` | No constraints. | TODO |
+| `tracecontext` | [`TraceContextPropagator`](#tracecontextpropagator) | `false` | No constraints. | Include the w3c trace context propagator. |
+| `baggage` | [`BaggagePropagator`](#baggagepropagator) | `false` | No constraints. | Include the w3c baggage propagator. |
+| `b3` | [`B3Propagator`](#b3propagator) | `false` | No constraints. | Include the zipkin b3 propagator. |
+| `b3multi` | [`B3MultiPropagator`](#b3multipropagator) | `false` | No constraints. | Include the zipkin b3 multi propagator. |
+| `jaeger` | [`JaegerPropagator`](#jaegerpropagator) | `false` | No constraints. | Include the jaeger propagator. |
+| `ottrace` | [`OpenTracingPropagator`](#opentracingpropagator) | `false` | No constraints. | Include the opentracing propagator. |
 
 <details>
 <summary>Language support status</summary>
@@ -6009,21 +6017,27 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "tracecontext": {
+      "description": "Include the w3c trace context propagator.",
       "$ref": "#/$defs/TraceContextPropagator"
     },
     "baggage": {
+      "description": "Include the w3c baggage propagator.",
       "$ref": "#/$defs/BaggagePropagator"
     },
     "b3": {
+      "description": "Include the zipkin b3 propagator.",
       "$ref": "#/$defs/B3Propagator"
     },
     "b3multi": {
+      "description": "Include the zipkin b3 multi propagator.",
       "$ref": "#/$defs/B3MultiPropagator"
     },
     "jaeger": {
+      "description": "Include the jaeger propagator.",
       "$ref": "#/$defs/JaegerPropagator"
     },
     "ottrace": {
+      "description": "Include the opentracing propagator.",
       "$ref": "#/$defs/OpenTracingPropagator"
     }
   }
