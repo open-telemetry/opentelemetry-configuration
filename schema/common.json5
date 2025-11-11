@@ -5,16 +5,24 @@
         "IncludeExclude": {
             "type": "object",
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "included": {
-                    "description": "Configure list of value patterns to include.\n Values are evaluated to match as follows:\n     * If the value exactly matches.\n     * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n If omitted, all values are included.",
+                    description: "Configure list of value patterns to include.\n \
+Values are evaluated to match as follows:\n \
+    * If the value exactly matches.\n \
+    * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n \
+If omitted, all values are included.",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "excluded": {
-                    "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\n Values are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n If omitted, .included attributes are included.",
+                    description: "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\n \
+Values are evaluated to match as follows:\n \
+* If the value exactly matches.\n \
+* If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n \
+If omitted, .included attributes are included.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -25,13 +33,13 @@
         "NameStringValuePair": {
             "type": "object",
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "name": {
-                    "description": "The name of the pair.",
+                    description: "The name of the pair.",
                     "type": "string"
                 },
                 "value": {
-                    "description": "The value of the pair.",
+                    description: "The value of the pair.",
                     "type": [
                         "string",
                         "null"
@@ -49,7 +57,7 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "endpoint": {
                     "type": [
                         "string",
@@ -57,7 +65,7 @@
                     ]
                 },
                 "tls": {
-                    "description": "Configure TLS settings for the exporter.",
+                    description: "Configure TLS settings for the exporter.",
                     "$ref": "#/$defs/HttpTls"
                 },
                 "headers": {
@@ -67,21 +75,27 @@
                     }
                 },
                 "headers_list": {
-                    "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
+                    description: "Configure headers. Entries have lower priority than entries from .headers.\n \
+The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n \
+If omitted or null, no headers are added.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "compression": {
-                    "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
+                    description: "Configure compression.\n \
+Values include: gzip, none. Implementations may support other compression algorithms.\n \
+If omitted or null, none is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "timeout": {
-                    "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
+                    description: "Configure max time (in milliseconds) to wait for each export.\n \
+Value must be non-negative. A value of 0 indicates no limit (infinity).\n \
+If omitted or null, 10000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -89,7 +103,9 @@
                     "minimum": 0
                 },
                 "encoding": {
-                    "description": "Configure the encoding used for messages. \n Values include: protobuf, json. Implementations may not support json.\n If omitted or null, protobuf is used.",
+                    description: "Configure the encoding used for messages. \n \
+Values include: protobuf, json. Implementations may not support json.\n \
+If omitted or null, protobuf is used.",
                     "$ref": "#/$defs/OtlpHttpEncoding"
                 }
             }
@@ -110,41 +126,49 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "endpoint": {
-                    "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
+                    description: "Configure endpoint.\n \
+If omitted or null, http://localhost:4317 is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "tls": {
-                    "description": "Configure TLS settings for the exporter.",
+                    description: "Configure TLS settings for the exporter.",
                     "$ref": "#/$defs/GrpcTls"
                 },
                 "headers": {
-                    "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
+                    description: "Configure headers. Entries have higher priority than entries from .headers_list.\n \
+If an entry's .value is null, the entry is ignored.",
                     "type": "array",
                     "items": {
                         "$ref": "#/$defs/NameStringValuePair"
                     }
                 },
                 "headers_list": {
-                    "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
+                    description: "Configure headers. Entries have lower priority than entries from .headers.\n \
+The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n \
+If omitted or null, no headers are added.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "compression": {
-                    "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
+                    description: "Configure compression.\n \
+Values include: gzip, none. Implementations may support other compression algorithms.\n \
+If omitted or null, none is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "timeout": {
-                    "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
+                    description: "Configure max time (in milliseconds) to wait for each export.\n \
+Value must be non-negative. A value of 0 indicates no limit (infinity).\n \
+If omitted or null, 10000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -159,9 +183,11 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "output_stream": {
-                    "description": "Configure output stream.\n Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\n If omitted or null, stdout is used.",
+                    description: "Configure output stream.\n \
+Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\n \
+If omitted or null, stdout is used.",
                     "type": [
                         "string",
                         "null"
@@ -182,23 +208,29 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "certificate_file": {
-                    "description": "Configure certificate used to verify a server's TLS credentials.\n Absolute path to certificate file in PEM format.\n If omitted or null, system default certificate verification is used for secure connections.",
+                    description: "Configure certificate used to verify a server's TLS credentials.\n \
+Absolute path to certificate file in PEM format.\n \
+If omitted or null, system default certificate verification is used for secure connections.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "client_key_file": {
-                    "description": "Configure mTLS private client key.\n Absolute path to client key file in PEM format. If set, .client_certificate must also be set.\n If omitted or null, mTLS is not used.",
+                    description: "Configure mTLS private client key.\n \
+Absolute path to client key file in PEM format. If set, .client_certificate must also be set.\n \
+If omitted or null, mTLS is not used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "client_certificate_file": {
-                    "description": "Configure mTLS client certificate.\n Absolute path to client certificate file in PEM format. If set, .client_key must also be set.\n If omitted or null, mTLS is not used.",
+                    description: "Configure mTLS client certificate.\n \
+Absolute path to client certificate file in PEM format. If set, .client_key must also be set.\n \
+If omitted or null, mTLS is not used.",
                     "type": [
                         "string",
                         "null"
@@ -212,30 +244,38 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "certificate_file": {
-                    "description": "Configure certificate used to verify a server's TLS credentials.\n Absolute path to certificate file in PEM format.\n If omitted or null, system default certificate verification is used for secure connections.",
+                    description: "Configure certificate used to verify a server's TLS credentials.\n \
+Absolute path to certificate file in PEM format.\n \
+If omitted or null, system default certificate verification is used for secure connections.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "client_key_file": {
-                    "description": "Configure mTLS private client key.\n Absolute path to client key file in PEM format. If set, .client_certificate must also be set.\n If omitted or null, mTLS is not used.",
+                    description: "Configure mTLS private client key.\n \
+Absolute path to client key file in PEM format. If set, .client_certificate must also be set.\n \
+If omitted or null, mTLS is not used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "client_certificate_file": {
-                    "description": "Configure mTLS client certificate.\n Absolute path to client certificate file in PEM format. If set, .client_key must also be set.\n If omitted or null, mTLS is not used.",
+                    description: "Configure mTLS client certificate.\n \
+Absolute path to client certificate file in PEM format. If set, .client_key must also be set.\n \
+If omitted or null, mTLS is not used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "insecure": {
-                    "description": "Configure client transport security for the exporter's connection.\n Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.\n If omitted or null, false is used.",
+                    description: "Configure client transport security for the exporter's connection.\n \
+Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.\n \
+If omitted or null, false is used.",
                     "type": [
                         "boolean",
                         "null"

@@ -61,17 +61,27 @@ tracer_provider:
           otlp_http:
             # TODO
             endpoint: http://localhost:4318/v1/traces
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file:
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file:
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file:
-            # TODO
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: gzip
-            # TODO
+            # Configure max time (in milliseconds) to wait for each export.
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
+            # If omitted or null, 10000 is used.
             timeout: 10000
             # TODO
             headers: []
@@ -132,11 +142,17 @@ meter_provider:
             endpoint: http://localhost:4318/v1/metrics
             # TODO
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file:
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file:
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file:
             # TODO
             compression: gzip
@@ -177,17 +193,27 @@ logger_provider:
           otlp_http:
             # TODO
             endpoint: http://localhost:4318/v1/logs
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file:
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file:
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file:
-            # TODO
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: gzip
-            # TODO
+            # Configure max time (in milliseconds) to wait for each export.
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
+            # If omitted or null, 10000 is used.
             timeout: 10000
             # TODO
             headers: []

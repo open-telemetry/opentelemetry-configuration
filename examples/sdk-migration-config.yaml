@@ -91,21 +91,33 @@ tracer_provider:
           otlp_http:
             # TODO
             endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: ${OTEL_EXPORTER_OTLP_TRACES_CERTIFICATE}
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_KEY}
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_CERTIFICATE}
-            # TODO
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: ${OTEL_EXPORTER_OTLP_TRACES_COMPRESSION:-gzip}
-            # TODO
+            # Configure max time (in milliseconds) to wait for each export.
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
+            # If omitted or null, 10000 is used.
             timeout: ${OTEL_EXPORTER_OTLP_TRACES_TIMEOUT:-10000}
             # TODO
             headers: []
-            # TODO
+            # Configure headers. Entries have lower priority than entries from .headers.
+            # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+            # If omitted or null, no headers are added.
             headers_list: ${OTEL_EXPORTER_OTLP_TRACES_HEADERS}
   # TODO
   limits:
@@ -166,11 +178,17 @@ meter_provider:
             endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
             # TODO
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: ${OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE}
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_KEY}
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_CERTIFICATE}
             # TODO
             compression: ${OTEL_EXPORTER_OTLP_METRICS_COMPRESSION:-gzip}
@@ -213,21 +231,33 @@ logger_provider:
           otlp_http:
             # TODO
             endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: ${OTEL_EXPORTER_OTLP_LOGS_CERTIFICATE}
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_KEY}
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_CERTIFICATE}
-            # TODO
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: ${OTEL_EXPORTER_OTLP_LOGS_COMPRESSION:-gzip}
-            # TODO
+            # Configure max time (in milliseconds) to wait for each export.
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
+            # If omitted or null, 10000 is used.
             timeout: ${OTEL_EXPORTER_OTLP_LOGS_TIMEOUT:-10000}
             # TODO
             headers: []
-            # TODO
+            # Configure headers. Entries have lower priority than entries from .headers.
+            # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+            # If omitted or null, no headers are added.
             headers_list: ${OTEL_EXPORTER_OTLP_LOGS_HEADERS}
   # Configure log record limits. See also attribute_limits.
   limits:

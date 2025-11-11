@@ -48,27 +48,41 @@ logger_provider:
           otlp_http:
             # TODO
             endpoint: http://localhost:4318/v1/logs
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
             # TODO
             headers:
-              - # TODO
+              - # The name of the pair.
                 name: api-key
-                # TODO
+                # The value of the pair.
                 value: "1234"
-            # TODO
+            # Configure headers. Entries have lower priority than entries from .headers.
+            # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+            # If omitted or null, no headers are added.
             headers_list: "api-key=1234"
-            # TODO
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: gzip
-            # TODO
+            # Configure max time (in milliseconds) to wait for each export.
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
+            # If omitted or null, 10000 is used.
             timeout: 10000
-            # TODO
+            # Configure the encoding used for messages. 
+            # Values include: protobuf, json. Implementations may not support json.
+            # If omitted or null, protobuf is used.
             encoding: protobuf
     - # Configure a batch log record processor.
       batch:
@@ -76,29 +90,45 @@ logger_provider:
         exporter:
           # Configure exporter to be OTLP with gRPC transport.
           otlp_grpc:
-            # TODO
+            # Configure endpoint.
+            # If omitted or null, http://localhost:4317 is used.
             endpoint: http://localhost:4317
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
-              # TODO
+              # Configure client transport security for the exporter's connection.
+              # Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
+              # If omitted or null, false is used.
               insecure: false
-            # TODO
+            # Configure headers. Entries have higher priority than entries from .headers_list.
+            # If an entry's .value is null, the entry is ignored.
             headers:
-              - # TODO
+              - # The name of the pair.
                 name: api-key
-                # TODO
+                # The value of the pair.
                 value: "1234"
-            # TODO
+            # Configure headers. Entries have lower priority than entries from .headers.
+            # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+            # If omitted or null, no headers are added.
             headers_list: "api-key=1234"
-            # TODO
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: gzip
-            # TODO
+            # Configure max time (in milliseconds) to wait for each export.
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
+            # If omitted or null, 10000 is used.
             timeout: 10000
     - # Configure a batch log record processor.
       batch:
@@ -107,7 +137,9 @@ logger_provider:
           # Configure exporter to be OTLP with file transport.
           #This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # TODO
+            # Configure output stream.
+            # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+            # If omitted or null, stdout is used.
             output_stream: file:///var/log/logs.jsonl
     - # Configure a batch log record processor.
       batch:
@@ -116,7 +148,9 @@ logger_provider:
           # Configure exporter to be OTLP with file transport.
           #This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # TODO
+            # Configure output stream.
+            # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+            # If omitted or null, stdout is used.
             output_stream: stdout
     - # Configure a simple log record processor.
       simple:
@@ -171,10 +205,18 @@ meter_provider:
             without_scope_info: false
             # TODO
             with_resource_constant_labels:
-              # TODO
+              # Configure list of value patterns to include.
+              # Values are evaluated to match as follows:
+              #     * If the value exactly matches.
+              #     * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+              # If omitted, all values are included.
               included:
                 - "service*"
-              # TODO
+              # Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).
+              # Values are evaluated to match as follows:
+              # * If the value exactly matches.
+              # * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+              # If omitted, .included attributes are included.
               excluded:
                 - "service.attr1"
             # TODO
@@ -215,17 +257,23 @@ meter_provider:
             endpoint: http://localhost:4318/v1/metrics
             # TODO
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
             # TODO
             headers:
-              - # TODO
+              - # The name of the pair.
                 name: api-key
-                # TODO
+                # The value of the pair.
                 value: "1234"
             # TODO
             headers_list: "api-key=1234"
@@ -271,19 +319,27 @@ meter_provider:
             endpoint: http://localhost:4317
             # TODO
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
-              # TODO
+              # Configure client transport security for the exporter's connection.
+              # Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
+              # If omitted or null, false is used.
               insecure: false
             # TODO
             headers:
-              - # TODO
+              - # The name of the pair.
                 name: api-key
-                # TODO
+                # The value of the pair.
                 value: "1234"
             # TODO
             headers_list: "api-key=1234"
@@ -382,11 +438,19 @@ meter_provider:
         aggregation_cardinality_limit: 2000
         # TODO
         attribute_keys:
-          # TODO
+          # Configure list of value patterns to include.
+          # Values are evaluated to match as follows:
+          #     * If the value exactly matches.
+          #     * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+          # If omitted, all values are included.
           included:
             - key1
             - key2
-          # TODO
+          # Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).
+          # Values are evaluated to match as follows:
+          # * If the value exactly matches.
+          # * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+          # If omitted, .included attributes are included.
           excluded:
             - key3
   # TODO
@@ -446,27 +510,41 @@ tracer_provider:
           otlp_http:
             # TODO
             endpoint: http://localhost:4318/v1/traces
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
             # TODO
             headers:
-              - # TODO
+              - # The name of the pair.
                 name: api-key
-                # TODO
+                # The value of the pair.
                 value: "1234"
-            # TODO
+            # Configure headers. Entries have lower priority than entries from .headers.
+            # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+            # If omitted or null, no headers are added.
             headers_list: "api-key=1234"
-            # TODO
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: gzip
-            # TODO
+            # Configure max time (in milliseconds) to wait for each export.
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
+            # If omitted or null, 10000 is used.
             timeout: 10000
-            # TODO
+            # Configure the encoding used for messages. 
+            # Values include: protobuf, json. Implementations may not support json.
+            # If omitted or null, protobuf is used.
             encoding: protobuf
     - # TODO
       batch:
@@ -474,29 +552,45 @@ tracer_provider:
         exporter:
           # TODO
           otlp_grpc:
-            # TODO
+            # Configure endpoint.
+            # If omitted or null, http://localhost:4317 is used.
             endpoint: http://localhost:4317
-            # TODO
+            # Configure TLS settings for the exporter.
             tls:
-              # TODO
+              # Configure certificate used to verify a server's TLS credentials.
+              # Absolute path to certificate file in PEM format.
+              # If omitted or null, system default certificate verification is used for secure connections.
               certificate_file: /app/cert.pem
-              # TODO
+              # Configure mTLS private client key.
+              # Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
+              # If omitted or null, mTLS is not used.
               client_key_file: /app/cert.pem
-              # TODO
+              # Configure mTLS client certificate.
+              # Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
+              # If omitted or null, mTLS is not used.
               client_certificate_file: /app/cert.pem
-              # TODO
+              # Configure client transport security for the exporter's connection.
+              # Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
+              # If omitted or null, false is used.
               insecure: false
-            # TODO
+            # Configure headers. Entries have higher priority than entries from .headers_list.
+            # If an entry's .value is null, the entry is ignored.
             headers:
-              - # TODO
+              - # The name of the pair.
                 name: api-key
-                # TODO
+                # The value of the pair.
                 value: "1234"
-            # TODO
+            # Configure headers. Entries have lower priority than entries from .headers.
+            # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+            # If omitted or null, no headers are added.
             headers_list: "api-key=1234"
-            # TODO
+            # Configure compression.
+            # Values include: gzip, none. Implementations may support other compression algorithms.
+            # If omitted or null, none is used.
             compression: gzip
-            # TODO
+            # Configure max time (in milliseconds) to wait for each export.
+            # Value must be non-negative. A value of 0 indicates no limit (infinity).
+            # If omitted or null, 10000 is used.
             timeout: 10000
     - # TODO
       batch:
@@ -505,7 +599,9 @@ tracer_provider:
           # TODO
           #This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # TODO
+            # Configure output stream.
+            # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+            # If omitted or null, stdout is used.
             output_stream: file:///var/log/traces.jsonl
     - # TODO
       batch:
@@ -514,7 +610,9 @@ tracer_provider:
           # TODO
           #This property is experimental and subject to breaking changes in minor versions.
           otlp_file/development:
-            # TODO
+            # Configure output stream.
+            # Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+            # If omitted or null, stdout is used.
             output_stream: stdout
     - # TODO
       batch:
@@ -687,10 +785,18 @@ resource:
   detection/development:
     # Configure attributes provided by resource detectors.
     attributes:
-      # TODO
+      # Configure list of value patterns to include.
+      # Values are evaluated to match as follows:
+      #     * If the value exactly matches.
+      #     * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+      # If omitted, all values are included.
       included:
         - process.*
-      # TODO
+      # Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).
+      # Values are evaluated to match as follows:
+      # * If the value exactly matches.
+      # * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+      # If omitted, .included attributes are included.
       excluded:
         - process.command_args
     # Configure resource detectors.
