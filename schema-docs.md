@@ -625,14 +625,14 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `default` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | TODO |
-| `counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | TODO |
-| `gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | TODO |
-| `histogram` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | TODO |
-| `observable_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | TODO |
-| `observable_gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | TODO |
-| `observable_up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | TODO |
-| `up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | TODO |
+| `default` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for all instrument types.<br> Instrument-specific cardinality limits take priority.<br> If omitted or null, 2000 is used. |
+| `counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for counter instruments.<br> If omitted or null, the value from .default is used. |
+| `gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for gauge instruments.<br> If omitted or null, the value from .default is used. |
+| `histogram` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for histogram instruments.<br> If omitted or null, the value from .default is used. |
+| `observable_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_counter instruments.<br> If omitted or null, the value from .default is used. |
+| `observable_gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_gauge instruments.<br> If omitted or null, the value from .default is used. |
+| `observable_up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_up_down_counter instruments.<br> If omitted or null, the value from .default is used. |
+| `up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for up_down_counter instruments.<br> If omitted or null, the value from .default is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -667,6 +667,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "default": {
+      "description": "Configure default cardinality limit for all instrument types.\n Instrument-specific cardinality limits take priority.\n If omitted or null, 2000 is used.",
       "type": [
         "integer",
         "null"
@@ -674,6 +675,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "counter": {
+      "description": "Configure default cardinality limit for counter instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -681,6 +683,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "gauge": {
+      "description": "Configure default cardinality limit for gauge instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -688,6 +691,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "histogram": {
+      "description": "Configure default cardinality limit for histogram instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -695,6 +699,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "observable_counter": {
+      "description": "Configure default cardinality limit for observable_counter instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -702,6 +707,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "observable_gauge": {
+      "description": "Configure default cardinality limit for observable_gauge instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -709,6 +715,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "observable_up_down_counter": {
+      "description": "Configure default cardinality limit for observable_up_down_counter instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -716,6 +723,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "up_down_counter": {
+      "description": "Configure default cardinality limit for up_down_counter instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -3466,10 +3474,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `readers` | `array` of [`MetricReader`](#metricreader) | `true` | * `minItems`: `1`<br> | TODO |
-| `views` | `array` of [`View`](#view) | `false` | No constraints. | TODO |
-| `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | No constraints. | TODO |
-| `meter_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | No constraints. | TODO |
+| `readers` | `array` of [`MetricReader`](#metricreader) | `true` | * `minItems`: `1`<br> | Configure metric readers. |
+| `views` | `array` of [`View`](#view) | `false` | No constraints. | Configure views.<br> Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s). |
+| `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | No constraints. | Configure the exemplar filter.<br> Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br> If omitted or null, trace_based is used. |
+| `meter_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | No constraints. | Configure meters. |
 
 <details>
 <summary>Language support status</summary>
@@ -3502,6 +3510,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "readers": {
+      "description": "Configure metric readers.",
       "type": "array",
       "minItems": 1,
       "items": {
@@ -3509,15 +3518,18 @@ Usages:
       }
     },
     "views": {
+      "description": "Configure views.\n Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).",
       "type": "array",
       "items": {
         "$ref": "#/$defs/View"
       }
     },
     "exemplar_filter": {
+      "description": "Configure the exemplar filter.\n Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\n If omitted or null, trace_based is used.",
       "$ref": "#/$defs/ExemplarFilter"
     },
     "meter_configurator/development": {
+      "description": "Configure meters.",
       "$ref": "#/$defs/ExperimentalMeterConfigurator"
     }
   },
@@ -3597,6 +3609,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "default": {
+          "description": "Configure default cardinality limit for all instrument types.\n Instrument-specific cardinality limits take priority.\n If omitted or null, 2000 is used.",
           "type": [
             "integer",
             "null"
@@ -3604,6 +3617,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "counter": {
+          "description": "Configure default cardinality limit for counter instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3611,6 +3625,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "gauge": {
+          "description": "Configure default cardinality limit for gauge instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3618,6 +3633,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "histogram": {
+          "description": "Configure default cardinality limit for histogram instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3625,6 +3641,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "observable_counter": {
+          "description": "Configure default cardinality limit for observable_counter instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3632,6 +3649,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "observable_gauge": {
+          "description": "Configure default cardinality limit for observable_gauge instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3639,6 +3657,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "observable_up_down_counter": {
+          "description": "Configure default cardinality limit for observable_up_down_counter instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3646,6 +3665,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "up_down_counter": {
+          "description": "Configure default cardinality limit for up_down_counter instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"

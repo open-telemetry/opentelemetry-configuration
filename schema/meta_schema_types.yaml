@@ -86,38 +86,13 @@
 - type: CardinalityLimits
   properties:
     - property: default
-      description: |
-        Configure default cardinality limit for all instrument types.
-        Instrument-specific cardinality limits take priority. 
-        If omitted or null, 2000 is used.
     - property: counter
-      description: |
-        Configure default cardinality limit for counter instruments.
-        If omitted or null, the value from .default is used.
     - property: gauge
-      description: |
-        Configure default cardinality limit for gauge instruments.
-        If omitted or null, the value from .default is used.
     - property: histogram
-      description: |
-        Configure default cardinality limit for histogram instruments.
-        If omitted or null, the value from .default is used.
     - property: observable_counter
-      description: |
-        Configure default cardinality limit for observable_counter instruments.
-        If omitted or null, the value from .default is used.
     - property: observable_gauge
-      description: |
-        Configure default cardinality limit for observable_gauge instruments.
-        If omitted or null, the value from .default is used.
     - property: observable_up_down_counter
-      description: |
-        Configure default cardinality limit for observable_up_down_counter instruments.
-        If omitted or null, the value from .default is used.
     - property: up_down_counter
-      description: |
-        Configure default cardinality limit for up_down_counter instruments.
-        If omitted or null, the value from .default is used.
   isSdkExtensionPlugin: false
 - type: ConsoleExporter
   properties: []
@@ -466,19 +441,9 @@
 - type: MeterProvider
   properties:
     - property: readers
-      description: Configure metric readers.
     - property: views
-      description: |
-        Configure views. 
-        Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
     - property: exemplar_filter
-      description: |
-        Configure the exemplar filter. 
-        Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
-        If omitted or null, trace_based is used.
     - property: meter_configurator/development
-      description: |
-        Configure meters.
   isSdkExtensionPlugin: false
 - type: MetricProducer
   properties:
@@ -700,12 +665,9 @@
     - property: always_on
     - property: parent_based
     - property: trace_id_ratio_based
-      description: Configure sampler to be trace_id_ratio_based.
     - property: probability/development
-      description: Configure sampler to be probability.
     - property: jaeger_remote/development
     - property: composite/development
-      description: Configure sampler to be composite.
   isSdkExtensionPlugin: true
 - type: SimpleLogRecordProcessor
   properties:

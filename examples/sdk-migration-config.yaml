@@ -197,7 +197,7 @@ tracer_provider:
 # Configure meter provider.
 # If omitted, a noop meter provider is used.
 meter_provider:
-  # TODO
+  # Configure metric readers.
   readers:
     - # TODO
       periodic:
@@ -237,7 +237,9 @@ meter_provider:
             temporality_preference: ${OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:-cumulative}
             # TODO
             default_histogram_aggregation: ${OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION:-explicit_bucket_histogram}
-  # TODO
+  # Configure the exemplar filter.
+  # Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
+  # If omitted or null, trace_based is used.
   exemplar_filter: ${OTEL_METRICS_EXEMPLAR_FILTER:-trace_based}
 # Configure logger provider.
 # If omitted, a noop logger provider is used.

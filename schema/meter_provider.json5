@@ -5,7 +5,7 @@
     "additionalProperties": false,
     "properties": {
         "readers": {
-            "description": "Configure metric readers.",
+            description: "Configure metric readers.",
             "type": "array",
             "minItems": 1,
             "items": {
@@ -13,18 +13,21 @@
             }
         },
         "views": {
-            "description": "Configure views.\n Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).",
+            description: "Configure views.\n \
+Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).",
             "type": "array",
             "items": {
                 "$ref": "#/$defs/View"
             }
         },
         "exemplar_filter": {
-            "description": "Configure the exemplar filter.\n Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\n If omitted or null, trace_based is used.",
+            description: "Configure the exemplar filter.\n \
+Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\n \
+If omitted or null, trace_based is used.",
             "$ref": "#/$defs/ExemplarFilter"
         },
         "meter_configurator/development": {
-            "description": "Configure meters.",
+            description: "Configure meters.",
             "$ref": "#/$defs/ExperimentalMeterConfigurator"
         }
     },
@@ -104,7 +107,9 @@
             "additionalProperties": false,
             "properties": {
                 "default": {
-                    "description": "Configure default cardinality limit for all instrument types.\n Instrument-specific cardinality limits take priority.\n If omitted or null, 2000 is used.",
+                    description: "Configure default cardinality limit for all instrument types.\n \
+Instrument-specific cardinality limits take priority.\n \
+If omitted or null, 2000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -112,7 +117,8 @@
                     "exclusiveMinimum": 0
                 },
                 "counter": {
-                    "description": "Configure default cardinality limit for counter instruments.\n If omitted or null, the value from .default is used.",
+                    description: "Configure default cardinality limit for counter instruments.\n \
+If omitted or null, the value from .default is used.",
                     "type": [
                         "integer",
                         "null"
@@ -120,7 +126,8 @@
                     "exclusiveMinimum": 0
                 },
                 "gauge": {
-                    "description": "Configure default cardinality limit for gauge instruments.\n If omitted or null, the value from .default is used.",
+                    description: "Configure default cardinality limit for gauge instruments.\n \
+If omitted or null, the value from .default is used.",
                     "type": [
                         "integer",
                         "null"
@@ -128,7 +135,8 @@
                     "exclusiveMinimum": 0
                 },
                 "histogram": {
-                    "description": "Configure default cardinality limit for histogram instruments.\n If omitted or null, the value from .default is used.",
+                    description: "Configure default cardinality limit for histogram instruments.\n \
+If omitted or null, the value from .default is used.",
                     "type": [
                         "integer",
                         "null"
@@ -136,7 +144,8 @@
                     "exclusiveMinimum": 0
                 },
                 "observable_counter": {
-                    "description": "Configure default cardinality limit for observable_counter instruments.\n If omitted or null, the value from .default is used.",
+                    description: "Configure default cardinality limit for observable_counter instruments.\n \
+If omitted or null, the value from .default is used.",
                     "type": [
                         "integer",
                         "null"
@@ -144,7 +153,8 @@
                     "exclusiveMinimum": 0
                 },
                 "observable_gauge": {
-                    "description": "Configure default cardinality limit for observable_gauge instruments.\n If omitted or null, the value from .default is used.",
+                    description: "Configure default cardinality limit for observable_gauge instruments.\n \
+If omitted or null, the value from .default is used.",
                     "type": [
                         "integer",
                         "null"
@@ -152,7 +162,8 @@
                     "exclusiveMinimum": 0
                 },
                 "observable_up_down_counter": {
-                    "description": "Configure default cardinality limit for observable_up_down_counter instruments.\n If omitted or null, the value from .default is used.",
+                    description: "Configure default cardinality limit for observable_up_down_counter instruments.\n \
+If omitted or null, the value from .default is used.",
                     "type": [
                         "integer",
                         "null"
@@ -160,7 +171,8 @@
                     "exclusiveMinimum": 0
                 },
                 "up_down_counter": {
-                    "description": "Configure default cardinality limit for up_down_counter instruments.\n If omitted or null, the value from .default is used.",
+                    description: "Configure default cardinality limit for up_down_counter instruments.\n \
+If omitted or null, the value from .default is used.",
                     "type": [
                         "integer",
                         "null"
