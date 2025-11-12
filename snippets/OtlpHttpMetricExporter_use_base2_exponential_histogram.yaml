@@ -1,0 +1,2 @@
+endpoint: http://localhost:4317
+default_histogram_aggregation: base2_exponential_bucket_histogram

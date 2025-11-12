@@ -38,6 +38,10 @@ update-file-format:
 fix-meta-schema:
 	npm run-script fix-meta-schema || exit 1; \
 
+.PHONY: validate-snippets
+validate-snippets:
+	npm run-script validate-snippets || exit 1; \
+
 .PHONY: generate-descriptions
 generate-descriptions:
 	@if ! npm ls minimatch yaml; then npm install; fi
@@ -50,7 +54,7 @@ generate-markdown:
 	npm run-script generate-markdown || exit 1; \
 
 .PHONY: all-meta-schema
-all-meta-schema: fix-meta-schema generate-descriptions generate-markdown
+all-meta-schema: fix-meta-schema validate-snippets generate-descriptions generate-markdown
 
 .PHONY: install-tools
 install-tools:

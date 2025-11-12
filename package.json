@@ -3,12 +3,14 @@
   "scripts": {
     "generate-descriptions": "node scripts/generate-descriptions.js",
     "generate-markdown": "node scripts/generate-markdown.js",
-    "fix-meta-schema": "node scripts/fix-meta-schema.js"
+    "fix-meta-schema": "node scripts/fix-meta-schema.js",
+    "validate-snippets": "node scripts/validate-snippets.js"
   },
   "devDependencies": {
     "ajv-cli": "5.0.0"
   },
   "dependencies": {
+    "ajv": "^8.17.1",
     "envsub": "^4.1.0",
     "yaml": "^2.4.5"
   }
