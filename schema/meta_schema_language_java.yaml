@@ -59,7 +59,7 @@ typeSupportStatuses:
     notes: ""
     propertyOverrides: []
   - type: ConsoleMetricExporter
-    status: unknown
+    status: supported
     notes: ""
     propertyOverrides:
       - property: default_histogram_aggregation
@@ -78,6 +78,26 @@ typeSupportStatuses:
     status: supported
     notes: ""
     enumOverrides: []
+  - type: ExperimentalComposableAlwaysOffSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalComposableAlwaysOnSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalComposableParentBasedSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalComposableProbabilitySampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
+  - type: ExperimentalComposableSampler
+    status: unknown
+    notes: ""
+    propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: supported
     notes: ""
@@ -292,7 +312,7 @@ typeSupportStatuses:
     status: ignored
     notes: ""
     propertyOverrides: []
-  - type: OpentelemetryConfiguration
+  - type: OpenTelemetryConfiguration
     status: supported
     notes: ""
     propertyOverrides:
