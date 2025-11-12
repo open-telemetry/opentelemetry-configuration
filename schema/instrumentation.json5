@@ -5,51 +5,62 @@
     "additionalProperties": false,
     "properties": {
         "general": {
-            "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\n Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.",
+            description: "Configure general SemConv options that may apply to multiple languages and instrumentations.\n \
+Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.",
             "$ref": "#/$defs/ExperimentalGeneralInstrumentation"
         },
         "cpp": {
-            "description": "Configure C++ language-specific instrumentation libraries.",
+            description: "Configure C++ language-specific instrumentation libraries.",
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "dotnet": {
-            "description": "Configure .NET language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
+            description: "Configure .NET language-specific instrumentation libraries.\n \
+Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "erlang": {
-            "description": "Configure Erlang language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
+            description: "Configure Erlang language-specific instrumentation libraries.\n \
+Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "go": {
-            "description": "Configure Go language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
+            description: "Configure Go language-specific instrumentation libraries.\n \
+Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "java": {
-            "description": "Configure Java language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
+            description: "Configure Java language-specific instrumentation libraries.\n \
+Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "js": {
-            "description": "Configure JavaScript language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
+            description: "Configure JavaScript language-specific instrumentation libraries.\n \
+Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "php": {
-            "description": "Configure PHP language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
+            description: "Configure PHP language-specific instrumentation libraries.\n \
+Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "python": {
-            "description": "Configure Python language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
+            description: "Configure Python language-specific instrumentation libraries.\n \
+Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "ruby": {
-            "description": "Configure Ruby language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
+            description: "Configure Ruby language-specific instrumentation libraries.\n \
+Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "rust": {
-            "description": "Configure Rust language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
+            description: "Configure Rust language-specific instrumentation libraries.\n \
+Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         },
         "swift": {
-            "description": "Configure Swift language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
+            description: "Configure Swift language-specific instrumentation libraries.\n \
+Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
             "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
         }
     },
@@ -59,11 +70,13 @@
             "additionalProperties": false,
             "properties": {
                 "peer": {
-                    "description": "Configure instrumentations following the peer semantic conventions.\n See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/",
+                    description: "Configure instrumentations following the peer semantic conventions.\n \
+See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/",
                     "$ref": "#/$defs/ExperimentalPeerInstrumentation"
                 },
                 "http": {
-                    "description": "Configure instrumentations following the http semantic conventions.\n See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/",
+                    description: "Configure instrumentations following the http semantic conventions.\n \
+See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/",
                     "$ref": "#/$defs/ExperimentalHttpInstrumentation"
                 }
             }
@@ -73,7 +86,8 @@
             "additionalProperties": false,
             "properties": {
                 "service_mapping": {
-                    "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\n See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes",
+                    description: "Configure the service mapping for instrumentations following peer.service semantic conventions.\n \
+See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes",
                     "type": "array",
                     "items": {
                         "$ref": "#/$defs/ExperimentalPeerServiceMapping"
@@ -86,11 +100,11 @@
             "additionalProperties": false,
             "properties": {
                 "peer": {
-                    "description": "The IP address to map.",
+                    description: "The IP address to map.",
                     "type": "string"
                 },
                 "service": {
-                    "description": "The logical name corresponding to the IP address of .peer.",
+                    description: "The logical name corresponding to the IP address of .peer.",
                     "type": "string"
                 }
             },
@@ -104,14 +118,14 @@
             "additionalProperties": false,
             "properties": {
                 "request_captured_headers": {
-                    "description": "Configure headers to capture for outbound http requests.",
+                    description: "Configure headers to capture for outbound http requests.",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "response_captured_headers": {
-                    "description": "Configure headers to capture for inbound http responses.",
+                    description: "Configure headers to capture for inbound http responses.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -124,14 +138,14 @@
             "additionalProperties": false,
             "properties": {
                 "request_captured_headers": {
-                    "description": "Configure headers to capture for inbound http requests.",
+                    description: "Configure headers to capture for inbound http requests.",
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
                 "response_captured_headers": {
-                    "description": "Configure headers to capture for outbound http responses.",
+                    description: "Configure headers to capture for outbound http responses.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -144,11 +158,11 @@
             "additionalProperties": false,
             "properties": {
                 "client": {
-                    "description": "Configure instrumentations following the http client semantic conventions.",
+                    description: "Configure instrumentations following the http client semantic conventions.",
                     "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
                 },
                 "server": {
-                    "description": "Configure instrumentations following the http server semantic conventions.",
+                    description: "Configure instrumentations following the http server semantic conventions.",
                     "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
                 }
             }

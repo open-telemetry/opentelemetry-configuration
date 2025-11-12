@@ -151,11 +151,9 @@ export class MetaSchemaType {
 
 export class MetaSchemaProperty {
     property;
-    description;
 
-    constructor(property, description) {
+    constructor(property) {
         this.property = property;
-        this.description = description;
     }
 
     toJson() {
@@ -164,8 +162,7 @@ export class MetaSchemaProperty {
 
     static parseJson(rawJson, messages) {
         const property = parseString(rawJson, 'property', `MetaSchemaProperty has invalid 'property'`);
-        const description = parseString(rawJson, 'description', `MetaSchemaProperty has invalid 'description'`);
-        return new MetaSchemaProperty(property, description);
+        return new MetaSchemaProperty(property);
     }
 }
 

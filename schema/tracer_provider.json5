@@ -3,9 +3,9 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "additionalProperties": false,
-    "properties": {
+    properties: {
         "processors": {
-            "description": "Configure span processors.  ",
+            description: "Configure span processors.  ",
             "type": "array",
             "minItems": 1,
             "items": {
@@ -13,15 +13,16 @@
             }
         },
         "limits": {
-            "description": "Configure span limits. See also attribute_limits.",
+            description: "Configure span limits. See also attribute_limits.",
             "$ref": "#/$defs/SpanLimits"
         },
         "sampler": {
-            "description": "Configure the sampler. \n If omitted, parent based sampler with a root of always_on is used.",
+            description: "Configure the sampler. \n \
+If omitted, parent based sampler with a root of always_on is used.",
             "$ref": "#/$defs/Sampler"
         },
         "tracer_configurator/development": {
-            "description": "Configure tracers.",
+            description: "Configure tracers.",
             "$ref": "#/$defs/ExperimentalTracerConfigurator"
         }
     },
@@ -32,9 +33,11 @@
         "BatchSpanProcessor": {
             "type": "object",
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "schedule_delay": {
-                    "description": "Configure delay interval (in milliseconds) between two consecutive exports.\n Value must be non-negative.\n If omitted or null, 5000 is used.",
+                    description: "Configure delay interval (in milliseconds) between two consecutive exports.\n \
+Value must be non-negative.\n \
+If omitted or null, 5000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -42,7 +45,9 @@
                     "minimum": 0
                 },
                 "export_timeout": {
-                    "description": "Configure maximum allowed time (in milliseconds) to export data.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
+                    description: "Configure maximum allowed time (in milliseconds) to export data.\n \
+Value must be non-negative. A value of 0 indicates no limit (infinity).\n \
+If omitted or null, 30000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -50,7 +55,8 @@
                     "minimum": 0
                 },
                 "max_queue_size": {
-                    "description": "Configure maximum queue size. Value must be positive.\n If omitted or null, 2048 is used.",
+                    description: "Configure maximum queue size. Value must be positive.\n \
+If omitted or null, 2048 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -58,7 +64,8 @@
                     "exclusiveMinimum": 0
                 },
                 "max_export_batch_size": {
-                    "description": "Configure maximum batch size. Value must be positive.\n If omitted or null, 512 is used.",
+                    description: "Configure maximum batch size. Value must be positive.\n \
+If omitted or null, 512 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -66,7 +73,7 @@
                     "exclusiveMinimum": 0
                 },
                 "exporter": {
-                    "description": "Configure exporter.",
+                    description: "Configure exporter.",
                     "$ref": "#/$defs/SpanExporter"
                 }
             },
@@ -84,33 +91,33 @@
             },
             "minProperties": 1,
             "maxProperties": 1,
-            "properties": {
+            properties: {
                 "always_off": {
-                    "description": "Configure sampler to be always_off.",
+                    description: "Configure sampler to be always_off.",
                     "$ref": "#/$defs/AlwaysOffSampler"
                 },
                 "always_on": {
-                    "description": "Configure sampler to be always_on.",
+                    description: "Configure sampler to be always_on.",
                     "$ref": "#/$defs/AlwaysOnSampler"
                 },
                 "composite/development": {
-                    "description": "Configure sampler to be composite.",
+                    description: "Configure sampler to be composite.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 },
                 "jaeger_remote/development": {
-                    "description": "TODO",
+                    description: "TODO",
                     "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
                 },
                 "parent_based": {
-                    "description": "Configure sampler to be parent_based.",
+                    description: "Configure sampler to be parent_based.",
                     "$ref": "#/$defs/ParentBasedSampler"
                 },
                 "probability/development": {
-                    "description": "Configure sampler to be probability.",
+                    description: "Configure sampler to be probability.",
                     "$ref": "#/$defs/ExperimentalProbabilitySampler"
                 },
                 "trace_id_ratio_based": {
-                    "description": "Configure sampler to be trace_id_ratio_based.",
+                    description: "Configure sampler to be trace_id_ratio_based.",
                     "$ref": "#/$defs/TraceIdRatioBasedSampler"
                 }
             }
@@ -135,16 +142,16 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "endpoint": {
-                    "description": "TODO",
+                    description: "TODO",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "interval": {
-                    "description": "TODO",
+                    description: "TODO",
                     "type": [
                         "integer",
                         "null"
@@ -152,7 +159,7 @@
                     "minimum": 0
                 },
                 "initial_sampler": {
-                    "description": "TODO",
+                    description: "TODO",
                     "$ref": "#/$defs/Sampler"
                 }
             }
@@ -163,25 +170,30 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "root": {
-                    "description": "Configure root sampler.\n If omitted or null, always_on is used.",
+      description: "Configure root sampler.\n \
+If omitted or null, always_on is used.",
                     "$ref": "#/$defs/Sampler"
                 },
                 "remote_parent_sampled": {
-                    "description": "Configure remote_parent_sampled sampler.\n If omitted or null, always_on is used.",
+      description: "Configure remote_parent_sampled sampler.\n \
+If omitted or null, always_on is used.",
                     "$ref": "#/$defs/Sampler"
                 },
                 "remote_parent_not_sampled": {
-                    "description": "Configure remote_parent_not_sampled sampler.\n If omitted or null, always_off is used.",
+      description: "Configure remote_parent_not_sampled sampler.\n \
+If omitted or null, always_off is used.",
                     "$ref": "#/$defs/Sampler"
                 },
                 "local_parent_sampled": {
-                    "description": "Configure local_parent_sampled sampler.\n If omitted or null, always_on is used.",
+      description: "Configure local_parent_sampled sampler.\n \
+If omitted or null, always_on is used.",
                     "$ref": "#/$defs/Sampler"
                 },
                 "local_parent_not_sampled": {
-                    "description": "Configure local_parent_not_sampled sampler.\n If omitted or null, always_off is used.",
+      description: "Configure local_parent_not_sampled sampler.\n \
+If omitted or null, always_off is used.",
                     "$ref": "#/$defs/Sampler"
                 }
             }
@@ -192,9 +204,10 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "ratio": {
-                    "description": "Configure ratio.\n If omitted or null, 1.0 is used.",
+                    description: "Configure ratio.\n \
+If omitted or null, 1.0 is used.",
                     "type": [
                         "number",
                         "null"
@@ -210,9 +223,10 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "ratio": {
-                    "description": "Configure trace_id_ratio.\n If omitted or null, 1.0 is used.",
+                    description: "Configure trace_id_ratio.\n \
+If omitted or null, 1.0 is used.",
                     "type": [
                         "number",
                         "null"
@@ -242,25 +256,25 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "root": {
-                    "description": "Configures the sampler for spans with no parent.",
+                    description: "Configures the sampler for spans with no parent.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 },
                 "remote_parent_sampled": {
-                    "description": "Configures the sampler for spans with a remote parent that is sampled.",
+                    description: "Configures the sampler for spans with a remote parent that is sampled.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 },
                 "remote_parent_not_sampled": {
-                    "description": "Configures the sampler for spans with a remote parent that is not sampled.",
+                    description: "Configures the sampler for spans with a remote parent that is not sampled.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 },
                 "local_parent_sampled": {
-                    "description": "Configures the sampler for spans with a local parent that is sampled.",
+                    description: "Configures the sampler for spans with a local parent that is sampled.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 },
                 "local_parent_not_sampled": {
-                    "description": "Configures the sampler for spans with a local parent that is not sampled.",
+                    description: "Configures the sampler for spans with a local parent that is not sampled.",
                     "$ref": "#/$defs/ExperimentalComposableSampler"
                 }
             }
@@ -271,9 +285,10 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "ratio": {
-                    "description": "Configure ratio.\n If omitted or null, 1.0 is used.",
+                    description: "Configure ratio.\n \
+If omitted or null, 1.0 is used.",
                     "type": [
                         "number",
                         "null"
@@ -293,21 +308,21 @@
             },
             "minProperties": 1,
             "maxProperties": 1,
-            "properties": {
+            properties: {
                 "always_off": {
-                    "description": "Configure sampler to be always_off.",
+                    description: "Configure sampler to be always_off.",
                     "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
                 },
                 "always_on": {
-                    "description": "Configure sampler to be always_on.",
+                    description: "Configure sampler to be always_on.",
                     "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
                 },
                 "parent_based": {
-                    "description": "Configure sampler to be parent_based.",
+                    description: "Configure sampler to be parent_based.",
                     "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
                 },
                 "probability": {
-                    "description": "Configure sampler to be probability.",
+                    description: "Configure sampler to be probability.",
                     "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
                 }
             }
@@ -315,9 +330,9 @@
         "SimpleSpanProcessor": {
             "type": "object",
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "exporter": {
-                    "description": "Configure exporter.",
+                    description: "Configure exporter.",
                     "$ref": "#/$defs/SpanExporter"
                 }
             },
@@ -335,25 +350,25 @@
             },
             "minProperties": 1,
             "maxProperties": 1,
-            "properties": {
+            properties: {
                 "otlp_http": {
-                    "description": "Configure exporter to be OTLP with HTTP transport.",
+                    description: "Configure exporter to be OTLP with HTTP transport.",
                     "$ref": "common.json#/$defs/OtlpHttpExporter"
                 },
                 "otlp_grpc": {
-                    "description": "Configure exporter to be OTLP with gRPC transport.",
+                    description: "Configure exporter to be OTLP with gRPC transport.",
                     "$ref": "common.json#/$defs/OtlpGrpcExporter"
                 },
                 "otlp_file/development": {
-                    "description": "Configure exporter to be OTLP with file transport.",
+                    description: "Configure exporter to be OTLP with file transport.",
                     "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
                 },
                 "console": {
-                    "description": "Configure exporter to be console.",
+                    description: "Configure exporter to be console.",
                     "$ref": "common.json#/$defs/ConsoleExporter"
                 },
                 "zipkin": {
-                    "description": "Configure exporter to be zipkin.",
+                    description: "Configure exporter to be zipkin.",
                     "$ref": "#/$defs/ZipkinSpanExporter"
                 }
             }
@@ -361,9 +376,11 @@
         "SpanLimits": {
             "type": "object",
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "attribute_value_length_limit": {
-                    "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \n Value must be non-negative.\n If omitted or null, there is no limit.",
+      description: "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \n \
+Value must be non-negative.\n \
+If omitted or null, there is no limit.",
                     "type": [
                         "integer",
                         "null"
@@ -371,7 +388,9 @@
                     "minimum": 0
                 },
                 "attribute_count_limit": {
-                    "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \n Value must be non-negative.\n If omitted or null, 128 is used.",
+      description: "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \n \
+Value must be non-negative.\n \
+If omitted or null, 128 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -379,7 +398,9 @@
                     "minimum": 0
                 },
                 "event_count_limit": {
-                    "description": "Configure max span event count. \n Value must be non-negative.\n If omitted or null, 128 is used.",
+      description: "Configure max span event count. \n \
+Value must be non-negative.\n \
+If omitted or null, 128 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -387,7 +408,9 @@
                     "minimum": 0
                 },
                 "link_count_limit": {
-                    "description": "Configure max span link count. \n Value must be non-negative.\n If omitted or null, 128 is used.",
+      description: "Configure max span link count. \n \
+Value must be non-negative.\n \
+If omitted or null, 128 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -395,7 +418,9 @@
                     "minimum": 0
                 },
                 "event_attribute_count_limit": {
-                    "description": "Configure max attributes per span event. \n Value must be non-negative.\n If omitted or null, 128 is used.",
+      description: "Configure max attributes per span event. \n \
+Value must be non-negative.\n \
+If omitted or null, 128 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -403,7 +428,9 @@
                     "minimum": 0
                 },
                 "link_attribute_count_limit": {
-                    "description": "Configure max attributes per span link. \n Value must be non-negative.\n If omitted or null, 128 is used.",
+      description: "Configure max attributes per span link. \n \
+Value must be non-negative.\n \
+If omitted or null, 128 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -422,13 +449,13 @@
             },
             "minProperties": 1,
             "maxProperties": 1,
-            "properties": {
+            properties: {
                 "batch": {
-                    "description": "Configure a batch span processor.",
+                    description: "Configure a batch span processor.",
                     "$ref": "#/$defs/BatchSpanProcessor"
                 },
                 "simple": {
-                    "description": "Configure a simple span processor.",
+                    description: "Configure a simple span processor.",
                     "$ref": "#/$defs/SimpleSpanProcessor"
                 }
             }
@@ -439,16 +466,19 @@
                 "null"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "endpoint": {
-                    "description": "Configure endpoint.\n If omitted or null, http://localhost:9411/api/v2/spans is used.",
+      description: "Configure endpoint.\n \
+If omitted or null, http://localhost:9411/api/v2/spans is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "timeout": {
-                    "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates indefinite.\n If omitted or null, 10000 is used.",
+      description: "Configure max time (in milliseconds) to wait for each export.\n \
+Value must be non-negative. A value of 0 indicates indefinite.\n \
+If omitted or null, 10000 is used.",
                     "type": [
                         "integer",
                         "null"
@@ -462,13 +492,13 @@
                 "object"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "default_config": {
-                    "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.",
+                    description: "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.",
                     "$ref": "#/$defs/ExperimentalTracerConfig"
                 },
                 "tracers": {
-                    "description": "Configure tracers.",
+                    description: "Configure tracers.",
                     "type": "array",
                     "items": {
                         "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
@@ -481,15 +511,18 @@
                 "object"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "name": {
-                    "description": "Configure tracer names to match, evaluated as follows:\n \n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
+                    description: "Configure tracer names to match, evaluated as follows:\n \
+\n \
+* If the tracer name exactly matches.\n \
+* If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
                     "type": [
                         "string"
                     ]
                 },
                 "config": {
-                    "description": "The tracer config.",
+                    description: "The tracer config.",
                     "$ref": "#/$defs/ExperimentalTracerConfig"
                 }
             }
@@ -499,9 +532,9 @@
                 "object"
             ],
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "disabled": {
-                    "description": "Configure if the tracer is enabled or not.",
+                    description: "Configure if the tracer is enabled or not.",
                     "type": [
                         "boolean"
                     ]

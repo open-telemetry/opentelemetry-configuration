@@ -56,21 +56,27 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "default": {
+      "description": "TODO",
       "$ref": "#/$defs/DefaultAggregation"
     },
     "drop": {
+      "description": "TODO",
       "$ref": "#/$defs/DropAggregation"
     },
     "explicit_bucket_histogram": {
+      "description": "Configure aggregation to be explicit_bucket_histogram.",
       "$ref": "#/$defs/ExplicitBucketHistogramAggregation"
     },
     "base2_exponential_bucket_histogram": {
+      "description": "TODO",
       "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation"
     },
     "last_value": {
+      "description": "TODO",
       "$ref": "#/$defs/LastValueAggregation"
     },
     "sum": {
+      "description": "TODO",
       "$ref": "#/$defs/SumAggregation"
     }
   }
@@ -131,8 +137,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> |
-| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
+| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size.<br> Value must be non-negative.<br> If omitted or null, there is no limit. |
+| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count.<br> Value must be non-negative.<br> If omitted or null, 128 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -160,6 +166,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "attribute_value_length_limit": {
+      "description": "Configure max attribute value size.\n Value must be non-negative.\n If omitted or null, there is no limit.",
       "type": [
         "integer",
         "null"
@@ -167,6 +174,7 @@ Usages:
       "minimum": 0
     },
     "attribute_count_limit": {
+      "description": "Configure max attribute count.\n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -181,9 +189,9 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `name` | `string` | `true` | No constraints. | The attribute name.<br> |
-| `value` | `oneOf` | `true` | No constraints. | The attribute value.<br>The type of value must match .type.<br> |
-| `type` | [`AttributeType`](#attributetype) | `false` | No constraints. | The attribute type.<br>Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br>If omitted or null, string is used.<br> |
+| `name` | `string` | `true` | No constraints. | The attribute name. |
+| `value` | `oneOf` | `true` | No constraints. | The attribute value.<br> The type of value must match .type. |
+| `type` | [`AttributeType`](#attributetype) | `false` | No constraints. | The attribute type.<br> Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br> If omitted or null, string is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -213,9 +221,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "The attribute name.",
       "type": "string"
     },
     "value": {
+      "description": "The attribute value.\n The type of value must match .type.",
       "oneOf": [
         {
           "type": "string"
@@ -250,6 +260,7 @@ Usages:
       ]
     },
     "type": {
+      "description": "The attribute type.\n Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.\n If omitted or null, string is used.",
       "$ref": "#/$defs/AttributeType"
     }
   },
@@ -431,18 +442,21 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "max_scale": {
+      "description": "TODO",
       "type": [
         "integer",
         "null"
       ]
     },
     "max_size": {
+      "description": "TODO",
       "type": [
         "integer",
         "null"
       ]
     },
     "record_min_max": {
+      "description": "TODO",
       "type": [
         "boolean",
         "null"
@@ -456,10 +470,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `schedule_delay` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 1000 is used.<br> |
-| `export_timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> |
-| `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> |
-| `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> |
+| `schedule_delay` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between two consecutive exports. <br> Value must be non-negative.<br> If omitted or null, 1000 is used. |
+| `export_timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data. <br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 30000 is used. |
+| `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum queue size. Value must be positive.<br> If omitted or null, 2048 is used. |
+| `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum batch size. Value must be positive.<br> If omitted or null, 512 is used. |
 | `exporter` | [`LogRecordExporter`](#logrecordexporter) | `true` | No constraints. | Configure exporter. |
 
 <details>
@@ -492,6 +506,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "schedule_delay": {
+      "description": "Configure delay interval (in milliseconds) between two consecutive exports. \n Value must be non-negative.\n If omitted or null, 1000 is used.",
       "type": [
         "integer",
         "null"
@@ -499,6 +514,7 @@ Usages:
       "minimum": 0
     },
     "export_timeout": {
+      "description": "Configure maximum allowed time (in milliseconds) to export data. \n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
       "type": [
         "integer",
         "null"
@@ -506,6 +522,7 @@ Usages:
       "minimum": 0
     },
     "max_queue_size": {
+      "description": "Configure maximum queue size. Value must be positive.\n If omitted or null, 2048 is used.",
       "type": [
         "integer",
         "null"
@@ -513,6 +530,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "max_export_batch_size": {
+      "description": "Configure maximum batch size. Value must be positive.\n If omitted or null, 512 is used.",
       "type": [
         "integer",
         "null"
@@ -520,6 +538,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "exporter": {
+      "description": "Configure exporter.",
       "$ref": "#/$defs/LogRecordExporter"
     }
   },
@@ -533,10 +552,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `schedule_delay` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 5000 is used.<br> |
-| `export_timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> |
-| `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum queue size. Value must be positive.<br>If omitted or null, 2048 is used.<br> |
-| `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum batch size. Value must be positive.<br>If omitted or null, 512 is used.<br> |
+| `schedule_delay` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between two consecutive exports.<br> Value must be non-negative.<br> If omitted or null, 5000 is used. |
+| `export_timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 30000 is used. |
+| `max_queue_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum queue size. Value must be positive.<br> If omitted or null, 2048 is used. |
+| `max_export_batch_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure maximum batch size. Value must be positive.<br> If omitted or null, 512 is used. |
 | `exporter` | [`SpanExporter`](#spanexporter) | `true` | No constraints. | Configure exporter. |
 
 <details>
@@ -569,6 +588,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "schedule_delay": {
+      "description": "Configure delay interval (in milliseconds) between two consecutive exports.\n Value must be non-negative.\n If omitted or null, 5000 is used.",
       "type": [
         "integer",
         "null"
@@ -576,6 +596,7 @@ Usages:
       "minimum": 0
     },
     "export_timeout": {
+      "description": "Configure maximum allowed time (in milliseconds) to export data.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
       "type": [
         "integer",
         "null"
@@ -583,6 +604,7 @@ Usages:
       "minimum": 0
     },
     "max_queue_size": {
+      "description": "Configure maximum queue size. Value must be positive.\n If omitted or null, 2048 is used.",
       "type": [
         "integer",
         "null"
@@ -590,6 +612,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "max_export_batch_size": {
+      "description": "Configure maximum batch size. Value must be positive.\n If omitted or null, 512 is used.",
       "type": [
         "integer",
         "null"
@@ -597,6 +620,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "exporter": {
+      "description": "Configure exporter.",
       "$ref": "#/$defs/SpanExporter"
     }
   },
@@ -610,14 +634,14 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `default` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for all instrument types.<br>Instrument-specific cardinality limits take priority. <br>If omitted or null, 2000 is used.<br> |
-| `counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for counter instruments.<br>If omitted or null, the value from .default is used.<br> |
-| `gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for gauge instruments.<br>If omitted or null, the value from .default is used.<br> |
-| `histogram` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for histogram instruments.<br>If omitted or null, the value from .default is used.<br> |
-| `observable_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_counter instruments.<br>If omitted or null, the value from .default is used.<br> |
-| `observable_gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_gauge instruments.<br>If omitted or null, the value from .default is used.<br> |
-| `observable_up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> |
-| `up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for up_down_counter instruments.<br>If omitted or null, the value from .default is used.<br> |
+| `default` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for all instrument types.<br> Instrument-specific cardinality limits take priority.<br> If omitted or null, 2000 is used. |
+| `counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for counter instruments.<br> If omitted or null, the value from .default is used. |
+| `gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for gauge instruments.<br> If omitted or null, the value from .default is used. |
+| `histogram` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for histogram instruments.<br> If omitted or null, the value from .default is used. |
+| `observable_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_counter instruments.<br> If omitted or null, the value from .default is used. |
+| `observable_gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_gauge instruments.<br> If omitted or null, the value from .default is used. |
+| `observable_up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_up_down_counter instruments.<br> If omitted or null, the value from .default is used. |
+| `up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for up_down_counter instruments.<br> If omitted or null, the value from .default is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -652,6 +676,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "default": {
+      "description": "Configure default cardinality limit for all instrument types.\n Instrument-specific cardinality limits take priority.\n If omitted or null, 2000 is used.",
       "type": [
         "integer",
         "null"
@@ -659,6 +684,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "counter": {
+      "description": "Configure default cardinality limit for counter instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -666,6 +692,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "gauge": {
+      "description": "Configure default cardinality limit for gauge instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -673,6 +700,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "histogram": {
+      "description": "Configure default cardinality limit for histogram instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -680,6 +708,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "observable_counter": {
+      "description": "Configure default cardinality limit for observable_counter instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -687,6 +716,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "observable_gauge": {
+      "description": "Configure default cardinality limit for observable_gauge instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -694,6 +724,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "observable_up_down_counter": {
+      "description": "Configure default cardinality limit for observable_up_down_counter instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -701,6 +732,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "up_down_counter": {
+      "description": "Configure default cardinality limit for up_down_counter instruments.\n If omitted or null, the value from .default is used.",
       "type": [
         "integer",
         "null"
@@ -741,8 +773,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br> Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, cumulative is used. |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br> Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, explicit_bucket_histogram is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -773,9 +805,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "temporality_preference": {
+      "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
       "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
+      "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
       "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
@@ -976,18 +1010,23 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "root": {
+      "description": "Configures the sampler for spans with no parent.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "remote_parent_sampled": {
+      "description": "Configures the sampler for spans with a remote parent that is sampled.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "remote_parent_not_sampled": {
+      "description": "Configures the sampler for spans with a remote parent that is not sampled.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "local_parent_sampled": {
+      "description": "Configures the sampler for spans with a local parent that is sampled.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "local_parent_not_sampled": {
+      "description": "Configures the sampler for spans with a local parent that is not sampled.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     }
   }
@@ -1001,7 +1040,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br>If omitted or null, 1.0 is used.<br> |
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br> If omitted or null, 1.0 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -1031,6 +1070,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "ratio": {
+      "description": "Configure ratio.\n If omitted or null, 1.0 is used.",
       "type": [
         "number",
         "null"
@@ -1096,15 +1136,19 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "always_off": {
+      "description": "Configure sampler to be always_off.",
       "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
     },
     "always_on": {
+      "description": "Configure sampler to be always_on.",
       "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
     },
     "parent_based": {
+      "description": "Configure sampler to be parent_based.",
       "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
     },
     "probability": {
+      "description": "Configure sampler to be probability.",
       "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
     }
   }
@@ -1146,8 +1190,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `peer` | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` | No constraints. | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> |
-| `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
+| `peer` | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` | No constraints. | Configure instrumentations following the peer semantic conventions.<br> See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/ |
+| `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | No constraints. | Configure instrumentations following the http semantic conventions.<br> See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/ |
 
 <details>
 <summary>Language support status</summary>
@@ -1175,9 +1219,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "peer": {
+      "description": "Configure instrumentations following the peer semantic conventions.\n See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/",
       "$ref": "#/$defs/ExperimentalPeerInstrumentation"
     },
     "http": {
+      "description": "Configure instrumentations following the http semantic conventions.\n See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/",
       "$ref": "#/$defs/ExperimentalHttpInstrumentation"
     }
   }
@@ -1219,8 +1265,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `request_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for outbound http requests.<br> |
-| `response_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for inbound http responses.<br> |
+| `request_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for outbound http requests. |
+| `response_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for inbound http responses. |
 
 <details>
 <summary>Language support status</summary>
@@ -1248,12 +1294,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "request_captured_headers": {
+      "description": "Configure headers to capture for outbound http requests.",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "response_captured_headers": {
+      "description": "Configure headers to capture for inbound http responses.",
       "type": "array",
       "items": {
         "type": "string"
@@ -1299,9 +1347,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "client": {
+      "description": "Configure instrumentations following the http client semantic conventions.",
       "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
     },
     "server": {
+      "description": "Configure instrumentations following the http server semantic conventions.",
       "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
     }
   }
@@ -1315,8 +1365,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `request_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for inbound http requests.<br> |
-| `response_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for outbound http responses.<br> |
+| `request_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for inbound http requests. |
+| `response_captured_headers` | `array` of `string` | `false` | No constraints. | Configure headers to capture for outbound http responses. |
 
 <details>
 <summary>Language support status</summary>
@@ -1344,12 +1394,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "request_captured_headers": {
+      "description": "Configure headers to capture for inbound http requests.",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "response_captured_headers": {
+      "description": "Configure headers to capture for outbound http responses.",
       "type": "array",
       "items": {
         "type": "string"
@@ -1366,18 +1418,18 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `general` | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | `false` | No constraints. | Configure general SemConv options that may apply to multiple languages and instrumentations.<br>Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.<br> |
+| `general` | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | `false` | No constraints. | Configure general SemConv options that may apply to multiple languages and instrumentations.<br> Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>. |
 | `cpp` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure C++ language-specific instrumentation libraries. |
-| `dotnet` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure .NET language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `erlang` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Erlang language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `go` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Go language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `java` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Java language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `js` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure JavaScript language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `php` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure PHP language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `python` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Python language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `ruby` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Ruby language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `rust` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Rust language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `swift` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Swift language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+| `dotnet` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure .NET language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `erlang` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Erlang language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `go` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Go language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `java` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Java language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `js` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure JavaScript language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `php` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure PHP language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `python` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Python language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `ruby` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Ruby language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `rust` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Rust language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
+| `swift` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | No constraints. | Configure Swift language-specific instrumentation libraries.<br> Each entry's key identifies a particular instrumentation library. The corresponding value configures it. |
 
 <details>
 <summary>Language support status</summary>
@@ -1417,39 +1469,51 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "general": {
+      "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\n Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.",
       "$ref": "#/$defs/ExperimentalGeneralInstrumentation"
     },
     "cpp": {
+      "description": "Configure C++ language-specific instrumentation libraries.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "dotnet": {
+      "description": "Configure .NET language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "erlang": {
+      "description": "Configure Erlang language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "go": {
+      "description": "Configure Go language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "java": {
+      "description": "Configure Java language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "js": {
+      "description": "Configure JavaScript language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "php": {
+      "description": "Configure PHP language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "python": {
+      "description": "Configure Python language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "ruby": {
+      "description": "Configure Ruby language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "rust": {
+      "description": "Configure Rust language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "swift": {
+      "description": "Configure Swift language-specific instrumentation libraries.\n Each entry's key identifies a particular instrumentation library. The corresponding value configures it.",
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     }
   },
@@ -1459,9 +1523,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "peer": {
+          "description": "Configure instrumentations following the peer semantic conventions.\n See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/",
           "$ref": "#/$defs/ExperimentalPeerInstrumentation"
         },
         "http": {
+          "description": "Configure instrumentations following the http semantic conventions.\n See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/",
           "$ref": "#/$defs/ExperimentalHttpInstrumentation"
         }
       }
@@ -1471,6 +1537,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "service_mapping": {
+          "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\n See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes",
           "type": "array",
           "items": {
             "$ref": "#/$defs/ExperimentalPeerServiceMapping"
@@ -1483,9 +1550,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "peer": {
+          "description": "The IP address to map.",
           "type": "string"
         },
         "service": {
+          "description": "The logical name corresponding to the IP address of .peer.",
           "type": "string"
         }
       },
@@ -1499,12 +1568,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "request_captured_headers": {
+          "description": "Configure headers to capture for outbound http requests.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "response_captured_headers": {
+          "description": "Configure headers to capture for inbound http responses.",
           "type": "array",
           "items": {
             "type": "string"
@@ -1517,12 +1588,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "request_captured_headers": {
+          "description": "Configure headers to capture for inbound http requests.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "response_captured_headers": {
+          "description": "Configure headers to capture for outbound http responses.",
           "type": "array",
           "items": {
             "type": "string"
@@ -1535,9 +1608,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "client": {
+          "description": "Configure instrumentations following the http client semantic conventions.",
           "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
         },
         "server": {
+          "description": "Configure instrumentations following the http server semantic conventions.",
           "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
         }
       }
@@ -1593,12 +1668,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "TODO",
       "type": [
         "string",
         "null"
       ]
     },
     "interval": {
+      "description": "TODO",
       "type": [
         "integer",
         "null"
@@ -1606,6 +1683,7 @@ Usages:
       "minimum": 0
     },
     "initial_sampler": {
+      "description": "TODO",
       "$ref": "#/$defs/Sampler"
     }
   }
@@ -1686,6 +1764,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "disabled": {
+      "description": "Configure if the logger is enabled or not.",
       "type": [
         "boolean"
       ]
@@ -1732,9 +1811,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "default_config": {
+      "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.",
       "$ref": "#/$defs/ExperimentalLoggerConfig"
     },
     "loggers": {
+      "description": "Configure loggers.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
@@ -1751,7 +1832,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `name` | `string` | `false` | No constraints. | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
+| `name` | `string` | `false` | No constraints. | Configure logger names to match, evaluated as follows:<br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none. |
 | `config` | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `false` | No constraints. | The logger config. |
 
 <details>
@@ -1782,11 +1863,13 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "Configure logger names to match, evaluated as follows:\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
       "type": [
         "string"
       ]
     },
     "config": {
+      "description": "The logger config.",
       "$ref": "#/$defs/ExperimentalLoggerConfig"
     }
   }
@@ -1830,6 +1913,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "disabled": {
+      "description": "Configure if the meter is enabled or not.",
       "type": [
         "boolean"
       ]
@@ -1876,9 +1960,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "default_config": {
+      "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.",
       "$ref": "#/$defs/ExperimentalMeterConfig"
     },
     "meters": {
+      "description": "Configure meters.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
@@ -1895,7 +1981,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `name` | `string` | `false` | No constraints. | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
+| `name` | `string` | `false` | No constraints. | Configure meter names to match, evaluated as follows:<br> <br>     * If the meter name exactly matches.<br>     * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none. |
 | `config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` | No constraints. | The meter config. |
 
 <details>
@@ -1926,11 +2012,13 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "Configure meter names to match, evaluated as follows:\n \n     * If the meter name exactly matches.\n     * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
       "type": [
         "string"
       ]
     },
     "config": {
+      "description": "The meter config.",
       "$ref": "#/$defs/ExperimentalMeterConfig"
     }
   }
@@ -1944,7 +2032,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> |
+| `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure output stream.<br> Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br> If omitted or null, stdout is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -1975,6 +2063,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "output_stream": {
+      "description": "Configure output stream.\n Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\n If omitted or null, stdout is used.",
       "type": [
         "string",
         "null"
@@ -1991,9 +2080,9 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br>If omitted or null, stdout is used.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
+| `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure output stream.<br> Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br> If omitted or null, stdout is used. |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br> Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, cumulative is used. |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br> Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, explicit_bucket_histogram is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2025,15 +2114,18 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "output_stream": {
+      "description": "Configure output stream.\n Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\n If omitted or null, stdout is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "temporality_preference": {
+      "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
       "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
+      "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
       "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
@@ -2047,7 +2139,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` | No constraints. | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> |
+| `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` | No constraints. | Configure the service mapping for instrumentations following peer.service semantic conventions.<br> See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes |
 
 <details>
 <summary>Language support status</summary>
@@ -2074,6 +2166,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "service_mapping": {
+      "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\n See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes",
       "type": "array",
       "items": {
         "$ref": "#/$defs/ExperimentalPeerServiceMapping"
@@ -2090,8 +2183,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `peer` | `string` | `true` | No constraints. | The IP address to map.<br> |
-| `service` | `string` | `true` | No constraints. | The logical name corresponding to the IP address of .peer.<br> |
+| `peer` | `string` | `true` | No constraints. | The IP address to map. |
+| `service` | `string` | `true` | No constraints. | The logical name corresponding to the IP address of .peer. |
 
 <details>
 <summary>Language support status</summary>
@@ -2120,9 +2213,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "peer": {
+      "description": "The IP address to map.",
       "type": "string"
     },
     "service": {
+      "description": "The logical name corresponding to the IP address of .peer.",
       "type": "string"
     }
   },
@@ -2140,7 +2235,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br>If omitted or null, 1.0 is used.<br> |
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure ratio.<br> If omitted or null, 1.0 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2170,6 +2265,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "ratio": {
+      "description": "Configure ratio.\n If omitted or null, 1.0 is used.",
       "type": [
         "number",
         "null"
@@ -2216,11 +2312,11 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `host` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure host.<br>If omitted or null, localhost is used.<br> |
-| `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | Configure port.<br>If omitted or null, 9464 is used.<br> |
-| `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure Prometheus Exporter to produce metrics without a scope info metric.<br>If omitted or null, false is used.<br> |
+| `host` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure host.<br> If omitted or null, localhost is used. |
+| `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | Configure port.<br> If omitted or null, 9464 is used. |
+| `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure Prometheus Exporter to produce metrics without a scope info metric.<br> If omitted or null, false is used. |
 | `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
-| `translation_strategy` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure how Prometheus metrics are exposed. Values include:<br><br> * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br> * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.<br> * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br> * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.<br><br>If omitted or null, UnderscoreEscapingWithSuffixes is used.<br> |
+| `translation_strategy` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure how Prometheus metrics are exposed. Values include:<br> <br>          * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br>          * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.<br>          * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br>          * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.<br> <br>         If omitted or null, UnderscoreEscapingWithSuffixes is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2254,27 +2350,32 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "host": {
+      "description": "Configure host.\n If omitted or null, localhost is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "port": {
+      "description": "Configure port.\n If omitted or null, 9464 is used.",
       "type": [
         "integer",
         "null"
       ]
     },
     "without_scope_info": {
+      "description": "Configure Prometheus Exporter to produce metrics without a scope info metric.\n If omitted or null, false is used.",
       "type": [
         "boolean",
         "null"
       ]
     },
     "with_resource_constant_labels": {
+      "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.",
       "$ref": "common.json#/$defs/IncludeExclude"
     },
     "translation_strategy": {
+      "description": "Configure how Prometheus metrics are exposed. Values include:\n \n          * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n          * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n          * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n          * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\n \n         If omitted or null, UnderscoreEscapingWithSuffixes is used.",
       "type": [
         "string",
         "null"
@@ -2298,7 +2399,7 @@ Usages:
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `attributes` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure attributes provided by resource detectors. |
-| `detectors` | `array` of [`ExperimentalResourceDetector`](#experimentalresourcedetector) | `false` | No constraints. | Configure resource detectors.<br>Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. <br>If omitted or null, no resource detectors are enabled.<br> |
+| `detectors` | `array` of [`ExperimentalResourceDetector`](#experimentalresourcedetector) | `false` | No constraints. | Configure resource detectors.<br> Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language.<br> If omitted or null, no resource detectors are enabled. |
 
 <details>
 <summary>Language support status</summary>
@@ -2326,9 +2427,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "attributes": {
+      "description": "Configure attributes provided by resource detectors.",
       "$ref": "common.json#/$defs/IncludeExclude"
     },
     "detectors": {
+      "description": "Configure resource detectors.\n Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language.\n If omitted or null, no resource detectors are enabled.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/ExperimentalResourceDetector"
@@ -2347,10 +2450,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `container` | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | `false` | No constraints. | Enable the container resource detector, which populates container.* attributes.<br> |
-| `host` | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | `false` | No constraints. | Enable the host resource detector, which populates host.* and os.* attributes.<br> |
-| `process` | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | `false` | No constraints. | Enable the process resource detector, which populates process.* attributes.<br> |
-| `service` | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | `false` | No constraints. | Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.<br> |
+| `container` | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | `false` | No constraints. | Enable the container resource detector, which populates container.* attributes. |
+| `host` | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | `false` | No constraints. | Enable the host resource detector, which populates host.* and os.* attributes. |
+| `process` | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | `false` | No constraints. | Enable the process resource detector, which populates process.* attributes. |
+| `service` | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | `false` | No constraints. | Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id. |
 
 <details>
 <summary>Language support status</summary>
@@ -2389,15 +2492,19 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "container": {
+      "description": "Enable the container resource detector, which populates container.* attributes.",
       "$ref": "#/$defs/ExperimentalContainerResourceDetector"
     },
     "host": {
+      "description": "Enable the host resource detector, which populates host.* and os.* attributes.",
       "$ref": "#/$defs/ExperimentalHostResourceDetector"
     },
     "process": {
+      "description": "Enable the process resource detector, which populates process.* attributes.",
       "$ref": "#/$defs/ExperimentalProcessResourceDetector"
     },
     "service": {
+      "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.",
       "$ref": "#/$defs/ExperimentalServiceResourceDetector"
     }
   }
@@ -2469,6 +2576,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "disabled": {
+      "description": "Configure if the tracer is enabled or not.",
       "type": [
         "boolean"
       ]
@@ -2515,9 +2623,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "default_config": {
+      "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.",
       "$ref": "#/$defs/ExperimentalTracerConfig"
     },
     "tracers": {
+      "description": "Configure tracers.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
@@ -2534,7 +2644,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `name` | `string` | `false` | No constraints. | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
+| `name` | `string` | `false` | No constraints. | Configure tracer names to match, evaluated as follows:<br> <br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none. |
 | `config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` | No constraints. | The tracer config. |
 
 <details>
@@ -2565,11 +2675,13 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "Configure tracer names to match, evaluated as follows:\n \n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
       "type": [
         "string"
       ]
     },
     "config": {
+      "description": "The tracer config.",
       "$ref": "#/$defs/ExperimentalTracerConfig"
     }
   }
@@ -2580,8 +2692,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `boundaries` | `array` of `number` | `false` | No constraints. | Configure bucket boundaries.<br>If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.<br> |
-| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure record min and max.<br>If omitted or null, true is used.<br> |
+| `boundaries` | `array` of `number` | `false` | No constraints. | Configure bucket boundaries.<br> If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used. |
+| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure record min and max.<br> If omitted or null, true is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2612,12 +2724,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "boundaries": {
+      "description": "Configure bucket boundaries.\n If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.",
       "type": "array",
       "items": {
         "type": "number"
       }
     },
     "record_min_max": {
+      "description": "Configure record min and max.\n If omitted or null, true is used.",
       "type": [
         "boolean",
         "null"
@@ -2720,10 +2834,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
-| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
-| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
-| `insecure` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> |
+| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials.<br> Absolute path to certificate file in PEM format.<br> If omitted or null, system default certificate verification is used for secure connections. |
+| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key.<br> Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br> If omitted or null, mTLS is not used. |
+| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate.<br> Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br> If omitted or null, mTLS is not used. |
+| `insecure` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure client transport security for the exporter's connection.<br> Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br> If omitted or null, false is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2757,24 +2871,28 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "certificate_file": {
+      "description": "Configure certificate used to verify a server's TLS credentials.\n Absolute path to certificate file in PEM format.\n If omitted or null, system default certificate verification is used for secure connections.",
       "type": [
         "string",
         "null"
       ]
     },
     "client_key_file": {
+      "description": "Configure mTLS private client key.\n Absolute path to client key file in PEM format. If set, .client_certificate must also be set.\n If omitted or null, mTLS is not used.",
       "type": [
         "string",
         "null"
       ]
     },
     "client_certificate_file": {
+      "description": "Configure mTLS client certificate.\n Absolute path to client certificate file in PEM format. If set, .client_key must also be set.\n If omitted or null, mTLS is not used.",
       "type": [
         "string",
         "null"
       ]
     },
     "insecure": {
+      "description": "Configure client transport security for the exporter's connection.\n Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.\n If omitted or null, false is used.",
       "type": [
         "boolean",
         "null"
@@ -2788,9 +2906,9 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
-| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
-| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
+| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials.<br> Absolute path to certificate file in PEM format.<br> If omitted or null, system default certificate verification is used for secure connections. |
+| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key.<br> Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br> If omitted or null, mTLS is not used. |
+| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate.<br> Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br> If omitted or null, mTLS is not used. |
 
 <details>
 <summary>Language support status</summary>
@@ -2823,18 +2941,21 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "certificate_file": {
+      "description": "Configure certificate used to verify a server's TLS credentials.\n Absolute path to certificate file in PEM format.\n If omitted or null, system default certificate verification is used for secure connections.",
       "type": [
         "string",
         "null"
       ]
     },
     "client_key_file": {
+      "description": "Configure mTLS private client key.\n Absolute path to client key file in PEM format. If set, .client_certificate must also be set.\n If omitted or null, mTLS is not used.",
       "type": [
         "string",
         "null"
       ]
     },
     "client_certificate_file": {
+      "description": "Configure mTLS client certificate.\n Absolute path to client certificate file in PEM format. If set, .client_key must also be set.\n If omitted or null, mTLS is not used.",
       "type": [
         "string",
         "null"
@@ -2848,8 +2969,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `included` | `array` of `string` | `false` | No constraints. | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all values are included.<br> |
-| `excluded` | `array` of `string` | `false` | No constraints. | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> |
+| `included` | `array` of `string` | `false` | No constraints. | Configure list of value patterns to include.<br> Values are evaluated to match as follows:<br>     * If the value exactly matches.<br>     * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> If omitted, all values are included. |
+| `excluded` | `array` of `string` | `false` | No constraints. | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br> Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> If omitted, .included attributes are included. |
 
 <details>
 <summary>Language support status</summary>
@@ -2879,12 +3000,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "included": {
+      "description": "Configure list of value patterns to include.\n Values are evaluated to match as follows:\n     * If the value exactly matches.\n     * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n If omitted, all values are included.",
       "type": "array",
       "items": {
         "type": "string"
       }
     },
     "excluded": {
+      "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\n Values are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n If omitted, .included attributes are included.",
       "type": "array",
       "items": {
         "type": "string"
@@ -3005,7 +3128,7 @@ Usages:
 |---|---|---|---|---|
 | `processors` | `array` of [`LogRecordProcessor`](#logrecordprocessor) | `true` | * `minItems`: `1`<br> | Configure log record processors. |
 | `limits` | [`LogRecordLimits`](#logrecordlimits) | `false` | No constraints. | Configure log record limits. See also attribute_limits. |
-| `logger_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` | No constraints. | Configure loggers.<br> |
+| `logger_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` | No constraints. | Configure loggers. |
 
 <details>
 <summary>Language support status</summary>
@@ -3037,6 +3160,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "processors": {
+      "description": "Configure log record processors.",
       "type": "array",
       "minItems": 1,
       "items": {
@@ -3044,9 +3168,11 @@ Usages:
       }
     },
     "limits": {
+      "description": "Configure log record limits. See also attribute_limits.",
       "$ref": "#/$defs/LogRecordLimits"
     },
     "logger_configurator/development": {
+      "description": "Configure loggers.",
       "$ref": "#/$defs/ExperimentalLoggerConfigurator"
     }
   },
@@ -3059,6 +3185,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "exporter": {
+          "description": "Configure exporter.",
           "$ref": "#/$defs/LogRecordExporter"
         }
       },
@@ -3071,6 +3198,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "schedule_delay": {
+          "description": "Configure delay interval (in milliseconds) between two consecutive exports. \n Value must be non-negative.\n If omitted or null, 1000 is used.",
           "type": [
             "integer",
             "null"
@@ -3078,6 +3206,7 @@ Usages:
           "minimum": 0
         },
         "export_timeout": {
+          "description": "Configure maximum allowed time (in milliseconds) to export data. \n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
           "type": [
             "integer",
             "null"
@@ -3085,6 +3214,7 @@ Usages:
           "minimum": 0
         },
         "max_queue_size": {
+          "description": "Configure maximum queue size. Value must be positive.\n If omitted or null, 2048 is used.",
           "type": [
             "integer",
             "null"
@@ -3092,6 +3222,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "max_export_batch_size": {
+          "description": "Configure maximum batch size. Value must be positive.\n If omitted or null, 512 is used.",
           "type": [
             "integer",
             "null"
@@ -3099,6 +3230,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "exporter": {
+          "description": "Configure exporter.",
           "$ref": "#/$defs/LogRecordExporter"
         }
       },
@@ -3118,15 +3250,19 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "otlp_http": {
+          "description": "Configure exporter to be OTLP with HTTP transport.",
           "$ref": "common.json#/$defs/OtlpHttpExporter"
         },
         "otlp_grpc": {
+          "description": "Configure exporter to be OTLP with gRPC transport.",
           "$ref": "common.json#/$defs/OtlpGrpcExporter"
         },
         "otlp_file/development": {
+          "description": "Configure exporter to be OTLP with file transport.",
           "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
         },
         "console": {
+          "description": "Configure exporter to be console.",
           "$ref": "common.json#/$defs/ConsoleExporter"
         }
       }
@@ -3136,6 +3272,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "attribute_value_length_limit": {
+          "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.\n Value must be non-negative.\n If omitted or null, there is no limit.",
           "type": [
             "integer",
             "null"
@@ -3143,6 +3280,7 @@ Usages:
           "minimum": 0
         },
         "attribute_count_limit": {
+          "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.\n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -3163,9 +3301,11 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "batch": {
+          "description": "Configure a batch log record processor.",
           "$ref": "#/$defs/BatchLogRecordProcessor"
         },
         "simple": {
+          "description": "Configure a simple log record processor.",
           "$ref": "#/$defs/SimpleLogRecordProcessor"
         }
       }
@@ -3177,9 +3317,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "default_config": {
+          "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.",
           "$ref": "#/$defs/ExperimentalLoggerConfig"
         },
         "loggers": {
+          "description": "Configure loggers.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
@@ -3194,11 +3336,13 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "name": {
+          "description": "Configure logger names to match, evaluated as follows:\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
           "type": [
             "string"
           ]
         },
         "config": {
+          "description": "The logger config.",
           "$ref": "#/$defs/ExperimentalLoggerConfig"
         }
       }
@@ -3210,6 +3354,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "disabled": {
+          "description": "Configure if the logger is enabled or not.",
           "type": [
             "boolean"
           ]
@@ -3228,7 +3373,7 @@ Usages:
 |---|---|---|---|---|
 | `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | No constraints. | Configure exporter to be OTLP with HTTP transport. |
 | `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport. |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br> |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport. |
 | `console` | [`ConsoleExporter`](#consoleexporter) | `false` | No constraints. | Configure exporter to be console. |
 
 <details>
@@ -3269,15 +3414,19 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
+      "description": "Configure exporter to be OTLP with HTTP transport.",
       "$ref": "common.json#/$defs/OtlpHttpExporter"
     },
     "otlp_grpc": {
+      "description": "Configure exporter to be OTLP with gRPC transport.",
       "$ref": "common.json#/$defs/OtlpGrpcExporter"
     },
     "otlp_file/development": {
+      "description": "Configure exporter to be OTLP with file transport.",
       "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
     },
     "console": {
+      "description": "Configure exporter to be console.",
       "$ref": "common.json#/$defs/ConsoleExporter"
     }
   }
@@ -3288,8 +3437,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> |
-| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
+| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.<br> Value must be non-negative.<br> If omitted or null, there is no limit. |
+| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.<br> Value must be non-negative.<br> If omitted or null, 128 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -3317,6 +3466,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "attribute_value_length_limit": {
+      "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit.\n Value must be non-negative.\n If omitted or null, there is no limit.",
       "type": [
         "integer",
         "null"
@@ -3324,6 +3474,7 @@ Usages:
       "minimum": 0
     },
     "attribute_count_limit": {
+      "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit.\n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -3378,9 +3529,11 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "batch": {
+      "description": "Configure a batch log record processor.",
       "$ref": "#/$defs/BatchLogRecordProcessor"
     },
     "simple": {
+      "description": "Configure a simple log record processor.",
       "$ref": "#/$defs/SimpleLogRecordProcessor"
     }
   }
@@ -3392,9 +3545,9 @@ Usages:
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `readers` | `array` of [`MetricReader`](#metricreader) | `true` | * `minItems`: `1`<br> | Configure metric readers. |
-| `views` | `array` of [`View`](#view) | `false` | No constraints. | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> |
-| `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | No constraints. | Configure the exemplar filter. <br>Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br>If omitted or null, trace_based is used.<br> |
-| `meter_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | No constraints. | Configure meters.<br> |
+| `views` | `array` of [`View`](#view) | `false` | No constraints. | Configure views.<br> Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s). |
+| `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | No constraints. | Configure the exemplar filter.<br> Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br> If omitted or null, trace_based is used. |
+| `meter_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | No constraints. | Configure meters. |
 
 <details>
 <summary>Language support status</summary>
@@ -3427,6 +3580,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "readers": {
+      "description": "Configure metric readers.",
       "type": "array",
       "minItems": 1,
       "items": {
@@ -3434,15 +3588,18 @@ Usages:
       }
     },
     "views": {
+      "description": "Configure views.\n Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).",
       "type": "array",
       "items": {
         "$ref": "#/$defs/View"
       }
     },
     "exemplar_filter": {
+      "description": "Configure the exemplar filter.\n Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\n If omitted or null, trace_based is used.",
       "$ref": "#/$defs/ExemplarFilter"
     },
     "meter_configurator/development": {
+      "description": "Configure meters.",
       "$ref": "#/$defs/ExperimentalMeterConfigurator"
     }
   },
@@ -3466,6 +3623,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "interval": {
+          "description": "Configure delay interval (in milliseconds) between start of two consecutive exports.\n Value must be non-negative.\n If omitted or null, 60000 is used.",
           "type": [
             "integer",
             "null"
@@ -3473,6 +3631,7 @@ Usages:
           "minimum": 0
         },
         "timeout": {
+          "description": "Configure maximum allowed time (in milliseconds) to export data.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
           "type": [
             "integer",
             "null"
@@ -3480,15 +3639,18 @@ Usages:
           "minimum": 0
         },
         "exporter": {
+          "description": "Configure exporter.",
           "$ref": "#/$defs/PushMetricExporter"
         },
         "producers": {
+          "description": "Configure metric producers.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/MetricProducer"
           }
         },
         "cardinality_limits": {
+          "description": "Configure cardinality limits.",
           "$ref": "#/$defs/CardinalityLimits"
         }
       },
@@ -3501,15 +3663,18 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "exporter": {
+          "description": "Configure exporter.",
           "$ref": "#/$defs/PullMetricExporter"
         },
         "producers": {
+          "description": "Configure metric producers.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/MetricProducer"
           }
         },
         "cardinality_limits": {
+          "description": "Configure cardinality limits.",
           "$ref": "#/$defs/CardinalityLimits"
         }
       },
@@ -3522,6 +3687,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "default": {
+          "description": "Configure default cardinality limit for all instrument types.\n Instrument-specific cardinality limits take priority.\n If omitted or null, 2000 is used.",
           "type": [
             "integer",
             "null"
@@ -3529,6 +3695,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "counter": {
+          "description": "Configure default cardinality limit for counter instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3536,6 +3703,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "gauge": {
+          "description": "Configure default cardinality limit for gauge instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3543,6 +3711,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "histogram": {
+          "description": "Configure default cardinality limit for histogram instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3550,6 +3719,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "observable_counter": {
+          "description": "Configure default cardinality limit for observable_counter instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3557,6 +3727,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "observable_gauge": {
+          "description": "Configure default cardinality limit for observable_gauge instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3564,6 +3735,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "observable_up_down_counter": {
+          "description": "Configure default cardinality limit for observable_up_down_counter instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3571,6 +3743,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "up_down_counter": {
+          "description": "Configure default cardinality limit for up_down_counter instruments.\n If omitted or null, the value from .default is used.",
           "type": [
             "integer",
             "null"
@@ -3591,15 +3764,19 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "otlp_http": {
+          "description": "Configure exporter to be OTLP with HTTP transport.",
           "$ref": "#/$defs/OtlpHttpMetricExporter"
         },
         "otlp_grpc": {
+          "description": "Configure exporter to be OTLP with gRPC transport.",
           "$ref": "#/$defs/OtlpGrpcMetricExporter"
         },
         "otlp_file/development": {
+          "description": "Configure exporter to be OTLP with file transport.",
           "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
         },
         "console": {
+          "description": "Configure exporter to be console.",
           "$ref": "#/$defs/ConsoleMetricExporter"
         }
       }
@@ -3616,6 +3793,7 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "prometheus/development": {
+          "description": "Configure exporter to be prometheus.",
           "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
         }
       }
@@ -3632,6 +3810,7 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "opencensus": {
+          "description": "Configure metric producer to be opencensus.",
           "$ref": "#/$defs/OpenCensusMetricProducer"
         }
       }
@@ -3651,27 +3830,32 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "host": {
+          "description": "Configure host.\n If omitted or null, localhost is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "port": {
+          "description": "Configure port.\n If omitted or null, 9464 is used.",
           "type": [
             "integer",
             "null"
           ]
         },
         "without_scope_info": {
+          "description": "Configure Prometheus Exporter to produce metrics without a scope info metric.\n If omitted or null, false is used.",
           "type": [
             "boolean",
             "null"
           ]
         },
         "with_resource_constant_labels": {
+          "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.",
           "$ref": "common.json#/$defs/IncludeExclude"
         },
         "translation_strategy": {
+          "description": "Configure how Prometheus metrics are exposed. Values include:\n \n          * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n          * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n          * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n          * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\n \n         If omitted or null, UnderscoreEscapingWithSuffixes is used.",
           "type": [
             "string",
             "null"
@@ -3692,9 +3876,11 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "periodic": {
+          "description": "Configure a periodic metric reader.",
           "$ref": "#/$defs/PeriodicMetricReader"
         },
         "pull": {
+          "description": "Configure a pull based metric reader.",
           "$ref": "#/$defs/PullMetricReader"
         }
       }
@@ -3728,33 +3914,39 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "endpoint": {
+          "description": "Configure endpoint, including the signal specific path.\n If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "tls": {
+          "description": "Configure TLS settings for the exporter.",
           "$ref": "common.json#/$defs/HttpTls"
         },
         "headers": {
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
           "type": "array",
           "items": {
             "$ref": "common.json#/$defs/NameStringValuePair"
           }
         },
         "headers_list": {
+          "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
           "type": [
             "string",
             "null"
           ]
         },
         "compression": {
+          "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "timeout": {
+          "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
           "type": [
             "integer",
             "null"
@@ -3762,12 +3954,15 @@ Usages:
           "minimum": 0
         },
         "encoding": {
+          "description": "Configure the encoding used for messages. \n Values include: protobuf, json. Implementations may not support json.\n If omitted or null, protobuf is used.",
           "$ref": "common.json#/$defs/OtlpHttpEncoding"
         },
         "temporality_preference": {
+          "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
           "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
+          "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
@@ -3780,33 +3975,39 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "endpoint": {
+          "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "tls": {
+          "description": "Configure TLS settings for the exporter.",
           "$ref": "common.json#/$defs/GrpcTls"
         },
         "headers": {
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
           "type": "array",
           "items": {
             "$ref": "common.json#/$defs/NameStringValuePair"
           }
         },
         "headers_list": {
+          "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
           "type": [
             "string",
             "null"
           ]
         },
         "compression": {
+          "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "timeout": {
+          "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
           "type": [
             "integer",
             "null"
@@ -3814,9 +4015,11 @@ Usages:
           "minimum": 0
         },
         "temporality_preference": {
+          "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
           "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
+          "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
@@ -3829,15 +4032,18 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "output_stream": {
+          "description": "Configure output stream.\n Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\n If omitted or null, stdout is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "temporality_preference": {
+          "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
           "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
+          "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
@@ -3850,9 +4056,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "temporality_preference": {
+          "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
           "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
+          "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
@@ -3862,9 +4070,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "selector": {
+          "description": "Configure view selector.\n Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.",
           "$ref": "#/$defs/ViewSelector"
         },
         "stream": {
+          "description": "Configure view stream.",
           "$ref": "#/$defs/ViewStream"
         }
       },
@@ -3878,33 +4088,39 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "instrument_name": {
+          "description": "Configure instrument name selection criteria.\n If omitted or null, all instrument names match.",
           "type": [
             "string",
             "null"
           ]
         },
         "instrument_type": {
+          "description": "Configure instrument type selection criteria.\n Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\n If omitted or null, all instrument types match.",
           "$ref": "#/$defs/InstrumentType"
         },
         "unit": {
+          "description": "Configure the instrument unit selection criteria.\n If omitted or null, all instrument units match.",
           "type": [
             "string",
             "null"
           ]
         },
         "meter_name": {
+          "description": "Configure meter name selection criteria.\n If omitted or null, all meter names match.",
           "type": [
             "string",
             "null"
           ]
         },
         "meter_version": {
+          "description": "Configure meter version selection criteria.\n If omitted or null, all meter versions match.",
           "type": [
             "string",
             "null"
           ]
         },
         "meter_schema_url": {
+          "description": "Configure meter schema url selection criteria.\n If omitted or null, all meter schema URLs match.",
           "type": [
             "string",
             "null"
@@ -3932,21 +4148,25 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "name": {
+          "description": "Configure metric name of the resulting stream(s).\n If omitted or null, the instrument's original name is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "description": {
+          "description": "Configure metric description of the resulting stream(s).\n If omitted or null, the instrument's origin description is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "aggregation": {
+          "description": "Configure aggregation of the resulting stream(s).\n Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.\n If omitted, default is used.",
           "$ref": "#/$defs/Aggregation"
         },
         "aggregation_cardinality_limit": {
+          "description": "Configure the aggregation cardinality limit.\n If omitted or null, the metric reader's default cardinality limit is used.",
           "type": [
             "integer",
             "null"
@@ -3954,6 +4174,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "attribute_keys": {
+          "description": "Configure attribute keys retained in the resulting stream(s).",
           "$ref": "common.json#/$defs/IncludeExclude"
         }
       }
@@ -3965,21 +4186,27 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "default": {
+          "description": "TODO",
           "$ref": "#/$defs/DefaultAggregation"
         },
         "drop": {
+          "description": "TODO",
           "$ref": "#/$defs/DropAggregation"
         },
         "explicit_bucket_histogram": {
+          "description": "Configure aggregation to be explicit_bucket_histogram.",
           "$ref": "#/$defs/ExplicitBucketHistogramAggregation"
         },
         "base2_exponential_bucket_histogram": {
+          "description": "TODO",
           "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation"
         },
         "last_value": {
+          "description": "TODO",
           "$ref": "#/$defs/LastValueAggregation"
         },
         "sum": {
+          "description": "TODO",
           "$ref": "#/$defs/SumAggregation"
         }
       }
@@ -4006,12 +4233,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "boundaries": {
+          "description": "Configure bucket boundaries.\n If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.",
           "type": "array",
           "items": {
             "type": "number"
           }
         },
         "record_min_max": {
+          "description": "Configure record min and max.\n If omitted or null, true is used.",
           "type": [
             "boolean",
             "null"
@@ -4027,18 +4256,21 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "max_scale": {
+          "description": "TODO",
           "type": [
             "integer",
             "null"
           ]
         },
         "max_size": {
+          "description": "TODO",
           "type": [
             "integer",
             "null"
           ]
         },
         "record_min_max": {
+          "description": "TODO",
           "type": [
             "boolean",
             "null"
@@ -4067,9 +4299,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "default_config": {
+          "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.",
           "$ref": "#/$defs/ExperimentalMeterConfig"
         },
         "meters": {
+          "description": "Configure meters.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
@@ -4084,11 +4318,13 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "name": {
+          "description": "Configure meter names to match, evaluated as follows:\n \n     * If the meter name exactly matches.\n     * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
           "type": [
             "string"
           ]
         },
         "config": {
+          "description": "The meter config.",
           "$ref": "#/$defs/ExperimentalMeterConfig"
         }
       }
@@ -4100,6 +4336,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "disabled": {
+          "description": "Configure if the meter is enabled or not.",
           "type": [
             "boolean"
           ]
@@ -4153,6 +4390,7 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "opencensus": {
+      "description": "Configure metric producer to be opencensus.",
       "$ref": "#/$defs/OpenCensusMetricProducer"
     }
   }
@@ -4196,9 +4434,11 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "periodic": {
+      "description": "Configure a periodic metric reader.",
       "$ref": "#/$defs/PeriodicMetricReader"
     },
     "pull": {
+      "description": "Configure a pull based metric reader.",
       "$ref": "#/$defs/PullMetricReader"
     }
   }
@@ -4242,9 +4482,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "The name of the pair.",
       "type": "string"
     },
     "value": {
+      "description": "The value of the pair.",
       "type": [
         "string",
         "null"
@@ -4287,16 +4529,16 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `file_format` | `string` | `true` | No constraints. | The file format version.<br>The yaml format is documented at<br>https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema<br> |
-| `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure if the SDK is disabled or not.<br>If omitted or null, false is used.<br> |
-| `log_level` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the log level of the internal logger used by the SDK.<br>If omitted, info is used.<br> |
-| `attribute_limits` | [`AttributeLimits`](#attributelimits) | `false` | No constraints. | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br> |
-| `logger_provider` | [`LoggerProvider`](#loggerprovider) | `false` | No constraints. | Configure logger provider.<br>If omitted, a noop logger provider is used.<br> |
-| `meter_provider` | [`MeterProvider`](#meterprovider) | `false` | No constraints. | Configure meter provider.<br>If omitted, a noop meter provider is used.<br> |
-| `propagator` | [`Propagator`](#propagator) | `false` | No constraints. | Configure text map context propagators.<br>If omitted, a noop propagator is used.<br> |
-| `tracer_provider` | [`TracerProvider`](#tracerprovider) | `false` | No constraints. | Configure tracer provider.<br>If omitted, a noop tracer provider is used.<br> |
-| `resource` | [`Resource`](#resource) | `false` | No constraints. | Configure resource for all signals.<br>If omitted, the default resource is used.<br> |
-| `instrumentation/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | No constraints. | Configure instrumentation.<br> |
+| `file_format` | `string` | `true` | No constraints. | The file format version.<br> The yaml format is documented at<br> https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema |
+| `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure if the SDK is disabled or not.<br> If omitted or null, false is used. |
+| `log_level` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the log level of the internal logger used by the SDK.<br> If omitted, info is used. |
+| `attribute_limits` | [`AttributeLimits`](#attributelimits) | `false` | No constraints. | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits. |
+| `logger_provider` | [`LoggerProvider`](#loggerprovider) | `false` | No constraints. | Configure logger provider.<br> If omitted, a noop logger provider is used. |
+| `meter_provider` | [`MeterProvider`](#meterprovider) | `false` | No constraints. | Configure meter provider.<br> If omitted, a noop meter provider is used. |
+| `propagator` | [`Propagator`](#propagator) | `false` | No constraints. | Configure text map context propagators.<br> If omitted, a noop propagator is used. |
+| `tracer_provider` | [`TracerProvider`](#tracerprovider) | `false` | No constraints. | Configure tracer provider.<br> If omitted, a noop tracer provider is used. |
+| `resource` | [`Resource`](#resource) | `false` | No constraints. | Configure resource for all signals.<br> If omitted, the default resource is used. |
+| `instrumentation/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | No constraints. | Configure instrumentation. |
 
 <details>
 <summary>Language support status</summary>
@@ -4334,39 +4576,49 @@ No usages.
   "additionalProperties": true,
   "properties": {
     "file_format": {
+      "description": "The file format version.\n The yaml format is documented at\n https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema",
       "type": "string"
     },
     "disabled": {
+      "description": "Configure if the SDK is disabled or not.\n If omitted or null, false is used.",
       "type": [
         "boolean",
         "null"
       ]
     },
     "log_level": {
+      "description": "Configure the log level of the internal logger used by the SDK.\n If omitted, info is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "attribute_limits": {
+      "description": "Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.",
       "$ref": "#/$defs/AttributeLimits"
     },
     "logger_provider": {
+      "description": "Configure logger provider.\n If omitted, a noop logger provider is used.",
       "$ref": "#/$defs/LoggerProvider"
     },
     "meter_provider": {
+      "description": "Configure meter provider.\n If omitted, a noop meter provider is used.",
       "$ref": "#/$defs/MeterProvider"
     },
     "propagator": {
+      "description": "Configure text map context propagators.\n If omitted, a noop propagator is used.",
       "$ref": "#/$defs/Propagator"
     },
     "tracer_provider": {
+      "description": "Configure tracer provider.\n If omitted, a noop tracer provider is used.",
       "$ref": "#/$defs/TracerProvider"
     },
     "resource": {
+      "description": "Configure resource for all signals.\n If omitted, the default resource is used.",
       "$ref": "#/$defs/Resource"
     },
     "instrumentation/development": {
+      "description": "Configure instrumentation.",
       "$ref": "#/$defs/ExperimentalInstrumentation"
     }
   },
@@ -4379,6 +4631,7 @@ No usages.
       "additionalProperties": false,
       "properties": {
         "attribute_value_length_limit": {
+          "description": "Configure max attribute value size.\n Value must be non-negative.\n If omitted or null, there is no limit.",
           "type": [
             "integer",
             "null"
@@ -4386,6 +4639,7 @@ No usages.
           "minimum": 0
         },
         "attribute_count_limit": {
+          "description": "Configure max attribute count.\n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -4445,11 +4699,11 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> |
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br> If omitted or null, http://localhost:4317 is used. |
+| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br> If an entry's .value is null, the entry is ignored. |
+| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> If omitted or null, no headers are added. |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br> Values include: gzip, none. Implementations may support other compression algorithms.<br> If omitted or null, none is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 10000 is used. |
 | `tls` | [`GrpcTls`](#grpctls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
 <details>
@@ -4486,33 +4740,39 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "tls": {
+      "description": "Configure TLS settings for the exporter.",
       "$ref": "#/$defs/GrpcTls"
     },
     "headers": {
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
       }
     },
     "headers_list": {
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
       "type": [
         "string",
         "null"
       ]
     },
     "compression": {
+      "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "timeout": {
+      "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
       "type": [
         "integer",
         "null"
@@ -4527,13 +4787,13 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> |
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br> If omitted or null, http://localhost:4317 is used. |
+| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br> If an entry's .value is null, the entry is ignored. |
+| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> If omitted or null, no headers are added. |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br> Values include: gzip, none. Implementations may support other compression algorithms.<br> If omitted or null, none is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 10000 is used. |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br> Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, cumulative is used. |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br> Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, explicit_bucket_histogram is used. |
 | `tls` | [`GrpcTls`](#grpctls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
 <details>
@@ -4571,33 +4831,39 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "Configure endpoint.\n If omitted or null, http://localhost:4317 is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "tls": {
+      "description": "Configure TLS settings for the exporter.",
       "$ref": "common.json#/$defs/GrpcTls"
     },
     "headers": {
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
       "type": "array",
       "items": {
         "$ref": "common.json#/$defs/NameStringValuePair"
       }
     },
     "headers_list": {
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
       "type": [
         "string",
         "null"
       ]
     },
     "compression": {
+      "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "timeout": {
+      "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
       "type": [
         "integer",
         "null"
@@ -4605,9 +4871,11 @@ Usages:
       "minimum": 0
     },
     "temporality_preference": {
+      "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
       "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
+      "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
       "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
@@ -4659,12 +4927,12 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint, including the signal specific path.<br>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.<br> |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> |
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> |
-| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint, including the signal specific path.<br> If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used. |
+| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br> If an entry's .value is null, the entry is ignored. |
+| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> If omitted or null, no headers are added. |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br> Values include: gzip, none. Implementations may support other compression algorithms.<br> If omitted or null, none is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 10000 is used. |
+| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | Configure the encoding used for messages. <br> Values include: protobuf, json. Implementations may not support json.<br> If omitted or null, protobuf is used. |
 | `tls` | [`HttpTls`](#httptls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
 <details>
@@ -4702,33 +4970,39 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "Configure endpoint, including the signal specific path.\n If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "tls": {
+      "description": "Configure TLS settings for the exporter.",
       "$ref": "#/$defs/HttpTls"
     },
     "headers": {
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
       }
     },
     "headers_list": {
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
       "type": [
         "string",
         "null"
       ]
     },
     "compression": {
+      "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "timeout": {
+      "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
       "type": [
         "integer",
         "null"
@@ -4736,6 +5010,7 @@ Usages:
       "minimum": 0
     },
     "encoding": {
+      "description": "Configure the encoding used for messages. \n Values include: protobuf, json. Implementations may not support json.\n If omitted or null, protobuf is used.",
       "$ref": "#/$defs/OtlpHttpEncoding"
     }
   }
@@ -4746,15 +5021,14 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint, including the signal specific path.<br>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.<br> |
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
-| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> |
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 10000 is used.<br> |
-| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint, including the signal specific path.<br> If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used. |
+| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | No constraints. | Configure headers. Entries have higher priority than entries from .headers_list.<br> If an entry's .value is null, the entry is ignored. |
+| `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> If omitted or null, no headers are added. |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br> Values include: gzip, none. Implementations may support other compression algorithms.<br> If omitted or null, none is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 10000 is used. |
+| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | Configure the encoding used for messages. <br> Values include: protobuf, json. Implementations may not support json.<br> If omitted or null, protobuf is used. |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br> Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, cumulative is used. |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br> Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> If omitted or null, explicit_bucket_histogram is used. |
 | `tls` | [`HttpTls`](#httptls) | `false` | No constraints. | Configure TLS settings for the exporter. |
 
 <details>
@@ -4762,7 +5036,6 @@ Usages:
 
 | Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `endpoint` | supported | unknown | supported | unknown |
 | `endpoint` | supported | unknown | supported | unknown |
 | `headers` | supported | unknown | supported | unknown |
 | `headers_list` | supported | unknown | supported | unknown |
@@ -4794,33 +5067,39 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "Configure endpoint, including the signal specific path.\n If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "tls": {
+      "description": "Configure TLS settings for the exporter.",
       "$ref": "common.json#/$defs/HttpTls"
     },
     "headers": {
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\n If an entry's .value is null, the entry is ignored.",
       "type": "array",
       "items": {
         "$ref": "common.json#/$defs/NameStringValuePair"
       }
     },
     "headers_list": {
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\n The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\n If omitted or null, no headers are added.",
       "type": [
         "string",
         "null"
       ]
     },
     "compression": {
+      "description": "Configure compression.\n Values include: gzip, none. Implementations may support other compression algorithms.\n If omitted or null, none is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "timeout": {
+      "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 10000 is used.",
       "type": [
         "integer",
         "null"
@@ -4828,12 +5107,15 @@ Usages:
       "minimum": 0
     },
     "encoding": {
+      "description": "Configure the encoding used for messages. \n Values include: protobuf, json. Implementations may not support json.\n If omitted or null, protobuf is used.",
       "$ref": "common.json#/$defs/OtlpHttpEncoding"
     },
     "temporality_preference": {
+      "description": "Configure temporality preference.\n Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, cumulative is used.",
       "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
+      "description": "Configure default histogram aggregation.\n Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\n If omitted or null, explicit_bucket_histogram is used.",
       "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
@@ -4844,11 +5126,11 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `root` | [`Sampler`](#sampler) | `false` | No constraints. | Configure root sampler.<br>If omitted or null, always_on is used.<br> |
-| `remote_parent_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure remote_parent_sampled sampler.<br>If omitted or null, always_on is used.<br> |
-| `remote_parent_not_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure remote_parent_not_sampled sampler.<br>If omitted or null, always_off is used.<br> |
-| `local_parent_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure local_parent_sampled sampler.<br>If omitted or null, always_on is used.<br> |
-| `local_parent_not_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure local_parent_not_sampled sampler.<br>If omitted or null, always_off is used.<br> |
+| `root` | [`Sampler`](#sampler) | `false` | No constraints. | Configure root sampler.<br> If omitted or null, always_on is used. |
+| `remote_parent_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure remote_parent_sampled sampler.<br> If omitted or null, always_on is used. |
+| `remote_parent_not_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure remote_parent_not_sampled sampler.<br> If omitted or null, always_off is used. |
+| `local_parent_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure local_parent_sampled sampler.<br> If omitted or null, always_on is used. |
+| `local_parent_not_sampled` | [`Sampler`](#sampler) | `false` | No constraints. | Configure local_parent_not_sampled sampler.<br> If omitted or null, always_off is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -4882,18 +5164,23 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "root": {
+      "description": "Configure root sampler.\n If omitted or null, always_on is used.",
       "$ref": "#/$defs/Sampler"
     },
     "remote_parent_sampled": {
+      "description": "Configure remote_parent_sampled sampler.\n If omitted or null, always_on is used.",
       "$ref": "#/$defs/Sampler"
     },
     "remote_parent_not_sampled": {
+      "description": "Configure remote_parent_not_sampled sampler.\n If omitted or null, always_off is used.",
       "$ref": "#/$defs/Sampler"
     },
     "local_parent_sampled": {
+      "description": "Configure local_parent_sampled sampler.\n If omitted or null, always_on is used.",
       "$ref": "#/$defs/Sampler"
     },
     "local_parent_not_sampled": {
+      "description": "Configure local_parent_not_sampled sampler.\n If omitted or null, always_off is used.",
       "$ref": "#/$defs/Sampler"
     }
   }
@@ -4904,8 +5191,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between start of two consecutive exports. <br>Value must be non-negative.<br>If omitted or null, 60000 is used.<br> |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br>If omitted or null, 30000 is used.<br> |
+| `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between start of two consecutive exports.<br> Value must be non-negative.<br> If omitted or null, 60000 is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data.<br> Value must be non-negative. A value of 0 indicates no limit (infinity).<br> If omitted or null, 30000 is used. |
 | `exporter` | [`PushMetricExporter`](#pushmetricexporter) | `true` | No constraints. | Configure exporter. |
 | `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | No constraints. | Configure metric producers. |
 | `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | No constraints. | Configure cardinality limits. |
@@ -4940,6 +5227,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "interval": {
+      "description": "Configure delay interval (in milliseconds) between start of two consecutive exports.\n Value must be non-negative.\n If omitted or null, 60000 is used.",
       "type": [
         "integer",
         "null"
@@ -4947,6 +5235,7 @@ Usages:
       "minimum": 0
     },
     "timeout": {
+      "description": "Configure maximum allowed time (in milliseconds) to export data.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
       "type": [
         "integer",
         "null"
@@ -4954,15 +5243,18 @@ Usages:
       "minimum": 0
     },
     "exporter": {
+      "description": "Configure exporter.",
       "$ref": "#/$defs/PushMetricExporter"
     },
     "producers": {
+      "description": "Configure metric producers.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/MetricProducer"
       }
     },
     "cardinality_limits": {
+      "description": "Configure cardinality limits.",
       "$ref": "#/$defs/CardinalityLimits"
     }
   },
@@ -4976,8 +5268,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | No constraints. | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> |
-| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> |
+| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | No constraints. | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br> Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray.<br> If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used. |
+| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br> The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br> Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray.<br> If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -5007,12 +5299,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "composite": {
+      "description": "Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.\n Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray.\n If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/TextMapPropagator"
       }
     },
     "composite_list": {
+      "description": "Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.\n The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\n Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray.\n If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.",
       "type": [
         "string",
         "null"
@@ -5032,21 +5326,27 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "tracecontext": {
+          "description": "Include the w3c trace context propagator.",
           "$ref": "#/$defs/TraceContextPropagator"
         },
         "baggage": {
+          "description": "Include the w3c baggage propagator.",
           "$ref": "#/$defs/BaggagePropagator"
         },
         "b3": {
+          "description": "Include the zipkin b3 propagator.",
           "$ref": "#/$defs/B3Propagator"
         },
         "b3multi": {
+          "description": "Include the zipkin b3 multi propagator.",
           "$ref": "#/$defs/B3MultiPropagator"
         },
         "jaeger": {
+          "description": "Include the jaeger propagator.",
           "$ref": "#/$defs/JaegerPropagator"
         },
         "ottrace": {
+          "description": "Include the opentracing propagator.",
           "$ref": "#/$defs/OpenTracingPropagator"
         }
       }
@@ -5103,7 +5403,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `prometheus/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | No constraints. | Configure exporter to be prometheus.<br> |
+| `prometheus/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | No constraints. | Configure exporter to be prometheus. |
 
 <details>
 <summary>Language support status</summary>
@@ -5139,6 +5439,7 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "prometheus/development": {
+      "description": "Configure exporter to be prometheus.",
       "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
     }
   }
@@ -5181,15 +5482,18 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "exporter": {
+      "description": "Configure exporter.",
       "$ref": "#/$defs/PullMetricExporter"
     },
     "producers": {
+      "description": "Configure metric producers.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/MetricProducer"
       }
     },
     "cardinality_limits": {
+      "description": "Configure cardinality limits.",
       "$ref": "#/$defs/CardinalityLimits"
     }
   },
@@ -5205,10 +5509,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `otlp_http` | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with HTTP transport.<br> |
-| `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport.<br> |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br> |
-| `console` | [`ConsoleMetricExporter`](#consolemetricexporter) | `false` | No constraints. | Configure exporter to be console.<br> |
+| `otlp_http` | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with HTTP transport. |
+| `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport. |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport. |
+| `console` | [`ConsoleMetricExporter`](#consolemetricexporter) | `false` | No constraints. | Configure exporter to be console. |
 
 <details>
 <summary>Language support status</summary>
@@ -5247,15 +5551,19 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
+      "description": "Configure exporter to be OTLP with HTTP transport.",
       "$ref": "#/$defs/OtlpHttpMetricExporter"
     },
     "otlp_grpc": {
+      "description": "Configure exporter to be OTLP with gRPC transport.",
       "$ref": "#/$defs/OtlpGrpcMetricExporter"
     },
     "otlp_file/development": {
+      "description": "Configure exporter to be OTLP with file transport.",
       "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
     },
     "console": {
+      "description": "Configure exporter to be console.",
       "$ref": "#/$defs/ConsoleMetricExporter"
     }
   }
@@ -5266,10 +5574,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `attributes` | `array` of [`AttributeNameValue`](#attributenamevalue) | `false` | No constraints. | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br> |
-| `detection/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | No constraints. | Configure resource detection.<br>If omitted or null, resource detection is disabled.<br> |
-| `schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure resource schema URL.<br>If omitted or null, no schema URL is used.<br> |
-| `attributes_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>If omitted or null, no resource attributes are added.<br> |
+| `attributes` | `array` of [`AttributeNameValue`](#attributenamevalue) | `false` | No constraints. | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list. |
+| `detection/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | No constraints. | Configure resource detection.<br> If omitted or null, resource detection is disabled. |
+| `schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure resource schema URL.<br> If omitted or null, no schema URL is used. |
+| `attributes_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br> The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br> If omitted or null, no resource attributes are added. |
 
 <details>
 <summary>Language support status</summary>
@@ -5301,21 +5609,25 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "attributes": {
+      "description": "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/AttributeNameValue"
       }
     },
     "detection/development": {
+      "description": "Configure resource detection.\n If omitted or null, resource detection is disabled.",
       "$ref": "#/$defs/ExperimentalResourceDetection"
     },
     "schema_url": {
+      "description": "Configure resource schema URL.\n If omitted or null, no schema URL is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "attributes_list": {
+      "description": "Configure resource attributes. Entries have lower priority than entries from .resource.attributes.\n The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\n If omitted or null, no resource attributes are added.",
       "type": [
         "string",
         "null"
@@ -5328,9 +5640,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "name": {
+          "description": "The attribute name.",
           "type": "string"
         },
         "value": {
+          "description": "The attribute value.\n The type of value must match .type.",
           "oneOf": [
             {
               "type": "string"
@@ -5365,6 +5679,7 @@ Usages:
           ]
         },
         "type": {
+          "description": "The attribute type.\n Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.\n If omitted or null, string is used.",
           "$ref": "#/$defs/AttributeType"
         }
       },
@@ -5394,9 +5709,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "attributes": {
+          "description": "Configure attributes provided by resource detectors.",
           "$ref": "common.json#/$defs/IncludeExclude"
         },
         "detectors": {
+          "description": "Configure resource detectors.\n Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language.\n If omitted or null, no resource detectors are enabled.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/ExperimentalResourceDetector"
@@ -5416,15 +5733,19 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "container": {
+          "description": "Enable the container resource detector, which populates container.* attributes.",
           "$ref": "#/$defs/ExperimentalContainerResourceDetector"
         },
         "host": {
+          "description": "Enable the host resource detector, which populates host.* and os.* attributes.",
           "$ref": "#/$defs/ExperimentalHostResourceDetector"
         },
         "process": {
+          "description": "Enable the process resource detector, which populates process.* attributes.",
           "$ref": "#/$defs/ExperimentalProcessResourceDetector"
         },
         "service": {
+          "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.",
           "$ref": "#/$defs/ExperimentalServiceResourceDetector"
         }
       }
@@ -5521,24 +5842,31 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "always_off": {
+      "description": "Configure sampler to be always_off.",
       "$ref": "#/$defs/AlwaysOffSampler"
     },
     "always_on": {
+      "description": "Configure sampler to be always_on.",
       "$ref": "#/$defs/AlwaysOnSampler"
     },
     "composite/development": {
+      "description": "Configure sampler to be composite.",
       "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "jaeger_remote/development": {
+      "description": "TODO",
       "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
     },
     "parent_based": {
+      "description": "Configure sampler to be parent_based.",
       "$ref": "#/$defs/ParentBasedSampler"
     },
     "probability/development": {
+      "description": "Configure sampler to be probability.",
       "$ref": "#/$defs/ExperimentalProbabilitySampler"
     },
     "trace_id_ratio_based": {
+      "description": "Configure sampler to be trace_id_ratio_based.",
       "$ref": "#/$defs/TraceIdRatioBasedSampler"
     }
   }
@@ -5577,6 +5905,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "exporter": {
+      "description": "Configure exporter.",
       "$ref": "#/$defs/LogRecordExporter"
     }
   },
@@ -5618,6 +5947,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "exporter": {
+      "description": "Configure exporter.",
       "$ref": "#/$defs/SpanExporter"
     }
   },
@@ -5635,7 +5965,7 @@ Usages:
 |---|---|---|---|---|
 | `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | No constraints. | Configure exporter to be OTLP with HTTP transport. |
 | `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | No constraints. | Configure exporter to be OTLP with gRPC transport. |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport.<br> |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | No constraints. | Configure exporter to be OTLP with file transport. |
 | `console` | [`ConsoleExporter`](#consoleexporter) | `false` | No constraints. | Configure exporter to be console. |
 | `zipkin` | [`ZipkinSpanExporter`](#zipkinspanexporter) | `false` | No constraints. | Configure exporter to be zipkin. |
 
@@ -5678,18 +6008,23 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
+      "description": "Configure exporter to be OTLP with HTTP transport.",
       "$ref": "common.json#/$defs/OtlpHttpExporter"
     },
     "otlp_grpc": {
+      "description": "Configure exporter to be OTLP with gRPC transport.",
       "$ref": "common.json#/$defs/OtlpGrpcExporter"
     },
     "otlp_file/development": {
+      "description": "Configure exporter to be OTLP with file transport.",
       "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
     },
     "console": {
+      "description": "Configure exporter to be console.",
       "$ref": "common.json#/$defs/ConsoleExporter"
     },
     "zipkin": {
+      "description": "Configure exporter to be zipkin.",
       "$ref": "#/$defs/ZipkinSpanExporter"
     }
   }
@@ -5700,12 +6035,12 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br>Value must be non-negative.<br>If omitted or null, there is no limit.<br> |
-| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
-| `event_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max span event count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
-| `link_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max span link count. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
-| `event_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attributes per span event. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
-| `link_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attributes per span link. <br>Value must be non-negative.<br>If omitted or null, 128 is used.<br> |
+| `attribute_value_length_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. <br> Value must be non-negative.<br> If omitted or null, there is no limit. |
+| `attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. <br> Value must be non-negative.<br> If omitted or null, 128 is used. |
+| `event_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max span event count. <br> Value must be non-negative.<br> If omitted or null, 128 is used. |
+| `link_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max span link count. <br> Value must be non-negative.<br> If omitted or null, 128 is used. |
+| `event_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attributes per span event. <br> Value must be non-negative.<br> If omitted or null, 128 is used. |
+| `link_attribute_count_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max attributes per span link. <br> Value must be non-negative.<br> If omitted or null, 128 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -5737,6 +6072,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "attribute_value_length_limit": {
+      "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \n Value must be non-negative.\n If omitted or null, there is no limit.",
       "type": [
         "integer",
         "null"
@@ -5744,6 +6080,7 @@ Usages:
       "minimum": 0
     },
     "attribute_count_limit": {
+      "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -5751,6 +6088,7 @@ Usages:
       "minimum": 0
     },
     "event_count_limit": {
+      "description": "Configure max span event count. \n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -5758,6 +6096,7 @@ Usages:
       "minimum": 0
     },
     "link_count_limit": {
+      "description": "Configure max span link count. \n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -5765,6 +6104,7 @@ Usages:
       "minimum": 0
     },
     "event_attribute_count_limit": {
+      "description": "Configure max attributes per span event. \n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -5772,6 +6112,7 @@ Usages:
       "minimum": 0
     },
     "link_attribute_count_limit": {
+      "description": "Configure max attributes per span link. \n Value must be non-negative.\n If omitted or null, 128 is used.",
       "type": [
         "integer",
         "null"
@@ -5826,9 +6167,11 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "batch": {
+      "description": "Configure a batch span processor.",
       "$ref": "#/$defs/BatchSpanProcessor"
     },
     "simple": {
+      "description": "Configure a simple span processor.",
       "$ref": "#/$defs/SimpleSpanProcessor"
     }
   }
@@ -5912,21 +6255,27 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "tracecontext": {
+      "description": "Include the w3c trace context propagator.",
       "$ref": "#/$defs/TraceContextPropagator"
     },
     "baggage": {
+      "description": "Include the w3c baggage propagator.",
       "$ref": "#/$defs/BaggagePropagator"
     },
     "b3": {
+      "description": "Include the zipkin b3 propagator.",
       "$ref": "#/$defs/B3Propagator"
     },
     "b3multi": {
+      "description": "Include the zipkin b3 multi propagator.",
       "$ref": "#/$defs/B3MultiPropagator"
     },
     "jaeger": {
+      "description": "Include the jaeger propagator.",
       "$ref": "#/$defs/JaegerPropagator"
     },
     "ottrace": {
+      "description": "Include the opentracing propagator.",
       "$ref": "#/$defs/OpenTracingPropagator"
     }
   }
@@ -5962,7 +6311,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure trace_id_ratio.<br>If omitted or null, 1.0 is used.<br> |
+| `ratio` | one of:<br>* `number`<br>* `null`<br> | `false` | * `minimum`: `0`<br>* `maximum`: `1`<br> | Configure trace_id_ratio.<br> If omitted or null, 1.0 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -5992,6 +6341,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "ratio": {
+      "description": "Configure trace_id_ratio.\n If omitted or null, 1.0 is used.",
       "type": [
         "number",
         "null"
@@ -6007,10 +6357,10 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | * `minItems`: `1`<br> | Configure span processors. |
+| `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | * `minItems`: `1`<br> | Configure span processors.   |
 | `limits` | [`SpanLimits`](#spanlimits) | `false` | No constraints. | Configure span limits. See also attribute_limits. |
-| `sampler` | [`Sampler`](#sampler) | `false` | No constraints. | Configure the sampler.<br>If omitted, parent based sampler with a root of always_on is used.<br> |
-| `tracer_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | No constraints. | Configure tracers.<br> |
+| `sampler` | [`Sampler`](#sampler) | `false` | No constraints. | Configure the sampler. <br> If omitted, parent based sampler with a root of always_on is used. |
+| `tracer_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | No constraints. | Configure tracers. |
 
 <details>
 <summary>Language support status</summary>
@@ -6043,6 +6393,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "processors": {
+      "description": "Configure span processors.  ",
       "type": "array",
       "minItems": 1,
       "items": {
@@ -6050,12 +6401,15 @@ Usages:
       }
     },
     "limits": {
+      "description": "Configure span limits. See also attribute_limits.",
       "$ref": "#/$defs/SpanLimits"
     },
     "sampler": {
+      "description": "Configure the sampler. \n If omitted, parent based sampler with a root of always_on is used.",
       "$ref": "#/$defs/Sampler"
     },
     "tracer_configurator/development": {
+      "description": "Configure tracers.",
       "$ref": "#/$defs/ExperimentalTracerConfigurator"
     }
   },
@@ -6068,6 +6422,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "schedule_delay": {
+          "description": "Configure delay interval (in milliseconds) between two consecutive exports.\n Value must be non-negative.\n If omitted or null, 5000 is used.",
           "type": [
             "integer",
             "null"
@@ -6075,6 +6430,7 @@ Usages:
           "minimum": 0
         },
         "export_timeout": {
+          "description": "Configure maximum allowed time (in milliseconds) to export data.\n Value must be non-negative. A value of 0 indicates no limit (infinity).\n If omitted or null, 30000 is used.",
           "type": [
             "integer",
             "null"
@@ -6082,6 +6438,7 @@ Usages:
           "minimum": 0
         },
         "max_queue_size": {
+          "description": "Configure maximum queue size. Value must be positive.\n If omitted or null, 2048 is used.",
           "type": [
             "integer",
             "null"
@@ -6089,6 +6446,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "max_export_batch_size": {
+          "description": "Configure maximum batch size. Value must be positive.\n If omitted or null, 512 is used.",
           "type": [
             "integer",
             "null"
@@ -6096,6 +6454,7 @@ Usages:
           "exclusiveMinimum": 0
         },
         "exporter": {
+          "description": "Configure exporter.",
           "$ref": "#/$defs/SpanExporter"
         }
       },
@@ -6115,24 +6474,31 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "always_off": {
+          "description": "Configure sampler to be always_off.",
           "$ref": "#/$defs/AlwaysOffSampler"
         },
         "always_on": {
+          "description": "Configure sampler to be always_on.",
           "$ref": "#/$defs/AlwaysOnSampler"
         },
         "composite/development": {
+          "description": "Configure sampler to be composite.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "jaeger_remote/development": {
+          "description": "TODO",
           "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
         },
         "parent_based": {
+          "description": "Configure sampler to be parent_based.",
           "$ref": "#/$defs/ParentBasedSampler"
         },
         "probability/development": {
+          "description": "Configure sampler to be probability.",
           "$ref": "#/$defs/ExperimentalProbabilitySampler"
         },
         "trace_id_ratio_based": {
+          "description": "Configure sampler to be trace_id_ratio_based.",
           "$ref": "#/$defs/TraceIdRatioBasedSampler"
         }
       }
@@ -6159,12 +6525,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "endpoint": {
+          "description": "TODO",
           "type": [
             "string",
             "null"
           ]
         },
         "interval": {
+          "description": "TODO",
           "type": [
             "integer",
             "null"
@@ -6172,6 +6540,7 @@ Usages:
           "minimum": 0
         },
         "initial_sampler": {
+          "description": "TODO",
           "$ref": "#/$defs/Sampler"
         }
       }
@@ -6184,18 +6553,23 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "root": {
+          "description": "Configure root sampler.\n If omitted or null, always_on is used.",
           "$ref": "#/$defs/Sampler"
         },
         "remote_parent_sampled": {
+          "description": "Configure remote_parent_sampled sampler.\n If omitted or null, always_on is used.",
           "$ref": "#/$defs/Sampler"
         },
         "remote_parent_not_sampled": {
+          "description": "Configure remote_parent_not_sampled sampler.\n If omitted or null, always_off is used.",
           "$ref": "#/$defs/Sampler"
         },
         "local_parent_sampled": {
+          "description": "Configure local_parent_sampled sampler.\n If omitted or null, always_on is used.",
           "$ref": "#/$defs/Sampler"
         },
         "local_parent_not_sampled": {
+          "description": "Configure local_parent_not_sampled sampler.\n If omitted or null, always_off is used.",
           "$ref": "#/$defs/Sampler"
         }
       }
@@ -6208,6 +6582,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "ratio": {
+          "description": "Configure ratio.\n If omitted or null, 1.0 is used.",
           "type": [
             "number",
             "null"
@@ -6225,6 +6600,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "ratio": {
+          "description": "Configure trace_id_ratio.\n If omitted or null, 1.0 is used.",
           "type": [
             "number",
             "null"
@@ -6256,18 +6632,23 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "root": {
+          "description": "Configures the sampler for spans with no parent.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "remote_parent_sampled": {
+          "description": "Configures the sampler for spans with a remote parent that is sampled.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "remote_parent_not_sampled": {
+          "description": "Configures the sampler for spans with a remote parent that is not sampled.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "local_parent_sampled": {
+          "description": "Configures the sampler for spans with a local parent that is sampled.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "local_parent_not_sampled": {
+          "description": "Configures the sampler for spans with a local parent that is not sampled.",
           "$ref": "#/$defs/ExperimentalComposableSampler"
         }
       }
@@ -6280,6 +6661,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "ratio": {
+          "description": "Configure ratio.\n If omitted or null, 1.0 is used.",
           "type": [
             "number",
             "null"
@@ -6301,15 +6683,19 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "always_off": {
+          "description": "Configure sampler to be always_off.",
           "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
         },
         "always_on": {
+          "description": "Configure sampler to be always_on.",
           "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
         },
         "parent_based": {
+          "description": "Configure sampler to be parent_based.",
           "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
         },
         "probability": {
+          "description": "Configure sampler to be probability.",
           "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
         }
       }
@@ -6319,6 +6705,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "exporter": {
+          "description": "Configure exporter.",
           "$ref": "#/$defs/SpanExporter"
         }
       },
@@ -6338,18 +6725,23 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "otlp_http": {
+          "description": "Configure exporter to be OTLP with HTTP transport.",
           "$ref": "common.json#/$defs/OtlpHttpExporter"
         },
         "otlp_grpc": {
+          "description": "Configure exporter to be OTLP with gRPC transport.",
           "$ref": "common.json#/$defs/OtlpGrpcExporter"
         },
         "otlp_file/development": {
+          "description": "Configure exporter to be OTLP with file transport.",
           "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
         },
         "console": {
+          "description": "Configure exporter to be console.",
           "$ref": "common.json#/$defs/ConsoleExporter"
         },
         "zipkin": {
+          "description": "Configure exporter to be zipkin.",
           "$ref": "#/$defs/ZipkinSpanExporter"
         }
       }
@@ -6359,6 +6751,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "attribute_value_length_limit": {
+          "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \n Value must be non-negative.\n If omitted or null, there is no limit.",
           "type": [
             "integer",
             "null"
@@ -6366,6 +6759,7 @@ Usages:
           "minimum": 0
         },
         "attribute_count_limit": {
+          "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -6373,6 +6767,7 @@ Usages:
           "minimum": 0
         },
         "event_count_limit": {
+          "description": "Configure max span event count. \n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -6380,6 +6775,7 @@ Usages:
           "minimum": 0
         },
         "link_count_limit": {
+          "description": "Configure max span link count. \n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -6387,6 +6783,7 @@ Usages:
           "minimum": 0
         },
         "event_attribute_count_limit": {
+          "description": "Configure max attributes per span event. \n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -6394,6 +6791,7 @@ Usages:
           "minimum": 0
         },
         "link_attribute_count_limit": {
+          "description": "Configure max attributes per span link. \n Value must be non-negative.\n If omitted or null, 128 is used.",
           "type": [
             "integer",
             "null"
@@ -6414,9 +6812,11 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "batch": {
+          "description": "Configure a batch span processor.",
           "$ref": "#/$defs/BatchSpanProcessor"
         },
         "simple": {
+          "description": "Configure a simple span processor.",
           "$ref": "#/$defs/SimpleSpanProcessor"
         }
       }
@@ -6429,12 +6829,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "endpoint": {
+          "description": "Configure endpoint.\n If omitted or null, http://localhost:9411/api/v2/spans is used.",
           "type": [
             "string",
             "null"
           ]
         },
         "timeout": {
+          "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates indefinite.\n If omitted or null, 10000 is used.",
           "type": [
             "integer",
             "null"
@@ -6450,9 +6852,11 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "default_config": {
+          "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.",
           "$ref": "#/$defs/ExperimentalTracerConfig"
         },
         "tracers": {
+          "description": "Configure tracers.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
@@ -6467,11 +6871,13 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "name": {
+          "description": "Configure tracer names to match, evaluated as follows:\n \n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.",
           "type": [
             "string"
           ]
         },
         "config": {
+          "description": "The tracer config.",
           "$ref": "#/$defs/ExperimentalTracerConfig"
         }
       }
@@ -6483,6 +6889,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "disabled": {
+          "description": "Configure if the tracer is enabled or not.",
           "type": [
             "boolean"
           ]
@@ -6497,7 +6904,7 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `selector` | [`ViewSelector`](#viewselector) | `true` | No constraints. | Configure view selector. <br>Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.<br> |
+| `selector` | [`ViewSelector`](#viewselector) | `true` | No constraints. | Configure view selector.<br> Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria. |
 | `stream` | [`ViewStream`](#viewstream) | `true` | No constraints. | Configure view stream. |
 
 <details>
@@ -6527,9 +6934,11 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "selector": {
+      "description": "Configure view selector.\n Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.",
       "$ref": "#/$defs/ViewSelector"
     },
     "stream": {
+      "description": "Configure view stream.",
       "$ref": "#/$defs/ViewStream"
     }
   },
@@ -6544,12 +6953,12 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `instrument_name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure instrument name selection criteria.<br>If omitted or null, all instrument names match.<br> |
-| `instrument_type` | [`InstrumentType`](#instrumenttype) | `false` | No constraints. | Configure instrument type selection criteria.<br>Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.<br>If omitted or null, all instrument types match.<br> |
-| `unit` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the instrument unit selection criteria.<br>If omitted or null, all instrument units match.<br> |
-| `meter_name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter name selection criteria.<br>If omitted or null, all meter names match.<br> |
-| `meter_version` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter version selection criteria.<br>If omitted or null, all meter versions match.<br> |
-| `meter_schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter schema url selection criteria.<br>If omitted or null, all meter schema URLs match.<br> |
+| `instrument_name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure instrument name selection criteria.<br> If omitted or null, all instrument names match. |
+| `instrument_type` | [`InstrumentType`](#instrumenttype) | `false` | No constraints. | Configure instrument type selection criteria.<br> Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.<br> If omitted or null, all instrument types match. |
+| `unit` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the instrument unit selection criteria.<br> If omitted or null, all instrument units match. |
+| `meter_name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter name selection criteria.<br> If omitted or null, all meter names match. |
+| `meter_version` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter version selection criteria.<br> If omitted or null, all meter versions match. |
+| `meter_schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure meter schema url selection criteria.<br> If omitted or null, all meter schema URLs match. |
 
 <details>
 <summary>Language support status</summary>
@@ -6581,33 +6990,39 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "instrument_name": {
+      "description": "Configure instrument name selection criteria.\n If omitted or null, all instrument names match.",
       "type": [
         "string",
         "null"
       ]
     },
     "instrument_type": {
+      "description": "Configure instrument type selection criteria.\n Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\n If omitted or null, all instrument types match.",
       "$ref": "#/$defs/InstrumentType"
     },
     "unit": {
+      "description": "Configure the instrument unit selection criteria.\n If omitted or null, all instrument units match.",
       "type": [
         "string",
         "null"
       ]
     },
     "meter_name": {
+      "description": "Configure meter name selection criteria.\n If omitted or null, all meter names match.",
       "type": [
         "string",
         "null"
       ]
     },
     "meter_version": {
+      "description": "Configure meter version selection criteria.\n If omitted or null, all meter versions match.",
       "type": [
         "string",
         "null"
       ]
     },
     "meter_schema_url": {
+      "description": "Configure meter schema url selection criteria.\n If omitted or null, all meter schema URLs match.",
       "type": [
         "string",
         "null"
@@ -6621,11 +7036,11 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure metric name of the resulting stream(s).<br>If omitted or null, the instrument's original name is used.<br> |
-| `description` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure metric description of the resulting stream(s).<br>If omitted or null, the instrument's origin description is used.<br> |
-| `aggregation` | [`Aggregation`](#aggregation) | `false` | No constraints. | Configure aggregation of the resulting stream(s). <br>Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.<br>If omitted, default is used.<br> |
-| `aggregation_cardinality_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure the aggregation cardinality limit.<br>If omitted or null, the metric reader's default cardinality limit is used.<br> |
-| `attribute_keys` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure attribute keys retained in the resulting stream(s).<br> |
+| `name` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure metric name of the resulting stream(s).<br> If omitted or null, the instrument's original name is used. |
+| `description` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure metric description of the resulting stream(s).<br> If omitted or null, the instrument's origin description is used. |
+| `aggregation` | [`Aggregation`](#aggregation) | `false` | No constraints. | Configure aggregation of the resulting stream(s).<br> Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.<br> If omitted, default is used. |
+| `aggregation_cardinality_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `exclusiveMinimum`: `0`<br> | Configure the aggregation cardinality limit.<br> If omitted or null, the metric reader's default cardinality limit is used. |
+| `attribute_keys` | [`IncludeExclude`](#includeexclude) | `false` | No constraints. | Configure attribute keys retained in the resulting stream(s). |
 
 <details>
 <summary>Language support status</summary>
@@ -6656,21 +7071,25 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "name": {
+      "description": "Configure metric name of the resulting stream(s).\n If omitted or null, the instrument's original name is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "description": {
+      "description": "Configure metric description of the resulting stream(s).\n If omitted or null, the instrument's origin description is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "aggregation": {
+      "description": "Configure aggregation of the resulting stream(s).\n Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.\n If omitted, default is used.",
       "$ref": "#/$defs/Aggregation"
     },
     "aggregation_cardinality_limit": {
+      "description": "Configure the aggregation cardinality limit.\n If omitted or null, the metric reader's default cardinality limit is used.",
       "type": [
         "integer",
         "null"
@@ -6678,6 +7097,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "attribute_keys": {
+      "description": "Configure attribute keys retained in the resulting stream(s).",
       "$ref": "common.json#/$defs/IncludeExclude"
     }
   }
@@ -6688,8 +7108,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br>If omitted or null, http://localhost:9411/api/v2/spans is used.<br> |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export. <br>Value must be non-negative. A value of 0 indicates indefinite.<br>If omitted or null, 10000 is used.<br> |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br> If omitted or null, http://localhost:9411/api/v2/spans is used. |
+| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br> Value must be non-negative. A value of 0 indicates indefinite.<br> If omitted or null, 10000 is used. |
 
 <details>
 <summary>Language support status</summary>
@@ -6720,12 +7140,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "endpoint": {
+      "description": "Configure endpoint.\n If omitted or null, http://localhost:9411/api/v2/spans is used.",
       "type": [
         "string",
         "null"
       ]
     },
     "timeout": {
+      "description": "Configure max time (in milliseconds) to wait for each export.\n Value must be non-negative. A value of 0 indicates indefinite.\n If omitted or null, 10000 is used.",
       "type": [
         "integer",
         "null"
@@ -6819,7 +7241,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `tls`: supported<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `endpoint`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: supported<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `root`: supported<br>* `remote_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `local_parent_not_sampled`: supported<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | supported |  | * `interval`: supported<br>* `timeout`: supported<br>* `exporter`: supported<br>* `producers`: supported<br>* `cardinality_limits`: supported<br> |
 | [`Propagator`](#propagator) | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
@@ -6925,7 +7347,7 @@ Latest supported file format: `0.3.0`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | unknown |  | * `interval`: unknown<br>* `timeout`: unknown<br>* `exporter`: unknown<br>* `producers`: unknown<br>* `cardinality_limits`: unknown<br> |
 | [`Propagator`](#propagator) | unknown |  | * `composite`: unknown<br>* `composite_list`: unknown<br> |
@@ -7031,7 +7453,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: ignored<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: not_implemented<br>* `tls`: ignored<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `endpoint`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: not_implemented<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: ignored<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `compression`: supported<br>* `timeout`: supported<br>* `encoding`: not_implemented<br>* `temporality_preference`: supported<br>* `default_histogram_aggregation`: supported<br>* `tls`: ignored<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `root`: supported<br>* `remote_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `local_parent_not_sampled`: supported<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | supported |  | * `interval`: supported<br>* `timeout`: supported<br>* `exporter`: supported<br>* `producers`: not_implemented<br>* `cardinality_limits`: supported<br> |
 | [`Propagator`](#propagator) | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
@@ -7137,7 +7559,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `compression`: unknown<br>* `timeout`: unknown<br>* `encoding`: unknown<br>* `temporality_preference`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `root`: unknown<br>* `remote_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `local_parent_not_sampled`: unknown<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | unknown |  | * `interval`: unknown<br>* `timeout`: unknown<br>* `exporter`: unknown<br>* `producers`: unknown<br>* `cardinality_limits`: unknown<br> |
 | [`Propagator`](#propagator) | unknown |  | * `composite`: unknown<br>* `composite_list`: unknown<br> |

@@ -3,27 +3,31 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "additionalProperties": false,
-    "properties": {
+    properties: {
         "attributes": {
-            "description": "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.",
+            description: "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.",
             "type": "array",
             "items": {
                 "$ref": "#/$defs/AttributeNameValue"
             }
         },
         "detection/development": {
-            "description": "Configure resource detection.\n If omitted or null, resource detection is disabled.",
+            description: "Configure resource detection.\n \
+If omitted or null, resource detection is disabled.",
             "$ref": "#/$defs/ExperimentalResourceDetection"
         },
         "schema_url": {
-            "description": "Configure resource schema URL.\n If omitted or null, no schema URL is used.",
+            description: "Configure resource schema URL.\n \
+If omitted or null, no schema URL is used.",
             "type": [
                 "string",
                 "null"
             ]
         },
         "attributes_list": {
-            "description": "Configure resource attributes. Entries have lower priority than entries from .resource.attributes.\n The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\n If omitted or null, no resource attributes are added.",
+            description: "Configure resource attributes. Entries have lower priority than entries from .resource.attributes.\n \
+The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\n \
+If omitted or null, no resource attributes are added.",
             "type": [
                 "string",
                 "null"
@@ -34,13 +38,14 @@
         "AttributeNameValue": {
             "type": "object",
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "name": {
-                    "description": "The attribute name.",
+                    description: "The attribute name.",
                     "type": "string"
                 },
                 "value": {
-                    "description": "The attribute value.\n The type of value must match .type.",
+                    description: "The attribute value.\n \
+The type of value must match .type.",
                     "oneOf": [
                         {
                             "type": "string"
@@ -75,7 +80,9 @@
                     ]
                 },
                 "type": {
-                    "description": "The attribute type.\n Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.\n If omitted or null, string is used.",
+                    description: "The attribute type.\n \
+Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.\n \
+If omitted or null, string is used.",
                     "$ref": "#/$defs/AttributeType"
                 }
             },
@@ -103,13 +110,15 @@
         "ExperimentalResourceDetection": {
             "type": "object",
             "additionalProperties": false,
-            "properties": {
+            properties: {
                 "attributes": {
-                    "description": "Configure attributes provided by resource detectors.",
+                    description: "Configure attributes provided by resource detectors.",
                     "$ref": "common.json#/$defs/IncludeExclude"
                 },
                 "detectors": {
-                    "description": "Configure resource detectors.\n Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language.\n If omitted or null, no resource detectors are enabled.",
+                    description: "Configure resource detectors.\n \
+Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language.\n \
+If omitted or null, no resource detectors are enabled.",
                     "type": "array",
                     "items": {
                         "$ref": "#/$defs/ExperimentalResourceDetector"
@@ -127,21 +136,21 @@
             },
             "minProperties": 1,
             "maxProperties": 1,
-            "properties": {
+            properties: {
                 "container": {
-                    "description": "Enable the container resource detector, which populates container.* attributes.",
+                    description: "Enable the container resource detector, which populates container.* attributes.",
                     "$ref": "#/$defs/ExperimentalContainerResourceDetector"
                 },
                 "host": {
-                    "description": "Enable the host resource detector, which populates host.* and os.* attributes.",
+                    description: "Enable the host resource detector, which populates host.* and os.* attributes.",
                     "$ref": "#/$defs/ExperimentalHostResourceDetector"
                 },
                 "process": {
-                    "description": "Enable the process resource detector, which populates process.* attributes.",
+                    description: "Enable the process resource detector, which populates process.* attributes.",
                     "$ref": "#/$defs/ExperimentalProcessResourceDetector"
                 },
                 "service": {
-                    "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.",
+                    description: "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.",
                     "$ref": "#/$defs/ExperimentalServiceResourceDetector"
                 }
             }

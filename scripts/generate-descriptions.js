@@ -35,6 +35,9 @@ const { messages, metaSchema } = readAndFixMetaSchema();
 const metaSchemaTypesByType = {};
 metaSchema.types.forEach(type => metaSchemaTypesByType[type.type] = type);
 if (messages.length > 0) {
+    if (options['debug'] == true) {
+        console.log(messages)
+    }
     throw new Error("Meta schema has problems. Please run fix-meta-schema and try again.");
 }
 const jsonSchemaTypesByType = {};
@@ -77,7 +80,7 @@ yaml.visit(fileDoc, {
             debug(`No meta schema property ${propertyKey} for type ${metaSchemaType.type}.`);
             return;
         }
-        let fullDescription = metaSchemaProperty.description;
+        let fullDescription = jsonSchemaType.schema.properties[propertyKey].description ? jsonSchemaType.schema.properties[propertyKey].description : "TODO";
         if (isExperimentalProperty(metaSchemaProperty.property)) {
             if (!fullDescription.endsWith('\n')) {
                 fullDescription += '\n';
@@ -88,8 +91,7 @@ yaml.visit(fileDoc, {
 
         // Set the description
         let formattedDescription = fullDescription
-            .replace(/\n$/, '')
-            .split('\n')
+            .split('\\')
             .map(line => ' ' + line)
             .join('\n');
         // If we're on the first element, prefix the formatted description with the existing commentBefore to retain the comments at the top of the file

@@ -84,7 +84,8 @@ metaSchema.types.forEach(metaSchemaType => {
                 if (formattedConstraints.length === 0) {
                     formattedConstraints = 'No constraints.';
                 }
-                const formattedDescription = property.description.split("\n").join("<br>");
+                let fullDescription = jsonSchemaProperty.schema.description ? jsonSchemaProperty.schema.description : "TODO";
+                const formattedDescription = fullDescription.split("\n").join("<br>");
 
                 output.push(`| ${formattedProperty} | ${formattedPropertyType} | \`${isRequired}\` | ${formattedConstraints} | ${formattedDescription} |\n`);
             });
