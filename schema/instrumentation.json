@@ -122,6 +122,12 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
+                "known_methods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "client": {
                     "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
                 },
