@@ -42,13 +42,15 @@
     "$defs": {
         "AttributeLimits": {
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": false,
             "properties": {
                 "attribute_value_length_limit": {
-                    "type": ["integer", "null"]
+                    "type": ["integer", "null"],
+                    "minimum": 0
                 },
                 "attribute_count_limit": {
-                    "type": ["integer", "null"]
+                    "type": ["integer", "null"],
+                    "minimum": 0
                 }
             }
         },

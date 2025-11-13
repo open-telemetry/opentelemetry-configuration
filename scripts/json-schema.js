@@ -1,6 +1,6 @@
 import fs from 'fs';
 import {MetaSchemaEnumValue, MetaSchemaProperty, MetaSchemaType} from "./meta-schema.js";
-import {schemaDirPath} from "./util.js";
+import {rootTypeName, schemaDirPath} from "./util.js";
 
 const localDefPrefix = '#/$defs/';
 
@@ -16,7 +16,7 @@ export function readJsonSchemaTypes() {
             topLevelSchemas[file] = fileContent;
 
             if (file === 'opentelemetry_configuration.json') {
-                typesByType['OpenTelemetryConfiguration'] = new JsonSchemaType('OpentelemetryConfiguration', file, fileContent, '.', fileContent, []);
+                typesByType[rootTypeName] = new JsonSchemaType(rootTypeName, file, fileContent, '.', fileContent);
             }
 
             Object.entries(getDefs(fileContent)).forEach(([type, schema]) => {
