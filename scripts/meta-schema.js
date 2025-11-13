@@ -239,7 +239,7 @@ export class TypeSupportStatus {
     }
 
     toJson() {
-        const json = {type: this.type, status: this.status, notes: this.notes};
+        const json = {type: this.type, status: this.status};
 
         if (this.enumOverrides !== null) {
             const enumOverrides = this.enumOverrides.map(enumValueStatus => enumValueStatus.toJson());
@@ -250,6 +250,9 @@ export class TypeSupportStatus {
             const propertyOverrides = this.propertyOverrides.map(propertyStatus => propertyStatus.toJson());
             propertyOverrides.sort((a, b) => a.property.localeCompare(b.property));
             json.propertyOverrides = propertyOverrides;
+        }
+        if(this.notes !== null) {
+            json.notes = this.notes;
         }
 
         return json;
@@ -274,7 +277,7 @@ export class TypeSupportStatus {
             error => `TypeSupportStatus '${type}' has invalid EnumValueStatus: ${error.message}. Skipping.`,
             messages,
             true);
-        const notes = parseString(rawJson, 'notes', `TypeSupportStatus has invalid 'notes'`);
+        const notes = parseString(rawJson, 'notes', `TypeSupportStatus has invalid 'notes'`, true);
         return new TypeSupportStatus(type, status, propertyOverrides, enumOverrides, notes);
     }
 }
@@ -525,7 +528,7 @@ function emptyLanguageImplementation(language, metaSchema) {
     return new LanguageImplementation(
         language,
         'TODO',
-        metaSchema.types.map(metaSchemaType => new TypeSupportStatus(metaSchemaType.type, IMPLEMENTATION_STATUS_UNKNOWN, [], metaSchemaType.enumValues === null ? null : [], '')));
+        metaSchema.types.map(metaSchemaType => new TypeSupportStatus(metaSchemaType.type, IMPLEMENTATION_STATUS_UNKNOWN, [], metaSchemaType.enumValues === null ? null : [], null)));
 }
 
 function parseEnum(rawJson, propertyName, errorMessage, knownValues) {
@@ -536,8 +539,11 @@ function parseEnum(rawJson, propertyName, errorMessage, knownValues) {
     return string;
 }
 
-function parseString(rawJson, propertyName, errorMessage) {
+function parseString(rawJson, propertyName, errorMessage, nullable = false) {
     const property = rawJson[propertyName];
+    if ((property === null || property === undefined) && nullable) {
+        return null;
+    }
     if (typeof property !== 'string') {
         throw new Error(errorMessage);
     }

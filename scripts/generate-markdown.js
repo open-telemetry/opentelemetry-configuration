@@ -197,6 +197,11 @@ KNOWN_LANGUAGES.forEach(language => {
             throw new Error(`MetaSchemaType not found for type ${typeSupportStatus.type}.`);
         }
 
+        let formattedNotes = typeSupportStatus.notes;
+        if (!formattedNotes) {
+            formattedNotes = "";
+        }
+
         const supportStatusDetails = [];
 
         if (metaSchemaType.properties !== null) {
@@ -213,7 +218,7 @@ KNOWN_LANGUAGES.forEach(language => {
             });
         }
 
-        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${typeSupportStatus.notes} | ${supportStatusDetails.join('')} |\n`);
+        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${formattedNotes} | ${supportStatusDetails.join('')} |\n`);
     });
     output.push(`\n\n`);
 });

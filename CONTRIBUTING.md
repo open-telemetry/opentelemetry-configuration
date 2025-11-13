@@ -332,7 +332,7 @@ latestSupportedFileFormat: 1.0.0-rc.1
 typeSupportStatuses:
   - type: Base2ExponentialBucketHistogramAggregation
     status: supported # the support status, see below for allowed enum values
-    notes: ""
+    # notes: Uncomment to include optional additional notes on the implementation.
     propertyOverrides:
       - property: record_min_max
         status: ignored
@@ -345,6 +345,7 @@ Notes:
 * `.typeSupportStatuses` is an array with entries for each type in the JSON schema.
   * `.typeSupportStatuses[].type` is the name of the JSON schema type. **Maintained automatically by build tooling.**
   * `.typeSupportStatuses[].status` captures the support status of the type and all properties except overrides in `.typeSupportStatuses[].propertyOverrides`. See enum options below.
+  * `.typeSupportStatuses[].notes` optional additional notes on the implementation.
   * `.typeSupportStatuses[].propertyOverrides` an array of properties which have different support statuses than the overall type as recorded in `.typeSupportStatuses[].status. Omitted for enum types.
     * `.typeSupportStatuses[].propertyOverrides[].property` the name of the property whose support status is overridden.
     * `.typeSupportStatuses[].propertyOverrides[].status` the overridden support status. See enum options below.
