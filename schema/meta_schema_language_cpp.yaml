@@ -57,23 +57,18 @@ typeSupportStatuses:
   - type: ExperimentalComposableAlwaysOffSampler
     status: unknown
     propertyOverrides: []
-    notes: ""
   - type: ExperimentalComposableAlwaysOnSampler
     status: unknown
     propertyOverrides: []
-    notes: ""
   - type: ExperimentalComposableParentBasedSampler
     status: unknown
     propertyOverrides: []
-    notes: ""
   - type: ExperimentalComposableProbabilitySampler
     status: unknown
     propertyOverrides: []
-    notes: ""
   - type: ExperimentalComposableSampler
     status: unknown
     propertyOverrides: []
-    notes: ""
   - type: ExperimentalContainerResourceDetector
     status: not_implemented
     propertyOverrides: []
@@ -98,7 +93,6 @@ typeSupportStatuses:
   - type: ExperimentalJaegerRemoteSampler
     status: not_implemented
     propertyOverrides: []
-    notes: ""
   - type: ExperimentalLanguageSpecificInstrumentation
     status: not_applicable
     propertyOverrides: []
