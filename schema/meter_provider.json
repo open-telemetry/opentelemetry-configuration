@@ -455,10 +455,13 @@
             "additionalProperties": false,
             "properties": {
                 "max_scale": {
-                    "type": ["integer", "null"]
+                    "type": ["integer", "null"],
+                    "minimum": -10,
+                    "maximum": 20
                 },
                 "max_size": {
-                    "type": ["integer", "null"]
+                    "type": ["integer", "null"],
+                    "minimum": 2
                 },
                 "record_min_max": {
                     "type": ["boolean", "null"]
