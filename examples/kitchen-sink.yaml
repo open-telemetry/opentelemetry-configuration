@@ -804,8 +804,14 @@ tracer_provider:
       # Configure local_parent_sampled sampler.
       # If omitted or null, always_on is used.
       local_parent_sampled:
-        # Configure sampler to be always_on.
-        always_on:
+        # Configure sampler to be composite.
+        # This property is experimental and subject to breaking changes in minor versions.
+        composite/development:
+          # Configure sampler to be probability.
+          probability:
+            # Configure ratio.
+            # If omitted or null, 1.0 is used.
+            ratio: 0.001
       # Configure local_parent_not_sampled sampler.
       # If omitted or null, always_off is used.
       local_parent_not_sampled:

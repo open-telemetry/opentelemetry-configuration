@@ -2,7 +2,7 @@ import fs from 'fs';
 import yaml from 'yaml';
 import {readAndFixMetaSchema} from "./meta-schema.js";
 import {readJsonSchemaTypes} from "./json-schema.js";
-import {isExperimentalProperty} from "./util.js";
+import {isExperimentalProperty, rootTypeName} from "./util.js";
 
 // Extract input file arg or throw
 const usageString = "Usage: \n npm run-script generate-descriptions -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml [--debug]";
@@ -148,9 +148,9 @@ function yamlPathToJsonPath(yamlPath, propertyKey) {
 }
 
 function resolveJsonSchemaType(jsonSchemaTypesByType, yamlPath) {
-    let last = jsonSchemaTypesByType['OpentelemetryConfiguration']; // TODO: make constant
+    let last = jsonSchemaTypesByType[rootTypeName];
     if (!last) {
-        throw new Error(`JSON schema missing root type 'OpenTelemetryConfiguration'`);
+        throw new Error(`JSON schema missing root type '${rootTypeName}'`);
     }
     for (let i = 0; i < yamlPath.length; i++) {
         const entry = yamlPath[i];
