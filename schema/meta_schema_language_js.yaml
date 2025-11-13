@@ -147,7 +147,6 @@ typeSupportStatuses:
   - type: ExperimentalSeverityNumber
     status: unknown
     enumOverrides: []
-    notes: ""
   - type: ExperimentalTracerConfig
     status: unknown
     propertyOverrides: []
