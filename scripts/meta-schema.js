@@ -116,8 +116,7 @@ export class MetaSchemaType {
         }
         if (this.properties !== null) {
             const properties = this.properties.map(property => property.toJson());
-            // TODO(jack-berg): sort in separate PR to make review easier
-            // properties.sort((a, b) => a.property.localeCompare(b.property));
+            properties.sort((a, b) => a.property.localeCompare(b.property));
             json.properties = properties;
         }
 
@@ -533,7 +532,7 @@ function emptyLanguageImplementation(language, metaSchema) {
 
 function parseEnum(rawJson, propertyName, errorMessage, knownValues) {
     const string = parseString(rawJson, propertyName, errorMessage);
-    if (!IMPLEMENTATION_STATUSES.includes(string)) {
+    if (!knownValues.includes(string)) {
         throw new Error(errorMessage);
     }
     return string;
