@@ -2458,30 +2458,30 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `DEBUG` | TODO |
-| `DEBUG2` | TODO |
-| `DEBUG3` | TODO |
-| `DEBUG4` | TODO |
-| `ERROR` | TODO |
-| `ERROR2` | TODO |
-| `ERROR3` | TODO |
-| `ERROR4` | TODO |
-| `FATAL` | TODO |
-| `FATAL2` | TODO |
-| `FATAL3` | TODO |
-| `FATAL4` | TODO |
-| `INFO` | TODO |
-| `INFO2` | TODO |
-| `INFO3` | TODO |
-| `INFO4` | TODO |
-| `TRACE` | TODO |
-| `TRACE2` | TODO |
-| `TRACE3` | TODO |
-| `TRACE4` | TODO |
-| `WARN` | TODO |
-| `WARN2` | TODO |
-| `WARN3` | TODO |
-| `WARN4` | TODO |
+| `DEBUG` | DEBUG, severity number 5. |
+| `DEBUG2` | DEBUG2, severity number 6. |
+| `DEBUG3` | DEBUG3, severity number 7. |
+| `DEBUG4` | DEBUG4, severity number 8. |
+| `ERROR` | ERROR, severity number 17. |
+| `ERROR2` | ERROR2, severity number 18. |
+| `ERROR3` | ERROR3, severity number 19. |
+| `ERROR4` | ERROR4, severity number 20. |
+| `FATAL` | FATAL, severity number 21. |
+| `FATAL2` | FATAL2, severity number 22. |
+| `FATAL3` | FATAL3, severity number 23. |
+| `FATAL4` | FATAL4, severity number 24. |
+| `INFO` | INFO, severity number 9. |
+| `INFO2` | INFO2, severity number 10. |
+| `INFO3` | INFO3, severity number 11. |
+| `INFO4` | INFO4, severity number 12. |
+| `TRACE` | TRACE, severity number 1. |
+| `TRACE2` | TRACE2, severity number 2. |
+| `TRACE3` | TRACE3, severity number 3. |
+| `TRACE4` | TRACE4, severity number 4. |
+| `WARN` | WARN, severity number 13. |
+| `WARN2` | WARN2, severity number 14. |
+| `WARN3` | WARN3, severity number 15. |
+| `WARN4` | WARN4, severity number 16. |
 
 <details>
 <summary>Language support status</summary>

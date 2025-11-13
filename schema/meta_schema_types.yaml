@@ -1216,51 +1216,51 @@
 - type: ExperimentalSeverityNumber
   enumValues:
     - enumValue: DEBUG
-      description: TODO
+      description: DEBUG, severity number 5.
     - enumValue: DEBUG2
-      description: TODO
+      description: DEBUG2, severity number 6.
     - enumValue: DEBUG3
-      description: TODO
+      description: DEBUG3, severity number 7.
     - enumValue: DEBUG4
-      description: TODO
+      description: DEBUG4, severity number 8.
     - enumValue: ERROR
-      description: TODO
+      description: ERROR, severity number 17.
     - enumValue: ERROR2
-      description: TODO
+      description: ERROR2, severity number 18.
     - enumValue: ERROR3
-      description: TODO
+      description: ERROR3, severity number 19.
     - enumValue: ERROR4
-      description: TODO
+      description: ERROR4, severity number 20.
     - enumValue: FATAL
-      description: TODO
+      description: FATAL, severity number 21.
     - enumValue: FATAL2
-      description: TODO
+      description: FATAL2, severity number 22.
     - enumValue: FATAL3
-      description: TODO
+      description: FATAL3, severity number 23.
     - enumValue: FATAL4
-      description: TODO
+      description: FATAL4, severity number 24.
     - enumValue: INFO
-      description: TODO
+      description: INFO, severity number 9.
     - enumValue: INFO2
-      description: TODO
+      description: INFO2, severity number 10.
     - enumValue: INFO3
-      description: TODO
+      description: INFO3, severity number 11.
     - enumValue: INFO4
-      description: TODO
+      description: INFO4, severity number 12.
     - enumValue: TRACE
-      description: TODO
+      description: TRACE, severity number 1.
     - enumValue: TRACE2
-      description: TODO
+      description: TRACE2, severity number 2.
     - enumValue: TRACE3
-      description: TODO
+      description: TRACE3, severity number 3.
     - enumValue: TRACE4
-      description: TODO
+      description: TRACE4, severity number 4.
     - enumValue: WARN
-      description: TODO
+      description: WARN, severity number 13.
     - enumValue: WARN2
-      description: TODO
+      description: WARN2, severity number 14.
     - enumValue: WARN3
-      description: TODO
+      description: WARN3, severity number 15.
     - enumValue: WARN4
-      description: TODO
+      description: WARN4, severity number 16.
   isSdkExtensionPlugin: false
