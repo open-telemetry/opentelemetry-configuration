@@ -123,6 +123,7 @@
                 },
                 "loggers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
                     }
