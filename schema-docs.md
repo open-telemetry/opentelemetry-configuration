@@ -1779,8 +1779,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `config` | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `false` | No constraints. | The logger config. |
-| `name` | `string` | `false` | No constraints. | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
+| `config` | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `true` | No constraints. | The logger config. |
+| `name` | `string` | `true` | No constraints. | Configure logger names to match, evaluated as follows:<br><br> * If the logger name exactly matches.<br> * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1794,6 +1794,7 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+* `required`: `["name","config"]`
 
 Usages:
 
@@ -1817,7 +1818,11 @@ Usages:
     "config": {
       "$ref": "#/$defs/ExperimentalLoggerConfig"
     }
-  }
+  },
+  "required": [
+    "name",
+    "config"
+  ]
 }</pre>
 </details>
 
@@ -1924,8 +1929,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` | No constraints. | The meter config. |
-| `name` | `string` | `false` | No constraints. | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
+| `config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `true` | No constraints. | The meter config. |
+| `name` | `string` | `true` | No constraints. | Configure meter names to match, evaluated as follows:<br><br> * If the meter name exactly matches.<br> * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1939,6 +1944,7 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+* `required`: `["name","config"]`
 
 Usages:
 
@@ -1962,7 +1968,11 @@ Usages:
     "config": {
       "$ref": "#/$defs/ExperimentalMeterConfig"
     }
-  }
+  },
+  "required": [
+    "name",
+    "config"
+  ]
 }</pre>
 </details>
 
@@ -2675,8 +2685,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` | No constraints. | The tracer config. |
-| `name` | `string` | `false` | No constraints. | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
+| `config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `true` | No constraints. | The tracer config. |
+| `name` | `string` | `true` | No constraints. | Configure tracer names to match, evaluated as follows:<br><br> * If the tracer name exactly matches.<br> * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2690,6 +2700,7 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+* `required`: `["name","config"]`
 
 Usages:
 
@@ -2713,7 +2724,11 @@ Usages:
     "config": {
       "$ref": "#/$defs/ExperimentalTracerConfig"
     }
-  }
+  },
+  "required": [
+    "name",
+    "config"
+  ]
 }</pre>
 </details>
 
@@ -3346,7 +3361,11 @@ Usages:
         "config": {
           "$ref": "#/$defs/ExperimentalLoggerConfig"
         }
-      }
+      },
+      "required": [
+        "name",
+        "config"
+      ]
     },
     "ExperimentalLoggerConfig": {
       "type": [
@@ -4288,7 +4307,11 @@ Usages:
         "config": {
           "$ref": "#/$defs/ExperimentalMeterConfig"
         }
-      }
+      },
+      "required": [
+        "name",
+        "config"
+      ]
     },
     "ExperimentalMeterConfig": {
       "type": [
@@ -6684,7 +6707,11 @@ Usages:
         "config": {
           "$ref": "#/$defs/ExperimentalTracerConfig"
         }
-      }
+      },
+      "required": [
+        "name",
+        "config"
+      ]
     },
     "ExperimentalTracerConfig": {
       "type": [
