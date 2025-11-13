@@ -31,7 +31,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides:
       - property: record_min_max
-        status: ignored
+        status: not_implemented
   - type: BatchLogRecordProcessor
     status: supported
     propertyOverrides: []
@@ -45,8 +45,12 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ConsoleMetricExporter
-    status: unknown
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: default_histogram_aggregation
+        status: not_implemented
+      - property: temporality_preference
+        status: ignored
   - type: DefaultAggregation
     status: supported
     propertyOverrides: []
@@ -56,6 +60,26 @@ typeSupportStatuses:
   - type: ExemplarFilter
     status: supported
     enumOverrides: []
+  - type: ExperimentalComposableAlwaysOffSampler
+    status: unknown
+    propertyOverrides: []
+    notes: ""
+  - type: ExperimentalComposableAlwaysOnSampler
+    status: unknown
+    propertyOverrides: []
+    notes: ""
+  - type: ExperimentalComposableParentBasedSampler
+    status: unknown
+    propertyOverrides: []
+    notes: ""
+  - type: ExperimentalComposableProbabilitySampler
+    status: unknown
+    propertyOverrides: []
+    notes: ""
+  - type: ExperimentalComposableSampler
+    status: unknown
+    propertyOverrides: []
+    notes: ""
   - type: ExperimentalContainerResourceDetector
     status: supported
     propertyOverrides: []
@@ -76,34 +100,65 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalInstrumentation
     status: supported
+    propertyOverrides:
+      - property: cpp
+        status: not_applicable
+      - property: dotnet
+        status: not_applicable
+      - property: erlang
+        status: not_applicable
+      - property: go
+        status: not_applicable
+      - property: js
+        status: not_applicable
+      - property: php
+        status: not_applicable
+      - property: python
+        status: not_applicable
+      - property: ruby
+        status: not_applicable
+      - property: rust
+        status: not_applicable
+      - property: swift
+        status: not_applicable
+  - type: ExperimentalJaegerRemoteSampler
+    status: ignored
     propertyOverrides: []
+    notes: ""
   - type: ExperimentalLanguageSpecificInstrumentation
-    status: supported
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalLoggerConfig
-    status: supported
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalLoggerConfigurator
-    status: supported
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalLoggerMatcherAndConfig
-    status: supported
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalMeterConfig
-    status: supported
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalMeterConfigurator
-    status: supported
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalMeterMatcherAndConfig
-    status: supported
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalOtlpFileExporter
-    status: supported
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalOtlpFileMetricExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: output_stream
+        status: not_implemented
+  - type: ExperimentalOtlpFileMetricExporter
+    status: supported
+    propertyOverrides:
+      - property: output_stream
+        status: not_implemented
   - type: ExperimentalPeerInstrumentation
     status: supported
     propertyOverrides: []
@@ -111,7 +166,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ExperimentalProbabilitySampler
-    status: unknown
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
     status: supported
@@ -143,7 +198,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExplicitBucketHistogramAggregation
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: record_min_max
+        status: not_implemented
   - type: ExporterDefaultHistogramAggregation
     status: supported
     enumOverrides: []
@@ -151,12 +208,10 @@ typeSupportStatuses:
     status: supported
     enumOverrides: []
   - type: GrpcTls
-    status: unknown
-    propertyOverrides:
-      - property: insecure
-        status: not_applicable
+    status: not_implemented
+    propertyOverrides: []
   - type: HttpTls
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: IncludeExclude
     status: supported
@@ -165,9 +220,6 @@ typeSupportStatuses:
     status: supported
     enumOverrides: []
   - type: JaegerPropagator
-    status: supported
-    propertyOverrides: []
-  - type: JaegerRemoteSampler
     status: supported
     propertyOverrides: []
   - type: LastValueAggregation
@@ -189,7 +241,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: MetricProducer
-    status: supported
+    status: ignored
     propertyOverrides: []
   - type: MetricReader
     status: supported
@@ -198,37 +250,53 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: OpenCensusMetricProducer
-    status: supported
+    status: ignored
     propertyOverrides: []
-  - type: OpentelemetryConfiguration
+  - type: OpenTelemetryConfiguration
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: log_level
+        status: not_implemented
   - type: OpenTracingPropagator
     status: supported
     propertyOverrides: []
   - type: OtlpGrpcExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: tls
+        status: ignored
   - type: OtlpGrpcMetricExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: tls
+        status: ignored
   - type: OtlpHttpEncoding
-    status: supported
+    status: not_implemented
     enumOverrides:
       - enumValue: json
         status: not_implemented
   - type: OtlpHttpExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: encoding
+        status: not_implemented
+      - property: tls
+        status: ignored
   - type: OtlpHttpMetricExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: encoding
+        status: not_implemented
+      - property: tls
+        status: ignored
   - type: ParentBasedSampler
     status: supported
     propertyOverrides: []
   - type: PeriodicMetricReader
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: producers
+        status: not_implemented
   - type: Propagator
     status: supported
     propertyOverrides: []
@@ -237,16 +305,22 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: PullMetricReader
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: producers
+        status: not_implemented
   - type: PushMetricExporter
     status: supported
     propertyOverrides: []
   - type: Resource
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: schema_url
+        status: ignored
   - type: Sampler
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: probability/development
+        status: ignored
   - type: SimpleLogRecordProcessor
     status: supported
     propertyOverrides: []
@@ -282,7 +356,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ViewSelector
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: unit
+        status: ignored
   - type: ViewStream
     status: supported
     propertyOverrides: []

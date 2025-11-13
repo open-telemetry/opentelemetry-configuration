@@ -54,6 +54,26 @@ typeSupportStatuses:
   - type: ExemplarFilter
     status: unknown
     enumOverrides: []
+  - type: ExperimentalComposableAlwaysOffSampler
+    status: unknown
+    propertyOverrides: []
+    notes: ""
+  - type: ExperimentalComposableAlwaysOnSampler
+    status: unknown
+    propertyOverrides: []
+    notes: ""
+  - type: ExperimentalComposableParentBasedSampler
+    status: unknown
+    propertyOverrides: []
+    notes: ""
+  - type: ExperimentalComposableProbabilitySampler
+    status: unknown
+    propertyOverrides: []
+    notes: ""
+  - type: ExperimentalComposableSampler
+    status: unknown
+    propertyOverrides: []
+    notes: ""
   - type: ExperimentalContainerResourceDetector
     status: unknown
     propertyOverrides: []
@@ -75,6 +95,10 @@ typeSupportStatuses:
   - type: ExperimentalInstrumentation
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalJaegerRemoteSampler
+    status: unknown
+    propertyOverrides: []
+    notes: ""
   - type: ExperimentalLanguageSpecificInstrumentation
     status: unknown
     propertyOverrides: []
@@ -159,9 +183,6 @@ typeSupportStatuses:
   - type: JaegerPropagator
     status: unknown
     propertyOverrides: []
-  - type: JaegerRemoteSampler
-    status: unknown
-    propertyOverrides: []
   - type: LastValueAggregation
     status: unknown
     propertyOverrides: []
@@ -192,7 +213,7 @@ typeSupportStatuses:
   - type: OpenCensusMetricProducer
     status: unknown
     propertyOverrides: []
-  - type: OpentelemetryConfiguration
+  - type: OpenTelemetryConfiguration
     status: unknown
     propertyOverrides: []
   - type: OpenTracingPropagator

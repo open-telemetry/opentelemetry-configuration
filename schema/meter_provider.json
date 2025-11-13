@@ -147,7 +147,7 @@
             }
         },
         "PullMetricExporter": {
-            "type": ["object"],
+            "type": "object",
             "additionalProperties": {
                 "type": ["object", "null"]
             },
@@ -340,7 +340,8 @@
                 "stream": {
                     "$ref": "#/$defs/ViewStream"
                 }
-            }
+            },
+            "required": ["selector", "stream"]
         },
         "ViewSelector": {
             "type": "object",

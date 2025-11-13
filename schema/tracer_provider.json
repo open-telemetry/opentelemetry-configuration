@@ -67,8 +67,11 @@
                 "always_on": {
                     "$ref": "#/$defs/AlwaysOnSampler"
                 },
-                "jaeger_remote": {
-                    "$ref": "#/$defs/JaegerRemoteSampler"
+                "composite/development": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                },
+                "jaeger_remote/development": {
+                    "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
                 },
                 "parent_based": {
                     "$ref": "#/$defs/ParentBasedSampler"
@@ -89,7 +92,7 @@
             "type": ["object", "null"],
             "additionalProperties": false
         },
-        "JaegerRemoteSampler": {
+        "ExperimentalJaegerRemoteSampler": {
             "type": ["object", "null"],
             "additionalProperties": false,
             "properties": {
@@ -145,6 +148,68 @@
                     "type": ["number", "null"],
                     "minimum": 0,
                     "maximum": 1
+                }
+            }
+        },
+        "ExperimentalComposableAlwaysOffSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "ExperimentalComposableAlwaysOnSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false
+        },
+        "ExperimentalComposableParentBasedSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "root": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                },
+                "remote_parent_sampled": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                },
+                "remote_parent_not_sampled": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                },
+                "local_parent_sampled": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                },
+                "local_parent_not_sampled": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                }
+            }
+        },
+        "ExperimentalComposableProbabilitySampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "ratio": {
+                    "type": ["number", "null"],
+                    "minimum": 0,
+                    "maximum": 1
+                }
+            }
+        },
+        "ExperimentalComposableSampler": {
+            "type": "object",
+            "additionalProperties": {
+                "type": ["object", "null"]
+            },
+            "minProperties": 1,
+            "maxProperties": 1,
+            "properties": {
+                "always_off": {
+                    "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
+                },
+                "always_on": {
+                    "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
+                },
+                "parent_based": {
+                    "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
+                },
+                "probability": {
+                    "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
                 }
             }
         },
