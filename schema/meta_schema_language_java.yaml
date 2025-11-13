@@ -120,30 +120,27 @@ typeSupportStatuses:
     status: ignored
     propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalLoggerConfig
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalLoggerConfigurator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalLoggerMatcherAndConfig
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalMeterConfig
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalMeterConfigurator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalMeterMatcherAndConfig
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalOtlpFileExporter
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalOtlpFileMetricExporter
     status: supported
     propertyOverrides:
       - property: output_stream
