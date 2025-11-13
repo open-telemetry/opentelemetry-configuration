@@ -124,7 +124,11 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalLoggerConfig
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: minimum_severity
+        status: not_implemented
+      - property: trace_based
+        status: not_implemented
   - type: ExperimentalLoggerConfigurator
     status: supported
     propertyOverrides: []
@@ -178,6 +182,9 @@ typeSupportStatuses:
   - type: ExperimentalServiceResourceDetector
     status: supported
     propertyOverrides: []
+  - type: ExperimentalSeverityNumber
+    status: unknown
+    enumOverrides: []
   - type: ExperimentalTracerConfig
     status: supported
     propertyOverrides: []

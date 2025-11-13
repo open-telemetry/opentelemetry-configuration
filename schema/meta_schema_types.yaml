@@ -281,7 +281,20 @@
 - type: ExperimentalLoggerConfig
   properties:
     - property: disabled
-      description: Configure if the logger is enabled or not.
+      description: |
+        Configure if the logger is enabled or not.
+        If omitted or null, false is used.
+    - property: minimum_severity
+      description: |
+        Configure severity filtering.
+        Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
+        Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.
+        If omitted or null, severity filtering is not applied.
+    - property: trace_based
+      description: |
+        Configure trace based filtering.
+        If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.
+        If omitted or null, trace based filtering is not applied.
   isSdkExtensionPlugin: false
 - type: ExperimentalLoggerConfigurator
   properties:
@@ -1199,4 +1212,55 @@
       description: |
         Configure ratio.
         If omitted or null, 1.0 is used.
+  isSdkExtensionPlugin: false
+- type: ExperimentalSeverityNumber
+  enumValues:
+    - enumValue: DEBUG
+      description: DEBUG, severity number 5.
+    - enumValue: DEBUG2
+      description: DEBUG2, severity number 6.
+    - enumValue: DEBUG3
+      description: DEBUG3, severity number 7.
+    - enumValue: DEBUG4
+      description: DEBUG4, severity number 8.
+    - enumValue: ERROR
+      description: ERROR, severity number 17.
+    - enumValue: ERROR2
+      description: ERROR2, severity number 18.
+    - enumValue: ERROR3
+      description: ERROR3, severity number 19.
+    - enumValue: ERROR4
+      description: ERROR4, severity number 20.
+    - enumValue: FATAL
+      description: FATAL, severity number 21.
+    - enumValue: FATAL2
+      description: FATAL2, severity number 22.
+    - enumValue: FATAL3
+      description: FATAL3, severity number 23.
+    - enumValue: FATAL4
+      description: FATAL4, severity number 24.
+    - enumValue: INFO
+      description: INFO, severity number 9.
+    - enumValue: INFO2
+      description: INFO2, severity number 10.
+    - enumValue: INFO3
+      description: INFO3, severity number 11.
+    - enumValue: INFO4
+      description: INFO4, severity number 12.
+    - enumValue: TRACE
+      description: TRACE, severity number 1.
+    - enumValue: TRACE2
+      description: TRACE2, severity number 2.
+    - enumValue: TRACE3
+      description: TRACE3, severity number 3.
+    - enumValue: TRACE4
+      description: TRACE4, severity number 4.
+    - enumValue: WARN
+      description: WARN, severity number 13.
+    - enumValue: WARN2
+      description: WARN2, severity number 14.
+    - enumValue: WARN3
+      description: WARN3, severity number 15.
+    - enumValue: WARN4
+      description: WARN4, severity number 16.
   isSdkExtensionPlugin: false
