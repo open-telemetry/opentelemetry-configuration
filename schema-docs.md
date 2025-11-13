@@ -397,8 +397,8 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `max_scale` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | TODO |
-| `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | No constraints. | TODO |
+| `max_scale` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `-10`<br>* `maximum`: `20`<br> | TODO |
+| `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | * `minimum`: `2`<br> | TODO |
 | `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | TODO |
 
 <details>
@@ -434,13 +434,16 @@ Usages:
       "type": [
         "integer",
         "null"
-      ]
+      ],
+      "minimum": -10,
+      "maximum": 20
     },
     "max_size": {
       "type": [
         "integer",
         "null"
-      ]
+      ],
+      "minimum": 2
     },
     "record_min_max": {
       "type": [
@@ -4030,13 +4033,16 @@ Usages:
           "type": [
             "integer",
             "null"
-          ]
+          ],
+          "minimum": -10,
+          "maximum": 20
         },
         "max_size": {
           "type": [
             "integer",
             "null"
-          ]
+          ],
+          "minimum": 2
         },
         "record_min_max": {
           "type": [
