@@ -10,8 +10,8 @@
                     "type": "array",
                     "minItems": 1,
                     "items": {
-                          "type": "string"
-                      }
+                        "type": "string"
+                    }
                 },
                 "excluded": {
                     "type": "array",
@@ -51,8 +51,8 @@
                     "type": "array",
                     "minItems": 1,
                     "items": {
-                          "$ref": "#/$defs/NameStringValuePair"
-                      }
+                        "$ref": "#/$defs/NameStringValuePair"
+                    }
                 },
                 "headers_list": {
                     "type": ["string", "null"]
