@@ -19,6 +19,7 @@
   should be "main".
 * Click "Generate release notes" to get a draft release notes. Refer
   to [CHANGELOG.md](CHANGELOG.md) for a list of changes since last release.
+  * Call out [breaking changes](CONTRIBUTING.md#pull-requests) and provide example migration steps (see [v0.4.0](https://github.com/open-telemetry/opentelemetry-configuration/releases/tag/v0.4.0) for an example).
 * Click "Publish Release".
 
 Our tags follow the naming convention of `v<major>.<minor>.<patch>`. Increment `minor` by 1
