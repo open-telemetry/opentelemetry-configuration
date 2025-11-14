@@ -191,6 +191,44 @@
                 }
             }
         },
+        "ExperimentalComposableRuleBasedSampler": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+                "rules": {
+                    "type": ["array", "null"],
+                    "items": {
+                        "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
+                    }
+                }
+            }
+        },
+        "ExperimentalComposableRuleBasedSamplerRule": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "attribute_values": {
+                    "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributeValues"
+                },
+                "attribute_patterns": {
+                    "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributePatterns"
+                },
+                "span_kinds": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "common.json#/$defs/SpanKind"
+                    }
+                },
+                "is_root": {
+                    "type": "boolean"
+                },
+                "sampler": {
+                    "$ref": "#/$defs/ExperimentalComposableSampler"
+                }
+            },
+            "required": ["sampler"]
+        },
         "ExperimentalComposableSampler": {
             "type": "object",
             "additionalProperties": {
@@ -210,8 +248,41 @@
                 },
                 "probability": {
                     "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
+                },
+                "rule_based": {
+                    "$ref": "#/$defs/ExperimentalComposableRuleBasedSampler"
                 }
             }
+        },
+        "ExperimentalComposableRuleBasedSamplerRuleAttributeValues": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": ["key", "value"]
+        },
+        "ExperimentalComposableRuleBasedSamplerRuleAttributePatterns": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "pattern": {
+                    "$ref": "common.json#/$defs/IncludeExclude"
+                }
+            },
+            "required": ["key", "pattern"]
         },
         "SimpleSpanProcessor": {
             "type": "object",

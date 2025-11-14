@@ -72,6 +72,18 @@ typeSupportStatuses:
   - type: ExperimentalComposableProbabilitySampler
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRule
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalComposableSampler
     status: unknown
     propertyOverrides: []
@@ -328,6 +340,9 @@ typeSupportStatuses:
   - type: SpanExporter
     status: supported
     propertyOverrides: []
+  - type: SpanKind
+    status: unknown
+    enumOverrides: []
   - type: SpanLimits
     status: supported
     propertyOverrides: []

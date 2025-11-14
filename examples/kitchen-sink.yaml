@@ -818,11 +818,41 @@ tracer_provider:
         # Configure sampler to be composite.
         # This property is experimental and subject to breaking changes in minor versions.
         composite/development:
-          # Configure sampler to be probability.
-          probability:
-            # Configure ratio.
-            # If omitted or null, 1.0 is used.
-            ratio: 0.001
+          # Configure sampler to be rule_based.
+          rule_based:
+            # The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match. If no conditions are specified, the rule matches all spans that reach it.
+            rules:
+              - attribute_values:
+                  key: http.route
+                  values:
+                    - /healthz
+                    - /livez
+                # Configure sampler when matched.
+                sampler:
+                  # Configure sampler to be always_off if matched.
+                  always_off: # Configure a sampling rule matching http.path attribute patterns.
+              - attribute_patterns:
+                  key: http.path
+                  patterns:
+                    includes:
+                      - /internal/*
+                    excludes:
+                      - /internal/special/*
+                # Configure sampler when matched.
+                sampler:
+                  # Configure sampler to be always_on if matched.
+                  always_on: # Configure a sampling rule matching root spans with CLIENT span kind.
+              - is_root: true
+                span_kinds:
+                  - CLIENT
+                sampler:
+                  # Configure sampler to be trace_id_ratio_based if matched.
+                  trace_id_ratio_based:
+                    ratio: 0.05
+              - probability:
+                  # Configure ratio.
+                  # If omitted or null, 1.0 is used.
+                  ratio: 0.001
       # Configure local_parent_not_sampled sampler.
       # If omitted or null, always_off is used.
       local_parent_not_sampled:

@@ -150,6 +150,16 @@
                     "type": ["boolean", "null"]
                 }
             }
+        },
+        "SpanKind": {
+            "type": ["string", "null"],
+            "enum": [
+                "INTERNAL",
+                "SERVER",
+                "CLIENT",
+                "PRODUCER",
+                "CONSUMER"
+            ]
         }
     }
 }

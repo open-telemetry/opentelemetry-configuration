@@ -1186,6 +1186,8 @@
       description: Configure sampler to be parent_based.
     - property: probability
       description: Configure sampler to be probability.
+    - property: rule_based
+      description: Configure sampler to be rule_based.
   isSdkExtensionPlugin: false
 - type: ExperimentalComposableParentBasedSampler
   properties:
@@ -1263,4 +1265,49 @@
       description: WARN3, severity number 15.
     - enumValue: WARN4
       description: WARN4, severity number 16.
+  isSdkExtensionPlugin: false
+- type: SpanKind
+  enumValues:
+    - enumValue: CLIENT
+      description: CLIENT, a client span.
+    - enumValue: CONSUMER
+      description: CONSUMER, a consumer span.
+    - enumValue: INTERNAL
+      description: INTERNAL, an internal span.
+    - enumValue: PRODUCER
+      description: PRODUCER, a producer span.
+    - enumValue: SERVER
+      description: SERVER, a server span.
+  isSdkExtensionPlugin: false
+- type: ExperimentalComposableRuleBasedSampler
+  properties:
+    - property: rules
+      description: The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match. If no conditions are specified, the rule matches all spans that reach it.
+  isSdkExtensionPlugin: false
+- type: ExperimentalComposableRuleBasedSamplerRule
+  properties:
+    - property: attribute_patterns
+      description: Patterns to match against a single attribute.
+    - property: attribute_values
+      description: Values to match against a single attribute.
+    - property: is_root
+      description: Whether to match only root spans.
+    - property: sampler
+      description: The sampler to use for matching spans.
+    - property: span_kinds
+      description: The span kinds to match. If the span's kind matches any of these, it matches.
+  isSdkExtensionPlugin: false
+- type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
+  properties:
+    - property: key
+      description: The attribute key to match against.
+    - property: value
+      description: The attribute values to match against. If the attribute's value matches any of these, it matches.
+  isSdkExtensionPlugin: false
+- type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
+  properties:
+    - property: key
+      description: The attribute key to match against.
+    - property: pattern
+      description: The include and exclude patterns to match. If a pattern satsifies any include and doesn't satisfy any exclude, it matches.
   isSdkExtensionPlugin: false
