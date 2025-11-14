@@ -3,8 +3,7 @@
   "scripts": {
     "generate-descriptions": "node scripts/generate-descriptions.js",
     "generate-markdown": "node scripts/generate-markdown.js",
-    "fix-meta-schema": "node scripts/fix-meta-schema.js",
-    "json-to-yaml": "node scripts/json-to-yaml.js"
+    "fix-meta-schema": "node scripts/fix-meta-schema.js"
   },
   "devDependencies": {
     "ajv-cli": "5.0.0"
