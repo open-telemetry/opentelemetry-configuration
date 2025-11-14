@@ -151,6 +151,7 @@ export class JsonSchemaProperty {
 export class JsonSchemaType {
     type;
     file;
+    sourceFile;
     fileContent;
     jsonSchemaPath;
     schema;
@@ -160,6 +161,7 @@ export class JsonSchemaType {
     constructor(type, file, fileContent, jsonSchemaPath, schema) {
         this.type = type;
         this.file = file;
+        this.sourceFile = file.replace(".json", ".yaml");
         this.fileContent = fileContent;
         this.jsonSchemaPath = jsonSchemaPath;
         this.schema = schema;

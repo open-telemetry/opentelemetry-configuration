@@ -12,6 +12,7 @@ include validator/Makefile
 
 .PHONY: compile-schema
 compile-schema:
+	@if ! npm ls minimatch yaml; then npm install; fi
 	npm run-script yaml-to-json || exit 1;
 	@if ! npm ls ajv-cli; then npm install; fi
 	@for f in $(SCHEMA_FILES); do \
