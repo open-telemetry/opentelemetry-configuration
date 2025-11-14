@@ -27,7 +27,7 @@ jobs:
 
       # TODO: Publish releases
       - name: Build
-        run: make validator
+        run: make compile-schema && make validator
 
       - name: Test
         run: |
