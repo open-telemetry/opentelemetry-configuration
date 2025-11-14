@@ -34,7 +34,7 @@ tools: $(GOVULNCHECK)
 
 validator-copy-schema:
 	mkdir -p ${ROOT_DIR}/schema
-	find ${PARENT_DIR} -path '*/schema/*.json' ! -path '*/validator/schema/*.json' -exec cp '{}' "${ROOT_DIR}/schema/" ';'
+	find ${PARENT_DIR} -path '*/schema_out/*.json' ! -path '*/validator/schema/*.json' -exec cp '{}' "${ROOT_DIR}/schema/" ';'
 
 validator: validator-copy-schema
 	go build -C ${ROOT_DIR} ${ROOT_DIR}
