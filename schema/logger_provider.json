@@ -140,7 +140,11 @@
                 "config": {
                     "$ref": "#/$defs/ExperimentalLoggerConfig"
                 }
-            }
+            },
+            "required": [
+                "name",
+                "config"
+            ]
         },
         "ExperimentalLoggerConfig": {
             "type": ["object"],
