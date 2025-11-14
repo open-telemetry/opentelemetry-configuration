@@ -1,6 +1,6 @@
 import fs from 'fs';
 import {MetaSchemaEnumValue, MetaSchemaProperty, MetaSchemaType} from "./meta-schema.js";
-import {rootTypeName, schemaDirPath} from "./util.js";
+import {rootTypeName, schemaOutDirPath} from "./util.js";
 
 const localDefPrefix = '#/$defs/';
 
@@ -8,10 +8,10 @@ export function readJsonSchemaTypes() {
     const typesByType = {};
     const topLevelSchemas = {};
 
-    fs.readdirSync(schemaDirPath)
+    fs.readdirSync(schemaOutDirPath)
         .filter(file => file.endsWith(".json"))
         .forEach(file => {
-            const fileContent = JSON.parse(fs.readFileSync(schemaDirPath + file, "utf-8"));
+            const fileContent = JSON.parse(fs.readFileSync(schemaOutDirPath + file, "utf-8"));
 
             topLevelSchemas[file] = fileContent;
 

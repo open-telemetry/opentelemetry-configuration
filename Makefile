@@ -1,7 +1,7 @@
 # Copyright The OpenTelemetry Authors
 # SPDX-License-Identifier: Apache-2.0
 
-SCHEMA_FILES := $(shell find . -path './schema/*.json' -exec basename {} \; | sort)
+SCHEMA_FILES := $(shell find . -path './schema_out/*.json' -exec basename {} \; | sort)
 EXAMPLE_FILES := $(shell find . -path './examples/*.yaml' -exec basename {} \; | sort)
 $(shell mkdir -p out)
 
@@ -12,9 +12,10 @@ include validator/Makefile
 
 .PHONY: compile-schema
 compile-schema:
+	npm run-script yaml-to-json || exit 1;
 	@if ! npm ls ajv-cli; then npm install; fi
 	@for f in $(SCHEMA_FILES); do \
-	    npx --no ajv-cli compile --spec=draft2020 --allow-matching-properties -s ./schema/$$f -r "./schema/!($$f|*.yaml)" \
+	    npx --no ajv-cli compile --spec=draft2020 --allow-matching-properties -s ./schema_out/$$f -r "./schema_out/!($$f)" \
 	        || exit 1; \
 	done
 
@@ -23,7 +24,7 @@ validate-examples:
 	@if ! npm ls ajv-cli; then npm install; fi
 	@for f in $(EXAMPLE_FILES); do \
 	    npx envsub ./examples/$$f ./out/$$f || exit 1; \
-		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./schema/opentelemetry_configuration.json -r "./schema/!(opentelemetry_configuration.json|*.yaml)" -d ./out/$$f \
+		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./schema_out/opentelemetry_configuration.json -r "./schema_out/!(opentelemetry_configuration.json)" -d ./out/$$f \
 		    || exit 1; \
 	done
 
