@@ -1171,7 +1171,7 @@ No usages.
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `key` | `string` | `true` | No constraints. | The attribute key to match against. |
-| `pattern` | [`IncludeExclude`](#includeexclude) | `true` | No constraints. | The include and exclude patterns to match. If a pattern satsifies any include and doesn't satisfy any exclude, it matches. |
+| `patterns` | [`IncludeExclude`](#includeexclude) | `true` | No constraints. | The include and exclude patterns to match. If a pattern satsifies any include and doesn't satisfy any exclude, it matches. |
 
 <details>
 <summary>Language support status</summary>
@@ -1179,13 +1179,13 @@ No usages.
 | Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
 | `key` | unknown | unknown | unknown | unknown |
-| `pattern` | unknown | unknown | unknown | unknown |
+| `patterns` | unknown | unknown | unknown | unknown |
 </details>
 
 Constraints: 
 
 * `additionalProperties`: `false`
-* `required`: `["key","pattern"]`
+* `required`: `["key","patterns"]`
 
 Usages:
 
@@ -1202,13 +1202,13 @@ Usages:
     "key": {
       "type": "string"
     },
-    "pattern": {
+    "patterns": {
       "$ref": "common.json#/$defs/IncludeExclude"
     }
   },
   "required": [
     "key",
-    "pattern"
+    "patterns"
   ]
 }</pre>
 </details>
@@ -1221,7 +1221,7 @@ Usages:
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
 | `key` | `string` | `true` | No constraints. | The attribute key to match against. |
-| `value` | `array` of `string` | `true` | * `minItems`: `1`<br> | The attribute values to match against. If the attribute's value matches any of these, it matches. |
+| `values` | `array` of `string` | `true` | * `minItems`: `1`<br> | The attribute values to match against. If the attribute's value matches any of these, it matches. |
 
 <details>
 <summary>Language support status</summary>
@@ -1229,13 +1229,13 @@ Usages:
 | Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
 | `key` | unknown | unknown | unknown | unknown |
-| `value` | unknown | unknown | unknown | unknown |
+| `values` | unknown | unknown | unknown | unknown |
 </details>
 
 Constraints: 
 
 * `additionalProperties`: `false`
-* `required`: `["key","value"]`
+* `required`: `["key","values"]`
 
 Usages:
 
@@ -1252,7 +1252,7 @@ Usages:
     "key": {
       "type": "string"
     },
-    "value": {
+    "values": {
       "type": "array",
       "minItems": 1,
       "items": {
@@ -1262,7 +1262,7 @@ Usages:
   },
   "required": [
     "key",
-    "value"
+    "values"
   ]
 }</pre>
 </details>
@@ -3236,7 +3236,7 @@ Usages:
 * [`ExperimentalPrometheusMetricExporter.with_resource_constant_labels`](#experimentalprometheusmetricexporter)
 * [`ViewStream.attribute_keys`](#viewstream)
 * [`ExperimentalResourceDetection.attributes`](#experimentalresourcedetection)
-* [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns.pattern`](#experimentalcomposablerulebasedsamplerruleattributepatterns)
+* [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns.patterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns)
 
 <details>
 <summary>JSON Schema</summary>
@@ -6854,7 +6854,7 @@ Usages:
         "key": {
           "type": "string"
         },
-        "value": {
+        "values": {
           "type": "array",
           "minItems": 1,
           "items": {
@@ -6864,7 +6864,7 @@ Usages:
       },
       "required": [
         "key",
-        "value"
+        "values"
       ]
     },
     "ExperimentalComposableRuleBasedSamplerRuleAttributePatterns": {
@@ -6874,13 +6874,13 @@ Usages:
         "key": {
           "type": "string"
         },
-        "pattern": {
+        "patterns": {
           "$ref": "common.json#/$defs/IncludeExclude"
         }
       },
       "required": [
         "key",
-        "pattern"
+        "patterns"
       ]
     },
     "SimpleSpanProcessor": {
@@ -7338,8 +7338,8 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `is_root`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `key`: unknown<br>* `pattern`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `value`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `key`: unknown<br>* `patterns`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
 | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | not_implemented |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | not_applicable |  | * `http`: not_applicable<br>* `peer`: not_applicable<br> |
@@ -7450,8 +7450,8 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `is_root`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `key`: unknown<br>* `pattern`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `value`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `key`: unknown<br>* `patterns`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
 | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |
@@ -7562,8 +7562,8 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `is_root`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `key`: unknown<br>* `pattern`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `value`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `key`: unknown<br>* `patterns`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
 | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | supported |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | supported |  | * `http`: supported<br>* `peer`: supported<br> |
@@ -7674,8 +7674,8 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `is_root`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `key`: unknown<br>* `pattern`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `value`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `key`: unknown<br>* `patterns`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
 | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |

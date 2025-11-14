@@ -261,7 +261,7 @@
                 "key": {
                     "type": "string"
                 },
-                "value": {
+                "values": {
                     "type": "array",
                     "minItems": 1,
                     "items": {
@@ -269,7 +269,7 @@
                     }
                 }
             },
-            "required": ["key", "value"]
+            "required": ["key", "values"]
         },
         "ExperimentalComposableRuleBasedSamplerRuleAttributePatterns": {
             "type": "object",
@@ -278,11 +278,11 @@
                 "key": {
                     "type": "string"
                 },
-                "pattern": {
+                "patterns": {
                     "$ref": "common.json#/$defs/IncludeExclude"
                 }
             },
-            "required": ["key", "pattern"]
+            "required": ["key", "patterns"]
         },
         "SimpleSpanProcessor": {
             "type": "object",

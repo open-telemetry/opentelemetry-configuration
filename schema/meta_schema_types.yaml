@@ -1301,13 +1301,13 @@
   properties:
     - property: key
       description: The attribute key to match against.
-    - property: value
+    - property: values
       description: The attribute values to match against. If the attribute's value matches any of these, it matches.
   isSdkExtensionPlugin: false
 - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
   properties:
     - property: key
       description: The attribute key to match against.
-    - property: pattern
+    - property: patterns
       description: The include and exclude patterns to match. If a pattern satsifies any include and doesn't satisfy any exclude, it matches.
   isSdkExtensionPlugin: false

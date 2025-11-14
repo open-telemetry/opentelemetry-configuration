@@ -834,9 +834,9 @@ tracer_provider:
               - attribute_patterns:
                   key: http.path
                   patterns:
-                    includes:
+                    included:
                       - /internal/*
-                    excludes:
+                    excluded:
                       - /internal/special/*
                 # Configure sampler when matched.
                 sampler:
@@ -849,10 +849,11 @@ tracer_provider:
                   # Configure sampler to be trace_id_ratio_based if matched.
                   trace_id_ratio_based:
                     ratio: 0.05
-              - probability:
-                  # Configure ratio.
-                  # If omitted or null, 1.0 is used.
-                  ratio: 0.001
+              - sampler:
+                  probability:
+                    # Configure ratio.
+                    # If omitted or null, 1.0 is used.
+                    ratio: 0.001
       # Configure local_parent_not_sampled sampler.
       # If omitted or null, always_off is used.
       local_parent_not_sampled:
