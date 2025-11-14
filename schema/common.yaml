@@ -1,228 +1,154 @@
-{
-  "$id": "https://opentelemetry.io/otelconfig/common.json",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$defs": {
-    "IncludeExclude": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "included": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          }
-        },
-        "excluded": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "NameStringValuePair": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "value": {
-          "type": [
-            "string",
-            "null"
-          ]
-        }
-      },
-      "required": [
-        "name",
-        "value"
-      ]
-    },
-    "OtlpHttpExporter": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "endpoint": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "tls": {
-          "$ref": "#/$defs/HttpTls"
-        },
-        "headers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/NameStringValuePair"
-          }
-        },
-        "headers_list": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "compression": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "timeout": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "encoding": {
-          "$ref": "#/$defs/OtlpHttpEncoding"
-        }
-      }
-    },
-    "OtlpHttpEncoding": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "protobuf",
-        "json"
-      ]
-    },
-    "OtlpGrpcExporter": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "endpoint": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "tls": {
-          "$ref": "#/$defs/GrpcTls"
-        },
-        "headers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/NameStringValuePair"
-          }
-        },
-        "headers_list": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "compression": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "timeout": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        }
-      }
-    },
-    "ExperimentalOtlpFileExporter": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "output_stream": {
-          "type": [
-            "string",
-            "null"
-          ]
-        }
-      }
-    },
-    "ConsoleExporter": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "HttpTls": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "certificate_file": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "client_key_file": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "client_certificate_file": {
-          "type": [
-            "string",
-            "null"
-          ]
-        }
-      }
-    },
-    "GrpcTls": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "certificate_file": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "client_key_file": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "client_certificate_file": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "insecure": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        }
-      }
-    }
-  }
-}
+$id: https://opentelemetry.io/otelconfig/common.json
+$schema: https://json-schema.org/draft/2020-12/schema
+$defs:
+  IncludeExclude:
+    type: object
+    additionalProperties: false
+    properties:
+      included:
+        type: array
+        minItems: 1
+        items:
+          type: string
+      excluded:
+        type: array
+        minItems: 1
+        items:
+          type: string
+  NameStringValuePair:
+    type: object
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      value:
+        type:
+          - string
+          - "null"
+    required:
+      - name
+      - value
+  OtlpHttpExporter:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      endpoint:
+        type:
+          - string
+          - "null"
+      tls:
+        $ref: "#/$defs/HttpTls"
+      headers:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/NameStringValuePair"
+      headers_list:
+        type:
+          - string
+          - "null"
+      compression:
+        type:
+          - string
+          - "null"
+      timeout:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      encoding:
+        $ref: "#/$defs/OtlpHttpEncoding"
+  OtlpHttpEncoding:
+    type:
+      - string
+      - "null"
+    enum:
+      - protobuf
+      - json
+  OtlpGrpcExporter:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      endpoint:
+        type:
+          - string
+          - "null"
+      tls:
+        $ref: "#/$defs/GrpcTls"
+      headers:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/NameStringValuePair"
+      headers_list:
+        type:
+          - string
+          - "null"
+      compression:
+        type:
+          - string
+          - "null"
+      timeout:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+  ExperimentalOtlpFileExporter:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      output_stream:
+        type:
+          - string
+          - "null"
+  ConsoleExporter:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  HttpTls:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      certificate_file:
+        type:
+          - string
+          - "null"
+      client_key_file:
+        type:
+          - string
+          - "null"
+      client_certificate_file:
+        type:
+          - string
+          - "null"
+  GrpcTls:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      certificate_file:
+        type:
+          - string
+          - "null"
+      client_key_file:
+        type:
+          - string
+          - "null"
+      client_certificate_file:
+        type:
+          - string
+          - "null"
+      insecure:
+        type:
+          - boolean
+          - "null"
