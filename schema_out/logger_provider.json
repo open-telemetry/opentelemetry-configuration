@@ -1,0 +1,255 @@
+{
+  "$id": "https://opentelemetry.io/otelconfig/logger_provider.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "processors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/LogRecordProcessor"
+      },
+      "description": "Configure log record processors."
+    },
+    "limits": {
+      "$ref": "#/$defs/LogRecordLimits",
+      "description": "Configure log record limits. See also attribute_limits."
+    },
+    "logger_configurator/development": {
+      "$ref": "#/$defs/ExperimentalLoggerConfigurator",
+      "description": "Configure loggers.\n"
+    }
+  },
+  "required": [
+    "processors"
+  ],
+  "$defs": {
+    "SimpleLogRecordProcessor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exporter": {
+          "$ref": "#/$defs/LogRecordExporter",
+          "description": "Configure exporter."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "BatchLogRecordProcessor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schedule_delay": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure delay interval (in milliseconds) between two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 1000 is used.\n"
+        },
+        "export_timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+        },
+        "max_queue_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure maximum queue size. Value must be positive.\nIf omitted or null, 2048 is used.\n"
+        },
+        "max_export_batch_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure maximum batch size. Value must be positive.\nIf omitted or null, 512 is used.\n"
+        },
+        "exporter": {
+          "$ref": "#/$defs/LogRecordExporter",
+          "description": "Configure exporter."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "LogRecordExporter": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "otlp_http": {
+          "$ref": "common.json#/$defs/OtlpHttpExporter",
+          "description": "Configure exporter to be OTLP with HTTP transport."
+        },
+        "otlp_grpc": {
+          "$ref": "common.json#/$defs/OtlpGrpcExporter",
+          "description": "Configure exporter to be OTLP with gRPC transport."
+        },
+        "otlp_file/development": {
+          "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter",
+          "description": "Configure exporter to be OTLP with file transport.\n"
+        },
+        "console": {
+          "$ref": "common.json#/$defs/ConsoleExporter",
+          "description": "Configure exporter to be console."
+        }
+      }
+    },
+    "LogRecordLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attribute_value_length_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+        },
+        "attribute_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        }
+      }
+    },
+    "LogRecordProcessor": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "batch": {
+          "$ref": "#/$defs/BatchLogRecordProcessor",
+          "description": "Configure a batch log record processor."
+        },
+        "simple": {
+          "$ref": "#/$defs/SimpleLogRecordProcessor",
+          "description": "Configure a simple log record processor."
+        }
+      }
+    },
+    "ExperimentalLoggerConfigurator": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "default_config": {
+          "$ref": "#/$defs/ExperimentalLoggerConfig",
+          "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers."
+        },
+        "loggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
+          },
+          "description": "Configure loggers."
+        }
+      }
+    },
+    "ExperimentalLoggerMatcherAndConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": [
+            "string"
+          ],
+          "description": "Configure logger names to match, evaluated as follows:\n\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+        },
+        "config": {
+          "$ref": "#/$defs/ExperimentalLoggerConfig",
+          "description": "The logger config."
+        }
+      }
+    },
+    "ExperimentalLoggerConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "disabled": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure if the logger is enabled or not.\nIf omitted or null, false is used.\n"
+        },
+        "minimum_severity": {
+          "$ref": "#/$defs/ExperimentalSeverityNumber",
+          "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.\nIf omitted or null, severity filtering is not applied.\n"
+        },
+        "trace_based": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure trace based filtering.\nIf true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.\nIf omitted or null, trace based filtering is not applied.\n"
+        }
+      }
+    },
+    "ExperimentalSeverityNumber": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "TRACE",
+        "TRACE2",
+        "TRACE3",
+        "TRACE4",
+        "DEBUG",
+        "DEBUG2",
+        "DEBUG3",
+        "DEBUG4",
+        "INFO",
+        "INFO2",
+        "INFO3",
+        "INFO4",
+        "WARN",
+        "WARN2",
+        "WARN3",
+        "WARN4",
+        "ERROR",
+        "ERROR2",
+        "ERROR3",
+        "ERROR4",
+        "FATAL",
+        "FATAL2",
+        "FATAL3",
+        "FATAL4"
+      ]
+    }
+  }
+}

@@ -1,0 +1,782 @@
+{
+  "$id": "https://opentelemetry.io/otelconfig/meter_provider.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "readers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/MetricReader"
+      },
+      "description": "Configure metric readers."
+    },
+    "views": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/View"
+      },
+      "description": "Configure views. \nEach view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).\n"
+    },
+    "exemplar_filter": {
+      "$ref": "#/$defs/ExemplarFilter",
+      "description": "Configure the exemplar filter. \nValues include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\nIf omitted or null, trace_based is used.\n"
+    },
+    "meter_configurator/development": {
+      "$ref": "#/$defs/ExperimentalMeterConfigurator",
+      "description": "Configure meters.\n"
+    }
+  },
+  "required": [
+    "readers"
+  ],
+  "$defs": {
+    "ExemplarFilter": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "always_on",
+        "always_off",
+        "trace_based"
+      ]
+    },
+    "PeriodicMetricReader": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "interval": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure delay interval (in milliseconds) between start of two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 60000 is used.\n"
+        },
+        "timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+        },
+        "exporter": {
+          "$ref": "#/$defs/PushMetricExporter",
+          "description": "Configure exporter."
+        },
+        "producers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/MetricProducer"
+          },
+          "description": "Configure metric producers."
+        },
+        "cardinality_limits": {
+          "$ref": "#/$defs/CardinalityLimits",
+          "description": "Configure cardinality limits."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "PullMetricReader": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exporter": {
+          "$ref": "#/$defs/PullMetricExporter",
+          "description": "Configure exporter."
+        },
+        "producers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/MetricProducer"
+          },
+          "description": "Configure metric producers."
+        },
+        "cardinality_limits": {
+          "$ref": "#/$defs/CardinalityLimits",
+          "description": "Configure cardinality limits."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "CardinalityLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "default": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for all instrument types.\nInstrument-specific cardinality limits take priority. \nIf omitted or null, 2000 is used.\n"
+        },
+        "counter": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for counter instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "gauge": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for gauge instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "histogram": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for histogram instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "observable_counter": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for observable_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "observable_gauge": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for observable_gauge instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "observable_up_down_counter": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for observable_up_down_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "up_down_counter": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for up_down_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+        }
+      }
+    },
+    "PushMetricExporter": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "otlp_http": {
+          "$ref": "#/$defs/OtlpHttpMetricExporter",
+          "description": "Configure exporter to be OTLP with HTTP transport.\n"
+        },
+        "otlp_grpc": {
+          "$ref": "#/$defs/OtlpGrpcMetricExporter",
+          "description": "Configure exporter to be OTLP with gRPC transport.\n"
+        },
+        "otlp_file/development": {
+          "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter",
+          "description": "Configure exporter to be OTLP with file transport.\n"
+        },
+        "console": {
+          "$ref": "#/$defs/ConsoleMetricExporter",
+          "description": "Configure exporter to be console.\n"
+        }
+      }
+    },
+    "PullMetricExporter": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "prometheus/development": {
+          "$ref": "#/$defs/ExperimentalPrometheusMetricExporter",
+          "description": "Configure exporter to be prometheus.\n"
+        }
+      }
+    },
+    "MetricProducer": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "opencensus": {
+          "$ref": "#/$defs/OpenCensusMetricProducer",
+          "description": "Configure metric producer to be opencensus."
+        }
+      }
+    },
+    "OpenCensusMetricProducer": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalPrometheusMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "host": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure host.\nIf omitted or null, localhost is used.\n"
+        },
+        "port": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Configure port.\nIf omitted or null, 9464 is used.\n"
+        },
+        "without_scope_info": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure Prometheus Exporter to produce metrics without a scope info metric.\nIf omitted or null, false is used.\n"
+        },
+        "with_resource_constant_labels": {
+          "$ref": "common.json#/$defs/IncludeExclude",
+          "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns."
+        },
+        "translation_strategy": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "UnderscoreEscapingWithSuffixes",
+            "UnderscoreEscapingWithoutSuffixes",
+            "NoUTF8EscapingWithSuffixes",
+            "NoTranslation"
+          ],
+          "description": "Configure how Prometheus metrics are exposed. Values include:\n\n * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\n\nIf omitted or null, UnderscoreEscapingWithSuffixes is used.\n"
+        }
+      }
+    },
+    "MetricReader": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "periodic": {
+          "$ref": "#/$defs/PeriodicMetricReader",
+          "description": "Configure a periodic metric reader."
+        },
+        "pull": {
+          "$ref": "#/$defs/PullMetricReader",
+          "description": "Configure a pull based metric reader."
+        }
+      }
+    },
+    "ExporterTemporalityPreference": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "cumulative",
+        "delta",
+        "low_memory"
+      ]
+    },
+    "ExporterDefaultHistogramAggregation": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "explicit_bucket_histogram",
+        "base2_exponential_bucket_histogram"
+      ]
+    },
+    "OtlpHttpMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure endpoint.\nIf omitted or null, http://localhost:4317 is used.\n"
+        },
+        "tls": {
+          "$ref": "common.json#/$defs/HttpTls",
+          "description": "Configure TLS settings for the exporter."
+        },
+        "headers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.json#/$defs/NameStringValuePair"
+          },
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+        },
+        "headers_list": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+        },
+        "compression": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+        },
+        "timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+        },
+        "encoding": {
+          "$ref": "common.json#/$defs/OtlpHttpEncoding",
+          "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted or null, protobuf is used.\n"
+        },
+        "temporality_preference": {
+          "$ref": "#/$defs/ExporterTemporalityPreference",
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+        },
+        "default_histogram_aggregation": {
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+        }
+      }
+    },
+    "OtlpGrpcMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure endpoint.\nIf omitted or null, http://localhost:4317 is used.\n"
+        },
+        "tls": {
+          "$ref": "common.json#/$defs/GrpcTls",
+          "description": "Configure TLS settings for the exporter."
+        },
+        "headers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.json#/$defs/NameStringValuePair"
+          },
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+        },
+        "headers_list": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+        },
+        "compression": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+        },
+        "timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+        },
+        "temporality_preference": {
+          "$ref": "#/$defs/ExporterTemporalityPreference",
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+        },
+        "default_histogram_aggregation": {
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+        }
+      }
+    },
+    "ExperimentalOtlpFileMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "output_stream": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure output stream. \nValues include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\nIf omitted or null, stdout is used.\n"
+        },
+        "temporality_preference": {
+          "$ref": "#/$defs/ExporterTemporalityPreference",
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+        },
+        "default_histogram_aggregation": {
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+        }
+      }
+    },
+    "ConsoleMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "temporality_preference": {
+          "$ref": "#/$defs/ExporterTemporalityPreference",
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+        },
+        "default_histogram_aggregation": {
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+        }
+      }
+    },
+    "View": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "selector": {
+          "$ref": "#/$defs/ViewSelector",
+          "description": "Configure view selector. \nSelection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.\n"
+        },
+        "stream": {
+          "$ref": "#/$defs/ViewStream",
+          "description": "Configure view stream."
+        }
+      },
+      "required": [
+        "selector",
+        "stream"
+      ]
+    },
+    "ViewSelector": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "instrument_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure instrument name selection criteria.\nIf omitted or null, all instrument names match.\n"
+        },
+        "instrument_type": {
+          "$ref": "#/$defs/InstrumentType",
+          "description": "Configure instrument type selection criteria.\nValues include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\nIf omitted or null, all instrument types match.\n"
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure the instrument unit selection criteria.\nIf omitted or null, all instrument units match.\n"
+        },
+        "meter_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure meter name selection criteria.\nIf omitted or null, all meter names match.\n"
+        },
+        "meter_version": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure meter version selection criteria.\nIf omitted or null, all meter versions match.\n"
+        },
+        "meter_schema_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure meter schema url selection criteria.\nIf omitted or null, all meter schema URLs match.\n"
+        }
+      }
+    },
+    "InstrumentType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "counter",
+        "gauge",
+        "histogram",
+        "observable_counter",
+        "observable_gauge",
+        "observable_up_down_counter",
+        "up_down_counter"
+      ]
+    },
+    "ViewStream": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure metric name of the resulting stream(s).\nIf omitted or null, the instrument's original name is used.\n"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure metric description of the resulting stream(s).\nIf omitted or null, the instrument's origin description is used.\n"
+        },
+        "aggregation": {
+          "$ref": "#/$defs/Aggregation",
+          "description": "Configure aggregation of the resulting stream(s). \nValues include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.\nIf omitted, default is used.\n"
+        },
+        "aggregation_cardinality_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure the aggregation cardinality limit.\nIf omitted or null, the metric reader's default cardinality limit is used.\n"
+        },
+        "attribute_keys": {
+          "$ref": "common.json#/$defs/IncludeExclude",
+          "description": "Configure attribute keys retained in the resulting stream(s).\n"
+        }
+      }
+    },
+    "Aggregation": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "default": {
+          "$ref": "#/$defs/DefaultAggregation",
+          "description": "TODO"
+        },
+        "drop": {
+          "$ref": "#/$defs/DropAggregation",
+          "description": "TODO"
+        },
+        "explicit_bucket_histogram": {
+          "$ref": "#/$defs/ExplicitBucketHistogramAggregation",
+          "description": "Configure aggregation to be explicit_bucket_histogram."
+        },
+        "base2_exponential_bucket_histogram": {
+          "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation",
+          "description": "TODO"
+        },
+        "last_value": {
+          "$ref": "#/$defs/LastValueAggregation",
+          "description": "TODO"
+        },
+        "sum": {
+          "$ref": "#/$defs/SumAggregation",
+          "description": "TODO"
+        }
+      }
+    },
+    "DefaultAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "DropAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExplicitBucketHistogramAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "boundaries": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "number"
+          },
+          "description": "Configure bucket boundaries.\nIf omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.\n"
+        },
+        "record_min_max": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure record min and max.\nIf omitted or null, true is used.\n"
+        }
+      }
+    },
+    "Base2ExponentialBucketHistogramAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "max_scale": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": -10,
+          "maximum": 20,
+          "description": "TODO"
+        },
+        "max_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 2,
+          "description": "TODO"
+        },
+        "record_min_max": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "TODO"
+        }
+      }
+    },
+    "LastValueAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "SumAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalMeterConfigurator": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "default_config": {
+          "$ref": "#/$defs/ExperimentalMeterConfig",
+          "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters."
+        },
+        "meters": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
+          },
+          "description": "Configure meters."
+        }
+      }
+    },
+    "ExperimentalMeterMatcherAndConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": [
+            "string"
+          ],
+          "description": "Configure meter names to match, evaluated as follows:\n\n * If the meter name exactly matches.\n * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+        },
+        "config": {
+          "$ref": "#/$defs/ExperimentalMeterConfig",
+          "description": "The meter config."
+        }
+      }
+    },
+    "ExperimentalMeterConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "disabled": {
+          "type": [
+            "boolean"
+          ],
+          "description": "Configure if the meter is enabled or not."
+        }
+      }
+    }
+  }
+}

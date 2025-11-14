@@ -1,0 +1,100 @@
+{
+  "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenTelemetryConfiguration",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "file_format": {
+      "type": "string",
+      "description": "The file format version.\nThe yaml format is documented at\nhttps://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema\n"
+    },
+    "disabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Configure if the SDK is disabled or not.\nIf omitted or null, false is used.\n"
+    },
+    "log_level": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Configure the log level of the internal logger used by the SDK.\nIf omitted, info is used.\n"
+    },
+    "attribute_limits": {
+      "$ref": "#/$defs/AttributeLimits",
+      "description": "Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.\n"
+    },
+    "logger_provider": {
+      "$ref": "#/$defs/LoggerProvider",
+      "description": "Configure logger provider.\nIf omitted, a noop logger provider is used.\n"
+    },
+    "meter_provider": {
+      "$ref": "#/$defs/MeterProvider",
+      "description": "Configure meter provider.\nIf omitted, a noop meter provider is used.\n"
+    },
+    "propagator": {
+      "$ref": "#/$defs/Propagator",
+      "description": "Configure text map context propagators.\nIf omitted, a noop propagator is used.\n"
+    },
+    "tracer_provider": {
+      "$ref": "#/$defs/TracerProvider",
+      "description": "Configure tracer provider.\nIf omitted, a noop tracer provider is used.\n"
+    },
+    "resource": {
+      "$ref": "#/$defs/Resource",
+      "description": "Configure resource for all signals.\nIf omitted, the default resource is used.\n"
+    },
+    "instrumentation/development": {
+      "$ref": "#/$defs/ExperimentalInstrumentation",
+      "description": "Configure instrumentation.\n"
+    }
+  },
+  "required": [
+    "file_format"
+  ],
+  "$defs": {
+    "AttributeLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attribute_value_length_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute value size. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+        },
+        "attribute_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        }
+      }
+    },
+    "LoggerProvider": {
+      "$ref": "logger_provider.json"
+    },
+    "MeterProvider": {
+      "$ref": "meter_provider.json"
+    },
+    "TracerProvider": {
+      "$ref": "tracer_provider.json"
+    },
+    "Propagator": {
+      "$ref": "propagator.json"
+    },
+    "Resource": {
+      "$ref": "resource.json"
+    },
+    "ExperimentalInstrumentation": {
+      "$ref": "instrumentation.json"
+    }
+  }
+}

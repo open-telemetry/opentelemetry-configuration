@@ -1,0 +1,513 @@
+{
+  "$id": "https://opentelemetry.io/otelconfig/tracer_provider.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "processors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/SpanProcessor"
+      },
+      "description": "Configure span processors."
+    },
+    "limits": {
+      "$ref": "#/$defs/SpanLimits",
+      "description": "Configure span limits. See also attribute_limits."
+    },
+    "sampler": {
+      "$ref": "#/$defs/Sampler",
+      "description": "Configure the sampler.\nIf omitted, parent based sampler with a root of always_on is used.\n"
+    },
+    "tracer_configurator/development": {
+      "$ref": "#/$defs/ExperimentalTracerConfigurator",
+      "description": "Configure tracers.\n"
+    }
+  },
+  "required": [
+    "processors"
+  ],
+  "$defs": {
+    "BatchSpanProcessor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schedule_delay": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure delay interval (in milliseconds) between two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 5000 is used.\n"
+        },
+        "export_timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+        },
+        "max_queue_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure maximum queue size. Value must be positive.\nIf omitted or null, 2048 is used.\n"
+        },
+        "max_export_batch_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure maximum batch size. Value must be positive.\nIf omitted or null, 512 is used.\n"
+        },
+        "exporter": {
+          "$ref": "#/$defs/SpanExporter",
+          "description": "Configure exporter."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "Sampler": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "always_off": {
+          "$ref": "#/$defs/AlwaysOffSampler",
+          "description": "Configure sampler to be always_off."
+        },
+        "always_on": {
+          "$ref": "#/$defs/AlwaysOnSampler",
+          "description": "Configure sampler to be always_on."
+        },
+        "composite/development": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configure sampler to be composite."
+        },
+        "jaeger_remote/development": {
+          "$ref": "#/$defs/ExperimentalJaegerRemoteSampler",
+          "description": "TODO"
+        },
+        "parent_based": {
+          "$ref": "#/$defs/ParentBasedSampler",
+          "description": "Configure sampler to be parent_based."
+        },
+        "probability/development": {
+          "$ref": "#/$defs/ExperimentalProbabilitySampler",
+          "description": "Configure sampler to be probability."
+        },
+        "trace_id_ratio_based": {
+          "$ref": "#/$defs/TraceIdRatioBasedSampler",
+          "description": "Configure sampler to be trace_id_ratio_based."
+        }
+      }
+    },
+    "AlwaysOffSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "AlwaysOnSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalJaegerRemoteSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "TODO"
+        },
+        "interval": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "TODO"
+        },
+        "initial_sampler": {
+          "$ref": "#/$defs/Sampler",
+          "description": "TODO"
+        }
+      }
+    },
+    "ParentBasedSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure root sampler.\nIf omitted or null, always_on is used.\n"
+        },
+        "remote_parent_sampled": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure remote_parent_sampled sampler.\nIf omitted or null, always_on is used.\n"
+        },
+        "remote_parent_not_sampled": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure remote_parent_not_sampled sampler.\nIf omitted or null, always_off is used.\n"
+        },
+        "local_parent_sampled": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure local_parent_sampled sampler.\nIf omitted or null, always_on is used.\n"
+        },
+        "local_parent_not_sampled": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure local_parent_not_sampled sampler.\nIf omitted or null, always_off is used.\n"
+        }
+      }
+    },
+    "ExperimentalProbabilitySampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Configure ratio.\nIf omitted or null, 1.0 is used.\n"
+        }
+      }
+    },
+    "TraceIdRatioBasedSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Configure trace_id_ratio.\nIf omitted or null, 1.0 is used.\n"
+        }
+      }
+    },
+    "ExperimentalComposableAlwaysOffSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalComposableAlwaysOnSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalComposableParentBasedSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configures the sampler for spans with no parent."
+        },
+        "remote_parent_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configures the sampler for spans with a remote parent that is sampled."
+        },
+        "remote_parent_not_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configures the sampler for spans with a remote parent that is not sampled."
+        },
+        "local_parent_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configures the sampler for spans with a local parent that is sampled."
+        },
+        "local_parent_not_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configures the sampler for spans with a local parent that is not sampled."
+        }
+      }
+    },
+    "ExperimentalComposableProbabilitySampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Configure ratio.\nIf omitted or null, 1.0 is used.\n"
+        }
+      }
+    },
+    "ExperimentalComposableSampler": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "always_off": {
+          "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler",
+          "description": "Configure sampler to be always_off."
+        },
+        "always_on": {
+          "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler",
+          "description": "Configure sampler to be always_on."
+        },
+        "parent_based": {
+          "$ref": "#/$defs/ExperimentalComposableParentBasedSampler",
+          "description": "Configure sampler to be parent_based."
+        },
+        "probability": {
+          "$ref": "#/$defs/ExperimentalComposableProbabilitySampler",
+          "description": "Configure sampler to be probability."
+        }
+      }
+    },
+    "SimpleSpanProcessor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exporter": {
+          "$ref": "#/$defs/SpanExporter",
+          "description": "Configure exporter."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "SpanExporter": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "otlp_http": {
+          "$ref": "common.json#/$defs/OtlpHttpExporter",
+          "description": "Configure exporter to be OTLP with HTTP transport."
+        },
+        "otlp_grpc": {
+          "$ref": "common.json#/$defs/OtlpGrpcExporter",
+          "description": "Configure exporter to be OTLP with gRPC transport."
+        },
+        "otlp_file/development": {
+          "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter",
+          "description": "Configure exporter to be OTLP with file transport.\n"
+        },
+        "console": {
+          "$ref": "common.json#/$defs/ConsoleExporter",
+          "description": "Configure exporter to be console."
+        },
+        "zipkin": {
+          "$ref": "#/$defs/ZipkinSpanExporter",
+          "description": "Configure exporter to be zipkin."
+        }
+      }
+    },
+    "SpanLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attribute_value_length_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+        },
+        "attribute_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        },
+        "event_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max span event count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        },
+        "link_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max span link count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        },
+        "event_attribute_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attributes per span event. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        },
+        "link_attribute_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attributes per span link. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        }
+      }
+    },
+    "SpanProcessor": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "batch": {
+          "$ref": "#/$defs/BatchSpanProcessor",
+          "description": "Configure a batch span processor."
+        },
+        "simple": {
+          "$ref": "#/$defs/SimpleSpanProcessor",
+          "description": "Configure a simple span processor."
+        }
+      }
+    },
+    "ZipkinSpanExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure endpoint.\nIf omitted or null, http://localhost:9411/api/v2/spans is used.\n"
+        },
+        "timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max time (in milliseconds) to wait for each export. \nValue must be non-negative. A value of 0 indicates indefinite.\nIf omitted or null, 10000 is used.\n"
+        }
+      }
+    },
+    "ExperimentalTracerConfigurator": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "default_config": {
+          "$ref": "#/$defs/ExperimentalTracerConfig",
+          "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers."
+        },
+        "tracers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
+          },
+          "description": "Configure tracers."
+        }
+      }
+    },
+    "ExperimentalTracerMatcherAndConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": [
+            "string"
+          ],
+          "description": "Configure tracer names to match, evaluated as follows:\n\n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+        },
+        "config": {
+          "$ref": "#/$defs/ExperimentalTracerConfig",
+          "description": "The tracer config."
+        }
+      }
+    },
+    "ExperimentalTracerConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "disabled": {
+          "type": [
+            "boolean"
+          ],
+          "description": "Configure if the tracer is enabled or not."
+        }
+      }
+    }
+  }
+}
