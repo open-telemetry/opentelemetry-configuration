@@ -224,6 +224,9 @@ meter_provider:
             # Configure Prometheus Exporter to produce metrics without a scope info metric.
             # If omitted or null, false is used.
             without_scope_info: false
+            # Configure Prometheus Exporter to produce metrics without a target info metric for the resource.
+            # If omitted or null, false is used.
+            without_target_info: false
             # Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
             with_resource_constant_labels:
               # Configure list of value patterns to include.

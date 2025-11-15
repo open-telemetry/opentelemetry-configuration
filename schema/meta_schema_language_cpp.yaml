@@ -134,7 +134,11 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalPrometheusMetricExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: without_scope_info
+        status: unknown
+      - property: without_target_info
+        status: unknown
   - type: ExperimentalResourceDetection
     status: not_implemented
     propertyOverrides: []
