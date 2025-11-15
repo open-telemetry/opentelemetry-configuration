@@ -69,10 +69,6 @@ attribute_limits:
 # Configure text map context propagators.
 # If omitted, a noop propagator is used.
 propagator:
-  # Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.
-  # Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. 
-  # If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
-  composite: []
   # Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.
   # The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
   # Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. 
@@ -128,9 +124,6 @@ tracer_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: ${OTEL_EXPORTER_OTLP_TRACES_TIMEOUT:-10000}
-            # Configure headers. Entries have higher priority than entries from .headers_list.
-            # If an entry's .value is null, the entry is ignored.
-            headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
@@ -237,9 +230,6 @@ meter_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: ${OTEL_EXPORTER_OTLP_METRICS_TIMEOUT:-10000}
-            # Configure headers. Entries have higher priority than entries from .headers_list.
-            # If an entry's .value is null, the entry is ignored.
-            headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.
@@ -306,9 +296,6 @@ logger_provider:
             # Value must be non-negative. A value of 0 indicates no limit (infinity).
             # If omitted or null, 10000 is used.
             timeout: ${OTEL_EXPORTER_OTLP_LOGS_TIMEOUT:-10000}
-            # Configure headers. Entries have higher priority than entries from .headers_list.
-            # If an entry's .value is null, the entry is ignored.
-            headers: []
             # Configure headers. Entries have lower priority than entries from .headers.
             # The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
             # If omitted or null, no headers are added.

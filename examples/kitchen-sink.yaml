@@ -180,6 +180,7 @@ logger_provider:
     # Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
     default_config:
       # Configure if the logger is enabled or not.
+      # If omitted or null, false is used.
       disabled: true
     # Configure loggers.
     loggers:
@@ -191,7 +192,17 @@ logger_provider:
         # The logger config.
         config:
           # Configure if the logger is enabled or not.
+          # If omitted or null, false is used.
           disabled: false
+          # Configure severity filtering.
+          # Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
+          # Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.
+          # If omitted or null, severity filtering is not applied.
+          minimum_severity: INFO
+          # Configure trace based filtering.
+          # If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.
+          # If omitted or null, trace based filtering is not applied.
+          trace_based: true
 # Configure meter provider.
 # If omitted, a noop meter provider is used.
 meter_provider:
@@ -213,7 +224,7 @@ meter_provider:
             # Configure Prometheus Exporter to produce metrics without a scope info metric.
             # If omitted or null, false is used.
             without_scope_info: false
-            # Configure Prometheus Exporter to produce metrics without a target info metric.
+            # Configure Prometheus Exporter to produce metrics without a target info metric for the resource.
             # If omitted or null, false is used.
             without_target_info: false
             # Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
@@ -807,8 +818,14 @@ tracer_provider:
       # Configure local_parent_sampled sampler.
       # If omitted or null, always_on is used.
       local_parent_sampled:
-        # Configure sampler to be always_on.
-        always_on:
+        # Configure sampler to be composite.
+        # This property is experimental and subject to breaking changes in minor versions.
+        composite/development:
+          # Configure sampler to be probability.
+          probability:
+            # Configure ratio.
+            # If omitted or null, 1.0 is used.
+            ratio: 0.001
       # Configure local_parent_not_sampled sampler.
       # If omitted or null, always_off is used.
       local_parent_not_sampled:

@@ -101,7 +101,7 @@
         "LogRecordProcessor": {
             "type": "object",
             "additionalProperties": {
-                "type": ["object"]
+                "type": ["object", "null"]
             },
             "minProperties": 1,
             "maxProperties": 1,
@@ -123,6 +123,7 @@
                 },
                 "loggers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
                     }
@@ -139,16 +140,55 @@
                 "config": {
                     "$ref": "#/$defs/ExperimentalLoggerConfig"
                 }
-            }
+            },
+            "required": [
+                "name",
+                "config"
+            ]
         },
         "ExperimentalLoggerConfig": {
             "type": ["object"],
             "additionalProperties": false,
             "properties": {
                 "disabled": {
-                    "type": ["boolean"]
+                    "type": ["boolean", "null"]
+                },
+                "minimum_severity": {
+                    "$ref": "#/$defs/ExperimentalSeverityNumber"
+                },
+                "trace_based": {
+                    "type": ["boolean", "null"]
                 }
             }
+        },
+        "ExperimentalSeverityNumber": {
+            "type": ["string", "null"],
+            "enum": [
+                "TRACE",
+                "TRACE2",
+                "TRACE3",
+                "TRACE4",
+                "DEBUG",
+                "DEBUG2",
+                "DEBUG3",
+                "DEBUG4",
+                "INFO",
+                "INFO2",
+                "INFO3",
+                "INFO4",
+                "WARN",
+                "WARN2",
+                "WARN3",
+                "WARN4",
+                "ERROR",
+                "ERROR2",
+                "ERROR3",
+                "ERROR4",
+                "FATAL",
+                "FATAL2",
+                "FATAL3",
+                "FATAL4"
+            ]
         }
     }
 }

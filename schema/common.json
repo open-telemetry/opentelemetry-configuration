@@ -8,12 +8,14 @@
             "properties": {
                 "included": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "type": "string"
                     }
                 },
                 "excluded": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "type": "string"
                     }
@@ -47,6 +49,7 @@
                 },
                 "headers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/NameStringValuePair"
                     }
@@ -85,6 +88,7 @@
                 },
                 "headers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/NameStringValuePair"
                     }

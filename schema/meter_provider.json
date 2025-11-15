@@ -13,6 +13,7 @@
         },
         "views": {
             "type": "array",
+            "minItems": 1,
             "items": {
                 "$ref": "#/$defs/View"
             }
@@ -53,6 +54,7 @@
                 },
                 "producers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/MetricProducer"
                     }
@@ -74,6 +76,7 @@
                 },
                 "producers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/MetricProducer"
                     }
@@ -147,7 +150,7 @@
             }
         },
         "PullMetricExporter": {
-            "type": ["object"],
+            "type": "object",
             "additionalProperties": {
                 "type": ["object", "null"]
             },
@@ -247,6 +250,7 @@
                 },
                 "headers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "common.json#/$defs/NameStringValuePair"
                     }
@@ -284,6 +288,7 @@
                 },
                 "headers": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "common.json#/$defs/NameStringValuePair"
                     }
@@ -444,6 +449,7 @@
             "properties": {
                 "boundaries": {
                     "type": "array",
+                    "minItems": 0,
                     "items": {
                         "type": "number"
                     }
@@ -458,10 +464,13 @@
             "additionalProperties": false,
             "properties": {
                 "max_scale": {
-                    "type": ["integer", "null"]
+                    "type": ["integer", "null"],
+                    "minimum": -10,
+                    "maximum": 20
                 },
                 "max_size": {
-                    "type": ["integer", "null"]
+                    "type": ["integer", "null"],
+                    "minimum": 2
                 },
                 "record_min_max": {
                     "type": ["boolean", "null"]
@@ -485,6 +494,7 @@
                 },
                 "meters": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
                     }
@@ -501,7 +511,11 @@
                 "config": {
                     "$ref": "#/$defs/ExperimentalMeterConfig"
                 }
-            }
+            },
+            "required": [
+                "name",
+                "config"
+            ]
         },
         "ExperimentalMeterConfig": {
             "type": ["object"],
