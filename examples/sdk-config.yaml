@@ -5,7 +5,7 @@
 # environment variables when interpreting config files. This including ignoring all env
 # vars defined in https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/.
 #
-# For schema documentation, including required fields, semantics, default behavior, etc,
+# For schema documentation, including required properties, semantics, default behavior, etc,
 # see: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md
 file_format: "1.0-rc.2"
 disabled: false
