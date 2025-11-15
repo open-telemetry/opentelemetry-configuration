@@ -169,6 +169,19 @@
 - type: ConsoleExporter
   properties: []
   isSdkExtensionPlugin: false
+- type: ConsoleMetricExporter
+  properties:
+    - property: default_histogram_aggregation
+      description: |
+        Configure default histogram aggregation.
+        Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, explicit_bucket_histogram is used.
+    - property: temporality_preference
+      description: |
+        Configure temporality preference.
+        Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, cumulative is used.
+  isSdkExtensionPlugin: false
 - type: DefaultAggregation
   properties: []
   isSdkExtensionPlugin: false
@@ -183,289 +196,6 @@
       description: TODO
     - enumValue: trace_based
       description: TODO
-  isSdkExtensionPlugin: false
-- type: ExperimentalContainerResourceDetector
-  properties: []
-  isSdkExtensionPlugin: false
-- type: ExperimentalGeneralInstrumentation
-  properties:
-    - property: http
-      description: |
-        Configure instrumentations following the http semantic conventions.
-        See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
-    - property: peer
-      description: |
-        Configure instrumentations following the peer semantic conventions.
-        See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
-  isSdkExtensionPlugin: false
-- type: ExperimentalHostResourceDetector
-  properties: []
-  isSdkExtensionPlugin: false
-- type: ExperimentalHttpClientInstrumentation
-  properties:
-    - property: request_captured_headers
-      description: |
-        Configure headers to capture for outbound http requests.
-    - property: response_captured_headers
-      description: |
-        Configure headers to capture for inbound http responses.
-  isSdkExtensionPlugin: false
-- type: ExperimentalHttpInstrumentation
-  properties:
-    - property: client
-      description: Configure instrumentations following the http client semantic conventions.
-    - property: server
-      description: Configure instrumentations following the http server semantic conventions.
-  isSdkExtensionPlugin: false
-- type: ExperimentalHttpServerInstrumentation
-  properties:
-    - property: request_captured_headers
-      description: |
-        Configure headers to capture for inbound http requests.
-    - property: response_captured_headers
-      description: |
-        Configure headers to capture for outbound http responses.
-  isSdkExtensionPlugin: false
-- type: ExperimentalInstrumentation
-  properties:
-    - property: cpp
-      description: Configure C++ language-specific instrumentation libraries.
-    - property: dotnet
-      description: |
-        Configure .NET language-specific instrumentation libraries.
-        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    - property: erlang
-      description: |
-        Configure Erlang language-specific instrumentation libraries.
-        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    - property: general
-      description: |
-        Configure general SemConv options that may apply to multiple languages and instrumentations.
-        Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
-    - property: go
-      description: |
-        Configure Go language-specific instrumentation libraries.
-        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    - property: java
-      description: |
-        Configure Java language-specific instrumentation libraries.
-        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    - property: js
-      description: |
-        Configure JavaScript language-specific instrumentation libraries.
-        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    - property: php
-      description: |
-        Configure PHP language-specific instrumentation libraries.
-        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    - property: python
-      description: |
-        Configure Python language-specific instrumentation libraries.
-        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    - property: ruby
-      description: |
-        Configure Ruby language-specific instrumentation libraries.
-        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    - property: rust
-      description: |
-        Configure Rust language-specific instrumentation libraries.
-        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    - property: swift
-      description: |
-        Configure Swift language-specific instrumentation libraries.
-        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-  isSdkExtensionPlugin: false
-- type: ExperimentalLanguageSpecificInstrumentation
-  properties: []
-  isSdkExtensionPlugin: false
-- type: ExperimentalLoggerConfig
-  properties:
-    - property: disabled
-      description: |
-        Configure if the logger is enabled or not.
-        If omitted or null, false is used.
-    - property: minimum_severity
-      description: |
-        Configure severity filtering.
-        Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
-        Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.
-        If omitted or null, severity filtering is not applied.
-    - property: trace_based
-      description: |
-        Configure trace based filtering.
-        If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.
-        If omitted or null, trace based filtering is not applied.
-  isSdkExtensionPlugin: false
-- type: ExperimentalLoggerConfigurator
-  properties:
-    - property: default_config
-      description: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
-    - property: loggers
-      description: Configure loggers.
-  isSdkExtensionPlugin: false
-- type: ExperimentalLoggerMatcherAndConfig
-  properties:
-    - property: config
-      description: The logger config.
-    - property: name
-      description: |
-        Configure logger names to match, evaluated as follows:
-
-         * If the logger name exactly matches.
-         * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-  isSdkExtensionPlugin: false
-- type: ExperimentalMeterConfig
-  properties:
-    - property: disabled
-      description: Configure if the meter is enabled or not.
-  isSdkExtensionPlugin: false
-- type: ExperimentalMeterConfigurator
-  properties:
-    - property: default_config
-      description: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
-    - property: meters
-      description: Configure meters.
-  isSdkExtensionPlugin: false
-- type: ExperimentalMeterMatcherAndConfig
-  properties:
-    - property: config
-      description: The meter config.
-    - property: name
-      description: |
-        Configure meter names to match, evaluated as follows:
-
-         * If the meter name exactly matches.
-         * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-  isSdkExtensionPlugin: false
-- type: ExperimentalOtlpFileExporter
-  properties:
-    - property: output_stream
-      description: |
-        Configure output stream. 
-        Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
-        If omitted or null, stdout is used.
-  isSdkExtensionPlugin: false
-- type: ExperimentalOtlpFileMetricExporter
-  properties:
-    - property: default_histogram_aggregation
-      description: |
-        Configure default histogram aggregation.
-        Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-        If omitted or null, explicit_bucket_histogram is used.
-    - property: output_stream
-      description: |
-        Configure output stream. 
-        Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
-        If omitted or null, stdout is used.
-    - property: temporality_preference
-      description: |
-        Configure temporality preference.
-        Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-        If omitted or null, cumulative is used.
-  isSdkExtensionPlugin: false
-- type: ExperimentalPeerInstrumentation
-  properties:
-    - property: service_mapping
-      description: |
-        Configure the service mapping for instrumentations following peer.service semantic conventions.
-        See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
-  isSdkExtensionPlugin: false
-- type: ExperimentalPeerServiceMapping
-  properties:
-    - property: peer
-      description: |
-        The IP address to map.
-    - property: service
-      description: |
-        The logical name corresponding to the IP address of .peer.
-  isSdkExtensionPlugin: false
-- type: ExperimentalProbabilitySampler
-  properties:
-    - property: ratio
-      description: |
-        Configure ratio.
-        If omitted or null, 1.0 is used.
-  isSdkExtensionPlugin: false
-- type: ExperimentalProcessResourceDetector
-  properties: []
-  isSdkExtensionPlugin: false
-- type: ExperimentalPrometheusMetricExporter
-  properties:
-    - property: host
-      description: |
-        Configure host.
-        If omitted or null, localhost is used.
-    - property: port
-      description: |
-        Configure port.
-        If omitted or null, 9464 is used.
-    - property: translation_strategy
-      description: |
-        Configure how Prometheus metrics are exposed. Values include:
-
-         * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.
-         * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.
-         * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.
-         * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.
-
-        If omitted or null, UnderscoreEscapingWithSuffixes is used.
-    - property: with_resource_constant_labels
-      description: Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
-    - property: without_scope_info
-      description: |
-        Configure Prometheus Exporter to produce metrics without a scope info metric.
-        If omitted or null, false is used.
-  isSdkExtensionPlugin: false
-- type: ExperimentalResourceDetection
-  properties:
-    - property: attributes
-      description: Configure attributes provided by resource detectors.
-    - property: detectors
-      description: |
-        Configure resource detectors.
-        Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
-        If omitted or null, no resource detectors are enabled.
-  isSdkExtensionPlugin: false
-- type: ExperimentalResourceDetector
-  properties:
-    - property: container
-      description: |
-        Enable the container resource detector, which populates container.* attributes.
-    - property: host
-      description: |
-        Enable the host resource detector, which populates host.* and os.* attributes.
-    - property: process
-      description: |
-        Enable the process resource detector, which populates process.* attributes.
-    - property: service
-      description: |
-        Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.
-  isSdkExtensionPlugin: true
-- type: ExperimentalServiceResourceDetector
-  properties: []
-  isSdkExtensionPlugin: false
-- type: ExperimentalTracerConfig
-  properties:
-    - property: disabled
-      description: Configure if the tracer is enabled or not.
-  isSdkExtensionPlugin: false
-- type: ExperimentalTracerConfigurator
-  properties:
-    - property: default_config
-      description: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
-    - property: tracers
-      description: Configure tracers.
-  isSdkExtensionPlugin: false
-- type: ExperimentalTracerMatcherAndConfig
-  properties:
-    - property: config
-      description: The tracer config.
-    - property: name
-      description: |
-        Configure tracer names to match, evaluated as follows:
-
-         * If the tracer name exactly matches.
-         * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
   isSdkExtensionPlugin: false
 - type: ExplicitBucketHistogramAggregation
   properties:
@@ -579,23 +309,23 @@
   properties:
     - property: limits
       description: Configure log record limits. See also attribute_limits.
+    - property: processors
+      description: Configure log record processors.
     - property: logger_configurator/development
       description: |
         Configure loggers.
-    - property: processors
-      description: Configure log record processors.
   isSdkExtensionPlugin: false
 - type: LogRecordExporter
   properties:
     - property: console
       description: Configure exporter to be console.
-    - property: otlp_file/development
-      description: |
-        Configure exporter to be OTLP with file transport.
     - property: otlp_grpc
       description: Configure exporter to be OTLP with gRPC transport.
     - property: otlp_http
       description: Configure exporter to be OTLP with HTTP transport.
+    - property: otlp_file/development
+      description: |
+        Configure exporter to be OTLP with file transport.
   isSdkExtensionPlugin: true
 - type: LogRecordLimits
   properties:
@@ -624,15 +354,15 @@
         Configure the exemplar filter. 
         Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
         If omitted or null, trace_based is used.
-    - property: meter_configurator/development
-      description: |
-        Configure meters.
     - property: readers
       description: Configure metric readers.
     - property: views
       description: |
         Configure views. 
         Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
+    - property: meter_configurator/development
+      description: |
+        Configure meters.
   isSdkExtensionPlugin: false
 - type: MetricProducer
   properties:
@@ -670,9 +400,6 @@
         The file format version.
         The yaml format is documented at
         https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
-    - property: instrumentation/development
-      description: |
-        Configure instrumentation.
     - property: log_level
       description: |
         Configure the log level of the internal logger used by the SDK.
@@ -697,6 +424,9 @@
       description: |
         Configure tracer provider.
         If omitted, a noop tracer provider is used.
+    - property: instrumentation/development
+      description: |
+        Configure instrumentation.
   isSdkExtensionPlugin: false
 - type: OpenTracingPropagator
   properties: []
@@ -930,15 +660,15 @@
     - property: console
       description: |
         Configure exporter to be console.
-    - property: otlp_file/development
-      description: |
-        Configure exporter to be OTLP with file transport.
     - property: otlp_grpc
       description: |
         Configure exporter to be OTLP with gRPC transport.
     - property: otlp_http
       description: |
         Configure exporter to be OTLP with HTTP transport.
+    - property: otlp_file/development
+      description: |
+        Configure exporter to be OTLP with file transport.
   isSdkExtensionPlugin: true
 - type: Resource
   properties:
@@ -950,14 +680,14 @@
         Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
         The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
         If omitted or null, no resource attributes are added.
-    - property: detection/development
-      description: |
-        Configure resource detection.
-        If omitted or null, resource detection is disabled.
     - property: schema_url
       description: |
         Configure resource schema URL.
         If omitted or null, no schema URL is used.
+    - property: detection/development
+      description: |
+        Configure resource detection.
+        If omitted or null, resource detection is disabled.
   isSdkExtensionPlugin: false
 - type: Sampler
   properties:
@@ -965,16 +695,16 @@
       description: Configure sampler to be always_off.
     - property: always_on
       description: Configure sampler to be always_on.
+    - property: parent_based
+      description: Configure sampler to be parent_based.
+    - property: trace_id_ratio_based
+      description: Configure sampler to be trace_id_ratio_based.
     - property: composite/development
       description: Configure sampler to be composite.
     - property: jaeger_remote/development
       description: TODO
-    - property: parent_based
-      description: Configure sampler to be parent_based.
     - property: probability/development
       description: Configure sampler to be probability.
-    - property: trace_id_ratio_based
-      description: Configure sampler to be trace_id_ratio_based.
   isSdkExtensionPlugin: true
 - type: SimpleLogRecordProcessor
   properties:
@@ -990,15 +720,15 @@
   properties:
     - property: console
       description: Configure exporter to be console.
-    - property: otlp_file/development
-      description: |
-        Configure exporter to be OTLP with file transport.
     - property: otlp_grpc
       description: Configure exporter to be OTLP with gRPC transport.
     - property: otlp_http
       description: Configure exporter to be OTLP with HTTP transport.
     - property: zipkin
       description: Configure exporter to be zipkin.
+    - property: otlp_file/development
+      description: |
+        Configure exporter to be OTLP with file transport.
   isSdkExtensionPlugin: true
 - type: SpanLimits
   properties:
@@ -1154,38 +884,11 @@
         Value must be non-negative. A value of 0 indicates indefinite.
         If omitted or null, 10000 is used.
   isSdkExtensionPlugin: false
-- type: ConsoleMetricExporter
-  properties:
-    - property: default_histogram_aggregation
-      description: |
-        Configure default histogram aggregation.
-        Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-        If omitted or null, explicit_bucket_histogram is used.
-    - property: temporality_preference
-      description: |
-        Configure temporality preference.
-        Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
-        If omitted or null, cumulative is used.
+- type: ExperimentalComposableAlwaysOffSampler
+  properties: []
   isSdkExtensionPlugin: false
-- type: ExperimentalJaegerRemoteSampler
-  properties:
-    - property: endpoint
-      description: TODO
-    - property: initial_sampler
-      description: TODO
-    - property: interval
-      description: TODO
-  isSdkExtensionPlugin: false
-- type: ExperimentalComposableSampler
-  properties:
-    - property: always_off
-      description: Configure sampler to be always_off.
-    - property: always_on
-      description: Configure sampler to be always_on.
-    - property: parent_based
-      description: Configure sampler to be parent_based.
-    - property: probability
-      description: Configure sampler to be probability.
+- type: ExperimentalComposableAlwaysOnSampler
+  properties: []
   isSdkExtensionPlugin: false
 - type: ExperimentalComposableParentBasedSampler
   properties:
@@ -1200,18 +903,292 @@
     - property: root
       description: Configures the sampler for spans with no parent.
   isSdkExtensionPlugin: false
-- type: ExperimentalComposableAlwaysOffSampler
-  properties: []
-  isSdkExtensionPlugin: false
-- type: ExperimentalComposableAlwaysOnSampler
-  properties: []
-  isSdkExtensionPlugin: false
 - type: ExperimentalComposableProbabilitySampler
   properties:
     - property: ratio
       description: |
         Configure ratio.
         If omitted or null, 1.0 is used.
+  isSdkExtensionPlugin: false
+- type: ExperimentalComposableSampler
+  properties:
+    - property: always_off
+      description: Configure sampler to be always_off.
+    - property: always_on
+      description: Configure sampler to be always_on.
+    - property: parent_based
+      description: Configure sampler to be parent_based.
+    - property: probability
+      description: Configure sampler to be probability.
+  isSdkExtensionPlugin: false
+- type: ExperimentalContainerResourceDetector
+  properties: []
+  isSdkExtensionPlugin: false
+- type: ExperimentalGeneralInstrumentation
+  properties:
+    - property: http
+      description: |
+        Configure instrumentations following the http semantic conventions.
+        See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
+    - property: peer
+      description: |
+        Configure instrumentations following the peer semantic conventions.
+        See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
+  isSdkExtensionPlugin: false
+- type: ExperimentalHostResourceDetector
+  properties: []
+  isSdkExtensionPlugin: false
+- type: ExperimentalHttpClientInstrumentation
+  properties:
+    - property: request_captured_headers
+      description: |
+        Configure headers to capture for outbound http requests.
+    - property: response_captured_headers
+      description: |
+        Configure headers to capture for inbound http responses.
+  isSdkExtensionPlugin: false
+- type: ExperimentalHttpInstrumentation
+  properties:
+    - property: client
+      description: Configure instrumentations following the http client semantic conventions.
+    - property: server
+      description: Configure instrumentations following the http server semantic conventions.
+  isSdkExtensionPlugin: false
+- type: ExperimentalHttpServerInstrumentation
+  properties:
+    - property: request_captured_headers
+      description: |
+        Configure headers to capture for inbound http requests.
+    - property: response_captured_headers
+      description: |
+        Configure headers to capture for outbound http responses.
+  isSdkExtensionPlugin: false
+- type: ExperimentalInstrumentation
+  properties:
+    - property: cpp
+      description: Configure C++ language-specific instrumentation libraries.
+    - property: dotnet
+      description: |
+        Configure .NET language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    - property: erlang
+      description: |
+        Configure Erlang language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    - property: general
+      description: |
+        Configure general SemConv options that may apply to multiple languages and instrumentations.
+        Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
+    - property: go
+      description: |
+        Configure Go language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    - property: java
+      description: |
+        Configure Java language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    - property: js
+      description: |
+        Configure JavaScript language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    - property: php
+      description: |
+        Configure PHP language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    - property: python
+      description: |
+        Configure Python language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    - property: ruby
+      description: |
+        Configure Ruby language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    - property: rust
+      description: |
+        Configure Rust language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    - property: swift
+      description: |
+        Configure Swift language-specific instrumentation libraries.
+        Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+  isSdkExtensionPlugin: false
+- type: ExperimentalJaegerRemoteSampler
+  properties:
+    - property: endpoint
+      description: TODO
+    - property: initial_sampler
+      description: TODO
+    - property: interval
+      description: TODO
+  isSdkExtensionPlugin: false
+- type: ExperimentalLanguageSpecificInstrumentation
+  properties: []
+  isSdkExtensionPlugin: false
+- type: ExperimentalLoggerConfig
+  properties:
+    - property: disabled
+      description: |
+        Configure if the logger is enabled or not.
+        If omitted or null, false is used.
+    - property: minimum_severity
+      description: |
+        Configure severity filtering.
+        Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
+        Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.
+        If omitted or null, severity filtering is not applied.
+    - property: trace_based
+      description: |
+        Configure trace based filtering.
+        If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.
+        If omitted or null, trace based filtering is not applied.
+  isSdkExtensionPlugin: false
+- type: ExperimentalLoggerConfigurator
+  properties:
+    - property: default_config
+      description: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
+    - property: loggers
+      description: Configure loggers.
+  isSdkExtensionPlugin: false
+- type: ExperimentalLoggerMatcherAndConfig
+  properties:
+    - property: config
+      description: The logger config.
+    - property: name
+      description: |
+        Configure logger names to match, evaluated as follows:
+
+         * If the logger name exactly matches.
+         * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+  isSdkExtensionPlugin: false
+- type: ExperimentalMeterConfig
+  properties:
+    - property: disabled
+      description: Configure if the meter is enabled or not.
+  isSdkExtensionPlugin: false
+- type: ExperimentalMeterConfigurator
+  properties:
+    - property: default_config
+      description: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
+    - property: meters
+      description: Configure meters.
+  isSdkExtensionPlugin: false
+- type: ExperimentalMeterMatcherAndConfig
+  properties:
+    - property: config
+      description: The meter config.
+    - property: name
+      description: |
+        Configure meter names to match, evaluated as follows:
+
+         * If the meter name exactly matches.
+         * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+  isSdkExtensionPlugin: false
+- type: ExperimentalOtlpFileExporter
+  properties:
+    - property: output_stream
+      description: |
+        Configure output stream. 
+        Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+        If omitted or null, stdout is used.
+  isSdkExtensionPlugin: false
+- type: ExperimentalOtlpFileMetricExporter
+  properties:
+    - property: default_histogram_aggregation
+      description: |
+        Configure default histogram aggregation.
+        Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, explicit_bucket_histogram is used.
+    - property: output_stream
+      description: |
+        Configure output stream. 
+        Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+        If omitted or null, stdout is used.
+    - property: temporality_preference
+      description: |
+        Configure temporality preference.
+        Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
+        If omitted or null, cumulative is used.
+  isSdkExtensionPlugin: false
+- type: ExperimentalPeerInstrumentation
+  properties:
+    - property: service_mapping
+      description: |
+        Configure the service mapping for instrumentations following peer.service semantic conventions.
+        See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
+  isSdkExtensionPlugin: false
+- type: ExperimentalPeerServiceMapping
+  properties:
+    - property: peer
+      description: |
+        The IP address to map.
+    - property: service
+      description: |
+        The logical name corresponding to the IP address of .peer.
+  isSdkExtensionPlugin: false
+- type: ExperimentalProbabilitySampler
+  properties:
+    - property: ratio
+      description: |
+        Configure ratio.
+        If omitted or null, 1.0 is used.
+  isSdkExtensionPlugin: false
+- type: ExperimentalProcessResourceDetector
+  properties: []
+  isSdkExtensionPlugin: false
+- type: ExperimentalPrometheusMetricExporter
+  properties:
+    - property: host
+      description: |
+        Configure host.
+        If omitted or null, localhost is used.
+    - property: port
+      description: |
+        Configure port.
+        If omitted or null, 9464 is used.
+    - property: translation_strategy
+      description: |
+        Configure how Prometheus metrics are exposed. Values include:
+
+         * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.
+         * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.
+         * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.
+         * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.
+
+        If omitted or null, UnderscoreEscapingWithSuffixes is used.
+    - property: with_resource_constant_labels
+      description: Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
+    - property: without_scope_info
+      description: |
+        Configure Prometheus Exporter to produce metrics without a scope info metric.
+        If omitted or null, false is used.
+  isSdkExtensionPlugin: false
+- type: ExperimentalResourceDetection
+  properties:
+    - property: attributes
+      description: Configure attributes provided by resource detectors.
+    - property: detectors
+      description: |
+        Configure resource detectors.
+        Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
+        If omitted or null, no resource detectors are enabled.
+  isSdkExtensionPlugin: false
+- type: ExperimentalResourceDetector
+  properties:
+    - property: container
+      description: |
+        Enable the container resource detector, which populates container.* attributes.
+    - property: host
+      description: |
+        Enable the host resource detector, which populates host.* and os.* attributes.
+    - property: process
+      description: |
+        Enable the process resource detector, which populates process.* attributes.
+    - property: service
+      description: |
+        Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.
+  isSdkExtensionPlugin: true
+- type: ExperimentalServiceResourceDetector
+  properties: []
   isSdkExtensionPlugin: false
 - type: ExperimentalSeverityNumber
   enumValues:
@@ -1263,4 +1240,27 @@
       description: WARN3, severity number 15.
     - enumValue: WARN4
       description: WARN4, severity number 16.
+  isSdkExtensionPlugin: false
+- type: ExperimentalTracerConfig
+  properties:
+    - property: disabled
+      description: Configure if the tracer is enabled or not.
+  isSdkExtensionPlugin: false
+- type: ExperimentalTracerConfigurator
+  properties:
+    - property: default_config
+      description: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
+    - property: tracers
+      description: Configure tracers.
+  isSdkExtensionPlugin: false
+- type: ExperimentalTracerMatcherAndConfig
+  properties:
+    - property: config
+      description: The tracer config.
+    - property: name
+      description: |
+        Configure tracer names to match, evaluated as follows:
+
+         * If the tracer name exactly matches.
+         * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
   isSdkExtensionPlugin: false
