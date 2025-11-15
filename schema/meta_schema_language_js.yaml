@@ -54,108 +54,6 @@ typeSupportStatuses:
   - type: ExemplarFilter
     status: unknown
     enumOverrides: []
-  - type: ExperimentalComposableAlwaysOffSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableAlwaysOnSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableParentBasedSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableProbabilitySampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalContainerResourceDetector
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalGeneralInstrumentation
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalHostResourceDetector
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalHttpClientInstrumentation
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalHttpInstrumentation
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalHttpServerInstrumentation
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalInstrumentation
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalJaegerRemoteSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalLanguageSpecificInstrumentation
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalLoggerConfig
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalLoggerConfigurator
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalLoggerMatcherAndConfig
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalMeterConfig
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalMeterConfigurator
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalMeterMatcherAndConfig
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalOtlpFileExporter
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalOtlpFileMetricExporter
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalPeerInstrumentation
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalPeerServiceMapping
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalProbabilitySampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalProcessResourceDetector
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalPrometheusMetricExporter
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalResourceDetection
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalResourceDetector
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalServiceResourceDetector
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalSeverityNumber
-    status: unknown
-    enumOverrides: []
-  - type: ExperimentalTracerConfig
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalTracerConfigurator
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalTracerMatcherAndConfig
-    status: unknown
-    propertyOverrides: []
   - type: ExplicitBucketHistogramAggregation
     status: unknown
     propertyOverrides: []
@@ -295,5 +193,107 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ZipkinSpanExporter
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableAlwaysOffSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableAlwaysOnSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableParentBasedSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableProbabilitySampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalContainerResourceDetector
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalGeneralInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalHostResourceDetector
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalHttpClientInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalHttpInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalHttpServerInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalJaegerRemoteSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalLanguageSpecificInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalLoggerConfig
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalLoggerConfigurator
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalLoggerMatcherAndConfig
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalMeterConfig
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalMeterConfigurator
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalMeterMatcherAndConfig
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalOtlpFileExporter
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalOtlpFileMetricExporter
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalPeerInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalPeerServiceMapping
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalProbabilitySampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalProcessResourceDetector
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalPrometheusMetricExporter
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalResourceDetection
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalResourceDetector
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalServiceResourceDetector
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalSeverityNumber
+    status: unknown
+    enumOverrides: []
+  - type: ExperimentalTracerConfig
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalTracerConfigurator
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalTracerMatcherAndConfig
     status: unknown
     propertyOverrides: []
