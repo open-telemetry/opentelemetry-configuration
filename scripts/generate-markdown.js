@@ -1,7 +1,7 @@
 import {readJsonSchemaTypes} from "./json-schema.js";
 import {KNOWN_LANGUAGES, readAndFixMetaSchema} from "./meta-schema.js";
 import fs from "node:fs";
-import {isExperimentalProperty, isExperimentalType, markdownDocPath} from "./util.js";
+import {isExperimentalProperty, isExperimentalType, markdownDocPath, rootTypeName} from "./util.js";
 import {readSnippets} from "./snippets.js";
 
 const { messages, metaSchema } = readAndFixMetaSchema();
@@ -30,7 +30,7 @@ addHeader('Overview', 'overview', 1);
 output.push(`
 This document is an auto-generated view of the declarative configuration JSON schema and meta schema meant for improved consumability by humans.
 
-* [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [OpenTelemetryConfiguration](#opentelemetryconfiguration) is the root type and is a good starting point.
+* [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [${rootTypeName}](#${rootTypeName.toLowerCase()}) is the root type and is a good starting point.
 * [Language Support Status](#language-support-status) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
 * [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
 
@@ -226,6 +226,11 @@ KNOWN_LANGUAGES.forEach(language => {
             throw new Error(`MetaSchemaType not found for type ${typeSupportStatus.type}.`);
         }
 
+        let formattedNotes = typeSupportStatus.notes;
+        if (!formattedNotes) {
+            formattedNotes = "";
+        }
+
         const supportStatusDetails = [];
 
         if (metaSchemaType.properties !== null) {
@@ -242,7 +247,7 @@ KNOWN_LANGUAGES.forEach(language => {
             });
         }
 
-        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${typeSupportStatus.notes} | ${supportStatusDetails.join('')} |\n`);
+        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${formattedNotes} | ${supportStatusDetails.join('')} |\n`);
     });
     output.push(`\n\n`);
 });

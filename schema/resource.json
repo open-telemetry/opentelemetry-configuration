@@ -6,6 +6,7 @@
     "properties": {
         "attributes": {
             "type": "array",
+            "minItems": 1,
             "items": {
                 "$ref": "#/$defs/AttributeNameValue"
             }
@@ -34,9 +35,9 @@
                         {"type": "number"},
                         {"type": "boolean"},
                         {"type": "null"},
-                        {"type": "array", "items": {"type": "string"}},
-                        {"type": "array", "items": {"type": "boolean"}},
-                        {"type": "array", "items": {"type": "number"}}
+                        {"type": "array", "items": {"type": "string"}, "minItems": 1},
+                        {"type": "array", "items": {"type": "boolean"}, "minItems": 1},
+                        {"type": "array", "items": {"type": "number"}, "minItems": 1}
                     ]
                 },
                 "type": {
@@ -69,6 +70,7 @@
                 },
                 "detectors": {
                     "type": "array",
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/$defs/ExperimentalResourceDetector"
                     }

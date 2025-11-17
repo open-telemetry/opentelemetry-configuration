@@ -2,9 +2,11 @@
     "$id": "https://opentelemetry.io/otelconfig/propagator.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
+    "additionalProperties": false,
     "properties": {
         "composite": {
             "type": "array",
+            "minItems": 1,
             "items": {
                 "$ref": "#/$defs/TextMapPropagator"
             }

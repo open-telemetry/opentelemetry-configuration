@@ -19,3 +19,4 @@ export const isExperimentalProperty = (property) => property.endsWith('/developm
 export const isExperimentalType = (type) => type.startsWith('Experimental');
 
 export const snippetsDirPath = __dirname + "/../snippets/";
+export const rootTypeName = 'OpenTelemetryConfiguration';

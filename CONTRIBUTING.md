@@ -192,6 +192,14 @@ Another example:
 
 `oneOf` is used to specify that the `value` property matches the [Attribute AnyValue](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/README.md#anyvalue) definition, and is either a primitive or array of primitives. This type of use is acceptable but should be used judiciously.
 
+### Array minItems
+
+Because properties of type `array` are not candidates for [env var substitution], it typically does not make sense to allow the array to be empty. In some cases, an empty array likely corresponds to an accidental misconfiguration which should be detected and reported as an error. In other cases, an empty array is simply meaningless and the user is better off omitting the property altogether.
+
+For these reasons, [`minItems`](https://json-schema.org/understanding-json-schema/reference/array#length) is typically set to `1`.
+
+NOTE: there are some valid cases where an empty array is semantically meaningful, such as when setting `ExplicitBucketHistogram.boundaries`.
+
 ### Annotations - title and description
 
 The JSON schema [`title` and `description` annotations](https://json-schema.org/understanding-json-schema/reference/annotations) are keywords which are not involved in validation. Instead, they act as a mechanism to help schemas be self-documenting, and may be used by code generation tools.
@@ -243,6 +251,51 @@ Or a property can reference a subschema residing in a schema document's [$defs](
 ```
 
 In order to promote stylistic consistency and allow for reuse of concepts, `object` and `enum` types should be defined in either as a top level schema document or as a subschema in a schema document's `$defs`.
+
+### SDK extension plugins
+
+[SDK extension plugin interfaces](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#sdk-extension-components) should be modeled consistently for improved user experience and to facilitate implementations supporting custom implementations via the [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#componentprovider) mechanism.
+
+The [SpanExporter](schema/tracer_provider.json) schema is typical:
+
+```
+...
+"SpanExporter": {
+    "type": "object",
+    "additionalProperties": {
+        "type": ["object", "null"]
+    },
+    "minProperties": 1,
+    "maxProperties": 1,
+    "properties": {
+        "otlp_http": { "$ref": "common.json#/$defs/OtlpHttpExporter" },
+        // additional built-in exporters omitted for brevity
+    } 
+},
+```
+
+Which results in YAML like:
+
+```yaml
+tracer_provider:
+  processors:
+    - batch:
+        exporter: 
+          otlp_http: # set the span exporter to be the built-in OTLP http exporter
+            endpoint: http://exmaple/v1/traces
+---
+tracer_provider:
+  processors:
+    - batch:
+        exporter:
+          my_custom_exporter: # set the span exporter to be a custom exporter with name my_custom_exporter
+            property: value
+```
+
+* The `SpanExporter` type requires exactly one property to be set (`"minProperties": 1`, `"maxProperties": 1`), and requires that property to have a value of type `object` or `null` (`"additionalProperties": {"type": ["object", "null"]}`).
+* The property key refers to the `name` used to [register a ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-componentprovider). 
+* The property value is passed as configuration as `properties` when [ComponentProvodier Create Plugin](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create-plugin) is called.
+* `SpanExporter` has `properties` describing the names and schemas of built-in span exporters (i.e. those defined explicitly in the specification). 
 
 ## Consistency Checks
 
@@ -332,7 +385,7 @@ latestSupportedFileFormat: 1.0.0-rc.1
 typeSupportStatuses:
   - type: Base2ExponentialBucketHistogramAggregation
     status: supported # the support status, see below for allowed enum values
-    notes: ""
+    # notes: Uncomment to include optional additional notes on the implementation.
     propertyOverrides:
       - property: record_min_max
         status: ignored
@@ -345,6 +398,7 @@ Notes:
 * `.typeSupportStatuses` is an array with entries for each type in the JSON schema.
   * `.typeSupportStatuses[].type` is the name of the JSON schema type. **Maintained automatically by build tooling.**
   * `.typeSupportStatuses[].status` captures the support status of the type and all properties except overrides in `.typeSupportStatuses[].propertyOverrides`. See enum options below.
+  * `.typeSupportStatuses[].notes` optional additional notes on the implementation.
   * `.typeSupportStatuses[].propertyOverrides` an array of properties which have different support statuses than the overall type as recorded in `.typeSupportStatuses[].status. Omitted for enum types.
     * `.typeSupportStatuses[].propertyOverrides[].property` the name of the property whose support status is overridden.
     * `.typeSupportStatuses[].propertyOverrides[].status` the overridden support status. See enum options below.
@@ -434,14 +488,11 @@ A PR is ready to merge when:
 * There is no `request changes` from the [codeowners](.github/CODEOWNERS)
 * If a change to the schema, at least one [example](examples/) is updated to illustrate change
 * All required status checks pass
-* The PR includes a [CHANGELOG](CHANGELOG.md) entry under `## UNRELEASED` following the form:
+* Has been tagged with any applicable [labels](#labels)
 
-```markdown
+### Labels
 
-* {Brief description of change}
-  ([#{PR Number}]({https://github.com/open-telemetry/opentelemetry-configuration/pull/{PR Number}))
-
-```
+* [`breaking`](https://github.com/open-telemetry/opentelemetry-configuration/pulls?q=is%3Apr+label%3Abreaking+): applied to PRs which qualify as breaking changes according to the [stability definition](README.md#stability-definition), including breaking changes to [experimental features](README.md#experimental-features) which are allowed in minor versions.
 
 [env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
