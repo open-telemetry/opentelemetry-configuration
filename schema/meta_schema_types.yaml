@@ -415,6 +415,10 @@
       description: |
         Configure Prometheus Exporter to produce metrics without a scope info metric.
         If omitted or null, false is used.
+    - property: without_target_info
+      description: |
+        Configure Prometheus Exporter to produce metrics without a target info metric for the resource.
+        If omitted or null, false is used.
   isSdkExtensionPlugin: false
 - type: ExperimentalResourceDetection
   properties:
