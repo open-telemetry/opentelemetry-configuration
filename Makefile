@@ -40,19 +40,12 @@ update-file-format:
 fix-meta-schema:
 	npm run-script fix-meta-schema || exit 1; \
 
-.PHONY: generate-descriptions
-generate-descriptions:
-	@if ! npm ls minimatch yaml; then npm install; fi
-	@for f in $(EXAMPLE_FILES); do \
-	    npm run-script generate-descriptions -- $(shell pwd)/examples/$$f $(shell pwd)/examples/$$f || exit 1; \
-	done
-
 .PHONY: generate-markdown
 generate-markdown:
 	npm run-script generate-markdown || exit 1; \
 
 .PHONY: all-meta-schema
-all-meta-schema: fix-meta-schema generate-descriptions generate-markdown
+all-meta-schema: fix-meta-schema generate-markdown
 
 .PHONY: install-tools
 install-tools:
