@@ -1,7 +1,6 @@
 {
   "type": "module",
   "scripts": {
-    "generate-descriptions": "node scripts/generate-descriptions.js",
     "generate-markdown": "node scripts/generate-markdown.js",
     "fix-meta-schema": "node scripts/fix-meta-schema.js"
   },
