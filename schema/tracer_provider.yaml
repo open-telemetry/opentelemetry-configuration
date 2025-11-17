@@ -1,5 +1,3 @@
-$id: https://opentelemetry.io/otelconfig/tracer_provider.json
-$schema: https://json-schema.org/draft/2020-12/schema
 type: object
 additionalProperties: false
 properties:
@@ -208,13 +206,13 @@ $defs:
     maxProperties: 1
     properties:
       otlp_http:
-        $ref: common.json#/$defs/OtlpHttpExporter
+        $ref: common.yaml#/$defs/OtlpHttpExporter
       otlp_grpc:
-        $ref: common.json#/$defs/OtlpGrpcExporter
+        $ref: common.yaml#/$defs/OtlpGrpcExporter
       otlp_file/development:
-        $ref: common.json#/$defs/ExperimentalOtlpFileExporter
+        $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
       console:
-        $ref: common.json#/$defs/ConsoleExporter
+        $ref: common.yaml#/$defs/ConsoleExporter
       zipkin:
         $ref: "#/$defs/ZipkinSpanExporter"
   SpanLimits:

@@ -1,5 +1,3 @@
-$id: https://opentelemetry.io/otelconfig/common.json
-$schema: https://json-schema.org/draft/2020-12/schema
 $defs:
   IncludeExclude:
     type: object

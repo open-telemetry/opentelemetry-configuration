@@ -1,5 +1,3 @@
-$id: https://opentelemetry.io/otelconfig/opentelemetry_configuration.json
-$schema: https://json-schema.org/draft/2020-12/schema
 title: OpenTelemetryConfiguration
 type: object
 additionalProperties: true
@@ -46,14 +44,14 @@ $defs:
           - "null"
         minimum: 0
   LoggerProvider:
-    $ref: logger_provider.json
+    $ref: logger_provider.yaml
   MeterProvider:
-    $ref: meter_provider.json
+    $ref: meter_provider.yaml
   TracerProvider:
-    $ref: tracer_provider.json
+    $ref: tracer_provider.yaml
   Propagator:
-    $ref: propagator.json
+    $ref: propagator.yaml
   Resource:
-    $ref: resource.json
+    $ref: resource.yaml
   ExperimentalInstrumentation:
-    $ref: instrumentation.json
+    $ref: instrumentation.yaml
