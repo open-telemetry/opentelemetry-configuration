@@ -5,8 +5,8 @@ tracer_provider:
     - simple:
         exporter:
           console:
-  # SNIPPET_START
   sampler:
+    # SNIPPET_START
     parent_based:
       root:
         trace_id_ratio_based:

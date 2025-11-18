@@ -4003,20 +4003,19 @@ Snippets:
 
 [Snippet Source File](./snippets/Sampler_parent_based.yaml)
 ```yaml
-sampler:
-  parent_based:
-    root:
-      trace_id_ratio_based:
-        ratio: 0.0001
-    remote_parent_sampled:
-      always_on:
-    remote_parent_not_sampled:
-      probability/development:
-        ratio: 0.01
-    local_parent_sampled:
-      always_on:
-    local_parent_not_sampled:
-      always_off:
+parent_based:
+  root:
+    trace_id_ratio_based:
+      ratio: 0.0001
+  remote_parent_sampled:
+    always_on:
+  remote_parent_not_sampled:
+    probability/development:
+      ratio: 0.01
+  local_parent_sampled:
+    always_on:
+  local_parent_not_sampled:
+    always_off:
 ```
 </details>
 
