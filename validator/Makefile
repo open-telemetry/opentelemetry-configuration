@@ -1,6 +1,8 @@
 # Copyright The OpenTelemetry Authors
 # SPDX-License-Identifier: Apache-2.0
 
+include Makefile.common
+
 ROOT_DIR :=$(realpath $(shell dirname $(lastword $(MAKEFILE_LIST))))
 PARENT_DIR :=$(realpath ${ROOT_DIR}/../)
 CURRENT_GIT_REF :=$(shell git rev-parse --short HEAD)
@@ -32,7 +34,7 @@ $(TOOLS)/govulncheck: PACKAGE=golang.org/x/vuln/cmd/govulncheck
 .PHONY: tools
 tools: $(GOVULNCHECK)
 
-validator-copy-schema:
+validator-copy-schema: compile-schema
 	mkdir -p ${ROOT_DIR}/schema
 	find ${PARENT_DIR} -path '*/schema_out/*.json' ! -path '*/validator/schema/*.json' -exec cp '{}' "${ROOT_DIR}/schema/" ';'
 

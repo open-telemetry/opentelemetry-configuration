@@ -1,24 +1,13 @@
 # Copyright The OpenTelemetry Authors
 # SPDX-License-Identifier: Apache-2.0
 
-SCHEMA_FILES := $(shell find . -path './schema_out/*.json' -exec basename {} \; | sort)
+include validator/Makefile
+
 EXAMPLE_FILES := $(shell find . -path './examples/*.yaml' -exec basename {} \; | sort)
 $(shell mkdir -p out)
 
 .PHONY: all
 all: install-tools compile-schema validate-examples all-meta-schema
-
-include validator/Makefile
-
-.PHONY: compile-schema
-compile-schema:
-	@if ! npm ls minimatch yaml; then npm install; fi
-	npm run-script yaml-to-json || exit 1;
-	@if ! npm ls ajv-cli; then npm install; fi
-	@for f in $(SCHEMA_FILES); do \
-	    npx --no ajv-cli compile --spec=draft2020 --allow-matching-properties -s ./schema_out/$$f -r "./schema_out/!($$f)" \
-	        || exit 1; \
-	done
 
 .PHONY: validate-examples
 validate-examples:
