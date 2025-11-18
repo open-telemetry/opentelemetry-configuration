@@ -24,21 +24,38 @@ readSnippets().forEach(snippet => {
 
 const output = [];
 
-metaSchema.types.sort((a, b) => a.type.localeCompare(b.type));
-
 addHeader('Overview', 'overview', 1);
 output.push(`
 This document is an auto-generated view of the declarative configuration JSON schema and meta schema meant for improved consumability by humans.
 
 * [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [${rootTypeName}](#${rootTypeName.toLowerCase()}) is the root type and is a good starting point.
+* [Experimental Types](#experimental-types) same as [Types](#types) but for experimental types subject to breaking changes.
 * [Language Support Status](#language-support-status) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
 * [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
 
 `);
 
-// Write types
-addHeader('Types', 'types', 1);
+
+const types = [];
+const experimentalTypes = [];
+metaSchema.types.sort((a, b) => a.type.localeCompare(b.type));
 metaSchema.types.forEach(metaSchemaType => {
+    if (isExperimentalType(metaSchemaType.type)) {
+        experimentalTypes.push(metaSchemaType);
+    } else {
+        types.push(metaSchemaType);
+    }
+});
+
+// Write types
+
+addHeader('Types', 'types', 1);
+types.forEach(writeType);
+
+addHeader('Experimental Types', 'experimental-types', 1);
+experimentalTypes.forEach(writeType);
+
+function writeType(metaSchemaType) {
     const type = metaSchemaType.type;
     const jsonSchemaType = jsonSchemaTypesByType[type];
     if (!jsonSchemaType) {
@@ -206,7 +223,7 @@ metaSchema.types.forEach(metaSchemaType => {
     output.push(`<pre>${JSON.stringify(jsonSchemaType.schema, null, 2)}</pre>\n`);
     output.push(`</details>\n`);
     output.push('\n');
-});
+}
 
 // Write language support status
 addHeader('Language Support Status', 'language-support-status', 1);
