@@ -60,142 +60,6 @@ typeSupportStatuses:
   - type: ExemplarFilter
     status: supported
     enumOverrides: []
-  - type: ExperimentalComposableAlwaysOffSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableAlwaysOnSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableParentBasedSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableProbabilitySampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalContainerResourceDetector
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalGeneralInstrumentation
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalHostResourceDetector
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalHttpClientInstrumentation
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalHttpInstrumentation
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalHttpServerInstrumentation
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalInstrumentation
-    status: supported
-    propertyOverrides:
-      - property: cpp
-        status: not_applicable
-      - property: dotnet
-        status: not_applicable
-      - property: erlang
-        status: not_applicable
-      - property: go
-        status: not_applicable
-      - property: js
-        status: not_applicable
-      - property: php
-        status: not_applicable
-      - property: python
-        status: not_applicable
-      - property: ruby
-        status: not_applicable
-      - property: rust
-        status: not_applicable
-      - property: swift
-        status: not_applicable
-  - type: ExperimentalJaegerRemoteSampler
-    status: ignored
-    propertyOverrides: []
-  - type: ExperimentalLanguageSpecificInstrumentation
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalLoggerConfig
-    status: supported
-    propertyOverrides:
-      - property: minimum_severity
-        status: not_implemented
-      - property: trace_based
-        status: not_implemented
-  - type: ExperimentalLoggerConfigurator
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalLoggerMatcherAndConfig
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalMeterConfig
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalMeterConfigurator
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalMeterMatcherAndConfig
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalOtlpFileExporter
-    status: supported
-    propertyOverrides:
-      - property: output_stream
-        status: not_implemented
-  - type: ExperimentalOtlpFileMetricExporter
-    status: supported
-    propertyOverrides:
-      - property: output_stream
-        status: not_implemented
-  - type: ExperimentalPeerInstrumentation
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalPeerServiceMapping
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalProbabilitySampler
-    status: ignored
-    propertyOverrides: []
-  - type: ExperimentalProcessResourceDetector
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalPrometheusMetricExporter
-    status: supported
-    propertyOverrides:
-      - property: translation_strategy
-        status: not_implemented
-      - property: without_scope_info
-        status: ignored
-      - property: without_target_info
-        status: ignored
-  - type: ExperimentalResourceDetection
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalResourceDetector
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalServiceResourceDetector
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalSeverityNumber
-    status: unknown
-    enumOverrides: []
-  - type: ExperimentalTracerConfig
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalTracerConfigurator
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalTracerMatcherAndConfig
-    status: supported
-    propertyOverrides: []
   - type: ExplicitBucketHistogramAggregation
     status: supported
     propertyOverrides:
@@ -363,5 +227,141 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ZipkinSpanExporter
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalComposableAlwaysOffSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableAlwaysOnSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableParentBasedSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableProbabilitySampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalContainerResourceDetector
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalGeneralInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalHostResourceDetector
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalHttpClientInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalHttpInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalHttpServerInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalInstrumentation
+    status: supported
+    propertyOverrides:
+      - property: cpp
+        status: not_applicable
+      - property: dotnet
+        status: not_applicable
+      - property: erlang
+        status: not_applicable
+      - property: go
+        status: not_applicable
+      - property: js
+        status: not_applicable
+      - property: php
+        status: not_applicable
+      - property: python
+        status: not_applicable
+      - property: ruby
+        status: not_applicable
+      - property: rust
+        status: not_applicable
+      - property: swift
+        status: not_applicable
+  - type: ExperimentalJaegerRemoteSampler
+    status: ignored
+    propertyOverrides: []
+  - type: ExperimentalLanguageSpecificInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalLoggerConfig
+    status: supported
+    propertyOverrides:
+      - property: minimum_severity
+        status: not_implemented
+      - property: trace_based
+        status: not_implemented
+  - type: ExperimentalLoggerConfigurator
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalLoggerMatcherAndConfig
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalMeterConfig
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalMeterConfigurator
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalMeterMatcherAndConfig
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalOtlpFileExporter
+    status: supported
+    propertyOverrides:
+      - property: output_stream
+        status: not_implemented
+  - type: ExperimentalOtlpFileMetricExporter
+    status: supported
+    propertyOverrides:
+      - property: output_stream
+        status: not_implemented
+  - type: ExperimentalPeerInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalPeerServiceMapping
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalProbabilitySampler
+    status: ignored
+    propertyOverrides: []
+  - type: ExperimentalProcessResourceDetector
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalPrometheusMetricExporter
+    status: supported
+    propertyOverrides:
+      - property: translation_strategy
+        status: not_implemented
+      - property: without_scope_info
+        status: ignored
+      - property: without_target_info
+        status: ignored
+  - type: ExperimentalResourceDetection
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalResourceDetector
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalServiceResourceDetector
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalSeverityNumber
+    status: unknown
+    enumOverrides: []
+  - type: ExperimentalTracerConfig
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalTracerConfigurator
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalTracerMatcherAndConfig
     status: supported
     propertyOverrides: []

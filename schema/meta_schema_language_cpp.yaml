@@ -54,112 +54,6 @@ typeSupportStatuses:
   - type: ExemplarFilter
     status: not_implemented
     enumOverrides: []
-  - type: ExperimentalComposableAlwaysOffSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableAlwaysOnSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableParentBasedSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableProbabilitySampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalComposableSampler
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalContainerResourceDetector
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalGeneralInstrumentation
-    status: not_applicable
-    propertyOverrides: []
-  - type: ExperimentalHostResourceDetector
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalHttpClientInstrumentation
-    status: not_applicable
-    propertyOverrides: []
-  - type: ExperimentalHttpInstrumentation
-    status: not_applicable
-    propertyOverrides: []
-  - type: ExperimentalHttpServerInstrumentation
-    status: not_applicable
-    propertyOverrides: []
-  - type: ExperimentalInstrumentation
-    status: not_applicable
-    propertyOverrides: []
-  - type: ExperimentalJaegerRemoteSampler
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalLanguageSpecificInstrumentation
-    status: not_applicable
-    propertyOverrides: []
-  - type: ExperimentalLoggerConfig
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalLoggerConfigurator
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalLoggerMatcherAndConfig
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalMeterConfig
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalMeterConfigurator
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalMeterMatcherAndConfig
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalOtlpFileExporter
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalOtlpFileMetricExporter
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalPeerInstrumentation
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalPeerServiceMapping
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalProbabilitySampler
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalProcessResourceDetector
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalPrometheusMetricExporter
-    status: supported
-    propertyOverrides:
-      - property: without_scope_info
-        status: unknown
-      - property: without_target_info
-        status: unknown
-  - type: ExperimentalResourceDetection
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalResourceDetector
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalServiceResourceDetector
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalSeverityNumber
-    status: unknown
-    enumOverrides: []
-  - type: ExperimentalTracerConfig
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalTracerConfigurator
-    status: not_implemented
-    propertyOverrides: []
-  - type: ExperimentalTracerMatcherAndConfig
-    status: not_implemented
-    propertyOverrides: []
   - type: ExplicitBucketHistogramAggregation
     status: supported
     propertyOverrides: []
@@ -300,4 +194,110 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ZipkinSpanExporter
     status: supported
+    propertyOverrides: []
+  - type: ExperimentalComposableAlwaysOffSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableAlwaysOnSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableParentBasedSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableProbabilitySampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalContainerResourceDetector
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalGeneralInstrumentation
+    status: not_applicable
+    propertyOverrides: []
+  - type: ExperimentalHostResourceDetector
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalHttpClientInstrumentation
+    status: not_applicable
+    propertyOverrides: []
+  - type: ExperimentalHttpInstrumentation
+    status: not_applicable
+    propertyOverrides: []
+  - type: ExperimentalHttpServerInstrumentation
+    status: not_applicable
+    propertyOverrides: []
+  - type: ExperimentalInstrumentation
+    status: not_applicable
+    propertyOverrides: []
+  - type: ExperimentalJaegerRemoteSampler
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalLanguageSpecificInstrumentation
+    status: not_applicable
+    propertyOverrides: []
+  - type: ExperimentalLoggerConfig
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalLoggerConfigurator
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalLoggerMatcherAndConfig
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalMeterConfig
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalMeterConfigurator
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalMeterMatcherAndConfig
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalOtlpFileExporter
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalOtlpFileMetricExporter
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalPeerInstrumentation
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalPeerServiceMapping
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalProbabilitySampler
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalProcessResourceDetector
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalPrometheusMetricExporter
+    status: supported
+    propertyOverrides:
+      - property: without_scope_info
+        status: unknown
+      - property: without_target_info
+        status: unknown
+  - type: ExperimentalResourceDetection
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalResourceDetector
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalServiceResourceDetector
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalSeverityNumber
+    status: unknown
+    enumOverrides: []
+  - type: ExperimentalTracerConfig
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalTracerConfigurator
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalTracerMatcherAndConfig
+    status: not_implemented
     propertyOverrides: []
