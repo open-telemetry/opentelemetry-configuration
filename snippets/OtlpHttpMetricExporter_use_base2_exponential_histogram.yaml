@@ -1,2 +1,10 @@
-endpoint: http://localhost:4317
-default_histogram_aggregation: base2_exponential_bucket_histogram
+file_format: "1.0-rc.2"
+
+meter_provider:
+  readers:
+    - periodic:
+        exporter:
+          otlp_http:
+            # SNIPPET_START
+            endpoint: http://localhost:4317
+            default_histogram_aggregation: base2_exponential_bucket_histogram

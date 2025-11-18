@@ -1,11 +1,8 @@
 import fs from "fs";
-import {schemaDirPath} from "./util.js";
+import {rootTypeName, schemaDirPath} from "./util.js";
 import {readJsonSchemaTypes} from "./json-schema.js";
 import Ajv from "ajv/dist/2020.js";
 import {readSnippets} from "./snippets.js";
-
-const jsonSchemaTypesByType = {};
-readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type);
 
 // Initialize ajv
 const ajv = new Ajv({ allErrors: true });
@@ -17,31 +14,42 @@ fs.readdirSync(schemaDirPath)
         ajv.addSchema(jsonContent);
     });
 
+
+const jsonSchemaTypesByType = {};
+readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type);
+const rootJsonSchemaType = jsonSchemaTypesByType[rootTypeName];
+const rootJsonSchemaTypeRef = computeJsonSchemaTypeRef(rootJsonSchemaType);
+
+
 const messages = [];
 
 readSnippets()
     .forEach(snippet => {
-        const jsonSchemaType = jsonSchemaTypesByType[snippet.jsonSchemaType];
-        if (!jsonSchemaType) {
+        const rootValidator = ajv.getSchema(rootJsonSchemaTypeRef);
+        if (!rootValidator) {
+            throw new Error(`Unable to resolve root schema for JSON schema type ref: ${rootJsonSchemaTypeRef}`);
+        }
+
+        const snippetJsonSchemaType = jsonSchemaTypesByType[snippet.jsonSchemaType];
+        if (!snippetJsonSchemaType) {
             messages.push(`Error validating snippet ${snippet.file}. Resolved JSON schema type not found: ${snippet.jsonSchemaType}`);
             return;
         }
-        const jsonSchemaTypeRef = computeJsonSchemaTypeRef(jsonSchemaType);
-        const validate = ajv.getSchema(jsonSchemaTypeRef);
-        if (!validate) {
-            messages.push(`Error validating snippet ${snippet.file}. Unable to resolve schema for JSON schema type ref: ${jsonSchemaTypeRef}`);
+        const snippetTypeRef = computeJsonSchemaTypeRef(snippetJsonSchemaType);
+        const snippetValidator = ajv.getSchema(snippetTypeRef);
+        if (!snippetValidator) {
+            messages.push(`Error validating snippet ${snippet.file}. Unable to resolve schema for JSON schema type ref: ${snippetTypeRef}`);
             return;
         }
 
-        try {
-            const valid = validate(snippet.parsedContent);
-            if (!valid) {
-                messages.push(`Snippet ${snippet.file} is invalid: `);
-                validate.errors.forEach(error => messages.push(`  ${formatError(error)}`));
-            }
-        } catch (error) {
-            messages.push(`Error validating snippet ${snippet.file}: ${error.message}`);
+        // Validate the snippet against the specific schema
+        // Return if schema is invalid, so we don't validate the entire snippet against the root schema and duplicate errors
+        if (!validate(snippet.file, snippetValidator, snippetTypeRef, snippet.parsedSnippetContent)) {
+            return;
         }
+
+        // Validate entire snippet against root schema
+        validate(snippet.file, rootValidator, rootJsonSchemaTypeRef, snippet.parsedFullContent);
     });
 
 if (messages.length > 0) {
@@ -53,6 +61,21 @@ if (messages.length > 0) {
 }
 
 // Helper functions
+
+function validate(snippetFile, ajvValidator, ajvRef, data) {
+    try {
+        const valid = ajvValidator(data);
+        if (!valid) {
+            messages.push(`Snippet ${snippetFile} failed validation against ref ${ajvRef} with errors:`);
+            ajvValidator.errors.forEach(error => messages.push(`  ${formatError(error)}`));
+            return false;
+        }
+        return true;
+    } catch (error) {
+        messages.push(`Error validating snippet ${snippetFile} against ref ${ajvRef}: ${error.message}`);
+        return false;
+    }
+}
 
 function computeJsonSchemaTypeRef(jsonSchemaType) {
     const fileId = jsonSchemaType.fileContent['$id'];

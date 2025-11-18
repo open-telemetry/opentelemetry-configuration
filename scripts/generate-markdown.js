@@ -190,8 +190,8 @@ function writeType(metaSchemaType) {
             output.push(`<summary>${snippet.description}</summary>\n\n`);
             output.push(`[Snippet Source File](./snippets/${snippet.file})\n`)
             output.push(`\`\`\`yaml\n`);
-            output.push(snippet.rawContent);
-            if (!snippet.rawContent.endsWith('\n')) {
+            output.push(snippet.rawSnippetContent);
+            if (!snippet.rawSnippetContent.endsWith('\n')) {
                 output.push('\n');
             }
             output.push(`\`\`\`\n`);

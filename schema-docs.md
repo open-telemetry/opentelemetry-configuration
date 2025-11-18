@@ -4003,19 +4003,20 @@ Snippets:
 
 [Snippet Source File](./snippets/Sampler_parent_based.yaml)
 ```yaml
-parent_based:
-  root:
-    trace_id_ratio_based:
-      ratio: 0.0001
-  remote_parent_sampled:
-    always_on:
-  remote_parent_not_sampled:
-    probability/development:
-      ratio: 0.01
-  local_parent_sampled:
-    always_on:
-  local_parent_not_sampled:
-    always_off:
+sampler:
+  parent_based:
+    root:
+      trace_id_ratio_based:
+        ratio: 0.0001
+    remote_parent_sampled:
+      always_on:
+    remote_parent_not_sampled:
+      probability/development:
+        ratio: 0.01
+    local_parent_sampled:
+      always_on:
+    local_parent_not_sampled:
+      always_off:
 ```
 </details>
 
@@ -5070,7 +5071,6 @@ Snippets:
 
 [Snippet Source File](./snippets/View_override_default_histogram_buckets.yaml)
 ```yaml
-# select a specific histogram instrument and override the default buckets
 selector:
   instrument_name: my.instrument.name
   instrument_type: histogram
