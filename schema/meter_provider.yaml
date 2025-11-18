@@ -179,14 +179,16 @@ $defs:
       with_resource_constant_labels:
         $ref: common.yaml#/$defs/IncludeExclude
       translation_strategy:
-        type:
-          - string
-          - "null"
-        enum:
-          - UnderscoreEscapingWithSuffixes
-          - UnderscoreEscapingWithoutSuffixes
-          - NoUTF8EscapingWithSuffixes
-          - NoTranslation
+        $ref: "#/$defs/ExperimentalPrometheusTranslationStrategy"
+  ExperimentalPrometheusTranslationStrategy:
+    type:
+      - string
+      - "null"
+    enum:
+      - UnderscoreEscapingWithSuffixes
+      - UnderscoreEscapingWithoutSuffixes
+      - NoUTF8EscapingWithSuffixes
+      - NoTranslation
   MetricReader:
     type: object
     additionalProperties: false
