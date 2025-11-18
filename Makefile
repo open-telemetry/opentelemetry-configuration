@@ -3,6 +3,7 @@
 
 SCHEMA_FILES := $(shell find . -path './schema/*.json' -exec basename {} \; | sort)
 EXAMPLE_FILES := $(shell find . -path './examples/*.yaml' -exec basename {} \; | sort)
+SNIPPET_FILES := $(shell find . -path './snippets/*.yaml' -exec basename {} \; | sort)
 $(shell mkdir -p out)
 
 .PHONY: all
@@ -29,9 +30,12 @@ validate-examples:
 
 .PHONY: update-file-format
 update-file-format:
-	@echo "Updating \"file_format:\" in ./examples/* to: $(FILE_FORMAT)"
+	@echo "Updating \"file_format:\" in ./examples/* and ./snippets/* to: $(FILE_FORMAT)"
 	@for f in $(EXAMPLE_FILES); do \
 	    sed -e 's/file_format:.*/file_format: \"$(FILE_FORMAT)\"/g' -i '' ./examples/$$f; \
+	done
+	@for f in $(SNIPPET_FILES); do \
+	    sed -e 's/file_format:.*/file_format: \"$(FILE_FORMAT)\"/g' -i '' ./snippets/$$f; \
 	done
 
 .PHONY: fix-meta-schema
