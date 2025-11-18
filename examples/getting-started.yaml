@@ -23,6 +23,11 @@ propagator:
     - tracecontext:
     - baggage:
 
+sampler:
+  parent_based:
+    root:
+      always_on:
+
 # Read backend endpoint from the OTEL_EXPORTER_OTLP_ENDPOINT environment variable.
 # This aligns well with the OpenTelemetry Operator and other deployment methods.
 
