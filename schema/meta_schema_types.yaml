@@ -226,17 +226,17 @@
   isSdkExtensionPlugin: false
 - type: GrpcTls
   properties:
-    - property: certificate_file
+    - property: ca_file
       description: |
         Configure certificate used to verify a server's TLS credentials. 
         Absolute path to certificate file in PEM format.
         If omitted or null, system default certificate verification is used for secure connections.
-    - property: client_certificate_file
+    - property: cert_file
       description: |
         Configure mTLS client certificate. 
         Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
         If omitted or null, mTLS is not used.
-    - property: client_key_file
+    - property: key_file
       description: |
         Configure mTLS private client key. 
         Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
@@ -249,17 +249,17 @@
   isSdkExtensionPlugin: false
 - type: HttpTls
   properties:
-    - property: certificate_file
+    - property: ca_file
       description: |
         Configure certificate used to verify a server's TLS credentials. 
         Absolute path to certificate file in PEM format.
         If omitted or null, system default certificate verification is used for secure connections.
-    - property: client_certificate_file
+    - property: cert_file
       description: |
         Configure mTLS client certificate. 
         Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
         If omitted or null, mTLS is not used.
-    - property: client_key_file
+    - property: key_file
       description: |
         Configure mTLS private client key. 
         Absolute path to client key file in PEM format. If set, .client_certificate must also be set.

@@ -24,9 +24,9 @@ logger_provider:
           otlp_http:
             endpoint: http://localhost:4318/v1/logs
             tls:
-              certificate_file: /app/cert.pem
-              client_key_file: /app/cert.pem
-              client_certificate_file: /app/cert.pem
+              ca_file: /app/cert.pem
+              key_file: /app/cert.pem
+              cert_file: /app/cert.pem
             headers:
               - name: api-key
                 value: "1234"
@@ -39,9 +39,9 @@ logger_provider:
           otlp_grpc:
             endpoint: http://localhost:4317
             tls:
-              certificate_file: /app/cert.pem
-              client_key_file: /app/cert.pem
-              client_certificate_file: /app/cert.pem
+              ca_file: /app/cert.pem
+              key_file: /app/cert.pem
+              cert_file: /app/cert.pem
               insecure: false
             headers:
               - name: api-key
@@ -105,9 +105,9 @@ meter_provider:
           otlp_http:
             endpoint: http://localhost:4318/v1/metrics
             tls:
-              certificate_file: /app/cert.pem
-              client_key_file: /app/cert.pem
-              client_certificate_file: /app/cert.pem
+              ca_file: /app/cert.pem
+              key_file: /app/cert.pem
+              cert_file: /app/cert.pem
             headers:
               - name: api-key
                 value: "1234"
@@ -133,9 +133,9 @@ meter_provider:
           otlp_grpc:
             endpoint: http://localhost:4317
             tls:
-              certificate_file: /app/cert.pem
-              client_key_file: /app/cert.pem
-              client_certificate_file: /app/cert.pem
+              ca_file: /app/cert.pem
+              key_file: /app/cert.pem
+              cert_file: /app/cert.pem
               insecure: false
             headers:
               - name: api-key
@@ -229,9 +229,9 @@ tracer_provider:
           otlp_http:
             endpoint: http://localhost:4318/v1/traces
             tls:
-              certificate_file: /app/cert.pem
-              client_key_file: /app/cert.pem
-              client_certificate_file: /app/cert.pem
+              ca_file: /app/cert.pem
+              key_file: /app/cert.pem
+              cert_file: /app/cert.pem
             headers:
               - name: api-key
                 value: "1234"
@@ -244,9 +244,9 @@ tracer_provider:
           otlp_grpc:
             endpoint: http://localhost:4317
             tls:
-              certificate_file: /app/cert.pem
-              client_key_file: /app/cert.pem
-              client_certificate_file: /app/cert.pem
+              ca_file: /app/cert.pem
+              key_file: /app/cert.pem
+              cert_file: /app/cert.pem
               insecure: false
             headers:
               - name: api-key
