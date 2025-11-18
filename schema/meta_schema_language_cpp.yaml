@@ -280,6 +280,9 @@ typeSupportStatuses:
         status: unknown
       - property: without_target_info
         status: unknown
+  - type: ExperimentalPrometheusTranslationStrategy
+    status: unknown
+    enumOverrides: []
   - type: ExperimentalResourceDetection
     status: not_implemented
     propertyOverrides: []

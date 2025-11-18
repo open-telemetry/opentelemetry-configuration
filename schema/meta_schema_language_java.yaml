@@ -344,6 +344,9 @@ typeSupportStatuses:
         status: ignored
       - property: without_target_info
         status: ignored
+  - type: ExperimentalPrometheusTranslationStrategy
+    status: unknown
+    enumOverrides: []
   - type: ExperimentalResourceDetection
     status: supported
     propertyOverrides: []

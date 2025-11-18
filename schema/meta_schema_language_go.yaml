@@ -276,6 +276,9 @@ typeSupportStatuses:
   - type: ExperimentalPrometheusMetricExporter
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalPrometheusTranslationStrategy
+    status: unknown
+    enumOverrides: []
   - type: ExperimentalResourceDetection
     status: unknown
     propertyOverrides: []

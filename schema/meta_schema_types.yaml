@@ -1166,6 +1166,17 @@
         Configure Prometheus Exporter to produce metrics without a target info metric for the resource.
         If omitted or null, false is used.
   isSdkExtensionPlugin: false
+- type: ExperimentalPrometheusTranslationStrategy
+  enumValues:
+    - enumValue: NoTranslation
+      description: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.
+    - enumValue: NoUTF8EscapingWithSuffixes
+      description: Special character escaping is disabled. Type and unit suffixes are enabled.
+    - enumValue: UnderscoreEscapingWithoutSuffixes
+      description: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.
+    - enumValue: UnderscoreEscapingWithSuffixes
+      description: Special character escaping is enabled. Type and unit suffixes are enabled.
+  isSdkExtensionPlugin: false
 - type: ExperimentalResourceDetection
   properties:
     - property: attributes
