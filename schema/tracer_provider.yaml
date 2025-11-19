@@ -1,0 +1,312 @@
+type: object
+additionalProperties: false
+properties:
+  processors:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/SpanProcessor"
+  limits:
+    $ref: "#/$defs/SpanLimits"
+  sampler:
+    $ref: "#/$defs/Sampler"
+  tracer_configurator/development:
+    $ref: "#/$defs/ExperimentalTracerConfigurator"
+required:
+  - processors
+$defs:
+  BatchSpanProcessor:
+    type: object
+    additionalProperties: false
+    properties:
+      schedule_delay:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      export_timeout:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      max_queue_size:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      max_export_batch_size:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      exporter:
+        $ref: "#/$defs/SpanExporter"
+    required:
+      - exporter
+  Sampler:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      always_off:
+        $ref: "#/$defs/AlwaysOffSampler"
+      always_on:
+        $ref: "#/$defs/AlwaysOnSampler"
+      composite/development:
+        $ref: "#/$defs/ExperimentalComposableSampler"
+      jaeger_remote/development:
+        $ref: "#/$defs/ExperimentalJaegerRemoteSampler"
+      parent_based:
+        $ref: "#/$defs/ParentBasedSampler"
+      probability/development:
+        $ref: "#/$defs/ExperimentalProbabilitySampler"
+      trace_id_ratio_based:
+        $ref: "#/$defs/TraceIdRatioBasedSampler"
+  AlwaysOffSampler:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  AlwaysOnSampler:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExperimentalJaegerRemoteSampler:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      endpoint:
+        type:
+          - string
+          - "null"
+      interval:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      initial_sampler:
+        $ref: "#/$defs/Sampler"
+  ParentBasedSampler:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      root:
+        $ref: "#/$defs/Sampler"
+      remote_parent_sampled:
+        $ref: "#/$defs/Sampler"
+      remote_parent_not_sampled:
+        $ref: "#/$defs/Sampler"
+      local_parent_sampled:
+        $ref: "#/$defs/Sampler"
+      local_parent_not_sampled:
+        $ref: "#/$defs/Sampler"
+  ExperimentalProbabilitySampler:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      ratio:
+        type:
+          - number
+          - "null"
+        minimum: 0
+        maximum: 1
+  TraceIdRatioBasedSampler:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      ratio:
+        type:
+          - number
+          - "null"
+        minimum: 0
+        maximum: 1
+  ExperimentalComposableAlwaysOffSampler:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExperimentalComposableAlwaysOnSampler:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExperimentalComposableParentBasedSampler:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      root:
+        $ref: "#/$defs/ExperimentalComposableSampler"
+      remote_parent_sampled:
+        $ref: "#/$defs/ExperimentalComposableSampler"
+      remote_parent_not_sampled:
+        $ref: "#/$defs/ExperimentalComposableSampler"
+      local_parent_sampled:
+        $ref: "#/$defs/ExperimentalComposableSampler"
+      local_parent_not_sampled:
+        $ref: "#/$defs/ExperimentalComposableSampler"
+  ExperimentalComposableProbabilitySampler:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      ratio:
+        type:
+          - number
+          - "null"
+        minimum: 0
+        maximum: 1
+  ExperimentalComposableSampler:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      always_off:
+        $ref: "#/$defs/ExperimentalComposableAlwaysOffSampler"
+      always_on:
+        $ref: "#/$defs/ExperimentalComposableAlwaysOnSampler"
+      parent_based:
+        $ref: "#/$defs/ExperimentalComposableParentBasedSampler"
+      probability:
+        $ref: "#/$defs/ExperimentalComposableProbabilitySampler"
+  SimpleSpanProcessor:
+    type: object
+    additionalProperties: false
+    properties:
+      exporter:
+        $ref: "#/$defs/SpanExporter"
+    required:
+      - exporter
+  SpanExporter:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      otlp_http:
+        $ref: common.yaml#/$defs/OtlpHttpExporter
+      otlp_grpc:
+        $ref: common.yaml#/$defs/OtlpGrpcExporter
+      otlp_file/development:
+        $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
+      console:
+        $ref: common.yaml#/$defs/ConsoleExporter
+      zipkin:
+        $ref: "#/$defs/ZipkinSpanExporter"
+  SpanLimits:
+    type: object
+    additionalProperties: false
+    properties:
+      attribute_value_length_limit:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      attribute_count_limit:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      event_count_limit:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      link_count_limit:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      event_attribute_count_limit:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      link_attribute_count_limit:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+  SpanProcessor:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      batch:
+        $ref: "#/$defs/BatchSpanProcessor"
+      simple:
+        $ref: "#/$defs/SimpleSpanProcessor"
+  ZipkinSpanExporter:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      endpoint:
+        type:
+          - string
+          - "null"
+      timeout:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+  ExperimentalTracerConfigurator:
+    type:
+      - object
+    additionalProperties: false
+    properties:
+      default_config:
+        $ref: "#/$defs/ExperimentalTracerConfig"
+      tracers:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/ExperimentalTracerMatcherAndConfig"
+  ExperimentalTracerMatcherAndConfig:
+    type:
+      - object
+    additionalProperties: false
+    properties:
+      name:
+        type:
+          - string
+      config:
+        $ref: "#/$defs/ExperimentalTracerConfig"
+    required:
+      - name
+      - config
+  ExperimentalTracerConfig:
+    type:
+      - object
+    additionalProperties: false
+    properties:
+      disabled:
+        type:
+          - boolean

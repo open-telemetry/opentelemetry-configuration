@@ -1,6 +1,7 @@
 {
   "type": "module",
   "scripts": {
+    "yaml-to-json": "node scripts/yaml-to-json.js",
     "generate-markdown": "node scripts/generate-markdown.js",
     "fix-meta-schema": "node scripts/fix-meta-schema.js"
   },

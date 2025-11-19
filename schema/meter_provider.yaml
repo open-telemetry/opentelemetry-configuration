@@ -1,0 +1,487 @@
+type: object
+additionalProperties: false
+properties:
+  readers:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/MetricReader"
+  views:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/View"
+  exemplar_filter:
+    $ref: "#/$defs/ExemplarFilter"
+  meter_configurator/development:
+    $ref: "#/$defs/ExperimentalMeterConfigurator"
+required:
+  - readers
+$defs:
+  ExemplarFilter:
+    type:
+      - string
+      - "null"
+    enum:
+      - always_on
+      - always_off
+      - trace_based
+  PeriodicMetricReader:
+    type: object
+    additionalProperties: false
+    properties:
+      interval:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      timeout:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      exporter:
+        $ref: "#/$defs/PushMetricExporter"
+      producers:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/MetricProducer"
+      cardinality_limits:
+        $ref: "#/$defs/CardinalityLimits"
+    required:
+      - exporter
+  PullMetricReader:
+    type: object
+    additionalProperties: false
+    properties:
+      exporter:
+        $ref: "#/$defs/PullMetricExporter"
+      producers:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/MetricProducer"
+      cardinality_limits:
+        $ref: "#/$defs/CardinalityLimits"
+    required:
+      - exporter
+  CardinalityLimits:
+    type: object
+    additionalProperties: false
+    properties:
+      default:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      counter:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      gauge:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      histogram:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      observable_counter:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      observable_gauge:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      observable_up_down_counter:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      up_down_counter:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+  PushMetricExporter:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      otlp_http:
+        $ref: "#/$defs/OtlpHttpMetricExporter"
+      otlp_grpc:
+        $ref: "#/$defs/OtlpGrpcMetricExporter"
+      otlp_file/development:
+        $ref: "#/$defs/ExperimentalOtlpFileMetricExporter"
+      console:
+        $ref: "#/$defs/ConsoleMetricExporter"
+  PullMetricExporter:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      prometheus/development:
+        $ref: "#/$defs/ExperimentalPrometheusMetricExporter"
+  MetricProducer:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      opencensus:
+        $ref: "#/$defs/OpenCensusMetricProducer"
+  OpenCensusMetricProducer:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExperimentalPrometheusMetricExporter:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      host:
+        type:
+          - string
+          - "null"
+      port:
+        type:
+          - integer
+          - "null"
+      without_scope_info:
+        type:
+          - boolean
+          - "null"
+      without_target_info:
+        type:
+          - boolean
+          - "null"
+      with_resource_constant_labels:
+        $ref: common.yaml#/$defs/IncludeExclude
+      translation_strategy:
+        $ref: "#/$defs/ExperimentalPrometheusTranslationStrategy"
+  ExperimentalPrometheusTranslationStrategy:
+    type:
+      - string
+      - "null"
+    enum:
+      - UnderscoreEscapingWithSuffixes
+      - UnderscoreEscapingWithoutSuffixes
+      - NoUTF8EscapingWithSuffixes
+      - NoTranslation
+  MetricReader:
+    type: object
+    additionalProperties: false
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      periodic:
+        $ref: "#/$defs/PeriodicMetricReader"
+      pull:
+        $ref: "#/$defs/PullMetricReader"
+  ExporterTemporalityPreference:
+    type:
+      - string
+      - "null"
+    enum:
+      - cumulative
+      - delta
+      - low_memory
+  ExporterDefaultHistogramAggregation:
+    type:
+      - string
+      - "null"
+    enum:
+      - explicit_bucket_histogram
+      - base2_exponential_bucket_histogram
+  OtlpHttpMetricExporter:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      endpoint:
+        type:
+          - string
+          - "null"
+      tls:
+        $ref: common.yaml#/$defs/HttpTls
+      headers:
+        type: array
+        minItems: 1
+        items:
+          $ref: common.yaml#/$defs/NameStringValuePair
+      headers_list:
+        type:
+          - string
+          - "null"
+      compression:
+        type:
+          - string
+          - "null"
+      timeout:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      encoding:
+        $ref: common.yaml#/$defs/OtlpHttpEncoding
+      temporality_preference:
+        $ref: "#/$defs/ExporterTemporalityPreference"
+      default_histogram_aggregation:
+        $ref: "#/$defs/ExporterDefaultHistogramAggregation"
+  OtlpGrpcMetricExporter:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      endpoint:
+        type:
+          - string
+          - "null"
+      tls:
+        $ref: common.yaml#/$defs/GrpcTls
+      headers:
+        type: array
+        minItems: 1
+        items:
+          $ref: common.yaml#/$defs/NameStringValuePair
+      headers_list:
+        type:
+          - string
+          - "null"
+      compression:
+        type:
+          - string
+          - "null"
+      timeout:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      temporality_preference:
+        $ref: "#/$defs/ExporterTemporalityPreference"
+      default_histogram_aggregation:
+        $ref: "#/$defs/ExporterDefaultHistogramAggregation"
+  ExperimentalOtlpFileMetricExporter:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      output_stream:
+        type:
+          - string
+          - "null"
+      temporality_preference:
+        $ref: "#/$defs/ExporterTemporalityPreference"
+      default_histogram_aggregation:
+        $ref: "#/$defs/ExporterDefaultHistogramAggregation"
+  ConsoleMetricExporter:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      temporality_preference:
+        $ref: "#/$defs/ExporterTemporalityPreference"
+      default_histogram_aggregation:
+        $ref: "#/$defs/ExporterDefaultHistogramAggregation"
+  View:
+    type: object
+    additionalProperties: false
+    properties:
+      selector:
+        $ref: "#/$defs/ViewSelector"
+      stream:
+        $ref: "#/$defs/ViewStream"
+    required:
+      - selector
+      - stream
+  ViewSelector:
+    type: object
+    additionalProperties: false
+    properties:
+      instrument_name:
+        type:
+          - string
+          - "null"
+      instrument_type:
+        $ref: "#/$defs/InstrumentType"
+      unit:
+        type:
+          - string
+          - "null"
+      meter_name:
+        type:
+          - string
+          - "null"
+      meter_version:
+        type:
+          - string
+          - "null"
+      meter_schema_url:
+        type:
+          - string
+          - "null"
+  InstrumentType:
+    type:
+      - string
+      - "null"
+    enum:
+      - counter
+      - gauge
+      - histogram
+      - observable_counter
+      - observable_gauge
+      - observable_up_down_counter
+      - up_down_counter
+  ViewStream:
+    type: object
+    additionalProperties: false
+    properties:
+      name:
+        type:
+          - string
+          - "null"
+      description:
+        type:
+          - string
+          - "null"
+      aggregation:
+        $ref: "#/$defs/Aggregation"
+      aggregation_cardinality_limit:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      attribute_keys:
+        $ref: common.yaml#/$defs/IncludeExclude
+  Aggregation:
+    type: object
+    additionalProperties: false
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      default:
+        $ref: "#/$defs/DefaultAggregation"
+      drop:
+        $ref: "#/$defs/DropAggregation"
+      explicit_bucket_histogram:
+        $ref: "#/$defs/ExplicitBucketHistogramAggregation"
+      base2_exponential_bucket_histogram:
+        $ref: "#/$defs/Base2ExponentialBucketHistogramAggregation"
+      last_value:
+        $ref: "#/$defs/LastValueAggregation"
+      sum:
+        $ref: "#/$defs/SumAggregation"
+  DefaultAggregation:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  DropAggregation:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExplicitBucketHistogramAggregation:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      boundaries:
+        type: array
+        minItems: 0
+        items:
+          type: number
+      record_min_max:
+        type:
+          - boolean
+          - "null"
+  Base2ExponentialBucketHistogramAggregation:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      max_scale:
+        type:
+          - integer
+          - "null"
+        minimum: -10
+        maximum: 20
+      max_size:
+        type:
+          - integer
+          - "null"
+        minimum: 2
+      record_min_max:
+        type:
+          - boolean
+          - "null"
+  LastValueAggregation:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  SumAggregation:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExperimentalMeterConfigurator:
+    type:
+      - object
+    additionalProperties: false
+    properties:
+      default_config:
+        $ref: "#/$defs/ExperimentalMeterConfig"
+      meters:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/ExperimentalMeterMatcherAndConfig"
+  ExperimentalMeterMatcherAndConfig:
+    type:
+      - object
+    additionalProperties: false
+    properties:
+      name:
+        type:
+          - string
+      config:
+        $ref: "#/$defs/ExperimentalMeterConfig"
+    required:
+      - name
+      - config
+  ExperimentalMeterConfig:
+    type:
+      - object
+    additionalProperties: false
+    properties:
+      disabled:
+        type:
+          - boolean

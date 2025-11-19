@@ -49,7 +49,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -93,7 +93,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -118,7 +118,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -155,7 +155,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/opentelemetry_configuration.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -208,7 +208,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -303,7 +303,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "string",
@@ -337,7 +337,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -362,7 +362,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -387,7 +387,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -426,7 +426,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -493,7 +493,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -570,7 +570,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -653,7 +653,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -734,7 +734,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -771,7 +771,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -804,7 +804,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -829,7 +829,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -868,7 +868,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -909,7 +909,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -964,7 +964,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -1009,7 +1009,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -1055,7 +1055,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -1121,7 +1121,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -1180,7 +1180,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -1240,7 +1240,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -1273,7 +1273,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -1298,7 +1298,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -1338,7 +1338,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/logger_provider.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -1612,7 +1612,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -1667,7 +1667,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -1721,7 +1721,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -1775,7 +1775,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/meter_provider.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -2519,7 +2519,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -2567,7 +2567,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -2615,7 +2615,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -2652,7 +2652,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -2704,7 +2704,7 @@ No usages.
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/opentelemetry_configuration.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -2810,7 +2810,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -2856,7 +2856,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -2942,7 +2942,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -3023,7 +3023,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "string",
@@ -3074,7 +3074,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -3167,7 +3167,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -3256,7 +3256,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -3317,7 +3317,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -3383,7 +3383,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/propagator.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -3511,7 +3511,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -3560,7 +3560,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -3620,7 +3620,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -3679,7 +3679,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/resource.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -3899,7 +3899,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -3962,7 +3962,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -4003,7 +4003,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -4056,7 +4056,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -4122,7 +4122,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -4204,7 +4204,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -4241,7 +4241,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -4290,7 +4290,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -4339,7 +4339,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -4374,7 +4374,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -4426,7 +4426,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/tracer_provider.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -4917,7 +4917,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -4971,7 +4971,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5046,7 +5046,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5107,7 +5107,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5152,7 +5152,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5180,7 +5180,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5226,7 +5226,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5281,7 +5281,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5342,7 +5342,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -5388,7 +5388,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -5428,7 +5428,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5461,7 +5461,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -5501,7 +5501,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5553,7 +5553,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5598,7 +5598,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5671,7 +5671,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/instrumentation.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -5850,7 +5850,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5906,7 +5906,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -5948,7 +5948,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6004,7 +6004,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6056,7 +6056,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6108,7 +6108,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6154,7 +6154,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6206,7 +6206,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6258,7 +6258,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -6308,7 +6308,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -6360,7 +6360,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -6407,7 +6407,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -6454,7 +6454,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -6492,7 +6492,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -6540,7 +6540,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -6616,7 +6616,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -6661,7 +6661,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -6718,7 +6718,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -6764,7 +6764,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -6848,7 +6848,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -6912,7 +6912,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6958,7 +6958,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -7010,7 +7010,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object"

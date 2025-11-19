@@ -23,7 +23,7 @@ jobs:
 
       - name: Run govulncheck
         run: |
-          make -C validator govulncheck
+          make govulncheck
 
       # TODO: Publish releases
       - name: Build
@@ -33,6 +33,7 @@ jobs:
         run: |
           cd validator
           go test .
+          cd ..
 
       - name: Run ShellTests
         run: |
