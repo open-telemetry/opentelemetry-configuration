@@ -24,6 +24,7 @@ package-lock.json
 
 # Output directory after applying env substitution
 out
+schema_out
 
 # validator binary
 otel_config_validator

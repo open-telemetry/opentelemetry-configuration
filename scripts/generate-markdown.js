@@ -219,7 +219,7 @@ function writeType(metaSchemaType) {
     // JSON schema collapsible section
     output.push(`<details>\n`);
     output.push(`<summary>JSON Schema</summary>\n\n`);
-    output.push(`[JSON Schema Source File](./schema/${jsonSchemaType.file})\n`)
+    output.push(`[JSON Schema Source File](./schema/${jsonSchemaType.sourceFile})\n`)
     output.push(`<pre>${JSON.stringify(jsonSchemaType.schema, null, 2)}</pre>\n`);
     output.push(`</details>\n`);
     output.push('\n');

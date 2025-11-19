@@ -6,7 +6,7 @@ import {
     metaSchemaLanguageStatusPath,
     metaSchemaTypesPath,
     metaSchemaLanguageStatusFileName,
-    schemaDirPath,
+    schemaSourceDirPath,
     metaSchemaLanguageFilePrefix, isExperimentalProperty, isExperimentalType
 } from "./util.js";
 
@@ -512,12 +512,12 @@ function reconcileLanguageImplementations(metaSchema, jsonSchemaTypesByType, mes
     });
 
     // Find and remove any language implementations which are extra
-    fs.readdirSync(schemaDirPath)
+    fs.readdirSync(schemaSourceDirPath)
         .filter(file => file.startsWith(metaSchemaLanguageFilePrefix))
         .filter(file => !KNOWN_LANGUAGES.some(language => metaSchemaLanguageStatusFileName(language) === file))
         .forEach(file => {
             messages.push(`LanguageImplementation file ${file} found for unrecognized language. Removing.`);
-            fs.unlinkSync(schemaDirPath + file);
+            fs.unlinkSync(schemaSourceDirPath + file);
         });
 
     // Find and add any language implementations not in meta schema

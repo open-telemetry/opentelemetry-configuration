@@ -1,0 +1,64 @@
+type: object
+additionalProperties: false
+properties:
+  composite:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/TextMapPropagator"
+  composite_list:
+    type:
+      - string
+      - "null"
+$defs:
+  TextMapPropagator:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      tracecontext:
+        $ref: "#/$defs/TraceContextPropagator"
+      baggage:
+        $ref: "#/$defs/BaggagePropagator"
+      b3:
+        $ref: "#/$defs/B3Propagator"
+      b3multi:
+        $ref: "#/$defs/B3MultiPropagator"
+      jaeger:
+        $ref: "#/$defs/JaegerPropagator"
+      ottrace:
+        $ref: "#/$defs/OpenTracingPropagator"
+  TraceContextPropagator:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  BaggagePropagator:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  B3Propagator:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  B3MultiPropagator:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  JaegerPropagator:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  OpenTracingPropagator:
+    type:
+      - object
+      - "null"
+    additionalProperties: false

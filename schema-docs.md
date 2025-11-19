@@ -51,7 +51,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -97,7 +97,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -124,7 +124,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -163,7 +163,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/opentelemetry_configuration.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -218,7 +218,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -315,7 +315,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "string",
@@ -351,7 +351,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -378,7 +378,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -405,7 +405,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -446,7 +446,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -515,7 +515,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -594,7 +594,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -679,7 +679,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -762,7 +762,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -801,7 +801,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -836,7 +836,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -863,7 +863,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -904,7 +904,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -947,7 +947,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -1004,7 +1004,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -1051,7 +1051,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -1069,20 +1069,20 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
-| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
-| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
+| `ca_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
+| `cert_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
 | `insecure` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure client transport security for the exporter's connection. <br>Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.<br>If omitted or null, false is used.<br> |
+| `key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
 
 <details>
 <summary>Language support status</summary>
 
 | Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `certificate_file` | unknown | unknown | not_implemented | unknown |
-| `client_certificate_file` | unknown | unknown | not_implemented | unknown |
-| `client_key_file` | unknown | unknown | not_implemented | unknown |
+| `ca_file` | unknown | unknown | not_implemented | unknown |
+| `cert_file` | unknown | unknown | not_implemented | unknown |
 | `insecure` | unknown | unknown | not_implemented | unknown |
+| `key_file` | unknown | unknown | not_implemented | unknown |
 </details>
 
 Constraints: 
@@ -1099,7 +1099,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -1107,19 +1107,19 @@ Usages:
   ],
   "additionalProperties": false,
   "properties": {
-    "certificate_file": {
+    "ca_file": {
       "type": [
         "string",
         "null"
       ]
     },
-    "client_key_file": {
+    "key_file": {
       "type": [
         "string",
         "null"
       ]
     },
-    "client_certificate_file": {
+    "cert_file": {
       "type": [
         "string",
         "null"
@@ -1139,18 +1139,18 @@ Usages:
 
 | Property | Type | Required? | Constraints | Description |
 |---|---|---|---|---|
-| `certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
-| `client_certificate_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
-| `client_key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
+| `ca_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure certificate used to verify a server's TLS credentials. <br>Absolute path to certificate file in PEM format.<br>If omitted or null, system default certificate verification is used for secure connections.<br> |
+| `cert_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS client certificate. <br>Absolute path to client certificate file in PEM format. If set, .client_key must also be set.<br>If omitted or null, mTLS is not used.<br> |
+| `key_file` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure mTLS private client key. <br>Absolute path to client key file in PEM format. If set, .client_certificate must also be set.<br>If omitted or null, mTLS is not used.<br> |
 
 <details>
 <summary>Language support status</summary>
 
 | Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `certificate_file` | unknown | unknown | not_implemented | unknown |
-| `client_certificate_file` | unknown | unknown | not_implemented | unknown |
-| `client_key_file` | unknown | unknown | not_implemented | unknown |
+| `ca_file` | unknown | unknown | not_implemented | unknown |
+| `cert_file` | unknown | unknown | not_implemented | unknown |
+| `key_file` | unknown | unknown | not_implemented | unknown |
 </details>
 
 Constraints: 
@@ -1167,7 +1167,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -1175,19 +1175,19 @@ Usages:
   ],
   "additionalProperties": false,
   "properties": {
-    "certificate_file": {
+    "ca_file": {
       "type": [
         "string",
         "null"
       ]
     },
-    "client_key_file": {
+    "key_file": {
       "type": [
         "string",
         "null"
       ]
     },
-    "client_certificate_file": {
+    "cert_file": {
       "type": [
         "string",
         "null"
@@ -1228,7 +1228,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -1290,7 +1290,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -1325,7 +1325,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -1352,7 +1352,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -1394,7 +1394,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/logger_provider.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -1670,7 +1670,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -1727,7 +1727,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -1783,7 +1783,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -1839,7 +1839,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/meter_provider.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -2585,7 +2585,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -2635,7 +2635,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -2685,7 +2685,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -2724,7 +2724,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -2778,7 +2778,7 @@ No usages.
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/opentelemetry_configuration.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -2886,7 +2886,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -2934,7 +2934,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -3022,7 +3022,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -3105,7 +3105,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "string",
@@ -3158,7 +3158,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -3263,7 +3263,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -3354,7 +3354,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -3417,7 +3417,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -3485,7 +3485,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/propagator.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -3615,7 +3615,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -3666,7 +3666,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -3728,7 +3728,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -3789,7 +3789,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/resource.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -4032,7 +4032,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -4097,7 +4097,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -4140,7 +4140,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -4195,7 +4195,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -4263,7 +4263,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -4347,7 +4347,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -4386,7 +4386,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -4437,7 +4437,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -4488,7 +4488,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/propagator.json)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -4525,7 +4525,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -4579,7 +4579,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/tracer_provider.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -5087,7 +5087,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5143,7 +5143,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5220,7 +5220,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5283,7 +5283,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5330,7 +5330,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5360,7 +5360,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5408,7 +5408,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5465,7 +5465,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5528,7 +5528,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -5576,7 +5576,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -5618,7 +5618,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5653,7 +5653,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -5695,7 +5695,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5749,7 +5749,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5796,7 +5796,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5871,7 +5871,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "$id": "https://opentelemetry.io/otelconfig/instrumentation.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -6052,7 +6052,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -6110,7 +6110,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -6154,7 +6154,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6212,7 +6212,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6266,7 +6266,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6320,7 +6320,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6368,7 +6368,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6422,7 +6422,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6476,7 +6476,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/common.json)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -6528,7 +6528,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -6582,7 +6582,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -6631,7 +6631,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/instrumentation.json)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -6680,7 +6680,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -6720,7 +6720,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -6770,7 +6770,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -6848,7 +6848,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/meter_provider.json)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -6895,7 +6895,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -6954,7 +6954,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -7002,7 +7002,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/resource.json)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -7088,7 +7088,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.json)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -7154,7 +7154,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -7202,7 +7202,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -7256,7 +7256,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/tracer_provider.json)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -7308,8 +7308,8 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
 | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
 | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
-| [`GrpcTls`](#grpctls) | unknown |  | * `certificate_file`: unknown<br>* `client_certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `insecure`: unknown<br> |
-| [`HttpTls`](#httptls) | unknown |  | * `certificate_file`: unknown<br>* `client_certificate_file`: unknown<br>* `client_key_file`: unknown<br> |
+| [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
+| [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
 | [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
@@ -7416,8 +7416,8 @@ Latest supported file format: `0.3.0`
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
 | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
 | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
-| [`GrpcTls`](#grpctls) | unknown |  | * `certificate_file`: unknown<br>* `client_certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `insecure`: unknown<br> |
-| [`HttpTls`](#httptls) | unknown |  | * `certificate_file`: unknown<br>* `client_certificate_file`: unknown<br>* `client_key_file`: unknown<br> |
+| [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
+| [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
 | [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
@@ -7524,8 +7524,8 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: not_implemented<br> |
 | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
 | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
-| [`GrpcTls`](#grpctls) | not_implemented |  | * `certificate_file`: not_implemented<br>* `client_certificate_file`: not_implemented<br>* `client_key_file`: not_implemented<br>* `insecure`: not_implemented<br> |
-| [`HttpTls`](#httptls) | not_implemented |  | * `certificate_file`: not_implemented<br>* `client_certificate_file`: not_implemented<br>* `client_key_file`: not_implemented<br> |
+| [`GrpcTls`](#grpctls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `insecure`: not_implemented<br>* `key_file`: not_implemented<br> |
+| [`HttpTls`](#httptls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `key_file`: not_implemented<br> |
 | [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
 | [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
@@ -7632,8 +7632,8 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
 | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
 | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
-| [`GrpcTls`](#grpctls) | unknown |  | * `certificate_file`: unknown<br>* `client_certificate_file`: unknown<br>* `client_key_file`: unknown<br>* `insecure`: unknown<br> |
-| [`HttpTls`](#httptls) | unknown |  | * `certificate_file`: unknown<br>* `client_certificate_file`: unknown<br>* `client_key_file`: unknown<br> |
+| [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
+| [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
 | [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
