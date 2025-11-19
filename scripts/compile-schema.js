@@ -15,6 +15,8 @@ const messages = [];
 Object.entries(sourceTypesByType).forEach(([type, sourceSchemaType]) => {
     allPropertiesShouldHaveDescriptions(sourceSchemaType, messages);
     allEnumValuesShouldHaveDescriptions(sourceSchemaType, messages);
+    sdkExtensionPluginSchema(sourceSchemaType, messages);
+    noSubschemas(sourceSchemaType, messages);
 });
 if (messages.length > 0) {
     messages.forEach(message => console.log(message));
@@ -89,4 +91,43 @@ function allEnumValuesShouldHaveDescriptions(sourceSchemaType, messages) {
             messages.push(`Please remove entry for ${enumValue} from 'enumDescriptions' for ${sourceSchemaType.type}.`);
         }
     });
+}
+
+function sdkExtensionPluginSchema(sourceSchemaType, messages) {
+    const sdkExtensionPluginAdditionalProperties = JSON.stringify({"type": ["object", "null"]});
+
+    const schema = sourceSchemaType.schema;
+    if (!schema['isSdkExtensionPlugin']) {
+        return;
+    }
+    const type = schema['type'];
+    if (type !== 'object') {
+        messages.push(`Please set 'type' to 'object' for ${sourceSchemaType.type}.`);
+    }
+    const additionalProperties = schema['additionalProperties'];
+    if (JSON.stringify(additionalProperties) !== sdkExtensionPluginAdditionalProperties) {
+        messages.push(`Please set 'additionalProperties' to ${sdkExtensionPluginAdditionalProperties} for ${sourceSchemaType.type}.`);
+    }
+    const minProperties = schema['minProperties'];
+    if (minProperties !== 1) {
+        messages.push(`Please set 'minProperties' to 1 for ${sourceSchemaType.type}.`);
+    }
+    const maxProperties = schema['maxProperties'];
+    if (maxProperties !== 1) {
+        messages.push(`Please set 'maxProperties' to 1 for ${sourceSchemaType.type}.`);
+    }
+}
+
+function noSubschemas(sourceSchemaType, messages) {
+    if (sourceSchemaType.isEnumType()) {
+        return;
+    }
+    sourceSchemaType.properties.forEach(property => {
+       property.types.forEach(type => {
+           if (type === 'object') {
+               messages.push(`Please move subschema for ${sourceSchemaType.type}.${property.property} to top level type in $defs.`)
+           }
+       });
+    });
+
 }
