@@ -1,14 +1,14 @@
 import fs from 'fs';
 import {schemaOutDirPath} from "./util.js";
 import yaml from "yaml";
-import {readSourceSchemaTypes} from "./source-schema.js";
+import {readSourceSchema} from "./source-schema.js";
 
 // Delete and recreate schema out directory
 fs.rmSync(schemaOutDirPath, {recursive: true, force: true});
 fs.mkdirSync(schemaOutDirPath);
 
 // Read source schema
-const { sourceContentByFile, sourceTypesByType } = readSourceSchemaTypes();
+const { sourceContentByFile, sourceTypesByType } = readSourceSchema();
 
 // Validate source types and exit early if there are any errors
 const messages = [];
@@ -45,7 +45,7 @@ Object.entries(sourceContentByFile).forEach(([file, content]) => {
     fs.writeFileSync(schemaOutDirPath + jsonFile, JSON.stringify(annotated, null, 2));
 });
 
-console.log(readSourceSchemaTypes());
+console.log(readSourceSchema());
 
 function allPropertiesShouldHaveDescriptions(sourceSchemaType, messages) {
     sourceSchemaType.properties.forEach(property => {

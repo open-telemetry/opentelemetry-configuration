@@ -421,7 +421,7 @@ Ensures that the JSON schema and the meta schema are kept in sync:
 * For each meta schema type:
   * If a property exists in the JSON schema and not the meta schema, add it.
   * If a property exists in the meta schema and not the JSON schema, delete it.
-* If a language implementation is known (i.e. defined in constant array `KNOWN_LANGUAGES` in [meta-schema.js](./scripts/meta-schema.js)) but not in meta schema, add it.
+* If a language implementation is known (i.e. defined in constant array `KNOWN_LANGUAGES` in [language-implementations.js](scripts/language-implementations.js)) but not in meta schema, add it.
 * If a language implementation exists in meta schema but is not known, delete it.
 * For each language implementation:
   * If a type exists in the JSON schema and not in the language implementation's type support status of the meta schema, add it.

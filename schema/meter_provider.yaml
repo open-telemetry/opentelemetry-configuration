@@ -329,7 +329,7 @@ $defs:
           - "null"
         description: |
           Configure endpoint.
-          If omitted or null, http://localhost:4317 is used.
+          If omitted or null, http://localhost:4318/v1/metrics is used.
       tls:
         $ref: common.yaml#/$defs/HttpTls
         description: Configure TLS settings for the exporter.

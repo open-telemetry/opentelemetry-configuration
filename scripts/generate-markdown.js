@@ -1,17 +1,14 @@
-import {readJsonSchemaTypes} from "./json-schema.js";
-import {KNOWN_LANGUAGES, readAndFixMetaSchema} from "./meta-schema.js";
+import {KNOWN_LANGUAGES, readAndFixLanguageImplementations} from "./language-implementations.js";
 import fs from "node:fs";
 import {isExperimentalProperty, isExperimentalType, markdownDocPath, rootTypeName} from "./util.js";
+import {readSourceSchema} from "./source-schema.js";
 
-const { messages, metaSchema } = readAndFixMetaSchema();
+const { sourceTypesByType } = readSourceSchema();
 
+const { messages, languageImplementations } = readAndFixLanguageImplementations();
 if (messages.length > 0) {
-    throw new Error("Meta schema has problems. Please run fix-meta-schema and try again.");
+    throw new Error("Language implementations have problems. Please run fix-language-implementations and try again.");
 }
-
-const jsonSchemaTypes = readJsonSchemaTypes();
-const jsonSchemaTypesByType = {};
-jsonSchemaTypes.forEach(type => jsonSchemaTypesByType[type.type] = type);
 
 const output = [];
 
@@ -26,15 +23,15 @@ This document is an auto-generated view of the declarative configuration JSON sc
 
 `);
 
-
+const allTypes = Object.values(sourceTypesByType);
 const types = [];
 const experimentalTypes = [];
-metaSchema.types.sort((a, b) => a.type.localeCompare(b.type));
-metaSchema.types.forEach(metaSchemaType => {
-    if (isExperimentalType(metaSchemaType.type)) {
-        experimentalTypes.push(metaSchemaType);
+allTypes.sort((a, b) => a.type.localeCompare(b.type));
+allTypes.forEach(sourceSchemaType => {
+    if (isExperimentalType(sourceSchemaType.type)) {
+        experimentalTypes.push(sourceSchemaType);
     } else {
-        types.push(metaSchemaType);
+        types.push(sourceSchemaType);
     }
 });
 
@@ -46,13 +43,9 @@ types.forEach(writeType);
 addHeader('Experimental Types', 'experimental-types', 1);
 experimentalTypes.forEach(writeType);
 
-function writeType(metaSchemaType) {
-    const type = metaSchemaType.type;
-    const jsonSchemaType = jsonSchemaTypesByType[type];
-    if (!jsonSchemaType) {
-        throw new Error(`JSON schema type not found for meta schema type ${type}.`);
-    }
-    const required = jsonSchemaType.schema['required'];
+function writeType(sourceSchemaType) {
+    const type = sourceSchemaType.type;
+    const required = sourceSchemaType.schema['required'];
 
     // Heading
     addHeader(type, type.toLowerCase(), 2);
@@ -64,44 +57,42 @@ function writeType(metaSchemaType) {
     }
 
     // SDK extension plugin
-    if (metaSchemaType.isSdkExtensionPlugin) {
+    if (sourceSchemaType.schema.isSdkExtensionPlugin) {
         output.push(`\`${type}\` is an [SDK extension plugin](#sdk-extension-plugins).\n\n`);
     }
 
-    if (jsonSchemaType.isEnumType()) {
+    if (sourceSchemaType.isEnumType()) {
         // Enum values
         output.push("This is a enum type.\n\n");
         output.push(`| Value | Description |\n`);
         output.push(`|---|---|\n`);
-        metaSchemaType.enumValues.forEach(enumValue => {
-            const formattedDescription = enumValue.description.split("\n").join("<br>");
-            output.push(`| \`${enumValue.enumValue}\` | ${formattedDescription} |\n`);
+        sourceSchemaType.sortedEnumValues().forEach(enumValue => {
+            const description = sourceSchemaType.schema['enumDescriptions'][enumValue];
+            const formattedDescription = description.split("\n").join("<br>");
+            output.push(`| \`${enumValue}\` | ${formattedDescription} |\n`);
         });
         output.push('\n');
     } else {
         // Properties
-        if (metaSchemaType.properties.length === 0) {
+        const properties = sourceSchemaType.sortedProperties();
+        if (properties.length === 0) {
             output.push("No properties.\n\n");
         } else {
             // Property type and description table
             output.push(`| Property | Type | Required? | Constraints | Description |\n`);
             output.push("|---|---|---|---|---|\n");
-            metaSchemaType.properties.forEach(property => {
-                const jsonSchemaProperty = jsonSchemaType.properties.find(item => item.property === property.property);
-                if (!jsonSchemaProperty) {
-                    throw new Error(`JSON schema property not found for property ${property.property} and type ${type}.`);
-                }
-                let formattedProperty = `\`${property.property}\``
-                if (isExperimentalProperty(property.property)) {
+            properties.forEach(sourceSchemaProperty => {
+                let formattedProperty = `\`${sourceSchemaProperty.property}\``
+                if (isExperimentalProperty(sourceSchemaProperty.property)) {
                     formattedProperty += '<br>**WARNING:** This property is [experimental](README.md#experimental-features).'
                 }
-                const formattedPropertyType = formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType);
-                const isRequired = required !== undefined && required.includes(property.property);
-                let formattedConstraints = resolveAndFormatConstraints(jsonSchemaProperty.schema, '<br>');
+                const formattedPropertyType = formatPropertyType(sourceSchemaProperty, sourceTypesByType);
+                const isRequired = required !== undefined && required.includes(sourceSchemaProperty.property);
+                let formattedConstraints = resolveAndFormatConstraints(sourceSchemaProperty.schema, '<br>');
                 if (formattedConstraints.length === 0) {
                     formattedConstraints = 'No constraints.';
                 }
-                const formattedDescription = property.description.split("\n").join("<br>");
+                const formattedDescription = sourceSchemaProperty.schema.description.split("\n").join("<br>");
 
                 output.push(`| ${formattedProperty} | ${formattedPropertyType} | \`${isRequired}\` | ${formattedConstraints} | ${formattedDescription} |\n`);
             });
@@ -110,12 +101,12 @@ function writeType(metaSchemaType) {
     }
 
     // Write language support status for type
-    if ((jsonSchemaType.isEnumType() && metaSchemaType.enumValues.length > 0) || (!jsonSchemaType.isEnumType() && jsonSchemaType.properties.length > 0)) {
+    if ((sourceSchemaType.isEnumType() && sourceSchemaType.enumValues.length > 0) || (!sourceSchemaType.isEnumType() && sourceSchemaType.properties.length > 0)) {
         output.push(`<details>\n`);
         output.push('<summary>Language support status</summary>\n\n');
         const languageImplementationsByLanguage = {};
-        metaSchema.languageImplementations.forEach(languageImplementation => languageImplementationsByLanguage[languageImplementation.language] = languageImplementation);
-        const rowHeader = jsonSchemaType.isEnumType() ? 'Value' : 'Property';
+        languageImplementations.forEach(languageImplementation => languageImplementationsByLanguage[languageImplementation.language] = languageImplementation);
+        const rowHeader = sourceSchemaType.isEnumType() ? 'Value' : 'Property';
         output.push(`| ${rowHeader} |`);
         KNOWN_LANGUAGES.forEach(language => {
             output.push(` [${language}](#${language}) |`);
@@ -127,22 +118,22 @@ function writeType(metaSchemaType) {
         output.push('|---|');
         KNOWN_LANGUAGES.forEach(language => output.push(`---|`));
         output.push('\n');
-        if (jsonSchemaType.isEnumType()) {
-            metaSchemaType.enumValues.forEach(enumValue => {
-                output.push(`| \`${enumValue.enumValue}\` |`);
+        if (sourceSchemaType.isEnumType()) {
+            sourceSchemaType.sortedEnumValues().forEach(enumValue => {
+                output.push(`| \`${enumValue}\` |`);
                 KNOWN_LANGUAGES.forEach(language => {
                     const typeSupportStatus = languageImplementationsByLanguage[language].typeSupportStatuses.find(item => item.type === type);
                     if (!typeSupportStatus) {
                         throw new Error(`Meta schema LanguageImplementation for language ${language} missing type ${type}.`);
                     }
-                    const enumValueOverride = typeSupportStatus.enumOverrides.find(enumOverride => enumOverride.enumValue === enumValue.enumValue);
+                    const enumValueOverride = typeSupportStatus.enumOverrides.find(enumOverride => enumOverride.enumValue === enumValue);
                     const status = enumValueOverride ? enumValueOverride.status : typeSupportStatus.status;
                     output.push(` ${status} |`);
                 });
                 output.push('\n');
             });
         } else {
-            metaSchemaType.properties.forEach(property => {
+            sourceSchemaType.sortedProperties().forEach(property => {
                 output.push(`| \`${property.property}\` |`);
                 KNOWN_LANGUAGES.forEach(language => {
                     const typeSupportStatus = languageImplementationsByLanguage[language].typeSupportStatuses.find(item => item.type === type);
@@ -161,7 +152,7 @@ function writeType(metaSchemaType) {
     }
 
     // Constraints
-    const formattedConstraints = resolveAndFormatConstraints(jsonSchemaType.schema, '\n');
+    const formattedConstraints = resolveAndFormatConstraints(sourceSchemaType.schema, '\n');
     if (formattedConstraints.length > 0) {
         output.push('Constraints: \n\n');
         output.push(formattedConstraints);
@@ -172,10 +163,10 @@ function writeType(metaSchemaType) {
 
     // Usages
     const usages = [];
-    jsonSchemaTypes.forEach(otherJsonSchemaType => {
-       otherJsonSchemaType.properties.forEach(property => {
+    Object.values(sourceTypesByType).forEach(otherSourceType => {
+       otherSourceType.properties.forEach(property => {
            if (property.types.find(item => item === type)) {
-               usages.push([ otherJsonSchemaType, property ]);
+               usages.push([ otherSourceType, property ]);
            }
        });
     });
@@ -190,8 +181,8 @@ function writeType(metaSchemaType) {
     // JSON schema collapsible section
     output.push(`<details>\n`);
     output.push(`<summary>JSON Schema</summary>\n\n`);
-    output.push(`[JSON Schema Source File](./schema/${jsonSchemaType.sourceFile})\n`)
-    output.push(`<pre>${JSON.stringify(jsonSchemaType.schema, null, 2)}</pre>\n`);
+    output.push(`[Source File](./schema/${sourceSchemaType.sourceFile})\n`)
+    output.push(`<pre>${JSON.stringify(sourceSchemaType.schema, null, 2)}</pre>\n`);
     output.push(`</details>\n`);
     output.push('\n');
 }
@@ -200,7 +191,7 @@ function writeType(metaSchemaType) {
 addHeader('Language Support Status', 'language-support-status', 1);
 KNOWN_LANGUAGES.forEach(language => {
     addHeader(language, language, 2);
-    const languageImplementation = metaSchema.languageImplementations.find(item => item.language === language);
+    const languageImplementation = languageImplementations.find(item => item.language === language);
     if (!languageImplementation) {
         throw new Error(`Meta schema LanguageImplementation not found for language ${language}.`);
     }
@@ -209,9 +200,9 @@ KNOWN_LANGUAGES.forEach(language => {
     output.push(`| Type | Status | Notes | Support Status Details |\n`);
     output.push(`|---|---|---|---|\n`);
     languageImplementation.typeSupportStatuses.forEach(typeSupportStatus => {
-        const metaSchemaType = metaSchema.types.find(item => item.type === typeSupportStatus.type);
-        if (!metaSchemaType) {
-            throw new Error(`MetaSchemaType not found for type ${typeSupportStatus.type}.`);
+        const sourceSchemaType = allTypes.find(item => item.type === typeSupportStatus.type);
+        if (!sourceSchemaType) {
+            throw new Error(`SourceSchemaType not found for type ${typeSupportStatus.type}.`);
         }
 
         let formattedNotes = typeSupportStatus.notes;
@@ -221,17 +212,17 @@ KNOWN_LANGUAGES.forEach(language => {
 
         const supportStatusDetails = [];
 
-        if (metaSchemaType.properties !== null) {
-            metaSchemaType.properties.forEach(metaSchemaProperty => {
-                const propertyOverride = typeSupportStatus.propertyOverrides.find(propertyOverride => propertyOverride.property === metaSchemaProperty.property);
+        if (sourceSchemaType.properties !== null) {
+            sourceSchemaType.sortedProperties().forEach(sourceSchemaProperty => {
+                const propertyOverride = typeSupportStatus.propertyOverrides.find(propertyOverride => propertyOverride.property === sourceSchemaProperty.property);
                 const status = propertyOverride ? propertyOverride.status : typeSupportStatus.status;
-                supportStatusDetails.push(`* \`${metaSchemaProperty.property}\`: ${status}<br>`);
+                supportStatusDetails.push(`* \`${sourceSchemaProperty.property}\`: ${status}<br>`);
             });
         } else {
-            metaSchemaType.enumValues.forEach(metaSchemaEnumValue => {
-                const enumValueOverride = typeSupportStatus.enumOverrides.find(enumOverride => enumOverride.enumValue === metaSchemaEnumValue.enumValue);
+            sourceSchemaType.enumValues.forEach(sourceSchemaEnumValue => {
+                const enumValueOverride = typeSupportStatus.enumOverrides.find(enumOverride => enumOverride.enumValue === sourceSchemaEnumValue.enumValue);
                 const status = enumValueOverride ? enumValueOverride.status : typeSupportStatus.status;
-                supportStatusDetails.push(`* \`${metaSchemaEnumValue.enumValue}\`: ${status}<br>`);
+                supportStatusDetails.push(`* \`${sourceSchemaEnumValue.enumValue}\`: ${status}<br>`);
             });
         }
 
@@ -252,29 +243,29 @@ Each of the following types support referencing custom interface implementations
 SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the \`otlp_http\` property of \`SpanExporter\` defines the OTLP http/protobuf exporter.
 
 `);
-metaSchema.types.filter(metaSchemaType => metaSchemaType.isSdkExtensionPlugin)
-    .forEach(metaSchemaType => {
-        output.push(`* [${metaSchemaType.type}](#${metaSchemaType.type})\n`)
+allTypes.filter(sourceSchemaType => sourceSchemaType.isSdkExtensionPlugin)
+    .forEach(sourceSchemaType => {
+        output.push(`* [${sourceSchemaType.type}](#${sourceSchemaType.type})\n`)
     });
 
 output.unshift('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
 fs.writeFileSync(markdownDocPath, output.join(""));
 
 // Helper functions
-function formatJsonSchemaPropertyType(jsonSchemaProperty, jsonSchemaTypesByType) {
+function formatPropertyType(sourceProperty, sourceTypesByType) {
     const output = [];
-    if (jsonSchemaProperty.isSeq) {
+    if (sourceProperty.isSeq) {
         output.push('`array` of ');
     }
     let prefix = '';
     let suffix = '';
-    if (jsonSchemaProperty.types.length > 1) {
+    if (sourceProperty.types.length > 1) {
         output.push('one of:<br>');
         prefix = '* ';
         suffix = '<br>';
     }
-    jsonSchemaProperty.types.forEach(type => {
-        let resolvedType = jsonSchemaTypesByType[type];
+    sourceProperty.types.forEach(type => {
+        let resolvedType = sourceTypesByType[type];
         output.push(prefix);
         output.push(resolvedType ? `[\`${resolvedType.type}\`](#${resolvedType.type.toLowerCase()})` : `\`${type}\``)
         output.push(suffix);

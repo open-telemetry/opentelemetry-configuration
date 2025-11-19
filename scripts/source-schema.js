@@ -1,10 +1,15 @@
 import fs from 'fs';
-import {metaSchemaFilePrefix, rootTypeName, schemaSourceDirPath} from "./util.js";
+import {
+    isExperimentalProperty,
+    metaSchemaFilePrefix,
+    rootTypeName,
+    schemaSourceDirPath
+} from "./util.js";
 import yaml from "yaml";
 
 const localDefPrefix = '#/$defs/';
 
-export function readSourceSchemaTypes() {
+export function readSourceSchema() {
     const sourceTypesByType = {};
     const sourceContentByFile = {};
 
@@ -180,5 +185,21 @@ export class SourceSchemaType {
             ref += this.jsonSchemaPath;
         }
         return ref;
+    }
+
+    sortedEnumValues() {
+        const sorted = this.enumValues.slice();
+        sorted.sort((a, b) => a.localeCompare(b));
+        return sorted;
+    }
+
+    sortedProperties() {
+        const sorted = this.properties.slice();
+        // Sort in lexigraphical order, with non-experimental properties first
+        sorted.sort((a, b) => {
+            const differentMaturities = isExperimentalProperty(a.property) - isExperimentalProperty(b.property);
+            return differentMaturities === 0 ? a.property.localeCompare(b.property) : +differentMaturities;
+        });
+        return sorted;
     }
 }
