@@ -1,36 +1,56 @@
 import fs from 'fs';
-import {metaSchemaFilePrefix, schemaSourceDirPath, schemaOutDirPath} from "./util.js";
+import {schemaOutDirPath} from "./util.js";
 import yaml from "yaml";
+import {readSourceSchemaTypes} from "./source-schema.js";
 
 // Delete and recreate schema out directory
 fs.rmSync(schemaOutDirPath, {recursive: true, force: true});
 fs.mkdirSync(schemaOutDirPath);
 
-// Read YAML source files and create a map of their content
-const fileContentByFile = {};
-fs.readdirSync(schemaSourceDirPath)
-    .filter(file => file.endsWith('.yaml') && !file.startsWith(metaSchemaFilePrefix))
-    .forEach(file => fileContentByFile[file] = fs.readFileSync(schemaSourceDirPath + file, "utf-8"));
+// Read source schema
+const { sourceContentByFile, sourceTypesByType } = readSourceSchemaTypes();
 
-// Iterate through source files, replacing references
-Object.keys(fileContentByFile).forEach(file => {
+// Validate source types and exit early if there are any errors
+const messages = [];
+Object.entries(sourceTypesByType).forEach(([type, sourceSchemaType]) => {
+    allPropertiesShouldHaveDescriptions(sourceSchemaType, messages);
+});
+if (messages.length > 0) {
+    messages.forEach(message => console.log(message));
+    process.exit(1);
+}
+
+// If we make it here, source schema is valid. Massage the schema a bit and write it to the output directory in JSON format.
+
+// Replace refs with new JSON file paths
+Object.keys(sourceContentByFile).forEach(file => {
     const jsonFile = file.replace('.yaml', '.json');
-    Object.entries(fileContentByFile).forEach(([otherFile, otherContent]) => {
-        fileContentByFile[otherFile] = otherContent.replaceAll(`$ref: ${file}`, `$ref: ${jsonFile}`);
+    Object.entries(sourceContentByFile).forEach(([otherFile, otherContent]) => {
+        const otherContentString = yaml.stringify(otherContent, {lineWidth: 0});
+        sourceContentByFile[otherFile] = yaml.parse(otherContentString.replaceAll(`$ref: ${file}`, `$ref: ${jsonFile}`));
     });
 });
 
 // For each file, parse the YAML, annotate, and write to output directory
-Object.entries(fileContentByFile).forEach(([file, content]) => {
-    const parsedContent = yaml.parse(content);
+Object.entries(sourceContentByFile).forEach(([file, content]) => {
     const jsonFile = file.replace('.yaml', '.json');
 
     // Annotate with constant info
     const annotated = {
         '$id': `https://opentelemetry.io/otelconfig/${jsonFile}`,
         '$schema': 'https://json-schema.org/draft/2020-12/schema',
-        ...parsedContent
+        ...content
     }
 
     fs.writeFileSync(schemaOutDirPath + jsonFile, JSON.stringify(annotated, null, 2));
 });
+
+console.log(readSourceSchemaTypes());
+
+function allPropertiesShouldHaveDescriptions(sourceSchemaType, messages) {
+    sourceSchemaType.properties.forEach(property => {
+       if (!property.schema.description) {
+           messages.push(`Property ${sourceSchemaType.type}.${property.property} has no description`);
+       }
+    });
+}
