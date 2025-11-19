@@ -28,7 +28,7 @@ unchanged and increment the `patch`.
 
 ## Update `file_format` {#update-file-format}
 
-Update the `file_format: "<major>.<minor>` of [./examples](./examples) as follows:
+Update the `file_format: "<major>.<minor>` of [./examples](./examples) and [./snippets](./snippets) as follows:
 
 ```shell
 # Set FILE_FORMAT env var to target version of the release
