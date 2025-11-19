@@ -4,12 +4,12 @@
 include Makefile.common
 
 PARENT_DIR :=$(realpath $(shell dirname $(lastword $(MAKEFILE_LIST))))
-ROOT_DIR :=$(realpath ${PARENT_DIR}/validator/)
+ROOT_DIR :=$(realpath ${PARENT_DIR}/validator)
 CURRENT_GIT_REF :=$(shell git rev-parse --short HEAD)
 DOCKER_IMAGE_TAG :=${CURRENT_GIT_REF}
 DOCKER_BUILD_ARGS :=-f ${ROOT_DIR}/Dockerfile -t otel_config_validator:${DOCKER_IMAGE_TAG} -t otel_config_validator:current
 DOCKER_SHELLTEST_BUILD_ARGS :=-f ${ROOT_DIR}/Dockerfile --target shelltest -t shelltest:${CURRENT_GIT_REF} -t shelltest:current
-EXAMPLE_FILES := $(shell find ${ROOT_DIR}/../examples -name "*.yaml" -exec basename {} \; | sort)
+EXAMPLE_FILES := $(shell find ${PARENT_DIR}/examples -name "*.yaml" -exec basename {} \; | sort)
 $(shell mkdir -p out)
 
 # User to run as in docker images.
@@ -17,9 +17,9 @@ DOCKER_USER=$(shell id -u):$(shell id -g)
 
 GO = go
 
-TOOLS = $(CURDIR)/.tools
+TOOLS = $(ROOT_DIR)/.tools
 
-TOOLS_MOD_DIR := ./internal/tools
+TOOLS_MOD_DIR := $(ROOT_DIR)/internal/tools
 
 $(TOOLS):
 	@mkdir -p $@
@@ -58,6 +58,6 @@ validator-run-shelltests: validator-build-shelltest-image
 
 .PHONY: govulncheck
 govulncheck: $(TOOLS)/govulncheck
-	$(GOVULNCHECK) ./...
+	cd $(ROOT_DIR) && $(GOVULNCHECK) ./...
 
 .PHONY: validator-validate-examples validator-copy-schema validator validator-docker-image
