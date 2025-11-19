@@ -32,9 +32,9 @@ tracer_provider:
           otlp_http:
             endpoint: http://localhost:4318/v1/traces
             tls:
-              certificate_file:
-              client_key_file:
-              client_certificate_file:
+              ca_file:
+              key_file:
+              cert_file:
             compression: gzip
             timeout: 10000
   limits:
@@ -65,9 +65,9 @@ meter_provider:
           otlp_http:
             endpoint: http://localhost:4318/v1/metrics
             tls:
-              certificate_file:
-              client_key_file:
-              client_certificate_file:
+              ca_file:
+              key_file:
+              cert_file:
             compression: gzip
             timeout: 10000
             temporality_preference: cumulative
@@ -84,9 +84,9 @@ logger_provider:
           otlp_http:
             endpoint: http://localhost:4318/v1/logs
             tls:
-              certificate_file:
-              client_key_file:
-              client_certificate_file:
+              ca_file:
+              key_file:
+              cert_file:
             compression: gzip
             timeout: 10000
   limits:

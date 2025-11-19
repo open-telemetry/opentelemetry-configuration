@@ -58,9 +58,9 @@ tracer_provider:
           otlp_http:
             endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}
             tls:
-              certificate_file: ${OTEL_EXPORTER_OTLP_TRACES_CERTIFICATE}
-              client_key_file: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_KEY}
-              client_certificate_file: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_CERTIFICATE}
+              ca_file: ${OTEL_EXPORTER_OTLP_TRACES_CERTIFICATE}
+              key_file: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_KEY}
+              cert_file: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_CERTIFICATE}
             compression: ${OTEL_EXPORTER_OTLP_TRACES_COMPRESSION:-gzip}
             timeout: ${OTEL_EXPORTER_OTLP_TRACES_TIMEOUT:-10000}
             headers_list: ${OTEL_EXPORTER_OTLP_TRACES_HEADERS}
@@ -92,9 +92,9 @@ meter_provider:
           otlp_http:
             endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
             tls:
-              certificate_file: ${OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE}
-              client_key_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_KEY}
-              client_certificate_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_CERTIFICATE}
+              ca_file: ${OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE}
+              key_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_KEY}
+              cert_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_CERTIFICATE}
             compression: ${OTEL_EXPORTER_OTLP_METRICS_COMPRESSION:-gzip}
             timeout: ${OTEL_EXPORTER_OTLP_METRICS_TIMEOUT:-10000}
             headers_list: ${OTEL_EXPORTER_OTLP_METRICS_HEADERS}
@@ -112,9 +112,9 @@ logger_provider:
           otlp_http:
             endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}
             tls:
-              certificate_file: ${OTEL_EXPORTER_OTLP_LOGS_CERTIFICATE}
-              client_key_file: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_KEY}
-              client_certificate_file: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_CERTIFICATE}
+              ca_file: ${OTEL_EXPORTER_OTLP_LOGS_CERTIFICATE}
+              key_file: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_KEY}
+              cert_file: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_CERTIFICATE}
             compression: ${OTEL_EXPORTER_OTLP_LOGS_COMPRESSION:-gzip}
             timeout: ${OTEL_EXPORTER_OTLP_LOGS_TIMEOUT:-10000}
             headers_list: ${OTEL_EXPORTER_OTLP_LOGS_HEADERS}

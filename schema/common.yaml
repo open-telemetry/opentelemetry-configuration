@@ -116,15 +116,15 @@ $defs:
       - "null"
     additionalProperties: false
     properties:
-      certificate_file:
+      ca_file:
         type:
           - string
           - "null"
-      client_key_file:
+      key_file:
         type:
           - string
           - "null"
-      client_certificate_file:
+      cert_file:
         type:
           - string
           - "null"
@@ -134,15 +134,15 @@ $defs:
       - "null"
     additionalProperties: false
     properties:
-      certificate_file:
+      ca_file:
         type:
           - string
           - "null"
-      client_key_file:
+      key_file:
         type:
           - string
           - "null"
-      client_certificate_file:
+      cert_file:
         type:
           - string
           - "null"
