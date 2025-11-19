@@ -3,8 +3,8 @@
 
 include Makefile.common
 
-ROOT_DIR :=$(realpath $(shell dirname $(lastword $(MAKEFILE_LIST))))
-PARENT_DIR :=$(realpath ${ROOT_DIR}/../)
+PARENT_DIR :=$(realpath $(shell dirname $(lastword $(MAKEFILE_LIST))))
+ROOT_DIR :=$(realpath ${PARENT_DIR}/validator/)
 CURRENT_GIT_REF :=$(shell git rev-parse --short HEAD)
 DOCKER_IMAGE_TAG :=${CURRENT_GIT_REF}
 DOCKER_BUILD_ARGS :=-f ${ROOT_DIR}/Dockerfile -t otel_config_validator:${DOCKER_IMAGE_TAG} -t otel_config_validator:current
