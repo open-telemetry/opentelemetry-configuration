@@ -1,15 +1,15 @@
 import fs from "fs";
-import {rootTypeName, schemaDirPath} from "./util.js";
+import {rootTypeName, schemaOutDirPath} from "./util.js";
 import {readJsonSchemaTypes} from "./json-schema.js";
 import Ajv from "ajv/dist/2020.js";
 import {readSnippets} from "./snippets.js";
 
 // Initialize ajv
 const ajv = new Ajv({ allErrors: true });
-fs.readdirSync(schemaDirPath)
+fs.readdirSync(schemaOutDirPath)
     .filter(file => file.endsWith('.json'))
     .forEach(file =>{
-        const rawContent = fs.readFileSync(schemaDirPath + file, "utf-8");
+        const rawContent = fs.readFileSync(schemaOutDirPath + file, "utf-8");
         const jsonContent = JSON.parse(rawContent);
         ajv.addSchema(jsonContent);
     });
