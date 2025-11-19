@@ -1,6 +1,6 @@
 import {KNOWN_LANGUAGES, readAndFixLanguageImplementations} from "./language-implementations.js";
 import fs from "node:fs";
-import {isExperimentalProperty, isExperimentalType, markdownDocPath, rootTypeName} from "./util.js";
+import {isExperimentalProperty, isExperimentalType, markdownDocPath, rootTypeName, schemaOutDirPath} from "./util.js";
 import {readSourceSchema} from "./source-schema.js";
 
 const { sourceTypesByType } = readSourceSchema();
@@ -9,6 +9,11 @@ const { messages, languageImplementations } = readAndFixLanguageImplementations(
 if (messages.length > 0) {
     throw new Error("Language implementations have problems. Please run fix-language-implementations and try again.");
 }
+
+const outputSchemaByFile = {};
+fs.readdirSync(schemaOutDirPath).forEach(file => {
+    outputSchemaByFile[file] = JSON.parse(fs.readFileSync(schemaOutDirPath + file, 'utf8'));
+});
 
 const output = [];
 
@@ -181,10 +186,52 @@ function writeType(sourceSchemaType) {
     // JSON schema collapsible section
     output.push(`<details>\n`);
     output.push(`<summary>JSON Schema</summary>\n\n`);
-    output.push(`[Source File](./schema/${sourceSchemaType.sourceFile})\n`)
-    output.push(`<pre>${JSON.stringify(sourceSchemaType.schema, null, 2)}</pre>\n`);
+    output.push(`[JSON Schema Source File](./schema/${sourceSchemaType.sourceFile})\n`);
+    // cleanSchema is a temp hack to minimize the diff while merging the meta schema
+    // TODO: come back and remove
+    const schemaSource = cleanSchema(getSchemaSource(sourceSchemaType));
+    output.push(`<pre>${JSON.stringify(schemaSource, null, 2)}</pre>\n`);
     output.push(`</details>\n`);
     output.push('\n');
+}
+
+function getSchemaSource(sourceSchemaType) {
+    const outputFile = sourceSchemaType.sourceFile.replace('.yaml', '.json');
+    const outputFileContent = outputSchemaByFile[outputFile];
+    if (!outputSchemaByFile[outputFile]) {
+        throw new Error(`Output schema file ${outputFile} not found. Please run "make generate-schema" first.`);
+    }
+    if (sourceSchemaType.jsonSchemaPath === '.') {
+        return outputFileContent;
+    }
+    const defs = outputFileContent['$defs'];
+    if (!defs) {
+        throw new Error(`Output schema file ${outputFile} does not have $defs.`);
+    }
+    let def = defs[sourceSchemaType.type];
+    if (!def) {
+        throw new Error(`Output schema file ${outputFile} does not $def entry for ${sourceSchemaType.type}.`);
+    }
+    return def;
+}
+
+function cleanSchema(schemaSource) {
+    const adjustedSchema = JSON.parse(JSON.stringify(schemaSource));
+    const properties = adjustedSchema.properties;
+    if (properties) {
+        Object.values(properties).forEach(property => {
+           delete property.description;
+        });
+    }
+    const defs = adjustedSchema['$defs'];
+    if (defs) {
+        const adjustedDefs = {};
+        Object.entries(defs).forEach(([key, value]) => {
+            adjustedDefs[key] = cleanSchema(value);
+        });
+        adjustedSchema['$defs'] = adjustedDefs;
+    }
+    return adjustedSchema;
 }
 
 // Write language support status
@@ -212,17 +259,17 @@ KNOWN_LANGUAGES.forEach(language => {
 
         const supportStatusDetails = [];
 
-        if (sourceSchemaType.properties !== null) {
+        if (!sourceSchemaType.isEnumType()) {
             sourceSchemaType.sortedProperties().forEach(sourceSchemaProperty => {
                 const propertyOverride = typeSupportStatus.propertyOverrides.find(propertyOverride => propertyOverride.property === sourceSchemaProperty.property);
                 const status = propertyOverride ? propertyOverride.status : typeSupportStatus.status;
                 supportStatusDetails.push(`* \`${sourceSchemaProperty.property}\`: ${status}<br>`);
             });
         } else {
-            sourceSchemaType.enumValues.forEach(sourceSchemaEnumValue => {
-                const enumValueOverride = typeSupportStatus.enumOverrides.find(enumOverride => enumOverride.enumValue === sourceSchemaEnumValue.enumValue);
+            sourceSchemaType.sortedEnumValues().forEach(enumValue => {
+                const enumValueOverride = typeSupportStatus.enumOverrides.find(enumOverride => enumOverride.enumValue === enumValue);
                 const status = enumValueOverride ? enumValueOverride.status : typeSupportStatus.status;
-                supportStatusDetails.push(`* \`${sourceSchemaEnumValue.enumValue}\`: ${status}<br>`);
+                supportStatusDetails.push(`* \`${enumValue}\`: ${status}<br>`);
             });
         }
 
@@ -243,7 +290,7 @@ Each of the following types support referencing custom interface implementations
 SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the \`otlp_http\` property of \`SpanExporter\` defines the OTLP http/protobuf exporter.
 
 `);
-allTypes.filter(sourceSchemaType => sourceSchemaType.isSdkExtensionPlugin)
+allTypes.filter(sourceSchemaType => sourceSchemaType.schema.isSdkExtensionPlugin)
     .forEach(sourceSchemaType => {
         output.push(`* [${sourceSchemaType.type}](#${sourceSchemaType.type})\n`)
     });

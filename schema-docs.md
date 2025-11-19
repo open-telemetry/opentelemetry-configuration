@@ -49,7 +49,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -57,28 +57,22 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "default": {
-      "$ref": "#/$defs/DefaultAggregation",
-      "description": "TODO"
+      "$ref": "#/$defs/DefaultAggregation"
     },
     "drop": {
-      "$ref": "#/$defs/DropAggregation",
-      "description": "TODO"
+      "$ref": "#/$defs/DropAggregation"
     },
     "explicit_bucket_histogram": {
-      "$ref": "#/$defs/ExplicitBucketHistogramAggregation",
-      "description": "Configure aggregation to be explicit_bucket_histogram."
+      "$ref": "#/$defs/ExplicitBucketHistogramAggregation"
     },
     "base2_exponential_bucket_histogram": {
-      "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation",
-      "description": "TODO"
+      "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation"
     },
     "last_value": {
-      "$ref": "#/$defs/LastValueAggregation",
-      "description": "TODO"
+      "$ref": "#/$defs/LastValueAggregation"
     },
     "sum": {
-      "$ref": "#/$defs/SumAggregation",
-      "description": "TODO"
+      "$ref": "#/$defs/SumAggregation"
     }
   }
 }</pre>
@@ -99,7 +93,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -124,7 +118,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -161,7 +155,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/opentelemetry_configuration.yaml)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -171,16 +165,14 @@ Usages:
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max attribute value size. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+      "minimum": 0
     },
     "attribute_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max attribute count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+      "minimum": 0
     }
   }
 }</pre>
@@ -216,14 +208,13 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/resource.yaml)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "name": {
-      "type": "string",
-      "description": "The attribute name.\n"
+      "type": "string"
     },
     "value": {
       "oneOf": [
@@ -260,12 +251,10 @@ Usages:
           },
           "minItems": 1
         }
-      ],
-      "description": "The attribute value.\nThe type of value must match .type.\n"
+      ]
     },
     "type": {
-      "$ref": "#/$defs/AttributeType",
-      "description": "The attribute type.\nValues include: string, bool, int, double, string_array, bool_array, int_array, double_array.\nIf omitted or null, string is used.\n"
+      "$ref": "#/$defs/AttributeType"
     }
   },
   "required": [
@@ -314,7 +303,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/resource.yaml)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "string",
@@ -329,17 +318,7 @@ Usages:
     "bool_array",
     "int_array",
     "double_array"
-  ],
-  "enumDescriptions": {
-    "bool": "TODO",
-    "bool_array": "TODO",
-    "double": "TODO",
-    "double_array": "TODO",
-    "int": "TODO",
-    "int_array": "TODO",
-    "string": "TODO",
-    "string_array": "TODO"
-  }
+  ]
 }</pre>
 </details>
 
@@ -358,7 +337,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/propagator.yaml)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -383,7 +362,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/propagator.yaml)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -408,7 +387,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/propagator.yaml)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -447,7 +426,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -461,23 +440,20 @@ Usages:
         "null"
       ],
       "minimum": -10,
-      "maximum": 20,
-      "description": "TODO"
+      "maximum": 20
     },
     "max_size": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 2,
-      "description": "TODO"
+      "minimum": 2
     },
     "record_min_max": {
       "type": [
         "boolean",
         "null"
-      ],
-      "description": "TODO"
+      ]
     }
   }
 }</pre>
@@ -517,7 +493,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/logger_provider.yaml)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -527,36 +503,31 @@ Usages:
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure delay interval (in milliseconds) between two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 1000 is used.\n"
+      "minimum": 0
     },
     "export_timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+      "minimum": 0
     },
     "max_queue_size": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure maximum queue size. Value must be positive.\nIf omitted or null, 2048 is used.\n"
+      "exclusiveMinimum": 0
     },
     "max_export_batch_size": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure maximum batch size. Value must be positive.\nIf omitted or null, 512 is used.\n"
+      "exclusiveMinimum": 0
     },
     "exporter": {
-      "$ref": "#/$defs/LogRecordExporter",
-      "description": "Configure exporter."
+      "$ref": "#/$defs/LogRecordExporter"
     }
   },
   "required": [
@@ -599,7 +570,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -609,36 +580,31 @@ Usages:
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure delay interval (in milliseconds) between two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 5000 is used.\n"
+      "minimum": 0
     },
     "export_timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+      "minimum": 0
     },
     "max_queue_size": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure maximum queue size. Value must be positive.\nIf omitted or null, 2048 is used.\n"
+      "exclusiveMinimum": 0
     },
     "max_export_batch_size": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure maximum batch size. Value must be positive.\nIf omitted or null, 512 is used.\n"
+      "exclusiveMinimum": 0
     },
     "exporter": {
-      "$ref": "#/$defs/SpanExporter",
-      "description": "Configure exporter."
+      "$ref": "#/$defs/SpanExporter"
     }
   },
   "required": [
@@ -687,7 +653,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -697,64 +663,56 @@ Usages:
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure default cardinality limit for all instrument types.\nInstrument-specific cardinality limits take priority. \nIf omitted or null, 2000 is used.\n"
+      "exclusiveMinimum": 0
     },
     "counter": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure default cardinality limit for counter instruments.\nIf omitted or null, the value from .default is used.\n"
+      "exclusiveMinimum": 0
     },
     "gauge": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure default cardinality limit for gauge instruments.\nIf omitted or null, the value from .default is used.\n"
+      "exclusiveMinimum": 0
     },
     "histogram": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure default cardinality limit for histogram instruments.\nIf omitted or null, the value from .default is used.\n"
+      "exclusiveMinimum": 0
     },
     "observable_counter": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure default cardinality limit for observable_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+      "exclusiveMinimum": 0
     },
     "observable_gauge": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure default cardinality limit for observable_gauge instruments.\nIf omitted or null, the value from .default is used.\n"
+      "exclusiveMinimum": 0
     },
     "observable_up_down_counter": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure default cardinality limit for observable_up_down_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+      "exclusiveMinimum": 0
     },
     "up_down_counter": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure default cardinality limit for up_down_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+      "exclusiveMinimum": 0
     }
   }
 }</pre>
@@ -776,7 +734,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/common.yaml)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -813,7 +771,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -822,12 +780,10 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "temporality_preference": {
-      "$ref": "#/$defs/ExporterTemporalityPreference",
-      "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+      "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
-      "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-      "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+      "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
 }</pre>
@@ -848,7 +804,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -873,7 +829,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -912,7 +868,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -922,12 +878,7 @@ Usages:
     "always_on",
     "always_off",
     "trace_based"
-  ],
-  "enumDescriptions": {
-    "always_off": "TODO",
-    "always_on": "TODO",
-    "trace_based": "TODO"
-  }
+  ]
 }</pre>
 </details>
 
@@ -958,7 +909,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -971,15 +922,13 @@ Usages:
       "minItems": 0,
       "items": {
         "type": "number"
-      },
-      "description": "Configure bucket boundaries.\nIf omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.\n"
+      }
     },
     "record_min_max": {
       "type": [
         "boolean",
         "null"
-      ],
-      "description": "Configure record min and max.\nIf omitted or null, true is used.\n"
+      ]
     }
   }
 }</pre>
@@ -1015,7 +964,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -1024,11 +973,7 @@ Usages:
   "enum": [
     "explicit_bucket_histogram",
     "base2_exponential_bucket_histogram"
-  ],
-  "enumDescriptions": {
-    "base2_exponential_bucket_histogram": "TODO",
-    "explicit_bucket_histogram": "TODO"
-  }
+  ]
 }</pre>
 </details>
 
@@ -1064,7 +1009,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -1074,12 +1019,7 @@ Usages:
     "cumulative",
     "delta",
     "low_memory"
-  ],
-  "enumDescriptions": {
-    "cumulative": "TODO",
-    "delta": "TODO",
-    "low_memory": "TODO"
-  }
+  ]
 }</pre>
 </details>
 
@@ -1115,7 +1055,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/common.yaml)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -1127,29 +1067,25 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure certificate used to verify a server's TLS credentials. \nAbsolute path to certificate file in PEM format.\nIf omitted or null, system default certificate verification is used for secure connections.\n"
+      ]
     },
     "key_file": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure mTLS private client key. \nAbsolute path to client key file in PEM format. If set, .client_certificate must also be set.\nIf omitted or null, mTLS is not used.\n"
+      ]
     },
     "cert_file": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure mTLS client certificate. \nAbsolute path to client certificate file in PEM format. If set, .client_key must also be set.\nIf omitted or null, mTLS is not used.\n"
+      ]
     },
     "insecure": {
       "type": [
         "boolean",
         "null"
-      ],
-      "description": "Configure client transport security for the exporter's connection. \nOnly applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.\nIf omitted or null, false is used.\n"
+      ]
     }
   }
 }</pre>
@@ -1185,7 +1121,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/common.yaml)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -1197,22 +1133,19 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure certificate used to verify a server's TLS credentials. \nAbsolute path to certificate file in PEM format.\nIf omitted or null, system default certificate verification is used for secure connections.\n"
+      ]
     },
     "key_file": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure mTLS private client key. \nAbsolute path to client key file in PEM format. If set, .client_certificate must also be set.\nIf omitted or null, mTLS is not used.\n"
+      ]
     },
     "cert_file": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure mTLS client certificate. \nAbsolute path to client certificate file in PEM format. If set, .client_key must also be set.\nIf omitted or null, mTLS is not used.\n"
+      ]
     }
   }
 }</pre>
@@ -1247,7 +1180,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/common.yaml)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -1257,16 +1190,14 @@ Usages:
       "minItems": 1,
       "items": {
         "type": "string"
-      },
-      "description": "Configure list of value patterns to include.\nValues are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, all values are included.\n"
+      }
     },
     "excluded": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "string"
-      },
-      "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\nValues are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, .included attributes are included.\n"
+      }
     }
   }
 }</pre>
@@ -1309,7 +1240,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -1323,16 +1254,7 @@ Usages:
     "observable_gauge",
     "observable_up_down_counter",
     "up_down_counter"
-  ],
-  "enumDescriptions": {
-    "counter": "TODO",
-    "gauge": "TODO",
-    "histogram": "TODO",
-    "observable_counter": "TODO",
-    "observable_gauge": "TODO",
-    "observable_up_down_counter": "TODO",
-    "up_down_counter": "TODO"
-  }
+  ]
 }</pre>
 </details>
 
@@ -1351,7 +1273,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/propagator.yaml)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -1376,7 +1298,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -1416,8 +1338,10 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/logger_provider.yaml)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
+  "$id": "https://opentelemetry.io/otelconfig/logger_provider.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -1426,16 +1350,13 @@ Usages:
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/LogRecordProcessor"
-      },
-      "description": "Configure log record processors."
+      }
     },
     "limits": {
-      "$ref": "#/$defs/LogRecordLimits",
-      "description": "Configure log record limits. See also attribute_limits."
+      "$ref": "#/$defs/LogRecordLimits"
     },
     "logger_configurator/development": {
-      "$ref": "#/$defs/ExperimentalLoggerConfigurator",
-      "description": "Configure loggers.\n"
+      "$ref": "#/$defs/ExperimentalLoggerConfigurator"
     }
   },
   "required": [
@@ -1447,8 +1368,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "exporter": {
-          "$ref": "#/$defs/LogRecordExporter",
-          "description": "Configure exporter."
+          "$ref": "#/$defs/LogRecordExporter"
         }
       },
       "required": [
@@ -1464,36 +1384,31 @@ Usages:
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure delay interval (in milliseconds) between two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 1000 is used.\n"
+          "minimum": 0
         },
         "export_timeout": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+          "minimum": 0
         },
         "max_queue_size": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure maximum queue size. Value must be positive.\nIf omitted or null, 2048 is used.\n"
+          "exclusiveMinimum": 0
         },
         "max_export_batch_size": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure maximum batch size. Value must be positive.\nIf omitted or null, 512 is used.\n"
+          "exclusiveMinimum": 0
         },
         "exporter": {
-          "$ref": "#/$defs/LogRecordExporter",
-          "description": "Configure exporter."
+          "$ref": "#/$defs/LogRecordExporter"
         }
       },
       "required": [
@@ -1512,23 +1427,18 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "otlp_http": {
-          "$ref": "common.yaml#/$defs/OtlpHttpExporter",
-          "description": "Configure exporter to be OTLP with HTTP transport."
+          "$ref": "common.json#/$defs/OtlpHttpExporter"
         },
         "otlp_grpc": {
-          "$ref": "common.yaml#/$defs/OtlpGrpcExporter",
-          "description": "Configure exporter to be OTLP with gRPC transport."
+          "$ref": "common.json#/$defs/OtlpGrpcExporter"
         },
         "otlp_file/development": {
-          "$ref": "common.yaml#/$defs/ExperimentalOtlpFileExporter",
-          "description": "Configure exporter to be OTLP with file transport.\n"
+          "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
         },
         "console": {
-          "$ref": "common.yaml#/$defs/ConsoleExporter",
-          "description": "Configure exporter to be console."
+          "$ref": "common.json#/$defs/ConsoleExporter"
         }
-      },
-      "isSdkExtensionPlugin": true
+      }
     },
     "LogRecordLimits": {
       "type": "object",
@@ -1539,16 +1449,14 @@ Usages:
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+          "minimum": 0
         },
         "attribute_count_limit": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+          "minimum": 0
         }
       }
     },
@@ -1564,15 +1472,12 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "batch": {
-          "$ref": "#/$defs/BatchLogRecordProcessor",
-          "description": "Configure a batch log record processor."
+          "$ref": "#/$defs/BatchLogRecordProcessor"
         },
         "simple": {
-          "$ref": "#/$defs/SimpleLogRecordProcessor",
-          "description": "Configure a simple log record processor."
+          "$ref": "#/$defs/SimpleLogRecordProcessor"
         }
-      },
-      "isSdkExtensionPlugin": true
+      }
     },
     "ExperimentalLoggerConfigurator": {
       "type": [
@@ -1581,16 +1486,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "default_config": {
-          "$ref": "#/$defs/ExperimentalLoggerConfig",
-          "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers."
+          "$ref": "#/$defs/ExperimentalLoggerConfig"
         },
         "loggers": {
           "type": "array",
           "minItems": 1,
           "items": {
             "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
-          },
-          "description": "Configure loggers."
+          }
         }
       }
     },
@@ -1603,12 +1506,10 @@ Usages:
         "name": {
           "type": [
             "string"
-          ],
-          "description": "Configure logger names to match, evaluated as follows:\n\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+          ]
         },
         "config": {
-          "$ref": "#/$defs/ExperimentalLoggerConfig",
-          "description": "The logger config."
+          "$ref": "#/$defs/ExperimentalLoggerConfig"
         }
       },
       "required": [
@@ -1626,19 +1527,16 @@ Usages:
           "type": [
             "boolean",
             "null"
-          ],
-          "description": "Configure if the logger is enabled or not.\nIf omitted or null, false is used.\n"
+          ]
         },
         "minimum_severity": {
-          "$ref": "#/$defs/ExperimentalSeverityNumber",
-          "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.\nIf omitted or null, severity filtering is not applied.\n"
+          "$ref": "#/$defs/ExperimentalSeverityNumber"
         },
         "trace_based": {
           "type": [
             "boolean",
             "null"
-          ],
-          "description": "Configure trace based filtering.\nIf true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.\nIf omitted or null, trace based filtering is not applied.\n"
+          ]
         }
       }
     },
@@ -1672,33 +1570,7 @@ Usages:
         "FATAL2",
         "FATAL3",
         "FATAL4"
-      ],
-      "enumDescriptions": {
-        "DEBUG": "DEBUG, severity number 5.",
-        "DEBUG2": "DEBUG2, severity number 6.",
-        "DEBUG3": "DEBUG3, severity number 7.",
-        "DEBUG4": "DEBUG4, severity number 8.",
-        "ERROR": "ERROR, severity number 17.",
-        "ERROR2": "ERROR2, severity number 18.",
-        "ERROR3": "ERROR3, severity number 19.",
-        "ERROR4": "ERROR4, severity number 20.",
-        "FATAL": "FATAL, severity number 21.",
-        "FATAL2": "FATAL2, severity number 22.",
-        "FATAL3": "FATAL3, severity number 23.",
-        "FATAL4": "FATAL4, severity number 24.",
-        "INFO": "INFO, severity number 9.",
-        "INFO2": "INFO2, severity number 10.",
-        "INFO3": "INFO3, severity number 11.",
-        "INFO4": "INFO4, severity number 12.",
-        "TRACE": "TRACE, severity number 1.",
-        "TRACE2": "TRACE2, severity number 2.",
-        "TRACE3": "TRACE3, severity number 3.",
-        "TRACE4": "TRACE4, severity number 4.",
-        "WARN": "WARN, severity number 13.",
-        "WARN2": "WARN2, severity number 14.",
-        "WARN3": "WARN3, severity number 15.",
-        "WARN4": "WARN4, severity number 16."
-      }
+      ]
     }
   }
 }</pre>
@@ -1740,7 +1612,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/logger_provider.yaml)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -1753,23 +1625,18 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
-      "$ref": "common.yaml#/$defs/OtlpHttpExporter",
-      "description": "Configure exporter to be OTLP with HTTP transport."
+      "$ref": "common.json#/$defs/OtlpHttpExporter"
     },
     "otlp_grpc": {
-      "$ref": "common.yaml#/$defs/OtlpGrpcExporter",
-      "description": "Configure exporter to be OTLP with gRPC transport."
+      "$ref": "common.json#/$defs/OtlpGrpcExporter"
     },
     "otlp_file/development": {
-      "$ref": "common.yaml#/$defs/ExperimentalOtlpFileExporter",
-      "description": "Configure exporter to be OTLP with file transport.\n"
+      "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
     },
     "console": {
-      "$ref": "common.yaml#/$defs/ConsoleExporter",
-      "description": "Configure exporter to be console."
+      "$ref": "common.json#/$defs/ConsoleExporter"
     }
-  },
-  "isSdkExtensionPlugin": true
+  }
 }</pre>
 </details>
 
@@ -1800,7 +1667,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/logger_provider.yaml)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -1810,16 +1677,14 @@ Usages:
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+      "minimum": 0
     },
     "attribute_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+      "minimum": 0
     }
   }
 }</pre>
@@ -1856,7 +1721,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/logger_provider.yaml)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -1869,15 +1734,12 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "batch": {
-      "$ref": "#/$defs/BatchLogRecordProcessor",
-      "description": "Configure a batch log record processor."
+      "$ref": "#/$defs/BatchLogRecordProcessor"
     },
     "simple": {
-      "$ref": "#/$defs/SimpleLogRecordProcessor",
-      "description": "Configure a simple log record processor."
+      "$ref": "#/$defs/SimpleLogRecordProcessor"
     }
-  },
-  "isSdkExtensionPlugin": true
+  }
 }</pre>
 </details>
 
@@ -1913,8 +1775,10 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
+  "$id": "https://opentelemetry.io/otelconfig/meter_provider.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -1923,24 +1787,20 @@ Usages:
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/MetricReader"
-      },
-      "description": "Configure metric readers."
+      }
     },
     "views": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/View"
-      },
-      "description": "Configure views. \nEach view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).\n"
+      }
     },
     "exemplar_filter": {
-      "$ref": "#/$defs/ExemplarFilter",
-      "description": "Configure the exemplar filter. \nValues include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\nIf omitted or null, trace_based is used.\n"
+      "$ref": "#/$defs/ExemplarFilter"
     },
     "meter_configurator/development": {
-      "$ref": "#/$defs/ExperimentalMeterConfigurator",
-      "description": "Configure meters.\n"
+      "$ref": "#/$defs/ExperimentalMeterConfigurator"
     }
   },
   "required": [
@@ -1956,12 +1816,7 @@ Usages:
         "always_on",
         "always_off",
         "trace_based"
-      ],
-      "enumDescriptions": {
-        "always_off": "TODO",
-        "always_on": "TODO",
-        "trace_based": "TODO"
-      }
+      ]
     },
     "PeriodicMetricReader": {
       "type": "object",
@@ -1972,32 +1827,27 @@ Usages:
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure delay interval (in milliseconds) between start of two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 60000 is used.\n"
+          "minimum": 0
         },
         "timeout": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+          "minimum": 0
         },
         "exporter": {
-          "$ref": "#/$defs/PushMetricExporter",
-          "description": "Configure exporter."
+          "$ref": "#/$defs/PushMetricExporter"
         },
         "producers": {
           "type": "array",
           "minItems": 1,
           "items": {
             "$ref": "#/$defs/MetricProducer"
-          },
-          "description": "Configure metric producers."
+          }
         },
         "cardinality_limits": {
-          "$ref": "#/$defs/CardinalityLimits",
-          "description": "Configure cardinality limits."
+          "$ref": "#/$defs/CardinalityLimits"
         }
       },
       "required": [
@@ -2009,20 +1859,17 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "exporter": {
-          "$ref": "#/$defs/PullMetricExporter",
-          "description": "Configure exporter."
+          "$ref": "#/$defs/PullMetricExporter"
         },
         "producers": {
           "type": "array",
           "minItems": 1,
           "items": {
             "$ref": "#/$defs/MetricProducer"
-          },
-          "description": "Configure metric producers."
+          }
         },
         "cardinality_limits": {
-          "$ref": "#/$defs/CardinalityLimits",
-          "description": "Configure cardinality limits."
+          "$ref": "#/$defs/CardinalityLimits"
         }
       },
       "required": [
@@ -2038,64 +1885,56 @@ Usages:
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for all instrument types.\nInstrument-specific cardinality limits take priority. \nIf omitted or null, 2000 is used.\n"
+          "exclusiveMinimum": 0
         },
         "counter": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for counter instruments.\nIf omitted or null, the value from .default is used.\n"
+          "exclusiveMinimum": 0
         },
         "gauge": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for gauge instruments.\nIf omitted or null, the value from .default is used.\n"
+          "exclusiveMinimum": 0
         },
         "histogram": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for histogram instruments.\nIf omitted or null, the value from .default is used.\n"
+          "exclusiveMinimum": 0
         },
         "observable_counter": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for observable_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+          "exclusiveMinimum": 0
         },
         "observable_gauge": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for observable_gauge instruments.\nIf omitted or null, the value from .default is used.\n"
+          "exclusiveMinimum": 0
         },
         "observable_up_down_counter": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for observable_up_down_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+          "exclusiveMinimum": 0
         },
         "up_down_counter": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for up_down_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+          "exclusiveMinimum": 0
         }
       }
     },
@@ -2111,23 +1950,18 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "otlp_http": {
-          "$ref": "#/$defs/OtlpHttpMetricExporter",
-          "description": "Configure exporter to be OTLP with HTTP transport.\n"
+          "$ref": "#/$defs/OtlpHttpMetricExporter"
         },
         "otlp_grpc": {
-          "$ref": "#/$defs/OtlpGrpcMetricExporter",
-          "description": "Configure exporter to be OTLP with gRPC transport.\n"
+          "$ref": "#/$defs/OtlpGrpcMetricExporter"
         },
         "otlp_file/development": {
-          "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter",
-          "description": "Configure exporter to be OTLP with file transport.\n"
+          "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
         },
         "console": {
-          "$ref": "#/$defs/ConsoleMetricExporter",
-          "description": "Configure exporter to be console.\n"
+          "$ref": "#/$defs/ConsoleMetricExporter"
         }
-      },
-      "isSdkExtensionPlugin": true
+      }
     },
     "PullMetricExporter": {
       "type": "object",
@@ -2141,11 +1975,9 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "prometheus/development": {
-          "$ref": "#/$defs/ExperimentalPrometheusMetricExporter",
-          "description": "Configure exporter to be prometheus.\n"
+          "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
         }
-      },
-      "isSdkExtensionPlugin": true
+      }
     },
     "MetricProducer": {
       "type": "object",
@@ -2159,11 +1991,9 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "opencensus": {
-          "$ref": "#/$defs/OpenCensusMetricProducer",
-          "description": "Configure metric producer to be opencensus."
+          "$ref": "#/$defs/OpenCensusMetricProducer"
         }
-      },
-      "isSdkExtensionPlugin": true
+      }
     },
     "OpenCensusMetricProducer": {
       "type": [
@@ -2183,37 +2013,31 @@ Usages:
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure host.\nIf omitted or null, localhost is used.\n"
+          ]
         },
         "port": {
           "type": [
             "integer",
             "null"
-          ],
-          "description": "Configure port.\nIf omitted or null, 9464 is used.\n"
+          ]
         },
         "without_scope_info": {
           "type": [
             "boolean",
             "null"
-          ],
-          "description": "Configure Prometheus Exporter to produce metrics without a scope info metric.\nIf omitted or null, false is used.\n"
+          ]
         },
         "without_target_info": {
           "type": [
             "boolean",
             "null"
-          ],
-          "description": "Configure Prometheus Exporter to produce metrics without a target info metric for the resource.\nIf omitted or null, false is used.\n"
+          ]
         },
         "with_resource_constant_labels": {
-          "$ref": "common.yaml#/$defs/IncludeExclude",
-          "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns."
+          "$ref": "common.json#/$defs/IncludeExclude"
         },
         "translation_strategy": {
-          "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
-          "description": "Configure how Prometheus metrics are exposed. Values include:\n\n * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\n\nIf omitted or null, UnderscoreEscapingWithSuffixes is used.\n"
+          "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy"
         }
       }
     },
@@ -2227,13 +2051,7 @@ Usages:
         "UnderscoreEscapingWithoutSuffixes",
         "NoUTF8EscapingWithSuffixes",
         "NoTranslation"
-      ],
-      "enumDescriptions": {
-        "NoTranslation": "Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.",
-        "NoUTF8EscapingWithSuffixes": "Special character escaping is disabled. Type and unit suffixes are enabled.",
-        "UnderscoreEscapingWithoutSuffixes": "Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.",
-        "UnderscoreEscapingWithSuffixes": "Special character escaping is enabled. Type and unit suffixes are enabled."
-      }
+      ]
     },
     "MetricReader": {
       "type": "object",
@@ -2242,12 +2060,10 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "periodic": {
-          "$ref": "#/$defs/PeriodicMetricReader",
-          "description": "Configure a periodic metric reader."
+          "$ref": "#/$defs/PeriodicMetricReader"
         },
         "pull": {
-          "$ref": "#/$defs/PullMetricReader",
-          "description": "Configure a pull based metric reader."
+          "$ref": "#/$defs/PullMetricReader"
         }
       }
     },
@@ -2260,12 +2076,7 @@ Usages:
         "cumulative",
         "delta",
         "low_memory"
-      ],
-      "enumDescriptions": {
-        "cumulative": "TODO",
-        "delta": "TODO",
-        "low_memory": "TODO"
-      }
+      ]
     },
     "ExporterDefaultHistogramAggregation": {
       "type": [
@@ -2275,11 +2086,7 @@ Usages:
       "enum": [
         "explicit_bucket_histogram",
         "base2_exponential_bucket_histogram"
-      ],
-      "enumDescriptions": {
-        "base2_exponential_bucket_histogram": "TODO",
-        "explicit_bucket_histogram": "TODO"
-      }
+      ]
     },
     "OtlpHttpMetricExporter": {
       "type": [
@@ -2292,54 +2099,45 @@ Usages:
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure endpoint.\nIf omitted or null, http://localhost:4318/v1/metrics is used.\n"
+          ]
         },
         "tls": {
-          "$ref": "common.yaml#/$defs/HttpTls",
-          "description": "Configure TLS settings for the exporter."
+          "$ref": "common.json#/$defs/HttpTls"
         },
         "headers": {
           "type": "array",
           "minItems": 1,
           "items": {
-            "$ref": "common.yaml#/$defs/NameStringValuePair"
-          },
-          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+            "$ref": "common.json#/$defs/NameStringValuePair"
+          }
         },
         "headers_list": {
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+          ]
         },
         "compression": {
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+          ]
         },
         "timeout": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+          "minimum": 0
         },
         "encoding": {
-          "$ref": "common.yaml#/$defs/OtlpHttpEncoding",
-          "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted or null, protobuf is used.\n"
+          "$ref": "common.json#/$defs/OtlpHttpEncoding"
         },
         "temporality_preference": {
-          "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+          "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
-          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
     },
@@ -2354,50 +2152,42 @@ Usages:
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure endpoint.\nIf omitted or null, http://localhost:4317 is used.\n"
+          ]
         },
         "tls": {
-          "$ref": "common.yaml#/$defs/GrpcTls",
-          "description": "Configure TLS settings for the exporter."
+          "$ref": "common.json#/$defs/GrpcTls"
         },
         "headers": {
           "type": "array",
           "minItems": 1,
           "items": {
-            "$ref": "common.yaml#/$defs/NameStringValuePair"
-          },
-          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+            "$ref": "common.json#/$defs/NameStringValuePair"
+          }
         },
         "headers_list": {
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+          ]
         },
         "compression": {
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+          ]
         },
         "timeout": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+          "minimum": 0
         },
         "temporality_preference": {
-          "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+          "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
-          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
     },
@@ -2412,16 +2202,13 @@ Usages:
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure output stream. \nValues include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\nIf omitted or null, stdout is used.\n"
+          ]
         },
         "temporality_preference": {
-          "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+          "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
-          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
     },
@@ -2433,12 +2220,10 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "temporality_preference": {
-          "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+          "$ref": "#/$defs/ExporterTemporalityPreference"
         },
         "default_histogram_aggregation": {
-          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
         }
       }
     },
@@ -2447,12 +2232,10 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "selector": {
-          "$ref": "#/$defs/ViewSelector",
-          "description": "Configure view selector. \nSelection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.\n"
+          "$ref": "#/$defs/ViewSelector"
         },
         "stream": {
-          "$ref": "#/$defs/ViewStream",
-          "description": "Configure view stream."
+          "$ref": "#/$defs/ViewStream"
         }
       },
       "required": [
@@ -2468,40 +2251,34 @@ Usages:
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure instrument name selection criteria.\nIf omitted or null, all instrument names match.\n"
+          ]
         },
         "instrument_type": {
-          "$ref": "#/$defs/InstrumentType",
-          "description": "Configure instrument type selection criteria.\nValues include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\nIf omitted or null, all instrument types match.\n"
+          "$ref": "#/$defs/InstrumentType"
         },
         "unit": {
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure the instrument unit selection criteria.\nIf omitted or null, all instrument units match.\n"
+          ]
         },
         "meter_name": {
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure meter name selection criteria.\nIf omitted or null, all meter names match.\n"
+          ]
         },
         "meter_version": {
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure meter version selection criteria.\nIf omitted or null, all meter versions match.\n"
+          ]
         },
         "meter_schema_url": {
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure meter schema url selection criteria.\nIf omitted or null, all meter schema URLs match.\n"
+          ]
         }
       }
     },
@@ -2518,16 +2295,7 @@ Usages:
         "observable_gauge",
         "observable_up_down_counter",
         "up_down_counter"
-      ],
-      "enumDescriptions": {
-        "counter": "TODO",
-        "gauge": "TODO",
-        "histogram": "TODO",
-        "observable_counter": "TODO",
-        "observable_gauge": "TODO",
-        "observable_up_down_counter": "TODO",
-        "up_down_counter": "TODO"
-      }
+      ]
     },
     "ViewStream": {
       "type": "object",
@@ -2537,31 +2305,26 @@ Usages:
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure metric name of the resulting stream(s).\nIf omitted or null, the instrument's original name is used.\n"
+          ]
         },
         "description": {
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure metric description of the resulting stream(s).\nIf omitted or null, the instrument's origin description is used.\n"
+          ]
         },
         "aggregation": {
-          "$ref": "#/$defs/Aggregation",
-          "description": "Configure aggregation of the resulting stream(s). \nValues include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.\nIf omitted, default is used.\n"
+          "$ref": "#/$defs/Aggregation"
         },
         "aggregation_cardinality_limit": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure the aggregation cardinality limit.\nIf omitted or null, the metric reader's default cardinality limit is used.\n"
+          "exclusiveMinimum": 0
         },
         "attribute_keys": {
-          "$ref": "common.yaml#/$defs/IncludeExclude",
-          "description": "Configure attribute keys retained in the resulting stream(s).\n"
+          "$ref": "common.json#/$defs/IncludeExclude"
         }
       }
     },
@@ -2572,28 +2335,22 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "default": {
-          "$ref": "#/$defs/DefaultAggregation",
-          "description": "TODO"
+          "$ref": "#/$defs/DefaultAggregation"
         },
         "drop": {
-          "$ref": "#/$defs/DropAggregation",
-          "description": "TODO"
+          "$ref": "#/$defs/DropAggregation"
         },
         "explicit_bucket_histogram": {
-          "$ref": "#/$defs/ExplicitBucketHistogramAggregation",
-          "description": "Configure aggregation to be explicit_bucket_histogram."
+          "$ref": "#/$defs/ExplicitBucketHistogramAggregation"
         },
         "base2_exponential_bucket_histogram": {
-          "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation",
-          "description": "TODO"
+          "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation"
         },
         "last_value": {
-          "$ref": "#/$defs/LastValueAggregation",
-          "description": "TODO"
+          "$ref": "#/$defs/LastValueAggregation"
         },
         "sum": {
-          "$ref": "#/$defs/SumAggregation",
-          "description": "TODO"
+          "$ref": "#/$defs/SumAggregation"
         }
       }
     },
@@ -2623,15 +2380,13 @@ Usages:
           "minItems": 0,
           "items": {
             "type": "number"
-          },
-          "description": "Configure bucket boundaries.\nIf omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.\n"
+          }
         },
         "record_min_max": {
           "type": [
             "boolean",
             "null"
-          ],
-          "description": "Configure record min and max.\nIf omitted or null, true is used.\n"
+          ]
         }
       }
     },
@@ -2648,23 +2403,20 @@ Usages:
             "null"
           ],
           "minimum": -10,
-          "maximum": 20,
-          "description": "TODO"
+          "maximum": 20
         },
         "max_size": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 2,
-          "description": "TODO"
+          "minimum": 2
         },
         "record_min_max": {
           "type": [
             "boolean",
             "null"
-          ],
-          "description": "TODO"
+          ]
         }
       }
     },
@@ -2689,16 +2441,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "default_config": {
-          "$ref": "#/$defs/ExperimentalMeterConfig",
-          "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters."
+          "$ref": "#/$defs/ExperimentalMeterConfig"
         },
         "meters": {
           "type": "array",
           "minItems": 1,
           "items": {
             "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
-          },
-          "description": "Configure meters."
+          }
         }
       }
     },
@@ -2711,12 +2461,10 @@ Usages:
         "name": {
           "type": [
             "string"
-          ],
-          "description": "Configure meter names to match, evaluated as follows:\n\n * If the meter name exactly matches.\n * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+          ]
         },
         "config": {
-          "$ref": "#/$defs/ExperimentalMeterConfig",
-          "description": "The meter config."
+          "$ref": "#/$defs/ExperimentalMeterConfig"
         }
       },
       "required": [
@@ -2733,8 +2481,7 @@ Usages:
         "disabled": {
           "type": [
             "boolean"
-          ],
-          "description": "Configure if the meter is enabled or not."
+          ]
         }
       }
     }
@@ -2772,7 +2519,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -2785,11 +2532,9 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "opencensus": {
-      "$ref": "#/$defs/OpenCensusMetricProducer",
-      "description": "Configure metric producer to be opencensus."
+      "$ref": "#/$defs/OpenCensusMetricProducer"
     }
-  },
-  "isSdkExtensionPlugin": true
+  }
 }</pre>
 </details>
 
@@ -2822,7 +2567,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -2830,12 +2575,10 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "periodic": {
-      "$ref": "#/$defs/PeriodicMetricReader",
-      "description": "Configure a periodic metric reader."
+      "$ref": "#/$defs/PeriodicMetricReader"
     },
     "pull": {
-      "$ref": "#/$defs/PullMetricReader",
-      "description": "Configure a pull based metric reader."
+      "$ref": "#/$defs/PullMetricReader"
     }
   }
 }</pre>
@@ -2872,21 +2615,19 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/common.yaml)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "name": {
-      "type": "string",
-      "description": "The name of the pair."
+      "type": "string"
     },
     "value": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "The value of the pair."
+      ]
     }
   },
   "required": [
@@ -2911,7 +2652,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -2928,7 +2669,6 @@ Usages:
 | `attribute_limits` | [`AttributeLimits`](#attributelimits) | `false` | No constraints. | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br> |
 | `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | No constraints. | Configure if the SDK is disabled or not.<br>If omitted or null, false is used.<br> |
 | `file_format` | `string` | `true` | No constraints. | The file format version.<br>The yaml format is documented at<br>https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema<br> |
-| `foo` | `object` | `false` | No constraints. | description |
 | `log_level` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure the log level of the internal logger used by the SDK.<br>If omitted, info is used.<br> |
 | `logger_provider` | [`LoggerProvider`](#loggerprovider) | `false` | No constraints. | Configure logger provider.<br>If omitted, a noop logger provider is used.<br> |
 | `meter_provider` | [`MeterProvider`](#meterprovider) | `false` | No constraints. | Configure meter provider.<br>If omitted, a noop meter provider is used.<br> |
@@ -2945,7 +2685,6 @@ Usages:
 | `attribute_limits` | supported | unknown | supported | unknown |
 | `disabled` | supported | unknown | supported | unknown |
 | `file_format` | supported | unknown | supported | unknown |
-| `foo` | supported | unknown | supported | unknown |
 | `log_level` | supported | unknown | not_implemented | unknown |
 | `logger_provider` | supported | unknown | supported | unknown |
 | `meter_provider` | supported | unknown | supported | unknown |
@@ -2965,66 +2704,49 @@ No usages.
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/opentelemetry_configuration.yaml)
+[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
+  "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "OpenTelemetryConfiguration",
   "type": "object",
   "additionalProperties": true,
   "properties": {
     "file_format": {
-      "type": "string",
-      "description": "The file format version.\nThe yaml format is documented at\nhttps://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema\n"
+      "type": "string"
     },
     "disabled": {
       "type": [
         "boolean",
         "null"
-      ],
-      "description": "Configure if the SDK is disabled or not.\nIf omitted or null, false is used.\n"
+      ]
     },
     "log_level": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure the log level of the internal logger used by the SDK.\nIf omitted, info is used.\n"
+      ]
     },
     "attribute_limits": {
-      "$ref": "#/$defs/AttributeLimits",
-      "description": "Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.\n"
+      "$ref": "#/$defs/AttributeLimits"
     },
     "logger_provider": {
-      "$ref": "#/$defs/LoggerProvider",
-      "description": "Configure logger provider.\nIf omitted, a noop logger provider is used.\n"
+      "$ref": "#/$defs/LoggerProvider"
     },
     "meter_provider": {
-      "$ref": "#/$defs/MeterProvider",
-      "description": "Configure meter provider.\nIf omitted, a noop meter provider is used.\n"
+      "$ref": "#/$defs/MeterProvider"
     },
     "propagator": {
-      "$ref": "#/$defs/Propagator",
-      "description": "Configure text map context propagators.\nIf omitted, a noop propagator is used.\n"
+      "$ref": "#/$defs/Propagator"
     },
     "tracer_provider": {
-      "$ref": "#/$defs/TracerProvider",
-      "description": "Configure tracer provider.\nIf omitted, a noop tracer provider is used.\n"
+      "$ref": "#/$defs/TracerProvider"
     },
     "resource": {
-      "$ref": "#/$defs/Resource",
-      "description": "Configure resource for all signals.\nIf omitted, the default resource is used.\n"
+      "$ref": "#/$defs/Resource"
     },
     "instrumentation/development": {
-      "$ref": "#/$defs/ExperimentalInstrumentation",
-      "description": "Configure instrumentation.\n"
-    },
-    "foo": {
-      "description": "description",
-      "type": "object",
-      "properties": {
-        "bar": {
-          "type": "string"
-        }
-      }
+      "$ref": "#/$defs/ExperimentalInstrumentation"
     }
   },
   "required": [
@@ -3040,36 +2762,34 @@ No usages.
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max attribute value size. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+          "minimum": 0
         },
         "attribute_count_limit": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max attribute count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+          "minimum": 0
         }
       }
     },
     "LoggerProvider": {
-      "$ref": "logger_provider.yaml"
+      "$ref": "logger_provider.json"
     },
     "MeterProvider": {
-      "$ref": "meter_provider.yaml"
+      "$ref": "meter_provider.json"
     },
     "TracerProvider": {
-      "$ref": "tracer_provider.yaml"
+      "$ref": "tracer_provider.json"
     },
     "Propagator": {
-      "$ref": "propagator.yaml"
+      "$ref": "propagator.json"
     },
     "Resource": {
-      "$ref": "resource.yaml"
+      "$ref": "resource.json"
     },
     "ExperimentalInstrumentation": {
-      "$ref": "instrumentation.yaml"
+      "$ref": "instrumentation.json"
     }
   }
 }</pre>
@@ -3090,7 +2810,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/propagator.yaml)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -3136,7 +2856,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/common.yaml)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -3148,42 +2868,36 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure endpoint.\nIf omitted or null, http://localhost:4317 is used.\n"
+      ]
     },
     "tls": {
-      "$ref": "#/$defs/GrpcTls",
-      "description": "Configure TLS settings for the exporter."
+      "$ref": "#/$defs/GrpcTls"
     },
     "headers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
-      },
-      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+      }
     },
     "headers_list": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+      ]
     },
     "compression": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+      ]
     },
     "timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+      "minimum": 0
     }
   }
 }</pre>
@@ -3228,7 +2942,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -3240,50 +2954,42 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure endpoint.\nIf omitted or null, http://localhost:4317 is used.\n"
+      ]
     },
     "tls": {
-      "$ref": "common.yaml#/$defs/GrpcTls",
-      "description": "Configure TLS settings for the exporter."
+      "$ref": "common.json#/$defs/GrpcTls"
     },
     "headers": {
       "type": "array",
       "minItems": 1,
       "items": {
-        "$ref": "common.yaml#/$defs/NameStringValuePair"
-      },
-      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+        "$ref": "common.json#/$defs/NameStringValuePair"
+      }
     },
     "headers_list": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+      ]
     },
     "compression": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+      ]
     },
     "timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+      "minimum": 0
     },
     "temporality_preference": {
-      "$ref": "#/$defs/ExporterTemporalityPreference",
-      "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+      "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
-      "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-      "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+      "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
 }</pre>
@@ -3317,7 +3023,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/common.yaml)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "string",
@@ -3326,11 +3032,7 @@ Usages:
   "enum": [
     "protobuf",
     "json"
-  ],
-  "enumDescriptions": {
-    "json": "Protobuf JSON encoding.",
-    "protobuf": "Protobuf binary encoding."
-  }
+  ]
 }</pre>
 </details>
 
@@ -3372,7 +3074,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/common.yaml)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -3384,46 +3086,39 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure endpoint, including the signal specific path.\nIf omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.\n"
+      ]
     },
     "tls": {
-      "$ref": "#/$defs/HttpTls",
-      "description": "Configure TLS settings for the exporter."
+      "$ref": "#/$defs/HttpTls"
     },
     "headers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
-      },
-      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+      }
     },
     "headers_list": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+      ]
     },
     "compression": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+      ]
     },
     "timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+      "minimum": 0
     },
     "encoding": {
-      "$ref": "#/$defs/OtlpHttpEncoding",
-      "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted or null, protobuf is used.\n"
+      "$ref": "#/$defs/OtlpHttpEncoding"
     }
   }
 }</pre>
@@ -3470,7 +3165,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -3482,54 +3177,45 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure endpoint.\nIf omitted or null, http://localhost:4318/v1/metrics is used.\n"
+      ]
     },
     "tls": {
-      "$ref": "common.yaml#/$defs/HttpTls",
-      "description": "Configure TLS settings for the exporter."
+      "$ref": "common.json#/$defs/HttpTls"
     },
     "headers": {
       "type": "array",
       "minItems": 1,
       "items": {
-        "$ref": "common.yaml#/$defs/NameStringValuePair"
-      },
-      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+        "$ref": "common.json#/$defs/NameStringValuePair"
+      }
     },
     "headers_list": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+      ]
     },
     "compression": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+      ]
     },
     "timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+      "minimum": 0
     },
     "encoding": {
-      "$ref": "common.yaml#/$defs/OtlpHttpEncoding",
-      "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted or null, protobuf is used.\n"
+      "$ref": "common.json#/$defs/OtlpHttpEncoding"
     },
     "temporality_preference": {
-      "$ref": "#/$defs/ExporterTemporalityPreference",
-      "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+      "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
-      "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-      "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+      "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
 }</pre>
@@ -3568,7 +3254,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -3577,24 +3263,19 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "root": {
-      "$ref": "#/$defs/Sampler",
-      "description": "Configure root sampler.\nIf omitted or null, always_on is used.\n"
+      "$ref": "#/$defs/Sampler"
     },
     "remote_parent_sampled": {
-      "$ref": "#/$defs/Sampler",
-      "description": "Configure remote_parent_sampled sampler.\nIf omitted or null, always_on is used.\n"
+      "$ref": "#/$defs/Sampler"
     },
     "remote_parent_not_sampled": {
-      "$ref": "#/$defs/Sampler",
-      "description": "Configure remote_parent_not_sampled sampler.\nIf omitted or null, always_off is used.\n"
+      "$ref": "#/$defs/Sampler"
     },
     "local_parent_sampled": {
-      "$ref": "#/$defs/Sampler",
-      "description": "Configure local_parent_sampled sampler.\nIf omitted or null, always_on is used.\n"
+      "$ref": "#/$defs/Sampler"
     },
     "local_parent_not_sampled": {
-      "$ref": "#/$defs/Sampler",
-      "description": "Configure local_parent_not_sampled sampler.\nIf omitted or null, always_off is used.\n"
+      "$ref": "#/$defs/Sampler"
     }
   }
 }</pre>
@@ -3634,7 +3315,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -3644,32 +3325,27 @@ Usages:
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure delay interval (in milliseconds) between start of two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 60000 is used.\n"
+      "minimum": 0
     },
     "timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+      "minimum": 0
     },
     "exporter": {
-      "$ref": "#/$defs/PushMetricExporter",
-      "description": "Configure exporter."
+      "$ref": "#/$defs/PushMetricExporter"
     },
     "producers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/MetricProducer"
-      },
-      "description": "Configure metric producers."
+      }
     },
     "cardinality_limits": {
-      "$ref": "#/$defs/CardinalityLimits",
-      "description": "Configure cardinality limits."
+      "$ref": "#/$defs/CardinalityLimits"
     }
   },
   "required": [
@@ -3705,8 +3381,10 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/propagator.yaml)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
+  "$id": "https://opentelemetry.io/otelconfig/propagator.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -3715,15 +3393,13 @@ Usages:
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/TextMapPropagator"
-      },
-      "description": "Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.\nBuilt-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. \nIf the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.\n"
+      }
     },
     "composite_list": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.\nThe value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nBuilt-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. \nIf the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.\n"
+      ]
     }
   },
   "$defs": {
@@ -3739,31 +3415,24 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "tracecontext": {
-          "$ref": "#/$defs/TraceContextPropagator",
-          "description": "Include the w3c trace context propagator."
+          "$ref": "#/$defs/TraceContextPropagator"
         },
         "baggage": {
-          "$ref": "#/$defs/BaggagePropagator",
-          "description": "Include the w3c baggage propagator."
+          "$ref": "#/$defs/BaggagePropagator"
         },
         "b3": {
-          "$ref": "#/$defs/B3Propagator",
-          "description": "Include the zipkin b3 propagator."
+          "$ref": "#/$defs/B3Propagator"
         },
         "b3multi": {
-          "$ref": "#/$defs/B3MultiPropagator",
-          "description": "Include the zipkin b3 multi propagator."
+          "$ref": "#/$defs/B3MultiPropagator"
         },
         "jaeger": {
-          "$ref": "#/$defs/JaegerPropagator",
-          "description": "Include the jaeger propagator."
+          "$ref": "#/$defs/JaegerPropagator"
         },
         "ottrace": {
-          "$ref": "#/$defs/OpenTracingPropagator",
-          "description": "Include the opentracing propagator."
+          "$ref": "#/$defs/OpenTracingPropagator"
         }
-      },
-      "isSdkExtensionPlugin": true
+      }
     },
     "TraceContextPropagator": {
       "type": [
@@ -3840,7 +3509,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -3853,11 +3522,9 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "prometheus/development": {
-      "$ref": "#/$defs/ExperimentalPrometheusMetricExporter",
-      "description": "Configure exporter to be prometheus.\n"
+      "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
     }
-  },
-  "isSdkExtensionPlugin": true
+  }
 }</pre>
 </details>
 
@@ -3891,26 +3558,23 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "exporter": {
-      "$ref": "#/$defs/PullMetricExporter",
-      "description": "Configure exporter."
+      "$ref": "#/$defs/PullMetricExporter"
     },
     "producers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/MetricProducer"
-      },
-      "description": "Configure metric producers."
+      }
     },
     "cardinality_limits": {
-      "$ref": "#/$defs/CardinalityLimits",
-      "description": "Configure cardinality limits."
+      "$ref": "#/$defs/CardinalityLimits"
     }
   },
   "required": [
@@ -3954,7 +3618,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -3967,23 +3631,18 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
-      "$ref": "#/$defs/OtlpHttpMetricExporter",
-      "description": "Configure exporter to be OTLP with HTTP transport.\n"
+      "$ref": "#/$defs/OtlpHttpMetricExporter"
     },
     "otlp_grpc": {
-      "$ref": "#/$defs/OtlpGrpcMetricExporter",
-      "description": "Configure exporter to be OTLP with gRPC transport.\n"
+      "$ref": "#/$defs/OtlpGrpcMetricExporter"
     },
     "otlp_file/development": {
-      "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter",
-      "description": "Configure exporter to be OTLP with file transport.\n"
+      "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
     },
     "console": {
-      "$ref": "#/$defs/ConsoleMetricExporter",
-      "description": "Configure exporter to be console.\n"
+      "$ref": "#/$defs/ConsoleMetricExporter"
     }
-  },
-  "isSdkExtensionPlugin": true
+  }
 }</pre>
 </details>
 
@@ -4018,8 +3677,10 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/resource.yaml)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
+  "$id": "https://opentelemetry.io/otelconfig/resource.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -4028,26 +3689,22 @@ Usages:
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/AttributeNameValue"
-      },
-      "description": "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.\n"
+      }
     },
     "detection/development": {
-      "$ref": "#/$defs/ExperimentalResourceDetection",
-      "description": "Configure resource detection.\nIf omitted or null, resource detection is disabled.\n"
+      "$ref": "#/$defs/ExperimentalResourceDetection"
     },
     "schema_url": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure resource schema URL.\nIf omitted or null, no schema URL is used.\n"
+      ]
     },
     "attributes_list": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure resource attributes. Entries have lower priority than entries from .resource.attributes.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nIf omitted or null, no resource attributes are added.\n"
+      ]
     }
   },
   "$defs": {
@@ -4056,8 +3713,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string",
-          "description": "The attribute name.\n"
+          "type": "string"
         },
         "value": {
           "oneOf": [
@@ -4094,12 +3750,10 @@ Usages:
               },
               "minItems": 1
             }
-          ],
-          "description": "The attribute value.\nThe type of value must match .type.\n"
+          ]
         },
         "type": {
-          "$ref": "#/$defs/AttributeType",
-          "description": "The attribute type.\nValues include: string, bool, int, double, string_array, bool_array, int_array, double_array.\nIf omitted or null, string is used.\n"
+          "$ref": "#/$defs/AttributeType"
         }
       },
       "required": [
@@ -4121,33 +3775,21 @@ Usages:
         "bool_array",
         "int_array",
         "double_array"
-      ],
-      "enumDescriptions": {
-        "bool": "TODO",
-        "bool_array": "TODO",
-        "double": "TODO",
-        "double_array": "TODO",
-        "int": "TODO",
-        "int_array": "TODO",
-        "string": "TODO",
-        "string_array": "TODO"
-      }
+      ]
     },
     "ExperimentalResourceDetection": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "attributes": {
-          "$ref": "common.yaml#/$defs/IncludeExclude",
-          "description": "Configure attributes provided by resource detectors."
+          "$ref": "common.json#/$defs/IncludeExclude"
         },
         "detectors": {
           "type": "array",
           "minItems": 1,
           "items": {
             "$ref": "#/$defs/ExperimentalResourceDetector"
-          },
-          "description": "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. \nIf omitted or null, no resource detectors are enabled.\n"
+          }
         }
       }
     },
@@ -4163,23 +3805,18 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "container": {
-          "$ref": "#/$defs/ExperimentalContainerResourceDetector",
-          "description": "Enable the container resource detector, which populates container.* attributes.\n"
+          "$ref": "#/$defs/ExperimentalContainerResourceDetector"
         },
         "host": {
-          "$ref": "#/$defs/ExperimentalHostResourceDetector",
-          "description": "Enable the host resource detector, which populates host.* and os.* attributes.\n"
+          "$ref": "#/$defs/ExperimentalHostResourceDetector"
         },
         "process": {
-          "$ref": "#/$defs/ExperimentalProcessResourceDetector",
-          "description": "Enable the process resource detector, which populates process.* attributes.\n"
+          "$ref": "#/$defs/ExperimentalProcessResourceDetector"
         },
         "service": {
-          "$ref": "#/$defs/ExperimentalServiceResourceDetector",
-          "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.\n"
+          "$ref": "#/$defs/ExperimentalServiceResourceDetector"
         }
-      },
-      "isSdkExtensionPlugin": true
+      }
     },
     "ExperimentalContainerResourceDetector": {
       "type": [
@@ -4260,7 +3897,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -4273,35 +3910,27 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "always_off": {
-      "$ref": "#/$defs/AlwaysOffSampler",
-      "description": "Configure sampler to be always_off."
+      "$ref": "#/$defs/AlwaysOffSampler"
     },
     "always_on": {
-      "$ref": "#/$defs/AlwaysOnSampler",
-      "description": "Configure sampler to be always_on."
+      "$ref": "#/$defs/AlwaysOnSampler"
     },
     "composite/development": {
-      "$ref": "#/$defs/ExperimentalComposableSampler",
-      "description": "Configure sampler to be composite."
+      "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "jaeger_remote/development": {
-      "$ref": "#/$defs/ExperimentalJaegerRemoteSampler",
-      "description": "TODO"
+      "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
     },
     "parent_based": {
-      "$ref": "#/$defs/ParentBasedSampler",
-      "description": "Configure sampler to be parent_based."
+      "$ref": "#/$defs/ParentBasedSampler"
     },
     "probability/development": {
-      "$ref": "#/$defs/ExperimentalProbabilitySampler",
-      "description": "Configure sampler to be probability."
+      "$ref": "#/$defs/ExperimentalProbabilitySampler"
     },
     "trace_id_ratio_based": {
-      "$ref": "#/$defs/TraceIdRatioBasedSampler",
-      "description": "Configure sampler to be trace_id_ratio_based."
+      "$ref": "#/$defs/TraceIdRatioBasedSampler"
     }
-  },
-  "isSdkExtensionPlugin": true
+  }
 }</pre>
 </details>
 
@@ -4331,14 +3960,13 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/logger_provider.yaml)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "exporter": {
-      "$ref": "#/$defs/LogRecordExporter",
-      "description": "Configure exporter."
+      "$ref": "#/$defs/LogRecordExporter"
     }
   },
   "required": [
@@ -4373,14 +4001,13 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "exporter": {
-      "$ref": "#/$defs/SpanExporter",
-      "description": "Configure exporter."
+      "$ref": "#/$defs/SpanExporter"
     }
   },
   "required": [
@@ -4427,7 +4054,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -4440,27 +4067,21 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
-      "$ref": "common.yaml#/$defs/OtlpHttpExporter",
-      "description": "Configure exporter to be OTLP with HTTP transport."
+      "$ref": "common.json#/$defs/OtlpHttpExporter"
     },
     "otlp_grpc": {
-      "$ref": "common.yaml#/$defs/OtlpGrpcExporter",
-      "description": "Configure exporter to be OTLP with gRPC transport."
+      "$ref": "common.json#/$defs/OtlpGrpcExporter"
     },
     "otlp_file/development": {
-      "$ref": "common.yaml#/$defs/ExperimentalOtlpFileExporter",
-      "description": "Configure exporter to be OTLP with file transport.\n"
+      "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
     },
     "console": {
-      "$ref": "common.yaml#/$defs/ConsoleExporter",
-      "description": "Configure exporter to be console."
+      "$ref": "common.json#/$defs/ConsoleExporter"
     },
     "zipkin": {
-      "$ref": "#/$defs/ZipkinSpanExporter",
-      "description": "Configure exporter to be zipkin."
+      "$ref": "#/$defs/ZipkinSpanExporter"
     }
-  },
-  "isSdkExtensionPlugin": true
+  }
 }</pre>
 </details>
 
@@ -4499,7 +4120,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -4509,48 +4130,42 @@ Usages:
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+      "minimum": 0
     },
     "attribute_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+      "minimum": 0
     },
     "event_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max span event count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+      "minimum": 0
     },
     "link_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max span link count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+      "minimum": 0
     },
     "event_attribute_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max attributes per span event. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+      "minimum": 0
     },
     "link_attribute_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max attributes per span link. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+      "minimum": 0
     }
   }
 }</pre>
@@ -4587,7 +4202,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -4600,15 +4215,12 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "batch": {
-      "$ref": "#/$defs/BatchSpanProcessor",
-      "description": "Configure a batch span processor."
+      "$ref": "#/$defs/BatchSpanProcessor"
     },
     "simple": {
-      "$ref": "#/$defs/SimpleSpanProcessor",
-      "description": "Configure a simple span processor."
+      "$ref": "#/$defs/SimpleSpanProcessor"
     }
-  },
-  "isSdkExtensionPlugin": true
+  }
 }</pre>
 </details>
 
@@ -4627,7 +4239,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -4676,7 +4288,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/propagator.yaml)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -4689,31 +4301,24 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "tracecontext": {
-      "$ref": "#/$defs/TraceContextPropagator",
-      "description": "Include the w3c trace context propagator."
+      "$ref": "#/$defs/TraceContextPropagator"
     },
     "baggage": {
-      "$ref": "#/$defs/BaggagePropagator",
-      "description": "Include the w3c baggage propagator."
+      "$ref": "#/$defs/BaggagePropagator"
     },
     "b3": {
-      "$ref": "#/$defs/B3Propagator",
-      "description": "Include the zipkin b3 propagator."
+      "$ref": "#/$defs/B3Propagator"
     },
     "b3multi": {
-      "$ref": "#/$defs/B3MultiPropagator",
-      "description": "Include the zipkin b3 multi propagator."
+      "$ref": "#/$defs/B3MultiPropagator"
     },
     "jaeger": {
-      "$ref": "#/$defs/JaegerPropagator",
-      "description": "Include the jaeger propagator."
+      "$ref": "#/$defs/JaegerPropagator"
     },
     "ottrace": {
-      "$ref": "#/$defs/OpenTracingPropagator",
-      "description": "Include the opentracing propagator."
+      "$ref": "#/$defs/OpenTracingPropagator"
     }
-  },
-  "isSdkExtensionPlugin": true
+  }
 }</pre>
 </details>
 
@@ -4732,7 +4337,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/propagator.yaml)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
   "type": [
     "object",
@@ -4767,7 +4372,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -4781,8 +4386,7 @@ Usages:
         "null"
       ],
       "minimum": 0,
-      "maximum": 1,
-      "description": "Configure trace_id_ratio.\nIf omitted or null, 1.0 is used.\n"
+      "maximum": 1
     }
   }
 }</pre>
@@ -4820,8 +4424,10 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
+  "$id": "https://opentelemetry.io/otelconfig/tracer_provider.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -4830,20 +4436,16 @@ Usages:
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/SpanProcessor"
-      },
-      "description": "Configure span processors."
+      }
     },
     "limits": {
-      "$ref": "#/$defs/SpanLimits",
-      "description": "Configure span limits. See also attribute_limits."
+      "$ref": "#/$defs/SpanLimits"
     },
     "sampler": {
-      "$ref": "#/$defs/Sampler",
-      "description": "Configure the sampler.\nIf omitted, parent based sampler with a root of always_on is used.\n"
+      "$ref": "#/$defs/Sampler"
     },
     "tracer_configurator/development": {
-      "$ref": "#/$defs/ExperimentalTracerConfigurator",
-      "description": "Configure tracers.\n"
+      "$ref": "#/$defs/ExperimentalTracerConfigurator"
     }
   },
   "required": [
@@ -4859,36 +4461,31 @@ Usages:
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure delay interval (in milliseconds) between two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 5000 is used.\n"
+          "minimum": 0
         },
         "export_timeout": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+          "minimum": 0
         },
         "max_queue_size": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure maximum queue size. Value must be positive.\nIf omitted or null, 2048 is used.\n"
+          "exclusiveMinimum": 0
         },
         "max_export_batch_size": {
           "type": [
             "integer",
             "null"
           ],
-          "exclusiveMinimum": 0,
-          "description": "Configure maximum batch size. Value must be positive.\nIf omitted or null, 512 is used.\n"
+          "exclusiveMinimum": 0
         },
         "exporter": {
-          "$ref": "#/$defs/SpanExporter",
-          "description": "Configure exporter."
+          "$ref": "#/$defs/SpanExporter"
         }
       },
       "required": [
@@ -4907,35 +4504,27 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "always_off": {
-          "$ref": "#/$defs/AlwaysOffSampler",
-          "description": "Configure sampler to be always_off."
+          "$ref": "#/$defs/AlwaysOffSampler"
         },
         "always_on": {
-          "$ref": "#/$defs/AlwaysOnSampler",
-          "description": "Configure sampler to be always_on."
+          "$ref": "#/$defs/AlwaysOnSampler"
         },
         "composite/development": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configure sampler to be composite."
+          "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "jaeger_remote/development": {
-          "$ref": "#/$defs/ExperimentalJaegerRemoteSampler",
-          "description": "TODO"
+          "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
         },
         "parent_based": {
-          "$ref": "#/$defs/ParentBasedSampler",
-          "description": "Configure sampler to be parent_based."
+          "$ref": "#/$defs/ParentBasedSampler"
         },
         "probability/development": {
-          "$ref": "#/$defs/ExperimentalProbabilitySampler",
-          "description": "Configure sampler to be probability."
+          "$ref": "#/$defs/ExperimentalProbabilitySampler"
         },
         "trace_id_ratio_based": {
-          "$ref": "#/$defs/TraceIdRatioBasedSampler",
-          "description": "Configure sampler to be trace_id_ratio_based."
+          "$ref": "#/$defs/TraceIdRatioBasedSampler"
         }
-      },
-      "isSdkExtensionPlugin": true
+      }
     },
     "AlwaysOffSampler": {
       "type": [
@@ -4962,20 +4551,17 @@ Usages:
           "type": [
             "string",
             "null"
-          ],
-          "description": "TODO"
+          ]
         },
         "interval": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "TODO"
+          "minimum": 0
         },
         "initial_sampler": {
-          "$ref": "#/$defs/Sampler",
-          "description": "TODO"
+          "$ref": "#/$defs/Sampler"
         }
       }
     },
@@ -4987,24 +4573,19 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "root": {
-          "$ref": "#/$defs/Sampler",
-          "description": "Configure root sampler.\nIf omitted or null, always_on is used.\n"
+          "$ref": "#/$defs/Sampler"
         },
         "remote_parent_sampled": {
-          "$ref": "#/$defs/Sampler",
-          "description": "Configure remote_parent_sampled sampler.\nIf omitted or null, always_on is used.\n"
+          "$ref": "#/$defs/Sampler"
         },
         "remote_parent_not_sampled": {
-          "$ref": "#/$defs/Sampler",
-          "description": "Configure remote_parent_not_sampled sampler.\nIf omitted or null, always_off is used.\n"
+          "$ref": "#/$defs/Sampler"
         },
         "local_parent_sampled": {
-          "$ref": "#/$defs/Sampler",
-          "description": "Configure local_parent_sampled sampler.\nIf omitted or null, always_on is used.\n"
+          "$ref": "#/$defs/Sampler"
         },
         "local_parent_not_sampled": {
-          "$ref": "#/$defs/Sampler",
-          "description": "Configure local_parent_not_sampled sampler.\nIf omitted or null, always_off is used.\n"
+          "$ref": "#/$defs/Sampler"
         }
       }
     },
@@ -5021,8 +4602,7 @@ Usages:
             "null"
           ],
           "minimum": 0,
-          "maximum": 1,
-          "description": "Configure ratio.\nIf omitted or null, 1.0 is used.\n"
+          "maximum": 1
         }
       }
     },
@@ -5039,8 +4619,7 @@ Usages:
             "null"
           ],
           "minimum": 0,
-          "maximum": 1,
-          "description": "Configure trace_id_ratio.\nIf omitted or null, 1.0 is used.\n"
+          "maximum": 1
         }
       }
     },
@@ -5066,24 +4645,19 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "root": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with no parent."
+          "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "remote_parent_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a remote parent that is sampled."
+          "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "remote_parent_not_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a remote parent that is not sampled."
+          "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "local_parent_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a local parent that is sampled."
+          "$ref": "#/$defs/ExperimentalComposableSampler"
         },
         "local_parent_not_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a local parent that is not sampled."
+          "$ref": "#/$defs/ExperimentalComposableSampler"
         }
       }
     },
@@ -5100,8 +4674,7 @@ Usages:
             "null"
           ],
           "minimum": 0,
-          "maximum": 1,
-          "description": "Configure ratio.\nIf omitted or null, 1.0 is used.\n"
+          "maximum": 1
         }
       }
     },
@@ -5117,20 +4690,16 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "always_off": {
-          "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler",
-          "description": "Configure sampler to be always_off."
+          "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
         },
         "always_on": {
-          "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler",
-          "description": "Configure sampler to be always_on."
+          "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
         },
         "parent_based": {
-          "$ref": "#/$defs/ExperimentalComposableParentBasedSampler",
-          "description": "Configure sampler to be parent_based."
+          "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
         },
         "probability": {
-          "$ref": "#/$defs/ExperimentalComposableProbabilitySampler",
-          "description": "Configure sampler to be probability."
+          "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
         }
       }
     },
@@ -5139,8 +4708,7 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "exporter": {
-          "$ref": "#/$defs/SpanExporter",
-          "description": "Configure exporter."
+          "$ref": "#/$defs/SpanExporter"
         }
       },
       "required": [
@@ -5159,27 +4727,21 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "otlp_http": {
-          "$ref": "common.yaml#/$defs/OtlpHttpExporter",
-          "description": "Configure exporter to be OTLP with HTTP transport."
+          "$ref": "common.json#/$defs/OtlpHttpExporter"
         },
         "otlp_grpc": {
-          "$ref": "common.yaml#/$defs/OtlpGrpcExporter",
-          "description": "Configure exporter to be OTLP with gRPC transport."
+          "$ref": "common.json#/$defs/OtlpGrpcExporter"
         },
         "otlp_file/development": {
-          "$ref": "common.yaml#/$defs/ExperimentalOtlpFileExporter",
-          "description": "Configure exporter to be OTLP with file transport.\n"
+          "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
         },
         "console": {
-          "$ref": "common.yaml#/$defs/ConsoleExporter",
-          "description": "Configure exporter to be console."
+          "$ref": "common.json#/$defs/ConsoleExporter"
         },
         "zipkin": {
-          "$ref": "#/$defs/ZipkinSpanExporter",
-          "description": "Configure exporter to be zipkin."
+          "$ref": "#/$defs/ZipkinSpanExporter"
         }
-      },
-      "isSdkExtensionPlugin": true
+      }
     },
     "SpanLimits": {
       "type": "object",
@@ -5190,48 +4752,42 @@ Usages:
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+          "minimum": 0
         },
         "attribute_count_limit": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+          "minimum": 0
         },
         "event_count_limit": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max span event count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+          "minimum": 0
         },
         "link_count_limit": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max span link count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+          "minimum": 0
         },
         "event_attribute_count_limit": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max attributes per span event. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+          "minimum": 0
         },
         "link_attribute_count_limit": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max attributes per span link. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+          "minimum": 0
         }
       }
     },
@@ -5247,15 +4803,12 @@ Usages:
       "maxProperties": 1,
       "properties": {
         "batch": {
-          "$ref": "#/$defs/BatchSpanProcessor",
-          "description": "Configure a batch span processor."
+          "$ref": "#/$defs/BatchSpanProcessor"
         },
         "simple": {
-          "$ref": "#/$defs/SimpleSpanProcessor",
-          "description": "Configure a simple span processor."
+          "$ref": "#/$defs/SimpleSpanProcessor"
         }
-      },
-      "isSdkExtensionPlugin": true
+      }
     },
     "ZipkinSpanExporter": {
       "type": [
@@ -5268,16 +4821,14 @@ Usages:
           "type": [
             "string",
             "null"
-          ],
-          "description": "Configure endpoint.\nIf omitted or null, http://localhost:9411/api/v2/spans is used.\n"
+          ]
         },
         "timeout": {
           "type": [
             "integer",
             "null"
           ],
-          "minimum": 0,
-          "description": "Configure max time (in milliseconds) to wait for each export. \nValue must be non-negative. A value of 0 indicates indefinite.\nIf omitted or null, 10000 is used.\n"
+          "minimum": 0
         }
       }
     },
@@ -5288,16 +4839,14 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "default_config": {
-          "$ref": "#/$defs/ExperimentalTracerConfig",
-          "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers."
+          "$ref": "#/$defs/ExperimentalTracerConfig"
         },
         "tracers": {
           "type": "array",
           "minItems": 1,
           "items": {
             "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
-          },
-          "description": "Configure tracers."
+          }
         }
       }
     },
@@ -5310,12 +4859,10 @@ Usages:
         "name": {
           "type": [
             "string"
-          ],
-          "description": "Configure tracer names to match, evaluated as follows:\n\n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+          ]
         },
         "config": {
-          "$ref": "#/$defs/ExperimentalTracerConfig",
-          "description": "The tracer config."
+          "$ref": "#/$defs/ExperimentalTracerConfig"
         }
       },
       "required": [
@@ -5332,8 +4879,7 @@ Usages:
         "disabled": {
           "type": [
             "boolean"
-          ],
-          "description": "Configure if the tracer is enabled or not."
+          ]
         }
       }
     }
@@ -5369,18 +4915,16 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "selector": {
-      "$ref": "#/$defs/ViewSelector",
-      "description": "Configure view selector. \nSelection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.\n"
+      "$ref": "#/$defs/ViewSelector"
     },
     "stream": {
-      "$ref": "#/$defs/ViewStream",
-      "description": "Configure view stream."
+      "$ref": "#/$defs/ViewStream"
     }
   },
   "required": [
@@ -5425,7 +4969,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5434,40 +4978,34 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure instrument name selection criteria.\nIf omitted or null, all instrument names match.\n"
+      ]
     },
     "instrument_type": {
-      "$ref": "#/$defs/InstrumentType",
-      "description": "Configure instrument type selection criteria.\nValues include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\nIf omitted or null, all instrument types match.\n"
+      "$ref": "#/$defs/InstrumentType"
     },
     "unit": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure the instrument unit selection criteria.\nIf omitted or null, all instrument units match.\n"
+      ]
     },
     "meter_name": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure meter name selection criteria.\nIf omitted or null, all meter names match.\n"
+      ]
     },
     "meter_version": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure meter version selection criteria.\nIf omitted or null, all meter versions match.\n"
+      ]
     },
     "meter_schema_url": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure meter schema url selection criteria.\nIf omitted or null, all meter schema URLs match.\n"
+      ]
     }
   }
 }</pre>
@@ -5506,7 +5044,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5515,31 +5053,26 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure metric name of the resulting stream(s).\nIf omitted or null, the instrument's original name is used.\n"
+      ]
     },
     "description": {
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure metric description of the resulting stream(s).\nIf omitted or null, the instrument's origin description is used.\n"
+      ]
     },
     "aggregation": {
-      "$ref": "#/$defs/Aggregation",
-      "description": "Configure aggregation of the resulting stream(s). \nValues include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.\nIf omitted, default is used.\n"
+      "$ref": "#/$defs/Aggregation"
     },
     "aggregation_cardinality_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0,
-      "description": "Configure the aggregation cardinality limit.\nIf omitted or null, the metric reader's default cardinality limit is used.\n"
+      "exclusiveMinimum": 0
     },
     "attribute_keys": {
-      "$ref": "common.yaml#/$defs/IncludeExclude",
-      "description": "Configure attribute keys retained in the resulting stream(s).\n"
+      "$ref": "common.json#/$defs/IncludeExclude"
     }
   }
 }</pre>
@@ -5572,7 +5105,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5584,16 +5117,14 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure endpoint.\nIf omitted or null, http://localhost:9411/api/v2/spans is used.\n"
+      ]
     },
     "timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "Configure max time (in milliseconds) to wait for each export. \nValue must be non-negative. A value of 0 indicates indefinite.\nIf omitted or null, 10000 is used.\n"
+      "minimum": 0
     }
   }
 }</pre>
@@ -5619,7 +5150,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5647,7 +5178,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5693,7 +5224,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5702,24 +5233,19 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "root": {
-      "$ref": "#/$defs/ExperimentalComposableSampler",
-      "description": "Configures the sampler for spans with no parent."
+      "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "remote_parent_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler",
-      "description": "Configures the sampler for spans with a remote parent that is sampled."
+      "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "remote_parent_not_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler",
-      "description": "Configures the sampler for spans with a remote parent that is not sampled."
+      "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "local_parent_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler",
-      "description": "Configures the sampler for spans with a local parent that is sampled."
+      "$ref": "#/$defs/ExperimentalComposableSampler"
     },
     "local_parent_not_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler",
-      "description": "Configures the sampler for spans with a local parent that is not sampled."
+      "$ref": "#/$defs/ExperimentalComposableSampler"
     }
   }
 }</pre>
@@ -5753,7 +5279,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -5767,8 +5293,7 @@ Usages:
         "null"
       ],
       "minimum": 0,
-      "maximum": 1,
-      "description": "Configure ratio.\nIf omitted or null, 1.0 is used.\n"
+      "maximum": 1
     }
   }
 }</pre>
@@ -5815,7 +5340,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -5828,20 +5353,16 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "always_off": {
-      "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler",
-      "description": "Configure sampler to be always_off."
+      "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
     },
     "always_on": {
-      "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler",
-      "description": "Configure sampler to be always_on."
+      "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
     },
     "parent_based": {
-      "$ref": "#/$defs/ExperimentalComposableParentBasedSampler",
-      "description": "Configure sampler to be parent_based."
+      "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
     },
     "probability": {
-      "$ref": "#/$defs/ExperimentalComposableProbabilitySampler",
-      "description": "Configure sampler to be probability."
+      "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
     }
   }
 }</pre>
@@ -5865,7 +5386,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/resource.yaml)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -5905,18 +5426,16 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/instrumentation.yaml)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "peer": {
-      "$ref": "#/$defs/ExperimentalPeerInstrumentation",
-      "description": "Configure instrumentations following the peer semantic conventions.\nSee peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/\n"
+      "$ref": "#/$defs/ExperimentalPeerInstrumentation"
     },
     "http": {
-      "$ref": "#/$defs/ExperimentalHttpInstrumentation",
-      "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\n"
+      "$ref": "#/$defs/ExperimentalHttpInstrumentation"
     }
   }
 }</pre>
@@ -5940,7 +5459,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/resource.yaml)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -5980,7 +5499,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/instrumentation.yaml)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -5990,15 +5509,13 @@ Usages:
       "minItems": 1,
       "items": {
         "type": "string"
-      },
-      "description": "Configure headers to capture for outbound http requests.\n"
+      }
     },
     "response_captured_headers": {
       "type": "array",
       "items": {
         "type": "string"
-      },
-      "description": "Configure headers to capture for inbound http responses.\n"
+      }
     }
   }
 }</pre>
@@ -6034,18 +5551,16 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/instrumentation.yaml)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "client": {
-      "$ref": "#/$defs/ExperimentalHttpClientInstrumentation",
-      "description": "Configure instrumentations following the http client semantic conventions."
+      "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
     },
     "server": {
-      "$ref": "#/$defs/ExperimentalHttpServerInstrumentation",
-      "description": "Configure instrumentations following the http server semantic conventions."
+      "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
     }
   }
 }</pre>
@@ -6081,7 +5596,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/instrumentation.yaml)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -6091,16 +5606,14 @@ Usages:
       "minItems": 1,
       "items": {
         "type": "string"
-      },
-      "description": "Configure headers to capture for inbound http requests.\n"
+      }
     },
     "response_captured_headers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "string"
-      },
-      "description": "Configure headers to capture for outbound http responses.\n"
+      }
     }
   }
 }</pre>
@@ -6156,58 +5669,48 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/instrumentation.yaml)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
+  "$id": "https://opentelemetry.io/otelconfig/instrumentation.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "general": {
-      "$ref": "#/$defs/ExperimentalGeneralInstrumentation",
-      "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\nInstrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.\n"
+      "$ref": "#/$defs/ExperimentalGeneralInstrumentation"
     },
     "cpp": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-      "description": "Configure C++ language-specific instrumentation libraries."
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "dotnet": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-      "description": "Configure .NET language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "erlang": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-      "description": "Configure Erlang language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "go": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-      "description": "Configure Go language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "java": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-      "description": "Configure Java language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "js": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-      "description": "Configure JavaScript language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "php": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-      "description": "Configure PHP language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "python": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-      "description": "Configure Python language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "ruby": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-      "description": "Configure Ruby language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "rust": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-      "description": "Configure Rust language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     },
     "swift": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-      "description": "Configure Swift language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     }
   },
   "$defs": {
@@ -6216,12 +5719,10 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "peer": {
-          "$ref": "#/$defs/ExperimentalPeerInstrumentation",
-          "description": "Configure instrumentations following the peer semantic conventions.\nSee peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/\n"
+          "$ref": "#/$defs/ExperimentalPeerInstrumentation"
         },
         "http": {
-          "$ref": "#/$defs/ExperimentalHttpInstrumentation",
-          "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\n"
+          "$ref": "#/$defs/ExperimentalHttpInstrumentation"
         }
       }
     },
@@ -6234,8 +5735,7 @@ Usages:
           "minItems": 1,
           "items": {
             "$ref": "#/$defs/ExperimentalPeerServiceMapping"
-          },
-          "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\nSee peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\n"
+          }
         }
       }
     },
@@ -6244,12 +5744,10 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "peer": {
-          "type": "string",
-          "description": "The IP address to map.\n"
+          "type": "string"
         },
         "service": {
-          "type": "string",
-          "description": "The logical name corresponding to the IP address of .peer.\n"
+          "type": "string"
         }
       },
       "required": [
@@ -6266,15 +5764,13 @@ Usages:
           "minItems": 1,
           "items": {
             "type": "string"
-          },
-          "description": "Configure headers to capture for outbound http requests.\n"
+          }
         },
         "response_captured_headers": {
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "Configure headers to capture for inbound http responses.\n"
+          }
         }
       }
     },
@@ -6287,16 +5783,14 @@ Usages:
           "minItems": 1,
           "items": {
             "type": "string"
-          },
-          "description": "Configure headers to capture for inbound http requests.\n"
+          }
         },
         "response_captured_headers": {
           "type": "array",
           "minItems": 1,
           "items": {
             "type": "string"
-          },
-          "description": "Configure headers to capture for outbound http responses.\n"
+          }
         }
       }
     },
@@ -6305,12 +5799,10 @@ Usages:
       "additionalProperties": false,
       "properties": {
         "client": {
-          "$ref": "#/$defs/ExperimentalHttpClientInstrumentation",
-          "description": "Configure instrumentations following the http client semantic conventions."
+          "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
         },
         "server": {
-          "$ref": "#/$defs/ExperimentalHttpServerInstrumentation",
-          "description": "Configure instrumentations following the http server semantic conventions."
+          "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
         }
       }
     },
@@ -6356,7 +5848,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -6368,20 +5860,17 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "TODO"
+      ]
     },
     "interval": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0,
-      "description": "TODO"
+      "minimum": 0
     },
     "initial_sampler": {
-      "$ref": "#/$defs/Sampler",
-      "description": "TODO"
+      "$ref": "#/$defs/Sampler"
     }
   }
 }</pre>
@@ -6415,7 +5904,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/instrumentation.yaml)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -6457,7 +5946,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/logger_provider.yaml)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6468,19 +5957,16 @@ Usages:
       "type": [
         "boolean",
         "null"
-      ],
-      "description": "Configure if the logger is enabled or not.\nIf omitted or null, false is used.\n"
+      ]
     },
     "minimum_severity": {
-      "$ref": "#/$defs/ExperimentalSeverityNumber",
-      "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.\nIf omitted or null, severity filtering is not applied.\n"
+      "$ref": "#/$defs/ExperimentalSeverityNumber"
     },
     "trace_based": {
       "type": [
         "boolean",
         "null"
-      ],
-      "description": "Configure trace based filtering.\nIf true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.\nIf omitted or null, trace based filtering is not applied.\n"
+      ]
     }
   }
 }</pre>
@@ -6516,7 +6002,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/logger_provider.yaml)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6524,16 +6010,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "default_config": {
-      "$ref": "#/$defs/ExperimentalLoggerConfig",
-      "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers."
+      "$ref": "#/$defs/ExperimentalLoggerConfig"
     },
     "loggers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
-      },
-      "description": "Configure loggers."
+      }
     }
   }
 }</pre>
@@ -6570,7 +6054,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/logger_provider.yaml)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6580,12 +6064,10 @@ Usages:
     "name": {
       "type": [
         "string"
-      ],
-      "description": "Configure logger names to match, evaluated as follows:\n\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+      ]
     },
     "config": {
-      "$ref": "#/$defs/ExperimentalLoggerConfig",
-      "description": "The logger config."
+      "$ref": "#/$defs/ExperimentalLoggerConfig"
     }
   },
   "required": [
@@ -6624,7 +6106,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6634,8 +6116,7 @@ Usages:
     "disabled": {
       "type": [
         "boolean"
-      ],
-      "description": "Configure if the meter is enabled or not."
+      ]
     }
   }
 }</pre>
@@ -6671,7 +6152,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6679,16 +6160,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "default_config": {
-      "$ref": "#/$defs/ExperimentalMeterConfig",
-      "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters."
+      "$ref": "#/$defs/ExperimentalMeterConfig"
     },
     "meters": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
-      },
-      "description": "Configure meters."
+      }
     }
   }
 }</pre>
@@ -6725,7 +6204,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -6735,12 +6214,10 @@ Usages:
     "name": {
       "type": [
         "string"
-      ],
-      "description": "Configure meter names to match, evaluated as follows:\n\n * If the meter name exactly matches.\n * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+      ]
     },
     "config": {
-      "$ref": "#/$defs/ExperimentalMeterConfig",
-      "description": "The meter config."
+      "$ref": "#/$defs/ExperimentalMeterConfig"
     }
   },
   "required": [
@@ -6779,7 +6256,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/common.yaml)
+[JSON Schema Source File](./schema/common.yaml)
 <pre>{
   "type": [
     "object",
@@ -6791,8 +6268,7 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure output stream. \nValues include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\nIf omitted or null, stdout is used.\n"
+      ]
     }
   }
 }</pre>
@@ -6830,7 +6306,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -6842,16 +6318,13 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure output stream. \nValues include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\nIf omitted or null, stdout is used.\n"
+      ]
     },
     "temporality_preference": {
-      "$ref": "#/$defs/ExporterTemporalityPreference",
-      "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+      "$ref": "#/$defs/ExporterTemporalityPreference"
     },
     "default_histogram_aggregation": {
-      "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-      "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+      "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
     }
   }
 }</pre>
@@ -6885,7 +6358,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/instrumentation.yaml)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
@@ -6895,8 +6368,7 @@ Usages:
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalPeerServiceMapping"
-      },
-      "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\nSee peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\n"
+      }
     }
   }
 }</pre>
@@ -6933,18 +6405,16 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/instrumentation.yaml)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "peer": {
-      "type": "string",
-      "description": "The IP address to map.\n"
+      "type": "string"
     },
     "service": {
-      "type": "string",
-      "description": "The logical name corresponding to the IP address of .peer.\n"
+      "type": "string"
     }
   },
   "required": [
@@ -6982,7 +6452,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -6996,8 +6466,7 @@ Usages:
         "null"
       ],
       "minimum": 0,
-      "maximum": 1,
-      "description": "Configure ratio.\nIf omitted or null, 1.0 is used.\n"
+      "maximum": 1
     }
   }
 }</pre>
@@ -7021,7 +6490,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/resource.yaml)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -7069,7 +6538,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "object",
@@ -7081,37 +6550,31 @@ Usages:
       "type": [
         "string",
         "null"
-      ],
-      "description": "Configure host.\nIf omitted or null, localhost is used.\n"
+      ]
     },
     "port": {
       "type": [
         "integer",
         "null"
-      ],
-      "description": "Configure port.\nIf omitted or null, 9464 is used.\n"
+      ]
     },
     "without_scope_info": {
       "type": [
         "boolean",
         "null"
-      ],
-      "description": "Configure Prometheus Exporter to produce metrics without a scope info metric.\nIf omitted or null, false is used.\n"
+      ]
     },
     "without_target_info": {
       "type": [
         "boolean",
         "null"
-      ],
-      "description": "Configure Prometheus Exporter to produce metrics without a target info metric for the resource.\nIf omitted or null, false is used.\n"
+      ]
     },
     "with_resource_constant_labels": {
-      "$ref": "common.yaml#/$defs/IncludeExclude",
-      "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns."
+      "$ref": "common.json#/$defs/IncludeExclude"
     },
     "translation_strategy": {
-      "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
-      "description": "Configure how Prometheus metrics are exposed. Values include:\n\n * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\n\nIf omitted or null, UnderscoreEscapingWithSuffixes is used.\n"
+      "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy"
     }
   }
 }</pre>
@@ -7151,7 +6614,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/meter_provider.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -7162,13 +6625,7 @@ Usages:
     "UnderscoreEscapingWithoutSuffixes",
     "NoUTF8EscapingWithSuffixes",
     "NoTranslation"
-  ],
-  "enumDescriptions": {
-    "NoTranslation": "Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.",
-    "NoUTF8EscapingWithSuffixes": "Special character escaping is disabled. Type and unit suffixes are enabled.",
-    "UnderscoreEscapingWithoutSuffixes": "Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.",
-    "UnderscoreEscapingWithSuffixes": "Special character escaping is enabled. Type and unit suffixes are enabled."
-  }
+  ]
 }</pre>
 </details>
 
@@ -7202,22 +6659,20 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/resource.yaml)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "attributes": {
-      "$ref": "common.yaml#/$defs/IncludeExclude",
-      "description": "Configure attributes provided by resource detectors."
+      "$ref": "common.json#/$defs/IncludeExclude"
     },
     "detectors": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalResourceDetector"
-      },
-      "description": "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. \nIf omitted or null, no resource detectors are enabled.\n"
+      }
     }
   }
 }</pre>
@@ -7261,7 +6716,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/resource.yaml)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": "object",
   "additionalProperties": {
@@ -7274,23 +6729,18 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "container": {
-      "$ref": "#/$defs/ExperimentalContainerResourceDetector",
-      "description": "Enable the container resource detector, which populates container.* attributes.\n"
+      "$ref": "#/$defs/ExperimentalContainerResourceDetector"
     },
     "host": {
-      "$ref": "#/$defs/ExperimentalHostResourceDetector",
-      "description": "Enable the host resource detector, which populates host.* and os.* attributes.\n"
+      "$ref": "#/$defs/ExperimentalHostResourceDetector"
     },
     "process": {
-      "$ref": "#/$defs/ExperimentalProcessResourceDetector",
-      "description": "Enable the process resource detector, which populates process.* attributes.\n"
+      "$ref": "#/$defs/ExperimentalProcessResourceDetector"
     },
     "service": {
-      "$ref": "#/$defs/ExperimentalServiceResourceDetector",
-      "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.\n"
+      "$ref": "#/$defs/ExperimentalServiceResourceDetector"
     }
-  },
-  "isSdkExtensionPlugin": true
+  }
 }</pre>
 </details>
 
@@ -7312,7 +6762,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/resource.yaml)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
   "type": [
     "object",
@@ -7396,7 +6846,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/logger_provider.yaml)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
   "type": [
     "string",
@@ -7427,33 +6877,7 @@ Usages:
     "FATAL2",
     "FATAL3",
     "FATAL4"
-  ],
-  "enumDescriptions": {
-    "DEBUG": "DEBUG, severity number 5.",
-    "DEBUG2": "DEBUG2, severity number 6.",
-    "DEBUG3": "DEBUG3, severity number 7.",
-    "DEBUG4": "DEBUG4, severity number 8.",
-    "ERROR": "ERROR, severity number 17.",
-    "ERROR2": "ERROR2, severity number 18.",
-    "ERROR3": "ERROR3, severity number 19.",
-    "ERROR4": "ERROR4, severity number 20.",
-    "FATAL": "FATAL, severity number 21.",
-    "FATAL2": "FATAL2, severity number 22.",
-    "FATAL3": "FATAL3, severity number 23.",
-    "FATAL4": "FATAL4, severity number 24.",
-    "INFO": "INFO, severity number 9.",
-    "INFO2": "INFO2, severity number 10.",
-    "INFO3": "INFO3, severity number 11.",
-    "INFO4": "INFO4, severity number 12.",
-    "TRACE": "TRACE, severity number 1.",
-    "TRACE2": "TRACE2, severity number 2.",
-    "TRACE3": "TRACE3, severity number 3.",
-    "TRACE4": "TRACE4, severity number 4.",
-    "WARN": "WARN, severity number 13.",
-    "WARN2": "WARN2, severity number 14.",
-    "WARN3": "WARN3, severity number 15.",
-    "WARN4": "WARN4, severity number 16."
-  }
+  ]
 }</pre>
 </details>
 
@@ -7486,7 +6910,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -7496,8 +6920,7 @@ Usages:
     "disabled": {
       "type": [
         "boolean"
-      ],
-      "description": "Configure if the tracer is enabled or not."
+      ]
     }
   }
 }</pre>
@@ -7533,7 +6956,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -7541,16 +6964,14 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "default_config": {
-      "$ref": "#/$defs/ExperimentalTracerConfig",
-      "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers."
+      "$ref": "#/$defs/ExperimentalTracerConfig"
     },
     "tracers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
-      },
-      "description": "Configure tracers."
+      }
     }
   }
 }</pre>
@@ -7587,7 +7008,7 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[Source File](./schema/tracer_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "object"
@@ -7597,12 +7018,10 @@ Usages:
     "name": {
       "type": [
         "string"
-      ],
-      "description": "Configure tracer names to match, evaluated as follows:\n\n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+      ]
     },
     "config": {
-      "$ref": "#/$defs/ExperimentalTracerConfig",
-      "description": "The tracer config."
+      "$ref": "#/$defs/ExperimentalTracerConfig"
     }
   },
   "required": [
@@ -7625,7 +7044,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`AlwaysOnSampler`](#alwaysonsampler) | supported |  |  |
 | [`AttributeLimits`](#attributelimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | [`AttributeNameValue`](#attributenamevalue) | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
-| [`AttributeType`](#attributetype) | supported |  |  |
+| [`AttributeType`](#attributetype) | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | supported |  |  |
 | [`B3Propagator`](#b3propagator) | supported |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | supported |  |  |
@@ -7637,14 +7056,14 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `temporality_preference`: supported<br> |
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
 | [`DropAggregation`](#dropaggregation) | supported |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | not_implemented |  |  |
+| [`ExemplarFilter`](#exemplarfilter) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `trace_based`: not_implemented<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  |  |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  |  |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  |  |
+| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
 | [`LoggerProvider`](#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
@@ -7656,11 +7075,11 @@ Latest supported file format: `1.0.0-rc.2`
 | [`MetricReader`](#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | [`NameStringValuePair`](#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | supported |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `file_format`: supported<br>* `foo`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
+| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
 | [`OpenTracingPropagator`](#opentracingpropagator) | not_implemented |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  |  |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
@@ -7712,11 +7131,11 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | not_implemented |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: supported<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  |  |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | not_implemented |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  |  |
+| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
@@ -7733,7 +7152,7 @@ Latest supported file format: `0.3.0`
 | [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
 | [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
 | [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `type`: unknown<br>* `value`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  |  |
+| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
 | [`B3Propagator`](#b3propagator) | unknown |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
@@ -7745,14 +7164,14 @@ Latest supported file format: `0.3.0`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `temporality_preference`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
 | [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  |  |
+| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  |  |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  |  |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  |  |
+| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
 | [`LoggerProvider`](#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
@@ -7764,11 +7183,11 @@ Latest supported file format: `0.3.0`
 | [`MetricReader`](#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
 | [`NameStringValuePair`](#namestringvaluepair) | unknown |  | * `name`: unknown<br>* `value`: unknown<br> |
 | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | unknown |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `file_format`: unknown<br>* `foo`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
+| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
 | [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `compression`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  |  |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `compression`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
@@ -7820,11 +7239,11 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | unknown |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | unknown |  | * `host`: unknown<br>* `port`: unknown<br>* `translation_strategy`: unknown<br>* `with_resource_constant_labels`: unknown<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  |  |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  |  |
+| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
@@ -7841,7 +7260,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`AlwaysOnSampler`](#alwaysonsampler) | supported |  |  |
 | [`AttributeLimits`](#attributelimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | [`AttributeNameValue`](#attributenamevalue) | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
-| [`AttributeType`](#attributetype) | supported |  |  |
+| [`AttributeType`](#attributetype) | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | supported |  |  |
 | [`B3Propagator`](#b3propagator) | supported |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | supported |  |  |
@@ -7853,14 +7272,14 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: ignored<br> |
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
 | [`DropAggregation`](#dropaggregation) | supported |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | supported |  |  |
+| [`ExemplarFilter`](#exemplarfilter) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `trace_based`: supported<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: not_implemented<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  |  |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  |  |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
 | [`GrpcTls`](#grpctls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `insecure`: not_implemented<br>* `key_file`: not_implemented<br> |
 | [`HttpTls`](#httptls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `key_file`: not_implemented<br> |
 | [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  |  |
+| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
 | [`LoggerProvider`](#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
@@ -7872,11 +7291,11 @@ Latest supported file format: `1.0.0-rc.1`
 | [`MetricReader`](#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | [`NameStringValuePair`](#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | ignored |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `file_format`: supported<br>* `foo`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
+| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
 | [`OpenTracingPropagator`](#opentracingpropagator) | supported |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | not_implemented |  |  |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `compression`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
@@ -7928,11 +7347,11 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | ignored |  | * `ratio`: ignored<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | supported |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: not_implemented<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: ignored<br>* `without_target_info`: ignored<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  |  |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | supported |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  |  |
+| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | supported |  | * `disabled`: supported<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
@@ -7949,7 +7368,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
 | [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
 | [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `type`: unknown<br>* `value`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  |  |
+| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
 | [`B3Propagator`](#b3propagator) | unknown |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
@@ -7961,14 +7380,14 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `temporality_preference`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
 | [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  |  |
+| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  |  |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  |  |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  |  |
+| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
 | [`LoggerProvider`](#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
@@ -7980,11 +7399,11 @@ Latest supported file format: `1.0.0-rc.2`
 | [`MetricReader`](#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
 | [`NameStringValuePair`](#namestringvaluepair) | unknown |  | * `name`: unknown<br>* `value`: unknown<br> |
 | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | unknown |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `file_format`: unknown<br>* `foo`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
+| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
 | [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `compression`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  |  |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `compression`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
@@ -8036,11 +7455,11 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | unknown |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | unknown |  | * `host`: unknown<br>* `port`: unknown<br>* `translation_strategy`: unknown<br>* `with_resource_constant_labels`: unknown<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  |  |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  |  |
+| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
@@ -8056,3 +7475,13 @@ Each of the following types support referencing custom interface implementations
 
 SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the `otlp_http` property of `SpanExporter` defines the OTLP http/protobuf exporter.
 
+* [ExperimentalResourceDetector](#ExperimentalResourceDetector)
+* [LogRecordExporter](#LogRecordExporter)
+* [LogRecordProcessor](#LogRecordProcessor)
+* [MetricProducer](#MetricProducer)
+* [PullMetricExporter](#PullMetricExporter)
+* [PushMetricExporter](#PushMetricExporter)
+* [Sampler](#Sampler)
+* [SpanExporter](#SpanExporter)
+* [SpanProcessor](#SpanProcessor)
+* [TextMapPropagator](#TextMapPropagator)
