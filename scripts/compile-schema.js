@@ -8,19 +8,20 @@ fs.rmSync(schemaOutDirPath, {recursive: true, force: true});
 fs.mkdirSync(schemaOutDirPath);
 
 // Read source schema
-const { sourceContentByFile, sourceTypesByType } = readSourceSchema();
+const {sourceContentByFile, sourceTypesByType} = readSourceSchema();
 
 // Validate source types and exit early if there are any errors
 const messages = [];
 Object.entries(sourceTypesByType).forEach(([type, sourceSchemaType]) => {
     allPropertiesShouldHaveDescriptions(sourceSchemaType, messages);
+    allEnumValuesShouldHaveDescriptions(sourceSchemaType, messages);
 });
 if (messages.length > 0) {
     messages.forEach(message => console.log(message));
     process.exit(1);
 }
 
-// If we make it here, source schema is valid. Massage the schema a bit and write it to the output directory in JSON format.
+// If we make it here, source schema is valid.
 
 // Replace refs with new JSON file paths
 Object.keys(sourceContentByFile).forEach(file => {
@@ -31,9 +32,16 @@ Object.keys(sourceContentByFile).forEach(file => {
     });
 });
 
-// For each file, parse the YAML, annotate, and write to output directory
+// For each file, massage the schema a bit and write it to the output directory in JSON format.
 Object.entries(sourceContentByFile).forEach(([file, content]) => {
     const jsonFile = file.replace('.yaml', '.json');
+
+    // Remove bits which are not part of JSON schema spec
+    stripExtraSourceSchemaMetadata(content);
+    const defs = content['$defs'];
+    if (defs) {
+        Object.values(defs).forEach(type => stripExtraSourceSchemaMetadata(type));
+    }
 
     // Annotate with constant info
     const annotated = {
@@ -45,12 +53,40 @@ Object.entries(sourceContentByFile).forEach(([file, content]) => {
     fs.writeFileSync(schemaOutDirPath + jsonFile, JSON.stringify(annotated, null, 2));
 });
 
-console.log(readSourceSchema());
+// Helper functions
+
+function stripExtraSourceSchemaMetadata(type) {
+    delete type['enumDescriptions'];
+    delete type['isSdkExtensionPlugin'];
+}
+
+// Validation functions
 
 function allPropertiesShouldHaveDescriptions(sourceSchemaType, messages) {
     sourceSchemaType.properties.forEach(property => {
-       if (!property.schema.description) {
-           messages.push(`Property ${sourceSchemaType.type}.${property.property} has no description`);
-       }
+        if (!property.schema.description) {
+            messages.push(`Please add 'description' to ${sourceSchemaType.type}.${property.property}.`);
+        }
+    });
+}
+
+function allEnumValuesShouldHaveDescriptions(sourceSchemaType, messages) {
+    if (!sourceSchemaType.isEnumType()) {
+        return;
+    }
+    const enumDescriptions = sourceSchemaType.schema['enumDescriptions'];
+    if (!enumDescriptions) {
+        messages.push(`Please add 'enumDescriptions' to ${sourceSchemaType.type}.`);
+        return;
+    }
+    sourceSchemaType.enumValues.forEach(enumValue => {
+        if (!enumDescriptions[enumValue]) {
+            messages.push(`Please add entry for ${enumValue} to 'enumDescriptions' for ${sourceSchemaType.type}.`);
+        }
+    });
+    Object.keys(enumDescriptions).forEach(enumValue => {
+        if (!sourceSchemaType.enumValues.includes(enumValue)) {
+            messages.push(`Please remove entry for ${enumValue} from 'enumDescriptions' for ${sourceSchemaType.type}.`);
+        }
     });
 }
