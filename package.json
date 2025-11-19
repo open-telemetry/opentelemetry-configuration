@@ -3,7 +3,8 @@
   "scripts": {
     "compile-schema": "node scripts/compile-schema.js",
     "generate-markdown": "node scripts/generate-markdown.js",
-    "fix-meta-schema": "node scripts/fix-meta-schema.js"
+    "fix-meta-schema": "node scripts/fix-meta-schema.js",
+    "merge-meta-schema": "node scripts/merge-meta-schema.js"
   },
   "devDependencies": {
     "ajv-cli": "5.0.0"

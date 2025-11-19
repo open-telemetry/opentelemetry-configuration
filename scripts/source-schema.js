@@ -38,7 +38,7 @@ export function readSourceSchemaTypes() {
         if (!topLevelSchema) {
             throw new Error("Could not resolve top level $ref:" + ref);
         }
-        sourceSchemaType.file = ref;
+        sourceSchemaType.sourceFile = ref;
         sourceSchemaType.jsonSchemaPath = '.';
         sourceSchemaType.schema = topLevelSchema;
     });
