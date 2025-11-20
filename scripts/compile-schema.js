@@ -12,6 +12,7 @@ sourceTypes.forEach(sourceSchemaType => {
     allEnumValuesShouldHaveDescriptions(sourceSchemaType, messages);
     sdkExtensionPluginSchema(sourceSchemaType, messages);
     noSubschemas(sourceSchemaType, messages);
+    optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages);
 });
 if (messages.length > 0) {
     messages.forEach(message => console.log(message));
@@ -144,4 +145,21 @@ function noSubschemas(sourceSchemaType, messages) {
             }
         });
     });
+}
+
+function optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages) {
+    if (sourceSchemaType.isEnumType()) {
+        return;
+    }
+    const required = sourceSchemaType.schema.required || [];
+    sourceSchemaType.properties
+        .filter(property => !required.includes(property.property) && !property.schema.defaultBehavior)
+        .forEach(property => {
+            messages.push(`Please add 'defaultBehavior' to optional property ${sourceSchemaType.type}.${property.property}.`);
+        });
+    sourceSchemaType.properties
+        .filter(property => required.includes(property.property) && property.schema.defaultBehavior)
+        .forEach(property => {
+           messages.push(`Please remove 'defaultBehavior' from required property ${sourceSchemaType.type}.${property.property}.`);
+        });
 }
