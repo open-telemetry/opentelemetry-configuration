@@ -35,6 +35,9 @@ sourceTypes.filter(sourceSchemaType => sourceSchemaType.type !== rootTypeName)
             Object.values(properties).forEach(replaceCrossFileRefs);
         }
 
+        // Strip away defs from top level schemas
+        delete schema['$defs'];
+
         // Strip extra source meta data
         delete schema['enumDescriptions'];
         delete schema['isSdkExtensionPlugin'];
@@ -141,5 +144,4 @@ function noSubschemas(sourceSchemaType, messages) {
             }
         });
     });
-
 }
