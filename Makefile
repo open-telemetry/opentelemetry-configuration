@@ -26,7 +26,7 @@ update-file-format:
 	done
 
 .PHONY: fix-meta-schema
-fix-meta-schema:
+fix-meta-schema: compile-schema
 	npm run-script fix-meta-schema || exit 1; \
 
 .PHONY: generate-markdown

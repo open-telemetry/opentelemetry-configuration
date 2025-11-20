@@ -314,7 +314,7 @@ tracer_provider:
                 sampler:
                   # Configure sampler to be always_on if matched.
                   always_on: # Configure a sampling rule matching root spans with CLIENT span kind.
-              - is_root: true
+              - is_trace_root: true
                 span_kinds:
                   - CLIENT
                 sampler:
