@@ -1,67 +1,67 @@
 latestSupportedFileFormat: 1.0.0-rc.2
 typeSupportStatuses:
   - type: Aggregation
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: AlwaysOffSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: AlwaysOnSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: AttributeLimits
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: AttributeNameValue
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: AttributeType
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: B3MultiPropagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: B3Propagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: BaggagePropagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: Base2ExponentialBucketHistogramAggregation
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: BatchLogRecordProcessor
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: BatchSpanProcessor
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: CardinalityLimits
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ConsoleExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ConsoleMetricExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: DefaultAggregation
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: DropAggregation
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExemplarFilter
-    status: unknown
+    status: not_implemented
     enumOverrides: []
   - type: ExplicitBucketHistogramAggregation
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExporterDefaultHistogramAggregation
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: ExporterTemporalityPreference
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: GrpcTls
     status: unknown
@@ -70,133 +70,133 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: IncludeExclude
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: InstrumentType
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: JaegerPropagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: LastValueAggregation
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: LoggerProvider
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: LogRecordExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: LogRecordLimits
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: LogRecordProcessor
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: MeterProvider
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: MetricProducer
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: MetricReader
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: NameStringValuePair
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: OpenCensusMetricProducer
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: OpenTelemetryConfiguration
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: OpenTracingPropagator
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: OtlpGrpcExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: OtlpGrpcMetricExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: OtlpHttpEncoding
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: OtlpHttpExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: OtlpHttpMetricExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ParentBasedSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: PeriodicMetricReader
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: Propagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: PullMetricExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: PullMetricReader
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: PushMetricExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: Resource
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: Sampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: SimpleLogRecordProcessor
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: SimpleSpanProcessor
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: SpanExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: SpanKind
     status: unknown
     enumOverrides: []
   - type: SpanLimits
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: SpanProcessor
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: SumAggregation
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: TextMapPropagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: TraceContextPropagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: TraceIdRatioBasedSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: TracerProvider
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: View
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ViewSelector
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ViewStream
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ZipkinSpanExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: unknown
@@ -226,92 +226,96 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalHostResourceDetector
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalHttpClientInstrumentation
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalHttpInstrumentation
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalHttpServerInstrumentation
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalInstrumentation
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalJaegerRemoteSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalLoggerConfig
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalLoggerConfigurator
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalLoggerMatcherAndConfig
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalMeterConfig
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalMeterConfigurator
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalMeterMatcherAndConfig
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalOtlpFileExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalOtlpFileMetricExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalPeerInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalPeerServiceMapping
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalProbabilitySampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalPrometheusMetricExporter
-    status: unknown
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: without_scope_info
+        status: unknown
+      - property: without_target_info
+        status: unknown
   - type: ExperimentalPrometheusTranslationStrategy
     status: unknown
     enumOverrides: []
   - type: ExperimentalResourceDetection
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalResourceDetector
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalSeverityNumber
     status: unknown
     enumOverrides: []
   - type: ExperimentalTracerConfig
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalTracerConfigurator
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
