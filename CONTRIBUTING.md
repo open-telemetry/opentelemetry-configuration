@@ -322,6 +322,8 @@ make all
 
 ## Meta schema
 
+> 🚧 The tooling around meta schema is under construction, and the docs below will be temporarily inaccurate. Please check back soon. 🚧
+
 [meta_schema_*.yaml](schema) files track schema details that don't fit neatly into the JSON schema including:
 
 * Property descriptions and semantics
