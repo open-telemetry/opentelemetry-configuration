@@ -14,6 +14,7 @@ $defs:
            * If the value exactly matches.
            * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
           If omitted, all values are included.
+        defaultBehavior: TODO
       excluded:
         type: array
         minItems: 1
@@ -25,6 +26,7 @@ $defs:
            * If the value exactly matches.
            * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
           If omitted, .included attributes are included.
+        defaultBehavior: TODO
   NameStringValuePair:
     type: object
     additionalProperties: false
@@ -53,9 +55,11 @@ $defs:
         description: |
           Configure endpoint, including the signal specific path.
           If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
+        defaultBehavior: TODO
       tls:
         $ref: "#/$defs/HttpTls"
         description: Configure TLS settings for the exporter.
+        defaultBehavior: TODO
       headers:
         type: array
         minItems: 1
@@ -64,6 +68,7 @@ $defs:
         description: |
           Configure headers. Entries have higher priority than entries from .headers_list.
           If an entry's .value is null, the entry is ignored.
+        defaultBehavior: TODO
       headers_list:
         type:
           - string
@@ -72,6 +77,7 @@ $defs:
           Configure headers. Entries have lower priority than entries from .headers.
           The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
           If omitted or null, no headers are added.
+        defaultBehavior: TODO
       compression:
         type:
           - string
@@ -80,6 +86,7 @@ $defs:
           Configure compression.
           Values include: gzip, none. Implementations may support other compression algorithms.
           If omitted or null, none is used.
+        defaultBehavior: TODO
       timeout:
         type:
           - integer
@@ -89,12 +96,14 @@ $defs:
           Configure max time (in milliseconds) to wait for each export.
           Value must be non-negative. A value of 0 indicates no limit (infinity).
           If omitted or null, 10000 is used.
+        defaultBehavior: TODO
       encoding:
         $ref: "#/$defs/OtlpHttpEncoding"
         description: |
           Configure the encoding used for messages. 
           Values include: protobuf, json. Implementations may not support json.
           If omitted or null, protobuf is used.
+        defaultBehavior: TODO
   OtlpHttpEncoding:
     type:
       - string
@@ -118,9 +127,11 @@ $defs:
         description: |
           Configure endpoint.
           If omitted or null, http://localhost:4317 is used.
+        defaultBehavior: TODO
       tls:
         $ref: "#/$defs/GrpcTls"
         description: Configure TLS settings for the exporter.
+        defaultBehavior: TODO
       headers:
         type: array
         minItems: 1
@@ -129,6 +140,7 @@ $defs:
         description: |
           Configure headers. Entries have higher priority than entries from .headers_list.
           If an entry's .value is null, the entry is ignored.
+        defaultBehavior: TODO
       headers_list:
         type:
           - string
@@ -137,6 +149,7 @@ $defs:
           Configure headers. Entries have lower priority than entries from .headers.
           The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
           If omitted or null, no headers are added.
+        defaultBehavior: TODO
       compression:
         type:
           - string
@@ -145,6 +158,7 @@ $defs:
           Configure compression.
           Values include: gzip, none. Implementations may support other compression algorithms.
           If omitted or null, none is used.
+        defaultBehavior: TODO
       timeout:
         type:
           - integer
@@ -154,6 +168,7 @@ $defs:
           Configure max time (in milliseconds) to wait for each export.
           Value must be non-negative. A value of 0 indicates no limit (infinity).
           If omitted or null, 10000 is used.
+        defaultBehavior: TODO
   ExperimentalOtlpFileExporter:
     type:
       - object
@@ -168,6 +183,7 @@ $defs:
           Configure output stream. 
           Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
           If omitted or null, stdout is used.
+        defaultBehavior: TODO
   ConsoleExporter:
     type:
       - object
@@ -187,6 +203,7 @@ $defs:
           Configure certificate used to verify a server's TLS credentials. 
           Absolute path to certificate file in PEM format.
           If omitted or null, system default certificate verification is used for secure connections.
+        defaultBehavior: TODO
       key_file:
         type:
           - string
@@ -195,6 +212,7 @@ $defs:
           Configure mTLS private client key. 
           Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
           If omitted or null, mTLS is not used.
+        defaultBehavior: TODO
       cert_file:
         type:
           - string
@@ -203,6 +221,7 @@ $defs:
           Configure mTLS client certificate. 
           Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
           If omitted or null, mTLS is not used.
+        defaultBehavior: TODO
   GrpcTls:
     type:
       - object
@@ -217,6 +236,7 @@ $defs:
           Configure certificate used to verify a server's TLS credentials. 
           Absolute path to certificate file in PEM format.
           If omitted or null, system default certificate verification is used for secure connections.
+        defaultBehavior: TODO
       key_file:
         type:
           - string
@@ -225,6 +245,7 @@ $defs:
           Configure mTLS private client key. 
           Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
           If omitted or null, mTLS is not used.
+        defaultBehavior: TODO
       cert_file:
         type:
           - string
@@ -233,6 +254,7 @@ $defs:
           Configure mTLS client certificate. 
           Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
           If omitted or null, mTLS is not used.
+        defaultBehavior: TODO
       insecure:
         type:
           - boolean
@@ -241,3 +263,4 @@ $defs:
           Configure client transport security for the exporter's connection. 
           Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
           If omitted or null, false is used.
+        defaultBehavior: TODO

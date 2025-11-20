@@ -27,31 +27,14 @@ sourceTypes.sort((a, b) => a.type.localeCompare(b.type));
 const defs = {};
 sourceTypes.filter(sourceSchemaType => sourceSchemaType.type !== rootTypeName)
     .forEach(sourceSchemaType => {
-        // Clone schema to avoid modifying original
-        const schema = JSON.parse(JSON.stringify(sourceSchemaType.schema));
-
-        // Replace cross-file refs to resolve refs from defs in local file
-        const properties = schema.properties;
-        if (properties) {
-            Object.values(properties).forEach(replaceCrossFileRefs);
-        }
-
-        // Strip away defs from top level schemas
-        delete schema['$defs'];
-
-        // Strip extra source meta data
-        delete schema['enumDescriptions'];
-        delete schema['isSdkExtensionPlugin'];
-
-        defs[sourceSchemaType.type] = schema;
+        defs[sourceSchemaType.type] = prepareSchemaForOutput(sourceSchemaType.schema);
     });
 
 const rootType = sourceTypes.find(sourceSchemaType => sourceSchemaType.type === rootTypeName);
 if (!rootType) {
     throw new Error(`Root type ${rootTypeName} not found in source schema.`);
 }
-const rootTypeSchema = JSON.parse(JSON.stringify(rootType.schema));
-delete rootTypeSchema['$defs'];
+const rootTypeSchema = prepareSchemaForOutput(rootType.schema);
 
 const output = {
     "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
@@ -64,18 +47,47 @@ fs.writeFileSync(schemaPath, JSON.stringify(output, null, 2));
 
 // Helper functions
 
-function replaceCrossFileRefs(propertySchema) {
-    const ref = propertySchema['$ref'];
-    if (ref) {
-        propertySchema['$ref'] = ref.substring(ref.indexOf('#'));
+function prepareSchemaForOutput(schema) {
+    const copy = JSON.parse(JSON.stringify(schema));
+
+    delete copy['$defs'];
+
+    stripMetadata(copy);
+    replaceCrossFileRefs(copy);
+    return copy;
+}
+
+function stripMetadata(schema) {
+    delete schema['enumDescriptions'];
+    delete schema['isSdkExtensionPlugin'];
+
+    const properties = schema.properties;
+    if (!properties) {
+        return;
     }
-    const items = propertySchema['items'];
-    if (items) {
-        const itemsRef = items['$ref'];
-        if (itemsRef) {
-            items['$ref'] = itemsRef.substring(itemsRef.indexOf('#'));
+    Object.values(properties).forEach(propertySchema => {
+        delete propertySchema['defaultBehavior'];
+    });
+}
+
+function replaceCrossFileRefs(schema) {
+    const properties = schema.properties;
+    if (!properties) {
+        return;
+    }
+    Object.values(properties).forEach(propertySchema => {
+        const ref = propertySchema['$ref'];
+        if (ref) {
+            propertySchema['$ref'] = ref.substring(ref.indexOf('#'));
         }
-    }
+        const items = propertySchema['items'];
+        if (items) {
+            const itemsRef = items['$ref'];
+            if (itemsRef) {
+                items['$ref'] = itemsRef.substring(itemsRef.indexOf('#'));
+            }
+        }
+    });
 }
 
 // Validation functions
@@ -151,14 +163,14 @@ function optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages) {
     if (sourceSchemaType.isEnumType()) {
         return;
     }
-    const required = sourceSchemaType.schema.required || [];
+    const required = sourceSchemaType.schema['required'] || [];
     sourceSchemaType.properties
-        .filter(property => !required.includes(property.property) && !property.schema.defaultBehavior)
+        .filter(property => !required.includes(property.property) && !property.schema['defaultBehavior'])
         .forEach(property => {
             messages.push(`Please add 'defaultBehavior' to optional property ${sourceSchemaType.type}.${property.property}.`);
         });
     sourceSchemaType.properties
-        .filter(property => required.includes(property.property) && property.schema.defaultBehavior)
+        .filter(property => required.includes(property.property) && property.schema['defaultBehavior'])
         .forEach(property => {
            messages.push(`Please remove 'defaultBehavior' from required property ${sourceSchemaType.type}.${property.property}.`);
         });

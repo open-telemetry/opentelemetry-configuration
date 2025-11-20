@@ -15,6 +15,7 @@ properties:
     description: |
       Configure if the SDK is disabled or not.
       If omitted or null, false is used.
+    defaultBehavior: TODO
   log_level:
     type:
       - string
@@ -22,39 +23,47 @@ properties:
     description: |
       Configure the log level of the internal logger used by the SDK.
       If omitted, info is used.
+    defaultBehavior: TODO
   attribute_limits:
     $ref: "#/$defs/AttributeLimits"
     description: |
       Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
+    defaultBehavior: TODO
   logger_provider:
     $ref: "#/$defs/LoggerProvider"
     description: |
       Configure logger provider.
       If omitted, a noop logger provider is used.
+    defaultBehavior: TODO
   meter_provider:
     $ref: "#/$defs/MeterProvider"
     description: |
       Configure meter provider.
       If omitted, a noop meter provider is used.
+    defaultBehavior: TODO
   propagator:
     $ref: "#/$defs/Propagator"
     description: |
       Configure text map context propagators.
       If omitted, a noop propagator is used.
+    defaultBehavior: TODO
   tracer_provider:
     $ref: "#/$defs/TracerProvider"
     description: |
       Configure tracer provider.
       If omitted, a noop tracer provider is used.
+    defaultBehavior: TODO
   resource:
     $ref: "#/$defs/Resource"
     description: |
       Configure resource for all signals.
       If omitted, the default resource is used.
+    defaultBehavior: TODO
   instrumentation/development:
     $ref: "#/$defs/ExperimentalInstrumentation"
     description: |
       Configure instrumentation.
+    defaultBehavior: TODO
 required:
   - file_format
 $defs:
@@ -71,6 +80,7 @@ $defs:
           Configure max attribute value size. 
           Value must be non-negative.
           If omitted or null, there is no limit.
+        defaultBehavior: TODO
       attribute_count_limit:
         type:
           - integer
@@ -80,6 +90,7 @@ $defs:
           Configure max attribute count. 
           Value must be non-negative.
           If omitted or null, 128 is used.
+        defaultBehavior: TODO
   LoggerProvider:
     $ref: logger_provider.yaml
   MeterProvider:

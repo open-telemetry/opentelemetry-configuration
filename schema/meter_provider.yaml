@@ -15,16 +15,19 @@ properties:
     description: |
       Configure views. 
       Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
+    defaultBehavior: TODO
   exemplar_filter:
     $ref: "#/$defs/ExemplarFilter"
     description: |
       Configure the exemplar filter. 
       Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
       If omitted or null, trace_based is used.
+    defaultBehavior: TODO
   meter_configurator/development:
     $ref: "#/$defs/ExperimentalMeterConfigurator"
     description: |
       Configure meters.
+    defaultBehavior: TODO
 required:
   - readers
 $defs:
@@ -53,6 +56,7 @@ $defs:
           Configure delay interval (in milliseconds) between start of two consecutive exports. 
           Value must be non-negative.
           If omitted or null, 60000 is used.
+        defaultBehavior: TODO
       timeout:
         type:
           - integer
@@ -62,6 +66,7 @@ $defs:
           Configure maximum allowed time (in milliseconds) to export data. 
           Value must be non-negative. A value of 0 indicates no limit (infinity).
           If omitted or null, 30000 is used.
+        defaultBehavior: TODO
       exporter:
         $ref: "#/$defs/PushMetricExporter"
         description: Configure exporter.
@@ -71,9 +76,11 @@ $defs:
         items:
           $ref: "#/$defs/MetricProducer"
         description: Configure metric producers.
+        defaultBehavior: TODO
       cardinality_limits:
         $ref: "#/$defs/CardinalityLimits"
         description: Configure cardinality limits.
+        defaultBehavior: TODO
     required:
       - exporter
   PullMetricReader:
@@ -89,9 +96,11 @@ $defs:
         items:
           $ref: "#/$defs/MetricProducer"
         description: Configure metric producers.
+        defaultBehavior: TODO
       cardinality_limits:
         $ref: "#/$defs/CardinalityLimits"
         description: Configure cardinality limits.
+        defaultBehavior: TODO
     required:
       - exporter
   CardinalityLimits:
@@ -107,6 +116,7 @@ $defs:
           Configure default cardinality limit for all instrument types.
           Instrument-specific cardinality limits take priority. 
           If omitted or null, 2000 is used.
+        defaultBehavior: TODO
       counter:
         type:
           - integer
@@ -115,6 +125,7 @@ $defs:
         description: |
           Configure default cardinality limit for counter instruments.
           If omitted or null, the value from .default is used.
+        defaultBehavior: TODO
       gauge:
         type:
           - integer
@@ -123,6 +134,7 @@ $defs:
         description: |
           Configure default cardinality limit for gauge instruments.
           If omitted or null, the value from .default is used.
+        defaultBehavior: TODO
       histogram:
         type:
           - integer
@@ -131,6 +143,7 @@ $defs:
         description: |
           Configure default cardinality limit for histogram instruments.
           If omitted or null, the value from .default is used.
+        defaultBehavior: TODO
       observable_counter:
         type:
           - integer
@@ -139,6 +152,7 @@ $defs:
         description: |
           Configure default cardinality limit for observable_counter instruments.
           If omitted or null, the value from .default is used.
+        defaultBehavior: TODO
       observable_gauge:
         type:
           - integer
@@ -147,6 +161,7 @@ $defs:
         description: |
           Configure default cardinality limit for observable_gauge instruments.
           If omitted or null, the value from .default is used.
+        defaultBehavior: TODO
       observable_up_down_counter:
         type:
           - integer
@@ -155,6 +170,7 @@ $defs:
         description: |
           Configure default cardinality limit for observable_up_down_counter instruments.
           If omitted or null, the value from .default is used.
+        defaultBehavior: TODO
       up_down_counter:
         type:
           - integer
@@ -163,6 +179,7 @@ $defs:
         description: |
           Configure default cardinality limit for up_down_counter instruments.
           If omitted or null, the value from .default is used.
+        defaultBehavior: TODO
   PushMetricExporter:
     type: object
     additionalProperties:
@@ -176,18 +193,22 @@ $defs:
         $ref: "#/$defs/OtlpHttpMetricExporter"
         description: |
           Configure exporter to be OTLP with HTTP transport.
+        defaultBehavior: TODO
       otlp_grpc:
         $ref: "#/$defs/OtlpGrpcMetricExporter"
         description: |
           Configure exporter to be OTLP with gRPC transport.
+        defaultBehavior: TODO
       otlp_file/development:
         $ref: "#/$defs/ExperimentalOtlpFileMetricExporter"
         description: |
           Configure exporter to be OTLP with file transport.
+        defaultBehavior: TODO
       console:
         $ref: "#/$defs/ConsoleMetricExporter"
         description: |
           Configure exporter to be console.
+        defaultBehavior: TODO
     isSdkExtensionPlugin: true
   PullMetricExporter:
     type: object
@@ -202,6 +223,7 @@ $defs:
         $ref: "#/$defs/ExperimentalPrometheusMetricExporter"
         description: |
           Configure exporter to be prometheus.
+        defaultBehavior: TODO
     isSdkExtensionPlugin: true
   MetricProducer:
     type: object
@@ -215,6 +237,7 @@ $defs:
       opencensus:
         $ref: "#/$defs/OpenCensusMetricProducer"
         description: Configure metric producer to be opencensus.
+        defaultBehavior: TODO
     isSdkExtensionPlugin: true
   OpenCensusMetricProducer:
     type:
@@ -234,6 +257,7 @@ $defs:
         description: |
           Configure host.
           If omitted or null, localhost is used.
+        defaultBehavior: TODO
       port:
         type:
           - integer
@@ -241,6 +265,7 @@ $defs:
         description: |
           Configure port.
           If omitted or null, 9464 is used.
+        defaultBehavior: TODO
       without_scope_info:
         type:
           - boolean
@@ -248,6 +273,7 @@ $defs:
         description: |
           Configure Prometheus Exporter to produce metrics without a scope info metric.
           If omitted or null, false is used.
+        defaultBehavior: TODO
       without_target_info:
         type:
           - boolean
@@ -255,9 +281,11 @@ $defs:
         description: |
           Configure Prometheus Exporter to produce metrics without a target info metric for the resource.
           If omitted or null, false is used.
+        defaultBehavior: TODO
       with_resource_constant_labels:
         $ref: common.yaml#/$defs/IncludeExclude
         description: Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
+        defaultBehavior: TODO
       translation_strategy:
         $ref: "#/$defs/ExperimentalPrometheusTranslationStrategy"
         description: |
@@ -269,6 +297,7 @@ $defs:
            * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.
 
           If omitted or null, UnderscoreEscapingWithSuffixes is used.
+        defaultBehavior: TODO
   ExperimentalPrometheusTranslationStrategy:
     type:
       - string
@@ -292,9 +321,11 @@ $defs:
       periodic:
         $ref: "#/$defs/PeriodicMetricReader"
         description: Configure a periodic metric reader.
+        defaultBehavior: TODO
       pull:
         $ref: "#/$defs/PullMetricReader"
         description: Configure a pull based metric reader.
+        defaultBehavior: TODO
   ExporterTemporalityPreference:
     type:
       - string
@@ -330,9 +361,11 @@ $defs:
         description: |
           Configure endpoint.
           If omitted or null, http://localhost:4318/v1/metrics is used.
+        defaultBehavior: TODO
       tls:
         $ref: common.yaml#/$defs/HttpTls
         description: Configure TLS settings for the exporter.
+        defaultBehavior: TODO
       headers:
         type: array
         minItems: 1
@@ -341,6 +374,7 @@ $defs:
         description: |
           Configure headers. Entries have higher priority than entries from .headers_list.
           If an entry's .value is null, the entry is ignored.
+        defaultBehavior: TODO
       headers_list:
         type:
           - string
@@ -349,6 +383,7 @@ $defs:
           Configure headers. Entries have lower priority than entries from .headers.
           The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
           If omitted or null, no headers are added.
+        defaultBehavior: TODO
       compression:
         type:
           - string
@@ -357,6 +392,7 @@ $defs:
           Configure compression.
           Values include: gzip, none. Implementations may support other compression algorithms.
           If omitted or null, none is used.
+        defaultBehavior: TODO
       timeout:
         type:
           - integer
@@ -366,24 +402,28 @@ $defs:
           Configure max time (in milliseconds) to wait for each export.
           Value must be non-negative. A value of 0 indicates no limit (infinity).
           If omitted or null, 10000 is used.
+        defaultBehavior: TODO
       encoding:
         $ref: common.yaml#/$defs/OtlpHttpEncoding
         description: |
           Configure the encoding used for messages. 
           Values include: protobuf, json. Implementations may not support json.
           If omitted or null, protobuf is used.
+        defaultBehavior: TODO
       temporality_preference:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
           Configure temporality preference.
           Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
           If omitted or null, cumulative is used.
+        defaultBehavior: TODO
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
           Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
           If omitted or null, explicit_bucket_histogram is used.
+        defaultBehavior: TODO
   OtlpGrpcMetricExporter:
     type:
       - object
@@ -397,9 +437,11 @@ $defs:
         description: |
           Configure endpoint.
           If omitted or null, http://localhost:4317 is used.
+        defaultBehavior: TODO
       tls:
         $ref: common.yaml#/$defs/GrpcTls
         description: Configure TLS settings for the exporter.
+        defaultBehavior: TODO
       headers:
         type: array
         minItems: 1
@@ -408,6 +450,7 @@ $defs:
         description: |
           Configure headers. Entries have higher priority than entries from .headers_list.
           If an entry's .value is null, the entry is ignored.
+        defaultBehavior: TODO
       headers_list:
         type:
           - string
@@ -416,6 +459,7 @@ $defs:
           Configure headers. Entries have lower priority than entries from .headers.
           The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
           If omitted or null, no headers are added.
+        defaultBehavior: TODO
       compression:
         type:
           - string
@@ -424,6 +468,7 @@ $defs:
           Configure compression.
           Values include: gzip, none. Implementations may support other compression algorithms.
           If omitted or null, none is used.
+        defaultBehavior: TODO
       timeout:
         type:
           - integer
@@ -433,18 +478,21 @@ $defs:
           Configure max time (in milliseconds) to wait for each export.
           Value must be non-negative. A value of 0 indicates no limit (infinity).
           If omitted or null, 10000 is used.
+        defaultBehavior: TODO
       temporality_preference:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
           Configure temporality preference.
           Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
           If omitted or null, cumulative is used.
+        defaultBehavior: TODO
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
           Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
           If omitted or null, explicit_bucket_histogram is used.
+        defaultBehavior: TODO
   ExperimentalOtlpFileMetricExporter:
     type:
       - object
@@ -459,18 +507,21 @@ $defs:
           Configure output stream. 
           Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
           If omitted or null, stdout is used.
+        defaultBehavior: TODO
       temporality_preference:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
           Configure temporality preference.
           Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
           If omitted or null, cumulative is used.
+        defaultBehavior: TODO
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
           Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
           If omitted or null, explicit_bucket_histogram is used.
+        defaultBehavior: TODO
   ConsoleMetricExporter:
     type:
       - object
@@ -483,12 +534,14 @@ $defs:
           Configure temporality preference.
           Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
           If omitted or null, cumulative is used.
+        defaultBehavior: TODO
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
           Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
           If omitted or null, explicit_bucket_histogram is used.
+        defaultBehavior: TODO
   View:
     type: object
     additionalProperties: false
@@ -515,12 +568,14 @@ $defs:
         description: |
           Configure instrument name selection criteria.
           If omitted or null, all instrument names match.
+        defaultBehavior: TODO
       instrument_type:
         $ref: "#/$defs/InstrumentType"
         description: |
           Configure instrument type selection criteria.
           Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.
           If omitted or null, all instrument types match.
+        defaultBehavior: TODO
       unit:
         type:
           - string
@@ -528,6 +583,7 @@ $defs:
         description: |
           Configure the instrument unit selection criteria.
           If omitted or null, all instrument units match.
+        defaultBehavior: TODO
       meter_name:
         type:
           - string
@@ -535,6 +591,7 @@ $defs:
         description: |
           Configure meter name selection criteria.
           If omitted or null, all meter names match.
+        defaultBehavior: TODO
       meter_version:
         type:
           - string
@@ -542,6 +599,7 @@ $defs:
         description: |
           Configure meter version selection criteria.
           If omitted or null, all meter versions match.
+        defaultBehavior: TODO
       meter_schema_url:
         type:
           - string
@@ -549,6 +607,7 @@ $defs:
         description: |
           Configure meter schema url selection criteria.
           If omitted or null, all meter schema URLs match.
+        defaultBehavior: TODO
   InstrumentType:
     type:
       - string
@@ -580,6 +639,7 @@ $defs:
         description: |
           Configure metric name of the resulting stream(s).
           If omitted or null, the instrument's original name is used.
+        defaultBehavior: TODO
       description:
         type:
           - string
@@ -587,12 +647,14 @@ $defs:
         description: |
           Configure metric description of the resulting stream(s).
           If omitted or null, the instrument's origin description is used.
+        defaultBehavior: TODO
       aggregation:
         $ref: "#/$defs/Aggregation"
         description: |
           Configure aggregation of the resulting stream(s). 
           Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
           If omitted, default is used.
+        defaultBehavior: TODO
       aggregation_cardinality_limit:
         type:
           - integer
@@ -601,10 +663,12 @@ $defs:
         description: |
           Configure the aggregation cardinality limit.
           If omitted or null, the metric reader's default cardinality limit is used.
+        defaultBehavior: TODO
       attribute_keys:
         $ref: common.yaml#/$defs/IncludeExclude
         description: |
           Configure attribute keys retained in the resulting stream(s).
+        defaultBehavior: TODO
   Aggregation:
     type: object
     additionalProperties: false
@@ -614,21 +678,27 @@ $defs:
       default:
         $ref: "#/$defs/DefaultAggregation"
         description: TODO
+        defaultBehavior: TODO
       drop:
         $ref: "#/$defs/DropAggregation"
         description: TODO
+        defaultBehavior: TODO
       explicit_bucket_histogram:
         $ref: "#/$defs/ExplicitBucketHistogramAggregation"
         description: Configure aggregation to be explicit_bucket_histogram.
+        defaultBehavior: TODO
       base2_exponential_bucket_histogram:
         $ref: "#/$defs/Base2ExponentialBucketHistogramAggregation"
         description: TODO
+        defaultBehavior: TODO
       last_value:
         $ref: "#/$defs/LastValueAggregation"
         description: TODO
+        defaultBehavior: TODO
       sum:
         $ref: "#/$defs/SumAggregation"
         description: TODO
+        defaultBehavior: TODO
   DefaultAggregation:
     type:
       - object
@@ -653,6 +723,7 @@ $defs:
         description: |
           Configure bucket boundaries.
           If omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.
+        defaultBehavior: TODO
       record_min_max:
         type:
           - boolean
@@ -660,6 +731,7 @@ $defs:
         description: |
           Configure record min and max.
           If omitted or null, true is used.
+        defaultBehavior: TODO
   Base2ExponentialBucketHistogramAggregation:
     type:
       - object
@@ -673,17 +745,20 @@ $defs:
         minimum: -10
         maximum: 20
         description: TODO
+        defaultBehavior: TODO
       max_size:
         type:
           - integer
           - "null"
         minimum: 2
         description: TODO
+        defaultBehavior: TODO
       record_min_max:
         type:
           - boolean
           - "null"
         description: TODO
+        defaultBehavior: TODO
   LastValueAggregation:
     type:
       - object
@@ -702,12 +777,14 @@ $defs:
       default_config:
         $ref: "#/$defs/ExperimentalMeterConfig"
         description: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
+        defaultBehavior: TODO
       meters:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalMeterMatcherAndConfig"
         description: Configure meters.
+        defaultBehavior: TODO
   ExperimentalMeterMatcherAndConfig:
     type:
       - object
@@ -736,3 +813,4 @@ $defs:
         type:
           - boolean
         description: Configure if the meter is enabled or not.
+        defaultBehavior: TODO

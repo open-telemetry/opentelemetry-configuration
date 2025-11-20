@@ -10,10 +10,12 @@ properties:
   limits:
     $ref: "#/$defs/LogRecordLimits"
     description: Configure log record limits. See also attribute_limits.
+    defaultBehavior: TODO
   logger_configurator/development:
     $ref: "#/$defs/ExperimentalLoggerConfigurator"
     description: |
       Configure loggers.
+    defaultBehavior: TODO
 required:
   - processors
 $defs:
@@ -39,6 +41,7 @@ $defs:
           Configure delay interval (in milliseconds) between two consecutive exports. 
           Value must be non-negative.
           If omitted or null, 1000 is used.
+        defaultBehavior: TODO
       export_timeout:
         type:
           - integer
@@ -48,6 +51,7 @@ $defs:
           Configure maximum allowed time (in milliseconds) to export data. 
           Value must be non-negative. A value of 0 indicates no limit (infinity).
           If omitted or null, 30000 is used.
+        defaultBehavior: TODO
       max_queue_size:
         type:
           - integer
@@ -56,6 +60,7 @@ $defs:
         description: |
           Configure maximum queue size. Value must be positive.
           If omitted or null, 2048 is used.
+        defaultBehavior: TODO
       max_export_batch_size:
         type:
           - integer
@@ -64,6 +69,7 @@ $defs:
         description: |
           Configure maximum batch size. Value must be positive.
           If omitted or null, 512 is used.
+        defaultBehavior: TODO
       exporter:
         $ref: "#/$defs/LogRecordExporter"
         description: Configure exporter.
@@ -81,16 +87,20 @@ $defs:
       otlp_http:
         $ref: common.yaml#/$defs/OtlpHttpExporter
         description: Configure exporter to be OTLP with HTTP transport.
+        defaultBehavior: TODO
       otlp_grpc:
         $ref: common.yaml#/$defs/OtlpGrpcExporter
         description: Configure exporter to be OTLP with gRPC transport.
+        defaultBehavior: TODO
       otlp_file/development:
         $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
         description: |
           Configure exporter to be OTLP with file transport.
+        defaultBehavior: TODO
       console:
         $ref: common.yaml#/$defs/ConsoleExporter
         description: Configure exporter to be console.
+        defaultBehavior: TODO
     isSdkExtensionPlugin: true
   LogRecordLimits:
     type: object
@@ -105,6 +115,7 @@ $defs:
           Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
           Value must be non-negative.
           If omitted or null, there is no limit.
+        defaultBehavior: TODO
       attribute_count_limit:
         type:
           - integer
@@ -114,6 +125,7 @@ $defs:
           Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
           Value must be non-negative.
           If omitted or null, 128 is used.
+        defaultBehavior: TODO
   LogRecordProcessor:
     type: object
     additionalProperties:
@@ -126,9 +138,11 @@ $defs:
       batch:
         $ref: "#/$defs/BatchLogRecordProcessor"
         description: Configure a batch log record processor.
+        defaultBehavior: TODO
       simple:
         $ref: "#/$defs/SimpleLogRecordProcessor"
         description: Configure a simple log record processor.
+        defaultBehavior: TODO
     isSdkExtensionPlugin: true
   ExperimentalLoggerConfigurator:
     type:
@@ -138,12 +152,14 @@ $defs:
       default_config:
         $ref: "#/$defs/ExperimentalLoggerConfig"
         description: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
+        defaultBehavior: TODO
       loggers:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalLoggerMatcherAndConfig"
         description: Configure loggers.
+        defaultBehavior: TODO
   ExperimentalLoggerMatcherAndConfig:
     type:
       - object
@@ -175,6 +191,7 @@ $defs:
         description: |
           Configure if the logger is enabled or not.
           If omitted or null, false is used.
+        defaultBehavior: TODO
       minimum_severity:
         $ref: "#/$defs/ExperimentalSeverityNumber"
         description: |
@@ -182,6 +199,7 @@ $defs:
           Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
           Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.
           If omitted or null, severity filtering is not applied.
+        defaultBehavior: TODO
       trace_based:
         type:
           - boolean
@@ -190,6 +208,7 @@ $defs:
           Configure trace based filtering.
           If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.
           If omitted or null, trace based filtering is not applied.
+        defaultBehavior: TODO
   ExperimentalSeverityNumber:
     type:
       - string

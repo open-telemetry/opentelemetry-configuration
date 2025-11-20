@@ -10,15 +10,18 @@ properties:
   limits:
     $ref: "#/$defs/SpanLimits"
     description: Configure span limits. See also attribute_limits.
+    defaultBehavior: TODO
   sampler:
     $ref: "#/$defs/Sampler"
     description: |
       Configure the sampler.
       If omitted, parent based sampler with a root of always_on is used.
+    defaultBehavior: TODO
   tracer_configurator/development:
     $ref: "#/$defs/ExperimentalTracerConfigurator"
     description: |
       Configure tracers.
+    defaultBehavior: TODO
 required:
   - processors
 $defs:
@@ -35,6 +38,7 @@ $defs:
           Configure delay interval (in milliseconds) between two consecutive exports. 
           Value must be non-negative.
           If omitted or null, 5000 is used.
+        defaultBehavior: TODO
       export_timeout:
         type:
           - integer
@@ -44,6 +48,7 @@ $defs:
           Configure maximum allowed time (in milliseconds) to export data. 
           Value must be non-negative. A value of 0 indicates no limit (infinity).
           If omitted or null, 30000 is used.
+        defaultBehavior: TODO
       max_queue_size:
         type:
           - integer
@@ -52,6 +57,7 @@ $defs:
         description: |
           Configure maximum queue size. Value must be positive.
           If omitted or null, 2048 is used.
+        defaultBehavior: TODO
       max_export_batch_size:
         type:
           - integer
@@ -60,6 +66,7 @@ $defs:
         description: |
           Configure maximum batch size. Value must be positive.
           If omitted or null, 512 is used.
+        defaultBehavior: TODO
       exporter:
         $ref: "#/$defs/SpanExporter"
         description: Configure exporter.
@@ -77,24 +84,31 @@ $defs:
       always_off:
         $ref: "#/$defs/AlwaysOffSampler"
         description: Configure sampler to be always_off.
+        defaultBehavior: TODO
       always_on:
         $ref: "#/$defs/AlwaysOnSampler"
         description: Configure sampler to be always_on.
+        defaultBehavior: TODO
       composite/development:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configure sampler to be composite.
+        defaultBehavior: TODO
       jaeger_remote/development:
         $ref: "#/$defs/ExperimentalJaegerRemoteSampler"
         description: TODO
+        defaultBehavior: TODO
       parent_based:
         $ref: "#/$defs/ParentBasedSampler"
         description: Configure sampler to be parent_based.
+        defaultBehavior: TODO
       probability/development:
         $ref: "#/$defs/ExperimentalProbabilitySampler"
         description: Configure sampler to be probability.
+        defaultBehavior: TODO
       trace_id_ratio_based:
         $ref: "#/$defs/TraceIdRatioBasedSampler"
         description: Configure sampler to be trace_id_ratio_based.
+        defaultBehavior: TODO
     isSdkExtensionPlugin: true
   AlwaysOffSampler:
     type:
@@ -117,15 +131,18 @@ $defs:
           - string
           - "null"
         description: TODO
+        defaultBehavior: TODO
       interval:
         type:
           - integer
           - "null"
         minimum: 0
         description: TODO
+        defaultBehavior: TODO
       initial_sampler:
         $ref: "#/$defs/Sampler"
         description: TODO
+        defaultBehavior: TODO
   ParentBasedSampler:
     type:
       - object
@@ -137,26 +154,31 @@ $defs:
         description: |
           Configure root sampler.
           If omitted or null, always_on is used.
+        defaultBehavior: TODO
       remote_parent_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure remote_parent_sampled sampler.
           If omitted or null, always_on is used.
+        defaultBehavior: TODO
       remote_parent_not_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure remote_parent_not_sampled sampler.
           If omitted or null, always_off is used.
+        defaultBehavior: TODO
       local_parent_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure local_parent_sampled sampler.
           If omitted or null, always_on is used.
+        defaultBehavior: TODO
       local_parent_not_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure local_parent_not_sampled sampler.
           If omitted or null, always_off is used.
+        defaultBehavior: TODO
   ExperimentalProbabilitySampler:
     type:
       - object
@@ -172,6 +194,7 @@ $defs:
         description: |
           Configure ratio.
           If omitted or null, 1.0 is used.
+        defaultBehavior: TODO
   TraceIdRatioBasedSampler:
     type:
       - object
@@ -187,6 +210,7 @@ $defs:
         description: |
           Configure trace_id_ratio.
           If omitted or null, 1.0 is used.
+        defaultBehavior: TODO
   ExperimentalComposableAlwaysOffSampler:
     type:
       - object
@@ -206,18 +230,23 @@ $defs:
       root:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with no parent.
+        defaultBehavior: TODO
       remote_parent_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a remote parent that is sampled.
+        defaultBehavior: TODO
       remote_parent_not_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a remote parent that is not sampled.
+        defaultBehavior: TODO
       local_parent_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a local parent that is sampled.
+        defaultBehavior: TODO
       local_parent_not_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a local parent that is not sampled.
+        defaultBehavior: TODO
   ExperimentalComposableProbabilitySampler:
     type:
       - object
@@ -233,6 +262,7 @@ $defs:
         description: |
           Configure ratio.
           If omitted or null, 1.0 is used.
+        defaultBehavior: TODO
   ExperimentalComposableSampler:
     type: object
     additionalProperties:
@@ -245,15 +275,19 @@ $defs:
       always_off:
         $ref: "#/$defs/ExperimentalComposableAlwaysOffSampler"
         description: Configure sampler to be always_off.
+        defaultBehavior: TODO
       always_on:
         $ref: "#/$defs/ExperimentalComposableAlwaysOnSampler"
         description: Configure sampler to be always_on.
+        defaultBehavior: TODO
       parent_based:
         $ref: "#/$defs/ExperimentalComposableParentBasedSampler"
         description: Configure sampler to be parent_based.
+        defaultBehavior: TODO
       probability:
         $ref: "#/$defs/ExperimentalComposableProbabilitySampler"
         description: Configure sampler to be probability.
+        defaultBehavior: TODO
   SimpleSpanProcessor:
     type: object
     additionalProperties: false
@@ -275,19 +309,24 @@ $defs:
       otlp_http:
         $ref: common.yaml#/$defs/OtlpHttpExporter
         description: Configure exporter to be OTLP with HTTP transport.
+        defaultBehavior: TODO
       otlp_grpc:
         $ref: common.yaml#/$defs/OtlpGrpcExporter
         description: Configure exporter to be OTLP with gRPC transport.
+        defaultBehavior: TODO
       otlp_file/development:
         $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
         description: |
           Configure exporter to be OTLP with file transport.
+        defaultBehavior: TODO
       console:
         $ref: common.yaml#/$defs/ConsoleExporter
         description: Configure exporter to be console.
+        defaultBehavior: TODO
       zipkin:
         $ref: "#/$defs/ZipkinSpanExporter"
         description: Configure exporter to be zipkin.
+        defaultBehavior: TODO
     isSdkExtensionPlugin: true
   SpanLimits:
     type: object
@@ -302,6 +341,7 @@ $defs:
           Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
           Value must be non-negative.
           If omitted or null, there is no limit.
+        defaultBehavior: TODO
       attribute_count_limit:
         type:
           - integer
@@ -311,6 +351,7 @@ $defs:
           Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
           Value must be non-negative.
           If omitted or null, 128 is used.
+        defaultBehavior: TODO
       event_count_limit:
         type:
           - integer
@@ -320,6 +361,7 @@ $defs:
           Configure max span event count. 
           Value must be non-negative.
           If omitted or null, 128 is used.
+        defaultBehavior: TODO
       link_count_limit:
         type:
           - integer
@@ -329,6 +371,7 @@ $defs:
           Configure max span link count. 
           Value must be non-negative.
           If omitted or null, 128 is used.
+        defaultBehavior: TODO
       event_attribute_count_limit:
         type:
           - integer
@@ -338,6 +381,7 @@ $defs:
           Configure max attributes per span event. 
           Value must be non-negative.
           If omitted or null, 128 is used.
+        defaultBehavior: TODO
       link_attribute_count_limit:
         type:
           - integer
@@ -347,6 +391,7 @@ $defs:
           Configure max attributes per span link. 
           Value must be non-negative.
           If omitted or null, 128 is used.
+        defaultBehavior: TODO
   SpanProcessor:
     type: object
     additionalProperties:
@@ -359,9 +404,11 @@ $defs:
       batch:
         $ref: "#/$defs/BatchSpanProcessor"
         description: Configure a batch span processor.
+        defaultBehavior: TODO
       simple:
         $ref: "#/$defs/SimpleSpanProcessor"
         description: Configure a simple span processor.
+        defaultBehavior: TODO
     isSdkExtensionPlugin: true
   ZipkinSpanExporter:
     type:
@@ -376,6 +423,7 @@ $defs:
         description: |
           Configure endpoint.
           If omitted or null, http://localhost:9411/api/v2/spans is used.
+        defaultBehavior: TODO
       timeout:
         type:
           - integer
@@ -385,6 +433,7 @@ $defs:
           Configure max time (in milliseconds) to wait for each export. 
           Value must be non-negative. A value of 0 indicates indefinite.
           If omitted or null, 10000 is used.
+        defaultBehavior: TODO
   ExperimentalTracerConfigurator:
     type:
       - object
@@ -393,12 +442,14 @@ $defs:
       default_config:
         $ref: "#/$defs/ExperimentalTracerConfig"
         description: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
+        defaultBehavior: TODO
       tracers:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalTracerMatcherAndConfig"
         description: Configure tracers.
+        defaultBehavior: TODO
   ExperimentalTracerMatcherAndConfig:
     type:
       - object
@@ -427,3 +478,4 @@ $defs:
         type:
           - boolean
         description: Configure if the tracer is enabled or not.
+        defaultBehavior: TODO
