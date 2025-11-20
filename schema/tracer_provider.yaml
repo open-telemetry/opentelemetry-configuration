@@ -173,14 +173,14 @@ $defs:
         maximum: 1
   ExperimentalComposableRuleBasedSampler:
   type:
-  - object
-  - 'null'
+    - object
+    - 'null'
   additionalProperties: false
   properties:
     rules:
       type:
-      - array
-      - 'null'
+        - array
+        - 'null'
       items:
         "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
 ExperimentalComposableRuleBasedSamplerRule:
@@ -201,13 +201,13 @@ ExperimentalComposableRuleBasedSamplerRule:
     sampler:
       "$ref": "#/$defs/ExperimentalComposableSampler"
   required:
-  - sampler
+   - sampler
 ExperimentalComposableSampler:
   type: object
   additionalProperties:
     type:
-    - object
-    - 'null'
+      - object
+      - 'null'
   minProperties: 1
   maxProperties: 1
   properties:
