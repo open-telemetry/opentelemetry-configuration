@@ -1,19 +1,23 @@
 import {KNOWN_LANGUAGES, readAndFixLanguageImplementations} from "./language-implementations.js";
 import fs from "node:fs";
-import {isExperimentalProperty, isExperimentalType, markdownDocPath, rootTypeName, schemaOutDirPath} from "./util.js";
-import {readSourceSchema} from "./source-schema.js";
+import {
+    isExperimentalProperty,
+    isExperimentalType,
+    markdownDocPath,
+    rootTypeName,
+    schemaPath
+} from "./util.js";
+import {readSourceTypesByType} from "./source-schema.js";
 
-const { sourceTypesByType } = readSourceSchema();
+const sourceTypesByType = readSourceTypesByType();
+const sourceTypes = Object.values(sourceTypesByType);
 
 const { messages, languageImplementations } = readAndFixLanguageImplementations();
 if (messages.length > 0) {
     throw new Error("Language implementations have problems. Please run fix-language-implementations and try again.");
 }
 
-const outputSchemaByFile = {};
-fs.readdirSync(schemaOutDirPath).forEach(file => {
-    outputSchemaByFile[file] = JSON.parse(fs.readFileSync(schemaOutDirPath + file, 'utf8'));
-});
+const outputSchema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
 
 const output = [];
 
@@ -28,11 +32,10 @@ This document is an auto-generated view of the declarative configuration JSON sc
 
 `);
 
-const allTypes = Object.values(sourceTypesByType);
 const types = [];
 const experimentalTypes = [];
-allTypes.sort((a, b) => a.type.localeCompare(b.type));
-allTypes.forEach(sourceSchemaType => {
+sourceTypes.sort((a, b) => a.type.localeCompare(b.type));
+sourceTypes.forEach(sourceSchemaType => {
     if (isExperimentalType(sourceSchemaType.type)) {
         experimentalTypes.push(sourceSchemaType);
     } else {
@@ -196,21 +199,16 @@ function writeType(sourceSchemaType) {
 }
 
 function getSchemaSource(sourceSchemaType) {
-    const outputFile = sourceSchemaType.sourceFile.replace('.yaml', '.json');
-    const outputFileContent = outputSchemaByFile[outputFile];
-    if (!outputSchemaByFile[outputFile]) {
-        throw new Error(`Output schema file ${outputFile} not found. Please run "make generate-schema" first.`);
+    if (sourceSchemaType.type === rootTypeName) {
+        return outputSchema;
     }
-    if (sourceSchemaType.jsonSchemaPath === '.') {
-        return outputFileContent;
-    }
-    const defs = outputFileContent['$defs'];
+    const defs = outputSchema['$defs'];
     if (!defs) {
-        throw new Error(`Output schema file ${outputFile} does not have $defs.`);
+        throw new Error(`Output schema does not have $defs.`);
     }
-    let def = defs[sourceSchemaType.type];
+    const def = defs[sourceSchemaType.type];
     if (!def) {
-        throw new Error(`Output schema file ${outputFile} does not $def entry for ${sourceSchemaType.type}.`);
+        throw new Error(`Output schema does not $defs entry for ${sourceSchemaType.type}.`);
     }
     return def;
 }
@@ -219,18 +217,9 @@ function cleanSchema(schemaSource) {
     const adjustedSchema = JSON.parse(JSON.stringify(schemaSource));
     const properties = adjustedSchema.properties;
     if (properties) {
-        Object.values(properties).forEach(property => {
-           delete property.description;
-        });
+        Object.values(properties).forEach(property => delete property.description);
     }
-    const defs = adjustedSchema['$defs'];
-    if (defs) {
-        const adjustedDefs = {};
-        Object.entries(defs).forEach(([key, value]) => {
-            adjustedDefs[key] = cleanSchema(value);
-        });
-        adjustedSchema['$defs'] = adjustedDefs;
-    }
+    delete adjustedSchema['$defs'];
     return adjustedSchema;
 }
 
@@ -247,7 +236,7 @@ KNOWN_LANGUAGES.forEach(language => {
     output.push(`| Type | Status | Notes | Support Status Details |\n`);
     output.push(`|---|---|---|---|\n`);
     languageImplementation.typeSupportStatuses.forEach(typeSupportStatus => {
-        const sourceSchemaType = allTypes.find(item => item.type === typeSupportStatus.type);
+        const sourceSchemaType = sourceTypes.find(item => item.type === typeSupportStatus.type);
         if (!sourceSchemaType) {
             throw new Error(`SourceSchemaType not found for type ${typeSupportStatus.type}.`);
         }
@@ -290,7 +279,7 @@ Each of the following types support referencing custom interface implementations
 SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the \`otlp_http\` property of \`SpanExporter\` defines the OTLP http/protobuf exporter.
 
 `);
-allTypes.filter(sourceSchemaType => sourceSchemaType.schema.isSdkExtensionPlugin)
+sourceTypes.filter(sourceSchemaType => sourceSchemaType.schema.isSdkExtensionPlugin)
     .forEach(sourceSchemaType => {
         output.push(`* [${sourceSchemaType.type}](#${sourceSchemaType.type})\n`)
     });
