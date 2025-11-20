@@ -1,0 +1,2331 @@
+{
+  "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenTelemetryConfiguration",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "file_format": {
+      "type": "string",
+      "description": "The file format version.\nThe yaml format is documented at\nhttps://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema\n"
+    },
+    "disabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Configure if the SDK is disabled or not.\nIf omitted or null, false is used.\n"
+    },
+    "log_level": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Configure the log level of the internal logger used by the SDK.\nIf omitted, info is used.\n"
+    },
+    "attribute_limits": {
+      "$ref": "#/$defs/AttributeLimits",
+      "description": "Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.\n"
+    },
+    "logger_provider": {
+      "$ref": "#/$defs/LoggerProvider",
+      "description": "Configure logger provider.\nIf omitted, a noop logger provider is used.\n"
+    },
+    "meter_provider": {
+      "$ref": "#/$defs/MeterProvider",
+      "description": "Configure meter provider.\nIf omitted, a noop meter provider is used.\n"
+    },
+    "propagator": {
+      "$ref": "#/$defs/Propagator",
+      "description": "Configure text map context propagators.\nIf omitted, a noop propagator is used.\n"
+    },
+    "tracer_provider": {
+      "$ref": "#/$defs/TracerProvider",
+      "description": "Configure tracer provider.\nIf omitted, a noop tracer provider is used.\n"
+    },
+    "resource": {
+      "$ref": "#/$defs/Resource",
+      "description": "Configure resource for all signals.\nIf omitted, the default resource is used.\n"
+    },
+    "instrumentation/development": {
+      "$ref": "#/$defs/ExperimentalInstrumentation",
+      "description": "Configure instrumentation.\n"
+    }
+  },
+  "required": [
+    "file_format"
+  ],
+  "$defs": {
+    "Aggregation": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "default": {
+          "$ref": "#/$defs/DefaultAggregation",
+          "description": "TODO"
+        },
+        "drop": {
+          "$ref": "#/$defs/DropAggregation",
+          "description": "TODO"
+        },
+        "explicit_bucket_histogram": {
+          "$ref": "#/$defs/ExplicitBucketHistogramAggregation",
+          "description": "Configure aggregation to be explicit_bucket_histogram."
+        },
+        "base2_exponential_bucket_histogram": {
+          "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation",
+          "description": "TODO"
+        },
+        "last_value": {
+          "$ref": "#/$defs/LastValueAggregation",
+          "description": "TODO"
+        },
+        "sum": {
+          "$ref": "#/$defs/SumAggregation",
+          "description": "TODO"
+        }
+      }
+    },
+    "AlwaysOffSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "AlwaysOnSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "AttributeLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attribute_value_length_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute value size. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+        },
+        "attribute_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        }
+      }
+    },
+    "AttributeNameValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The attribute name.\n"
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "boolean"
+              },
+              "minItems": 1
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 1
+            }
+          ],
+          "description": "The attribute value.\nThe type of value must match .type.\n"
+        },
+        "type": {
+          "$ref": "#/$defs/AttributeType",
+          "description": "The attribute type.\nValues include: string, bool, int, double, string_array, bool_array, int_array, double_array.\nIf omitted or null, string is used.\n"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ]
+    },
+    "AttributeType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "string",
+        "bool",
+        "int",
+        "double",
+        "string_array",
+        "bool_array",
+        "int_array",
+        "double_array"
+      ]
+    },
+    "B3MultiPropagator": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "B3Propagator": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "BaggagePropagator": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "Base2ExponentialBucketHistogramAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "max_scale": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": -10,
+          "maximum": 20,
+          "description": "TODO"
+        },
+        "max_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 2,
+          "description": "TODO"
+        },
+        "record_min_max": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "TODO"
+        }
+      }
+    },
+    "BatchLogRecordProcessor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schedule_delay": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure delay interval (in milliseconds) between two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 1000 is used.\n"
+        },
+        "export_timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+        },
+        "max_queue_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure maximum queue size. Value must be positive.\nIf omitted or null, 2048 is used.\n"
+        },
+        "max_export_batch_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure maximum batch size. Value must be positive.\nIf omitted or null, 512 is used.\n"
+        },
+        "exporter": {
+          "$ref": "#/$defs/LogRecordExporter",
+          "description": "Configure exporter."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "BatchSpanProcessor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schedule_delay": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure delay interval (in milliseconds) between two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 5000 is used.\n"
+        },
+        "export_timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+        },
+        "max_queue_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure maximum queue size. Value must be positive.\nIf omitted or null, 2048 is used.\n"
+        },
+        "max_export_batch_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure maximum batch size. Value must be positive.\nIf omitted or null, 512 is used.\n"
+        },
+        "exporter": {
+          "$ref": "#/$defs/SpanExporter",
+          "description": "Configure exporter."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "CardinalityLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "default": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for all instrument types.\nInstrument-specific cardinality limits take priority. \nIf omitted or null, 2000 is used.\n"
+        },
+        "counter": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for counter instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "gauge": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for gauge instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "histogram": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for histogram instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "observable_counter": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for observable_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "observable_gauge": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for observable_gauge instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "observable_up_down_counter": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for observable_up_down_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+        },
+        "up_down_counter": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure default cardinality limit for up_down_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+        }
+      }
+    },
+    "ConsoleExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ConsoleMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "temporality_preference": {
+          "$ref": "#/$defs/ExporterTemporalityPreference",
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+        },
+        "default_histogram_aggregation": {
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+        }
+      }
+    },
+    "DefaultAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "DropAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExemplarFilter": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "always_on",
+        "always_off",
+        "trace_based"
+      ]
+    },
+    "ExperimentalComposableAlwaysOffSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalComposableAlwaysOnSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalComposableParentBasedSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configures the sampler for spans with no parent."
+        },
+        "remote_parent_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configures the sampler for spans with a remote parent that is sampled."
+        },
+        "remote_parent_not_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configures the sampler for spans with a remote parent that is not sampled."
+        },
+        "local_parent_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configures the sampler for spans with a local parent that is sampled."
+        },
+        "local_parent_not_sampled": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configures the sampler for spans with a local parent that is not sampled."
+        }
+      }
+    },
+    "ExperimentalComposableProbabilitySampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Configure ratio.\nIf omitted or null, 1.0 is used.\n"
+        }
+      }
+    },
+    "ExperimentalComposableSampler": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "always_off": {
+          "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler",
+          "description": "Configure sampler to be always_off."
+        },
+        "always_on": {
+          "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler",
+          "description": "Configure sampler to be always_on."
+        },
+        "parent_based": {
+          "$ref": "#/$defs/ExperimentalComposableParentBasedSampler",
+          "description": "Configure sampler to be parent_based."
+        },
+        "probability": {
+          "$ref": "#/$defs/ExperimentalComposableProbabilitySampler",
+          "description": "Configure sampler to be probability."
+        }
+      }
+    },
+    "ExperimentalContainerResourceDetector": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalGeneralInstrumentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "peer": {
+          "$ref": "#/$defs/ExperimentalPeerInstrumentation",
+          "description": "Configure instrumentations following the peer semantic conventions.\nSee peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/\n"
+        },
+        "http": {
+          "$ref": "#/$defs/ExperimentalHttpInstrumentation",
+          "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\n"
+        }
+      }
+    },
+    "ExperimentalHostResourceDetector": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalHttpClientInstrumentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request_captured_headers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Configure headers to capture for outbound http requests.\n"
+        },
+        "response_captured_headers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Configure headers to capture for inbound http responses.\n"
+        }
+      }
+    },
+    "ExperimentalHttpInstrumentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "client": {
+          "$ref": "#/$defs/ExperimentalHttpClientInstrumentation",
+          "description": "Configure instrumentations following the http client semantic conventions."
+        },
+        "server": {
+          "$ref": "#/$defs/ExperimentalHttpServerInstrumentation",
+          "description": "Configure instrumentations following the http server semantic conventions."
+        }
+      }
+    },
+    "ExperimentalHttpServerInstrumentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request_captured_headers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Configure headers to capture for inbound http requests.\n"
+        },
+        "response_captured_headers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Configure headers to capture for outbound http responses.\n"
+        }
+      }
+    },
+    "ExperimentalInstrumentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "general": {
+          "$ref": "#/$defs/ExperimentalGeneralInstrumentation",
+          "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\nInstrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.\n"
+        },
+        "cpp": {
+          "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+          "description": "Configure C++ language-specific instrumentation libraries."
+        },
+        "dotnet": {
+          "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+          "description": "Configure .NET language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+        },
+        "erlang": {
+          "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+          "description": "Configure Erlang language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+        },
+        "go": {
+          "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+          "description": "Configure Go language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+        },
+        "java": {
+          "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+          "description": "Configure Java language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+        },
+        "js": {
+          "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+          "description": "Configure JavaScript language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+        },
+        "php": {
+          "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+          "description": "Configure PHP language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+        },
+        "python": {
+          "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+          "description": "Configure Python language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+        },
+        "ruby": {
+          "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+          "description": "Configure Ruby language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+        },
+        "rust": {
+          "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+          "description": "Configure Rust language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+        },
+        "swift": {
+          "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+          "description": "Configure Swift language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+        }
+      }
+    },
+    "ExperimentalJaegerRemoteSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "TODO"
+        },
+        "interval": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "TODO"
+        },
+        "initial_sampler": {
+          "$ref": "#/$defs/Sampler",
+          "description": "TODO"
+        }
+      }
+    },
+    "ExperimentalLanguageSpecificInstrumentation": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "ExperimentalLoggerConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "disabled": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure if the logger is enabled or not.\nIf omitted or null, false is used.\n"
+        },
+        "minimum_severity": {
+          "$ref": "#/$defs/ExperimentalSeverityNumber",
+          "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.\nIf omitted or null, severity filtering is not applied.\n"
+        },
+        "trace_based": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure trace based filtering.\nIf true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.\nIf omitted or null, trace based filtering is not applied.\n"
+        }
+      }
+    },
+    "ExperimentalLoggerConfigurator": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "default_config": {
+          "$ref": "#/$defs/ExperimentalLoggerConfig",
+          "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers."
+        },
+        "loggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
+          },
+          "description": "Configure loggers."
+        }
+      }
+    },
+    "ExperimentalLoggerMatcherAndConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": [
+            "string"
+          ],
+          "description": "Configure logger names to match, evaluated as follows:\n\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+        },
+        "config": {
+          "$ref": "#/$defs/ExperimentalLoggerConfig",
+          "description": "The logger config."
+        }
+      },
+      "required": [
+        "name",
+        "config"
+      ]
+    },
+    "ExperimentalMeterConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "disabled": {
+          "type": [
+            "boolean"
+          ],
+          "description": "Configure if the meter is enabled or not."
+        }
+      }
+    },
+    "ExperimentalMeterConfigurator": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "default_config": {
+          "$ref": "#/$defs/ExperimentalMeterConfig",
+          "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters."
+        },
+        "meters": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
+          },
+          "description": "Configure meters."
+        }
+      }
+    },
+    "ExperimentalMeterMatcherAndConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": [
+            "string"
+          ],
+          "description": "Configure meter names to match, evaluated as follows:\n\n * If the meter name exactly matches.\n * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+        },
+        "config": {
+          "$ref": "#/$defs/ExperimentalMeterConfig",
+          "description": "The meter config."
+        }
+      },
+      "required": [
+        "name",
+        "config"
+      ]
+    },
+    "ExperimentalOtlpFileExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "output_stream": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure output stream. \nValues include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\nIf omitted or null, stdout is used.\n"
+        }
+      }
+    },
+    "ExperimentalOtlpFileMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "output_stream": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure output stream. \nValues include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\nIf omitted or null, stdout is used.\n"
+        },
+        "temporality_preference": {
+          "$ref": "#/$defs/ExporterTemporalityPreference",
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+        },
+        "default_histogram_aggregation": {
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+        }
+      }
+    },
+    "ExperimentalPeerInstrumentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "service_mapping": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/ExperimentalPeerServiceMapping"
+          },
+          "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\nSee peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\n"
+        }
+      }
+    },
+    "ExperimentalPeerServiceMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "peer": {
+          "type": "string",
+          "description": "The IP address to map.\n"
+        },
+        "service": {
+          "type": "string",
+          "description": "The logical name corresponding to the IP address of .peer.\n"
+        }
+      },
+      "required": [
+        "peer",
+        "service"
+      ]
+    },
+    "ExperimentalProbabilitySampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Configure ratio.\nIf omitted or null, 1.0 is used.\n"
+        }
+      }
+    },
+    "ExperimentalProcessResourceDetector": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalPrometheusMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "host": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure host.\nIf omitted or null, localhost is used.\n"
+        },
+        "port": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Configure port.\nIf omitted or null, 9464 is used.\n"
+        },
+        "without_scope_info": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure Prometheus Exporter to produce metrics without a scope info metric.\nIf omitted or null, false is used.\n"
+        },
+        "without_target_info": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure Prometheus Exporter to produce metrics without a target info metric for the resource.\nIf omitted or null, false is used.\n"
+        },
+        "with_resource_constant_labels": {
+          "$ref": "#/$defs/IncludeExclude",
+          "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns."
+        },
+        "translation_strategy": {
+          "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
+          "description": "Configure how Prometheus metrics are exposed. Values include:\n\n * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\n\nIf omitted or null, UnderscoreEscapingWithSuffixes is used.\n"
+        }
+      }
+    },
+    "ExperimentalPrometheusTranslationStrategy": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "UnderscoreEscapingWithSuffixes",
+        "UnderscoreEscapingWithoutSuffixes",
+        "NoUTF8EscapingWithSuffixes",
+        "NoTranslation"
+      ]
+    },
+    "ExperimentalResourceDetection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attributes": {
+          "$ref": "#/$defs/IncludeExclude",
+          "description": "Configure attributes provided by resource detectors."
+        },
+        "detectors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/ExperimentalResourceDetector"
+          },
+          "description": "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. \nIf omitted or null, no resource detectors are enabled.\n"
+        }
+      }
+    },
+    "ExperimentalResourceDetector": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "container": {
+          "$ref": "#/$defs/ExperimentalContainerResourceDetector",
+          "description": "Enable the container resource detector, which populates container.* attributes.\n"
+        },
+        "host": {
+          "$ref": "#/$defs/ExperimentalHostResourceDetector",
+          "description": "Enable the host resource detector, which populates host.* and os.* attributes.\n"
+        },
+        "process": {
+          "$ref": "#/$defs/ExperimentalProcessResourceDetector",
+          "description": "Enable the process resource detector, which populates process.* attributes.\n"
+        },
+        "service": {
+          "$ref": "#/$defs/ExperimentalServiceResourceDetector",
+          "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.\n"
+        }
+      }
+    },
+    "ExperimentalServiceResourceDetector": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "ExperimentalSeverityNumber": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "TRACE",
+        "TRACE2",
+        "TRACE3",
+        "TRACE4",
+        "DEBUG",
+        "DEBUG2",
+        "DEBUG3",
+        "DEBUG4",
+        "INFO",
+        "INFO2",
+        "INFO3",
+        "INFO4",
+        "WARN",
+        "WARN2",
+        "WARN3",
+        "WARN4",
+        "ERROR",
+        "ERROR2",
+        "ERROR3",
+        "ERROR4",
+        "FATAL",
+        "FATAL2",
+        "FATAL3",
+        "FATAL4"
+      ]
+    },
+    "ExperimentalTracerConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "disabled": {
+          "type": [
+            "boolean"
+          ],
+          "description": "Configure if the tracer is enabled or not."
+        }
+      }
+    },
+    "ExperimentalTracerConfigurator": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "default_config": {
+          "$ref": "#/$defs/ExperimentalTracerConfig",
+          "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers."
+        },
+        "tracers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
+          },
+          "description": "Configure tracers."
+        }
+      }
+    },
+    "ExperimentalTracerMatcherAndConfig": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": [
+            "string"
+          ],
+          "description": "Configure tracer names to match, evaluated as follows:\n\n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+        },
+        "config": {
+          "$ref": "#/$defs/ExperimentalTracerConfig",
+          "description": "The tracer config."
+        }
+      },
+      "required": [
+        "name",
+        "config"
+      ]
+    },
+    "ExplicitBucketHistogramAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "boundaries": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "number"
+          },
+          "description": "Configure bucket boundaries.\nIf omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.\n"
+        },
+        "record_min_max": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure record min and max.\nIf omitted or null, true is used.\n"
+        }
+      }
+    },
+    "ExporterDefaultHistogramAggregation": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "explicit_bucket_histogram",
+        "base2_exponential_bucket_histogram"
+      ]
+    },
+    "ExporterTemporalityPreference": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "cumulative",
+        "delta",
+        "low_memory"
+      ]
+    },
+    "GrpcTls": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ca_file": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure certificate used to verify a server's TLS credentials. \nAbsolute path to certificate file in PEM format.\nIf omitted or null, system default certificate verification is used for secure connections.\n"
+        },
+        "key_file": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure mTLS private client key. \nAbsolute path to client key file in PEM format. If set, .client_certificate must also be set.\nIf omitted or null, mTLS is not used.\n"
+        },
+        "cert_file": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure mTLS client certificate. \nAbsolute path to client certificate file in PEM format. If set, .client_key must also be set.\nIf omitted or null, mTLS is not used.\n"
+        },
+        "insecure": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure client transport security for the exporter's connection. \nOnly applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.\nIf omitted or null, false is used.\n"
+        }
+      }
+    },
+    "HttpTls": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ca_file": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure certificate used to verify a server's TLS credentials. \nAbsolute path to certificate file in PEM format.\nIf omitted or null, system default certificate verification is used for secure connections.\n"
+        },
+        "key_file": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure mTLS private client key. \nAbsolute path to client key file in PEM format. If set, .client_certificate must also be set.\nIf omitted or null, mTLS is not used.\n"
+        },
+        "cert_file": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure mTLS client certificate. \nAbsolute path to client certificate file in PEM format. If set, .client_key must also be set.\nIf omitted or null, mTLS is not used.\n"
+        }
+      }
+    },
+    "IncludeExclude": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "included": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Configure list of value patterns to include.\nValues are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, all values are included.\n"
+        },
+        "excluded": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\nValues are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, .included attributes are included.\n"
+        }
+      }
+    },
+    "InstrumentType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "counter",
+        "gauge",
+        "histogram",
+        "observable_counter",
+        "observable_gauge",
+        "observable_up_down_counter",
+        "up_down_counter"
+      ]
+    },
+    "JaegerPropagator": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "LastValueAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "LoggerProvider": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "processors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/LogRecordProcessor"
+          },
+          "description": "Configure log record processors."
+        },
+        "limits": {
+          "$ref": "#/$defs/LogRecordLimits",
+          "description": "Configure log record limits. See also attribute_limits."
+        },
+        "logger_configurator/development": {
+          "$ref": "#/$defs/ExperimentalLoggerConfigurator",
+          "description": "Configure loggers.\n"
+        }
+      },
+      "required": [
+        "processors"
+      ]
+    },
+    "LogRecordExporter": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "otlp_http": {
+          "$ref": "#/$defs/OtlpHttpExporter",
+          "description": "Configure exporter to be OTLP with HTTP transport."
+        },
+        "otlp_grpc": {
+          "$ref": "#/$defs/OtlpGrpcExporter",
+          "description": "Configure exporter to be OTLP with gRPC transport."
+        },
+        "otlp_file/development": {
+          "$ref": "#/$defs/ExperimentalOtlpFileExporter",
+          "description": "Configure exporter to be OTLP with file transport.\n"
+        },
+        "console": {
+          "$ref": "#/$defs/ConsoleExporter",
+          "description": "Configure exporter to be console."
+        }
+      }
+    },
+    "LogRecordLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attribute_value_length_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+        },
+        "attribute_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        }
+      }
+    },
+    "LogRecordProcessor": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "batch": {
+          "$ref": "#/$defs/BatchLogRecordProcessor",
+          "description": "Configure a batch log record processor."
+        },
+        "simple": {
+          "$ref": "#/$defs/SimpleLogRecordProcessor",
+          "description": "Configure a simple log record processor."
+        }
+      }
+    },
+    "MeterProvider": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "readers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/MetricReader"
+          },
+          "description": "Configure metric readers."
+        },
+        "views": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/View"
+          },
+          "description": "Configure views. \nEach view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).\n"
+        },
+        "exemplar_filter": {
+          "$ref": "#/$defs/ExemplarFilter",
+          "description": "Configure the exemplar filter. \nValues include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\nIf omitted or null, trace_based is used.\n"
+        },
+        "meter_configurator/development": {
+          "$ref": "#/$defs/ExperimentalMeterConfigurator",
+          "description": "Configure meters.\n"
+        }
+      },
+      "required": [
+        "readers"
+      ]
+    },
+    "MetricProducer": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "opencensus": {
+          "$ref": "#/$defs/OpenCensusMetricProducer",
+          "description": "Configure metric producer to be opencensus."
+        }
+      }
+    },
+    "MetricReader": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "periodic": {
+          "$ref": "#/$defs/PeriodicMetricReader",
+          "description": "Configure a periodic metric reader."
+        },
+        "pull": {
+          "$ref": "#/$defs/PullMetricReader",
+          "description": "Configure a pull based metric reader."
+        }
+      }
+    },
+    "NameStringValuePair": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the pair."
+        },
+        "value": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The value of the pair."
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ]
+    },
+    "OpenCensusMetricProducer": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "OpenTracingPropagator": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "OtlpGrpcExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure endpoint.\nIf omitted or null, http://localhost:4317 is used.\n"
+        },
+        "tls": {
+          "$ref": "#/$defs/GrpcTls",
+          "description": "Configure TLS settings for the exporter."
+        },
+        "headers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/NameStringValuePair"
+          },
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+        },
+        "headers_list": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+        },
+        "compression": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+        },
+        "timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+        }
+      }
+    },
+    "OtlpGrpcMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure endpoint.\nIf omitted or null, http://localhost:4317 is used.\n"
+        },
+        "tls": {
+          "$ref": "#/$defs/GrpcTls",
+          "description": "Configure TLS settings for the exporter."
+        },
+        "headers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/NameStringValuePair"
+          },
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+        },
+        "headers_list": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+        },
+        "compression": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+        },
+        "timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+        },
+        "temporality_preference": {
+          "$ref": "#/$defs/ExporterTemporalityPreference",
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+        },
+        "default_histogram_aggregation": {
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+        }
+      }
+    },
+    "OtlpHttpEncoding": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "protobuf",
+        "json"
+      ]
+    },
+    "OtlpHttpExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure endpoint, including the signal specific path.\nIf omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.\n"
+        },
+        "tls": {
+          "$ref": "#/$defs/HttpTls",
+          "description": "Configure TLS settings for the exporter."
+        },
+        "headers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/NameStringValuePair"
+          },
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+        },
+        "headers_list": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+        },
+        "compression": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+        },
+        "timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+        },
+        "encoding": {
+          "$ref": "#/$defs/OtlpHttpEncoding",
+          "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted or null, protobuf is used.\n"
+        }
+      }
+    },
+    "OtlpHttpMetricExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure endpoint.\nIf omitted or null, http://localhost:4318/v1/metrics is used.\n"
+        },
+        "tls": {
+          "$ref": "#/$defs/HttpTls",
+          "description": "Configure TLS settings for the exporter."
+        },
+        "headers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/NameStringValuePair"
+          },
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+        },
+        "headers_list": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
+        },
+        "compression": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+        },
+        "timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
+        },
+        "encoding": {
+          "$ref": "#/$defs/OtlpHttpEncoding",
+          "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted or null, protobuf is used.\n"
+        },
+        "temporality_preference": {
+          "$ref": "#/$defs/ExporterTemporalityPreference",
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+        },
+        "default_histogram_aggregation": {
+          "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+        }
+      }
+    },
+    "ParentBasedSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure root sampler.\nIf omitted or null, always_on is used.\n"
+        },
+        "remote_parent_sampled": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure remote_parent_sampled sampler.\nIf omitted or null, always_on is used.\n"
+        },
+        "remote_parent_not_sampled": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure remote_parent_not_sampled sampler.\nIf omitted or null, always_off is used.\n"
+        },
+        "local_parent_sampled": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure local_parent_sampled sampler.\nIf omitted or null, always_on is used.\n"
+        },
+        "local_parent_not_sampled": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure local_parent_not_sampled sampler.\nIf omitted or null, always_off is used.\n"
+        }
+      }
+    },
+    "PeriodicMetricReader": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "interval": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure delay interval (in milliseconds) between start of two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 60000 is used.\n"
+        },
+        "timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
+        },
+        "exporter": {
+          "$ref": "#/$defs/PushMetricExporter",
+          "description": "Configure exporter."
+        },
+        "producers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/MetricProducer"
+          },
+          "description": "Configure metric producers."
+        },
+        "cardinality_limits": {
+          "$ref": "#/$defs/CardinalityLimits",
+          "description": "Configure cardinality limits."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "Propagator": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "composite": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/TextMapPropagator"
+          },
+          "description": "Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.\nBuilt-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. \nIf the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.\n"
+        },
+        "composite_list": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.\nThe value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nBuilt-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. \nIf the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.\n"
+        }
+      }
+    },
+    "PullMetricExporter": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "prometheus/development": {
+          "$ref": "#/$defs/ExperimentalPrometheusMetricExporter",
+          "description": "Configure exporter to be prometheus.\n"
+        }
+      }
+    },
+    "PullMetricReader": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exporter": {
+          "$ref": "#/$defs/PullMetricExporter",
+          "description": "Configure exporter."
+        },
+        "producers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/MetricProducer"
+          },
+          "description": "Configure metric producers."
+        },
+        "cardinality_limits": {
+          "$ref": "#/$defs/CardinalityLimits",
+          "description": "Configure cardinality limits."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "PushMetricExporter": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "otlp_http": {
+          "$ref": "#/$defs/OtlpHttpMetricExporter",
+          "description": "Configure exporter to be OTLP with HTTP transport.\n"
+        },
+        "otlp_grpc": {
+          "$ref": "#/$defs/OtlpGrpcMetricExporter",
+          "description": "Configure exporter to be OTLP with gRPC transport.\n"
+        },
+        "otlp_file/development": {
+          "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter",
+          "description": "Configure exporter to be OTLP with file transport.\n"
+        },
+        "console": {
+          "$ref": "#/$defs/ConsoleMetricExporter",
+          "description": "Configure exporter to be console.\n"
+        }
+      }
+    },
+    "Resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attributes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/AttributeNameValue"
+          },
+          "description": "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.\n"
+        },
+        "detection/development": {
+          "$ref": "#/$defs/ExperimentalResourceDetection",
+          "description": "Configure resource detection.\nIf omitted or null, resource detection is disabled.\n"
+        },
+        "schema_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure resource schema URL.\nIf omitted or null, no schema URL is used.\n"
+        },
+        "attributes_list": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure resource attributes. Entries have lower priority than entries from .resource.attributes.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nIf omitted or null, no resource attributes are added.\n"
+        }
+      }
+    },
+    "Sampler": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "always_off": {
+          "$ref": "#/$defs/AlwaysOffSampler",
+          "description": "Configure sampler to be always_off."
+        },
+        "always_on": {
+          "$ref": "#/$defs/AlwaysOnSampler",
+          "description": "Configure sampler to be always_on."
+        },
+        "composite/development": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configure sampler to be composite."
+        },
+        "jaeger_remote/development": {
+          "$ref": "#/$defs/ExperimentalJaegerRemoteSampler",
+          "description": "TODO"
+        },
+        "parent_based": {
+          "$ref": "#/$defs/ParentBasedSampler",
+          "description": "Configure sampler to be parent_based."
+        },
+        "probability/development": {
+          "$ref": "#/$defs/ExperimentalProbabilitySampler",
+          "description": "Configure sampler to be probability."
+        },
+        "trace_id_ratio_based": {
+          "$ref": "#/$defs/TraceIdRatioBasedSampler",
+          "description": "Configure sampler to be trace_id_ratio_based."
+        }
+      }
+    },
+    "SimpleLogRecordProcessor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exporter": {
+          "$ref": "#/$defs/LogRecordExporter",
+          "description": "Configure exporter."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "SimpleSpanProcessor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exporter": {
+          "$ref": "#/$defs/SpanExporter",
+          "description": "Configure exporter."
+        }
+      },
+      "required": [
+        "exporter"
+      ]
+    },
+    "SpanExporter": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "otlp_http": {
+          "$ref": "#/$defs/OtlpHttpExporter",
+          "description": "Configure exporter to be OTLP with HTTP transport."
+        },
+        "otlp_grpc": {
+          "$ref": "#/$defs/OtlpGrpcExporter",
+          "description": "Configure exporter to be OTLP with gRPC transport."
+        },
+        "otlp_file/development": {
+          "$ref": "#/$defs/ExperimentalOtlpFileExporter",
+          "description": "Configure exporter to be OTLP with file transport.\n"
+        },
+        "console": {
+          "$ref": "#/$defs/ConsoleExporter",
+          "description": "Configure exporter to be console."
+        },
+        "zipkin": {
+          "$ref": "#/$defs/ZipkinSpanExporter",
+          "description": "Configure exporter to be zipkin."
+        }
+      }
+    },
+    "SpanLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attribute_value_length_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+        },
+        "attribute_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        },
+        "event_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max span event count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        },
+        "link_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max span link count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        },
+        "event_attribute_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attributes per span event. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        },
+        "link_attribute_count_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max attributes per span link. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
+        }
+      }
+    },
+    "SpanProcessor": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "batch": {
+          "$ref": "#/$defs/BatchSpanProcessor",
+          "description": "Configure a batch span processor."
+        },
+        "simple": {
+          "$ref": "#/$defs/SimpleSpanProcessor",
+          "description": "Configure a simple span processor."
+        }
+      }
+    },
+    "SumAggregation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "TextMapPropagator": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "tracecontext": {
+          "$ref": "#/$defs/TraceContextPropagator",
+          "description": "Include the w3c trace context propagator."
+        },
+        "baggage": {
+          "$ref": "#/$defs/BaggagePropagator",
+          "description": "Include the w3c baggage propagator."
+        },
+        "b3": {
+          "$ref": "#/$defs/B3Propagator",
+          "description": "Include the zipkin b3 propagator."
+        },
+        "b3multi": {
+          "$ref": "#/$defs/B3MultiPropagator",
+          "description": "Include the zipkin b3 multi propagator."
+        },
+        "jaeger": {
+          "$ref": "#/$defs/JaegerPropagator",
+          "description": "Include the jaeger propagator."
+        },
+        "ottrace": {
+          "$ref": "#/$defs/OpenTracingPropagator",
+          "description": "Include the opentracing propagator."
+        }
+      }
+    },
+    "TraceContextPropagator": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
+    "TraceIdRatioBasedSampler": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Configure trace_id_ratio.\nIf omitted or null, 1.0 is used.\n"
+        }
+      }
+    },
+    "TracerProvider": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "processors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/SpanProcessor"
+          },
+          "description": "Configure span processors."
+        },
+        "limits": {
+          "$ref": "#/$defs/SpanLimits",
+          "description": "Configure span limits. See also attribute_limits."
+        },
+        "sampler": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure the sampler.\nIf omitted, parent based sampler with a root of always_on is used.\n"
+        },
+        "tracer_configurator/development": {
+          "$ref": "#/$defs/ExperimentalTracerConfigurator",
+          "description": "Configure tracers.\n"
+        }
+      },
+      "required": [
+        "processors"
+      ]
+    },
+    "View": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "selector": {
+          "$ref": "#/$defs/ViewSelector",
+          "description": "Configure view selector. \nSelection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.\n"
+        },
+        "stream": {
+          "$ref": "#/$defs/ViewStream",
+          "description": "Configure view stream."
+        }
+      },
+      "required": [
+        "selector",
+        "stream"
+      ]
+    },
+    "ViewSelector": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "instrument_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure instrument name selection criteria.\nIf omitted or null, all instrument names match.\n"
+        },
+        "instrument_type": {
+          "$ref": "#/$defs/InstrumentType",
+          "description": "Configure instrument type selection criteria.\nValues include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\nIf omitted or null, all instrument types match.\n"
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure the instrument unit selection criteria.\nIf omitted or null, all instrument units match.\n"
+        },
+        "meter_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure meter name selection criteria.\nIf omitted or null, all meter names match.\n"
+        },
+        "meter_version": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure meter version selection criteria.\nIf omitted or null, all meter versions match.\n"
+        },
+        "meter_schema_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure meter schema url selection criteria.\nIf omitted or null, all meter schema URLs match.\n"
+        }
+      }
+    },
+    "ViewStream": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure metric name of the resulting stream(s).\nIf omitted or null, the instrument's original name is used.\n"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure metric description of the resulting stream(s).\nIf omitted or null, the instrument's origin description is used.\n"
+        },
+        "aggregation": {
+          "$ref": "#/$defs/Aggregation",
+          "description": "Configure aggregation of the resulting stream(s). \nValues include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.\nIf omitted, default is used.\n"
+        },
+        "aggregation_cardinality_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "Configure the aggregation cardinality limit.\nIf omitted or null, the metric reader's default cardinality limit is used.\n"
+        },
+        "attribute_keys": {
+          "$ref": "#/$defs/IncludeExclude",
+          "description": "Configure attribute keys retained in the resulting stream(s).\n"
+        }
+      }
+    },
+    "ZipkinSpanExporter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure endpoint.\nIf omitted or null, http://localhost:9411/api/v2/spans is used.\n"
+        },
+        "timeout": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure max time (in milliseconds) to wait for each export. \nValue must be non-negative. A value of 0 indicates indefinite.\nIf omitted or null, 10000 is used.\n"
+        }
+      }
+    }
+  }
+}

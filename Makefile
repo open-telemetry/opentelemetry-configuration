@@ -9,12 +9,19 @@ all: install-tools compile-schema validate-examples all-meta-schema
 
 include validator/Makefile
 
+.PHONY: compile-schema
+compile-schema:
+	@if ! npm ls minimatch yaml; then npm install; fi
+	npm run-script compile-schema || exit 1;
+	@if ! npm ls ajv-cli; then npm install; fi
+	npx --no ajv-cli compile --spec=draft2020 --allow-matching-properties -s ./opentelemetry_configuration.json;
+
 .PHONY: validate-examples
 validate-examples:
 	@if ! npm ls ajv-cli; then npm install; fi
 	@for f in $(EXAMPLE_FILES); do \
 	    npx envsub ./examples/$$f ./out/$$f || exit 1; \
-		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./schema_out/opentelemetry_configuration.json -r "./schema_out/!(opentelemetry_configuration.json)" -d ./out/$$f \
+		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./opentelemetry_configuration.json -d ./out/$$f \
 		    || exit 1; \
 	done
 

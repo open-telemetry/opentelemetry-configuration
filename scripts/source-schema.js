@@ -9,7 +9,7 @@ import yaml from "yaml";
 
 const localDefPrefix = '#/$defs/';
 
-export function readSourceSchema() {
+export function readSourceTypesByType() {
     const sourceTypesByType = {};
     const sourceContentByFile = {};
 
@@ -57,10 +57,7 @@ export function readSourceSchema() {
         }
     });
 
-    return {
-        sourceContentByFile,
-        sourceTypesByType,
-    };
+    return sourceTypesByType;
 }
 
 function resolveSourceSchemaProperties(sourceSchema, typesByType) {

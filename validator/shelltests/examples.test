@@ -1,4 +1,4 @@
-cd .. && make validator-validate-examples
+make validator-validate-examples
 >>>
 Validating kitchen-sink.yaml
 Validating sdk-config.yaml

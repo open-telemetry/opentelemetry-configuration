@@ -1,18 +1,13 @@
 import fs from 'fs';
-import {schemaOutDirPath} from "./util.js";
-import yaml from "yaml";
-import {readSourceSchema} from "./source-schema.js";
-
-// Delete and recreate schema out directory
-fs.rmSync(schemaOutDirPath, {recursive: true, force: true});
-fs.mkdirSync(schemaOutDirPath);
+import {rootTypeName, schemaPath} from "./util.js";
+import {readSourceTypesByType} from "./source-schema.js";
 
 // Read source schema
-const {sourceContentByFile, sourceTypesByType} = readSourceSchema();
+const sourceTypes = Object.values(readSourceTypesByType());
 
 // Validate source types and exit early if there are any errors
 const messages = [];
-Object.entries(sourceTypesByType).forEach(([type, sourceSchemaType]) => {
+sourceTypes.forEach(sourceSchemaType => {
     allPropertiesShouldHaveDescriptions(sourceSchemaType, messages);
     allEnumValuesShouldHaveDescriptions(sourceSchemaType, messages);
     sdkExtensionPluginSchema(sourceSchemaType, messages);
@@ -25,41 +20,61 @@ if (messages.length > 0) {
 
 // If we make it here, source schema is valid.
 
-// Replace refs with new JSON file paths
-Object.keys(sourceContentByFile).forEach(file => {
-    const jsonFile = file.replace('.yaml', '.json');
-    Object.entries(sourceContentByFile).forEach(([otherFile, otherContent]) => {
-        const otherContentString = yaml.stringify(otherContent, {lineWidth: 0});
-        sourceContentByFile[otherFile] = yaml.parse(otherContentString.replaceAll(`$ref: ${file}`, `$ref: ${jsonFile}`));
+// Construct and write full schema into single output file
+// All types go in $defs, except root type, which is the top level schema
+sourceTypes.sort((a, b) => a.type.localeCompare(b.type));
+const defs = {};
+sourceTypes.filter(sourceSchemaType => sourceSchemaType.type !== rootTypeName)
+    .forEach(sourceSchemaType => {
+        // Clone schema to avoid modifying original
+        const schema = JSON.parse(JSON.stringify(sourceSchemaType.schema));
+
+        // Replace cross-file refs to resolve refs from defs in local file
+        const properties = schema.properties;
+        if (properties) {
+            Object.values(properties).forEach(replaceCrossFileRefs);
+        }
+
+        // Strip away defs from top level schemas
+        delete schema['$defs'];
+
+        // Strip extra source meta data
+        delete schema['enumDescriptions'];
+        delete schema['isSdkExtensionPlugin'];
+
+        defs[sourceSchemaType.type] = schema;
     });
-});
 
-// For each file, massage the schema a bit and write it to the output directory in JSON format.
-Object.entries(sourceContentByFile).forEach(([file, content]) => {
-    const jsonFile = file.replace('.yaml', '.json');
+const rootType = sourceTypes.find(sourceSchemaType => sourceSchemaType.type === rootTypeName);
+if (!rootType) {
+    throw new Error(`Root type ${rootTypeName} not found in source schema.`);
+}
+const rootTypeSchema = JSON.parse(JSON.stringify(rootType.schema));
+delete rootTypeSchema['$defs'];
 
-    // Remove bits which are not part of JSON schema spec
-    stripExtraSourceSchemaMetadata(content);
-    const defs = content['$defs'];
-    if (defs) {
-        Object.values(defs).forEach(type => stripExtraSourceSchemaMetadata(type));
-    }
+const output = {
+    "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    ...rootTypeSchema,
+    "$defs": defs
+};
 
-    // Annotate with constant info
-    const annotated = {
-        '$id': `https://opentelemetry.io/otelconfig/${jsonFile}`,
-        '$schema': 'https://json-schema.org/draft/2020-12/schema',
-        ...content
-    }
-
-    fs.writeFileSync(schemaOutDirPath + jsonFile, JSON.stringify(annotated, null, 2));
-});
+fs.writeFileSync(schemaPath, JSON.stringify(output, null, 2));
 
 // Helper functions
 
-function stripExtraSourceSchemaMetadata(type) {
-    delete type['enumDescriptions'];
-    delete type['isSdkExtensionPlugin'];
+function replaceCrossFileRefs(propertySchema) {
+    const ref = propertySchema['$ref'];
+    if (ref) {
+        propertySchema['$ref'] = ref.substring(ref.indexOf('#'));
+    }
+    const items = propertySchema['items'];
+    if (items) {
+        const itemsRef = items['$ref'];
+        if (itemsRef) {
+            items['$ref'] = itemsRef.substring(itemsRef.indexOf('#'));
+        }
+    }
 }
 
 // Validation functions
@@ -123,11 +138,10 @@ function noSubschemas(sourceSchemaType, messages) {
         return;
     }
     sourceSchemaType.properties.forEach(property => {
-       property.types.forEach(type => {
-           if (type === 'object') {
-               messages.push(`Please move subschema for ${sourceSchemaType.type}.${property.property} to top level type in $defs.`)
-           }
-       });
+        property.types.forEach(type => {
+            if (type === 'object') {
+                messages.push(`Please move subschema for ${sourceSchemaType.type}.${property.property} to top level type in $defs.`)
+            }
+        });
     });
-
 }

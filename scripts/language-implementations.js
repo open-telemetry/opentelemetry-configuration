@@ -7,7 +7,7 @@ import {
     metaSchemaLanguageFilePrefix,
     isExperimentalType
 } from "./util.js";
-import {readSourceSchema} from "./source-schema.js";
+import {readSourceTypesByType} from "./source-schema.js";
 
 export const KNOWN_LANGUAGES = [
     'cpp', 
@@ -29,7 +29,7 @@ export function readAndFixLanguageImplementations() {
     // Track messages tracking schema fixes
     const messages = [];
 
-    const { sourceTypesByType } = readSourceSchema();
+    const sourceTypesByType = readSourceTypesByType();
 
     // Parse meta schema language implementations and sanitize
     const metaSchemaLanguageImplementations = [];
