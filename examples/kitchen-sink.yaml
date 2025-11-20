@@ -820,7 +820,8 @@ tracer_provider:
         composite/development:
           # Configure sampler to be rule_based.
           rule_based:
-            # The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match. If no conditions are specified, the rule matches all spans that reach it.
+            # The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match. 
+            # If no conditions are specified, the rule matches all spans that reach it. If no rules match, the span is not sampled.
             rules:
               - attribute_values:
                   key: http.route

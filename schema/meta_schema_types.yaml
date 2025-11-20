@@ -1282,16 +1282,24 @@
 - type: ExperimentalComposableRuleBasedSampler
   properties:
     - property: rules
-      description: The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match. If no conditions are specified, the rule matches all spans that reach it.
+      description: |
+        The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match. 
+        If no conditions are specified, the rule matches all spans that reach it. If no rules match, the span is not sampled.
   isSdkExtensionPlugin: false
 - type: ExperimentalComposableRuleBasedSamplerRule
   properties:
     - property: attribute_patterns
-      description: Patterns to match against a single attribute.
+      description: |
+        Patterns to match against a single attribute. Non-string attributes are matched using their string representation:
+        for example, a pattern of "4*" would match any http.response.status_code in 400-499. For array attributes, if any
+        item matches, it is considered a match.
     - property: attribute_values
-      description: Values to match against a single attribute.
-    - property: is_root
-      description: Whether to match only root spans.
+      description: |
+        Values to match against a single attribute. Non-string attributes are matched using their string representation:
+        for example, a value of "404" would match the http.response.status_code 404. For array attributes, if any
+        item matches, it is considered a match.
+    - property: is_trace_root
+      description: Whether to match only trace root spans, those without any parent.
     - property: sampler
       description: The sampler to use for matching spans.
     - property: span_kinds

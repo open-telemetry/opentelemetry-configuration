@@ -220,7 +220,7 @@
                         "$ref": "common.json#/$defs/SpanKind"
                     }
                 },
-                "is_root": {
+                "is_trace_root": {
                     "type": "boolean"
                 },
                 "sampler": {
