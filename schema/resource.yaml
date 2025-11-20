@@ -13,16 +13,14 @@ properties:
     $ref: "#/$defs/ExperimentalResourceDetection"
     description: |
       Configure resource detection.
-      If omitted or null, resource detection is disabled.
-    defaultBehavior: TODO
+    defaultBehavior: resource detection is disabled
   schema_url:
     type:
       - string
       - "null"
     description: |
       Configure resource schema URL.
-      If omitted or null, no schema URL is used.
-    defaultBehavior: TODO
+    defaultBehavior: no schema URL is used
   attributes_list:
     type:
       - string
@@ -30,8 +28,7 @@ properties:
     description: |
       Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
       The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
-      If omitted or null, no resource attributes are added.
-    defaultBehavior: TODO
+    defaultBehavior: no resource attributes are added
 $defs:
   AttributeNameValue:
     type: object
@@ -67,8 +64,7 @@ $defs:
         description: |
           The attribute type.
           Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
-          If omitted or null, string is used.
-        defaultBehavior: TODO
+        defaultBehavior: string is used
     required:
       - name
       - value
@@ -110,8 +106,7 @@ $defs:
         description: |
           Configure resource detectors.
           Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
-          If omitted or null, no resource detectors are enabled.
-        defaultBehavior: TODO
+        defaultBehavior: no resource detectors are enabled
   ExperimentalResourceDetector:
     type: object
     additionalProperties:

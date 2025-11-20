@@ -40,8 +40,7 @@ $defs:
         description: |
           Configure delay interval (in milliseconds) between two consecutive exports. 
           Value must be non-negative.
-          If omitted or null, 1000 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 1000 is used
       export_timeout:
         type:
           - integer
@@ -50,8 +49,7 @@ $defs:
         description: |
           Configure maximum allowed time (in milliseconds) to export data. 
           Value must be non-negative. A value of 0 indicates no limit (infinity).
-          If omitted or null, 30000 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 30000 is used
       max_queue_size:
         type:
           - integer
@@ -59,8 +57,7 @@ $defs:
         exclusiveMinimum: 0
         description: |
           Configure maximum queue size. Value must be positive.
-          If omitted or null, 2048 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 2048 is used
       max_export_batch_size:
         type:
           - integer
@@ -68,8 +65,7 @@ $defs:
         exclusiveMinimum: 0
         description: |
           Configure maximum batch size. Value must be positive.
-          If omitted or null, 512 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 512 is used
       exporter:
         $ref: "#/$defs/LogRecordExporter"
         description: Configure exporter.
@@ -114,8 +110,7 @@ $defs:
         description: |
           Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
           Value must be non-negative.
-          If omitted or null, there is no limit.
-        defaultBehavior: TODO
+        defaultBehavior: there is no limit
       attribute_count_limit:
         type:
           - integer
@@ -124,8 +119,7 @@ $defs:
         description: |
           Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 128 is used
   LogRecordProcessor:
     type: object
     additionalProperties:
@@ -190,16 +184,14 @@ $defs:
           - "null"
         description: |
           Configure if the logger is enabled or not.
-          If omitted or null, false is used.
-        defaultBehavior: TODO
+        defaultBehavior: false is used
       minimum_severity:
         $ref: "#/$defs/ExperimentalSeverityNumber"
         description: |
           Configure severity filtering.
           Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
           Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.
-          If omitted or null, severity filtering is not applied.
-        defaultBehavior: TODO
+        defaultBehavior: severity filtering is not applied
       trace_based:
         type:
           - boolean
@@ -207,8 +199,7 @@ $defs:
         description: |
           Configure trace based filtering.
           If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.
-          If omitted or null, trace based filtering is not applied.
-        defaultBehavior: TODO
+        defaultBehavior: trace based filtering is not applied
   ExperimentalSeverityNumber:
     type:
       - string

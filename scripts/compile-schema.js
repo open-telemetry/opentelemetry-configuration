@@ -170,8 +170,13 @@ function optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages) {
             messages.push(`Please add 'defaultBehavior' to optional property ${sourceSchemaType.type}.${property.property}.`);
         });
     sourceSchemaType.properties
-        .filter(property => required.includes(property.property) && property.schema['defaultBehavior'])
+        .filter(property => required.includes(property.property))
         .forEach(property => {
-           messages.push(`Please remove 'defaultBehavior' from required property ${sourceSchemaType.type}.${property.property}.`);
+            if (property.schema['defaultBehavior']) {
+                messages.push(`Please remove 'defaultBehavior' from required property ${sourceSchemaType.type}.${property.property}.`);
+            }
+            if (property.schema['nullBehavior']) {
+                messages.push(`Please remove 'nullBehavior' from required property ${sourceSchemaType.type}.${property.property}.`);
+            }
         });
 }

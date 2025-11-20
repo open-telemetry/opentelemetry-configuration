@@ -14,16 +14,14 @@ properties:
       - "null"
     description: |
       Configure if the SDK is disabled or not.
-      If omitted or null, false is used.
-    defaultBehavior: TODO
+    defaultBehavior: false is used
   log_level:
     type:
       - string
       - "null"
     description: |
       Configure the log level of the internal logger used by the SDK.
-      If omitted, info is used.
-    defaultBehavior: TODO
+    defaultBehavior: info is used
   attribute_limits:
     $ref: "#/$defs/AttributeLimits"
     description: |
@@ -33,32 +31,27 @@ properties:
     $ref: "#/$defs/LoggerProvider"
     description: |
       Configure logger provider.
-      If omitted, a noop logger provider is used.
-    defaultBehavior: TODO
+    defaultBehavior: a noop logger provider is used
   meter_provider:
     $ref: "#/$defs/MeterProvider"
     description: |
       Configure meter provider.
-      If omitted, a noop meter provider is used.
-    defaultBehavior: TODO
+    defaultBehavior: a noop meter provider is used
   propagator:
     $ref: "#/$defs/Propagator"
     description: |
       Configure text map context propagators.
-      If omitted, a noop propagator is used.
-    defaultBehavior: TODO
+    defaultBehavior: a noop propagator is used
   tracer_provider:
     $ref: "#/$defs/TracerProvider"
     description: |
       Configure tracer provider.
-      If omitted, a noop tracer provider is used.
-    defaultBehavior: TODO
+    defaultBehavior: a noop tracer provider is used
   resource:
     $ref: "#/$defs/Resource"
     description: |
       Configure resource for all signals.
-      If omitted, the default resource is used.
-    defaultBehavior: TODO
+    defaultBehavior: the default resource is used
   instrumentation/development:
     $ref: "#/$defs/ExperimentalInstrumentation"
     description: |
@@ -79,8 +72,7 @@ $defs:
         description: |
           Configure max attribute value size. 
           Value must be non-negative.
-          If omitted or null, there is no limit.
-        defaultBehavior: TODO
+        defaultBehavior: there is no limit
       attribute_count_limit:
         type:
           - integer
@@ -89,8 +81,7 @@ $defs:
         description: |
           Configure max attribute count. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 128 is used
   LoggerProvider:
     $ref: logger_provider.yaml
   MeterProvider:

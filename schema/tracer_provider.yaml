@@ -15,8 +15,7 @@ properties:
     $ref: "#/$defs/Sampler"
     description: |
       Configure the sampler.
-      If omitted, parent based sampler with a root of always_on is used.
-    defaultBehavior: TODO
+    defaultBehavior: parent based sampler with a root of always_on is used
   tracer_configurator/development:
     $ref: "#/$defs/ExperimentalTracerConfigurator"
     description: |
@@ -37,8 +36,7 @@ $defs:
         description: |
           Configure delay interval (in milliseconds) between two consecutive exports. 
           Value must be non-negative.
-          If omitted or null, 5000 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 5000 is used
       export_timeout:
         type:
           - integer
@@ -47,8 +45,7 @@ $defs:
         description: |
           Configure maximum allowed time (in milliseconds) to export data. 
           Value must be non-negative. A value of 0 indicates no limit (infinity).
-          If omitted or null, 30000 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 30000 is used
       max_queue_size:
         type:
           - integer
@@ -56,8 +53,7 @@ $defs:
         exclusiveMinimum: 0
         description: |
           Configure maximum queue size. Value must be positive.
-          If omitted or null, 2048 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 2048 is used
       max_export_batch_size:
         type:
           - integer
@@ -65,8 +61,7 @@ $defs:
         exclusiveMinimum: 0
         description: |
           Configure maximum batch size. Value must be positive.
-          If omitted or null, 512 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 512 is used
       exporter:
         $ref: "#/$defs/SpanExporter"
         description: Configure exporter.
@@ -153,32 +148,27 @@ $defs:
         $ref: "#/$defs/Sampler"
         description: |
           Configure root sampler.
-          If omitted or null, always_on is used.
-        defaultBehavior: TODO
+        defaultBehavior: always_on is used
       remote_parent_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure remote_parent_sampled sampler.
-          If omitted or null, always_on is used.
-        defaultBehavior: TODO
+        defaultBehavior: always_on is used
       remote_parent_not_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure remote_parent_not_sampled sampler.
-          If omitted or null, always_off is used.
-        defaultBehavior: TODO
+        defaultBehavior: always_off is used
       local_parent_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure local_parent_sampled sampler.
-          If omitted or null, always_on is used.
-        defaultBehavior: TODO
+        defaultBehavior: always_on is used
       local_parent_not_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure local_parent_not_sampled sampler.
-          If omitted or null, always_off is used.
-        defaultBehavior: TODO
+        defaultBehavior: always_off is used
   ExperimentalProbabilitySampler:
     type:
       - object
@@ -193,8 +183,7 @@ $defs:
         maximum: 1
         description: |
           Configure ratio.
-          If omitted or null, 1.0 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 1.0 is used
   TraceIdRatioBasedSampler:
     type:
       - object
@@ -209,8 +198,7 @@ $defs:
         maximum: 1
         description: |
           Configure trace_id_ratio.
-          If omitted or null, 1.0 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 1.0 is used
   ExperimentalComposableAlwaysOffSampler:
     type:
       - object
@@ -261,8 +249,7 @@ $defs:
         maximum: 1
         description: |
           Configure ratio.
-          If omitted or null, 1.0 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 1.0 is used
   ExperimentalComposableSampler:
     type: object
     additionalProperties:
@@ -340,8 +327,7 @@ $defs:
         description: |
           Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
           Value must be non-negative.
-          If omitted or null, there is no limit.
-        defaultBehavior: TODO
+        defaultBehavior: there is no limit
       attribute_count_limit:
         type:
           - integer
@@ -350,8 +336,7 @@ $defs:
         description: |
           Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 128 is used
       event_count_limit:
         type:
           - integer
@@ -360,8 +345,7 @@ $defs:
         description: |
           Configure max span event count. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 128 is used
       link_count_limit:
         type:
           - integer
@@ -370,8 +354,7 @@ $defs:
         description: |
           Configure max span link count. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 128 is used
       event_attribute_count_limit:
         type:
           - integer
@@ -380,8 +363,7 @@ $defs:
         description: |
           Configure max attributes per span event. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 128 is used
       link_attribute_count_limit:
         type:
           - integer
@@ -390,8 +372,7 @@ $defs:
         description: |
           Configure max attributes per span link. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 128 is used
   SpanProcessor:
     type: object
     additionalProperties:
@@ -422,8 +403,7 @@ $defs:
           - "null"
         description: |
           Configure endpoint.
-          If omitted or null, http://localhost:9411/api/v2/spans is used.
-        defaultBehavior: TODO
+        defaultBehavior: http://localhost:9411/api/v2/spans is used
       timeout:
         type:
           - integer
@@ -432,8 +412,7 @@ $defs:
         description: |
           Configure max time (in milliseconds) to wait for each export. 
           Value must be non-negative. A value of 0 indicates indefinite.
-          If omitted or null, 10000 is used.
-        defaultBehavior: TODO
+        defaultBehavior: 10000 is used
   ExperimentalTracerConfigurator:
     type:
       - object
