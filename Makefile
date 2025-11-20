@@ -1,13 +1,13 @@
 # Copyright The OpenTelemetry Authors
 # SPDX-License-Identifier: Apache-2.0
 
-include validator/Makefile
-
 EXAMPLE_FILES := $(shell find . -path './examples/*.yaml' -exec basename {} \; | sort)
 $(shell mkdir -p out)
 
 .PHONY: all
 all: install-tools compile-schema validate-examples all-meta-schema
+
+include validator/Makefile
 
 .PHONY: validate-examples
 validate-examples:
