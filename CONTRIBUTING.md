@@ -322,6 +322,8 @@ make all
 
 ## Meta schema
 
+> 🚧 The tooling around meta schema is under construction, and the docs below will be temporarily inaccurate. Please check back soon. 🚧
+
 [meta_schema_*.yaml](schema) files track schema details that don't fit neatly into the JSON schema including:
 
 * Property descriptions and semantics
@@ -342,7 +344,7 @@ There are a variety of build tasks that intersect with the meta schema:
 
 ### `meta_schema_types.yaml`
 
-[meta_schema_types.yaml](schema/meta_schema_types.yaml) contains property descriptions, semantics, enum value descriptions, and SDK extension plugin information.
+`meta_schema_types.yaml` (TODO: update docs after this was merged into source schema) contains property descriptions, semantics, enum value descriptions, and SDK extension plugin information.
 
 Content looks like:
 
@@ -421,7 +423,7 @@ Ensures that the JSON schema and the meta schema are kept in sync:
 * For each meta schema type:
   * If a property exists in the JSON schema and not the meta schema, add it.
   * If a property exists in the meta schema and not the JSON schema, delete it.
-* If a language implementation is known (i.e. defined in constant array `KNOWN_LANGUAGES` in [meta-schema.js](./scripts/meta-schema.js)) but not in meta schema, add it.
+* If a language implementation is known (i.e. defined in constant array `KNOWN_LANGUAGES` in [language-implementations.js](scripts/language-implementations.js)) but not in meta schema, add it.
 * If a language implementation exists in meta schema but is not known, delete it.
 * For each language implementation:
   * If a type exists in the JSON schema and not in the language implementation's type support status of the meta schema, add it.

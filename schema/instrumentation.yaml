@@ -3,28 +3,62 @@ additionalProperties: false
 properties:
   general:
     $ref: "#/$defs/ExperimentalGeneralInstrumentation"
+    description: |
+      Configure general SemConv options that may apply to multiple languages and instrumentations.
+      Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
   cpp:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    description: Configure C++ language-specific instrumentation libraries.
   dotnet:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    description: |
+      Configure .NET language-specific instrumentation libraries.
+      Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   erlang:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    description: |
+      Configure Erlang language-specific instrumentation libraries.
+      Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   go:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    description: |
+      Configure Go language-specific instrumentation libraries.
+      Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   java:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    description: |
+      Configure Java language-specific instrumentation libraries.
+      Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   js:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    description: |
+      Configure JavaScript language-specific instrumentation libraries.
+      Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   php:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    description: |
+      Configure PHP language-specific instrumentation libraries.
+      Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   python:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    description: |
+      Configure Python language-specific instrumentation libraries.
+      Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   ruby:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    description: |
+      Configure Ruby language-specific instrumentation libraries.
+      Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   rust:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    description: |
+      Configure Rust language-specific instrumentation libraries.
+      Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
   swift:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+    description: |
+      Configure Swift language-specific instrumentation libraries.
+      Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
 $defs:
   ExperimentalGeneralInstrumentation:
     type: object
@@ -32,8 +66,14 @@ $defs:
     properties:
       peer:
         $ref: "#/$defs/ExperimentalPeerInstrumentation"
+        description: |
+          Configure instrumentations following the peer semantic conventions.
+          See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
       http:
         $ref: "#/$defs/ExperimentalHttpInstrumentation"
+        description: |
+          Configure instrumentations following the http semantic conventions.
+          See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
   ExperimentalPeerInstrumentation:
     type: object
     additionalProperties: false
@@ -43,14 +83,21 @@ $defs:
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalPeerServiceMapping"
+        description: |
+          Configure the service mapping for instrumentations following peer.service semantic conventions.
+          See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
   ExperimentalPeerServiceMapping:
     type: object
     additionalProperties: false
     properties:
       peer:
         type: string
+        description: |
+          The IP address to map.
       service:
         type: string
+        description: |
+          The logical name corresponding to the IP address of .peer.
     required:
       - peer
       - service
@@ -63,10 +110,14 @@ $defs:
         minItems: 1
         items:
           type: string
+        description: |
+          Configure headers to capture for outbound http requests.
       response_captured_headers:
         type: array
         items:
           type: string
+        description: |
+          Configure headers to capture for inbound http responses.
   ExperimentalHttpServerInstrumentation:
     type: object
     additionalProperties: false
@@ -76,19 +127,25 @@ $defs:
         minItems: 1
         items:
           type: string
+        description: |
+          Configure headers to capture for inbound http requests.
       response_captured_headers:
         type: array
         minItems: 1
         items:
           type: string
+        description: |
+          Configure headers to capture for outbound http responses.
   ExperimentalHttpInstrumentation:
     type: object
     additionalProperties: false
     properties:
       client:
         $ref: "#/$defs/ExperimentalHttpClientInstrumentation"
+        description: Configure instrumentations following the http client semantic conventions.
       server:
         $ref: "#/$defs/ExperimentalHttpServerInstrumentation"
+        description: Configure instrumentations following the http server semantic conventions.
   ExperimentalLanguageSpecificInstrumentation:
     type: object
     additionalProperties:
