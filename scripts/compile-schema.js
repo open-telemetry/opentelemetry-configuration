@@ -27,14 +27,14 @@ sourceTypes.sort((a, b) => a.type.localeCompare(b.type));
 const defs = {};
 sourceTypes.filter(sourceSchemaType => sourceSchemaType.type !== rootTypeName)
     .forEach(sourceSchemaType => {
-        defs[sourceSchemaType.type] = prepareSchemaForOutput(sourceSchemaType.schema);
+        defs[sourceSchemaType.type] = prepareSchemaForOutput(sourceSchemaType);
     });
 
 const rootType = sourceTypes.find(sourceSchemaType => sourceSchemaType.type === rootTypeName);
 if (!rootType) {
     throw new Error(`Root type ${rootTypeName} not found in source schema.`);
 }
-const rootTypeSchema = prepareSchemaForOutput(rootType.schema);
+const rootTypeSchema = prepareSchemaForOutput(rootType);
 
 const output = {
     "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
@@ -47,14 +47,16 @@ fs.writeFileSync(schemaPath, JSON.stringify(output, null, 2));
 
 // Helper functions
 
-function prepareSchemaForOutput(schema) {
-    const copy = JSON.parse(JSON.stringify(schema));
+function prepareSchemaForOutput(sourceSchemaType) {
+    const schema = JSON.parse(JSON.stringify(sourceSchemaType.schema));
 
-    delete copy['$defs'];
+    delete schema['$defs'];
 
-    stripMetadata(copy);
-    replaceCrossFileRefs(copy);
-    return copy;
+    stripMetadata(schema);
+    replaceCrossFileRefs(schema);
+    enrichDescriptions(sourceSchemaType, schema);
+
+    return schema;
 }
 
 function stripMetadata(schema) {
@@ -67,6 +69,7 @@ function stripMetadata(schema) {
     }
     Object.values(properties).forEach(propertySchema => {
         delete propertySchema['defaultBehavior'];
+        delete propertySchema['nullBehavior'];
     });
 }
 
@@ -87,6 +90,25 @@ function replaceCrossFileRefs(schema) {
                 items['$ref'] = itemsRef.substring(itemsRef.indexOf('#'));
             }
         }
+    });
+}
+
+function enrichDescriptions(sourceSchemaType, schema) {
+    const properties = schema.properties;
+    if (!properties) {
+        return;
+    }
+    Object.entries(properties).forEach(([propertyKey, propertySchema]) => {
+        const sourceProperty = sourceSchemaType.properties.find(property => property.property === propertyKey);
+        let description = propertySchema['description'];
+        if (!description.endsWith('\n')) {
+            description += '\n';
+        }
+        description += sourceProperty.formatDefaultAndNullBehavior();
+        if (!description.endsWith('\n')) {
+            description += '\n';
+        }
+        propertySchema['description'] = description;
     });
 }
 
@@ -164,18 +186,23 @@ function optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages) {
         return;
     }
     const required = sourceSchemaType.schema['required'] || [];
+    // Checks for optional properties
     sourceSchemaType.properties
         .filter(property => !required.includes(property.property) && !property.schema['defaultBehavior'])
         .forEach(property => {
             messages.push(`Please add 'defaultBehavior' to optional property ${sourceSchemaType.type}.${property.property}.`);
         });
+    // Checks for required properties
     sourceSchemaType.properties
         .filter(property => required.includes(property.property))
         .forEach(property => {
             if (property.schema['defaultBehavior']) {
                 messages.push(`Please remove 'defaultBehavior' from required property ${sourceSchemaType.type}.${property.property}.`);
             }
-            if (property.schema['nullBehavior']) {
+            if (property.isNullable && !property.schema['nullBehavior']) {
+                messages.push(`Please add 'nullBehavior' to required nullable property ${sourceSchemaType.type}.${property.property}.`);
+            }
+            if (!property.isNullable && property.schema['nullBehavior']) {
                 messages.push(`Please remove 'nullBehavior' from required property ${sourceSchemaType.type}.${property.property}.`);
             }
         });

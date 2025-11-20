@@ -87,8 +87,8 @@ function writeType(sourceSchemaType) {
             output.push("No properties.\n\n");
         } else {
             // Property type and description table
-            output.push(`| Property | Type | Required? | Constraints | Description |\n`);
-            output.push("|---|---|---|---|---|\n");
+            output.push(`| Property | Type | Required? | Default and Null Behavior | Constraints | Description |\n`);
+            output.push("|---|---|---|---|---|---|\n");
             properties.forEach(sourceSchemaProperty => {
                 let formattedProperty = `\`${sourceSchemaProperty.property}\``
                 if (isExperimentalProperty(sourceSchemaProperty.property)) {
@@ -96,13 +96,14 @@ function writeType(sourceSchemaType) {
                 }
                 const formattedPropertyType = formatPropertyType(sourceSchemaProperty, sourceTypesByType);
                 const isRequired = required !== undefined && required.includes(sourceSchemaProperty.property);
+                const formattedDefaultAndNullBehavior = sourceSchemaProperty.formatDefaultAndNullBehavior();
                 let formattedConstraints = resolveAndFormatConstraints(sourceSchemaProperty.schema, '<br>');
                 if (formattedConstraints.length === 0) {
                     formattedConstraints = 'No constraints.';
                 }
                 const formattedDescription = sourceSchemaProperty.schema.description.split("\n").join("<br>");
 
-                output.push(`| ${formattedProperty} | ${formattedPropertyType} | \`${isRequired}\` | ${formattedConstraints} | ${formattedDescription} |\n`);
+                output.push(`| ${formattedProperty} | ${formattedPropertyType} | \`${isRequired}\` | ${formattedDefaultAndNullBehavior} | ${formattedConstraints} | ${formattedDescription} |\n`);
             });
             output.push('\n');
         }

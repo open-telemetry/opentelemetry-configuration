@@ -37,6 +37,7 @@ $defs:
           - string
           - "null"
         description: The value of the pair.
+        nullBehavior: TODO
     required:
       - name
       - value
