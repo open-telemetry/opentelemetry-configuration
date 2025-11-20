@@ -1,66 +1,71 @@
 import fs from 'fs';
-import {MetaSchemaEnumValue, MetaSchemaProperty, MetaSchemaType} from "./meta-schema.js";
-import {rootTypeName, schemaOutDirPath} from "./util.js";
+import {
+    isExperimentalProperty,
+    metaSchemaFilePrefix,
+    rootTypeName,
+    schemaSourceDirPath
+} from "./util.js";
+import yaml from "yaml";
 
 const localDefPrefix = '#/$defs/';
 
-export function readJsonSchemaTypes() {
-    const typesByType = {};
-    const topLevelSchemas = {};
+export function readSourceTypesByType() {
+    const sourceTypesByType = {};
+    const sourceContentByFile = {};
 
-    fs.readdirSync(schemaOutDirPath)
-        .filter(file => file.endsWith(".json"))
+    fs.readdirSync(schemaSourceDirPath)
+        .filter(file => file.endsWith('.yaml') && !file.startsWith(metaSchemaFilePrefix))
         .forEach(file => {
-            const fileContent = JSON.parse(fs.readFileSync(schemaOutDirPath + file, "utf-8"));
+            const sourceContent = yaml.parse(fs.readFileSync(schemaSourceDirPath + file, "utf-8"));
 
-            topLevelSchemas[file] = fileContent;
+            sourceContentByFile[file] = sourceContent;
 
-            if (file === 'opentelemetry_configuration.json') {
-                typesByType[rootTypeName] = new JsonSchemaType(rootTypeName, file, fileContent, '.', fileContent);
+            if (file === 'opentelemetry_configuration.yaml') {
+                sourceTypesByType[rootTypeName] = new SourceSchemaType(rootTypeName, file, sourceContent, '.', sourceContent);
             }
 
-            Object.entries(getDefs(fileContent)).forEach(([type, schema]) => {
+            Object.entries(getDefs(sourceContent)).forEach(([type, schema]) => {
                 const jsonSchemaPath = `${localDefPrefix}${type}`;
-                if (type in typesByType) {
-                    throw new Error(`${type} already exists in schemasByName with definition: ` + typesByType[type]);
+                if (type in sourceTypesByType) {
+                    throw new Error(`${type} already exists in schemasByName with definition: ` + sourceTypesByType[type]);
                 }
-                typesByType[type] = new JsonSchemaType(type, file, fileContent, jsonSchemaPath, schema);
+                sourceTypesByType[type] = new SourceSchemaType(type, file, sourceContent, jsonSchemaPath, schema);
             });
         });
 
     // Resolve refs to top-level types
-    Object.values(typesByType).forEach(jsonSchemaType => {
-        const ref = jsonSchemaType.schema['$ref'];
+    Object.values(sourceTypesByType).forEach(sourceSchemaType => {
+        const ref = sourceSchemaType.schema['$ref'];
         if (!ref) {
             return;
         }
-        const topLevelSchema = topLevelSchemas[ref];
+        const topLevelSchema = sourceContentByFile[ref];
         if (!topLevelSchema) {
             throw new Error("Could not resolve top level $ref:" + ref);
         }
-        jsonSchemaType.file = ref;
-        jsonSchemaType.jsonSchemaPath = '.';
-        jsonSchemaType.schema = topLevelSchema;
+        sourceSchemaType.sourceFile = ref;
+        sourceSchemaType.jsonSchemaPath = '.';
+        sourceSchemaType.schema = topLevelSchema;
     });
 
     // Resolve properties, enum values
-    Object.values(typesByType).forEach(jsonSchemaType => {
-        jsonSchemaType.properties = resolveJsonSchemaProperties(jsonSchemaType.schema, typesByType);
-        jsonSchemaType.enumValues = resolveEnumValues(jsonSchemaType);
-        if (jsonSchemaType.properties.length > 0 && jsonSchemaType.enumValues !== null) {
-            throw new Error(`${jsonSchemaType.type} has enum values and properties`);
+    Object.values(sourceTypesByType).forEach(sourceSchemaType => {
+        sourceSchemaType.properties = resolveSourceSchemaProperties(sourceSchemaType.schema, sourceTypesByType);
+        sourceSchemaType.enumValues = resolveEnumValues(sourceSchemaType);
+        if (sourceSchemaType.properties.length > 0 && sourceSchemaType.enumValues !== null) {
+            throw new Error(`${sourceSchemaType.type} has enum values and properties`);
         }
     });
 
-    return Object.values(typesByType);
+    return sourceTypesByType;
 }
 
-function resolveJsonSchemaProperties(jsonSchema, typesByType) {
-    const properties = jsonSchema['properties'];
+function resolveSourceSchemaProperties(sourceSchema, typesByType) {
+    const properties = sourceSchema['properties'];
     if (!properties) {
         return [];
     }
-    const requiredProperties = jsonSchema['required'] || [];
+    const requiredProperties = sourceSchema['required'] || [];
     const resolvedProperties = [];
     Object.entries(properties).forEach(([propertyKey, propertySchema]) => {
         const type = propertySchema['type'];
@@ -96,14 +101,14 @@ function resolveJsonSchemaProperties(jsonSchema, typesByType) {
         } else if (oneOf) {
             types.push('oneOf');
         }
-        resolvedProperties.push(new JsonSchemaProperty(propertyKey, types, isSeq, isRequired, propertySchema));
+        resolvedProperties.push(new SourceSchemaProperty(propertyKey, types, isSeq, isRequired, propertySchema));
     });
 
     return resolvedProperties;
 }
 
-function resolveEnumValues(jsonSchemaType) {
-    const enumValues = jsonSchemaType.schema['enum'];
+function resolveEnumValues(sourceSchemaType) {
+    const enumValues = sourceSchemaType.schema['enum'];
     if (!enumValues) {
         return null;
     }
@@ -116,7 +121,7 @@ export function resolveRef(ref, typesByType) {
         const type = ref.substring(localDefPrefix.length);
         response = typesByType[type];
     } else {
-        response = Object.values(typesByType).find(jsonSchemaType => jsonSchemaType.jsonSchemaRef() === ref);
+        response = Object.values(typesByType).find(sourceSchemaType => sourceSchemaType.jsonSchemaRef() === ref);
     }
     if (!response) {
         throw new Error(`Unable to find type for JSON schema ref ${ref}`);
@@ -132,7 +137,7 @@ function getDefs(jsonSchema) {
     return defs;
 }
 
-export class JsonSchemaProperty {
+export class SourceSchemaProperty {
     property;
     types;
     isSeq;
@@ -148,9 +153,8 @@ export class JsonSchemaProperty {
     }
 }
 
-export class JsonSchemaType {
+export class SourceSchemaType {
     type;
-    file;
     sourceFile;
     fileContent;
     jsonSchemaPath;
@@ -158,10 +162,9 @@ export class JsonSchemaType {
     properties;
     enumValues; // null if not enum
 
-    constructor(type, file, fileContent, jsonSchemaPath, schema) {
+    constructor(type, sourceFile, fileContent, jsonSchemaPath, schema) {
         this.type = type;
-        this.file = file;
-        this.sourceFile = file.replace(".json", ".yaml");
+        this.sourceFile = sourceFile;
         this.fileContent = fileContent;
         this.jsonSchemaPath = jsonSchemaPath;
         this.schema = schema;
@@ -174,19 +177,26 @@ export class JsonSchemaType {
     }
 
     jsonSchemaRef() {
-        let ref = this.file;
+        let ref = this.sourceFile;
         if (this.jsonSchemaPath !== '.') {
             ref += this.jsonSchemaPath;
         }
         return ref;
     }
 
-    toMetaSchemaType() {
-        return new MetaSchemaType(
-            this.type,
-            this.properties.map(jsonSchemaProperty => new MetaSchemaProperty(jsonSchemaProperty.property, "TODO")),
-            this.enumValues === null ? null : this.enumValues.map(enumValue => new MetaSchemaEnumValue(enumValue, "TODO")),
-            false
-        );
+    sortedEnumValues() {
+        const sorted = this.enumValues.slice();
+        sorted.sort((a, b) => a.localeCompare(b));
+        return sorted;
+    }
+
+    sortedProperties() {
+        const sorted = this.properties.slice();
+        // Sort in lexigraphical order, with non-experimental properties first
+        sorted.sort((a, b) => {
+            const differentMaturities = isExperimentalProperty(a.property) - isExperimentalProperty(b.property);
+            return differentMaturities === 0 ? a.property.localeCompare(b.property) : +differentMaturities;
+        });
+        return sorted;
     }
 }

@@ -1339,10 +1339,8 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
+[JSON Schema Source File](./schema/logger_provider.yaml)
 <pre>{
-  "$id": "https://opentelemetry.io/otelconfig/logger_provider.json",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -1362,218 +1360,7 @@ Usages:
   },
   "required": [
     "processors"
-  ],
-  "$defs": {
-    "SimpleLogRecordProcessor": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "exporter": {
-          "$ref": "#/$defs/LogRecordExporter"
-        }
-      },
-      "required": [
-        "exporter"
-      ]
-    },
-    "BatchLogRecordProcessor": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "schedule_delay": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "export_timeout": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "max_queue_size": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "max_export_batch_size": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "exporter": {
-          "$ref": "#/$defs/LogRecordExporter"
-        }
-      },
-      "required": [
-        "exporter"
-      ]
-    },
-    "LogRecordExporter": {
-      "type": "object",
-      "additionalProperties": {
-        "type": [
-          "object",
-          "null"
-        ]
-      },
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "otlp_http": {
-          "$ref": "common.json#/$defs/OtlpHttpExporter"
-        },
-        "otlp_grpc": {
-          "$ref": "common.json#/$defs/OtlpGrpcExporter"
-        },
-        "otlp_file/development": {
-          "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
-        },
-        "console": {
-          "$ref": "common.json#/$defs/ConsoleExporter"
-        }
-      }
-    },
-    "LogRecordLimits": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "attribute_value_length_limit": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "attribute_count_limit": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        }
-      }
-    },
-    "LogRecordProcessor": {
-      "type": "object",
-      "additionalProperties": {
-        "type": [
-          "object",
-          "null"
-        ]
-      },
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "batch": {
-          "$ref": "#/$defs/BatchLogRecordProcessor"
-        },
-        "simple": {
-          "$ref": "#/$defs/SimpleLogRecordProcessor"
-        }
-      }
-    },
-    "ExperimentalLoggerConfigurator": {
-      "type": [
-        "object"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "default_config": {
-          "$ref": "#/$defs/ExperimentalLoggerConfig"
-        },
-        "loggers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
-          }
-        }
-      }
-    },
-    "ExperimentalLoggerMatcherAndConfig": {
-      "type": [
-        "object"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "type": [
-            "string"
-          ]
-        },
-        "config": {
-          "$ref": "#/$defs/ExperimentalLoggerConfig"
-        }
-      },
-      "required": [
-        "name",
-        "config"
-      ]
-    },
-    "ExperimentalLoggerConfig": {
-      "type": [
-        "object"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "disabled": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "minimum_severity": {
-          "$ref": "#/$defs/ExperimentalSeverityNumber"
-        },
-        "trace_based": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        }
-      }
-    },
-    "ExperimentalSeverityNumber": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "TRACE",
-        "TRACE2",
-        "TRACE3",
-        "TRACE4",
-        "DEBUG",
-        "DEBUG2",
-        "DEBUG3",
-        "DEBUG4",
-        "INFO",
-        "INFO2",
-        "INFO3",
-        "INFO4",
-        "WARN",
-        "WARN2",
-        "WARN3",
-        "WARN4",
-        "ERROR",
-        "ERROR2",
-        "ERROR3",
-        "ERROR4",
-        "FATAL",
-        "FATAL2",
-        "FATAL3",
-        "FATAL4"
-      ]
-    }
-  }
+  ]
 }</pre>
 </details>
 
@@ -1626,16 +1413,16 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
-      "$ref": "common.json#/$defs/OtlpHttpExporter"
+      "$ref": "#/$defs/OtlpHttpExporter"
     },
     "otlp_grpc": {
-      "$ref": "common.json#/$defs/OtlpGrpcExporter"
+      "$ref": "#/$defs/OtlpGrpcExporter"
     },
     "otlp_file/development": {
-      "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
+      "$ref": "#/$defs/ExperimentalOtlpFileExporter"
     },
     "console": {
-      "$ref": "common.json#/$defs/ConsoleExporter"
+      "$ref": "#/$defs/ConsoleExporter"
     }
   }
 }</pre>
@@ -1776,10 +1563,8 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
+[JSON Schema Source File](./schema/meter_provider.yaml)
 <pre>{
-  "$id": "https://opentelemetry.io/otelconfig/meter_provider.json",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -1806,687 +1591,7 @@ Usages:
   },
   "required": [
     "readers"
-  ],
-  "$defs": {
-    "ExemplarFilter": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "always_on",
-        "always_off",
-        "trace_based"
-      ]
-    },
-    "PeriodicMetricReader": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "interval": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "timeout": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "exporter": {
-          "$ref": "#/$defs/PushMetricExporter"
-        },
-        "producers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/MetricProducer"
-          }
-        },
-        "cardinality_limits": {
-          "$ref": "#/$defs/CardinalityLimits"
-        }
-      },
-      "required": [
-        "exporter"
-      ]
-    },
-    "PullMetricReader": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "exporter": {
-          "$ref": "#/$defs/PullMetricExporter"
-        },
-        "producers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/MetricProducer"
-          }
-        },
-        "cardinality_limits": {
-          "$ref": "#/$defs/CardinalityLimits"
-        }
-      },
-      "required": [
-        "exporter"
-      ]
-    },
-    "CardinalityLimits": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "default": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "counter": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "gauge": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "histogram": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "observable_counter": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "observable_gauge": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "observable_up_down_counter": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "up_down_counter": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        }
-      }
-    },
-    "PushMetricExporter": {
-      "type": "object",
-      "additionalProperties": {
-        "type": [
-          "object",
-          "null"
-        ]
-      },
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "otlp_http": {
-          "$ref": "#/$defs/OtlpHttpMetricExporter"
-        },
-        "otlp_grpc": {
-          "$ref": "#/$defs/OtlpGrpcMetricExporter"
-        },
-        "otlp_file/development": {
-          "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
-        },
-        "console": {
-          "$ref": "#/$defs/ConsoleMetricExporter"
-        }
-      }
-    },
-    "PullMetricExporter": {
-      "type": "object",
-      "additionalProperties": {
-        "type": [
-          "object",
-          "null"
-        ]
-      },
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "prometheus/development": {
-          "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
-        }
-      }
-    },
-    "MetricProducer": {
-      "type": "object",
-      "additionalProperties": {
-        "type": [
-          "object",
-          "null"
-        ]
-      },
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "opencensus": {
-          "$ref": "#/$defs/OpenCensusMetricProducer"
-        }
-      }
-    },
-    "OpenCensusMetricProducer": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "ExperimentalPrometheusMetricExporter": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "host": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "port": {
-          "type": [
-            "integer",
-            "null"
-          ]
-        },
-        "without_scope_info": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "without_target_info": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "with_resource_constant_labels": {
-          "$ref": "common.json#/$defs/IncludeExclude"
-        },
-        "translation_strategy": {
-          "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy"
-        }
-      }
-    },
-    "ExperimentalPrometheusTranslationStrategy": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "UnderscoreEscapingWithSuffixes",
-        "UnderscoreEscapingWithoutSuffixes",
-        "NoUTF8EscapingWithSuffixes",
-        "NoTranslation"
-      ]
-    },
-    "MetricReader": {
-      "type": "object",
-      "additionalProperties": false,
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "periodic": {
-          "$ref": "#/$defs/PeriodicMetricReader"
-        },
-        "pull": {
-          "$ref": "#/$defs/PullMetricReader"
-        }
-      }
-    },
-    "ExporterTemporalityPreference": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "cumulative",
-        "delta",
-        "low_memory"
-      ]
-    },
-    "ExporterDefaultHistogramAggregation": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "explicit_bucket_histogram",
-        "base2_exponential_bucket_histogram"
-      ]
-    },
-    "OtlpHttpMetricExporter": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "endpoint": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "tls": {
-          "$ref": "common.json#/$defs/HttpTls"
-        },
-        "headers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "common.json#/$defs/NameStringValuePair"
-          }
-        },
-        "headers_list": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "compression": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "timeout": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "encoding": {
-          "$ref": "common.json#/$defs/OtlpHttpEncoding"
-        },
-        "temporality_preference": {
-          "$ref": "#/$defs/ExporterTemporalityPreference"
-        },
-        "default_histogram_aggregation": {
-          "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
-        }
-      }
-    },
-    "OtlpGrpcMetricExporter": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "endpoint": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "tls": {
-          "$ref": "common.json#/$defs/GrpcTls"
-        },
-        "headers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "common.json#/$defs/NameStringValuePair"
-          }
-        },
-        "headers_list": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "compression": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "timeout": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "temporality_preference": {
-          "$ref": "#/$defs/ExporterTemporalityPreference"
-        },
-        "default_histogram_aggregation": {
-          "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
-        }
-      }
-    },
-    "ExperimentalOtlpFileMetricExporter": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "output_stream": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "temporality_preference": {
-          "$ref": "#/$defs/ExporterTemporalityPreference"
-        },
-        "default_histogram_aggregation": {
-          "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
-        }
-      }
-    },
-    "ConsoleMetricExporter": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "temporality_preference": {
-          "$ref": "#/$defs/ExporterTemporalityPreference"
-        },
-        "default_histogram_aggregation": {
-          "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
-        }
-      }
-    },
-    "View": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "selector": {
-          "$ref": "#/$defs/ViewSelector"
-        },
-        "stream": {
-          "$ref": "#/$defs/ViewStream"
-        }
-      },
-      "required": [
-        "selector",
-        "stream"
-      ]
-    },
-    "ViewSelector": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "instrument_name": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "instrument_type": {
-          "$ref": "#/$defs/InstrumentType"
-        },
-        "unit": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "meter_name": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "meter_version": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "meter_schema_url": {
-          "type": [
-            "string",
-            "null"
-          ]
-        }
-      }
-    },
-    "InstrumentType": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "counter",
-        "gauge",
-        "histogram",
-        "observable_counter",
-        "observable_gauge",
-        "observable_up_down_counter",
-        "up_down_counter"
-      ]
-    },
-    "ViewStream": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "description": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "aggregation": {
-          "$ref": "#/$defs/Aggregation"
-        },
-        "aggregation_cardinality_limit": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "attribute_keys": {
-          "$ref": "common.json#/$defs/IncludeExclude"
-        }
-      }
-    },
-    "Aggregation": {
-      "type": "object",
-      "additionalProperties": false,
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "default": {
-          "$ref": "#/$defs/DefaultAggregation"
-        },
-        "drop": {
-          "$ref": "#/$defs/DropAggregation"
-        },
-        "explicit_bucket_histogram": {
-          "$ref": "#/$defs/ExplicitBucketHistogramAggregation"
-        },
-        "base2_exponential_bucket_histogram": {
-          "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation"
-        },
-        "last_value": {
-          "$ref": "#/$defs/LastValueAggregation"
-        },
-        "sum": {
-          "$ref": "#/$defs/SumAggregation"
-        }
-      }
-    },
-    "DefaultAggregation": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "DropAggregation": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "ExplicitBucketHistogramAggregation": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "boundaries": {
-          "type": "array",
-          "minItems": 0,
-          "items": {
-            "type": "number"
-          }
-        },
-        "record_min_max": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        }
-      }
-    },
-    "Base2ExponentialBucketHistogramAggregation": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "max_scale": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": -10,
-          "maximum": 20
-        },
-        "max_size": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 2
-        },
-        "record_min_max": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        }
-      }
-    },
-    "LastValueAggregation": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "SumAggregation": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "ExperimentalMeterConfigurator": {
-      "type": [
-        "object"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "default_config": {
-          "$ref": "#/$defs/ExperimentalMeterConfig"
-        },
-        "meters": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
-          }
-        }
-      }
-    },
-    "ExperimentalMeterMatcherAndConfig": {
-      "type": [
-        "object"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "type": [
-            "string"
-          ]
-        },
-        "config": {
-          "$ref": "#/$defs/ExperimentalMeterConfig"
-        }
-      },
-      "required": [
-        "name",
-        "config"
-      ]
-    },
-    "ExperimentalMeterConfig": {
-      "type": [
-        "object"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "disabled": {
-          "type": [
-            "boolean"
-          ]
-        }
-      }
-    }
-  }
+  ]
 }</pre>
 </details>
 
@@ -2752,47 +1857,7 @@ No usages.
   },
   "required": [
     "file_format"
-  ],
-  "$defs": {
-    "AttributeLimits": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "attribute_value_length_limit": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "attribute_count_limit": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        }
-      }
-    },
-    "LoggerProvider": {
-      "$ref": "logger_provider.json"
-    },
-    "MeterProvider": {
-      "$ref": "meter_provider.json"
-    },
-    "TracerProvider": {
-      "$ref": "tracer_provider.json"
-    },
-    "Propagator": {
-      "$ref": "propagator.json"
-    },
-    "Resource": {
-      "$ref": "resource.json"
-    },
-    "ExperimentalInstrumentation": {
-      "$ref": "instrumentation.json"
-    }
-  }
+  ]
 }</pre>
 </details>
 
@@ -2958,13 +2023,13 @@ Usages:
       ]
     },
     "tls": {
-      "$ref": "common.json#/$defs/GrpcTls"
+      "$ref": "#/$defs/GrpcTls"
     },
     "headers": {
       "type": "array",
       "minItems": 1,
       "items": {
-        "$ref": "common.json#/$defs/NameStringValuePair"
+        "$ref": "#/$defs/NameStringValuePair"
       }
     },
     "headers_list": {
@@ -3132,8 +2197,7 @@ Usages:
 | `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br>If omitted or null, none is used.<br> |
 | `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, explicit_bucket_histogram is used.<br> |
 | `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | No constraints. | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br>If omitted or null, protobuf is used.<br> |
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint, including the signal specific path.<br>If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.<br> |
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br>If omitted or null, http://localhost:4317 is used.<br> |
+| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure endpoint.<br>If omitted or null, http://localhost:4318/v1/metrics is used.<br> |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br>If omitted or null, no headers are added.<br> |
 | `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br>If omitted or null, cumulative is used.<br> |
@@ -3148,7 +2212,6 @@ Usages:
 | `compression` | supported | unknown | supported | unknown |
 | `default_histogram_aggregation` | supported | unknown | supported | unknown |
 | `encoding` | supported | unknown | not_implemented | unknown |
-| `endpoint` | supported | unknown | supported | unknown |
 | `endpoint` | supported | unknown | supported | unknown |
 | `headers` | supported | unknown | supported | unknown |
 | `headers_list` | supported | unknown | supported | unknown |
@@ -3183,13 +2246,13 @@ Usages:
       ]
     },
     "tls": {
-      "$ref": "common.json#/$defs/HttpTls"
+      "$ref": "#/$defs/HttpTls"
     },
     "headers": {
       "type": "array",
       "minItems": 1,
       "items": {
-        "$ref": "common.json#/$defs/NameStringValuePair"
+        "$ref": "#/$defs/NameStringValuePair"
       }
     },
     "headers_list": {
@@ -3212,7 +2275,7 @@ Usages:
       "minimum": 0
     },
     "encoding": {
-      "$ref": "common.json#/$defs/OtlpHttpEncoding"
+      "$ref": "#/$defs/OtlpHttpEncoding"
     },
     "temporality_preference": {
       "$ref": "#/$defs/ExporterTemporalityPreference"
@@ -3384,10 +2447,8 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
+[JSON Schema Source File](./schema/propagator.yaml)
 <pre>{
-  "$id": "https://opentelemetry.io/otelconfig/propagator.json",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -3403,81 +2464,6 @@ Usages:
         "string",
         "null"
       ]
-    }
-  },
-  "$defs": {
-    "TextMapPropagator": {
-      "type": "object",
-      "additionalProperties": {
-        "type": [
-          "object",
-          "null"
-        ]
-      },
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "tracecontext": {
-          "$ref": "#/$defs/TraceContextPropagator"
-        },
-        "baggage": {
-          "$ref": "#/$defs/BaggagePropagator"
-        },
-        "b3": {
-          "$ref": "#/$defs/B3Propagator"
-        },
-        "b3multi": {
-          "$ref": "#/$defs/B3MultiPropagator"
-        },
-        "jaeger": {
-          "$ref": "#/$defs/JaegerPropagator"
-        },
-        "ottrace": {
-          "$ref": "#/$defs/OpenTracingPropagator"
-        }
-      }
-    },
-    "TraceContextPropagator": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "BaggagePropagator": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "B3Propagator": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "B3MultiPropagator": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "JaegerPropagator": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "OpenTracingPropagator": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
     }
   }
 }</pre>
@@ -3680,10 +2666,8 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
+[JSON Schema Source File](./schema/resource.yaml)
 <pre>{
-  "$id": "https://opentelemetry.io/otelconfig/resource.json",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -3708,146 +2692,6 @@ Usages:
         "string",
         "null"
       ]
-    }
-  },
-  "$defs": {
-    "AttributeNameValue": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "value": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "number"
-            },
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            },
-            {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "minItems": 1
-            },
-            {
-              "type": "array",
-              "items": {
-                "type": "boolean"
-              },
-              "minItems": 1
-            },
-            {
-              "type": "array",
-              "items": {
-                "type": "number"
-              },
-              "minItems": 1
-            }
-          ]
-        },
-        "type": {
-          "$ref": "#/$defs/AttributeType"
-        }
-      },
-      "required": [
-        "name",
-        "value"
-      ]
-    },
-    "AttributeType": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "string",
-        "bool",
-        "int",
-        "double",
-        "string_array",
-        "bool_array",
-        "int_array",
-        "double_array"
-      ]
-    },
-    "ExperimentalResourceDetection": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "attributes": {
-          "$ref": "common.json#/$defs/IncludeExclude"
-        },
-        "detectors": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/ExperimentalResourceDetector"
-          }
-        }
-      }
-    },
-    "ExperimentalResourceDetector": {
-      "type": "object",
-      "additionalProperties": {
-        "type": [
-          "object",
-          "null"
-        ]
-      },
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "container": {
-          "$ref": "#/$defs/ExperimentalContainerResourceDetector"
-        },
-        "host": {
-          "$ref": "#/$defs/ExperimentalHostResourceDetector"
-        },
-        "process": {
-          "$ref": "#/$defs/ExperimentalProcessResourceDetector"
-        },
-        "service": {
-          "$ref": "#/$defs/ExperimentalServiceResourceDetector"
-        }
-      }
-    },
-    "ExperimentalContainerResourceDetector": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "ExperimentalHostResourceDetector": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "ExperimentalProcessResourceDetector": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "ExperimentalServiceResourceDetector": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
     }
   }
 }</pre>
@@ -4070,16 +2914,16 @@ Usages:
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
-      "$ref": "common.json#/$defs/OtlpHttpExporter"
+      "$ref": "#/$defs/OtlpHttpExporter"
     },
     "otlp_grpc": {
-      "$ref": "common.json#/$defs/OtlpGrpcExporter"
+      "$ref": "#/$defs/OtlpGrpcExporter"
     },
     "otlp_file/development": {
-      "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
+      "$ref": "#/$defs/ExperimentalOtlpFileExporter"
     },
     "console": {
-      "$ref": "common.json#/$defs/ConsoleExporter"
+      "$ref": "#/$defs/ConsoleExporter"
     },
     "zipkin": {
       "$ref": "#/$defs/ZipkinSpanExporter"
@@ -4476,10 +3320,8 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
-  "$id": "https://opentelemetry.io/otelconfig/tracer_provider.json",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -4502,525 +3344,7 @@ Usages:
   },
   "required": [
     "processors"
-  ],
-  "$defs": {
-    "BatchSpanProcessor": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "schedule_delay": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "export_timeout": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "max_queue_size": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "max_export_batch_size": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "exclusiveMinimum": 0
-        },
-        "exporter": {
-          "$ref": "#/$defs/SpanExporter"
-        }
-      },
-      "required": [
-        "exporter"
-      ]
-    },
-    "Sampler": {
-      "type": "object",
-      "additionalProperties": {
-        "type": [
-          "object",
-          "null"
-        ]
-      },
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "always_off": {
-          "$ref": "#/$defs/AlwaysOffSampler"
-        },
-        "always_on": {
-          "$ref": "#/$defs/AlwaysOnSampler"
-        },
-        "composite/development": {
-          "$ref": "#/$defs/ExperimentalComposableSampler"
-        },
-        "jaeger_remote/development": {
-          "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
-        },
-        "parent_based": {
-          "$ref": "#/$defs/ParentBasedSampler"
-        },
-        "probability/development": {
-          "$ref": "#/$defs/ExperimentalProbabilitySampler"
-        },
-        "trace_id_ratio_based": {
-          "$ref": "#/$defs/TraceIdRatioBasedSampler"
-        }
-      }
-    },
-    "AlwaysOffSampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "AlwaysOnSampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "ExperimentalJaegerRemoteSampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "endpoint": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "interval": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "initial_sampler": {
-          "$ref": "#/$defs/Sampler"
-        }
-      }
-    },
-    "ParentBasedSampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "root": {
-          "$ref": "#/$defs/Sampler"
-        },
-        "remote_parent_sampled": {
-          "$ref": "#/$defs/Sampler"
-        },
-        "remote_parent_not_sampled": {
-          "$ref": "#/$defs/Sampler"
-        },
-        "local_parent_sampled": {
-          "$ref": "#/$defs/Sampler"
-        },
-        "local_parent_not_sampled": {
-          "$ref": "#/$defs/Sampler"
-        }
-      }
-    },
-    "ExperimentalProbabilitySampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "ratio": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "minimum": 0,
-          "maximum": 1
-        }
-      }
-    },
-    "TraceIdRatioBasedSampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "ratio": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "minimum": 0,
-          "maximum": 1
-        }
-      }
-    },
-    "ExperimentalComposableAlwaysOffSampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "ExperimentalComposableAlwaysOnSampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
-    "ExperimentalComposableParentBasedSampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "root": {
-          "$ref": "#/$defs/ExperimentalComposableSampler"
-        },
-        "remote_parent_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler"
-        },
-        "remote_parent_not_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler"
-        },
-        "local_parent_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler"
-        },
-        "local_parent_not_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler"
-        }
-      }
-    },
-    "ExperimentalComposableProbabilitySampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "ratio": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "minimum": 0,
-          "maximum": 1
-        }
-      }
-    },
-    "ExperimentalComposableRuleBasedSampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "rules": {
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
-          }
-        }
-      }
-    },
-    "ExperimentalComposableRuleBasedSamplerRule": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "attribute_values": {
-          "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributeValues"
-        },
-        "attribute_patterns": {
-          "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributePatterns"
-        },
-        "span_kinds": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "common.json#/$defs/SpanKind"
-          }
-        },
-        "is_trace_root": {
-          "type": "boolean"
-        },
-        "sampler": {
-          "$ref": "#/$defs/ExperimentalComposableSampler"
-        }
-      },
-      "required": [
-        "sampler"
-      ]
-    },
-    "ExperimentalComposableRuleBasedSamplerRuleAttributeValues": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "values": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "required": [
-        "key",
-        "values"
-      ]
-    },
-    "ExperimentalComposableRuleBasedSamplerRuleAttributePatterns": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "key": {
-          "type": "string"
-        },
-        "patterns": {
-          "$ref": "common.json#/$defs/IncludeExclude"
-        }
-      },
-      "required": [
-        "key",
-        "patterns"
-      ]
-    },
-    "ExperimentalComposableSampler": {
-      "type": "object",
-      "additionalProperties": {
-        "type": [
-          "object",
-          "null"
-        ]
-      },
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "always_off": {
-          "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
-        },
-        "always_on": {
-          "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
-        },
-        "parent_based": {
-          "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
-        },
-        "probability": {
-          "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
-        },
-        "rule_based": {
-          "$ref": "#/$defs/ExperimentalComposableRuleBasedSampler"
-        }
-      }
-    },
-    "SimpleSpanProcessor": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "exporter": {
-          "$ref": "#/$defs/SpanExporter"
-        }
-      },
-      "required": [
-        "exporter"
-      ]
-    },
-    "SpanExporter": {
-      "type": "object",
-      "additionalProperties": {
-        "type": [
-          "object",
-          "null"
-        ]
-      },
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "otlp_http": {
-          "$ref": "common.json#/$defs/OtlpHttpExporter"
-        },
-        "otlp_grpc": {
-          "$ref": "common.json#/$defs/OtlpGrpcExporter"
-        },
-        "otlp_file/development": {
-          "$ref": "common.json#/$defs/ExperimentalOtlpFileExporter"
-        },
-        "console": {
-          "$ref": "common.json#/$defs/ConsoleExporter"
-        },
-        "zipkin": {
-          "$ref": "#/$defs/ZipkinSpanExporter"
-        }
-      }
-    },
-    "SpanLimits": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "attribute_value_length_limit": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "attribute_count_limit": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "event_count_limit": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "link_count_limit": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "event_attribute_count_limit": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        },
-        "link_attribute_count_limit": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        }
-      }
-    },
-    "SpanProcessor": {
-      "type": "object",
-      "additionalProperties": {
-        "type": [
-          "object",
-          "null"
-        ]
-      },
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "batch": {
-          "$ref": "#/$defs/BatchSpanProcessor"
-        },
-        "simple": {
-          "$ref": "#/$defs/SimpleSpanProcessor"
-        }
-      }
-    },
-    "ZipkinSpanExporter": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "endpoint": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "timeout": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0
-        }
-      }
-    },
-    "ExperimentalTracerConfigurator": {
-      "type": [
-        "object"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "default_config": {
-          "$ref": "#/$defs/ExperimentalTracerConfig"
-        },
-        "tracers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
-          }
-        }
-      }
-    },
-    "ExperimentalTracerMatcherAndConfig": {
-      "type": [
-        "object"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "type": [
-            "string"
-          ]
-        },
-        "config": {
-          "$ref": "#/$defs/ExperimentalTracerConfig"
-        }
-      },
-      "required": [
-        "name",
-        "config"
-      ]
-    },
-    "ExperimentalTracerConfig": {
-      "type": [
-        "object"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "disabled": {
-          "type": [
-            "boolean"
-          ]
-        }
-      }
-    }
-  }
+  ]
 }</pre>
 </details>
 
@@ -5209,7 +3533,7 @@ Usages:
       "exclusiveMinimum": 0
     },
     "attribute_keys": {
-      "$ref": "common.json#/$defs/IncludeExclude"
+      "$ref": "#/$defs/IncludeExclude"
     }
   }
 }</pre>
@@ -5535,7 +3859,7 @@ No usages.
       "type": "array",
       "minItems": 1,
       "items": {
-        "$ref": "common.json#/$defs/SpanKind"
+        "$ref": "#/$defs/SpanKind"
       }
     },
     "is_trace_root": {
@@ -5591,7 +3915,7 @@ Usages:
       "type": "string"
     },
     "patterns": {
-      "$ref": "common.json#/$defs/IncludeExclude"
+      "$ref": "#/$defs/IncludeExclude"
     }
   },
   "required": [
@@ -6031,10 +4355,8 @@ Usages:
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
+[JSON Schema Source File](./schema/instrumentation.yaml)
 <pre>{
-  "$id": "https://opentelemetry.io/otelconfig/instrumentation.json",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -6073,106 +4395,6 @@ Usages:
     },
     "swift": {
       "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
-    }
-  },
-  "$defs": {
-    "ExperimentalGeneralInstrumentation": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "peer": {
-          "$ref": "#/$defs/ExperimentalPeerInstrumentation"
-        },
-        "http": {
-          "$ref": "#/$defs/ExperimentalHttpInstrumentation"
-        }
-      }
-    },
-    "ExperimentalPeerInstrumentation": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "service_mapping": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/ExperimentalPeerServiceMapping"
-          }
-        }
-      }
-    },
-    "ExperimentalPeerServiceMapping": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "peer": {
-          "type": "string"
-        },
-        "service": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "peer",
-        "service"
-      ]
-    },
-    "ExperimentalHttpClientInstrumentation": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "request_captured_headers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          }
-        },
-        "response_captured_headers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ExperimentalHttpServerInstrumentation": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "request_captured_headers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          }
-        },
-        "response_captured_headers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "ExperimentalHttpInstrumentation": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "client": {
-          "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
-        },
-        "server": {
-          "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
-        }
-      }
-    },
-    "ExperimentalLanguageSpecificInstrumentation": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "object"
-      }
     }
   }
 }</pre>
@@ -6933,7 +5155,7 @@ Usages:
       ]
     },
     "with_resource_constant_labels": {
-      "$ref": "common.json#/$defs/IncludeExclude"
+      "$ref": "#/$defs/IncludeExclude"
     },
     "translation_strategy": {
       "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy"
@@ -7027,7 +5249,7 @@ Usages:
   "additionalProperties": false,
   "properties": {
     "attributes": {
-      "$ref": "common.json#/$defs/IncludeExclude"
+      "$ref": "#/$defs/IncludeExclude"
     },
     "detectors": {
       "type": "array",
@@ -7443,7 +5665,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: supported<br>* `timeout`: supported<br> |
 | [`Propagator`](#propagator) | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
@@ -7556,7 +5778,7 @@ Latest supported file format: `0.3.0`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `compression`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `interval`: unknown<br>* `producers`: unknown<br>* `timeout`: unknown<br> |
 | [`Propagator`](#propagator) | unknown |  | * `composite`: unknown<br>* `composite_list`: unknown<br> |
@@ -7669,7 +5891,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `compression`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: not_implemented<br>* `timeout`: supported<br> |
 | [`Propagator`](#propagator) | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
@@ -7782,7 +6004,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `compression`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
+| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
 | [`PeriodicMetricReader`](#periodicmetricreader) | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `interval`: unknown<br>* `producers`: unknown<br>* `timeout`: unknown<br> |
 | [`Propagator`](#propagator) | unknown |  | * `composite`: unknown<br>* `composite_list`: unknown<br> |

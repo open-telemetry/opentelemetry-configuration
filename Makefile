@@ -1,20 +1,27 @@
 # Copyright The OpenTelemetry Authors
 # SPDX-License-Identifier: Apache-2.0
 
-include validator/Makefile
-
 EXAMPLE_FILES := $(shell find . -path './examples/*.yaml' -exec basename {} \; | sort)
 $(shell mkdir -p out)
 
 .PHONY: all
 all: install-tools compile-schema validate-examples all-meta-schema
 
+include validator/Makefile
+
+.PHONY: compile-schema
+compile-schema:
+	@if ! npm ls minimatch yaml; then npm install; fi
+	npm run-script compile-schema || exit 1;
+	@if ! npm ls ajv-cli; then npm install; fi
+	npx --no ajv-cli compile --spec=draft2020 --allow-matching-properties -s ./opentelemetry_configuration.json;
+
 .PHONY: validate-examples
 validate-examples:
 	@if ! npm ls ajv-cli; then npm install; fi
 	@for f in $(EXAMPLE_FILES); do \
 	    npx envsub ./examples/$$f ./out/$$f || exit 1; \
-		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./schema_out/opentelemetry_configuration.json -r "./schema_out/!(opentelemetry_configuration.json)" -d ./out/$$f \
+		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./opentelemetry_configuration.json -d ./out/$$f \
 		    || exit 1; \
 	done
 
@@ -25,16 +32,16 @@ update-file-format:
 	    sed -e 's/file_format:.*/file_format: \"$(FILE_FORMAT)\"/g' -i '' ./examples/$$f; \
 	done
 
-.PHONY: fix-meta-schema
-fix-meta-schema: compile-schema
-	npm run-script fix-meta-schema || exit 1; \
+.PHONY: fix-language-implementations
+fix-language-implementations: compile-schema
+	npm run-script fix-language-implementations || exit 1; \
 
 .PHONY: generate-markdown
 generate-markdown:
 	npm run-script generate-markdown || exit 1; \
 
 .PHONY: all-meta-schema
-all-meta-schema: fix-meta-schema generate-markdown
+all-meta-schema: fix-language-implementations generate-markdown
 
 .PHONY: install-tools
 install-tools:
