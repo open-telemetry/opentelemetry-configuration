@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: check out code
-      uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
 
     - name: install dependencies
       run: npm install
@@ -30,9 +30,8 @@ jobs:
 
     - name: check for diff
       run: |
-        # need to "git add" to detect any changes to descriptions which are not checked in
+        # need to "git add" to detect any changes which are not checked in
         # select files from locations managed by meta schema
-        git add examples**
         git add schema/meta_schema_*
         git add schema-docs.md
         if git diff --cached --quiet

@@ -1,0 +1,109 @@
+type: object
+additionalProperties: false
+properties:
+  attributes:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/AttributeNameValue"
+  detection/development:
+    $ref: "#/$defs/ExperimentalResourceDetection"
+  schema_url:
+    type:
+      - string
+      - "null"
+  attributes_list:
+    type:
+      - string
+      - "null"
+$defs:
+  AttributeNameValue:
+    type: object
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      value:
+        oneOf:
+          - type: string
+          - type: number
+          - type: boolean
+          - type: "null"
+          - type: array
+            items:
+              type: string
+            minItems: 1
+          - type: array
+            items:
+              type: boolean
+            minItems: 1
+          - type: array
+            items:
+              type: number
+            minItems: 1
+      type:
+        $ref: "#/$defs/AttributeType"
+    required:
+      - name
+      - value
+  AttributeType:
+    type:
+      - string
+      - "null"
+    enum:
+      - string
+      - bool
+      - int
+      - double
+      - string_array
+      - bool_array
+      - int_array
+      - double_array
+  ExperimentalResourceDetection:
+    type: object
+    additionalProperties: false
+    properties:
+      attributes:
+        $ref: common.yaml#/$defs/IncludeExclude
+      detectors:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/ExperimentalResourceDetector"
+  ExperimentalResourceDetector:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      container:
+        $ref: "#/$defs/ExperimentalContainerResourceDetector"
+      host:
+        $ref: "#/$defs/ExperimentalHostResourceDetector"
+      process:
+        $ref: "#/$defs/ExperimentalProcessResourceDetector"
+      service:
+        $ref: "#/$defs/ExperimentalServiceResourceDetector"
+  ExperimentalContainerResourceDetector:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExperimentalHostResourceDetector:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExperimentalProcessResourceDetector:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExperimentalServiceResourceDetector:
+    type:
+      - object
+      - "null"
+    additionalProperties: false

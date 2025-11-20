@@ -6,8 +6,8 @@ import {
     metaSchemaLanguageStatusPath,
     metaSchemaTypesPath,
     metaSchemaLanguageStatusFileName,
-    schemaDirPath,
-    metaSchemaLanguageFilePrefix
+    schemaSourceDirPath,
+    metaSchemaLanguageFilePrefix, isExperimentalProperty, isExperimentalType
 } from "./util.js";
 
 export const KNOWN_LANGUAGES = [
@@ -21,7 +21,7 @@ const IMPLEMENTATION_STATUS_UNKNOWN = 'unknown';
 const IMPLEMENTATION_STATUSES = ['supported', IMPLEMENTATION_STATUS_UNKNOWN, 'not_implemented', 'ignored', 'not_applicable']
 
 export function writeMetaSchema(metaSchema) {
-    fs.writeFileSync(metaSchemaTypesPath, yaml.stringify(metaSchema.types.map(type => type.toJson()), {lineWidth: 0}));
+    fs.writeFileSync(metaSchemaTypesPath, yaml.stringify(metaSchema.toJson().types, {lineWidth: 0}));
 
     metaSchema.languageImplementations.forEach(languageImplementation => {
         fs.writeFileSync(metaSchemaLanguageStatusPath(languageImplementation.language), yaml.stringify(languageImplementation.toJson(), {lineWidth: 0}));
@@ -83,12 +83,13 @@ export class MetaSchema {
 
     toJson() {
         let sortedTypes = this.types.map(type => type.toJson());
-        sortedTypes.sort((a, b) => a.type.localeCompare(b.type));
+        // Types in lexicographical order, with non-experimental first
+        sortedTypes.sort((a, b) => {
+            const differentMaturities = isExperimentalType(a.type) - isExperimentalType(b.type);
+            return differentMaturities === 0 ? a.type.localeCompare(b.type) : +differentMaturities;
+        });
 
-        let sortedLanguageImplementations = this.languageImplementations.map(languageImplementation => languageImplementation.toJson());
-        sortedLanguageImplementations.sort((a, b) => a.language.localeCompare(b.language));
-
-        return {types: sortedTypes, languageImplementations: sortedLanguageImplementations};
+        return {types: sortedTypes, languageImplementations: this.languageImplementations.map(languageImplementation => languageImplementation.toJson())};
     }
 }
 
@@ -116,7 +117,11 @@ export class MetaSchemaType {
         }
         if (this.properties !== null) {
             const properties = this.properties.map(property => property.toJson());
-            properties.sort((a, b) => a.property.localeCompare(b.property));
+            // Properties in lexicographical order, with non-experimental first
+            properties.sort((a, b) => {
+                const differentMaturities = isExperimentalProperty(a.property) - isExperimentalProperty(b.property);
+                return differentMaturities === 0 ? a.property.localeCompare(b.property) : +differentMaturities;
+            });
             json.properties = properties;
         }
 
@@ -200,8 +205,12 @@ export class LanguageImplementation {
     }
 
     toJson() {
+        // Types in lexicographical order, with non-experimental first
         const typeSupportStatuses = this.typeSupportStatuses.map(typeSupportStatus => typeSupportStatus.toJson());
-        typeSupportStatuses.sort((a, b) => a.type.localeCompare(b.type));
+        typeSupportStatuses.sort((a, b) => {
+            const differentMaturities = isExperimentalType(a.type) - isExperimentalType(b.type);
+            return differentMaturities === 0 ? a.type.localeCompare(b.type) : +differentMaturities;
+        });
 
         return {
             latestSupportedFileFormat: this.latestSupportedFileFormat,
@@ -503,12 +512,12 @@ function reconcileLanguageImplementations(metaSchema, jsonSchemaTypesByType, mes
     });
 
     // Find and remove any language implementations which are extra
-    fs.readdirSync(schemaDirPath)
+    fs.readdirSync(schemaSourceDirPath)
         .filter(file => file.startsWith(metaSchemaLanguageFilePrefix))
         .filter(file => !KNOWN_LANGUAGES.some(language => metaSchemaLanguageStatusFileName(language) === file))
         .forEach(file => {
             messages.push(`LanguageImplementation file ${file} found for unrecognized language. Removing.`);
-            fs.unlinkSync(schemaDirPath + file);
+            fs.unlinkSync(schemaSourceDirPath + file);
         });
 
     // Find and add any language implementations not in meta schema

@@ -256,7 +256,7 @@ In order to promote stylistic consistency and allow for reuse of concepts, `obje
 
 [SDK extension plugin interfaces](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#sdk-extension-components) should be modeled consistently for improved user experience and to facilitate implementations supporting custom implementations via the [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#componentprovider) mechanism.
 
-The [SpanExporter](schema/tracer_provider.json) schema is typical:
+The [SpanExporter](schema-docs.md#spanexporter) schema is typical:
 
 ```
 ...

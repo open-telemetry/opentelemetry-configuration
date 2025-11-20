@@ -8,6 +8,8 @@ Configuration
 schema](https://github.com/open-telemetry/opentelemetry-configuration/) and
 optionally outputting to a yaml or json file.
 
+> NOTE: All make commands are run from the root of the repository.
+
 ### Build
 
 Requirements:

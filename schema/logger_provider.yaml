@@ -1,0 +1,164 @@
+type: object
+additionalProperties: false
+properties:
+  processors:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/LogRecordProcessor"
+  limits:
+    $ref: "#/$defs/LogRecordLimits"
+  logger_configurator/development:
+    $ref: "#/$defs/ExperimentalLoggerConfigurator"
+required:
+  - processors
+$defs:
+  SimpleLogRecordProcessor:
+    type: object
+    additionalProperties: false
+    properties:
+      exporter:
+        $ref: "#/$defs/LogRecordExporter"
+    required:
+      - exporter
+  BatchLogRecordProcessor:
+    type: object
+    additionalProperties: false
+    properties:
+      schedule_delay:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      export_timeout:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      max_queue_size:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      max_export_batch_size:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+      exporter:
+        $ref: "#/$defs/LogRecordExporter"
+    required:
+      - exporter
+  LogRecordExporter:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      otlp_http:
+        $ref: common.yaml#/$defs/OtlpHttpExporter
+      otlp_grpc:
+        $ref: common.yaml#/$defs/OtlpGrpcExporter
+      otlp_file/development:
+        $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
+      console:
+        $ref: common.yaml#/$defs/ConsoleExporter
+  LogRecordLimits:
+    type: object
+    additionalProperties: false
+    properties:
+      attribute_value_length_limit:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+      attribute_count_limit:
+        type:
+          - integer
+          - "null"
+        minimum: 0
+  LogRecordProcessor:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      batch:
+        $ref: "#/$defs/BatchLogRecordProcessor"
+      simple:
+        $ref: "#/$defs/SimpleLogRecordProcessor"
+  ExperimentalLoggerConfigurator:
+    type:
+      - object
+    additionalProperties: false
+    properties:
+      default_config:
+        $ref: "#/$defs/ExperimentalLoggerConfig"
+      loggers:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/ExperimentalLoggerMatcherAndConfig"
+  ExperimentalLoggerMatcherAndConfig:
+    type:
+      - object
+    additionalProperties: false
+    properties:
+      name:
+        type:
+          - string
+      config:
+        $ref: "#/$defs/ExperimentalLoggerConfig"
+    required:
+      - name
+      - config
+  ExperimentalLoggerConfig:
+    type:
+      - object
+    additionalProperties: false
+    properties:
+      disabled:
+        type:
+          - boolean
+          - "null"
+      minimum_severity:
+        $ref: "#/$defs/ExperimentalSeverityNumber"
+      trace_based:
+        type:
+          - boolean
+          - "null"
+  ExperimentalSeverityNumber:
+    type:
+      - string
+      - "null"
+    enum:
+      - TRACE
+      - TRACE2
+      - TRACE3
+      - TRACE4
+      - DEBUG
+      - DEBUG2
+      - DEBUG3
+      - DEBUG4
+      - INFO
+      - INFO2
+      - INFO3
+      - INFO4
+      - WARN
+      - WARN2
+      - WARN3
+      - WARN4
+      - ERROR
+      - ERROR2
+      - ERROR3
+      - ERROR4
+      - FATAL
+      - FATAL2
+      - FATAL3
+      - FATAL4
