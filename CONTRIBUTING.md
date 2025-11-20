@@ -344,7 +344,7 @@ There are a variety of build tasks which intersect with the meta schema:
 
 ### `meta_schema_types.yaml`
 
-[meta_schema_types.yaml](schema/meta_schema_types.yaml) contains property descriptions, semantics, enum value descriptions, and SDK extension plugin information.
+`meta_schema_types.yaml` (TODO: update docs after this was merged into source schema) contains property descriptions, semantics, enum value descriptions, and SDK extension plugin information.
 
 Content looks like:
 
