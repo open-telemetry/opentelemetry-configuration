@@ -473,35 +473,6 @@
       ],
       "additionalProperties": false
     },
-    "ExperimentalComposableParentBasedSampler": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "root": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with no parent."
-        },
-        "remote_parent_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a remote parent that is sampled."
-        },
-        "remote_parent_not_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a remote parent that is not sampled."
-        },
-        "local_parent_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a local parent that is sampled."
-        },
-        "local_parent_not_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a local parent that is not sampled."
-        }
-      }
-    },
     "ExperimentalComposableProbabilitySampler": {
       "type": [
         "object",
@@ -540,8 +511,8 @@
           "description": "Configure sampler to be always_on."
         },
         "parent_based": {
-          "$ref": "#/$defs/ExperimentalComposableParentBasedSampler",
-          "description": "Configure sampler to be parent_based."
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configure sampler to be parent_based, delegating to the configured sampler when there is no parent.\n"
         },
         "probability": {
           "$ref": "#/$defs/ExperimentalComposableProbabilitySampler",
