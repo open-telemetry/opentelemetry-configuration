@@ -227,10 +227,10 @@ $defs:
       always_on:
         $ref: "#/$defs/ExperimentalComposableAlwaysOnSampler"
         description: Configure sampler to be always_on.
-      parent_based:
+      parent_threshold:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: |
-          Configure sampler to be parent_based, delegating to the configured sampler when there is no parent.
+          Configure sampler to be parent_threshold, delegating to the configured sampler when there is no parent.
       probability:
         $ref: "#/$defs/ExperimentalComposableProbabilitySampler"
         description: Configure sampler to be probability.
