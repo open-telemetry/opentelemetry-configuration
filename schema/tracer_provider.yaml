@@ -336,12 +336,30 @@ $defs:
       key:
         type: string
         description: The attribute key to match against.
-      patterns:
-        "$ref": common.yaml#/$defs/IncludeExclude
-        description: The include and exclude patterns to match. If a pattern satisfies any include and doesn't satisfy any exclude, it matches.
+      included:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: |
+          Configure list of value patterns to include.
+          Values are evaluated to match as follows:
+           * If the value exactly matches.
+           * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+          If omitted, all values are included.
+      excluded:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: |
+          Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).
+          Values are evaluated to match as follows:
+           * If the value exactly matches.
+           * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+          If omitted, .included attributes are included.
     required:
       - key
-      - patterns
   ExperimentalComposableSampler:
     type: object
     additionalProperties:

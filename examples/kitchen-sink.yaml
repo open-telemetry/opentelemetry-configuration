@@ -306,11 +306,10 @@ tracer_provider:
               # Configure a sampling rule matching http.path attribute patterns.
               - attribute_patterns:
                   key: http.path
-                  patterns:
-                    included:
-                      - /internal/*
-                    excluded:
-                      - /internal/special/*
+                  included:
+                    - /internal/*
+                  excluded:
+                    - /internal/special/*
                 # Configure sampler when matched.
                 sampler:
                   # Configure sampler to be always_on if matched.

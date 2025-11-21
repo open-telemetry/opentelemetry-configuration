@@ -584,14 +584,25 @@
           "type": "string",
           "description": "The attribute key to match against."
         },
-        "patterns": {
-          "$ref": "#/$defs/IncludeExclude",
-          "description": "The include and exclude patterns to match. If a pattern satisfies any include and doesn't satisfy any exclude, it matches."
+        "included": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Configure list of value patterns to include.\nValues are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, all values are included.\n"
+        },
+        "excluded": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\nValues are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, .included attributes are included.\n"
         }
       },
       "required": [
-        "key",
-        "patterns"
+        "key"
       ]
     },
     "ExperimentalComposableRuleBasedSamplerRuleAttributeValues": {
