@@ -142,6 +142,7 @@ export class SourceSchemaProperty {
     types;
     isSeq;
     isRequired;
+    isNullable;
     schema;
 
     constructor(property, types, isSeq, isRequired, schema) {
@@ -149,7 +150,27 @@ export class SourceSchemaProperty {
         this.types = types;
         this.isSeq = isSeq;
         this.isRequired = isRequired;
+        this.isNullable = types.includes('null');
         this.schema = schema;
+    }
+
+    formatDefaultAndNullBehavior() {
+        const defaultBehavior = this.schema['defaultBehavior'];
+        const nullBehavior = this.schema['nullBehavior'];
+
+        if (this.isRequired) {
+            if (!this.isNullable) {
+                return 'Property is required and must be non-null.';
+            }
+            return `Property must be present, but if null ${nullBehavior}.`;
+        }
+        if (!nullBehavior) {
+            if (this.isNullable) {
+                return `If omitted or null, ${defaultBehavior}.`;
+            }
+            return `If omitted, ${defaultBehavior}.`;
+        }
+        return `If omitted, ${defaultBehavior}. If present and null, ${nullBehavior}.`;
     }
 }
 

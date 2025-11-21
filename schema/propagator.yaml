@@ -10,6 +10,7 @@ properties:
       Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.
       Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. 
       If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
+    defaultBehavior: TODO
   composite_list:
     type:
       - string
@@ -19,6 +20,7 @@ properties:
       The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
       Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. 
       If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.
+    defaultBehavior: TODO
 $defs:
   TextMapPropagator:
     type: object
@@ -32,21 +34,27 @@ $defs:
       tracecontext:
         $ref: "#/$defs/TraceContextPropagator"
         description: Include the w3c trace context propagator.
+        defaultBehavior: TODO
       baggage:
         $ref: "#/$defs/BaggagePropagator"
         description: Include the w3c baggage propagator.
+        defaultBehavior: TODO
       b3:
         $ref: "#/$defs/B3Propagator"
         description: Include the zipkin b3 propagator.
+        defaultBehavior: TODO
       b3multi:
         $ref: "#/$defs/B3MultiPropagator"
         description: Include the zipkin b3 multi propagator.
+        defaultBehavior: TODO
       jaeger:
         $ref: "#/$defs/JaegerPropagator"
         description: Include the jaeger propagator.
+        defaultBehavior: TODO
       ottrace:
         $ref: "#/$defs/OpenTracingPropagator"
         description: Include the opentracing propagator.
+        defaultBehavior: TODO
     isSdkExtensionPlugin: true
   TraceContextPropagator:
     type:

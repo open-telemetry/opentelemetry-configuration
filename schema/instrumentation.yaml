@@ -6,59 +6,71 @@ properties:
     description: |
       Configure general SemConv options that may apply to multiple languages and instrumentations.
       Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
+    defaultBehavior: TODO
   cpp:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: Configure C++ language-specific instrumentation libraries.
+    defaultBehavior: TODO
   dotnet:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure .NET language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    defaultBehavior: TODO
   erlang:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Erlang language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    defaultBehavior: TODO
   go:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Go language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    defaultBehavior: TODO
   java:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Java language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    defaultBehavior: TODO
   js:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure JavaScript language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    defaultBehavior: TODO
   php:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure PHP language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    defaultBehavior: TODO
   python:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Python language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    defaultBehavior: TODO
   ruby:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Ruby language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    defaultBehavior: TODO
   rust:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Rust language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    defaultBehavior: TODO
   swift:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Swift language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
+    defaultBehavior: TODO
 $defs:
   ExperimentalGeneralInstrumentation:
     type: object
@@ -69,11 +81,13 @@ $defs:
         description: |
           Configure instrumentations following the peer semantic conventions.
           See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
+        defaultBehavior: TODO
       http:
         $ref: "#/$defs/ExperimentalHttpInstrumentation"
         description: |
           Configure instrumentations following the http semantic conventions.
           See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
+        defaultBehavior: TODO
   ExperimentalPeerInstrumentation:
     type: object
     additionalProperties: false
@@ -86,6 +100,7 @@ $defs:
         description: |
           Configure the service mapping for instrumentations following peer.service semantic conventions.
           See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
+        defaultBehavior: TODO
   ExperimentalPeerServiceMapping:
     type: object
     additionalProperties: false
@@ -112,12 +127,14 @@ $defs:
           type: string
         description: |
           Configure headers to capture for outbound http requests.
+        defaultBehavior: TODO
       response_captured_headers:
         type: array
         items:
           type: string
         description: |
           Configure headers to capture for inbound http responses.
+        defaultBehavior: TODO
   ExperimentalHttpServerInstrumentation:
     type: object
     additionalProperties: false
@@ -129,6 +146,7 @@ $defs:
           type: string
         description: |
           Configure headers to capture for inbound http requests.
+        defaultBehavior: TODO
       response_captured_headers:
         type: array
         minItems: 1
@@ -136,6 +154,7 @@ $defs:
           type: string
         description: |
           Configure headers to capture for outbound http responses.
+        defaultBehavior: TODO
   ExperimentalHttpInstrumentation:
     type: object
     additionalProperties: false
@@ -143,9 +162,11 @@ $defs:
       client:
         $ref: "#/$defs/ExperimentalHttpClientInstrumentation"
         description: Configure instrumentations following the http client semantic conventions.
+        defaultBehavior: TODO
       server:
         $ref: "#/$defs/ExperimentalHttpServerInstrumentation"
         description: Configure instrumentations following the http server semantic conventions.
+        defaultBehavior: TODO
   ExperimentalLanguageSpecificInstrumentation:
     type: object
     additionalProperties:
