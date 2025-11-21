@@ -241,19 +241,3 @@ $defs:
           Configure client transport security for the exporter's connection. 
           Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
           If omitted or null, false is used.
-  SpanKind:
-    type:
-      - string
-      - "null"
-    enum:
-      - INTERNAL
-      - SERVER
-      - CLIENT
-      - PRODUCER
-      - CONSUMER
-    enumDescriptions:
-      INTERNAL: INTERNAL, an internal span.
-      SERVER: SERVER, a server span.
-      CLIENT: CLIENT, a client span.
-      PRODUCER: PRODUCER, a producer span.
-      CONSUMER: CONSUMER, a consumer span.

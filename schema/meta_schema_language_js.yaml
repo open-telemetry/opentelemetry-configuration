@@ -168,6 +168,9 @@ typeSupportStatuses:
   - type: SpanLimits
     status: unknown
     propertyOverrides: []
+  - type: SpanParent
+    status: unknown
+    enumOverrides: []
   - type: SpanProcessor
     status: unknown
     propertyOverrides: []
