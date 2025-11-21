@@ -162,9 +162,15 @@ typeSupportStatuses:
   - type: SpanExporter
     status: unknown
     propertyOverrides: []
+  - type: SpanKind
+    status: unknown
+    enumOverrides: []
   - type: SpanLimits
     status: unknown
     propertyOverrides: []
+  - type: SpanParent
+    status: unknown
+    enumOverrides: []
   - type: SpanProcessor
     status: unknown
     propertyOverrides: []
@@ -205,6 +211,18 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableProbabilitySampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRule
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableSampler

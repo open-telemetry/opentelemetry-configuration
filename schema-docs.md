@@ -2931,6 +2931,55 @@ Usages:
 }</pre>
 </details>
 
+## SpanKind <a id="spankind"></a>
+
+This is a enum type.
+
+| Value | Description |
+|---|---|
+| `CLIENT` | CLIENT, a client span. |
+| `CONSUMER` | CONSUMER, a consumer span. |
+| `INTERNAL` | INTERNAL, an internal span. |
+| `PRODUCER` | PRODUCER, a producer span. |
+| `SERVER` | SERVER, a server span. |
+
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `CLIENT` | unknown | unknown | unknown | unknown |
+| `CONSUMER` | unknown | unknown | unknown | unknown |
+| `INTERNAL` | unknown | unknown | unknown | unknown |
+| `PRODUCER` | unknown | unknown | unknown | unknown |
+| `SERVER` | unknown | unknown | unknown | unknown |
+</details>
+
+No constraints.
+
+Usages:
+
+* [`ExperimentalComposableRuleBasedSamplerRule.span_kinds`](#experimentalcomposablerulebasedsamplerrule)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": [
+    "string",
+    "null"
+  ],
+  "enum": [
+    "INTERNAL",
+    "SERVER",
+    "CLIENT",
+    "PRODUCER",
+    "CONSUMER"
+  ]
+}</pre>
+</details>
+
 ## SpanLimits <a id="spanlimits"></a>
 
 | Property | Type | Required? | Constraints | Description |
@@ -3014,6 +3063,55 @@ Usages:
       "minimum": 0
     }
   }
+}</pre>
+</details>
+
+## SpanParent <a id="spanparent"></a>
+
+This is a enum type.
+
+| Value | Description |
+|---|---|
+| `LOCAL_NOT_SAMPLED` | LOCAL_NOT_SAMPLED, a local parent that is not sampled. |
+| `LOCAL_SAMPLED` | LOCAL_SAMPLED, a local parent that is sampled. |
+| `NONE` | NONE, no parent, i.e., the trace root. |
+| `REMOTE_NOT_SAMPLED` | REMOTE_NOT_SAMPLED, a remote parent that is not sampled. |
+| `REMOTE_SAMPLED` | REMOTE_SAMPLED, a remote parent that is sampled. |
+
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `LOCAL_NOT_SAMPLED` | unknown | unknown | unknown | unknown |
+| `LOCAL_SAMPLED` | unknown | unknown | unknown | unknown |
+| `NONE` | unknown | unknown | unknown | unknown |
+| `REMOTE_NOT_SAMPLED` | unknown | unknown | unknown | unknown |
+| `REMOTE_SAMPLED` | unknown | unknown | unknown | unknown |
+</details>
+
+No constraints.
+
+Usages:
+
+* [`ExperimentalComposableRuleBasedSamplerRule.parent`](#experimentalcomposablerulebasedsamplerrule)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": [
+    "string",
+    "null"
+  ],
+  "enum": [
+    "NONE",
+    "REMOTE_NOT_SAMPLED",
+    "REMOTE_SAMPLED",
+    "LOCAL_NOT_SAMPLED",
+    "LOCAL_SAMPLED"
+  ]
 }</pre>
 </details>
 
@@ -3710,6 +3808,241 @@ Usages:
 }</pre>
 </details>
 
+## ExperimentalComposableRuleBasedSampler <a id="experimentalcomposablerulebasedsampler"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `rules` | one of:<br>* `array`<br>* `null`<br> | `false` | No constraints. | The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match. <br>If no conditions are specified, the rule matches all spans that reach it. If no rules match, the span is not sampled.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `rules` | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalComposableSampler.rule_based`](#experimentalcomposablesampler)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "rules": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
+      }
+    }
+  }
+}</pre>
+</details>
+
+## ExperimentalComposableRuleBasedSamplerRule <a id="experimentalcomposablerulebasedsamplerrule"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `attribute_patterns` | [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | `false` | No constraints. | Patterns to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a pattern of "4*" would match any http.response.status_code in 400-499. For array attributes, if any<br>item matches, it is considered a match.<br> |
+| `attribute_values` | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | `false` | No constraints. | Values to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a value of "404" would match the http.response.status_code 404. For array attributes, if any<br>item matches, it is considered a match.<br> |
+| `parent` | `array` of [`SpanParent`](#spanparent) | `false` | * `minItems`: `1`<br> | The parent span types to match. |
+| `sampler` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `true` | No constraints. | The sampler to use for matching spans. |
+| `span_kinds` | `array` of [`SpanKind`](#spankind) | `false` | * `minItems`: `1`<br> | The span kinds to match. If the span's kind matches any of these, it matches. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `attribute_patterns` | unknown | unknown | unknown | unknown |
+| `attribute_values` | unknown | unknown | unknown | unknown |
+| `parent` | unknown | unknown | unknown | unknown |
+| `sampler` | unknown | unknown | unknown | unknown |
+| `span_kinds` | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+* `required`: `["sampler"]`
+
+No usages.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "attribute_values": {
+      "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributeValues"
+    },
+    "attribute_patterns": {
+      "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributePatterns"
+    },
+    "span_kinds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/SpanKind"
+      }
+    },
+    "parent": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/SpanParent"
+      }
+    },
+    "sampler": {
+      "$ref": "#/$defs/ExperimentalComposableSampler"
+    }
+  },
+  "required": [
+    "sampler"
+  ]
+}</pre>
+</details>
+
+## ExperimentalComposableRuleBasedSamplerRuleAttributePatterns <a id="experimentalcomposablerulebasedsamplerruleattributepatterns"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `excluded` | `array` of `string` | `false` | * `minItems`: `1`<br> | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> |
+| `included` | `array` of `string` | `false` | * `minItems`: `1`<br> | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all values are included.<br> |
+| `key` | `string` | `true` | No constraints. | The attribute key to match against. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `excluded` | unknown | unknown | unknown | unknown |
+| `included` | unknown | unknown | unknown | unknown |
+| `key` | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+* `required`: `["key"]`
+
+Usages:
+
+* [`ExperimentalComposableRuleBasedSamplerRule.attribute_patterns`](#experimentalcomposablerulebasedsamplerrule)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "included": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "excluded": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "key"
+  ]
+}</pre>
+</details>
+
+## ExperimentalComposableRuleBasedSamplerRuleAttributeValues <a id="experimentalcomposablerulebasedsamplerruleattributevalues"></a>
+
+> [!WARNING]
+> This type is [experimental](README.md#experimental-features).
+
+| Property | Type | Required? | Constraints | Description |
+|---|---|---|---|---|
+| `key` | `string` | `true` | No constraints. | The attribute key to match against. |
+| `values` | `array` of `string` | `true` | * `minItems`: `1`<br> | The attribute values to match against. If the attribute's value matches any of these, it matches. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `key` | unknown | unknown | unknown | unknown |
+| `values` | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+* `required`: `["key","values"]`
+
+Usages:
+
+* [`ExperimentalComposableRuleBasedSamplerRule.attribute_values`](#experimentalcomposablerulebasedsamplerrule)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "values": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "key",
+    "values"
+  ]
+}</pre>
+</details>
+
 ## ExperimentalComposableSampler <a id="experimentalcomposablesampler"></a>
 
 > [!WARNING]
@@ -3721,6 +4054,7 @@ Usages:
 | `always_on` | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | `false` | No constraints. | Configure sampler to be always_on. |
 | `parent_based` | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | `false` | No constraints. | Configure sampler to be parent_based. |
 | `probability` | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | `false` | No constraints. | Configure sampler to be probability. |
+| `rule_based` | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | `false` | No constraints. | Configure sampler to be rule_based. |
 
 <details>
 <summary>Language support status</summary>
@@ -3731,6 +4065,7 @@ Usages:
 | `always_on` | unknown | unknown | unknown | unknown |
 | `parent_based` | unknown | unknown | unknown | unknown |
 | `probability` | unknown | unknown | unknown | unknown |
+| `rule_based` | unknown | unknown | unknown | unknown |
 </details>
 
 Constraints: 
@@ -3747,6 +4082,7 @@ Usages:
 * [`ExperimentalComposableParentBasedSampler.remote_parent_not_sampled`](#experimentalcomposableparentbasedsampler)
 * [`ExperimentalComposableParentBasedSampler.local_parent_sampled`](#experimentalcomposableparentbasedsampler)
 * [`ExperimentalComposableParentBasedSampler.local_parent_not_sampled`](#experimentalcomposableparentbasedsampler)
+* [`ExperimentalComposableRuleBasedSamplerRule.sampler`](#experimentalcomposablerulebasedsamplerrule)
 
 <details>
 <summary>JSON Schema</summary>
@@ -3774,6 +4110,9 @@ Usages:
     },
     "probability": {
       "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
+    },
+    "rule_based": {
+      "$ref": "#/$defs/ExperimentalComposableRuleBasedSampler"
     }
   }
 }</pre>
@@ -5402,7 +5741,9 @@ Latest supported file format: `1.0.0-rc.2`
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `zipkin`: supported<br>* `otlp_file/development`: supported<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `CLIENT`: unknown<br>* `CONSUMER`: unknown<br>* `INTERNAL`: unknown<br>* `PRODUCER`: unknown<br>* `SERVER`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
+| [`SpanParent`](#spanparent) | unknown |  | * `LOCAL_NOT_SAMPLED`: unknown<br>* `LOCAL_SAMPLED`: unknown<br>* `NONE`: unknown<br>* `REMOTE_NOT_SAMPLED`: unknown<br>* `REMOTE_SAMPLED`: unknown<br> |
 | [`SpanProcessor`](#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](#sumaggregation) | supported |  |  |
 | [`TextMapPropagator`](#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `jaeger`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
@@ -5417,7 +5758,11 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
 | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | not_implemented |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | not_applicable |  | * `http`: not_applicable<br>* `peer`: not_applicable<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | not_implemented |  |  |
@@ -5510,7 +5855,9 @@ Latest supported file format: `0.3.0`
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `zipkin`: unknown<br>* `otlp_file/development`: unknown<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `CLIENT`: unknown<br>* `CONSUMER`: unknown<br>* `INTERNAL`: unknown<br>* `PRODUCER`: unknown<br>* `SERVER`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
+| [`SpanParent`](#spanparent) | unknown |  | * `LOCAL_NOT_SAMPLED`: unknown<br>* `LOCAL_SAMPLED`: unknown<br>* `NONE`: unknown<br>* `REMOTE_NOT_SAMPLED`: unknown<br>* `REMOTE_SAMPLED`: unknown<br> |
 | [`SpanProcessor`](#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
 | [`SumAggregation`](#sumaggregation) | unknown |  |  |
 | [`TextMapPropagator`](#textmappropagator) | unknown |  | * `b3`: unknown<br>* `b3multi`: unknown<br>* `baggage`: unknown<br>* `jaeger`: unknown<br>* `ottrace`: unknown<br>* `tracecontext`: unknown<br> |
@@ -5525,7 +5872,11 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
 | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
@@ -5618,7 +5969,9 @@ Latest supported file format: `1.0.0-rc.1`
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `zipkin`: supported<br>* `otlp_file/development`: supported<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `CLIENT`: unknown<br>* `CONSUMER`: unknown<br>* `INTERNAL`: unknown<br>* `PRODUCER`: unknown<br>* `SERVER`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
+| [`SpanParent`](#spanparent) | unknown |  | * `LOCAL_NOT_SAMPLED`: unknown<br>* `LOCAL_SAMPLED`: unknown<br>* `NONE`: unknown<br>* `REMOTE_NOT_SAMPLED`: unknown<br>* `REMOTE_SAMPLED`: unknown<br> |
 | [`SpanProcessor`](#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](#sumaggregation) | supported |  |  |
 | [`TextMapPropagator`](#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `jaeger`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
@@ -5633,7 +5986,11 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
 | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | supported |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | supported |  | * `http`: supported<br>* `peer`: supported<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | supported |  |  |
@@ -5726,7 +6083,9 @@ Latest supported file format: `1.0.0-rc.2`
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `zipkin`: unknown<br>* `otlp_file/development`: unknown<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `CLIENT`: unknown<br>* `CONSUMER`: unknown<br>* `INTERNAL`: unknown<br>* `PRODUCER`: unknown<br>* `SERVER`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
+| [`SpanParent`](#spanparent) | unknown |  | * `LOCAL_NOT_SAMPLED`: unknown<br>* `LOCAL_SAMPLED`: unknown<br>* `NONE`: unknown<br>* `REMOTE_NOT_SAMPLED`: unknown<br>* `REMOTE_SAMPLED`: unknown<br> |
 | [`SpanProcessor`](#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
 | [`SumAggregation`](#sumaggregation) | unknown |  |  |
 | [`TextMapPropagator`](#textmappropagator) | unknown |  | * `b3`: unknown<br>* `b3multi`: unknown<br>* `baggage`: unknown<br>* `jaeger`: unknown<br>* `ottrace`: unknown<br>* `tracecontext`: unknown<br> |
@@ -5741,7 +6100,11 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
 | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
