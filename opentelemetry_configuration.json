@@ -50,6 +50,10 @@
     "instrumentation/development": {
       "$ref": "#/$defs/ExperimentalInstrumentation",
       "description": "Configure instrumentation.\n"
+    },
+    "distribution": {
+      "$ref": "#/$defs/Distribution",
+      "description": "Defines configuration parameters specific to a particular OpenTelemetry distribution or vendor.\nThis section provides a standardized location for distribution-specific settings\nthat are not part of the OpenTelemetry configuration model.\nIt allows vendors to expose their own extensions and general configuration options.\nIf omitted, noop distribution settings are used.\n"
     }
   },
   "required": [
@@ -440,6 +444,10 @@
         "null"
       ],
       "additionalProperties": false
+    },
+    "Distribution": {
+      "type": "object",
+      "additionalProperties": true
     },
     "DropAggregation": {
       "type": [
