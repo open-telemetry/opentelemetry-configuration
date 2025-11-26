@@ -26,7 +26,7 @@ properties:
     $ref: "#/$defs/AttributeLimits"
     description: |
       Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
-    defaultBehavior: TODO
+    defaultBehavior: default values as described in AttributeLimits are used
   logger_provider:
     $ref: "#/$defs/LoggerProvider"
     description: |
@@ -56,7 +56,7 @@ properties:
     $ref: "#/$defs/ExperimentalInstrumentation"
     description: |
       Configure instrumentation.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
 required:
   - file_format
 $defs:

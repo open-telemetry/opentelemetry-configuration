@@ -10,7 +10,7 @@ properties:
   limits:
     $ref: "#/$defs/SpanLimits"
     description: Configure span limits. See also attribute_limits.
-    defaultBehavior: TODO
+    defaultBehavior: default values as described in SpanLimits are used
   sampler:
     $ref: "#/$defs/Sampler"
     description: |
@@ -20,7 +20,7 @@ properties:
     $ref: "#/$defs/ExperimentalTracerConfigurator"
     description: |
       Configure tracers.
-    defaultBehavior: TODO
+    defaultBehavior: all tracers use default values as described in ExperimentalTracerConfig
 required:
   - processors
 $defs:
@@ -79,31 +79,31 @@ $defs:
       always_off:
         $ref: "#/$defs/AlwaysOffSampler"
         description: Configure sampler to be always_off.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       always_on:
         $ref: "#/$defs/AlwaysOnSampler"
         description: Configure sampler to be always_on.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       composite/development:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configure sampler to be composite.
-        defaultBehavior: TODO
+        defaultBehavior: v
       jaeger_remote/development:
         $ref: "#/$defs/ExperimentalJaegerRemoteSampler"
-        description: TODO
-        defaultBehavior: TODO
+        description: Configure sampler to be jaeger_remote.
+        defaultBehavior: ignore
       parent_based:
         $ref: "#/$defs/ParentBasedSampler"
         description: Configure sampler to be parent_based.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       probability/development:
         $ref: "#/$defs/ExperimentalProbabilitySampler"
         description: Configure sampler to be probability.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       trace_id_ratio_based:
         $ref: "#/$defs/TraceIdRatioBasedSampler"
         description: Configure sampler to be trace_id_ratio_based.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   AlwaysOffSampler:
     type:
@@ -124,20 +124,20 @@ $defs:
       endpoint:
         type:
           - string
-          - "null"
-        description: TODO
-        defaultBehavior: TODO
+        description: Configure the endpoint of the jaeger remote sampling service.
       interval:
         type:
           - integer
           - "null"
         minimum: 0
-        description: TODO
-        defaultBehavior: TODO
+        description: Configure the polling interval (in milliseconds) to fetch from the remote sampling service.
+        defaultBehavior: 60000 is used
       initial_sampler:
         $ref: "#/$defs/Sampler"
-        description: TODO
-        defaultBehavior: TODO
+        description: Configure the initial sampler used before first configuration is fetched.
+    required:
+      - endpoint
+      - initial_sampler
   ParentBasedSampler:
     type:
       - object
@@ -218,23 +218,23 @@ $defs:
       root:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with no parent.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       remote_parent_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a remote parent that is sampled.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       remote_parent_not_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a remote parent that is not sampled.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       local_parent_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a local parent that is sampled.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       local_parent_not_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a local parent that is not sampled.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
   ExperimentalComposableProbabilitySampler:
     type:
       - object
@@ -262,19 +262,19 @@ $defs:
       always_off:
         $ref: "#/$defs/ExperimentalComposableAlwaysOffSampler"
         description: Configure sampler to be always_off.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       always_on:
         $ref: "#/$defs/ExperimentalComposableAlwaysOnSampler"
         description: Configure sampler to be always_on.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       parent_based:
         $ref: "#/$defs/ExperimentalComposableParentBasedSampler"
         description: Configure sampler to be parent_based.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       probability:
         $ref: "#/$defs/ExperimentalComposableProbabilitySampler"
         description: Configure sampler to be probability.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
   SimpleSpanProcessor:
     type: object
     additionalProperties: false
@@ -296,24 +296,24 @@ $defs:
       otlp_http:
         $ref: common.yaml#/$defs/OtlpHttpExporter
         description: Configure exporter to be OTLP with HTTP transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       otlp_grpc:
         $ref: common.yaml#/$defs/OtlpGrpcExporter
         description: Configure exporter to be OTLP with gRPC transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       otlp_file/development:
         $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
         description: |
           Configure exporter to be OTLP with file transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       console:
         $ref: common.yaml#/$defs/ConsoleExporter
         description: Configure exporter to be console.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       zipkin:
         $ref: "#/$defs/ZipkinSpanExporter"
         description: Configure exporter to be zipkin.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   SpanLimits:
     type: object
@@ -385,11 +385,11 @@ $defs:
       batch:
         $ref: "#/$defs/BatchSpanProcessor"
         description: Configure a batch span processor.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       simple:
         $ref: "#/$defs/SimpleSpanProcessor"
         description: Configure a simple span processor.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   ZipkinSpanExporter:
     type:
@@ -421,14 +421,14 @@ $defs:
       default_config:
         $ref: "#/$defs/ExperimentalTracerConfig"
         description: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
-        defaultBehavior: TODO
+        defaultBehavior: unmatched .tracers use default values as described in ExperimentalTracerConfig
       tracers:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalTracerMatcherAndConfig"
         description: Configure tracers.
-        defaultBehavior: TODO
+        defaultBehavior: all tracers use .default_config
   ExperimentalTracerMatcherAndConfig:
     type:
       - object
@@ -457,4 +457,4 @@ $defs:
         type:
           - boolean
         description: Configure if the tracer is enabled or not.
-        defaultBehavior: TODO
+        defaultBehavior: false is used
