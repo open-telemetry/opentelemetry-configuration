@@ -633,27 +633,27 @@ $defs:
     properties:
       default:
         $ref: "#/$defs/DefaultAggregation"
-        description: TODO
+        description: The default aggregation informs the SDK to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters.
         defaultBehavior: TODO
       drop:
         $ref: "#/$defs/DropAggregation"
-        description: TODO
+        description: The drop aggregation informs the SDK to ignore/drop all instrument measurements.
         defaultBehavior: TODO
       explicit_bucket_histogram:
         $ref: "#/$defs/ExplicitBucketHistogramAggregation"
-        description: Configure aggregation to be explicit_bucket_histogram.
+        description: The explicit bucket histogram aggregation informs the SDK to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing.
         defaultBehavior: TODO
       base2_exponential_bucket_histogram:
         $ref: "#/$defs/Base2ExponentialBucketHistogramAggregation"
-        description: TODO
+        description: The base2 exponential histogram aggregation informs the SDK to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. 
         defaultBehavior: TODO
       last_value:
         $ref: "#/$defs/LastValueAggregation"
-        description: TODO
+        description: The last value aggregation informs the SDK to collect the last measurement.
         defaultBehavior: TODO
       sum:
         $ref: "#/$defs/SumAggregation"
-        description: TODO
+        description: The sum aggregation informs the SDK to collect the arithmetic sum of measurement values.
         defaultBehavior: TODO
   DefaultAggregation:
     type:

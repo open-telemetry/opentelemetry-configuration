@@ -16,12 +16,12 @@ This document is an auto-generated view of the declarative configuration JSON sc
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `base2_exponential_bucket_histogram` | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | `false` | If omitted, TODO. | No constraints. | TODO |
-| `default` | [`DefaultAggregation`](#defaultaggregation) | `false` | If omitted, TODO. | No constraints. | TODO |
-| `drop` | [`DropAggregation`](#dropaggregation) | `false` | If omitted, TODO. | No constraints. | TODO |
-| `explicit_bucket_histogram` | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | `false` | If omitted, TODO. | No constraints. | Configure aggregation to be explicit_bucket_histogram. |
-| `last_value` | [`LastValueAggregation`](#lastvalueaggregation) | `false` | If omitted, TODO. | No constraints. | TODO |
-| `sum` | [`SumAggregation`](#sumaggregation) | `false` | If omitted, TODO. | No constraints. | TODO |
+| `base2_exponential_bucket_histogram` | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | `false` | If omitted, TODO. | No constraints. | The base2 exponential histogram aggregation informs the SDK to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. |
+| `default` | [`DefaultAggregation`](#defaultaggregation) | `false` | If omitted, TODO. | No constraints. | The default aggregation informs the SDK to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. |
+| `drop` | [`DropAggregation`](#dropaggregation) | `false` | If omitted, TODO. | No constraints. | The drop aggregation informs the SDK to ignore/drop all instrument measurements. |
+| `explicit_bucket_histogram` | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | `false` | If omitted, TODO. | No constraints. | The explicit bucket histogram aggregation informs the SDK to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. |
+| `last_value` | [`LastValueAggregation`](#lastvalueaggregation) | `false` | If omitted, TODO. | No constraints. | The last value aggregation informs the SDK to collect the last measurement. |
+| `sum` | [`SumAggregation`](#sumaggregation) | `false` | If omitted, TODO. | No constraints. | The sum aggregation informs the SDK to collect the arithmetic sum of measurement values. |
 
 <details>
 <summary>Language support status</summary>
