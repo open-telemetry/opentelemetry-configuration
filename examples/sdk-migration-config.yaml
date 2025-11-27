@@ -56,7 +56,7 @@ tracer_provider:
         max_export_batch_size: ${OTEL_BSP_MAX_EXPORT_BATCH_SIZE:-512}
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}
+            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/traces
             tls:
               ca_file: ${OTEL_EXPORTER_OTLP_TRACES_CERTIFICATE}
               key_file: ${OTEL_EXPORTER_OTLP_TRACES_CLIENT_KEY}
@@ -90,7 +90,7 @@ meter_provider:
         timeout: ${OTEL_METRIC_EXPORT_TIMEOUT:-30000}
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
+            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/metrics
             tls:
               ca_file: ${OTEL_EXPORTER_OTLP_METRICS_CERTIFICATE}
               key_file: ${OTEL_EXPORTER_OTLP_METRICS_CLIENT_KEY}
@@ -110,7 +110,7 @@ logger_provider:
         max_export_batch_size: ${OTEL_BLRP_MAX_EXPORT_BATCH_SIZE:-512}
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}
+            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/logs
             tls:
               ca_file: ${OTEL_EXPORTER_OTLP_LOGS_CERTIFICATE}
               key_file: ${OTEL_EXPORTER_OTLP_LOGS_CLIENT_KEY}
