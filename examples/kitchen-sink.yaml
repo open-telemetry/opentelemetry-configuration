@@ -320,8 +320,8 @@ tracer_provider:
                 span_kinds:
                   - CLIENT
                 sampler:
-                  # Configure sampler to be trace_id_ratio_based if matched.
-                  trace_id_ratio_based:
+                  # Configure sampler to be probability if matched.
+                  probability:
                     ratio: 0.05
               - sampler:
                   probability:
