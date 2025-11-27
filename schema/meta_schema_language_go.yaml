@@ -168,9 +168,6 @@ typeSupportStatuses:
   - type: SpanLimits
     status: unknown
     propertyOverrides: []
-  - type: SpanParent
-    status: unknown
-    enumOverrides: []
   - type: SpanProcessor
     status: unknown
     propertyOverrides: []
@@ -307,6 +304,9 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalSeverityNumber
+    status: unknown
+    enumOverrides: []
+  - type: ExperimentalSpanParent
     status: unknown
     enumOverrides: []
   - type: ExperimentalTracerConfig

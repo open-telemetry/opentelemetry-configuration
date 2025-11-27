@@ -38,22 +38,18 @@ $defs:
       CLIENT: CLIENT, a client span.
       PRODUCER: PRODUCER, a producer span.
       CONSUMER: CONSUMER, a consumer span.
-  SpanParent:
+  ExperimentalSpanParent:
     type:
       - string
       - "null"
     enum:
       - NONE
-      - REMOTE_NOT_SAMPLED
-      - REMOTE_SAMPLED
-      - LOCAL_NOT_SAMPLED
-      - LOCAL_SAMPLED
+      - REMOTE
+      - LOCAL
     enumDescriptions:
       NONE: NONE, no parent, i.e., the trace root.
-      REMOTE_NOT_SAMPLED: REMOTE_NOT_SAMPLED, a remote parent that is not sampled.
-      REMOTE_SAMPLED: REMOTE_SAMPLED, a remote parent that is sampled.
-      LOCAL_NOT_SAMPLED: LOCAL_NOT_SAMPLED, a local parent that is not sampled.
-      LOCAL_SAMPLED: LOCAL_SAMPLED, a local parent that is sampled.
+      REMOTE: REMOTE, a remote parent.
+      LOCAL: LOCAL, a local parent.
   BatchSpanProcessor:
     type: object
     additionalProperties: false
@@ -306,7 +302,7 @@ $defs:
         type: array
         minItems: 1
         items:
-          "$ref": "#/$defs/SpanParent"
+          "$ref": "#/$defs/ExperimentalSpanParent"
         description: The parent span types to match.
       sampler:
         "$ref": "#/$defs/ExperimentalComposableSampler"
