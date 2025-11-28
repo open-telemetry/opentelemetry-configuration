@@ -398,3 +398,5 @@ instrumentation/development:
     example:
       property: "value"
 distribution:
+  example:
+    property: "value"
