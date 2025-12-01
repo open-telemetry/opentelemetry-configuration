@@ -633,27 +633,27 @@ $defs:
     properties:
       default:
         $ref: "#/$defs/DefaultAggregation"
-        description: The default aggregation informs the SDK to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters.
+        description: Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters.
         defaultBehavior: TODO
       drop:
         $ref: "#/$defs/DropAggregation"
-        description: The drop aggregation informs the SDK to ignore/drop all instrument measurements.
+        description: Configures the stream to ignore/drop all instrument measurements.
         defaultBehavior: TODO
       explicit_bucket_histogram:
         $ref: "#/$defs/ExplicitBucketHistogramAggregation"
-        description: The explicit bucket histogram aggregation informs the SDK to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing.
+        description: Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing.
         defaultBehavior: TODO
       base2_exponential_bucket_histogram:
         $ref: "#/$defs/Base2ExponentialBucketHistogramAggregation"
-        description: The base2 exponential histogram aggregation informs the SDK to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. 
+        description: Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. 
         defaultBehavior: TODO
       last_value:
         $ref: "#/$defs/LastValueAggregation"
-        description: The last value aggregation informs the SDK to collect the last measurement.
+        description: Configures the stream to collect data using the last measurement.
         defaultBehavior: TODO
       sum:
         $ref: "#/$defs/SumAggregation"
-        description: The sum aggregation informs the SDK to collect the arithmetic sum of measurement values.
+        description: Configures the stream to collect the arithmetic sum of measurement values.
         defaultBehavior: TODO
   DefaultAggregation:
     type:
