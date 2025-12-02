@@ -48,6 +48,10 @@ To remove redundant information from the configuration file, prefixes for data p
 
 Properties defined in the schema should be lower [snake case](https://en.wikipedia.org/wiki/Snake_case).
 
+### Enum value case
+
+[enum](https://json-schema.org/understanding-json-schema/reference/enum) values should be lower [snake case](https://en.wikipedia.org/wiki/Snake_case).
+
 ### Properties requiring pattern matching
 
 When a property requires pattern matching, use wildcard `*` (match any number of any character, including none) and `?` (match any single character) instead of regex. If a single property with wildcards is likely to be insufficient to model the configuration requirements, accept `included` and `excluded` properties, each with an array of strings with wildcard entries. The wildcard entries should be joined with a logical OR. If `included` is not specified, assume that all entries are included. Apply `excluded` after applying `included`. Examples:

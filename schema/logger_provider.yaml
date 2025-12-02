@@ -205,52 +205,52 @@ $defs:
       - string
       - "null"
     enum:
-      - TRACE
-      - TRACE2
-      - TRACE3
-      - TRACE4
-      - DEBUG
-      - DEBUG2
-      - DEBUG3
-      - DEBUG4
-      - INFO
-      - INFO2
-      - INFO3
-      - INFO4
-      - WARN
-      - WARN2
-      - WARN3
-      - WARN4
-      - ERROR
-      - ERROR2
-      - ERROR3
-      - ERROR4
-      - FATAL
-      - FATAL2
-      - FATAL3
-      - FATAL4
+      - trace
+      - trace2
+      - trace3
+      - trace4
+      - debug
+      - debug2
+      - debug3
+      - debug4
+      - info
+      - info2
+      - info3
+      - info4
+      - warn
+      - warn2
+      - warn3
+      - warn4
+      - error
+      - error2
+      - error3
+      - error4
+      - fatal
+      - fatal2
+      - fatal3
+      - fatal4
     enumDescriptions:
-      DEBUG: DEBUG, severity number 5.
-      DEBUG2: DEBUG2, severity number 6.
-      DEBUG3: DEBUG3, severity number 7.
-      DEBUG4: DEBUG4, severity number 8.
-      ERROR: ERROR, severity number 17.
-      ERROR2: ERROR2, severity number 18.
-      ERROR3: ERROR3, severity number 19.
-      ERROR4: ERROR4, severity number 20.
-      FATAL: FATAL, severity number 21.
-      FATAL2: FATAL2, severity number 22.
-      FATAL3: FATAL3, severity number 23.
-      FATAL4: FATAL4, severity number 24.
-      INFO: INFO, severity number 9.
-      INFO2: INFO2, severity number 10.
-      INFO3: INFO3, severity number 11.
-      INFO4: INFO4, severity number 12.
-      TRACE: TRACE, severity number 1.
-      TRACE2: TRACE2, severity number 2.
-      TRACE3: TRACE3, severity number 3.
-      TRACE4: TRACE4, severity number 4.
-      WARN: WARN, severity number 13.
-      WARN2: WARN2, severity number 14.
-      WARN3: WARN3, severity number 15.
-      WARN4: WARN4, severity number 16.
+      debug: DEBUG, severity number 5.
+      debug2: DEBUG2, severity number 6.
+      debug3: DEBUG3, severity number 7.
+      debug4: DEBUG4, severity number 8.
+      error: ERROR, severity number 17.
+      error2: ERROR2, severity number 18.
+      error3: ERROR3, severity number 19.
+      error4: ERROR4, severity number 20.
+      fatal: FATAL, severity number 21.
+      fatal2: FATAL2, severity number 22.
+      fatal3: FATAL3, severity number 23.
+      fatal4: FATAL4, severity number 24.
+      info: INFO, severity number 9.
+      info2: INFO2, severity number 10.
+      info3: INFO3, severity number 11.
+      info4: INFO4, severity number 12.
+      trace: TRACE, severity number 1.
+      trace2: TRACE2, severity number 2.
+      trace3: TRACE3, severity number 3.
+      trace4: TRACE4, severity number 4.
+      warn: WARN, severity number 13.
+      warn2: WARN2, severity number 14.
+      warn3: WARN3, severity number 15.
+      warn4: WARN4, severity number 16.

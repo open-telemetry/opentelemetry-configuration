@@ -70,7 +70,7 @@ logger_provider:
       - name: io.opentelemetry.contrib.*
         config:
           disabled: false
-          minimum_severity: INFO
+          minimum_severity: info
           trace_based: true
 meter_provider:
   readers:
@@ -86,7 +86,7 @@ meter_provider:
                 - "service*"
               excluded:
                 - "service.attr1"
-            translation_strategy: UnderscoreEscapingWithSuffixes
+            translation_strategy: underscore_escaping_with_suffixes
         producers:
           - opencensus:
         cardinality_limits:
