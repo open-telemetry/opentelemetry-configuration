@@ -185,6 +185,9 @@ typeSupportStatuses:
     propertyOverrides:
       - property: probability/development
         status: ignored
+  - type: SeverityNumber
+    status: unknown
+    enumOverrides: []
   - type: SimpleLogRecordProcessor
     status: supported
     propertyOverrides: []
@@ -356,9 +359,6 @@ typeSupportStatuses:
   - type: ExperimentalServiceResourceDetector
     status: supported
     propertyOverrides: []
-  - type: ExperimentalSeverityNumber
-    status: unknown
-    enumOverrides: []
   - type: ExperimentalTracerConfig
     status: supported
     propertyOverrides: []

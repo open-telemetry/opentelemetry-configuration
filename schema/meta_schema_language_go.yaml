@@ -153,6 +153,9 @@ typeSupportStatuses:
   - type: Sampler
     status: unknown
     propertyOverrides: []
+  - type: SeverityNumber
+    status: unknown
+    enumOverrides: []
   - type: SimpleLogRecordProcessor
     status: unknown
     propertyOverrides: []
@@ -288,9 +291,6 @@ typeSupportStatuses:
   - type: ExperimentalServiceResourceDetector
     status: unknown
     propertyOverrides: []
-  - type: ExperimentalSeverityNumber
-    status: unknown
-    enumOverrides: []
   - type: ExperimentalTracerConfig
     status: unknown
     propertyOverrides: []
