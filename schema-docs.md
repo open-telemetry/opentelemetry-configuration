@@ -401,9 +401,9 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `max_scale` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, TODO. | * `minimum`: `-10`<br>* `maximum`: `20`<br> | TODO |
-| `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, TODO. | * `minimum`: `2`<br> | TODO |
-| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, TODO. | No constraints. | TODO |
+| `max_scale` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, TODO. | * `minimum`: `-10`<br>* `maximum`: `20`<br> | Configure the max scale factor. |
+| `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, TODO. | * `minimum`: `2`<br> | Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket. |
+| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, TODO. | No constraints. | Configure whether or not to record min and max. |
 
 <details>
 <summary>Language support status</summary>

@@ -231,7 +231,7 @@
           ],
           "minimum": -10,
           "maximum": 20,
-          "description": "TODO\nIf omitted or null, TODO.\n"
+          "description": "Configure the max scale factor.\nIf omitted or null, TODO.\n"
         },
         "max_size": {
           "type": [
@@ -239,14 +239,14 @@
             "null"
           ],
           "minimum": 2,
-          "description": "TODO\nIf omitted or null, TODO.\n"
+          "description": "Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket.\nIf omitted or null, TODO.\n"
         },
         "record_min_max": {
           "type": [
             "boolean",
             "null"
           ],
-          "description": "TODO\nIf omitted or null, TODO.\n"
+          "description": "Configure whether or not to record min and max.\nIf omitted or null, TODO.\n"
         }
       }
     },
