@@ -10,7 +10,7 @@ properties:
   limits:
     $ref: "#/$defs/LogRecordLimits"
     description: Configure log record limits. See also attribute_limits.
-    defaultBehavior: TODO
+    defaultBehavior: default values as described in LogRecordLimits are used
   logger_configurator/development:
     $ref: "#/$defs/ExperimentalLoggerConfigurator"
     description: |
@@ -83,11 +83,11 @@ $defs:
       otlp_http:
         $ref: common.yaml#/$defs/OtlpHttpExporter
         description: Configure exporter to be OTLP with HTTP transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       otlp_grpc:
         $ref: common.yaml#/$defs/OtlpGrpcExporter
         description: Configure exporter to be OTLP with gRPC transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       otlp_file/development:
         $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
         description: |
@@ -96,7 +96,7 @@ $defs:
       console:
         $ref: common.yaml#/$defs/ConsoleExporter
         description: Configure exporter to be console.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   LogRecordLimits:
     type: object
@@ -132,11 +132,11 @@ $defs:
       batch:
         $ref: "#/$defs/BatchLogRecordProcessor"
         description: Configure a batch log record processor.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       simple:
         $ref: "#/$defs/SimpleLogRecordProcessor"
         description: Configure a simple log record processor.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   ExperimentalLoggerConfigurator:
     type:

@@ -10,7 +10,7 @@ properties:
   limits:
     $ref: "#/$defs/SpanLimits"
     description: Configure span limits. See also attribute_limits.
-    defaultBehavior: TODO
+    defaultBehavior: default values as described in SpanLimits are used
   sampler:
     $ref: "#/$defs/Sampler"
     description: |
@@ -79,11 +79,11 @@ $defs:
       always_off:
         $ref: "#/$defs/AlwaysOffSampler"
         description: Configure sampler to be always_off.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       always_on:
         $ref: "#/$defs/AlwaysOnSampler"
         description: Configure sampler to be always_on.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       composite/development:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configure sampler to be composite.
@@ -95,7 +95,7 @@ $defs:
       parent_based:
         $ref: "#/$defs/ParentBasedSampler"
         description: Configure sampler to be parent_based.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       probability/development:
         $ref: "#/$defs/ExperimentalProbabilitySampler"
         description: Configure sampler to be probability.
@@ -103,7 +103,7 @@ $defs:
       trace_id_ratio_based:
         $ref: "#/$defs/TraceIdRatioBasedSampler"
         description: Configure sampler to be trace_id_ratio_based.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   AlwaysOffSampler:
     type:
@@ -296,11 +296,11 @@ $defs:
       otlp_http:
         $ref: common.yaml#/$defs/OtlpHttpExporter
         description: Configure exporter to be OTLP with HTTP transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       otlp_grpc:
         $ref: common.yaml#/$defs/OtlpGrpcExporter
         description: Configure exporter to be OTLP with gRPC transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       otlp_file/development:
         $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
         description: |
@@ -309,11 +309,11 @@ $defs:
       console:
         $ref: common.yaml#/$defs/ConsoleExporter
         description: Configure exporter to be console.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       zipkin:
         $ref: "#/$defs/ZipkinSpanExporter"
         description: Configure exporter to be zipkin.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   SpanLimits:
     type: object
@@ -385,11 +385,11 @@ $defs:
       batch:
         $ref: "#/$defs/BatchSpanProcessor"
         description: Configure a batch span processor.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       simple:
         $ref: "#/$defs/SimpleSpanProcessor"
         description: Configure a simple span processor.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   ZipkinSpanExporter:
     type:
