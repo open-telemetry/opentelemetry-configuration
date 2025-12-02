@@ -49,7 +49,7 @@
     },
     "instrumentation/development": {
       "$ref": "#/$defs/ExperimentalInstrumentation",
-      "description": "Configure instrumentation.\nIf omitted, TODO.\n"
+      "description": "Configure instrumentation.\nIf omitted, instrumentation defaults are used.\n"
     }
   },
   "required": [
@@ -231,7 +231,7 @@
           ],
           "minimum": -10,
           "maximum": 20,
-          "description": "TODO\nIf omitted or null, TODO.\n"
+          "description": "TODO\nIf omitted or null, 20 is used.\n"
         },
         "max_size": {
           "type": [
@@ -239,14 +239,14 @@
             "null"
           ],
           "minimum": 2,
-          "description": "TODO\nIf omitted or null, TODO.\n"
+          "description": "TODO\nIf omitted or null, 160 is used.\n"
         },
         "record_min_max": {
           "type": [
             "boolean",
             "null"
           ],
-          "description": "TODO\nIf omitted or null, TODO.\n"
+          "description": "TODO\nIf omitted or null, true is used.\n"
         }
       }
     },
@@ -482,23 +482,23 @@
       "properties": {
         "root": {
           "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with no parent.\nIf omitted, TODO.\n"
+          "description": "Configures the sampler for spans with no parent.\nIf omitted, ignore.\n"
         },
         "remote_parent_sampled": {
           "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a remote parent that is sampled.\nIf omitted, TODO.\n"
+          "description": "Configures the sampler for spans with a remote parent that is sampled.\nIf omitted, ignore.\n"
         },
         "remote_parent_not_sampled": {
           "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a remote parent that is not sampled.\nIf omitted, TODO.\n"
+          "description": "Configures the sampler for spans with a remote parent that is not sampled.\nIf omitted, ignore.\n"
         },
         "local_parent_sampled": {
           "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a local parent that is sampled.\nIf omitted, TODO.\n"
+          "description": "Configures the sampler for spans with a local parent that is sampled.\nIf omitted, ignore.\n"
         },
         "local_parent_not_sampled": {
           "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a local parent that is not sampled.\nIf omitted, TODO.\n"
+          "description": "Configures the sampler for spans with a local parent that is not sampled.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -533,19 +533,19 @@
       "properties": {
         "always_off": {
           "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler",
-          "description": "Configure sampler to be always_off.\nIf omitted, TODO.\n"
+          "description": "Configure sampler to be always_off.\nIf omitted, ignore.\n"
         },
         "always_on": {
           "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler",
-          "description": "Configure sampler to be always_on.\nIf omitted, TODO.\n"
+          "description": "Configure sampler to be always_on.\nIf omitted, ignore.\n"
         },
         "parent_based": {
           "$ref": "#/$defs/ExperimentalComposableParentBasedSampler",
-          "description": "Configure sampler to be parent_based.\nIf omitted, TODO.\n"
+          "description": "Configure sampler to be parent_based.\nIf omitted, ignore.\n"
         },
         "probability": {
           "$ref": "#/$defs/ExperimentalComposableProbabilitySampler",
-          "description": "Configure sampler to be probability.\nIf omitted, TODO.\n"
+          "description": "Configure sampler to be probability.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -562,11 +562,11 @@
       "properties": {
         "peer": {
           "$ref": "#/$defs/ExperimentalPeerInstrumentation",
-          "description": "Configure instrumentations following the peer semantic conventions.\nSee peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/\nIf omitted, TODO.\n"
+          "description": "Configure instrumentations following the peer semantic conventions.\nSee peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/\nIf omitted, defaults as described in ExperimentalPeerInstrumentation are used.\n"
         },
         "http": {
           "$ref": "#/$defs/ExperimentalHttpInstrumentation",
-          "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\nIf omitted, TODO.\n"
+          "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\nIf omitted, defaults as described in ExperimentalHttpInstrumentation are used.\n"
         }
       }
     },
@@ -587,14 +587,15 @@
           "items": {
             "type": "string"
           },
-          "description": "Configure headers to capture for outbound http requests.\nIf omitted, TODO.\n"
+          "description": "Configure headers to capture for outbound http requests.\nIf omitted, no outbound request headers are captured.\n"
         },
         "response_captured_headers": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "string"
           },
-          "description": "Configure headers to capture for inbound http responses.\nIf omitted, TODO.\n"
+          "description": "Configure headers to capture for inbound http responses.\nIf omitted, no inbound response headers are captured.\n"
         }
       }
     },
@@ -604,11 +605,11 @@
       "properties": {
         "client": {
           "$ref": "#/$defs/ExperimentalHttpClientInstrumentation",
-          "description": "Configure instrumentations following the http client semantic conventions.\nIf omitted, TODO.\n"
+          "description": "Configure instrumentations following the http client semantic conventions.\nIf omitted, defaults as described in ExperimentalHttpClientInstrumentation are used.\n"
         },
         "server": {
           "$ref": "#/$defs/ExperimentalHttpServerInstrumentation",
-          "description": "Configure instrumentations following the http server semantic conventions.\nIf omitted, TODO.\n"
+          "description": "Configure instrumentations following the http server semantic conventions.\nIf omitted, defaults as described in ExperimentalHttpServerInstrumentation are used.\n"
         }
       }
     },
@@ -622,7 +623,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Configure headers to capture for inbound http requests.\nIf omitted, TODO.\n"
+          "description": "Configure headers to capture for inbound http requests.\nIf omitted, no request headers are captured.\n"
         },
         "response_captured_headers": {
           "type": "array",
@@ -630,7 +631,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Configure headers to capture for outbound http responses.\nIf omitted, TODO.\n"
+          "description": "Configure headers to capture for outbound http responses.\nIf omitted, no response headers are captures.\n"
         }
       }
     },
@@ -640,51 +641,51 @@
       "properties": {
         "general": {
           "$ref": "#/$defs/ExperimentalGeneralInstrumentation",
-          "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\nInstrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.\nIf omitted, TODO.\n"
+          "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\nInstrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.\nIf omitted, default values as described in ExperimentalGeneralInstrumentation are used.\n"
         },
         "cpp": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure C++ language-specific instrumentation libraries.\nIf omitted, TODO.\n"
+          "description": "Configure C++ language-specific instrumentation libraries.\nIf omitted, instrumentation defaults are used.\n"
         },
         "dotnet": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure .NET language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, TODO.\n"
+          "description": "Configure .NET language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "erlang": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Erlang language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, TODO.\n"
+          "description": "Configure Erlang language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "go": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Go language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, TODO.\n"
+          "description": "Configure Go language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "java": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Java language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, TODO.\n"
+          "description": "Configure Java language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "js": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure JavaScript language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, TODO.\n"
+          "description": "Configure JavaScript language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "php": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure PHP language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, TODO.\n"
+          "description": "Configure PHP language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "python": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Python language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, TODO.\n"
+          "description": "Configure Python language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "ruby": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Ruby language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, TODO.\n"
+          "description": "Configure Ruby language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "rust": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Rust language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, TODO.\n"
+          "description": "Configure Rust language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "swift": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Swift language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, TODO.\n"
+          "description": "Configure Swift language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         }
       }
     },
@@ -697,10 +698,9 @@
       "properties": {
         "endpoint": {
           "type": [
-            "string",
-            "null"
+            "string"
           ],
-          "description": "TODO\nIf omitted or null, TODO.\n"
+          "description": "Configure the endpoint of the jaeger remote sampling service.\nProperty is required and must be non-null.\n"
         },
         "interval": {
           "type": [
@@ -708,13 +708,17 @@
             "null"
           ],
           "minimum": 0,
-          "description": "TODO\nIf omitted or null, TODO.\n"
+          "description": "Configure the polling interval (in milliseconds) to fetch from the remote sampling service.\nIf omitted or null, 60000 is used.\n"
         },
         "initial_sampler": {
           "$ref": "#/$defs/Sampler",
-          "description": "TODO\nIf omitted, TODO.\n"
+          "description": "Configure the initial sampler used before first configuration is fetched.\nProperty is required and must be non-null.\n"
         }
-      }
+      },
+      "required": [
+        "endpoint",
+        "initial_sampler"
+      ]
     },
     "ExperimentalLanguageSpecificInstrumentation": {
       "type": "object",
@@ -756,7 +760,7 @@
       "properties": {
         "default_config": {
           "$ref": "#/$defs/ExperimentalLoggerConfig",
-          "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.\nIf omitted, TODO.\n"
+          "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.\nIf omitted, unmatched .loggers use default values as described in ExperimentalLoggerConfig.\n"
         },
         "loggers": {
           "type": "array",
@@ -764,7 +768,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
           },
-          "description": "Configure loggers.\nIf omitted, TODO.\n"
+          "description": "Configure loggers.\nIf omitted, all loggers use .default_config.\n"
         }
       }
     },
@@ -800,7 +804,7 @@
           "type": [
             "boolean"
           ],
-          "description": "Configure if the meter is enabled or not.\nIf omitted, TODO.\n"
+          "description": "Configure if the meter is enabled or not.\nIf omitted, false is used.\n"
         }
       }
     },
@@ -812,7 +816,7 @@
       "properties": {
         "default_config": {
           "$ref": "#/$defs/ExperimentalMeterConfig",
-          "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.\nIf omitted, TODO.\n"
+          "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.\nIf omitted, unmatched .meters use default values as described in ExperimentalMeterConfig.\n"
         },
         "meters": {
           "type": "array",
@@ -820,7 +824,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
           },
-          "description": "Configure meters.\nIf omitted, TODO.\n"
+          "description": "Configure meters.\nIf omitted, all meters used .default_config.\n"
         }
       }
     },
@@ -896,7 +900,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalPeerServiceMapping"
           },
-          "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\nSee peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\nIf omitted, TODO.\n"
+          "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\nSee peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\nIf omitted, no peer service mappings are used.\n"
         }
       }
     },
@@ -980,7 +984,7 @@
         },
         "with_resource_constant_labels": {
           "$ref": "#/$defs/IncludeExclude",
-          "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.\nIf omitted, TODO.\n"
+          "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.\nIf omitted, no resource attributes are added.\n"
         },
         "translation_strategy": {
           "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
@@ -1006,7 +1010,7 @@
       "properties": {
         "attributes": {
           "$ref": "#/$defs/IncludeExclude",
-          "description": "Configure attributes provided by resource detectors.\nIf omitted, TODO.\n"
+          "description": "Configure attributes provided by resource detectors.\nIf omitted, all attributes from resource detectors are added.\n"
         },
         "detectors": {
           "type": "array",
@@ -1031,19 +1035,19 @@
       "properties": {
         "container": {
           "$ref": "#/$defs/ExperimentalContainerResourceDetector",
-          "description": "Enable the container resource detector, which populates container.* attributes.\nIf omitted, TODO.\n"
+          "description": "Enable the container resource detector, which populates container.* attributes.\nIf omitted, ignore.\n"
         },
         "host": {
           "$ref": "#/$defs/ExperimentalHostResourceDetector",
-          "description": "Enable the host resource detector, which populates host.* and os.* attributes.\nIf omitted, TODO.\n"
+          "description": "Enable the host resource detector, which populates host.* and os.* attributes.\nIf omitted, ignore.\n"
         },
         "process": {
           "$ref": "#/$defs/ExperimentalProcessResourceDetector",
-          "description": "Enable the process resource detector, which populates process.* attributes.\nIf omitted, TODO.\n"
+          "description": "Enable the process resource detector, which populates process.* attributes.\nIf omitted, ignore.\n"
         },
         "service": {
           "$ref": "#/$defs/ExperimentalServiceResourceDetector",
-          "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.\nIf omitted, TODO.\n"
+          "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -1096,7 +1100,7 @@
           "type": [
             "boolean"
           ],
-          "description": "Configure if the tracer is enabled or not.\nIf omitted, TODO.\n"
+          "description": "Configure if the tracer is enabled or not.\nIf omitted, false is used.\n"
         }
       }
     },
@@ -1108,7 +1112,7 @@
       "properties": {
         "default_config": {
           "$ref": "#/$defs/ExperimentalTracerConfig",
-          "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.\nIf omitted, TODO.\n"
+          "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.\nIf omitted, unmatched .tracers use default values as described in ExperimentalTracerConfig.\n"
         },
         "tracers": {
           "type": "array",
@@ -1116,7 +1120,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
           },
-          "description": "Configure tracers.\nIf omitted, TODO.\n"
+          "description": "Configure tracers.\nIf omitted, all tracers use .default_config.\n"
         }
       }
     },
@@ -1323,7 +1327,7 @@
         },
         "logger_configurator/development": {
           "$ref": "#/$defs/ExperimentalLoggerConfigurator",
-          "description": "Configure loggers.\nIf omitted, TODO.\n"
+          "description": "Configure loggers.\nIf omitted, all loggers use default values as described in ExperimentalLoggerConfig.\n"
         }
       },
       "required": [
@@ -1351,7 +1355,7 @@
         },
         "otlp_file/development": {
           "$ref": "#/$defs/ExperimentalOtlpFileExporter",
-          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, TODO.\n"
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\n"
         },
         "console": {
           "$ref": "#/$defs/ConsoleExporter",
@@ -1428,7 +1432,7 @@
         },
         "meter_configurator/development": {
           "$ref": "#/$defs/ExperimentalMeterConfigurator",
-          "description": "Configure meters.\nIf omitted, TODO.\n"
+          "description": "Configure meters.\nIf omitted, all meters use default values as described in ExperimentalMeterConfig.\n"
         }
       },
       "required": [
@@ -1841,7 +1845,7 @@
       "properties": {
         "prometheus/development": {
           "$ref": "#/$defs/ExperimentalPrometheusMetricExporter",
-          "description": "Configure exporter to be prometheus.\nIf omitted, TODO.\n"
+          "description": "Configure exporter to be prometheus.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -1891,7 +1895,7 @@
         },
         "otlp_file/development": {
           "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter",
-          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, TODO.\n"
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\n"
         },
         "console": {
           "$ref": "#/$defs/ConsoleMetricExporter",
@@ -1952,11 +1956,11 @@
         },
         "composite/development": {
           "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configure sampler to be composite.\nIf omitted, TODO.\n"
+          "description": "Configure sampler to be composite.\nIf omitted, ignore.\n"
         },
         "jaeger_remote/development": {
           "$ref": "#/$defs/ExperimentalJaegerRemoteSampler",
-          "description": "TODO\nIf omitted, TODO.\n"
+          "description": "Configure sampler to be jaeger_remote.\nIf omitted, ignore.\n"
         },
         "parent_based": {
           "$ref": "#/$defs/ParentBasedSampler",
@@ -1964,7 +1968,7 @@
         },
         "probability/development": {
           "$ref": "#/$defs/ExperimentalProbabilitySampler",
-          "description": "Configure sampler to be probability.\nIf omitted, TODO.\n"
+          "description": "Configure sampler to be probability.\nIf omitted, ignore.\n"
         },
         "trace_id_ratio_based": {
           "$ref": "#/$defs/TraceIdRatioBasedSampler",
@@ -2019,7 +2023,7 @@
         },
         "otlp_file/development": {
           "$ref": "#/$defs/ExperimentalOtlpFileExporter",
-          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, TODO.\n"
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\n"
         },
         "console": {
           "$ref": "#/$defs/ConsoleExporter",
@@ -2197,7 +2201,7 @@
         },
         "tracer_configurator/development": {
           "$ref": "#/$defs/ExperimentalTracerConfigurator",
-          "description": "Configure tracers.\nIf omitted, TODO.\n"
+          "description": "Configure tracers.\nIf omitted, all tracers use default values as described in ExperimentalTracerConfig.\n"
         }
       },
       "required": [

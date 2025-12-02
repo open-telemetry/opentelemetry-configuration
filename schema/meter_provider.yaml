@@ -26,7 +26,7 @@ properties:
     $ref: "#/$defs/ExperimentalMeterConfigurator"
     description: |
       Configure meters.
-    defaultBehavior: TODO
+    defaultBehavior: all meters use default values as described in ExperimentalMeterConfig
 required:
   - readers
 $defs:
@@ -192,7 +192,7 @@ $defs:
         $ref: "#/$defs/ExperimentalOtlpFileMetricExporter"
         description: |
           Configure exporter to be OTLP with file transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       console:
         $ref: "#/$defs/ConsoleMetricExporter"
         description: |
@@ -212,7 +212,7 @@ $defs:
         $ref: "#/$defs/ExperimentalPrometheusMetricExporter"
         description: |
           Configure exporter to be prometheus.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   MetricProducer:
     type: object
@@ -270,7 +270,7 @@ $defs:
       with_resource_constant_labels:
         $ref: common.yaml#/$defs/IncludeExclude
         description: Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
-        defaultBehavior: TODO
+        defaultBehavior: no resource attributes are added
       translation_strategy:
         $ref: "#/$defs/ExperimentalPrometheusTranslationStrategy"
         description: |
@@ -699,20 +699,20 @@ $defs:
         minimum: -10
         maximum: 20
         description: TODO
-        defaultBehavior: TODO
+        defaultBehavior: 20 is used
       max_size:
         type:
           - integer
           - "null"
         minimum: 2
         description: TODO
-        defaultBehavior: TODO
+        defaultBehavior: 160 is used
       record_min_max:
         type:
           - boolean
           - "null"
         description: TODO
-        defaultBehavior: TODO
+        defaultBehavior: true is used
   LastValueAggregation:
     type:
       - object
@@ -731,14 +731,14 @@ $defs:
       default_config:
         $ref: "#/$defs/ExperimentalMeterConfig"
         description: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
-        defaultBehavior: TODO
+        defaultBehavior: unmatched .meters use default values as described in ExperimentalMeterConfig
       meters:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalMeterMatcherAndConfig"
         description: Configure meters.
-        defaultBehavior: TODO
+        defaultBehavior: all meters used .default_config
   ExperimentalMeterMatcherAndConfig:
     type:
       - object
@@ -767,4 +767,4 @@ $defs:
         type:
           - boolean
         description: Configure if the meter is enabled or not.
-        defaultBehavior: TODO
+        defaultBehavior: false is used
