@@ -53,7 +53,7 @@
     },
     "distribution": {
       "$ref": "#/$defs/Distribution",
-      "description": "Defines configuration parameters specific to a particular OpenTelemetry distribution or vendor.\nThis section provides a standardized location for distribution-specific settings\nthat are not part of the OpenTelemetry configuration model.\nIt allows vendors to expose their own extensions and general configuration options.\nIf omitted, noop distribution settings are used.\n"
+      "description": "Defines configuration parameters specific to a particular OpenTelemetry distribution or vendor.\nThis section provides a standardized location for distribution-specific settings\nthat are not part of the OpenTelemetry configuration model.\nIt allows vendors to expose their own extensions and general configuration options.\n"
     }
   },
   "required": [

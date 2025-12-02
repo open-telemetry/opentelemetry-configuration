@@ -62,7 +62,6 @@ properties:
       This section provides a standardized location for distribution-specific settings
       that are not part of the OpenTelemetry configuration model.
       It allows vendors to expose their own extensions and general configuration options.
-      If omitted, noop distribution settings are used.
 required:
   - file_format
 $defs:
