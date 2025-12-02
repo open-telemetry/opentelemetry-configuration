@@ -1,4 +1,3 @@
-title: OpenTelemetryConfiguration
 type: object
 additionalProperties: true
 properties:
