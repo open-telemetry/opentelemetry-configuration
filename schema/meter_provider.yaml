@@ -698,20 +698,20 @@ $defs:
           - "null"
         minimum: -10
         maximum: 20
-        description: TODO
+        description: Configure the max scale factor.
         defaultBehavior: TODO
       max_size:
         type:
           - integer
           - "null"
         minimum: 2
-        description: TODO
+        description: Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket.
         defaultBehavior: TODO
       record_min_max:
         type:
           - boolean
           - "null"
-        description: TODO
+        description: Configure whether or not to record min and max.
         defaultBehavior: TODO
   LastValueAggregation:
     type:
