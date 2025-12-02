@@ -4,6 +4,10 @@ Read OpenTelemetry project [contributing
 guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)
 for general information about the project.
 
+* [Schema modeling rules](#schema-modeling-rules): Standardize solutions to common schema modeling problems for a more consistent user experience and less [bike shedding](https://en.wikipedia.org/wiki/Law_of_triviality).
+* [Project tooling](#project-tooling): Project tooling used to improve consistency, reduce bugs, and improve the maintainer experience.
+* [Pull request](#pull-requests): Guidelines for submitting pull requests.
+
 ## Schema modeling rules
 
 The following rules are enforced when modeling the configuration schema.
@@ -16,7 +20,7 @@ The schema is modeled using JSON schema [draft 2020-12](https://json-schema.org/
 
 This is reflected in top level schema documents by setting `"$schema": "https://json-schema.org/draft/2020-12/schema"`.
 
-## What you see is what you get
+### What you see is what you get
 
 The schema semantics should follow a "what you see is what you get" (or WYSIWYG) philosophy. Another way to frame this is that implementations should minimize the amount of magic that occurs as a result of the absence of an optional property.
 
@@ -204,10 +208,9 @@ NOTE: there are some valid cases where an empty array is semantically meaningful
 
 The JSON schema [`title` and `description` annotations](https://json-schema.org/understanding-json-schema/reference/annotations) are keywords that are not involved in validation. Instead, they act as a mechanism to help schemas be self-documenting, and may be used by code generation tools.
 
-Despite these potential benefits, these keywords should be omitted:
+`description` must be included on all properties. [Schema validation](#schema-validation) project tooling enforces this.
 
-* The titles of `object` and `enum` types produced by code generation tools should be defined using key values in [$defs](https://json-schema.org/understanding-json-schema/structuring#defs). Setting the `title` keyword introduces multiple sources of truth and possible conflict.
-* As described in [description generation](./CONTRIBUTING.md#make-generate-descriptions), we use a different mechanism to describe the semantics of types and properties. Setting the `description` keyword introduces multiple sources of truth and possible conflict.
+`title` should be omitted. [Schema compilation](#json-schema-source-and-output) project tooling ensures consistent type titles by including `title` for the root `OpenTelemetryConfiguration` type, and letting the [$defs](https://json-schema.org/understanding-json-schema/structuring#defs) key be the title for all other type.
 
 ### Schemas and subschemas
 
@@ -297,12 +300,15 @@ tracer_provider:
 * The property value is passed as configuration as `properties` when [ComponentProvider Create Plugin](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create-plugin) is called.
 * `SpanExporter` has `properties` describing the names and schemas of built-in span exporters (i.e. those defined explicitly in the specification).
 
-## Consistency Checks
+[Schema validation](#schema-validation) project tooling enforces that types labeled `isSdkExtensionPlugin: true` are modeled consistently as described above.
 
-This repository has various checks to ensure the schema changes are valid. Before using:
+## Project tooling
 
-* Install the latest LTS release of **[Node](https://nodejs.org/)**.
-  For example, using **[nvm][]** under Linux run:
+This repository has a variety of tooling assisting with the development of the JSON schema and associated artifacts.
+
+Much of the project tooling is written in JavaScript and uses [Node](https://nodejs.org/) to run. Before making changes to the project:
+
+* Install the latest LTS release of **[Node](https://nodejs.org/)**. For example, using **[nvm][]** under Linux run:
 
   ```bash
   nvm install --lts
@@ -313,74 +319,58 @@ This repository has various checks to ensure the schema changes are valid. Befor
   ```bash
   npm install
   ```
+  
+To run all project tooling targets:
 
-You can perform all checks locally using this command:
-
-```bash
+```shell
+# `all` is the default target and can be optionally omitted
 make all
 ```
 
-## Meta schema
+### JSON schema source and output
 
-> 🚧 The tooling around meta schema is under construction, and the docs below will be temporarily inaccurate. Please check back soon. 🚧
+The JSON schema source is maintained as a set of YAML files in the [schema](schema) directory. All files except those starting with `meta_` are source schema files.
 
-[meta_schema_*.yaml](schema) files track schema details that don't fit neatly into the JSON schema including:
+Maintaining the source in YAML instead of JSON makes it easier to maintain read and write multi-line property `description`s, which we lean on frequently to document complex property semantics.
 
-* Property descriptions and semantics
-* Tracking of types that are SDK extension plugins
-* Implementation support status
+It also allows us to maintain metadata that does not fit neatly into the JSON schema:
 
-The meta schema is broken up across multiple files for improved maintainability:
+* `isSdkExtensionPlugin` (boolean): Types labeled as SDK extension plugins are called out in [documentation](#documentation-generation) and have a consistent schema.
+* `defaultBehavior` (string): Describes the behavior when a property is omitted. If `nullBehavior` is not set, `defaultBehavior` also describes the behavior when a property is null. `defaultBehavior` is required for all non-required properties.
+* `nullBehavior` (string): Describes the behavior when a property is `null`. This can optionally be set on non-required properties to differentiate behavior when a property is present but `null`, vs. omitted entirely. `nullBehavior` is required for all required properties that are nullable.
+* `enumDescriptions` (map<string, string>): Contains descriptions for each value of an `enum` type. `enumDescriptions` must be present on all `enum` types, and each enum value must have a corresponding entry.
 
-* [meta_schema_types.yaml](#meta_schema_typesyaml)
-* [meta_schema_language_{language}.yaml](#meta_schema_language_languageyaml)
+JSON schema source files are compiled into a single JSON schema output file at [opentelemetry-configuration.schema.json](opentelemetry_configuration.json) using:
 
-There are a variety of build tasks that intersect with the meta schema:
-
-* [make fix-meta-schema](#make-fix-meta-schema)
-* [make generate-markdown](#make-generate-markdown)
-* [make generate-descriptions](#make-generate-descriptions)
-* [make all-meta-schema](#make-all-meta-schema)
-
-### `meta_schema_types.yaml`
-
-`meta_schema_types.yaml` (TODO: update docs after this was merged into source schema) contains property descriptions, semantics, enum value descriptions, and SDK extension plugin information.
-
-Content looks like:
-
-```yaml
-- type: AttributeLimits
-  properties:
-    - property: attribute_value_length_limit
-      description: |
-        Configure max attribute value size.
-        Value must be non-negative.
-        If omitted or null, there is no limit.
-- type: OtlpHttpEncoding
-  enumValues:
-    - enumValue: json
-      description: Protobuf JSON encoding.
-    - enumValue: protobuf
-      description: Protobuf binary encoding.
-# other types omitted for brevity
+```shell
+make compile-schema
 ```
 
-Notes:
+Having a single output file simplifies integration with tooling, as there eliminates the need to resolve external `$ref`s.
 
-* `[]` is the document is an array of entries for each type in the JSON schema.
-  * `[].type` is the name of the JSON schema type. **Maintained automatically by build tooling.**
-  * `[].properties` is an array of entries for each property in the JSON schema type. Omitted for enum types.
-    * `[].properties[].property` is the name of the property. **Maintained automatically by build tooling.**
-    * `[].properties[].description` is the property description, including semantics and default behavior.
-  * `[].enumValues` is an array of entries for each enum value in the JSON schema type. Omitted for non-enum types.
-    * `[].enumValues[].enumValue` is the name of the enum value. **Maintained automatically by build tooling.**
-    * `[].enumValues[].description` is the enum value description.
+The output file has property `description` fields which are enriched with additional information from the JSON schema which can be leveraged by code generation tooling for improved documentation.
 
-### `meta_schema_language_{language}.yaml`
+The `compile-schema` target performs [schema validation](#schema-validation), failing with descriptive error messages if violations are found. 
 
-These files track language implementation status for a particular language. See [fix-meta-schema](#make-fix-meta-schema) for details on adding a new language.
+It's important to run `compile-schema` before committing changes to the schema as uncommitted changes will cause the build to fail. The default `make` target will run `compile-schema` automatically.
 
-Content looks like:
+### Schema validation
+
+Before compiling the schema, the `compile-schema` target performs a variety of validation checks to help ensure schema consistency and quality:
+
+* Validate all properties have a [`description`](#annotations---title-and-description).
+* Validate all enum types have a `enumDescription` (see above) and all enum values have a corresponding entry.
+* Validate all types labeled `isSdkExtensionPlugin: true` are modeled consistently.
+* Validate there are [no subschemas](#schemas-and-subschemas) (i.e. all types are defined at the top level of in `$defs`).
+* Validate `defaultBehavior` and `nullBehavior` are used correctly:
+  * All non-required properties must have a `defaultBehavior`.
+  * All required properties must have a `nullBehavior` if they are nullable.
+
+### Language implementation status tracking
+
+The `meta_schema_language_{language}.yaml` files in [schema](schema) track the language implementation status for a particular language.
+
+`meta_schema_language_{language}.yaml` file content looks like:
 
 ```yaml
 latestSupportedFileFormat: 1.0.0-rc.1
@@ -396,91 +386,66 @@ typeSupportStatuses:
 
 Notes:
 
-* `.latestSupportedFileFormat` is the latest version of `opentelemetry-configuration` supported by the `{language}`
-* `.typeSupportStatuses` is an array with entries for each type in the JSON schema.
-  * `.typeSupportStatuses[].type` is the name of the JSON schema type. **Maintained automatically by build tooling.**
-  * `.typeSupportStatuses[].status` captures the support status of the type and all properties except overrides in `.typeSupportStatuses[].propertyOverrides`. See enum options below.
-  * `.typeSupportStatuses[].notes` contains optional additional notes on the implementation.
-  * `.typeSupportStatuses[].propertyOverrides` is an array of properties which have different support statuses than the overall type as recorded in `.typeSupportStatuses[].status`. Omitted for enum types.
-    * `.typeSupportStatuses[].propertyOverrides[].property` is the name of the property whose support status is overridden.
-    * `.typeSupportStatuses[].propertyOverrides[].status` is the overridden support status. See enum options below.
-  * `.typeSupportStatuses[].enumOverrides` is an array of enum values which have different support statuses than the overall type as recorded in `.typeSupportStatuses[].status`. Omitted for non-enum types.
-    * `.typeSupportStatuses[].enumOverrides[].enumValue` is the name of the enum value whose support status is overridden.
-    * `.typeSupportStatuses[].enumOverrides[].status` is the overridden support status. See enum options below.
+* `.latestSupportedFileFormat` (string): The latest version of `opentelemetry-configuration` supported by the `{language}`
+* `.typeSupportStatuses` ([]object): An array with entries for each type in the JSON schema.
+    * `.typeSupportStatuses[].type` (string): The name of the JSON schema type. **Maintained automatically by build tooling.**
+    * `.typeSupportStatuses[].status` (enum): Captures the support status of the type and all properties except overrides in `.typeSupportStatuses[].propertyOverrides`. See enum options below.
+    * `.typeSupportStatuses[].notes` (string): Contains optional additional notes on the implementation.
+    * `.typeSupportStatuses[].propertyOverrides` ([]object): An array of properties which have different support statuses than the overall type as recorded in `.typeSupportStatuses[].status`. Omitted for enum types.
+        * `.typeSupportStatuses[].propertyOverrides[].property` (string): The name of the property whose support status is overridden.
+        * `.typeSupportStatuses[].propertyOverrides[].status` (string): The overridden support status. See enum options below.
+    * `.typeSupportStatuses[].enumOverrides` ([]object): An array of enum values which have different support statuses than the overall type as recorded in `.typeSupportStatuses[].status`. Omitted for non-enum types.
+        * `.typeSupportStatuses[].enumOverrides[].enumValue` (string): The name of the enum value whose support status is overridden.
+        * `.typeSupportStatuses[].enumOverrides[].status` (enum): The overridden support status. See enum options below.
 * Status enum options, applicable to `.typeSupportStatuses[].status`, `.typeSupportStatuses[].propertyOverrides[].status`:
-  * `unknown`: Language maintainer has not yet recorded a status.
-  * `supported`: The type / property is supported by the language implementation.
-  * `not_implemented`: The type / property is not parsed / recognized by the language implementation because the concept is not yet implemented but should be eventually.
-  * `not_applicable`: The type / property is not parsed / recognized by the language implementation because the concept is not applicable. E.g. C++ specific instrumentation for Java.
-  * `ignored`: The type / property is not parsed / recognized by the language implementation despite the concept being available in the language's programmatic configuration API.
+    * `unknown`: Language maintainer has not yet recorded a status.
+    * `supported`: The type / property is supported by the language implementation.
+    * `not_implemented`: The type / property is not parsed / recognized by the language implementation because the concept is not yet implemented but should be eventually.
+    * `not_applicable`: The type / property is not parsed / recognized by the language implementation because the concept is not applicable. E.g. C++ specific instrumentation for Java.
+    * `ignored`: The type / property is not parsed / recognized by the language implementation despite the concept being available in the language's programmatic configuration API.
 
-### `make fix-meta-schema`
 
-Ensures that the JSON schema and the meta schema are kept in sync:
-
-* If a type exists in the JSON schema and not the meta schema, add it.
-* If a type exists in the meta schema and not the JSON schema, delete it.
-* For each meta schema type:
-  * If a property exists in the JSON schema and not the meta schema, add it.
-  * If a property exists in the meta schema and not the JSON schema, delete it.
-* If a language implementation is known (i.e. defined in constant array `KNOWN_LANGUAGES` in [language-implementations.js](scripts/language-implementations.js)) but not in meta schema, add it.
-* If a language implementation exists in meta schema but is not known, delete it.
-* For each language implementation:
-  * If a type exists in the JSON schema and not in the language implementation's type support status of the meta schema, add it.
-  * If a type exists in the language implementation's type support status of the meta schema and no in the JSON schema, delete it.
-  * For each property in a type's propertyOverrides:
-    * If the property does not exist in the JSON schema, delete it.
-
-When this task adds new entries to the meta schema, they are stubbed out with `TODO` placeholders. Contributors should update these with sensible values.
-
-**NOTE:** This task is run as part of build automation. If it produces changes that are not checked into version control, the build will fail.
-
-### `make generate-markdown`
-
-Generates markdown at [schema-docs.md](./schema-docs.md) which summarizes a variety of useful information about JSON schema and meta schema in an easy to consume format.
-
-**NOTE:** This task is run as part of build automation. If it produces changes that are not checked into version control, the build will fail.
-
-### `make generate-descriptions`
-
-Annotates files in [./examples](./examples) with comments derived from the JSON schema and meta schema.
-
-The `/examples` directory contains a variety of examples that are expected to be used as starter templates and as references. The JSON schema is insufficient in describing the expected behavior of a given config file. It's missing key details describing behavior semantics (such as defaults) which are essential for both users and implementers. This task ensures that all examples are correctly and consistently commented.
-
-**NOTE:** This task is run as part of build automation. If it produces changes that are not checked into version control, the build will fail.
-
-To run against a single file:
-
-* Install the latest LTS release of **[Node](https://nodejs.org/)**.
-  For example, using **[nvm][]** under Linux run:
-
-  ```bash
-  nvm install --lts
-  ```
-
-* Install tooling packages:
-
-  ```bash
-  npm install
-  ```
-
-* Run the script:
+Tooling ensures that the contents of these files are consistent with the contents of the JSON schema:
 
 ```shell
-npm run-script generate-descriptions -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml
+make fix-language-implementations
 ```
 
-Optionally, include the `--debug` parameter. This prints out information about
-each key-value pair, including the computed dot notation location, the matched
-rule, the previous description, the new description, etc.
+The `fix-language-implementations` target synchronizes the contents of these files as follows:
+
+* If a language implementation is known (i.e. defined in constant array `KNOWN_LANGUAGES` in [language-implementations.js](scripts/language-implementations.js)) but does not have a `meta_schema_language_{language}.yaml` file, add it.
+* If a `meta_schema_language_{language}.yaml` exists for a language not in `KNOWN_LANGUAGES`, delete it.
+* For each language implementation file:
+    * If a type exists in the JSON schema and not in the language implementation file, add it.
+    * If a type exists in the language implementation file and not in the JSON schema, delete it.
+    * For each property in a type's `propertyOverrides`, if the property does not exist in the JSON schema, delete it.
+    * For each property in a type's `enumOverrides`, if the value does not exist in the JSON schema, delete it.
+
+When this target adds new entries to `meta_schema_language_{langauage}.yaml`, they are stubbed out with `TODO` placeholders. Contributors adding new schema types and properties should update these with sensible values.
+
+It's important to run `fix-language-implementations` before committing changes to the schema as uncommitted changes will cause the build to fail. The default `make` target will run `fix-language-implementations` automatically.
+
+### Documentation generation
+
+[schema-docs.md](schema-docs.md) contains generated markdown summarizing a variety of useful information about the JSON schema and [language implementation status](#language-implementation-status-tracking) in an easy to consume format.
+
+To generate:
 
 ```shell
-npm run-script generate-descriptions -- /absolute/path/to/input/file.yaml /absolute/path/to/output/file.yaml --debug
+make generate-markdown
 ```
 
-### `make all-meta-schema`
+It's important to run `generate-markdown` before committing changes to the schema as uncommitted changes will cause the build to fail. The default `make` target will run `generate-markdown` automatically.
 
-A composite task which runs all meta schema tasks.
+### Example validation
+
+To validate [starter template examples](README.md#starter-templates) against the JSON schema:
+
+```shell
+make validate-examples
+```
+
+Failures in the `validate-examples` target will cause the build to fail. The default `make` target will run `validate-examples` automatically.
 
 ## Pull requests
 
