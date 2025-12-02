@@ -13,7 +13,7 @@ $defs:
           Values are evaluated to match as follows:
            * If the value exactly matches.
            * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-          If omitted, all values are included.
+        defaultBehavior: all values are included
       excluded:
         type: array
         minItems: 1
@@ -24,7 +24,7 @@ $defs:
           Values are evaluated to match as follows:
            * If the value exactly matches.
            * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-          If omitted, .included attributes are included.
+        defaultBehavior: .included attributes are included
   NameStringValuePair:
     type: object
     additionalProperties: false
@@ -37,6 +37,7 @@ $defs:
           - string
           - "null"
         description: The value of the pair.
+        nullBehavior: TODO
     required:
       - name
       - value
@@ -52,10 +53,11 @@ $defs:
           - "null"
         description: |
           Configure endpoint, including the signal specific path.
-          If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.
+        defaultBehavior: the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used
       tls:
         $ref: "#/$defs/HttpTls"
         description: Configure TLS settings for the exporter.
+        defaultBehavior: system default TLS settings are used
       headers:
         type: array
         minItems: 1
@@ -64,6 +66,7 @@ $defs:
         description: |
           Configure headers. Entries have higher priority than entries from .headers_list.
           If an entry's .value is null, the entry is ignored.
+        defaultBehavior: no headers are added
       headers_list:
         type:
           - string
@@ -71,7 +74,7 @@ $defs:
         description: |
           Configure headers. Entries have lower priority than entries from .headers.
           The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
-          If omitted or null, no headers are added.
+        defaultBehavior: no headers are added
       compression:
         type:
           - string
@@ -79,7 +82,7 @@ $defs:
         description: |
           Configure compression.
           Values include: gzip, none. Implementations may support other compression algorithms.
-          If omitted or null, none is used.
+        defaultBehavior: none is used
       timeout:
         type:
           - integer
@@ -88,13 +91,13 @@ $defs:
         description: |
           Configure max time (in milliseconds) to wait for each export.
           Value must be non-negative. A value of 0 indicates no limit (infinity).
-          If omitted or null, 10000 is used.
+        defaultBehavior: 10000 is used
       encoding:
         $ref: "#/$defs/OtlpHttpEncoding"
         description: |
           Configure the encoding used for messages. 
           Values include: protobuf, json. Implementations may not support json.
-          If omitted or null, protobuf is used.
+        defaultBehavior: protobuf is used
   OtlpHttpEncoding:
     type:
       - string
@@ -117,10 +120,11 @@ $defs:
           - "null"
         description: |
           Configure endpoint.
-          If omitted or null, http://localhost:4317 is used.
+        defaultBehavior: http://localhost:4317 is used
       tls:
         $ref: "#/$defs/GrpcTls"
         description: Configure TLS settings for the exporter.
+        defaultBehavior: system default TLS settings are used
       headers:
         type: array
         minItems: 1
@@ -129,6 +133,7 @@ $defs:
         description: |
           Configure headers. Entries have higher priority than entries from .headers_list.
           If an entry's .value is null, the entry is ignored.
+        defaultBehavior: no headers are added
       headers_list:
         type:
           - string
@@ -136,7 +141,7 @@ $defs:
         description: |
           Configure headers. Entries have lower priority than entries from .headers.
           The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
-          If omitted or null, no headers are added.
+        defaultBehavior: no headers are added
       compression:
         type:
           - string
@@ -144,7 +149,7 @@ $defs:
         description: |
           Configure compression.
           Values include: gzip, none. Implementations may support other compression algorithms.
-          If omitted or null, none is used.
+        defaultBehavior: none is used
       timeout:
         type:
           - integer
@@ -153,7 +158,7 @@ $defs:
         description: |
           Configure max time (in milliseconds) to wait for each export.
           Value must be non-negative. A value of 0 indicates no limit (infinity).
-          If omitted or null, 10000 is used.
+        defaultBehavior: 10000 is used
   ExperimentalOtlpFileExporter:
     type:
       - object
@@ -167,7 +172,7 @@ $defs:
         description: |
           Configure output stream. 
           Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
-          If omitted or null, stdout is used.
+        defaultBehavior: stdout is used
   ConsoleExporter:
     type:
       - object
@@ -186,7 +191,7 @@ $defs:
         description: |
           Configure certificate used to verify a server's TLS credentials. 
           Absolute path to certificate file in PEM format.
-          If omitted or null, system default certificate verification is used for secure connections.
+        defaultBehavior: system default certificate verification is used for secure connections
       key_file:
         type:
           - string
@@ -194,7 +199,7 @@ $defs:
         description: |
           Configure mTLS private client key. 
           Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
-          If omitted or null, mTLS is not used.
+        defaultBehavior: mTLS is not used
       cert_file:
         type:
           - string
@@ -202,7 +207,7 @@ $defs:
         description: |
           Configure mTLS client certificate. 
           Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
-          If omitted or null, mTLS is not used.
+        defaultBehavior: mTLS is not used
   GrpcTls:
     type:
       - object
@@ -216,7 +221,7 @@ $defs:
         description: |
           Configure certificate used to verify a server's TLS credentials. 
           Absolute path to certificate file in PEM format.
-          If omitted or null, system default certificate verification is used for secure connections.
+        defaultBehavior: system default certificate verification is used for secure connections
       key_file:
         type:
           - string
@@ -224,7 +229,7 @@ $defs:
         description: |
           Configure mTLS private client key. 
           Absolute path to client key file in PEM format. If set, .client_certificate must also be set.
-          If omitted or null, mTLS is not used.
+        defaultBehavior: mTLS is not used
       cert_file:
         type:
           - string
@@ -232,7 +237,7 @@ $defs:
         description: |
           Configure mTLS client certificate. 
           Absolute path to client certificate file in PEM format. If set, .client_key must also be set.
-          If omitted or null, mTLS is not used.
+        defaultBehavior: mTLS is not used
       insecure:
         type:
           - boolean
@@ -240,4 +245,4 @@ $defs:
         description: |
           Configure client transport security for the exporter's connection. 
           Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
-          If omitted or null, false is used.
+        defaultBehavior: false is used
