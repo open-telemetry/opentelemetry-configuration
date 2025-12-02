@@ -270,14 +270,14 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `bool` | TODO |
-| `bool_array` | TODO |
-| `double` | TODO |
-| `double_array` | TODO |
-| `int` | TODO |
-| `int_array` | TODO |
-| `string` | TODO |
-| `string_array` | TODO |
+| `bool` | Boolean attribute value. |
+| `bool_array` | Boolean array attribute value. |
+| `double` | Double attribute value. |
+| `double_array` | Double array attribute value. |
+| `int` | Integer attribute value. |
+| `int_array` | Integer array attribute value. |
+| `string` | String attribute value. |
+| `string_array` | String array attribute value. |
 
 <details>
 <summary>Language support status</summary>
@@ -401,9 +401,9 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `max_scale` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, TODO. | * `minimum`: `-10`<br>* `maximum`: `20`<br> | TODO |
-| `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, TODO. | * `minimum`: `2`<br> | TODO |
-| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, TODO. | No constraints. | TODO |
+| `max_scale` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, TODO. | * `minimum`: `-10`<br>* `maximum`: `20`<br> | Configure the max scale factor. |
+| `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, TODO. | * `minimum`: `2`<br> | Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket. |
+| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, TODO. | No constraints. | Configure whether or not to record min and max. |
 
 <details>
 <summary>Language support status</summary>
@@ -845,9 +845,9 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `always_off` | TODO |
-| `always_on` | TODO |
-| `trace_based` | TODO |
+| `always_off` | ExemplarFilter which makes no measurements eligible for being an Exemplar. |
+| `always_on` | ExemplarFilter which makes all measurements eligible for being an Exemplar. |
+| `trace_based` | ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar. |
 
 <details>
 <summary>Language support status</summary>
@@ -983,9 +983,9 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `cumulative` | TODO |
-| `delta` | TODO |
-| `low_memory` | TODO |
+| `cumulative` | Use cumulative aggregation temporality for all instrument types. |
+| `delta` | Use delta aggregation for all instrument types except up down counter and asynchronous up down counter. |
+| `low_memory` | Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types. |
 
 <details>
 <summary>Language support status</summary>
@@ -1209,13 +1209,13 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `asynchronous_counter` | TODO |
-| `asynchronous_gauge` | TODO |
-| `asynchronous_up_down_counter` | TODO |
-| `counter` | TODO |
-| `gauge` | TODO |
-| `histogram` | TODO |
-| `up_down_counter` | TODO |
+| `asynchronous_counter` | Asynchronous counter instruments. |
+| `asynchronous_gauge` | Asynchronous gauge instruments. |
+| `asynchronous_up_down_counter` | Asynchronous up down counter instruments. |
+| `counter` | Synchronous counter instruments. |
+| `gauge` | Synchronous gauge instruments. |
+| `histogram` | Synchronous histogram instruments. |
+| `up_down_counter` | Synchronous up down counter instruments. |
 
 <details>
 <summary>Language support status</summary>
