@@ -64,27 +64,27 @@
       "properties": {
         "default": {
           "$ref": "#/$defs/DefaultAggregation",
-          "description": "TODO\nIf omitted, TODO.\n"
+          "description": "Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#default-aggregation for details.\nIf omitted, TODO.\n"
         },
         "drop": {
           "$ref": "#/$defs/DropAggregation",
-          "description": "TODO\nIf omitted, TODO.\n"
+          "description": "Configures the stream to ignore/drop all instrument measurements. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#drop-aggregation for details.\nIf omitted, TODO.\n"
         },
         "explicit_bucket_histogram": {
           "$ref": "#/$defs/ExplicitBucketHistogramAggregation",
-          "description": "Configure aggregation to be explicit_bucket_histogram.\nIf omitted, TODO.\n"
+          "description": "Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation for details\nIf omitted, TODO.\n"
         },
         "base2_exponential_bucket_histogram": {
           "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation",
-          "description": "TODO\nIf omitted, TODO.\n"
+          "description": "Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation for details.\nIf omitted, TODO.\n"
         },
         "last_value": {
           "$ref": "#/$defs/LastValueAggregation",
-          "description": "TODO\nIf omitted, TODO.\n"
+          "description": "Configures the stream to collect data using the last measurement. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#last-value-aggregation for details.\nIf omitted, TODO.\n"
         },
         "sum": {
           "$ref": "#/$defs/SumAggregation",
-          "description": "TODO\nIf omitted, TODO.\n"
+          "description": "Configures the stream to collect the arithmetic sum of measurement values. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sum-aggregation for details.\nIf omitted, TODO.\n"
         }
       }
     },
