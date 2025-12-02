@@ -376,29 +376,29 @@
           "exclusiveMinimum": 0,
           "description": "Configure default cardinality limit for histogram instruments.\nIf omitted or null, the value from .default is used.\n"
         },
-        "observable_counter": {
+        "asynchronous_counter": {
           "type": [
             "integer",
             "null"
           ],
           "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for observable_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+          "description": "Configure default cardinality limit for asynchronous counter instruments.\nIf omitted or null, the value from .default is used.\n"
         },
-        "observable_gauge": {
+        "asynchronous_gauge": {
           "type": [
             "integer",
             "null"
           ],
           "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for observable_gauge instruments.\nIf omitted or null, the value from .default is used.\n"
+          "description": "Configure default cardinality limit for asynchronous gauge instruments.\nIf omitted or null, the value from .default is used.\n"
         },
-        "observable_up_down_counter": {
+        "asynchronous_up_down_counter": {
           "type": [
             "integer",
             "null"
           ],
           "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for observable_up_down_counter instruments.\nIf omitted or null, the value from .default is used.\n"
+          "description": "Configure default cardinality limit for asynchronous up down counter instruments.\nIf omitted or null, the value from .default is used.\n"
         },
         "up_down_counter": {
           "type": [
@@ -1285,9 +1285,9 @@
         "counter",
         "gauge",
         "histogram",
-        "observable_counter",
-        "observable_gauge",
-        "observable_up_down_counter",
+        "asynchronous_counter",
+        "asynchronous_gauge",
+        "asynchronous_up_down_counter",
         "up_down_counter"
       ]
     },
@@ -2235,7 +2235,7 @@
         },
         "instrument_type": {
           "$ref": "#/$defs/InstrumentType",
-          "description": "Configure instrument type selection criteria.\nValues include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\nIf omitted, all instrument types match.\n"
+          "description": "Configure instrument type selection criteria.\nIf omitted, all instrument types match.\n"
         },
         "unit": {
           "type": [

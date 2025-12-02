@@ -617,13 +617,13 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
+| `asynchronous_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for asynchronous counter instruments.<br> |
+| `asynchronous_gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for asynchronous gauge instruments.<br> |
+| `asynchronous_up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for asynchronous up down counter instruments.<br> |
 | `counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for counter instruments.<br> |
 | `default` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 2000 is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for all instrument types.<br>Instrument-specific cardinality limits take priority. <br> |
 | `gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for gauge instruments.<br> |
 | `histogram` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for histogram instruments.<br> |
-| `observable_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_counter instruments.<br> |
-| `observable_gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_gauge instruments.<br> |
-| `observable_up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_up_down_counter instruments.<br> |
 | `up_down_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for up_down_counter instruments.<br> |
 
 <details>
@@ -631,13 +631,13 @@ Usages:
 
 | Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
+| `asynchronous_counter` | not_implemented | unknown | supported | unknown |
+| `asynchronous_gauge` | not_implemented | unknown | supported | unknown |
+| `asynchronous_up_down_counter` | not_implemented | unknown | supported | unknown |
 | `counter` | not_implemented | unknown | supported | unknown |
 | `default` | not_implemented | unknown | supported | unknown |
 | `gauge` | not_implemented | unknown | supported | unknown |
 | `histogram` | not_implemented | unknown | supported | unknown |
-| `observable_counter` | not_implemented | unknown | supported | unknown |
-| `observable_gauge` | not_implemented | unknown | supported | unknown |
-| `observable_up_down_counter` | not_implemented | unknown | supported | unknown |
 | `up_down_counter` | not_implemented | unknown | supported | unknown |
 </details>
 
@@ -686,21 +686,21 @@ Usages:
       ],
       "exclusiveMinimum": 0
     },
-    "observable_counter": {
+    "asynchronous_counter": {
       "type": [
         "integer",
         "null"
       ],
       "exclusiveMinimum": 0
     },
-    "observable_gauge": {
+    "asynchronous_gauge": {
       "type": [
         "integer",
         "null"
       ],
       "exclusiveMinimum": 0
     },
-    "observable_up_down_counter": {
+    "asynchronous_up_down_counter": {
       "type": [
         "integer",
         "null"
@@ -1209,12 +1209,12 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
+| `asynchronous_counter` | TODO |
+| `asynchronous_gauge` | TODO |
+| `asynchronous_up_down_counter` | TODO |
 | `counter` | TODO |
 | `gauge` | TODO |
 | `histogram` | TODO |
-| `observable_counter` | TODO |
-| `observable_gauge` | TODO |
-| `observable_up_down_counter` | TODO |
 | `up_down_counter` | TODO |
 
 <details>
@@ -1222,12 +1222,12 @@ This is a enum type.
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
+| `asynchronous_counter` | supported | unknown | supported | unknown |
+| `asynchronous_gauge` | supported | unknown | supported | unknown |
+| `asynchronous_up_down_counter` | supported | unknown | supported | unknown |
 | `counter` | supported | unknown | supported | unknown |
 | `gauge` | supported | unknown | supported | unknown |
 | `histogram` | supported | unknown | supported | unknown |
-| `observable_counter` | supported | unknown | supported | unknown |
-| `observable_gauge` | supported | unknown | supported | unknown |
-| `observable_up_down_counter` | supported | unknown | supported | unknown |
 | `up_down_counter` | supported | unknown | supported | unknown |
 </details>
 
@@ -1250,9 +1250,9 @@ Usages:
     "counter",
     "gauge",
     "histogram",
-    "observable_counter",
-    "observable_gauge",
-    "observable_up_down_counter",
+    "asynchronous_counter",
+    "asynchronous_gauge",
+    "asynchronous_up_down_counter",
     "up_down_counter"
   ]
 }</pre>
@@ -3350,7 +3350,7 @@ Usages:
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `instrument_name` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all instrument names match. | No constraints. | Configure instrument name selection criteria.<br> |
-| `instrument_type` | [`InstrumentType`](#instrumenttype) | `false` | If omitted, all instrument types match. | No constraints. | Configure instrument type selection criteria.<br>Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.<br> |
+| `instrument_type` | [`InstrumentType`](#instrumenttype) | `false` | If omitted, all instrument types match. | No constraints. | Configure instrument type selection criteria.<br> |
 | `meter_name` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter names match. | No constraints. | Configure meter name selection criteria.<br> |
 | `meter_schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter schema URLs match. | No constraints. | Configure meter schema url selection criteria.<br> |
 | `meter_version` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter versions match. | No constraints. | Configure meter version selection criteria.<br> |
@@ -5360,7 +5360,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: supported<br> |
 | [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
 | [`BatchSpanProcessor`](#batchspanprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | not_implemented |  | * `counter`: not_implemented<br>* `default`: not_implemented<br>* `gauge`: not_implemented<br>* `histogram`: not_implemented<br>* `observable_counter`: not_implemented<br>* `observable_gauge`: not_implemented<br>* `observable_up_down_counter`: not_implemented<br>* `up_down_counter`: not_implemented<br> |
+| [`CardinalityLimits`](#cardinalitylimits) | not_implemented |  | * `asynchronous_counter`: not_implemented<br>* `asynchronous_gauge`: not_implemented<br>* `asynchronous_up_down_counter`: not_implemented<br>* `counter`: not_implemented<br>* `default`: not_implemented<br>* `gauge`: not_implemented<br>* `histogram`: not_implemented<br>* `up_down_counter`: not_implemented<br> |
 | [`ConsoleExporter`](#consoleexporter) | supported |  |  |
 | [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `temporality_preference`: supported<br> |
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
@@ -5372,7 +5372,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
+| [`InstrumentType`](#instrumenttype) | supported |  | * `asynchronous_counter`: supported<br>* `asynchronous_gauge`: supported<br>* `asynchronous_up_down_counter`: supported<br>* `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `up_down_counter`: supported<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
 | [`LoggerProvider`](#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
@@ -5468,7 +5468,7 @@ Latest supported file format: `0.3.0`
 | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | unknown |  | * `max_scale`: unknown<br>* `max_size`: unknown<br>* `record_min_max`: unknown<br> |
 | [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
 | [`BatchSpanProcessor`](#batchspanprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | unknown |  | * `counter`: unknown<br>* `default`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
+| [`CardinalityLimits`](#cardinalitylimits) | unknown |  | * `asynchronous_counter`: unknown<br>* `asynchronous_gauge`: unknown<br>* `asynchronous_up_down_counter`: unknown<br>* `counter`: unknown<br>* `default`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`ConsoleExporter`](#consoleexporter) | unknown |  |  |
 | [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `temporality_preference`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
@@ -5480,7 +5480,7 @@ Latest supported file format: `0.3.0`
 | [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
+| [`InstrumentType`](#instrumenttype) | unknown |  | * `asynchronous_counter`: unknown<br>* `asynchronous_gauge`: unknown<br>* `asynchronous_up_down_counter`: unknown<br>* `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
 | [`LoggerProvider`](#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
@@ -5576,7 +5576,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: not_implemented<br> |
 | [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
 | [`BatchSpanProcessor`](#batchspanprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | supported |  | * `counter`: supported<br>* `default`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
+| [`CardinalityLimits`](#cardinalitylimits) | supported |  | * `asynchronous_counter`: supported<br>* `asynchronous_gauge`: supported<br>* `asynchronous_up_down_counter`: supported<br>* `counter`: supported<br>* `default`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `up_down_counter`: supported<br> |
 | [`ConsoleExporter`](#consoleexporter) | supported |  |  |
 | [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: ignored<br> |
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
@@ -5588,7 +5588,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`GrpcTls`](#grpctls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `insecure`: not_implemented<br>* `key_file`: not_implemented<br> |
 | [`HttpTls`](#httptls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `key_file`: not_implemented<br> |
 | [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
+| [`InstrumentType`](#instrumenttype) | supported |  | * `asynchronous_counter`: supported<br>* `asynchronous_gauge`: supported<br>* `asynchronous_up_down_counter`: supported<br>* `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `up_down_counter`: supported<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
 | [`LoggerProvider`](#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
@@ -5684,7 +5684,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | unknown |  | * `max_scale`: unknown<br>* `max_size`: unknown<br>* `record_min_max`: unknown<br> |
 | [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
 | [`BatchSpanProcessor`](#batchspanprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | unknown |  | * `counter`: unknown<br>* `default`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
+| [`CardinalityLimits`](#cardinalitylimits) | unknown |  | * `asynchronous_counter`: unknown<br>* `asynchronous_gauge`: unknown<br>* `asynchronous_up_down_counter`: unknown<br>* `counter`: unknown<br>* `default`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`ConsoleExporter`](#consoleexporter) | unknown |  |  |
 | [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `temporality_preference`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
@@ -5696,7 +5696,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
+| [`InstrumentType`](#instrumenttype) | unknown |  | * `asynchronous_counter`: unknown<br>* `asynchronous_gauge`: unknown<br>* `asynchronous_up_down_counter`: unknown<br>* `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `up_down_counter`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
 | [`LoggerProvider`](#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |

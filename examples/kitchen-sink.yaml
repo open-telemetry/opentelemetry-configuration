@@ -94,9 +94,9 @@ meter_provider:
           counter: 2000
           gauge: 2000
           histogram: 2000
-          observable_counter: 2000
-          observable_gauge: 2000
-          observable_up_down_counter: 2000
+          asynchronous_counter: 2000
+          asynchronous_gauge: 2000
+          asynchronous_up_down_counter: 2000
           up_down_counter: 2000
     - periodic:
         interval: 60000
@@ -124,9 +124,9 @@ meter_provider:
           counter: 2000
           gauge: 2000
           histogram: 2000
-          observable_counter: 2000
-          observable_gauge: 2000
-          observable_up_down_counter: 2000
+          asynchronous_counter: 2000
+          asynchronous_gauge: 2000
+          asynchronous_up_down_counter: 2000
           up_down_counter: 2000
     - periodic:
         exporter:

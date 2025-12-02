@@ -137,29 +137,29 @@ $defs:
         description: |
           Configure default cardinality limit for histogram instruments.
         defaultBehavior: the value from .default is used
-      observable_counter:
+      asynchronous_counter:
         type:
           - integer
           - "null"
         exclusiveMinimum: 0
         description: |
-          Configure default cardinality limit for observable_counter instruments.
+          Configure default cardinality limit for asynchronous counter instruments.
         defaultBehavior: the value from .default is used
-      observable_gauge:
+      asynchronous_gauge:
         type:
           - integer
           - "null"
         exclusiveMinimum: 0
         description: |
-          Configure default cardinality limit for observable_gauge instruments.
+          Configure default cardinality limit for asynchronous gauge instruments.
         defaultBehavior: the value from .default is used
-      observable_up_down_counter:
+      asynchronous_up_down_counter:
         type:
           - integer
           - "null"
         exclusiveMinimum: 0
         description: |
-          Configure default cardinality limit for observable_up_down_counter instruments.
+          Configure default cardinality limit for asynchronous up down counter instruments.
         defaultBehavior: the value from .default is used
       up_down_counter:
         type:
@@ -538,7 +538,6 @@ $defs:
         $ref: "#/$defs/InstrumentType"
         description: |
           Configure instrument type selection criteria.
-          Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.
         defaultBehavior: all instrument types match
       unit:
         type:
@@ -576,17 +575,17 @@ $defs:
       - counter
       - gauge
       - histogram
-      - observable_counter
-      - observable_gauge
-      - observable_up_down_counter
+      - asynchronous_counter
+      - asynchronous_gauge
+      - asynchronous_up_down_counter
       - up_down_counter
     enumDescriptions:
       counter: TODO
       gauge: TODO
       histogram: TODO
-      observable_counter: TODO
-      observable_gauge: TODO
-      observable_up_down_counter: TODO
+      asynchronous_counter: TODO
+      asynchronous_gauge: TODO
+      asynchronous_up_down_counter: TODO
       up_down_counter: TODO
   ViewStream:
     type: object
