@@ -270,14 +270,14 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `bool` | TODO |
-| `bool_array` | TODO |
-| `double` | TODO |
-| `double_array` | TODO |
-| `int` | TODO |
-| `int_array` | TODO |
-| `string` | TODO |
-| `string_array` | TODO |
+| `bool` | Boolean attribute value. |
+| `bool_array` | Boolean array attribute value. |
+| `double` | Double attribute value. |
+| `double_array` | Double array attribute value. |
+| `int` | Integer attribute value. |
+| `int_array` | Integer array attribute value. |
+| `string` | String attribute value. |
+| `string_array` | String array attribute value. |
 
 <details>
 <summary>Language support status</summary>
@@ -845,9 +845,9 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `always_off` | TODO |
-| `always_on` | TODO |
-| `trace_based` | TODO |
+| `always_off` | ExemplarFilter which makes no measurements eligible for being an Exemplar. |
+| `always_on` | ExemplarFilter which makes all measurements eligible for being an Exemplar. |
+| `trace_based` | ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar. |
 
 <details>
 <summary>Language support status</summary>
@@ -983,9 +983,9 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `cumulative` | TODO |
-| `delta` | TODO |
-| `low_memory` | TODO |
+| `cumulative` | Use cumulative aggregation temporality for all instrument types. |
+| `delta` | Use delta aggregation for all instrument types except up down counter and asynchronous up down counter. |
+| `low_memory` | Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types. |
 
 <details>
 <summary>Language support status</summary>
@@ -1209,13 +1209,13 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `counter` | TODO |
-| `gauge` | TODO |
-| `histogram` | TODO |
-| `observable_counter` | TODO |
-| `observable_gauge` | TODO |
-| `observable_up_down_counter` | TODO |
-| `up_down_counter` | TODO |
+| `counter` | Synchronous counter instruments. |
+| `gauge` | Synchronous gauge instruments. |
+| `histogram` | Synchronous histogram instruments. |
+| `observable_counter` | Asynchronous counter instruments. |
+| `observable_gauge` | Asynchronous gauge instruments. |
+| `observable_up_down_counter` | Asynchronous up down counter instruments. |
+| `up_down_counter` | Synchronous up down counter instruments. |
 
 <details>
 <summary>Language support status</summary>
