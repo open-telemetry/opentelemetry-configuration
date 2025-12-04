@@ -197,6 +197,15 @@ $defs:
       - object
       - "null"
     additionalProperties: false
+  ExperimentalComposableParentThresholdSampler:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      root:
+        $ref: "#/$defs/ExperimentalComposableSampler"
+        description: Sampler to use when there is no parent.
   ExperimentalComposableProbabilitySampler:
     type:
       - object
@@ -228,7 +237,7 @@ $defs:
         $ref: "#/$defs/ExperimentalComposableAlwaysOnSampler"
         description: Configure sampler to be always_on.
       parent_threshold:
-        $ref: "#/$defs/ExperimentalComposableSampler"
+        $ref: "#/$defs/ExperimentalComposableParentThresholdSampler"
         description: |
           Configure sampler to be parent_threshold, delegating to the configured sampler when there is no parent.
       probability:
