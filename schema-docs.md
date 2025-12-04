@@ -1314,7 +1314,7 @@ Usages:
 |---|---|---|---|---|---|
 | `limits` | [`LogRecordLimits`](#logrecordlimits) | `false` | If omitted, default values as described in LogRecordLimits are used. | No constraints. | Configure log record limits. See also attribute_limits. |
 | `processors` | `array` of [`LogRecordProcessor`](#logrecordprocessor) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure log record processors. |
-| `logger_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` | If omitted, all loggers use default values as described in ExperimentalLoggerConfig. | No constraints. | Configure loggers.<br> |
+| `logger_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` | If omitted, all loggers use default values as described in ExperimentalLoggerConfig. | No constraints. | Configure loggers.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1372,7 +1372,7 @@ Usages:
 | `console` | [`ConsoleExporter`](#consoleexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be console. |
 | `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with gRPC transport. |
 | `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with HTTP transport. |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1537,7 +1537,7 @@ Usages:
 | `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | If omitted, trace_based is used. | No constraints. | Configure the exemplar filter. <br>Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br> |
 | `readers` | `array` of [`MetricReader`](#metricreader) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure metric readers. |
 | `views` | `array` of [`View`](#view) | `false` | If omitted, no views are registered. | * `minItems`: `1`<br> | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> |
-| `meter_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | If omitted, all meters use default values as described in ExperimentalMeterConfig. | No constraints. | Configure meters.<br> |
+| `meter_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | If omitted, all meters use default values as described in ExperimentalMeterConfig. | No constraints. | Configure meters.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1780,7 +1780,7 @@ Usages:
 | `propagator` | [`Propagator`](#propagator) | `false` | If omitted, a noop propagator is used. | No constraints. | Configure text map context propagators.<br> |
 | `resource` | [`Resource`](#resource) | `false` | If omitted, the default resource is used. | No constraints. | Configure resource for all signals.<br> |
 | `tracer_provider` | [`TracerProvider`](#tracerprovider) | `false` | If omitted, a noop tracer provider is used. | No constraints. | Configure tracer provider.<br> |
-| `instrumentation/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure instrumentation.<br> |
+| `instrumentation/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure instrumentation.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2471,7 +2471,7 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `prometheus/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be prometheus.<br> |
+| `prometheus/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be prometheus.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2577,7 +2577,7 @@ Usages:
 | `console` | [`ConsoleMetricExporter`](#consolemetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be console.<br> |
 | `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with gRPC transport.<br> |
 | `otlp_http` | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with HTTP transport.<br> |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2638,7 +2638,7 @@ Usages:
 | `attributes` | `array` of [`AttributeNameValue`](#attributenamevalue) | `false` | If omitted, no resource attributes are added. | * `minItems`: `1`<br> | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br> |
 | `attributes_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no resource attributes are added. | No constraints. | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br> |
 | `schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no schema URL is used. | No constraints. | Configure resource schema URL.<br> |
-| `detection/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | If omitted, resource detection is disabled. | No constraints. | Configure resource detection.<br> |
+| `detection/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | If omitted, resource detection is disabled. | No constraints. | Configure resource detection.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2703,9 +2703,9 @@ Usages:
 | `always_on` | [`AlwaysOnSampler`](#alwaysonsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_on. |
 | `parent_based` | [`ParentBasedSampler`](#parentbasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be parent_based. |
 | `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be trace_id_ratio_based. |
-| `composite/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be composite. |
-| `jaeger_remote/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be jaeger_remote. |
-| `probability/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be probability. |
+| `composite/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be composite. |
+| `jaeger_remote/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be jaeger_remote. |
+| `probability/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be probability. |
 
 <details>
 <summary>Language support status</summary>
@@ -2976,7 +2976,7 @@ Usages:
 | `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with gRPC transport. |
 | `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with HTTP transport. |
 | `zipkin` | [`ZipkinSpanExporter`](#zipkinspanexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be zipkin. |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -3349,7 +3349,7 @@ Usages:
 | `limits` | [`SpanLimits`](#spanlimits) | `false` | If omitted, default values as described in SpanLimits are used. | No constraints. | Configure span limits. See also attribute_limits. |
 | `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure span processors. |
 | `sampler` | [`Sampler`](#sampler) | `false` | If omitted, parent based sampler with a root of always_on is used. | No constraints. | Configure the sampler.<br> |
-| `tracer_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | If omitted, all tracers use default values as described in ExperimentalTracerConfig. | No constraints. | Configure tracers.<br> |
+| `tracer_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | If omitted, all tracers use default values as described in ExperimentalTracerConfig. | No constraints. | Configure tracers.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -3650,7 +3650,7 @@ Usages:
 ## ExperimentalComposableAlwaysOffSampler <a id="experimentalcomposablealwaysoffsampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -3678,7 +3678,7 @@ Usages:
 ## ExperimentalComposableAlwaysOnSampler <a id="experimentalcomposablealwaysonsampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -3706,7 +3706,7 @@ Usages:
 ## ExperimentalComposableParentBasedSampler <a id="experimentalcomposableparentbasedsampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -3769,7 +3769,7 @@ Usages:
 ## ExperimentalComposableProbabilitySampler <a id="experimentalcomposableprobabilitysampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -3817,7 +3817,7 @@ Usages:
 ## ExperimentalComposableSampler <a id="experimentalcomposablesampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -3886,7 +3886,7 @@ Usages:
 ## ExperimentalContainerResourceDetector <a id="experimentalcontainerresourcedetector"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -3914,7 +3914,7 @@ Usages:
 ## ExperimentalGeneralInstrumentation <a id="experimentalgeneralinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -3959,7 +3959,7 @@ Usages:
 ## ExperimentalHostResourceDetector <a id="experimentalhostresourcedetector"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -3987,7 +3987,7 @@ Usages:
 ## ExperimentalHttpClientInstrumentation <a id="experimentalhttpclientinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4040,7 +4040,7 @@ Usages:
 ## ExperimentalHttpInstrumentation <a id="experimentalhttpinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4085,7 +4085,7 @@ Usages:
 ## ExperimentalHttpServerInstrumentation <a id="experimentalhttpserverinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4138,7 +4138,7 @@ Usages:
 ## ExperimentalInstrumentation <a id="experimentalinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4233,7 +4233,7 @@ Usages:
 ## ExperimentalJaegerRemoteSampler <a id="experimentaljaegerremotesampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4297,7 +4297,7 @@ Usages:
 ## ExperimentalLanguageSpecificInstrumentation <a id="experimentallanguagespecificinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -4334,7 +4334,7 @@ Usages:
 ## ExperimentalLoggerConfig <a id="experimentalloggerconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4393,7 +4393,7 @@ Usages:
 ## ExperimentalLoggerConfigurator <a id="experimentalloggerconfigurator"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4444,7 +4444,7 @@ Usages:
 ## ExperimentalLoggerMatcherAndConfig <a id="experimentalloggermatcherandconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4498,7 +4498,7 @@ Usages:
 ## ExperimentalMeterConfig <a id="experimentalmeterconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4543,7 +4543,7 @@ Usages:
 ## ExperimentalMeterConfigurator <a id="experimentalmeterconfigurator"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4594,7 +4594,7 @@ Usages:
 ## ExperimentalMeterMatcherAndConfig <a id="experimentalmetermatcherandconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4648,7 +4648,7 @@ Usages:
 ## ExperimentalOtlpFileExporter <a id="experimentalotlpfileexporter"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4695,7 +4695,7 @@ Usages:
 ## ExperimentalOtlpFileMetricExporter <a id="experimentalotlpfilemetricexporter"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4751,7 +4751,7 @@ Usages:
 ## ExperimentalPeerInstrumentation <a id="experimentalpeerinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4795,7 +4795,7 @@ Usages:
 ## ExperimentalPeerServiceMapping <a id="experimentalpeerservicemapping"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4845,7 +4845,7 @@ Usages:
 ## ExperimentalProbabilitySampler <a id="experimentalprobabilitysampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4893,7 +4893,7 @@ Usages:
 ## ExperimentalProcessResourceDetector <a id="experimentalprocessresourcedetector"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -4921,7 +4921,7 @@ Usages:
 ## ExperimentalPrometheusMetricExporter <a id="experimentalprometheusmetricexporter"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -5001,7 +5001,7 @@ Usages:
 ## ExperimentalPrometheusTranslationStrategy <a id="experimentalprometheustranslationstrategy"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 This is a enum type.
 
@@ -5050,7 +5050,7 @@ Usages:
 ## ExperimentalResourceDetection <a id="experimentalresourcedetection"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -5099,7 +5099,7 @@ Usages:
 ## ExperimentalResourceDetector <a id="experimentalresourcedetector"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 `ExperimentalResourceDetector` is an [SDK extension plugin](#sdk-extension-plugins).
 
@@ -5165,7 +5165,7 @@ Usages:
 ## ExperimentalServiceResourceDetector <a id="experimentalserviceresourcedetector"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -5193,7 +5193,7 @@ Usages:
 ## ExperimentalTracerConfig <a id="experimentaltracerconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -5238,7 +5238,7 @@ Usages:
 ## ExperimentalTracerConfigurator <a id="experimentaltracerconfigurator"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -5289,7 +5289,7 @@ Usages:
 ## ExperimentalTracerMatcherAndConfig <a id="experimentaltracermatcherandconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
