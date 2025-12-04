@@ -8,7 +8,7 @@ properties:
       $ref: "#/$defs/AttributeNameValue"
     description: |
       Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
-    defaultBehavior: TODO
+    defaultBehavior: no resource attributes are added
   detection/development:
     $ref: "#/$defs/ExperimentalResourceDetection"
     description: |
