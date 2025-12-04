@@ -1774,7 +1774,7 @@ Usages:
 | `attribute_limits` | [`AttributeLimits`](#attributelimits) | `false` | If omitted, default values as described in AttributeLimits are used. | No constraints. | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br> |
 | `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure if the SDK is disabled or not.<br> |
 | `file_format` | `string` | `true` | Property is required and must be non-null. | No constraints. | The file format version.<br>The yaml format is documented at<br>https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema<br> |
-| `log_level` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, info is used. | No constraints. | Configure the log level of the internal logger used by the SDK.<br> |
+| `log_level` | [`SeverityNumber`](#severitynumber) | `false` | If omitted, INFO is used. | No constraints. | Configure the log level of the internal logger used by the SDK.<br> |
 | `logger_provider` | [`LoggerProvider`](#loggerprovider) | `false` | If omitted, a noop logger provider is used. | No constraints. | Configure logger provider.<br> |
 | `meter_provider` | [`MeterProvider`](#meterprovider) | `false` | If omitted, a noop meter provider is used. | No constraints. | Configure meter provider.<br> |
 | `propagator` | [`Propagator`](#propagator) | `false` | If omitted, a noop propagator is used. | No constraints. | Configure text map context propagators.<br> |
@@ -1827,10 +1827,7 @@ No usages.
       ]
     },
     "log_level": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "$ref": "#/$defs/SeverityNumber"
     },
     "attribute_limits": {
       "$ref": "#/$defs/AttributeLimits"
@@ -2777,6 +2774,113 @@ Usages:
       "$ref": "#/$defs/TraceIdRatioBasedSampler"
     }
   }
+}</pre>
+</details>
+
+## SeverityNumber <a id="severitynumber"></a>
+
+This is a enum type.
+
+| Value | Description |
+|---|---|
+| `DEBUG` | DEBUG, severity number 5. |
+| `DEBUG2` | DEBUG2, severity number 6. |
+| `DEBUG3` | DEBUG3, severity number 7. |
+| `DEBUG4` | DEBUG4, severity number 8. |
+| `ERROR` | ERROR, severity number 17. |
+| `ERROR2` | ERROR2, severity number 18. |
+| `ERROR3` | ERROR3, severity number 19. |
+| `ERROR4` | ERROR4, severity number 20. |
+| `FATAL` | FATAL, severity number 21. |
+| `FATAL2` | FATAL2, severity number 22. |
+| `FATAL3` | FATAL3, severity number 23. |
+| `FATAL4` | FATAL4, severity number 24. |
+| `INFO` | INFO, severity number 9. |
+| `INFO2` | INFO2, severity number 10. |
+| `INFO3` | INFO3, severity number 11. |
+| `INFO4` | INFO4, severity number 12. |
+| `TRACE` | TRACE, severity number 1. |
+| `TRACE2` | TRACE2, severity number 2. |
+| `TRACE3` | TRACE3, severity number 3. |
+| `TRACE4` | TRACE4, severity number 4. |
+| `WARN` | WARN, severity number 13. |
+| `WARN2` | WARN2, severity number 14. |
+| `WARN3` | WARN3, severity number 15. |
+| `WARN4` | WARN4, severity number 16. |
+
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `DEBUG` | unknown | unknown | unknown | unknown |
+| `DEBUG2` | unknown | unknown | unknown | unknown |
+| `DEBUG3` | unknown | unknown | unknown | unknown |
+| `DEBUG4` | unknown | unknown | unknown | unknown |
+| `ERROR` | unknown | unknown | unknown | unknown |
+| `ERROR2` | unknown | unknown | unknown | unknown |
+| `ERROR3` | unknown | unknown | unknown | unknown |
+| `ERROR4` | unknown | unknown | unknown | unknown |
+| `FATAL` | unknown | unknown | unknown | unknown |
+| `FATAL2` | unknown | unknown | unknown | unknown |
+| `FATAL3` | unknown | unknown | unknown | unknown |
+| `FATAL4` | unknown | unknown | unknown | unknown |
+| `INFO` | unknown | unknown | unknown | unknown |
+| `INFO2` | unknown | unknown | unknown | unknown |
+| `INFO3` | unknown | unknown | unknown | unknown |
+| `INFO4` | unknown | unknown | unknown | unknown |
+| `TRACE` | unknown | unknown | unknown | unknown |
+| `TRACE2` | unknown | unknown | unknown | unknown |
+| `TRACE3` | unknown | unknown | unknown | unknown |
+| `TRACE4` | unknown | unknown | unknown | unknown |
+| `WARN` | unknown | unknown | unknown | unknown |
+| `WARN2` | unknown | unknown | unknown | unknown |
+| `WARN3` | unknown | unknown | unknown | unknown |
+| `WARN4` | unknown | unknown | unknown | unknown |
+</details>
+
+No constraints.
+
+Usages:
+
+* [`ExperimentalLoggerConfig.minimum_severity`](#experimentalloggerconfig)
+* [`OpenTelemetryConfiguration.log_level`](#opentelemetryconfiguration)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/common.yaml)
+<pre>{
+  "type": [
+    "string",
+    "null"
+  ],
+  "enum": [
+    "TRACE",
+    "TRACE2",
+    "TRACE3",
+    "TRACE4",
+    "DEBUG",
+    "DEBUG2",
+    "DEBUG3",
+    "DEBUG4",
+    "INFO",
+    "INFO2",
+    "INFO3",
+    "INFO4",
+    "WARN",
+    "WARN2",
+    "WARN3",
+    "WARN4",
+    "ERROR",
+    "ERROR2",
+    "ERROR3",
+    "ERROR4",
+    "FATAL",
+    "FATAL2",
+    "FATAL3",
+    "FATAL4"
+  ]
 }</pre>
 </details>
 
@@ -4235,7 +4339,7 @@ Usages:
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure if the logger is enabled or not.<br> |
-| `minimum_severity` | [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | `false` | If omitted, severity filtering is not applied. | No constraints. | Configure severity filtering.<br>Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.<br>Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.<br> |
+| `minimum_severity` | [`SeverityNumber`](#severitynumber) | `false` | If omitted, severity filtering is not applied. | No constraints. | Configure severity filtering.<br>Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.<br>Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.<br> |
 | `trace_based` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, trace based filtering is not applied. | No constraints. | Configure trace based filtering.<br>If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.<br> |
 
 <details>
@@ -4274,7 +4378,7 @@ Usages:
       ]
     },
     "minimum_severity": {
-      "$ref": "#/$defs/ExperimentalSeverityNumber"
+      "$ref": "#/$defs/SeverityNumber"
     },
     "trace_based": {
       "type": [
@@ -5086,115 +5190,6 @@ Usages:
 }</pre>
 </details>
 
-## ExperimentalSeverityNumber <a id="experimentalseveritynumber"></a>
-
-> [!WARNING]
-> This type is [experimental](README.md#experimental-features).
-
-This is a enum type.
-
-| Value | Description |
-|---|---|
-| `DEBUG` | DEBUG, severity number 5. |
-| `DEBUG2` | DEBUG2, severity number 6. |
-| `DEBUG3` | DEBUG3, severity number 7. |
-| `DEBUG4` | DEBUG4, severity number 8. |
-| `ERROR` | ERROR, severity number 17. |
-| `ERROR2` | ERROR2, severity number 18. |
-| `ERROR3` | ERROR3, severity number 19. |
-| `ERROR4` | ERROR4, severity number 20. |
-| `FATAL` | FATAL, severity number 21. |
-| `FATAL2` | FATAL2, severity number 22. |
-| `FATAL3` | FATAL3, severity number 23. |
-| `FATAL4` | FATAL4, severity number 24. |
-| `INFO` | INFO, severity number 9. |
-| `INFO2` | INFO2, severity number 10. |
-| `INFO3` | INFO3, severity number 11. |
-| `INFO4` | INFO4, severity number 12. |
-| `TRACE` | TRACE, severity number 1. |
-| `TRACE2` | TRACE2, severity number 2. |
-| `TRACE3` | TRACE3, severity number 3. |
-| `TRACE4` | TRACE4, severity number 4. |
-| `WARN` | WARN, severity number 13. |
-| `WARN2` | WARN2, severity number 14. |
-| `WARN3` | WARN3, severity number 15. |
-| `WARN4` | WARN4, severity number 16. |
-
-<details>
-<summary>Language support status</summary>
-
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `DEBUG` | unknown | unknown | unknown | unknown |
-| `DEBUG2` | unknown | unknown | unknown | unknown |
-| `DEBUG3` | unknown | unknown | unknown | unknown |
-| `DEBUG4` | unknown | unknown | unknown | unknown |
-| `ERROR` | unknown | unknown | unknown | unknown |
-| `ERROR2` | unknown | unknown | unknown | unknown |
-| `ERROR3` | unknown | unknown | unknown | unknown |
-| `ERROR4` | unknown | unknown | unknown | unknown |
-| `FATAL` | unknown | unknown | unknown | unknown |
-| `FATAL2` | unknown | unknown | unknown | unknown |
-| `FATAL3` | unknown | unknown | unknown | unknown |
-| `FATAL4` | unknown | unknown | unknown | unknown |
-| `INFO` | unknown | unknown | unknown | unknown |
-| `INFO2` | unknown | unknown | unknown | unknown |
-| `INFO3` | unknown | unknown | unknown | unknown |
-| `INFO4` | unknown | unknown | unknown | unknown |
-| `TRACE` | unknown | unknown | unknown | unknown |
-| `TRACE2` | unknown | unknown | unknown | unknown |
-| `TRACE3` | unknown | unknown | unknown | unknown |
-| `TRACE4` | unknown | unknown | unknown | unknown |
-| `WARN` | unknown | unknown | unknown | unknown |
-| `WARN2` | unknown | unknown | unknown | unknown |
-| `WARN3` | unknown | unknown | unknown | unknown |
-| `WARN4` | unknown | unknown | unknown | unknown |
-</details>
-
-No constraints.
-
-Usages:
-
-* [`ExperimentalLoggerConfig.minimum_severity`](#experimentalloggerconfig)
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/logger_provider.yaml)
-<pre>{
-  "type": [
-    "string",
-    "null"
-  ],
-  "enum": [
-    "TRACE",
-    "TRACE2",
-    "TRACE3",
-    "TRACE4",
-    "DEBUG",
-    "DEBUG2",
-    "DEBUG3",
-    "DEBUG4",
-    "INFO",
-    "INFO2",
-    "INFO3",
-    "INFO4",
-    "WARN",
-    "WARN2",
-    "WARN3",
-    "WARN4",
-    "ERROR",
-    "ERROR2",
-    "ERROR3",
-    "ERROR4",
-    "FATAL",
-    "FATAL2",
-    "FATAL3",
-    "FATAL4"
-  ]
-}</pre>
-</details>
-
 ## ExperimentalTracerConfig <a id="experimentaltracerconfig"></a>
 
 > [!WARNING]
@@ -5404,6 +5399,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
 | [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: supported<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `zipkin`: supported<br>* `otlp_file/development`: supported<br> |
@@ -5449,7 +5445,6 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | not_implemented |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
@@ -5512,6 +5507,7 @@ Latest supported file format: `0.3.0`
 | [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
 | [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `attributes_list`: unknown<br>* `schema_url`: unknown<br>* `detection/development`: unknown<br> |
 | [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `composite/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `probability/development`: unknown<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `zipkin`: unknown<br>* `otlp_file/development`: unknown<br> |
@@ -5557,7 +5553,6 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
@@ -5620,6 +5615,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: ignored<br>* `detection/development`: supported<br> |
 | [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: ignored<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `zipkin`: supported<br>* `otlp_file/development`: supported<br> |
@@ -5665,7 +5661,6 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | supported |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | supported |  | * `disabled`: supported<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
@@ -5728,6 +5723,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
 | [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `attributes_list`: unknown<br>* `schema_url`: unknown<br>* `detection/development`: unknown<br> |
 | [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `composite/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `probability/development`: unknown<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `zipkin`: unknown<br>* `otlp_file/development`: unknown<br> |
@@ -5773,7 +5769,6 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |

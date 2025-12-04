@@ -186,7 +186,7 @@ $defs:
           Configure if the logger is enabled or not.
         defaultBehavior: false is used
       minimum_severity:
-        $ref: "#/$defs/ExperimentalSeverityNumber"
+        $ref: "common.yaml#/$defs/SeverityNumber"
         description: |
           Configure severity filtering.
           Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
@@ -200,57 +200,3 @@ $defs:
           Configure trace based filtering.
           If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.
         defaultBehavior: trace based filtering is not applied
-  ExperimentalSeverityNumber:
-    type:
-      - string
-      - "null"
-    enum:
-      - TRACE
-      - TRACE2
-      - TRACE3
-      - TRACE4
-      - DEBUG
-      - DEBUG2
-      - DEBUG3
-      - DEBUG4
-      - INFO
-      - INFO2
-      - INFO3
-      - INFO4
-      - WARN
-      - WARN2
-      - WARN3
-      - WARN4
-      - ERROR
-      - ERROR2
-      - ERROR3
-      - ERROR4
-      - FATAL
-      - FATAL2
-      - FATAL3
-      - FATAL4
-    enumDescriptions:
-      DEBUG: DEBUG, severity number 5.
-      DEBUG2: DEBUG2, severity number 6.
-      DEBUG3: DEBUG3, severity number 7.
-      DEBUG4: DEBUG4, severity number 8.
-      ERROR: ERROR, severity number 17.
-      ERROR2: ERROR2, severity number 18.
-      ERROR3: ERROR3, severity number 19.
-      ERROR4: ERROR4, severity number 20.
-      FATAL: FATAL, severity number 21.
-      FATAL2: FATAL2, severity number 22.
-      FATAL3: FATAL3, severity number 23.
-      FATAL4: FATAL4, severity number 24.
-      INFO: INFO, severity number 9.
-      INFO2: INFO2, severity number 10.
-      INFO3: INFO3, severity number 11.
-      INFO4: INFO4, severity number 12.
-      TRACE: TRACE, severity number 1.
-      TRACE2: TRACE2, severity number 2.
-      TRACE3: TRACE3, severity number 3.
-      TRACE4: TRACE4, severity number 4.
-      WARN: WARN, severity number 13.
-      WARN2: WARN2, severity number 14.
-      WARN3: WARN3, severity number 15.
-      WARN4: WARN4, severity number 16.

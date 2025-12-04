@@ -17,11 +17,8 @@
       "description": "Configure if the SDK is disabled or not.\nIf omitted or null, false is used.\n"
     },
     "log_level": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "description": "Configure the log level of the internal logger used by the SDK.\nIf omitted or null, info is used.\n"
+      "$ref": "#/$defs/SeverityNumber",
+      "description": "Configure the log level of the internal logger used by the SDK.\nIf omitted, INFO is used.\n"
     },
     "attribute_limits": {
       "$ref": "#/$defs/AttributeLimits",
@@ -740,7 +737,7 @@
           "description": "Configure if the logger is enabled or not.\nIf omitted or null, false is used.\n"
         },
         "minimum_severity": {
-          "$ref": "#/$defs/ExperimentalSeverityNumber",
+          "$ref": "#/$defs/SeverityNumber",
           "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.\nIf omitted, severity filtering is not applied.\n"
         },
         "trace_based": {
@@ -1057,38 +1054,6 @@
         "null"
       ],
       "additionalProperties": false
-    },
-    "ExperimentalSeverityNumber": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "TRACE",
-        "TRACE2",
-        "TRACE3",
-        "TRACE4",
-        "DEBUG",
-        "DEBUG2",
-        "DEBUG3",
-        "DEBUG4",
-        "INFO",
-        "INFO2",
-        "INFO3",
-        "INFO4",
-        "WARN",
-        "WARN2",
-        "WARN3",
-        "WARN4",
-        "ERROR",
-        "ERROR2",
-        "ERROR3",
-        "ERROR4",
-        "FATAL",
-        "FATAL2",
-        "FATAL3",
-        "FATAL4"
-      ]
     },
     "ExperimentalTracerConfig": {
       "type": [
@@ -1975,6 +1940,38 @@
           "description": "Configure sampler to be trace_id_ratio_based.\nIf omitted, ignore.\n"
         }
       }
+    },
+    "SeverityNumber": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "TRACE",
+        "TRACE2",
+        "TRACE3",
+        "TRACE4",
+        "DEBUG",
+        "DEBUG2",
+        "DEBUG3",
+        "DEBUG4",
+        "INFO",
+        "INFO2",
+        "INFO3",
+        "INFO4",
+        "WARN",
+        "WARN2",
+        "WARN3",
+        "WARN4",
+        "ERROR",
+        "ERROR2",
+        "ERROR3",
+        "ERROR4",
+        "FATAL",
+        "FATAL2",
+        "FATAL3",
+        "FATAL4"
+      ]
     },
     "SimpleLogRecordProcessor": {
       "type": "object",

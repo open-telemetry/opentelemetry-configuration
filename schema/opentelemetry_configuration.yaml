@@ -15,12 +15,10 @@ properties:
       Configure if the SDK is disabled or not.
     defaultBehavior: false is used
   log_level:
-    type:
-      - string
-      - "null"
+    $ref: common.yaml#/$defs/SeverityNumber
     description: |
       Configure the log level of the internal logger used by the SDK.
-    defaultBehavior: info is used
+    defaultBehavior: INFO is used
   attribute_limits:
     $ref: "#/$defs/AttributeLimits"
     description: |
