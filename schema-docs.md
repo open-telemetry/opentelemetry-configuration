@@ -3868,9 +3868,9 @@ Usages:
 > [!WARNING]
 > This type is [experimental](README.md#experimental-features).
 
-| Property | Type | Required? | Constraints | Description |
-|---|---|---|---|---|
-| `rules` | one of:<br>* `array`<br>* `null`<br> | `false` | No constraints. | The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match. <br>If no conditions are specified, the rule matches all spans that reach it. If no rules match, the span is not sampled.<br> |
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `rules` | one of:<br>* `array`<br>* `null`<br> | `false` | If omitted or null, no span is sampled. | No constraints. | The rules for the sampler, matched in order. If no rules match, the span is not sampled.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -3917,13 +3917,13 @@ Usages:
 > [!WARNING]
 > This type is [experimental](README.md#experimental-features).
 
-| Property | Type | Required? | Constraints | Description |
-|---|---|---|---|---|
-| `attribute_patterns` | [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | `false` | No constraints. | Patterns to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a pattern of "4*" would match any http.response.status_code in 400-499. For array attributes, if any<br>item matches, it is considered a match.<br> |
-| `attribute_values` | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | `false` | No constraints. | Values to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a value of "404" would match the http.response.status_code 404. For array attributes, if any<br>item matches, it is considered a match.<br> |
-| `parent` | `array` of [`ExperimentalSpanParent`](#experimentalspanparent) | `false` | * `minItems`: `1`<br> | The parent span types to match. |
-| `sampler` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `true` | No constraints. | The sampler to use for matching spans. |
-| `span_kinds` | `array` of [`SpanKind`](#spankind) | `false` | * `minItems`: `1`<br> | The span kinds to match. If the span's kind matches any of these, it matches. |
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `attribute_patterns` | [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | `false` | If omitted, ignore. | No constraints. | Patterns to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a pattern of "4*" would match any http.response.status_code in 400-499. For array attributes, if any<br>item matches, it is considered a match.<br> |
+| `attribute_values` | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | `false` | If omitted, ignore. | No constraints. | Values to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a value of "404" would match the http.response.status_code 404. For array attributes, if any<br>item matches, it is considered a match.<br> |
+| `parent` | `array` of [`ExperimentalSpanParent`](#experimentalspanparent) | `false` | If omitted, ignore. | * `minItems`: `1`<br> | The parent span types to match. |
+| `sampler` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `true` | Property is required and must be non-null. | No constraints. | The sampler to use for matching spans. |
+| `span_kinds` | `array` of [`SpanKind`](#spankind) | `false` | If omitted, ignore. | * `minItems`: `1`<br> | The span kinds to match. If the span's kind matches any of these, it matches. |
 
 <details>
 <summary>Language support status</summary>
@@ -3950,6 +3950,7 @@ No usages.
 [JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": "object",
+  "description": "A rule for ExperimentalComposableRuleBasedSampler. A rule can have multiple match conditions - the sampler will be applied if all match. \nIf no conditions are specified, the rule matches all spans that reach it.\n",
   "additionalProperties": false,
   "properties": {
     "attribute_values": {
@@ -3987,11 +3988,11 @@ No usages.
 > [!WARNING]
 > This type is [experimental](README.md#experimental-features).
 
-| Property | Type | Required? | Constraints | Description |
-|---|---|---|---|---|
-| `excluded` | `array` of `string` | `false` | * `minItems`: `1`<br> | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, .included attributes are included.<br> |
-| `included` | `array` of `string` | `false` | * `minItems`: `1`<br> | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br>If omitted, all values are included.<br> |
-| `key` | `string` | `true` | No constraints. | The attribute key to match against. |
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `excluded` | `array` of `string` | `false` | If omitted, .included attributes are included. | * `minItems`: `1`<br> | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
+| `included` | `array` of `string` | `false` | If omitted, all values are included. | * `minItems`: `1`<br> | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
+| `key` | `string` | `true` | Property is required and must be non-null. | No constraints. | The attribute key to match against. |
 
 <details>
 <summary>Language support status</summary>
@@ -4049,10 +4050,10 @@ Usages:
 > [!WARNING]
 > This type is [experimental](README.md#experimental-features).
 
-| Property | Type | Required? | Constraints | Description |
-|---|---|---|---|---|
-| `key` | `string` | `true` | No constraints. | The attribute key to match against. |
-| `values` | `array` of `string` | `true` | * `minItems`: `1`<br> | The attribute values to match against. If the attribute's value matches any of these, it matches. |
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `key` | `string` | `true` | Property is required and must be non-null. | No constraints. | The attribute key to match against. |
+| `values` | `array` of `string` | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | The attribute values to match against. If the attribute's value matches any of these, it matches. |
 
 <details>
 <summary>Language support status</summary>
@@ -4103,22 +4104,13 @@ Usages:
 > [!WARNING]
 > This type is [experimental](README.md#experimental-features).
 
-<<<<<<< HEAD
-| Property | Type | Required? | Constraints | Description |
-|---|---|---|---|---|
-| `always_off` | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | `false` | No constraints. | Configure sampler to be always_off. |
-| `always_on` | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | `false` | No constraints. | Configure sampler to be always_on. |
-| `parent_based` | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | `false` | No constraints. | Configure sampler to be parent_based. |
-| `probability` | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | `false` | No constraints. | Configure sampler to be probability. |
-| `rule_based` | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | `false` | No constraints. | Configure sampler to be rule_based. |
-=======
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `always_off` | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_off. |
 | `always_on` | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_on. |
 | `parent_based` | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be parent_based. |
 | `probability` | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be probability. |
->>>>>>> 67055d75dbebb324070a3f172a866e6d491704d3
+| `rule_based` | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be rule_based. |
 
 <details>
 <summary>Language support status</summary>
@@ -5489,116 +5481,6 @@ Usages:
 }</pre>
 </details>
 
-<<<<<<< HEAD
-## ExperimentalSeverityNumber <a id="experimentalseveritynumber"></a>
-
-> [!WARNING]
-> This type is [experimental](README.md#experimental-features).
-
-This is a enum type.
-
-| Value | Description |
-|---|---|
-| `DEBUG` | DEBUG, severity number 5. |
-| `DEBUG2` | DEBUG2, severity number 6. |
-| `DEBUG3` | DEBUG3, severity number 7. |
-| `DEBUG4` | DEBUG4, severity number 8. |
-| `ERROR` | ERROR, severity number 17. |
-| `ERROR2` | ERROR2, severity number 18. |
-| `ERROR3` | ERROR3, severity number 19. |
-| `ERROR4` | ERROR4, severity number 20. |
-| `FATAL` | FATAL, severity number 21. |
-| `FATAL2` | FATAL2, severity number 22. |
-| `FATAL3` | FATAL3, severity number 23. |
-| `FATAL4` | FATAL4, severity number 24. |
-| `INFO` | INFO, severity number 9. |
-| `INFO2` | INFO2, severity number 10. |
-| `INFO3` | INFO3, severity number 11. |
-| `INFO4` | INFO4, severity number 12. |
-| `TRACE` | TRACE, severity number 1. |
-| `TRACE2` | TRACE2, severity number 2. |
-| `TRACE3` | TRACE3, severity number 3. |
-| `TRACE4` | TRACE4, severity number 4. |
-| `WARN` | WARN, severity number 13. |
-| `WARN2` | WARN2, severity number 14. |
-| `WARN3` | WARN3, severity number 15. |
-| `WARN4` | WARN4, severity number 16. |
-
-<details>
-<summary>Language support status</summary>
-
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `DEBUG` | unknown | unknown | unknown | unknown |
-| `DEBUG2` | unknown | unknown | unknown | unknown |
-| `DEBUG3` | unknown | unknown | unknown | unknown |
-| `DEBUG4` | unknown | unknown | unknown | unknown |
-| `ERROR` | unknown | unknown | unknown | unknown |
-| `ERROR2` | unknown | unknown | unknown | unknown |
-| `ERROR3` | unknown | unknown | unknown | unknown |
-| `ERROR4` | unknown | unknown | unknown | unknown |
-| `FATAL` | unknown | unknown | unknown | unknown |
-| `FATAL2` | unknown | unknown | unknown | unknown |
-| `FATAL3` | unknown | unknown | unknown | unknown |
-| `FATAL4` | unknown | unknown | unknown | unknown |
-| `INFO` | unknown | unknown | unknown | unknown |
-| `INFO2` | unknown | unknown | unknown | unknown |
-| `INFO3` | unknown | unknown | unknown | unknown |
-| `INFO4` | unknown | unknown | unknown | unknown |
-| `TRACE` | unknown | unknown | unknown | unknown |
-| `TRACE2` | unknown | unknown | unknown | unknown |
-| `TRACE3` | unknown | unknown | unknown | unknown |
-| `TRACE4` | unknown | unknown | unknown | unknown |
-| `WARN` | unknown | unknown | unknown | unknown |
-| `WARN2` | unknown | unknown | unknown | unknown |
-| `WARN3` | unknown | unknown | unknown | unknown |
-| `WARN4` | unknown | unknown | unknown | unknown |
-</details>
-
-No constraints.
-
-Usages:
-
-* [`ExperimentalLoggerConfig.minimum_severity`](#experimentalloggerconfig)
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/logger_provider.yaml)
-<pre>{
-  "type": [
-    "string",
-    "null"
-  ],
-  "enum": [
-    "TRACE",
-    "TRACE2",
-    "TRACE3",
-    "TRACE4",
-    "DEBUG",
-    "DEBUG2",
-    "DEBUG3",
-    "DEBUG4",
-    "INFO",
-    "INFO2",
-    "INFO3",
-    "INFO4",
-    "WARN",
-    "WARN2",
-    "WARN3",
-    "WARN4",
-    "ERROR",
-    "ERROR2",
-    "ERROR3",
-    "ERROR4",
-    "FATAL",
-    "FATAL2",
-    "FATAL3",
-    "FATAL4"
-  ]
-}</pre>
-</details>
-
 ## ExperimentalSpanParent <a id="experimentalspanparent"></a>
 
 > [!WARNING]
@@ -5645,8 +5527,6 @@ Usages:
 }</pre>
 </details>
 
-=======
->>>>>>> 67055d75dbebb324070a3f172a866e6d491704d3
 ## ExperimentalTracerConfig <a id="experimentaltracerconfig"></a>
 
 > [!WARNING]
@@ -5907,11 +5787,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | not_implemented |  |  |
-<<<<<<< HEAD
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-=======
->>>>>>> 67055d75dbebb324070a3f172a866e6d491704d3
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
@@ -6025,11 +5901,7 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-<<<<<<< HEAD
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-=======
->>>>>>> 67055d75dbebb324070a3f172a866e6d491704d3
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
@@ -6143,11 +6015,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | supported |  |  |
-<<<<<<< HEAD
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-=======
->>>>>>> 67055d75dbebb324070a3f172a866e6d491704d3
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | supported |  | * `disabled`: supported<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
@@ -6261,11 +6129,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-<<<<<<< HEAD
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
 | [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-=======
->>>>>>> 67055d75dbebb324070a3f172a866e6d491704d3
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |

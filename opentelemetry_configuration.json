@@ -532,21 +532,22 @@
           "items": {
             "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
           },
-          "description": "The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match. \nIf no conditions are specified, the rule matches all spans that reach it. If no rules match, the span is not sampled.\n"
+          "description": "The rules for the sampler, matched in order. If no rules match, the span is not sampled.\nIf omitted or null, no span is sampled.\n"
         }
       }
     },
     "ExperimentalComposableRuleBasedSamplerRule": {
       "type": "object",
+      "description": "A rule for ExperimentalComposableRuleBasedSampler. A rule can have multiple match conditions - the sampler will be applied if all match. \nIf no conditions are specified, the rule matches all spans that reach it.\n",
       "additionalProperties": false,
       "properties": {
         "attribute_values": {
           "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributeValues",
-          "description": "Values to match against a single attribute. Non-string attributes are matched using their string representation:\nfor example, a value of \"404\" would match the http.response.status_code 404. For array attributes, if any\nitem matches, it is considered a match.\n"
+          "description": "Values to match against a single attribute. Non-string attributes are matched using their string representation:\nfor example, a value of \"404\" would match the http.response.status_code 404. For array attributes, if any\nitem matches, it is considered a match.\nIf omitted, ignore.\n"
         },
         "attribute_patterns": {
           "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributePatterns",
-          "description": "Patterns to match against a single attribute. Non-string attributes are matched using their string representation:\nfor example, a pattern of \"4*\" would match any http.response.status_code in 400-499. For array attributes, if any\nitem matches, it is considered a match.\n"
+          "description": "Patterns to match against a single attribute. Non-string attributes are matched using their string representation:\nfor example, a pattern of \"4*\" would match any http.response.status_code in 400-499. For array attributes, if any\nitem matches, it is considered a match.\nIf omitted, ignore.\n"
         },
         "span_kinds": {
           "type": "array",
@@ -554,7 +555,7 @@
           "items": {
             "$ref": "#/$defs/SpanKind"
           },
-          "description": "The span kinds to match. If the span's kind matches any of these, it matches."
+          "description": "The span kinds to match. If the span's kind matches any of these, it matches.\nIf omitted, ignore.\n"
         },
         "parent": {
           "type": "array",
@@ -562,11 +563,11 @@
           "items": {
             "$ref": "#/$defs/ExperimentalSpanParent"
           },
-          "description": "The parent span types to match."
+          "description": "The parent span types to match.\nIf omitted, ignore.\n"
         },
         "sampler": {
           "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "The sampler to use for matching spans."
+          "description": "The sampler to use for matching spans.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [
@@ -579,7 +580,7 @@
       "properties": {
         "key": {
           "type": "string",
-          "description": "The attribute key to match against."
+          "description": "The attribute key to match against.\nProperty is required and must be non-null.\n"
         },
         "included": {
           "type": "array",
@@ -608,7 +609,7 @@
       "properties": {
         "key": {
           "type": "string",
-          "description": "The attribute key to match against."
+          "description": "The attribute key to match against.\nProperty is required and must be non-null.\n"
         },
         "values": {
           "type": "array",
@@ -616,7 +617,7 @@
           "items": {
             "type": "string"
           },
-          "description": "The attribute values to match against. If the attribute's value matches any of these, it matches."
+          "description": "The attribute values to match against. If the attribute's value matches any of these, it matches.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [
@@ -649,15 +650,11 @@
         },
         "probability": {
           "$ref": "#/$defs/ExperimentalComposableProbabilitySampler",
-<<<<<<< HEAD
-          "description": "Configure sampler to be probability."
+          "description": "Configure sampler to be probability.\nIf omitted, ignore.\n"
         },
         "rule_based": {
           "$ref": "#/$defs/ExperimentalComposableRuleBasedSampler",
-          "description": "Configure sampler to be rule_based."
-=======
-          "description": "Configure sampler to be probability.\nIf omitted, ignore.\n"
->>>>>>> 67055d75dbebb324070a3f172a866e6d491704d3
+          "description": "Configure sampler to be rule_based.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -1170,39 +1167,6 @@
       ],
       "additionalProperties": false
     },
-<<<<<<< HEAD
-    "ExperimentalSeverityNumber": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "TRACE",
-        "TRACE2",
-        "TRACE3",
-        "TRACE4",
-        "DEBUG",
-        "DEBUG2",
-        "DEBUG3",
-        "DEBUG4",
-        "INFO",
-        "INFO2",
-        "INFO3",
-        "INFO4",
-        "WARN",
-        "WARN2",
-        "WARN3",
-        "WARN4",
-        "ERROR",
-        "ERROR2",
-        "ERROR3",
-        "ERROR4",
-        "FATAL",
-        "FATAL2",
-        "FATAL3",
-        "FATAL4"
-      ]
-    },
     "ExperimentalSpanParent": {
       "type": [
         "string",
@@ -1214,8 +1178,6 @@
         "local"
       ]
     },
-=======
->>>>>>> 67055d75dbebb324070a3f172a866e6d491704d3
     "ExperimentalTracerConfig": {
       "type": [
         "object"

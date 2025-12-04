@@ -291,10 +291,13 @@ $defs:
         items:
           "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
         description: |
-          The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match. 
-          If no conditions are specified, the rule matches all spans that reach it. If no rules match, the span is not sampled.
+          The rules for the sampler, matched in order. If no rules match, the span is not sampled.
+        defaultBehavior: no span is sampled
   ExperimentalComposableRuleBasedSamplerRule:
     type: object
+    description: |
+      A rule for ExperimentalComposableRuleBasedSampler. A rule can have multiple match conditions - the sampler will be applied if all match. 
+      If no conditions are specified, the rule matches all spans that reach it.
     additionalProperties: false
     properties:
       attribute_values:
@@ -401,13 +404,11 @@ $defs:
       probability:
         $ref: "#/$defs/ExperimentalComposableProbabilitySampler"
         description: Configure sampler to be probability.
-<<<<<<< HEAD
+        defaultBehavior: ignore
       rule_based:
         $ref: "#/$defs/ExperimentalComposableRuleBasedSampler"
         description: Configure sampler to be rule_based.
-=======
         defaultBehavior: ignore
->>>>>>> 67055d75dbebb324070a3f172a866e6d491704d3
   SimpleSpanProcessor:
     type: object
     additionalProperties: false
