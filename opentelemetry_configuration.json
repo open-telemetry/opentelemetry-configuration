@@ -172,7 +172,7 @@
         },
         "type": {
           "$ref": "#/$defs/AttributeType",
-          "description": "The attribute type.\nValues include: string, bool, int, double, string_array, bool_array, int_array, double_array.\nIf omitted, string is used.\n"
+          "description": "The attribute type.\nIf omitted, string is used.\n"
         }
       },
       "required": [
@@ -426,11 +426,11 @@
       "properties": {
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -741,7 +741,7 @@
         },
         "minimum_severity": {
           "$ref": "#/$defs/ExperimentalSeverityNumber",
-          "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.\nIf omitted, severity filtering is not applied.\n"
+          "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nIf omitted, severity filtering is not applied.\n"
         },
         "trace_based": {
           "type": [
@@ -882,11 +882,11 @@
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -988,7 +988,7 @@
         },
         "translation_strategy": {
           "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
-          "description": "Configure how Prometheus metrics are exposed. Values include:\n\n * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\nIf omitted, UnderscoreEscapingWithSuffixes is used.\n"
+          "description": "Configure how Prometheus metrics are exposed.\nIf omitted, UnderscoreEscapingWithSuffixes is used.\n"
         }
       }
     },
@@ -1428,7 +1428,7 @@
         },
         "exemplar_filter": {
           "$ref": "#/$defs/ExemplarFilter",
-          "description": "Configure the exemplar filter. \nValues include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\nIf omitted, trace_based is used.\n"
+          "description": "Configure the exemplar filter. \nIf omitted, trace_based is used.\n"
         },
         "meter_configurator/development": {
           "$ref": "#/$defs/ExperimentalMeterConfigurator",
@@ -1545,7 +1545,7 @@
             "string",
             "null"
           ],
-          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+          "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
         },
         "timeout": {
           "type": [
@@ -1595,7 +1595,7 @@
             "string",
             "null"
           ],
-          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+          "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
         },
         "timeout": {
           "type": [
@@ -1607,11 +1607,11 @@
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -1663,7 +1663,7 @@
             "string",
             "null"
           ],
-          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+          "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
         },
         "timeout": {
           "type": [
@@ -1675,7 +1675,7 @@
         },
         "encoding": {
           "$ref": "#/$defs/OtlpHttpEncoding",
-          "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted, protobuf is used.\n"
+          "description": "Configure the encoding used for messages. \nImplementations may not support json.\nIf omitted, protobuf is used.\n"
         }
       }
     },
@@ -1717,7 +1717,7 @@
             "string",
             "null"
           ],
-          "description": "Configure compression.\nValues include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+          "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
         },
         "timeout": {
           "type": [
@@ -1729,15 +1729,15 @@
         },
         "encoding": {
           "$ref": "#/$defs/OtlpHttpEncoding",
-          "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted, protobuf is used.\n"
+          "description": "Configure the encoding used for messages. \nImplementations may not support json.\nIf omitted, protobuf is used.\n"
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -2239,7 +2239,7 @@
         },
         "instrument_type": {
           "$ref": "#/$defs/InstrumentType",
-          "description": "Configure instrument type selection criteria.\nValues include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\nIf omitted, all instrument types match.\n"
+          "description": "Configure instrument type selection criteria.\nIf omitted, all instrument types match.\n"
         },
         "unit": {
           "type": [
@@ -2291,7 +2291,7 @@
         },
         "aggregation": {
           "$ref": "#/$defs/Aggregation",
-          "description": "Configure aggregation of the resulting stream(s). \nValues include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.\nIf omitted, default is used.\n"
+          "description": "Configure aggregation of the resulting stream(s). \nIf omitted, default is used.\n"
         },
         "aggregation_cardinality_limit": {
           "type": [

@@ -190,7 +190,6 @@ $defs:
         description: |
           Configure severity filtering.
           Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
-          Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.
         defaultBehavior: severity filtering is not applied
       trace_based:
         type:
