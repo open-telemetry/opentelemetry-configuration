@@ -61,7 +61,7 @@ function writeType(sourceSchemaType) {
     // Experimental type warning
     if (isExperimentalType(type)) {
         output.push('> [!WARNING]\n');
-        output.push('> This type is [experimental](README.md#experimental-features).\n\n');
+        output.push('> This type is [experimental](VERSIONING.md#experimental-features).\n\n');
     }
 
     // SDK extension plugin
@@ -92,7 +92,7 @@ function writeType(sourceSchemaType) {
             properties.forEach(sourceSchemaProperty => {
                 let formattedProperty = `\`${sourceSchemaProperty.property}\``
                 if (isExperimentalProperty(sourceSchemaProperty.property)) {
-                    formattedProperty += '<br>**WARNING:** This property is [experimental](README.md#experimental-features).'
+                    formattedProperty += '<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).'
                 }
                 const formattedPropertyType = formatPropertyType(sourceSchemaProperty, sourceTypesByType);
                 const isRequired = required !== undefined && required.includes(sourceSchemaProperty.property);
