@@ -5,8 +5,9 @@ properties:
     type: string
     description: |
       The file format version.
-      The yaml format is documented at
-      https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
+      Represented as a string including the semver major, minor version numbers (and optionally the meta tag). For example: "0.4", "1.0-rc.2", "1.0" (after stable release).
+      See https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md for more details.
+      The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
   disabled:
     type:
       - boolean

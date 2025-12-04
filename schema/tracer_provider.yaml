@@ -24,6 +24,34 @@ properties:
 required:
   - processors
 $defs:
+  SpanKind:
+    type:
+      - string
+      - "null"
+    enum:
+      - internal
+      - server
+      - client
+      - producer
+      - consumer
+    enumDescriptions:
+      internal: internal, an internal span.
+      server: server, a server span.
+      client: client, a client span.
+      producer: producer, a producer span.
+      consumer: consumer, a consumer span.
+  ExperimentalSpanParent:
+    type:
+      - string
+      - "null"
+    enum:
+      - none
+      - remote
+      - local
+    enumDescriptions:
+      none: none, no parent, i.e., the trace root.
+      remote: remote, a remote parent.
+      local: local, a local parent.
   BatchSpanProcessor:
     type: object
     additionalProperties: false
@@ -234,6 +262,108 @@ $defs:
         description: |
           Configure ratio.
         defaultBehavior: 1.0 is used
+  ExperimentalComposableRuleBasedSampler:
+    type:
+      - object
+      - 'null'
+    additionalProperties: false
+    properties:
+      rules:
+        type:
+          - array
+          - 'null'
+        items:
+          "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
+        description: |
+          The rules for the sampler, matched in order. If no rules match, the span is not sampled.
+        defaultBehavior: no span is sampled
+  ExperimentalComposableRuleBasedSamplerRule:
+    type: object
+    description: |
+      A rule for ExperimentalComposableRuleBasedSampler. A rule can have multiple match conditions - the sampler will be applied if all match. 
+      If no conditions are specified, the rule matches all spans that reach it.
+    additionalProperties: false
+    properties:
+      attribute_values:
+        "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributeValues"
+        description: |
+          Values to match against a single attribute. Non-string attributes are matched using their string representation:
+          for example, a value of "404" would match the http.response.status_code 404. For array attributes, if any
+          item matches, it is considered a match.
+        defaultBehavior: ignore
+      attribute_patterns:
+        "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributePatterns"
+        description: |
+          Patterns to match against a single attribute. Non-string attributes are matched using their string representation:
+          for example, a pattern of "4*" would match any http.response.status_code in 400-499. For array attributes, if any
+          item matches, it is considered a match.
+        defaultBehavior: ignore
+      span_kinds:
+        type: array
+        minItems: 1
+        items:
+          "$ref": "#/$defs/SpanKind"
+        description: The span kinds to match. If the span's kind matches any of these, it matches.
+        defaultBehavior: ignore
+      parent:
+        type: array
+        minItems: 1
+        items:
+          "$ref": "#/$defs/ExperimentalSpanParent"
+        description: The parent span types to match.
+        defaultBehavior: ignore
+      sampler:
+        "$ref": "#/$defs/ExperimentalComposableSampler"
+        description: The sampler to use for matching spans.
+    required:
+      - sampler
+  ExperimentalComposableRuleBasedSamplerRuleAttributeValues:
+    type: object
+    additionalProperties: false
+    properties:
+      key:
+        type: string
+        description: The attribute key to match against.
+      values:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: The attribute values to match against. If the attribute's value matches any of these, it matches.
+    required:
+      - key
+      - values
+  ExperimentalComposableRuleBasedSamplerRuleAttributePatterns:
+    type: object
+    additionalProperties: false
+    properties:
+      key:
+        type: string
+        description: The attribute key to match against.
+      included:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: |
+          Configure list of value patterns to include.
+          Values are evaluated to match as follows:
+           * If the value exactly matches.
+           * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        defaultBehavior: all values are included
+      excluded:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: |
+          Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).
+          Values are evaluated to match as follows:
+           * If the value exactly matches.
+           * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        defaultBehavior: .included attributes are included
+    required:
+      - key
   ExperimentalComposableSampler:
     type: object
     additionalProperties:
@@ -259,6 +389,10 @@ $defs:
       probability:
         $ref: "#/$defs/ExperimentalComposableProbabilitySampler"
         description: Configure sampler to be probability.
+        defaultBehavior: ignore
+      rule_based:
+        $ref: "#/$defs/ExperimentalComposableRuleBasedSampler"
+        description: Configure sampler to be rule_based.
         defaultBehavior: ignore
   SimpleSpanProcessor:
     type: object
@@ -294,10 +428,6 @@ $defs:
       console:
         $ref: common.yaml#/$defs/ConsoleExporter
         description: Configure exporter to be console.
-        defaultBehavior: ignore
-      zipkin:
-        $ref: "#/$defs/ZipkinSpanExporter"
-        description: Configure exporter to be zipkin.
         defaultBehavior: ignore
     isSdkExtensionPlugin: true
   SpanLimits:
@@ -376,28 +506,6 @@ $defs:
         description: Configure a simple span processor.
         defaultBehavior: ignore
     isSdkExtensionPlugin: true
-  ZipkinSpanExporter:
-    type:
-      - object
-      - "null"
-    additionalProperties: false
-    properties:
-      endpoint:
-        type:
-          - string
-          - "null"
-        description: |
-          Configure endpoint.
-        defaultBehavior: http://localhost:9411/api/v2/spans is used
-      timeout:
-        type:
-          - integer
-          - "null"
-        minimum: 0
-        description: |
-          Configure max time (in milliseconds) to wait for each export. 
-          Value must be non-negative. A value of 0 indicates indefinite.
-        defaultBehavior: 10000 is used
   ExperimentalTracerConfigurator:
     type:
       - object
