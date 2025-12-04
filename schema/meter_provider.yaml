@@ -330,8 +330,8 @@ $defs:
       - explicit_bucket_histogram
       - base2_exponential_bucket_histogram
     enumDescriptions:
-      base2_exponential_bucket_histogram: TODO
-      explicit_bucket_histogram: TODO
+      base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.
+      explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.
   OtlpHttpMetricExporter:
     type:
       - object
