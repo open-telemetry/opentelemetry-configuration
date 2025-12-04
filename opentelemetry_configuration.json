@@ -17,11 +17,8 @@
       "description": "Configure if the SDK is disabled or not.\nIf omitted or null, false is used.\n"
     },
     "log_level": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "description": "Configure the log level of the internal logger used by the SDK.\nIf omitted or null, info is used.\n"
+      "$ref": "#/$defs/SeverityNumber",
+      "description": "Configure the log level of the internal logger used by the SDK.\nValues include:\n* DEBUG: DEBUG, severity number 5.\n* DEBUG2: DEBUG2, severity number 6.\n* DEBUG3: DEBUG3, severity number 7.\n* DEBUG4: DEBUG4, severity number 8.\n* ERROR: ERROR, severity number 17.\n* ERROR2: ERROR2, severity number 18.\n* ERROR3: ERROR3, severity number 19.\n* ERROR4: ERROR4, severity number 20.\n* FATAL: FATAL, severity number 21.\n* FATAL2: FATAL2, severity number 22.\n* FATAL3: FATAL3, severity number 23.\n* FATAL4: FATAL4, severity number 24.\n* INFO: INFO, severity number 9.\n* INFO2: INFO2, severity number 10.\n* INFO3: INFO3, severity number 11.\n* INFO4: INFO4, severity number 12.\n* TRACE: TRACE, severity number 1.\n* TRACE2: TRACE2, severity number 2.\n* TRACE3: TRACE3, severity number 3.\n* TRACE4: TRACE4, severity number 4.\n* WARN: WARN, severity number 13.\n* WARN2: WARN2, severity number 14.\n* WARN3: WARN3, severity number 15.\n* WARN4: WARN4, severity number 16.\nIf omitted, INFO is used.\n"
     },
     "attribute_limits": {
       "$ref": "#/$defs/AttributeLimits",
@@ -740,7 +737,7 @@
           "description": "Configure if the logger is enabled or not.\nIf omitted or null, false is used.\n"
         },
         "minimum_severity": {
-          "$ref": "#/$defs/ExperimentalSeverityNumber",
+          "$ref": "#/$defs/SeverityNumber",
           "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include:\n* DEBUG: DEBUG, severity number 5.\n* DEBUG2: DEBUG2, severity number 6.\n* DEBUG3: DEBUG3, severity number 7.\n* DEBUG4: DEBUG4, severity number 8.\n* ERROR: ERROR, severity number 17.\n* ERROR2: ERROR2, severity number 18.\n* ERROR3: ERROR3, severity number 19.\n* ERROR4: ERROR4, severity number 20.\n* FATAL: FATAL, severity number 21.\n* FATAL2: FATAL2, severity number 22.\n* FATAL3: FATAL3, severity number 23.\n* FATAL4: FATAL4, severity number 24.\n* INFO: INFO, severity number 9.\n* INFO2: INFO2, severity number 10.\n* INFO3: INFO3, severity number 11.\n* INFO4: INFO4, severity number 12.\n* TRACE: TRACE, severity number 1.\n* TRACE2: TRACE2, severity number 2.\n* TRACE3: TRACE3, severity number 3.\n* TRACE4: TRACE4, severity number 4.\n* WARN: WARN, severity number 13.\n* WARN2: WARN2, severity number 14.\n* WARN3: WARN3, severity number 15.\n* WARN4: WARN4, severity number 16.\nIf omitted, severity filtering is not applied.\n"
         },
         "trace_based": {
@@ -1057,38 +1054,6 @@
         "null"
       ],
       "additionalProperties": false
-    },
-    "ExperimentalSeverityNumber": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "TRACE",
-        "TRACE2",
-        "TRACE3",
-        "TRACE4",
-        "DEBUG",
-        "DEBUG2",
-        "DEBUG3",
-        "DEBUG4",
-        "INFO",
-        "INFO2",
-        "INFO3",
-        "INFO4",
-        "WARN",
-        "WARN2",
-        "WARN3",
-        "WARN4",
-        "ERROR",
-        "ERROR2",
-        "ERROR3",
-        "ERROR4",
-        "FATAL",
-        "FATAL2",
-        "FATAL3",
-        "FATAL4"
-      ]
     },
     "ExperimentalTracerConfig": {
       "type": [
@@ -1975,6 +1940,38 @@
           "description": "Configure sampler to be trace_id_ratio_based.\nIf omitted, ignore.\n"
         }
       }
+    },
+    "SeverityNumber": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "TRACE",
+        "TRACE2",
+        "TRACE3",
+        "TRACE4",
+        "DEBUG",
+        "DEBUG2",
+        "DEBUG3",
+        "DEBUG4",
+        "INFO",
+        "INFO2",
+        "INFO3",
+        "INFO4",
+        "WARN",
+        "WARN2",
+        "WARN3",
+        "WARN4",
+        "ERROR",
+        "ERROR2",
+        "ERROR3",
+        "ERROR4",
+        "FATAL",
+        "FATAL2",
+        "FATAL3",
+        "FATAL4"
+      ]
     },
     "SimpleLogRecordProcessor": {
       "type": "object",
