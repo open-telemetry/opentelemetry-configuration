@@ -71,6 +71,7 @@ Stable types provide the following guarantees. All types except those excluded i
   * [uniqueItems](https://json-schema.org/understanding-json-schema/reference/array#uniqueItems): will not go from `false` to `true`.
   * [enum](https://json-schema.org/understanding-json-schema/reference/enum): will not remove entries.
   * [const](https://json-schema.org/understanding-json-schema/reference/const): will not change.
+  * [isSdkExtensionPlugin](CONTRIBUTING.md#json-schema-source-and-output): will not change.
 * No existing type will be deleted.
 * No type property will be deleted.
 
@@ -80,8 +81,13 @@ The following additive changes are allowed:
 * Adding new types.
 * Changes that make property validation less strict. See above for examples.
 * Removing a property from `required`.
-* Adding, removing, or modifying `description` [annotation][].
+* Modifying `description` [annotation][], as long as the updated semantics do not break users. **[1]**
+* Modifying [`defaultBehavior`](CONTRIBUTING.md#json-schema-source-and-output), as long as the updated semantics do not break users. **[1]**
+* Modifying [`nullBehavior`](CONTRIBUTING.md#json-schema-source-and-output), as long as the updated semantics do not break users. **[1]**
+* Modifying [`enumDescriptions`](CONTRIBUTING.md#json-schema-source-and-output), as long as the updated semantics do not break users. **[1]**
 * Adding, removing, or modifying `deprecated` [annotation][].
+
+**[1]**: `desciption`, `defaultBehavior`, `nullBehavior`, and `enumDescriptions` play an important role in describing property semantics, important for both users and language implementation maintainers. These fields are written in plain english, and therefore it's not possible to have a rigid policy around what changes are allowed. Instead, we follow the principle: don't break users. What constitutes a breaking change will be decided on a case-by-case basis and is left to the judgment of project maintainers.
 
 ### Applicability
 
