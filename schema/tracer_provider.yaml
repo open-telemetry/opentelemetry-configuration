@@ -10,15 +10,17 @@ properties:
   limits:
     $ref: "#/$defs/SpanLimits"
     description: Configure span limits. See also attribute_limits.
+    defaultBehavior: default values as described in SpanLimits are used
   sampler:
     $ref: "#/$defs/Sampler"
     description: |
       Configure the sampler.
-      If omitted, parent based sampler with a root of always_on is used.
+    defaultBehavior: parent based sampler with a root of always_on is used
   tracer_configurator/development:
     $ref: "#/$defs/ExperimentalTracerConfigurator"
     description: |
       Configure tracers.
+    defaultBehavior: all tracers use default values as described in ExperimentalTracerConfig
 required:
   - processors
 $defs:
@@ -62,7 +64,7 @@ $defs:
         description: |
           Configure delay interval (in milliseconds) between two consecutive exports. 
           Value must be non-negative.
-          If omitted or null, 5000 is used.
+        defaultBehavior: 5000 is used
       export_timeout:
         type:
           - integer
@@ -71,7 +73,7 @@ $defs:
         description: |
           Configure maximum allowed time (in milliseconds) to export data. 
           Value must be non-negative. A value of 0 indicates no limit (infinity).
-          If omitted or null, 30000 is used.
+        defaultBehavior: 30000 is used
       max_queue_size:
         type:
           - integer
@@ -79,7 +81,7 @@ $defs:
         exclusiveMinimum: 0
         description: |
           Configure maximum queue size. Value must be positive.
-          If omitted or null, 2048 is used.
+        defaultBehavior: 2048 is used
       max_export_batch_size:
         type:
           - integer
@@ -87,7 +89,7 @@ $defs:
         exclusiveMinimum: 0
         description: |
           Configure maximum batch size. Value must be positive.
-          If omitted or null, 512 is used.
+        defaultBehavior: 512 is used
       exporter:
         $ref: "#/$defs/SpanExporter"
         description: Configure exporter.
@@ -105,24 +107,31 @@ $defs:
       always_off:
         $ref: "#/$defs/AlwaysOffSampler"
         description: Configure sampler to be always_off.
+        defaultBehavior: ignore
       always_on:
         $ref: "#/$defs/AlwaysOnSampler"
         description: Configure sampler to be always_on.
+        defaultBehavior: ignore
       composite/development:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configure sampler to be composite.
+        defaultBehavior: ignore
       jaeger_remote/development:
         $ref: "#/$defs/ExperimentalJaegerRemoteSampler"
-        description: TODO
+        description: Configure sampler to be jaeger_remote.
+        defaultBehavior: ignore
       parent_based:
         $ref: "#/$defs/ParentBasedSampler"
         description: Configure sampler to be parent_based.
+        defaultBehavior: ignore
       probability/development:
         $ref: "#/$defs/ExperimentalProbabilitySampler"
         description: Configure sampler to be probability.
+        defaultBehavior: ignore
       trace_id_ratio_based:
         $ref: "#/$defs/TraceIdRatioBasedSampler"
         description: Configure sampler to be trace_id_ratio_based.
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   AlwaysOffSampler:
     type:
@@ -143,17 +152,20 @@ $defs:
       endpoint:
         type:
           - string
-          - "null"
-        description: TODO
+        description: Configure the endpoint of the jaeger remote sampling service.
       interval:
         type:
           - integer
           - "null"
         minimum: 0
-        description: TODO
+        description: Configure the polling interval (in milliseconds) to fetch from the remote sampling service.
+        defaultBehavior: 60000 is used
       initial_sampler:
         $ref: "#/$defs/Sampler"
-        description: TODO
+        description: Configure the initial sampler used before first configuration is fetched.
+    required:
+      - endpoint
+      - initial_sampler
   ParentBasedSampler:
     type:
       - object
@@ -164,27 +176,27 @@ $defs:
         $ref: "#/$defs/Sampler"
         description: |
           Configure root sampler.
-          If omitted or null, always_on is used.
+        defaultBehavior: always_on is used
       remote_parent_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure remote_parent_sampled sampler.
-          If omitted or null, always_on is used.
+        defaultBehavior: always_on is used
       remote_parent_not_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure remote_parent_not_sampled sampler.
-          If omitted or null, always_off is used.
+        defaultBehavior: always_off is used
       local_parent_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure local_parent_sampled sampler.
-          If omitted or null, always_on is used.
+        defaultBehavior: always_on is used
       local_parent_not_sampled:
         $ref: "#/$defs/Sampler"
         description: |
           Configure local_parent_not_sampled sampler.
-          If omitted or null, always_off is used.
+        defaultBehavior: always_off is used
   ExperimentalProbabilitySampler:
     type:
       - object
@@ -199,7 +211,7 @@ $defs:
         maximum: 1
         description: |
           Configure ratio.
-          If omitted or null, 1.0 is used.
+        defaultBehavior: 1.0 is used
   TraceIdRatioBasedSampler:
     type:
       - object
@@ -214,7 +226,7 @@ $defs:
         maximum: 1
         description: |
           Configure trace_id_ratio.
-          If omitted or null, 1.0 is used.
+        defaultBehavior: 1.0 is used
   ExperimentalComposableAlwaysOffSampler:
     type:
       - object
@@ -234,18 +246,23 @@ $defs:
       root:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with no parent.
+        defaultBehavior: ignore
       remote_parent_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a remote parent that is sampled.
+        defaultBehavior: ignore
       remote_parent_not_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a remote parent that is not sampled.
+        defaultBehavior: ignore
       local_parent_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a local parent that is sampled.
+        defaultBehavior: ignore
       local_parent_not_sampled:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configures the sampler for spans with a local parent that is not sampled.
+        defaultBehavior: ignore
   ExperimentalComposableProbabilitySampler:
     type:
       - object
@@ -260,7 +277,7 @@ $defs:
         maximum: 1
         description: |
           Configure ratio.
-          If omitted or null, 1.0 is used.
+        defaultBehavior: 1.0 is used
   ExperimentalComposableRuleBasedSampler:
     type:
       - object
@@ -312,7 +329,7 @@ $defs:
         "$ref": "#/$defs/ExperimentalComposableSampler"
         description: The sampler to use for matching spans.
     required:
-    - sampler
+      - sampler
   ExperimentalComposableRuleBasedSamplerRuleAttributeValues:
     type: object
     additionalProperties: false
@@ -346,8 +363,7 @@ $defs:
           Values are evaluated to match as follows:
            * If the value exactly matches.
            * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-          If omitted, all values are included.
-        defaultBehavior: ignore
+        defaultBehavior: all values are included
       excluded:
         type: array
         minItems: 1
@@ -358,8 +374,7 @@ $defs:
           Values are evaluated to match as follows:
            * If the value exactly matches.
            * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-          If omitted, .included attributes are included.
-        defaultBehavior: ignore
+        defaultBehavior: .included attributes are included
     required:
       - key
   ExperimentalComposableSampler:
@@ -374,18 +389,25 @@ $defs:
       always_off:
         $ref: "#/$defs/ExperimentalComposableAlwaysOffSampler"
         description: Configure sampler to be always_off.
+        defaultBehavior: ignore
       always_on:
         $ref: "#/$defs/ExperimentalComposableAlwaysOnSampler"
         description: Configure sampler to be always_on.
+        defaultBehavior: ignore
       parent_based:
         $ref: "#/$defs/ExperimentalComposableParentBasedSampler"
         description: Configure sampler to be parent_based.
+        defaultBehavior: ignore
       probability:
         $ref: "#/$defs/ExperimentalComposableProbabilitySampler"
         description: Configure sampler to be probability.
+<<<<<<< HEAD
       rule_based:
         $ref: "#/$defs/ExperimentalComposableRuleBasedSampler"
         description: Configure sampler to be rule_based.
+=======
+        defaultBehavior: ignore
+>>>>>>> 67055d75dbebb324070a3f172a866e6d491704d3
   SimpleSpanProcessor:
     type: object
     additionalProperties: false
@@ -407,19 +429,24 @@ $defs:
       otlp_http:
         $ref: common.yaml#/$defs/OtlpHttpExporter
         description: Configure exporter to be OTLP with HTTP transport.
+        defaultBehavior: ignore
       otlp_grpc:
         $ref: common.yaml#/$defs/OtlpGrpcExporter
         description: Configure exporter to be OTLP with gRPC transport.
+        defaultBehavior: ignore
       otlp_file/development:
         $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
         description: |
           Configure exporter to be OTLP with file transport.
+        defaultBehavior: ignore
       console:
         $ref: common.yaml#/$defs/ConsoleExporter
         description: Configure exporter to be console.
+        defaultBehavior: ignore
       zipkin:
         $ref: "#/$defs/ZipkinSpanExporter"
         description: Configure exporter to be zipkin.
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   SpanLimits:
     type: object
@@ -433,7 +460,7 @@ $defs:
         description: |
           Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. 
           Value must be non-negative.
-          If omitted or null, there is no limit.
+        defaultBehavior: there is no limit
       attribute_count_limit:
         type:
           - integer
@@ -442,7 +469,7 @@ $defs:
         description: |
           Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
+        defaultBehavior: 128 is used
       event_count_limit:
         type:
           - integer
@@ -451,7 +478,7 @@ $defs:
         description: |
           Configure max span event count. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
+        defaultBehavior: 128 is used
       link_count_limit:
         type:
           - integer
@@ -460,7 +487,7 @@ $defs:
         description: |
           Configure max span link count. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
+        defaultBehavior: 128 is used
       event_attribute_count_limit:
         type:
           - integer
@@ -469,7 +496,7 @@ $defs:
         description: |
           Configure max attributes per span event. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
+        defaultBehavior: 128 is used
       link_attribute_count_limit:
         type:
           - integer
@@ -478,7 +505,7 @@ $defs:
         description: |
           Configure max attributes per span link. 
           Value must be non-negative.
-          If omitted or null, 128 is used.
+        defaultBehavior: 128 is used
   SpanProcessor:
     type: object
     additionalProperties:
@@ -491,9 +518,11 @@ $defs:
       batch:
         $ref: "#/$defs/BatchSpanProcessor"
         description: Configure a batch span processor.
+        defaultBehavior: ignore
       simple:
         $ref: "#/$defs/SimpleSpanProcessor"
         description: Configure a simple span processor.
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   ZipkinSpanExporter:
     type:
@@ -507,7 +536,7 @@ $defs:
           - "null"
         description: |
           Configure endpoint.
-          If omitted or null, http://localhost:9411/api/v2/spans is used.
+        defaultBehavior: http://localhost:9411/api/v2/spans is used
       timeout:
         type:
           - integer
@@ -516,7 +545,7 @@ $defs:
         description: |
           Configure max time (in milliseconds) to wait for each export. 
           Value must be non-negative. A value of 0 indicates indefinite.
-          If omitted or null, 10000 is used.
+        defaultBehavior: 10000 is used
   ExperimentalTracerConfigurator:
     type:
       - object
@@ -525,12 +554,14 @@ $defs:
       default_config:
         $ref: "#/$defs/ExperimentalTracerConfig"
         description: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
+        defaultBehavior: unmatched .tracers use default values as described in ExperimentalTracerConfig
       tracers:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalTracerMatcherAndConfig"
         description: Configure tracers.
+        defaultBehavior: all tracers use .default_config
   ExperimentalTracerMatcherAndConfig:
     type:
       - object
@@ -559,3 +590,4 @@ $defs:
         type:
           - boolean
         description: Configure if the tracer is enabled or not.
+        defaultBehavior: false is used
