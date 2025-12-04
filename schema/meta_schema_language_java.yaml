@@ -136,9 +136,7 @@ typeSupportStatuses:
         status: ignored
   - type: OtlpHttpEncoding
     status: not_implemented
-    enumOverrides:
-      - enumValue: json
-        status: not_implemented
+    enumOverrides: []
   - type: OtlpHttpExporter
     status: supported
     propertyOverrides:

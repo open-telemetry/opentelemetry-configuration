@@ -70,9 +70,9 @@ meter_provider:
               cert_file:
             compression: gzip
             timeout: 10000
-            temporality_preference: cumulative
-            default_histogram_aggregation: explicit_bucket_histogram
-  exemplar_filter: trace_based
+            temporality_preference: CUMULATIVE
+            default_histogram_aggregation: EXPLICIT_BUCKET_HISTOGRAM
+  exemplar_filter: TRACE_BASED
 logger_provider:
   processors:
     - batch:

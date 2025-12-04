@@ -98,9 +98,9 @@ meter_provider:
             compression: ${OTEL_EXPORTER_OTLP_METRICS_COMPRESSION:-gzip}
             timeout: ${OTEL_EXPORTER_OTLP_METRICS_TIMEOUT:-10000}
             headers_list: ${OTEL_EXPORTER_OTLP_METRICS_HEADERS}
-            temporality_preference: ${OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:-cumulative}
-            default_histogram_aggregation: ${OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION:-explicit_bucket_histogram}
-  exemplar_filter: ${OTEL_METRICS_EXEMPLAR_FILTER:-trace_based}
+            temporality_preference: ${OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE:-CUMULATIVE}
+            default_histogram_aggregation: ${OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION:-EXPLICIT_BUCKET_HISTOGRAM}
+  exemplar_filter: ${OTEL_METRICS_EXEMPLAR_FILTER:-TRACE_BASED}
 logger_provider:
   processors:
     - batch:

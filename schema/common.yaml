@@ -96,18 +96,18 @@ $defs:
         $ref: "#/$defs/OtlpHttpEncoding"
         description: |
           Configure the encoding used for messages. 
-          Values include: protobuf, json. Implementations may not support json.
-        defaultBehavior: protobuf is used
+          Values include: PROTOBUF, JSON. Implementations may not support JSON.
+        defaultBehavior: PROTOBUF is used
   OtlpHttpEncoding:
     type:
       - string
       - "null"
     enum:
-      - protobuf
-      - json
+      - PROTOBUF
+      - JSON
     enumDescriptions:
-      json: Protobuf JSON encoding.
-      protobuf: Protobuf binary encoding.
+      JSON: Protobuf JSON encoding.
+      PROTOBUF: Protobuf binary encoding.
   OtlpGrpcExporter:
     type:
       - object

@@ -63,8 +63,8 @@ $defs:
         $ref: "#/$defs/AttributeType"
         description: |
           The attribute type.
-          Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
-        defaultBehavior: string is used
+          Values include: STRING, BOOL, INT, DOUBLE, STRING_ARRAY, BOOL_ARRAY, INT_ARRAY, DOUBLE_ARRAY.
+        defaultBehavior: STRING is used
     required:
       - name
       - value
@@ -73,23 +73,23 @@ $defs:
       - string
       - "null"
     enum:
-      - string
-      - bool
-      - int
-      - double
-      - string_array
-      - bool_array
-      - int_array
-      - double_array
+      - STRING
+      - BOOL
+      - INT
+      - DOUBLE
+      - STRING_ARRAY
+      - BOOL_ARRAY
+      - INT_ARRAY
+      - DOUBLE_ARRAY
     enumDescriptions:
-      bool: Boolean attribute value.
-      bool_array: Boolean array attribute value.
-      double: Double attribute value.
-      double_array: Double array attribute value.
-      int: Integer attribute value.
-      int_array: Integer array attribute value.
-      string: String attribute value.
-      string_array: String array attribute value.
+      BOOL: Boolean attribute value.
+      BOOL_ARRAY: Boolean array attribute value.
+      DOUBLE: Double attribute value.
+      DOUBLE_ARRAY: Double array attribute value.
+      INT: Integer attribute value.
+      INT_ARRAY: Integer array attribute value.
+      STRING: String attribute value.
+      STRING_ARRAY: String array attribute value.
   ExperimentalResourceDetection:
     type: object
     additionalProperties: false
