@@ -156,6 +156,9 @@ typeSupportStatuses:
   - type: Sampler
     status: unknown
     propertyOverrides: []
+  - type: SeverityNumber
+    status: unknown
+    enumOverrides: []
   - type: SimpleLogRecordProcessor
     status: unknown
     propertyOverrides: []
@@ -165,6 +168,9 @@ typeSupportStatuses:
   - type: SpanExporter
     status: unknown
     propertyOverrides: []
+  - type: SpanKind
+    status: unknown
+    enumOverrides: []
   - type: SpanLimits
     status: unknown
     propertyOverrides: []
@@ -195,19 +201,28 @@ typeSupportStatuses:
   - type: ViewStream
     status: unknown
     propertyOverrides: []
-  - type: ZipkinSpanExporter
-    status: unknown
-    propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOnSampler
     status: unknown
     propertyOverrides: []
-  - type: ExperimentalComposableParentBasedSampler
+  - type: ExperimentalComposableParentThresholdSampler
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableProbabilitySampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRule
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableSampler
@@ -291,7 +306,7 @@ typeSupportStatuses:
   - type: ExperimentalServiceResourceDetector
     status: unknown
     propertyOverrides: []
-  - type: ExperimentalSeverityNumber
+  - type: ExperimentalSpanParent
     status: unknown
     enumOverrides: []
   - type: ExperimentalTracerConfig

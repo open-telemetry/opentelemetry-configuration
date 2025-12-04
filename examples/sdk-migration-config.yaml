@@ -31,12 +31,13 @@
 # - OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE
 # - OTEL_EXPORTER_OTLP_COMPRESSION
 # - OTEL_EXPORTER_OTLP_TIMEOUT
+# - OTEL_LOG_LEVEL
 #
 # For schema documentation, including required properties, semantics, default behavior, etc,
 # see: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md
 file_format: "1.0-rc.2"
 disabled: ${OTEL_SDK_DISABLED:-false}
-log_level: ${OTEL_LOG_LEVEL:-info}
+log_level: INFO
 resource:
   attributes:
     - name: service.name

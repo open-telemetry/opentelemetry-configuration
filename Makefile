@@ -33,7 +33,7 @@ update-file-format:
 	done
 
 .PHONY: fix-language-implementations
-fix-language-implementations:
+fix-language-implementations: compile-schema
 	npm run-script fix-language-implementations || exit 1; \
 
 .PHONY: generate-markdown
