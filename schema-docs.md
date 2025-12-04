@@ -940,8 +940,8 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `base2_exponential_bucket_histogram` | TODO |
-| `explicit_bucket_histogram` | TODO |
+| `base2_exponential_bucket_histogram` | Use base2 exponential histogram as the default aggregation for histogram instruments. |
+| `explicit_bucket_histogram` | Use explicit bucket histogram as the default aggregation for histogram instruments. |
 
 <details>
 <summary>Language support status</summary>
@@ -1694,7 +1694,7 @@ Usages:
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `name` | `string` | `true` | Property is required and must be non-null. | No constraints. | The name of the pair. |
-| `value` | one of:<br>* `string`<br>* `null`<br> | `true` | Property must be present, but if null TODO. | No constraints. | The value of the pair. |
+| `value` | one of:<br>* `string`<br>* `null`<br> | `true` | Property must be present, but if null the behavior is dependent on usage context. | No constraints. | The value of the pair. |
 
 <details>
 <summary>Language support status</summary>

@@ -1559,7 +1559,7 @@
             "string",
             "null"
           ],
-          "description": "The value of the pair.\nProperty must be present, but if null TODO.\n"
+          "description": "The value of the pair.\nProperty must be present, but if null the behavior is dependent on usage context.\n"
         }
       },
       "required": [
