@@ -26,7 +26,7 @@ properties:
     $ref: "#/$defs/ExperimentalMeterConfigurator"
     description: |
       Configure meters.
-    defaultBehavior: TODO
+    defaultBehavior: all meters use default values as described in ExperimentalMeterConfig
 required:
   - readers
 $defs:
@@ -39,9 +39,9 @@ $defs:
       - always_off
       - trace_based
     enumDescriptions:
-      always_off: TODO
-      always_on: TODO
-      trace_based: TODO
+      always_off: ExemplarFilter which makes no measurements eligible for being an Exemplar.
+      always_on: ExemplarFilter which makes all measurements eligible for being an Exemplar.
+      trace_based: ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar.
   PeriodicMetricReader:
     type: object
     additionalProperties: false
@@ -192,7 +192,7 @@ $defs:
         $ref: "#/$defs/ExperimentalOtlpFileMetricExporter"
         description: |
           Configure exporter to be OTLP with file transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       console:
         $ref: "#/$defs/ConsoleMetricExporter"
         description: |
@@ -212,7 +212,7 @@ $defs:
         $ref: "#/$defs/ExperimentalPrometheusMetricExporter"
         description: |
           Configure exporter to be prometheus.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   MetricProducer:
     type: object
@@ -319,9 +319,9 @@ $defs:
       - delta
       - low_memory
     enumDescriptions:
-      cumulative: TODO
-      delta: TODO
-      low_memory: TODO
+      cumulative: Use cumulative aggregation temporality for all instrument types.
+      delta: Use delta aggregation for all instrument types except up down counter and asynchronous up down counter.
+      low_memory: Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types.
   ExporterDefaultHistogramAggregation:
     type:
       - string
@@ -581,13 +581,13 @@ $defs:
       - observable_up_down_counter
       - up_down_counter
     enumDescriptions:
-      counter: TODO
-      gauge: TODO
-      histogram: TODO
-      observable_counter: TODO
-      observable_gauge: TODO
-      observable_up_down_counter: TODO
-      up_down_counter: TODO
+      counter: Synchronous counter instruments.
+      gauge: Synchronous gauge instruments.
+      histogram: Synchronous histogram instruments.
+      observable_counter: Asynchronous counter instruments.
+      observable_gauge: Asynchronous gauge instruments.
+      observable_up_down_counter: Asynchronous up down counter instruments.
+      up_down_counter: Synchronous up down counter instruments.
   ViewStream:
     type: object
     additionalProperties: false
@@ -633,29 +633,27 @@ $defs:
     properties:
       default:
         $ref: "#/$defs/DefaultAggregation"
-        description: TODO
+        description: Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#default-aggregation for details.
         defaultBehavior: ignore
       drop:
         $ref: "#/$defs/DropAggregation"
-        description: TODO
+        description: Configures the stream to ignore/drop all instrument measurements. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#drop-aggregation for details.
         defaultBehavior: ignore
       explicit_bucket_histogram:
         $ref: "#/$defs/ExplicitBucketHistogramAggregation"
-        description: TODO
+        description: Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation for details
         defaultBehavior: ignore
-        nullBehavior: default values as described in ExplicitBucketHistogramAggregation are used
       base2_exponential_bucket_histogram:
         $ref: "#/$defs/Base2ExponentialBucketHistogramAggregation"
-        description: TODO
+        description: Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation for details.
         defaultBehavior: ignore
-        nullBehavior: default values as described in Base2ExponentialBucketHistogramAggregation are used
       last_value:
         $ref: "#/$defs/LastValueAggregation"
-        description: TODO
+        description: Configures the stream to collect data using the last measurement. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#last-value-aggregation for details.
         defaultBehavior: ignore
       sum:
         $ref: "#/$defs/SumAggregation"
-        description: TODO
+        description: Configures the stream to collect the arithmetic sum of measurement values. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sum-aggregation for details.
         defaultBehavior: ignore
   DefaultAggregation:
     type:
@@ -700,20 +698,20 @@ $defs:
           - "null"
         minimum: -10
         maximum: 20
-        description: TODO
+        description: Configure the max scale factor.
         defaultBehavior: 20 is used
       max_size:
         type:
           - integer
           - "null"
         minimum: 2
-        description: TODO
+        description: Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket.
         defaultBehavior: 160 is used
       record_min_max:
         type:
           - boolean
           - "null"
-        description: TODO
+        description: Configure whether or not to record min and max.
         defaultBehavior: true is used
   LastValueAggregation:
     type:
@@ -733,14 +731,14 @@ $defs:
       default_config:
         $ref: "#/$defs/ExperimentalMeterConfig"
         description: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
-        defaultBehavior: TODO
+        defaultBehavior: unmatched .meters use default values as described in ExperimentalMeterConfig
       meters:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalMeterMatcherAndConfig"
         description: Configure meters.
-        defaultBehavior: TODO
+        defaultBehavior: all meters used .default_config
   ExperimentalMeterMatcherAndConfig:
     type:
       - object
@@ -769,4 +767,4 @@ $defs:
         type:
           - boolean
         description: Configure if the meter is enabled or not.
-        defaultBehavior: TODO
+        defaultBehavior: false is used
