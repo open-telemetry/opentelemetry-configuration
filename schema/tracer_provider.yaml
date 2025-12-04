@@ -310,10 +310,6 @@ $defs:
         $ref: common.yaml#/$defs/ConsoleExporter
         description: Configure exporter to be console.
         defaultBehavior: ignore
-      zipkin:
-        $ref: "#/$defs/ZipkinSpanExporter"
-        description: Configure exporter to be zipkin.
-        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   SpanLimits:
     type: object
@@ -391,28 +387,6 @@ $defs:
         description: Configure a simple span processor.
         defaultBehavior: ignore
     isSdkExtensionPlugin: true
-  ZipkinSpanExporter:
-    type:
-      - object
-      - "null"
-    additionalProperties: false
-    properties:
-      endpoint:
-        type:
-          - string
-          - "null"
-        description: |
-          Configure endpoint.
-        defaultBehavior: http://localhost:9411/api/v2/spans is used
-      timeout:
-        type:
-          - integer
-          - "null"
-        minimum: 0
-        description: |
-          Configure max time (in milliseconds) to wait for each export. 
-          Value must be non-negative. A value of 0 indicates indefinite.
-        defaultBehavior: 10000 is used
   ExperimentalTracerConfigurator:
     type:
       - object
