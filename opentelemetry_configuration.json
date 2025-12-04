@@ -172,7 +172,7 @@
         },
         "type": {
           "$ref": "#/$defs/AttributeType",
-          "description": "The attribute type.\nValues include: string, bool, int, double, string_array, bool_array, int_array, double_array.\nIf omitted, string is used.\n"
+          "description": "The attribute type.\nValues include: STRING, BOOL, INT, DOUBLE, STRING_ARRAY, BOOL_ARRAY, INT_ARRAY, DOUBLE_ARRAY.\nIf omitted, STRING is used.\n"
         }
       },
       "required": [
@@ -186,14 +186,14 @@
         "null"
       ],
       "enum": [
-        "string",
-        "bool",
-        "int",
-        "double",
-        "string_array",
-        "bool_array",
-        "int_array",
-        "double_array"
+        "STRING",
+        "BOOL",
+        "INT",
+        "DOUBLE",
+        "STRING_ARRAY",
+        "BOOL_ARRAY",
+        "INT_ARRAY",
+        "DOUBLE_ARRAY"
       ]
     },
     "B3MultiPropagator": {
@@ -426,11 +426,11 @@
       "properties": {
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include: CUMULATIVE, DELTA, LOW_MEMORY. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include: EXPLICIT_BUCKET_HISTOGRAM, BASE2_EXPONENTIAL_BUCKET_HISTOGRAM. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -454,9 +454,9 @@
         "null"
       ],
       "enum": [
-        "always_on",
-        "always_off",
-        "trace_based"
+        "ALWAYS_ON",
+        "ALWAYS_OFF",
+        "TRACE_BASED"
       ]
     },
     "ExperimentalComposableAlwaysOffSampler": {
@@ -878,11 +878,11 @@
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include: CUMULATIVE, DELTA, LOW_MEMORY. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include: EXPLICIT_BUCKET_HISTOGRAM, BASE2_EXPONENTIAL_BUCKET_HISTOGRAM. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -984,7 +984,7 @@
         },
         "translation_strategy": {
           "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
-          "description": "Configure how Prometheus metrics are exposed. Values include:\n\n * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\nIf omitted, UnderscoreEscapingWithSuffixes is used.\n"
+          "description": "Configure how Prometheus metrics are exposed. Values include:\n\n * UNDERSCORE_ESCAPING_WITH_SUFFIXES, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n * UNDERSCORE_ESCAPING_WITHOUT_SUFFIXES, metric names will continue to escape special characters to _, but suffixes won't be attached.\n * NO_UTF8_ESCAPING_WITH_SUFFIXES will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n * NO_TRANSLATION. This strategy bypasses all metric and label name translation, passing them through unaltered.\nIf omitted, UNDERSCORE_ESCAPING_WITH_SUFFIXES is used.\n"
         }
       }
     },
@@ -994,10 +994,10 @@
         "null"
       ],
       "enum": [
-        "UnderscoreEscapingWithSuffixes",
-        "UnderscoreEscapingWithoutSuffixes",
-        "NoUTF8EscapingWithSuffixes",
-        "NoTranslation"
+        "UNDERSCORE_ESCAPING_WITH_SUFFIXES",
+        "UNDERSCORE_ESCAPING_WITHOUT_SUFFIXES",
+        "NO_UTF8_ESCAPING_WITH_SUFFIXES",
+        "NO_TRANSLATION"
       ]
     },
     "ExperimentalResourceDetection": {
@@ -1172,8 +1172,8 @@
         "null"
       ],
       "enum": [
-        "explicit_bucket_histogram",
-        "base2_exponential_bucket_histogram"
+        "EXPLICIT_BUCKET_HISTOGRAM",
+        "BASE2_EXPONENTIAL_BUCKET_HISTOGRAM"
       ]
     },
     "ExporterTemporalityPreference": {
@@ -1182,9 +1182,9 @@
         "null"
       ],
       "enum": [
-        "cumulative",
-        "delta",
-        "low_memory"
+        "CUMULATIVE",
+        "DELTA",
+        "LOW_MEMORY"
       ]
     },
     "GrpcTls": {
@@ -1282,13 +1282,13 @@
         "null"
       ],
       "enum": [
-        "counter",
-        "gauge",
-        "histogram",
-        "observable_counter",
-        "observable_gauge",
-        "observable_up_down_counter",
-        "up_down_counter"
+        "COUNTER",
+        "GAUGE",
+        "HISTOGRAM",
+        "OBSERVABLE_COUNTER",
+        "OBSERVABLE_GAUGE",
+        "OBSERVABLE_UP_DOWN_COUNTER",
+        "UP_DOWN_COUNTER"
       ]
     },
     "JaegerPropagator": {
@@ -1424,7 +1424,7 @@
         },
         "exemplar_filter": {
           "$ref": "#/$defs/ExemplarFilter",
-          "description": "Configure the exemplar filter. \nValues include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\nIf omitted, trace_based is used.\n"
+          "description": "Configure the exemplar filter. \nValues include: TRACE_BASED, ALWAYS_ON, ALWAYS_OFF. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\nIf omitted, TRACE_BASED is used.\n"
         },
         "meter_configurator/development": {
           "$ref": "#/$defs/ExperimentalMeterConfigurator",
@@ -1603,11 +1603,11 @@
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include: CUMULATIVE, DELTA, LOW_MEMORY. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, CUMULATIVE is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include: EXPLICIT_BUCKET_HISTOGRAM, BASE2_EXPONENTIAL_BUCKET_HISTOGRAM. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -1617,8 +1617,8 @@
         "null"
       ],
       "enum": [
-        "protobuf",
-        "json"
+        "PROTOBUF",
+        "JSON"
       ]
     },
     "OtlpHttpExporter": {
@@ -1671,7 +1671,7 @@
         },
         "encoding": {
           "$ref": "#/$defs/OtlpHttpEncoding",
-          "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted, protobuf is used.\n"
+          "description": "Configure the encoding used for messages. \nValues include: PROTOBUF, JSON. Implementations may not support JSON.\nIf omitted, PROTOBUF is used.\n"
         }
       }
     },
@@ -1729,11 +1729,11 @@
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include: CUMULATIVE, DELTA, LOW_MEMORY. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, CUMULATIVE is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include: EXPLICIT_BUCKET_HISTOGRAM, BASE2_EXPONENTIAL_BUCKET_HISTOGRAM. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, EXPLICIT_BUCKET_HISTOGRAM is used.\n"
         }
       }
     },
@@ -2235,7 +2235,7 @@
         },
         "instrument_type": {
           "$ref": "#/$defs/InstrumentType",
-          "description": "Configure instrument type selection criteria.\nValues include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\nIf omitted, all instrument types match.\n"
+          "description": "Configure instrument type selection criteria.\nValues include: COUNTER, GAUGE, HISTOGRAM, OBSERVABLE_COUNTER, OBSERVABLE_GAUGE, OBSERVABLE_UP_DOWN_COUNTER, UP_DOWN_COUNTER.\nIf omitted, all instrument types match.\n"
         },
         "unit": {
           "type": [

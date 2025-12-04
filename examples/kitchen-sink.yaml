@@ -33,7 +33,7 @@ logger_provider:
             headers_list: "api-key=1234"
             compression: gzip
             timeout: 10000
-            encoding: protobuf
+            encoding: PROTOBUF
     - batch:
         exporter:
           otlp_grpc:
@@ -86,7 +86,7 @@ meter_provider:
                 - "service*"
               excluded:
                 - "service.attr1"
-            translation_strategy: UnderscoreEscapingWithSuffixes
+            translation_strategy: UNDERSCORE_ESCAPING_WITH_SUFFIXES
         producers:
           - opencensus:
         cardinality_limits:
@@ -114,9 +114,9 @@ meter_provider:
             headers_list: "api-key=1234"
             compression: gzip
             timeout: 10000
-            encoding: protobuf
-            temporality_preference: delta
-            default_histogram_aggregation: base2_exponential_bucket_histogram
+            encoding: PROTOBUF
+            temporality_preference: DELTA
+            default_histogram_aggregation: BASE2_EXPONENTIAL_BUCKET_HISTOGRAM
         producers:
           - opencensus:
         cardinality_limits:
@@ -143,29 +143,29 @@ meter_provider:
             headers_list: "api-key=1234"
             compression: gzip
             timeout: 10000
-            temporality_preference: delta
-            default_histogram_aggregation: base2_exponential_bucket_histogram
+            temporality_preference: DELTA
+            default_histogram_aggregation: BASE2_EXPONENTIAL_BUCKET_HISTOGRAM
     - periodic:
         exporter:
           otlp_file/development:
             output_stream: file:///var/log/metrics.jsonl
-            temporality_preference: delta
-            default_histogram_aggregation: base2_exponential_bucket_histogram
+            temporality_preference: DELTA
+            default_histogram_aggregation: BASE2_EXPONENTIAL_BUCKET_HISTOGRAM
     - periodic:
         exporter:
           otlp_file/development:
             output_stream: stdout
-            temporality_preference: delta
-            default_histogram_aggregation: base2_exponential_bucket_histogram
+            temporality_preference: DELTA
+            default_histogram_aggregation: BASE2_EXPONENTIAL_BUCKET_HISTOGRAM
     - periodic:
         exporter:
           console:
-            temporality_preference: delta
-            default_histogram_aggregation: base2_exponential_bucket_histogram
+            temporality_preference: DELTA
+            default_histogram_aggregation: BASE2_EXPONENTIAL_BUCKET_HISTOGRAM
   views:
     - selector:
         instrument_name: my-instrument
-        instrument_type: histogram
+        instrument_type: HISTOGRAM
         unit: ms
         meter_name: my-meter
         meter_version: 1.0.0
@@ -201,7 +201,7 @@ meter_provider:
             - key2
           excluded:
             - key3
-  exemplar_filter: trace_based
+  exemplar_filter: TRACE_BASED
   meter_configurator/development:
     default_config:
       disabled: true
@@ -238,7 +238,7 @@ tracer_provider:
             headers_list: "api-key=1234"
             compression: gzip
             timeout: 10000
-            encoding: protobuf
+            encoding: PROTOBUF
     - batch:
         exporter:
           otlp_grpc:
@@ -306,28 +306,28 @@ resource:
       value: unknown_service
     - name: string_key
       value: value
-      type: string
+      type: STRING
     - name: bool_key
       value: true
-      type: bool
+      type: BOOL
     - name: int_key
       value: 1
-      type: int
+      type: INT
     - name: double_key
       value: 1.1
-      type: double
+      type: DOUBLE
     - name: string_array_key
       value: [ "value1", "value2" ]
-      type: string_array
+      type: STRING_ARRAY
     - name: bool_array_key
       value: [ true, false ]
-      type: bool_array
+      type: BOOL_ARRAY
     - name: int_array_key
       value: [ 1, 2 ]
-      type: int_array
+      type: INT_ARRAY
     - name: double_array_key
       value: [ 1.1, 2.2 ]
-      type: double_array
+      type: DOUBLE_ARRAY
   attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
   detection/development:
     attributes:

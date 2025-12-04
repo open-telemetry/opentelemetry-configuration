@@ -183,7 +183,7 @@ Usages:
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `name` | `string` | `true` | Property is required and must be non-null. | No constraints. | The attribute name.<br> |
-| `type` | [`AttributeType`](#attributetype) | `false` | If omitted, string is used. | No constraints. | The attribute type.<br>Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br> |
+| `type` | [`AttributeType`](#attributetype) | `false` | If omitted, STRING is used. | No constraints. | The attribute type.<br>Values include: STRING, BOOL, INT, DOUBLE, STRING_ARRAY, BOOL_ARRAY, INT_ARRAY, DOUBLE_ARRAY.<br> |
 | `value` | `oneOf` | `true` | Property is required and must be non-null. | No constraints. | The attribute value.<br>The type of value must match .type.<br> |
 
 <details>
@@ -270,28 +270,28 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `bool` | Boolean attribute value. |
-| `bool_array` | Boolean array attribute value. |
-| `double` | Double attribute value. |
-| `double_array` | Double array attribute value. |
-| `int` | Integer attribute value. |
-| `int_array` | Integer array attribute value. |
-| `string` | String attribute value. |
-| `string_array` | String array attribute value. |
+| `BOOL` | Boolean attribute value. |
+| `BOOL_ARRAY` | Boolean array attribute value. |
+| `DOUBLE` | Double attribute value. |
+| `DOUBLE_ARRAY` | Double array attribute value. |
+| `INT` | Integer attribute value. |
+| `INT_ARRAY` | Integer array attribute value. |
+| `STRING` | String attribute value. |
+| `STRING_ARRAY` | String array attribute value. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `bool` | supported | unknown | supported | unknown |
-| `bool_array` | supported | unknown | supported | unknown |
-| `double` | supported | unknown | supported | unknown |
-| `double_array` | supported | unknown | supported | unknown |
-| `int` | supported | unknown | supported | unknown |
-| `int_array` | supported | unknown | supported | unknown |
-| `string` | supported | unknown | supported | unknown |
-| `string_array` | supported | unknown | supported | unknown |
+| `BOOL` | supported | unknown | supported | unknown |
+| `BOOL_ARRAY` | supported | unknown | supported | unknown |
+| `DOUBLE` | supported | unknown | supported | unknown |
+| `DOUBLE_ARRAY` | supported | unknown | supported | unknown |
+| `INT` | supported | unknown | supported | unknown |
+| `INT_ARRAY` | supported | unknown | supported | unknown |
+| `STRING` | supported | unknown | supported | unknown |
+| `STRING_ARRAY` | supported | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -310,14 +310,14 @@ Usages:
     "null"
   ],
   "enum": [
-    "string",
-    "bool",
-    "int",
-    "double",
-    "string_array",
-    "bool_array",
-    "int_array",
-    "double_array"
+    "STRING",
+    "BOOL",
+    "INT",
+    "DOUBLE",
+    "STRING_ARRAY",
+    "BOOL_ARRAY",
+    "INT_ARRAY",
+    "DOUBLE_ARRAY"
   ]
 }</pre>
 </details>
@@ -748,8 +748,8 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br>Values include: EXPLICIT_BUCKET_HISTOGRAM, BASE2_EXPONENTIAL_BUCKET_HISTOGRAM. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br>Values include: CUMULATIVE, DELTA, LOW_MEMORY. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -845,18 +845,18 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `always_off` | ExemplarFilter which makes no measurements eligible for being an Exemplar. |
-| `always_on` | ExemplarFilter which makes all measurements eligible for being an Exemplar. |
-| `trace_based` | ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar. |
+| `ALWAYS_OFF` | ExemplarFilter which makes no measurements eligible for being an Exemplar. |
+| `ALWAYS_ON` | ExemplarFilter which makes all measurements eligible for being an Exemplar. |
+| `TRACE_BASED` | ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `always_off` | not_implemented | unknown | supported | unknown |
-| `always_on` | not_implemented | unknown | supported | unknown |
-| `trace_based` | not_implemented | unknown | supported | unknown |
+| `ALWAYS_OFF` | not_implemented | unknown | supported | unknown |
+| `ALWAYS_ON` | not_implemented | unknown | supported | unknown |
+| `TRACE_BASED` | not_implemented | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -875,9 +875,9 @@ Usages:
     "null"
   ],
   "enum": [
-    "always_on",
-    "always_off",
-    "trace_based"
+    "ALWAYS_ON",
+    "ALWAYS_OFF",
+    "TRACE_BASED"
   ]
 }</pre>
 </details>
@@ -940,16 +940,16 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `base2_exponential_bucket_histogram` | TODO |
-| `explicit_bucket_histogram` | TODO |
+| `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM` | TODO |
+| `EXPLICIT_BUCKET_HISTOGRAM` | TODO |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown |
-| `explicit_bucket_histogram` | supported | unknown | supported | unknown |
+| `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM` | supported | unknown | supported | unknown |
+| `EXPLICIT_BUCKET_HISTOGRAM` | supported | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -971,8 +971,8 @@ Usages:
     "null"
   ],
   "enum": [
-    "explicit_bucket_histogram",
-    "base2_exponential_bucket_histogram"
+    "EXPLICIT_BUCKET_HISTOGRAM",
+    "BASE2_EXPONENTIAL_BUCKET_HISTOGRAM"
   ]
 }</pre>
 </details>
@@ -983,18 +983,18 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `cumulative` | Use cumulative aggregation temporality for all instrument types. |
-| `delta` | Use delta aggregation for all instrument types except up down counter and asynchronous up down counter. |
-| `low_memory` | Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types. |
+| `CUMULATIVE` | Use cumulative aggregation temporality for all instrument types. |
+| `DELTA` | Use delta aggregation for all instrument types except up down counter and asynchronous up down counter. |
+| `LOW_MEMORY` | Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `cumulative` | supported | unknown | supported | unknown |
-| `delta` | supported | unknown | supported | unknown |
-| `low_memory` | supported | unknown | supported | unknown |
+| `CUMULATIVE` | supported | unknown | supported | unknown |
+| `DELTA` | supported | unknown | supported | unknown |
+| `LOW_MEMORY` | supported | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -1016,9 +1016,9 @@ Usages:
     "null"
   ],
   "enum": [
-    "cumulative",
-    "delta",
-    "low_memory"
+    "CUMULATIVE",
+    "DELTA",
+    "LOW_MEMORY"
   ]
 }</pre>
 </details>
@@ -1209,26 +1209,26 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `counter` | Synchronous counter instruments. |
-| `gauge` | Synchronous gauge instruments. |
-| `histogram` | Synchronous histogram instruments. |
-| `observable_counter` | Asynchronous counter instruments. |
-| `observable_gauge` | Asynchronous gauge instruments. |
-| `observable_up_down_counter` | Asynchronous up down counter instruments. |
-| `up_down_counter` | Synchronous up down counter instruments. |
+| `COUNTER` | Synchronous counter instruments. |
+| `GAUGE` | Synchronous gauge instruments. |
+| `HISTOGRAM` | Synchronous histogram instruments. |
+| `OBSERVABLE_COUNTER` | Asynchronous counter instruments. |
+| `OBSERVABLE_GAUGE` | Asynchronous gauge instruments. |
+| `OBSERVABLE_UP_DOWN_COUNTER` | Asynchronous up down counter instruments. |
+| `UP_DOWN_COUNTER` | Synchronous up down counter instruments. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `counter` | supported | unknown | supported | unknown |
-| `gauge` | supported | unknown | supported | unknown |
-| `histogram` | supported | unknown | supported | unknown |
-| `observable_counter` | supported | unknown | supported | unknown |
-| `observable_gauge` | supported | unknown | supported | unknown |
-| `observable_up_down_counter` | supported | unknown | supported | unknown |
-| `up_down_counter` | supported | unknown | supported | unknown |
+| `COUNTER` | supported | unknown | supported | unknown |
+| `GAUGE` | supported | unknown | supported | unknown |
+| `HISTOGRAM` | supported | unknown | supported | unknown |
+| `OBSERVABLE_COUNTER` | supported | unknown | supported | unknown |
+| `OBSERVABLE_GAUGE` | supported | unknown | supported | unknown |
+| `OBSERVABLE_UP_DOWN_COUNTER` | supported | unknown | supported | unknown |
+| `UP_DOWN_COUNTER` | supported | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -1247,13 +1247,13 @@ Usages:
     "null"
   ],
   "enum": [
-    "counter",
-    "gauge",
-    "histogram",
-    "observable_counter",
-    "observable_gauge",
-    "observable_up_down_counter",
-    "up_down_counter"
+    "COUNTER",
+    "GAUGE",
+    "HISTOGRAM",
+    "OBSERVABLE_COUNTER",
+    "OBSERVABLE_GAUGE",
+    "OBSERVABLE_UP_DOWN_COUNTER",
+    "UP_DOWN_COUNTER"
   ]
 }</pre>
 </details>
@@ -1534,7 +1534,7 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | If omitted, trace_based is used. | No constraints. | Configure the exemplar filter. <br>Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br> |
+| `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | If omitted, TRACE_BASED is used. | No constraints. | Configure the exemplar filter. <br>Values include: TRACE_BASED, ALWAYS_ON, ALWAYS_OFF. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br> |
 | `readers` | `array` of [`MetricReader`](#metricreader) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure metric readers. |
 | `views` | `array` of [`View`](#view) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> |
 | `meter_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | If omitted, TODO. | No constraints. | Configure meters.<br> |
@@ -1973,11 +1973,11 @@ Usages:
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br> |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br>Values include: EXPLICIT_BUCKET_HISTOGRAM, BASE2_EXPONENTIAL_BUCKET_HISTOGRAM. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, http://localhost:4317 is used. | No constraints. | Configure endpoint.<br> |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no headers are added. | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, CUMULATIVE is used. | No constraints. | Configure temporality preference.<br>Values include: CUMULATIVE, DELTA, LOW_MEMORY. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 10000 is used. | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
 | `tls` | [`GrpcTls`](#grpctls) | `false` | If omitted, TODO. | No constraints. | Configure TLS settings for the exporter. |
 
@@ -2066,16 +2066,16 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `json` | Protobuf JSON encoding. |
-| `protobuf` | Protobuf binary encoding. |
+| `JSON` | Protobuf JSON encoding. |
+| `PROTOBUF` | Protobuf binary encoding. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `json` | supported | unknown | not_implemented | unknown |
-| `protobuf` | supported | unknown | not_implemented | unknown |
+| `JSON` | supported | unknown | not_implemented | unknown |
+| `PROTOBUF` | supported | unknown | not_implemented | unknown |
 </details>
 
 No constraints.
@@ -2095,8 +2095,8 @@ Usages:
     "null"
   ],
   "enum": [
-    "protobuf",
-    "json"
+    "PROTOBUF",
+    "JSON"
   ]
 }</pre>
 </details>
@@ -2106,7 +2106,7 @@ Usages:
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br> |
-| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | If omitted, protobuf is used. | No constraints. | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br> |
+| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | If omitted, PROTOBUF is used. | No constraints. | Configure the encoding used for messages. <br>Values include: PROTOBUF, JSON. Implementations may not support JSON.<br> |
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used. | No constraints. | Configure endpoint, including the signal specific path.<br> |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, no headers are added. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no headers are added. | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> |
@@ -2194,12 +2194,12 @@ Usages:
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br> |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, EXPLICIT_BUCKET_HISTOGRAM is used. | No constraints. | Configure default histogram aggregation.<br>Values include: EXPLICIT_BUCKET_HISTOGRAM, BASE2_EXPONENTIAL_BUCKET_HISTOGRAM. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
 | `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | If omitted, protobuf is used. | No constraints. | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br> |
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, http://localhost:4318/v1/metrics is used. | No constraints. | Configure endpoint.<br> |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no headers are added. | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, CUMULATIVE is used. | No constraints. | Configure temporality preference.<br>Values include: CUMULATIVE, DELTA, LOW_MEMORY. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 10000 is used. | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
 | `tls` | [`HttpTls`](#httptls) | `false` | If omitted, TODO. | No constraints. | Configure TLS settings for the exporter. |
 
@@ -3350,7 +3350,7 @@ Usages:
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `instrument_name` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all instrument names match. | No constraints. | Configure instrument name selection criteria.<br> |
-| `instrument_type` | [`InstrumentType`](#instrumenttype) | `false` | If omitted, all instrument types match. | No constraints. | Configure instrument type selection criteria.<br>Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.<br> |
+| `instrument_type` | [`InstrumentType`](#instrumenttype) | `false` | If omitted, all instrument types match. | No constraints. | Configure instrument type selection criteria.<br>Values include: COUNTER, GAUGE, HISTOGRAM, OBSERVABLE_COUNTER, OBSERVABLE_GAUGE, OBSERVABLE_UP_DOWN_COUNTER, UP_DOWN_COUNTER.<br> |
 | `meter_name` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter names match. | No constraints. | Configure meter name selection criteria.<br> |
 | `meter_schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter schema URLs match. | No constraints. | Configure meter schema url selection criteria.<br> |
 | `meter_version` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter versions match. | No constraints. | Configure meter version selection criteria.<br> |
@@ -4590,9 +4590,9 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br>Values include: EXPLICIT_BUCKET_HISTOGRAM, BASE2_EXPONENTIAL_BUCKET_HISTOGRAM. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
 | `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, stdout is used. | No constraints. | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br>Values include: CUMULATIVE, DELTA, LOW_MEMORY. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4818,7 +4818,7 @@ Usages:
 |---|---|---|---|---|---|
 | `host` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, localhost is used. | No constraints. | Configure host.<br> |
 | `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 9464 is used. | No constraints. | Configure port.<br> |
-| `translation_strategy` | [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | `false` | If omitted, UnderscoreEscapingWithSuffixes is used. | No constraints. | Configure how Prometheus metrics are exposed. Values include:<br><br> * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br> * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.<br> * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br> * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.<br> |
+| `translation_strategy` | [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | `false` | If omitted, UNDERSCORE_ESCAPING_WITH_SUFFIXES is used. | No constraints. | Configure how Prometheus metrics are exposed. Values include:<br><br> * UNDERSCORE_ESCAPING_WITH_SUFFIXES, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.<br> * UNDERSCORE_ESCAPING_WITHOUT_SUFFIXES, metric names will continue to escape special characters to _, but suffixes won't be attached.<br> * NO_UTF8_ESCAPING_WITH_SUFFIXES will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.<br> * NO_TRANSLATION. This strategy bypasses all metric and label name translation, passing them through unaltered.<br> |
 | `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, TODO. | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
 | `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a scope info metric.<br> |
 | `without_target_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a target info metric for the resource.<br> |
@@ -4898,20 +4898,20 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `NoTranslation` | Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered. |
-| `NoUTF8EscapingWithSuffixes` | Special character escaping is disabled. Type and unit suffixes are enabled. |
-| `UnderscoreEscapingWithoutSuffixes` | Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility. |
-| `UnderscoreEscapingWithSuffixes` | Special character escaping is enabled. Type and unit suffixes are enabled. |
+| `NO_TRANSLATION` | Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered. |
+| `NO_UTF8_ESCAPING_WITH_SUFFIXES` | Special character escaping is disabled. Type and unit suffixes are enabled. |
+| `UNDERSCORE_ESCAPING_WITH_SUFFIXES` | Special character escaping is enabled. Type and unit suffixes are enabled. |
+| `UNDERSCORE_ESCAPING_WITHOUT_SUFFIXES` | Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `NoTranslation` | unknown | unknown | unknown | unknown |
-| `NoUTF8EscapingWithSuffixes` | unknown | unknown | unknown | unknown |
-| `UnderscoreEscapingWithoutSuffixes` | unknown | unknown | unknown | unknown |
-| `UnderscoreEscapingWithSuffixes` | unknown | unknown | unknown | unknown |
+| `NO_TRANSLATION` | unknown | unknown | unknown | unknown |
+| `NO_UTF8_ESCAPING_WITH_SUFFIXES` | unknown | unknown | unknown | unknown |
+| `UNDERSCORE_ESCAPING_WITH_SUFFIXES` | unknown | unknown | unknown | unknown |
+| `UNDERSCORE_ESCAPING_WITHOUT_SUFFIXES` | unknown | unknown | unknown | unknown |
 </details>
 
 No constraints.
@@ -4930,10 +4930,10 @@ Usages:
     "null"
   ],
   "enum": [
-    "UnderscoreEscapingWithSuffixes",
-    "UnderscoreEscapingWithoutSuffixes",
-    "NoUTF8EscapingWithSuffixes",
-    "NoTranslation"
+    "UNDERSCORE_ESCAPING_WITH_SUFFIXES",
+    "UNDERSCORE_ESCAPING_WITHOUT_SUFFIXES",
+    "NO_UTF8_ESCAPING_WITH_SUFFIXES",
+    "NO_TRANSLATION"
   ]
 }</pre>
 </details>
@@ -5353,7 +5353,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`AlwaysOnSampler`](#alwaysonsampler) | supported |  |  |
 | [`AttributeLimits`](#attributelimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | [`AttributeNameValue`](#attributenamevalue) | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
-| [`AttributeType`](#attributetype) | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
+| [`AttributeType`](#attributetype) | supported |  | * `BOOL`: supported<br>* `BOOL_ARRAY`: supported<br>* `DOUBLE`: supported<br>* `DOUBLE_ARRAY`: supported<br>* `INT`: supported<br>* `INT_ARRAY`: supported<br>* `STRING`: supported<br>* `STRING_ARRAY`: supported<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | supported |  |  |
 | [`B3Propagator`](#b3propagator) | supported |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | supported |  |  |
@@ -5365,14 +5365,14 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `temporality_preference`: supported<br> |
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
 | [`DropAggregation`](#dropaggregation) | supported |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `trace_based`: not_implemented<br> |
+| [`ExemplarFilter`](#exemplarfilter) | not_implemented |  | * `ALWAYS_OFF`: not_implemented<br>* `ALWAYS_ON`: not_implemented<br>* `TRACE_BASED`: not_implemented<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM`: supported<br>* `EXPLICIT_BUCKET_HISTOGRAM`: supported<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `CUMULATIVE`: supported<br>* `DELTA`: supported<br>* `LOW_MEMORY`: supported<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
+| [`InstrumentType`](#instrumenttype) | supported |  | * `COUNTER`: supported<br>* `GAUGE`: supported<br>* `HISTOGRAM`: supported<br>* `OBSERVABLE_COUNTER`: supported<br>* `OBSERVABLE_GAUGE`: supported<br>* `OBSERVABLE_UP_DOWN_COUNTER`: supported<br>* `UP_DOWN_COUNTER`: supported<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
 | [`LoggerProvider`](#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
@@ -5388,7 +5388,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`OpenTracingPropagator`](#opentracingpropagator) | not_implemented |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  | * `JSON`: supported<br>* `PROTOBUF`: supported<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
@@ -5440,7 +5440,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | not_implemented |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: supported<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NO_TRANSLATION`: unknown<br>* `NO_UTF8_ESCAPING_WITH_SUFFIXES`: unknown<br>* `UNDERSCORE_ESCAPING_WITH_SUFFIXES`: unknown<br>* `UNDERSCORE_ESCAPING_WITHOUT_SUFFIXES`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | not_implemented |  |  |
@@ -5461,7 +5461,7 @@ Latest supported file format: `0.3.0`
 | [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
 | [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
 | [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `type`: unknown<br>* `value`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
+| [`AttributeType`](#attributetype) | unknown |  | * `BOOL`: unknown<br>* `BOOL_ARRAY`: unknown<br>* `DOUBLE`: unknown<br>* `DOUBLE_ARRAY`: unknown<br>* `INT`: unknown<br>* `INT_ARRAY`: unknown<br>* `STRING`: unknown<br>* `STRING_ARRAY`: unknown<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
 | [`B3Propagator`](#b3propagator) | unknown |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
@@ -5473,14 +5473,14 @@ Latest supported file format: `0.3.0`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `temporality_preference`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
 | [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
+| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `ALWAYS_OFF`: unknown<br>* `ALWAYS_ON`: unknown<br>* `TRACE_BASED`: unknown<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM`: unknown<br>* `EXPLICIT_BUCKET_HISTOGRAM`: unknown<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `CUMULATIVE`: unknown<br>* `DELTA`: unknown<br>* `LOW_MEMORY`: unknown<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
+| [`InstrumentType`](#instrumenttype) | unknown |  | * `COUNTER`: unknown<br>* `GAUGE`: unknown<br>* `HISTOGRAM`: unknown<br>* `OBSERVABLE_COUNTER`: unknown<br>* `OBSERVABLE_GAUGE`: unknown<br>* `OBSERVABLE_UP_DOWN_COUNTER`: unknown<br>* `UP_DOWN_COUNTER`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
 | [`LoggerProvider`](#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
@@ -5496,7 +5496,7 @@ Latest supported file format: `0.3.0`
 | [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `compression`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `JSON`: unknown<br>* `PROTOBUF`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `compression`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
@@ -5548,7 +5548,7 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | unknown |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | unknown |  | * `host`: unknown<br>* `port`: unknown<br>* `translation_strategy`: unknown<br>* `with_resource_constant_labels`: unknown<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NO_TRANSLATION`: unknown<br>* `NO_UTF8_ESCAPING_WITH_SUFFIXES`: unknown<br>* `UNDERSCORE_ESCAPING_WITH_SUFFIXES`: unknown<br>* `UNDERSCORE_ESCAPING_WITHOUT_SUFFIXES`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
@@ -5569,7 +5569,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`AlwaysOnSampler`](#alwaysonsampler) | supported |  |  |
 | [`AttributeLimits`](#attributelimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | [`AttributeNameValue`](#attributenamevalue) | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
-| [`AttributeType`](#attributetype) | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
+| [`AttributeType`](#attributetype) | supported |  | * `BOOL`: supported<br>* `BOOL_ARRAY`: supported<br>* `DOUBLE`: supported<br>* `DOUBLE_ARRAY`: supported<br>* `INT`: supported<br>* `INT_ARRAY`: supported<br>* `STRING`: supported<br>* `STRING_ARRAY`: supported<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | supported |  |  |
 | [`B3Propagator`](#b3propagator) | supported |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | supported |  |  |
@@ -5581,14 +5581,14 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: ignored<br> |
 | [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
 | [`DropAggregation`](#dropaggregation) | supported |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `trace_based`: supported<br> |
+| [`ExemplarFilter`](#exemplarfilter) | supported |  | * `ALWAYS_OFF`: supported<br>* `ALWAYS_ON`: supported<br>* `TRACE_BASED`: supported<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: not_implemented<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM`: supported<br>* `EXPLICIT_BUCKET_HISTOGRAM`: supported<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `CUMULATIVE`: supported<br>* `DELTA`: supported<br>* `LOW_MEMORY`: supported<br> |
 | [`GrpcTls`](#grpctls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `insecure`: not_implemented<br>* `key_file`: not_implemented<br> |
 | [`HttpTls`](#httptls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `key_file`: not_implemented<br> |
 | [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
+| [`InstrumentType`](#instrumenttype) | supported |  | * `COUNTER`: supported<br>* `GAUGE`: supported<br>* `HISTOGRAM`: supported<br>* `OBSERVABLE_COUNTER`: supported<br>* `OBSERVABLE_GAUGE`: supported<br>* `OBSERVABLE_UP_DOWN_COUNTER`: supported<br>* `UP_DOWN_COUNTER`: supported<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
 | [`LoggerProvider`](#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
@@ -5604,7 +5604,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`OpenTracingPropagator`](#opentracingpropagator) | supported |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | not_implemented |  | * `JSON`: not_implemented<br>* `PROTOBUF`: not_implemented<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `compression`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
@@ -5656,7 +5656,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | ignored |  | * `ratio`: ignored<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | supported |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: not_implemented<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: ignored<br>* `without_target_info`: ignored<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NO_TRANSLATION`: unknown<br>* `NO_UTF8_ESCAPING_WITH_SUFFIXES`: unknown<br>* `UNDERSCORE_ESCAPING_WITH_SUFFIXES`: unknown<br>* `UNDERSCORE_ESCAPING_WITHOUT_SUFFIXES`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | supported |  |  |
@@ -5677,7 +5677,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
 | [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
 | [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `type`: unknown<br>* `value`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
+| [`AttributeType`](#attributetype) | unknown |  | * `BOOL`: unknown<br>* `BOOL_ARRAY`: unknown<br>* `DOUBLE`: unknown<br>* `DOUBLE_ARRAY`: unknown<br>* `INT`: unknown<br>* `INT_ARRAY`: unknown<br>* `STRING`: unknown<br>* `STRING_ARRAY`: unknown<br> |
 | [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
 | [`B3Propagator`](#b3propagator) | unknown |  |  |
 | [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
@@ -5689,14 +5689,14 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `temporality_preference`: unknown<br> |
 | [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
 | [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
+| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `ALWAYS_OFF`: unknown<br>* `ALWAYS_ON`: unknown<br>* `TRACE_BASED`: unknown<br> |
 | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
+| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM`: unknown<br>* `EXPLICIT_BUCKET_HISTOGRAM`: unknown<br> |
+| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `CUMULATIVE`: unknown<br>* `DELTA`: unknown<br>* `LOW_MEMORY`: unknown<br> |
 | [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
 | [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
+| [`InstrumentType`](#instrumenttype) | unknown |  | * `COUNTER`: unknown<br>* `GAUGE`: unknown<br>* `HISTOGRAM`: unknown<br>* `OBSERVABLE_COUNTER`: unknown<br>* `OBSERVABLE_GAUGE`: unknown<br>* `OBSERVABLE_UP_DOWN_COUNTER`: unknown<br>* `UP_DOWN_COUNTER`: unknown<br> |
 | [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
 | [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
 | [`LoggerProvider`](#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
@@ -5712,7 +5712,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
 | [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `compression`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
+| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `JSON`: unknown<br>* `PROTOBUF`: unknown<br> |
 | [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `compression`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
@@ -5764,7 +5764,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | unknown |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | unknown |  | * `host`: unknown<br>* `port`: unknown<br>* `translation_strategy`: unknown<br>* `with_resource_constant_labels`: unknown<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NO_TRANSLATION`: unknown<br>* `NO_UTF8_ESCAPING_WITH_SUFFIXES`: unknown<br>* `UNDERSCORE_ESCAPING_WITH_SUFFIXES`: unknown<br>* `UNDERSCORE_ESCAPING_WITHOUT_SUFFIXES`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
