@@ -12,7 +12,7 @@ for general information about the project.
 
 The following rules are enforced when modeling the configuration schema.
 
-These rules must be enforced when making changes to the schema; however, changes to the rules are permitted. In other words, the [stability definition](./README.md#stability-definition) does not apply to the rules: so long as the stability definition is not violated for existing properties, the modeling rules guiding new properties may change.
+These rules must be enforced when making changes to the schema; however, changes to the rules are permitted. In other words, the [versioning policy guarantees](VERSIONING.md#guarantees-and-allowed-changes) do not apply to the rules: so long as the versioning policy is not violated for existing properties, the modeling rules guiding new properties may change.
 
 ### Which JSON schema version?
 
@@ -459,7 +459,7 @@ A PR is ready to merge when:
 
 ### Labels
 
-* [`breaking`](https://github.com/open-telemetry/opentelemetry-configuration/pulls?q=is%3Apr+label%3Abreaking+): applied to PRs that qualify as breaking changes according to the [stability definition](README.md#stability-definition), including breaking changes to [experimental features](README.md#experimental-features) which are allowed in minor versions.
+* [`breaking`](https://github.com/open-telemetry/opentelemetry-configuration/pulls?q=is%3Apr+label%3Abreaking+): applied to PRs that qualify as breaking changes according to the [versioning policy](VERSIONING.md), including breaking changes to [experimental features](VERSIONING.md#experimental-features) which are allowed in minor versions.
 
 [env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
