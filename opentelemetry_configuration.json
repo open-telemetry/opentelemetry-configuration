@@ -172,7 +172,7 @@
         },
         "type": {
           "$ref": "#/$defs/AttributeType",
-          "description": "The attribute type.\nIf omitted, string is used.\n"
+          "description": "The attribute type.\nValues include:\n* bool: Boolean attribute value.\n* bool_array: Boolean array attribute value.\n* double: Double attribute value.\n* double_array: Double array attribute value.\n* int: Integer attribute value.\n* int_array: Integer array attribute value.\n* string: String attribute value.\n* string_array: String array attribute value.\nIf omitted, string is used.\n"
         }
       },
       "required": [
@@ -426,11 +426,11 @@
       "properties": {
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include:\n* cumulative: Use cumulative aggregation temporality for all instrument types.\n* delta: Use delta aggregation for all instrument types except up down counter and asynchronous up down counter.\n* low_memory: Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: TODO\n* explicit_bucket_histogram: TODO\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -741,7 +741,7 @@
         },
         "minimum_severity": {
           "$ref": "#/$defs/ExperimentalSeverityNumber",
-          "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nIf omitted, severity filtering is not applied.\n"
+          "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include:\n* DEBUG: DEBUG, severity number 5.\n* DEBUG2: DEBUG2, severity number 6.\n* DEBUG3: DEBUG3, severity number 7.\n* DEBUG4: DEBUG4, severity number 8.\n* ERROR: ERROR, severity number 17.\n* ERROR2: ERROR2, severity number 18.\n* ERROR3: ERROR3, severity number 19.\n* ERROR4: ERROR4, severity number 20.\n* FATAL: FATAL, severity number 21.\n* FATAL2: FATAL2, severity number 22.\n* FATAL3: FATAL3, severity number 23.\n* FATAL4: FATAL4, severity number 24.\n* INFO: INFO, severity number 9.\n* INFO2: INFO2, severity number 10.\n* INFO3: INFO3, severity number 11.\n* INFO4: INFO4, severity number 12.\n* TRACE: TRACE, severity number 1.\n* TRACE2: TRACE2, severity number 2.\n* TRACE3: TRACE3, severity number 3.\n* TRACE4: TRACE4, severity number 4.\n* WARN: WARN, severity number 13.\n* WARN2: WARN2, severity number 14.\n* WARN3: WARN3, severity number 15.\n* WARN4: WARN4, severity number 16.\nIf omitted, severity filtering is not applied.\n"
         },
         "trace_based": {
           "type": [
@@ -882,11 +882,11 @@
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include:\n* cumulative: Use cumulative aggregation temporality for all instrument types.\n* delta: Use delta aggregation for all instrument types except up down counter and asynchronous up down counter.\n* low_memory: Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: TODO\n* explicit_bucket_histogram: TODO\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -988,7 +988,7 @@
         },
         "translation_strategy": {
           "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
-          "description": "Configure how Prometheus metrics are exposed.\nIf omitted, UnderscoreEscapingWithSuffixes is used.\n"
+          "description": "Configure how Prometheus metrics are exposed.\nValues include:\n* NoTranslation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.\n* NoUTF8EscapingWithSuffixes: Special character escaping is disabled. Type and unit suffixes are enabled.\n* UnderscoreEscapingWithoutSuffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.\n* UnderscoreEscapingWithSuffixes: Special character escaping is enabled. Type and unit suffixes are enabled.\nIf omitted, UnderscoreEscapingWithSuffixes is used.\n"
         }
       }
     },
@@ -1428,7 +1428,7 @@
         },
         "exemplar_filter": {
           "$ref": "#/$defs/ExemplarFilter",
-          "description": "Configure the exemplar filter. \nIf omitted, trace_based is used.\n"
+          "description": "Configure the exemplar filter. \nValues include:\n* always_off: ExemplarFilter which makes no measurements eligible for being an Exemplar.\n* always_on: ExemplarFilter which makes all measurements eligible for being an Exemplar.\n* trace_based: ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar.\nIf omitted, trace_based is used.\n"
         },
         "meter_configurator/development": {
           "$ref": "#/$defs/ExperimentalMeterConfigurator",
@@ -1607,11 +1607,11 @@
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include:\n* cumulative: Use cumulative aggregation temporality for all instrument types.\n* delta: Use delta aggregation for all instrument types except up down counter and asynchronous up down counter.\n* low_memory: Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: TODO\n* explicit_bucket_histogram: TODO\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -1675,7 +1675,7 @@
         },
         "encoding": {
           "$ref": "#/$defs/OtlpHttpEncoding",
-          "description": "Configure the encoding used for messages. \nImplementations may not support json.\nIf omitted, protobuf is used.\n"
+          "description": "Configure the encoding used for messages. \nImplementations may not support json.\nValues include:\n* json: Protobuf JSON encoding.\n* protobuf: Protobuf binary encoding.\nIf omitted, protobuf is used.\n"
         }
       }
     },
@@ -1729,15 +1729,15 @@
         },
         "encoding": {
           "$ref": "#/$defs/OtlpHttpEncoding",
-          "description": "Configure the encoding used for messages. \nImplementations may not support json.\nIf omitted, protobuf is used.\n"
+          "description": "Configure the encoding used for messages. \nImplementations may not support json.\nValues include:\n* json: Protobuf JSON encoding.\n* protobuf: Protobuf binary encoding.\nIf omitted, protobuf is used.\n"
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nIf omitted, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include:\n* cumulative: Use cumulative aggregation temporality for all instrument types.\n* delta: Use delta aggregation for all instrument types except up down counter and asynchronous up down counter.\n* low_memory: Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: TODO\n* explicit_bucket_histogram: TODO\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -2239,7 +2239,7 @@
         },
         "instrument_type": {
           "$ref": "#/$defs/InstrumentType",
-          "description": "Configure instrument type selection criteria.\nIf omitted, all instrument types match.\n"
+          "description": "Configure instrument type selection criteria.\nValues include:\n* counter: Synchronous counter instruments.\n* gauge: Synchronous gauge instruments.\n* histogram: Synchronous histogram instruments.\n* observable_counter: Asynchronous counter instruments.\n* observable_gauge: Asynchronous gauge instruments.\n* observable_up_down_counter: Asynchronous up down counter instruments.\n* up_down_counter: Synchronous up down counter instruments.\nIf omitted, all instrument types match.\n"
         },
         "unit": {
           "type": [
