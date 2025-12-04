@@ -7,7 +7,7 @@
   "properties": {
     "file_format": {
       "type": "string",
-      "description": "The file format version.\nThe yaml format is documented at\nhttps://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema\n"
+      "description": "The file format version.\nThe yaml format is documented at\nhttps://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema\nProperty is required and must be non-null.\n"
     },
     "disabled": {
       "type": [
@@ -17,15 +17,12 @@
       "description": "Configure if the SDK is disabled or not.\nIf omitted or null, false is used.\n"
     },
     "log_level": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "description": "Configure the log level of the internal logger used by the SDK.\nIf omitted, info is used.\n"
+      "$ref": "#/$defs/SeverityNumber",
+      "description": "Configure the log level of the internal logger used by the SDK.\nIf omitted, INFO is used.\n"
     },
     "attribute_limits": {
       "$ref": "#/$defs/AttributeLimits",
-      "description": "Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.\n"
+      "description": "Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.\nIf omitted, default values as described in AttributeLimits are used.\n"
     },
     "logger_provider": {
       "$ref": "#/$defs/LoggerProvider",
@@ -49,7 +46,7 @@
     },
     "instrumentation/development": {
       "$ref": "#/$defs/ExperimentalInstrumentation",
-      "description": "Configure instrumentation.\n"
+      "description": "Configure instrumentation.\nIf omitted, instrumentation defaults are used.\n"
     }
   },
   "required": [
@@ -64,27 +61,27 @@
       "properties": {
         "default": {
           "$ref": "#/$defs/DefaultAggregation",
-          "description": "TODO"
+          "description": "Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#default-aggregation for details.\nIf omitted, ignore.\n"
         },
         "drop": {
           "$ref": "#/$defs/DropAggregation",
-          "description": "TODO"
+          "description": "Configures the stream to ignore/drop all instrument measurements. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#drop-aggregation for details.\nIf omitted, ignore.\n"
         },
         "explicit_bucket_histogram": {
           "$ref": "#/$defs/ExplicitBucketHistogramAggregation",
-          "description": "Configure aggregation to be explicit_bucket_histogram."
+          "description": "Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation for details\nIf omitted, ignore.\n"
         },
         "base2_exponential_bucket_histogram": {
           "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation",
-          "description": "TODO"
+          "description": "Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation for details.\nIf omitted, ignore.\n"
         },
         "last_value": {
           "$ref": "#/$defs/LastValueAggregation",
-          "description": "TODO"
+          "description": "Configures the stream to collect data using the last measurement. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#last-value-aggregation for details.\nIf omitted, ignore.\n"
         },
         "sum": {
           "$ref": "#/$defs/SumAggregation",
-          "description": "TODO"
+          "description": "Configures the stream to collect the arithmetic sum of measurement values. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sum-aggregation for details.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -130,7 +127,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "description": "The attribute name.\n"
+          "description": "The attribute name.\nProperty is required and must be non-null.\n"
         },
         "value": {
           "oneOf": [
@@ -168,11 +165,11 @@
               "minItems": 1
             }
           ],
-          "description": "The attribute value.\nThe type of value must match .type.\n"
+          "description": "The attribute value.\nThe type of value must match .type.\nProperty is required and must be non-null.\n"
         },
         "type": {
           "$ref": "#/$defs/AttributeType",
-          "description": "The attribute type.\nValues include: string, bool, int, double, string_array, bool_array, int_array, double_array.\nIf omitted or null, string is used.\n"
+          "description": "The attribute type.\nValues include: string, bool, int, double, string_array, bool_array, int_array, double_array.\nIf omitted, string is used.\n"
         }
       },
       "required": [
@@ -231,7 +228,7 @@
           ],
           "minimum": -10,
           "maximum": 20,
-          "description": "TODO"
+          "description": "Configure the max scale factor.\nIf omitted or null, 20 is used.\n"
         },
         "max_size": {
           "type": [
@@ -239,14 +236,14 @@
             "null"
           ],
           "minimum": 2,
-          "description": "TODO"
+          "description": "Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket.\nIf omitted or null, 160 is used.\n"
         },
         "record_min_max": {
           "type": [
             "boolean",
             "null"
           ],
-          "description": "TODO"
+          "description": "Configure whether or not to record min and max.\nIf omitted or null, true is used.\n"
         }
       }
     },
@@ -288,7 +285,7 @@
         },
         "exporter": {
           "$ref": "#/$defs/LogRecordExporter",
-          "description": "Configure exporter."
+          "description": "Configure exporter.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [
@@ -333,7 +330,7 @@
         },
         "exporter": {
           "$ref": "#/$defs/SpanExporter",
-          "description": "Configure exporter."
+          "description": "Configure exporter.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [
@@ -426,11 +423,11 @@
       "properties": {
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -473,6 +470,21 @@
       ],
       "additionalProperties": false
     },
+    "ExperimentalComposableParentThresholdSampler": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Sampler to use when there is no parent.\nProperty is required and must be non-null.\n"
+        }
+      },
+      "required": [
+        "root"
+      ]
+    },
     "ExperimentalComposableProbabilitySampler": {
       "type": [
         "object",
@@ -504,19 +516,19 @@
       "properties": {
         "always_off": {
           "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler",
-          "description": "Configure sampler to be always_off."
+          "description": "Configure sampler to be always_off.\nIf omitted, ignore.\n"
         },
         "always_on": {
           "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler",
-          "description": "Configure sampler to be always_on."
+          "description": "Configure sampler to be always_on.\nIf omitted, ignore.\n"
         },
         "parent_threshold": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configure sampler to be parent_threshold, delegating to the configured sampler when there is no parent.\n"
+          "$ref": "#/$defs/ExperimentalComposableParentThresholdSampler",
+          "description": "Configure sampler to be parent_threshold.\nIf omitted, ignore.\n"
         },
         "probability": {
           "$ref": "#/$defs/ExperimentalComposableProbabilitySampler",
-          "description": "Configure sampler to be probability."
+          "description": "Configure sampler to be probability.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -533,11 +545,11 @@
       "properties": {
         "peer": {
           "$ref": "#/$defs/ExperimentalPeerInstrumentation",
-          "description": "Configure instrumentations following the peer semantic conventions.\nSee peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/\n"
+          "description": "Configure instrumentations following the peer semantic conventions.\nSee peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/\nIf omitted, defaults as described in ExperimentalPeerInstrumentation are used.\n"
         },
         "http": {
           "$ref": "#/$defs/ExperimentalHttpInstrumentation",
-          "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\n"
+          "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\nIf omitted, defaults as described in ExperimentalHttpInstrumentation are used.\n"
         }
       }
     },
@@ -558,14 +570,15 @@
           "items": {
             "type": "string"
           },
-          "description": "Configure headers to capture for outbound http requests.\n"
+          "description": "Configure headers to capture for outbound http requests.\nIf omitted, no outbound request headers are captured.\n"
         },
         "response_captured_headers": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "string"
           },
-          "description": "Configure headers to capture for inbound http responses.\n"
+          "description": "Configure headers to capture for inbound http responses.\nIf omitted, no inbound response headers are captured.\n"
         }
       }
     },
@@ -575,11 +588,11 @@
       "properties": {
         "client": {
           "$ref": "#/$defs/ExperimentalHttpClientInstrumentation",
-          "description": "Configure instrumentations following the http client semantic conventions."
+          "description": "Configure instrumentations following the http client semantic conventions.\nIf omitted, defaults as described in ExperimentalHttpClientInstrumentation are used.\n"
         },
         "server": {
           "$ref": "#/$defs/ExperimentalHttpServerInstrumentation",
-          "description": "Configure instrumentations following the http server semantic conventions."
+          "description": "Configure instrumentations following the http server semantic conventions.\nIf omitted, defaults as described in ExperimentalHttpServerInstrumentation are used.\n"
         }
       }
     },
@@ -593,7 +606,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Configure headers to capture for inbound http requests.\n"
+          "description": "Configure headers to capture for inbound http requests.\nIf omitted, no request headers are captured.\n"
         },
         "response_captured_headers": {
           "type": "array",
@@ -601,7 +614,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Configure headers to capture for outbound http responses.\n"
+          "description": "Configure headers to capture for outbound http responses.\nIf omitted, no response headers are captures.\n"
         }
       }
     },
@@ -611,51 +624,51 @@
       "properties": {
         "general": {
           "$ref": "#/$defs/ExperimentalGeneralInstrumentation",
-          "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\nInstrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.\n"
+          "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\nInstrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.\nIf omitted, default values as described in ExperimentalGeneralInstrumentation are used.\n"
         },
         "cpp": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure C++ language-specific instrumentation libraries."
+          "description": "Configure C++ language-specific instrumentation libraries.\nIf omitted, instrumentation defaults are used.\n"
         },
         "dotnet": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure .NET language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+          "description": "Configure .NET language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "erlang": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Erlang language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+          "description": "Configure Erlang language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "go": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Go language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+          "description": "Configure Go language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "java": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Java language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+          "description": "Configure Java language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "js": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure JavaScript language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+          "description": "Configure JavaScript language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "php": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure PHP language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+          "description": "Configure PHP language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "python": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Python language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+          "description": "Configure Python language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "ruby": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Ruby language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+          "description": "Configure Ruby language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "rust": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Rust language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+          "description": "Configure Rust language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         },
         "swift": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
-          "description": "Configure Swift language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\n"
+          "description": "Configure Swift language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
         }
       }
     },
@@ -668,10 +681,9 @@
       "properties": {
         "endpoint": {
           "type": [
-            "string",
-            "null"
+            "string"
           ],
-          "description": "TODO"
+          "description": "Configure the endpoint of the jaeger remote sampling service.\nProperty is required and must be non-null.\n"
         },
         "interval": {
           "type": [
@@ -679,13 +691,17 @@
             "null"
           ],
           "minimum": 0,
-          "description": "TODO"
+          "description": "Configure the polling interval (in milliseconds) to fetch from the remote sampling service.\nIf omitted or null, 60000 is used.\n"
         },
         "initial_sampler": {
           "$ref": "#/$defs/Sampler",
-          "description": "TODO"
+          "description": "Configure the initial sampler used before first configuration is fetched.\nProperty is required and must be non-null.\n"
         }
-      }
+      },
+      "required": [
+        "endpoint",
+        "initial_sampler"
+      ]
     },
     "ExperimentalLanguageSpecificInstrumentation": {
       "type": "object",
@@ -707,8 +723,8 @@
           "description": "Configure if the logger is enabled or not.\nIf omitted or null, false is used.\n"
         },
         "minimum_severity": {
-          "$ref": "#/$defs/ExperimentalSeverityNumber",
-          "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.\nIf omitted or null, severity filtering is not applied.\n"
+          "$ref": "#/$defs/SeverityNumber",
+          "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.\nIf omitted, severity filtering is not applied.\n"
         },
         "trace_based": {
           "type": [
@@ -727,7 +743,7 @@
       "properties": {
         "default_config": {
           "$ref": "#/$defs/ExperimentalLoggerConfig",
-          "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers."
+          "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.\nIf omitted, unmatched .loggers use default values as described in ExperimentalLoggerConfig.\n"
         },
         "loggers": {
           "type": "array",
@@ -735,7 +751,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
           },
-          "description": "Configure loggers."
+          "description": "Configure loggers.\nIf omitted, all loggers use .default_config.\n"
         }
       }
     },
@@ -749,11 +765,11 @@
           "type": [
             "string"
           ],
-          "description": "Configure logger names to match, evaluated as follows:\n\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+          "description": "Configure logger names to match, evaluated as follows:\n\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nProperty is required and must be non-null.\n"
         },
         "config": {
           "$ref": "#/$defs/ExperimentalLoggerConfig",
-          "description": "The logger config."
+          "description": "The logger config.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [
@@ -771,7 +787,7 @@
           "type": [
             "boolean"
           ],
-          "description": "Configure if the meter is enabled or not."
+          "description": "Configure if the meter is enabled or not.\nIf omitted, false is used.\n"
         }
       }
     },
@@ -783,7 +799,7 @@
       "properties": {
         "default_config": {
           "$ref": "#/$defs/ExperimentalMeterConfig",
-          "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters."
+          "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.\nIf omitted, unmatched .meters use default values as described in ExperimentalMeterConfig.\n"
         },
         "meters": {
           "type": "array",
@@ -791,7 +807,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
           },
-          "description": "Configure meters."
+          "description": "Configure meters.\nIf omitted, all meters used .default_config.\n"
         }
       }
     },
@@ -805,11 +821,11 @@
           "type": [
             "string"
           ],
-          "description": "Configure meter names to match, evaluated as follows:\n\n * If the meter name exactly matches.\n * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+          "description": "Configure meter names to match, evaluated as follows:\n\n * If the meter name exactly matches.\n * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nProperty is required and must be non-null.\n"
         },
         "config": {
           "$ref": "#/$defs/ExperimentalMeterConfig",
-          "description": "The meter config."
+          "description": "The meter config.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [
@@ -849,11 +865,11 @@
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -867,7 +883,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalPeerServiceMapping"
           },
-          "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\nSee peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\n"
+          "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\nSee peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\nIf omitted, no peer service mappings are used.\n"
         }
       }
     },
@@ -877,11 +893,11 @@
       "properties": {
         "peer": {
           "type": "string",
-          "description": "The IP address to map.\n"
+          "description": "The IP address to map.\nProperty is required and must be non-null.\n"
         },
         "service": {
           "type": "string",
-          "description": "The logical name corresponding to the IP address of .peer.\n"
+          "description": "The logical name corresponding to the IP address of .peer.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [
@@ -951,11 +967,11 @@
         },
         "with_resource_constant_labels": {
           "$ref": "#/$defs/IncludeExclude",
-          "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns."
+          "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.\nIf omitted, no resource attributes are added.\n"
         },
         "translation_strategy": {
           "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
-          "description": "Configure how Prometheus metrics are exposed. Values include:\n\n * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\n\nIf omitted or null, UnderscoreEscapingWithSuffixes is used.\n"
+          "description": "Configure how Prometheus metrics are exposed. Values include:\n\n * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.\n * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.\n * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.\n * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.\nIf omitted, UnderscoreEscapingWithSuffixes is used.\n"
         }
       }
     },
@@ -977,7 +993,7 @@
       "properties": {
         "attributes": {
           "$ref": "#/$defs/IncludeExclude",
-          "description": "Configure attributes provided by resource detectors."
+          "description": "Configure attributes provided by resource detectors.\nIf omitted, all attributes from resource detectors are added.\n"
         },
         "detectors": {
           "type": "array",
@@ -985,7 +1001,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalResourceDetector"
           },
-          "description": "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. \nIf omitted or null, no resource detectors are enabled.\n"
+          "description": "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. \nIf omitted, no resource detectors are enabled.\n"
         }
       }
     },
@@ -1002,19 +1018,19 @@
       "properties": {
         "container": {
           "$ref": "#/$defs/ExperimentalContainerResourceDetector",
-          "description": "Enable the container resource detector, which populates container.* attributes.\n"
+          "description": "Enable the container resource detector, which populates container.* attributes.\nIf omitted, ignore.\n"
         },
         "host": {
           "$ref": "#/$defs/ExperimentalHostResourceDetector",
-          "description": "Enable the host resource detector, which populates host.* and os.* attributes.\n"
+          "description": "Enable the host resource detector, which populates host.* and os.* attributes.\nIf omitted, ignore.\n"
         },
         "process": {
           "$ref": "#/$defs/ExperimentalProcessResourceDetector",
-          "description": "Enable the process resource detector, which populates process.* attributes.\n"
+          "description": "Enable the process resource detector, which populates process.* attributes.\nIf omitted, ignore.\n"
         },
         "service": {
           "$ref": "#/$defs/ExperimentalServiceResourceDetector",
-          "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.\n"
+          "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -1024,38 +1040,6 @@
         "null"
       ],
       "additionalProperties": false
-    },
-    "ExperimentalSeverityNumber": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "enum": [
-        "TRACE",
-        "TRACE2",
-        "TRACE3",
-        "TRACE4",
-        "DEBUG",
-        "DEBUG2",
-        "DEBUG3",
-        "DEBUG4",
-        "INFO",
-        "INFO2",
-        "INFO3",
-        "INFO4",
-        "WARN",
-        "WARN2",
-        "WARN3",
-        "WARN4",
-        "ERROR",
-        "ERROR2",
-        "ERROR3",
-        "ERROR4",
-        "FATAL",
-        "FATAL2",
-        "FATAL3",
-        "FATAL4"
-      ]
     },
     "ExperimentalTracerConfig": {
       "type": [
@@ -1067,7 +1051,7 @@
           "type": [
             "boolean"
           ],
-          "description": "Configure if the tracer is enabled or not."
+          "description": "Configure if the tracer is enabled or not.\nIf omitted, false is used.\n"
         }
       }
     },
@@ -1079,7 +1063,7 @@
       "properties": {
         "default_config": {
           "$ref": "#/$defs/ExperimentalTracerConfig",
-          "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers."
+          "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.\nIf omitted, unmatched .tracers use default values as described in ExperimentalTracerConfig.\n"
         },
         "tracers": {
           "type": "array",
@@ -1087,7 +1071,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
           },
-          "description": "Configure tracers."
+          "description": "Configure tracers.\nIf omitted, all tracers use .default_config.\n"
         }
       }
     },
@@ -1101,11 +1085,11 @@
           "type": [
             "string"
           ],
-          "description": "Configure tracer names to match, evaluated as follows:\n\n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\n"
+          "description": "Configure tracer names to match, evaluated as follows:\n\n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nProperty is required and must be non-null.\n"
         },
         "config": {
           "$ref": "#/$defs/ExperimentalTracerConfig",
-          "description": "The tracer config."
+          "description": "The tracer config.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [
@@ -1286,15 +1270,15 @@
           "items": {
             "$ref": "#/$defs/LogRecordProcessor"
           },
-          "description": "Configure log record processors."
+          "description": "Configure log record processors.\nProperty is required and must be non-null.\n"
         },
         "limits": {
           "$ref": "#/$defs/LogRecordLimits",
-          "description": "Configure log record limits. See also attribute_limits."
+          "description": "Configure log record limits. See also attribute_limits.\nIf omitted, default values as described in LogRecordLimits are used.\n"
         },
         "logger_configurator/development": {
           "$ref": "#/$defs/ExperimentalLoggerConfigurator",
-          "description": "Configure loggers.\n"
+          "description": "Configure loggers.\nIf omitted, all loggers use default values as described in ExperimentalLoggerConfig.\n"
         }
       },
       "required": [
@@ -1314,19 +1298,19 @@
       "properties": {
         "otlp_http": {
           "$ref": "#/$defs/OtlpHttpExporter",
-          "description": "Configure exporter to be OTLP with HTTP transport."
+          "description": "Configure exporter to be OTLP with HTTP transport.\nIf omitted, ignore.\n"
         },
         "otlp_grpc": {
           "$ref": "#/$defs/OtlpGrpcExporter",
-          "description": "Configure exporter to be OTLP with gRPC transport."
+          "description": "Configure exporter to be OTLP with gRPC transport.\nIf omitted, ignore.\n"
         },
         "otlp_file/development": {
           "$ref": "#/$defs/ExperimentalOtlpFileExporter",
-          "description": "Configure exporter to be OTLP with file transport.\n"
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\n"
         },
         "console": {
           "$ref": "#/$defs/ConsoleExporter",
-          "description": "Configure exporter to be console."
+          "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -1365,11 +1349,11 @@
       "properties": {
         "batch": {
           "$ref": "#/$defs/BatchLogRecordProcessor",
-          "description": "Configure a batch log record processor."
+          "description": "Configure a batch log record processor.\nIf omitted, ignore.\n"
         },
         "simple": {
           "$ref": "#/$defs/SimpleLogRecordProcessor",
-          "description": "Configure a simple log record processor."
+          "description": "Configure a simple log record processor.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -1383,7 +1367,7 @@
           "items": {
             "$ref": "#/$defs/MetricReader"
           },
-          "description": "Configure metric readers."
+          "description": "Configure metric readers.\nProperty is required and must be non-null.\n"
         },
         "views": {
           "type": "array",
@@ -1391,15 +1375,15 @@
           "items": {
             "$ref": "#/$defs/View"
           },
-          "description": "Configure views. \nEach view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).\n"
+          "description": "Configure views. \nEach view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).\nIf omitted, no views are registered.\n"
         },
         "exemplar_filter": {
           "$ref": "#/$defs/ExemplarFilter",
-          "description": "Configure the exemplar filter. \nValues include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\nIf omitted or null, trace_based is used.\n"
+          "description": "Configure the exemplar filter. \nValues include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.\nIf omitted, trace_based is used.\n"
         },
         "meter_configurator/development": {
           "$ref": "#/$defs/ExperimentalMeterConfigurator",
-          "description": "Configure meters.\n"
+          "description": "Configure meters.\nIf omitted, all meters use default values as described in ExperimentalMeterConfig.\n"
         }
       },
       "required": [
@@ -1419,7 +1403,7 @@
       "properties": {
         "opencensus": {
           "$ref": "#/$defs/OpenCensusMetricProducer",
-          "description": "Configure metric producer to be opencensus."
+          "description": "Configure metric producer to be opencensus.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -1431,11 +1415,11 @@
       "properties": {
         "periodic": {
           "$ref": "#/$defs/PeriodicMetricReader",
-          "description": "Configure a periodic metric reader."
+          "description": "Configure a periodic metric reader.\nIf omitted, ignore.\n"
         },
         "pull": {
           "$ref": "#/$defs/PullMetricReader",
-          "description": "Configure a pull based metric reader."
+          "description": "Configure a pull based metric reader.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -1445,14 +1429,14 @@
       "properties": {
         "name": {
           "type": "string",
-          "description": "The name of the pair."
+          "description": "The name of the pair.\nProperty is required and must be non-null.\n"
         },
         "value": {
           "type": [
             "string",
             "null"
           ],
-          "description": "The value of the pair."
+          "description": "The value of the pair.\nProperty must be present, but if null TODO.\n"
         }
       },
       "required": [
@@ -1490,7 +1474,7 @@
         },
         "tls": {
           "$ref": "#/$defs/GrpcTls",
-          "description": "Configure TLS settings for the exporter."
+          "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
         },
         "headers": {
           "type": "array",
@@ -1498,7 +1482,7 @@
           "items": {
             "$ref": "#/$defs/NameStringValuePair"
           },
-          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\nIf omitted, no headers are added.\n"
         },
         "headers_list": {
           "type": [
@@ -1540,7 +1524,7 @@
         },
         "tls": {
           "$ref": "#/$defs/GrpcTls",
-          "description": "Configure TLS settings for the exporter."
+          "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
         },
         "headers": {
           "type": "array",
@@ -1548,7 +1532,7 @@
           "items": {
             "$ref": "#/$defs/NameStringValuePair"
           },
-          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\nIf omitted, no headers are added.\n"
         },
         "headers_list": {
           "type": [
@@ -1574,11 +1558,11 @@
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -1608,7 +1592,7 @@
         },
         "tls": {
           "$ref": "#/$defs/HttpTls",
-          "description": "Configure TLS settings for the exporter."
+          "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
         },
         "headers": {
           "type": "array",
@@ -1616,7 +1600,7 @@
           "items": {
             "$ref": "#/$defs/NameStringValuePair"
           },
-          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\nIf omitted, no headers are added.\n"
         },
         "headers_list": {
           "type": [
@@ -1642,7 +1626,7 @@
         },
         "encoding": {
           "$ref": "#/$defs/OtlpHttpEncoding",
-          "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted or null, protobuf is used.\n"
+          "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted, protobuf is used.\n"
         }
       }
     },
@@ -1662,7 +1646,7 @@
         },
         "tls": {
           "$ref": "#/$defs/HttpTls",
-          "description": "Configure TLS settings for the exporter."
+          "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
         },
         "headers": {
           "type": "array",
@@ -1670,7 +1654,7 @@
           "items": {
             "$ref": "#/$defs/NameStringValuePair"
           },
-          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\n"
+          "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\nIf omitted, no headers are added.\n"
         },
         "headers_list": {
           "type": [
@@ -1696,15 +1680,15 @@
         },
         "encoding": {
           "$ref": "#/$defs/OtlpHttpEncoding",
-          "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted or null, protobuf is used.\n"
+          "description": "Configure the encoding used for messages. \nValues include: protobuf, json. Implementations may not support json.\nIf omitted, protobuf is used.\n"
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
-          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, cumulative is used.\n"
+          "description": "Configure temporality preference.\nValues include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, cumulative is used.\n"
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted or null, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -1717,23 +1701,23 @@
       "properties": {
         "root": {
           "$ref": "#/$defs/Sampler",
-          "description": "Configure root sampler.\nIf omitted or null, always_on is used.\n"
+          "description": "Configure root sampler.\nIf omitted, always_on is used.\n"
         },
         "remote_parent_sampled": {
           "$ref": "#/$defs/Sampler",
-          "description": "Configure remote_parent_sampled sampler.\nIf omitted or null, always_on is used.\n"
+          "description": "Configure remote_parent_sampled sampler.\nIf omitted, always_on is used.\n"
         },
         "remote_parent_not_sampled": {
           "$ref": "#/$defs/Sampler",
-          "description": "Configure remote_parent_not_sampled sampler.\nIf omitted or null, always_off is used.\n"
+          "description": "Configure remote_parent_not_sampled sampler.\nIf omitted, always_off is used.\n"
         },
         "local_parent_sampled": {
           "$ref": "#/$defs/Sampler",
-          "description": "Configure local_parent_sampled sampler.\nIf omitted or null, always_on is used.\n"
+          "description": "Configure local_parent_sampled sampler.\nIf omitted, always_on is used.\n"
         },
         "local_parent_not_sampled": {
           "$ref": "#/$defs/Sampler",
-          "description": "Configure local_parent_not_sampled sampler.\nIf omitted or null, always_off is used.\n"
+          "description": "Configure local_parent_not_sampled sampler.\nIf omitted, always_off is used.\n"
         }
       }
     },
@@ -1759,7 +1743,7 @@
         },
         "exporter": {
           "$ref": "#/$defs/PushMetricExporter",
-          "description": "Configure exporter."
+          "description": "Configure exporter.\nProperty is required and must be non-null.\n"
         },
         "producers": {
           "type": "array",
@@ -1767,11 +1751,11 @@
           "items": {
             "$ref": "#/$defs/MetricProducer"
           },
-          "description": "Configure metric producers."
+          "description": "Configure metric producers.\nIf omitted, no metric producers are added.\n"
         },
         "cardinality_limits": {
           "$ref": "#/$defs/CardinalityLimits",
-          "description": "Configure cardinality limits."
+          "description": "Configure cardinality limits.\nIf omitted, default values as described in CardinalityLimits are used.\n"
         }
       },
       "required": [
@@ -1788,14 +1772,14 @@
           "items": {
             "$ref": "#/$defs/TextMapPropagator"
           },
-          "description": "Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.\nBuilt-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. \nIf the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.\n"
+          "description": "Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.\nBuilt-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. \nIf omitted, and .composite_list is omitted or null, a noop propagator is used.\n"
         },
         "composite_list": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.\nThe value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nBuilt-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. \nIf the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.\n"
+          "description": "Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.\nThe value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nBuilt-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. \nIf omitted or null, and .composite is omitted or null, a noop propagator is used.\n"
         }
       }
     },
@@ -1812,7 +1796,7 @@
       "properties": {
         "prometheus/development": {
           "$ref": "#/$defs/ExperimentalPrometheusMetricExporter",
-          "description": "Configure exporter to be prometheus.\n"
+          "description": "Configure exporter to be prometheus.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -1822,7 +1806,7 @@
       "properties": {
         "exporter": {
           "$ref": "#/$defs/PullMetricExporter",
-          "description": "Configure exporter."
+          "description": "Configure exporter.\nProperty is required and must be non-null.\n"
         },
         "producers": {
           "type": "array",
@@ -1830,11 +1814,11 @@
           "items": {
             "$ref": "#/$defs/MetricProducer"
           },
-          "description": "Configure metric producers."
+          "description": "Configure metric producers.\nIf omitted, no metric producers are added.\n"
         },
         "cardinality_limits": {
           "$ref": "#/$defs/CardinalityLimits",
-          "description": "Configure cardinality limits."
+          "description": "Configure cardinality limits.\nIf omitted, default values as described in CardinalityLimits are used.\n"
         }
       },
       "required": [
@@ -1854,19 +1838,19 @@
       "properties": {
         "otlp_http": {
           "$ref": "#/$defs/OtlpHttpMetricExporter",
-          "description": "Configure exporter to be OTLP with HTTP transport.\n"
+          "description": "Configure exporter to be OTLP with HTTP transport.\nIf omitted, ignore.\n"
         },
         "otlp_grpc": {
           "$ref": "#/$defs/OtlpGrpcMetricExporter",
-          "description": "Configure exporter to be OTLP with gRPC transport.\n"
+          "description": "Configure exporter to be OTLP with gRPC transport.\nIf omitted, ignore.\n"
         },
         "otlp_file/development": {
           "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter",
-          "description": "Configure exporter to be OTLP with file transport.\n"
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\n"
         },
         "console": {
           "$ref": "#/$defs/ConsoleMetricExporter",
-          "description": "Configure exporter to be console.\n"
+          "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -1880,11 +1864,11 @@
           "items": {
             "$ref": "#/$defs/AttributeNameValue"
           },
-          "description": "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.\n"
+          "description": "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.\nIf omitted, no resource attributes are added.\n"
         },
         "detection/development": {
           "$ref": "#/$defs/ExperimentalResourceDetection",
-          "description": "Configure resource detection.\nIf omitted or null, resource detection is disabled.\n"
+          "description": "Configure resource detection.\nIf omitted, resource detection is disabled.\n"
         },
         "schema_url": {
           "type": [
@@ -1915,33 +1899,65 @@
       "properties": {
         "always_off": {
           "$ref": "#/$defs/AlwaysOffSampler",
-          "description": "Configure sampler to be always_off."
+          "description": "Configure sampler to be always_off.\nIf omitted, ignore.\n"
         },
         "always_on": {
           "$ref": "#/$defs/AlwaysOnSampler",
-          "description": "Configure sampler to be always_on."
+          "description": "Configure sampler to be always_on.\nIf omitted, ignore.\n"
         },
         "composite/development": {
           "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configure sampler to be composite."
+          "description": "Configure sampler to be composite.\nIf omitted, ignore.\n"
         },
         "jaeger_remote/development": {
           "$ref": "#/$defs/ExperimentalJaegerRemoteSampler",
-          "description": "TODO"
+          "description": "Configure sampler to be jaeger_remote.\nIf omitted, ignore.\n"
         },
         "parent_based": {
           "$ref": "#/$defs/ParentBasedSampler",
-          "description": "Configure sampler to be parent_based."
+          "description": "Configure sampler to be parent_based.\nIf omitted, ignore.\n"
         },
         "probability/development": {
           "$ref": "#/$defs/ExperimentalProbabilitySampler",
-          "description": "Configure sampler to be probability."
+          "description": "Configure sampler to be probability.\nIf omitted, ignore.\n"
         },
         "trace_id_ratio_based": {
           "$ref": "#/$defs/TraceIdRatioBasedSampler",
-          "description": "Configure sampler to be trace_id_ratio_based."
+          "description": "Configure sampler to be trace_id_ratio_based.\nIf omitted, ignore.\n"
         }
       }
+    },
+    "SeverityNumber": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "TRACE",
+        "TRACE2",
+        "TRACE3",
+        "TRACE4",
+        "DEBUG",
+        "DEBUG2",
+        "DEBUG3",
+        "DEBUG4",
+        "INFO",
+        "INFO2",
+        "INFO3",
+        "INFO4",
+        "WARN",
+        "WARN2",
+        "WARN3",
+        "WARN4",
+        "ERROR",
+        "ERROR2",
+        "ERROR3",
+        "ERROR4",
+        "FATAL",
+        "FATAL2",
+        "FATAL3",
+        "FATAL4"
+      ]
     },
     "SimpleLogRecordProcessor": {
       "type": "object",
@@ -1949,7 +1965,7 @@
       "properties": {
         "exporter": {
           "$ref": "#/$defs/LogRecordExporter",
-          "description": "Configure exporter."
+          "description": "Configure exporter.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [
@@ -1962,7 +1978,7 @@
       "properties": {
         "exporter": {
           "$ref": "#/$defs/SpanExporter",
-          "description": "Configure exporter."
+          "description": "Configure exporter.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [
@@ -1982,23 +1998,23 @@
       "properties": {
         "otlp_http": {
           "$ref": "#/$defs/OtlpHttpExporter",
-          "description": "Configure exporter to be OTLP with HTTP transport."
+          "description": "Configure exporter to be OTLP with HTTP transport.\nIf omitted, ignore.\n"
         },
         "otlp_grpc": {
           "$ref": "#/$defs/OtlpGrpcExporter",
-          "description": "Configure exporter to be OTLP with gRPC transport."
+          "description": "Configure exporter to be OTLP with gRPC transport.\nIf omitted, ignore.\n"
         },
         "otlp_file/development": {
           "$ref": "#/$defs/ExperimentalOtlpFileExporter",
-          "description": "Configure exporter to be OTLP with file transport.\n"
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\n"
         },
         "console": {
           "$ref": "#/$defs/ConsoleExporter",
-          "description": "Configure exporter to be console."
+          "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
         },
         "zipkin": {
           "$ref": "#/$defs/ZipkinSpanExporter",
-          "description": "Configure exporter to be zipkin."
+          "description": "Configure exporter to be zipkin.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -2069,11 +2085,11 @@
       "properties": {
         "batch": {
           "$ref": "#/$defs/BatchSpanProcessor",
-          "description": "Configure a batch span processor."
+          "description": "Configure a batch span processor.\nIf omitted, ignore.\n"
         },
         "simple": {
           "$ref": "#/$defs/SimpleSpanProcessor",
-          "description": "Configure a simple span processor."
+          "description": "Configure a simple span processor.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -2097,27 +2113,27 @@
       "properties": {
         "tracecontext": {
           "$ref": "#/$defs/TraceContextPropagator",
-          "description": "Include the w3c trace context propagator."
+          "description": "Include the w3c trace context propagator.\nIf omitted, ignore.\n"
         },
         "baggage": {
           "$ref": "#/$defs/BaggagePropagator",
-          "description": "Include the w3c baggage propagator."
+          "description": "Include the w3c baggage propagator.\nIf omitted, ignore.\n"
         },
         "b3": {
           "$ref": "#/$defs/B3Propagator",
-          "description": "Include the zipkin b3 propagator."
+          "description": "Include the zipkin b3 propagator.\nIf omitted, ignore.\n"
         },
         "b3multi": {
           "$ref": "#/$defs/B3MultiPropagator",
-          "description": "Include the zipkin b3 multi propagator."
+          "description": "Include the zipkin b3 multi propagator.\nIf omitted, ignore.\n"
         },
         "jaeger": {
           "$ref": "#/$defs/JaegerPropagator",
-          "description": "Include the jaeger propagator."
+          "description": "Include the jaeger propagator.\nIf omitted, ignore.\n"
         },
         "ottrace": {
           "$ref": "#/$defs/OpenTracingPropagator",
-          "description": "Include the opentracing propagator."
+          "description": "Include the opentracing propagator.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -2156,11 +2172,11 @@
           "items": {
             "$ref": "#/$defs/SpanProcessor"
           },
-          "description": "Configure span processors."
+          "description": "Configure span processors.\nProperty is required and must be non-null.\n"
         },
         "limits": {
           "$ref": "#/$defs/SpanLimits",
-          "description": "Configure span limits. See also attribute_limits."
+          "description": "Configure span limits. See also attribute_limits.\nIf omitted, default values as described in SpanLimits are used.\n"
         },
         "sampler": {
           "$ref": "#/$defs/Sampler",
@@ -2168,7 +2184,7 @@
         },
         "tracer_configurator/development": {
           "$ref": "#/$defs/ExperimentalTracerConfigurator",
-          "description": "Configure tracers.\n"
+          "description": "Configure tracers.\nIf omitted, all tracers use default values as described in ExperimentalTracerConfig.\n"
         }
       },
       "required": [
@@ -2181,11 +2197,11 @@
       "properties": {
         "selector": {
           "$ref": "#/$defs/ViewSelector",
-          "description": "Configure view selector. \nSelection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.\n"
+          "description": "Configure view selector. \nSelection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.\nProperty is required and must be non-null.\n"
         },
         "stream": {
           "$ref": "#/$defs/ViewStream",
-          "description": "Configure view stream."
+          "description": "Configure view stream.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [
@@ -2206,7 +2222,7 @@
         },
         "instrument_type": {
           "$ref": "#/$defs/InstrumentType",
-          "description": "Configure instrument type selection criteria.\nValues include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\nIf omitted or null, all instrument types match.\n"
+          "description": "Configure instrument type selection criteria.\nValues include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.\nIf omitted, all instrument types match.\n"
         },
         "unit": {
           "type": [
@@ -2270,7 +2286,7 @@
         },
         "attribute_keys": {
           "$ref": "#/$defs/IncludeExclude",
-          "description": "Configure attribute keys retained in the resulting stream(s).\n"
+          "description": "Configure attribute keys retained in the resulting stream(s).\nIf omitted, all attribute keys are retained.\n"
         }
       }
     },

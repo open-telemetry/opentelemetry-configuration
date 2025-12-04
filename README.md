@@ -7,9 +7,10 @@ This repository contains the JSON schema definitions of the OpenTelemetry [decla
 ## Starter templates
 
 The [examples](./examples) directory contains a variety of sample configuration files to help get started and illustrate useful patterns. The following are noteworthy:
-
-* [sdk-migration-config.yaml](./examples/sdk-migration-config.yaml): Includes env var substitution references to all [standard env vars](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md) which map cleanly to declarative configuration (see notes in the example for the set of env vars that are not referenced). Note, SDKs parsing configuration files ignore all env vars besides those referenced via [env var substitution][]. This is a great starting point for transitioning from env var based configuration to file based configuration.
-* [sdk-config.yaml](./examples/sdk-config.yaml): Represents the typical default configuration. This is a good starting point if you are not using env var based configuration or wish to transition fully to file based configuration. Note, SDKs parsing configuration files ignore all env vars besides those referenced via [env var substitution][].
+   
+* [getting-started.yaml](./examples/getting-started.yaml): A typical default configuration file to get started with declarative configuration. This is a good starting point if you are new to declarative configuration.
+- [sdk-migration-config.yaml](./examples/sdk-migration-config.yaml): Includes env var substitution references to all [standard env vars](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md) which map cleanly to declarative configuration (see notes in the example for the set of env vars that are not referenced). Note, SDKs parsing configuration files ignore all env vars besides those referenced via [env var substitution][]. This is a great starting point for transitioning from env var based configuration to file based configuration.
+* [sdk-config.yaml](./examples/sdk-config.yaml): Represents a comprehensive default configuration. This is a good starting point if you wish to have a template with more settings than `getting-started.yaml` and you are not using env var based configuration or wish to transition fully to file based configuration. Note, SDKs parsing configuration files ignore all env vars besides those referenced via [env var substitution][].
 
 ## Code generation
 
@@ -70,6 +71,7 @@ Stable types provide the following guarantees. All types except those excluded i
   * [uniqueItems](https://json-schema.org/understanding-json-schema/reference/array#uniqueItems): will not go from `false` to `true`.
   * [enum](https://json-schema.org/understanding-json-schema/reference/enum): will not remove entries.
   * [const](https://json-schema.org/understanding-json-schema/reference/const): will not change.
+  * [isSdkExtensionPlugin](CONTRIBUTING.md#json-schema-source-and-output): will not change.
 * No existing type will be deleted.
 * No type property will be deleted.
 
@@ -79,8 +81,13 @@ The following additive changes are allowed:
 * Adding new types.
 * Changes that make property validation less strict. See above for examples.
 * Removing a property from `required`.
-* Adding, removing, or modifying `description` [annotation][].
+* Modifying `description` [annotation][], as long as the updated semantics do not break users. **[1]**
+* Modifying [`defaultBehavior`](CONTRIBUTING.md#json-schema-source-and-output), as long as the updated semantics do not break users. **[1]**
+* Modifying [`nullBehavior`](CONTRIBUTING.md#json-schema-source-and-output), as long as the updated semantics do not break users. **[1]**
+* Modifying [`enumDescriptions`](CONTRIBUTING.md#json-schema-source-and-output), as long as the updated semantics do not break users. **[1]**
 * Adding, removing, or modifying `deprecated` [annotation][].
+
+**[1]**: `desciption`, `defaultBehavior`, `nullBehavior`, and `enumDescriptions` play an important role in describing property semantics, important for both users and language implementation maintainers. These fields are written in plain english, and therefore it's not possible to have a rigid policy around what changes are allowed. Instead, we follow the principle: don't break users. What constitutes a breaking change will be decided on a case-by-case basis and is left to the judgment of project maintainers.
 
 ### Applicability
 
