@@ -444,7 +444,10 @@
     },
     "Distribution": {
       "type": "object",
-      "additionalProperties": true
+      "additionalProperties": {
+        "type": "object"
+      },
+      "minProperties": 1
     },
     "DropAggregation": {
       "type": [

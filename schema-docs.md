@@ -820,7 +820,8 @@ No properties.
 
 Constraints: 
 
-* `additionalProperties`: `true`
+* `additionalProperties`: `{"type":"object"}`
+* `minProperties`: `1`
 
 Usages:
 
@@ -832,7 +833,10 @@ Usages:
 [JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
   "type": "object",
-  "additionalProperties": true
+  "additionalProperties": {
+    "type": "object"
+  },
+  "minProperties": 1
 }</pre>
 </details>
 

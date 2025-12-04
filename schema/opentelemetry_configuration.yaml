@@ -102,4 +102,6 @@ $defs:
     $ref: instrumentation.yaml
   Distribution:
     type: object
-    additionalProperties: true
+    additionalProperties:
+      type: object
+    minProperties: 1
