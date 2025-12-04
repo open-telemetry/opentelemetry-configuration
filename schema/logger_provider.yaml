@@ -15,7 +15,7 @@ properties:
     $ref: "#/$defs/ExperimentalLoggerConfigurator"
     description: |
       Configure loggers.
-    defaultBehavior: TODO
+    defaultBehavior: all loggers use default values as described in ExperimentalLoggerConfig
 required:
   - processors
 $defs:
@@ -92,7 +92,7 @@ $defs:
         $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
         description: |
           Configure exporter to be OTLP with file transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       console:
         $ref: common.yaml#/$defs/ConsoleExporter
         description: Configure exporter to be console.
@@ -146,14 +146,14 @@ $defs:
       default_config:
         $ref: "#/$defs/ExperimentalLoggerConfig"
         description: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
-        defaultBehavior: TODO
+        defaultBehavior: unmatched .loggers use default values as described in ExperimentalLoggerConfig
       loggers:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalLoggerMatcherAndConfig"
         description: Configure loggers.
-        defaultBehavior: TODO
+        defaultBehavior: all loggers use .default_config
   ExperimentalLoggerMatcherAndConfig:
     type:
       - object

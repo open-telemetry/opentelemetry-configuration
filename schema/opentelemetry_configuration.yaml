@@ -55,7 +55,7 @@ properties:
     $ref: "#/$defs/ExperimentalInstrumentation"
     description: |
       Configure instrumentation.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
 required:
   - file_format
 $defs:
