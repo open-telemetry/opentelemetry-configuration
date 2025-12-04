@@ -2025,10 +2025,6 @@
         "console": {
           "$ref": "#/$defs/ConsoleExporter",
           "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
-        },
-        "zipkin": {
-          "$ref": "#/$defs/ZipkinSpanExporter",
-          "description": "Configure exporter to be zipkin.\nIf omitted, ignore.\n"
         }
       }
     },
@@ -2301,30 +2297,6 @@
         "attribute_keys": {
           "$ref": "#/$defs/IncludeExclude",
           "description": "Configure attribute keys retained in the resulting stream(s).\nIf omitted, all attribute keys are retained.\n"
-        }
-      }
-    },
-    "ZipkinSpanExporter": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "endpoint": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "description": "Configure endpoint.\nIf omitted or null, http://localhost:9411/api/v2/spans is used.\n"
-        },
-        "timeout": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 0,
-          "description": "Configure max time (in milliseconds) to wait for each export. \nValue must be non-negative. A value of 0 indicates indefinite.\nIf omitted or null, 10000 is used.\n"
         }
       }
     }

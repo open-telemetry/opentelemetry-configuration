@@ -195,9 +195,6 @@ typeSupportStatuses:
   - type: ViewStream
     status: unknown
     propertyOverrides: []
-  - type: ZipkinSpanExporter
-    status: unknown
-    propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: unknown
     propertyOverrides: []
