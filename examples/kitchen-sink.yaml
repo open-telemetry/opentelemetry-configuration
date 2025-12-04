@@ -316,9 +316,9 @@ tracer_provider:
                   always_on:
               # Configure a sampling rule matching root spans with CLIENT span kind.
               - parent:
-                  - NONE
+                  - none
                 span_kinds:
-                  - CLIENT
+                  - client
                 sampler:
                   # Configure sampler to be probability if matched.
                   probability:

@@ -2937,22 +2937,22 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `CLIENT` | CLIENT, a client span. |
-| `CONSUMER` | CONSUMER, a consumer span. |
-| `INTERNAL` | INTERNAL, an internal span. |
-| `PRODUCER` | PRODUCER, a producer span. |
-| `SERVER` | SERVER, a server span. |
+| `client` | client, a client span. |
+| `consumer` | consumer, a consumer span. |
+| `internal` | internal, an internal span. |
+| `producer` | producer, a producer span. |
+| `server` | server, a server span. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `CLIENT` | unknown | unknown | unknown | unknown |
-| `CONSUMER` | unknown | unknown | unknown | unknown |
-| `INTERNAL` | unknown | unknown | unknown | unknown |
-| `PRODUCER` | unknown | unknown | unknown | unknown |
-| `SERVER` | unknown | unknown | unknown | unknown |
+| `client` | unknown | unknown | unknown | unknown |
+| `consumer` | unknown | unknown | unknown | unknown |
+| `internal` | unknown | unknown | unknown | unknown |
+| `producer` | unknown | unknown | unknown | unknown |
+| `server` | unknown | unknown | unknown | unknown |
 </details>
 
 No constraints.
@@ -2971,11 +2971,11 @@ Usages:
     "null"
   ],
   "enum": [
-    "INTERNAL",
-    "SERVER",
-    "CLIENT",
-    "PRODUCER",
-    "CONSUMER"
+    "internal",
+    "server",
+    "client",
+    "producer",
+    "consumer"
   ]
 }</pre>
 </details>
@@ -5489,18 +5489,18 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `LOCAL` | LOCAL, a local parent. |
-| `NONE` | NONE, no parent, i.e., the trace root. |
-| `REMOTE` | REMOTE, a remote parent. |
+| `local` | local, a local parent. |
+| `none` | none, no parent, i.e., the trace root. |
+| `remote` | remote, a remote parent. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `LOCAL` | unknown | unknown | unknown | unknown |
-| `NONE` | unknown | unknown | unknown | unknown |
-| `REMOTE` | unknown | unknown | unknown | unknown |
+| `local` | unknown | unknown | unknown | unknown |
+| `none` | unknown | unknown | unknown | unknown |
+| `remote` | unknown | unknown | unknown | unknown |
 </details>
 
 No constraints.
@@ -5519,9 +5519,9 @@ Usages:
     "null"
   ],
   "enum": [
-    "NONE",
-    "REMOTE",
-    "LOCAL"
+    "none",
+    "remote",
+    "local"
   ]
 }</pre>
 </details>
@@ -5738,7 +5738,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `zipkin`: supported<br>* `otlp_file/development`: supported<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `CLIENT`: unknown<br>* `CONSUMER`: unknown<br>* `INTERNAL`: unknown<br>* `PRODUCER`: unknown<br>* `SERVER`: unknown<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | [`SpanProcessor`](#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](#sumaggregation) | supported |  |  |
@@ -5786,7 +5786,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | not_implemented |  |  |
 | [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `LOCAL`: unknown<br>* `NONE`: unknown<br>* `REMOTE`: unknown<br> |
+| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
@@ -5852,7 +5852,7 @@ Latest supported file format: `0.3.0`
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `zipkin`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `CLIENT`: unknown<br>* `CONSUMER`: unknown<br>* `INTERNAL`: unknown<br>* `PRODUCER`: unknown<br>* `SERVER`: unknown<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
 | [`SpanProcessor`](#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
 | [`SumAggregation`](#sumaggregation) | unknown |  |  |
@@ -5900,7 +5900,7 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
 | [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `LOCAL`: unknown<br>* `NONE`: unknown<br>* `REMOTE`: unknown<br> |
+| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
@@ -5966,7 +5966,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `zipkin`: supported<br>* `otlp_file/development`: supported<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `CLIENT`: unknown<br>* `CONSUMER`: unknown<br>* `INTERNAL`: unknown<br>* `PRODUCER`: unknown<br>* `SERVER`: unknown<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | [`SpanProcessor`](#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](#sumaggregation) | supported |  |  |
@@ -6014,7 +6014,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | supported |  |  |
 | [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `LOCAL`: unknown<br>* `NONE`: unknown<br>* `REMOTE`: unknown<br> |
+| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | supported |  | * `disabled`: supported<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
@@ -6080,7 +6080,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `zipkin`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `CLIENT`: unknown<br>* `CONSUMER`: unknown<br>* `INTERNAL`: unknown<br>* `PRODUCER`: unknown<br>* `SERVER`: unknown<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
 | [`SpanProcessor`](#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
 | [`SumAggregation`](#sumaggregation) | unknown |  |  |
@@ -6128,7 +6128,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
 | [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `LOCAL`: unknown<br>* `NONE`: unknown<br>* `REMOTE`: unknown<br> |
+| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |

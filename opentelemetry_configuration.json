@@ -1203,9 +1203,9 @@
         "null"
       ],
       "enum": [
-        "NONE",
-        "REMOTE",
-        "LOCAL"
+        "none",
+        "remote",
+        "local"
       ]
     },
     "ExperimentalTracerConfig": {
@@ -2159,11 +2159,11 @@
         "null"
       ],
       "enum": [
-        "INTERNAL",
-        "SERVER",
-        "CLIENT",
-        "PRODUCER",
-        "CONSUMER"
+        "internal",
+        "server",
+        "client",
+        "producer",
+        "consumer"
       ]
     },
     "SpanLimits": {
