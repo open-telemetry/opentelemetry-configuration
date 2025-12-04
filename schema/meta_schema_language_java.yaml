@@ -238,7 +238,7 @@ typeSupportStatuses:
   - type: ExperimentalComposableAlwaysOnSampler
     status: unknown
     propertyOverrides: []
-  - type: ExperimentalComposableParentBasedSampler
+  - type: ExperimentalComposableParentThresholdSampler
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableProbabilitySampler

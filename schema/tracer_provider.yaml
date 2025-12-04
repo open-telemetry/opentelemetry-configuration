@@ -237,32 +237,16 @@ $defs:
       - object
       - "null"
     additionalProperties: false
-  ExperimentalComposableParentBasedSampler:
+  ExperimentalComposableParentThresholdSampler:
     type:
       - object
-      - "null"
     additionalProperties: false
     properties:
       root:
         $ref: "#/$defs/ExperimentalComposableSampler"
-        description: Configures the sampler for spans with no parent.
-        defaultBehavior: ignore
-      remote_parent_sampled:
-        $ref: "#/$defs/ExperimentalComposableSampler"
-        description: Configures the sampler for spans with a remote parent that is sampled.
-        defaultBehavior: ignore
-      remote_parent_not_sampled:
-        $ref: "#/$defs/ExperimentalComposableSampler"
-        description: Configures the sampler for spans with a remote parent that is not sampled.
-        defaultBehavior: ignore
-      local_parent_sampled:
-        $ref: "#/$defs/ExperimentalComposableSampler"
-        description: Configures the sampler for spans with a local parent that is sampled.
-        defaultBehavior: ignore
-      local_parent_not_sampled:
-        $ref: "#/$defs/ExperimentalComposableSampler"
-        description: Configures the sampler for spans with a local parent that is not sampled.
-        defaultBehavior: ignore
+        description: Sampler to use when there is no parent.
+    required:
+      - root
   ExperimentalComposableProbabilitySampler:
     type:
       - object
@@ -397,9 +381,10 @@ $defs:
         $ref: "#/$defs/ExperimentalComposableAlwaysOnSampler"
         description: Configure sampler to be always_on.
         defaultBehavior: ignore
-      parent_based:
-        $ref: "#/$defs/ExperimentalComposableParentBasedSampler"
-        description: Configure sampler to be parent_based.
+      parent_threshold:
+        $ref: "#/$defs/ExperimentalComposableParentThresholdSampler"
+        description: |
+          Configure sampler to be parent_threshold.
         defaultBehavior: ignore
       probability:
         $ref: "#/$defs/ExperimentalComposableProbabilitySampler"

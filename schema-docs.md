@@ -3695,38 +3695,31 @@ Usages:
 }</pre>
 </details>
 
-## ExperimentalComposableParentBasedSampler <a id="experimentalcomposableparentbasedsampler"></a>
+## ExperimentalComposableParentThresholdSampler <a id="experimentalcomposableparentthresholdsampler"></a>
 
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `local_parent_not_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, ignore. | No constraints. | Configures the sampler for spans with a local parent that is not sampled. |
-| `local_parent_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, ignore. | No constraints. | Configures the sampler for spans with a local parent that is sampled. |
-| `remote_parent_not_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, ignore. | No constraints. | Configures the sampler for spans with a remote parent that is not sampled. |
-| `remote_parent_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, ignore. | No constraints. | Configures the sampler for spans with a remote parent that is sampled. |
-| `root` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, ignore. | No constraints. | Configures the sampler for spans with no parent. |
+| `root` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `true` | Property is required and must be non-null. | No constraints. | Sampler to use when there is no parent. |
 
 <details>
 <summary>Language support status</summary>
 
 | Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `local_parent_not_sampled` | unknown | unknown | unknown | unknown |
-| `local_parent_sampled` | unknown | unknown | unknown | unknown |
-| `remote_parent_not_sampled` | unknown | unknown | unknown | unknown |
-| `remote_parent_sampled` | unknown | unknown | unknown | unknown |
 | `root` | unknown | unknown | unknown | unknown |
 </details>
 
 Constraints: 
 
 * `additionalProperties`: `false`
+* `required`: `["root"]`
 
 Usages:
 
-* [`ExperimentalComposableSampler.parent_based`](#experimentalcomposablesampler)
+* [`ExperimentalComposableSampler.parent_threshold`](#experimentalcomposablesampler)
 
 <details>
 <summary>JSON Schema</summary>
@@ -3734,27 +3727,17 @@ Usages:
 [JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
-    "object",
-    "null"
+    "object"
   ],
   "additionalProperties": false,
   "properties": {
     "root": {
       "$ref": "#/$defs/ExperimentalComposableSampler"
-    },
-    "remote_parent_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler"
-    },
-    "remote_parent_not_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler"
-    },
-    "local_parent_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler"
-    },
-    "local_parent_not_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler"
     }
-  }
+  },
+  "required": [
+    "root"
+  ]
 }</pre>
 </details>
 
@@ -4051,7 +4034,7 @@ Usages:
 |---|---|---|---|---|---|
 | `always_off` | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_off. |
 | `always_on` | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_on. |
-| `parent_based` | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be parent_based. |
+| `parent_threshold` | [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be parent_threshold.<br> |
 | `probability` | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be probability. |
 | `rule_based` | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be rule_based. |
 
@@ -4062,7 +4045,7 @@ Usages:
 |---|---|---|---|---|
 | `always_off` | unknown | unknown | unknown | unknown |
 | `always_on` | unknown | unknown | unknown | unknown |
-| `parent_based` | unknown | unknown | unknown | unknown |
+| `parent_threshold` | unknown | unknown | unknown | unknown |
 | `probability` | unknown | unknown | unknown | unknown |
 | `rule_based` | unknown | unknown | unknown | unknown |
 </details>
@@ -4076,11 +4059,7 @@ Constraints:
 Usages:
 
 * [`Sampler.composite/development`](#sampler)
-* [`ExperimentalComposableParentBasedSampler.root`](#experimentalcomposableparentbasedsampler)
-* [`ExperimentalComposableParentBasedSampler.remote_parent_sampled`](#experimentalcomposableparentbasedsampler)
-* [`ExperimentalComposableParentBasedSampler.remote_parent_not_sampled`](#experimentalcomposableparentbasedsampler)
-* [`ExperimentalComposableParentBasedSampler.local_parent_sampled`](#experimentalcomposableparentbasedsampler)
-* [`ExperimentalComposableParentBasedSampler.local_parent_not_sampled`](#experimentalcomposableparentbasedsampler)
+* [`ExperimentalComposableParentThresholdSampler.root`](#experimentalcomposableparentthresholdsampler)
 * [`ExperimentalComposableRuleBasedSamplerRule.sampler`](#experimentalcomposablerulebasedsamplerrule)
 
 <details>
@@ -4104,8 +4083,8 @@ Usages:
     "always_on": {
       "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
     },
-    "parent_based": {
-      "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
+    "parent_threshold": {
+      "$ref": "#/$defs/ExperimentalComposableParentThresholdSampler"
     },
     "probability": {
       "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
@@ -5696,13 +5675,13 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ViewStream`](#viewstream) | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
 | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
+| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | not_implemented |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | not_applicable |  | * `http`: not_applicable<br>* `peer`: not_applicable<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | not_implemented |  |  |
@@ -5809,13 +5788,13 @@ Latest supported file format: `0.3.0`
 | [`ViewStream`](#viewstream) | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br> |
 | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
+| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
@@ -5922,13 +5901,13 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ViewStream`](#viewstream) | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
 | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
+| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | supported |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | supported |  | * `http`: supported<br>* `peer`: supported<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | supported |  |  |
@@ -6035,13 +6014,13 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ViewStream`](#viewstream) | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br> |
 | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
+| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |

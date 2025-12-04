@@ -470,34 +470,20 @@
       ],
       "additionalProperties": false
     },
-    "ExperimentalComposableParentBasedSampler": {
+    "ExperimentalComposableParentThresholdSampler": {
       "type": [
-        "object",
-        "null"
+        "object"
       ],
       "additionalProperties": false,
       "properties": {
         "root": {
           "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with no parent.\nIf omitted, ignore.\n"
-        },
-        "remote_parent_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a remote parent that is sampled.\nIf omitted, ignore.\n"
-        },
-        "remote_parent_not_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a remote parent that is not sampled.\nIf omitted, ignore.\n"
-        },
-        "local_parent_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a local parent that is sampled.\nIf omitted, ignore.\n"
-        },
-        "local_parent_not_sampled": {
-          "$ref": "#/$defs/ExperimentalComposableSampler",
-          "description": "Configures the sampler for spans with a local parent that is not sampled.\nIf omitted, ignore.\n"
+          "description": "Sampler to use when there is no parent.\nProperty is required and must be non-null.\n"
         }
-      }
+      },
+      "required": [
+        "root"
+      ]
     },
     "ExperimentalComposableProbabilitySampler": {
       "type": [
@@ -644,9 +630,9 @@
           "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler",
           "description": "Configure sampler to be always_on.\nIf omitted, ignore.\n"
         },
-        "parent_based": {
-          "$ref": "#/$defs/ExperimentalComposableParentBasedSampler",
-          "description": "Configure sampler to be parent_based.\nIf omitted, ignore.\n"
+        "parent_threshold": {
+          "$ref": "#/$defs/ExperimentalComposableParentThresholdSampler",
+          "description": "Configure sampler to be parent_threshold.\nIf omitted, ignore.\n"
         },
         "probability": {
           "$ref": "#/$defs/ExperimentalComposableProbabilitySampler",
