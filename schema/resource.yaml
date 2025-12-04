@@ -82,14 +82,14 @@ $defs:
       - int_array
       - double_array
     enumDescriptions:
-      bool: TODO
-      bool_array: TODO
-      double: TODO
-      double_array: TODO
-      int: TODO
-      int_array: TODO
-      string: TODO
-      string_array: TODO
+      bool: Boolean attribute value.
+      bool_array: Boolean array attribute value.
+      double: Double attribute value.
+      double_array: Double array attribute value.
+      int: Integer attribute value.
+      int_array: Integer array attribute value.
+      string: String attribute value.
+      string_array: String array attribute value.
   ExperimentalResourceDetection:
     type: object
     additionalProperties: false

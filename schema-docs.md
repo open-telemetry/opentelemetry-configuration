@@ -16,12 +16,12 @@ This document is an auto-generated view of the declarative configuration JSON sc
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `base2_exponential_bucket_histogram` | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | `false` | If omitted, TODO. | No constraints. | TODO |
-| `default` | [`DefaultAggregation`](#defaultaggregation) | `false` | If omitted, TODO. | No constraints. | TODO |
-| `drop` | [`DropAggregation`](#dropaggregation) | `false` | If omitted, TODO. | No constraints. | TODO |
-| `explicit_bucket_histogram` | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | `false` | If omitted, TODO. | No constraints. | Configure aggregation to be explicit_bucket_histogram. |
-| `last_value` | [`LastValueAggregation`](#lastvalueaggregation) | `false` | If omitted, TODO. | No constraints. | TODO |
-| `sum` | [`SumAggregation`](#sumaggregation) | `false` | If omitted, TODO. | No constraints. | TODO |
+| `base2_exponential_bucket_histogram` | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation for details. |
+| `default` | [`DefaultAggregation`](#defaultaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#default-aggregation for details. |
+| `drop` | [`DropAggregation`](#dropaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to ignore/drop all instrument measurements. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#drop-aggregation for details. |
+| `explicit_bucket_histogram` | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation for details |
+| `last_value` | [`LastValueAggregation`](#lastvalueaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to collect data using the last measurement. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#last-value-aggregation for details. |
+| `sum` | [`SumAggregation`](#sumaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to collect the arithmetic sum of measurement values. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sum-aggregation for details. |
 
 <details>
 <summary>Language support status</summary>
@@ -270,14 +270,14 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `bool` | TODO |
-| `bool_array` | TODO |
-| `double` | TODO |
-| `double_array` | TODO |
-| `int` | TODO |
-| `int_array` | TODO |
-| `string` | TODO |
-| `string_array` | TODO |
+| `bool` | Boolean attribute value. |
+| `bool_array` | Boolean array attribute value. |
+| `double` | Double attribute value. |
+| `double_array` | Double array attribute value. |
+| `int` | Integer attribute value. |
+| `int_array` | Integer array attribute value. |
+| `string` | String attribute value. |
+| `string_array` | String array attribute value. |
 
 <details>
 <summary>Language support status</summary>
@@ -401,9 +401,9 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `max_scale` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 20 is used. | * `minimum`: `-10`<br>* `maximum`: `20`<br> | TODO |
-| `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 160 is used. | * `minimum`: `2`<br> | TODO |
-| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, true is used. | No constraints. | TODO |
+| `max_scale` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 20 is used. | * `minimum`: `-10`<br>* `maximum`: `20`<br> | Configure the max scale factor. |
+| `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 160 is used. | * `minimum`: `2`<br> | Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket. |
+| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, true is used. | No constraints. | Configure whether or not to record min and max. |
 
 <details>
 <summary>Language support status</summary>
@@ -845,9 +845,9 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `always_off` | TODO |
-| `always_on` | TODO |
-| `trace_based` | TODO |
+| `always_off` | ExemplarFilter which makes no measurements eligible for being an Exemplar. |
+| `always_on` | ExemplarFilter which makes all measurements eligible for being an Exemplar. |
+| `trace_based` | ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar. |
 
 <details>
 <summary>Language support status</summary>
@@ -983,9 +983,9 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `cumulative` | TODO |
-| `delta` | TODO |
-| `low_memory` | TODO |
+| `cumulative` | Use cumulative aggregation temporality for all instrument types. |
+| `delta` | Use delta aggregation for all instrument types except up down counter and asynchronous up down counter. |
+| `low_memory` | Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types. |
 
 <details>
 <summary>Language support status</summary>
@@ -1209,13 +1209,13 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `counter` | TODO |
-| `gauge` | TODO |
-| `histogram` | TODO |
-| `observable_counter` | TODO |
-| `observable_gauge` | TODO |
-| `observable_up_down_counter` | TODO |
-| `up_down_counter` | TODO |
+| `counter` | Synchronous counter instruments. |
+| `gauge` | Synchronous gauge instruments. |
+| `histogram` | Synchronous histogram instruments. |
+| `observable_counter` | Asynchronous counter instruments. |
+| `observable_gauge` | Asynchronous gauge instruments. |
+| `observable_up_down_counter` | Asynchronous up down counter instruments. |
+| `up_down_counter` | Synchronous up down counter instruments. |
 
 <details>
 <summary>Language support status</summary>
