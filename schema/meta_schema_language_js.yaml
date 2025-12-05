@@ -48,6 +48,9 @@ typeSupportStatuses:
   - type: DefaultAggregation
     status: unknown
     propertyOverrides: []
+  - type: Distribution
+    status: unknown
+    propertyOverrides: []
   - type: DropAggregation
     status: unknown
     propertyOverrides: []

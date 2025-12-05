@@ -55,6 +55,14 @@ properties:
     description: |
       Configure instrumentation.
     defaultBehavior: instrumentation defaults are used
+  distribution:
+    $ref: "#/$defs/Distribution"
+    description: |
+      Defines configuration parameters specific to a particular OpenTelemetry distribution or vendor.
+      This section provides a standardized location for distribution-specific settings
+      that are not part of the OpenTelemetry configuration model.
+      It allows vendors to expose their own extensions and general configuration options.
+    defaultBehavior: distribution defaults are used
 required:
   - file_format
 $defs:
@@ -92,3 +100,8 @@ $defs:
     $ref: resource.yaml
   ExperimentalInstrumentation:
     $ref: instrumentation.yaml
+  Distribution:
+    type: object
+    additionalProperties:
+      type: object
+    minProperties: 1
