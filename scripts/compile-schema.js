@@ -27,18 +27,19 @@ sourceTypes.sort((a, b) => a.type.localeCompare(b.type));
 const defs = {};
 sourceTypes.filter(sourceSchemaType => sourceSchemaType.type !== rootTypeName)
     .forEach(sourceSchemaType => {
-        defs[sourceSchemaType.type] = prepareSchemaForOutput(sourceSchemaType);
+        defs[sourceSchemaType.type] = prepareSchemaForOutput(sourceSchemaType, sourceTypes);
     });
 
 const rootType = sourceTypes.find(sourceSchemaType => sourceSchemaType.type === rootTypeName);
 if (!rootType) {
     throw new Error(`Root type ${rootTypeName} not found in source schema.`);
 }
-const rootTypeSchema = prepareSchemaForOutput(rootType);
+const rootTypeSchema = prepareSchemaForOutput(rootType, sourceTypes);
 
 const output = {
     "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": rootTypeName,
     ...rootTypeSchema,
     "$defs": defs
 };
@@ -47,14 +48,14 @@ fs.writeFileSync(schemaPath, JSON.stringify(output, null, 2));
 
 // Helper functions
 
-function prepareSchemaForOutput(sourceSchemaType) {
+function prepareSchemaForOutput(sourceSchemaType, sourceTypes) {
     const schema = JSON.parse(JSON.stringify(sourceSchemaType.schema));
 
     delete schema['$defs'];
 
     stripMetadata(schema);
     replaceCrossFileRefs(schema);
-    enrichDescriptions(sourceSchemaType, schema);
+    enrichDescriptions(sourceSchemaType, schema, sourceTypes);
 
     return schema;
 }
@@ -93,7 +94,7 @@ function replaceCrossFileRefs(schema) {
     });
 }
 
-function enrichDescriptions(sourceSchemaType, schema) {
+function enrichDescriptions(sourceSchemaType, schema, sourceTypes) {
     const properties = schema.properties;
     if (!properties) {
         return;
@@ -101,15 +102,33 @@ function enrichDescriptions(sourceSchemaType, schema) {
     Object.entries(properties).forEach(([propertyKey, propertySchema]) => {
         const sourceProperty = sourceSchemaType.properties.find(property => property.property === propertyKey);
         let description = propertySchema['description'];
-        if (!description.endsWith('\n')) {
-            description += '\n';
+
+        // Add enum value descriptions if property is an enum type
+        const enumSourceType = sourceProperty.types.map(type => sourceTypes.find(sourceType => sourceType.type === type)).find(sourceType => sourceType && sourceType.isEnumType());
+        if (enumSourceType) {
+            description = maybeAddLineBreak(description);
+            description += 'Values include:\n';
+            enumSourceType.sortedEnumValues().forEach(enumValue => {
+                const enumDescription = enumSourceType.schema['enumDescriptions'][enumValue];
+                description += `* ${enumValue}: ${enumDescription}\n`;
+            });
         }
+
+        // Add default and null behavior
+        description = maybeAddLineBreak(description)
         description += sourceProperty.formatDefaultAndNullBehavior();
         if (!description.endsWith('\n')) {
             description += '\n';
         }
         propertySchema['description'] = description;
     });
+}
+
+function maybeAddLineBreak(str) {
+    if (!str.endsWith('\n')) {
+        return str + '\n';
+    }
+    return str;
 }
 
 // Validation functions

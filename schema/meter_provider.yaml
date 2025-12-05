@@ -15,18 +15,17 @@ properties:
     description: |
       Configure views. 
       Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
-    defaultBehavior: TODO
+    defaultBehavior: no views are registered
   exemplar_filter:
     $ref: "#/$defs/ExemplarFilter"
     description: |
       Configure the exemplar filter. 
-      Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
     defaultBehavior: trace_based is used
   meter_configurator/development:
     $ref: "#/$defs/ExperimentalMeterConfigurator"
     description: |
       Configure meters.
-    defaultBehavior: TODO
+    defaultBehavior: all meters use default values as described in ExperimentalMeterConfig
 required:
   - readers
 $defs:
@@ -73,11 +72,11 @@ $defs:
         items:
           $ref: "#/$defs/MetricProducer"
         description: Configure metric producers.
-        defaultBehavior: TODO
+        defaultBehavior: no metric producers are added
       cardinality_limits:
         $ref: "#/$defs/CardinalityLimits"
         description: Configure cardinality limits.
-        defaultBehavior: TODO
+        defaultBehavior: default values as described in CardinalityLimits are used
     required:
       - exporter
   PullMetricReader:
@@ -93,11 +92,11 @@ $defs:
         items:
           $ref: "#/$defs/MetricProducer"
         description: Configure metric producers.
-        defaultBehavior: TODO
+        defaultBehavior: no metric producers are added
       cardinality_limits:
         $ref: "#/$defs/CardinalityLimits"
         description: Configure cardinality limits.
-        defaultBehavior: TODO
+        defaultBehavior: default values as described in CardinalityLimits are used
     required:
       - exporter
   CardinalityLimits:
@@ -182,22 +181,22 @@ $defs:
         $ref: "#/$defs/OtlpHttpMetricExporter"
         description: |
           Configure exporter to be OTLP with HTTP transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       otlp_grpc:
         $ref: "#/$defs/OtlpGrpcMetricExporter"
         description: |
           Configure exporter to be OTLP with gRPC transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       otlp_file/development:
         $ref: "#/$defs/ExperimentalOtlpFileMetricExporter"
         description: |
           Configure exporter to be OTLP with file transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       console:
         $ref: "#/$defs/ConsoleMetricExporter"
         description: |
           Configure exporter to be console.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   PullMetricExporter:
     type: object
@@ -212,7 +211,7 @@ $defs:
         $ref: "#/$defs/ExperimentalPrometheusMetricExporter"
         description: |
           Configure exporter to be prometheus.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   MetricProducer:
     type: object
@@ -226,7 +225,7 @@ $defs:
       opencensus:
         $ref: "#/$defs/OpenCensusMetricProducer"
         description: Configure metric producer to be opencensus.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   OpenCensusMetricProducer:
     type:
@@ -270,7 +269,7 @@ $defs:
       with_resource_constant_labels:
         $ref: common.yaml#/$defs/IncludeExclude
         description: Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
-        defaultBehavior: TODO
+        defaultBehavior: no resource attributes are added
       translation_strategy:
         $ref: "#/$defs/ExperimentalPrometheusTranslationStrategy"
         description: Configure how metric names are translated to Prometheus metric names.
@@ -298,11 +297,11 @@ $defs:
       periodic:
         $ref: "#/$defs/PeriodicMetricReader"
         description: Configure a periodic metric reader.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       pull:
         $ref: "#/$defs/PullMetricReader"
         description: Configure a pull based metric reader.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
   ExporterTemporalityPreference:
     type:
       - string
@@ -323,8 +322,8 @@ $defs:
       - explicit_bucket_histogram
       - base2_exponential_bucket_histogram
     enumDescriptions:
-      base2_exponential_bucket_histogram: TODO
-      explicit_bucket_histogram: TODO
+      base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.
+      explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.
   OtlpHttpMetricExporter:
     type:
       - object
@@ -341,7 +340,7 @@ $defs:
       tls:
         $ref: common.yaml#/$defs/HttpTls
         description: Configure TLS settings for the exporter.
-        defaultBehavior: TODO
+        defaultBehavior: system default TLS settings are used
       headers:
         type: array
         minItems: 1
@@ -350,7 +349,7 @@ $defs:
         description: |
           Configure headers. Entries have higher priority than entries from .headers_list.
           If an entry's .value is null, the entry is ignored.
-        defaultBehavior: TODO
+        defaultBehavior: no headers are added
       headers_list:
         type:
           - string
@@ -365,7 +364,7 @@ $defs:
           - "null"
         description: |
           Configure compression.
-          Values include: gzip, none. Implementations may support other compression algorithms.
+          Known values include: gzip, none. Implementations may support other compression algorithms.
         defaultBehavior: none is used
       timeout:
         type:
@@ -380,19 +379,17 @@ $defs:
         $ref: common.yaml#/$defs/OtlpHttpEncoding
         description: |
           Configure the encoding used for messages. 
-          Values include: protobuf, json. Implementations may not support json.
+          Implementations may not support json.
         defaultBehavior: protobuf is used
       temporality_preference:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
           Configure temporality preference.
-          Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
-          Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: explicit_bucket_histogram is used
   OtlpGrpcMetricExporter:
     type:
@@ -410,7 +407,7 @@ $defs:
       tls:
         $ref: common.yaml#/$defs/GrpcTls
         description: Configure TLS settings for the exporter.
-        defaultBehavior: TODO
+        defaultBehavior: system default TLS settings are used
       headers:
         type: array
         minItems: 1
@@ -419,7 +416,7 @@ $defs:
         description: |
           Configure headers. Entries have higher priority than entries from .headers_list.
           If an entry's .value is null, the entry is ignored.
-        defaultBehavior: TODO
+        defaultBehavior: no headers are added
       headers_list:
         type:
           - string
@@ -434,7 +431,7 @@ $defs:
           - "null"
         description: |
           Configure compression.
-          Values include: gzip, none. Implementations may support other compression algorithms.
+          Known values include: gzip, none. Implementations may support other compression algorithms.
         defaultBehavior: none is used
       timeout:
         type:
@@ -449,13 +446,11 @@ $defs:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
           Configure temporality preference.
-          Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
-          Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: explicit_bucket_histogram is used
   ExperimentalOtlpFileMetricExporter:
     type:
@@ -475,13 +470,11 @@ $defs:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
           Configure temporality preference.
-          Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
-          Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: explicit_bucket_histogram is used
   ConsoleMetricExporter:
     type:
@@ -493,13 +486,11 @@ $defs:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
           Configure temporality preference.
-          Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
-          Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: explicit_bucket_histogram is used
   View:
     type: object
@@ -531,7 +522,6 @@ $defs:
         $ref: "#/$defs/InstrumentType"
         description: |
           Configure instrument type selection criteria.
-          Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.
         defaultBehavior: all instrument types match
       unit:
         type:
@@ -603,7 +593,6 @@ $defs:
         $ref: "#/$defs/Aggregation"
         description: |
           Configure aggregation of the resulting stream(s). 
-          Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
         defaultBehavior: default is used
       aggregation_cardinality_limit:
         type:
@@ -617,7 +606,7 @@ $defs:
         $ref: common.yaml#/$defs/IncludeExclude
         description: |
           Configure attribute keys retained in the resulting stream(s).
-        defaultBehavior: TODO
+        defaultBehavior: all attribute keys are retained
   Aggregation:
     type: object
     additionalProperties: false
@@ -627,27 +616,27 @@ $defs:
       default:
         $ref: "#/$defs/DefaultAggregation"
         description: Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#default-aggregation for details.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       drop:
         $ref: "#/$defs/DropAggregation"
         description: Configures the stream to ignore/drop all instrument measurements. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#drop-aggregation for details.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       explicit_bucket_histogram:
         $ref: "#/$defs/ExplicitBucketHistogramAggregation"
         description: Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation for details
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       base2_exponential_bucket_histogram:
         $ref: "#/$defs/Base2ExponentialBucketHistogramAggregation"
         description: Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation for details.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       last_value:
         $ref: "#/$defs/LastValueAggregation"
         description: Configures the stream to collect data using the last measurement. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#last-value-aggregation for details.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       sum:
         $ref: "#/$defs/SumAggregation"
         description: Configures the stream to collect the arithmetic sum of measurement values. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sum-aggregation for details.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
   DefaultAggregation:
     type:
       - object
@@ -692,20 +681,20 @@ $defs:
         minimum: -10
         maximum: 20
         description: Configure the max scale factor.
-        defaultBehavior: TODO
+        defaultBehavior: 20 is used
       max_size:
         type:
           - integer
           - "null"
         minimum: 2
         description: Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket.
-        defaultBehavior: TODO
+        defaultBehavior: 160 is used
       record_min_max:
         type:
           - boolean
           - "null"
         description: Configure whether or not to record min and max.
-        defaultBehavior: TODO
+        defaultBehavior: true is used
   LastValueAggregation:
     type:
       - object
@@ -724,14 +713,14 @@ $defs:
       default_config:
         $ref: "#/$defs/ExperimentalMeterConfig"
         description: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
-        defaultBehavior: TODO
+        defaultBehavior: unmatched .meters use default values as described in ExperimentalMeterConfig
       meters:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalMeterMatcherAndConfig"
         description: Configure meters.
-        defaultBehavior: TODO
+        defaultBehavior: all meters used .default_config
   ExperimentalMeterMatcherAndConfig:
     type:
       - object
@@ -760,4 +749,4 @@ $defs:
         type:
           - boolean
         description: Configure if the meter is enabled or not.
-        defaultBehavior: TODO
+        defaultBehavior: false is used

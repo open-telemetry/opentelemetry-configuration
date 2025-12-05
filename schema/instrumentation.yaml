@@ -6,71 +6,71 @@ properties:
     description: |
       Configure general SemConv options that may apply to multiple languages and instrumentations.
       Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.
-    defaultBehavior: TODO
+    defaultBehavior: default values as described in ExperimentalGeneralInstrumentation are used
   cpp:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: Configure C++ language-specific instrumentation libraries.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
   dotnet:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure .NET language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
   erlang:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Erlang language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
   go:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Go language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
   java:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Java language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
   js:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure JavaScript language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
   php:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure PHP language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
   python:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Python language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
   ruby:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Ruby language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
   rust:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Rust language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
   swift:
     $ref: "#/$defs/ExperimentalLanguageSpecificInstrumentation"
     description: |
       Configure Swift language-specific instrumentation libraries.
       Each entry's key identifies a particular instrumentation library. The corresponding value configures it.
-    defaultBehavior: TODO
+    defaultBehavior: instrumentation defaults are used
 $defs:
   ExperimentalGeneralInstrumentation:
     type: object
@@ -81,13 +81,13 @@ $defs:
         description: |
           Configure instrumentations following the peer semantic conventions.
           See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
-        defaultBehavior: TODO
+        defaultBehavior: defaults as described in ExperimentalPeerInstrumentation are used
       http:
         $ref: "#/$defs/ExperimentalHttpInstrumentation"
         description: |
           Configure instrumentations following the http semantic conventions.
           See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
-        defaultBehavior: TODO
+        defaultBehavior: defaults as described in ExperimentalHttpInstrumentation are used
   ExperimentalPeerInstrumentation:
     type: object
     additionalProperties: false
@@ -100,7 +100,7 @@ $defs:
         description: |
           Configure the service mapping for instrumentations following peer.service semantic conventions.
           See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
-        defaultBehavior: TODO
+        defaultBehavior: no peer service mappings are used
   ExperimentalPeerServiceMapping:
     type: object
     additionalProperties: false
@@ -127,14 +127,15 @@ $defs:
           type: string
         description: |
           Configure headers to capture for outbound http requests.
-        defaultBehavior: TODO
+        defaultBehavior: no outbound request headers are captured
       response_captured_headers:
         type: array
+        minItems: 1
         items:
           type: string
         description: |
           Configure headers to capture for inbound http responses.
-        defaultBehavior: TODO
+        defaultBehavior: no inbound response headers are captured
   ExperimentalHttpServerInstrumentation:
     type: object
     additionalProperties: false
@@ -146,7 +147,7 @@ $defs:
           type: string
         description: |
           Configure headers to capture for inbound http requests.
-        defaultBehavior: TODO
+        defaultBehavior: no request headers are captured
       response_captured_headers:
         type: array
         minItems: 1
@@ -154,7 +155,7 @@ $defs:
           type: string
         description: |
           Configure headers to capture for outbound http responses.
-        defaultBehavior: TODO
+        defaultBehavior: no response headers are captures
   ExperimentalHttpInstrumentation:
     type: object
     additionalProperties: false
@@ -162,11 +163,11 @@ $defs:
       client:
         $ref: "#/$defs/ExperimentalHttpClientInstrumentation"
         description: Configure instrumentations following the http client semantic conventions.
-        defaultBehavior: TODO
+        defaultBehavior: defaults as described in ExperimentalHttpClientInstrumentation are used
       server:
         $ref: "#/$defs/ExperimentalHttpServerInstrumentation"
         description: Configure instrumentations following the http server semantic conventions.
-        defaultBehavior: TODO
+        defaultBehavior: defaults as described in ExperimentalHttpServerInstrumentation are used
   ExperimentalLanguageSpecificInstrumentation:
     type: object
     additionalProperties:

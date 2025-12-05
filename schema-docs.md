@@ -16,12 +16,12 @@ This document is an auto-generated view of the declarative configuration JSON sc
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `base2_exponential_bucket_histogram` | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation for details. |
-| `default` | [`DefaultAggregation`](#defaultaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#default-aggregation for details. |
-| `drop` | [`DropAggregation`](#dropaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to ignore/drop all instrument measurements. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#drop-aggregation for details. |
-| `explicit_bucket_histogram` | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation for details |
-| `last_value` | [`LastValueAggregation`](#lastvalueaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to collect data using the last measurement. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#last-value-aggregation for details. |
-| `sum` | [`SumAggregation`](#sumaggregation) | `false` | If omitted, TODO. | No constraints. | Configures the stream to collect the arithmetic sum of measurement values. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sum-aggregation for details. |
+| `base2_exponential_bucket_histogram` | [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation for details. |
+| `default` | [`DefaultAggregation`](#defaultaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#default-aggregation for details. |
+| `drop` | [`DropAggregation`](#dropaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to ignore/drop all instrument measurements. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#drop-aggregation for details. |
+| `explicit_bucket_histogram` | [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation for details |
+| `last_value` | [`LastValueAggregation`](#lastvalueaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to collect data using the last measurement. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#last-value-aggregation for details. |
+| `sum` | [`SumAggregation`](#sumaggregation) | `false` | If omitted, ignore. | No constraints. | Configures the stream to collect the arithmetic sum of measurement values. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sum-aggregation for details. |
 
 <details>
 <summary>Language support status</summary>
@@ -183,7 +183,7 @@ Usages:
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `name` | `string` | `true` | Property is required and must be non-null. | No constraints. | The attribute name.<br> |
-| `type` | [`AttributeType`](#attributetype) | `false` | If omitted, string is used. | No constraints. | The attribute type.<br>Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.<br> |
+| `type` | [`AttributeType`](#attributetype) | `false` | If omitted, string is used. | No constraints. | The attribute type.<br> |
 | `value` | `oneOf` | `true` | Property is required and must be non-null. | No constraints. | The attribute value.<br>The type of value must match .type.<br> |
 
 <details>
@@ -401,9 +401,9 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `max_scale` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, TODO. | * `minimum`: `-10`<br>* `maximum`: `20`<br> | Configure the max scale factor. |
-| `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, TODO. | * `minimum`: `2`<br> | Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket. |
-| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, TODO. | No constraints. | Configure whether or not to record min and max. |
+| `max_scale` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 20 is used. | * `minimum`: `-10`<br>* `maximum`: `20`<br> | Configure the max scale factor. |
+| `max_size` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 160 is used. | * `minimum`: `2`<br> | Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket. |
+| `record_min_max` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, true is used. | No constraints. | Configure whether or not to record min and max. |
 
 <details>
 <summary>Language support status</summary>
@@ -748,8 +748,8 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br> |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -940,8 +940,8 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `base2_exponential_bucket_histogram` | TODO |
-| `explicit_bucket_histogram` | TODO |
+| `base2_exponential_bucket_histogram` | Use base2 exponential histogram as the default aggregation for histogram instruments. |
+| `explicit_bucket_histogram` | Use explicit bucket histogram as the default aggregation for histogram instruments. |
 
 <details>
 <summary>Language support status</summary>
@@ -1312,9 +1312,9 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `limits` | [`LogRecordLimits`](#logrecordlimits) | `false` | If omitted, TODO. | No constraints. | Configure log record limits. See also attribute_limits. |
+| `limits` | [`LogRecordLimits`](#logrecordlimits) | `false` | If omitted, default values as described in LogRecordLimits are used. | No constraints. | Configure log record limits. See also attribute_limits. |
 | `processors` | `array` of [`LogRecordProcessor`](#logrecordprocessor) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure log record processors. |
-| `logger_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` | If omitted, TODO. | No constraints. | Configure loggers.<br> |
+| `logger_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | `false` | If omitted, all loggers use default values as described in ExperimentalLoggerConfig. | No constraints. | Configure loggers.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1369,10 +1369,10 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `console` | [`ConsoleExporter`](#consoleexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be console. |
-| `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be OTLP with gRPC transport. |
-| `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be OTLP with HTTP transport. |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
+| `console` | [`ConsoleExporter`](#consoleexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be console. |
+| `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with gRPC transport. |
+| `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with HTTP transport. |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1483,8 +1483,8 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `batch` | [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | `false` | If omitted, TODO. | No constraints. | Configure a batch log record processor. |
-| `simple` | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | `false` | If omitted, TODO. | No constraints. | Configure a simple log record processor. |
+| `batch` | [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a batch log record processor. |
+| `simple` | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a simple log record processor. |
 
 <details>
 <summary>Language support status</summary>
@@ -1534,10 +1534,10 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | If omitted, trace_based is used. | No constraints. | Configure the exemplar filter. <br>Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.<br> |
+| `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | If omitted, trace_based is used. | No constraints. | Configure the exemplar filter. <br> |
 | `readers` | `array` of [`MetricReader`](#metricreader) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure metric readers. |
-| `views` | `array` of [`View`](#view) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> |
-| `meter_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | If omitted, TODO. | No constraints. | Configure meters.<br> |
+| `views` | `array` of [`View`](#view) | `false` | If omitted, no views are registered. | * `minItems`: `1`<br> | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> |
+| `meter_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | If omitted, all meters use default values as described in ExperimentalMeterConfig. | No constraints. | Configure meters.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1600,7 +1600,7 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `opencensus` | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | `false` | If omitted, TODO. | No constraints. | Configure metric producer to be opencensus. |
+| `opencensus` | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | `false` | If omitted, ignore. | No constraints. | Configure metric producer to be opencensus. |
 
 <details>
 <summary>Language support status</summary>
@@ -1647,8 +1647,8 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `periodic` | [`PeriodicMetricReader`](#periodicmetricreader) | `false` | If omitted, TODO. | No constraints. | Configure a periodic metric reader. |
-| `pull` | [`PullMetricReader`](#pullmetricreader) | `false` | If omitted, TODO. | No constraints. | Configure a pull based metric reader. |
+| `periodic` | [`PeriodicMetricReader`](#periodicmetricreader) | `false` | If omitted, ignore. | No constraints. | Configure a periodic metric reader. |
+| `pull` | [`PullMetricReader`](#pullmetricreader) | `false` | If omitted, ignore. | No constraints. | Configure a pull based metric reader. |
 
 <details>
 <summary>Language support status</summary>
@@ -1694,7 +1694,7 @@ Usages:
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `name` | `string` | `true` | Property is required and must be non-null. | No constraints. | The name of the pair. |
-| `value` | one of:<br>* `string`<br>* `null`<br> | `true` | Property must be present, but if null TODO. | No constraints. | The value of the pair. |
+| `value` | one of:<br>* `string`<br>* `null`<br> | `true` | Property must be present, but if null the behavior is dependent on usage context. | No constraints. | The value of the pair. |
 
 <details>
 <summary>Language support status</summary>
@@ -1771,16 +1771,16 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `attribute_limits` | [`AttributeLimits`](#attributelimits) | `false` | If omitted, TODO. | No constraints. | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br> |
+| `attribute_limits` | [`AttributeLimits`](#attributelimits) | `false` | If omitted, default values as described in AttributeLimits are used. | No constraints. | Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.<br> |
 | `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure if the SDK is disabled or not.<br> |
-| `file_format` | `string` | `true` | Property is required and must be non-null. | No constraints. | The file format version.<br>The yaml format is documented at<br>https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema<br> |
-| `log_level` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, info is used. | No constraints. | Configure the log level of the internal logger used by the SDK.<br> |
+| `file_format` | `string` | `true` | Property is required and must be non-null. | No constraints. | The file format version.<br>Represented as a string including the semver major, minor version numbers (and optionally the meta tag). For example: "0.4", "1.0-rc.2", "1.0" (after stable release).<br>See https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md for more details.<br>The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema<br> |
+| `log_level` | [`SeverityNumber`](#severitynumber) | `false` | If omitted, INFO is used. | No constraints. | Configure the log level of the internal logger used by the SDK.<br> |
 | `logger_provider` | [`LoggerProvider`](#loggerprovider) | `false` | If omitted, a noop logger provider is used. | No constraints. | Configure logger provider.<br> |
 | `meter_provider` | [`MeterProvider`](#meterprovider) | `false` | If omitted, a noop meter provider is used. | No constraints. | Configure meter provider.<br> |
 | `propagator` | [`Propagator`](#propagator) | `false` | If omitted, a noop propagator is used. | No constraints. | Configure text map context propagators.<br> |
 | `resource` | [`Resource`](#resource) | `false` | If omitted, the default resource is used. | No constraints. | Configure resource for all signals.<br> |
 | `tracer_provider` | [`TracerProvider`](#tracerprovider) | `false` | If omitted, a noop tracer provider is used. | No constraints. | Configure tracer provider.<br> |
-| `instrumentation/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure instrumentation.<br> |
+| `instrumentation/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalInstrumentation`](#experimentalinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure instrumentation.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1827,10 +1827,7 @@ No usages.
       ]
     },
     "log_level": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "$ref": "#/$defs/SeverityNumber"
     },
     "attribute_limits": {
       "$ref": "#/$defs/AttributeLimits"
@@ -1889,7 +1886,7 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br> |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br> |
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, http://localhost:4317 is used. | No constraints. | Configure endpoint.<br> |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, no headers are added. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no headers are added. | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> |
@@ -1972,14 +1969,14 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br> |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br> |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br> |
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, http://localhost:4317 is used. | No constraints. | Configure endpoint.<br> |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
+| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, no headers are added. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no headers are added. | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br> |
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 10000 is used. | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
-| `tls` | [`GrpcTls`](#grpctls) | `false` | If omitted, TODO. | No constraints. | Configure TLS settings for the exporter. |
+| `tls` | [`GrpcTls`](#grpctls) | `false` | If omitted, system default TLS settings are used. | No constraints. | Configure TLS settings for the exporter. |
 
 <details>
 <summary>Language support status</summary>
@@ -2105,8 +2102,8 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br> |
-| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | If omitted, protobuf is used. | No constraints. | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br> |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br> |
+| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | If omitted, protobuf is used. | No constraints. | Configure the encoding used for messages. <br>Implementations may not support json.<br> |
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used. | No constraints. | Configure endpoint, including the signal specific path.<br> |
 | `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, no headers are added. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no headers are added. | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> |
@@ -2193,15 +2190,15 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Values include: gzip, none. Implementations may support other compression algorithms.<br> |
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
-| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | If omitted, protobuf is used. | No constraints. | Configure the encoding used for messages. <br>Values include: protobuf, json. Implementations may not support json.<br> |
+| `compression` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, none is used. | No constraints. | Configure compression.<br>Known values include: gzip, none. Implementations may support other compression algorithms.<br> |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br> |
+| `encoding` | [`OtlpHttpEncoding`](#otlphttpencoding) | `false` | If omitted, protobuf is used. | No constraints. | Configure the encoding used for messages. <br>Implementations may not support json.<br> |
 | `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, http://localhost:4318/v1/metrics is used. | No constraints. | Configure endpoint.<br> |
-| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
+| `headers` | `array` of [`NameStringValuePair`](#namestringvaluepair) | `false` | If omitted, no headers are added. | * `minItems`: `1`<br> | Configure headers. Entries have higher priority than entries from .headers_list.<br>If an entry's .value is null, the entry is ignored.<br> |
 | `headers_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no headers are added. | No constraints. | Configure headers. Entries have lower priority than entries from .headers.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br> |
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 10000 is used. | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export.<br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
-| `tls` | [`HttpTls`](#httptls) | `false` | If omitted, TODO. | No constraints. | Configure TLS settings for the exporter. |
+| `tls` | [`HttpTls`](#httptls) | `false` | If omitted, system default TLS settings are used. | No constraints. | Configure TLS settings for the exporter. |
 
 <details>
 <summary>Language support status</summary>
@@ -2350,10 +2347,10 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | If omitted, TODO. | No constraints. | Configure cardinality limits. |
+| `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | If omitted, default values as described in CardinalityLimits are used. | No constraints. | Configure cardinality limits. |
 | `exporter` | [`PushMetricExporter`](#pushmetricexporter) | `true` | Property is required and must be non-null. | No constraints. | Configure exporter. |
 | `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 60000 is used. | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between start of two consecutive exports. <br>Value must be non-negative.<br> |
-| `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure metric producers. |
+| `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | If omitted, no metric producers are added. | * `minItems`: `1`<br> | Configure metric producers. |
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 30000 is used. | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
 
 <details>
@@ -2423,8 +2420,8 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> |
-| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, TODO. | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br>If the resolved list of propagators (from .composite and .composite_list) is empty, a noop propagator is used.<br> |
+| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | If omitted, and .composite_list is omitted or null, a noop propagator is used. | * `minItems`: `1`<br> | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br> |
+| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, and .composite is omitted or null, a noop propagator is used. | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2474,7 +2471,7 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `prometheus/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be prometheus.<br> |
+| `prometheus/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be prometheus.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2520,9 +2517,9 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | If omitted, TODO. | No constraints. | Configure cardinality limits. |
+| `cardinality_limits` | [`CardinalityLimits`](#cardinalitylimits) | `false` | If omitted, default values as described in CardinalityLimits are used. | No constraints. | Configure cardinality limits. |
 | `exporter` | [`PullMetricExporter`](#pullmetricexporter) | `true` | Property is required and must be non-null. | No constraints. | Configure exporter. |
-| `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure metric producers. |
+| `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | If omitted, no metric producers are added. | * `minItems`: `1`<br> | Configure metric producers. |
 
 <details>
 <summary>Language support status</summary>
@@ -2577,10 +2574,10 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `console` | [`ConsoleMetricExporter`](#consolemetricexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be console.<br> |
-| `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be OTLP with gRPC transport.<br> |
-| `otlp_http` | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be OTLP with HTTP transport.<br> |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
+| `console` | [`ConsoleMetricExporter`](#consolemetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be console.<br> |
+| `otlp_grpc` | [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with gRPC transport.<br> |
+| `otlp_http` | [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with HTTP transport.<br> |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2638,10 +2635,10 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `attributes` | `array` of [`AttributeNameValue`](#attributenamevalue) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br> |
+| `attributes` | `array` of [`AttributeNameValue`](#attributenamevalue) | `false` | If omitted, no resource attributes are added. | * `minItems`: `1`<br> | Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.<br> |
 | `attributes_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no resource attributes are added. | No constraints. | Configure resource attributes. Entries have lower priority than entries from .resource.attributes.<br>The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br> |
 | `schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no schema URL is used. | No constraints. | Configure resource schema URL.<br> |
-| `detection/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | If omitted, resource detection is disabled. | No constraints. | Configure resource detection.<br> |
+| `detection/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | `false` | If omitted, resource detection is disabled. | No constraints. | Configure resource detection.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2702,13 +2699,13 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `always_off` | [`AlwaysOffSampler`](#alwaysoffsampler) | `false` | If omitted, TODO. | No constraints. | Configure sampler to be always_off. |
-| `always_on` | [`AlwaysOnSampler`](#alwaysonsampler) | `false` | If omitted, TODO. | No constraints. | Configure sampler to be always_on. |
-| `parent_based` | [`ParentBasedSampler`](#parentbasedsampler) | `false` | If omitted, TODO. | No constraints. | Configure sampler to be parent_based. |
-| `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | If omitted, TODO. | No constraints. | Configure sampler to be trace_id_ratio_based. |
-| `composite/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, TODO. | No constraints. | Configure sampler to be composite. |
-| `jaeger_remote/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | `false` | If omitted, TODO. | No constraints. | TODO |
-| `probability/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | If omitted, TODO. | No constraints. | Configure sampler to be probability. |
+| `always_off` | [`AlwaysOffSampler`](#alwaysoffsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_off. |
+| `always_on` | [`AlwaysOnSampler`](#alwaysonsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_on. |
+| `parent_based` | [`ParentBasedSampler`](#parentbasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be parent_based. |
+| `trace_id_ratio_based` | [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be trace_id_ratio_based. |
+| `composite/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be composite. |
+| `jaeger_remote/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be jaeger_remote. |
+| `probability/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be probability. |
 
 <details>
 <summary>Language support status</summary>
@@ -2777,6 +2774,113 @@ Usages:
       "$ref": "#/$defs/TraceIdRatioBasedSampler"
     }
   }
+}</pre>
+</details>
+
+## SeverityNumber <a id="severitynumber"></a>
+
+This is a enum type.
+
+| Value | Description |
+|---|---|
+| `debug` | debug, severity number 5. |
+| `debug2` | debug2, severity number 6. |
+| `debug3` | debug3, severity number 7. |
+| `debug4` | debug4, severity number 8. |
+| `error` | error, severity number 17. |
+| `error2` | error2, severity number 18. |
+| `error3` | error3, severity number 19. |
+| `error4` | error4, severity number 20. |
+| `fatal` | fatal, severity number 21. |
+| `fatal2` | fatal2, severity number 22. |
+| `fatal3` | fatal3, severity number 23. |
+| `fatal4` | fatal4, severity number 24. |
+| `info` | info, severity number 9. |
+| `info2` | info2, severity number 10. |
+| `info3` | info3, severity number 11. |
+| `info4` | info4, severity number 12. |
+| `trace` | trace, severity number 1. |
+| `trace2` | trace2, severity number 2. |
+| `trace3` | trace3, severity number 3. |
+| `trace4` | trace4, severity number 4. |
+| `warn` | warn, severity number 13. |
+| `warn2` | warn2, severity number 14. |
+| `warn3` | warn3, severity number 15. |
+| `warn4` | warn4, severity number 16. |
+
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `debug` | unknown | unknown | unknown | unknown |
+| `debug2` | unknown | unknown | unknown | unknown |
+| `debug3` | unknown | unknown | unknown | unknown |
+| `debug4` | unknown | unknown | unknown | unknown |
+| `error` | unknown | unknown | unknown | unknown |
+| `error2` | unknown | unknown | unknown | unknown |
+| `error3` | unknown | unknown | unknown | unknown |
+| `error4` | unknown | unknown | unknown | unknown |
+| `fatal` | unknown | unknown | unknown | unknown |
+| `fatal2` | unknown | unknown | unknown | unknown |
+| `fatal3` | unknown | unknown | unknown | unknown |
+| `fatal4` | unknown | unknown | unknown | unknown |
+| `info` | unknown | unknown | unknown | unknown |
+| `info2` | unknown | unknown | unknown | unknown |
+| `info3` | unknown | unknown | unknown | unknown |
+| `info4` | unknown | unknown | unknown | unknown |
+| `trace` | unknown | unknown | unknown | unknown |
+| `trace2` | unknown | unknown | unknown | unknown |
+| `trace3` | unknown | unknown | unknown | unknown |
+| `trace4` | unknown | unknown | unknown | unknown |
+| `warn` | unknown | unknown | unknown | unknown |
+| `warn2` | unknown | unknown | unknown | unknown |
+| `warn3` | unknown | unknown | unknown | unknown |
+| `warn4` | unknown | unknown | unknown | unknown |
+</details>
+
+No constraints.
+
+Usages:
+
+* [`ExperimentalLoggerConfig.minimum_severity`](#experimentalloggerconfig)
+* [`OpenTelemetryConfiguration.log_level`](#opentelemetryconfiguration)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/common.yaml)
+<pre>{
+  "type": [
+    "string",
+    "null"
+  ],
+  "enum": [
+    "trace",
+    "trace2",
+    "trace3",
+    "trace4",
+    "debug",
+    "debug2",
+    "debug3",
+    "debug4",
+    "info",
+    "info2",
+    "info3",
+    "info4",
+    "warn",
+    "warn2",
+    "warn3",
+    "warn4",
+    "error",
+    "error2",
+    "error3",
+    "error4",
+    "fatal",
+    "fatal2",
+    "fatal3",
+    "fatal4"
+  ]
 }</pre>
 </details>
 
@@ -2868,11 +2972,10 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `console` | [`ConsoleExporter`](#consoleexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be console. |
-| `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be OTLP with gRPC transport. |
-| `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be OTLP with HTTP transport. |
-| `zipkin` | [`ZipkinSpanExporter`](#zipkinspanexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be zipkin. |
-| `otlp_file/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | If omitted, TODO. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
+| `console` | [`ConsoleExporter`](#consoleexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be console. |
+| `otlp_grpc` | [`OtlpGrpcExporter`](#otlpgrpcexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with gRPC transport. |
+| `otlp_http` | [`OtlpHttpExporter`](#otlphttpexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with HTTP transport. |
+| `otlp_file/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | `false` | If omitted, ignore. | No constraints. | Configure exporter to be OTLP with file transport.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2882,7 +2985,6 @@ Usages:
 | `console` | supported | unknown | supported | unknown |
 | `otlp_grpc` | supported | unknown | supported | unknown |
 | `otlp_http` | supported | unknown | supported | unknown |
-| `zipkin` | supported | unknown | supported | unknown |
 | `otlp_file/development` | supported | unknown | supported | unknown |
 </details>
 
@@ -2923,11 +3025,57 @@ Usages:
     },
     "console": {
       "$ref": "#/$defs/ConsoleExporter"
-    },
-    "zipkin": {
-      "$ref": "#/$defs/ZipkinSpanExporter"
     }
   }
+}</pre>
+</details>
+
+## SpanKind <a id="spankind"></a>
+
+This is a enum type.
+
+| Value | Description |
+|---|---|
+| `client` | client, a client span. |
+| `consumer` | consumer, a consumer span. |
+| `internal` | internal, an internal span. |
+| `producer` | producer, a producer span. |
+| `server` | server, a server span. |
+
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `client` | unknown | unknown | unknown | unknown |
+| `consumer` | unknown | unknown | unknown | unknown |
+| `internal` | unknown | unknown | unknown | unknown |
+| `producer` | unknown | unknown | unknown | unknown |
+| `server` | unknown | unknown | unknown | unknown |
+</details>
+
+No constraints.
+
+Usages:
+
+* [`ExperimentalComposableRuleBasedSamplerRule.span_kinds`](#experimentalcomposablerulebasedsamplerrule)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": [
+    "string",
+    "null"
+  ],
+  "enum": [
+    "internal",
+    "server",
+    "client",
+    "producer",
+    "consumer"
+  ]
 }</pre>
 </details>
 
@@ -3023,8 +3171,8 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `batch` | [`BatchSpanProcessor`](#batchspanprocessor) | `false` | If omitted, TODO. | No constraints. | Configure a batch span processor. |
-| `simple` | [`SimpleSpanProcessor`](#simplespanprocessor) | `false` | If omitted, TODO. | No constraints. | Configure a simple span processor. |
+| `batch` | [`BatchSpanProcessor`](#batchspanprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a batch span processor. |
+| `simple` | [`SimpleSpanProcessor`](#simplespanprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a simple span processor. |
 
 <details>
 <summary>Language support status</summary>
@@ -3101,12 +3249,12 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `b3` | [`B3Propagator`](#b3propagator) | `false` | If omitted, TODO. | No constraints. | Include the zipkin b3 propagator. |
-| `b3multi` | [`B3MultiPropagator`](#b3multipropagator) | `false` | If omitted, TODO. | No constraints. | Include the zipkin b3 multi propagator. |
-| `baggage` | [`BaggagePropagator`](#baggagepropagator) | `false` | If omitted, TODO. | No constraints. | Include the w3c baggage propagator. |
-| `jaeger` | [`JaegerPropagator`](#jaegerpropagator) | `false` | If omitted, TODO. | No constraints. | Include the jaeger propagator. |
-| `ottrace` | [`OpenTracingPropagator`](#opentracingpropagator) | `false` | If omitted, TODO. | No constraints. | Include the opentracing propagator. |
-| `tracecontext` | [`TraceContextPropagator`](#tracecontextpropagator) | `false` | If omitted, TODO. | No constraints. | Include the w3c trace context propagator. |
+| `b3` | [`B3Propagator`](#b3propagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 propagator. |
+| `b3multi` | [`B3MultiPropagator`](#b3multipropagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 multi propagator. |
+| `baggage` | [`BaggagePropagator`](#baggagepropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c baggage propagator. |
+| `jaeger` | [`JaegerPropagator`](#jaegerpropagator) | `false` | If omitted, ignore. | No constraints. | Include the jaeger propagator. |
+| `ottrace` | [`OpenTracingPropagator`](#opentracingpropagator) | `false` | If omitted, ignore. | No constraints. | Include the opentracing propagator. |
+| `tracecontext` | [`TraceContextPropagator`](#tracecontextpropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c trace context propagator. |
 
 <details>
 <summary>Language support status</summary>
@@ -3242,10 +3390,10 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `limits` | [`SpanLimits`](#spanlimits) | `false` | If omitted, TODO. | No constraints. | Configure span limits. See also attribute_limits. |
+| `limits` | [`SpanLimits`](#spanlimits) | `false` | If omitted, default values as described in SpanLimits are used. | No constraints. | Configure span limits. See also attribute_limits. |
 | `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure span processors. |
 | `sampler` | [`Sampler`](#sampler) | `false` | If omitted, parent based sampler with a root of always_on is used. | No constraints. | Configure the sampler.<br> |
-| `tracer_configurator/development`<br>**WARNING:** This property is [experimental](README.md#experimental-features). | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | If omitted, TODO. | No constraints. | Configure tracers.<br> |
+| `tracer_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | `false` | If omitted, all tracers use default values as described in ExperimentalTracerConfig. | No constraints. | Configure tracers.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -3350,7 +3498,7 @@ Usages:
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `instrument_name` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all instrument names match. | No constraints. | Configure instrument name selection criteria.<br> |
-| `instrument_type` | [`InstrumentType`](#instrumenttype) | `false` | If omitted, all instrument types match. | No constraints. | Configure instrument type selection criteria.<br>Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.<br> |
+| `instrument_type` | [`InstrumentType`](#instrumenttype) | `false` | If omitted, all instrument types match. | No constraints. | Configure instrument type selection criteria.<br> |
 | `meter_name` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter names match. | No constraints. | Configure meter name selection criteria.<br> |
 | `meter_schema_url` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter schema URLs match. | No constraints. | Configure meter schema url selection criteria.<br> |
 | `meter_version` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, all meter versions match. | No constraints. | Configure meter version selection criteria.<br> |
@@ -3426,9 +3574,9 @@ Usages:
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `aggregation` | [`Aggregation`](#aggregation) | `false` | If omitted, default is used. | No constraints. | Configure aggregation of the resulting stream(s). <br>Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.<br> |
+| `aggregation` | [`Aggregation`](#aggregation) | `false` | If omitted, default is used. | No constraints. | Configure aggregation of the resulting stream(s). <br> |
 | `aggregation_cardinality_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the metric reader's default cardinality limit is used. | * `exclusiveMinimum`: `0`<br> | Configure the aggregation cardinality limit.<br> |
-| `attribute_keys` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, TODO. | No constraints. | Configure attribute keys retained in the resulting stream(s).<br> |
+| `attribute_keys` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, all attribute keys are retained. | No constraints. | Configure attribute keys retained in the resulting stream(s).<br> |
 | `description` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, the instrument's origin description is used. | No constraints. | Configure metric description of the resulting stream(s).<br> |
 | `name` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, the instrument's original name is used. | No constraints. | Configure metric name of the resulting stream(s).<br> |
 
@@ -3489,64 +3637,12 @@ Usages:
 }</pre>
 </details>
 
-## ZipkinSpanExporter <a id="zipkinspanexporter"></a>
-
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, http://localhost:9411/api/v2/spans is used. | No constraints. | Configure endpoint.<br> |
-| `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 10000 is used. | * `minimum`: `0`<br> | Configure max time (in milliseconds) to wait for each export. <br>Value must be non-negative. A value of 0 indicates indefinite.<br> |
-
-<details>
-<summary>Language support status</summary>
-
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `endpoint` | supported | unknown | supported | unknown |
-| `timeout` | supported | unknown | supported | unknown |
-</details>
-
-Constraints: 
-
-* `additionalProperties`: `false`
-
-Usages:
-
-* [`SpanExporter.zipkin`](#spanexporter)
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/tracer_provider.yaml)
-<pre>{
-  "type": [
-    "object",
-    "null"
-  ],
-  "additionalProperties": false,
-  "properties": {
-    "endpoint": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "timeout": {
-      "type": [
-        "integer",
-        "null"
-      ],
-      "minimum": 0
-    }
-  }
-}</pre>
-</details>
-
 # Experimental Types <a id="experimental-types"></a>
 
 ## ExperimentalComposableAlwaysOffSampler <a id="experimentalcomposablealwaysoffsampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -3574,7 +3670,7 @@ Usages:
 ## ExperimentalComposableAlwaysOnSampler <a id="experimentalcomposablealwaysonsampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -3599,38 +3695,31 @@ Usages:
 }</pre>
 </details>
 
-## ExperimentalComposableParentBasedSampler <a id="experimentalcomposableparentbasedsampler"></a>
+## ExperimentalComposableParentThresholdSampler <a id="experimentalcomposableparentthresholdsampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `local_parent_not_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, TODO. | No constraints. | Configures the sampler for spans with a local parent that is not sampled. |
-| `local_parent_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, TODO. | No constraints. | Configures the sampler for spans with a local parent that is sampled. |
-| `remote_parent_not_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, TODO. | No constraints. | Configures the sampler for spans with a remote parent that is not sampled. |
-| `remote_parent_sampled` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, TODO. | No constraints. | Configures the sampler for spans with a remote parent that is sampled. |
-| `root` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `false` | If omitted, TODO. | No constraints. | Configures the sampler for spans with no parent. |
+| `root` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `true` | Property is required and must be non-null. | No constraints. | Sampler to use when there is no parent. |
 
 <details>
 <summary>Language support status</summary>
 
 | Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `local_parent_not_sampled` | unknown | unknown | unknown | unknown |
-| `local_parent_sampled` | unknown | unknown | unknown | unknown |
-| `remote_parent_not_sampled` | unknown | unknown | unknown | unknown |
-| `remote_parent_sampled` | unknown | unknown | unknown | unknown |
 | `root` | unknown | unknown | unknown | unknown |
 </details>
 
 Constraints: 
 
 * `additionalProperties`: `false`
+* `required`: `["root"]`
 
 Usages:
 
-* [`ExperimentalComposableSampler.parent_based`](#experimentalcomposablesampler)
+* [`ExperimentalComposableSampler.parent_threshold`](#experimentalcomposablesampler)
 
 <details>
 <summary>JSON Schema</summary>
@@ -3638,34 +3727,24 @@ Usages:
 [JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
-    "object",
-    "null"
+    "object"
   ],
   "additionalProperties": false,
   "properties": {
     "root": {
       "$ref": "#/$defs/ExperimentalComposableSampler"
-    },
-    "remote_parent_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler"
-    },
-    "remote_parent_not_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler"
-    },
-    "local_parent_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler"
-    },
-    "local_parent_not_sampled": {
-      "$ref": "#/$defs/ExperimentalComposableSampler"
     }
-  }
+  },
+  "required": [
+    "root"
+  ]
 }</pre>
 </details>
 
 ## ExperimentalComposableProbabilitySampler <a id="experimentalcomposableprobabilitysampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -3710,17 +3789,254 @@ Usages:
 }</pre>
 </details>
 
-## ExperimentalComposableSampler <a id="experimentalcomposablesampler"></a>
+## ExperimentalComposableRuleBasedSampler <a id="experimentalcomposablerulebasedsampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `always_off` | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | `false` | If omitted, TODO. | No constraints. | Configure sampler to be always_off. |
-| `always_on` | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | `false` | If omitted, TODO. | No constraints. | Configure sampler to be always_on. |
-| `parent_based` | [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | `false` | If omitted, TODO. | No constraints. | Configure sampler to be parent_based. |
-| `probability` | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | `false` | If omitted, TODO. | No constraints. | Configure sampler to be probability. |
+| `rules` | one of:<br>* `array`<br>* `null`<br> | `false` | If omitted or null, no span is sampled. | No constraints. | The rules for the sampler, matched in order. If no rules match, the span is not sampled.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `rules` | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalComposableSampler.rule_based`](#experimentalcomposablesampler)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "rules": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
+      }
+    }
+  }
+}</pre>
+</details>
+
+## ExperimentalComposableRuleBasedSamplerRule <a id="experimentalcomposablerulebasedsamplerrule"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `attribute_patterns` | [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | `false` | If omitted, ignore. | No constraints. | Patterns to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a pattern of "4*" would match any http.response.status_code in 400-499. For array attributes, if any<br>item matches, it is considered a match.<br> |
+| `attribute_values` | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | `false` | If omitted, ignore. | No constraints. | Values to match against a single attribute. Non-string attributes are matched using their string representation:<br>for example, a value of "404" would match the http.response.status_code 404. For array attributes, if any<br>item matches, it is considered a match.<br> |
+| `parent` | `array` of [`ExperimentalSpanParent`](#experimentalspanparent) | `false` | If omitted, ignore. | * `minItems`: `1`<br> | The parent span types to match. |
+| `sampler` | [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | `true` | Property is required and must be non-null. | No constraints. | The sampler to use for matching spans. |
+| `span_kinds` | `array` of [`SpanKind`](#spankind) | `false` | If omitted, ignore. | * `minItems`: `1`<br> | The span kinds to match. If the span's kind matches any of these, it matches. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `attribute_patterns` | unknown | unknown | unknown | unknown |
+| `attribute_values` | unknown | unknown | unknown | unknown |
+| `parent` | unknown | unknown | unknown | unknown |
+| `sampler` | unknown | unknown | unknown | unknown |
+| `span_kinds` | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+* `required`: `["sampler"]`
+
+No usages.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": "object",
+  "description": "A rule for ExperimentalComposableRuleBasedSampler. A rule can have multiple match conditions - the sampler will be applied if all match. \nIf no conditions are specified, the rule matches all spans that reach it.\n",
+  "additionalProperties": false,
+  "properties": {
+    "attribute_values": {
+      "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributeValues"
+    },
+    "attribute_patterns": {
+      "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributePatterns"
+    },
+    "span_kinds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/SpanKind"
+      }
+    },
+    "parent": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/ExperimentalSpanParent"
+      }
+    },
+    "sampler": {
+      "$ref": "#/$defs/ExperimentalComposableSampler"
+    }
+  },
+  "required": [
+    "sampler"
+  ]
+}</pre>
+</details>
+
+## ExperimentalComposableRuleBasedSamplerRuleAttributePatterns <a id="experimentalcomposablerulebasedsamplerruleattributepatterns"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `excluded` | `array` of `string` | `false` | If omitted, .included attributes are included. | * `minItems`: `1`<br> | Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
+| `included` | `array` of `string` | `false` | If omitted, all values are included. | * `minItems`: `1`<br> | Configure list of value patterns to include.<br>Values are evaluated to match as follows:<br> * If the value exactly matches.<br> * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.<br> |
+| `key` | `string` | `true` | Property is required and must be non-null. | No constraints. | The attribute key to match against. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `excluded` | unknown | unknown | unknown | unknown |
+| `included` | unknown | unknown | unknown | unknown |
+| `key` | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+* `required`: `["key"]`
+
+Usages:
+
+* [`ExperimentalComposableRuleBasedSamplerRule.attribute_patterns`](#experimentalcomposablerulebasedsamplerrule)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "included": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "excluded": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "key"
+  ]
+}</pre>
+</details>
+
+## ExperimentalComposableRuleBasedSamplerRuleAttributeValues <a id="experimentalcomposablerulebasedsamplerruleattributevalues"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `key` | `string` | `true` | Property is required and must be non-null. | No constraints. | The attribute key to match against. |
+| `values` | `array` of `string` | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | The attribute values to match against. If the attribute's value matches any of these, it matches. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+|---|---|---|---|---|
+| `key` | unknown | unknown | unknown | unknown |
+| `values` | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+* `required`: `["key","values"]`
+
+Usages:
+
+* [`ExperimentalComposableRuleBasedSamplerRule.attribute_values`](#experimentalcomposablerulebasedsamplerrule)
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "values": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "key",
+    "values"
+  ]
+}</pre>
+</details>
+
+## ExperimentalComposableSampler <a id="experimentalcomposablesampler"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `always_off` | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_off. |
+| `always_on` | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be always_on. |
+| `parent_threshold` | [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be parent_threshold.<br> |
+| `probability` | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be probability. |
+| `rule_based` | [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | `false` | If omitted, ignore. | No constraints. | Configure sampler to be rule_based. |
 
 <details>
 <summary>Language support status</summary>
@@ -3729,8 +4045,9 @@ Usages:
 |---|---|---|---|---|
 | `always_off` | unknown | unknown | unknown | unknown |
 | `always_on` | unknown | unknown | unknown | unknown |
-| `parent_based` | unknown | unknown | unknown | unknown |
+| `parent_threshold` | unknown | unknown | unknown | unknown |
 | `probability` | unknown | unknown | unknown | unknown |
+| `rule_based` | unknown | unknown | unknown | unknown |
 </details>
 
 Constraints: 
@@ -3742,11 +4059,8 @@ Constraints:
 Usages:
 
 * [`Sampler.composite/development`](#sampler)
-* [`ExperimentalComposableParentBasedSampler.root`](#experimentalcomposableparentbasedsampler)
-* [`ExperimentalComposableParentBasedSampler.remote_parent_sampled`](#experimentalcomposableparentbasedsampler)
-* [`ExperimentalComposableParentBasedSampler.remote_parent_not_sampled`](#experimentalcomposableparentbasedsampler)
-* [`ExperimentalComposableParentBasedSampler.local_parent_sampled`](#experimentalcomposableparentbasedsampler)
-* [`ExperimentalComposableParentBasedSampler.local_parent_not_sampled`](#experimentalcomposableparentbasedsampler)
+* [`ExperimentalComposableParentThresholdSampler.root`](#experimentalcomposableparentthresholdsampler)
+* [`ExperimentalComposableRuleBasedSamplerRule.sampler`](#experimentalcomposablerulebasedsamplerrule)
 
 <details>
 <summary>JSON Schema</summary>
@@ -3769,11 +4083,14 @@ Usages:
     "always_on": {
       "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
     },
-    "parent_based": {
-      "$ref": "#/$defs/ExperimentalComposableParentBasedSampler"
+    "parent_threshold": {
+      "$ref": "#/$defs/ExperimentalComposableParentThresholdSampler"
     },
     "probability": {
       "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
+    },
+    "rule_based": {
+      "$ref": "#/$defs/ExperimentalComposableRuleBasedSampler"
     }
   }
 }</pre>
@@ -3782,7 +4099,7 @@ Usages:
 ## ExperimentalContainerResourceDetector <a id="experimentalcontainerresourcedetector"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -3810,12 +4127,12 @@ Usages:
 ## ExperimentalGeneralInstrumentation <a id="experimentalgeneralinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
-| `peer` | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> |
+| `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
+| `peer` | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` | If omitted, defaults as described in ExperimentalPeerInstrumentation are used. | No constraints. | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -3855,7 +4172,7 @@ Usages:
 ## ExperimentalHostResourceDetector <a id="experimentalhostresourcedetector"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -3883,12 +4200,12 @@ Usages:
 ## ExperimentalHttpClientInstrumentation <a id="experimentalhttpclientinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `request_captured_headers` | `array` of `string` | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure headers to capture for outbound http requests.<br> |
-| `response_captured_headers` | `array` of `string` | `false` | If omitted, TODO. | No constraints. | Configure headers to capture for inbound http responses.<br> |
+| `request_captured_headers` | `array` of `string` | `false` | If omitted, no outbound request headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for outbound http requests.<br> |
+| `response_captured_headers` | `array` of `string` | `false` | If omitted, no inbound response headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for inbound http responses.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -3924,6 +4241,7 @@ Usages:
     },
     "response_captured_headers": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "string"
       }
@@ -3935,12 +4253,12 @@ Usages:
 ## ExperimentalHttpInstrumentation <a id="experimentalhttpinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `client` | [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure instrumentations following the http client semantic conventions. |
-| `server` | [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure instrumentations following the http server semantic conventions. |
+| `client` | [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpClientInstrumentation are used. | No constraints. | Configure instrumentations following the http client semantic conventions. |
+| `server` | [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpServerInstrumentation are used. | No constraints. | Configure instrumentations following the http server semantic conventions. |
 
 <details>
 <summary>Language support status</summary>
@@ -3980,12 +4298,12 @@ Usages:
 ## ExperimentalHttpServerInstrumentation <a id="experimentalhttpserverinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `request_captured_headers` | `array` of `string` | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure headers to capture for inbound http requests.<br> |
-| `response_captured_headers` | `array` of `string` | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure headers to capture for outbound http responses.<br> |
+| `request_captured_headers` | `array` of `string` | `false` | If omitted, no request headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for inbound http requests.<br> |
+| `response_captured_headers` | `array` of `string` | `false` | If omitted, no response headers are captures. | * `minItems`: `1`<br> | Configure headers to capture for outbound http responses.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4033,22 +4351,22 @@ Usages:
 ## ExperimentalInstrumentation <a id="experimentalinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `cpp` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure C++ language-specific instrumentation libraries. |
-| `dotnet` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure .NET language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `erlang` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure Erlang language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `general` | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure general SemConv options that may apply to multiple languages and instrumentations.<br>Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.<br> |
-| `go` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure Go language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `java` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure Java language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `js` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure JavaScript language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `php` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure PHP language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `python` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure Python language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `ruby` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure Ruby language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `rust` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure Rust language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
-| `swift` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, TODO. | No constraints. | Configure Swift language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+| `cpp` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure C++ language-specific instrumentation libraries. |
+| `dotnet` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure .NET language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+| `erlang` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Erlang language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+| `general` | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | `false` | If omitted, default values as described in ExperimentalGeneralInstrumentation are used. | No constraints. | Configure general SemConv options that may apply to multiple languages and instrumentations.<br>Instrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.<br> |
+| `go` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Go language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+| `java` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Java language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+| `js` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure JavaScript language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+| `php` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure PHP language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+| `python` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Python language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+| `ruby` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Ruby language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+| `rust` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Rust language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
+| `swift` | [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | `false` | If omitted, instrumentation defaults are used. | No constraints. | Configure Swift language-specific instrumentation libraries.<br>Each entry's key identifies a particular instrumentation library. The corresponding value configures it.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4128,13 +4446,13 @@ Usages:
 ## ExperimentalJaegerRemoteSampler <a id="experimentaljaegerremotesampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `endpoint` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, TODO. | No constraints. | TODO |
-| `initial_sampler` | [`Sampler`](#sampler) | `false` | If omitted, TODO. | No constraints. | TODO |
-| `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, TODO. | * `minimum`: `0`<br> | TODO |
+| `endpoint` | `string` | `true` | Property is required and must be non-null. | No constraints. | Configure the endpoint of the jaeger remote sampling service. |
+| `initial_sampler` | [`Sampler`](#sampler) | `true` | Property is required and must be non-null. | No constraints. | Configure the initial sampler used before first configuration is fetched. |
+| `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 60000 is used. | * `minimum`: `0`<br> | Configure the polling interval (in milliseconds) to fetch from the remote sampling service. |
 
 <details>
 <summary>Language support status</summary>
@@ -4149,6 +4467,7 @@ Usages:
 Constraints: 
 
 * `additionalProperties`: `false`
+* `required`: `["endpoint","initial_sampler"]`
 
 Usages:
 
@@ -4167,8 +4486,7 @@ Usages:
   "properties": {
     "endpoint": {
       "type": [
-        "string",
-        "null"
+        "string"
       ]
     },
     "interval": {
@@ -4181,14 +4499,18 @@ Usages:
     "initial_sampler": {
       "$ref": "#/$defs/Sampler"
     }
-  }
+  },
+  "required": [
+    "endpoint",
+    "initial_sampler"
+  ]
 }</pre>
 </details>
 
 ## ExperimentalLanguageSpecificInstrumentation <a id="experimentallanguagespecificinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -4225,12 +4547,12 @@ Usages:
 ## ExperimentalLoggerConfig <a id="experimentalloggerconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure if the logger is enabled or not.<br> |
-| `minimum_severity` | [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | `false` | If omitted, severity filtering is not applied. | No constraints. | Configure severity filtering.<br>Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.<br>Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.<br> |
+| `minimum_severity` | [`SeverityNumber`](#severitynumber) | `false` | If omitted, severity filtering is not applied. | No constraints. | Configure severity filtering.<br>Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.<br> |
 | `trace_based` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, trace based filtering is not applied. | No constraints. | Configure trace based filtering.<br>If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.<br> |
 
 <details>
@@ -4269,7 +4591,7 @@ Usages:
       ]
     },
     "minimum_severity": {
-      "$ref": "#/$defs/ExperimentalSeverityNumber"
+      "$ref": "#/$defs/SeverityNumber"
     },
     "trace_based": {
       "type": [
@@ -4284,12 +4606,12 @@ Usages:
 ## ExperimentalLoggerConfigurator <a id="experimentalloggerconfigurator"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `default_config` | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `false` | If omitted, TODO. | No constraints. | Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers. |
-| `loggers` | `array` of [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure loggers. |
+| `default_config` | [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | `false` | If omitted, unmatched .loggers use default values as described in ExperimentalLoggerConfig. | No constraints. | Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers. |
+| `loggers` | `array` of [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | `false` | If omitted, all loggers use .default_config. | * `minItems`: `1`<br> | Configure loggers. |
 
 <details>
 <summary>Language support status</summary>
@@ -4335,7 +4657,7 @@ Usages:
 ## ExperimentalLoggerMatcherAndConfig <a id="experimentalloggermatcherandconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4389,11 +4711,11 @@ Usages:
 ## ExperimentalMeterConfig <a id="experimentalmeterconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `disabled` | `boolean` | `false` | If omitted, TODO. | No constraints. | Configure if the meter is enabled or not. |
+| `disabled` | `boolean` | `false` | If omitted, false is used. | No constraints. | Configure if the meter is enabled or not. |
 
 <details>
 <summary>Language support status</summary>
@@ -4434,12 +4756,12 @@ Usages:
 ## ExperimentalMeterConfigurator <a id="experimentalmeterconfigurator"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `default_config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` | If omitted, TODO. | No constraints. | Configure the default meter config used there is no matching entry in .meter_configurator/development.meters. |
-| `meters` | `array` of [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure meters. |
+| `default_config` | [`ExperimentalMeterConfig`](#experimentalmeterconfig) | `false` | If omitted, unmatched .meters use default values as described in ExperimentalMeterConfig. | No constraints. | Configure the default meter config used there is no matching entry in .meter_configurator/development.meters. |
+| `meters` | `array` of [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | `false` | If omitted, all meters used .default_config. | * `minItems`: `1`<br> | Configure meters. |
 
 <details>
 <summary>Language support status</summary>
@@ -4485,7 +4807,7 @@ Usages:
 ## ExperimentalMeterMatcherAndConfig <a id="experimentalmetermatcherandconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4539,7 +4861,7 @@ Usages:
 ## ExperimentalOtlpFileExporter <a id="experimentalotlpfileexporter"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4586,13 +4908,13 @@ Usages:
 ## ExperimentalOtlpFileMetricExporter <a id="experimentalotlpfilemetricexporter"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br>Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `default_histogram_aggregation` | [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | `false` | If omitted, explicit_bucket_histogram is used. | No constraints. | Configure default histogram aggregation.<br> |
 | `output_stream` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, stdout is used. | No constraints. | Configure output stream. <br>Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.<br> |
-| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br>Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.<br> |
+| `temporality_preference` | [`ExporterTemporalityPreference`](#exportertemporalitypreference) | `false` | If omitted, cumulative is used. | No constraints. | Configure temporality preference.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4642,11 +4964,11 @@ Usages:
 ## ExperimentalPeerInstrumentation <a id="experimentalpeerinstrumentation"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> |
+| `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` | If omitted, no peer service mappings are used. | * `minItems`: `1`<br> | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4686,7 +5008,7 @@ Usages:
 ## ExperimentalPeerServiceMapping <a id="experimentalpeerservicemapping"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4736,7 +5058,7 @@ Usages:
 ## ExperimentalProbabilitySampler <a id="experimentalprobabilitysampler"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -4784,7 +5106,7 @@ Usages:
 ## ExperimentalProcessResourceDetector <a id="experimentalprocessresourcedetector"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -4812,14 +5134,14 @@ Usages:
 ## ExperimentalPrometheusMetricExporter <a id="experimentalprometheusmetricexporter"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `host` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, localhost is used. | No constraints. | Configure host.<br> |
 | `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 9464 is used. | No constraints. | Configure port.<br> |
 | `translation_strategy` | [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | `false` | If omitted, underscore_escaping_with_suffixes is used. | No constraints. | Configure how metric names are translated to Prometheus metric names. |
-| `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, TODO. | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
+| `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, no resource attributes are added. | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
 | `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a scope info metric.<br> |
 | `without_target_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a target info metric for the resource.<br> |
 
@@ -4892,7 +5214,7 @@ Usages:
 ## ExperimentalPrometheusTranslationStrategy <a id="experimentalprometheustranslationstrategy"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 This is a enum type.
 
@@ -4941,11 +5263,11 @@ Usages:
 ## ExperimentalResourceDetection <a id="experimentalresourcedetection"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `attributes` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, TODO. | No constraints. | Configure attributes provided by resource detectors. |
+| `attributes` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, all attributes from resource detectors are added. | No constraints. | Configure attributes provided by resource detectors. |
 | `detectors` | `array` of [`ExperimentalResourceDetector`](#experimentalresourcedetector) | `false` | If omitted, no resource detectors are enabled. | * `minItems`: `1`<br> | Configure resource detectors.<br>Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. <br> |
 
 <details>
@@ -4990,16 +5312,16 @@ Usages:
 ## ExperimentalResourceDetector <a id="experimentalresourcedetector"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 `ExperimentalResourceDetector` is an [SDK extension plugin](#sdk-extension-plugins).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `container` | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | `false` | If omitted, TODO. | No constraints. | Enable the container resource detector, which populates container.* attributes.<br> |
-| `host` | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | `false` | If omitted, TODO. | No constraints. | Enable the host resource detector, which populates host.* and os.* attributes.<br> |
-| `process` | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | `false` | If omitted, TODO. | No constraints. | Enable the process resource detector, which populates process.* attributes.<br> |
-| `service` | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | `false` | If omitted, TODO. | No constraints. | Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.<br> |
+| `container` | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the container resource detector, which populates container.* attributes.<br> |
+| `host` | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the host resource detector, which populates host.* and os.* attributes.<br> |
+| `process` | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the process resource detector, which populates process.* attributes.<br> |
+| `service` | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -5056,7 +5378,7 @@ Usages:
 ## ExperimentalServiceResourceDetector <a id="experimentalserviceresourcedetector"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 No properties.
 
@@ -5081,111 +5403,48 @@ Usages:
 }</pre>
 </details>
 
-## ExperimentalSeverityNumber <a id="experimentalseveritynumber"></a>
+## ExperimentalSpanParent <a id="experimentalspanparent"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 This is a enum type.
 
 | Value | Description |
 |---|---|
-| `debug` | DEBUG, severity number 5. |
-| `debug2` | DEBUG2, severity number 6. |
-| `debug3` | DEBUG3, severity number 7. |
-| `debug4` | DEBUG4, severity number 8. |
-| `error` | ERROR, severity number 17. |
-| `error2` | ERROR2, severity number 18. |
-| `error3` | ERROR3, severity number 19. |
-| `error4` | ERROR4, severity number 20. |
-| `fatal` | FATAL, severity number 21. |
-| `fatal2` | FATAL2, severity number 22. |
-| `fatal3` | FATAL3, severity number 23. |
-| `fatal4` | FATAL4, severity number 24. |
-| `info` | INFO, severity number 9. |
-| `info2` | INFO2, severity number 10. |
-| `info3` | INFO3, severity number 11. |
-| `info4` | INFO4, severity number 12. |
-| `trace` | TRACE, severity number 1. |
-| `trace2` | TRACE2, severity number 2. |
-| `trace3` | TRACE3, severity number 3. |
-| `trace4` | TRACE4, severity number 4. |
-| `warn` | WARN, severity number 13. |
-| `warn2` | WARN2, severity number 14. |
-| `warn3` | WARN3, severity number 15. |
-| `warn4` | WARN4, severity number 16. |
+| `local` | local, a local parent. |
+| `none` | none, no parent, i.e., the trace root. |
+| `remote` | remote, a remote parent. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `debug` | unknown | unknown | unknown | unknown |
-| `debug2` | unknown | unknown | unknown | unknown |
-| `debug3` | unknown | unknown | unknown | unknown |
-| `debug4` | unknown | unknown | unknown | unknown |
-| `error` | unknown | unknown | unknown | unknown |
-| `error2` | unknown | unknown | unknown | unknown |
-| `error3` | unknown | unknown | unknown | unknown |
-| `error4` | unknown | unknown | unknown | unknown |
-| `fatal` | unknown | unknown | unknown | unknown |
-| `fatal2` | unknown | unknown | unknown | unknown |
-| `fatal3` | unknown | unknown | unknown | unknown |
-| `fatal4` | unknown | unknown | unknown | unknown |
-| `info` | unknown | unknown | unknown | unknown |
-| `info2` | unknown | unknown | unknown | unknown |
-| `info3` | unknown | unknown | unknown | unknown |
-| `info4` | unknown | unknown | unknown | unknown |
-| `trace` | unknown | unknown | unknown | unknown |
-| `trace2` | unknown | unknown | unknown | unknown |
-| `trace3` | unknown | unknown | unknown | unknown |
-| `trace4` | unknown | unknown | unknown | unknown |
-| `warn` | unknown | unknown | unknown | unknown |
-| `warn2` | unknown | unknown | unknown | unknown |
-| `warn3` | unknown | unknown | unknown | unknown |
-| `warn4` | unknown | unknown | unknown | unknown |
+| `local` | unknown | unknown | unknown | unknown |
+| `none` | unknown | unknown | unknown | unknown |
+| `remote` | unknown | unknown | unknown | unknown |
 </details>
 
 No constraints.
 
 Usages:
 
-* [`ExperimentalLoggerConfig.minimum_severity`](#experimentalloggerconfig)
+* [`ExperimentalComposableRuleBasedSamplerRule.parent`](#experimentalcomposablerulebasedsamplerrule)
 
 <details>
 <summary>JSON Schema</summary>
 
-[JSON Schema Source File](./schema/logger_provider.yaml)
+[JSON Schema Source File](./schema/tracer_provider.yaml)
 <pre>{
   "type": [
     "string",
     "null"
   ],
   "enum": [
-    "trace",
-    "trace2",
-    "trace3",
-    "trace4",
-    "debug",
-    "debug2",
-    "debug3",
-    "debug4",
-    "info",
-    "info2",
-    "info3",
-    "info4",
-    "warn",
-    "warn2",
-    "warn3",
-    "warn4",
-    "error",
-    "error2",
-    "error3",
-    "error4",
-    "fatal",
-    "fatal2",
-    "fatal3",
-    "fatal4"
+    "none",
+    "remote",
+    "local"
   ]
 }</pre>
 </details>
@@ -5193,11 +5452,11 @@ Usages:
 ## ExperimentalTracerConfig <a id="experimentaltracerconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `disabled` | `boolean` | `false` | If omitted, TODO. | No constraints. | Configure if the tracer is enabled or not. |
+| `disabled` | `boolean` | `false` | If omitted, false is used. | No constraints. | Configure if the tracer is enabled or not. |
 
 <details>
 <summary>Language support status</summary>
@@ -5238,12 +5497,12 @@ Usages:
 ## ExperimentalTracerConfigurator <a id="experimentaltracerconfigurator"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `default_config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` | If omitted, TODO. | No constraints. | Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers. |
-| `tracers` | `array` of [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | `false` | If omitted, TODO. | * `minItems`: `1`<br> | Configure tracers. |
+| `default_config` | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | `false` | If omitted, unmatched .tracers use default values as described in ExperimentalTracerConfig. | No constraints. | Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers. |
+| `tracers` | `array` of [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | `false` | If omitted, all tracers use .default_config. | * `minItems`: `1`<br> | Configure tracers. |
 
 <details>
 <summary>Language support status</summary>
@@ -5289,7 +5548,7 @@ Usages:
 ## ExperimentalTracerMatcherAndConfig <a id="experimentaltracermatcherandconfig"></a>
 
 > [!WARNING]
-> This type is [experimental](README.md#experimental-features).
+> This type is [experimental](VERSIONING.md#experimental-features).
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
@@ -5399,9 +5658,11 @@ Latest supported file format: `1.0.0-rc.2`
 | [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
 | [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: supported<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
-| [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `zipkin`: supported<br>* `otlp_file/development`: supported<br> |
+| [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | [`SpanProcessor`](#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](#sumaggregation) | supported |  |  |
@@ -5412,12 +5673,15 @@ Latest supported file format: `1.0.0-rc.2`
 | [`View`](#view) | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | [`ViewSelector`](#viewselector) | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
 | [`ViewStream`](#viewstream) | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| [`ZipkinSpanExporter`](#zipkinspanexporter) | supported |  | * `endpoint`: supported<br>* `timeout`: supported<br> |
 | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
+| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | not_implemented |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | not_applicable |  | * `http`: not_applicable<br>* `peer`: not_applicable<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | not_implemented |  |  |
@@ -5444,7 +5708,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | not_implemented |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
+| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
@@ -5507,9 +5771,11 @@ Latest supported file format: `0.3.0`
 | [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
 | [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `attributes_list`: unknown<br>* `schema_url`: unknown<br>* `detection/development`: unknown<br> |
 | [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `composite/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `probability/development`: unknown<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
-| [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `zipkin`: unknown<br>* `otlp_file/development`: unknown<br> |
+| [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
 | [`SpanProcessor`](#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
 | [`SumAggregation`](#sumaggregation) | unknown |  |  |
@@ -5520,12 +5786,15 @@ Latest supported file format: `0.3.0`
 | [`View`](#view) | unknown |  | * `selector`: unknown<br>* `stream`: unknown<br> |
 | [`ViewSelector`](#viewselector) | unknown |  | * `instrument_name`: unknown<br>* `instrument_type`: unknown<br>* `meter_name`: unknown<br>* `meter_schema_url`: unknown<br>* `meter_version`: unknown<br>* `unit`: unknown<br> |
 | [`ViewStream`](#viewstream) | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br> |
-| [`ZipkinSpanExporter`](#zipkinspanexporter) | unknown |  | * `endpoint`: unknown<br>* `timeout`: unknown<br> |
 | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
+| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
@@ -5552,7 +5821,7 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
+| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
@@ -5615,9 +5884,11 @@ Latest supported file format: `1.0.0-rc.1`
 | [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: ignored<br>* `detection/development`: supported<br> |
 | [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: ignored<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
-| [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `zipkin`: supported<br>* `otlp_file/development`: supported<br> |
+| [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | [`SpanProcessor`](#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](#sumaggregation) | supported |  |  |
@@ -5628,12 +5899,15 @@ Latest supported file format: `1.0.0-rc.1`
 | [`View`](#view) | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | [`ViewSelector`](#viewselector) | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: ignored<br> |
 | [`ViewStream`](#viewstream) | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| [`ZipkinSpanExporter`](#zipkinspanexporter) | supported |  | * `endpoint`: supported<br>* `timeout`: supported<br> |
 | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
+| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | supported |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | supported |  | * `http`: supported<br>* `peer`: supported<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | supported |  |  |
@@ -5660,7 +5934,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | supported |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
+| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | supported |  | * `disabled`: supported<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
@@ -5723,9 +5997,11 @@ Latest supported file format: `1.0.0-rc.2`
 | [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
 | [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `attributes_list`: unknown<br>* `schema_url`: unknown<br>* `detection/development`: unknown<br> |
 | [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `composite/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `probability/development`: unknown<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
-| [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `zipkin`: unknown<br>* `otlp_file/development`: unknown<br> |
+| [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
+| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
 | [`SpanLimits`](#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
 | [`SpanProcessor`](#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
 | [`SumAggregation`](#sumaggregation) | unknown |  |  |
@@ -5736,12 +6012,15 @@ Latest supported file format: `1.0.0-rc.2`
 | [`View`](#view) | unknown |  | * `selector`: unknown<br>* `stream`: unknown<br> |
 | [`ViewSelector`](#viewselector) | unknown |  | * `instrument_name`: unknown<br>* `instrument_type`: unknown<br>* `meter_name`: unknown<br>* `meter_schema_url`: unknown<br>* `meter_version`: unknown<br>* `unit`: unknown<br> |
 | [`ViewStream`](#viewstream) | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br> |
-| [`ZipkinSpanExporter`](#zipkinspanexporter) | unknown |  | * `endpoint`: unknown<br>* `timeout`: unknown<br> |
 | [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
 | [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentBasedSampler`](#experimentalcomposableparentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
+| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
 | [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `probability`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
@@ -5768,7 +6047,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-| [`ExperimentalSeverityNumber`](#experimentalseveritynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
+| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |

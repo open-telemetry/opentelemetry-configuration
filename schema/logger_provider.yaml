@@ -10,12 +10,12 @@ properties:
   limits:
     $ref: "#/$defs/LogRecordLimits"
     description: Configure log record limits. See also attribute_limits.
-    defaultBehavior: TODO
+    defaultBehavior: default values as described in LogRecordLimits are used
   logger_configurator/development:
     $ref: "#/$defs/ExperimentalLoggerConfigurator"
     description: |
       Configure loggers.
-    defaultBehavior: TODO
+    defaultBehavior: all loggers use default values as described in ExperimentalLoggerConfig
 required:
   - processors
 $defs:
@@ -83,20 +83,20 @@ $defs:
       otlp_http:
         $ref: common.yaml#/$defs/OtlpHttpExporter
         description: Configure exporter to be OTLP with HTTP transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       otlp_grpc:
         $ref: common.yaml#/$defs/OtlpGrpcExporter
         description: Configure exporter to be OTLP with gRPC transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       otlp_file/development:
         $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
         description: |
           Configure exporter to be OTLP with file transport.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       console:
         $ref: common.yaml#/$defs/ConsoleExporter
         description: Configure exporter to be console.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   LogRecordLimits:
     type: object
@@ -132,11 +132,11 @@ $defs:
       batch:
         $ref: "#/$defs/BatchLogRecordProcessor"
         description: Configure a batch log record processor.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
       simple:
         $ref: "#/$defs/SimpleLogRecordProcessor"
         description: Configure a simple log record processor.
-        defaultBehavior: TODO
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   ExperimentalLoggerConfigurator:
     type:
@@ -146,14 +146,14 @@ $defs:
       default_config:
         $ref: "#/$defs/ExperimentalLoggerConfig"
         description: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
-        defaultBehavior: TODO
+        defaultBehavior: unmatched .loggers use default values as described in ExperimentalLoggerConfig
       loggers:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalLoggerMatcherAndConfig"
         description: Configure loggers.
-        defaultBehavior: TODO
+        defaultBehavior: all loggers use .default_config
   ExperimentalLoggerMatcherAndConfig:
     type:
       - object
@@ -186,11 +186,10 @@ $defs:
           Configure if the logger is enabled or not.
         defaultBehavior: false is used
       minimum_severity:
-        $ref: "#/$defs/ExperimentalSeverityNumber"
+        $ref: "common.yaml#/$defs/SeverityNumber"
         description: |
           Configure severity filtering.
           Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.
-          Values include: TRACE, TRACE2, TRACE3, TRACE4, DEBUG, DEBUG2, DEBUG3, DEBUG4, INFO, INFO2, INFO3, INFO4, WARN, WARN2, WARN3, WARN4, ERROR, ERROR2, ERROR3, ERROR4, FATAL, FATAL2, FATAL3, FATAL4.
         defaultBehavior: severity filtering is not applied
       trace_based:
         type:
@@ -200,57 +199,3 @@ $defs:
           Configure trace based filtering.
           If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.
         defaultBehavior: trace based filtering is not applied
-  ExperimentalSeverityNumber:
-    type:
-      - string
-      - "null"
-    enum:
-      - trace
-      - trace2
-      - trace3
-      - trace4
-      - debug
-      - debug2
-      - debug3
-      - debug4
-      - info
-      - info2
-      - info3
-      - info4
-      - warn
-      - warn2
-      - warn3
-      - warn4
-      - error
-      - error2
-      - error3
-      - error4
-      - fatal
-      - fatal2
-      - fatal3
-      - fatal4
-    enumDescriptions:
-      debug: DEBUG, severity number 5.
-      debug2: DEBUG2, severity number 6.
-      debug3: DEBUG3, severity number 7.
-      debug4: DEBUG4, severity number 8.
-      error: ERROR, severity number 17.
-      error2: ERROR2, severity number 18.
-      error3: ERROR3, severity number 19.
-      error4: ERROR4, severity number 20.
-      fatal: FATAL, severity number 21.
-      fatal2: FATAL2, severity number 22.
-      fatal3: FATAL3, severity number 23.
-      fatal4: FATAL4, severity number 24.
-      info: INFO, severity number 9.
-      info2: INFO2, severity number 10.
-      info3: INFO3, severity number 11.
-      info4: INFO4, severity number 12.
-      trace: TRACE, severity number 1.
-      trace2: TRACE2, severity number 2.
-      trace3: TRACE3, severity number 3.
-      trace4: TRACE4, severity number 4.
-      warn: WARN, severity number 13.
-      warn2: WARN2, severity number 14.
-      warn3: WARN3, severity number 15.
-      warn4: WARN4, severity number 16.
