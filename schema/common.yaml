@@ -81,7 +81,7 @@ $defs:
           - "null"
         description: |
           Configure compression.
-          Values include: gzip, none. Implementations may support other compression algorithms.
+          Known values include: gzip, none. Implementations may support other compression algorithms.
         defaultBehavior: none is used
       timeout:
         type:
@@ -96,7 +96,7 @@ $defs:
         $ref: "#/$defs/OtlpHttpEncoding"
         description: |
           Configure the encoding used for messages. 
-          Values include: protobuf, json. Implementations may not support json.
+          Implementations may not support json.
         defaultBehavior: protobuf is used
   OtlpHttpEncoding:
     type:
@@ -148,7 +148,7 @@ $defs:
           - "null"
         description: |
           Configure compression.
-          Values include: gzip, none. Implementations may support other compression algorithms.
+          Known values include: gzip, none. Implementations may support other compression algorithms.
         defaultBehavior: none is used
       timeout:
         type:

@@ -63,7 +63,6 @@ $defs:
         $ref: "#/$defs/AttributeType"
         description: |
           The attribute type.
-          Values include: string, bool, int, double, string_array, bool_array, int_array, double_array.
         defaultBehavior: string is used
     required:
       - name
