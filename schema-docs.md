@@ -2783,60 +2783,60 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `DEBUG` | DEBUG, severity number 5. |
-| `DEBUG2` | DEBUG2, severity number 6. |
-| `DEBUG3` | DEBUG3, severity number 7. |
-| `DEBUG4` | DEBUG4, severity number 8. |
-| `ERROR` | ERROR, severity number 17. |
-| `ERROR2` | ERROR2, severity number 18. |
-| `ERROR3` | ERROR3, severity number 19. |
-| `ERROR4` | ERROR4, severity number 20. |
-| `FATAL` | FATAL, severity number 21. |
-| `FATAL2` | FATAL2, severity number 22. |
-| `FATAL3` | FATAL3, severity number 23. |
-| `FATAL4` | FATAL4, severity number 24. |
-| `INFO` | INFO, severity number 9. |
-| `INFO2` | INFO2, severity number 10. |
-| `INFO3` | INFO3, severity number 11. |
-| `INFO4` | INFO4, severity number 12. |
-| `TRACE` | TRACE, severity number 1. |
-| `TRACE2` | TRACE2, severity number 2. |
-| `TRACE3` | TRACE3, severity number 3. |
-| `TRACE4` | TRACE4, severity number 4. |
-| `WARN` | WARN, severity number 13. |
-| `WARN2` | WARN2, severity number 14. |
-| `WARN3` | WARN3, severity number 15. |
-| `WARN4` | WARN4, severity number 16. |
+| `debug` | debug, severity number 5. |
+| `debug2` | debug2, severity number 6. |
+| `debug3` | debug3, severity number 7. |
+| `debug4` | debug4, severity number 8. |
+| `error` | error, severity number 17. |
+| `error2` | error2, severity number 18. |
+| `error3` | error3, severity number 19. |
+| `error4` | error4, severity number 20. |
+| `fatal` | fatal, severity number 21. |
+| `fatal2` | fatal2, severity number 22. |
+| `fatal3` | fatal3, severity number 23. |
+| `fatal4` | fatal4, severity number 24. |
+| `info` | info, severity number 9. |
+| `info2` | info2, severity number 10. |
+| `info3` | info3, severity number 11. |
+| `info4` | info4, severity number 12. |
+| `trace` | trace, severity number 1. |
+| `trace2` | trace2, severity number 2. |
+| `trace3` | trace3, severity number 3. |
+| `trace4` | trace4, severity number 4. |
+| `warn` | warn, severity number 13. |
+| `warn2` | warn2, severity number 14. |
+| `warn3` | warn3, severity number 15. |
+| `warn4` | warn4, severity number 16. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `DEBUG` | unknown | unknown | unknown | unknown |
-| `DEBUG2` | unknown | unknown | unknown | unknown |
-| `DEBUG3` | unknown | unknown | unknown | unknown |
-| `DEBUG4` | unknown | unknown | unknown | unknown |
-| `ERROR` | unknown | unknown | unknown | unknown |
-| `ERROR2` | unknown | unknown | unknown | unknown |
-| `ERROR3` | unknown | unknown | unknown | unknown |
-| `ERROR4` | unknown | unknown | unknown | unknown |
-| `FATAL` | unknown | unknown | unknown | unknown |
-| `FATAL2` | unknown | unknown | unknown | unknown |
-| `FATAL3` | unknown | unknown | unknown | unknown |
-| `FATAL4` | unknown | unknown | unknown | unknown |
-| `INFO` | unknown | unknown | unknown | unknown |
-| `INFO2` | unknown | unknown | unknown | unknown |
-| `INFO3` | unknown | unknown | unknown | unknown |
-| `INFO4` | unknown | unknown | unknown | unknown |
-| `TRACE` | unknown | unknown | unknown | unknown |
-| `TRACE2` | unknown | unknown | unknown | unknown |
-| `TRACE3` | unknown | unknown | unknown | unknown |
-| `TRACE4` | unknown | unknown | unknown | unknown |
-| `WARN` | unknown | unknown | unknown | unknown |
-| `WARN2` | unknown | unknown | unknown | unknown |
-| `WARN3` | unknown | unknown | unknown | unknown |
-| `WARN4` | unknown | unknown | unknown | unknown |
+| `debug` | unknown | unknown | unknown | unknown |
+| `debug2` | unknown | unknown | unknown | unknown |
+| `debug3` | unknown | unknown | unknown | unknown |
+| `debug4` | unknown | unknown | unknown | unknown |
+| `error` | unknown | unknown | unknown | unknown |
+| `error2` | unknown | unknown | unknown | unknown |
+| `error3` | unknown | unknown | unknown | unknown |
+| `error4` | unknown | unknown | unknown | unknown |
+| `fatal` | unknown | unknown | unknown | unknown |
+| `fatal2` | unknown | unknown | unknown | unknown |
+| `fatal3` | unknown | unknown | unknown | unknown |
+| `fatal4` | unknown | unknown | unknown | unknown |
+| `info` | unknown | unknown | unknown | unknown |
+| `info2` | unknown | unknown | unknown | unknown |
+| `info3` | unknown | unknown | unknown | unknown |
+| `info4` | unknown | unknown | unknown | unknown |
+| `trace` | unknown | unknown | unknown | unknown |
+| `trace2` | unknown | unknown | unknown | unknown |
+| `trace3` | unknown | unknown | unknown | unknown |
+| `trace4` | unknown | unknown | unknown | unknown |
+| `warn` | unknown | unknown | unknown | unknown |
+| `warn2` | unknown | unknown | unknown | unknown |
+| `warn3` | unknown | unknown | unknown | unknown |
+| `warn4` | unknown | unknown | unknown | unknown |
 </details>
 
 No constraints.
@@ -2856,30 +2856,30 @@ Usages:
     "null"
   ],
   "enum": [
-    "TRACE",
-    "TRACE2",
-    "TRACE3",
-    "TRACE4",
-    "DEBUG",
-    "DEBUG2",
-    "DEBUG3",
-    "DEBUG4",
-    "INFO",
-    "INFO2",
-    "INFO3",
-    "INFO4",
-    "WARN",
-    "WARN2",
-    "WARN3",
-    "WARN4",
-    "ERROR",
-    "ERROR2",
-    "ERROR3",
-    "ERROR4",
-    "FATAL",
-    "FATAL2",
-    "FATAL3",
-    "FATAL4"
+    "trace",
+    "trace2",
+    "trace3",
+    "trace4",
+    "debug",
+    "debug2",
+    "debug3",
+    "debug4",
+    "info",
+    "info2",
+    "info3",
+    "info4",
+    "warn",
+    "warn2",
+    "warn3",
+    "warn4",
+    "error",
+    "error2",
+    "error3",
+    "error4",
+    "fatal",
+    "fatal2",
+    "fatal3",
+    "fatal4"
   ]
 }</pre>
 </details>
@@ -5140,7 +5140,7 @@ Usages:
 |---|---|---|---|---|---|
 | `host` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, localhost is used. | No constraints. | Configure host.<br> |
 | `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 9464 is used. | No constraints. | Configure port.<br> |
-| `translation_strategy` | [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | `false` | If omitted, UnderscoreEscapingWithSuffixes is used. | No constraints. | Configure how Prometheus metrics are exposed. |
+| `translation_strategy` | [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | `false` | If omitted, underscore_escaping_with_suffixes is used. | No constraints. | Configure how metric names are translated to Prometheus metric names. |
 | `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, no resource attributes are added. | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
 | `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a scope info metric.<br> |
 | `without_target_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a target info metric for the resource.<br> |
@@ -5220,20 +5220,20 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `NoTranslation` | Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered. |
-| `NoUTF8EscapingWithSuffixes` | Special character escaping is disabled. Type and unit suffixes are enabled. |
-| `UnderscoreEscapingWithoutSuffixes` | Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility. |
-| `UnderscoreEscapingWithSuffixes` | Special character escaping is enabled. Type and unit suffixes are enabled. |
+| `no_translation` | Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered. |
+| `no_utf8_escaping_with_suffixes` | Special character escaping is disabled. Type and unit suffixes are enabled. |
+| `underscore_escaping_with_suffixes` | Special character escaping is enabled. Type and unit suffixes are enabled. |
+| `underscore_escaping_without_suffixes` | Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
 |---|---|---|---|---|
-| `NoTranslation` | unknown | unknown | unknown | unknown |
-| `NoUTF8EscapingWithSuffixes` | unknown | unknown | unknown | unknown |
-| `UnderscoreEscapingWithoutSuffixes` | unknown | unknown | unknown | unknown |
-| `UnderscoreEscapingWithSuffixes` | unknown | unknown | unknown | unknown |
+| `no_translation` | unknown | unknown | unknown | unknown |
+| `no_utf8_escaping_with_suffixes` | unknown | unknown | unknown | unknown |
+| `underscore_escaping_with_suffixes` | unknown | unknown | unknown | unknown |
+| `underscore_escaping_without_suffixes` | unknown | unknown | unknown | unknown |
 </details>
 
 No constraints.
@@ -5252,10 +5252,10 @@ Usages:
     "null"
   ],
   "enum": [
-    "UnderscoreEscapingWithSuffixes",
-    "UnderscoreEscapingWithoutSuffixes",
-    "NoUTF8EscapingWithSuffixes",
-    "NoTranslation"
+    "underscore_escaping_with_suffixes",
+    "underscore_escaping_without_suffixes",
+    "no_utf8_escaping_with_suffixes",
+    "no_translation"
   ]
 }</pre>
 </details>
@@ -5658,7 +5658,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
 | [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: supported<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
@@ -5704,7 +5704,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | not_implemented |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: supported<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | not_implemented |  |  |
@@ -5771,7 +5771,7 @@ Latest supported file format: `0.3.0`
 | [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
 | [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `attributes_list`: unknown<br>* `schema_url`: unknown<br>* `detection/development`: unknown<br> |
 | [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `composite/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `probability/development`: unknown<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
@@ -5817,7 +5817,7 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | unknown |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | unknown |  | * `host`: unknown<br>* `port`: unknown<br>* `translation_strategy`: unknown<br>* `with_resource_constant_labels`: unknown<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
@@ -5884,7 +5884,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: ignored<br>* `detection/development`: supported<br> |
 | [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: ignored<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
@@ -5930,7 +5930,7 @@ Latest supported file format: `1.0.0-rc.1`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | ignored |  | * `ratio`: ignored<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | supported |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: not_implemented<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: ignored<br>* `without_target_info`: ignored<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | supported |  |  |
@@ -5997,7 +5997,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
 | [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `attributes_list`: unknown<br>* `schema_url`: unknown<br>* `detection/development`: unknown<br> |
 | [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `composite/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `probability/development`: unknown<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `DEBUG`: unknown<br>* `DEBUG2`: unknown<br>* `DEBUG3`: unknown<br>* `DEBUG4`: unknown<br>* `ERROR`: unknown<br>* `ERROR2`: unknown<br>* `ERROR3`: unknown<br>* `ERROR4`: unknown<br>* `FATAL`: unknown<br>* `FATAL2`: unknown<br>* `FATAL3`: unknown<br>* `FATAL4`: unknown<br>* `INFO`: unknown<br>* `INFO2`: unknown<br>* `INFO3`: unknown<br>* `INFO4`: unknown<br>* `TRACE`: unknown<br>* `TRACE2`: unknown<br>* `TRACE3`: unknown<br>* `TRACE4`: unknown<br>* `WARN`: unknown<br>* `WARN2`: unknown<br>* `WARN3`: unknown<br>* `WARN4`: unknown<br> |
+| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
 | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
 | [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
@@ -6043,7 +6043,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
 | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | unknown |  |  |
 | [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | unknown |  | * `host`: unknown<br>* `port`: unknown<br>* `translation_strategy`: unknown<br>* `with_resource_constant_labels`: unknown<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `NoTranslation`: unknown<br>* `NoUTF8EscapingWithSuffixes`: unknown<br>* `UnderscoreEscapingWithoutSuffixes`: unknown<br>* `UnderscoreEscapingWithSuffixes`: unknown<br> |
+| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
 | [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
