@@ -272,22 +272,22 @@ $defs:
         defaultBehavior: no resource attributes are added
       translation_strategy:
         $ref: "#/$defs/ExperimentalPrometheusTranslationStrategy"
-        description: Configure how Prometheus metrics are exposed.
-        defaultBehavior: UnderscoreEscapingWithSuffixes is used
+        description: Configure how metric names are translated to Prometheus metric names.
+        defaultBehavior: underscore_escaping_with_suffixes is used
   ExperimentalPrometheusTranslationStrategy:
     type:
       - string
       - "null"
     enum:
-      - UnderscoreEscapingWithSuffixes
-      - UnderscoreEscapingWithoutSuffixes
-      - NoUTF8EscapingWithSuffixes
-      - NoTranslation
+      - underscore_escaping_with_suffixes
+      - underscore_escaping_without_suffixes
+      - no_utf8_escaping_with_suffixes
+      - no_translation
     enumDescriptions:
-      NoTranslation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.
-      NoUTF8EscapingWithSuffixes: Special character escaping is disabled. Type and unit suffixes are enabled.
-      UnderscoreEscapingWithoutSuffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.
-      UnderscoreEscapingWithSuffixes: Special character escaping is enabled. Type and unit suffixes are enabled.
+      no_translation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.
+      no_utf8_escaping_with_suffixes: Special character escaping is disabled. Type and unit suffixes are enabled.
+      underscore_escaping_without_suffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.
+      underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.
   MetricReader:
     type: object
     additionalProperties: false

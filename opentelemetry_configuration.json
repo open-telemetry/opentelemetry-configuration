@@ -18,7 +18,7 @@
     },
     "log_level": {
       "$ref": "#/$defs/SeverityNumber",
-      "description": "Configure the log level of the internal logger used by the SDK.\nValues include:\n* DEBUG: DEBUG, severity number 5.\n* DEBUG2: DEBUG2, severity number 6.\n* DEBUG3: DEBUG3, severity number 7.\n* DEBUG4: DEBUG4, severity number 8.\n* ERROR: ERROR, severity number 17.\n* ERROR2: ERROR2, severity number 18.\n* ERROR3: ERROR3, severity number 19.\n* ERROR4: ERROR4, severity number 20.\n* FATAL: FATAL, severity number 21.\n* FATAL2: FATAL2, severity number 22.\n* FATAL3: FATAL3, severity number 23.\n* FATAL4: FATAL4, severity number 24.\n* INFO: INFO, severity number 9.\n* INFO2: INFO2, severity number 10.\n* INFO3: INFO3, severity number 11.\n* INFO4: INFO4, severity number 12.\n* TRACE: TRACE, severity number 1.\n* TRACE2: TRACE2, severity number 2.\n* TRACE3: TRACE3, severity number 3.\n* TRACE4: TRACE4, severity number 4.\n* WARN: WARN, severity number 13.\n* WARN2: WARN2, severity number 14.\n* WARN3: WARN3, severity number 15.\n* WARN4: WARN4, severity number 16.\nIf omitted, INFO is used.\n"
+      "description": "Configure the log level of the internal logger used by the SDK.\nValues include:\n* debug: debug, severity number 5.\n* debug2: debug2, severity number 6.\n* debug3: debug3, severity number 7.\n* debug4: debug4, severity number 8.\n* error: error, severity number 17.\n* error2: error2, severity number 18.\n* error3: error3, severity number 19.\n* error4: error4, severity number 20.\n* fatal: fatal, severity number 21.\n* fatal2: fatal2, severity number 22.\n* fatal3: fatal3, severity number 23.\n* fatal4: fatal4, severity number 24.\n* info: info, severity number 9.\n* info2: info2, severity number 10.\n* info3: info3, severity number 11.\n* info4: info4, severity number 12.\n* trace: trace, severity number 1.\n* trace2: trace2, severity number 2.\n* trace3: trace3, severity number 3.\n* trace4: trace4, severity number 4.\n* warn: warn, severity number 13.\n* warn2: warn2, severity number 14.\n* warn3: warn3, severity number 15.\n* warn4: warn4, severity number 16.\nIf omitted, INFO is used.\n"
     },
     "attribute_limits": {
       "$ref": "#/$defs/AttributeLimits",
@@ -427,7 +427,7 @@
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: TODO\n* explicit_bucket_histogram: TODO\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.\n* explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -541,7 +541,7 @@
           "items": {
             "$ref": "#/$defs/SpanKind"
           },
-          "description": "The span kinds to match. If the span's kind matches any of these, it matches.\nIf omitted, ignore.\n"
+          "description": "The span kinds to match. If the span's kind matches any of these, it matches.\nValues include:\n* client: client, a client span.\n* consumer: consumer, a consumer span.\n* internal: internal, an internal span.\n* producer: producer, a producer span.\n* server: server, a server span.\nIf omitted, ignore.\n"
         },
         "parent": {
           "type": "array",
@@ -549,7 +549,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalSpanParent"
           },
-          "description": "The parent span types to match.\nIf omitted, ignore.\n"
+          "description": "The parent span types to match.\nValues include:\n* local: local, a local parent.\n* none: none, no parent, i.e., the trace root.\n* remote: remote, a remote parent.\nIf omitted, ignore.\n"
         },
         "sampler": {
           "$ref": "#/$defs/ExperimentalComposableSampler",
@@ -836,7 +836,7 @@
         },
         "minimum_severity": {
           "$ref": "#/$defs/SeverityNumber",
-          "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include:\n* DEBUG: DEBUG, severity number 5.\n* DEBUG2: DEBUG2, severity number 6.\n* DEBUG3: DEBUG3, severity number 7.\n* DEBUG4: DEBUG4, severity number 8.\n* ERROR: ERROR, severity number 17.\n* ERROR2: ERROR2, severity number 18.\n* ERROR3: ERROR3, severity number 19.\n* ERROR4: ERROR4, severity number 20.\n* FATAL: FATAL, severity number 21.\n* FATAL2: FATAL2, severity number 22.\n* FATAL3: FATAL3, severity number 23.\n* FATAL4: FATAL4, severity number 24.\n* INFO: INFO, severity number 9.\n* INFO2: INFO2, severity number 10.\n* INFO3: INFO3, severity number 11.\n* INFO4: INFO4, severity number 12.\n* TRACE: TRACE, severity number 1.\n* TRACE2: TRACE2, severity number 2.\n* TRACE3: TRACE3, severity number 3.\n* TRACE4: TRACE4, severity number 4.\n* WARN: WARN, severity number 13.\n* WARN2: WARN2, severity number 14.\n* WARN3: WARN3, severity number 15.\n* WARN4: WARN4, severity number 16.\nIf omitted, severity filtering is not applied.\n"
+          "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include:\n* debug: debug, severity number 5.\n* debug2: debug2, severity number 6.\n* debug3: debug3, severity number 7.\n* debug4: debug4, severity number 8.\n* error: error, severity number 17.\n* error2: error2, severity number 18.\n* error3: error3, severity number 19.\n* error4: error4, severity number 20.\n* fatal: fatal, severity number 21.\n* fatal2: fatal2, severity number 22.\n* fatal3: fatal3, severity number 23.\n* fatal4: fatal4, severity number 24.\n* info: info, severity number 9.\n* info2: info2, severity number 10.\n* info3: info3, severity number 11.\n* info4: info4, severity number 12.\n* trace: trace, severity number 1.\n* trace2: trace2, severity number 2.\n* trace3: trace3, severity number 3.\n* trace4: trace4, severity number 4.\n* warn: warn, severity number 13.\n* warn2: warn2, severity number 14.\n* warn3: warn3, severity number 15.\n* warn4: warn4, severity number 16.\nIf omitted, severity filtering is not applied.\n"
         },
         "trace_based": {
           "type": [
@@ -981,7 +981,7 @@
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: TODO\n* explicit_bucket_histogram: TODO\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.\n* explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -1083,7 +1083,7 @@
         },
         "translation_strategy": {
           "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
-          "description": "Configure how Prometheus metrics are exposed.\nValues include:\n* NoTranslation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.\n* NoUTF8EscapingWithSuffixes: Special character escaping is disabled. Type and unit suffixes are enabled.\n* UnderscoreEscapingWithoutSuffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.\n* UnderscoreEscapingWithSuffixes: Special character escaping is enabled. Type and unit suffixes are enabled.\nIf omitted, UnderscoreEscapingWithSuffixes is used.\n"
+          "description": "Configure how metric names are translated to Prometheus metric names.\nValues include:\n* no_translation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.\n* no_utf8_escaping_with_suffixes: Special character escaping is disabled. Type and unit suffixes are enabled.\n* underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.\n* underscore_escaping_without_suffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.\nIf omitted, underscore_escaping_with_suffixes is used.\n"
         }
       }
     },
@@ -1093,10 +1093,10 @@
         "null"
       ],
       "enum": [
-        "UnderscoreEscapingWithSuffixes",
-        "UnderscoreEscapingWithoutSuffixes",
-        "NoUTF8EscapingWithSuffixes",
-        "NoTranslation"
+        "underscore_escaping_with_suffixes",
+        "underscore_escaping_without_suffixes",
+        "no_utf8_escaping_with_suffixes",
+        "no_translation"
       ]
     },
     "ExperimentalResourceDetection": {
@@ -1685,7 +1685,7 @@
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: TODO\n* explicit_bucket_histogram: TODO\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.\n* explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -1811,7 +1811,7 @@
         },
         "default_histogram_aggregation": {
           "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
-          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: TODO\n* explicit_bucket_histogram: TODO\nIf omitted, explicit_bucket_histogram is used.\n"
+          "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.\n* explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
     },
@@ -2056,30 +2056,30 @@
         "null"
       ],
       "enum": [
-        "TRACE",
-        "TRACE2",
-        "TRACE3",
-        "TRACE4",
-        "DEBUG",
-        "DEBUG2",
-        "DEBUG3",
-        "DEBUG4",
-        "INFO",
-        "INFO2",
-        "INFO3",
-        "INFO4",
-        "WARN",
-        "WARN2",
-        "WARN3",
-        "WARN4",
-        "ERROR",
-        "ERROR2",
-        "ERROR3",
-        "ERROR4",
-        "FATAL",
-        "FATAL2",
-        "FATAL3",
-        "FATAL4"
+        "trace",
+        "trace2",
+        "trace3",
+        "trace4",
+        "debug",
+        "debug2",
+        "debug3",
+        "debug4",
+        "info",
+        "info2",
+        "info3",
+        "info4",
+        "warn",
+        "warn2",
+        "warn3",
+        "warn4",
+        "error",
+        "error2",
+        "error3",
+        "error4",
+        "fatal",
+        "fatal2",
+        "fatal3",
+        "fatal4"
       ]
     },
     "SimpleLogRecordProcessor": {
