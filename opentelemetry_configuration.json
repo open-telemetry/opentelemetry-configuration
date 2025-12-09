@@ -47,6 +47,10 @@
     "instrumentation/development": {
       "$ref": "#/$defs/ExperimentalInstrumentation",
       "description": "Configure instrumentation.\nIf omitted, instrumentation defaults are used.\n"
+    },
+    "distribution": {
+      "$ref": "#/$defs/Distribution",
+      "description": "Defines configuration parameters specific to a particular OpenTelemetry distribution or vendor.\nThis section provides a standardized location for distribution-specific settings\nthat are not part of the OpenTelemetry configuration model.\nIt allows vendors to expose their own extensions and general configuration options.\nIf omitted, distribution defaults are used.\n"
     }
   },
   "required": [
@@ -437,6 +441,13 @@
         "null"
       ],
       "additionalProperties": false
+    },
+    "Distribution": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      },
+      "minProperties": 1
     },
     "DropAggregation": {
       "type": [

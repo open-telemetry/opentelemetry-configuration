@@ -436,3 +436,6 @@ instrumentation/development:
   swift:
     example:
       property: "value"
+distribution:
+  example:
+    property: "value"
