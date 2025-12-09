@@ -37,7 +37,7 @@
 # see: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md
 file_format: "1.0-rc.3"
 disabled: ${OTEL_SDK_DISABLED:-false}
-log_level: INFO
+log_level: info
 resource:
   attributes:
     - name: service.name

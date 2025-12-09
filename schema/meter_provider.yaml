@@ -20,7 +20,6 @@ properties:
     $ref: "#/$defs/ExemplarFilter"
     description: |
       Configure the exemplar filter. 
-      Values include: trace_based, always_on, always_off. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#metrics-sdk-configuration.
     defaultBehavior: trace_based is used
   meter_configurator/development:
     $ref: "#/$defs/ExperimentalMeterConfigurator"
@@ -273,29 +272,22 @@ $defs:
         defaultBehavior: no resource attributes are added
       translation_strategy:
         $ref: "#/$defs/ExperimentalPrometheusTranslationStrategy"
-        description: |
-          Configure how Prometheus metrics are exposed. Values include:
-
-           * UnderscoreEscapingWithSuffixes, the default. This fully escapes metric names for classic Prometheus metric name compatibility, and includes appending type and unit suffixes.
-           * UnderscoreEscapingWithoutSuffixes, metric names will continue to escape special characters to _, but suffixes won't be attached.
-           * NoUTF8EscapingWithSuffixes will disable changing special characters to _. Special suffixes like units and _total for counters will be attached.
-           * NoTranslation. This strategy bypasses all metric and label name translation, passing them through unaltered.
-
-        defaultBehavior: UnderscoreEscapingWithSuffixes is used
+        description: Configure how metric names are translated to Prometheus metric names.
+        defaultBehavior: underscore_escaping_with_suffixes is used
   ExperimentalPrometheusTranslationStrategy:
     type:
       - string
       - "null"
     enum:
-      - UnderscoreEscapingWithSuffixes
-      - UnderscoreEscapingWithoutSuffixes
-      - NoUTF8EscapingWithSuffixes
-      - NoTranslation
+      - underscore_escaping_with_suffixes
+      - underscore_escaping_without_suffixes
+      - no_utf8_escaping_with_suffixes
+      - no_translation
     enumDescriptions:
-      NoTranslation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.
-      NoUTF8EscapingWithSuffixes: Special character escaping is disabled. Type and unit suffixes are enabled.
-      UnderscoreEscapingWithoutSuffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.
-      UnderscoreEscapingWithSuffixes: Special character escaping is enabled. Type and unit suffixes are enabled.
+      no_translation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.
+      no_utf8_escaping_with_suffixes: Special character escaping is disabled. Type and unit suffixes are enabled.
+      underscore_escaping_without_suffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.
+      underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.
   MetricReader:
     type: object
     additionalProperties: false
@@ -330,8 +322,8 @@ $defs:
       - explicit_bucket_histogram
       - base2_exponential_bucket_histogram
     enumDescriptions:
-      base2_exponential_bucket_histogram: TODO
-      explicit_bucket_histogram: TODO
+      base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.
+      explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.
   OtlpHttpMetricExporter:
     type:
       - object
@@ -372,7 +364,7 @@ $defs:
           - "null"
         description: |
           Configure compression.
-          Values include: gzip, none. Implementations may support other compression algorithms.
+          Known values include: gzip, none. Implementations may support other compression algorithms.
         defaultBehavior: none is used
       timeout:
         type:
@@ -387,19 +379,17 @@ $defs:
         $ref: common.yaml#/$defs/OtlpHttpEncoding
         description: |
           Configure the encoding used for messages. 
-          Values include: protobuf, json. Implementations may not support json.
+          Implementations may not support json.
         defaultBehavior: protobuf is used
       temporality_preference:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
           Configure temporality preference.
-          Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
-          Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: explicit_bucket_histogram is used
   OtlpGrpcMetricExporter:
     type:
@@ -441,7 +431,7 @@ $defs:
           - "null"
         description: |
           Configure compression.
-          Values include: gzip, none. Implementations may support other compression algorithms.
+          Known values include: gzip, none. Implementations may support other compression algorithms.
         defaultBehavior: none is used
       timeout:
         type:
@@ -456,13 +446,11 @@ $defs:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
           Configure temporality preference.
-          Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
-          Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: explicit_bucket_histogram is used
   ExperimentalOtlpFileMetricExporter:
     type:
@@ -482,13 +470,11 @@ $defs:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
           Configure temporality preference.
-          Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
-          Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: explicit_bucket_histogram is used
   ConsoleMetricExporter:
     type:
@@ -500,13 +486,11 @@ $defs:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
           Configure temporality preference.
-          Values include: cumulative, delta, low_memory. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
         description: |
           Configure default histogram aggregation.
-          Values include: explicit_bucket_histogram, base2_exponential_bucket_histogram. For behavior of values, see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md.
         defaultBehavior: explicit_bucket_histogram is used
   View:
     type: object
@@ -538,7 +522,6 @@ $defs:
         $ref: "#/$defs/InstrumentType"
         description: |
           Configure instrument type selection criteria.
-          Values include: counter, gauge, histogram, observable_counter, observable_gauge, observable_up_down_counter, up_down_counter.
         defaultBehavior: all instrument types match
       unit:
         type:
@@ -610,7 +593,6 @@ $defs:
         $ref: "#/$defs/Aggregation"
         description: |
           Configure aggregation of the resulting stream(s). 
-          Values include: default, drop, explicit_bucket_histogram, base2_exponential_bucket_histogram, last_value, sum. For behavior of values see https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation.
         defaultBehavior: default is used
       aggregation_cardinality_limit:
         type:
