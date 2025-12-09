@@ -88,6 +88,8 @@ see [project tooling docs](CONTRIBUTING.md#json-schema-source-and-output) for mo
   ([#406](https://github.com/open-telemetry/opentelemetry-configuration/pull/406))
 * **BREAKING (low-impact):** Break out dedicated type for prometheus translation strategy
   ([#415](https://github.com/open-telemetry/opentelemetry-configuration/pull/415))
+* **BREAKING (low-impact):** Add schema modeling guidance for enum values as lower_snake_case
+  ([#445](https://github.com/open-telemetry/opentelemetry-configuration/pull/445))
 * Replace patternProperties with additionalProperties for improved type safety
   ([#323](https://github.com/open-telemetry/opentelemetry-configuration/pull/323), 
   [#347](https://github.com/open-telemetry/opentelemetry-configuration/pull/347))
@@ -106,6 +108,8 @@ see [project tooling docs](CONTRIBUTING.md#json-schema-source-and-output) for mo
   ([#455](https://github.com/open-telemetry/opentelemetry-configuration/pull/455))
 * Add schema for rule based sampler
   ([#410](https://github.com/open-telemetry/opentelemetry-configuration/pull/410))
+* Add Distribution section for vendor-specific settings
+  ([#433](https://github.com/open-telemetry/opentelemetry-configuration/pull/433))
 
 ### Tooling
 
@@ -113,8 +117,7 @@ see [project tooling docs](CONTRIBUTING.md#json-schema-source-and-output) for mo
   ([#319](https://github.com/open-telemetry/opentelemetry-configuration/pull/319),
   [#351](https://github.com/open-telemetry/opentelemetry-configuration/pull/351),
   [#379](https://github.com/open-telemetry/opentelemetry-configuration/pull/379),
-  [#434](https://github.com/open-telemetry/opentelemetry-configuration/pull/434)
-)
+  [#434](https://github.com/open-telemetry/opentelemetry-configuration/pull/434))
 * Track additional schema meta data, including default behavior and descriptions. Separate schema source and compile into single output file. Add additional schema validation. Generate documentation from schema.
   ([#312](https://github.com/open-telemetry/opentelemetry-configuration/pull/312),
   [#350](https://github.com/open-telemetry/opentelemetry-configuration/pull/350),
@@ -139,8 +142,9 @@ see [project tooling docs](CONTRIBUTING.md#json-schema-source-and-output) for mo
   [#443](https://github.com/open-telemetry/opentelemetry-configuration/pull/443),
   [#444](https://github.com/open-telemetry/opentelemetry-configuration/pull/444),
   [#442](https://github.com/open-telemetry/opentelemetry-configuration/pull/442),
-  [#440](https://github.com/open-telemetry/opentelemetry-configuration/pull/440))
-)
+  [#440](https://github.com/open-telemetry/opentelemetry-configuration/pull/440),
+  [#451](https://github.com/open-telemetry/opentelemetry-configuration/pull/451),
+  [#450](https://github.com/open-telemetry/opentelemetry-configuration/pull/450))
 * Document what you see is what you get philosophy as schema modeling rule
   ([#377](https://github.com/open-telemetry/opentelemetry-configuration/pull/377))
 * Add contributing / release guidance for breaking changes
