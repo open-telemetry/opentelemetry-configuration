@@ -262,11 +262,6 @@ tracer_provider:
         exporter:
           otlp_file/development:
             output_stream: stdout
-    - batch:
-        exporter:
-          zipkin:
-            endpoint: http://localhost:9411/api/v2/spans
-            timeout: 10000
     - simple:
         exporter:
           console:
