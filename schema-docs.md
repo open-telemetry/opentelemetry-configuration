@@ -2883,19 +2883,19 @@ Usages:
 Snippets:
 
 <details>
-<summary>Parent Based</summary>
+<summary>Parent Based Typical</summary>
 
-[Snippet Source File](./snippets/Sampler_parent_based.yaml)
+[Snippet Source File](./snippets/Sampler_parent_based_typical.yaml)
 ```yaml
+# configure the parent based sampler to sample 1% of root spans, and follow the sampling decision of parent spans
 parent_based:
   root:
     trace_id_ratio_based:
-      ratio: 0.0001
+      ratio: 0.01
   remote_parent_sampled:
     always_on:
   remote_parent_not_sampled:
-    probability/development:
-      ratio: 0.01
+    always_off:
   local_parent_sampled:
     always_on:
   local_parent_not_sampled:
