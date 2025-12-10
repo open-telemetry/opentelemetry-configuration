@@ -46,6 +46,8 @@ Usages:
 
 * [`ViewStream.aggregation`](#viewstream)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -90,6 +92,8 @@ Usages:
 
 * [`Sampler.always_off`](#sampler)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -114,6 +118,8 @@ Constraints:
 Usages:
 
 * [`Sampler.always_on`](#sampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -151,6 +157,8 @@ Constraints:
 Usages:
 
 * [`OpenTelemetryConfiguration.attribute_limits`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -204,6 +212,8 @@ Constraints:
 Usages:
 
 * [`Resource.attributes`](#resource)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -300,6 +310,8 @@ Usages:
 
 * [`AttributeNameValue.type`](#attributenamevalue)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -334,6 +346,8 @@ Usages:
 
 * [`TextMapPropagator.b3multi`](#textmappropagator)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -359,6 +373,8 @@ Usages:
 
 * [`TextMapPropagator.b3`](#textmappropagator)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -383,6 +399,8 @@ Constraints:
 Usages:
 
 * [`TextMapPropagator.baggage`](#textmappropagator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -422,6 +440,8 @@ Constraints:
 Usages:
 
 * [`Aggregation.base2_exponential_bucket_histogram`](#aggregation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -489,6 +509,8 @@ Constraints:
 Usages:
 
 * [`LogRecordProcessor.batch`](#logrecordprocessor)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -566,6 +588,8 @@ Constraints:
 Usages:
 
 * [`SpanProcessor.batch`](#spanprocessor)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -650,6 +674,8 @@ Usages:
 * [`PeriodicMetricReader.cardinality_limits`](#periodicmetricreader)
 * [`PullMetricReader.cardinality_limits`](#pullmetricreader)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -731,6 +757,8 @@ Usages:
 * [`LogRecordExporter.console`](#logrecordexporter)
 * [`SpanExporter.console`](#spanexporter)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -768,6 +796,8 @@ Usages:
 
 * [`PushMetricExporter.console`](#pushmetricexporter)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -801,6 +831,8 @@ Usages:
 
 * [`Aggregation.default`](#aggregation)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -827,6 +859,8 @@ Usages:
 
 * [`OpenTelemetryConfiguration.distribution`](#opentelemetryconfiguration)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -851,6 +885,8 @@ Constraints:
 Usages:
 
 * [`Aggregation.drop`](#aggregation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -890,6 +926,8 @@ No constraints.
 Usages:
 
 * [`MeterProvider.exemplar_filter`](#meterprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -931,6 +969,8 @@ Constraints:
 Usages:
 
 * [`Aggregation.explicit_bucket_histogram`](#aggregation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -987,6 +1027,8 @@ Usages:
 * [`ExperimentalOtlpFileMetricExporter.default_histogram_aggregation`](#experimentalotlpfilemetricexporter)
 * [`ConsoleMetricExporter.default_histogram_aggregation`](#consolemetricexporter)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -1031,6 +1073,8 @@ Usages:
 * [`OtlpGrpcMetricExporter.temporality_preference`](#otlpgrpcmetricexporter)
 * [`ExperimentalOtlpFileMetricExporter.temporality_preference`](#experimentalotlpfilemetricexporter)
 * [`ConsoleMetricExporter.temporality_preference`](#consolemetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1077,6 +1121,8 @@ Usages:
 
 * [`OtlpGrpcExporter.tls`](#otlpgrpcexporter)
 * [`OtlpGrpcMetricExporter.tls`](#otlpgrpcmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1144,6 +1190,8 @@ Usages:
 * [`OtlpHttpExporter.tls`](#otlphttpexporter)
 * [`OtlpHttpMetricExporter.tls`](#otlphttpmetricexporter)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -1202,6 +1250,8 @@ Usages:
 * [`ExperimentalPrometheusMetricExporter.with_resource_constant_labels`](#experimentalprometheusmetricexporter)
 * [`ViewStream.attribute_keys`](#viewstream)
 * [`ExperimentalResourceDetection.attributes`](#experimentalresourcedetection)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1263,6 +1313,8 @@ Usages:
 
 * [`ViewSelector.instrument_type`](#viewselector)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -1296,6 +1348,8 @@ Usages:
 
 * [`TextMapPropagator.jaeger`](#textmappropagator)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -1320,6 +1374,8 @@ Constraints:
 Usages:
 
 * [`Aggregation.last_value`](#aggregation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1360,6 +1416,8 @@ Constraints:
 Usages:
 
 * [`OpenTelemetryConfiguration.logger_provider`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1422,6 +1480,8 @@ Usages:
 * [`SimpleLogRecordProcessor.exporter`](#simplelogrecordprocessor)
 * [`BatchLogRecordProcessor.exporter`](#batchlogrecordprocessor)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -1477,6 +1537,8 @@ Usages:
 
 * [`LoggerProvider.limits`](#loggerprovider)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -1531,6 +1593,8 @@ Usages:
 
 * [`LoggerProvider.processors`](#loggerprovider)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -1584,6 +1648,8 @@ Constraints:
 Usages:
 
 * [`OpenTelemetryConfiguration.meter_provider`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1647,6 +1713,8 @@ Usages:
 * [`PeriodicMetricReader.producers`](#periodicmetricreader)
 * [`PullMetricReader.producers`](#pullmetricreader)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -1694,6 +1762,8 @@ Constraints:
 Usages:
 
 * [`MeterProvider.readers`](#meterprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1743,6 +1813,8 @@ Usages:
 * [`OtlpHttpMetricExporter.headers`](#otlphttpmetricexporter)
 * [`OtlpGrpcMetricExporter.headers`](#otlpgrpcmetricexporter)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -1779,6 +1851,8 @@ Constraints:
 Usages:
 
 * [`MetricProducer.opencensus`](#metricproducer)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1833,6 +1907,8 @@ Constraints:
 * `required`: `["file_format"]`
 
 No usages.
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1900,6 +1976,8 @@ Usages:
 
 * [`TextMapPropagator.ottrace`](#textmappropagator)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -1945,6 +2023,8 @@ Usages:
 
 * [`LogRecordExporter.otlp_grpc`](#logrecordexporter)
 * [`SpanExporter.otlp_grpc`](#spanexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2032,6 +2112,8 @@ Usages:
 
 * [`PushMetricExporter.otlp_grpc`](#pushmetricexporter)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -2113,6 +2195,8 @@ Usages:
 * [`OtlpHttpExporter.encoding`](#otlphttpexporter)
 * [`OtlpHttpMetricExporter.encoding`](#otlphttpmetricexporter)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -2163,6 +2247,8 @@ Usages:
 
 * [`LogRecordExporter.otlp_http`](#logrecordexporter)
 * [`SpanExporter.otlp_http`](#spanexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2255,6 +2341,18 @@ Usages:
 
 * [`PushMetricExporter.otlp_http`](#pushmetricexporter)
 
+Snippets:
+
+<details>
+<summary>Use Base2 Exponential Histogram</summary>
+
+[Snippet Source File](./snippets/OtlpHttpMetricExporter_use_base2_exponential_histogram.yaml)
+```yaml
+endpoint: http://localhost:4317
+default_histogram_aggregation: base2_exponential_bucket_histogram
+```
+</details>
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -2344,6 +2442,8 @@ Usages:
 
 * [`Sampler.parent_based`](#sampler)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -2404,6 +2504,8 @@ Constraints:
 Usages:
 
 * [`MetricReader.periodic`](#metricreader)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2471,6 +2573,8 @@ Usages:
 
 * [`OpenTelemetryConfiguration.propagator`](#opentelemetryconfiguration)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -2522,6 +2626,8 @@ Usages:
 
 * [`PullMetricReader.exporter`](#pullmetricreader)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -2570,6 +2676,8 @@ Constraints:
 Usages:
 
 * [`MetricReader.pull`](#metricreader)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2631,6 +2739,8 @@ Usages:
 
 * [`PeriodicMetricReader.exporter`](#periodicmetricreader)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -2689,6 +2799,8 @@ Constraints:
 Usages:
 
 * [`OpenTelemetryConfiguration.resource`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2767,6 +2879,29 @@ Usages:
 * [`ParentBasedSampler.remote_parent_not_sampled`](#parentbasedsampler)
 * [`ParentBasedSampler.local_parent_sampled`](#parentbasedsampler)
 * [`ParentBasedSampler.local_parent_not_sampled`](#parentbasedsampler)
+
+Snippets:
+
+<details>
+<summary>Parent Based Typical</summary>
+
+[Snippet Source File](./snippets/Sampler_parent_based_typical.yaml)
+```yaml
+# configure the parent based sampler to sample 1% of root spans, and follow the sampling decision of parent spans
+parent_based:
+  root:
+    trace_id_ratio_based:
+      ratio: 0.01
+  remote_parent_sampled:
+    always_on:
+  remote_parent_not_sampled:
+    always_off:
+  local_parent_sampled:
+    always_on:
+  local_parent_not_sampled:
+    always_off:
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -2877,6 +3012,8 @@ Usages:
 * [`ExperimentalLoggerConfig.minimum_severity`](#experimentalloggerconfig)
 * [`OpenTelemetryConfiguration.log_level`](#opentelemetryconfiguration)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -2938,6 +3075,8 @@ Usages:
 
 * [`LogRecordProcessor.simple`](#logrecordprocessor)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -2978,6 +3117,8 @@ Constraints:
 Usages:
 
 * [`SpanProcessor.simple`](#spanprocessor)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3029,6 +3170,8 @@ Usages:
 
 * [`BatchSpanProcessor.exporter`](#batchspanprocessor)
 * [`SimpleSpanProcessor.exporter`](#simplespanprocessor)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3091,6 +3234,8 @@ Usages:
 
 * [`ExperimentalComposableRuleBasedSamplerRule.span_kinds`](#experimentalcomposablerulebasedsamplerrule)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -3141,6 +3286,8 @@ Constraints:
 Usages:
 
 * [`TracerProvider.limits`](#tracerprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3224,6 +3371,8 @@ Usages:
 
 * [`TracerProvider.processors`](#tracerprovider)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -3260,6 +3409,8 @@ Constraints:
 Usages:
 
 * [`Aggregation.sum`](#aggregation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3310,6 +3461,8 @@ Usages:
 
 * [`Propagator.composite`](#propagator)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -3359,6 +3512,8 @@ Usages:
 
 * [`TextMapPropagator.tracecontext`](#textmappropagator)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -3393,6 +3548,8 @@ Constraints:
 Usages:
 
 * [`Sampler.trace_id_ratio_based`](#sampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3445,6 +3602,8 @@ Constraints:
 Usages:
 
 * [`OpenTelemetryConfiguration.tracer_provider`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3502,6 +3661,23 @@ Usages:
 
 * [`MeterProvider.views`](#meterprovider)
 
+Snippets:
+
+<details>
+<summary>Override Default Histogram Buckets</summary>
+
+[Snippet Source File](./snippets/View_override_default_histogram_buckets.yaml)
+```yaml
+selector:
+  instrument_name: my.instrument.name
+  instrument_type: histogram
+stream:
+  aggregation:
+    explicit_bucket_histogram:
+      boundaries: [0, 5, 10]
+```
+</details>
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -3555,6 +3731,8 @@ Constraints:
 Usages:
 
 * [`View.selector`](#view)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3631,6 +3809,8 @@ Usages:
 
 * [`View.stream`](#view)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -3685,6 +3865,8 @@ Usages:
 
 * [`ExperimentalComposableSampler.always_off`](#experimentalcomposablesampler)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -3712,6 +3894,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalComposableSampler.always_on`](#experimentalcomposablesampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3751,6 +3935,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalComposableSampler.parent_threshold`](#experimentalcomposablesampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3796,6 +3982,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalComposableSampler.probability`](#experimentalcomposablesampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3844,6 +4032,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalComposableSampler.rule_based`](#experimentalcomposablesampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3900,6 +4090,8 @@ Constraints:
 * `required`: `["sampler"]`
 
 No usages.
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3970,6 +4162,8 @@ Usages:
 
 * [`ExperimentalComposableRuleBasedSamplerRule.attribute_patterns`](#experimentalcomposablerulebasedsamplerrule)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -4029,6 +4223,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalComposableRuleBasedSamplerRule.attribute_values`](#experimentalcomposablerulebasedsamplerrule)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4093,6 +4289,8 @@ Usages:
 * [`ExperimentalComposableParentThresholdSampler.root`](#experimentalcomposableparentthresholdsampler)
 * [`ExperimentalComposableRuleBasedSamplerRule.sampler`](#experimentalcomposablerulebasedsamplerrule)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -4142,6 +4340,8 @@ Usages:
 
 * [`ExperimentalResourceDetector.container`](#experimentalresourcedetector)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -4182,6 +4382,8 @@ Usages:
 
 * [`ExperimentalInstrumentation.general`](#experimentalinstrumentation)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -4214,6 +4416,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalResourceDetector.host`](#experimentalresourcedetector)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4254,6 +4458,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalHttpInstrumentation.client`](#experimentalhttpinstrumentation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4308,6 +4514,8 @@ Usages:
 
 * [`ExperimentalGeneralInstrumentation.http`](#experimentalgeneralinstrumentation)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -4352,6 +4560,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalHttpInstrumentation.server`](#experimentalhttpinstrumentation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4425,6 +4635,8 @@ Constraints:
 Usages:
 
 * [`OpenTelemetryConfiguration.instrumentation/development`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4504,6 +4716,8 @@ Usages:
 
 * [`Sampler.jaeger_remote/development`](#sampler)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -4563,6 +4777,8 @@ Usages:
 * [`ExperimentalInstrumentation.rust`](#experimentalinstrumentation)
 * [`ExperimentalInstrumentation.swift`](#experimentalinstrumentation)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -4604,6 +4820,8 @@ Usages:
 
 * [`ExperimentalLoggerConfigurator.default_config`](#experimentalloggerconfigurator)
 * [`ExperimentalLoggerMatcherAndConfig.config`](#experimentalloggermatcherandconfig)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4661,6 +4879,8 @@ Usages:
 
 * [`LoggerProvider.logger_configurator/development`](#loggerprovider)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -4712,6 +4932,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalLoggerConfigurator.loggers`](#experimentalloggerconfigurator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4765,6 +4987,8 @@ Usages:
 * [`ExperimentalMeterConfigurator.default_config`](#experimentalmeterconfigurator)
 * [`ExperimentalMeterMatcherAndConfig.config`](#experimentalmetermatcherandconfig)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -4810,6 +5034,8 @@ Constraints:
 Usages:
 
 * [`MeterProvider.meter_configurator/development`](#meterprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4863,6 +5089,8 @@ Usages:
 
 * [`ExperimentalMeterConfigurator.meters`](#experimentalmeterconfigurator)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -4915,6 +5143,8 @@ Usages:
 * [`LogRecordExporter.otlp_file/development`](#logrecordexporter)
 * [`SpanExporter.otlp_file/development`](#spanexporter)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -4964,6 +5194,8 @@ Constraints:
 Usages:
 
 * [`PushMetricExporter.otlp_file/development`](#pushmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5017,6 +5249,8 @@ Usages:
 
 * [`ExperimentalGeneralInstrumentation.peer`](#experimentalgeneralinstrumentation)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -5063,6 +5297,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalPeerInstrumentation.service_mapping`](#experimentalpeerinstrumentation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5111,6 +5347,8 @@ Usages:
 
 * [`Sampler.probability/development`](#sampler)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -5148,6 +5386,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalResourceDetector.process`](#experimentalresourcedetector)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5196,6 +5436,8 @@ Constraints:
 Usages:
 
 * [`PullMetricExporter.prometheus/development`](#pullmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5273,6 +5515,8 @@ Usages:
 
 * [`ExperimentalPrometheusMetricExporter.translation_strategy`](#experimentalprometheusmetricexporter)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -5317,6 +5561,8 @@ Constraints:
 Usages:
 
 * [`Resource.detection/development`](#resource)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5375,6 +5621,8 @@ Usages:
 
 * [`ExperimentalResourceDetection.detectors`](#experimentalresourcedetection)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -5421,6 +5669,8 @@ Usages:
 
 * [`ExperimentalResourceDetector.service`](#experimentalresourcedetector)
 
+No snippets.
+
 <details>
 <summary>JSON Schema</summary>
 
@@ -5462,6 +5712,8 @@ No constraints.
 Usages:
 
 * [`ExperimentalComposableRuleBasedSamplerRule.parent`](#experimentalcomposablerulebasedsamplerrule)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5505,6 +5757,8 @@ Usages:
 
 * [`ExperimentalTracerConfigurator.default_config`](#experimentaltracerconfigurator)
 * [`ExperimentalTracerMatcherAndConfig.config`](#experimentaltracermatcherandconfig)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5551,6 +5805,8 @@ Constraints:
 Usages:
 
 * [`TracerProvider.tracer_configurator/development`](#tracerprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5603,6 +5859,8 @@ Constraints:
 Usages:
 
 * [`ExperimentalTracerConfigurator.tracers`](#experimentaltracerconfigurator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>

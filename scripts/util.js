@@ -16,4 +16,5 @@ export const metaSchemaLanguageStatusPath = (language) => schemaSourceDirPath + 
 export const isExperimentalProperty = (property) => property.endsWith('/development');
 export const isExperimentalType = (type) => type.startsWith('Experimental');
 
+export const snippetsDirPath = __dirname + "/../snippets/";
 export const rootTypeName = 'OpenTelemetryConfiguration';

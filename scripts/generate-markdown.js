@@ -8,6 +8,7 @@ import {
     schemaPath
 } from "./util.js";
 import {readSourceTypesByType} from "./source-schema.js";
+import {readSnippets} from "./snippets.js";
 
 const sourceTypesByType = readSourceTypesByType();
 const sourceTypes = Object.values(sourceTypesByType);
@@ -18,6 +19,14 @@ if (messages.length > 0) {
 }
 
 const outputSchema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
+
+const snippetsByType = {};
+readSnippets().forEach(snippet => {
+    if (!(snippet.jsonSchemaType in snippetsByType)) {
+        snippetsByType[snippet.jsonSchemaType] = [];
+    }
+    snippetsByType[snippet.jsonSchemaType].push(snippet);
+});
 
 const output = [];
 
@@ -185,6 +194,26 @@ function writeType(sourceSchemaType) {
         output.push('\n');
     } else {
         output.push('No usages.\n\n');
+    }
+
+    // Snippets
+    const snippetsForType = snippetsByType[type];
+    if (!snippetsForType) {
+        output.push("No snippets.\n\n");
+    } else {
+        output.push("Snippets:\n\n");
+        snippetsForType.forEach(snippet => {
+            output.push(`<details>\n`);
+            output.push(`<summary>${snippet.description}</summary>\n\n`);
+            output.push(`[Snippet Source File](./snippets/${snippet.file})\n`)
+            output.push(`\`\`\`yaml\n`);
+            output.push(snippet.rawSnippetContent);
+            if (!snippet.rawSnippetContent.endsWith('\n')) {
+                output.push('\n');
+            }
+            output.push(`\`\`\`\n`);
+            output.push('</details>\n\n');
+        });
     }
 
     // JSON schema collapsible section

@@ -25,8 +25,8 @@ jobs:
     - name: validate example
       run: make validate-examples
 
-    - name: meta schema
-      run: make all-meta-schema
+    - name: make all
+      run: make all
 
     - name: check for diff
       run: |
@@ -38,7 +38,7 @@ jobs:
         then 
           echo "No diff detected."
         else 
-          echo "Diff detected - did you run 'make all-meta-schema'?"
+          echo "Diff detected - did you run 'make all'?"
           echo $(git diff --cached --name-only)
           echo $(git diff --cached)
           exit 1

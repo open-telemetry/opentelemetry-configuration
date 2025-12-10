@@ -1,0 +1,18 @@
+# select a specific histogram instrument and override the default buckets
+file_format: "1.0-rc.2"
+
+meter_provider:
+  readers:
+    - periodic:
+        exporter:
+          console:
+  views:
+    -
+      # SNIPPET_START
+      selector:
+        instrument_name: my.instrument.name
+        instrument_type: histogram
+      stream:
+        aggregation:
+          explicit_bucket_histogram:
+            boundaries: [0, 5, 10]
