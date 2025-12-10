@@ -157,6 +157,8 @@ see [project tooling docs](CONTRIBUTING.md#json-schema-source-and-output) for mo
   ([#402](https://github.com/open-telemetry/opentelemetry-configuration/pull/402))
 * Move stability definition to VERSIONING.md, rework README.md for improved focus
   ([#454](https://github.com/open-telemetry/opentelemetry-configuration/pull/454))
+* Add tooling for small targeted configuration snippets
+  ([#397](https://github.com/open-telemetry/opentelemetry-configuration/pull/397))
 
 ### Schema
 
