@@ -429,6 +429,48 @@ When this target adds new entries to `meta_schema_language_{langauage}.yaml`, th
 
 It's important to run `fix-language-implementations` before committing changes to the schema as uncommitted changes will cause the build to fail. The default `make` target will run `fix-language-implementations` automatically.
 
+### Snippets
+
+[snippets](snippets) contains example configuration snippets used to demonstrate different scenarios, supplement documentation, and as a library of valid configuration files which implementations can use in testing.
+
+Each snippet file name follows the pattern: `<JsonSchemaType>_<snake_case_description>.yaml`:
+
+* `<JsonSchemaType>`: Refers to the name of a JSON schema type as referenced in [types](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#types-).
+* `<snake_case_description>`: A short description of what the snippet demonstrates, in lower snake case.
+* File content must validate against the top level `OpenTelemetryConfiguration` type.
+* File content must contain `# SNIPPET_START`, which marks the start of the relevant portion of the snippet. The content which follows is validated against the `<JsonSchemaType>` type in the file name. NOTE: The same number of whitespace characters proceeding `# SNIPPET_START` are stripped from later lines before validation.
+
+For example, the content for snippet file `OtlpHttpMetricExporter_use_base2_exponential_histogram` looks like:
+
+```shell
+file_format: "1.0-rc.2"
+
+meter_provider:
+  readers:
+    - periodic:
+        exporter:
+          otlp_http:
+            # SNIPPET_START
+            endpoint: http://localhost:4317
+            default_histogram_aggregation: base2_exponential_bucket_histogram
+```
+
+Notes:
+
+* The snippet has `<JsonSchemaType>` of `OtlpHttpMetricExporter` and `<snake_case_description>` of `use_base2_exponential_histogram`, or "use base2 exponential histogram" in plain english.
+* The portion after `# SNIPPET_START` is validated against the `OtlpHttpMetricExporter` type:
+   
+```yaml
+endpoint: http://localhost:4317
+default_histogram_aggregation: base2_exponential_bucket_histogram
+```
+
+To validate snippets:
+
+```shell
+make validate-snippets
+```
+
 ### Documentation generation
 
 [schema-docs.md](schema-docs.md) contains generated markdown summarizing a variety of useful information about the JSON schema and [language implementation status](#language-implementation-status-tracking) in an easy to consume format.

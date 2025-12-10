@@ -64,6 +64,3 @@ export class Snippet {
         this.parsedSnippetContent = parsedSnippetContent;
     }
 }
-
-
-// Helper functions

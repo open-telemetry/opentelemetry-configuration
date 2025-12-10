@@ -12,6 +12,7 @@ JSON schema was chosen in part because of the large [ecosystem of tools](https:/
 * [schema-docs.md](schema-docs.md): generated documentation for the schema and language implementation status, optimized for human consumption
 * [/schema](schema): the source schema and language implementation status tracking files (see [CONTRIBUTING.md](CONTRIBUTING.md#json-schema-source-and-output) for more details)
 * [/examples](examples): sample configuration files (see [starter templates](#starter-templates) for more details)
+* [/snippets](snippets): small targeted configuration files illustrating specific scenarios (see [snippets](CONTRIBUTING.md#snippets) for more details)
 * [/validator](validator): a tool which performs env var substitution on YAML, validates YAML against the schema, and outputs to JSON or YAML
 
 ## Starter templates
