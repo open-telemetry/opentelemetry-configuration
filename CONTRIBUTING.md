@@ -431,7 +431,7 @@ It's important to run `fix-language-implementations` before committing changes t
 
 ### Snippets
 
-[snippets](snippets) contains example configuration snippets used to demonstrate different scenarios, supplement documentation, and as a library of valid configuration files which implementations can use in testing.
+[snippets](snippets) contains small targeted configuration files illustrating different scenarios. These are used to supplement documentation and as a library of valid configuration files which implementations can use in testing.
 
 Each snippet file name follows the pattern: `<JsonSchemaType>_<snake_case_description>.yaml`:
 
@@ -465,7 +465,7 @@ endpoint: http://localhost:4317
 default_histogram_aggregation: base2_exponential_bucket_histogram
 ```
 
-To validate snippets:
+To validate all snippets:
 
 ```shell
 make validate-snippets
