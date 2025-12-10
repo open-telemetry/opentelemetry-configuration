@@ -6,16 +6,29 @@ properties:
     minItems: 1
     items:
       $ref: "#/$defs/AttributeNameValue"
+    description: |
+      Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
+    defaultBehavior: no resource attributes are added
   detection/development:
     $ref: "#/$defs/ExperimentalResourceDetection"
+    description: |
+      Configure resource detection.
+    defaultBehavior: resource detection is disabled
   schema_url:
     type:
       - string
       - "null"
+    description: |
+      Configure resource schema URL.
+    defaultBehavior: no schema URL is used
   attributes_list:
     type:
       - string
       - "null"
+    description: |
+      Configure resource attributes. Entries have lower priority than entries from .resource.attributes.
+      The value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.
+    defaultBehavior: no resource attributes are added
 $defs:
   AttributeNameValue:
     type: object
@@ -23,6 +36,8 @@ $defs:
     properties:
       name:
         type: string
+        description: |
+          The attribute name.
       value:
         oneOf:
           - type: string
@@ -41,8 +56,14 @@ $defs:
             items:
               type: number
             minItems: 1
+        description: |
+          The attribute value.
+          The type of value must match .type.
       type:
         $ref: "#/$defs/AttributeType"
+        description: |
+          The attribute type.
+        defaultBehavior: string is used
     required:
       - name
       - value
@@ -59,17 +80,32 @@ $defs:
       - bool_array
       - int_array
       - double_array
+    enumDescriptions:
+      bool: Boolean attribute value.
+      bool_array: Boolean array attribute value.
+      double: Double attribute value.
+      double_array: Double array attribute value.
+      int: Integer attribute value.
+      int_array: Integer array attribute value.
+      string: String attribute value.
+      string_array: String array attribute value.
   ExperimentalResourceDetection:
     type: object
     additionalProperties: false
     properties:
       attributes:
         $ref: common.yaml#/$defs/IncludeExclude
+        description: Configure attributes provided by resource detectors.
+        defaultBehavior: all attributes from resource detectors are added
       detectors:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalResourceDetector"
+        description: |
+          Configure resource detectors.
+          Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
+        defaultBehavior: no resource detectors are enabled
   ExperimentalResourceDetector:
     type: object
     additionalProperties:
@@ -81,12 +117,25 @@ $defs:
     properties:
       container:
         $ref: "#/$defs/ExperimentalContainerResourceDetector"
+        description: |
+          Enable the container resource detector, which populates container.* attributes.
+        defaultBehavior: ignore
       host:
         $ref: "#/$defs/ExperimentalHostResourceDetector"
+        description: |
+          Enable the host resource detector, which populates host.* and os.* attributes.
+        defaultBehavior: ignore
       process:
         $ref: "#/$defs/ExperimentalProcessResourceDetector"
+        description: |
+          Enable the process resource detector, which populates process.* attributes.
+        defaultBehavior: ignore
       service:
         $ref: "#/$defs/ExperimentalServiceResourceDetector"
+        description: |
+          Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.
+        defaultBehavior: ignore
+    isSdkExtensionPlugin: true
   ExperimentalContainerResourceDetector:
     type:
       - object

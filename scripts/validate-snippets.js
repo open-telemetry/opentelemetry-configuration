@@ -1,25 +1,18 @@
 import fs from "fs";
-import {rootTypeName, schemaOutDirPath} from "./util.js";
-import {readJsonSchemaTypes} from "./json-schema.js";
+import {rootTypeName, schemaPath} from "./util.js";
 import Ajv from "ajv/dist/2020.js";
 import {readSnippets} from "./snippets.js";
+import {readSourceTypesByType} from "./source-schema.js";
 
 // Initialize ajv
 const ajv = new Ajv({ allErrors: true });
-fs.readdirSync(schemaOutDirPath)
-    .filter(file => file.endsWith('.json'))
-    .forEach(file =>{
-        const rawContent = fs.readFileSync(schemaOutDirPath + file, "utf-8");
-        const jsonContent = JSON.parse(rawContent);
-        ajv.addSchema(jsonContent);
-    });
+const outputSchema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
+ajv.addSchema(outputSchema);
 
+const sourceTypesByType = readSourceTypesByType();
 
-const jsonSchemaTypesByType = {};
-readJsonSchemaTypes().forEach(type => jsonSchemaTypesByType[type.type] = type);
-const rootJsonSchemaType = jsonSchemaTypesByType[rootTypeName];
+const rootJsonSchemaType = sourceTypesByType[rootTypeName];
 const rootJsonSchemaTypeRef = computeJsonSchemaTypeRef(rootJsonSchemaType);
-
 
 const messages = [];
 
@@ -30,7 +23,7 @@ readSnippets()
             throw new Error(`Unable to resolve root schema for JSON schema type ref: ${rootJsonSchemaTypeRef}`);
         }
 
-        const snippetJsonSchemaType = jsonSchemaTypesByType[snippet.jsonSchemaType];
+        const snippetJsonSchemaType = sourceTypesByType[snippet.jsonSchemaType];
         if (!snippetJsonSchemaType) {
             messages.push(`Error validating snippet ${snippet.file}. Resolved JSON schema type not found: ${snippet.jsonSchemaType}`);
             return;
@@ -78,11 +71,11 @@ function validate(snippetFile, ajvValidator, ajvRef, data) {
 }
 
 function computeJsonSchemaTypeRef(jsonSchemaType) {
-    const fileId = jsonSchemaType.fileContent['$id'];
-    if (jsonSchemaType.jsonSchemaPath === '.') {
-        return fileId;
+    const rootId = outputSchema['$id'];
+    if (jsonSchemaType.type === rootTypeName) {
+        return rootId;
     }
-    return `${fileId}${jsonSchemaType.jsonSchemaPath}`;
+    return `${rootId}#/$defs/${jsonSchemaType.type}`;
 }
 
 function formatError(error) {

@@ -54,6 +54,9 @@ typeSupportStatuses:
   - type: DefaultAggregation
     status: supported
     propertyOverrides: []
+  - type: Distribution
+    status: unknown
+    propertyOverrides: []
   - type: DropAggregation
     status: supported
     propertyOverrides: []
@@ -185,6 +188,9 @@ typeSupportStatuses:
     propertyOverrides:
       - property: probability/development
         status: ignored
+  - type: SeverityNumber
+    status: unknown
+    enumOverrides: []
   - type: SimpleLogRecordProcessor
     status: supported
     propertyOverrides: []
@@ -194,6 +200,9 @@ typeSupportStatuses:
   - type: SpanExporter
     status: supported
     propertyOverrides: []
+  - type: SpanKind
+    status: unknown
+    enumOverrides: []
   - type: SpanLimits
     status: supported
     propertyOverrides: []
@@ -226,19 +235,28 @@ typeSupportStatuses:
   - type: ViewStream
     status: supported
     propertyOverrides: []
-  - type: ZipkinSpanExporter
-    status: supported
-    propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOnSampler
     status: unknown
     propertyOverrides: []
-  - type: ExperimentalComposableParentBasedSampler
+  - type: ExperimentalComposableParentThresholdSampler
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableProbabilitySampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSampler
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRule
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableSampler
@@ -356,7 +374,7 @@ typeSupportStatuses:
   - type: ExperimentalServiceResourceDetector
     status: supported
     propertyOverrides: []
-  - type: ExperimentalSeverityNumber
+  - type: ExperimentalSpanParent
     status: unknown
     enumOverrides: []
   - type: ExperimentalTracerConfig

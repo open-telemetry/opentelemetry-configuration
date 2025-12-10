@@ -1,10 +1,10 @@
 {
   "type": "module",
   "scripts": {
-    "yaml-to-json": "node scripts/yaml-to-json.js",
+    "compile-schema": "node scripts/compile-schema.js",
     "generate-markdown": "node scripts/generate-markdown.js",
-    "fix-meta-schema": "node scripts/fix-meta-schema.js",
-    "validate-snippets": "node scripts/validate-snippets.js"
+    "validate-snippets": "node scripts/validate-snippets.js",
+    "fix-language-implementations": "node scripts/fix-language-implementations.js"
   },
   "devDependencies": {
     "ajv-cli": "5.0.0"

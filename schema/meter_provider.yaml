@@ -6,15 +6,26 @@ properties:
     minItems: 1
     items:
       $ref: "#/$defs/MetricReader"
+    description: Configure metric readers.
   views:
     type: array
     minItems: 1
     items:
       $ref: "#/$defs/View"
+    description: |
+      Configure views. 
+      Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).
+    defaultBehavior: no views are registered
   exemplar_filter:
     $ref: "#/$defs/ExemplarFilter"
+    description: |
+      Configure the exemplar filter. 
+    defaultBehavior: trace_based is used
   meter_configurator/development:
     $ref: "#/$defs/ExperimentalMeterConfigurator"
+    description: |
+      Configure meters.
+    defaultBehavior: all meters use default values as described in ExperimentalMeterConfig
 required:
   - readers
 $defs:
@@ -26,6 +37,10 @@ $defs:
       - always_on
       - always_off
       - trace_based
+    enumDescriptions:
+      always_off: ExemplarFilter which makes no measurements eligible for being an Exemplar.
+      always_on: ExemplarFilter which makes all measurements eligible for being an Exemplar.
+      trace_based: ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar.
   PeriodicMetricReader:
     type: object
     additionalProperties: false
@@ -35,20 +50,33 @@ $defs:
           - integer
           - "null"
         minimum: 0
+        description: |
+          Configure delay interval (in milliseconds) between start of two consecutive exports. 
+          Value must be non-negative.
+        defaultBehavior: 60000 is used
       timeout:
         type:
           - integer
           - "null"
         minimum: 0
+        description: |
+          Configure maximum allowed time (in milliseconds) to export data. 
+          Value must be non-negative. A value of 0 indicates no limit (infinity).
+        defaultBehavior: 30000 is used
       exporter:
         $ref: "#/$defs/PushMetricExporter"
+        description: Configure exporter.
       producers:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/MetricProducer"
+        description: Configure metric producers.
+        defaultBehavior: no metric producers are added
       cardinality_limits:
         $ref: "#/$defs/CardinalityLimits"
+        description: Configure cardinality limits.
+        defaultBehavior: default values as described in CardinalityLimits are used
     required:
       - exporter
   PullMetricReader:
@@ -57,13 +85,18 @@ $defs:
     properties:
       exporter:
         $ref: "#/$defs/PullMetricExporter"
+        description: Configure exporter.
       producers:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/MetricProducer"
+        description: Configure metric producers.
+        defaultBehavior: no metric producers are added
       cardinality_limits:
         $ref: "#/$defs/CardinalityLimits"
+        description: Configure cardinality limits.
+        defaultBehavior: default values as described in CardinalityLimits are used
     required:
       - exporter
   CardinalityLimits:
@@ -75,41 +108,66 @@ $defs:
           - integer
           - "null"
         exclusiveMinimum: 0
+        description: |
+          Configure default cardinality limit for all instrument types.
+          Instrument-specific cardinality limits take priority. 
+        defaultBehavior: 2000 is used
       counter:
         type:
           - integer
           - "null"
         exclusiveMinimum: 0
+        description: |
+          Configure default cardinality limit for counter instruments.
+        defaultBehavior: the value from .default is used
       gauge:
         type:
           - integer
           - "null"
         exclusiveMinimum: 0
+        description: |
+          Configure default cardinality limit for gauge instruments.
+        defaultBehavior: the value from .default is used
       histogram:
         type:
           - integer
           - "null"
         exclusiveMinimum: 0
+        description: |
+          Configure default cardinality limit for histogram instruments.
+        defaultBehavior: the value from .default is used
       observable_counter:
         type:
           - integer
           - "null"
         exclusiveMinimum: 0
+        description: |
+          Configure default cardinality limit for observable_counter instruments.
+        defaultBehavior: the value from .default is used
       observable_gauge:
         type:
           - integer
           - "null"
         exclusiveMinimum: 0
+        description: |
+          Configure default cardinality limit for observable_gauge instruments.
+        defaultBehavior: the value from .default is used
       observable_up_down_counter:
         type:
           - integer
           - "null"
         exclusiveMinimum: 0
+        description: |
+          Configure default cardinality limit for observable_up_down_counter instruments.
+        defaultBehavior: the value from .default is used
       up_down_counter:
         type:
           - integer
           - "null"
         exclusiveMinimum: 0
+        description: |
+          Configure default cardinality limit for up_down_counter instruments.
+        defaultBehavior: the value from .default is used
   PushMetricExporter:
     type: object
     additionalProperties:
@@ -121,12 +179,25 @@ $defs:
     properties:
       otlp_http:
         $ref: "#/$defs/OtlpHttpMetricExporter"
+        description: |
+          Configure exporter to be OTLP with HTTP transport.
+        defaultBehavior: ignore
       otlp_grpc:
         $ref: "#/$defs/OtlpGrpcMetricExporter"
+        description: |
+          Configure exporter to be OTLP with gRPC transport.
+        defaultBehavior: ignore
       otlp_file/development:
         $ref: "#/$defs/ExperimentalOtlpFileMetricExporter"
+        description: |
+          Configure exporter to be OTLP with file transport.
+        defaultBehavior: ignore
       console:
         $ref: "#/$defs/ConsoleMetricExporter"
+        description: |
+          Configure exporter to be console.
+        defaultBehavior: ignore
+    isSdkExtensionPlugin: true
   PullMetricExporter:
     type: object
     additionalProperties:
@@ -138,6 +209,10 @@ $defs:
     properties:
       prometheus/development:
         $ref: "#/$defs/ExperimentalPrometheusMetricExporter"
+        description: |
+          Configure exporter to be prometheus.
+        defaultBehavior: ignore
+    isSdkExtensionPlugin: true
   MetricProducer:
     type: object
     additionalProperties:
@@ -149,6 +224,9 @@ $defs:
     properties:
       opencensus:
         $ref: "#/$defs/OpenCensusMetricProducer"
+        description: Configure metric producer to be opencensus.
+        defaultBehavior: ignore
+    isSdkExtensionPlugin: true
   OpenCensusMetricProducer:
     type:
       - object
@@ -164,31 +242,52 @@ $defs:
         type:
           - string
           - "null"
+        description: |
+          Configure host.
+        defaultBehavior: localhost is used
       port:
         type:
           - integer
           - "null"
+        description: |
+          Configure port.
+        defaultBehavior: 9464 is used
       without_scope_info:
         type:
           - boolean
           - "null"
+        description: |
+          Configure Prometheus Exporter to produce metrics without a scope info metric.
+        defaultBehavior: false is used
       without_target_info:
         type:
           - boolean
           - "null"
+        description: |
+          Configure Prometheus Exporter to produce metrics without a target info metric for the resource.
+        defaultBehavior: false is used
       with_resource_constant_labels:
         $ref: common.yaml#/$defs/IncludeExclude
+        description: Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
+        defaultBehavior: no resource attributes are added
       translation_strategy:
         $ref: "#/$defs/ExperimentalPrometheusTranslationStrategy"
+        description: Configure how metric names are translated to Prometheus metric names.
+        defaultBehavior: underscore_escaping_with_suffixes is used
   ExperimentalPrometheusTranslationStrategy:
     type:
       - string
       - "null"
     enum:
-      - UnderscoreEscapingWithSuffixes
-      - UnderscoreEscapingWithoutSuffixes
-      - NoUTF8EscapingWithSuffixes
-      - NoTranslation
+      - underscore_escaping_with_suffixes
+      - underscore_escaping_without_suffixes
+      - no_utf8_escaping_with_suffixes
+      - no_translation
+    enumDescriptions:
+      no_translation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.
+      no_utf8_escaping_with_suffixes: Special character escaping is disabled. Type and unit suffixes are enabled.
+      underscore_escaping_without_suffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.
+      underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.
   MetricReader:
     type: object
     additionalProperties: false
@@ -197,8 +296,12 @@ $defs:
     properties:
       periodic:
         $ref: "#/$defs/PeriodicMetricReader"
+        description: Configure a periodic metric reader.
+        defaultBehavior: ignore
       pull:
         $ref: "#/$defs/PullMetricReader"
+        description: Configure a pull based metric reader.
+        defaultBehavior: ignore
   ExporterTemporalityPreference:
     type:
       - string
@@ -207,6 +310,10 @@ $defs:
       - cumulative
       - delta
       - low_memory
+    enumDescriptions:
+      cumulative: Use cumulative aggregation temporality for all instrument types.
+      delta: Use delta aggregation for all instrument types except up down counter and asynchronous up down counter.
+      low_memory: Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types.
   ExporterDefaultHistogramAggregation:
     type:
       - string
@@ -214,6 +321,9 @@ $defs:
     enum:
       - explicit_bucket_histogram
       - base2_exponential_bucket_histogram
+    enumDescriptions:
+      base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.
+      explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.
   OtlpHttpMetricExporter:
     type:
       - object
@@ -224,32 +334,63 @@ $defs:
         type:
           - string
           - "null"
+        description: |
+          Configure endpoint.
+        defaultBehavior: http://localhost:4318/v1/metrics is used
       tls:
         $ref: common.yaml#/$defs/HttpTls
+        description: Configure TLS settings for the exporter.
+        defaultBehavior: system default TLS settings are used
       headers:
         type: array
         minItems: 1
         items:
           $ref: common.yaml#/$defs/NameStringValuePair
+        description: |
+          Configure headers. Entries have higher priority than entries from .headers_list.
+          If an entry's .value is null, the entry is ignored.
+        defaultBehavior: no headers are added
       headers_list:
         type:
           - string
           - "null"
+        description: |
+          Configure headers. Entries have lower priority than entries from .headers.
+          The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+        defaultBehavior: no headers are added
       compression:
         type:
           - string
           - "null"
+        description: |
+          Configure compression.
+          Known values include: gzip, none. Implementations may support other compression algorithms.
+        defaultBehavior: none is used
       timeout:
         type:
           - integer
           - "null"
         minimum: 0
+        description: |
+          Configure max time (in milliseconds) to wait for each export.
+          Value must be non-negative. A value of 0 indicates no limit (infinity).
+        defaultBehavior: 10000 is used
       encoding:
         $ref: common.yaml#/$defs/OtlpHttpEncoding
+        description: |
+          Configure the encoding used for messages. 
+          Implementations may not support json.
+        defaultBehavior: protobuf is used
       temporality_preference:
         $ref: "#/$defs/ExporterTemporalityPreference"
+        description: |
+          Configure temporality preference.
+        defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
+        description: |
+          Configure default histogram aggregation.
+        defaultBehavior: explicit_bucket_histogram is used
   OtlpGrpcMetricExporter:
     type:
       - object
@@ -260,30 +401,57 @@ $defs:
         type:
           - string
           - "null"
+        description: |
+          Configure endpoint.
+        defaultBehavior: http://localhost:4317 is used
       tls:
         $ref: common.yaml#/$defs/GrpcTls
+        description: Configure TLS settings for the exporter.
+        defaultBehavior: system default TLS settings are used
       headers:
         type: array
         minItems: 1
         items:
           $ref: common.yaml#/$defs/NameStringValuePair
+        description: |
+          Configure headers. Entries have higher priority than entries from .headers_list.
+          If an entry's .value is null, the entry is ignored.
+        defaultBehavior: no headers are added
       headers_list:
         type:
           - string
           - "null"
+        description: |
+          Configure headers. Entries have lower priority than entries from .headers.
+          The value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.
+        defaultBehavior: no headers are added
       compression:
         type:
           - string
           - "null"
+        description: |
+          Configure compression.
+          Known values include: gzip, none. Implementations may support other compression algorithms.
+        defaultBehavior: none is used
       timeout:
         type:
           - integer
           - "null"
         minimum: 0
+        description: |
+          Configure max time (in milliseconds) to wait for each export.
+          Value must be non-negative. A value of 0 indicates no limit (infinity).
+        defaultBehavior: 10000 is used
       temporality_preference:
         $ref: "#/$defs/ExporterTemporalityPreference"
+        description: |
+          Configure temporality preference.
+        defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
+        description: |
+          Configure default histogram aggregation.
+        defaultBehavior: explicit_bucket_histogram is used
   ExperimentalOtlpFileMetricExporter:
     type:
       - object
@@ -294,10 +462,20 @@ $defs:
         type:
           - string
           - "null"
+        description: |
+          Configure output stream. 
+          Values include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.
+        defaultBehavior: stdout is used
       temporality_preference:
         $ref: "#/$defs/ExporterTemporalityPreference"
+        description: |
+          Configure temporality preference.
+        defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
+        description: |
+          Configure default histogram aggregation.
+        defaultBehavior: explicit_bucket_histogram is used
   ConsoleMetricExporter:
     type:
       - object
@@ -306,16 +484,26 @@ $defs:
     properties:
       temporality_preference:
         $ref: "#/$defs/ExporterTemporalityPreference"
+        description: |
+          Configure temporality preference.
+        defaultBehavior: cumulative is used
       default_histogram_aggregation:
         $ref: "#/$defs/ExporterDefaultHistogramAggregation"
+        description: |
+          Configure default histogram aggregation.
+        defaultBehavior: explicit_bucket_histogram is used
   View:
     type: object
     additionalProperties: false
     properties:
       selector:
         $ref: "#/$defs/ViewSelector"
+        description: |
+          Configure view selector. 
+          Selection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.
       stream:
         $ref: "#/$defs/ViewStream"
+        description: Configure view stream.
     required:
       - selector
       - stream
@@ -327,24 +515,42 @@ $defs:
         type:
           - string
           - "null"
+        description: |
+          Configure instrument name selection criteria.
+        defaultBehavior: all instrument names match
       instrument_type:
         $ref: "#/$defs/InstrumentType"
+        description: |
+          Configure instrument type selection criteria.
+        defaultBehavior: all instrument types match
       unit:
         type:
           - string
           - "null"
+        description: |
+          Configure the instrument unit selection criteria.
+        defaultBehavior: all instrument units match
       meter_name:
         type:
           - string
           - "null"
+        description: |
+          Configure meter name selection criteria.
+        defaultBehavior: all meter names match
       meter_version:
         type:
           - string
           - "null"
+        description: |
+          Configure meter version selection criteria.
+        defaultBehavior: all meter versions match
       meter_schema_url:
         type:
           - string
           - "null"
+        description: |
+          Configure meter schema url selection criteria.
+        defaultBehavior: all meter schema URLs match
   InstrumentType:
     type:
       - string
@@ -357,6 +563,14 @@ $defs:
       - observable_gauge
       - observable_up_down_counter
       - up_down_counter
+    enumDescriptions:
+      counter: Synchronous counter instruments.
+      gauge: Synchronous gauge instruments.
+      histogram: Synchronous histogram instruments.
+      observable_counter: Asynchronous counter instruments.
+      observable_gauge: Asynchronous gauge instruments.
+      observable_up_down_counter: Asynchronous up down counter instruments.
+      up_down_counter: Synchronous up down counter instruments.
   ViewStream:
     type: object
     additionalProperties: false
@@ -365,19 +579,34 @@ $defs:
         type:
           - string
           - "null"
+        description: |
+          Configure metric name of the resulting stream(s).
+        defaultBehavior: the instrument's original name is used
       description:
         type:
           - string
           - "null"
+        description: |
+          Configure metric description of the resulting stream(s).
+        defaultBehavior: the instrument's origin description is used
       aggregation:
         $ref: "#/$defs/Aggregation"
+        description: |
+          Configure aggregation of the resulting stream(s). 
+        defaultBehavior: default is used
       aggregation_cardinality_limit:
         type:
           - integer
           - "null"
         exclusiveMinimum: 0
+        description: |
+          Configure the aggregation cardinality limit.
+        defaultBehavior: the metric reader's default cardinality limit is used
       attribute_keys:
         $ref: common.yaml#/$defs/IncludeExclude
+        description: |
+          Configure attribute keys retained in the resulting stream(s).
+        defaultBehavior: all attribute keys are retained
   Aggregation:
     type: object
     additionalProperties: false
@@ -386,16 +615,28 @@ $defs:
     properties:
       default:
         $ref: "#/$defs/DefaultAggregation"
+        description: Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#default-aggregation for details.
+        defaultBehavior: ignore
       drop:
         $ref: "#/$defs/DropAggregation"
+        description: Configures the stream to ignore/drop all instrument measurements. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#drop-aggregation for details.
+        defaultBehavior: ignore
       explicit_bucket_histogram:
         $ref: "#/$defs/ExplicitBucketHistogramAggregation"
+        description: Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation for details
+        defaultBehavior: ignore
       base2_exponential_bucket_histogram:
         $ref: "#/$defs/Base2ExponentialBucketHistogramAggregation"
+        description: Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation for details.
+        defaultBehavior: ignore
       last_value:
         $ref: "#/$defs/LastValueAggregation"
+        description: Configures the stream to collect data using the last measurement. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#last-value-aggregation for details.
+        defaultBehavior: ignore
       sum:
         $ref: "#/$defs/SumAggregation"
+        description: Configures the stream to collect the arithmetic sum of measurement values. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sum-aggregation for details.
+        defaultBehavior: ignore
   DefaultAggregation:
     type:
       - object
@@ -417,10 +658,16 @@ $defs:
         minItems: 0
         items:
           type: number
+        description: |
+          Configure bucket boundaries.
+        defaultBehavior: "[0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used"
       record_min_max:
         type:
           - boolean
           - "null"
+        description: |
+          Configure record min and max.
+        defaultBehavior: true is used
   Base2ExponentialBucketHistogramAggregation:
     type:
       - object
@@ -433,15 +680,21 @@ $defs:
           - "null"
         minimum: -10
         maximum: 20
+        description: Configure the max scale factor.
+        defaultBehavior: 20 is used
       max_size:
         type:
           - integer
           - "null"
         minimum: 2
+        description: Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket.
+        defaultBehavior: 160 is used
       record_min_max:
         type:
           - boolean
           - "null"
+        description: Configure whether or not to record min and max.
+        defaultBehavior: true is used
   LastValueAggregation:
     type:
       - object
@@ -459,11 +712,15 @@ $defs:
     properties:
       default_config:
         $ref: "#/$defs/ExperimentalMeterConfig"
+        description: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
+        defaultBehavior: unmatched .meters use default values as described in ExperimentalMeterConfig
       meters:
         type: array
         minItems: 1
         items:
           $ref: "#/$defs/ExperimentalMeterMatcherAndConfig"
+        description: Configure meters.
+        defaultBehavior: all meters used .default_config
   ExperimentalMeterMatcherAndConfig:
     type:
       - object
@@ -472,8 +729,14 @@ $defs:
       name:
         type:
           - string
+        description: |
+          Configure meter names to match, evaluated as follows:
+
+           * If the meter name exactly matches.
+           * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
       config:
         $ref: "#/$defs/ExperimentalMeterConfig"
+        description: The meter config.
     required:
       - name
       - config
@@ -485,3 +748,5 @@ $defs:
       disabled:
         type:
           - boolean
+        description: Configure if the meter is enabled or not.
+        defaultBehavior: false is used

@@ -1,31 +1,68 @@
-title: OpenTelemetryConfiguration
 type: object
 additionalProperties: true
 properties:
   file_format:
     type: string
+    description: |
+      The file format version.
+      Represented as a string including the semver major, minor version numbers (and optionally the meta tag). For example: "0.4", "1.0-rc.2", "1.0" (after stable release).
+      See https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md for more details.
+      The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
   disabled:
     type:
       - boolean
       - "null"
+    description: |
+      Configure if the SDK is disabled or not.
+    defaultBehavior: false is used
   log_level:
-    type:
-      - string
-      - "null"
+    $ref: common.yaml#/$defs/SeverityNumber
+    description: |
+      Configure the log level of the internal logger used by the SDK.
+    defaultBehavior: INFO is used
   attribute_limits:
     $ref: "#/$defs/AttributeLimits"
+    description: |
+      Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.
+    defaultBehavior: default values as described in AttributeLimits are used
   logger_provider:
     $ref: "#/$defs/LoggerProvider"
+    description: |
+      Configure logger provider.
+    defaultBehavior: a noop logger provider is used
   meter_provider:
     $ref: "#/$defs/MeterProvider"
+    description: |
+      Configure meter provider.
+    defaultBehavior: a noop meter provider is used
   propagator:
     $ref: "#/$defs/Propagator"
+    description: |
+      Configure text map context propagators.
+    defaultBehavior: a noop propagator is used
   tracer_provider:
     $ref: "#/$defs/TracerProvider"
+    description: |
+      Configure tracer provider.
+    defaultBehavior: a noop tracer provider is used
   resource:
     $ref: "#/$defs/Resource"
+    description: |
+      Configure resource for all signals.
+    defaultBehavior: the default resource is used
   instrumentation/development:
     $ref: "#/$defs/ExperimentalInstrumentation"
+    description: |
+      Configure instrumentation.
+    defaultBehavior: instrumentation defaults are used
+  distribution:
+    $ref: "#/$defs/Distribution"
+    description: |
+      Defines configuration parameters specific to a particular OpenTelemetry distribution or vendor.
+      This section provides a standardized location for distribution-specific settings
+      that are not part of the OpenTelemetry configuration model.
+      It allows vendors to expose their own extensions and general configuration options.
+    defaultBehavior: distribution defaults are used
 required:
   - file_format
 $defs:
@@ -38,11 +75,19 @@ $defs:
           - integer
           - "null"
         minimum: 0
+        description: |
+          Configure max attribute value size. 
+          Value must be non-negative.
+        defaultBehavior: there is no limit
       attribute_count_limit:
         type:
           - integer
           - "null"
         minimum: 0
+        description: |
+          Configure max attribute count. 
+          Value must be non-negative.
+        defaultBehavior: 128 is used
   LoggerProvider:
     $ref: logger_provider.yaml
   MeterProvider:
@@ -55,3 +100,8 @@ $defs:
     $ref: resource.yaml
   ExperimentalInstrumentation:
     $ref: instrumentation.yaml
+  Distribution:
+    type: object
+    additionalProperties:
+      type: object
+    minProperties: 1

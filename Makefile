@@ -6,18 +6,29 @@ SNIPPET_FILES := $(shell find . -path './snippets/*.yaml' -exec basename {} \; |
 $(shell mkdir -p out)
 
 .PHONY: all
-all: install-tools validate-examples all-meta-schema
+all: install-tools validate-examples fix-language-implementations generate-markdown
 
 include validator/Makefile
+
+.PHONY: compile-schema
+compile-schema:
+	@if ! npm ls minimatch yaml; then npm install; fi
+	npm run-script compile-schema || exit 1;
+	@if ! npm ls ajv-cli; then npm install; fi
+	npx --no ajv-cli compile --spec=draft2020 --allow-matching-properties -s ./opentelemetry_configuration.json;
 
 .PHONY: validate-examples
 validate-examples: compile-schema
 	@if ! npm ls ajv-cli; then npm install; fi
 	@for f in $(EXAMPLE_FILES); do \
 	    npx envsub ./examples/$$f ./out/$$f || exit 1; \
-		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./schema_out/opentelemetry_configuration.json -r "./schema_out/!(opentelemetry_configuration.json)" -d ./out/$$f \
+		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./opentelemetry_configuration.json -d ./out/$$f \
 		    || exit 1; \
 	done
+
+.PHONY: validate-snippets
+validate-snippets: compile-schema
+	npm run-script validate-snippets || exit 1; \
 
 .PHONY: update-file-format
 update-file-format:
@@ -29,20 +40,13 @@ update-file-format:
 	    sed -e 's/file_format:.*/file_format: \"$(FILE_FORMAT)\"/g' -i '' ./snippets/$$f; \
 	done
 
-.PHONY: fix-meta-schema
-fix-meta-schema: compile-schema
-	npm run-script fix-meta-schema || exit 1; \
-
-.PHONY: validate-snippets
-validate-snippets: fix-meta-schema
-	npm run-script validate-snippets || exit 1; \
+.PHONY: fix-language-implementations
+fix-language-implementations: compile-schema
+	npm run-script fix-language-implementations || exit 1; \
 
 .PHONY: generate-markdown
 generate-markdown: validate-snippets
 	npm run-script generate-markdown || exit 1; \
-
-.PHONY: all-meta-schema
-all-meta-schema: validate-snippets generate-markdown
 
 .PHONY: install-tools
 install-tools:
