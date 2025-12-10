@@ -179,6 +179,23 @@ function writeType(sourceSchemaType) {
         output.push('No constraints.\n\n');
     }
 
+    // Usages
+    const usages = [];
+    Object.values(sourceTypesByType).forEach(otherSourceType => {
+       otherSourceType.properties.forEach(property => {
+           if (property.types.find(item => item === type)) {
+               usages.push([ otherSourceType, property ]);
+           }
+       });
+    });
+    if (usages.length > 0) {
+        output.push('Usages:\n\n');
+        usages.forEach(usage => output.push(`* [\`${usage[0].type}.${usage[1].property}\`](#${usage[0].type.toLowerCase()})\n`));
+        output.push('\n');
+    } else {
+        output.push('No usages.\n\n');
+    }
+
     // Snippets
     const snippetsForType = snippetsByType[type];
     if (!snippetsForType) {
@@ -197,23 +214,6 @@ function writeType(sourceSchemaType) {
             output.push(`\`\`\`\n`);
             output.push('</details>\n\n');
         });
-    }
-
-    // Usages
-    const usages = [];
-    Object.values(sourceTypesByType).forEach(otherSourceType => {
-       otherSourceType.properties.forEach(property => {
-           if (property.types.find(item => item === type)) {
-               usages.push([ otherSourceType, property ]);
-           }
-       });
-    });
-    if (usages.length > 0) {
-        output.push('Usages:\n\n');
-        usages.forEach(usage => output.push(`* [\`${usage[0].type}.${usage[1].property}\`](#${usage[0].type.toLowerCase()})\n`));
-        output.push('\n');
-    } else {
-        output.push('No usages.\n\n');
     }
 
     // JSON schema collapsible section

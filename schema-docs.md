@@ -42,11 +42,11 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`ViewStream.aggregation`](#viewstream)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -88,11 +88,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Sampler.always_off`](#sampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -115,11 +115,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Sampler.always_on`](#sampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -154,11 +154,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`OpenTelemetryConfiguration.attribute_limits`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -209,11 +209,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["name","value"]`
 
-No snippets.
-
 Usages:
 
 * [`Resource.attributes`](#resource)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -306,11 +306,11 @@ This is a enum type.
 
 No constraints.
 
-No snippets.
-
 Usages:
 
 * [`AttributeNameValue.type`](#attributenamevalue)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -342,11 +342,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`TextMapPropagator.b3multi`](#textmappropagator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -369,11 +369,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`TextMapPropagator.b3`](#textmappropagator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -396,11 +396,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`TextMapPropagator.baggage`](#textmappropagator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -437,11 +437,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Aggregation.base2_exponential_bucket_histogram`](#aggregation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -506,11 +506,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
 
-No snippets.
-
 Usages:
 
 * [`LogRecordProcessor.batch`](#logrecordprocessor)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -585,11 +585,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
 
-No snippets.
-
 Usages:
 
 * [`SpanProcessor.batch`](#spanprocessor)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -669,12 +669,12 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`PeriodicMetricReader.cardinality_limits`](#periodicmetricreader)
 * [`PullMetricReader.cardinality_limits`](#pullmetricreader)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -752,12 +752,12 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`LogRecordExporter.console`](#logrecordexporter)
 * [`SpanExporter.console`](#spanexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -792,11 +792,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`PushMetricExporter.console`](#pushmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -827,11 +827,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Aggregation.default`](#aggregation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -855,11 +855,11 @@ Constraints:
 * `additionalProperties`: `{"type":"object"}`
 * `minProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`OpenTelemetryConfiguration.distribution`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -882,11 +882,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Aggregation.drop`](#aggregation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -923,11 +923,11 @@ This is a enum type.
 
 No constraints.
 
-No snippets.
-
 Usages:
 
 * [`MeterProvider.exemplar_filter`](#meterprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -966,11 +966,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Aggregation.explicit_bucket_histogram`](#aggregation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1020,14 +1020,14 @@ This is a enum type.
 
 No constraints.
 
-No snippets.
-
 Usages:
 
 * [`OtlpHttpMetricExporter.default_histogram_aggregation`](#otlphttpmetricexporter)
 * [`OtlpGrpcMetricExporter.default_histogram_aggregation`](#otlpgrpcmetricexporter)
 * [`ExperimentalOtlpFileMetricExporter.default_histogram_aggregation`](#experimentalotlpfilemetricexporter)
 * [`ConsoleMetricExporter.default_histogram_aggregation`](#consolemetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1067,14 +1067,14 @@ This is a enum type.
 
 No constraints.
 
-No snippets.
-
 Usages:
 
 * [`OtlpHttpMetricExporter.temporality_preference`](#otlphttpmetricexporter)
 * [`OtlpGrpcMetricExporter.temporality_preference`](#otlpgrpcmetricexporter)
 * [`ExperimentalOtlpFileMetricExporter.temporality_preference`](#experimentalotlpfilemetricexporter)
 * [`ConsoleMetricExporter.temporality_preference`](#consolemetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1117,12 +1117,12 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`OtlpGrpcExporter.tls`](#otlpgrpcexporter)
 * [`OtlpGrpcMetricExporter.tls`](#otlpgrpcmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1185,12 +1185,12 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`OtlpHttpExporter.tls`](#otlphttpexporter)
 * [`OtlpHttpMetricExporter.tls`](#otlphttpmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1245,13 +1245,13 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalPrometheusMetricExporter.with_resource_constant_labels`](#experimentalprometheusmetricexporter)
 * [`ViewStream.attribute_keys`](#viewstream)
 * [`ExperimentalResourceDetection.attributes`](#experimentalresourcedetection)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1309,11 +1309,11 @@ This is a enum type.
 
 No constraints.
 
-No snippets.
-
 Usages:
 
 * [`ViewSelector.instrument_type`](#viewselector)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1344,11 +1344,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`TextMapPropagator.jaeger`](#textmappropagator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1371,11 +1371,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Aggregation.last_value`](#aggregation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1413,11 +1413,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["processors"]`
 
-No snippets.
-
 Usages:
 
 * [`OpenTelemetryConfiguration.logger_provider`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1475,12 +1475,12 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`SimpleLogRecordProcessor.exporter`](#simplelogrecordprocessor)
 * [`BatchLogRecordProcessor.exporter`](#batchlogrecordprocessor)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1533,11 +1533,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`LoggerProvider.limits`](#loggerprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1589,11 +1589,11 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`LoggerProvider.processors`](#loggerprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1645,11 +1645,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["readers"]`
 
-No snippets.
-
 Usages:
 
 * [`OpenTelemetryConfiguration.meter_provider`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1708,12 +1708,12 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`PeriodicMetricReader.producers`](#periodicmetricreader)
 * [`PullMetricReader.producers`](#pullmetricreader)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1759,11 +1759,11 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`MeterProvider.readers`](#meterprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1806,14 +1806,14 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["name","value"]`
 
-No snippets.
-
 Usages:
 
 * [`OtlpHttpExporter.headers`](#otlphttpexporter)
 * [`OtlpGrpcExporter.headers`](#otlpgrpcexporter)
 * [`OtlpHttpMetricExporter.headers`](#otlphttpmetricexporter)
 * [`OtlpGrpcMetricExporter.headers`](#otlpgrpcmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1848,11 +1848,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`MetricProducer.opencensus`](#metricproducer)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1906,9 +1906,9 @@ Constraints:
 * `additionalProperties`: `true`
 * `required`: `["file_format"]`
 
-No snippets.
-
 No usages.
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -1972,11 +1972,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`TextMapPropagator.ottrace`](#textmappropagator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2019,12 +2019,12 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`LogRecordExporter.otlp_grpc`](#logrecordexporter)
 * [`SpanExporter.otlp_grpc`](#spanexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2108,11 +2108,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`PushMetricExporter.otlp_grpc`](#pushmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2190,12 +2190,12 @@ This is a enum type.
 
 No constraints.
 
-No snippets.
-
 Usages:
 
 * [`OtlpHttpExporter.encoding`](#otlphttpexporter)
 * [`OtlpHttpMetricExporter.encoding`](#otlphttpmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2243,12 +2243,12 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`LogRecordExporter.otlp_http`](#logrecordexporter)
 * [`SpanExporter.otlp_http`](#spanexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2337,6 +2337,10 @@ Constraints:
 
 * `additionalProperties`: `false`
 
+Usages:
+
+* [`PushMetricExporter.otlp_http`](#pushmetricexporter)
+
 Snippets:
 
 <details>
@@ -2348,10 +2352,6 @@ endpoint: http://localhost:4317
 default_histogram_aggregation: base2_exponential_bucket_histogram
 ```
 </details>
-
-Usages:
-
-* [`PushMetricExporter.otlp_http`](#pushmetricexporter)
 
 <details>
 <summary>JSON Schema</summary>
@@ -2438,11 +2438,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Sampler.parent_based`](#sampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2501,11 +2501,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
 
-No snippets.
-
 Usages:
 
 * [`MetricReader.periodic`](#metricreader)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2569,11 +2569,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`OpenTelemetryConfiguration.propagator`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2622,11 +2622,11 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`PullMetricReader.exporter`](#pullmetricreader)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2673,11 +2673,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
 
-No snippets.
-
 Usages:
 
 * [`MetricReader.pull`](#metricreader)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2735,11 +2735,11 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`PeriodicMetricReader.exporter`](#periodicmetricreader)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2796,11 +2796,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`OpenTelemetryConfiguration.resource`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -2870,6 +2870,16 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
+Usages:
+
+* [`TracerProvider.sampler`](#tracerprovider)
+* [`ExperimentalJaegerRemoteSampler.initial_sampler`](#experimentaljaegerremotesampler)
+* [`ParentBasedSampler.root`](#parentbasedsampler)
+* [`ParentBasedSampler.remote_parent_sampled`](#parentbasedsampler)
+* [`ParentBasedSampler.remote_parent_not_sampled`](#parentbasedsampler)
+* [`ParentBasedSampler.local_parent_sampled`](#parentbasedsampler)
+* [`ParentBasedSampler.local_parent_not_sampled`](#parentbasedsampler)
+
 Snippets:
 
 <details>
@@ -2892,16 +2902,6 @@ parent_based:
     always_off:
 ```
 </details>
-
-Usages:
-
-* [`TracerProvider.sampler`](#tracerprovider)
-* [`ExperimentalJaegerRemoteSampler.initial_sampler`](#experimentaljaegerremotesampler)
-* [`ParentBasedSampler.root`](#parentbasedsampler)
-* [`ParentBasedSampler.remote_parent_sampled`](#parentbasedsampler)
-* [`ParentBasedSampler.remote_parent_not_sampled`](#parentbasedsampler)
-* [`ParentBasedSampler.local_parent_sampled`](#parentbasedsampler)
-* [`ParentBasedSampler.local_parent_not_sampled`](#parentbasedsampler)
 
 <details>
 <summary>JSON Schema</summary>
@@ -3007,12 +3007,12 @@ This is a enum type.
 
 No constraints.
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalLoggerConfig.minimum_severity`](#experimentalloggerconfig)
 * [`OpenTelemetryConfiguration.log_level`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3071,11 +3071,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
 
-No snippets.
-
 Usages:
 
 * [`LogRecordProcessor.simple`](#logrecordprocessor)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3114,11 +3114,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["exporter"]`
 
-No snippets.
-
 Usages:
 
 * [`SpanProcessor.simple`](#spanprocessor)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3166,12 +3166,12 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`BatchSpanProcessor.exporter`](#batchspanprocessor)
 * [`SimpleSpanProcessor.exporter`](#simplespanprocessor)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3230,11 +3230,11 @@ This is a enum type.
 
 No constraints.
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalComposableRuleBasedSamplerRule.span_kinds`](#experimentalcomposablerulebasedsamplerrule)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3283,11 +3283,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`TracerProvider.limits`](#tracerprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3367,11 +3367,11 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`TracerProvider.processors`](#tracerprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3406,11 +3406,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Aggregation.sum`](#aggregation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3457,11 +3457,11 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`Propagator.composite`](#propagator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3508,11 +3508,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`TextMapPropagator.tracecontext`](#textmappropagator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3545,11 +3545,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Sampler.trace_id_ratio_based`](#sampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3599,11 +3599,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["processors"]`
 
-No snippets.
-
 Usages:
 
 * [`OpenTelemetryConfiguration.tracer_provider`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3657,6 +3657,10 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["selector","stream"]`
 
+Usages:
+
+* [`MeterProvider.views`](#meterprovider)
+
 Snippets:
 
 <details>
@@ -3673,10 +3677,6 @@ stream:
       boundaries: [0, 5, 10]
 ```
 </details>
-
-Usages:
-
-* [`MeterProvider.views`](#meterprovider)
 
 <details>
 <summary>JSON Schema</summary>
@@ -3728,11 +3728,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`View.selector`](#view)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3805,11 +3805,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`View.stream`](#view)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3861,11 +3861,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalComposableSampler.always_off`](#experimentalcomposablesampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3891,11 +3891,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalComposableSampler.always_on`](#experimentalcomposablesampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3932,11 +3932,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["root"]`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalComposableSampler.parent_threshold`](#experimentalcomposablesampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -3979,11 +3979,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalComposableSampler.probability`](#experimentalcomposablesampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4029,11 +4029,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalComposableSampler.rule_based`](#experimentalcomposablesampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4089,9 +4089,9 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["sampler"]`
 
-No snippets.
-
 No usages.
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4158,11 +4158,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["key"]`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalComposableRuleBasedSamplerRule.attribute_patterns`](#experimentalcomposablerulebasedsamplerrule)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4220,11 +4220,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["key","values"]`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalComposableRuleBasedSamplerRule.attribute_values`](#experimentalcomposablerulebasedsamplerrule)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4283,13 +4283,13 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`Sampler.composite/development`](#sampler)
 * [`ExperimentalComposableParentThresholdSampler.root`](#experimentalcomposableparentthresholdsampler)
 * [`ExperimentalComposableRuleBasedSamplerRule.sampler`](#experimentalcomposablerulebasedsamplerrule)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4336,11 +4336,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalResourceDetector.container`](#experimentalresourcedetector)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4378,11 +4378,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalInstrumentation.general`](#experimentalinstrumentation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4413,11 +4413,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalResourceDetector.host`](#experimentalresourcedetector)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4455,11 +4455,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalHttpInstrumentation.client`](#experimentalhttpinstrumentation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4510,11 +4510,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalGeneralInstrumentation.http`](#experimentalgeneralinstrumentation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4557,11 +4557,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalHttpInstrumentation.server`](#experimentalhttpinstrumentation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4632,11 +4632,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`OpenTelemetryConfiguration.instrumentation/development`](#opentelemetryconfiguration)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4712,11 +4712,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["endpoint","initial_sampler"]`
 
-No snippets.
-
 Usages:
 
 * [`Sampler.jaeger_remote/development`](#sampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4763,8 +4763,6 @@ Constraints:
 
 * `additionalProperties`: `{"type":"object"}`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalInstrumentation.cpp`](#experimentalinstrumentation)
@@ -4778,6 +4776,8 @@ Usages:
 * [`ExperimentalInstrumentation.ruby`](#experimentalinstrumentation)
 * [`ExperimentalInstrumentation.rust`](#experimentalinstrumentation)
 * [`ExperimentalInstrumentation.swift`](#experimentalinstrumentation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4816,12 +4816,12 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalLoggerConfigurator.default_config`](#experimentalloggerconfigurator)
 * [`ExperimentalLoggerMatcherAndConfig.config`](#experimentalloggermatcherandconfig)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4875,11 +4875,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`LoggerProvider.logger_configurator/development`](#loggerprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4929,11 +4929,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["name","config"]`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalLoggerConfigurator.loggers`](#experimentalloggerconfigurator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -4982,12 +4982,12 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalMeterConfigurator.default_config`](#experimentalmeterconfigurator)
 * [`ExperimentalMeterMatcherAndConfig.config`](#experimentalmetermatcherandconfig)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5031,11 +5031,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`MeterProvider.meter_configurator/development`](#meterprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5085,11 +5085,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["name","config"]`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalMeterConfigurator.meters`](#experimentalmeterconfigurator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5138,12 +5138,12 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`LogRecordExporter.otlp_file/development`](#logrecordexporter)
 * [`SpanExporter.otlp_file/development`](#spanexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5191,11 +5191,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`PushMetricExporter.otlp_file/development`](#pushmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5245,11 +5245,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalGeneralInstrumentation.peer`](#experimentalgeneralinstrumentation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5294,11 +5294,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["peer","service"]`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalPeerInstrumentation.service_mapping`](#experimentalpeerinstrumentation)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5343,11 +5343,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Sampler.probability/development`](#sampler)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5383,11 +5383,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalResourceDetector.process`](#experimentalresourcedetector)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5433,11 +5433,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`PullMetricExporter.prometheus/development`](#pullmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5511,11 +5511,11 @@ This is a enum type.
 
 No constraints.
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalPrometheusMetricExporter.translation_strategy`](#experimentalprometheusmetricexporter)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5558,11 +5558,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`Resource.detection/development`](#resource)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5617,11 +5617,11 @@ Constraints:
 * `minProperties`: `1`
 * `maxProperties`: `1`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalResourceDetection.detectors`](#experimentalresourcedetection)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5665,11 +5665,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalResourceDetector.service`](#experimentalresourcedetector)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5709,11 +5709,11 @@ This is a enum type.
 
 No constraints.
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalComposableRuleBasedSamplerRule.parent`](#experimentalcomposablerulebasedsamplerrule)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5753,12 +5753,12 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalTracerConfigurator.default_config`](#experimentaltracerconfigurator)
 * [`ExperimentalTracerMatcherAndConfig.config`](#experimentaltracermatcherandconfig)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5802,11 +5802,11 @@ Constraints:
 
 * `additionalProperties`: `false`
 
-No snippets.
-
 Usages:
 
 * [`TracerProvider.tracer_configurator/development`](#tracerprovider)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
@@ -5856,11 +5856,11 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["name","config"]`
 
-No snippets.
-
 Usages:
 
 * [`ExperimentalTracerConfigurator.tracers`](#experimentaltracerconfigurator)
+
+No snippets.
 
 <details>
 <summary>JSON Schema</summary>
