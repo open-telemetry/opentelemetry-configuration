@@ -1,6 +1,164 @@
 # Changelog
 
-## Unreleased
+## [v1.0.0-rc.3] - 2025-12-04 TODO update date
+
+This release contains a number of changes which are breaking according to the [versioning policy](VERSIONING.md), but in
+practice are unlikely to be impactful. These changes generally make implicit assumptions explicit, or require changes
+from implementations but not end users. There are a small number of notable breaking changes called out below.
+
+This release also contains a large number of project tooling improvements aimed at improving consistency and quality.
+Notably, the schema is now compiled into a single file
+at [opentelemetry_configuration.json](opentelemetry_configuration.json). Please
+see [project tooling docs](CONTRIBUTING.md#json-schema-source-and-output) for more details.
+
+### Schema
+
+* **BREAKING:** Move certificate configuration under `tls` block and rename to align with collector
+  ([#331](https://github.com/open-telemetry/opentelemetry-configuration/pull/331),
+  [#418](https://github.com/open-telemetry/opentelemetry-configuration/pull/418))
+
+  <details>
+
+  <summary>Migration steps</summary>
+
+  ```yaml
+  # Before
+  tracer_provider: # or meter_provider, logger_provider
+    processors:
+      - batch:
+          exporter:
+            otlp_http:
+              certificate_file: /app/cert.pem
+              client_key_file: /app/key.pem
+              client_certificate_file: /app/client_cert.pem
+  ---
+  # After
+  tracer_provider:
+    processors:
+      - batch:
+          exporter:
+            otlp_http:
+              tls:
+                ca_file: /app/cert.pem
+                key_file: /app/key.pem
+                cert_file: /app/client_cert.pem
+  ```
+  </details>
+
+* **BREAKING:** Update .log_level to be enum
+  ([#447](https://github.com/open-telemetry/opentelemetry-configuration/pull/447))
+
+  <details>
+
+  <summary>Migration steps</summary>
+
+  ```yaml
+  # .log_level must now be one of the values in https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#severitynumber-
+  # If already conforming to this, no update is necessary, else update to the equivalent level.
+  log_level: info
+  ```
+  </details>
+
+* **BREAKING:** Delete ZipkinSpanExporter ahead of stabilizing after deprecation in the specification.
+  See https://opentelemetry.io/blog/2025/deprecating-zipkin-exporters/ for details. If you depend on ZipkinSpanExporter
+  w/ declarative config, please open an issue to let us know.
+  ([#453](https://github.com/open-telemetry/opentelemetry-configuration/pull/453))
+
+* **BREAKING (low-impact):** Add ConsoleMetricExporter
+  ([#362](https://github.com/open-telemetry/opentelemetry-configuration/pull/362))
+* **BREAKING (low-impact):** Add [0, 1] bounds for TraceIdRatioBasedSampler ratio
+  ([#358](https://github.com/open-telemetry/opentelemetry-configuration/pull/358))
+* **BREAKING (low-impact):** Make view selector and stream required
+  ([#365](https://github.com/open-telemetry/opentelemetry-configuration/pull/365))
+* **BREAKING (low-impact):** Change JaegerRemote to Experimental
+  ([#363](https://github.com/open-telemetry/opentelemetry-configuration/pull/363))
+* **BREAKING (low-impact):** Fix casing for OpenTelemetryConfiguration
+  ([#372](https://github.com/open-telemetry/opentelemetry-configuration/pull/372))
+* **BREAKING (low-impact):** Add AttributeLimit constraints
+  ([#382](https://github.com/open-telemetry/opentelemetry-configuration/pull/382))
+* **BREAKING (low-impact):** Set AttributeLimits additionalProperties: false
+  ([#381](https://github.com/open-telemetry/opentelemetry-configuration/pull/381))
+* **BREAKING (low-impact):** Update Propagator to disallow additionalProperties
+  ([#388](https://github.com/open-telemetry/opentelemetry-configuration/pull/388))
+* **BREAKING (low-impact):** Add constraints to Base2ExponentialBucketHistogramAggregation properties
+  ([#383](https://github.com/open-telemetry/opentelemetry-configuration/pull/383))
+* **BREAKING (low-impact):** Add minItems recommendation for array properties
+  ([#386](https://github.com/open-telemetry/opentelemetry-configuration/pull/386))
+* **BREAKING (low-impact):** Experimental{Signal}MatcherAndConfig require name and config properties
+  ([#406](https://github.com/open-telemetry/opentelemetry-configuration/pull/406))
+* **BREAKING (low-impact):** Break out dedicated type for prometheus translation strategy
+  ([#415](https://github.com/open-telemetry/opentelemetry-configuration/pull/415))
+* **BREAKING (low-impact):** Add schema modeling guidance for enum values as lower_snake_case
+  ([#445](https://github.com/open-telemetry/opentelemetry-configuration/pull/445))
+* Replace patternProperties with additionalProperties for improved type safety
+  ([#323](https://github.com/open-telemetry/opentelemetry-configuration/pull/323), 
+  [#347](https://github.com/open-telemetry/opentelemetry-configuration/pull/347))
+* Minor cleanup of SDK extension plugin types
+  ([#385](https://github.com/open-telemetry/opentelemetry-configuration/pull/385))
+* Add schema for composite sampler
+  ([#390](https://github.com/open-telemetry/opentelemetry-configuration/pull/390),
+  [#427](https://github.com/open-telemetry/opentelemetry-configuration/pull/427))
+* Add schema for ProbabilitySampler
+  ([#339](https://github.com/open-telemetry/opentelemetry-configuration/pull/339))
+* Add new LoggerConfig parameters
+  ([#392](https://github.com/open-telemetry/opentelemetry-configuration/pull/392))
+* Update `without_target_info` to `ExperimentalPrometheusMetricExporter`
+  ([#376](https://github.com/open-telemetry/opentelemetry-configuration/pull/376))
+* Clarify .file_format is a string consisting of the major and minor version
+  ([#455](https://github.com/open-telemetry/opentelemetry-configuration/pull/455))
+* Add schema for rule based sampler
+  ([#410](https://github.com/open-telemetry/opentelemetry-configuration/pull/410))
+* Add Distribution section for vendor-specific settings
+  ([#433](https://github.com/open-telemetry/opentelemetry-configuration/pull/433))
+
+### Tooling
+
+* Fix links, use common link checker
+  ([#319](https://github.com/open-telemetry/opentelemetry-configuration/pull/319),
+  [#351](https://github.com/open-telemetry/opentelemetry-configuration/pull/351),
+  [#379](https://github.com/open-telemetry/opentelemetry-configuration/pull/379),
+  [#434](https://github.com/open-telemetry/opentelemetry-configuration/pull/434))
+* Track additional schema meta data, including default behavior and descriptions. Separate schema source and compile into single output file. Add additional schema validation. Generate documentation from schema.
+  ([#312](https://github.com/open-telemetry/opentelemetry-configuration/pull/312),
+  [#350](https://github.com/open-telemetry/opentelemetry-configuration/pull/350),
+  [#360](https://github.com/open-telemetry/opentelemetry-configuration/pull/360),
+  [#359](https://github.com/open-telemetry/opentelemetry-configuration/pull/359),
+  [#361](https://github.com/open-telemetry/opentelemetry-configuration/pull/361),
+  [#370](https://github.com/open-telemetry/opentelemetry-configuration/pull/370),
+  [#369](https://github.com/open-telemetry/opentelemetry-configuration/pull/369),
+  [#367](https://github.com/open-telemetry/opentelemetry-configuration/pull/367),
+  [#364](https://github.com/open-telemetry/opentelemetry-configuration/pull/364),
+  [#384](https://github.com/open-telemetry/opentelemetry-configuration/pull/384),
+  [#380](https://github.com/open-telemetry/opentelemetry-configuration/pull/380),
+  [#366](https://github.com/open-telemetry/opentelemetry-configuration/pull/366),
+  [#374](https://github.com/open-telemetry/opentelemetry-configuration/pull/374),
+  [#414](https://github.com/open-telemetry/opentelemetry-configuration/pull/414),
+  [#412](https://github.com/open-telemetry/opentelemetry-configuration/pull/412),
+  [#411](https://github.com/open-telemetry/opentelemetry-configuration/pull/411),
+  [#424](https://github.com/open-telemetry/opentelemetry-configuration/pull/424),
+  [#425](https://github.com/open-telemetry/opentelemetry-configuration/pull/425),
+  [#426](https://github.com/open-telemetry/opentelemetry-configuration/pull/426),
+  [#436](https://github.com/open-telemetry/opentelemetry-configuration/pull/436),
+  [#443](https://github.com/open-telemetry/opentelemetry-configuration/pull/443),
+  [#444](https://github.com/open-telemetry/opentelemetry-configuration/pull/444),
+  [#442](https://github.com/open-telemetry/opentelemetry-configuration/pull/442),
+  [#440](https://github.com/open-telemetry/opentelemetry-configuration/pull/440),
+  [#451](https://github.com/open-telemetry/opentelemetry-configuration/pull/451),
+  [#450](https://github.com/open-telemetry/opentelemetry-configuration/pull/450))
+* Document what you see is what you get philosophy as schema modeling rule
+  ([#377](https://github.com/open-telemetry/opentelemetry-configuration/pull/377))
+* Add contributing / release guidance for breaking changes
+  ([#373](https://github.com/open-telemetry/opentelemetry-configuration/pull/373))
+* Document SDK extension plugin schema modeling rule
+  ([#378](https://github.com/open-telemetry/opentelemetry-configuration/pull/378))
+* Misc docs updates
+  ([#423](https://github.com/open-telemetry/opentelemetry-configuration/pull/423))
+* Add getting started config at `/examples/getting-started.yaml`
+  ([#402](https://github.com/open-telemetry/opentelemetry-configuration/pull/402))
+* Move stability definition to VERSIONING.md, rework README.md for improved focus
+  ([#454](https://github.com/open-telemetry/opentelemetry-configuration/pull/454))
+* Add tooling for small targeted configuration snippets
+  ([#397](https://github.com/open-telemetry/opentelemetry-configuration/pull/397))
 
 ### Schema
 
