@@ -1,6 +1,6 @@
 # Changelog
 
-## [v1.0.0-rc.3] - 2025-12-04 TODO update date
+## [v1.0.0-rc.3] - 2025-12-11
 
 This release contains a number of changes which are breaking according to the [versioning policy](VERSIONING.md), but in
 practice are unlikely to be impactful. These changes generally make implicit assumptions explicit, or require changes
