@@ -1,6 +1,6 @@
 file_format: "1.0-rc.2"
 
-logger_provider:
+tracer_provider:
   processors:
     - batch:
         exporter:
