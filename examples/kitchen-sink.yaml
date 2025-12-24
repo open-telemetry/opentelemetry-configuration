@@ -49,14 +49,6 @@ logger_provider:
             headers_list: "api-key=1234"
             compression: gzip
             timeout: 10000
-    - batch:
-        exporter:
-          otlp_file/development:
-            output_stream: file:///var/log/logs.jsonl
-    - batch:
-        exporter:
-          otlp_file/development:
-            output_stream: stdout
     - simple:
         exporter:
           console:
@@ -143,18 +135,6 @@ meter_provider:
             headers_list: "api-key=1234"
             compression: gzip
             timeout: 10000
-            temporality_preference: delta
-            default_histogram_aggregation: base2_exponential_bucket_histogram
-    - periodic:
-        exporter:
-          otlp_file/development:
-            output_stream: file:///var/log/metrics.jsonl
-            temporality_preference: delta
-            default_histogram_aggregation: base2_exponential_bucket_histogram
-    - periodic:
-        exporter:
-          otlp_file/development:
-            output_stream: stdout
             temporality_preference: delta
             default_histogram_aggregation: base2_exponential_bucket_histogram
     - periodic:
@@ -254,14 +234,6 @@ tracer_provider:
             headers_list: "api-key=1234"
             compression: gzip
             timeout: 10000
-    - batch:
-        exporter:
-          otlp_file/development:
-            output_stream: file:///var/log/traces.jsonl
-    - batch:
-        exporter:
-          otlp_file/development:
-            output_stream: stdout
     - simple:
         exporter:
           console:
