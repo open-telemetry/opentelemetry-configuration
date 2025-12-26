@@ -4,6 +4,7 @@ import {
     isExperimentalProperty,
     isExperimentalType,
     markdownDocPath,
+    languageSupportStatusPath,
     rootTypeName,
     schemaPath
 } from "./util.js";
@@ -29,6 +30,7 @@ readSnippets().forEach(snippet => {
 });
 
 const output = [];
+const languageSupportOutput = [];
 
 addHeader('Overview', 'overview', 1);
 output.push(`
@@ -36,7 +38,7 @@ This document is an auto-generated view of the declarative configuration JSON sc
 
 * [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [${rootTypeName}](#${rootTypeName.toLowerCase()}) is the root type and is a good starting point.
 * [Experimental Types](#experimental-types) same as [Types](#types) but for experimental types subject to breaking changes.
-* [Language Support Status](#language-support-status) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
+* [Language Support Status](language-support-status.md) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
 * [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
 
 `);
@@ -127,7 +129,7 @@ function writeType(sourceSchemaType) {
         const rowHeader = sourceSchemaType.isEnumType() ? 'Value' : 'Property';
         output.push(`| ${rowHeader} |`);
         KNOWN_LANGUAGES.forEach(language => {
-            output.push(` [${language}](#${language}) |`);
+            output.push(` [${language}](language-support-status.md#${language}) |`);
             if (!languageImplementationsByLanguage[language]) {
                 throw new Error(`Meta schema LanguageImplementation not found for language ${language}.`);
             }
@@ -253,18 +255,19 @@ function cleanSchema(schemaSource) {
     return adjustedSchema;
 }
 
-// Write language support status
-addHeader('Language Support Status', 'language-support-status', 1);
+// Write language support status to separate file
+addHeader('Language Support Status', 'language-support-status', 1, languageSupportOutput);
+languageSupportOutput.push(`This page provides comprehensive language implementation status for each type in the declarative configuration schema. For type definitions and descriptions, see [schema-docs.md](schema-docs.md).\n\n`);
 KNOWN_LANGUAGES.forEach(language => {
-    addHeader(language, language, 2);
+    addHeader(language, language, 2, languageSupportOutput);
     const languageImplementation = languageImplementations.find(item => item.language === language);
     if (!languageImplementation) {
         throw new Error(`Meta schema LanguageImplementation not found for language ${language}.`);
     }
-    output.push(`Latest supported file format: \`${languageImplementation.latestSupportedFileFormat}\`\n\n`);
+    languageSupportOutput.push(`Latest supported file format: \`${languageImplementation.latestSupportedFileFormat}\`\n\n`);
 
-    output.push(`| Type | Status | Notes | Support Status Details |\n`);
-    output.push(`|---|---|---|---|\n`);
+    languageSupportOutput.push(`| Type | Status | Notes | Support Status Details |\n`);
+    languageSupportOutput.push(`|---|---|---|---|\n`);
     languageImplementation.typeSupportStatuses.forEach(typeSupportStatus => {
         const sourceSchemaType = sourceTypes.find(item => item.type === typeSupportStatus.type);
         if (!sourceSchemaType) {
@@ -292,9 +295,9 @@ KNOWN_LANGUAGES.forEach(language => {
             });
         }
 
-        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${formattedNotes} | ${supportStatusDetails.join('')} |\n`);
+        languageSupportOutput.push(`| [\`${typeSupportStatus.type}\`](schema-docs.md#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${formattedNotes} | ${supportStatusDetails.join('')} |\n`);
     });
-    output.push(`\n\n`);
+    languageSupportOutput.push(`\n\n`);
 });
 
 // Write SDK extension plugins
@@ -316,6 +319,9 @@ sourceTypes.filter(sourceSchemaType => sourceSchemaType.schema.isSdkExtensionPlu
 
 output.unshift('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
 fs.writeFileSync(markdownDocPath, output.join(""));
+
+languageSupportOutput.unshift('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
+fs.writeFileSync(languageSupportStatusPath, languageSupportOutput.join(""));
 
 // Helper functions
 function formatPropertyType(sourceProperty, sourceTypesByType) {
@@ -339,8 +345,8 @@ function formatPropertyType(sourceProperty, sourceTypesByType) {
     return output.join('');
 }
 
-function addHeader(title, id, level) {
-    output.push(`${'#'.repeat(level)} ${title} <a id="${id}"></a>\n\n`);
+function addHeader(title, id, level, targetOutput = output) {
+    targetOutput.push(`${'#'.repeat(level)} ${title} <a id="${id}"></a>\n\n`);
 }
 
 function resolveAndFormatConstraints(schema, linebreak) {

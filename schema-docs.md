@@ -7,7 +7,7 @@ This document is an auto-generated view of the declarative configuration JSON sc
 
 * [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [OpenTelemetryConfiguration](#opentelemetryconfiguration) is the root type and is a good starting point.
 * [Experimental Types](#experimental-types) same as [Types](#types) but for experimental types subject to breaking changes.
-* [Language Support Status](#language-support-status) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
+* [Language Support Status](language-support-status.md) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
 * [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
 
 # Types <a id="types"></a>
@@ -26,7 +26,7 @@ This document is an auto-generated view of the declarative configuration JSON sc
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown |
 | `default` | supported | unknown | supported | unknown |
@@ -144,7 +144,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `attribute_count_limit` | supported | unknown | supported | unknown |
 | `attribute_value_length_limit` | supported | unknown | supported | unknown |
@@ -197,7 +197,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `name` | supported | unknown | supported | unknown |
 | `type` | supported | unknown | supported | unknown |
@@ -292,7 +292,7 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `bool` | supported | unknown | supported | unknown |
 | `bool_array` | supported | unknown | supported | unknown |
@@ -426,7 +426,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `max_scale` | supported | unknown | supported | unknown |
 | `max_size` | supported | unknown | supported | unknown |
@@ -492,7 +492,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `export_timeout` | supported | unknown | supported | unknown |
 | `exporter` | supported | unknown | supported | unknown |
@@ -571,7 +571,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `export_timeout` | supported | unknown | supported | unknown |
 | `exporter` | supported | unknown | supported | unknown |
@@ -653,7 +653,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `counter` | not_implemented | unknown | supported | unknown |
 | `default` | not_implemented | unknown | supported | unknown |
@@ -782,7 +782,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `default_histogram_aggregation` | supported | unknown | not_implemented | unknown |
 | `temporality_preference` | supported | unknown | ignored | unknown |
@@ -914,7 +914,7 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `always_off` | not_implemented | unknown | supported | unknown |
 | `always_on` | not_implemented | unknown | supported | unknown |
@@ -956,7 +956,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `boundaries` | supported | unknown | supported | unknown |
 | `record_min_max` | supported | unknown | not_implemented | unknown |
@@ -1012,7 +1012,7 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown |
 | `explicit_bucket_histogram` | supported | unknown | supported | unknown |
@@ -1058,7 +1058,7 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `cumulative` | supported | unknown | supported | unknown |
 | `delta` | supported | unknown | supported | unknown |
@@ -1105,7 +1105,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `ca_file` | unknown | unknown | not_implemented | unknown |
 | `cert_file` | unknown | unknown | not_implemented | unknown |
@@ -1174,7 +1174,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `ca_file` | unknown | unknown | not_implemented | unknown |
 | `cert_file` | unknown | unknown | not_implemented | unknown |
@@ -1235,7 +1235,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `excluded` | supported | unknown | supported | unknown |
 | `included` | supported | unknown | supported | unknown |
@@ -1296,7 +1296,7 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `counter` | supported | unknown | supported | unknown |
 | `gauge` | supported | unknown | supported | unknown |
@@ -1401,7 +1401,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `limits` | supported | unknown | supported | unknown |
 | `processors` | supported | unknown | supported | unknown |
@@ -1461,7 +1461,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `console` | supported | unknown | supported | unknown |
 | `otlp_grpc` | supported | unknown | supported | unknown |
@@ -1523,7 +1523,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `attribute_count_limit` | supported | unknown | supported | unknown |
 | `attribute_value_length_limit` | supported | unknown | supported | unknown |
@@ -1577,7 +1577,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `batch` | supported | unknown | supported | unknown |
 | `simple` | supported | unknown | supported | unknown |
@@ -1632,7 +1632,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `exemplar_filter` | supported | unknown | supported | unknown |
 | `readers` | supported | unknown | supported | unknown |
@@ -1697,7 +1697,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `opencensus` | supported | unknown | ignored | unknown |
 </details>
@@ -1747,7 +1747,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `periodic` | supported | unknown | supported | unknown |
 | `pull` | supported | unknown | supported | unknown |
@@ -1795,7 +1795,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `name` | supported | unknown | supported | unknown |
 | `value` | supported | unknown | supported | unknown |
@@ -1886,7 +1886,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `attribute_limits` | supported | unknown | supported | unknown |
 | `disabled` | supported | unknown | supported | unknown |
@@ -2005,7 +2005,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `compression` | supported | unknown | supported | unknown |
 | `endpoint` | supported | unknown | supported | unknown |
@@ -2092,7 +2092,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `compression` | supported | unknown | supported | unknown |
 | `default_histogram_aggregation` | supported | unknown | supported | unknown |
@@ -2182,7 +2182,7 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `json` | supported | unknown | not_implemented | unknown |
 | `protobuf` | supported | unknown | not_implemented | unknown |
@@ -2228,7 +2228,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `compression` | supported | unknown | supported | unknown |
 | `encoding` | supported | unknown | not_implemented | unknown |
@@ -2320,7 +2320,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `compression` | supported | unknown | supported | unknown |
 | `default_histogram_aggregation` | supported | unknown | supported | unknown |
@@ -2425,7 +2425,7 @@ default_histogram_aggregation: base2_exponential_bucket_histogram
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `local_parent_not_sampled` | supported | unknown | supported | unknown |
 | `local_parent_sampled` | supported | unknown | supported | unknown |
@@ -2487,7 +2487,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `cardinality_limits` | supported | unknown | supported | unknown |
 | `exporter` | supported | unknown | supported | unknown |
@@ -2559,7 +2559,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `composite` | supported | unknown | supported | unknown |
 | `composite_list` | supported | unknown | supported | unknown |
@@ -2611,7 +2611,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `prometheus/development` | supported | unknown | supported | unknown |
 </details>
@@ -2661,7 +2661,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `cardinality_limits` | supported | unknown | supported | unknown |
 | `exporter` | supported | unknown | supported | unknown |
@@ -2721,7 +2721,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `console` | supported | unknown | supported | unknown |
 | `otlp_grpc` | supported | unknown | supported | unknown |
@@ -2784,7 +2784,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `attributes` | supported | unknown | supported | unknown |
 | `attributes_list` | supported | unknown | supported | unknown |
@@ -2853,7 +2853,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `always_off` | supported | unknown | supported | unknown |
 | `always_on` | supported | unknown | supported | unknown |
@@ -2977,7 +2977,7 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `debug` | unknown | unknown | unknown | unknown |
 | `debug2` | unknown | unknown | unknown | unknown |
@@ -3061,7 +3061,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `exporter` | supported | unknown | supported | unknown |
 </details>
@@ -3104,7 +3104,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `exporter` | supported | unknown | supported | unknown |
 </details>
@@ -3152,7 +3152,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `console` | supported | unknown | supported | unknown |
 | `otlp_grpc` | supported | unknown | supported | unknown |
@@ -3219,7 +3219,7 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `client` | unknown | unknown | unknown | unknown |
 | `consumer` | unknown | unknown | unknown | unknown |
@@ -3269,7 +3269,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `attribute_count_limit` | supported | unknown | supported | unknown |
 | `attribute_value_length_limit` | supported | unknown | supported | unknown |
@@ -3355,7 +3355,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `batch` | supported | unknown | supported | unknown |
 | `simple` | supported | unknown | supported | unknown |
@@ -3441,7 +3441,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `b3` | supported | unknown | supported | unknown |
 | `b3multi` | supported | unknown | supported | unknown |
@@ -3536,7 +3536,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `ratio` | supported | unknown | supported | unknown |
 </details>
@@ -3586,7 +3586,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `limits` | supported | unknown | supported | unknown |
 | `processors` | supported | unknown | supported | unknown |
@@ -3646,7 +3646,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `selector` | supported | unknown | supported | unknown |
 | `stream` | supported | unknown | supported | unknown |
@@ -3714,7 +3714,7 @@ stream:
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `instrument_name` | supported | unknown | supported | unknown |
 | `instrument_type` | supported | unknown | supported | unknown |
@@ -3792,7 +3792,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `aggregation` | supported | unknown | supported | unknown |
 | `aggregation_cardinality_limit` | supported | unknown | supported | unknown |
@@ -3922,7 +3922,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `root` | unknown | unknown | unknown | unknown |
 </details>
@@ -3970,7 +3970,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `ratio` | unknown | unknown | unknown | unknown |
 </details>
@@ -4020,7 +4020,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `rules` | unknown | unknown | unknown | unknown |
 </details>
@@ -4075,7 +4075,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `attribute_patterns` | unknown | unknown | unknown | unknown |
 | `attribute_values` | unknown | unknown | unknown | unknown |
@@ -4146,7 +4146,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `excluded` | unknown | unknown | unknown | unknown |
 | `included` | unknown | unknown | unknown | unknown |
@@ -4209,7 +4209,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `key` | unknown | unknown | unknown | unknown |
 | `values` | unknown | unknown | unknown | unknown |
@@ -4268,7 +4268,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `always_off` | unknown | unknown | unknown | unknown |
 | `always_on` | unknown | unknown | unknown | unknown |
@@ -4368,7 +4368,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `http` | not_applicable | unknown | supported | unknown |
 | `peer` | not_applicable | unknown | supported | unknown |
@@ -4445,7 +4445,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `request_captured_headers` | not_applicable | unknown | supported | unknown |
 | `response_captured_headers` | not_applicable | unknown | supported | unknown |
@@ -4500,7 +4500,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `client` | not_applicable | unknown | supported | unknown |
 | `server` | not_applicable | unknown | supported | unknown |
@@ -4547,7 +4547,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `request_captured_headers` | not_applicable | unknown | supported | unknown |
 | `response_captured_headers` | not_applicable | unknown | supported | unknown |
@@ -4612,7 +4612,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `cpp` | not_applicable | unknown | not_applicable | unknown |
 | `dotnet` | not_applicable | unknown | not_applicable | unknown |
@@ -4700,7 +4700,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `endpoint` | not_implemented | unknown | ignored | unknown |
 | `initial_sampler` | not_implemented | unknown | ignored | unknown |
@@ -4805,7 +4805,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `disabled` | not_implemented | unknown | supported | unknown |
 | `minimum_severity` | not_implemented | unknown | not_implemented | unknown |
@@ -4865,7 +4865,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `default_config` | not_implemented | unknown | supported | unknown |
 | `loggers` | not_implemented | unknown | supported | unknown |
@@ -4918,7 +4918,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `config` | not_implemented | unknown | supported | unknown |
 | `name` | not_implemented | unknown | supported | unknown |
@@ -4973,7 +4973,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `disabled` | not_implemented | unknown | supported | unknown |
 </details>
@@ -5021,7 +5021,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `default_config` | not_implemented | unknown | supported | unknown |
 | `meters` | not_implemented | unknown | supported | unknown |
@@ -5074,7 +5074,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `config` | not_implemented | unknown | supported | unknown |
 | `name` | not_implemented | unknown | supported | unknown |
@@ -5129,7 +5129,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `output_stream` | supported | unknown | not_implemented | unknown |
 </details>
@@ -5180,7 +5180,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `default_histogram_aggregation` | supported | unknown | supported | unknown |
 | `output_stream` | supported | unknown | not_implemented | unknown |
@@ -5236,7 +5236,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `service_mapping` | not_implemented | unknown | supported | unknown |
 </details>
@@ -5283,7 +5283,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `peer` | not_implemented | unknown | supported | unknown |
 | `service` | not_implemented | unknown | supported | unknown |
@@ -5334,7 +5334,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `ratio` | not_implemented | unknown | ignored | unknown |
 </details>
@@ -5419,7 +5419,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `host` | supported | unknown | supported | unknown |
 | `port` | supported | unknown | supported | unknown |
@@ -5501,7 +5501,7 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `no_translation` | unknown | unknown | unknown | unknown |
 | `no_utf8_escaping_with_suffixes` | unknown | unknown | unknown | unknown |
@@ -5548,7 +5548,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `attributes` | not_implemented | unknown | supported | unknown |
 | `detectors` | not_implemented | unknown | supported | unknown |
@@ -5603,7 +5603,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `container` | not_implemented | unknown | supported | unknown |
 | `host` | not_implemented | unknown | supported | unknown |
@@ -5700,7 +5700,7 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `local` | unknown | unknown | unknown | unknown |
 | `none` | unknown | unknown | unknown | unknown |
@@ -5744,7 +5744,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `disabled` | not_implemented | unknown | supported | unknown |
 </details>
@@ -5792,7 +5792,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `default_config` | not_implemented | unknown | supported | unknown |
 | `tracers` | not_implemented | unknown | supported | unknown |
@@ -5845,7 +5845,7 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `config` | not_implemented | unknown | supported | unknown |
 | `name` | not_implemented | unknown | supported | unknown |
@@ -5887,464 +5887,6 @@ No snippets.
   ]
 }</pre>
 </details>
-
-# Language Support Status <a id="language-support-status"></a>
-
-## cpp <a id="cpp"></a>
-
-Latest supported file format: `1.0.0-rc.2`
-
-| Type | Status | Notes | Support Status Details |
-|---|---|---|---|
-| [`Aggregation`](#aggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `default`: supported<br>* `drop`: supported<br>* `explicit_bucket_histogram`: supported<br>* `last_value`: supported<br>* `sum`: supported<br> |
-| [`AlwaysOffSampler`](#alwaysoffsampler) | supported |  |  |
-| [`AlwaysOnSampler`](#alwaysonsampler) | supported |  |  |
-| [`AttributeLimits`](#attributelimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`AttributeNameValue`](#attributenamevalue) | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
-| [`AttributeType`](#attributetype) | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
-| [`B3MultiPropagator`](#b3multipropagator) | supported |  |  |
-| [`B3Propagator`](#b3propagator) | supported |  |  |
-| [`BaggagePropagator`](#baggagepropagator) | supported |  |  |
-| [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: supported<br> |
-| [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| [`BatchSpanProcessor`](#batchspanprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | not_implemented |  | * `counter`: not_implemented<br>* `default`: not_implemented<br>* `gauge`: not_implemented<br>* `histogram`: not_implemented<br>* `observable_counter`: not_implemented<br>* `observable_gauge`: not_implemented<br>* `observable_up_down_counter`: not_implemented<br>* `up_down_counter`: not_implemented<br> |
-| [`ConsoleExporter`](#consoleexporter) | supported |  |  |
-| [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `temporality_preference`: supported<br> |
-| [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
-| [`Distribution`](#distribution) | unknown |  |  |
-| [`DropAggregation`](#dropaggregation) | supported |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `trace_based`: not_implemented<br> |
-| [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
-| [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
-| [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
-| [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
-| [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
-| [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
-| [`LoggerProvider`](#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
-| [`LogRecordExporter`](#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`LogRecordLimits`](#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`LogRecordProcessor`](#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
-| [`MeterProvider`](#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
-| [`MetricProducer`](#metricproducer) | supported |  | * `opencensus`: supported<br> |
-| [`MetricReader`](#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
-| [`NameStringValuePair`](#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
-| [`OpenCensusMetricProducer`](#opencensusmetricproducer) | supported |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| [`OpenTracingPropagator`](#opentracingpropagator) | not_implemented |  |  |
-| [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
-| [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
-| [`PeriodicMetricReader`](#periodicmetricreader) | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: supported<br>* `timeout`: supported<br> |
-| [`Propagator`](#propagator) | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
-| [`PullMetricExporter`](#pullmetricexporter) | supported |  | * `prometheus/development`: supported<br> |
-| [`PullMetricReader`](#pullmetricreader) | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `producers`: supported<br> |
-| [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
-| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: supported<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
-| [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
-| [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
-| [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
-| [`SpanLimits`](#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
-| [`SpanProcessor`](#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
-| [`SumAggregation`](#sumaggregation) | supported |  |  |
-| [`TextMapPropagator`](#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `jaeger`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
-| [`TraceContextPropagator`](#tracecontextpropagator) | supported |  |  |
-| [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
-| [`TracerProvider`](#tracerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
-| [`View`](#view) | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
-| [`ViewSelector`](#viewselector) | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
-| [`ViewStream`](#viewstream) | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
-| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
-| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
-| [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | not_implemented |  |  |
-| [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | not_applicable |  | * `http`: not_applicable<br>* `peer`: not_applicable<br> |
-| [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | not_implemented |  |  |
-| [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | not_applicable |  | * `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
-| [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | not_applicable |  | * `client`: not_applicable<br>* `server`: not_applicable<br> |
-| [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | not_applicable |  | * `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
-| [`ExperimentalInstrumentation`](#experimentalinstrumentation) | not_applicable |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: not_applicable<br>* `go`: not_applicable<br>* `java`: not_applicable<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
-| [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
-| [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | not_applicable |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | not_implemented |  | * `disabled`: not_implemented<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
-| [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `loggers`: not_implemented<br> |
-| [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
-| [`ExperimentalMeterConfig`](#experimentalmeterconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
-| [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `meters`: not_implemented<br> |
-| [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
-| [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | supported |  | * `output_stream`: supported<br> |
-| [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `output_stream`: supported<br>* `temporality_preference`: supported<br> |
-| [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | not_implemented |  | * `service_mapping`: not_implemented<br> |
-| [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | not_implemented |  | * `peer`: not_implemented<br>* `service`: not_implemented<br> |
-| [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
-| [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | not_implemented |  |  |
-| [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: supported<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
-| [`ExperimentalResourceDetection`](#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
-| [`ExperimentalResourceDetector`](#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
-| [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | not_implemented |  |  |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-| [`ExperimentalTracerConfig`](#experimentaltracerconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
-| [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
-| [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
-
-
-## go <a id="go"></a>
-
-Latest supported file format: `0.3.0`
-
-| Type | Status | Notes | Support Status Details |
-|---|---|---|---|
-| [`Aggregation`](#aggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `default`: unknown<br>* `drop`: unknown<br>* `explicit_bucket_histogram`: unknown<br>* `last_value`: unknown<br>* `sum`: unknown<br> |
-| [`AlwaysOffSampler`](#alwaysoffsampler) | unknown |  |  |
-| [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
-| [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
-| [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `type`: unknown<br>* `value`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
-| [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
-| [`B3Propagator`](#b3propagator) | unknown |  |  |
-| [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
-| [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | unknown |  | * `max_scale`: unknown<br>* `max_size`: unknown<br>* `record_min_max`: unknown<br> |
-| [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
-| [`BatchSpanProcessor`](#batchspanprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | unknown |  | * `counter`: unknown<br>* `default`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| [`ConsoleExporter`](#consoleexporter) | unknown |  |  |
-| [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `temporality_preference`: unknown<br> |
-| [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
-| [`Distribution`](#distribution) | unknown |  |  |
-| [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
-| [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
-| [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
-| [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
-| [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
-| [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
-| [`LoggerProvider`](#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
-| [`LogRecordExporter`](#logrecordexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`LogRecordLimits`](#logrecordlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
-| [`LogRecordProcessor`](#logrecordprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
-| [`MeterProvider`](#meterprovider) | unknown |  | * `exemplar_filter`: unknown<br>* `readers`: unknown<br>* `views`: unknown<br>* `meter_configurator/development`: unknown<br> |
-| [`MetricProducer`](#metricproducer) | unknown |  | * `opencensus`: unknown<br> |
-| [`MetricReader`](#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
-| [`NameStringValuePair`](#namestringvaluepair) | unknown |  | * `name`: unknown<br>* `value`: unknown<br> |
-| [`OpenCensusMetricProducer`](#opencensusmetricproducer) | unknown |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
-| [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
-| [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `compression`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
-| [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `compression`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
-| [`PeriodicMetricReader`](#periodicmetricreader) | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `interval`: unknown<br>* `producers`: unknown<br>* `timeout`: unknown<br> |
-| [`Propagator`](#propagator) | unknown |  | * `composite`: unknown<br>* `composite_list`: unknown<br> |
-| [`PullMetricExporter`](#pullmetricexporter) | unknown |  | * `prometheus/development`: unknown<br> |
-| [`PullMetricReader`](#pullmetricreader) | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `producers`: unknown<br> |
-| [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `attributes_list`: unknown<br>* `schema_url`: unknown<br>* `detection/development`: unknown<br> |
-| [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `composite/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `probability/development`: unknown<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
-| [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
-| [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
-| [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
-| [`SpanLimits`](#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
-| [`SpanProcessor`](#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
-| [`SumAggregation`](#sumaggregation) | unknown |  |  |
-| [`TextMapPropagator`](#textmappropagator) | unknown |  | * `b3`: unknown<br>* `b3multi`: unknown<br>* `baggage`: unknown<br>* `jaeger`: unknown<br>* `ottrace`: unknown<br>* `tracecontext`: unknown<br> |
-| [`TraceContextPropagator`](#tracecontextpropagator) | unknown |  |  |
-| [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | unknown |  | * `ratio`: unknown<br> |
-| [`TracerProvider`](#tracerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `sampler`: unknown<br>* `tracer_configurator/development`: unknown<br> |
-| [`View`](#view) | unknown |  | * `selector`: unknown<br>* `stream`: unknown<br> |
-| [`ViewSelector`](#viewselector) | unknown |  | * `instrument_name`: unknown<br>* `instrument_type`: unknown<br>* `meter_name`: unknown<br>* `meter_schema_url`: unknown<br>* `meter_version`: unknown<br>* `unit`: unknown<br> |
-| [`ViewStream`](#viewstream) | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
-| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
-| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
-| [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
-| [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |
-| [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
-| [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
-| [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | unknown |  | * `client`: unknown<br>* `server`: unknown<br> |
-| [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
-| [`ExperimentalInstrumentation`](#experimentalinstrumentation) | unknown |  | * `cpp`: unknown<br>* `dotnet`: unknown<br>* `erlang`: unknown<br>* `general`: unknown<br>* `go`: unknown<br>* `java`: unknown<br>* `js`: unknown<br>* `php`: unknown<br>* `python`: unknown<br>* `ruby`: unknown<br>* `rust`: unknown<br>* `swift`: unknown<br> |
-| [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `initial_sampler`: unknown<br>* `interval`: unknown<br> |
-| [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | unknown |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | unknown |  | * `disabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
-| [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | unknown |  | * `default_config`: unknown<br>* `loggers`: unknown<br> |
-| [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalMeterConfig`](#experimentalmeterconfig) | unknown |  | * `disabled`: unknown<br> |
-| [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | unknown |  | * `default_config`: unknown<br>* `meters`: unknown<br> |
-| [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | unknown |  | * `output_stream`: unknown<br> |
-| [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `output_stream`: unknown<br>* `temporality_preference`: unknown<br> |
-| [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | unknown |  | * `service_mapping`: unknown<br> |
-| [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | unknown |  | * `peer`: unknown<br>* `service`: unknown<br> |
-| [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | unknown |  |  |
-| [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | unknown |  | * `host`: unknown<br>* `port`: unknown<br>* `translation_strategy`: unknown<br>* `with_resource_constant_labels`: unknown<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
-| [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
-| [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
-| [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-| [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
-| [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
-| [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-
-
-## java <a id="java"></a>
-
-Latest supported file format: `1.0.0-rc.1`
-
-| Type | Status | Notes | Support Status Details |
-|---|---|---|---|
-| [`Aggregation`](#aggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `default`: supported<br>* `drop`: supported<br>* `explicit_bucket_histogram`: supported<br>* `last_value`: supported<br>* `sum`: supported<br> |
-| [`AlwaysOffSampler`](#alwaysoffsampler) | supported |  |  |
-| [`AlwaysOnSampler`](#alwaysonsampler) | supported |  |  |
-| [`AttributeLimits`](#attributelimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`AttributeNameValue`](#attributenamevalue) | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
-| [`AttributeType`](#attributetype) | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
-| [`B3MultiPropagator`](#b3multipropagator) | supported |  |  |
-| [`B3Propagator`](#b3propagator) | supported |  |  |
-| [`BaggagePropagator`](#baggagepropagator) | supported |  |  |
-| [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: not_implemented<br> |
-| [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| [`BatchSpanProcessor`](#batchspanprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | supported |  | * `counter`: supported<br>* `default`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
-| [`ConsoleExporter`](#consoleexporter) | supported |  |  |
-| [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: ignored<br> |
-| [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
-| [`Distribution`](#distribution) | unknown |  |  |
-| [`DropAggregation`](#dropaggregation) | supported |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `trace_based`: supported<br> |
-| [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: not_implemented<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
-| [`GrpcTls`](#grpctls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `insecure`: not_implemented<br>* `key_file`: not_implemented<br> |
-| [`HttpTls`](#httptls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `key_file`: not_implemented<br> |
-| [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
-| [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
-| [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
-| [`LoggerProvider`](#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
-| [`LogRecordExporter`](#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`LogRecordLimits`](#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`LogRecordProcessor`](#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
-| [`MeterProvider`](#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
-| [`MetricProducer`](#metricproducer) | ignored |  | * `opencensus`: ignored<br> |
-| [`MetricReader`](#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
-| [`NameStringValuePair`](#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
-| [`OpenCensusMetricProducer`](#opencensusmetricproducer) | ignored |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| [`OpenTracingPropagator`](#opentracingpropagator) | supported |  |  |
-| [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
-| [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `compression`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
-| [`PeriodicMetricReader`](#periodicmetricreader) | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: not_implemented<br>* `timeout`: supported<br> |
-| [`Propagator`](#propagator) | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
-| [`PullMetricExporter`](#pullmetricexporter) | supported |  | * `prometheus/development`: supported<br> |
-| [`PullMetricReader`](#pullmetricreader) | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `producers`: not_implemented<br> |
-| [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: ignored<br>* `detection/development`: supported<br> |
-| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: ignored<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
-| [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
-| [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
-| [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
-| [`SpanLimits`](#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
-| [`SpanProcessor`](#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
-| [`SumAggregation`](#sumaggregation) | supported |  |  |
-| [`TextMapPropagator`](#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `jaeger`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
-| [`TraceContextPropagator`](#tracecontextpropagator) | supported |  |  |
-| [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
-| [`TracerProvider`](#tracerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
-| [`View`](#view) | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
-| [`ViewSelector`](#viewselector) | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: ignored<br> |
-| [`ViewStream`](#viewstream) | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
-| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
-| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
-| [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | supported |  |  |
-| [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | supported |  | * `http`: supported<br>* `peer`: supported<br> |
-| [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | supported |  |  |
-| [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | supported |  | * `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
-| [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | supported |  | * `client`: supported<br>* `server`: supported<br> |
-| [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | supported |  | * `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
-| [`ExperimentalInstrumentation`](#experimentalinstrumentation) | supported |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: supported<br>* `go`: not_applicable<br>* `java`: supported<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
-| [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | ignored |  | * `endpoint`: ignored<br>* `initial_sampler`: ignored<br>* `interval`: ignored<br> |
-| [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | supported |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | supported |  | * `disabled`: supported<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
-| [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |
-| [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| [`ExperimentalMeterConfig`](#experimentalmeterconfig) | supported |  | * `disabled`: supported<br> |
-| [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | supported |  | * `default_config`: supported<br>* `meters`: supported<br> |
-| [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | supported |  | * `output_stream`: not_implemented<br> |
-| [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `output_stream`: not_implemented<br>* `temporality_preference`: supported<br> |
-| [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | supported |  | * `service_mapping`: supported<br> |
-| [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | supported |  | * `peer`: supported<br>* `service`: supported<br> |
-| [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | ignored |  | * `ratio`: ignored<br> |
-| [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | supported |  |  |
-| [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: not_implemented<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: ignored<br>* `without_target_info`: ignored<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
-| [`ExperimentalResourceDetection`](#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
-| [`ExperimentalResourceDetector`](#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
-| [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | supported |  |  |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-| [`ExperimentalTracerConfig`](#experimentaltracerconfig) | supported |  | * `disabled`: supported<br> |
-| [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
-| [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
-
-
-## js <a id="js"></a>
-
-Latest supported file format: `1.0.0-rc.2`
-
-| Type | Status | Notes | Support Status Details |
-|---|---|---|---|
-| [`Aggregation`](#aggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `default`: unknown<br>* `drop`: unknown<br>* `explicit_bucket_histogram`: unknown<br>* `last_value`: unknown<br>* `sum`: unknown<br> |
-| [`AlwaysOffSampler`](#alwaysoffsampler) | unknown |  |  |
-| [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
-| [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
-| [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `type`: unknown<br>* `value`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
-| [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
-| [`B3Propagator`](#b3propagator) | unknown |  |  |
-| [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
-| [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | unknown |  | * `max_scale`: unknown<br>* `max_size`: unknown<br>* `record_min_max`: unknown<br> |
-| [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
-| [`BatchSpanProcessor`](#batchspanprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | unknown |  | * `counter`: unknown<br>* `default`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| [`ConsoleExporter`](#consoleexporter) | unknown |  |  |
-| [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `temporality_preference`: unknown<br> |
-| [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
-| [`Distribution`](#distribution) | unknown |  |  |
-| [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
-| [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
-| [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
-| [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
-| [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
-| [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
-| [`LoggerProvider`](#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
-| [`LogRecordExporter`](#logrecordexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`LogRecordLimits`](#logrecordlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
-| [`LogRecordProcessor`](#logrecordprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
-| [`MeterProvider`](#meterprovider) | unknown |  | * `exemplar_filter`: unknown<br>* `readers`: unknown<br>* `views`: unknown<br>* `meter_configurator/development`: unknown<br> |
-| [`MetricProducer`](#metricproducer) | unknown |  | * `opencensus`: unknown<br> |
-| [`MetricReader`](#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
-| [`NameStringValuePair`](#namestringvaluepair) | unknown |  | * `name`: unknown<br>* `value`: unknown<br> |
-| [`OpenCensusMetricProducer`](#opencensusmetricproducer) | unknown |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
-| [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
-| [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `compression`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
-| [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `compression`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
-| [`PeriodicMetricReader`](#periodicmetricreader) | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `interval`: unknown<br>* `producers`: unknown<br>* `timeout`: unknown<br> |
-| [`Propagator`](#propagator) | unknown |  | * `composite`: unknown<br>* `composite_list`: unknown<br> |
-| [`PullMetricExporter`](#pullmetricexporter) | unknown |  | * `prometheus/development`: unknown<br> |
-| [`PullMetricReader`](#pullmetricreader) | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `producers`: unknown<br> |
-| [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `attributes_list`: unknown<br>* `schema_url`: unknown<br>* `detection/development`: unknown<br> |
-| [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `composite/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `probability/development`: unknown<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
-| [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
-| [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
-| [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
-| [`SpanLimits`](#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
-| [`SpanProcessor`](#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
-| [`SumAggregation`](#sumaggregation) | unknown |  |  |
-| [`TextMapPropagator`](#textmappropagator) | unknown |  | * `b3`: unknown<br>* `b3multi`: unknown<br>* `baggage`: unknown<br>* `jaeger`: unknown<br>* `ottrace`: unknown<br>* `tracecontext`: unknown<br> |
-| [`TraceContextPropagator`](#tracecontextpropagator) | unknown |  |  |
-| [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | unknown |  | * `ratio`: unknown<br> |
-| [`TracerProvider`](#tracerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `sampler`: unknown<br>* `tracer_configurator/development`: unknown<br> |
-| [`View`](#view) | unknown |  | * `selector`: unknown<br>* `stream`: unknown<br> |
-| [`ViewSelector`](#viewselector) | unknown |  | * `instrument_name`: unknown<br>* `instrument_type`: unknown<br>* `meter_name`: unknown<br>* `meter_schema_url`: unknown<br>* `meter_version`: unknown<br>* `unit`: unknown<br> |
-| [`ViewStream`](#viewstream) | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
-| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
-| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
-| [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
-| [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |
-| [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
-| [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
-| [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | unknown |  | * `client`: unknown<br>* `server`: unknown<br> |
-| [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
-| [`ExperimentalInstrumentation`](#experimentalinstrumentation) | unknown |  | * `cpp`: unknown<br>* `dotnet`: unknown<br>* `erlang`: unknown<br>* `general`: unknown<br>* `go`: unknown<br>* `java`: unknown<br>* `js`: unknown<br>* `php`: unknown<br>* `python`: unknown<br>* `ruby`: unknown<br>* `rust`: unknown<br>* `swift`: unknown<br> |
-| [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `initial_sampler`: unknown<br>* `interval`: unknown<br> |
-| [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | unknown |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | unknown |  | * `disabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
-| [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | unknown |  | * `default_config`: unknown<br>* `loggers`: unknown<br> |
-| [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalMeterConfig`](#experimentalmeterconfig) | unknown |  | * `disabled`: unknown<br> |
-| [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | unknown |  | * `default_config`: unknown<br>* `meters`: unknown<br> |
-| [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | unknown |  | * `output_stream`: unknown<br> |
-| [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `output_stream`: unknown<br>* `temporality_preference`: unknown<br> |
-| [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | unknown |  | * `service_mapping`: unknown<br> |
-| [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | unknown |  | * `peer`: unknown<br>* `service`: unknown<br> |
-| [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | unknown |  |  |
-| [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | unknown |  | * `host`: unknown<br>* `port`: unknown<br>* `translation_strategy`: unknown<br>* `with_resource_constant_labels`: unknown<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
-| [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
-| [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
-| [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-| [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
-| [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
-| [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-
 
 # SDK Extension Plugins <a id="sdk-extension-plugins"></a>
 
