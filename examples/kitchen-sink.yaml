@@ -15,14 +15,6 @@ attribute_limits:
   attribute_count_limit: 128
 logger_provider:
   processors:
-    - batch:
-        exporter:
-          otlp_file/development:
-            output_stream: file:///var/log/logs.jsonl
-    - batch:
-        exporter:
-          otlp_file/development:
-            output_stream: stdout
     - simple:
         exporter:
           console:
@@ -64,18 +56,6 @@ meter_provider:
           observable_gauge: 2000
           observable_up_down_counter: 2000
           up_down_counter: 2000
-    - periodic:
-        exporter:
-          otlp_file/development:
-            output_stream: file:///var/log/metrics.jsonl
-            temporality_preference: delta
-            default_histogram_aggregation: base2_exponential_bucket_histogram
-    - periodic:
-        exporter:
-          otlp_file/development:
-            output_stream: stdout
-            temporality_preference: delta
-            default_histogram_aggregation: base2_exponential_bucket_histogram
     - periodic:
         exporter:
           console:
@@ -139,14 +119,6 @@ propagator:
   composite_list: "tracecontext,baggage,b3,b3multi,jaeger,ottrace,xray"
 tracer_provider:
   processors:
-    - batch:
-        exporter:
-          otlp_file/development:
-            output_stream: file:///var/log/traces.jsonl
-    - batch:
-        exporter:
-          otlp_file/development:
-            output_stream: stdout
     - simple:
         exporter:
           console:

@@ -5265,7 +5265,43 @@ Usages:
 * [`LogRecordExporter.otlp_file/development`](#logrecordexporter)
 * [`SpanExporter.otlp_file/development`](#spanexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Logs File</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileExporter_logs_file.yaml)
+```yaml
+output_stream: file:///var/log/logs.jsonl
+```
+</details>
+
+<details>
+<summary>Logs Stdout</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileExporter_logs_stdout.yaml)
+```yaml
+output_stream: stdout
+```
+</details>
+
+<details>
+<summary>Traces File</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileExporter_traces_file.yaml)
+```yaml
+output_stream: file:///var/log/traces.jsonl
+```
+</details>
+
+<details>
+<summary>Traces Stdout</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileExporter_traces_stdout.yaml)
+```yaml
+output_stream: stdout
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5317,7 +5353,29 @@ Usages:
 
 * [`PushMetricExporter.otlp_file/development`](#pushmetricexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Metrics File</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileMetricExporter_metrics_file.yaml)
+```yaml
+output_stream: file:///var/log/metrics.jsonl
+temporality_preference: cumulative
+default_histogram_aggregation: explicit_bucket_histogram
+```
+</details>
+
+<details>
+<summary>Metrics Stdout</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileMetricExporter_metrics_stdout.yaml)
+```yaml
+output_stream: stdout
+temporality_preference: cumulative
+default_histogram_aggregation: explicit_bucket_histogram
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
