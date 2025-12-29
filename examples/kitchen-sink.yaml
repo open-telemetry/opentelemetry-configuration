@@ -10,17 +10,11 @@
 file_format: "1.0-rc.3"
 disabled: false
 log_level: info
-attribute_limits:
-  attribute_value_length_limit: 4096
-  attribute_count_limit: 128
 logger_provider:
   processors:
     - simple:
         exporter:
           console:
-  limits:
-    attribute_value_length_limit: 4096
-    attribute_count_limit: 128
   logger_configurator/development:
     default_config:
       disabled: true
@@ -47,15 +41,6 @@ meter_provider:
             translation_strategy: underscore_escaping_with_suffixes
         producers:
           - opencensus:
-        cardinality_limits:
-          default: 2000
-          counter: 2000
-          gauge: 2000
-          histogram: 2000
-          observable_counter: 2000
-          observable_gauge: 2000
-          observable_up_down_counter: 2000
-          up_down_counter: 2000
     - periodic:
         exporter:
           console:
@@ -122,13 +107,6 @@ tracer_provider:
     - simple:
         exporter:
           console:
-  limits:
-    attribute_value_length_limit: 4096
-    attribute_count_limit: 128
-    event_count_limit: 128
-    link_count_limit: 128
-    event_attribute_count_limit: 128
-    link_attribute_count_limit: 128
   sampler:
     parent_based:
       root:
