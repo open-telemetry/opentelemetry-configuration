@@ -1108,10 +1108,10 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `ca_file` | unknown | unknown | not_implemented | unknown |
-| `cert_file` | unknown | unknown | not_implemented | unknown |
+| `ca_file` | unknown | unknown | supported | unknown |
+| `cert_file` | unknown | unknown | supported | unknown |
 | `insecure` | unknown | unknown | not_implemented | unknown |
-| `key_file` | unknown | unknown | not_implemented | unknown |
+| `key_file` | unknown | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -1177,9 +1177,9 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `ca_file` | unknown | unknown | not_implemented | unknown |
-| `cert_file` | unknown | unknown | not_implemented | unknown |
-| `key_file` | unknown | unknown | not_implemented | unknown |
+| `ca_file` | unknown | unknown | supported | unknown |
+| `cert_file` | unknown | unknown | supported | unknown |
+| `key_file` | unknown | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -2013,7 +2013,7 @@ No snippets.
 | `headers` | supported | unknown | supported | unknown |
 | `headers_list` | supported | unknown | supported | unknown |
 | `timeout` | supported | unknown | supported | unknown |
-| `tls` | supported | unknown | ignored | unknown |
+| `tls` | supported | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -2142,7 +2142,7 @@ timeout: 10000
 | `headers_list` | supported | unknown | supported | unknown |
 | `temporality_preference` | supported | unknown | supported | unknown |
 | `timeout` | supported | unknown | supported | unknown |
-| `tls` | supported | unknown | ignored | unknown |
+| `tls` | supported | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -2297,7 +2297,7 @@ No snippets.
 | `headers` | supported | unknown | supported | unknown |
 | `headers_list` | supported | unknown | supported | unknown |
 | `timeout` | supported | unknown | supported | unknown |
-| `tls` | supported | unknown | ignored | unknown |
+| `tls` | supported | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -2431,7 +2431,7 @@ encoding: protobuf
 | `headers_list` | supported | unknown | supported | unknown |
 | `temporality_preference` | supported | unknown | supported | unknown |
 | `timeout` | supported | unknown | supported | unknown |
-| `tls` | supported | unknown | ignored | unknown |
+| `tls` | supported | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -2984,7 +2984,7 @@ No snippets.
 | `trace_id_ratio_based` | supported | unknown | supported | unknown |
 | `composite/development` | supported | unknown | supported | unknown |
 | `jaeger_remote/development` | supported | unknown | supported | unknown |
-| `probability/development` | supported | unknown | ignored | unknown |
+| `probability/development` | supported | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -3102,30 +3102,30 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `debug` | unknown | unknown | unknown | unknown |
-| `debug2` | unknown | unknown | unknown | unknown |
-| `debug3` | unknown | unknown | unknown | unknown |
-| `debug4` | unknown | unknown | unknown | unknown |
-| `error` | unknown | unknown | unknown | unknown |
-| `error2` | unknown | unknown | unknown | unknown |
-| `error3` | unknown | unknown | unknown | unknown |
-| `error4` | unknown | unknown | unknown | unknown |
-| `fatal` | unknown | unknown | unknown | unknown |
-| `fatal2` | unknown | unknown | unknown | unknown |
-| `fatal3` | unknown | unknown | unknown | unknown |
-| `fatal4` | unknown | unknown | unknown | unknown |
-| `info` | unknown | unknown | unknown | unknown |
-| `info2` | unknown | unknown | unknown | unknown |
-| `info3` | unknown | unknown | unknown | unknown |
-| `info4` | unknown | unknown | unknown | unknown |
-| `trace` | unknown | unknown | unknown | unknown |
-| `trace2` | unknown | unknown | unknown | unknown |
-| `trace3` | unknown | unknown | unknown | unknown |
-| `trace4` | unknown | unknown | unknown | unknown |
-| `warn` | unknown | unknown | unknown | unknown |
-| `warn2` | unknown | unknown | unknown | unknown |
-| `warn3` | unknown | unknown | unknown | unknown |
-| `warn4` | unknown | unknown | unknown | unknown |
+| `debug` | unknown | unknown | supported | unknown |
+| `debug2` | unknown | unknown | supported | unknown |
+| `debug3` | unknown | unknown | supported | unknown |
+| `debug4` | unknown | unknown | supported | unknown |
+| `error` | unknown | unknown | supported | unknown |
+| `error2` | unknown | unknown | supported | unknown |
+| `error3` | unknown | unknown | supported | unknown |
+| `error4` | unknown | unknown | supported | unknown |
+| `fatal` | unknown | unknown | supported | unknown |
+| `fatal2` | unknown | unknown | supported | unknown |
+| `fatal3` | unknown | unknown | supported | unknown |
+| `fatal4` | unknown | unknown | supported | unknown |
+| `info` | unknown | unknown | supported | unknown |
+| `info2` | unknown | unknown | supported | unknown |
+| `info3` | unknown | unknown | supported | unknown |
+| `info4` | unknown | unknown | supported | unknown |
+| `trace` | unknown | unknown | supported | unknown |
+| `trace2` | unknown | unknown | supported | unknown |
+| `trace3` | unknown | unknown | supported | unknown |
+| `trace4` | unknown | unknown | supported | unknown |
+| `warn` | unknown | unknown | supported | unknown |
+| `warn2` | unknown | unknown | supported | unknown |
+| `warn3` | unknown | unknown | supported | unknown |
+| `warn4` | unknown | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -3344,11 +3344,11 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `client` | unknown | unknown | unknown | unknown |
-| `consumer` | unknown | unknown | unknown | unknown |
-| `internal` | unknown | unknown | unknown | unknown |
-| `producer` | unknown | unknown | unknown | unknown |
-| `server` | unknown | unknown | unknown | unknown |
+| `client` | unknown | unknown | supported | unknown |
+| `consumer` | unknown | unknown | supported | unknown |
+| `internal` | unknown | unknown | supported | unknown |
+| `producer` | unknown | unknown | supported | unknown |
+| `server` | unknown | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -3844,7 +3844,7 @@ stream:
 | `meter_name` | supported | unknown | supported | unknown |
 | `meter_schema_url` | supported | unknown | supported | unknown |
 | `meter_version` | supported | unknown | supported | unknown |
-| `unit` | supported | unknown | ignored | unknown |
+| `unit` | supported | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -4047,7 +4047,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `root` | unknown | unknown | unknown | unknown |
+| `root` | unknown | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -4095,7 +4095,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `ratio` | unknown | unknown | unknown | unknown |
+| `ratio` | unknown | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -4145,7 +4145,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `rules` | unknown | unknown | unknown | unknown |
+| `rules` | unknown | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -4200,11 +4200,11 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `attribute_patterns` | unknown | unknown | unknown | unknown |
-| `attribute_values` | unknown | unknown | unknown | unknown |
-| `parent` | unknown | unknown | unknown | unknown |
-| `sampler` | unknown | unknown | unknown | unknown |
-| `span_kinds` | unknown | unknown | unknown | unknown |
+| `attribute_patterns` | unknown | unknown | supported | unknown |
+| `attribute_values` | unknown | unknown | supported | unknown |
+| `parent` | unknown | unknown | supported | unknown |
+| `sampler` | unknown | unknown | supported | unknown |
+| `span_kinds` | unknown | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -4271,9 +4271,9 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `excluded` | unknown | unknown | unknown | unknown |
-| `included` | unknown | unknown | unknown | unknown |
-| `key` | unknown | unknown | unknown | unknown |
+| `excluded` | unknown | unknown | supported | unknown |
+| `included` | unknown | unknown | supported | unknown |
+| `key` | unknown | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -4334,8 +4334,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `key` | unknown | unknown | unknown | unknown |
-| `values` | unknown | unknown | unknown | unknown |
+| `key` | unknown | unknown | supported | unknown |
+| `values` | unknown | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -4393,11 +4393,11 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `always_off` | unknown | unknown | unknown | unknown |
-| `always_on` | unknown | unknown | unknown | unknown |
-| `parent_threshold` | unknown | unknown | unknown | unknown |
-| `probability` | unknown | unknown | unknown | unknown |
-| `rule_based` | unknown | unknown | unknown | unknown |
+| `always_off` | unknown | unknown | supported | unknown |
+| `always_on` | unknown | unknown | supported | unknown |
+| `parent_threshold` | unknown | unknown | supported | unknown |
+| `probability` | unknown | unknown | supported | unknown |
+| `rule_based` | unknown | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -4825,9 +4825,9 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `endpoint` | not_implemented | unknown | ignored | unknown |
-| `initial_sampler` | not_implemented | unknown | ignored | unknown |
-| `interval` | not_implemented | unknown | ignored | unknown |
+| `endpoint` | not_implemented | unknown | supported | unknown |
+| `initial_sampler` | not_implemented | unknown | supported | unknown |
+| `interval` | not_implemented | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -4931,8 +4931,8 @@ No snippets.
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
 | `disabled` | not_implemented | unknown | supported | unknown |
-| `minimum_severity` | not_implemented | unknown | not_implemented | unknown |
-| `trace_based` | not_implemented | unknown | not_implemented | unknown |
+| `minimum_severity` | not_implemented | unknown | supported | unknown |
+| `trace_based` | not_implemented | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -5517,7 +5517,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `ratio` | not_implemented | unknown | ignored | unknown |
+| `ratio` | not_implemented | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -5684,10 +5684,10 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `no_translation` | unknown | unknown | unknown | unknown |
-| `no_utf8_escaping_with_suffixes` | unknown | unknown | unknown | unknown |
-| `underscore_escaping_with_suffixes` | unknown | unknown | unknown | unknown |
-| `underscore_escaping_without_suffixes` | unknown | unknown | unknown | unknown |
+| `no_translation` | unknown | unknown | not_implemented | unknown |
+| `no_utf8_escaping_with_suffixes` | unknown | unknown | not_implemented | unknown |
+| `underscore_escaping_with_suffixes` | unknown | unknown | not_implemented | unknown |
+| `underscore_escaping_without_suffixes` | unknown | unknown | not_implemented | unknown |
 </details>
 
 No constraints.
@@ -5883,9 +5883,9 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `local` | unknown | unknown | unknown | unknown |
-| `none` | unknown | unknown | unknown | unknown |
-| `remote` | unknown | unknown | unknown | unknown |
+| `local` | unknown | unknown | supported | unknown |
+| `none` | unknown | unknown | supported | unknown |
+| `remote` | unknown | unknown | supported | unknown |
 </details>
 
 No constraints.
