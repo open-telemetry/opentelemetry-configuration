@@ -2024,7 +2024,47 @@ Usages:
 * [`LogRecordExporter.otlp_grpc`](#logrecordexporter)
 * [`SpanExporter.otlp_grpc`](#spanexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Logs Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpGrpcExporter_logs_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+  insecure: false
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+```
+</details>
+
+<details>
+<summary>Traces Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpGrpcExporter_traces_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+  insecure: false
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -2112,7 +2152,27 @@ Usages:
 
 * [`PushMetricExporter.otlp_grpc`](#pushmetricexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Metrics Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpGrpcMetricExporter_metrics_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+  insecure: false
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -2248,7 +2308,47 @@ Usages:
 * [`LogRecordExporter.otlp_http`](#logrecordexporter)
 * [`SpanExporter.otlp_http`](#spanexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Logs Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpHttpExporter_logs_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318/v1/logs
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+encoding: protobuf
+```
+</details>
+
+<details>
+<summary>Traces Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpHttpExporter_traces_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318/v1/traces
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+encoding: protobuf
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -2342,6 +2442,28 @@ Usages:
 * [`PushMetricExporter.otlp_http`](#pushmetricexporter)
 
 Snippets:
+
+<details>
+<summary>Metrics Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpHttpMetricExporter_metrics_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318/v1/metrics
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+encoding: protobuf
+temporality_preference: cumulative
+default_histogram_aggregation: explicit_bucket_histogram
+```
+</details>
 
 <details>
 <summary>Use Base2 Exponential Histogram</summary>

@@ -1,5 +1,5 @@
 # select a specific histogram instrument and override the default buckets
-file_format: "1.0-rc.2"
+file_format: "1.0-rc.3"
 
 meter_provider:
   readers:
