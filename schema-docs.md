@@ -7,8 +7,9 @@ This document is an auto-generated view of the declarative configuration JSON sc
 
 * [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [OpenTelemetryConfiguration](#opentelemetryconfiguration) is the root type and is a good starting point.
 * [Experimental Types](#experimental-types) same as [Types](#types) but for experimental types subject to breaking changes.
-* [Language Support Status](language-support-status.md) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
 * [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
+
+See also [language support status](language-support-status.md) for all details about each language's support in a single place.
 
 # Types <a id="types"></a>
 
