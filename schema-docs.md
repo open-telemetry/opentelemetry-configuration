@@ -5001,7 +5001,23 @@ Usages:
 
 * [`LoggerProvider.logger_configurator/development`](#loggerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalLoggerConfigurator_kitchen_sink.yaml)
+```yaml
+default_config:
+  disabled: true
+loggers:
+  - name: io.opentelemetry.contrib.*
+    config:
+      disabled: false
+      minimum_severity: info
+      trace_based: true
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5157,7 +5173,21 @@ Usages:
 
 * [`MeterProvider.meter_configurator/development`](#meterprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalMeterConfigurator_kitchen_sink.yaml)
+```yaml
+default_config:
+  disabled: true
+meters:
+  - name: io.opentelemetry.contrib.*
+    config:
+      disabled: false
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5986,7 +6016,21 @@ Usages:
 
 * [`TracerProvider.tracer_configurator/development`](#tracerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalTracerConfigurator_kitchen_sink.yaml)
+```yaml
+default_config:
+  disabled: true
+tracers:
+  - name: io.opentelemetry.contrib.*
+    config:
+      disabled: false
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
