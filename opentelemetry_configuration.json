@@ -351,7 +351,7 @@
             "null"
           ],
           "exclusiveMinimum": 0,
-          "description": "Configure default cardinality limit for all instrument types.\nInstrument-specific cardinality limits take priority. \nIf omitted or null, 2000 is used.\n"
+          "description": "Configure default cardinality limit for all instrument types.\nInstrument-specific cardinality limits take priority.\nIf omitted or null, 2000 is used.\n"
         },
         "counter": {
           "type": [
@@ -1079,7 +1079,7 @@
             "boolean",
             "null"
           ],
-          "description": "Configure Prometheus Exporter to produce metrics without a scope info metric.\nIf omitted or null, false is used.\n"
+          "description": "Configure Prometheus Exporter to produce metrics without scope info labels.\nIf omitted or null, false is used.\n"
         },
         "without_target_info": {
           "type": [
@@ -1513,7 +1513,7 @@
         },
         "exemplar_filter": {
           "$ref": "#/$defs/ExemplarFilter",
-          "description": "Configure the exemplar filter. \nValues include:\n* always_off: ExemplarFilter which makes no measurements eligible for being an Exemplar.\n* always_on: ExemplarFilter which makes all measurements eligible for being an Exemplar.\n* trace_based: ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar.\nIf omitted, trace_based is used.\n"
+          "description": "Configure the exemplar filter.\nValues include:\n* always_off: ExemplarFilter which makes no measurements eligible for being an Exemplar.\n* always_on: ExemplarFilter which makes all measurements eligible for being an Exemplar.\n* trace_based: ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar.\nIf omitted, trace_based is used.\n"
         },
         "meter_configurator/development": {
           "$ref": "#/$defs/ExperimentalMeterConfigurator",
@@ -2417,7 +2417,7 @@
         },
         "aggregation": {
           "$ref": "#/$defs/Aggregation",
-          "description": "Configure aggregation of the resulting stream(s). \nIf omitted, default is used.\n"
+          "description": "Configure aggregation of the resulting stream(s).\nIf omitted, default is used.\n"
         },
         "aggregation_cardinality_limit": {
           "type": [
