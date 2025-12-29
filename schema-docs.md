@@ -3786,17 +3786,64 @@ Usages:
 Snippets:
 
 <details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/View_kitchen_sink.yaml)
+```yaml
+selector:
+  instrument_name: my_instrument
+  instrument_type: histogram
+  unit: ms
+  meter_name: my-meter
+  meter_version: 1.0.0
+  meter_schema_url: https://opentelemetry.io/schemas/1.16.0
+stream:
+  name: new_instrument_name
+  description: new_description
+  aggregation:
+    explicit_bucket_histogram:
+      boundaries:
+        - 0.0
+        - 5.0
+        - 10.0
+        - 25.0
+        - 50.0
+        - 75.0
+        - 100.0
+        - 250.0
+        - 500.0
+        - 750.0
+        - 1000.0
+        - 2500.0
+        - 5000.0
+        - 7500.0
+        - 10000.0
+      record_min_max: true
+  aggregation_cardinality_limit: 2000
+  attribute_keys:
+    included:
+      - foo.*
+    excluded:
+      - foo.bar
+```
+</details>
+
+<details>
 <summary>Override Default Histogram Buckets</summary>
 
 [Snippet Source File](./snippets/View_override_default_histogram_buckets.yaml)
 ```yaml
+# select a specific histogram instrument and override the default buckets
 selector:
   instrument_name: my.instrument.name
   instrument_type: histogram
 stream:
   aggregation:
     explicit_bucket_histogram:
-      boundaries: [0, 5, 10]
+      boundaries:
+        - 0
+        - 5.0
+        - 10.0
 ```
 </details>
 
