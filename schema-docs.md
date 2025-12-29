@@ -4759,7 +4759,70 @@ Usages:
 
 * [`OpenTelemetryConfiguration.instrumentation/development`](#opentelemetryconfiguration)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalInstrumentation_kitchen_sink.yaml)
+```yaml
+general:
+  peer:
+    service_mapping:
+      - peer: 1.2.3.4
+        service: FooService
+      - peer: 2.3.4.5
+        service: BarService
+  http:
+    client:
+      request_captured_headers:
+        - Content-Type
+        - Accept
+      response_captured_headers:
+        - Content-Type
+        - Content-Encoding
+    server:
+      request_captured_headers:
+        - Content-Type
+        - Accept
+      response_captured_headers:
+        - Content-Type
+        - Content-Encoding
+cpp:
+  example:
+    property: "value"
+dotnet:
+  example:
+    property: "value"
+erlang:
+  example:
+    property: "value"
+go:
+  example:
+    property: "value"
+java:
+  example:
+    property: "value"
+js:
+  example:
+    property: "value"
+php:
+  example:
+    property: "value"
+python:
+  example:
+    property: "value"
+ruby:
+  example:
+    property: "value"
+rust:
+  example:
+    property: "value"
+swift:
+  example:
+    property: "value"
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
