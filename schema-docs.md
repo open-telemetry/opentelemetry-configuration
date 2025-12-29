@@ -5617,7 +5617,25 @@ Usages:
 
 * [`PullMetricExporter.prometheus/development`](#pullmetricexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalPrometheusMetricExporter_kitchen_sink.yaml)
+```yaml
+host: localhost
+port: 9464
+without_scope_info: false
+without_target_info: false
+with_resource_constant_labels:
+  included:
+    - "service*"
+  excluded:
+    - "service.attr1"
+translation_strategy: underscore_escaping_with_suffixes
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
