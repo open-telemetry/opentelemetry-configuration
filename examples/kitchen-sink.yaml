@@ -112,11 +112,6 @@ propagator:
   composite:
     - tracecontext:
     - baggage:
-    - b3:
-    - b3multi:
-    - jaeger:
-    - ottrace:
-  composite_list: "tracecontext,baggage,b3,b3multi,jaeger,ottrace,xray"
 tracer_provider:
   processors:
     - simple:
