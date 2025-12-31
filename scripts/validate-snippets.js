@@ -71,11 +71,10 @@ function validate(snippetFile, ajvValidator, ajvRef, data) {
 }
 
 function computeJsonSchemaTypeRef(jsonSchemaType) {
-    const rootId = outputSchema['$id'];
     if (jsonSchemaType.type === rootTypeName) {
-        return rootId;
+        return '';
     }
-    return `${rootId}#/$defs/${jsonSchemaType.type}`;
+    return `#/$defs/${jsonSchemaType.type}`;
 }
 
 function formatError(error) {
