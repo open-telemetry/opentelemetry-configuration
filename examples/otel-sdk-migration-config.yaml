@@ -1,4 +1,4 @@
-# sdk-migration-config.yaml is a typical starting point for configuring the SDK when migrating
+# otel-sdk-migration-config.yaml is a typical starting point for configuring the SDK when migrating
 # from environment variable based configuration.
 #
 # This template includes env var substitution references (i.e. ${MY_ENV}) for all spec defined

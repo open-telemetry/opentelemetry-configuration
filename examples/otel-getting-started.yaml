@@ -1,4 +1,4 @@
-# getting-started.yaml is a good starting point for configuring the SDK, including exporting to
+# otel-getting-started.yaml is a good starting point for configuring the SDK, including exporting to
 # localhost via OTLP.
 #
 # NOTE: With the exception of env var substitution syntax (i.e. ${MY_ENV}), SDKs ignore
