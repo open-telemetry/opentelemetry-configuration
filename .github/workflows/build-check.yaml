@@ -34,6 +34,7 @@ jobs:
         # select files from locations managed by meta schema
         git add schema/meta_schema_*
         git add schema-docs.md
+        git add language-support-status.md
         if git diff --cached --quiet
         then 
           echo "No diff detected."
