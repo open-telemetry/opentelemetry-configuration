@@ -2696,7 +2696,23 @@ Usages:
 
 * [`OpenTelemetryConfiguration.propagator`](#opentelemetryconfiguration)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/Propagator_kitchen_sink.yaml)
+```yaml
+# .composite and .composite_list are merged and deduplicated.
+composite:
+  - tracecontext:
+  - baggage:
+  - b3:
+  - b3multi:
+  - jaeger:
+composite_list: "ottrace,xray"
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
