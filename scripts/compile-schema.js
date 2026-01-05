@@ -37,7 +37,6 @@ if (!rootType) {
 const rootTypeSchema = prepareSchemaForOutput(rootType, sourceTypes);
 
 const output = {
-    "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": rootTypeName,
     ...rootTypeSchema,

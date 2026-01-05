@@ -1944,7 +1944,6 @@ No snippets.
 
 [JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
-  "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "OpenTelemetryConfiguration",
   "type": "object",
