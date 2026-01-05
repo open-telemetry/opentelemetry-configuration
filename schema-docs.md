@@ -675,7 +675,24 @@ Usages:
 * [`PeriodicMetricReader.cardinality_limits`](#periodicmetricreader)
 * [`PullMetricReader.cardinality_limits`](#pullmetricreader)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/CardinalityLimits_kitchen_sink.yaml)
+```yaml
+# specify .default to set cardinality limits for all instruments, or specify instrument-specific limits. Instrument-specific limits take priority over .default. In this contrived example, the cardinality limits of each instrument type are set to 2000, overriding the value from .default.
+default: 100
+counter: 2000
+gauge: 2000
+histogram: 2000
+observable_counter: 2000
+observable_gauge: 2000
+observable_up_down_counter: 2000
+up_down_counter: 2000
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -1538,7 +1555,18 @@ Usages:
 
 * [`LoggerProvider.limits`](#loggerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/LogRecordLimits_kitchen_sink.yaml)
+```yaml
+# .logger_provider.limits take priority over general .attribute_limits. In this contrived example, attribute_value_length_limit is set to 4096, attribute_count_limit is set to 128, overriding the values from general .attribute_limits.
+attribute_count_limit: 128
+attribute_value_length_limit: 4096
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -3536,7 +3564,22 @@ Usages:
 
 * [`TracerProvider.limits`](#tracerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/SpanLimits_kitchen_sink.yaml)
+```yaml
+# .tracer_provider.limits take priority over general .attribute_limits. In this contrived example, attribute_value_length_limit is set to 4096, attribute_count_limit is set to 128, overriding the values from general .attribute_limits.
+attribute_count_limit: 128
+attribute_value_length_limit: 4096
+event_attribute_count_limit: 128
+event_count_limit: 128
+link_attribute_count_limit: 128
+link_count_limit: 128
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
