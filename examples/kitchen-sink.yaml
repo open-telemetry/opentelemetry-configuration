@@ -21,15 +21,6 @@ logger_provider:
   limits:
     attribute_value_length_limit: 4096
     attribute_count_limit: 128
-  logger_configurator/development:
-    default_config:
-      disabled: true
-    loggers:
-      - name: io.opentelemetry.contrib.*
-        config:
-          disabled: false
-          minimum_severity: info
-          trace_based: true
 meter_provider:
   readers:
     - periodic:
@@ -77,13 +68,6 @@ meter_provider:
           excluded:
             - key3
   exemplar_filter: trace_based
-  meter_configurator/development:
-    default_config:
-      disabled: true
-    meters:
-      - name: io.opentelemetry.contrib.*
-        config:
-          disabled: false
 propagator:
   composite:
     - tracecontext:
@@ -160,13 +144,6 @@ tracer_provider:
       # If omitted or null, always_off is used.
       local_parent_not_sampled:
         always_off:
-  tracer_configurator/development:
-    default_config:
-      disabled: true
-    tracers:
-      - name: io.opentelemetry.contrib.*
-        config:
-          disabled: false
 resource:
   attributes:
     - name: service.name
