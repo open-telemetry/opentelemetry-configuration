@@ -257,7 +257,7 @@ $defs:
           - boolean
           - "null"
         description: |
-          Configure Prometheus Exporter to produce metrics without scope info labels.
+          Configure Prometheus Exporter to produce metrics without scope labels.
         defaultBehavior: false is used
       without_target_info:
         type:
