@@ -775,7 +775,25 @@ Usages:
 * [`LogRecordExporter.console`](#logrecordexporter)
 * [`SpanExporter.console`](#spanexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Logs Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ConsoleExporter_logs_kitchen_sink.yaml)
+```yaml
+
+```
+</details>
+
+<details>
+<summary>Traces Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ConsoleExporter_traces_kitchen_sink.yaml)
+```yaml
+
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -814,7 +832,17 @@ Usages:
 
 * [`PushMetricExporter.console`](#pushmetricexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Traces Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ConsoleMetricExporter_traces_kitchen_sink.yaml)
+```yaml
+temporality_preference: cumulative
+default_histogram_aggregation: explicit_bucket_histogram
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>

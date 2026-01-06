@@ -43,7 +43,7 @@ yaml) of the output is based on the extension (`.json` or `yml`/`.yaml`) of the
 output file name.
 
 ```
-$ ./otel_config_validator -o out.json ../examples/kitchen-sink.yaml
+$ ./otel_config_validator -o out.json ../examples/sdk-config.yaml
 ```
 
 The docker image creates a directory `/opt/otel_config_validator` and sets it to
@@ -52,7 +52,7 @@ the `WORKDIR`, meaning you can mount your current directory to
 `docker run`:
 
 ```
-$ docker run -v $(pwd):/opt/otel_config_validator otel_config_validator:current -o out.yaml examples/kitchen-sink.yaml
+$ docker run -v $(pwd):/opt/otel_config_validator otel_config_validator:current -o out.yaml examples/sdk-config.yaml
 ```
 
 With the above docker command the output file, `out.yaml`, will be owned by
@@ -70,7 +70,7 @@ To use a version of of the schema other than the one builtin to the
 `otel_config_validator` executable pass the `-s <directory>` option:
 
 ```
-$ ./otel_config_validator -o out.json -s .../some/path/opentelemetry-configuration-0.1.0/ ../examples/kitchen-sink.yaml
+$ ./otel_config_validator -o out.json -s .../some/path/opentelemetry-configuration-0.1.0/ ../examples/sdk-config.yaml
 ```
 
 ### Testing
