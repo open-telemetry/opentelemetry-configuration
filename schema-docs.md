@@ -675,7 +675,24 @@ Usages:
 * [`PeriodicMetricReader.cardinality_limits`](#periodicmetricreader)
 * [`PullMetricReader.cardinality_limits`](#pullmetricreader)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/CardinalityLimits_kitchen_sink.yaml)
+```yaml
+# specify .default to set cardinality limits for all instruments, or specify instrument-specific limits. Instrument-specific limits take priority over .default. In this contrived example, the cardinality limits of each instrument type are set to 2000, overriding the value from .default.
+default: 100
+counter: 2000
+gauge: 2000
+histogram: 2000
+observable_counter: 2000
+observable_gauge: 2000
+observable_up_down_counter: 2000
+up_down_counter: 2000
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -758,7 +775,25 @@ Usages:
 * [`LogRecordExporter.console`](#logrecordexporter)
 * [`SpanExporter.console`](#spanexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Logs Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ConsoleExporter_logs_kitchen_sink.yaml)
+```yaml
+
+```
+</details>
+
+<details>
+<summary>Traces Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ConsoleExporter_traces_kitchen_sink.yaml)
+```yaml
+
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -797,7 +832,17 @@ Usages:
 
 * [`PushMetricExporter.console`](#pushmetricexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Traces Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ConsoleMetricExporter_traces_kitchen_sink.yaml)
+```yaml
+temporality_preference: cumulative
+default_histogram_aggregation: explicit_bucket_histogram
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -1538,7 +1583,18 @@ Usages:
 
 * [`LoggerProvider.limits`](#loggerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/LogRecordLimits_kitchen_sink.yaml)
+```yaml
+# .logger_provider.limits take priority over general .attribute_limits. In this contrived example, attribute_value_length_limit is set to 4096, attribute_count_limit is set to 128, overriding the values from general .attribute_limits.
+attribute_count_limit: 128
+attribute_value_length_limit: 4096
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -1916,7 +1972,6 @@ No snippets.
 
 [JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
-  "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "OpenTelemetryConfiguration",
   "type": "object",
@@ -2696,7 +2751,23 @@ Usages:
 
 * [`OpenTelemetryConfiguration.propagator`](#opentelemetryconfiguration)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/Propagator_kitchen_sink.yaml)
+```yaml
+# .composite and .composite_list are merged and deduplicated.
+composite:
+  - tracecontext:
+  - baggage:
+  - b3:
+  - b3multi:
+  - jaeger:
+composite_list: "ottrace,xray"
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -2923,7 +2994,55 @@ Usages:
 
 * [`OpenTelemetryConfiguration.resource`](#opentelemetryconfiguration)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/Resource_kitchen_sink.yaml)
+```yaml
+attributes:
+  - name: service.name
+    value: unknown_service
+  - name: string_key
+    value: value
+    type: string
+  - name: bool_key
+    value: true
+    type: bool
+  - name: int_key
+    value: 1
+    type: int
+  - name: double_key
+    value: 1.1
+    type: double
+  - name: string_array_key
+    value: [ "value1", "value2" ]
+    type: string_array
+  - name: bool_array_key
+    value: [ true, false ]
+    type: bool_array
+  - name: int_array_key
+    value: [ 1, 2 ]
+    type: int_array
+  - name: double_array_key
+    value: [ 1.1, 2.2 ]
+    type: double_array
+attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
+detection/development:
+  attributes:
+    included:
+      - process.*
+    excluded:
+      - process.command_args
+  detectors:
+    - container:
+    - host:
+    - process:
+    - service:
+schema_url: https://opentelemetry.io/schemas/1.16.0
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -3023,6 +3142,68 @@ parent_based:
     always_on:
   local_parent_not_sampled:
     always_off:
+```
+</details>
+
+<details>
+<summary>Probability Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/Sampler_probability_kitchen_sink.yaml)
+```yaml
+probability/development:
+  ratio: 0.001
+```
+</details>
+
+<details>
+<summary>Rule Based Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/Sampler_rule_based_kitchen_sink.yaml)
+```yaml
+composite/development:
+  rule_based:
+    # The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match.
+    # If no conditions are specified, the rule matches all spans that reach it. If no rules match, the span is not sampled.
+    # The rules of this sampler, in plain english:
+    # - If http.route = /healthz or /livez, do not sample the span.
+    # - If http.path starts with /internal/ and not /internal/special/, sample the span.
+    # - If there is no parent and the sppan kind is client, sample the span 5% of the time.
+    # - Else, sample the span .1% of the time.
+    rules:
+      - attribute_values:
+          key: http.route
+          values:
+            - /healthz
+            - /livez
+        # Configure sampler when matched.
+        sampler:
+          # Configure sampler to be always_off if matched.
+          always_off:
+      # Configure a sampling rule matching http.path attribute patterns.
+      - attribute_patterns:
+          key: http.path
+          included:
+            - /internal/*
+          excluded:
+            - /internal/special/*
+        # Configure sampler when matched.
+        sampler:
+          # Configure sampler to be always_on if matched.
+          always_on:
+      # Configure a sampling rule matching root spans with CLIENT span kind.
+      - parent:
+          - none
+        span_kinds:
+          - client
+        sampler:
+          # Configure sampler to be probability if matched.
+          probability:
+            ratio: 0.05
+      - sampler:
+          probability:
+            # Configure ratio.
+            # If omitted or null, 1.0 is used.
+            ratio: 0.001
 ```
 </details>
 
@@ -3410,7 +3591,22 @@ Usages:
 
 * [`TracerProvider.limits`](#tracerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/SpanLimits_kitchen_sink.yaml)
+```yaml
+# .tracer_provider.limits take priority over general .attribute_limits. In this contrived example, attribute_value_length_limit is set to 4096, attribute_count_limit is set to 128, overriding the values from general .attribute_limits.
+attribute_count_limit: 128
+attribute_value_length_limit: 4096
+event_attribute_count_limit: 128
+event_count_limit: 128
+link_attribute_count_limit: 128
+link_count_limit: 128
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -3787,17 +3983,64 @@ Usages:
 Snippets:
 
 <details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/View_kitchen_sink.yaml)
+```yaml
+selector:
+  instrument_name: my_instrument
+  instrument_type: histogram
+  unit: ms
+  meter_name: my-meter
+  meter_version: 1.0.0
+  meter_schema_url: https://opentelemetry.io/schemas/1.16.0
+stream:
+  name: new_instrument_name
+  description: new_description
+  aggregation:
+    explicit_bucket_histogram:
+      boundaries:
+        - 0.0
+        - 5.0
+        - 10.0
+        - 25.0
+        - 50.0
+        - 75.0
+        - 100.0
+        - 250.0
+        - 500.0
+        - 750.0
+        - 1000.0
+        - 2500.0
+        - 5000.0
+        - 7500.0
+        - 10000.0
+      record_min_max: true
+  aggregation_cardinality_limit: 2000
+  attribute_keys:
+    included:
+      - foo.*
+    excluded:
+      - foo.bar
+```
+</details>
+
+<details>
 <summary>Override Default Histogram Buckets</summary>
 
 [Snippet Source File](./snippets/View_override_default_histogram_buckets.yaml)
 ```yaml
+# select a specific histogram instrument and override the default buckets
 selector:
   instrument_name: my.instrument.name
   instrument_type: histogram
 stream:
   aggregation:
     explicit_bucket_histogram:
-      boundaries: [0, 5, 10]
+      boundaries:
+        - 0
+        - 5.0
+        - 10.0
 ```
 </details>
 
@@ -4759,7 +5002,70 @@ Usages:
 
 * [`OpenTelemetryConfiguration.instrumentation/development`](#opentelemetryconfiguration)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalInstrumentation_kitchen_sink.yaml)
+```yaml
+general:
+  peer:
+    service_mapping:
+      - peer: 1.2.3.4
+        service: FooService
+      - peer: 2.3.4.5
+        service: BarService
+  http:
+    client:
+      request_captured_headers:
+        - Content-Type
+        - Accept
+      response_captured_headers:
+        - Content-Type
+        - Content-Encoding
+    server:
+      request_captured_headers:
+        - Content-Type
+        - Accept
+      response_captured_headers:
+        - Content-Type
+        - Content-Encoding
+cpp:
+  example:
+    property: "value"
+dotnet:
+  example:
+    property: "value"
+erlang:
+  example:
+    property: "value"
+go:
+  example:
+    property: "value"
+java:
+  example:
+    property: "value"
+js:
+  example:
+    property: "value"
+php:
+  example:
+    property: "value"
+python:
+  example:
+    property: "value"
+ruby:
+  example:
+    property: "value"
+rust:
+  example:
+    property: "value"
+swift:
+  example:
+    property: "value"
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5002,7 +5308,23 @@ Usages:
 
 * [`LoggerProvider.logger_configurator/development`](#loggerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalLoggerConfigurator_kitchen_sink.yaml)
+```yaml
+default_config:
+  disabled: true
+loggers:
+  - name: io.opentelemetry.contrib.*
+    config:
+      disabled: false
+      minimum_severity: info
+      trace_based: true
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5158,7 +5480,21 @@ Usages:
 
 * [`MeterProvider.meter_configurator/development`](#meterprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalMeterConfigurator_kitchen_sink.yaml)
+```yaml
+default_config:
+  disabled: true
+meters:
+  - name: io.opentelemetry.contrib.*
+    config:
+      disabled: false
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5594,7 +5930,7 @@ No snippets.
 | `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 9464 is used. | No constraints. | Configure port.<br> |
 | `translation_strategy` | [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | `false` | If omitted, underscore_escaping_with_suffixes is used. | No constraints. | Configure how metric names are translated to Prometheus metric names. |
 | `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, no resource attributes are added. | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
-| `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without scope info labels.<br> |
+| `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without scope labels.<br> |
 | `without_target_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a target info metric for the resource.<br> |
 
 <details>
@@ -5618,7 +5954,25 @@ Usages:
 
 * [`PullMetricExporter.prometheus/development`](#pullmetricexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalPrometheusMetricExporter_kitchen_sink.yaml)
+```yaml
+host: localhost
+port: 9464
+without_scope_info: false
+without_target_info: false
+with_resource_constant_labels:
+  included:
+    - "service*"
+  excluded:
+    - "service.attr1"
+translation_strategy: underscore_escaping_with_suffixes
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5987,7 +6341,21 @@ Usages:
 
 * [`TracerProvider.tracer_configurator/development`](#tracerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalTracerConfigurator_kitchen_sink.yaml)
+```yaml
+default_config:
+  disabled: true
+tracers:
+  - name: io.opentelemetry.contrib.*
+    config:
+      disabled: false
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
