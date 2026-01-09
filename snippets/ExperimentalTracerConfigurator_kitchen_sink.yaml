@@ -8,8 +8,8 @@ tracer_provider:
   tracer_configurator/development:
     # SNIPPET_START
     default_config:
-      disabled: true
+      enabled: false
     tracers:
       - name: io.opentelemetry.contrib.*
         config:
-          disabled: false
+          enabled: true

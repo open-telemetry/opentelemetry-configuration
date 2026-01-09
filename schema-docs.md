@@ -5227,7 +5227,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure if the logger is enabled or not.<br> |
+| `enabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, true is used. | No constraints. | Configure if the logger is enabled or not.<br> |
 | `minimum_severity` | [`SeverityNumber`](#severitynumber) | `false` | If omitted, severity filtering is not applied. | No constraints. | Configure severity filtering.<br>Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.<br> |
 | `trace_based` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, trace based filtering is not applied. | No constraints. | Configure trace based filtering.<br>If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.<br> |
 
@@ -5236,7 +5236,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `disabled` | not_implemented | unknown | supported | unknown |
+| `enabled` | not_implemented | unknown | supported | unknown |
 | `minimum_severity` | not_implemented | unknown | not_implemented | unknown |
 | `trace_based` | not_implemented | unknown | not_implemented | unknown |
 </details>
@@ -5262,7 +5262,7 @@ No snippets.
   ],
   "additionalProperties": false,
   "properties": {
-    "disabled": {
+    "enabled": {
       "type": [
         "boolean",
         "null"
@@ -5316,11 +5316,11 @@ Snippets:
 [Snippet Source File](./snippets/ExperimentalLoggerConfigurator_kitchen_sink.yaml)
 ```yaml
 default_config:
-  disabled: true
+  enabled: false
 loggers:
   - name: io.opentelemetry.contrib.*
     config:
-      disabled: false
+      enabled: true
       minimum_severity: info
       trace_based: true
 ```
@@ -5413,14 +5413,14 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `disabled` | `boolean` | `false` | If omitted, false is used. | No constraints. | Configure if the meter is enabled or not. |
+| `enabled` | `boolean` | `false` | If omitted, true is used. | No constraints. | Configure if the meter is enabled or not. |
 
 <details>
 <summary>Language support status</summary>
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `disabled` | not_implemented | unknown | supported | unknown |
+| `enabled` | not_implemented | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -5444,7 +5444,7 @@ No snippets.
   ],
   "additionalProperties": false,
   "properties": {
-    "disabled": {
+    "enabled": {
       "type": [
         "boolean"
       ]
@@ -5488,11 +5488,11 @@ Snippets:
 [Snippet Source File](./snippets/ExperimentalMeterConfigurator_kitchen_sink.yaml)
 ```yaml
 default_config:
-  disabled: true
+  enabled: false
 meters:
   - name: io.opentelemetry.contrib.*
     config:
-      disabled: false
+      enabled: true
 ```
 </details>
 
@@ -6274,14 +6274,14 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `disabled` | `boolean` | `false` | If omitted, false is used. | No constraints. | Configure if the tracer is enabled or not. |
+| `enabled` | `boolean` | `false` | If omitted, true is used. | No constraints. | Configure if the tracer is enabled or not. |
 
 <details>
 <summary>Language support status</summary>
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `disabled` | not_implemented | unknown | supported | unknown |
+| `enabled` | not_implemented | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -6305,7 +6305,7 @@ No snippets.
   ],
   "additionalProperties": false,
   "properties": {
-    "disabled": {
+    "enabled": {
       "type": [
         "boolean"
       ]
@@ -6349,11 +6349,11 @@ Snippets:
 [Snippet Source File](./snippets/ExperimentalTracerConfigurator_kitchen_sink.yaml)
 ```yaml
 default_config:
-  disabled: true
+  enabled: false
 tracers:
   - name: io.opentelemetry.contrib.*
     config:
-      disabled: false
+      enabled: true
 ```
 </details>
 
