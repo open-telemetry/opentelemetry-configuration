@@ -1,4 +1,4 @@
-latestSupportedFileFormat: 1.0.0-rc.2
+latestSupportedFileFormat: 1.0.0-rc.3
 typeSupportStatuses:
   - type: Aggregation
     status: supported
@@ -49,7 +49,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: Distribution
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: DropAggregation
     status: supported
@@ -67,10 +67,10 @@ typeSupportStatuses:
     status: supported
     enumOverrides: []
   - type: GrpcTls
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: HttpTls
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: IncludeExclude
     status: supported
@@ -157,7 +157,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: SeverityNumber
-    status: unknown
+    status: not_implemented
     enumOverrides: []
   - type: SimpleLogRecordProcessor
     status: supported
@@ -169,7 +169,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: SpanKind
-    status: unknown
+    status: not_implemented
     enumOverrides: []
   - type: SpanLimits
     status: supported
@@ -202,31 +202,31 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOnSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableParentThresholdSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableProbabilitySampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRule
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: not_implemented
@@ -294,12 +294,10 @@ typeSupportStatuses:
   - type: ExperimentalPrometheusMetricExporter
     status: supported
     propertyOverrides:
-      - property: without_scope_info
-        status: unknown
       - property: without_target_info
-        status: unknown
+        status: not_implemented
   - type: ExperimentalPrometheusTranslationStrategy
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: ExperimentalResourceDetection
     status: not_implemented
@@ -311,7 +309,7 @@ typeSupportStatuses:
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalSpanParent
-    status: unknown
+    status: not_implemented
     enumOverrides: []
   - type: ExperimentalTracerConfig
     status: not_implemented
