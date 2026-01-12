@@ -745,8 +745,8 @@ $defs:
       - object
     additionalProperties: false
     properties:
-      disabled:
+      enabled:
         type:
           - boolean
         description: Configure if the meter is enabled or not.
-        defaultBehavior: false is used
+        defaultBehavior: true is used

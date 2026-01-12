@@ -837,12 +837,12 @@
       ],
       "additionalProperties": false,
       "properties": {
-        "disabled": {
+        "enabled": {
           "type": [
             "boolean",
             "null"
           ],
-          "description": "Configure if the logger is enabled or not.\nIf omitted or null, false is used.\n"
+          "description": "Configure if the logger is enabled or not.\nIf omitted or null, true is used.\n"
         },
         "minimum_severity": {
           "$ref": "#/$defs/SeverityNumber",
@@ -905,11 +905,11 @@
       ],
       "additionalProperties": false,
       "properties": {
-        "disabled": {
+        "enabled": {
           "type": [
             "boolean"
           ],
-          "description": "Configure if the meter is enabled or not.\nIf omitted, false is used.\n"
+          "description": "Configure if the meter is enabled or not.\nIf omitted, true is used.\n"
         }
       }
     },
@@ -1180,11 +1180,11 @@
       ],
       "additionalProperties": false,
       "properties": {
-        "disabled": {
+        "enabled": {
           "type": [
             "boolean"
           ],
-          "description": "Configure if the tracer is enabled or not.\nIf omitted, false is used.\n"
+          "description": "Configure if the tracer is enabled or not.\nIf omitted, true is used.\n"
         }
       }
     },
