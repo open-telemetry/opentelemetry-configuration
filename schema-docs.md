@@ -6038,8 +6038,8 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `no_translation` | supported | unknown | unknown | unknown |
-| `no_utf8_escaping_with_suffixes` | supported | unknown | unknown | unknown |
+| `no_translation` | not_implemented | unknown | unknown | unknown |
+| `no_utf8_escaping_with_suffixes` | not_implemented | unknown | unknown | unknown |
 | `underscore_escaping_with_suffixes` | supported | unknown | unknown | unknown |
 | `underscore_escaping_without_suffixes` | supported | unknown | unknown | unknown |
 </details>

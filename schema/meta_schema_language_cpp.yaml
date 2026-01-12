@@ -298,7 +298,11 @@ typeSupportStatuses:
         status: not_implemented
   - type: ExperimentalPrometheusTranslationStrategy
     status: supported
-    enumOverrides: []
+    enumOverrides:
+      - enumValue: no_translation
+        status: not_implemented
+      - enumValue: no_utf8_escaping_with_suffixes
+        status: not_implemented
   - type: ExperimentalResourceDetection
     status: not_implemented
     propertyOverrides: []
