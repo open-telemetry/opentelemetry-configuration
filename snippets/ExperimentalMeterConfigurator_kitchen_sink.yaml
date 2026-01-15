@@ -8,8 +8,8 @@ meter_provider:
   meter_configurator/development:
     # SNIPPET_START
     default_config:
-      disabled: true
+      enabled: false
     meters:
       - name: io.opentelemetry.contrib.*
         config:
-          disabled: false
+          enabled: true

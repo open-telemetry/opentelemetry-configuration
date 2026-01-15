@@ -6,7 +6,7 @@ This page provides comprehensive language implementation status for each type in
 
 ## cpp <a id="cpp"></a>
 
-Latest supported file format: `1.0.0-rc.2`
+Latest supported file format: `1.0.0-rc.3`
 
 | Type | Status | Notes | Support Status Details |
 |---|---|---|---|
@@ -26,14 +26,14 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ConsoleExporter`](schema-docs.md#consoleexporter) | supported |  |  |
 | [`ConsoleMetricExporter`](schema-docs.md#consolemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `temporality_preference`: supported<br> |
 | [`DefaultAggregation`](schema-docs.md#defaultaggregation) | supported |  |  |
-| [`Distribution`](schema-docs.md#distribution) | unknown |  |  |
+| [`Distribution`](schema-docs.md#distribution) | not_implemented |  |  |
 | [`DropAggregation`](schema-docs.md#dropaggregation) | supported |  |  |
 | [`ExemplarFilter`](schema-docs.md#exemplarfilter) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `trace_based`: not_implemented<br> |
 | [`ExplicitBucketHistogramAggregation`](schema-docs.md#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
 | [`ExporterDefaultHistogramAggregation`](schema-docs.md#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
 | [`ExporterTemporalityPreference`](schema-docs.md#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
-| [`GrpcTls`](schema-docs.md#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
-| [`HttpTls`](schema-docs.md#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
+| [`GrpcTls`](schema-docs.md#grpctls) | supported |  | * `ca_file`: supported<br>* `cert_file`: supported<br>* `insecure`: supported<br>* `key_file`: supported<br> |
+| [`HttpTls`](schema-docs.md#httptls) | supported |  | * `ca_file`: supported<br>* `cert_file`: supported<br>* `key_file`: supported<br> |
 | [`IncludeExclude`](schema-docs.md#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
 | [`InstrumentType`](schema-docs.md#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
 | [`JaegerPropagator`](schema-docs.md#jaegerpropagator) | supported |  |  |
@@ -62,11 +62,11 @@ Latest supported file format: `1.0.0-rc.2`
 | [`PushMetricExporter`](schema-docs.md#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`Resource`](schema-docs.md#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
 | [`Sampler`](schema-docs.md#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: supported<br> |
-| [`SeverityNumber`](schema-docs.md#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
+| [`SeverityNumber`](schema-docs.md#severitynumber) | not_implemented |  | * `debug`: not_implemented<br>* `debug2`: not_implemented<br>* `debug3`: not_implemented<br>* `debug4`: not_implemented<br>* `error`: not_implemented<br>* `error2`: not_implemented<br>* `error3`: not_implemented<br>* `error4`: not_implemented<br>* `fatal`: not_implemented<br>* `fatal2`: not_implemented<br>* `fatal3`: not_implemented<br>* `fatal4`: not_implemented<br>* `info`: not_implemented<br>* `info2`: not_implemented<br>* `info3`: not_implemented<br>* `info4`: not_implemented<br>* `trace`: not_implemented<br>* `trace2`: not_implemented<br>* `trace3`: not_implemented<br>* `trace4`: not_implemented<br>* `warn`: not_implemented<br>* `warn2`: not_implemented<br>* `warn3`: not_implemented<br>* `warn4`: not_implemented<br> |
 | [`SimpleLogRecordProcessor`](schema-docs.md#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](schema-docs.md#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](schema-docs.md#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`SpanKind`](schema-docs.md#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
+| [`SpanKind`](schema-docs.md#spankind) | not_implemented |  | * `client`: not_implemented<br>* `consumer`: not_implemented<br>* `internal`: not_implemented<br>* `producer`: not_implemented<br>* `server`: not_implemented<br> |
 | [`SpanLimits`](schema-docs.md#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | [`SpanProcessor`](schema-docs.md#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](schema-docs.md#sumaggregation) | supported |  |  |
@@ -77,15 +77,15 @@ Latest supported file format: `1.0.0-rc.2`
 | [`View`](schema-docs.md#view) | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | [`ViewSelector`](schema-docs.md#viewselector) | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
 | [`ViewStream`](schema-docs.md#viewstream) | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| [`ExperimentalComposableAlwaysOffSampler`](schema-docs.md#experimentalcomposablealwaysoffsampler) | unknown |  |  |
-| [`ExperimentalComposableAlwaysOnSampler`](schema-docs.md#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentThresholdSampler`](schema-docs.md#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
-| [`ExperimentalComposableProbabilitySampler`](schema-docs.md#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSampler`](schema-docs.md#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRule`](schema-docs.md#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
+| [`ExperimentalComposableAlwaysOffSampler`](schema-docs.md#experimentalcomposablealwaysoffsampler) | not_implemented |  |  |
+| [`ExperimentalComposableAlwaysOnSampler`](schema-docs.md#experimentalcomposablealwaysonsampler) | not_implemented |  |  |
+| [`ExperimentalComposableParentThresholdSampler`](schema-docs.md#experimentalcomposableparentthresholdsampler) | not_implemented |  | * `root`: not_implemented<br> |
+| [`ExperimentalComposableProbabilitySampler`](schema-docs.md#experimentalcomposableprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
+| [`ExperimentalComposableRuleBasedSampler`](schema-docs.md#experimentalcomposablerulebasedsampler) | not_implemented |  | * `rules`: not_implemented<br> |
+| [`ExperimentalComposableRuleBasedSamplerRule`](schema-docs.md#experimentalcomposablerulebasedsamplerrule) | not_implemented |  | * `attribute_patterns`: not_implemented<br>* `attribute_values`: not_implemented<br>* `parent`: not_implemented<br>* `sampler`: not_implemented<br>* `span_kinds`: not_implemented<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributepatterns) | not_implemented |  | * `excluded`: not_implemented<br>* `included`: not_implemented<br>* `key`: not_implemented<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributevalues) | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
+| [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | not_implemented |  |  |
 | [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | not_applicable |  | * `http`: not_applicable<br>* `peer`: not_applicable<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | not_implemented |  |  |
@@ -95,10 +95,10 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalInstrumentation`](schema-docs.md#experimentalinstrumentation) | not_applicable |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: not_applicable<br>* `go`: not_applicable<br>* `java`: not_applicable<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | [`ExperimentalJaegerRemoteSampler`](schema-docs.md#experimentaljaegerremotesampler) | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | not_applicable |  |  |
-| [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | not_implemented |  | * `disabled`: not_implemented<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
+| [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | not_implemented |  | * `enabled`: not_implemented<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
 | [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `loggers`: not_implemented<br> |
 | [`ExperimentalLoggerMatcherAndConfig`](schema-docs.md#experimentalloggermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
-| [`ExperimentalMeterConfig`](schema-docs.md#experimentalmeterconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
+| [`ExperimentalMeterConfig`](schema-docs.md#experimentalmeterconfig) | not_implemented |  | * `enabled`: not_implemented<br> |
 | [`ExperimentalMeterConfigurator`](schema-docs.md#experimentalmeterconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `meters`: not_implemented<br> |
 | [`ExperimentalMeterMatcherAndConfig`](schema-docs.md#experimentalmetermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
 | [`ExperimentalOtlpFileExporter`](schema-docs.md#experimentalotlpfileexporter) | supported |  | * `output_stream`: supported<br> |
@@ -107,13 +107,13 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalPeerServiceMapping`](schema-docs.md#experimentalpeerservicemapping) | not_implemented |  | * `peer`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalProbabilitySampler`](schema-docs.md#experimentalprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
 | [`ExperimentalProcessResourceDetector`](schema-docs.md#experimentalprocessresourcedetector) | not_implemented |  |  |
-| [`ExperimentalPrometheusMetricExporter`](schema-docs.md#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: supported<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](schema-docs.md#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
+| [`ExperimentalPrometheusMetricExporter`](schema-docs.md#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: supported<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: supported<br>* `without_target_info`: not_implemented<br> |
+| [`ExperimentalPrometheusTranslationStrategy`](schema-docs.md#experimentalprometheustranslationstrategy) | supported |  | * `no_translation`: not_implemented<br>* `no_utf8_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_with_suffixes`: supported<br>* `underscore_escaping_without_suffixes`: supported<br> |
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | not_implemented |  |  |
-| [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-| [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
+| [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
+| [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | not_implemented |  | * `enabled`: not_implemented<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
 
@@ -209,10 +209,10 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalInstrumentation`](schema-docs.md#experimentalinstrumentation) | unknown |  | * `cpp`: unknown<br>* `dotnet`: unknown<br>* `erlang`: unknown<br>* `general`: unknown<br>* `go`: unknown<br>* `java`: unknown<br>* `js`: unknown<br>* `php`: unknown<br>* `python`: unknown<br>* `ruby`: unknown<br>* `rust`: unknown<br>* `swift`: unknown<br> |
 | [`ExperimentalJaegerRemoteSampler`](schema-docs.md#experimentaljaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `initial_sampler`: unknown<br>* `interval`: unknown<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | unknown |  |  |
-| [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | unknown |  | * `disabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
+| [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | unknown |  | * `enabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | unknown |  | * `default_config`: unknown<br>* `loggers`: unknown<br> |
 | [`ExperimentalLoggerMatcherAndConfig`](schema-docs.md#experimentalloggermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalMeterConfig`](schema-docs.md#experimentalmeterconfig) | unknown |  | * `disabled`: unknown<br> |
+| [`ExperimentalMeterConfig`](schema-docs.md#experimentalmeterconfig) | unknown |  | * `enabled`: unknown<br> |
 | [`ExperimentalMeterConfigurator`](schema-docs.md#experimentalmeterconfigurator) | unknown |  | * `default_config`: unknown<br>* `meters`: unknown<br> |
 | [`ExperimentalMeterMatcherAndConfig`](schema-docs.md#experimentalmetermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
 | [`ExperimentalOtlpFileExporter`](schema-docs.md#experimentalotlpfileexporter) | unknown |  | * `output_stream`: unknown<br> |
@@ -227,7 +227,7 @@ Latest supported file format: `0.3.0`
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | unknown |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-| [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
+| [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | unknown |  | * `enabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
 
@@ -323,10 +323,10 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalInstrumentation`](schema-docs.md#experimentalinstrumentation) | supported |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: supported<br>* `go`: not_applicable<br>* `java`: supported<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | [`ExperimentalJaegerRemoteSampler`](schema-docs.md#experimentaljaegerremotesampler) | supported |  | * `endpoint`: supported<br>* `initial_sampler`: supported<br>* `interval`: supported<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | supported |  |  |
-| [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | supported |  | * `disabled`: supported<br>* `minimum_severity`: supported<br>* `trace_based`: supported<br> |
+| [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | supported |  | * `enabled`: supported<br>* `minimum_severity`: supported<br>* `trace_based`: supported<br> |
 | [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |
 | [`ExperimentalLoggerMatcherAndConfig`](schema-docs.md#experimentalloggermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| [`ExperimentalMeterConfig`](schema-docs.md#experimentalmeterconfig) | supported |  | * `disabled`: supported<br> |
+| [`ExperimentalMeterConfig`](schema-docs.md#experimentalmeterconfig) | supported |  | * `enabled`: supported<br> |
 | [`ExperimentalMeterConfigurator`](schema-docs.md#experimentalmeterconfigurator) | supported |  | * `default_config`: supported<br>* `meters`: supported<br> |
 | [`ExperimentalMeterMatcherAndConfig`](schema-docs.md#experimentalmetermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
 | [`ExperimentalOtlpFileExporter`](schema-docs.md#experimentalotlpfileexporter) | supported |  | * `output_stream`: not_implemented<br> |
@@ -335,13 +335,13 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalPeerServiceMapping`](schema-docs.md#experimentalpeerservicemapping) | supported |  | * `peer`: supported<br>* `service`: supported<br> |
 | [`ExperimentalProbabilitySampler`](schema-docs.md#experimentalprobabilitysampler) | supported |  | * `ratio`: supported<br> |
 | [`ExperimentalProcessResourceDetector`](schema-docs.md#experimentalprocessresourcedetector) | supported |  |  |
-| [`ExperimentalPrometheusMetricExporter`](schema-docs.md#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: not_implemented<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: ignored<br>* `without_target_info`: ignored<br> |
+| [`ExperimentalPrometheusMetricExporter`](schema-docs.md#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: not_implemented<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: supported<br>* `without_target_info`: supported<br> |
 | [`ExperimentalPrometheusTranslationStrategy`](schema-docs.md#experimentalprometheustranslationstrategy) | not_implemented |  | * `no_translation`: not_implemented<br>* `no_utf8_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes`: not_implemented<br> |
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | supported |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | supported |  | * `local`: supported<br>* `none`: supported<br>* `remote`: supported<br> |
-| [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | supported |  | * `disabled`: supported<br> |
+| [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | supported |  | * `enabled`: supported<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
 
@@ -437,10 +437,10 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalInstrumentation`](schema-docs.md#experimentalinstrumentation) | unknown |  | * `cpp`: unknown<br>* `dotnet`: unknown<br>* `erlang`: unknown<br>* `general`: unknown<br>* `go`: unknown<br>* `java`: unknown<br>* `js`: unknown<br>* `php`: unknown<br>* `python`: unknown<br>* `ruby`: unknown<br>* `rust`: unknown<br>* `swift`: unknown<br> |
 | [`ExperimentalJaegerRemoteSampler`](schema-docs.md#experimentaljaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `initial_sampler`: unknown<br>* `interval`: unknown<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | unknown |  |  |
-| [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | unknown |  | * `disabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
+| [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | unknown |  | * `enabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | unknown |  | * `default_config`: unknown<br>* `loggers`: unknown<br> |
 | [`ExperimentalLoggerMatcherAndConfig`](schema-docs.md#experimentalloggermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalMeterConfig`](schema-docs.md#experimentalmeterconfig) | unknown |  | * `disabled`: unknown<br> |
+| [`ExperimentalMeterConfig`](schema-docs.md#experimentalmeterconfig) | unknown |  | * `enabled`: unknown<br> |
 | [`ExperimentalMeterConfigurator`](schema-docs.md#experimentalmeterconfigurator) | unknown |  | * `default_config`: unknown<br>* `meters`: unknown<br> |
 | [`ExperimentalMeterMatcherAndConfig`](schema-docs.md#experimentalmetermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
 | [`ExperimentalOtlpFileExporter`](schema-docs.md#experimentalotlpfileexporter) | unknown |  | * `output_stream`: unknown<br> |
@@ -455,7 +455,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | unknown |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-| [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
+| [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | unknown |  | * `enabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
 

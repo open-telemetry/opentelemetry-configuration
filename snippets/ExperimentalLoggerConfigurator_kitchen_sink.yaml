@@ -8,10 +8,10 @@ logger_provider:
   logger_configurator/development:
     # SNIPPET_START
     default_config:
-      disabled: true
+      enabled: false
     loggers:
       - name: io.opentelemetry.contrib.*
         config:
-          disabled: false
+          enabled: true
           minimum_severity: info
           trace_based: true
