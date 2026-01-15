@@ -304,11 +304,11 @@ KNOWN_LANGUAGES.forEach(language => {
 // Write SDK extension plugins
 addHeader('SDK Extension Plugins', 'sdk-extension-plugins', 1);
 output.push(
-`[SDK extension plugins](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#supported-sdk-extension-plugins) are places where custom interface implementations can be referenced and configured.
+`[SDK extension plugins](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#supported-sdk-plugin-components) are places where custom interface implementations can be referenced and configured.
 
 For example, you could write a custom \`SpanExporter\`, and indicate that it should be paired with a \`BatchSpanProcessor\`.
 
-Each of the following types support referencing custom interface implementations. Each type is an object type containing exactly one property whose value is type \`object\` or \`null\`. The property key refers to the name of the custom implementation, and must be the same as the \`name\` of a corresponding registered [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-componentprovider). The value passed as configuration when the [ComponentProvider.create](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create) is called.
+Each of the following types support referencing custom interface implementations. Each type is an object type containing exactly one property whose value is type \`object\` or \`null\`. The property key refers to the name of the custom implementation, and must be the same as the \`name\` of a corresponding registered [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-plugincomponentprovider). The value passed as configuration when the [ComponentProvider.create](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create) is called.
 
 SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the \`otlp_http\` property of \`SpanExporter\` defines the OTLP http/protobuf exporter.
 
