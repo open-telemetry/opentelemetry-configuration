@@ -36,7 +36,6 @@ Latest supported file format: `1.0.0-rc.3`
 | [`HttpTls`](schema-docs.md#httptls) | supported |  | * `ca_file`: supported<br>* `cert_file`: supported<br>* `key_file`: supported<br> |
 | [`IncludeExclude`](schema-docs.md#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
 | [`InstrumentType`](schema-docs.md#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
-| [`JaegerPropagator`](schema-docs.md#jaegerpropagator) | supported |  |  |
 | [`LastValueAggregation`](schema-docs.md#lastvalueaggregation) | supported |  |  |
 | [`LoggerProvider`](schema-docs.md#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
@@ -70,7 +69,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`SpanLimits`](schema-docs.md#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | [`SpanProcessor`](schema-docs.md#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](schema-docs.md#sumaggregation) | supported |  |  |
-| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `jaeger`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
+| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
 | [`TraceContextPropagator`](schema-docs.md#tracecontextpropagator) | supported |  |  |
 | [`TraceIdRatioBasedSampler`](schema-docs.md#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
 | [`TracerProvider`](schema-docs.md#tracerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
@@ -150,7 +149,6 @@ Latest supported file format: `1.0.0-rc.2`
 | [`HttpTls`](schema-docs.md#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](schema-docs.md#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
 | [`InstrumentType`](schema-docs.md#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| [`JaegerPropagator`](schema-docs.md#jaegerpropagator) | supported |  |  |
 | [`LastValueAggregation`](schema-docs.md#lastvalueaggregation) | unknown |  |  |
 | [`LoggerProvider`](schema-docs.md#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: not_implemented<br> |
@@ -184,7 +182,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`SpanLimits`](schema-docs.md#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
 | [`SpanProcessor`](schema-docs.md#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](schema-docs.md#sumaggregation) | unknown |  |  |
-| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `jaeger`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
+| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
 | [`TraceContextPropagator`](schema-docs.md#tracecontextpropagator) | supported |  |  |
 | [`TraceIdRatioBasedSampler`](schema-docs.md#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
 | [`TracerProvider`](schema-docs.md#tracerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `sampler`: unknown<br>* `tracer_configurator/development`: unknown<br> |
@@ -264,7 +262,6 @@ Latest supported file format: `1.0.0-rc.3`
 | [`HttpTls`](schema-docs.md#httptls) | supported |  | * `ca_file`: supported<br>* `cert_file`: supported<br>* `key_file`: supported<br> |
 | [`IncludeExclude`](schema-docs.md#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
 | [`InstrumentType`](schema-docs.md#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
-| [`JaegerPropagator`](schema-docs.md#jaegerpropagator) | supported |  |  |
 | [`LastValueAggregation`](schema-docs.md#lastvalueaggregation) | supported |  |  |
 | [`LoggerProvider`](schema-docs.md#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
@@ -298,7 +295,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`SpanLimits`](schema-docs.md#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | [`SpanProcessor`](schema-docs.md#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](schema-docs.md#sumaggregation) | supported |  |  |
-| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `jaeger`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
+| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
 | [`TraceContextPropagator`](schema-docs.md#tracecontextpropagator) | supported |  |  |
 | [`TraceIdRatioBasedSampler`](schema-docs.md#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
 | [`TracerProvider`](schema-docs.md#tracerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
@@ -378,7 +375,6 @@ Latest supported file format: `1.0.0-rc.2`
 | [`HttpTls`](schema-docs.md#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
 | [`IncludeExclude`](schema-docs.md#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
 | [`InstrumentType`](schema-docs.md#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| [`JaegerPropagator`](schema-docs.md#jaegerpropagator) | unknown |  |  |
 | [`LastValueAggregation`](schema-docs.md#lastvalueaggregation) | unknown |  |  |
 | [`LoggerProvider`](schema-docs.md#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
@@ -412,7 +408,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`SpanLimits`](schema-docs.md#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
 | [`SpanProcessor`](schema-docs.md#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
 | [`SumAggregation`](schema-docs.md#sumaggregation) | unknown |  |  |
-| [`TextMapPropagator`](schema-docs.md#textmappropagator) | unknown |  | * `b3`: unknown<br>* `b3multi`: unknown<br>* `baggage`: unknown<br>* `jaeger`: unknown<br>* `ottrace`: unknown<br>* `tracecontext`: unknown<br> |
+| [`TextMapPropagator`](schema-docs.md#textmappropagator) | unknown |  | * `b3`: unknown<br>* `b3multi`: unknown<br>* `baggage`: unknown<br>* `ottrace`: unknown<br>* `tracecontext`: unknown<br> |
 | [`TraceContextPropagator`](schema-docs.md#tracecontextpropagator) | unknown |  |  |
 | [`TraceIdRatioBasedSampler`](schema-docs.md#traceidratiobasedsampler) | unknown |  | * `ratio`: unknown<br> |
 | [`TracerProvider`](schema-docs.md#tracerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `sampler`: unknown<br>* `tracer_configurator/development`: unknown<br> |

@@ -1379,13 +1379,6 @@
         "up_down_counter"
       ]
     },
-    "JaegerPropagator": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
     "LastValueAggregation": {
       "type": [
         "object",
@@ -2268,10 +2261,6 @@
         "b3multi": {
           "$ref": "#/$defs/B3MultiPropagator",
           "description": "Include the zipkin b3 multi propagator.\nIf omitted, ignore.\n"
-        },
-        "jaeger": {
-          "$ref": "#/$defs/JaegerPropagator",
-          "description": "Include the jaeger propagator.\nIf omitted, ignore.\n"
         },
         "ottrace": {
           "$ref": "#/$defs/OpenTracingPropagator",

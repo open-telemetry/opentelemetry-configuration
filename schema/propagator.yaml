@@ -45,10 +45,6 @@ $defs:
         $ref: "#/$defs/B3MultiPropagator"
         description: Include the zipkin b3 multi propagator.
         defaultBehavior: ignore
-      jaeger:
-        $ref: "#/$defs/JaegerPropagator"
-        description: Include the jaeger propagator.
-        defaultBehavior: ignore
       ottrace:
         $ref: "#/$defs/OpenTracingPropagator"
         description: Include the opentracing propagator.
@@ -70,11 +66,6 @@ $defs:
       - "null"
     additionalProperties: false
   B3MultiPropagator:
-    type:
-      - object
-      - "null"
-    additionalProperties: false
-  JaegerPropagator:
     type:
       - object
       - "null"

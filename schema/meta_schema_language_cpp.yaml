@@ -78,9 +78,6 @@ typeSupportStatuses:
   - type: InstrumentType
     status: supported
     enumOverrides: []
-  - type: JaegerPropagator
-    status: supported
-    propertyOverrides: []
   - type: LastValueAggregation
     status: supported
     propertyOverrides: []
