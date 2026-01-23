@@ -111,9 +111,6 @@ typeSupportStatuses:
   - type: OpenTelemetryConfiguration
     status: supported
     propertyOverrides: []
-  - type: OpenTracingPropagator
-    status: not_implemented
-    propertyOverrides: []
   - type: OtlpGrpcExporter
     status: supported
     propertyOverrides: []

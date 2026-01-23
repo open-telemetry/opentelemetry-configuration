@@ -1577,13 +1577,6 @@
       ],
       "additionalProperties": false
     },
-    "OpenTracingPropagator": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
     "OtlpGrpcExporter": {
       "type": [
         "object",
@@ -2261,10 +2254,6 @@
         "b3multi": {
           "$ref": "#/$defs/B3MultiPropagator",
           "description": "Include the zipkin b3 multi propagator.\nIf omitted, ignore.\n"
-        },
-        "ottrace": {
-          "$ref": "#/$defs/OpenTracingPropagator",
-          "description": "Include the opentracing propagator.\nIf omitted, ignore.\n"
         }
       }
     },

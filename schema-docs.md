@@ -1993,33 +1993,6 @@ No snippets.
 }</pre>
 </details>
 
-## OpenTracingPropagator <a id="opentracingpropagator"></a>
-
-No properties.
-
-Constraints: 
-
-* `additionalProperties`: `false`
-
-Usages:
-
-* [`TextMapPropagator.ottrace`](#textmappropagator)
-
-No snippets.
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/propagator.yaml)
-<pre>{
-  "type": [
-    "object",
-    "null"
-  ],
-  "additionalProperties": false
-}</pre>
-</details>
-
 ## OtlpGrpcExporter <a id="otlpgrpcexporter"></a>
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
@@ -3726,7 +3699,6 @@ No snippets.
 | `b3` | [`B3Propagator`](#b3propagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 propagator. |
 | `b3multi` | [`B3MultiPropagator`](#b3multipropagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 multi propagator. |
 | `baggage` | [`BaggagePropagator`](#baggagepropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c baggage propagator. |
-| `ottrace` | [`OpenTracingPropagator`](#opentracingpropagator) | `false` | If omitted, ignore. | No constraints. | Include the opentracing propagator. |
 | `tracecontext` | [`TraceContextPropagator`](#tracecontextpropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c trace context propagator. |
 
 <details>
@@ -3737,7 +3709,6 @@ No snippets.
 | `b3` | supported | supported | supported | unknown |
 | `b3multi` | supported | supported | supported | unknown |
 | `baggage` | supported | supported | supported | unknown |
-| `ottrace` | supported | supported | supported | unknown |
 | `tracecontext` | supported | supported | supported | unknown |
 </details>
 
@@ -3779,9 +3750,6 @@ No snippets.
     },
     "b3multi": {
       "$ref": "#/$defs/B3MultiPropagator"
-    },
-    "ottrace": {
-      "$ref": "#/$defs/OpenTracingPropagator"
     }
   }
 }</pre>
