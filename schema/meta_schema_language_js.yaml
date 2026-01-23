@@ -78,9 +78,6 @@ typeSupportStatuses:
   - type: InstrumentType
     status: unknown
     enumOverrides: []
-  - type: JaegerPropagator
-    status: unknown
-    propertyOverrides: []
   - type: LastValueAggregation
     status: unknown
     propertyOverrides: []

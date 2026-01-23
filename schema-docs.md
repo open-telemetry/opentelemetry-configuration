@@ -1382,33 +1382,6 @@ No snippets.
 }</pre>
 </details>
 
-## JaegerPropagator <a id="jaegerpropagator"></a>
-
-No properties.
-
-Constraints: 
-
-* `additionalProperties`: `false`
-
-Usages:
-
-* [`TextMapPropagator.jaeger`](#textmappropagator)
-
-No snippets.
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/propagator.yaml)
-<pre>{
-  "type": [
-    "object",
-    "null"
-  ],
-  "additionalProperties": false
-}</pre>
-</details>
-
 ## LastValueAggregation <a id="lastvalueaggregation"></a>
 
 No properties.
@@ -3753,7 +3726,6 @@ No snippets.
 | `b3` | [`B3Propagator`](#b3propagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 propagator. |
 | `b3multi` | [`B3MultiPropagator`](#b3multipropagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 multi propagator. |
 | `baggage` | [`BaggagePropagator`](#baggagepropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c baggage propagator. |
-| `jaeger` | [`JaegerPropagator`](#jaegerpropagator) | `false` | If omitted, ignore. | No constraints. | Include the jaeger propagator. |
 | `ottrace` | [`OpenTracingPropagator`](#opentracingpropagator) | `false` | If omitted, ignore. | No constraints. | Include the opentracing propagator. |
 | `tracecontext` | [`TraceContextPropagator`](#tracecontextpropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c trace context propagator. |
 
@@ -3765,7 +3737,6 @@ No snippets.
 | `b3` | supported | supported | supported | unknown |
 | `b3multi` | supported | supported | supported | unknown |
 | `baggage` | supported | supported | supported | unknown |
-| `jaeger` | supported | supported | supported | unknown |
 | `ottrace` | supported | supported | supported | unknown |
 | `tracecontext` | supported | supported | supported | unknown |
 </details>
@@ -3808,9 +3779,6 @@ No snippets.
     },
     "b3multi": {
       "$ref": "#/$defs/B3MultiPropagator"
-    },
-    "jaeger": {
-      "$ref": "#/$defs/JaegerPropagator"
     },
     "ottrace": {
       "$ref": "#/$defs/OpenTracingPropagator"
