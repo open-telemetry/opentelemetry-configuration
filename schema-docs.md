@@ -2677,8 +2677,8 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | If omitted, and .composite_list is omitted or null, a noop propagator is used. | * `minItems`: `1`<br> | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br> |
-| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, and .composite is omitted or null, a noop propagator is used. | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br> |
+| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | If omitted, and .composite_list is omitted or null, a noop propagator is used. | * `minItems`: `1`<br> | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger. Known third party keys include: xray.<br> |
+| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, and .composite is omitted or null, a noop propagator is used. | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger. Known third party identifiers include: xray.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2711,7 +2711,7 @@ composite:
   - b3:
   - b3multi:
   - jaeger:
-composite_list: "ottrace,xray"
+composite_list: "xray"
 ```
 </details>
 

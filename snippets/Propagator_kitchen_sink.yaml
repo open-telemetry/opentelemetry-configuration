@@ -9,4 +9,4 @@ propagator:
     - b3:
     - b3multi:
     - jaeger:
-  composite_list: "ottrace,xray"
+  composite_list: "xray"
