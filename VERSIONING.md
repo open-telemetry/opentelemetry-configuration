@@ -82,7 +82,7 @@ End users should be cautious of adopting experimental properties and types, sinc
 
 ### Extension points
 
-The schema contains types that are designed for extension, as indicated by the presence of `"additionalProperties": true`. For example, [component provider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-componentprovider) provides mechanisms for referencing custom SDK extension components like exporters, processors, samplers, etc. The versioning policy guarantees surrounding properties not explicitly defined in this repository are out of scope. Users should consult documentation for the components interpreting these additional properties and decide if their versioning policy is sufficient for adoption.
+The schema contains types that are designed for extension, as indicated by the presence of `"additionalProperties": true`. For example, [plugin component provider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-plugincomponentprovider) provides mechanisms for referencing custom SDK extension components like exporters, processors, samplers, etc. The versioning policy guarantees surrounding properties not explicitly defined in this repository are out of scope. Users should consult documentation for the components interpreting these additional properties and decide if their versioning policy is sufficient for adoption.
 
 ## File format
 
