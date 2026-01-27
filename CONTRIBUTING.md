@@ -261,7 +261,7 @@ In order to promote stylistic consistency and allow for reuse of concepts, `obje
 
 ### SDK extension plugins
 
-[SDK extension plugin interfaces](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#sdk-extension-components) should be modeled consistently for improved user experience and to facilitate implementations supporting custom implementations via the [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#componentprovider) mechanism.
+[SDK extension plugin interfaces](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#sdk-extension-components) should be modeled consistently for improved user experience and to facilitate implementations supporting custom implementations via the [PluginComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#plugincomponentprovider) mechanism.
 
 The [SpanExporter](schema-docs.md#spanexporter) schema is typical:
 
@@ -300,8 +300,8 @@ tracer_provider:
 ```
 
 * The `SpanExporter` type requires exactly one property to be set (`"minProperties": 1`, `"maxProperties": 1`), and requires that property to have a value of type `object` or `null` (`"additionalProperties": {"type": ["object", "null"]}`).
-* The property key refers to the `name` used to [register a ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-componentprovider).
-* The property value is passed as configuration as `properties` when [ComponentProvider Create Plugin](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create-plugin) is called.
+* The property key refers to the `name` used to [register a PluginComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-plugincomponentprovider).
+* The property value is passed as configuration as `properties` when [PluginComponentProvider Create Component](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create-component) is called.
 * `SpanExporter` has `properties` describing the names and schemas of built-in span exporters (i.e. those defined explicitly in the specification).
 
 [Schema validation](#schema-validation) project tooling enforces that types labeled `isSdkExtensionPlugin: true` are modeled consistently as described above.
