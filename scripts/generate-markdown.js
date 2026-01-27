@@ -222,8 +222,6 @@ function writeType(sourceSchemaType) {
     output.push(`<details>\n`);
     output.push(`<summary>JSON Schema</summary>\n\n`);
     output.push(`[JSON Schema Source File](./schema/${sourceSchemaType.sourceFile})\n`);
-    // cleanSchema is a temp hack to minimize the diff while merging the meta schema
-    // TODO: come back and remove
     const schemaSource = cleanSchema(getSchemaSource(sourceSchemaType));
     output.push(`<pre>${JSON.stringify(schemaSource, null, 2)}</pre>\n`);
     output.push(`</details>\n`);
@@ -246,13 +244,9 @@ function getSchemaSource(sourceSchemaType) {
 }
 
 function cleanSchema(schemaSource) {
-    const adjustedSchema = JSON.parse(JSON.stringify(schemaSource));
-    const properties = adjustedSchema.properties;
-    if (properties) {
-        Object.values(properties).forEach(property => delete property.description);
-    }
-    delete adjustedSchema['$defs'];
-    return adjustedSchema;
+    const schemaCopy = JSON.parse(JSON.stringify(schemaSource));
+    delete schemaCopy['$defs'];
+    return schemaCopy;
 }
 
 // Write SDK extension plugins
