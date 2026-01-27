@@ -4,6 +4,11 @@
 
 This page provides comprehensive language implementation status for each type in the declarative configuration schema. For type definitions and descriptions, see [schema-docs.md](schema-docs.md).
 
+* [cpp](#cpp)
+* [go](#go)
+* [java](#java)
+* [js](#js)
+
 ## cpp <a id="cpp"></a>
 
 Latest supported file format: `1.0.0-rc.3`
