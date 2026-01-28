@@ -1,0 +1,390 @@
+latestSupportedFileFormat: 1.0.0-rc.2
+typeSupportStatuses:
+  - type: Aggregation
+    status: ignored
+    propertyOverrides: []
+  - type: AlwaysOffSampler
+    status: supported
+    propertyOverrides: []
+  - type: AlwaysOnSampler
+    status: supported
+    propertyOverrides: []
+  - type: AttributeLimits
+    status: supported
+    propertyOverrides: []
+  - type: AttributeNameValue
+    status: supported
+    propertyOverrides:
+      - property: type
+        status: not_implemented
+  - type: AttributeType
+    status: not_implemented
+    enumOverrides: []
+  - type: B3MultiPropagator
+    status: supported
+    propertyOverrides: []
+  - type: B3Propagator
+    status: supported
+    propertyOverrides: []
+  - type: BaggagePropagator
+    status: supported
+    propertyOverrides: []
+  - type: Base2ExponentialBucketHistogramAggregation
+    status: not_implemented
+    propertyOverrides: []
+  - type: BatchLogRecordProcessor
+    status: supported
+    propertyOverrides: []
+    notes: "`schedule_delay` is only checked on `::onEmit()`."
+  - type: BatchSpanProcessor
+    status: supported
+    propertyOverrides: []
+    notes: "`schedule_delay` is only checked on `::onEnd()`."
+  - type: CardinalityLimits
+    status: not_implemented
+    propertyOverrides: []
+  - type: ConsoleExporter
+    status: supported
+    propertyOverrides: []
+  - type: ConsoleMetricExporter
+    status: supported
+    propertyOverrides:
+      - property: default_histogram_aggregation
+        status: not_implemented
+      - property: temporality_preference
+        status: ignored
+  - type: DefaultAggregation
+    status: ignored
+    propertyOverrides: []
+  - type: Distribution
+    status: not_implemented
+    propertyOverrides: []
+  - type: DropAggregation
+    status: ignored
+    propertyOverrides: []
+  - type: ExemplarFilter
+    status: supported
+    enumOverrides: []
+  - type: ExplicitBucketHistogramAggregation
+    status: ignored
+    propertyOverrides: []
+  - type: ExporterDefaultHistogramAggregation
+    status: ignored
+    enumOverrides: []
+  - type: ExporterTemporalityPreference
+    status: supported
+    enumOverrides: []
+  - type: GrpcTls
+    status: ignored
+    propertyOverrides: []
+  - type: HttpTls
+    status: ignored
+    propertyOverrides: []
+  - type: IncludeExclude
+    status: supported
+    propertyOverrides: []
+  - type: InstrumentType
+    status: supported
+    enumOverrides: []
+  - type: LastValueAggregation
+    status: ignored
+    propertyOverrides: []
+  - type: LoggerProvider
+    status: supported
+    propertyOverrides: []
+  - type: LogRecordExporter
+    status: supported
+    propertyOverrides: []
+  - type: LogRecordLimits
+    status: supported
+    propertyOverrides: []
+  - type: LogRecordProcessor
+    status: supported
+    propertyOverrides: []
+  - type: MeterProvider
+    status: supported
+    propertyOverrides: []
+  - type: MetricProducer
+    status: not_implemented
+    propertyOverrides: []
+  - type: MetricReader
+    status: supported
+    propertyOverrides:
+      - property: pull
+        status: not_implemented
+  - type: NameStringValuePair
+    status: supported
+    propertyOverrides: []
+  - type: OpenCensusMetricProducer
+    status: not_implemented
+    propertyOverrides: []
+  - type: OpenTelemetryConfiguration
+    status: supported
+    propertyOverrides:
+      - property: distribution
+        status: not_implemented
+      - property: log_level
+        status: not_implemented
+  - type: OpenTracingPropagator
+    status: not_implemented
+    propertyOverrides: []
+  - type: OtlpGrpcExporter
+    status: supported
+    propertyOverrides:
+      - property: tls
+        status: ignored
+  - type: OtlpGrpcMetricExporter
+    status: supported
+    propertyOverrides:
+      - property: default_histogram_aggregation
+        status: not_implemented
+      - property: tls
+        status: ignored
+  - type: OtlpHttpEncoding
+    status: supported
+    enumOverrides: []
+  - type: OtlpHttpExporter
+    status: supported
+    propertyOverrides:
+      - property: tls
+        status: ignored
+  - type: OtlpHttpMetricExporter
+    status: supported
+    propertyOverrides:
+      - property: default_histogram_aggregation
+        status: not_implemented
+      - property: tls
+        status: ignored
+  - type: ParentBasedSampler
+    status: supported
+    propertyOverrides: []
+  - type: PeriodicMetricReader
+    status: supported
+    propertyOverrides:
+      - property: interval
+        status: not_implemented
+      - property: producers
+        status: not_implemented
+  - type: Propagator
+    status: supported
+    propertyOverrides: []
+  - type: PullMetricExporter
+    status: not_implemented
+    propertyOverrides: []
+  - type: PullMetricReader
+    status: not_implemented
+    propertyOverrides: []
+  - type: PushMetricExporter
+    status: supported
+    propertyOverrides: []
+  - type: Resource
+    status: supported
+    propertyOverrides: []
+  - type: Sampler
+    status: supported
+    propertyOverrides:
+      - property: composite/development
+        status: not_implemented
+      - property: jaeger_remote/development
+        status: not_implemented
+      - property: probability/development
+        status: not_implemented
+  - type: SeverityNumber
+    status: supported
+    enumOverrides: []
+  - type: SimpleLogRecordProcessor
+    status: supported
+    propertyOverrides: []
+  - type: SimpleSpanProcessor
+    status: supported
+    propertyOverrides: []
+  - type: SpanExporter
+    status: supported
+    propertyOverrides: []
+  - type: SpanKind
+    status: not_implemented
+    enumOverrides: []
+  - type: SpanLimits
+    status: supported
+    propertyOverrides: []
+  - type: SpanProcessor
+    status: supported
+    propertyOverrides: []
+  - type: SumAggregation
+    status: ignored
+    propertyOverrides: []
+  - type: TextMapPropagator
+    status: supported
+    propertyOverrides:
+      - property: ottrace
+        status: not_implemented
+  - type: TraceContextPropagator
+    status: supported
+    propertyOverrides: []
+  - type: TraceIdRatioBasedSampler
+    status: supported
+    propertyOverrides: []
+  - type: TracerProvider
+    status: supported
+    propertyOverrides: []
+  - type: View
+    status: supported
+    propertyOverrides: []
+  - type: ViewSelector
+    status: supported
+    propertyOverrides:
+      - property: unit
+        status: not_implemented
+  - type: ViewStream
+    status: supported
+    propertyOverrides:
+      - property: aggregation
+        status: ignored
+      - property: aggregation_cardinality_limit
+        status: not_implemented
+    notes: "`attribute_keys.excluded` is not implemented, only `attribute_keys.included` is supported."
+  - type: ExperimentalComposableAlwaysOffSampler
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalComposableAlwaysOnSampler
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalComposableParentThresholdSampler
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalComposableProbabilitySampler
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSampler
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRule
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalComposableSampler
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalContainerResourceDetector
+    status: ignored
+    propertyOverrides: []
+  - type: ExperimentalGeneralInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalHostResourceDetector
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalHttpClientInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalHttpInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalHttpServerInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalInstrumentation
+    status: supported
+    propertyOverrides:
+      - property: cpp
+        status: not_applicable
+      - property: dotnet
+        status: not_applicable
+      - property: erlang
+        status: not_applicable
+      - property: go
+        status: not_applicable
+      - property: java
+        status: not_applicable
+      - property: js
+        status: not_applicable
+      - property: python
+        status: not_applicable
+      - property: ruby
+        status: not_applicable
+      - property: rust
+        status: not_applicable
+      - property: swift
+        status: not_applicable
+  - type: ExperimentalJaegerRemoteSampler
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalLanguageSpecificInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalLoggerConfig
+    status: supported
+    propertyOverrides:
+      - property: minimum_severity
+        status: not_implemented
+      - property: trace_based
+        status: not_implemented
+  - type: ExperimentalLoggerConfigurator
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalLoggerMatcherAndConfig
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalMeterConfig
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalMeterConfigurator
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalMeterMatcherAndConfig
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalOtlpFileExporter
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalOtlpFileMetricExporter
+    status: supported
+    propertyOverrides:
+      - property: default_histogram_aggregation
+        status: not_implemented
+  - type: ExperimentalPeerInstrumentation
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalPeerServiceMapping
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalProbabilitySampler
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalProcessResourceDetector
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalPrometheusMetricExporter
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalPrometheusTranslationStrategy
+    status: not_implemented
+    enumOverrides: []
+  - type: ExperimentalResourceDetection
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalResourceDetector
+    status: supported
+    propertyOverrides:
+      - property: container
+        status: ignored
+  - type: ExperimentalServiceResourceDetector
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalSpanParent
+    status: not_implemented
+    enumOverrides: []
+  - type: ExperimentalTracerConfig
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalTracerConfigurator
+    status: supported
+    propertyOverrides: []
+  - type: ExperimentalTracerMatcherAndConfig
+    status: supported
+    propertyOverrides: []
