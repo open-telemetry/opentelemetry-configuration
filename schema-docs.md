@@ -3497,11 +3497,11 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `client` | not_implemented | unknown | supported | unknown | supported |
-| `consumer` | not_implemented | unknown | supported | unknown | supported |
-| `internal` | not_implemented | unknown | supported | unknown | supported |
-| `producer` | not_implemented | unknown | supported | unknown | supported |
-| `server` | not_implemented | unknown | supported | unknown | supported |
+| `client` | not_implemented | unknown | supported | unknown | not_implemented |
+| `consumer` | not_implemented | unknown | supported | unknown | not_implemented |
+| `internal` | not_implemented | unknown | supported | unknown | not_implemented |
+| `producer` | not_implemented | unknown | supported | unknown | not_implemented |
+| `server` | not_implemented | unknown | supported | unknown | not_implemented |
 </details>
 
 No constraints.

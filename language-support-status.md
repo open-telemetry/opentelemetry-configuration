@@ -523,7 +523,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`SimpleLogRecordProcessor`](schema-docs.md#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SimpleSpanProcessor`](schema-docs.md#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
 | [`SpanExporter`](schema-docs.md#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`SpanKind`](schema-docs.md#spankind) | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
+| [`SpanKind`](schema-docs.md#spankind) | not_implemented |  | * `client`: not_implemented<br>* `consumer`: not_implemented<br>* `internal`: not_implemented<br>* `producer`: not_implemented<br>* `server`: not_implemented<br> |
 | [`SpanLimits`](schema-docs.md#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | [`SpanProcessor`](schema-docs.md#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](schema-docs.md#sumaggregation) | ignored |  |  |

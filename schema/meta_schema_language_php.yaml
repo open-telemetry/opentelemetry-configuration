@@ -202,7 +202,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: SpanKind
-    status: supported
+    status: not_implemented
     enumOverrides: []
   - type: SpanLimits
     status: supported
