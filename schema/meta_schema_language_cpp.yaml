@@ -37,7 +37,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: CardinalityLimits
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ConsoleExporter
     status: supported
@@ -154,7 +154,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: SeverityNumber
-    status: not_implemented
+    status: supported
     enumOverrides: []
   - type: SimpleLogRecordProcessor
     status: supported
@@ -290,9 +290,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalPrometheusMetricExporter
     status: supported
-    propertyOverrides:
-      - property: without_target_info
-        status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalPrometheusTranslationStrategy
     status: supported
     enumOverrides:

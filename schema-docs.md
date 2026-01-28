@@ -680,14 +680,14 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `counter` | not_implemented | unknown | supported | unknown |
-| `default` | not_implemented | unknown | supported | unknown |
-| `gauge` | not_implemented | unknown | supported | unknown |
-| `histogram` | not_implemented | unknown | supported | unknown |
-| `observable_counter` | not_implemented | unknown | supported | unknown |
-| `observable_gauge` | not_implemented | unknown | supported | unknown |
-| `observable_up_down_counter` | not_implemented | unknown | supported | unknown |
-| `up_down_counter` | not_implemented | unknown | supported | unknown |
+| `counter` | ignored | unknown | supported | unknown |
+| `default` | ignored | unknown | supported | unknown |
+| `gauge` | ignored | unknown | supported | unknown |
+| `histogram` | ignored | unknown | supported | unknown |
+| `observable_counter` | ignored | unknown | supported | unknown |
+| `observable_gauge` | ignored | unknown | supported | unknown |
+| `observable_up_down_counter` | ignored | unknown | supported | unknown |
+| `up_down_counter` | ignored | unknown | supported | unknown |
 </details>
 
 Constraints: 
@@ -3392,30 +3392,30 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) |
 |---|---|---|---|---|
-| `debug` | not_implemented | unknown | supported | unknown |
-| `debug2` | not_implemented | unknown | supported | unknown |
-| `debug3` | not_implemented | unknown | supported | unknown |
-| `debug4` | not_implemented | unknown | supported | unknown |
-| `error` | not_implemented | unknown | supported | unknown |
-| `error2` | not_implemented | unknown | supported | unknown |
-| `error3` | not_implemented | unknown | supported | unknown |
-| `error4` | not_implemented | unknown | supported | unknown |
-| `fatal` | not_implemented | unknown | supported | unknown |
-| `fatal2` | not_implemented | unknown | supported | unknown |
-| `fatal3` | not_implemented | unknown | supported | unknown |
-| `fatal4` | not_implemented | unknown | supported | unknown |
-| `info` | not_implemented | unknown | supported | unknown |
-| `info2` | not_implemented | unknown | supported | unknown |
-| `info3` | not_implemented | unknown | supported | unknown |
-| `info4` | not_implemented | unknown | supported | unknown |
-| `trace` | not_implemented | unknown | supported | unknown |
-| `trace2` | not_implemented | unknown | supported | unknown |
-| `trace3` | not_implemented | unknown | supported | unknown |
-| `trace4` | not_implemented | unknown | supported | unknown |
-| `warn` | not_implemented | unknown | supported | unknown |
-| `warn2` | not_implemented | unknown | supported | unknown |
-| `warn3` | not_implemented | unknown | supported | unknown |
-| `warn4` | not_implemented | unknown | supported | unknown |
+| `debug` | supported | unknown | supported | unknown |
+| `debug2` | supported | unknown | supported | unknown |
+| `debug3` | supported | unknown | supported | unknown |
+| `debug4` | supported | unknown | supported | unknown |
+| `error` | supported | unknown | supported | unknown |
+| `error2` | supported | unknown | supported | unknown |
+| `error3` | supported | unknown | supported | unknown |
+| `error4` | supported | unknown | supported | unknown |
+| `fatal` | supported | unknown | supported | unknown |
+| `fatal2` | supported | unknown | supported | unknown |
+| `fatal3` | supported | unknown | supported | unknown |
+| `fatal4` | supported | unknown | supported | unknown |
+| `info` | supported | unknown | supported | unknown |
+| `info2` | supported | unknown | supported | unknown |
+| `info3` | supported | unknown | supported | unknown |
+| `info4` | supported | unknown | supported | unknown |
+| `trace` | supported | unknown | supported | unknown |
+| `trace2` | supported | unknown | supported | unknown |
+| `trace3` | supported | unknown | supported | unknown |
+| `trace4` | supported | unknown | supported | unknown |
+| `warn` | supported | unknown | supported | unknown |
+| `warn2` | supported | unknown | supported | unknown |
+| `warn3` | supported | unknown | supported | unknown |
+| `warn4` | supported | unknown | supported | unknown |
 </details>
 
 No constraints.
@@ -6145,7 +6145,7 @@ No snippets.
 | `translation_strategy` | supported | unknown | not_implemented | unknown |
 | `with_resource_constant_labels` | supported | unknown | supported | unknown |
 | `without_scope_info` | supported | unknown | supported | unknown |
-| `without_target_info` | not_implemented | unknown | supported | unknown |
+| `without_target_info` | supported | unknown | supported | unknown |
 </details>
 
 Constraints: 
