@@ -656,14 +656,14 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `counter` | not_implemented | unknown | supported | unknown | not_implemented |
-| `default` | not_implemented | unknown | supported | unknown | not_implemented |
-| `gauge` | not_implemented | unknown | supported | unknown | not_implemented |
-| `histogram` | not_implemented | unknown | supported | unknown | not_implemented |
-| `observable_counter` | not_implemented | unknown | supported | unknown | not_implemented |
-| `observable_gauge` | not_implemented | unknown | supported | unknown | not_implemented |
-| `observable_up_down_counter` | not_implemented | unknown | supported | unknown | not_implemented |
-| `up_down_counter` | not_implemented | unknown | supported | unknown | not_implemented |
+| `counter` | ignored | unknown | supported | unknown | not_implemented |
+| `default` | ignored | unknown | supported | unknown | not_implemented |
+| `gauge` | ignored | unknown | supported | unknown | not_implemented |
+| `histogram` | ignored | unknown | supported | unknown | not_implemented |
+| `observable_counter` | ignored | unknown | supported | unknown | not_implemented |
+| `observable_gauge` | ignored | unknown | supported | unknown | not_implemented |
+| `observable_up_down_counter` | ignored | unknown | supported | unknown | not_implemented |
+| `up_down_counter` | ignored | unknown | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -2704,8 +2704,8 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | If omitted, and .composite_list is omitted or null, a noop propagator is used. | * `minItems`: `1`<br> | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br> |
-| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, and .composite is omitted or null, a noop propagator is used. | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br> |
+| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | If omitted, and .composite_list is omitted or null, a noop propagator is used. | * `minItems`: `1`<br> | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, ottrace. Known third party keys include: xray.<br> |
+| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, and .composite is omitted or null, a noop propagator is used. | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, ottrace. Known third party identifiers include: xray.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2737,7 +2737,6 @@ composite:
   - baggage:
   - b3:
   - b3multi:
-  - jaeger:
 composite_list: "ottrace,xray"
 ```
 </details>
@@ -3256,30 +3255,30 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `debug` | not_implemented | unknown | supported | unknown | supported |
-| `debug2` | not_implemented | unknown | supported | unknown | supported |
-| `debug3` | not_implemented | unknown | supported | unknown | supported |
-| `debug4` | not_implemented | unknown | supported | unknown | supported |
-| `error` | not_implemented | unknown | supported | unknown | supported |
-| `error2` | not_implemented | unknown | supported | unknown | supported |
-| `error3` | not_implemented | unknown | supported | unknown | supported |
-| `error4` | not_implemented | unknown | supported | unknown | supported |
-| `fatal` | not_implemented | unknown | supported | unknown | supported |
-| `fatal2` | not_implemented | unknown | supported | unknown | supported |
-| `fatal3` | not_implemented | unknown | supported | unknown | supported |
-| `fatal4` | not_implemented | unknown | supported | unknown | supported |
-| `info` | not_implemented | unknown | supported | unknown | supported |
-| `info2` | not_implemented | unknown | supported | unknown | supported |
-| `info3` | not_implemented | unknown | supported | unknown | supported |
-| `info4` | not_implemented | unknown | supported | unknown | supported |
-| `trace` | not_implemented | unknown | supported | unknown | supported |
-| `trace2` | not_implemented | unknown | supported | unknown | supported |
-| `trace3` | not_implemented | unknown | supported | unknown | supported |
-| `trace4` | not_implemented | unknown | supported | unknown | supported |
-| `warn` | not_implemented | unknown | supported | unknown | supported |
-| `warn2` | not_implemented | unknown | supported | unknown | supported |
-| `warn3` | not_implemented | unknown | supported | unknown | supported |
-| `warn4` | not_implemented | unknown | supported | unknown | supported |
+| `debug` | supported | unknown | supported | unknown | supported |
+| `debug2` | supported | unknown | supported | unknown | supported |
+| `debug3` | supported | unknown | supported | unknown | supported |
+| `debug4` | supported | unknown | supported | unknown | supported |
+| `error` | supported | unknown | supported | unknown | supported |
+| `error2` | supported | unknown | supported | unknown | supported |
+| `error3` | supported | unknown | supported | unknown | supported |
+| `error4` | supported | unknown | supported | unknown | supported |
+| `fatal` | supported | unknown | supported | unknown | supported |
+| `fatal2` | supported | unknown | supported | unknown | supported |
+| `fatal3` | supported | unknown | supported | unknown | supported |
+| `fatal4` | supported | unknown | supported | unknown | supported |
+| `info` | supported | unknown | supported | unknown | supported |
+| `info2` | supported | unknown | supported | unknown | supported |
+| `info3` | supported | unknown | supported | unknown | supported |
+| `info4` | supported | unknown | supported | unknown | supported |
+| `trace` | supported | unknown | supported | unknown | supported |
+| `trace2` | supported | unknown | supported | unknown | supported |
+| `trace3` | supported | unknown | supported | unknown | supported |
+| `trace4` | supported | unknown | supported | unknown | supported |
+| `warn` | supported | unknown | supported | unknown | supported |
+| `warn2` | supported | unknown | supported | unknown | supported |
+| `warn3` | supported | unknown | supported | unknown | supported |
+| `warn4` | supported | unknown | supported | unknown | supported |
 </details>
 
 No constraints.
@@ -5911,7 +5910,7 @@ No snippets.
 | `translation_strategy` | supported | unknown | not_implemented | unknown | not_implemented |
 | `with_resource_constant_labels` | supported | unknown | supported | unknown | not_implemented |
 | `without_scope_info` | supported | unknown | supported | unknown | not_implemented |
-| `without_target_info` | not_implemented | unknown | supported | unknown | not_implemented |
+| `without_target_info` | supported | unknown | supported | unknown | not_implemented |
 </details>
 
 Constraints: 

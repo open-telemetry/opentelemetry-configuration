@@ -8,5 +8,4 @@ propagator:
     - baggage:
     - b3:
     - b3multi:
-    - jaeger:
   composite_list: "ottrace,xray"
