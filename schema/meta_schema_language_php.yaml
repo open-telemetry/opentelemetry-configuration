@@ -242,6 +242,7 @@ typeSupportStatuses:
         status: ignored
       - property: aggregation_cardinality_limit
         status: not_implemented
+    notes: "`attribute_keys.excluded` is not implemented, only `attribute_keys.included` is supported."
   - type: ExperimentalComposableAlwaysOffSampler
     status: not_implemented
     propertyOverrides: []
