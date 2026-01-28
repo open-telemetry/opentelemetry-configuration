@@ -106,6 +106,7 @@ $defs:
           - HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/
           - Database migration: https://opentelemetry.io/docs/specs/semconv/database/
           - RPC: https://opentelemetry.io/docs/specs/semconv/rpc/
+          - Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/
         defaultBehavior: no opt-in configured, instrumentations continue emitting their current semantic convention version
   ExperimentalHttpClientInstrumentation:
     type: object
