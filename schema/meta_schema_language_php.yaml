@@ -271,7 +271,7 @@ typeSupportStatuses:
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
-    status: supported
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
     status: supported
@@ -370,7 +370,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalResourceDetector
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: container
+        status: ignored
   - type: ExperimentalServiceResourceDetector
     status: supported
     propertyOverrides: []

@@ -6107,7 +6107,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `container` | not_implemented | unknown | supported | unknown | supported |
+| `container` | not_implemented | unknown | supported | unknown | ignored |
 | `host` | not_implemented | unknown | supported | unknown | supported |
 | `process` | not_implemented | unknown | supported | unknown | supported |
 | `service` | not_implemented | unknown | supported | unknown | supported |
