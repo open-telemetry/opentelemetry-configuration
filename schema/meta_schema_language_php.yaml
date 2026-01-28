@@ -35,9 +35,11 @@ typeSupportStatuses:
   - type: BatchLogRecordProcessor
     status: supported
     propertyOverrides: []
+    notes: "`schedule_delay` is only checked on `::onEmit()`."
   - type: BatchSpanProcessor
     status: supported
     propertyOverrides: []
+    notes: "`schedule_delay` is only checked on `::onEnd()`."
   - type: CardinalityLimits
     status: not_implemented
     propertyOverrides: []
