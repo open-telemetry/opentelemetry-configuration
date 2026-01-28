@@ -38,6 +38,8 @@ instrumentation/development:
           - POST
           - PUT
           - TRACE
+    semconv_stability_opt_in:
+      - http/dup
   cpp:
     example:
       property: "value"
