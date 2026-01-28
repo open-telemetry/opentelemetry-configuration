@@ -24,6 +24,8 @@ instrumentation/development:
         response_captured_headers:
           - Content-Type
           - Content-Encoding
+    semconv_stability_opt_in:
+      - http/dup
   cpp:
     example:
       property: "value"

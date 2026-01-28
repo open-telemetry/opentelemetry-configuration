@@ -1,0 +1,8 @@
+file_format: "1.0-rc.3"
+
+instrumentation/development:
+  general:
+    # SNIPPET_START
+    semconv_stability_opt_in:
+      - http
+      - database/dup
