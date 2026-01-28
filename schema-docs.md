@@ -4856,6 +4856,7 @@ No snippets.
 |---|---|---|---|---|---|
 | `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
 | `peer` | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` | If omitted, defaults as described in ExperimentalPeerInstrumentation are used. | No constraints. | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> |
+| `semconv_stability_opt_in` | `array` of `string` | `false` | If omitted, no opt-in configured, instrumentations continue emitting their current semantic convention version. | * `minItems`: `1`<br> | Configure semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental semantic conventions for instrumentation.<br>This setting is only intended for migrating from experimental to stable semantic conventions.<br><br>Known values include:<br>- http: Emit stable HTTP and networking conventions only<br>- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)<br>- database: Emit stable database conventions only<br>- database/dup: Emit both old and stable database conventions (for phased migration)<br>- rpc: Emit stable RPC conventions only<br>- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)<br><br>Additional signal types (e.g., messaging) may be supported in future versions.<br><br>See:<br>- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/<br>- Database migration: https://opentelemetry.io/docs/specs/semconv/database/<br>- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4864,6 +4865,7 @@ No snippets.
 |---|---|---|---|---|---|
 | `http` | not_applicable | unknown | supported | unknown | supported |
 | `peer` | not_applicable | unknown | supported | unknown | supported |
+| `semconv_stability_opt_in` | not_applicable | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4874,7 +4876,18 @@ Usages:
 
 * [`ExperimentalInstrumentation.general`](#experimentalinstrumentation)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Semconv Stability Opt In</summary>
+
+[Snippet Source File](./snippets/ExperimentalGeneralInstrumentation_semconv_stability_opt_in.yaml)
+```yaml
+semconv_stability_opt_in:
+  - http
+  - database/dup
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -4891,6 +4904,14 @@ No snippets.
     "http": {
       "$ref": "#/$defs/ExperimentalHttpInstrumentation",
       "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\nIf omitted, defaults as described in ExperimentalHttpInstrumentation are used.\n"
+    },
+    "semconv_stability_opt_in": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "Configure semantic convention stability opt-in.\nControls the emission of stable vs. experimental semantic conventions for instrumentation.\nThis setting is only intended for migrating from experimental to stable semantic conventions.\n\nKnown values include:\n- http: Emit stable HTTP and networking conventions only\n- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)\n- database: Emit stable database conventions only\n- database/dup: Emit both old and stable database conventions (for phased migration)\n- rpc: Emit stable RPC conventions only\n- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)\n\nAdditional signal types (e.g., messaging) may be supported in future versions.\n\nSee:\n- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/\n- Database migration: https://opentelemetry.io/docs/specs/semconv/database/\n- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/\nIf omitted, no opt-in configured, instrumentations continue emitting their current semantic convention version.\n"
     }
   }
 }</pre>
@@ -5165,6 +5186,8 @@ general:
       response_captured_headers:
         - Content-Type
         - Content-Encoding
+  semconv_stability_opt_in:
+    - http/dup
 cpp:
   example:
     property: "value"
