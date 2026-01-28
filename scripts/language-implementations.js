@@ -14,6 +14,7 @@ export const KNOWN_LANGUAGES = [
     'go', 
     'java',
     'js',
+    'php',
 ];
 
 const IMPLEMENTATION_STATUS_UNKNOWN = 'unknown';
