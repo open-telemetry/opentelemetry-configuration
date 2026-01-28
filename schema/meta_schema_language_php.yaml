@@ -125,9 +125,6 @@ typeSupportStatuses:
         status: not_implemented
       - property: log_level
         status: not_implemented
-  - type: OpenTracingPropagator
-    status: not_implemented
-    propertyOverrides: []
   - type: OtlpGrpcExporter
     status: supported
     propertyOverrides:
@@ -215,9 +212,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: TextMapPropagator
     status: supported
-    propertyOverrides:
-      - property: ottrace
-        status: not_implemented
+    propertyOverrides: []
   - type: TraceContextPropagator
     status: supported
     propertyOverrides: []

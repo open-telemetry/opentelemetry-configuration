@@ -53,7 +53,6 @@ Latest supported file format: `1.0.0-rc.3`
 | [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | [`OpenCensusMetricProducer`](schema-docs.md#opencensusmetricproducer) | supported |  |  |
 | [`OpenTelemetryConfiguration`](schema-docs.md#opentelemetryconfiguration) | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| [`OpenTracingPropagator`](schema-docs.md#opentracingpropagator) | not_implemented |  |  |
 | [`OtlpGrpcExporter`](schema-docs.md#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpGrpcMetricExporter`](schema-docs.md#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpHttpEncoding`](schema-docs.md#otlphttpencoding) | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
@@ -75,7 +74,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`SpanLimits`](schema-docs.md#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | [`SpanProcessor`](schema-docs.md#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](schema-docs.md#sumaggregation) | supported |  |  |
-| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
+| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | [`TraceContextPropagator`](schema-docs.md#tracecontextpropagator) | supported |  |  |
 | [`TraceIdRatioBasedSampler`](schema-docs.md#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
 | [`TracerProvider`](schema-docs.md#tracerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
@@ -166,7 +165,6 @@ Latest supported file format: `1.0.0-rc.2`
 | [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | unknown |  | * `name`: unknown<br>* `value`: unknown<br> |
 | [`OpenCensusMetricProducer`](schema-docs.md#opencensusmetricproducer) | unknown |  |  |
 | [`OpenTelemetryConfiguration`](schema-docs.md#opentelemetryconfiguration) | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
-| [`OpenTracingPropagator`](schema-docs.md#opentracingpropagator) | supported |  |  |
 | [`OtlpGrpcExporter`](schema-docs.md#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpGrpcMetricExporter`](schema-docs.md#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpHttpEncoding`](schema-docs.md#otlphttpencoding) | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
@@ -188,7 +186,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`SpanLimits`](schema-docs.md#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
 | [`SpanProcessor`](schema-docs.md#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](schema-docs.md#sumaggregation) | unknown |  |  |
-| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
+| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | [`TraceContextPropagator`](schema-docs.md#tracecontextpropagator) | supported |  |  |
 | [`TraceIdRatioBasedSampler`](schema-docs.md#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
 | [`TracerProvider`](schema-docs.md#tracerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `sampler`: unknown<br>* `tracer_configurator/development`: unknown<br> |
@@ -279,7 +277,6 @@ Latest supported file format: `1.0.0-rc.3`
 | [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | [`OpenCensusMetricProducer`](schema-docs.md#opencensusmetricproducer) | ignored |  |  |
 | [`OpenTelemetryConfiguration`](schema-docs.md#opentelemetryconfiguration) | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| [`OpenTracingPropagator`](schema-docs.md#opentracingpropagator) | supported |  |  |
 | [`OtlpGrpcExporter`](schema-docs.md#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpGrpcMetricExporter`](schema-docs.md#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | [`OtlpHttpEncoding`](schema-docs.md#otlphttpencoding) | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
@@ -301,7 +298,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`SpanLimits`](schema-docs.md#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | [`SpanProcessor`](schema-docs.md#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](schema-docs.md#sumaggregation) | supported |  |  |
-| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
+| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | [`TraceContextPropagator`](schema-docs.md#tracecontextpropagator) | supported |  |  |
 | [`TraceIdRatioBasedSampler`](schema-docs.md#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
 | [`TracerProvider`](schema-docs.md#tracerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
@@ -392,7 +389,6 @@ Latest supported file format: `1.0.0-rc.2`
 | [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | unknown |  | * `name`: unknown<br>* `value`: unknown<br> |
 | [`OpenCensusMetricProducer`](schema-docs.md#opencensusmetricproducer) | unknown |  |  |
 | [`OpenTelemetryConfiguration`](schema-docs.md#opentelemetryconfiguration) | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
-| [`OpenTracingPropagator`](schema-docs.md#opentracingpropagator) | unknown |  |  |
 | [`OtlpGrpcExporter`](schema-docs.md#otlpgrpcexporter) | unknown |  | * `compression`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpGrpcMetricExporter`](schema-docs.md#otlpgrpcmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
 | [`OtlpHttpEncoding`](schema-docs.md#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
@@ -414,7 +410,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`SpanLimits`](schema-docs.md#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
 | [`SpanProcessor`](schema-docs.md#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
 | [`SumAggregation`](schema-docs.md#sumaggregation) | unknown |  |  |
-| [`TextMapPropagator`](schema-docs.md#textmappropagator) | unknown |  | * `b3`: unknown<br>* `b3multi`: unknown<br>* `baggage`: unknown<br>* `ottrace`: unknown<br>* `tracecontext`: unknown<br> |
+| [`TextMapPropagator`](schema-docs.md#textmappropagator) | unknown |  | * `b3`: unknown<br>* `b3multi`: unknown<br>* `baggage`: unknown<br>* `tracecontext`: unknown<br> |
 | [`TraceContextPropagator`](schema-docs.md#tracecontextpropagator) | unknown |  |  |
 | [`TraceIdRatioBasedSampler`](schema-docs.md#traceidratiobasedsampler) | unknown |  | * `ratio`: unknown<br> |
 | [`TracerProvider`](schema-docs.md#tracerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `sampler`: unknown<br>* `tracer_configurator/development`: unknown<br> |
@@ -505,7 +501,6 @@ Latest supported file format: `1.0.0-rc.2`
 | [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | [`OpenCensusMetricProducer`](schema-docs.md#opencensusmetricproducer) | not_implemented |  |  |
 | [`OpenTelemetryConfiguration`](schema-docs.md#opentelemetryconfiguration) | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: not_implemented<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| [`OpenTracingPropagator`](schema-docs.md#opentracingpropagator) | not_implemented |  |  |
 | [`OtlpGrpcExporter`](schema-docs.md#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | [`OtlpGrpcMetricExporter`](schema-docs.md#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | [`OtlpHttpEncoding`](schema-docs.md#otlphttpencoding) | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
@@ -527,7 +522,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`SpanLimits`](schema-docs.md#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | [`SpanProcessor`](schema-docs.md#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | [`SumAggregation`](schema-docs.md#sumaggregation) | ignored |  |  |
-| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `ottrace`: not_implemented<br>* `tracecontext`: supported<br> |
+| [`TextMapPropagator`](schema-docs.md#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | [`TraceContextPropagator`](schema-docs.md#tracecontextpropagator) | supported |  |  |
 | [`TraceIdRatioBasedSampler`](schema-docs.md#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
 | [`TracerProvider`](schema-docs.md#tracerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |

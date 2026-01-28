@@ -2069,33 +2069,6 @@ No snippets.
 }</pre>
 </details>
 
-## OpenTracingPropagator <a id="opentracingpropagator"></a>
-
-No properties.
-
-Constraints: 
-
-* `additionalProperties`: `false`
-
-Usages:
-
-* [`TextMapPropagator.ottrace`](#textmappropagator)
-
-No snippets.
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/propagator.yaml)
-<pre>{
-  "type": [
-    "object",
-    "null"
-  ],
-  "additionalProperties": false
-}</pre>
-</details>
-
 ## OtlpGrpcExporter <a id="otlpgrpcexporter"></a>
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
@@ -2820,8 +2793,8 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | If omitted, and .composite_list is omitted or null, a noop propagator is used. | * `minItems`: `1`<br> | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, ottrace. Known third party keys include: xray.<br> |
-| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, and .composite is omitted or null, a noop propagator is used. | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, ottrace. Known third party identifiers include: xray.<br> |
+| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | If omitted, and .composite_list is omitted or null, a noop propagator is used. | * `minItems`: `1`<br> | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi. Known third party keys include: xray.<br> |
+| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, and .composite is omitted or null, a noop propagator is used. | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi. Known third party identifiers include: xray.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2853,7 +2826,7 @@ composite:
   - baggage:
   - b3:
   - b3multi:
-composite_list: "ottrace,xray"
+composite_list: "xray"
 ```
 </details>
 
@@ -2871,14 +2844,14 @@ composite_list: "ottrace,xray"
       "items": {
         "$ref": "#/$defs/TextMapPropagator"
       },
-      "description": "Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.\nBuilt-in propagator keys include: tracecontext, baggage, b3, b3multi, ottrace. Known third party keys include: xray.\nIf omitted, and .composite_list is omitted or null, a noop propagator is used.\n"
+      "description": "Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.\nBuilt-in propagator keys include: tracecontext, baggage, b3, b3multi. Known third party keys include: xray.\nIf omitted, and .composite_list is omitted or null, a noop propagator is used.\n"
     },
     "composite_list": {
       "type": [
         "string",
         "null"
       ],
-      "description": "Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.\nThe value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nBuilt-in propagator identifiers include: tracecontext, baggage, b3, b3multi, ottrace. Known third party identifiers include: xray.\nIf omitted or null, and .composite is omitted or null, a noop propagator is used.\n"
+      "description": "Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.\nThe value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nBuilt-in propagator identifiers include: tracecontext, baggage, b3, b3multi. Known third party identifiers include: xray.\nIf omitted or null, and .composite is omitted or null, a noop propagator is used.\n"
     }
   }
 }</pre>
@@ -3876,7 +3849,6 @@ No snippets.
 | `b3` | [`B3Propagator`](#b3propagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 propagator. |
 | `b3multi` | [`B3MultiPropagator`](#b3multipropagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 multi propagator. |
 | `baggage` | [`BaggagePropagator`](#baggagepropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c baggage propagator. |
-| `ottrace` | [`OpenTracingPropagator`](#opentracingpropagator) | `false` | If omitted, ignore. | No constraints. | Include the opentracing propagator. |
 | `tracecontext` | [`TraceContextPropagator`](#tracecontextpropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c trace context propagator. |
 
 <details>
@@ -3887,7 +3859,6 @@ No snippets.
 | `b3` | supported | supported | supported | unknown | supported |
 | `b3multi` | supported | supported | supported | unknown | supported |
 | `baggage` | supported | supported | supported | unknown | supported |
-| `ottrace` | supported | supported | supported | unknown | not_implemented |
 | `tracecontext` | supported | supported | supported | unknown | supported |
 </details>
 
@@ -3933,10 +3904,6 @@ No snippets.
     "b3multi": {
       "$ref": "#/$defs/B3MultiPropagator",
       "description": "Include the zipkin b3 multi propagator.\nIf omitted, ignore.\n"
-    },
-    "ottrace": {
-      "$ref": "#/$defs/OpenTracingPropagator",
-      "description": "Include the opentracing propagator.\nIf omitted, ignore.\n"
     }
   }
 }</pre>

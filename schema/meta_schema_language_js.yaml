@@ -111,9 +111,6 @@ typeSupportStatuses:
   - type: OpenTelemetryConfiguration
     status: unknown
     propertyOverrides: []
-  - type: OpenTracingPropagator
-    status: unknown
-    propertyOverrides: []
   - type: OtlpGrpcExporter
     status: unknown
     propertyOverrides: []
