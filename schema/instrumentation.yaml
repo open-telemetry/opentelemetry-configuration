@@ -115,6 +115,8 @@ $defs:
           - database/dup: Emit both old and stable database conventions (for phased migration)
           - rpc: Emit stable RPC conventions only
           - rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)
+          - messaging: Emit stable messaging conventions only
+          - messaging/dup: Emit both old and stable messaging conventions (for phased migration)
 
           Multiple values can be specified as a comma-separated list (e.g., "http,database/dup").
           Additional signal types (e.g., messaging) may be supported in future versions.
