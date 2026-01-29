@@ -268,6 +268,9 @@ typeSupportStatuses:
   - type: ExperimentalContainerResourceDetector
     status: ignored
     propertyOverrides: []
+  - type: ExperimentalDatabaseInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
     status: supported
     propertyOverrides: []
@@ -325,6 +328,9 @@ typeSupportStatuses:
   - type: ExperimentalLoggerMatcherAndConfig
     status: supported
     propertyOverrides: []
+  - type: ExperimentalMessagingInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalMeterConfig
     status: supported
     propertyOverrides: []
@@ -362,6 +368,9 @@ typeSupportStatuses:
     propertyOverrides:
       - property: container
         status: ignored
+  - type: ExperimentalRpcInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
     status: supported
     propertyOverrides: []

@@ -247,6 +247,9 @@ typeSupportStatuses:
   - type: ExperimentalContainerResourceDetector
     status: supported
     propertyOverrides: []
+  - type: ExperimentalDatabaseInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
     status: supported
     propertyOverrides: []
@@ -300,6 +303,9 @@ typeSupportStatuses:
   - type: ExperimentalLoggerMatcherAndConfig
     status: supported
     propertyOverrides: []
+  - type: ExperimentalMessagingInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalMeterConfig
     status: supported
     propertyOverrides: []
@@ -338,6 +344,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalResourceDetector
     status: supported
+    propertyOverrides: []
+  - type: ExperimentalRpcInstrumentation
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
     status: supported
