@@ -4854,7 +4854,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `stability_opt_in` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure database semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental database semantic conventions.<br><br>Known values:<br>- stable: Emit stable database conventions only<br>- stable/dup: Emit both old and stable database conventions (for phased migration)<br><br>This property takes precedence over the general stability_opt_in_list setting.<br><br>See database migration: https://opentelemetry.io/docs/specs/semconv/database/<br> |
+| `stability_opt_in` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure database semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental database semantic conventions.<br><br>Values:<br>- stable: Emit stable database conventions only<br>- stable/dup: Emit both old and stable database conventions (for phased migration)<br><br>This property takes precedence over the general stability_opt_in_list setting.<br><br>See database migration: https://opentelemetry.io/docs/specs/semconv/database/<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4887,7 +4887,12 @@ No snippets.
         "string",
         "null"
       ],
-      "description": "Configure database semantic convention stability opt-in.\nControls the emission of stable vs. experimental database semantic conventions.\n\nKnown values:\n- stable: Emit stable database conventions only\n- stable/dup: Emit both old and stable database conventions (for phased migration)\n\nThis property takes precedence over the general stability_opt_in_list setting.\n\nSee database migration: https://opentelemetry.io/docs/specs/semconv/database/\nIf omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+      "enum": [
+        "stable",
+        "stable/dup",
+        null
+      ],
+      "description": "Configure database semantic convention stability opt-in.\nControls the emission of stable vs. experimental database semantic conventions.\n\nValues:\n- stable: Emit stable database conventions only\n- stable/dup: Emit both old and stable database conventions (for phased migration)\n\nThis property takes precedence over the general stability_opt_in_list setting.\n\nSee database migration: https://opentelemetry.io/docs/specs/semconv/database/\nIf omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
     }
   }
 }</pre>
@@ -5084,7 +5089,7 @@ No snippets.
 |---|---|---|---|---|---|
 | `client` | [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpClientInstrumentation are used. | No constraints. | Configure instrumentations following the http client semantic conventions. |
 | `server` | [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpServerInstrumentation are used. | No constraints. | Configure instrumentations following the http server semantic conventions. |
-| `stability_opt_in` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure HTTP semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental HTTP and networking semantic conventions.<br><br>Known values:<br>- stable: Emit stable HTTP and networking conventions only<br>- stable/dup: Emit both old and stable HTTP and networking conventions (for phased migration)<br><br>This property takes precedence over the general stability_opt_in_list setting.<br><br>See HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/<br> |
+| `stability_opt_in` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure HTTP semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental HTTP and networking semantic conventions.<br><br>Values:<br>- stable: Emit stable HTTP and networking conventions only<br>- stable/dup: Emit both old and stable HTTP and networking conventions (for phased migration)<br><br>This property takes precedence over the general stability_opt_in_list setting.<br><br>See HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -5119,7 +5124,12 @@ No snippets.
         "string",
         "null"
       ],
-      "description": "Configure HTTP semantic convention stability opt-in.\nControls the emission of stable vs. experimental HTTP and networking semantic conventions.\n\nKnown values:\n- stable: Emit stable HTTP and networking conventions only\n- stable/dup: Emit both old and stable HTTP and networking conventions (for phased migration)\n\nThis property takes precedence over the general stability_opt_in_list setting.\n\nSee HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/\nIf omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+      "enum": [
+        "stable",
+        "stable/dup",
+        null
+      ],
+      "description": "Configure HTTP semantic convention stability opt-in.\nControls the emission of stable vs. experimental HTTP and networking semantic conventions.\n\nValues:\n- stable: Emit stable HTTP and networking conventions only\n- stable/dup: Emit both old and stable HTTP and networking conventions (for phased migration)\n\nThis property takes precedence over the general stability_opt_in_list setting.\n\nSee HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/\nIf omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
     },
     "client": {
       "$ref": "#/$defs/ExperimentalHttpClientInstrumentation",
@@ -5674,7 +5684,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `stability_opt_in` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure messaging semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental messaging semantic conventions.<br><br>Known values:<br>- stable: Emit stable messaging conventions only<br>- stable/dup: Emit both old and stable messaging conventions (for phased migration)<br><br>This property takes precedence over the general stability_opt_in_list setting.<br><br>See messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/<br> |
+| `stability_opt_in` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure messaging semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental messaging semantic conventions.<br><br>Values:<br>- stable: Emit stable messaging conventions only<br>- stable/dup: Emit both old and stable messaging conventions (for phased migration)<br><br>This property takes precedence over the general stability_opt_in_list setting.<br><br>See messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -5707,7 +5717,12 @@ No snippets.
         "string",
         "null"
       ],
-      "description": "Configure messaging semantic convention stability opt-in.\nControls the emission of stable vs. experimental messaging semantic conventions.\n\nKnown values:\n- stable: Emit stable messaging conventions only\n- stable/dup: Emit both old and stable messaging conventions (for phased migration)\n\nThis property takes precedence over the general stability_opt_in_list setting.\n\nSee messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/\nIf omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+      "enum": [
+        "stable",
+        "stable/dup",
+        null
+      ],
+      "description": "Configure messaging semantic convention stability opt-in.\nControls the emission of stable vs. experimental messaging semantic conventions.\n\nValues:\n- stable: Emit stable messaging conventions only\n- stable/dup: Emit both old and stable messaging conventions (for phased migration)\n\nThis property takes precedence over the general stability_opt_in_list setting.\n\nSee messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/\nIf omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
     }
   }
 }</pre>
@@ -6528,7 +6543,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `stability_opt_in` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure RPC semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental RPC semantic conventions.<br><br>Known values:<br>- stable: Emit stable RPC conventions only<br>- stable/dup: Emit both experimental and stable RPC conventions (for phased migration)<br><br>This property takes precedence over the general stability_opt_in_list setting.<br><br>See RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/<br> |
+| `stability_opt_in` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure RPC semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental RPC semantic conventions.<br><br>Values:<br>- stable: Emit stable RPC conventions only<br>- stable/dup: Emit both experimental and stable RPC conventions (for phased migration)<br><br>This property takes precedence over the general stability_opt_in_list setting.<br><br>See RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -6561,7 +6576,12 @@ No snippets.
         "string",
         "null"
       ],
-      "description": "Configure RPC semantic convention stability opt-in.\nControls the emission of stable vs. experimental RPC semantic conventions.\n\nKnown values:\n- stable: Emit stable RPC conventions only\n- stable/dup: Emit both experimental and stable RPC conventions (for phased migration)\n\nThis property takes precedence over the general stability_opt_in_list setting.\n\nSee RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/\nIf omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+      "enum": [
+        "stable",
+        "stable/dup",
+        null
+      ],
+      "description": "Configure RPC semantic convention stability opt-in.\nControls the emission of stable vs. experimental RPC semantic conventions.\n\nValues:\n- stable: Emit stable RPC conventions only\n- stable/dup: Emit both experimental and stable RPC conventions (for phased migration)\n\nThis property takes precedence over the general stability_opt_in_list setting.\n\nSee RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/\nIf omitted or null, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
     }
   }
 }</pre>
