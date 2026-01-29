@@ -173,11 +173,12 @@ $defs:
     properties:
       stability_opt_in:
         type: [string, "null"]
+        enum: [stable, stable/dup, null]
         description: |
           Configure HTTP semantic convention stability opt-in.
           Controls the emission of stable vs. experimental HTTP and networking semantic conventions.
 
-          Known values:
+          Values:
           - stable: Emit stable HTTP and networking conventions only
           - stable/dup: Emit both old and stable HTTP and networking conventions (for phased migration)
 
@@ -199,11 +200,12 @@ $defs:
     properties:
       stability_opt_in:
         type: [string, "null"]
+        enum: [stable, stable/dup, null]
         description: |
           Configure database semantic convention stability opt-in.
           Controls the emission of stable vs. experimental database semantic conventions.
 
-          Known values:
+          Values:
           - stable: Emit stable database conventions only
           - stable/dup: Emit both old and stable database conventions (for phased migration)
 
@@ -217,11 +219,12 @@ $defs:
     properties:
       stability_opt_in:
         type: [string, "null"]
+        enum: [stable, stable/dup, null]
         description: |
           Configure RPC semantic convention stability opt-in.
           Controls the emission of stable vs. experimental RPC semantic conventions.
 
-          Known values:
+          Values:
           - stable: Emit stable RPC conventions only
           - stable/dup: Emit both experimental and stable RPC conventions (for phased migration)
 
@@ -235,11 +238,12 @@ $defs:
     properties:
       stability_opt_in:
         type: [string, "null"]
+        enum: [stable, stable/dup, null]
         description: |
           Configure messaging semantic convention stability opt-in.
           Controls the emission of stable vs. experimental messaging semantic conventions.
 
-          Known values:
+          Values:
           - stable: Emit stable messaging conventions only
           - stable/dup: Emit both old and stable messaging conventions (for phased migration)
 
