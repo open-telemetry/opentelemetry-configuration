@@ -3,6 +3,14 @@ file_format: "1.0-rc.3"
 instrumentation/development:
   general:
     # SNIPPET_START
-    semconv_stability_opt_in:
-      - http
-      - database/dup
+    # Configure semantic convention stability opt-in using a comma-separated list
+    # This format is compatible with OTEL_SEMCONV_STABILITY_OPT_IN environment variable
+    stability_opt_in_list: "http,database/dup"
+
+    # Alternatively, configure per-domain stability opt-in (takes precedence over stability_opt_in_list)
+    http:
+      # Opt-in to stable HTTP and networking conventions only
+      stability_opt_in: stable
+    database:
+      # Emit both old and stable database conventions for phased migration
+      stability_opt_in: stable/dup
