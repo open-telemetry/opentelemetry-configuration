@@ -342,12 +342,6 @@ typeSupportStatuses:
     propertyOverrides:
       - property: default_histogram_aggregation
         status: not_implemented
-  - type: ExperimentalPeerInstrumentation
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalPeerServiceMapping
-    status: supported
-    propertyOverrides: []
   - type: ExperimentalProbabilitySampler
     status: not_implemented
     propertyOverrides: []
@@ -368,6 +362,9 @@ typeSupportStatuses:
     propertyOverrides:
       - property: container
         status: ignored
+  - type: ExperimentalServicePeerMapping
+    status: supported
+    propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
     status: supported
     propertyOverrides: []

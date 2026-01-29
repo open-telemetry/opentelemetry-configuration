@@ -4855,7 +4855,7 @@ No snippets.
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
-| `peer` | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` | If omitted, defaults as described in ExperimentalPeerInstrumentation are used. | No constraints. | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> |
+| `service_peer_mapping` | `array` of [`ExperimentalServicePeerMapping`](#experimentalservicepeermapping) | `false` | If omitted, no service peer mappings are used. | * `minItems`: `1`<br> | Configure the service peer mapping for instrumentations following service.peer.name semantic conventions.<br>See service.peer.name semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4863,7 +4863,7 @@ No snippets.
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `http` | not_applicable | unknown | supported | unknown | supported |
-| `peer` | not_applicable | unknown | supported | unknown | supported |
+| `service_peer_mapping` | not_applicable | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4884,9 +4884,13 @@ No snippets.
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "peer": {
-      "$ref": "#/$defs/ExperimentalPeerInstrumentation",
-      "description": "Configure instrumentations following the peer semantic conventions.\nSee peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/\nIf omitted, defaults as described in ExperimentalPeerInstrumentation are used.\n"
+    "service_peer_mapping": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/ExperimentalServicePeerMapping"
+      },
+      "description": "Configure the service peer mapping for instrumentations following service.peer.name semantic conventions.\nSee service.peer.name semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\nIf omitted, no service peer mappings are used.\n"
     },
     "http": {
       "$ref": "#/$defs/ExperimentalHttpInstrumentation",
@@ -5144,12 +5148,12 @@ Snippets:
 [Snippet Source File](./snippets/ExperimentalInstrumentation_kitchen_sink.yaml)
 ```yaml
 general:
-  peer:
-    service_mapping:
-      - peer: 1.2.3.4
-        service: FooService
-      - peer: 2.3.4.5
-        service: BarService
+  service_peer_mapping:
+    - peer: 1.2.3.4
+      service_name: FooService
+      service_namespace: foo-namespace
+    - peer: 2.3.4.5
+      service_name: BarService
   http:
     client:
       request_captured_headers:
@@ -5906,107 +5910,6 @@ default_histogram_aggregation: explicit_bucket_histogram
 }</pre>
 </details>
 
-## ExperimentalPeerInstrumentation <a id="experimentalpeerinstrumentation"></a>
-
-> [!WARNING]
-> This type is [experimental](VERSIONING.md#experimental-features).
-
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` | If omitted, no peer service mappings are used. | * `minItems`: `1`<br> | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> |
-
-<details>
-<summary>Language support status</summary>
-
-| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
-|---|---|---|---|---|---|
-| `service_mapping` | not_implemented | unknown | supported | unknown | supported |
-</details>
-
-Constraints: 
-
-* `additionalProperties`: `false`
-
-Usages:
-
-* [`ExperimentalGeneralInstrumentation.peer`](#experimentalgeneralinstrumentation)
-
-No snippets.
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/instrumentation.yaml)
-<pre>{
-  "type": "object",
-  "additionalProperties": false,
-  "properties": {
-    "service_mapping": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "$ref": "#/$defs/ExperimentalPeerServiceMapping"
-      },
-      "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\nSee peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\nIf omitted, no peer service mappings are used.\n"
-    }
-  }
-}</pre>
-</details>
-
-## ExperimentalPeerServiceMapping <a id="experimentalpeerservicemapping"></a>
-
-> [!WARNING]
-> This type is [experimental](VERSIONING.md#experimental-features).
-
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `peer` | `string` | `true` | Property is required and must be non-null. | No constraints. | The IP address to map.<br> |
-| `service` | `string` | `true` | Property is required and must be non-null. | No constraints. | The logical name corresponding to the IP address of .peer.<br> |
-
-<details>
-<summary>Language support status</summary>
-
-| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
-|---|---|---|---|---|---|
-| `peer` | not_implemented | unknown | supported | unknown | supported |
-| `service` | not_implemented | unknown | supported | unknown | supported |
-</details>
-
-Constraints: 
-
-* `additionalProperties`: `false`
-* `required`: `["peer","service"]`
-
-Usages:
-
-* [`ExperimentalPeerInstrumentation.service_mapping`](#experimentalpeerinstrumentation)
-
-No snippets.
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/instrumentation.yaml)
-<pre>{
-  "type": "object",
-  "additionalProperties": false,
-  "properties": {
-    "peer": {
-      "type": "string",
-      "description": "The IP address to map.\nProperty is required and must be non-null.\n"
-    },
-    "service": {
-      "type": "string",
-      "description": "The logical name corresponding to the IP address of .peer.\nProperty is required and must be non-null.\n"
-    }
-  },
-  "required": [
-    "peer",
-    "service"
-  ]
-}</pre>
-</details>
-
 ## ExperimentalProbabilitySampler <a id="experimentalprobabilitysampler"></a>
 
 > [!WARNING]
@@ -6367,6 +6270,66 @@ No snippets.
       "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.\nIf omitted, ignore.\n"
     }
   }
+}</pre>
+</details>
+
+## ExperimentalServicePeerMapping <a id="experimentalservicepeermapping"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `peer` | `string` | `true` | Property is required and must be non-null. | No constraints. | The IP address or hostname to map.<br> |
+| `service_name` | `string` | `true` | Property is required and must be non-null. | No constraints. | The logical service name corresponding to the peer (service.peer.name).<br> |
+| `service_namespace` | `string` | `false` | If omitted, service.peer.namespace is not set. | No constraints. | The namespace of the peer service (service.peer.namespace).<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `peer` | not_implemented | unknown | supported | unknown | supported |
+| `service_name` | not_implemented | unknown | supported | unknown | supported |
+| `service_namespace` | not_implemented | unknown | supported | unknown | supported |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+* `required`: `["peer","service_name"]`
+
+Usages:
+
+* [`ExperimentalGeneralInstrumentation.service_peer_mapping`](#experimentalgeneralinstrumentation)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "peer": {
+      "type": "string",
+      "description": "The IP address or hostname to map.\nProperty is required and must be non-null.\n"
+    },
+    "service_name": {
+      "type": "string",
+      "description": "The logical service name corresponding to the peer (service.peer.name).\nProperty is required and must be non-null.\n"
+    },
+    "service_namespace": {
+      "type": "string",
+      "description": "The namespace of the peer service (service.peer.namespace).\nIf omitted, service.peer.namespace is not set.\n"
+    }
+  },
+  "required": [
+    "peer",
+    "service_name"
+  ]
 }</pre>
 </details>
 

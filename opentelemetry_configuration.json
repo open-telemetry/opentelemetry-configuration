@@ -665,9 +665,13 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "peer": {
-          "$ref": "#/$defs/ExperimentalPeerInstrumentation",
-          "description": "Configure instrumentations following the peer semantic conventions.\nSee peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/\nIf omitted, defaults as described in ExperimentalPeerInstrumentation are used.\n"
+        "service_peer_mapping": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/ExperimentalServicePeerMapping"
+          },
+          "description": "Configure the service peer mapping for instrumentations following service.peer.name semantic conventions.\nSee service.peer.name semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\nIf omitted, no service peer mappings are used.\n"
         },
         "http": {
           "$ref": "#/$defs/ExperimentalHttpInstrumentation",
@@ -995,38 +999,6 @@
         }
       }
     },
-    "ExperimentalPeerInstrumentation": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "service_mapping": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/ExperimentalPeerServiceMapping"
-          },
-          "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\nSee peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\nIf omitted, no peer service mappings are used.\n"
-        }
-      }
-    },
-    "ExperimentalPeerServiceMapping": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "peer": {
-          "type": "string",
-          "description": "The IP address to map.\nProperty is required and must be non-null.\n"
-        },
-        "service": {
-          "type": "string",
-          "description": "The logical name corresponding to the IP address of .peer.\nProperty is required and must be non-null.\n"
-        }
-      },
-      "required": [
-        "peer",
-        "service"
-      ]
-    },
     "ExperimentalProbabilitySampler": {
       "type": [
         "object",
@@ -1155,6 +1127,28 @@
           "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.\nIf omitted, ignore.\n"
         }
       }
+    },
+    "ExperimentalServicePeerMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "peer": {
+          "type": "string",
+          "description": "The IP address or hostname to map.\nProperty is required and must be non-null.\n"
+        },
+        "service_name": {
+          "type": "string",
+          "description": "The logical service name corresponding to the peer (service.peer.name).\nProperty is required and must be non-null.\n"
+        },
+        "service_namespace": {
+          "type": "string",
+          "description": "The namespace of the peer service (service.peer.namespace).\nIf omitted, service.peer.namespace is not set.\n"
+        }
+      },
+      "required": [
+        "peer",
+        "service_name"
+      ]
     },
     "ExperimentalServiceResourceDetector": {
       "type": [
