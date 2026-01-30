@@ -10,6 +10,7 @@ instrumentation/development:
         - peer: 2.3.4.5
           service: BarService
     http:
+      stability_opt_in: stable/dup
       client:
         request_captured_headers:
           - Content-Type
@@ -24,6 +25,9 @@ instrumentation/development:
         response_captured_headers:
           - Content-Type
           - Content-Encoding
+    database:
+      stability_opt_in: stable
+    stability_opt_in_list: "http/dup,database"
   cpp:
     example:
       property: "value"
