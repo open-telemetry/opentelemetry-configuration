@@ -17,6 +17,16 @@ instrumentation/development:
         response_captured_headers:
           - Content-Type
           - Content-Encoding
+        known_methods:
+          - CONNECT
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          - TRACE
       server:
         request_captured_headers:
           - Content-Type
@@ -24,6 +34,16 @@ instrumentation/development:
         response_captured_headers:
           - Content-Type
           - Content-Encoding
+        known_methods:
+          - CONNECT
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          - TRACE
   cpp:
     example:
       property: "value"

@@ -259,13 +259,17 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalHttpClientInstrumentation
     status: unknown
-    propertyOverrides: []
+    propertyOverrides:
+      - property: known_methods
+        status: not_implemented
   - type: ExperimentalHttpInstrumentation
     status: unknown
     propertyOverrides: []
   - type: ExperimentalHttpServerInstrumentation
     status: unknown
-    propertyOverrides: []
+    propertyOverrides:
+      - property: known_methods
+        status: not_implemented
   - type: ExperimentalInstrumentation
     status: unknown
     propertyOverrides: []
