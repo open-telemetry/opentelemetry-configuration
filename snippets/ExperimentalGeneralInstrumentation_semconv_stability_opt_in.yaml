@@ -13,4 +13,4 @@ instrumentation/development:
       stability_opt_in: stable
     database:
       # Emit both old and stable database conventions for phased migration
-      stability_opt_in: stable/dup
+      stability_opt_in: dup
