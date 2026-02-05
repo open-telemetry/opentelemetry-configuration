@@ -4,7 +4,7 @@ instrumentation/development:
   # SNIPPET_START
   general:
     http:
-      stability_opt_in: stable/dup
+      stability_opt_in: dup
       client:
         request_captured_headers:
           - Content-Type

@@ -195,14 +195,14 @@ $defs:
     properties:
       stability_opt_in:
         type: [string, "null"]
-        enum: [stable, stable/dup, null]
+        enum: [stable, dup, null]
         description: |
           Configure HTTP semantic convention stability opt-in.
           Controls the emission of stable vs. experimental HTTP and networking semantic conventions.
 
           Values:
           - stable: Emit stable HTTP and networking conventions only
-          - stable/dup: Emit both old and stable HTTP and networking conventions (for phased migration)
+          - dup: Emit both old and stable HTTP and networking conventions (for phased migration)
 
           This property takes precedence over the general stability_opt_in_list setting.
 
@@ -222,14 +222,14 @@ $defs:
     properties:
       stability_opt_in:
         type: [string, "null"]
-        enum: [stable, stable/dup, null]
+        enum: [stable, dup, null]
         description: |
           Configure database semantic convention stability opt-in.
           Controls the emission of stable vs. experimental database semantic conventions.
 
           Values:
           - stable: Emit stable database conventions only
-          - stable/dup: Emit both old and stable database conventions (for phased migration)
+          - dup: Emit both old and stable database conventions (for phased migration)
 
           This property takes precedence over the general stability_opt_in_list setting.
 
@@ -241,14 +241,14 @@ $defs:
     properties:
       stability_opt_in:
         type: [string, "null"]
-        enum: [stable, stable/dup, null]
+        enum: [stable, dup, null]
         description: |
           Configure RPC semantic convention stability opt-in.
           Controls the emission of stable vs. experimental RPC semantic conventions.
 
           Values:
           - stable: Emit stable RPC conventions only
-          - stable/dup: Emit both experimental and stable RPC conventions (for phased migration)
+          - dup: Emit both experimental and stable RPC conventions (for phased migration)
 
           This property takes precedence over the general stability_opt_in_list setting.
 
@@ -260,14 +260,14 @@ $defs:
     properties:
       stability_opt_in:
         type: [string, "null"]
-        enum: [stable, stable/dup, null]
+        enum: [stable, dup, null]
         description: |
           Configure messaging semantic convention stability opt-in.
           Controls the emission of stable vs. experimental messaging semantic conventions.
 
           Values:
           - stable: Emit stable messaging conventions only
-          - stable/dup: Emit both old and stable messaging conventions (for phased migration)
+          - dup: Emit both old and stable messaging conventions (for phased migration)
 
           This property takes precedence over the general stability_opt_in_list setting.
 
