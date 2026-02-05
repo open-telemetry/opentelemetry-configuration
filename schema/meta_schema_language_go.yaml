@@ -299,12 +299,6 @@ typeSupportStatuses:
   - type: ExperimentalOtlpFileMetricExporter
     status: not_implemented
     propertyOverrides: []
-  - type: ExperimentalPeerInstrumentation
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalPeerServiceMapping
-    status: unknown
-    propertyOverrides: []
   - type: ExperimentalProbabilitySampler
     status: not_implemented
     propertyOverrides: []
