@@ -4933,6 +4933,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
+| `known_methods` | `array` of `string` | `false` | If omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known. | * `minItems`: `0`<br> | Override the default list of known HTTP methods.<br>This is a full override of the default known methods, not a list of known methods in addition to the defaults.<br> |
 | `request_captured_headers` | `array` of `string` | `false` | If omitted, no outbound request headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for outbound http requests.<br> |
 | `response_captured_headers` | `array` of `string` | `false` | If omitted, no inbound response headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for inbound http responses.<br> |
 
@@ -4941,6 +4942,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
+| `known_methods` | not_implemented | not_implemented | not_implemented | not_implemented | not_implemented |
 | `request_captured_headers` | not_applicable | unknown | supported | unknown | supported |
 | `response_captured_headers` | not_applicable | unknown | supported | unknown | supported |
 </details>
@@ -4978,6 +4980,14 @@ No snippets.
         "type": "string"
       },
       "description": "Configure headers to capture for inbound http responses.\nIf omitted, no inbound response headers are captured.\n"
+    },
+    "known_methods": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "description": "Override the default list of known HTTP methods.\nThis is a full override of the default known methods, not a list of known methods in addition to the defaults.\nIf omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known.\n"
     }
   }
 }</pre>
@@ -5039,6 +5049,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
+| `known_methods` | `array` of `string` | `false` | If omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known. | * `minItems`: `0`<br> | Override the default list of known HTTP methods.<br>This is a full override of the default known methods, not a list of known methods in addition to the defaults.<br> |
 | `request_captured_headers` | `array` of `string` | `false` | If omitted, no request headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for inbound http requests.<br> |
 | `response_captured_headers` | `array` of `string` | `false` | If omitted, no response headers are captures. | * `minItems`: `1`<br> | Configure headers to capture for outbound http responses.<br> |
 
@@ -5047,6 +5058,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
+| `known_methods` | not_implemented | not_implemented | not_implemented | not_implemented | not_implemented |
 | `request_captured_headers` | not_applicable | unknown | supported | unknown | supported |
 | `response_captured_headers` | not_applicable | unknown | supported | unknown | supported |
 </details>
@@ -5084,6 +5096,14 @@ No snippets.
         "type": "string"
       },
       "description": "Configure headers to capture for outbound http responses.\nIf omitted, no response headers are captures.\n"
+    },
+    "known_methods": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "description": "Override the default list of known HTTP methods.\nThis is a full override of the default known methods, not a list of known methods in addition to the defaults.\nIf omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known.\n"
     }
   }
 }</pre>
@@ -5158,6 +5178,16 @@ general:
       response_captured_headers:
         - Content-Type
         - Content-Encoding
+      known_methods:
+        - CONNECT
+        - DELETE
+        - GET
+        - HEAD
+        - OPTIONS
+        - PATCH
+        - POST
+        - PUT
+        - TRACE
     server:
       request_captured_headers:
         - Content-Type
@@ -5165,6 +5195,16 @@ general:
       response_captured_headers:
         - Content-Type
         - Content-Encoding
+      known_methods:
+        - CONNECT
+        - DELETE
+        - GET
+        - HEAD
+        - OPTIONS
+        - PATCH
+        - POST
+        - PUT
+        - TRACE
 cpp:
   example:
     property: "value"
