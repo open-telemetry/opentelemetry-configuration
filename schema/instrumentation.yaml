@@ -121,7 +121,7 @@ $defs:
           Multiple values can be specified as a comma-separated list (e.g., "http,database/dup").
           Additional signal types (e.g., messaging) may be supported in future versions.
 
-          Domain-specific stability opt-in properties (e.g., http.stability_opt_in) take precedence over this general setting.
+          Domain-specific stability opt-in properties (e.g., .instrumentation/development.general.http.stability_opt_in) take precedence over this general setting.
 
           See:
           - HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/
@@ -129,6 +129,12 @@ $defs:
           - RPC: https://opentelemetry.io/docs/specs/semconv/rpc/
           - Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/
         defaultBehavior: no opt-in is configured and instrumentations continue emitting their default semantic convention version
+  ExperimentalSemconvStabilityOptIn:
+    type: [string, "null"]
+    enum: [stable, dup]
+    enumDescriptions:
+      stable: Emit stable semantic conventions only.
+      dup: Emit both old and stable semantic conventions (for phased migration).
   ExperimentalHttpClientInstrumentation:
     type: object
     additionalProperties: false
@@ -194,8 +200,7 @@ $defs:
     additionalProperties: false
     properties:
       stability_opt_in:
-        type: [string, "null"]
-        enum: [stable, dup, null]
+        $ref: "#/$defs/ExperimentalSemconvStabilityOptIn"
         description: |
           Configure HTTP semantic convention stability opt-in.
           Controls the emission of stable vs. experimental HTTP and networking semantic conventions.
@@ -204,7 +209,7 @@ $defs:
           - stable: Emit stable HTTP and networking conventions only
           - dup: Emit both old and stable HTTP and networking conventions (for phased migration)
 
-          This property takes precedence over the general stability_opt_in_list setting.
+          This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
           See HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/
         defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
@@ -221,8 +226,7 @@ $defs:
     additionalProperties: false
     properties:
       stability_opt_in:
-        type: [string, "null"]
-        enum: [stable, dup, null]
+        $ref: "#/$defs/ExperimentalSemconvStabilityOptIn"
         description: |
           Configure database semantic convention stability opt-in.
           Controls the emission of stable vs. experimental database semantic conventions.
@@ -231,7 +235,7 @@ $defs:
           - stable: Emit stable database conventions only
           - dup: Emit both old and stable database conventions (for phased migration)
 
-          This property takes precedence over the general stability_opt_in_list setting.
+          This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
           See database migration: https://opentelemetry.io/docs/specs/semconv/database/
         defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
@@ -240,8 +244,7 @@ $defs:
     additionalProperties: false
     properties:
       stability_opt_in:
-        type: [string, "null"]
-        enum: [stable, dup, null]
+        $ref: "#/$defs/ExperimentalSemconvStabilityOptIn"
         description: |
           Configure RPC semantic convention stability opt-in.
           Controls the emission of stable vs. experimental RPC semantic conventions.
@@ -250,7 +253,7 @@ $defs:
           - stable: Emit stable RPC conventions only
           - dup: Emit both experimental and stable RPC conventions (for phased migration)
 
-          This property takes precedence over the general stability_opt_in_list setting.
+          This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
           See RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/
         defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
@@ -259,8 +262,7 @@ $defs:
     additionalProperties: false
     properties:
       stability_opt_in:
-        type: [string, "null"]
-        enum: [stable, dup, null]
+        $ref: "#/$defs/ExperimentalSemconvStabilityOptIn"
         description: |
           Configure messaging semantic convention stability opt-in.
           Controls the emission of stable vs. experimental messaging semantic conventions.
@@ -269,7 +271,7 @@ $defs:
           - stable: Emit stable messaging conventions only
           - dup: Emit both old and stable messaging conventions (for phased migration)
 
-          This property takes precedence over the general stability_opt_in_list setting.
+          This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
           See messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/
         defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
