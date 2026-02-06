@@ -996,9 +996,9 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `always_off` | not_implemented | unknown | supported | unknown | supported |
-| `always_on` | not_implemented | unknown | supported | unknown | supported |
-| `trace_based` | not_implemented | unknown | supported | unknown | supported |
+| `always_off` | supported | unknown | supported | unknown | supported |
+| `always_on` | supported | unknown | supported | unknown | supported |
+| `trace_based` | supported | unknown | supported | unknown | supported |
 </details>
 
 No constraints.

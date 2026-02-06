@@ -49,13 +49,13 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: Distribution
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: DropAggregation
     status: supported
     propertyOverrides: []
   - type: ExemplarFilter
-    status: not_implemented
+    status: supported
     enumOverrides: []
   - type: ExplicitBucketHistogramAggregation
     status: supported
