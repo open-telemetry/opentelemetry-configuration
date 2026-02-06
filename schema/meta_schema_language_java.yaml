@@ -319,12 +319,6 @@ typeSupportStatuses:
     propertyOverrides:
       - property: output_stream
         status: not_implemented
-  - type: ExperimentalPeerInstrumentation
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalPeerServiceMapping
-    status: supported
-    propertyOverrides: []
   - type: ExperimentalProbabilitySampler
     status: supported
     propertyOverrides: []

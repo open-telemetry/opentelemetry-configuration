@@ -665,10 +665,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "peer": {
-          "$ref": "#/$defs/ExperimentalPeerInstrumentation",
-          "description": "Configure instrumentations following the peer semantic conventions.\nSee peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/\nIf omitted, defaults as described in ExperimentalPeerInstrumentation are used.\n"
-        },
         "http": {
           "$ref": "#/$defs/ExperimentalHttpInstrumentation",
           "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\nIf omitted, defaults as described in ExperimentalHttpInstrumentation are used.\n"
@@ -994,38 +990,6 @@
           "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.\n* explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.\nIf omitted, explicit_bucket_histogram is used.\n"
         }
       }
-    },
-    "ExperimentalPeerInstrumentation": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "service_mapping": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/ExperimentalPeerServiceMapping"
-          },
-          "description": "Configure the service mapping for instrumentations following peer.service semantic conventions.\nSee peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes\nIf omitted, no peer service mappings are used.\n"
-        }
-      }
-    },
-    "ExperimentalPeerServiceMapping": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "peer": {
-          "type": "string",
-          "description": "The IP address to map.\nProperty is required and must be non-null.\n"
-        },
-        "service": {
-          "type": "string",
-          "description": "The logical name corresponding to the IP address of .peer.\nProperty is required and must be non-null.\n"
-        }
-      },
-      "required": [
-        "peer",
-        "service"
-      ]
     },
     "ExperimentalProbabilitySampler": {
       "type": [
