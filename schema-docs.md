@@ -4847,6 +4847,49 @@ No snippets.
 }</pre>
 </details>
 
+## ExperimentalDatabaseInstrumentation <a id="experimentaldatabaseinstrumentation"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `stability_opt_in` | [`ExperimentalSemconvStabilityOptIn`](#experimentalsemconvstabilityoptin) | `false` | If omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure database semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental database semantic conventions.<br><br>Values:<br>- stable: Emit stable database conventions only<br>- dup: Emit both old and stable database conventions (for phased migration)<br><br>This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.<br><br>See database migration: https://opentelemetry.io/docs/specs/semconv/database/<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `stability_opt_in` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalGeneralInstrumentation.database`](#experimentalgeneralinstrumentation)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "stability_opt_in": {
+      "$ref": "#/$defs/ExperimentalSemconvStabilityOptIn",
+      "description": "Configure database semantic convention stability opt-in.\nControls the emission of stable vs. experimental database semantic conventions.\n\nValues:\n- stable: Emit stable database conventions only\n- dup: Emit both old and stable database conventions (for phased migration)\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee database migration: https://opentelemetry.io/docs/specs/semconv/database/\nValues include:\n* dup: Emit both old and stable semantic conventions (for phased migration).\n* stable: Emit stable semantic conventions only.\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+    }
+  }
+}</pre>
+</details>
+
 ## ExperimentalGeneralInstrumentation <a id="experimentalgeneralinstrumentation"></a>
 
 > [!WARNING]
@@ -4854,14 +4897,22 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
+| `database` | [`ExperimentalDatabaseInstrumentation`](#experimentaldatabaseinstrumentation) | `false` | If omitted, defaults as described in ExperimentalDatabaseInstrumentation are used. | No constraints. | Configure instrumentations following the database semantic conventions.<br>See database semantic conventions: https://opentelemetry.io/docs/specs/semconv/database/<br> |
 | `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
+| `messaging` | [`ExperimentalMessagingInstrumentation`](#experimentalmessaginginstrumentation) | `false` | If omitted, defaults as described in ExperimentalMessagingInstrumentation are used. | No constraints. | Configure instrumentations following the messaging semantic conventions.<br>See messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/<br> |
+| `rpc` | [`ExperimentalRpcInstrumentation`](#experimentalrpcinstrumentation) | `false` | If omitted, defaults as described in ExperimentalRpcInstrumentation are used. | No constraints. | Configure instrumentations following the RPC semantic conventions.<br>See RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/<br> |
+| `stability_opt_in_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no opt-in is configured and instrumentations continue emitting their default semantic convention version. | No constraints. | Configure semantic convention stability opt-in as a comma-separated list.<br>This property follows the format and semantics of the OTEL_SEMCONV_STABILITY_OPT_IN environment variable.<br>Controls the emission of stable vs. experimental semantic conventions for instrumentation.<br>This setting is only intended for migrating from experimental to stable semantic conventions.<br><br>Known values include:<br>- http: Emit stable HTTP and networking conventions only<br>- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)<br>- database: Emit stable database conventions only<br>- database/dup: Emit both old and stable database conventions (for phased migration)<br>- rpc: Emit stable RPC conventions only<br>- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)<br>- messaging: Emit stable messaging conventions only<br>- messaging/dup: Emit both old and stable messaging conventions (for phased migration)<br><br>Multiple values can be specified as a comma-separated list (e.g., "http,database/dup").<br>Additional signal types (e.g., messaging) may be supported in future versions.<br><br>Domain-specific stability opt-in properties (e.g., .instrumentation/development.general.http.stability_opt_in) take precedence over this general setting.<br><br>See:<br>- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/<br>- Database migration: https://opentelemetry.io/docs/specs/semconv/database/<br>- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/<br>- Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/<br> |
 
 <details>
 <summary>Language support status</summary>
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
+| `database` | not_applicable | unknown | supported | unknown | supported |
 | `http` | not_applicable | unknown | supported | unknown | supported |
+| `messaging` | not_applicable | unknown | supported | unknown | supported |
+| `rpc` | not_applicable | unknown | supported | unknown | supported |
+| `stability_opt_in_list` | not_applicable | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4872,7 +4923,26 @@ Usages:
 
 * [`ExperimentalInstrumentation.general`](#experimentalinstrumentation)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Semconv Stability Opt In</summary>
+
+[Snippet Source File](./snippets/ExperimentalGeneralInstrumentation_semconv_stability_opt_in.yaml)
+```yaml
+# Configure semantic convention stability opt-in using a comma-separated list
+# This format is compatible with OTEL_SEMCONV_STABILITY_OPT_IN environment variable
+stability_opt_in_list: "http,database/dup"
+
+# Alternatively, configure per-domain stability opt-in (takes precedence over stability_opt_in_list)
+http:
+  # Opt-in to stable HTTP and networking conventions only
+  stability_opt_in: stable
+database:
+  # Emit both old and stable database conventions for phased migration
+  stability_opt_in: dup
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -4885,6 +4955,25 @@ No snippets.
     "http": {
       "$ref": "#/$defs/ExperimentalHttpInstrumentation",
       "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\nIf omitted, defaults as described in ExperimentalHttpInstrumentation are used.\n"
+    },
+    "database": {
+      "$ref": "#/$defs/ExperimentalDatabaseInstrumentation",
+      "description": "Configure instrumentations following the database semantic conventions.\nSee database semantic conventions: https://opentelemetry.io/docs/specs/semconv/database/\nIf omitted, defaults as described in ExperimentalDatabaseInstrumentation are used.\n"
+    },
+    "rpc": {
+      "$ref": "#/$defs/ExperimentalRpcInstrumentation",
+      "description": "Configure instrumentations following the RPC semantic conventions.\nSee RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/\nIf omitted, defaults as described in ExperimentalRpcInstrumentation are used.\n"
+    },
+    "messaging": {
+      "$ref": "#/$defs/ExperimentalMessagingInstrumentation",
+      "description": "Configure instrumentations following the messaging semantic conventions.\nSee messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/\nIf omitted, defaults as described in ExperimentalMessagingInstrumentation are used.\n"
+    },
+    "stability_opt_in_list": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Configure semantic convention stability opt-in as a comma-separated list.\nThis property follows the format and semantics of the OTEL_SEMCONV_STABILITY_OPT_IN environment variable.\nControls the emission of stable vs. experimental semantic conventions for instrumentation.\nThis setting is only intended for migrating from experimental to stable semantic conventions.\n\nKnown values include:\n- http: Emit stable HTTP and networking conventions only\n- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)\n- database: Emit stable database conventions only\n- database/dup: Emit both old and stable database conventions (for phased migration)\n- rpc: Emit stable RPC conventions only\n- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)\n- messaging: Emit stable messaging conventions only\n- messaging/dup: Emit both old and stable messaging conventions (for phased migration)\n\nMultiple values can be specified as a comma-separated list (e.g., \"http,database/dup\").\nAdditional signal types (e.g., messaging) may be supported in future versions.\n\nDomain-specific stability opt-in properties (e.g., .instrumentation/development.general.http.stability_opt_in) take precedence over this general setting.\n\nSee:\n- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/\n- Database migration: https://opentelemetry.io/docs/specs/semconv/database/\n- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/\n- Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/\nIf omitted or null, no opt-in is configured and instrumentations continue emitting their default semantic convention version.\n"
     }
   }
 }</pre>
@@ -4986,6 +5075,7 @@ No snippets.
 |---|---|---|---|---|---|
 | `client` | [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpClientInstrumentation are used. | No constraints. | Configure instrumentations following the http client semantic conventions. |
 | `server` | [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpServerInstrumentation are used. | No constraints. | Configure instrumentations following the http server semantic conventions. |
+| `stability_opt_in` | [`ExperimentalSemconvStabilityOptIn`](#experimentalsemconvstabilityoptin) | `false` | If omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure HTTP semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental HTTP and networking semantic conventions.<br><br>Values:<br>- stable: Emit stable HTTP and networking conventions only<br>- dup: Emit both old and stable HTTP and networking conventions (for phased migration)<br><br>This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.<br><br>See HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4994,6 +5084,7 @@ No snippets.
 |---|---|---|---|---|---|
 | `client` | not_applicable | unknown | supported | unknown | supported |
 | `server` | not_applicable | unknown | supported | unknown | supported |
+| `stability_opt_in` | not_applicable | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5014,6 +5105,10 @@ No snippets.
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "stability_opt_in": {
+      "$ref": "#/$defs/ExperimentalSemconvStabilityOptIn",
+      "description": "Configure HTTP semantic convention stability opt-in.\nControls the emission of stable vs. experimental HTTP and networking semantic conventions.\n\nValues:\n- stable: Emit stable HTTP and networking conventions only\n- dup: Emit both old and stable HTTP and networking conventions (for phased migration)\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/\nValues include:\n* dup: Emit both old and stable semantic conventions (for phased migration).\n* stable: Emit stable semantic conventions only.\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+    },
     "client": {
       "$ref": "#/$defs/ExperimentalHttpClientInstrumentation",
       "description": "Configure instrumentations following the http client semantic conventions.\nIf omitted, defaults as described in ExperimentalHttpClientInstrumentation are used.\n"
@@ -5139,6 +5234,7 @@ Snippets:
 ```yaml
 general:
   http:
+    stability_opt_in: dup
     client:
       request_captured_headers:
         - Content-Type
@@ -5153,6 +5249,9 @@ general:
       response_captured_headers:
         - Content-Type
         - Content-Encoding
+  database:
+    stability_opt_in: stable
+  stability_opt_in_list: "http/dup,database"
 cpp:
   example:
     property: "value"
@@ -5547,6 +5646,49 @@ No snippets.
     "name",
     "config"
   ]
+}</pre>
+</details>
+
+## ExperimentalMessagingInstrumentation <a id="experimentalmessaginginstrumentation"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `stability_opt_in` | [`ExperimentalSemconvStabilityOptIn`](#experimentalsemconvstabilityoptin) | `false` | If omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure messaging semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental messaging semantic conventions.<br><br>Values:<br>- stable: Emit stable messaging conventions only<br>- dup: Emit both old and stable messaging conventions (for phased migration)<br><br>This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.<br><br>See messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `stability_opt_in` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalGeneralInstrumentation.messaging`](#experimentalgeneralinstrumentation)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "stability_opt_in": {
+      "$ref": "#/$defs/ExperimentalSemconvStabilityOptIn",
+      "description": "Configure messaging semantic convention stability opt-in.\nControls the emission of stable vs. experimental messaging semantic conventions.\n\nValues:\n- stable: Emit stable messaging conventions only\n- dup: Emit both old and stable messaging conventions (for phased migration)\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/\nValues include:\n* dup: Emit both old and stable semantic conventions (for phased migration).\n* stable: Emit stable semantic conventions only.\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+    }
+  }
 }</pre>
 </details>
 
@@ -6254,6 +6396,97 @@ No snippets.
       "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.\nIf omitted, ignore.\n"
     }
   }
+}</pre>
+</details>
+
+## ExperimentalRpcInstrumentation <a id="experimentalrpcinstrumentation"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `stability_opt_in` | [`ExperimentalSemconvStabilityOptIn`](#experimentalsemconvstabilityoptin) | `false` | If omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure RPC semantic convention stability opt-in.<br>Controls the emission of stable vs. experimental RPC semantic conventions.<br><br>Values:<br>- stable: Emit stable RPC conventions only<br>- dup: Emit both experimental and stable RPC conventions (for phased migration)<br><br>This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.<br><br>See RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `stability_opt_in` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalGeneralInstrumentation.rpc`](#experimentalgeneralinstrumentation)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "stability_opt_in": {
+      "$ref": "#/$defs/ExperimentalSemconvStabilityOptIn",
+      "description": "Configure RPC semantic convention stability opt-in.\nControls the emission of stable vs. experimental RPC semantic conventions.\n\nValues:\n- stable: Emit stable RPC conventions only\n- dup: Emit both experimental and stable RPC conventions (for phased migration)\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/\nValues include:\n* dup: Emit both old and stable semantic conventions (for phased migration).\n* stable: Emit stable semantic conventions only.\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+    }
+  }
+}</pre>
+</details>
+
+## ExperimentalSemconvStabilityOptIn <a id="experimentalsemconvstabilityoptin"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+This is a enum type.
+
+| Value | Description |
+|---|---|
+| `dup` | Emit both old and stable semantic conventions (for phased migration). |
+| `stable` | Emit stable semantic conventions only. |
+
+<details>
+<summary>Language support status</summary>
+
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `dup` | unknown | unknown | unknown | unknown | unknown |
+| `stable` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+No constraints.
+
+Usages:
+
+* [`ExperimentalHttpInstrumentation.stability_opt_in`](#experimentalhttpinstrumentation)
+* [`ExperimentalDatabaseInstrumentation.stability_opt_in`](#experimentaldatabaseinstrumentation)
+* [`ExperimentalRpcInstrumentation.stability_opt_in`](#experimentalrpcinstrumentation)
+* [`ExperimentalMessagingInstrumentation.stability_opt_in`](#experimentalmessaginginstrumentation)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": [
+    "string",
+    "null"
+  ],
+  "enum": [
+    "stable",
+    "dup"
+  ]
 }</pre>
 </details>
 
