@@ -295,6 +295,9 @@ typeSupportStatuses:
   - type: ExperimentalResourceDetector
     status: not_implemented
     propertyOverrides: []
+  - type: ExperimentalSanitization
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
     status: not_implemented
     propertyOverrides: []
@@ -309,4 +312,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
     status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalUrlSanitization
+    status: unknown
     propertyOverrides: []
