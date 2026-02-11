@@ -276,17 +276,13 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalHttpClientInstrumentation
     status: supported
-    propertyOverrides:
-      - property: known_methods
-        status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalHttpInstrumentation
     status: supported
     propertyOverrides: []
   - type: ExperimentalHttpServerInstrumentation
     status: supported
-    propertyOverrides:
-      - property: known_methods
-        status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalInstrumentation
     status: supported
     propertyOverrides:

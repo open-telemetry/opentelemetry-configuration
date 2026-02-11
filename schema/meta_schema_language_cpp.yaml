@@ -233,17 +233,13 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalHttpClientInstrumentation
     status: not_applicable
-    propertyOverrides:
-      - property: known_methods
-        status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalHttpInstrumentation
     status: not_applicable
     propertyOverrides: []
   - type: ExperimentalHttpServerInstrumentation
     status: not_applicable
-    propertyOverrides:
-      - property: known_methods
-        status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalInstrumentation
     status: not_applicable
     propertyOverrides: []
