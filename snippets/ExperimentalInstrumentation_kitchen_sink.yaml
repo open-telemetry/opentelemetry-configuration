@@ -4,7 +4,10 @@ instrumentation/development:
   # SNIPPET_START
   general:
     http:
-      stability_opt_in: dup
+      semconv:
+        experimental: true
+        version: v1
+        dup: true
       client:
         request_captured_headers:
           - Content-Type
@@ -40,7 +43,20 @@ instrumentation/development:
           - PUT
           - TRACE
     database:
-      stability_opt_in: stable
+      semconv:
+        experimental: false
+        version: v1
+        dup: false
+    rpc:
+      semconv:
+        experimental: false
+        version: v1
+        dup: true
+    messaging:
+      semconv:
+        experimental: true
+        version: v1
+        dup: false
     stability_opt_in_list: "http/dup,database"
   cpp:
     example:

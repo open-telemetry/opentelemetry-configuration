@@ -121,7 +121,7 @@ $defs:
           Multiple values can be specified as a comma-separated list (e.g., "http,database/dup").
           Additional signal types (e.g., messaging) may be supported in future versions.
 
-          Domain-specific stability opt-in properties (e.g., .instrumentation/development.general.http.stability_opt_in) take precedence over this general setting.
+          Domain-specific semconv properties (e.g., .instrumentation/development.general.http.semconv) take precedence over this general setting.
 
           See:
           - HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/
@@ -129,12 +129,25 @@ $defs:
           - RPC: https://opentelemetry.io/docs/specs/semconv/rpc/
           - Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/
         defaultBehavior: no opt-in is configured and instrumentations continue emitting their default semantic convention version
-  ExperimentalSemconvStabilityOptIn:
-    type: [string, "null"]
-    enum: [stable, dup]
-    enumDescriptions:
-      stable: Emit stable semantic conventions only.
-      dup: Emit both old and stable semantic conventions (for phased migration).
+  ExperimentalSemconvConfig:
+    type: object
+    additionalProperties: false
+    properties:
+      experimental:
+        type: [boolean, "null"]
+        description: |
+          Use experimental semantic conventions (before stable is available or to enable experimental features on top of stable conventions).
+        defaultBehavior: "false is used"
+      version:
+        type: [string, "null"]
+        description: |
+          The semantic convention version to use (e.g., v1, v2).
+        defaultBehavior: the latest stable version is used
+      dup:
+        type: [boolean, "null"]
+        description: |
+          Also emit the (stable) previous version of semantic conventions for phased migration.
+        defaultBehavior: "false is used"
   ExperimentalHttpClientInstrumentation:
     type: object
     additionalProperties: false
@@ -199,15 +212,11 @@ $defs:
     type: object
     additionalProperties: false
     properties:
-      stability_opt_in:
-        $ref: "#/$defs/ExperimentalSemconvStabilityOptIn"
+      semconv:
+        $ref: "#/$defs/ExperimentalSemconvConfig"
         description: |
-          Configure HTTP semantic convention stability opt-in.
-          Controls the emission of stable vs. experimental HTTP and networking semantic conventions.
-
-          Values:
-          - stable: Emit stable HTTP and networking conventions only
-          - dup: Emit both old and stable HTTP and networking conventions (for phased migration)
+          Configure HTTP semantic convention version and migration behavior.
+          Controls which version and style of HTTP and networking semantic conventions are emitted.
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
@@ -225,15 +234,11 @@ $defs:
     type: object
     additionalProperties: false
     properties:
-      stability_opt_in:
-        $ref: "#/$defs/ExperimentalSemconvStabilityOptIn"
+      semconv:
+        $ref: "#/$defs/ExperimentalSemconvConfig"
         description: |
-          Configure database semantic convention stability opt-in.
-          Controls the emission of stable vs. experimental database semantic conventions.
-
-          Values:
-          - stable: Emit stable database conventions only
-          - dup: Emit both old and stable database conventions (for phased migration)
+          Configure database semantic convention version and migration behavior.
+          Controls which version and style of database semantic conventions are emitted.
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
@@ -243,15 +248,11 @@ $defs:
     type: object
     additionalProperties: false
     properties:
-      stability_opt_in:
-        $ref: "#/$defs/ExperimentalSemconvStabilityOptIn"
+      semconv:
+        $ref: "#/$defs/ExperimentalSemconvConfig"
         description: |
-          Configure RPC semantic convention stability opt-in.
-          Controls the emission of stable vs. experimental RPC semantic conventions.
-
-          Values:
-          - stable: Emit stable RPC conventions only
-          - dup: Emit both experimental and stable RPC conventions (for phased migration)
+          Configure RPC semantic convention version and migration behavior.
+          Controls which version and style of RPC semantic conventions are emitted.
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
@@ -261,15 +262,11 @@ $defs:
     type: object
     additionalProperties: false
     properties:
-      stability_opt_in:
-        $ref: "#/$defs/ExperimentalSemconvStabilityOptIn"
+      semconv:
+        $ref: "#/$defs/ExperimentalSemconvConfig"
         description: |
-          Configure messaging semantic convention stability opt-in.
-          Controls the emission of stable vs. experimental messaging semantic conventions.
-
-          Values:
-          - stable: Emit stable messaging conventions only
-          - dup: Emit both old and stable messaging conventions (for phased migration)
+          Configure messaging semantic convention version and migration behavior.
+          Controls which version and style of messaging semantic conventions are emitted.
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 

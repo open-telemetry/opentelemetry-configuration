@@ -7,10 +7,13 @@ instrumentation/development:
     # This format is compatible with OTEL_SEMCONV_STABILITY_OPT_IN environment variable
     stability_opt_in_list: "http,database/dup"
 
-    # Alternatively, configure per-domain stability opt-in (takes precedence over stability_opt_in_list)
+    # Alternatively, configure per-domain semconv settings (takes precedence over stability_opt_in_list)
     http:
-      # Opt-in to stable HTTP and networking conventions only
-      stability_opt_in: stable
+      # Use stable HTTP and networking conventions (latest version)
+      semconv:
+        version: v1
     database:
-      # Emit both old and stable database conventions for phased migration
-      stability_opt_in: dup
+      # Use stable database conventions and also emit previous version for phased migration
+      semconv:
+        version: v1
+        dup: true

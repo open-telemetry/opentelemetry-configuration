@@ -304,9 +304,9 @@ typeSupportStatuses:
   - type: ExperimentalRpcInstrumentation
     status: unknown
     propertyOverrides: []
-  - type: ExperimentalSemconvStabilityOptIn
+  - type: ExperimentalSemconvConfig
     status: unknown
-    enumOverrides: []
+    propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
     status: not_implemented
     propertyOverrides: []
