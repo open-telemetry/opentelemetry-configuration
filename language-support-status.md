@@ -348,7 +348,7 @@ Latest supported file format: `1.0.0-rc.3`
 
 ## js <a id="js"></a>
 
-Latest supported file format: `1.0.0-rc.2`
+Latest supported file format: `1.0.0-rc.3`
 
 | Type | Status | Notes | Support Status Details |
 |---|---|---|---|
