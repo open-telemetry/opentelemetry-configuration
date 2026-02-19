@@ -1,4 +1,4 @@
-latestSupportedFileFormat: 1.0.0-rc.2
+latestSupportedFileFormat: 1.0.0-rc.3
 typeSupportStatuses:
   - type: Aggregation
     status: unknown
@@ -271,12 +271,6 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalOtlpFileMetricExporter
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalPeerInstrumentation
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalPeerServiceMapping
     status: unknown
     propertyOverrides: []
   - type: ExperimentalProbabilitySampler

@@ -3,12 +3,6 @@ file_format: "1.0-rc.3"
 instrumentation/development:
   # SNIPPET_START
   general:
-    peer:
-      service_mapping:
-        - peer: 1.2.3.4
-          service: FooService
-        - peer: 2.3.4.5
-          service: BarService
     http:
       client:
         request_captured_headers:
