@@ -151,16 +151,16 @@ $defs:
     type: object
     additionalProperties: false
     properties:
-      experimental:
-        type: [boolean, "null"]
-        description: |
-          Use experimental semantic conventions (before stable is available or to enable experimental features on top of stable conventions).
-        defaultBehavior: "false is used"
       version:
         type: [integer, "null"]
         description: |
           The target semantic convention version for this domain (e.g., 1).
         defaultBehavior: the latest stable version is used
+      experimental:
+        type: [boolean, "null"]
+        description: |
+          Use experimental semantic conventions (before stable is available or to enable experimental features on top of stable conventions).
+        defaultBehavior: "false is used"
       dual_emit:
         type: [boolean, "null"]
         description: |
