@@ -4855,6 +4855,7 @@ No snippets.
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
+| `sanitization` | [`ExperimentalSanitization`](#experimentalsanitization) | `false` | If omitted, defaults as described in ExperimentalSanitization are used. | No constraints. | Configure general sanitization options.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4862,6 +4863,7 @@ No snippets.
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `http` | not_applicable | unknown | supported | unknown | supported |
+| `sanitization` | not_applicable | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4885,6 +4887,10 @@ No snippets.
     "http": {
       "$ref": "#/$defs/ExperimentalHttpInstrumentation",
       "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\nIf omitted, defaults as described in ExperimentalHttpInstrumentation are used.\n"
+    },
+    "sanitization": {
+      "$ref": "#/$defs/ExperimentalSanitization",
+      "description": "Configure general sanitization options.\nIf omitted, defaults as described in ExperimentalSanitization are used.\n"
     }
   }
 }</pre>
@@ -5153,6 +5159,13 @@ general:
       response_captured_headers:
         - Content-Type
         - Content-Encoding
+  sanitization:
+    url:
+      sensitive_query_parameters:
+        - AWSAccessKeyId
+        - Signature
+        - sig
+        - X-Goog-Signature
 cpp:
   example:
     property: "value"
@@ -6257,6 +6270,49 @@ No snippets.
 }</pre>
 </details>
 
+## ExperimentalSanitization <a id="experimentalsanitization"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `url` | [`ExperimentalUrlSanitization`](#experimentalurlsanitization) | `false` | If omitted, defaults as described in ExperimentalUrlSanitization are used. | No constraints. | Configure URL sanitization options.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `url` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalGeneralInstrumentation.sanitization`](#experimentalgeneralinstrumentation)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "url": {
+      "$ref": "#/$defs/ExperimentalUrlSanitization",
+      "description": "Configure URL sanitization options.\nIf omitted, defaults as described in ExperimentalUrlSanitization are used.\n"
+    }
+  }
+}</pre>
+</details>
+
 ## ExperimentalServiceResourceDetector <a id="experimentalserviceresourcedetector"></a>
 
 > [!WARNING]
@@ -6507,6 +6563,53 @@ No snippets.
     "name",
     "config"
   ]
+}</pre>
+</details>
+
+## ExperimentalUrlSanitization <a id="experimentalurlsanitization"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `sensitive_query_parameters` | `array` of `string` | `false` | If omitted, the default sensitive query parameter list defined by the applicable semantic convention is used. | * `minItems`: `0`<br> | List of query parameter names whose values should be redacted from URLs.<br>Query parameter names are case-sensitive.<br>This is a full override of the default sensitive query parameter keys, it is not a list of keys in addition to the defaults.<br>Set to an empty array to disable query parameter redaction.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `sensitive_query_parameters` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalSanitization.url`](#experimentalsanitization)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "sensitive_query_parameters": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "description": "List of query parameter names whose values should be redacted from URLs.\nQuery parameter names are case-sensitive.\nThis is a full override of the default sensitive query parameter keys, it is not a list of keys in addition to the defaults.\nSet to an empty array to disable query parameter redaction.\nIf omitted, the default sensitive query parameter list defined by the applicable semantic convention is used.\n"
+    }
+  }
 }</pre>
 </details>
 

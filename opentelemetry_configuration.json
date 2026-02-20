@@ -668,6 +668,10 @@
         "http": {
           "$ref": "#/$defs/ExperimentalHttpInstrumentation",
           "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\nIf omitted, defaults as described in ExperimentalHttpInstrumentation are used.\n"
+        },
+        "sanitization": {
+          "$ref": "#/$defs/ExperimentalSanitization",
+          "description": "Configure general sanitization options.\nIf omitted, defaults as described in ExperimentalSanitization are used.\n"
         }
       }
     },
@@ -1120,6 +1124,16 @@
         }
       }
     },
+    "ExperimentalSanitization": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "$ref": "#/$defs/ExperimentalUrlSanitization",
+          "description": "Configure URL sanitization options.\nIf omitted, defaults as described in ExperimentalUrlSanitization are used.\n"
+        }
+      }
+    },
     "ExperimentalServiceResourceDetector": {
       "type": [
         "object",
@@ -1193,6 +1207,20 @@
         "name",
         "config"
       ]
+    },
+    "ExperimentalUrlSanitization": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sensitive_query_parameters": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "description": "List of query parameter names whose values should be redacted from URLs.\nQuery parameter names are case-sensitive.\nThis is a full override of the default sensitive query parameter keys, it is not a list of keys in addition to the defaults.\nSet to an empty array to disable query parameter redaction.\nIf omitted, the default sensitive query parameter list defined by the applicable semantic convention is used.\n"
+        }
+      }
     },
     "ExplicitBucketHistogramAggregation": {
       "type": [

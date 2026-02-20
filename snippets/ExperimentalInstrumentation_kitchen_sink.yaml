@@ -18,6 +18,13 @@ instrumentation/development:
         response_captured_headers:
           - Content-Type
           - Content-Encoding
+    sanitization:
+      url:
+        sensitive_query_parameters:
+          - AWSAccessKeyId
+          - Signature
+          - sig
+          - X-Goog-Signature
   cpp:
     example:
       property: "value"
