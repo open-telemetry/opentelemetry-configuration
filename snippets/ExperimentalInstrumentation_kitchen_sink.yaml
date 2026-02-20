@@ -22,7 +22,7 @@ instrumentation/development:
         response_captured_headers:
           - Content-Type
           - Content-Encoding
-    database:
+    db:
       semconv:
         experimental: false
         version: 1

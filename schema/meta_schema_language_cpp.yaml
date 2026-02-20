@@ -195,6 +195,9 @@ typeSupportStatuses:
   - type: ViewStream
     status: supported
     propertyOverrides: []
+  - type: ExperimentalCodeInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: not_implemented
     propertyOverrides: []
@@ -225,7 +228,10 @@ typeSupportStatuses:
   - type: ExperimentalContainerResourceDetector
     status: not_implemented
     propertyOverrides: []
-  - type: ExperimentalDatabaseInstrumentation
+  - type: ExperimentalDbInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalGenAiInstrumentation
     status: unknown
     propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
@@ -248,6 +254,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalJaegerRemoteSampler
     status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalK8sInstrumentation
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
     status: not_applicable
