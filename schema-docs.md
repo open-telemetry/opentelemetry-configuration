@@ -4324,6 +4324,49 @@ No snippets.
 
 # Experimental Types <a id="experimental-types"></a>
 
+## ExperimentalCodeInstrumentation <a id="experimentalcodeinstrumentation"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `semconv` | [`ExperimentalSemconvConfig`](#experimentalsemconvconfig) | `false` | If omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure code semantic convention version and migration behavior.<br>Controls which version and style of code semantic conventions are emitted.<br><br>This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.<br><br>See code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `semconv` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalGeneralInstrumentation.code`](#experimentalgeneralinstrumentation)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "semconv": {
+      "$ref": "#/$defs/ExperimentalSemconvConfig",
+      "description": "Configure code semantic convention version and migration behavior.\nControls which version and style of code semantic conventions are emitted.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+    }
+  }
+}</pre>
+</details>
+
 ## ExperimentalComposableAlwaysOffSampler <a id="experimentalcomposablealwaysoffsampler"></a>
 
 > [!WARNING]
@@ -4847,7 +4890,7 @@ No snippets.
 }</pre>
 </details>
 
-## ExperimentalDatabaseInstrumentation <a id="experimentaldatabaseinstrumentation"></a>
+## ExperimentalDbInstrumentation <a id="experimentaldbinstrumentation"></a>
 
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
@@ -4870,7 +4913,7 @@ Constraints:
 
 Usages:
 
-* [`ExperimentalGeneralInstrumentation.database`](#experimentalgeneralinstrumentation)
+* [`ExperimentalGeneralInstrumentation.db`](#experimentalgeneralinstrumentation)
 
 No snippets.
 
@@ -4890,6 +4933,49 @@ No snippets.
 }</pre>
 </details>
 
+## ExperimentalGenAiInstrumentation <a id="experimentalgenaiinstrumentation"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `semconv` | [`ExperimentalSemconvConfig`](#experimentalsemconvconfig) | `false` | If omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure GenAI semantic convention version and migration behavior.<br>Controls which version and style of GenAI semantic conventions are emitted.<br><br>This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.<br><br>See GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `semconv` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalGeneralInstrumentation.gen_ai`](#experimentalgeneralinstrumentation)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "semconv": {
+      "$ref": "#/$defs/ExperimentalSemconvConfig",
+      "description": "Configure GenAI semantic convention version and migration behavior.\nControls which version and style of GenAI semantic conventions are emitted.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+    }
+  }
+}</pre>
+</details>
+
 ## ExperimentalGeneralInstrumentation <a id="experimentalgeneralinstrumentation"></a>
 
 > [!WARNING]
@@ -4897,19 +4983,25 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `database` | [`ExperimentalDatabaseInstrumentation`](#experimentaldatabaseinstrumentation) | `false` | If omitted, defaults as described in ExperimentalDatabaseInstrumentation are used. | No constraints. | Configure instrumentations following the database semantic conventions.<br>See database semantic conventions: https://opentelemetry.io/docs/specs/semconv/database/<br> |
+| `code` | [`ExperimentalCodeInstrumentation`](#experimentalcodeinstrumentation) | `false` | If omitted, defaults as described in ExperimentalCodeInstrumentation are used. | No constraints. | Configure instrumentations following the code semantic conventions.<br>See code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/<br> |
+| `db` | [`ExperimentalDbInstrumentation`](#experimentaldbinstrumentation) | `false` | If omitted, defaults as described in ExperimentalDbInstrumentation are used. | No constraints. | Configure instrumentations following the database semantic conventions.<br>See database semantic conventions: https://opentelemetry.io/docs/specs/semconv/database/<br> |
+| `gen_ai` | [`ExperimentalGenAiInstrumentation`](#experimentalgenaiinstrumentation) | `false` | If omitted, defaults as described in ExperimentalGenAiInstrumentation are used. | No constraints. | Configure instrumentations following the GenAI semantic conventions.<br>See GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/<br> |
 | `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
+| `k8s` | [`ExperimentalK8sInstrumentation`](#experimentalk8sinstrumentation) | `false` | If omitted, defaults as described in ExperimentalK8sInstrumentation are used. | No constraints. | Configure instrumentations following the Kubernetes semantic conventions.<br>See Kubernetes semantic conventions: https://opentelemetry.io/docs/specs/semconv/resource/k8s/<br> |
 | `messaging` | [`ExperimentalMessagingInstrumentation`](#experimentalmessaginginstrumentation) | `false` | If omitted, defaults as described in ExperimentalMessagingInstrumentation are used. | No constraints. | Configure instrumentations following the messaging semantic conventions.<br>See messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/<br> |
 | `rpc` | [`ExperimentalRpcInstrumentation`](#experimentalrpcinstrumentation) | `false` | If omitted, defaults as described in ExperimentalRpcInstrumentation are used. | No constraints. | Configure instrumentations following the RPC semantic conventions.<br>See RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/<br> |
-| `stability_opt_in_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no opt-in is configured and instrumentations continue emitting their default semantic convention version. | No constraints. | Configure semantic convention stability opt-in as a comma-separated list.<br>This property follows the format and semantics of the OTEL_SEMCONV_STABILITY_OPT_IN environment variable.<br>Controls the emission of stable vs. experimental semantic conventions for instrumentation.<br>This setting is only intended for migrating from experimental to stable semantic conventions.<br><br>Known values include:<br>- http: Emit stable HTTP and networking conventions only<br>- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)<br>- database: Emit stable database conventions only<br>- database/dup: Emit both old and stable database conventions (for phased migration)<br>- rpc: Emit stable RPC conventions only<br>- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)<br>- messaging: Emit stable messaging conventions only<br>- messaging/dup: Emit both old and stable messaging conventions (for phased migration)<br><br>Multiple values can be specified as a comma-separated list (e.g., "http,database/dup").<br>Additional signal types (e.g., messaging) may be supported in future versions.<br><br>Domain-specific semconv properties (e.g., .instrumentation/development.general.http.semconv) take precedence over this general setting.<br><br>See:<br>- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/<br>- Database migration: https://opentelemetry.io/docs/specs/semconv/database/<br>- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/<br>- Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/<br> |
+| `stability_opt_in_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no opt-in is configured and instrumentations continue emitting their default semantic convention version. | No constraints. | Configure semantic convention stability opt-in as a comma-separated list.<br>This property follows the format and semantics of the OTEL_SEMCONV_STABILITY_OPT_IN environment variable.<br>Controls the emission of stable vs. experimental semantic conventions for instrumentation.<br>This setting is only intended for migrating from experimental to stable semantic conventions.<br><br>Known values include:<br>- http: Emit stable HTTP and networking conventions only<br>- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)<br>- database: Emit stable database conventions only<br>- database/dup: Emit both old and stable database conventions (for phased migration)<br>- rpc: Emit stable RPC conventions only<br>- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)<br>- messaging: Emit stable messaging conventions only<br>- messaging/dup: Emit both old and stable messaging conventions (for phased migration)<br><br>Multiple values can be specified as a comma-separated list (e.g., "http,database/dup").<br>Additional signal types (e.g., messaging) may be supported in future versions.<br><br>Domain-specific semconv properties (e.g., .instrumentation/development.general.db.semconv) take precedence over this general setting.<br><br>See:<br>- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/<br>- Database migration: https://opentelemetry.io/docs/specs/semconv/database/<br>- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/<br>- Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/<br> |
 
 <details>
 <summary>Language support status</summary>
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `database` | not_applicable | unknown | supported | unknown | supported |
+| `code` | not_applicable | unknown | supported | unknown | supported |
+| `db` | not_applicable | unknown | supported | unknown | supported |
+| `gen_ai` | not_applicable | unknown | supported | unknown | supported |
 | `http` | not_applicable | unknown | supported | unknown | supported |
+| `k8s` | not_applicable | unknown | supported | unknown | supported |
 | `messaging` | not_applicable | unknown | supported | unknown | supported |
 | `rpc` | not_applicable | unknown | supported | unknown | supported |
 | `stability_opt_in_list` | not_applicable | unknown | supported | unknown | supported |
@@ -4939,7 +5031,7 @@ http:
   # Use stable HTTP and networking conventions (latest version)
   semconv:
     version: 1
-database:
+db:
   # Use stable database conventions and also emit previous version for phased migration
   semconv:
     version: 1
@@ -4959,24 +5051,36 @@ database:
       "$ref": "#/$defs/ExperimentalHttpInstrumentation",
       "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\nIf omitted, defaults as described in ExperimentalHttpInstrumentation are used.\n"
     },
-    "database": {
-      "$ref": "#/$defs/ExperimentalDatabaseInstrumentation",
-      "description": "Configure instrumentations following the database semantic conventions.\nSee database semantic conventions: https://opentelemetry.io/docs/specs/semconv/database/\nIf omitted, defaults as described in ExperimentalDatabaseInstrumentation are used.\n"
+    "code": {
+      "$ref": "#/$defs/ExperimentalCodeInstrumentation",
+      "description": "Configure instrumentations following the code semantic conventions.\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/\nIf omitted, defaults as described in ExperimentalCodeInstrumentation are used.\n"
     },
-    "rpc": {
-      "$ref": "#/$defs/ExperimentalRpcInstrumentation",
-      "description": "Configure instrumentations following the RPC semantic conventions.\nSee RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/\nIf omitted, defaults as described in ExperimentalRpcInstrumentation are used.\n"
+    "db": {
+      "$ref": "#/$defs/ExperimentalDbInstrumentation",
+      "description": "Configure instrumentations following the database semantic conventions.\nSee database semantic conventions: https://opentelemetry.io/docs/specs/semconv/database/\nIf omitted, defaults as described in ExperimentalDbInstrumentation are used.\n"
+    },
+    "gen_ai": {
+      "$ref": "#/$defs/ExperimentalGenAiInstrumentation",
+      "description": "Configure instrumentations following the GenAI semantic conventions.\nSee GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/\nIf omitted, defaults as described in ExperimentalGenAiInstrumentation are used.\n"
+    },
+    "k8s": {
+      "$ref": "#/$defs/ExperimentalK8sInstrumentation",
+      "description": "Configure instrumentations following the Kubernetes semantic conventions.\nSee Kubernetes semantic conventions: https://opentelemetry.io/docs/specs/semconv/resource/k8s/\nIf omitted, defaults as described in ExperimentalK8sInstrumentation are used.\n"
     },
     "messaging": {
       "$ref": "#/$defs/ExperimentalMessagingInstrumentation",
       "description": "Configure instrumentations following the messaging semantic conventions.\nSee messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/\nIf omitted, defaults as described in ExperimentalMessagingInstrumentation are used.\n"
+    },
+    "rpc": {
+      "$ref": "#/$defs/ExperimentalRpcInstrumentation",
+      "description": "Configure instrumentations following the RPC semantic conventions.\nSee RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/\nIf omitted, defaults as described in ExperimentalRpcInstrumentation are used.\n"
     },
     "stability_opt_in_list": {
       "type": [
         "string",
         "null"
       ],
-      "description": "Configure semantic convention stability opt-in as a comma-separated list.\nThis property follows the format and semantics of the OTEL_SEMCONV_STABILITY_OPT_IN environment variable.\nControls the emission of stable vs. experimental semantic conventions for instrumentation.\nThis setting is only intended for migrating from experimental to stable semantic conventions.\n\nKnown values include:\n- http: Emit stable HTTP and networking conventions only\n- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)\n- database: Emit stable database conventions only\n- database/dup: Emit both old and stable database conventions (for phased migration)\n- rpc: Emit stable RPC conventions only\n- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)\n- messaging: Emit stable messaging conventions only\n- messaging/dup: Emit both old and stable messaging conventions (for phased migration)\n\nMultiple values can be specified as a comma-separated list (e.g., \"http,database/dup\").\nAdditional signal types (e.g., messaging) may be supported in future versions.\n\nDomain-specific semconv properties (e.g., .instrumentation/development.general.http.semconv) take precedence over this general setting.\n\nSee:\n- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/\n- Database migration: https://opentelemetry.io/docs/specs/semconv/database/\n- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/\n- Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/\nIf omitted or null, no opt-in is configured and instrumentations continue emitting their default semantic convention version.\n"
+      "description": "Configure semantic convention stability opt-in as a comma-separated list.\nThis property follows the format and semantics of the OTEL_SEMCONV_STABILITY_OPT_IN environment variable.\nControls the emission of stable vs. experimental semantic conventions for instrumentation.\nThis setting is only intended for migrating from experimental to stable semantic conventions.\n\nKnown values include:\n- http: Emit stable HTTP and networking conventions only\n- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)\n- database: Emit stable database conventions only\n- database/dup: Emit both old and stable database conventions (for phased migration)\n- rpc: Emit stable RPC conventions only\n- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)\n- messaging: Emit stable messaging conventions only\n- messaging/dup: Emit both old and stable messaging conventions (for phased migration)\n\nMultiple values can be specified as a comma-separated list (e.g., \"http,database/dup\").\nAdditional signal types (e.g., messaging) may be supported in future versions.\n\nDomain-specific semconv properties (e.g., .instrumentation/development.general.db.semconv) take precedence over this general setting.\n\nSee:\n- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/\n- Database migration: https://opentelemetry.io/docs/specs/semconv/database/\n- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/\n- Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/\nIf omitted or null, no opt-in is configured and instrumentations continue emitting their default semantic convention version.\n"
     }
   }
 }</pre>
@@ -5255,7 +5359,7 @@ general:
       response_captured_headers:
         - Content-Type
         - Content-Encoding
-  database:
+  db:
     semconv:
       experimental: false
       version: 1
@@ -5433,6 +5537,49 @@ No snippets.
     "endpoint",
     "initial_sampler"
   ]
+}</pre>
+</details>
+
+## ExperimentalK8sInstrumentation <a id="experimentalk8sinstrumentation"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `semconv` | [`ExperimentalSemconvConfig`](#experimentalsemconvconfig) | `false` | If omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure Kubernetes semantic convention version and migration behavior.<br>Controls which version and style of Kubernetes semantic conventions are emitted.<br><br>This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.<br><br>See Kubernetes semantic conventions: https://opentelemetry.io/docs/specs/semconv/resource/k8s/<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `semconv` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalGeneralInstrumentation.k8s`](#experimentalgeneralinstrumentation)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "semconv": {
+      "$ref": "#/$defs/ExperimentalSemconvConfig",
+      "description": "Configure Kubernetes semantic convention version and migration behavior.\nControls which version and style of Kubernetes semantic conventions are emitted.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee Kubernetes semantic conventions: https://opentelemetry.io/docs/specs/semconv/resource/k8s/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+    }
+  }
 }</pre>
 </details>
 
@@ -6489,7 +6636,10 @@ Constraints:
 Usages:
 
 * [`ExperimentalHttpInstrumentation.semconv`](#experimentalhttpinstrumentation)
-* [`ExperimentalDatabaseInstrumentation.semconv`](#experimentaldatabaseinstrumentation)
+* [`ExperimentalCodeInstrumentation.semconv`](#experimentalcodeinstrumentation)
+* [`ExperimentalDbInstrumentation.semconv`](#experimentaldbinstrumentation)
+* [`ExperimentalGenAiInstrumentation.semconv`](#experimentalgenaiinstrumentation)
+* [`ExperimentalK8sInstrumentation.semconv`](#experimentalk8sinstrumentation)
 * [`ExperimentalRpcInstrumentation.semconv`](#experimentalrpcinstrumentation)
 * [`ExperimentalMessagingInstrumentation.semconv`](#experimentalmessaginginstrumentation)
 

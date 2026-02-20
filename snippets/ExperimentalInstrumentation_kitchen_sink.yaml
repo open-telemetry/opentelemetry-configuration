@@ -42,7 +42,7 @@ instrumentation/development:
           - POST
           - PUT
           - TRACE
-    database:
+    db:
       semconv:
         experimental: false
         version: 1

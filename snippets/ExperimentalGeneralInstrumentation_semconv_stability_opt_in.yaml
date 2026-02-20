@@ -12,7 +12,7 @@ instrumentation/development:
       # Use stable HTTP and networking conventions (latest version)
       semconv:
         version: 1
-    database:
+    db:
       # Use stable database conventions and also emit previous version for phased migration
       semconv:
         version: 1
