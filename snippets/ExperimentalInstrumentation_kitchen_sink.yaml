@@ -6,8 +6,8 @@ instrumentation/development:
     http:
       semconv:
         experimental: true
-        version: v1
-        dup: true
+        version: 1
+        dual_emit: true
       client:
         request_captured_headers:
           - Content-Type
@@ -45,18 +45,18 @@ instrumentation/development:
     database:
       semconv:
         experimental: false
-        version: v1
-        dup: false
+        version: 1
+        dual_emit: false
     rpc:
       semconv:
         experimental: false
-        version: v1
-        dup: true
+        version: 1
+        dual_emit: true
     messaging:
       semconv:
         experimental: true
-        version: v1
-        dup: false
+        version: 1
+        dual_emit: false
     stability_opt_in_list: "http/dup,database"
   cpp:
     example:

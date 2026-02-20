@@ -1200,17 +1200,17 @@
         },
         "version": {
           "type": [
-            "string",
+            "integer",
             "null"
           ],
-          "description": "The semantic convention version to use (e.g., v1, v2).\nIf omitted or null, the latest stable version is used.\n"
+          "description": "The target semantic convention version for this domain (e.g., 1).\nIf omitted or null, the latest stable version is used.\n"
         },
-        "dup": {
+        "dual_emit": {
           "type": [
             "boolean",
             "null"
           ],
-          "description": "Also emit the (stable) previous version of semantic conventions for phased migration.\nIf omitted or null, false is used.\n"
+          "description": "When true, also emit the previous stable major version alongside the target version (e.g., version=2, dual_emit=true emits both v2 and v1).\nEnables dual-emit for phased migration between major versions.\nIf omitted or null, false is used.\n"
         }
       }
     },

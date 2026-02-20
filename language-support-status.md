@@ -116,7 +116,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dup`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
+| [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | not_implemented |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | not_implemented |  | * `enabled`: not_implemented<br> |
@@ -230,7 +230,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dup`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
+| [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | unknown |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | unknown |  | * `enabled`: unknown<br> |
@@ -344,7 +344,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dup`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
+| [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | supported |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | supported |  | * `local`: supported<br>* `none`: supported<br>* `remote`: supported<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | supported |  | * `enabled`: supported<br> |
@@ -458,7 +458,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dup`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
+| [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | unknown |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | unknown |  | * `enabled`: unknown<br> |
@@ -572,7 +572,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | supported |  | * `container`: ignored<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dup`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
+| [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | supported |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | supported |  | * `enabled`: supported<br> |
