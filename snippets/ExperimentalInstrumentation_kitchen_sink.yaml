@@ -4,6 +4,10 @@ instrumentation/development:
   # SNIPPET_START
   general:
     http:
+      semconv:
+        version: 1
+        experimental: true
+        dual_emit: true
       client:
         request_captured_headers:
           - Content-Type
@@ -18,6 +22,22 @@ instrumentation/development:
         response_captured_headers:
           - Content-Type
           - Content-Encoding
+    db:
+      semconv:
+        version: 1
+        experimental: false
+        dual_emit: false
+    rpc:
+      semconv:
+        version: 1
+        experimental: false
+        dual_emit: true
+    messaging:
+      semconv:
+        version: 1
+        experimental: true
+        dual_emit: false
+    stability_opt_in_list: "http/dup,database"
   cpp:
     example:
       property: "value"
