@@ -5,8 +5,8 @@ instrumentation/development:
   general:
     http:
       semconv:
-        experimental: true
         version: 1
+        experimental: true
         dual_emit: true
       client:
         request_captured_headers:
@@ -44,18 +44,18 @@ instrumentation/development:
           - TRACE
     db:
       semconv:
-        experimental: false
         version: 1
+        experimental: false
         dual_emit: false
     rpc:
       semconv:
-        experimental: false
         version: 1
+        experimental: false
         dual_emit: true
     messaging:
       semconv:
-        experimental: true
         version: 1
+        experimental: true
         dual_emit: false
     stability_opt_in_list: "http/dup,database"
   cpp:
