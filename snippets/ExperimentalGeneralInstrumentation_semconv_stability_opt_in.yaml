@@ -11,9 +11,9 @@ instrumentation/development:
     http:
       # Use stable HTTP and networking conventions (latest version)
       semconv:
-        version: v1
+        version: 1
     database:
       # Use stable database conventions and also emit previous version for phased migration
       semconv:
-        version: v1
-        dup: true
+        version: 1
+        dual_emit: true

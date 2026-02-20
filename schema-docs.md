@@ -4938,12 +4938,12 @@ stability_opt_in_list: "http,database/dup"
 http:
   # Use stable HTTP and networking conventions (latest version)
   semconv:
-    version: v1
+    version: 1
 database:
   # Use stable database conventions and also emit previous version for phased migration
   semconv:
-    version: v1
-    dup: true
+    version: 1
+    dual_emit: true
 ```
 </details>
 
@@ -5239,8 +5239,8 @@ general:
   http:
     semconv:
       experimental: true
-      version: v1
-      dup: true
+      version: 1
+      dual_emit: true
     client:
       request_captured_headers:
         - Content-Type
@@ -5258,18 +5258,18 @@ general:
   database:
     semconv:
       experimental: false
-      version: v1
-      dup: false
+      version: 1
+      dual_emit: false
   rpc:
     semconv:
       experimental: false
-      version: v1
-      dup: true
+      version: 1
+      dual_emit: true
   messaging:
     semconv:
       experimental: true
-      version: v1
-      dup: false
+      version: 1
+      dual_emit: false
   stability_opt_in_list: "http/dup,database"
 cpp:
   example:
@@ -6468,16 +6468,16 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `dup` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Also emit the (stable) previous version of semantic conventions for phased migration.<br> |
+| `dual_emit` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | When true, also emit the previous stable major version alongside the target version (e.g., version=2, dual_emit=true emits both v2 and v1).<br>Enables dual-emit for phased migration between major versions.<br> |
 | `experimental` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Use experimental semantic conventions (before stable is available or to enable experimental features on top of stable conventions).<br> |
-| `version` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, the latest stable version is used. | No constraints. | The semantic convention version to use (e.g., v1, v2).<br> |
+| `version` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the latest stable version is used. | No constraints. | The target semantic convention version for this domain (e.g., 1).<br> |
 
 <details>
 <summary>Language support status</summary>
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `dup` | unknown | unknown | unknown | unknown | unknown |
+| `dual_emit` | unknown | unknown | unknown | unknown | unknown |
 | `experimental` | unknown | unknown | unknown | unknown | unknown |
 | `version` | unknown | unknown | unknown | unknown | unknown |
 </details>
@@ -6512,17 +6512,17 @@ No snippets.
     },
     "version": {
       "type": [
-        "string",
+        "integer",
         "null"
       ],
-      "description": "The semantic convention version to use (e.g., v1, v2).\nIf omitted or null, the latest stable version is used.\n"
+      "description": "The target semantic convention version for this domain (e.g., 1).\nIf omitted or null, the latest stable version is used.\n"
     },
-    "dup": {
+    "dual_emit": {
       "type": [
         "boolean",
         "null"
       ],
-      "description": "Also emit the (stable) previous version of semantic conventions for phased migration.\nIf omitted or null, false is used.\n"
+      "description": "When true, also emit the previous stable major version alongside the target version (e.g., version=2, dual_emit=true emits both v2 and v1).\nEnables dual-emit for phased migration between major versions.\nIf omitted or null, false is used.\n"
     }
   }
 }</pre>
