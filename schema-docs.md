@@ -6573,7 +6573,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `sensitive_query_parameters` | `array` of `string` | `false` | If omitted, the default sensitive query parameter list defined by the applicable semantic convention is used. | * `minItems`: `0`<br> | List of query parameter names whose values should be redacted from URLs.<br>Query parameter names are case-sensitive.<br>This is a full override of the default sensitive query parameter keys, it is not a list of keys in addition to the defaults.<br>Set to an empty array to disable query parameter redaction.<br> |
+| `sensitive_query_parameters` | `array` of `string` | `false` | If omitted, the default sensitive query parameter list as defined by the url semantic conventions (https://github.com/open-telemetry/semantic-conventions/blob/main/docs/registry/attributes/url.md) is used. | * `minItems`: `0`<br> | List of query parameter names whose values should be redacted from URLs.<br>Query parameter names are case-sensitive.<br>This is a full override of the default sensitive query parameter keys, it is not a list of keys in addition to the defaults.<br>Set to an empty array to disable query parameter redaction.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -6607,7 +6607,7 @@ No snippets.
       "items": {
         "type": "string"
       },
-      "description": "List of query parameter names whose values should be redacted from URLs.\nQuery parameter names are case-sensitive.\nThis is a full override of the default sensitive query parameter keys, it is not a list of keys in addition to the defaults.\nSet to an empty array to disable query parameter redaction.\nIf omitted, the default sensitive query parameter list defined by the applicable semantic convention is used.\n"
+      "description": "List of query parameter names whose values should be redacted from URLs.\nQuery parameter names are case-sensitive.\nThis is a full override of the default sensitive query parameter keys, it is not a list of keys in addition to the defaults.\nSet to an empty array to disable query parameter redaction.\nIf omitted, the default sensitive query parameter list as defined by the url semantic conventions (https://github.com/open-telemetry/semantic-conventions/blob/main/docs/registry/attributes/url.md) is used.\n"
     }
   }
 }</pre>
