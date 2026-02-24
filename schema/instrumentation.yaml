@@ -86,7 +86,7 @@ $defs:
         $ref: "#/$defs/ExperimentalCodeInstrumentation"
         description: |
           Configure instrumentations following the code semantic conventions.
-          See code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/
+          See code semantic conventions: https://opentelemetry.io/docs/specs/semconv/registry/attributes/code/
         defaultBehavior: defaults as described in ExperimentalCodeInstrumentation are used
       db:
         $ref: "#/$defs/ExperimentalDbInstrumentation"
@@ -253,7 +253,7 @@ $defs:
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
-          See code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/
+          See code semantic conventions: https://opentelemetry.io/docs/specs/semconv/registry/attributes/code/
         defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
   ExperimentalDbInstrumentation:
     type: object

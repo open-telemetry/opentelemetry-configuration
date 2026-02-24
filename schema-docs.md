@@ -4331,7 +4331,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `semconv` | [`ExperimentalSemconvConfig`](#experimentalsemconvconfig) | `false` | If omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure code semantic convention version and migration behavior.<br><br>This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.<br><br>See code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/<br> |
+| `semconv` | [`ExperimentalSemconvConfig`](#experimentalsemconvconfig) | `false` | If omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure code semantic convention version and migration behavior.<br><br>This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.<br><br>See code semantic conventions: https://opentelemetry.io/docs/specs/semconv/registry/attributes/code/<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4361,7 +4361,7 @@ No snippets.
   "properties": {
     "semconv": {
       "$ref": "#/$defs/ExperimentalSemconvConfig",
-      "description": "Configure code semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+      "description": "Configure code semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/registry/attributes/code/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
     }
   }
 }</pre>
@@ -4983,7 +4983,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `code` | [`ExperimentalCodeInstrumentation`](#experimentalcodeinstrumentation) | `false` | If omitted, defaults as described in ExperimentalCodeInstrumentation are used. | No constraints. | Configure instrumentations following the code semantic conventions.<br>See code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/<br> |
+| `code` | [`ExperimentalCodeInstrumentation`](#experimentalcodeinstrumentation) | `false` | If omitted, defaults as described in ExperimentalCodeInstrumentation are used. | No constraints. | Configure instrumentations following the code semantic conventions.<br>See code semantic conventions: https://opentelemetry.io/docs/specs/semconv/registry/attributes/code/<br> |
 | `db` | [`ExperimentalDbInstrumentation`](#experimentaldbinstrumentation) | `false` | If omitted, defaults as described in ExperimentalDbInstrumentation are used. | No constraints. | Configure instrumentations following the database semantic conventions.<br>See database semantic conventions: https://opentelemetry.io/docs/specs/semconv/database/<br> |
 | `gen_ai` | [`ExperimentalGenAiInstrumentation`](#experimentalgenaiinstrumentation) | `false` | If omitted, defaults as described in ExperimentalGenAiInstrumentation are used. | No constraints. | Configure instrumentations following the GenAI semantic conventions.<br>See GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/<br> |
 | `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
@@ -5051,7 +5051,7 @@ db:
     },
     "code": {
       "$ref": "#/$defs/ExperimentalCodeInstrumentation",
-      "description": "Configure instrumentations following the code semantic conventions.\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/\nIf omitted, defaults as described in ExperimentalCodeInstrumentation are used.\n"
+      "description": "Configure instrumentations following the code semantic conventions.\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/registry/attributes/code/\nIf omitted, defaults as described in ExperimentalCodeInstrumentation are used.\n"
     },
     "db": {
       "$ref": "#/$defs/ExperimentalDbInstrumentation",

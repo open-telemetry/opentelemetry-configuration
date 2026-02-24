@@ -472,7 +472,7 @@
       "properties": {
         "semconv": {
           "$ref": "#/$defs/ExperimentalSemconvConfig",
-          "description": "Configure code semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+          "description": "Configure code semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/registry/attributes/code/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
         }
       }
     },
@@ -699,7 +699,7 @@
         },
         "code": {
           "$ref": "#/$defs/ExperimentalCodeInstrumentation",
-          "description": "Configure instrumentations following the code semantic conventions.\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/\nIf omitted, defaults as described in ExperimentalCodeInstrumentation are used.\n"
+          "description": "Configure instrumentations following the code semantic conventions.\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/registry/attributes/code/\nIf omitted, defaults as described in ExperimentalCodeInstrumentation are used.\n"
         },
         "db": {
           "$ref": "#/$defs/ExperimentalDbInstrumentation",
