@@ -280,13 +280,13 @@ $defs:
       - "null"
     enum:
       - underscore_escaping_with_suffixes
-      - underscore_escaping_without_suffixes
-      - no_utf8_escaping_with_suffixes
-      - no_translation
+      - underscore_escaping_without_suffixes/development
+      - no_utf8_escaping_with_suffixes/development
+      - no_translation/development
     enumDescriptions:
-      no_translation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.
-      no_utf8_escaping_with_suffixes: Special character escaping is disabled. Type and unit suffixes are enabled.
-      underscore_escaping_without_suffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.
+      no_translation/development: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.
+      no_utf8_escaping_with_suffixes/development: Special character escaping is disabled. Type and unit suffixes are enabled.
+      underscore_escaping_without_suffixes/development: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.
       underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.
   MetricReader:
     type: object
