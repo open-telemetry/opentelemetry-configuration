@@ -472,7 +472,7 @@
       "properties": {
         "semconv": {
           "$ref": "#/$defs/ExperimentalSemconvConfig",
-          "description": "Configure code semantic convention version and migration behavior.\nControls which version and style of code semantic conventions are emitted.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+          "description": "Configure code semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee code semantic conventions: https://opentelemetry.io/docs/specs/semconv/code/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
         }
       }
     },
@@ -675,7 +675,7 @@
       "properties": {
         "semconv": {
           "$ref": "#/$defs/ExperimentalSemconvConfig",
-          "description": "Configure database semantic convention version and migration behavior.\nControls which version and style of database semantic conventions are emitted.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee database migration: https://opentelemetry.io/docs/specs/semconv/database/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+          "description": "Configure database semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee database migration: https://opentelemetry.io/docs/specs/semconv/database/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
         }
       }
     },
@@ -685,7 +685,7 @@
       "properties": {
         "semconv": {
           "$ref": "#/$defs/ExperimentalSemconvConfig",
-          "description": "Configure GenAI semantic convention version and migration behavior.\nControls which version and style of GenAI semantic conventions are emitted.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+          "description": "Configure GenAI semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
         }
       }
     },
@@ -708,10 +708,6 @@
         "gen_ai": {
           "$ref": "#/$defs/ExperimentalGenAiInstrumentation",
           "description": "Configure instrumentations following the GenAI semantic conventions.\nSee GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/\nIf omitted, defaults as described in ExperimentalGenAiInstrumentation are used.\n"
-        },
-        "k8s": {
-          "$ref": "#/$defs/ExperimentalK8sInstrumentation",
-          "description": "Configure instrumentations following the Kubernetes semantic conventions.\nSee Kubernetes semantic conventions: https://opentelemetry.io/docs/specs/semconv/resource/k8s/\nIf omitted, defaults as described in ExperimentalK8sInstrumentation are used.\n"
         },
         "messaging": {
           "$ref": "#/$defs/ExperimentalMessagingInstrumentation",
@@ -773,7 +769,7 @@
       "properties": {
         "semconv": {
           "$ref": "#/$defs/ExperimentalSemconvConfig",
-          "description": "Configure HTTP semantic convention version and migration behavior.\nControls which version and style of HTTP and networking semantic conventions are emitted.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+          "description": "Configure HTTP semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
         },
         "client": {
           "$ref": "#/$defs/ExperimentalHttpClientInstrumentation",
@@ -900,16 +896,6 @@
         "initial_sampler"
       ]
     },
-    "ExperimentalK8sInstrumentation": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "semconv": {
-          "$ref": "#/$defs/ExperimentalSemconvConfig",
-          "description": "Configure Kubernetes semantic convention version and migration behavior.\nControls which version and style of Kubernetes semantic conventions are emitted.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee Kubernetes semantic conventions: https://opentelemetry.io/docs/specs/semconv/resource/k8s/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
-        }
-      }
-    },
     "ExperimentalLanguageSpecificInstrumentation": {
       "type": "object",
       "additionalProperties": {
@@ -990,7 +976,7 @@
       "properties": {
         "semconv": {
           "$ref": "#/$defs/ExperimentalSemconvConfig",
-          "description": "Configure messaging semantic convention version and migration behavior.\nControls which version and style of messaging semantic conventions are emitted.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+          "description": "Configure messaging semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
         }
       }
     },
@@ -1225,7 +1211,7 @@
       "properties": {
         "semconv": {
           "$ref": "#/$defs/ExperimentalSemconvConfig",
-          "description": "Configure RPC semantic convention version and migration behavior.\nControls which version and style of RPC semantic conventions are emitted.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+          "description": "Configure RPC semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
         }
       }
     },
@@ -1233,19 +1219,19 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "version": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The target semantic convention version for this domain (e.g., 1).\nIf omitted or null, the latest stable version is used, or if no stable version is available and .experimental is true then the latest experimental version is used.\n"
+        },
         "experimental": {
           "type": [
             "boolean",
             "null"
           ],
           "description": "Use experimental semantic conventions (before stable is available or to enable experimental features on top of stable conventions).\nIf omitted or null, false is used.\n"
-        },
-        "version": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "description": "The target semantic convention version for this domain (e.g., 1).\nIf omitted or null, the latest stable version is used.\n"
         },
         "dual_emit": {
           "type": [

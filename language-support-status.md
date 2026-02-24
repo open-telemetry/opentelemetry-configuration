@@ -94,14 +94,13 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | not_implemented |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | not_applicable |  | * `code`: not_applicable<br>* `db`: not_applicable<br>* `gen_ai`: not_applicable<br>* `http`: not_applicable<br>* `k8s`: not_applicable<br>* `messaging`: not_applicable<br>* `rpc`: not_applicable<br>* `stability_opt_in_list`: not_applicable<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | not_applicable |  | * `code`: not_applicable<br>* `db`: not_applicable<br>* `gen_ai`: not_applicable<br>* `http`: not_applicable<br>* `messaging`: not_applicable<br>* `rpc`: not_applicable<br>* `stability_opt_in_list`: not_applicable<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | not_implemented |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | not_applicable |  | * `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | not_applicable |  | * `client`: not_applicable<br>* `semconv`: not_applicable<br>* `server`: not_applicable<br> |
 | [`ExperimentalHttpServerInstrumentation`](schema-docs.md#experimentalhttpserverinstrumentation) | not_applicable |  | * `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
 | [`ExperimentalInstrumentation`](schema-docs.md#experimentalinstrumentation) | not_applicable |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: not_applicable<br>* `go`: not_applicable<br>* `java`: not_applicable<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | [`ExperimentalJaegerRemoteSampler`](schema-docs.md#experimentaljaegerremotesampler) | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
-| [`ExperimentalK8sInstrumentation`](schema-docs.md#experimentalk8sinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | not_applicable |  |  |
 | [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | not_implemented |  | * `enabled`: not_implemented<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
 | [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `loggers`: not_implemented<br> |
@@ -211,14 +210,13 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `code`: unknown<br>* `db`: unknown<br>* `gen_ai`: unknown<br>* `http`: unknown<br>* `k8s`: unknown<br>* `messaging`: unknown<br>* `rpc`: unknown<br>* `stability_opt_in_list`: unknown<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `code`: unknown<br>* `db`: unknown<br>* `gen_ai`: unknown<br>* `http`: unknown<br>* `messaging`: unknown<br>* `rpc`: unknown<br>* `stability_opt_in_list`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | unknown |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | unknown |  | * `client`: unknown<br>* `semconv`: unknown<br>* `server`: unknown<br> |
 | [`ExperimentalHttpServerInstrumentation`](schema-docs.md#experimentalhttpserverinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
 | [`ExperimentalInstrumentation`](schema-docs.md#experimentalinstrumentation) | unknown |  | * `cpp`: unknown<br>* `dotnet`: unknown<br>* `erlang`: unknown<br>* `general`: unknown<br>* `go`: unknown<br>* `java`: unknown<br>* `js`: unknown<br>* `php`: unknown<br>* `python`: unknown<br>* `ruby`: unknown<br>* `rust`: unknown<br>* `swift`: unknown<br> |
 | [`ExperimentalJaegerRemoteSampler`](schema-docs.md#experimentaljaegerremotesampler) | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
-| [`ExperimentalK8sInstrumentation`](schema-docs.md#experimentalk8sinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | unknown |  |  |
 | [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | unknown |  | * `enabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | unknown |  | * `default_config`: unknown<br>* `loggers`: unknown<br> |
@@ -328,14 +326,13 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | supported |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `k8s`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `stability_opt_in_list`: supported<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `stability_opt_in_list`: supported<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | supported |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | supported |  | * `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | supported |  | * `client`: supported<br>* `semconv`: supported<br>* `server`: supported<br> |
 | [`ExperimentalHttpServerInstrumentation`](schema-docs.md#experimentalhttpserverinstrumentation) | supported |  | * `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
 | [`ExperimentalInstrumentation`](schema-docs.md#experimentalinstrumentation) | supported |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: supported<br>* `go`: not_applicable<br>* `java`: supported<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | [`ExperimentalJaegerRemoteSampler`](schema-docs.md#experimentaljaegerremotesampler) | supported |  | * `endpoint`: supported<br>* `initial_sampler`: supported<br>* `interval`: supported<br> |
-| [`ExperimentalK8sInstrumentation`](schema-docs.md#experimentalk8sinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | supported |  |  |
 | [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | supported |  | * `enabled`: supported<br>* `minimum_severity`: supported<br>* `trace_based`: supported<br> |
 | [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |
@@ -445,14 +442,13 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `code`: unknown<br>* `db`: unknown<br>* `gen_ai`: unknown<br>* `http`: unknown<br>* `k8s`: unknown<br>* `messaging`: unknown<br>* `rpc`: unknown<br>* `stability_opt_in_list`: unknown<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `code`: unknown<br>* `db`: unknown<br>* `gen_ai`: unknown<br>* `http`: unknown<br>* `messaging`: unknown<br>* `rpc`: unknown<br>* `stability_opt_in_list`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | unknown |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | unknown |  | * `client`: unknown<br>* `semconv`: unknown<br>* `server`: unknown<br> |
 | [`ExperimentalHttpServerInstrumentation`](schema-docs.md#experimentalhttpserverinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
 | [`ExperimentalInstrumentation`](schema-docs.md#experimentalinstrumentation) | unknown |  | * `cpp`: unknown<br>* `dotnet`: unknown<br>* `erlang`: unknown<br>* `general`: unknown<br>* `go`: unknown<br>* `java`: unknown<br>* `js`: unknown<br>* `php`: unknown<br>* `python`: unknown<br>* `ruby`: unknown<br>* `rust`: unknown<br>* `swift`: unknown<br> |
 | [`ExperimentalJaegerRemoteSampler`](schema-docs.md#experimentaljaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `initial_sampler`: unknown<br>* `interval`: unknown<br> |
-| [`ExperimentalK8sInstrumentation`](schema-docs.md#experimentalk8sinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | unknown |  |  |
 | [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | unknown |  | * `enabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | unknown |  | * `default_config`: unknown<br>* `loggers`: unknown<br> |
@@ -562,14 +558,13 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | ignored |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `k8s`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `stability_opt_in_list`: supported<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `stability_opt_in_list`: supported<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | supported |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | supported |  | * `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | supported |  | * `client`: supported<br>* `semconv`: supported<br>* `server`: supported<br> |
 | [`ExperimentalHttpServerInstrumentation`](schema-docs.md#experimentalhttpserverinstrumentation) | supported |  | * `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
 | [`ExperimentalInstrumentation`](schema-docs.md#experimentalinstrumentation) | supported |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: supported<br>* `go`: not_applicable<br>* `java`: not_applicable<br>* `js`: not_applicable<br>* `php`: supported<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | [`ExperimentalJaegerRemoteSampler`](schema-docs.md#experimentaljaegerremotesampler) | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
-| [`ExperimentalK8sInstrumentation`](schema-docs.md#experimentalk8sinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | supported |  |  |
 | [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | supported |  | * `enabled`: supported<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
 | [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |

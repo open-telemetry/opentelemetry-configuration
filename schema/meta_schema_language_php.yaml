@@ -318,9 +318,6 @@ typeSupportStatuses:
   - type: ExperimentalJaegerRemoteSampler
     status: not_implemented
     propertyOverrides: []
-  - type: ExperimentalK8sInstrumentation
-    status: unknown
-    propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
     status: supported
     propertyOverrides: []

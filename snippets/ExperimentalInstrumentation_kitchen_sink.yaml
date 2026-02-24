@@ -57,6 +57,7 @@ instrumentation/development:
         version: 1
         experimental: true
         dual_emit: false
+    # Domain-specific semconv sections above (http, db, etc.) take precedence over this general setting.
     stability_opt_in_list: "http/dup,database"
   cpp:
     example:

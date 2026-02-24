@@ -100,12 +100,6 @@ $defs:
           Configure instrumentations following the GenAI semantic conventions.
           See GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/
         defaultBehavior: defaults as described in ExperimentalGenAiInstrumentation are used
-      k8s:
-        $ref: "#/$defs/ExperimentalK8sInstrumentation"
-        description: |
-          Configure instrumentations following the Kubernetes semantic conventions.
-          See Kubernetes semantic conventions: https://opentelemetry.io/docs/specs/semconv/resource/k8s/
-        defaultBehavior: defaults as described in ExperimentalK8sInstrumentation are used
       messaging:
         $ref: "#/$defs/ExperimentalMessagingInstrumentation"
         description: |
@@ -155,7 +149,7 @@ $defs:
         type: [integer, "null"]
         description: |
           The target semantic convention version for this domain (e.g., 1).
-        defaultBehavior: the latest stable version is used
+        defaultBehavior: the latest stable version is used, or if no stable version is available and .experimental is true then the latest experimental version is used
       experimental:
         type: [boolean, "null"]
         description: |
@@ -235,7 +229,6 @@ $defs:
         $ref: "#/$defs/ExperimentalSemconvConfig"
         description: |
           Configure HTTP semantic convention version and migration behavior.
-          Controls which version and style of HTTP and networking semantic conventions are emitted.
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
@@ -257,7 +250,6 @@ $defs:
         $ref: "#/$defs/ExperimentalSemconvConfig"
         description: |
           Configure code semantic convention version and migration behavior.
-          Controls which version and style of code semantic conventions are emitted.
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
@@ -271,7 +263,6 @@ $defs:
         $ref: "#/$defs/ExperimentalSemconvConfig"
         description: |
           Configure database semantic convention version and migration behavior.
-          Controls which version and style of database semantic conventions are emitted.
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
@@ -285,25 +276,10 @@ $defs:
         $ref: "#/$defs/ExperimentalSemconvConfig"
         description: |
           Configure GenAI semantic convention version and migration behavior.
-          Controls which version and style of GenAI semantic conventions are emitted.
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
           See GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/
-        defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
-  ExperimentalK8sInstrumentation:
-    type: object
-    additionalProperties: false
-    properties:
-      semconv:
-        $ref: "#/$defs/ExperimentalSemconvConfig"
-        description: |
-          Configure Kubernetes semantic convention version and migration behavior.
-          Controls which version and style of Kubernetes semantic conventions are emitted.
-
-          This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
-
-          See Kubernetes semantic conventions: https://opentelemetry.io/docs/specs/semconv/resource/k8s/
         defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
   ExperimentalRpcInstrumentation:
     type: object
@@ -313,7 +289,6 @@ $defs:
         $ref: "#/$defs/ExperimentalSemconvConfig"
         description: |
           Configure RPC semantic convention version and migration behavior.
-          Controls which version and style of RPC semantic conventions are emitted.
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
@@ -327,7 +302,6 @@ $defs:
         $ref: "#/$defs/ExperimentalSemconvConfig"
         description: |
           Configure messaging semantic convention version and migration behavior.
-          Controls which version and style of messaging semantic conventions are emitted.
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
