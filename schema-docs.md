@@ -4534,7 +4534,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `rules` | one of:<br>* `array`<br>* `null`<br> | `false` | If omitted or null, no span is sampled. | No constraints. | The rules for the sampler, matched in order. If no rules match, the span is not sampled.<br> |
+| `rules` | `array` of [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | `false` | If omitted, no span is sampled. | * `minItems`: `1`<br> | The rules for the sampler, matched in order.<br>Each rule can have multiple match conditions. All conditions must match for the rule to match.<br>If no conditions are specified, the rule matches all spans that reach it.<br>If no rules match, the span is not sampled.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4566,14 +4566,12 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "rules": {
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
       },
-      "description": "The rules for the sampler, matched in order. If no rules match, the span is not sampled.\nIf omitted or null, no span is sampled.\n"
+      "description": "The rules for the sampler, matched in order.\nEach rule can have multiple match conditions. All conditions must match for the rule to match.\nIf no conditions are specified, the rule matches all spans that reach it.\nIf no rules match, the span is not sampled.\nIf omitted, no span is sampled.\n"
     }
   }
 }</pre>
@@ -4609,7 +4607,9 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["sampler"]`
 
-No usages.
+Usages:
+
+* [`ExperimentalComposableRuleBasedSampler.rules`](#experimentalcomposablerulebasedsampler)
 
 No snippets.
 
@@ -4989,7 +4989,7 @@ No snippets.
 | `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
 | `messaging` | [`ExperimentalMessagingInstrumentation`](#experimentalmessaginginstrumentation) | `false` | If omitted, defaults as described in ExperimentalMessagingInstrumentation are used. | No constraints. | Configure instrumentations following the messaging semantic conventions.<br>See messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/<br> |
 | `rpc` | [`ExperimentalRpcInstrumentation`](#experimentalrpcinstrumentation) | `false` | If omitted, defaults as described in ExperimentalRpcInstrumentation are used. | No constraints. | Configure instrumentations following the RPC semantic conventions.<br>See RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/<br> |
-| `stability_opt_in_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no opt-in is configured and instrumentations continue emitting their default semantic convention version. | No constraints. | Configure semantic convention stability opt-in as a comma-separated list.<br>This property follows the format and semantics of the OTEL_SEMCONV_STABILITY_OPT_IN environment variable.<br>Controls the emission of stable vs. experimental semantic conventions for instrumentation.<br>This setting is only intended for migrating from experimental to stable semantic conventions.<br><br>Known values include:<br>- http: Emit stable HTTP and networking conventions only<br>- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)<br>- database: Emit stable database conventions only<br>- database/dup: Emit both old and stable database conventions (for phased migration)<br>- rpc: Emit stable RPC conventions only<br>- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)<br>- messaging: Emit stable messaging conventions only<br>- messaging/dup: Emit both old and stable messaging conventions (for phased migration)<br><br>Multiple values can be specified as a comma-separated list (e.g., "http,database/dup").<br>Additional signal types (e.g., messaging) may be supported in future versions.<br><br>Domain-specific semconv properties (e.g., .instrumentation/development.general.db.semconv) take precedence over this general setting.<br><br>See:<br>- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/<br>- Database migration: https://opentelemetry.io/docs/specs/semconv/database/<br>- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/<br>- Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/<br> |
+| `stability_opt_in_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no opt-in is configured and instrumentations continue emitting their default semantic convention version. | No constraints. | Configure semantic convention stability opt-in as a comma-separated list.<br>This property follows the format and semantics of the OTEL_SEMCONV_STABILITY_OPT_IN environment variable.<br>Controls the emission of stable vs. experimental semantic conventions for instrumentation.<br>This setting is only intended for migrating from experimental to stable semantic conventions.<br><br>Known values include:<br>- http: Emit stable HTTP and networking conventions only<br>- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)<br>- database: Emit stable database conventions only<br>- database/dup: Emit both old and stable database conventions (for phased migration)<br>- rpc: Emit stable RPC conventions only<br>- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)<br>- messaging: Emit stable messaging conventions only<br>- messaging/dup: Emit both old and stable messaging conventions (for phased migration)<br><br>Multiple values can be specified as a comma-separated list (e.g., "http,database/dup").<br>Additional signal types may be supported in future versions.<br><br>Domain-specific semconv properties (e.g., .instrumentation/development.general.db.semconv) take precedence over this general setting.<br><br>See:<br>- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/<br>- Database migration: https://opentelemetry.io/docs/specs/semconv/database/<br>- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/<br>- Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -5074,7 +5074,7 @@ db:
         "string",
         "null"
       ],
-      "description": "Configure semantic convention stability opt-in as a comma-separated list.\nThis property follows the format and semantics of the OTEL_SEMCONV_STABILITY_OPT_IN environment variable.\nControls the emission of stable vs. experimental semantic conventions for instrumentation.\nThis setting is only intended for migrating from experimental to stable semantic conventions.\n\nKnown values include:\n- http: Emit stable HTTP and networking conventions only\n- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)\n- database: Emit stable database conventions only\n- database/dup: Emit both old and stable database conventions (for phased migration)\n- rpc: Emit stable RPC conventions only\n- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)\n- messaging: Emit stable messaging conventions only\n- messaging/dup: Emit both old and stable messaging conventions (for phased migration)\n\nMultiple values can be specified as a comma-separated list (e.g., \"http,database/dup\").\nAdditional signal types (e.g., messaging) may be supported in future versions.\n\nDomain-specific semconv properties (e.g., .instrumentation/development.general.db.semconv) take precedence over this general setting.\n\nSee:\n- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/\n- Database migration: https://opentelemetry.io/docs/specs/semconv/database/\n- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/\n- Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/\nIf omitted or null, no opt-in is configured and instrumentations continue emitting their default semantic convention version.\n"
+      "description": "Configure semantic convention stability opt-in as a comma-separated list.\nThis property follows the format and semantics of the OTEL_SEMCONV_STABILITY_OPT_IN environment variable.\nControls the emission of stable vs. experimental semantic conventions for instrumentation.\nThis setting is only intended for migrating from experimental to stable semantic conventions.\n\nKnown values include:\n- http: Emit stable HTTP and networking conventions only\n- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)\n- database: Emit stable database conventions only\n- database/dup: Emit both old and stable database conventions (for phased migration)\n- rpc: Emit stable RPC conventions only\n- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)\n- messaging: Emit stable messaging conventions only\n- messaging/dup: Emit both old and stable messaging conventions (for phased migration)\n\nMultiple values can be specified as a comma-separated list (e.g., \"http,database/dup\").\nAdditional signal types may be supported in future versions.\n\nDomain-specific semconv properties (e.g., .instrumentation/development.general.db.semconv) take precedence over this general setting.\n\nSee:\n- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/\n- Database migration: https://opentelemetry.io/docs/specs/semconv/database/\n- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/\n- Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/\nIf omitted or null, no opt-in is configured and instrumentations continue emitting their default semantic convention version.\n"
     }
   }
 }</pre>
@@ -5117,6 +5117,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
+| `known_methods` | `array` of `string` | `false` | If omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known. | * `minItems`: `0`<br> | Override the default list of known HTTP methods.<br>Known methods are case-sensitive.<br>This is a full override of the default known methods, not a list of known methods in addition to the defaults.<br> |
 | `request_captured_headers` | `array` of `string` | `false` | If omitted, no outbound request headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for outbound http requests.<br> |
 | `response_captured_headers` | `array` of `string` | `false` | If omitted, no inbound response headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for inbound http responses.<br> |
 
@@ -5125,6 +5126,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
+| `known_methods` | not_applicable | unknown | supported | unknown | supported |
 | `request_captured_headers` | not_applicable | unknown | supported | unknown | supported |
 | `response_captured_headers` | not_applicable | unknown | supported | unknown | supported |
 </details>
@@ -5162,6 +5164,14 @@ No snippets.
         "type": "string"
       },
       "description": "Configure headers to capture for inbound http responses.\nIf omitted, no inbound response headers are captured.\n"
+    },
+    "known_methods": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "description": "Override the default list of known HTTP methods.\nKnown methods are case-sensitive.\nThis is a full override of the default known methods, not a list of known methods in addition to the defaults.\nIf omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known.\n"
     }
   }
 }</pre>
@@ -5229,6 +5239,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
+| `known_methods` | `array` of `string` | `false` | If omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known. | * `minItems`: `0`<br> | Override the default list of known HTTP methods.<br>Known methods are case-sensitive.<br>This is a full override of the default known methods, not a list of known methods in addition to the defaults.<br> |
 | `request_captured_headers` | `array` of `string` | `false` | If omitted, no request headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for inbound http requests.<br> |
 | `response_captured_headers` | `array` of `string` | `false` | If omitted, no response headers are captures. | * `minItems`: `1`<br> | Configure headers to capture for outbound http responses.<br> |
 
@@ -5237,6 +5248,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
+| `known_methods` | not_applicable | unknown | supported | unknown | supported |
 | `request_captured_headers` | not_applicable | unknown | supported | unknown | supported |
 | `response_captured_headers` | not_applicable | unknown | supported | unknown | supported |
 </details>
@@ -5274,6 +5286,14 @@ No snippets.
         "type": "string"
       },
       "description": "Configure headers to capture for outbound http responses.\nIf omitted, no response headers are captures.\n"
+    },
+    "known_methods": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "description": "Override the default list of known HTTP methods.\nKnown methods are case-sensitive.\nThis is a full override of the default known methods, not a list of known methods in addition to the defaults.\nIf omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known.\n"
     }
   }
 }</pre>
@@ -5346,6 +5366,16 @@ general:
       response_captured_headers:
         - Content-Type
         - Content-Encoding
+      known_methods:
+        - CONNECT
+        - DELETE
+        - GET
+        - HEAD
+        - OPTIONS
+        - PATCH
+        - POST
+        - PUT
+        - TRACE
     server:
       request_captured_headers:
         - Content-Type
@@ -5353,6 +5383,16 @@ general:
       response_captured_headers:
         - Content-Type
         - Content-Encoding
+      known_methods:
+        - CONNECT
+        - DELETE
+        - GET
+        - HEAD
+        - OPTIONS
+        - PATCH
+        - POST
+        - PUT
+        - TRACE
   db:
     semconv:
       version: 1
@@ -6567,7 +6607,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `dual_emit` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | When true, also emit the previous stable major version alongside the target version (e.g., version=2, dual_emit=true emits both v2 and v1).<br>Enables dual-emit for phased migration between major versions.<br> |
+| `dual_emit` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | When true, also emit the previous major version alongside the target version.<br>For version=1, the previous version refers to the pre-stable conventions that the instrumentation emitted before the first stable semantic convention version was defined.<br>For version=2 and above, the previous version is the prior stable major version (e.g., version=2, dual_emit=true emits both v2 and v1).<br>Enables dual-emit for phased migration between versions.<br> |
 | `experimental` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Use experimental semantic conventions (before stable is available or to enable experimental features on top of stable conventions).<br> |
 | `version` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the latest stable version is used, or if no stable version is available and .experimental is true then the latest experimental version is used. | No constraints. | The target semantic convention version for this domain (e.g., 1).<br> |
 
@@ -6623,7 +6663,7 @@ No snippets.
         "boolean",
         "null"
       ],
-      "description": "When true, also emit the previous stable major version alongside the target version (e.g., version=2, dual_emit=true emits both v2 and v1).\nEnables dual-emit for phased migration between major versions.\nIf omitted or null, false is used.\n"
+      "description": "When true, also emit the previous major version alongside the target version.\nFor version=1, the previous version refers to the pre-stable conventions that the instrumentation emitted before the first stable semantic convention version was defined.\nFor version=2 and above, the previous version is the prior stable major version (e.g., version=2, dual_emit=true emits both v2 and v1).\nEnables dual-emit for phased migration between versions.\nIf omitted or null, false is used.\n"
     }
   }
 }</pre>
