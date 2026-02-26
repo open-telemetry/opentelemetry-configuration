@@ -102,6 +102,16 @@ $defs:
         description: |
           Configure headers to capture for inbound http responses.
         defaultBehavior: no inbound response headers are captured
+      known_methods:
+        type: array
+        minItems: 0
+        items:
+          type: string
+        description: |
+          Override the default list of known HTTP methods.
+          Known methods are case-sensitive.
+          This is a full override of the default known methods, not a list of known methods in addition to the defaults.
+        defaultBehavior: HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known
   ExperimentalHttpServerInstrumentation:
     type: object
     additionalProperties: false
@@ -122,6 +132,16 @@ $defs:
         description: |
           Configure headers to capture for outbound http responses.
         defaultBehavior: no response headers are captures
+      known_methods:
+        type: array
+        minItems: 0
+        items:
+          type: string
+        description: |
+          Override the default list of known HTTP methods.
+          Known methods are case-sensitive.
+          This is a full override of the default known methods, not a list of known methods in addition to the defaults.
+        defaultBehavior: HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known
   ExperimentalHttpInstrumentation:
     type: object
     additionalProperties: false
