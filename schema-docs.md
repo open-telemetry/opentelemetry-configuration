@@ -4491,7 +4491,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `rules` | one of:<br>* `array`<br>* `null`<br> | `false` | If omitted or null, no span is sampled. | No constraints. | The rules for the sampler, matched in order. If no rules match, the span is not sampled.<br> |
+| `rules` | `array` of [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | `false` | If omitted, no span is sampled. | * `minItems`: `1`<br> | The rules for the sampler, matched in order.<br>Each rule can have multiple match conditions. All conditions must match for the rule to match.<br>If no conditions are specified, the rule matches all spans that reach it.<br>If no rules match, the span is not sampled.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4523,14 +4523,12 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "rules": {
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
       },
-      "description": "The rules for the sampler, matched in order. If no rules match, the span is not sampled.\nIf omitted or null, no span is sampled.\n"
+      "description": "The rules for the sampler, matched in order.\nEach rule can have multiple match conditions. All conditions must match for the rule to match.\nIf no conditions are specified, the rule matches all spans that reach it.\nIf no rules match, the span is not sampled.\nIf omitted, no span is sampled.\n"
     }
   }
 }</pre>
@@ -4566,7 +4564,9 @@ Constraints:
 * `additionalProperties`: `false`
 * `required`: `["sampler"]`
 
-No usages.
+Usages:
+
+* [`ExperimentalComposableRuleBasedSampler.rules`](#experimentalcomposablerulebasedsampler)
 
 No snippets.
 
