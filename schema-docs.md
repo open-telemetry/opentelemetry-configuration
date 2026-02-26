@@ -4528,7 +4528,7 @@ No snippets.
       "items": {
         "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
       },
-      "description": "The rules for the sampler, matched in order. If no rules match, the span is not sampled.\nIf omitted or null, no span is sampled.\n"
+      "description": "The rules for the sampler, matched in order.\nEach rule can have multiple match conditions. All conditions must match for the rule to match.\nIf no conditions are specified, the rule matches all spans that reach it.\nIf no rules match, the span is not sampled.\nIf omitted, no span is sampled.\n"
     }
   }
 }</pre>
