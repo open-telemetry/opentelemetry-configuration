@@ -281,6 +281,8 @@ $defs:
 
           This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
 
+          Set .experimental to true to enable latest experimental mode.
+
           See GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/
         defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
   ExperimentalRpcInstrumentation:
