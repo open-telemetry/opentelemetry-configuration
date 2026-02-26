@@ -129,6 +129,8 @@ $defs:
           - rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)
           - messaging: Emit stable messaging conventions only
           - messaging/dup: Emit both old and stable messaging conventions (for phased migration)
+          - code: Emit stable code conventions only
+          - code/dup: Emit both old and stable code conventions (for phased migration)
 
           Multiple values can be specified as a comma-separated list (e.g., "http,database/dup").
           Additional signal types may be supported in future versions.
@@ -147,13 +149,14 @@ $defs:
     properties:
       version:
         type: [integer, "null"]
+        minimum: 0
         description: |
           The target semantic convention version for this domain (e.g., 1).
         defaultBehavior: the latest stable version is used, or if no stable version is available and .experimental is true then the latest experimental version is used
       experimental:
         type: [boolean, "null"]
         description: |
-          Use experimental semantic conventions (before stable is available or to enable experimental features on top of stable conventions).
+          Use latest experimental semantic conventions (before stable is available or to enable experimental features on top of stable conventions).
         defaultBehavior: "false is used"
       dual_emit:
         type: [boolean, "null"]
