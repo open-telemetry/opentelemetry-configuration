@@ -19,7 +19,7 @@ properties:
   exemplar_filter:
     $ref: "#/$defs/ExemplarFilter"
     description: |
-      Configure the exemplar filter. 
+      Configure the exemplar filter.
     defaultBehavior: trace_based is used
   meter_configurator/development:
     $ref: "#/$defs/ExperimentalMeterConfigurator"
@@ -110,7 +110,7 @@ $defs:
         exclusiveMinimum: 0
         description: |
           Configure default cardinality limit for all instrument types.
-          Instrument-specific cardinality limits take priority. 
+          Instrument-specific cardinality limits take priority.
         defaultBehavior: 2000 is used
       counter:
         type:
@@ -257,7 +257,7 @@ $defs:
           - boolean
           - "null"
         description: |
-          Configure Prometheus Exporter to produce metrics without a scope info metric.
+          Configure Prometheus Exporter to produce metrics without scope labels.
         defaultBehavior: false is used
       without_target_info:
         type:
@@ -592,7 +592,7 @@ $defs:
       aggregation:
         $ref: "#/$defs/Aggregation"
         description: |
-          Configure aggregation of the resulting stream(s). 
+          Configure aggregation of the resulting stream(s).
         defaultBehavior: default is used
       aggregation_cardinality_limit:
         type:
@@ -745,8 +745,8 @@ $defs:
       - object
     additionalProperties: false
     properties:
-      disabled:
+      enabled:
         type:
           - boolean
         description: Configure if the meter is enabled or not.
-        defaultBehavior: false is used
+        defaultBehavior: true is used

@@ -1,4 +1,4 @@
-latestSupportedFileFormat: 1.0.0-rc.1
+latestSupportedFileFormat: 1.0.0-rc.3
 typeSupportStatuses:
   - type: Aggregation
     status: supported
@@ -55,7 +55,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: Distribution
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: DropAggregation
     status: supported
@@ -75,10 +75,12 @@ typeSupportStatuses:
     status: supported
     enumOverrides: []
   - type: GrpcTls
-    status: not_implemented
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: insecure
+        status: not_implemented
   - type: HttpTls
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: IncludeExclude
     status: supported
@@ -86,9 +88,6 @@ typeSupportStatuses:
   - type: InstrumentType
     status: supported
     enumOverrides: []
-  - type: JaegerPropagator
-    status: supported
-    propertyOverrides: []
   - type: LastValueAggregation
     status: supported
     propertyOverrides: []
@@ -124,38 +123,25 @@ typeSupportStatuses:
     propertyOverrides:
       - property: log_level
         status: not_implemented
-  - type: OpenTracingPropagator
-    status: supported
-    propertyOverrides: []
   - type: OtlpGrpcExporter
     status: supported
-    propertyOverrides:
-      - property: tls
-        status: ignored
+    propertyOverrides: []
   - type: OtlpGrpcMetricExporter
     status: supported
-    propertyOverrides:
-      - property: tls
-        status: ignored
+    propertyOverrides: []
   - type: OtlpHttpEncoding
     status: not_implemented
-    enumOverrides:
-      - enumValue: json
-        status: not_implemented
+    enumOverrides: []
   - type: OtlpHttpExporter
     status: supported
     propertyOverrides:
       - property: encoding
         status: not_implemented
-      - property: tls
-        status: ignored
   - type: OtlpHttpMetricExporter
     status: supported
     propertyOverrides:
       - property: encoding
         status: not_implemented
-      - property: tls
-        status: ignored
   - type: ParentBasedSampler
     status: supported
     propertyOverrides: []
@@ -185,11 +171,9 @@ typeSupportStatuses:
         status: ignored
   - type: Sampler
     status: supported
-    propertyOverrides:
-      - property: probability/development
-        status: ignored
+    propertyOverrides: []
   - type: SeverityNumber
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: SimpleLogRecordProcessor
     status: supported
@@ -201,7 +185,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: SpanKind
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: SpanLimits
     status: supported
@@ -229,38 +213,36 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ViewSelector
     status: supported
-    propertyOverrides:
-      - property: unit
-        status: ignored
+    propertyOverrides: []
   - type: ViewStream
     status: supported
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOnSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableParentThresholdSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableProbabilitySampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRule
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: supported
@@ -304,18 +286,14 @@ typeSupportStatuses:
       - property: swift
         status: not_applicable
   - type: ExperimentalJaegerRemoteSampler
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
     status: supported
     propertyOverrides: []
   - type: ExperimentalLoggerConfig
     status: supported
-    propertyOverrides:
-      - property: minimum_severity
-        status: not_implemented
-      - property: trace_based
-        status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalLoggerConfigurator
     status: supported
     propertyOverrides: []
@@ -341,14 +319,8 @@ typeSupportStatuses:
     propertyOverrides:
       - property: output_stream
         status: not_implemented
-  - type: ExperimentalPeerInstrumentation
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalPeerServiceMapping
-    status: supported
-    propertyOverrides: []
   - type: ExperimentalProbabilitySampler
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
     status: supported
@@ -358,12 +330,8 @@ typeSupportStatuses:
     propertyOverrides:
       - property: translation_strategy
         status: not_implemented
-      - property: without_scope_info
-        status: ignored
-      - property: without_target_info
-        status: ignored
   - type: ExperimentalPrometheusTranslationStrategy
-    status: unknown
+    status: not_implemented
     enumOverrides: []
   - type: ExperimentalResourceDetection
     status: supported
@@ -375,7 +343,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ExperimentalSpanParent
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: ExperimentalTracerConfig
     status: supported

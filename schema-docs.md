@@ -7,8 +7,9 @@ This document is an auto-generated view of the declarative configuration JSON sc
 
 * [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [OpenTelemetryConfiguration](#opentelemetryconfiguration) is the root type and is a good starting point.
 * [Experimental Types](#experimental-types) same as [Types](#types) but for experimental types subject to breaking changes.
-* [Language Support Status](#language-support-status) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
 * [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
+
+See also [language support status](language-support-status.md) for all details about each language's support in a single place.
 
 # Types <a id="types"></a>
 
@@ -26,14 +27,14 @@ This document is an auto-generated view of the declarative configuration JSON sc
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown |
-| `default` | supported | unknown | supported | unknown |
-| `drop` | supported | unknown | supported | unknown |
-| `explicit_bucket_histogram` | supported | unknown | supported | unknown |
-| `last_value` | supported | unknown | supported | unknown |
-| `sum` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown | ignored |
+| `default` | supported | unknown | supported | unknown | ignored |
+| `drop` | supported | unknown | supported | unknown | ignored |
+| `explicit_bucket_histogram` | supported | unknown | supported | unknown | ignored |
+| `last_value` | supported | unknown | supported | unknown | ignored |
+| `sum` | supported | unknown | supported | unknown | ignored |
 </details>
 
 Constraints: 
@@ -59,22 +60,28 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "default": {
-      "$ref": "#/$defs/DefaultAggregation"
+      "$ref": "#/$defs/DefaultAggregation",
+      "description": "Configures the stream to use the instrument kind to select an aggregation and advisory parameters to influence aggregation configuration parameters. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#default-aggregation for details.\nIf omitted, ignore.\n"
     },
     "drop": {
-      "$ref": "#/$defs/DropAggregation"
+      "$ref": "#/$defs/DropAggregation",
+      "description": "Configures the stream to ignore/drop all instrument measurements. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#drop-aggregation for details.\nIf omitted, ignore.\n"
     },
     "explicit_bucket_histogram": {
-      "$ref": "#/$defs/ExplicitBucketHistogramAggregation"
+      "$ref": "#/$defs/ExplicitBucketHistogramAggregation",
+      "description": "Configures the stream to collect data for the histogram metric point using a set of explicit boundary values for histogram bucketing. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation for details\nIf omitted, ignore.\n"
     },
     "base2_exponential_bucket_histogram": {
-      "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation"
+      "$ref": "#/$defs/Base2ExponentialBucketHistogramAggregation",
+      "description": "Configures the stream to collect data for the exponential histogram metric point, which uses a base-2 exponential formula to determine bucket boundaries and an integer scale parameter to control resolution. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation for details.\nIf omitted, ignore.\n"
     },
     "last_value": {
-      "$ref": "#/$defs/LastValueAggregation"
+      "$ref": "#/$defs/LastValueAggregation",
+      "description": "Configures the stream to collect data using the last measurement. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#last-value-aggregation for details.\nIf omitted, ignore.\n"
     },
     "sum": {
-      "$ref": "#/$defs/SumAggregation"
+      "$ref": "#/$defs/SumAggregation",
+      "description": "Configures the stream to collect the arithmetic sum of measurement values. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sum-aggregation for details.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -144,10 +151,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `attribute_count_limit` | supported | unknown | supported | unknown |
-| `attribute_value_length_limit` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `attribute_count_limit` | supported | unknown | supported | unknown | supported |
+| `attribute_value_length_limit` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -173,14 +180,16 @@ No snippets.
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max attribute value size. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
     },
     "attribute_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max attribute count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
     }
   }
 }</pre>
@@ -197,11 +206,11 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `name` | supported | unknown | supported | unknown |
-| `type` | supported | unknown | supported | unknown |
-| `value` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `name` | supported | supported | supported | unknown | supported |
+| `type` | supported | supported | supported | unknown | not_implemented |
+| `value` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -224,7 +233,8 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "description": "The attribute name.\nProperty is required and must be non-null.\n"
     },
     "value": {
       "oneOf": [
@@ -261,10 +271,12 @@ No snippets.
           },
           "minItems": 1
         }
-      ]
+      ],
+      "description": "The attribute value.\nThe type of value must match .type.\nProperty is required and must be non-null.\n"
     },
     "type": {
-      "$ref": "#/$defs/AttributeType"
+      "$ref": "#/$defs/AttributeType",
+      "description": "The attribute type.\nValues include:\n* bool: Boolean attribute value.\n* bool_array: Boolean array attribute value.\n* double: Double attribute value.\n* double_array: Double array attribute value.\n* int: Integer attribute value.\n* int_array: Integer array attribute value.\n* string: String attribute value.\n* string_array: String array attribute value.\nIf omitted, string is used.\n"
     }
   },
   "required": [
@@ -292,16 +304,16 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `bool` | supported | unknown | supported | unknown |
-| `bool_array` | supported | unknown | supported | unknown |
-| `double` | supported | unknown | supported | unknown |
-| `double_array` | supported | unknown | supported | unknown |
-| `int` | supported | unknown | supported | unknown |
-| `int_array` | supported | unknown | supported | unknown |
-| `string` | supported | unknown | supported | unknown |
-| `string_array` | supported | unknown | supported | unknown |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `bool` | supported | supported | supported | unknown | not_implemented |
+| `bool_array` | supported | supported | supported | unknown | not_implemented |
+| `double` | supported | supported | supported | unknown | not_implemented |
+| `double_array` | supported | supported | supported | unknown | not_implemented |
+| `int` | supported | supported | supported | unknown | not_implemented |
+| `int_array` | supported | supported | supported | unknown | not_implemented |
+| `string` | supported | supported | supported | unknown | not_implemented |
+| `string_array` | supported | supported | supported | unknown | not_implemented |
 </details>
 
 No constraints.
@@ -426,11 +438,11 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `max_scale` | supported | unknown | supported | unknown |
-| `max_size` | supported | unknown | supported | unknown |
-| `record_min_max` | supported | unknown | not_implemented | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `max_scale` | supported | unknown | supported | unknown | not_implemented |
+| `max_size` | supported | unknown | supported | unknown | not_implemented |
+| `record_min_max` | supported | unknown | not_implemented | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -460,20 +472,23 @@ No snippets.
         "null"
       ],
       "minimum": -10,
-      "maximum": 20
+      "maximum": 20,
+      "description": "Configure the max scale factor.\nIf omitted or null, 20 is used.\n"
     },
     "max_size": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 2
+      "minimum": 2,
+      "description": "Configure the maximum number of buckets in each of the positive and negative ranges, not counting the special zero bucket.\nIf omitted or null, 160 is used.\n"
     },
     "record_min_max": {
       "type": [
         "boolean",
         "null"
-      ]
+      ],
+      "description": "Configure whether or not to record min and max.\nIf omitted or null, true is used.\n"
     }
   }
 }</pre>
@@ -492,13 +507,13 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `export_timeout` | supported | unknown | supported | unknown |
-| `exporter` | supported | unknown | supported | unknown |
-| `max_export_batch_size` | supported | unknown | supported | unknown |
-| `max_queue_size` | supported | unknown | supported | unknown |
-| `schedule_delay` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `export_timeout` | supported | supported | supported | unknown | supported |
+| `exporter` | supported | supported | supported | unknown | supported |
+| `max_export_batch_size` | supported | supported | supported | unknown | supported |
+| `max_queue_size` | supported | supported | supported | unknown | supported |
+| `schedule_delay` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -525,31 +540,36 @@ No snippets.
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure delay interval (in milliseconds) between two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 1000 is used.\n"
     },
     "export_timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
     },
     "max_queue_size": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure maximum queue size. Value must be positive.\nIf omitted or null, 2048 is used.\n"
     },
     "max_export_batch_size": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure maximum batch size. Value must be positive.\nIf omitted or null, 512 is used.\n"
     },
     "exporter": {
-      "$ref": "#/$defs/LogRecordExporter"
+      "$ref": "#/$defs/LogRecordExporter",
+      "description": "Configure exporter.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -571,13 +591,13 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `export_timeout` | supported | unknown | supported | unknown |
-| `exporter` | supported | unknown | supported | unknown |
-| `max_export_batch_size` | supported | unknown | supported | unknown |
-| `max_queue_size` | supported | unknown | supported | unknown |
-| `schedule_delay` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `export_timeout` | supported | supported | supported | unknown | supported |
+| `exporter` | supported | supported | supported | unknown | supported |
+| `max_export_batch_size` | supported | supported | supported | unknown | supported |
+| `max_queue_size` | supported | supported | supported | unknown | supported |
+| `schedule_delay` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -604,31 +624,36 @@ No snippets.
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure delay interval (in milliseconds) between two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 5000 is used.\n"
     },
     "export_timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
     },
     "max_queue_size": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure maximum queue size. Value must be positive.\nIf omitted or null, 2048 is used.\n"
     },
     "max_export_batch_size": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure maximum batch size. Value must be positive.\nIf omitted or null, 512 is used.\n"
     },
     "exporter": {
-      "$ref": "#/$defs/SpanExporter"
+      "$ref": "#/$defs/SpanExporter",
+      "description": "Configure exporter.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -642,7 +667,7 @@ No snippets.
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for counter instruments.<br> |
-| `default` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 2000 is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for all instrument types.<br>Instrument-specific cardinality limits take priority. <br> |
+| `default` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 2000 is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for all instrument types.<br>Instrument-specific cardinality limits take priority.<br> |
 | `gauge` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for gauge instruments.<br> |
 | `histogram` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for histogram instruments.<br> |
 | `observable_counter` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the value from .default is used. | * `exclusiveMinimum`: `0`<br> | Configure default cardinality limit for observable_counter instruments.<br> |
@@ -653,16 +678,16 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `counter` | not_implemented | unknown | supported | unknown |
-| `default` | not_implemented | unknown | supported | unknown |
-| `gauge` | not_implemented | unknown | supported | unknown |
-| `histogram` | not_implemented | unknown | supported | unknown |
-| `observable_counter` | not_implemented | unknown | supported | unknown |
-| `observable_gauge` | not_implemented | unknown | supported | unknown |
-| `observable_up_down_counter` | not_implemented | unknown | supported | unknown |
-| `up_down_counter` | not_implemented | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `counter` | ignored | unknown | supported | unknown | not_implemented |
+| `default` | ignored | unknown | supported | unknown | not_implemented |
+| `gauge` | ignored | unknown | supported | unknown | not_implemented |
+| `histogram` | ignored | unknown | supported | unknown | not_implemented |
+| `observable_counter` | ignored | unknown | supported | unknown | not_implemented |
+| `observable_gauge` | ignored | unknown | supported | unknown | not_implemented |
+| `observable_up_down_counter` | ignored | unknown | supported | unknown | not_implemented |
+| `up_down_counter` | ignored | unknown | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -674,7 +699,24 @@ Usages:
 * [`PeriodicMetricReader.cardinality_limits`](#periodicmetricreader)
 * [`PullMetricReader.cardinality_limits`](#pullmetricreader)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/CardinalityLimits_kitchen_sink.yaml)
+```yaml
+# specify .default to set cardinality limits for all instruments, or specify instrument-specific limits. Instrument-specific limits take priority over .default. In this contrived example, the cardinality limits of each instrument type are set to 2000, overriding the value from .default.
+default: 100
+counter: 2000
+gauge: 2000
+histogram: 2000
+observable_counter: 2000
+observable_gauge: 2000
+observable_up_down_counter: 2000
+up_down_counter: 2000
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -689,56 +731,64 @@ No snippets.
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure default cardinality limit for all instrument types.\nInstrument-specific cardinality limits take priority.\nIf omitted or null, 2000 is used.\n"
     },
     "counter": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure default cardinality limit for counter instruments.\nIf omitted or null, the value from .default is used.\n"
     },
     "gauge": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure default cardinality limit for gauge instruments.\nIf omitted or null, the value from .default is used.\n"
     },
     "histogram": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure default cardinality limit for histogram instruments.\nIf omitted or null, the value from .default is used.\n"
     },
     "observable_counter": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure default cardinality limit for observable_counter instruments.\nIf omitted or null, the value from .default is used.\n"
     },
     "observable_gauge": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure default cardinality limit for observable_gauge instruments.\nIf omitted or null, the value from .default is used.\n"
     },
     "observable_up_down_counter": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure default cardinality limit for observable_up_down_counter instruments.\nIf omitted or null, the value from .default is used.\n"
     },
     "up_down_counter": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure default cardinality limit for up_down_counter instruments.\nIf omitted or null, the value from .default is used.\n"
     }
   }
 }</pre>
@@ -757,7 +807,25 @@ Usages:
 * [`LogRecordExporter.console`](#logrecordexporter)
 * [`SpanExporter.console`](#spanexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Logs Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ConsoleExporter_logs_kitchen_sink.yaml)
+```yaml
+
+```
+</details>
+
+<details>
+<summary>Traces Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ConsoleExporter_traces_kitchen_sink.yaml)
+```yaml
+
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -782,10 +850,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `default_histogram_aggregation` | supported | unknown | not_implemented | unknown |
-| `temporality_preference` | supported | unknown | ignored | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `default_histogram_aggregation` | supported | not_implemented | not_implemented | unknown | not_implemented |
+| `temporality_preference` | supported | not_implemented | ignored | unknown | ignored |
 </details>
 
 Constraints: 
@@ -796,7 +864,17 @@ Usages:
 
 * [`PushMetricExporter.console`](#pushmetricexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Traces Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ConsoleMetricExporter_traces_kitchen_sink.yaml)
+```yaml
+temporality_preference: cumulative
+default_histogram_aggregation: explicit_bucket_histogram
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -810,10 +888,12 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "temporality_preference": {
-      "$ref": "#/$defs/ExporterTemporalityPreference"
+      "$ref": "#/$defs/ExporterTemporalityPreference",
+      "description": "Configure temporality preference.\nValues include:\n* cumulative: Use cumulative aggregation temporality for all instrument types.\n* delta: Use delta aggregation for all instrument types except up down counter and asynchronous up down counter.\n* low_memory: Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types.\nIf omitted, cumulative is used.\n"
     },
     "default_histogram_aggregation": {
-      "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+      "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+      "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.\n* explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.\nIf omitted, explicit_bucket_histogram is used.\n"
     }
   }
 }</pre>
@@ -914,11 +994,11 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `always_off` | not_implemented | unknown | supported | unknown |
-| `always_on` | not_implemented | unknown | supported | unknown |
-| `trace_based` | not_implemented | unknown | supported | unknown |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `always_off` | supported | unknown | supported | unknown | supported |
+| `always_on` | supported | unknown | supported | unknown | supported |
+| `trace_based` | supported | unknown | supported | unknown | supported |
 </details>
 
 No constraints.
@@ -956,10 +1036,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `boundaries` | supported | unknown | supported | unknown |
-| `record_min_max` | supported | unknown | not_implemented | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `boundaries` | supported | unknown | supported | unknown | ignored |
+| `record_min_max` | supported | unknown | not_implemented | unknown | ignored |
 </details>
 
 Constraints: 
@@ -988,13 +1068,15 @@ No snippets.
       "minItems": 0,
       "items": {
         "type": "number"
-      }
+      },
+      "description": "Configure bucket boundaries.\nIf omitted, [0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000] is used.\n"
     },
     "record_min_max": {
       "type": [
         "boolean",
         "null"
-      ]
+      ],
+      "description": "Configure record min and max.\nIf omitted or null, true is used.\n"
     }
   }
 }</pre>
@@ -1012,10 +1094,10 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown |
-| `explicit_bucket_histogram` | supported | unknown | supported | unknown |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown | ignored |
+| `explicit_bucket_histogram` | supported | unknown | supported | unknown | ignored |
 </details>
 
 No constraints.
@@ -1058,11 +1140,11 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `cumulative` | supported | unknown | supported | unknown |
-| `delta` | supported | unknown | supported | unknown |
-| `low_memory` | supported | unknown | supported | unknown |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `cumulative` | supported | unknown | supported | unknown | supported |
+| `delta` | supported | unknown | supported | unknown | supported |
+| `low_memory` | supported | unknown | supported | unknown | supported |
 </details>
 
 No constraints.
@@ -1105,12 +1187,12 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `ca_file` | unknown | unknown | not_implemented | unknown |
-| `cert_file` | unknown | unknown | not_implemented | unknown |
-| `insecure` | unknown | unknown | not_implemented | unknown |
-| `key_file` | unknown | unknown | not_implemented | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `ca_file` | supported | unknown | supported | unknown | ignored |
+| `cert_file` | supported | unknown | supported | unknown | ignored |
+| `insecure` | supported | unknown | not_implemented | unknown | ignored |
+| `key_file` | supported | unknown | supported | unknown | ignored |
 </details>
 
 Constraints: 
@@ -1139,25 +1221,29 @@ No snippets.
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure certificate used to verify a server's TLS credentials. \nAbsolute path to certificate file in PEM format.\nIf omitted or null, system default certificate verification is used for secure connections.\n"
     },
     "key_file": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure mTLS private client key. \nAbsolute path to client key file in PEM format. If set, .client_certificate must also be set.\nIf omitted or null, mTLS is not used.\n"
     },
     "cert_file": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure mTLS client certificate. \nAbsolute path to client certificate file in PEM format. If set, .client_key must also be set.\nIf omitted or null, mTLS is not used.\n"
     },
     "insecure": {
       "type": [
         "boolean",
         "null"
-      ]
+      ],
+      "description": "Configure client transport security for the exporter's connection. \nOnly applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.\nIf omitted or null, false is used.\n"
     }
   }
 }</pre>
@@ -1174,11 +1260,11 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `ca_file` | unknown | unknown | not_implemented | unknown |
-| `cert_file` | unknown | unknown | not_implemented | unknown |
-| `key_file` | unknown | unknown | not_implemented | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `ca_file` | supported | unknown | supported | unknown | ignored |
+| `cert_file` | supported | unknown | supported | unknown | ignored |
+| `key_file` | supported | unknown | supported | unknown | ignored |
 </details>
 
 Constraints: 
@@ -1207,19 +1293,22 @@ No snippets.
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure certificate used to verify a server's TLS credentials. \nAbsolute path to certificate file in PEM format.\nIf omitted or null, system default certificate verification is used for secure connections.\n"
     },
     "key_file": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure mTLS private client key. \nAbsolute path to client key file in PEM format. If set, .client_certificate must also be set.\nIf omitted or null, mTLS is not used.\n"
     },
     "cert_file": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure mTLS client certificate. \nAbsolute path to client certificate file in PEM format. If set, .client_key must also be set.\nIf omitted or null, mTLS is not used.\n"
     }
   }
 }</pre>
@@ -1235,10 +1324,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `excluded` | supported | unknown | supported | unknown |
-| `included` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `excluded` | supported | unknown | supported | unknown | supported |
+| `included` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1266,14 +1355,16 @@ No snippets.
       "minItems": 1,
       "items": {
         "type": "string"
-      }
+      },
+      "description": "Configure list of value patterns to include.\nValues are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, all values are included.\n"
     },
     "excluded": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "string"
-      }
+      },
+      "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\nValues are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, .included attributes are included.\n"
     }
   }
 }</pre>
@@ -1296,15 +1387,15 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `counter` | supported | unknown | supported | unknown |
-| `gauge` | supported | unknown | supported | unknown |
-| `histogram` | supported | unknown | supported | unknown |
-| `observable_counter` | supported | unknown | supported | unknown |
-| `observable_gauge` | supported | unknown | supported | unknown |
-| `observable_up_down_counter` | supported | unknown | supported | unknown |
-| `up_down_counter` | supported | unknown | supported | unknown |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `counter` | supported | unknown | supported | unknown | supported |
+| `gauge` | supported | unknown | supported | unknown | supported |
+| `histogram` | supported | unknown | supported | unknown | supported |
+| `observable_counter` | supported | unknown | supported | unknown | supported |
+| `observable_gauge` | supported | unknown | supported | unknown | supported |
+| `observable_up_down_counter` | supported | unknown | supported | unknown | supported |
+| `up_down_counter` | supported | unknown | supported | unknown | supported |
 </details>
 
 No constraints.
@@ -1333,33 +1424,6 @@ No snippets.
     "observable_up_down_counter",
     "up_down_counter"
   ]
-}</pre>
-</details>
-
-## JaegerPropagator <a id="jaegerpropagator"></a>
-
-No properties.
-
-Constraints: 
-
-* `additionalProperties`: `false`
-
-Usages:
-
-* [`TextMapPropagator.jaeger`](#textmappropagator)
-
-No snippets.
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/propagator.yaml)
-<pre>{
-  "type": [
-    "object",
-    "null"
-  ],
-  "additionalProperties": false
 }</pre>
 </details>
 
@@ -1401,11 +1465,11 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `limits` | supported | unknown | supported | unknown |
-| `processors` | supported | unknown | supported | unknown |
-| `logger_configurator/development` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `limits` | supported | unknown | supported | unknown | supported |
+| `processors` | supported | unknown | supported | unknown | supported |
+| `logger_configurator/development` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1432,13 +1496,16 @@ No snippets.
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/LogRecordProcessor"
-      }
+      },
+      "description": "Configure log record processors.\nProperty is required and must be non-null.\n"
     },
     "limits": {
-      "$ref": "#/$defs/LogRecordLimits"
+      "$ref": "#/$defs/LogRecordLimits",
+      "description": "Configure log record limits. See also attribute_limits.\nIf omitted, default values as described in LogRecordLimits are used.\n"
     },
     "logger_configurator/development": {
-      "$ref": "#/$defs/ExperimentalLoggerConfigurator"
+      "$ref": "#/$defs/ExperimentalLoggerConfigurator",
+      "description": "Configure loggers.\nIf omitted, all loggers use default values as described in ExperimentalLoggerConfig.\n"
     }
   },
   "required": [
@@ -1461,12 +1528,12 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `console` | supported | unknown | supported | unknown |
-| `otlp_grpc` | supported | unknown | supported | unknown |
-| `otlp_http` | supported | unknown | supported | unknown |
-| `otlp_file/development` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `console` | supported | supported | supported | unknown | supported |
+| `otlp_grpc` | supported | supported | supported | unknown | supported |
+| `otlp_http` | supported | supported | supported | unknown | supported |
+| `otlp_file/development` | supported | not_implemented | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1498,16 +1565,20 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
-      "$ref": "#/$defs/OtlpHttpExporter"
+      "$ref": "#/$defs/OtlpHttpExporter",
+      "description": "Configure exporter to be OTLP with HTTP transport.\nIf omitted, ignore.\n"
     },
     "otlp_grpc": {
-      "$ref": "#/$defs/OtlpGrpcExporter"
+      "$ref": "#/$defs/OtlpGrpcExporter",
+      "description": "Configure exporter to be OTLP with gRPC transport.\nIf omitted, ignore.\n"
     },
     "otlp_file/development": {
-      "$ref": "#/$defs/ExperimentalOtlpFileExporter"
+      "$ref": "#/$defs/ExperimentalOtlpFileExporter",
+      "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\n"
     },
     "console": {
-      "$ref": "#/$defs/ConsoleExporter"
+      "$ref": "#/$defs/ConsoleExporter",
+      "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -1523,10 +1594,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `attribute_count_limit` | supported | unknown | supported | unknown |
-| `attribute_value_length_limit` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `attribute_count_limit` | supported | unknown | supported | unknown | supported |
+| `attribute_value_length_limit` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1537,7 +1608,18 @@ Usages:
 
 * [`LoggerProvider.limits`](#loggerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/LogRecordLimits_kitchen_sink.yaml)
+```yaml
+# .logger_provider.limits take priority over general .attribute_limits. In this contrived example, attribute_value_length_limit is set to 4096, attribute_count_limit is set to 128, overriding the values from general .attribute_limits.
+attribute_count_limit: 128
+attribute_value_length_limit: 4096
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -1552,14 +1634,16 @@ No snippets.
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
     },
     "attribute_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
     }
   }
 }</pre>
@@ -1577,10 +1661,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `batch` | supported | unknown | supported | unknown |
-| `simple` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `batch` | supported | unknown | supported | unknown | supported |
+| `simple` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1611,10 +1695,12 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "batch": {
-      "$ref": "#/$defs/BatchLogRecordProcessor"
+      "$ref": "#/$defs/BatchLogRecordProcessor",
+      "description": "Configure a batch log record processor.\nIf omitted, ignore.\n"
     },
     "simple": {
-      "$ref": "#/$defs/SimpleLogRecordProcessor"
+      "$ref": "#/$defs/SimpleLogRecordProcessor",
+      "description": "Configure a simple log record processor.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -1624,7 +1710,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | If omitted, trace_based is used. | No constraints. | Configure the exemplar filter. <br> |
+| `exemplar_filter` | [`ExemplarFilter`](#exemplarfilter) | `false` | If omitted, trace_based is used. | No constraints. | Configure the exemplar filter.<br> |
 | `readers` | `array` of [`MetricReader`](#metricreader) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure metric readers. |
 | `views` | `array` of [`View`](#view) | `false` | If omitted, no views are registered. | * `minItems`: `1`<br> | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> |
 | `meter_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | If omitted, all meters use default values as described in ExperimentalMeterConfig. | No constraints. | Configure meters.<br> |
@@ -1632,12 +1718,12 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `exemplar_filter` | supported | unknown | supported | unknown |
-| `readers` | supported | unknown | supported | unknown |
-| `views` | supported | unknown | supported | unknown |
-| `meter_configurator/development` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `exemplar_filter` | supported | unknown | supported | unknown | supported |
+| `readers` | supported | unknown | supported | unknown | supported |
+| `views` | supported | unknown | supported | unknown | supported |
+| `meter_configurator/development` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1664,20 +1750,24 @@ No snippets.
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/MetricReader"
-      }
+      },
+      "description": "Configure metric readers.\nProperty is required and must be non-null.\n"
     },
     "views": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/View"
-      }
+      },
+      "description": "Configure views. \nEach view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).\nIf omitted, no views are registered.\n"
     },
     "exemplar_filter": {
-      "$ref": "#/$defs/ExemplarFilter"
+      "$ref": "#/$defs/ExemplarFilter",
+      "description": "Configure the exemplar filter.\nValues include:\n* always_off: ExemplarFilter which makes no measurements eligible for being an Exemplar.\n* always_on: ExemplarFilter which makes all measurements eligible for being an Exemplar.\n* trace_based: ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar.\nIf omitted, trace_based is used.\n"
     },
     "meter_configurator/development": {
-      "$ref": "#/$defs/ExperimentalMeterConfigurator"
+      "$ref": "#/$defs/ExperimentalMeterConfigurator",
+      "description": "Configure meters.\nIf omitted, all meters use default values as described in ExperimentalMeterConfig.\n"
     }
   },
   "required": [
@@ -1697,9 +1787,9 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `opencensus` | supported | unknown | ignored | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `opencensus` | supported | unknown | ignored | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -1731,7 +1821,8 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "opencensus": {
-      "$ref": "#/$defs/OpenCensusMetricProducer"
+      "$ref": "#/$defs/OpenCensusMetricProducer",
+      "description": "Configure metric producer to be opencensus.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -1747,10 +1838,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `periodic` | supported | unknown | supported | unknown |
-| `pull` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `periodic` | supported | unknown | supported | unknown | supported |
+| `pull` | supported | unknown | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -1776,10 +1867,12 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "periodic": {
-      "$ref": "#/$defs/PeriodicMetricReader"
+      "$ref": "#/$defs/PeriodicMetricReader",
+      "description": "Configure a periodic metric reader.\nIf omitted, ignore.\n"
     },
     "pull": {
-      "$ref": "#/$defs/PullMetricReader"
+      "$ref": "#/$defs/PullMetricReader",
+      "description": "Configure a pull based metric reader.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -1795,10 +1888,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `name` | supported | unknown | supported | unknown |
-| `value` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `name` | supported | unknown | supported | unknown | supported |
+| `value` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1824,13 +1917,15 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "description": "The name of the pair.\nProperty is required and must be non-null.\n"
     },
     "value": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "The value of the pair.\nProperty must be present, but if null the behavior is dependent on usage context.\n"
     }
   },
   "required": [
@@ -1886,19 +1981,19 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `attribute_limits` | supported | unknown | supported | unknown |
-| `disabled` | supported | unknown | supported | unknown |
-| `distribution` | supported | unknown | supported | unknown |
-| `file_format` | supported | unknown | supported | unknown |
-| `log_level` | supported | unknown | not_implemented | unknown |
-| `logger_provider` | supported | unknown | supported | unknown |
-| `meter_provider` | supported | unknown | supported | unknown |
-| `propagator` | supported | unknown | supported | unknown |
-| `resource` | supported | unknown | supported | unknown |
-| `tracer_provider` | supported | unknown | supported | unknown |
-| `instrumentation/development` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `attribute_limits` | supported | unknown | supported | unknown | supported |
+| `disabled` | supported | unknown | supported | unknown | supported |
+| `distribution` | supported | unknown | supported | unknown | not_implemented |
+| `file_format` | supported | unknown | supported | unknown | supported |
+| `log_level` | supported | unknown | not_implemented | unknown | not_implemented |
+| `logger_provider` | supported | unknown | supported | unknown | supported |
+| `meter_provider` | supported | unknown | supported | unknown | supported |
+| `propagator` | supported | unknown | supported | unknown | supported |
+| `resource` | supported | unknown | supported | unknown | supported |
+| `tracer_provider` | supported | unknown | supported | unknown | supported |
+| `instrumentation/development` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1915,79 +2010,62 @@ No snippets.
 
 [JSON Schema Source File](./schema/opentelemetry_configuration.yaml)
 <pre>{
-  "$id": "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "OpenTelemetryConfiguration",
   "type": "object",
   "additionalProperties": true,
   "properties": {
     "file_format": {
-      "type": "string"
+      "type": "string",
+      "description": "The file format version.\nRepresented as a string including the semver major, minor version numbers (and optionally the meta tag). For example: \"0.4\", \"1.0-rc.2\", \"1.0\" (after stable release).\nSee https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md for more details.\nThe yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema\nProperty is required and must be non-null.\n"
     },
     "disabled": {
       "type": [
         "boolean",
         "null"
-      ]
+      ],
+      "description": "Configure if the SDK is disabled or not.\nIf omitted or null, false is used.\n"
     },
     "log_level": {
-      "$ref": "#/$defs/SeverityNumber"
+      "$ref": "#/$defs/SeverityNumber",
+      "description": "Configure the log level of the internal logger used by the SDK.\nValues include:\n* debug: debug, severity number 5.\n* debug2: debug2, severity number 6.\n* debug3: debug3, severity number 7.\n* debug4: debug4, severity number 8.\n* error: error, severity number 17.\n* error2: error2, severity number 18.\n* error3: error3, severity number 19.\n* error4: error4, severity number 20.\n* fatal: fatal, severity number 21.\n* fatal2: fatal2, severity number 22.\n* fatal3: fatal3, severity number 23.\n* fatal4: fatal4, severity number 24.\n* info: info, severity number 9.\n* info2: info2, severity number 10.\n* info3: info3, severity number 11.\n* info4: info4, severity number 12.\n* trace: trace, severity number 1.\n* trace2: trace2, severity number 2.\n* trace3: trace3, severity number 3.\n* trace4: trace4, severity number 4.\n* warn: warn, severity number 13.\n* warn2: warn2, severity number 14.\n* warn3: warn3, severity number 15.\n* warn4: warn4, severity number 16.\nIf omitted, INFO is used.\n"
     },
     "attribute_limits": {
-      "$ref": "#/$defs/AttributeLimits"
+      "$ref": "#/$defs/AttributeLimits",
+      "description": "Configure general attribute limits. See also tracer_provider.limits, logger_provider.limits.\nIf omitted, default values as described in AttributeLimits are used.\n"
     },
     "logger_provider": {
-      "$ref": "#/$defs/LoggerProvider"
+      "$ref": "#/$defs/LoggerProvider",
+      "description": "Configure logger provider.\nIf omitted, a noop logger provider is used.\n"
     },
     "meter_provider": {
-      "$ref": "#/$defs/MeterProvider"
+      "$ref": "#/$defs/MeterProvider",
+      "description": "Configure meter provider.\nIf omitted, a noop meter provider is used.\n"
     },
     "propagator": {
-      "$ref": "#/$defs/Propagator"
+      "$ref": "#/$defs/Propagator",
+      "description": "Configure text map context propagators.\nIf omitted, a noop propagator is used.\n"
     },
     "tracer_provider": {
-      "$ref": "#/$defs/TracerProvider"
+      "$ref": "#/$defs/TracerProvider",
+      "description": "Configure tracer provider.\nIf omitted, a noop tracer provider is used.\n"
     },
     "resource": {
-      "$ref": "#/$defs/Resource"
+      "$ref": "#/$defs/Resource",
+      "description": "Configure resource for all signals.\nIf omitted, the default resource is used.\n"
     },
     "instrumentation/development": {
-      "$ref": "#/$defs/ExperimentalInstrumentation"
+      "$ref": "#/$defs/ExperimentalInstrumentation",
+      "description": "Configure instrumentation.\nIf omitted, instrumentation defaults are used.\n"
     },
     "distribution": {
-      "$ref": "#/$defs/Distribution"
+      "$ref": "#/$defs/Distribution",
+      "description": "Defines configuration parameters specific to a particular OpenTelemetry distribution or vendor.\nThis section provides a standardized location for distribution-specific settings\nthat are not part of the OpenTelemetry configuration model.\nIt allows vendors to expose their own extensions and general configuration options.\nIf omitted, distribution defaults are used.\n"
     }
   },
   "required": [
     "file_format"
   ]
-}</pre>
-</details>
-
-## OpenTracingPropagator <a id="opentracingpropagator"></a>
-
-No properties.
-
-Constraints: 
-
-* `additionalProperties`: `false`
-
-Usages:
-
-* [`TextMapPropagator.ottrace`](#textmappropagator)
-
-No snippets.
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/propagator.yaml)
-<pre>{
-  "type": [
-    "object",
-    "null"
-  ],
-  "additionalProperties": false
 }</pre>
 </details>
 
@@ -2005,14 +2083,14 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `compression` | supported | unknown | supported | unknown |
-| `endpoint` | supported | unknown | supported | unknown |
-| `headers` | supported | unknown | supported | unknown |
-| `headers_list` | supported | unknown | supported | unknown |
-| `timeout` | supported | unknown | supported | unknown |
-| `tls` | supported | unknown | ignored | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `compression` | supported | supported | supported | unknown | supported |
+| `endpoint` | supported | supported | supported | unknown | supported |
+| `headers` | supported | supported | supported | unknown | supported |
+| `headers_list` | supported | supported | supported | unknown | supported |
+| `timeout` | supported | supported | supported | unknown | supported |
+| `tls` | supported | supported | supported | unknown | ignored |
 </details>
 
 Constraints: 
@@ -2024,7 +2102,47 @@ Usages:
 * [`LogRecordExporter.otlp_grpc`](#logrecordexporter)
 * [`SpanExporter.otlp_grpc`](#spanexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Logs Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpGrpcExporter_logs_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+  insecure: false
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+```
+</details>
+
+<details>
+<summary>Traces Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpGrpcExporter_traces_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+  insecure: false
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -2041,36 +2159,42 @@ No snippets.
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure endpoint.\nIf omitted or null, http://localhost:4317 is used.\n"
     },
     "tls": {
-      "$ref": "#/$defs/GrpcTls"
+      "$ref": "#/$defs/GrpcTls",
+      "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
     },
     "headers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
-      }
+      },
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\nIf omitted, no headers are added.\n"
     },
     "headers_list": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
     },
     "compression": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
     },
     "timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
     }
   }
 }</pre>
@@ -2092,16 +2216,16 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `compression` | supported | unknown | supported | unknown |
-| `default_histogram_aggregation` | supported | unknown | supported | unknown |
-| `endpoint` | supported | unknown | supported | unknown |
-| `headers` | supported | unknown | supported | unknown |
-| `headers_list` | supported | unknown | supported | unknown |
-| `temporality_preference` | supported | unknown | supported | unknown |
-| `timeout` | supported | unknown | supported | unknown |
-| `tls` | supported | unknown | ignored | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `compression` | supported | supported | supported | unknown | supported |
+| `default_histogram_aggregation` | supported | not_implemented | supported | unknown | not_implemented |
+| `endpoint` | supported | supported | supported | unknown | supported |
+| `headers` | supported | supported | supported | unknown | supported |
+| `headers_list` | supported | supported | supported | unknown | supported |
+| `temporality_preference` | supported | supported | supported | unknown | supported |
+| `timeout` | supported | supported | supported | unknown | supported |
+| `tls` | supported | supported | supported | unknown | ignored |
 </details>
 
 Constraints: 
@@ -2112,7 +2236,27 @@ Usages:
 
 * [`PushMetricExporter.otlp_grpc`](#pushmetricexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Metrics Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpGrpcMetricExporter_metrics_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+  insecure: false
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -2129,42 +2273,50 @@ No snippets.
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure endpoint.\nIf omitted or null, http://localhost:4317 is used.\n"
     },
     "tls": {
-      "$ref": "#/$defs/GrpcTls"
+      "$ref": "#/$defs/GrpcTls",
+      "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
     },
     "headers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
-      }
+      },
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\nIf omitted, no headers are added.\n"
     },
     "headers_list": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
     },
     "compression": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
     },
     "timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
     },
     "temporality_preference": {
-      "$ref": "#/$defs/ExporterTemporalityPreference"
+      "$ref": "#/$defs/ExporterTemporalityPreference",
+      "description": "Configure temporality preference.\nValues include:\n* cumulative: Use cumulative aggregation temporality for all instrument types.\n* delta: Use delta aggregation for all instrument types except up down counter and asynchronous up down counter.\n* low_memory: Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types.\nIf omitted, cumulative is used.\n"
     },
     "default_histogram_aggregation": {
-      "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+      "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+      "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.\n* explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.\nIf omitted, explicit_bucket_histogram is used.\n"
     }
   }
 }</pre>
@@ -2182,10 +2334,10 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `json` | supported | unknown | not_implemented | unknown |
-| `protobuf` | supported | unknown | not_implemented | unknown |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `json` | supported | not_implemented | not_implemented | unknown | supported |
+| `protobuf` | supported | not_implemented | not_implemented | unknown | supported |
 </details>
 
 No constraints.
@@ -2228,15 +2380,15 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `compression` | supported | unknown | supported | unknown |
-| `encoding` | supported | unknown | not_implemented | unknown |
-| `endpoint` | supported | unknown | supported | unknown |
-| `headers` | supported | unknown | supported | unknown |
-| `headers_list` | supported | unknown | supported | unknown |
-| `timeout` | supported | unknown | supported | unknown |
-| `tls` | supported | unknown | ignored | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `compression` | supported | supported | supported | unknown | supported |
+| `encoding` | supported | not_implemented | not_implemented | unknown | supported |
+| `endpoint` | supported | supported | supported | unknown | supported |
+| `headers` | supported | supported | supported | unknown | supported |
+| `headers_list` | supported | supported | supported | unknown | supported |
+| `timeout` | supported | supported | supported | unknown | supported |
+| `tls` | supported | supported | supported | unknown | ignored |
 </details>
 
 Constraints: 
@@ -2248,7 +2400,47 @@ Usages:
 * [`LogRecordExporter.otlp_http`](#logrecordexporter)
 * [`SpanExporter.otlp_http`](#spanexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Logs Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpHttpExporter_logs_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318/v1/logs
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+encoding: protobuf
+```
+</details>
+
+<details>
+<summary>Traces Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpHttpExporter_traces_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318/v1/traces
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+encoding: protobuf
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -2265,39 +2457,46 @@ No snippets.
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure endpoint, including the signal specific path.\nIf omitted or null, the http://localhost:4318/v1/{signal} (where signal is 'traces', 'logs', or 'metrics') is used.\n"
     },
     "tls": {
-      "$ref": "#/$defs/HttpTls"
+      "$ref": "#/$defs/HttpTls",
+      "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
     },
     "headers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
-      }
+      },
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\nIf omitted, no headers are added.\n"
     },
     "headers_list": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
     },
     "compression": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
     },
     "timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
     },
     "encoding": {
-      "$ref": "#/$defs/OtlpHttpEncoding"
+      "$ref": "#/$defs/OtlpHttpEncoding",
+      "description": "Configure the encoding used for messages. \nImplementations may not support json.\nValues include:\n* json: Protobuf JSON encoding.\n* protobuf: Protobuf binary encoding.\nIf omitted, protobuf is used.\n"
     }
   }
 }</pre>
@@ -2320,17 +2519,17 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `compression` | supported | unknown | supported | unknown |
-| `default_histogram_aggregation` | supported | unknown | supported | unknown |
-| `encoding` | supported | unknown | not_implemented | unknown |
-| `endpoint` | supported | unknown | supported | unknown |
-| `headers` | supported | unknown | supported | unknown |
-| `headers_list` | supported | unknown | supported | unknown |
-| `temporality_preference` | supported | unknown | supported | unknown |
-| `timeout` | supported | unknown | supported | unknown |
-| `tls` | supported | unknown | ignored | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `compression` | supported | supported | supported | unknown | supported |
+| `default_histogram_aggregation` | supported | not_implemented | supported | unknown | not_implemented |
+| `encoding` | supported | not_implemented | not_implemented | unknown | supported |
+| `endpoint` | supported | supported | supported | unknown | supported |
+| `headers` | supported | supported | supported | unknown | supported |
+| `headers_list` | supported | supported | supported | unknown | supported |
+| `temporality_preference` | supported | supported | supported | unknown | supported |
+| `timeout` | supported | supported | supported | unknown | supported |
+| `tls` | supported | supported | supported | unknown | ignored |
 </details>
 
 Constraints: 
@@ -2342,6 +2541,28 @@ Usages:
 * [`PushMetricExporter.otlp_http`](#pushmetricexporter)
 
 Snippets:
+
+<details>
+<summary>Metrics Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/OtlpHttpMetricExporter_metrics_kitchen_sink.yaml)
+```yaml
+endpoint: http://localhost:4318/v1/metrics
+tls:
+  ca_file: /app/cert.pem
+  key_file: /app/cert.pem
+  cert_file: /app/cert.pem
+headers:
+  - name: api-key
+    value: "1234"
+headers_list: "api-key=1234"
+compression: gzip
+timeout: 10000
+encoding: protobuf
+temporality_preference: cumulative
+default_histogram_aggregation: explicit_bucket_histogram
+```
+</details>
 
 <details>
 <summary>Use Base2 Exponential Histogram</summary>
@@ -2368,45 +2589,54 @@ default_histogram_aggregation: base2_exponential_bucket_histogram
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure endpoint.\nIf omitted or null, http://localhost:4318/v1/metrics is used.\n"
     },
     "tls": {
-      "$ref": "#/$defs/HttpTls"
+      "$ref": "#/$defs/HttpTls",
+      "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
     },
     "headers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/NameStringValuePair"
-      }
+      },
+      "description": "Configure headers. Entries have higher priority than entries from .headers_list.\nIf an entry's .value is null, the entry is ignored.\nIf omitted, no headers are added.\n"
     },
     "headers_list": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure headers. Entries have lower priority than entries from .headers.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_EXPORTER_OTLP_HEADERS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#configuration-options for details.\nIf omitted or null, no headers are added.\n"
     },
     "compression": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
     },
     "timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max time (in milliseconds) to wait for each export.\nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 10000 is used.\n"
     },
     "encoding": {
-      "$ref": "#/$defs/OtlpHttpEncoding"
+      "$ref": "#/$defs/OtlpHttpEncoding",
+      "description": "Configure the encoding used for messages. \nImplementations may not support json.\nValues include:\n* json: Protobuf JSON encoding.\n* protobuf: Protobuf binary encoding.\nIf omitted, protobuf is used.\n"
     },
     "temporality_preference": {
-      "$ref": "#/$defs/ExporterTemporalityPreference"
+      "$ref": "#/$defs/ExporterTemporalityPreference",
+      "description": "Configure temporality preference.\nValues include:\n* cumulative: Use cumulative aggregation temporality for all instrument types.\n* delta: Use delta aggregation for all instrument types except up down counter and asynchronous up down counter.\n* low_memory: Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types.\nIf omitted, cumulative is used.\n"
     },
     "default_histogram_aggregation": {
-      "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+      "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+      "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.\n* explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.\nIf omitted, explicit_bucket_histogram is used.\n"
     }
   }
 }</pre>
@@ -2425,13 +2655,13 @@ default_histogram_aggregation: base2_exponential_bucket_histogram
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `local_parent_not_sampled` | supported | unknown | supported | unknown |
-| `local_parent_sampled` | supported | unknown | supported | unknown |
-| `remote_parent_not_sampled` | supported | unknown | supported | unknown |
-| `remote_parent_sampled` | supported | unknown | supported | unknown |
-| `root` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `local_parent_not_sampled` | supported | supported | supported | unknown | supported |
+| `local_parent_sampled` | supported | supported | supported | unknown | supported |
+| `remote_parent_not_sampled` | supported | supported | supported | unknown | supported |
+| `remote_parent_sampled` | supported | supported | supported | unknown | supported |
+| `root` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -2456,19 +2686,24 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "root": {
-      "$ref": "#/$defs/Sampler"
+      "$ref": "#/$defs/Sampler",
+      "description": "Configure root sampler.\nIf omitted, always_on is used.\n"
     },
     "remote_parent_sampled": {
-      "$ref": "#/$defs/Sampler"
+      "$ref": "#/$defs/Sampler",
+      "description": "Configure remote_parent_sampled sampler.\nIf omitted, always_on is used.\n"
     },
     "remote_parent_not_sampled": {
-      "$ref": "#/$defs/Sampler"
+      "$ref": "#/$defs/Sampler",
+      "description": "Configure remote_parent_not_sampled sampler.\nIf omitted, always_off is used.\n"
     },
     "local_parent_sampled": {
-      "$ref": "#/$defs/Sampler"
+      "$ref": "#/$defs/Sampler",
+      "description": "Configure local_parent_sampled sampler.\nIf omitted, always_on is used.\n"
     },
     "local_parent_not_sampled": {
-      "$ref": "#/$defs/Sampler"
+      "$ref": "#/$defs/Sampler",
+      "description": "Configure local_parent_not_sampled sampler.\nIf omitted, always_off is used.\n"
     }
   }
 }</pre>
@@ -2487,13 +2722,13 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `cardinality_limits` | supported | unknown | supported | unknown |
-| `exporter` | supported | unknown | supported | unknown |
-| `interval` | supported | unknown | supported | unknown |
-| `producers` | supported | unknown | not_implemented | unknown |
-| `timeout` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `cardinality_limits` | supported | not_implemented | supported | unknown | supported |
+| `exporter` | supported | supported | supported | unknown | supported |
+| `interval` | supported | supported | supported | unknown | not_implemented |
+| `producers` | supported | not_implemented | not_implemented | unknown | not_implemented |
+| `timeout` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -2520,27 +2755,32 @@ No snippets.
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure delay interval (in milliseconds) between start of two consecutive exports. \nValue must be non-negative.\nIf omitted or null, 60000 is used.\n"
     },
     "timeout": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
     },
     "exporter": {
-      "$ref": "#/$defs/PushMetricExporter"
+      "$ref": "#/$defs/PushMetricExporter",
+      "description": "Configure exporter.\nProperty is required and must be non-null.\n"
     },
     "producers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/MetricProducer"
-      }
+      },
+      "description": "Configure metric producers.\nIf omitted, no metric producers are added.\n"
     },
     "cardinality_limits": {
-      "$ref": "#/$defs/CardinalityLimits"
+      "$ref": "#/$defs/CardinalityLimits",
+      "description": "Configure cardinality limits.\nIf omitted, default values as described in CardinalityLimits are used.\n"
     }
   },
   "required": [
@@ -2553,16 +2793,16 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | If omitted, and .composite_list is omitted or null, a noop propagator is used. | * `minItems`: `1`<br> | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party keys include: xray. <br> |
-| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, and .composite is omitted or null, a noop propagator is used. | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi, jaeger, ottrace. Known third party identifiers include: xray. <br> |
+| `composite` | `array` of [`TextMapPropagator`](#textmappropagator) | `false` | If omitted, and .composite_list is omitted or null, a noop propagator is used. | * `minItems`: `1`<br> | Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.<br>Built-in propagator keys include: tracecontext, baggage, b3, b3multi. Known third party keys include: xray.<br> |
+| `composite_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, and .composite is omitted or null, a noop propagator is used. | No constraints. | Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.<br>The value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.<br>Built-in propagator identifiers include: tracecontext, baggage, b3, b3multi. Known third party identifiers include: xray.<br> |
 
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `composite` | supported | unknown | supported | unknown |
-| `composite_list` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `composite` | supported | supported | supported | unknown | supported |
+| `composite_list` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -2573,7 +2813,22 @@ Usages:
 
 * [`OpenTelemetryConfiguration.propagator`](#opentelemetryconfiguration)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/Propagator_kitchen_sink.yaml)
+```yaml
+# .composite and .composite_list are merged and deduplicated.
+composite:
+  - tracecontext:
+  - baggage:
+  - b3:
+  - b3multi:
+composite_list: "xray"
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -2588,13 +2843,15 @@ No snippets.
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/TextMapPropagator"
-      }
+      },
+      "description": "Configure the propagators in the composite text map propagator. Entries from .composite_list are appended to the list here with duplicates filtered out.\nBuilt-in propagator keys include: tracecontext, baggage, b3, b3multi. Known third party keys include: xray.\nIf omitted, and .composite_list is omitted or null, a noop propagator is used.\n"
     },
     "composite_list": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure the propagators in the composite text map propagator. Entries are appended to .composite with duplicates filtered out.\nThe value is a comma separated list of propagator identifiers matching the format of OTEL_PROPAGATORS. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nBuilt-in propagator identifiers include: tracecontext, baggage, b3, b3multi. Known third party identifiers include: xray.\nIf omitted or null, and .composite is omitted or null, a noop propagator is used.\n"
     }
   }
 }</pre>
@@ -2611,9 +2868,9 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `prometheus/development` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `prometheus/development` | supported | unknown | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -2644,7 +2901,8 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "prometheus/development": {
-      "$ref": "#/$defs/ExperimentalPrometheusMetricExporter"
+      "$ref": "#/$defs/ExperimentalPrometheusMetricExporter",
+      "description": "Configure exporter to be prometheus.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -2661,11 +2919,11 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `cardinality_limits` | supported | unknown | supported | unknown |
-| `exporter` | supported | unknown | supported | unknown |
-| `producers` | supported | unknown | not_implemented | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `cardinality_limits` | supported | unknown | supported | unknown | not_implemented |
+| `exporter` | supported | unknown | supported | unknown | not_implemented |
+| `producers` | supported | unknown | not_implemented | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -2688,17 +2946,20 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "exporter": {
-      "$ref": "#/$defs/PullMetricExporter"
+      "$ref": "#/$defs/PullMetricExporter",
+      "description": "Configure exporter.\nProperty is required and must be non-null.\n"
     },
     "producers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/MetricProducer"
-      }
+      },
+      "description": "Configure metric producers.\nIf omitted, no metric producers are added.\n"
     },
     "cardinality_limits": {
-      "$ref": "#/$defs/CardinalityLimits"
+      "$ref": "#/$defs/CardinalityLimits",
+      "description": "Configure cardinality limits.\nIf omitted, default values as described in CardinalityLimits are used.\n"
     }
   },
   "required": [
@@ -2721,12 +2982,12 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `console` | supported | unknown | supported | unknown |
-| `otlp_grpc` | supported | unknown | supported | unknown |
-| `otlp_http` | supported | unknown | supported | unknown |
-| `otlp_file/development` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `console` | supported | unknown | supported | unknown | supported |
+| `otlp_grpc` | supported | unknown | supported | unknown | supported |
+| `otlp_http` | supported | unknown | supported | unknown | supported |
+| `otlp_file/development` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -2757,16 +3018,20 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
-      "$ref": "#/$defs/OtlpHttpMetricExporter"
+      "$ref": "#/$defs/OtlpHttpMetricExporter",
+      "description": "Configure exporter to be OTLP with HTTP transport.\nIf omitted, ignore.\n"
     },
     "otlp_grpc": {
-      "$ref": "#/$defs/OtlpGrpcMetricExporter"
+      "$ref": "#/$defs/OtlpGrpcMetricExporter",
+      "description": "Configure exporter to be OTLP with gRPC transport.\nIf omitted, ignore.\n"
     },
     "otlp_file/development": {
-      "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter"
+      "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter",
+      "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\n"
     },
     "console": {
-      "$ref": "#/$defs/ConsoleMetricExporter"
+      "$ref": "#/$defs/ConsoleMetricExporter",
+      "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -2784,12 +3049,12 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `attributes` | supported | unknown | supported | unknown |
-| `attributes_list` | supported | unknown | supported | unknown |
-| `schema_url` | supported | unknown | ignored | unknown |
-| `detection/development` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `attributes` | supported | unknown | supported | unknown | supported |
+| `attributes_list` | supported | unknown | supported | unknown | supported |
+| `schema_url` | supported | unknown | ignored | unknown | supported |
+| `detection/development` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -2800,7 +3065,55 @@ Usages:
 
 * [`OpenTelemetryConfiguration.resource`](#opentelemetryconfiguration)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/Resource_kitchen_sink.yaml)
+```yaml
+attributes:
+  - name: service.name
+    value: unknown_service
+  - name: string_key
+    value: value
+    type: string
+  - name: bool_key
+    value: true
+    type: bool
+  - name: int_key
+    value: 1
+    type: int
+  - name: double_key
+    value: 1.1
+    type: double
+  - name: string_array_key
+    value: [ "value1", "value2" ]
+    type: string_array
+  - name: bool_array_key
+    value: [ true, false ]
+    type: bool_array
+  - name: int_array_key
+    value: [ 1, 2 ]
+    type: int_array
+  - name: double_array_key
+    value: [ 1.1, 2.2 ]
+    type: double_array
+attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
+detection/development:
+  attributes:
+    included:
+      - process.*
+    excluded:
+      - process.command_args
+  detectors:
+    - container:
+    - host:
+    - process:
+    - service:
+schema_url: https://opentelemetry.io/schemas/1.16.0
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -2815,22 +3128,26 @@ No snippets.
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/AttributeNameValue"
-      }
+      },
+      "description": "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.\nIf omitted, no resource attributes are added.\n"
     },
     "detection/development": {
-      "$ref": "#/$defs/ExperimentalResourceDetection"
+      "$ref": "#/$defs/ExperimentalResourceDetection",
+      "description": "Configure resource detection.\nIf omitted, resource detection is disabled.\n"
     },
     "schema_url": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure resource schema URL.\nIf omitted or null, no schema URL is used.\n"
     },
     "attributes_list": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure resource attributes. Entries have lower priority than entries from .resource.attributes.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nIf omitted or null, no resource attributes are added.\n"
     }
   }
 }</pre>
@@ -2853,15 +3170,15 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `always_off` | supported | unknown | supported | unknown |
-| `always_on` | supported | unknown | supported | unknown |
-| `parent_based` | supported | unknown | supported | unknown |
-| `trace_id_ratio_based` | supported | unknown | supported | unknown |
-| `composite/development` | supported | unknown | supported | unknown |
-| `jaeger_remote/development` | supported | unknown | supported | unknown |
-| `probability/development` | supported | unknown | ignored | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `always_off` | supported | supported | supported | unknown | supported |
+| `always_on` | supported | supported | supported | unknown | supported |
+| `parent_based` | supported | supported | supported | unknown | supported |
+| `trace_id_ratio_based` | supported | supported | supported | unknown | supported |
+| `composite/development` | supported | not_implemented | supported | unknown | not_implemented |
+| `jaeger_remote/development` | supported | not_implemented | supported | unknown | not_implemented |
+| `probability/development` | supported | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -2904,6 +3221,68 @@ parent_based:
 </details>
 
 <details>
+<summary>Probability Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/Sampler_probability_kitchen_sink.yaml)
+```yaml
+probability/development:
+  ratio: 0.001
+```
+</details>
+
+<details>
+<summary>Rule Based Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/Sampler_rule_based_kitchen_sink.yaml)
+```yaml
+composite/development:
+  rule_based:
+    # The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match.
+    # If no conditions are specified, the rule matches all spans that reach it. If no rules match, the span is not sampled.
+    # The rules of this sampler, in plain english:
+    # - If http.route = /healthz or /livez, do not sample the span.
+    # - If http.path starts with /internal/ and not /internal/special/, sample the span.
+    # - If there is no parent and the sppan kind is client, sample the span 5% of the time.
+    # - Else, sample the span .1% of the time.
+    rules:
+      - attribute_values:
+          key: http.route
+          values:
+            - /healthz
+            - /livez
+        # Configure sampler when matched.
+        sampler:
+          # Configure sampler to be always_off if matched.
+          always_off:
+      # Configure a sampling rule matching http.path attribute patterns.
+      - attribute_patterns:
+          key: http.path
+          included:
+            - /internal/*
+          excluded:
+            - /internal/special/*
+        # Configure sampler when matched.
+        sampler:
+          # Configure sampler to be always_on if matched.
+          always_on:
+      # Configure a sampling rule matching root spans with CLIENT span kind.
+      - parent:
+          - none
+        span_kinds:
+          - client
+        sampler:
+          # Configure sampler to be probability if matched.
+          probability:
+            ratio: 0.05
+      - sampler:
+          probability:
+            # Configure ratio.
+            # If omitted or null, 1.0 is used.
+            ratio: 0.001
+```
+</details>
+
+<details>
 <summary>JSON Schema</summary>
 
 [JSON Schema Source File](./schema/tracer_provider.yaml)
@@ -2919,25 +3298,32 @@ parent_based:
   "maxProperties": 1,
   "properties": {
     "always_off": {
-      "$ref": "#/$defs/AlwaysOffSampler"
+      "$ref": "#/$defs/AlwaysOffSampler",
+      "description": "Configure sampler to be always_off.\nIf omitted, ignore.\n"
     },
     "always_on": {
-      "$ref": "#/$defs/AlwaysOnSampler"
+      "$ref": "#/$defs/AlwaysOnSampler",
+      "description": "Configure sampler to be always_on.\nIf omitted, ignore.\n"
     },
     "composite/development": {
-      "$ref": "#/$defs/ExperimentalComposableSampler"
+      "$ref": "#/$defs/ExperimentalComposableSampler",
+      "description": "Configure sampler to be composite.\nIf omitted, ignore.\n"
     },
     "jaeger_remote/development": {
-      "$ref": "#/$defs/ExperimentalJaegerRemoteSampler"
+      "$ref": "#/$defs/ExperimentalJaegerRemoteSampler",
+      "description": "Configure sampler to be jaeger_remote.\nIf omitted, ignore.\n"
     },
     "parent_based": {
-      "$ref": "#/$defs/ParentBasedSampler"
+      "$ref": "#/$defs/ParentBasedSampler",
+      "description": "Configure sampler to be parent_based.\nIf omitted, ignore.\n"
     },
     "probability/development": {
-      "$ref": "#/$defs/ExperimentalProbabilitySampler"
+      "$ref": "#/$defs/ExperimentalProbabilitySampler",
+      "description": "Configure sampler to be probability.\nIf omitted, ignore.\n"
     },
     "trace_id_ratio_based": {
-      "$ref": "#/$defs/TraceIdRatioBasedSampler"
+      "$ref": "#/$defs/TraceIdRatioBasedSampler",
+      "description": "Configure sampler to be trace_id_ratio_based.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -2977,32 +3363,32 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `debug` | unknown | unknown | unknown | unknown |
-| `debug2` | unknown | unknown | unknown | unknown |
-| `debug3` | unknown | unknown | unknown | unknown |
-| `debug4` | unknown | unknown | unknown | unknown |
-| `error` | unknown | unknown | unknown | unknown |
-| `error2` | unknown | unknown | unknown | unknown |
-| `error3` | unknown | unknown | unknown | unknown |
-| `error4` | unknown | unknown | unknown | unknown |
-| `fatal` | unknown | unknown | unknown | unknown |
-| `fatal2` | unknown | unknown | unknown | unknown |
-| `fatal3` | unknown | unknown | unknown | unknown |
-| `fatal4` | unknown | unknown | unknown | unknown |
-| `info` | unknown | unknown | unknown | unknown |
-| `info2` | unknown | unknown | unknown | unknown |
-| `info3` | unknown | unknown | unknown | unknown |
-| `info4` | unknown | unknown | unknown | unknown |
-| `trace` | unknown | unknown | unknown | unknown |
-| `trace2` | unknown | unknown | unknown | unknown |
-| `trace3` | unknown | unknown | unknown | unknown |
-| `trace4` | unknown | unknown | unknown | unknown |
-| `warn` | unknown | unknown | unknown | unknown |
-| `warn2` | unknown | unknown | unknown | unknown |
-| `warn3` | unknown | unknown | unknown | unknown |
-| `warn4` | unknown | unknown | unknown | unknown |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `debug` | supported | unknown | supported | unknown | supported |
+| `debug2` | supported | unknown | supported | unknown | supported |
+| `debug3` | supported | unknown | supported | unknown | supported |
+| `debug4` | supported | unknown | supported | unknown | supported |
+| `error` | supported | unknown | supported | unknown | supported |
+| `error2` | supported | unknown | supported | unknown | supported |
+| `error3` | supported | unknown | supported | unknown | supported |
+| `error4` | supported | unknown | supported | unknown | supported |
+| `fatal` | supported | unknown | supported | unknown | supported |
+| `fatal2` | supported | unknown | supported | unknown | supported |
+| `fatal3` | supported | unknown | supported | unknown | supported |
+| `fatal4` | supported | unknown | supported | unknown | supported |
+| `info` | supported | unknown | supported | unknown | supported |
+| `info2` | supported | unknown | supported | unknown | supported |
+| `info3` | supported | unknown | supported | unknown | supported |
+| `info4` | supported | unknown | supported | unknown | supported |
+| `trace` | supported | unknown | supported | unknown | supported |
+| `trace2` | supported | unknown | supported | unknown | supported |
+| `trace3` | supported | unknown | supported | unknown | supported |
+| `trace4` | supported | unknown | supported | unknown | supported |
+| `warn` | supported | unknown | supported | unknown | supported |
+| `warn2` | supported | unknown | supported | unknown | supported |
+| `warn3` | supported | unknown | supported | unknown | supported |
+| `warn4` | supported | unknown | supported | unknown | supported |
 </details>
 
 No constraints.
@@ -3061,9 +3447,9 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `exporter` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `exporter` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -3086,7 +3472,8 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "exporter": {
-      "$ref": "#/$defs/LogRecordExporter"
+      "$ref": "#/$defs/LogRecordExporter",
+      "description": "Configure exporter.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -3104,9 +3491,9 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `exporter` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `exporter` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -3129,7 +3516,8 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "exporter": {
-      "$ref": "#/$defs/SpanExporter"
+      "$ref": "#/$defs/SpanExporter",
+      "description": "Configure exporter.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -3152,12 +3540,12 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `console` | supported | unknown | supported | unknown |
-| `otlp_grpc` | supported | unknown | supported | unknown |
-| `otlp_http` | supported | unknown | supported | unknown |
-| `otlp_file/development` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `console` | supported | supported | supported | unknown | supported |
+| `otlp_grpc` | supported | supported | supported | unknown | supported |
+| `otlp_http` | supported | supported | supported | unknown | supported |
+| `otlp_file/development` | supported | not_implemented | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -3189,16 +3577,20 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "otlp_http": {
-      "$ref": "#/$defs/OtlpHttpExporter"
+      "$ref": "#/$defs/OtlpHttpExporter",
+      "description": "Configure exporter to be OTLP with HTTP transport.\nIf omitted, ignore.\n"
     },
     "otlp_grpc": {
-      "$ref": "#/$defs/OtlpGrpcExporter"
+      "$ref": "#/$defs/OtlpGrpcExporter",
+      "description": "Configure exporter to be OTLP with gRPC transport.\nIf omitted, ignore.\n"
     },
     "otlp_file/development": {
-      "$ref": "#/$defs/ExperimentalOtlpFileExporter"
+      "$ref": "#/$defs/ExperimentalOtlpFileExporter",
+      "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\n"
     },
     "console": {
-      "$ref": "#/$defs/ConsoleExporter"
+      "$ref": "#/$defs/ConsoleExporter",
+      "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -3219,13 +3611,13 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `client` | unknown | unknown | unknown | unknown |
-| `consumer` | unknown | unknown | unknown | unknown |
-| `internal` | unknown | unknown | unknown | unknown |
-| `producer` | unknown | unknown | unknown | unknown |
-| `server` | unknown | unknown | unknown | unknown |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `client` | not_implemented | unknown | supported | unknown | not_implemented |
+| `consumer` | not_implemented | unknown | supported | unknown | not_implemented |
+| `internal` | not_implemented | unknown | supported | unknown | not_implemented |
+| `producer` | not_implemented | unknown | supported | unknown | not_implemented |
+| `server` | not_implemented | unknown | supported | unknown | not_implemented |
 </details>
 
 No constraints.
@@ -3269,14 +3661,14 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `attribute_count_limit` | supported | unknown | supported | unknown |
-| `attribute_value_length_limit` | supported | unknown | supported | unknown |
-| `event_attribute_count_limit` | supported | unknown | supported | unknown |
-| `event_count_limit` | supported | unknown | supported | unknown |
-| `link_attribute_count_limit` | supported | unknown | supported | unknown |
-| `link_count_limit` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `attribute_count_limit` | supported | unknown | supported | unknown | supported |
+| `attribute_value_length_limit` | supported | unknown | supported | unknown | supported |
+| `event_attribute_count_limit` | supported | unknown | supported | unknown | supported |
+| `event_count_limit` | supported | unknown | supported | unknown | supported |
+| `link_attribute_count_limit` | supported | unknown | supported | unknown | supported |
+| `link_count_limit` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -3287,7 +3679,22 @@ Usages:
 
 * [`TracerProvider.limits`](#tracerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/SpanLimits_kitchen_sink.yaml)
+```yaml
+# .tracer_provider.limits take priority over general .attribute_limits. In this contrived example, attribute_value_length_limit is set to 4096, attribute_count_limit is set to 128, overriding the values from general .attribute_limits.
+attribute_count_limit: 128
+attribute_value_length_limit: 4096
+event_attribute_count_limit: 128
+event_count_limit: 128
+link_attribute_count_limit: 128
+link_count_limit: 128
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -3302,42 +3709,48 @@ No snippets.
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
     },
     "attribute_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max attribute count. Overrides .attribute_limits.attribute_count_limit. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
     },
     "event_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max span event count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
     },
     "link_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max span link count. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
     },
     "event_attribute_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max attributes per span event. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
     },
     "link_attribute_count_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure max attributes per span link. \nValue must be non-negative.\nIf omitted or null, 128 is used.\n"
     }
   }
 }</pre>
@@ -3355,10 +3768,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `batch` | supported | unknown | supported | unknown |
-| `simple` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `batch` | supported | supported | supported | unknown | supported |
+| `simple` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -3389,10 +3802,12 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "batch": {
-      "$ref": "#/$defs/BatchSpanProcessor"
+      "$ref": "#/$defs/BatchSpanProcessor",
+      "description": "Configure a batch span processor.\nIf omitted, ignore.\n"
     },
     "simple": {
-      "$ref": "#/$defs/SimpleSpanProcessor"
+      "$ref": "#/$defs/SimpleSpanProcessor",
+      "description": "Configure a simple span processor.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -3434,21 +3849,17 @@ No snippets.
 | `b3` | [`B3Propagator`](#b3propagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 propagator. |
 | `b3multi` | [`B3MultiPropagator`](#b3multipropagator) | `false` | If omitted, ignore. | No constraints. | Include the zipkin b3 multi propagator. |
 | `baggage` | [`BaggagePropagator`](#baggagepropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c baggage propagator. |
-| `jaeger` | [`JaegerPropagator`](#jaegerpropagator) | `false` | If omitted, ignore. | No constraints. | Include the jaeger propagator. |
-| `ottrace` | [`OpenTracingPropagator`](#opentracingpropagator) | `false` | If omitted, ignore. | No constraints. | Include the opentracing propagator. |
 | `tracecontext` | [`TraceContextPropagator`](#tracecontextpropagator) | `false` | If omitted, ignore. | No constraints. | Include the w3c trace context propagator. |
 
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `b3` | supported | unknown | supported | unknown |
-| `b3multi` | supported | unknown | supported | unknown |
-| `baggage` | supported | unknown | supported | unknown |
-| `jaeger` | supported | unknown | supported | unknown |
-| `ottrace` | supported | unknown | supported | unknown |
-| `tracecontext` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `b3` | supported | supported | supported | unknown | supported |
+| `b3multi` | supported | supported | supported | unknown | supported |
+| `baggage` | supported | supported | supported | unknown | supported |
+| `tracecontext` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -3479,22 +3890,20 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "tracecontext": {
-      "$ref": "#/$defs/TraceContextPropagator"
+      "$ref": "#/$defs/TraceContextPropagator",
+      "description": "Include the w3c trace context propagator.\nIf omitted, ignore.\n"
     },
     "baggage": {
-      "$ref": "#/$defs/BaggagePropagator"
+      "$ref": "#/$defs/BaggagePropagator",
+      "description": "Include the w3c baggage propagator.\nIf omitted, ignore.\n"
     },
     "b3": {
-      "$ref": "#/$defs/B3Propagator"
+      "$ref": "#/$defs/B3Propagator",
+      "description": "Include the zipkin b3 propagator.\nIf omitted, ignore.\n"
     },
     "b3multi": {
-      "$ref": "#/$defs/B3MultiPropagator"
-    },
-    "jaeger": {
-      "$ref": "#/$defs/JaegerPropagator"
-    },
-    "ottrace": {
-      "$ref": "#/$defs/OpenTracingPropagator"
+      "$ref": "#/$defs/B3MultiPropagator",
+      "description": "Include the zipkin b3 multi propagator.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -3536,9 +3945,9 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `ratio` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `ratio` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -3568,7 +3977,8 @@ No snippets.
         "null"
       ],
       "minimum": 0,
-      "maximum": 1
+      "maximum": 1,
+      "description": "Configure trace_id_ratio.\nIf omitted or null, 1.0 is used.\n"
     }
   }
 }</pre>
@@ -3586,12 +3996,12 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `limits` | supported | unknown | supported | unknown |
-| `processors` | supported | unknown | supported | unknown |
-| `sampler` | supported | unknown | supported | unknown |
-| `tracer_configurator/development` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `limits` | supported | unknown | supported | unknown | supported |
+| `processors` | supported | unknown | supported | unknown | supported |
+| `sampler` | supported | unknown | supported | unknown | supported |
+| `tracer_configurator/development` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -3618,16 +4028,20 @@ No snippets.
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/SpanProcessor"
-      }
+      },
+      "description": "Configure span processors.\nProperty is required and must be non-null.\n"
     },
     "limits": {
-      "$ref": "#/$defs/SpanLimits"
+      "$ref": "#/$defs/SpanLimits",
+      "description": "Configure span limits. See also attribute_limits.\nIf omitted, default values as described in SpanLimits are used.\n"
     },
     "sampler": {
-      "$ref": "#/$defs/Sampler"
+      "$ref": "#/$defs/Sampler",
+      "description": "Configure the sampler.\nIf omitted, parent based sampler with a root of always_on is used.\n"
     },
     "tracer_configurator/development": {
-      "$ref": "#/$defs/ExperimentalTracerConfigurator"
+      "$ref": "#/$defs/ExperimentalTracerConfigurator",
+      "description": "Configure tracers.\nIf omitted, all tracers use default values as described in ExperimentalTracerConfig.\n"
     }
   },
   "required": [
@@ -3646,10 +4060,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `selector` | supported | unknown | supported | unknown |
-| `stream` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `selector` | supported | unknown | supported | unknown | supported |
+| `stream` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -3664,17 +4078,64 @@ Usages:
 Snippets:
 
 <details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/View_kitchen_sink.yaml)
+```yaml
+selector:
+  instrument_name: my_instrument
+  instrument_type: histogram
+  unit: ms
+  meter_name: my-meter
+  meter_version: 1.0.0
+  meter_schema_url: https://opentelemetry.io/schemas/1.16.0
+stream:
+  name: new_instrument_name
+  description: new_description
+  aggregation:
+    explicit_bucket_histogram:
+      boundaries:
+        - 0.0
+        - 5.0
+        - 10.0
+        - 25.0
+        - 50.0
+        - 75.0
+        - 100.0
+        - 250.0
+        - 500.0
+        - 750.0
+        - 1000.0
+        - 2500.0
+        - 5000.0
+        - 7500.0
+        - 10000.0
+      record_min_max: true
+  aggregation_cardinality_limit: 2000
+  attribute_keys:
+    included:
+      - foo.*
+    excluded:
+      - foo.bar
+```
+</details>
+
+<details>
 <summary>Override Default Histogram Buckets</summary>
 
 [Snippet Source File](./snippets/View_override_default_histogram_buckets.yaml)
 ```yaml
+# select a specific histogram instrument and override the default buckets
 selector:
   instrument_name: my.instrument.name
   instrument_type: histogram
 stream:
   aggregation:
     explicit_bucket_histogram:
-      boundaries: [0, 5, 10]
+      boundaries:
+        - 0
+        - 5.0
+        - 10.0
 ```
 </details>
 
@@ -3687,10 +4148,12 @@ stream:
   "additionalProperties": false,
   "properties": {
     "selector": {
-      "$ref": "#/$defs/ViewSelector"
+      "$ref": "#/$defs/ViewSelector",
+      "description": "Configure view selector. \nSelection criteria is additive as described in https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#instrument-selection-criteria.\nProperty is required and must be non-null.\n"
     },
     "stream": {
-      "$ref": "#/$defs/ViewStream"
+      "$ref": "#/$defs/ViewStream",
+      "description": "Configure view stream.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -3714,14 +4177,14 @@ stream:
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `instrument_name` | supported | unknown | supported | unknown |
-| `instrument_type` | supported | unknown | supported | unknown |
-| `meter_name` | supported | unknown | supported | unknown |
-| `meter_schema_url` | supported | unknown | supported | unknown |
-| `meter_version` | supported | unknown | supported | unknown |
-| `unit` | supported | unknown | ignored | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `instrument_name` | supported | unknown | supported | unknown | supported |
+| `instrument_type` | supported | unknown | supported | unknown | supported |
+| `meter_name` | supported | unknown | supported | unknown | supported |
+| `meter_schema_url` | supported | unknown | supported | unknown | supported |
+| `meter_version` | supported | unknown | supported | unknown | supported |
+| `unit` | supported | unknown | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -3746,34 +4209,40 @@ No snippets.
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure instrument name selection criteria.\nIf omitted or null, all instrument names match.\n"
     },
     "instrument_type": {
-      "$ref": "#/$defs/InstrumentType"
+      "$ref": "#/$defs/InstrumentType",
+      "description": "Configure instrument type selection criteria.\nValues include:\n* counter: Synchronous counter instruments.\n* gauge: Synchronous gauge instruments.\n* histogram: Synchronous histogram instruments.\n* observable_counter: Asynchronous counter instruments.\n* observable_gauge: Asynchronous gauge instruments.\n* observable_up_down_counter: Asynchronous up down counter instruments.\n* up_down_counter: Synchronous up down counter instruments.\nIf omitted, all instrument types match.\n"
     },
     "unit": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure the instrument unit selection criteria.\nIf omitted or null, all instrument units match.\n"
     },
     "meter_name": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure meter name selection criteria.\nIf omitted or null, all meter names match.\n"
     },
     "meter_version": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure meter version selection criteria.\nIf omitted or null, all meter versions match.\n"
     },
     "meter_schema_url": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure meter schema url selection criteria.\nIf omitted or null, all meter schema URLs match.\n"
     }
   }
 }</pre>
@@ -3783,7 +4252,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `aggregation` | [`Aggregation`](#aggregation) | `false` | If omitted, default is used. | No constraints. | Configure aggregation of the resulting stream(s). <br> |
+| `aggregation` | [`Aggregation`](#aggregation) | `false` | If omitted, default is used. | No constraints. | Configure aggregation of the resulting stream(s).<br> |
 | `aggregation_cardinality_limit` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, the metric reader's default cardinality limit is used. | * `exclusiveMinimum`: `0`<br> | Configure the aggregation cardinality limit.<br> |
 | `attribute_keys` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, all attribute keys are retained. | No constraints. | Configure attribute keys retained in the resulting stream(s).<br> |
 | `description` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, the instrument's origin description is used. | No constraints. | Configure metric description of the resulting stream(s).<br> |
@@ -3792,13 +4261,13 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `aggregation` | supported | unknown | supported | unknown |
-| `aggregation_cardinality_limit` | supported | unknown | supported | unknown |
-| `attribute_keys` | supported | unknown | supported | unknown |
-| `description` | supported | unknown | supported | unknown |
-| `name` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `aggregation` | supported | unknown | supported | unknown | ignored |
+| `aggregation_cardinality_limit` | supported | unknown | supported | unknown | not_implemented |
+| `attribute_keys` | supported | unknown | supported | unknown | supported |
+| `description` | supported | unknown | supported | unknown | supported |
+| `name` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -3823,26 +4292,31 @@ No snippets.
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure metric name of the resulting stream(s).\nIf omitted or null, the instrument's original name is used.\n"
     },
     "description": {
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure metric description of the resulting stream(s).\nIf omitted or null, the instrument's origin description is used.\n"
     },
     "aggregation": {
-      "$ref": "#/$defs/Aggregation"
+      "$ref": "#/$defs/Aggregation",
+      "description": "Configure aggregation of the resulting stream(s).\nIf omitted, default is used.\n"
     },
     "aggregation_cardinality_limit": {
       "type": [
         "integer",
         "null"
       ],
-      "exclusiveMinimum": 0
+      "exclusiveMinimum": 0,
+      "description": "Configure the aggregation cardinality limit.\nIf omitted or null, the metric reader's default cardinality limit is used.\n"
     },
     "attribute_keys": {
-      "$ref": "#/$defs/IncludeExclude"
+      "$ref": "#/$defs/IncludeExclude",
+      "description": "Configure attribute keys retained in the resulting stream(s).\nIf omitted, all attribute keys are retained.\n"
     }
   }
 }</pre>
@@ -3922,9 +4396,9 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `root` | unknown | unknown | unknown | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `root` | not_implemented | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -3949,7 +4423,8 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "root": {
-      "$ref": "#/$defs/ExperimentalComposableSampler"
+      "$ref": "#/$defs/ExperimentalComposableSampler",
+      "description": "Sampler to use when there is no parent.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -3970,9 +4445,9 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `ratio` | unknown | unknown | unknown | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `ratio` | not_implemented | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4002,7 +4477,8 @@ No snippets.
         "null"
       ],
       "minimum": 0,
-      "maximum": 1
+      "maximum": 1,
+      "description": "Configure ratio.\nIf omitted or null, 1.0 is used.\n"
     }
   }
 }</pre>
@@ -4020,9 +4496,9 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `rules` | unknown | unknown | unknown | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `rules` | not_implemented | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4051,7 +4527,8 @@ No snippets.
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRule"
-      }
+      },
+      "description": "The rules for the sampler, matched in order. If no rules match, the span is not sampled.\nIf omitted or null, no span is sampled.\n"
     }
   }
 }</pre>
@@ -4073,13 +4550,13 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `attribute_patterns` | unknown | unknown | unknown | unknown |
-| `attribute_values` | unknown | unknown | unknown | unknown |
-| `parent` | unknown | unknown | unknown | unknown |
-| `sampler` | unknown | unknown | unknown | unknown |
-| `span_kinds` | unknown | unknown | unknown | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `attribute_patterns` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `attribute_values` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `parent` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `sampler` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `span_kinds` | not_implemented | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4103,27 +4580,32 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "attribute_values": {
-      "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributeValues"
+      "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributeValues",
+      "description": "Values to match against a single attribute. Non-string attributes are matched using their string representation:\nfor example, a value of \"404\" would match the http.response.status_code 404. For array attributes, if any\nitem matches, it is considered a match.\nIf omitted, ignore.\n"
     },
     "attribute_patterns": {
-      "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributePatterns"
+      "$ref": "#/$defs/ExperimentalComposableRuleBasedSamplerRuleAttributePatterns",
+      "description": "Patterns to match against a single attribute. Non-string attributes are matched using their string representation:\nfor example, a pattern of \"4*\" would match any http.response.status_code in 400-499. For array attributes, if any\nitem matches, it is considered a match.\nIf omitted, ignore.\n"
     },
     "span_kinds": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/SpanKind"
-      }
+      },
+      "description": "The span kinds to match. If the span's kind matches any of these, it matches.\nValues include:\n* client: client, a client span.\n* consumer: consumer, a consumer span.\n* internal: internal, an internal span.\n* producer: producer, a producer span.\n* server: server, a server span.\nIf omitted, ignore.\n"
     },
     "parent": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalSpanParent"
-      }
+      },
+      "description": "The parent span types to match.\nValues include:\n* local: local, a local parent.\n* none: none, no parent, i.e., the trace root.\n* remote: remote, a remote parent.\nIf omitted, ignore.\n"
     },
     "sampler": {
-      "$ref": "#/$defs/ExperimentalComposableSampler"
+      "$ref": "#/$defs/ExperimentalComposableSampler",
+      "description": "The sampler to use for matching spans.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -4146,11 +4628,11 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `excluded` | unknown | unknown | unknown | unknown |
-| `included` | unknown | unknown | unknown | unknown |
-| `key` | unknown | unknown | unknown | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `excluded` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `included` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `key` | not_implemented | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4173,21 +4655,24 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "key": {
-      "type": "string"
+      "type": "string",
+      "description": "The attribute key to match against.\nProperty is required and must be non-null.\n"
     },
     "included": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "string"
-      }
+      },
+      "description": "Configure list of value patterns to include.\nValues are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, all values are included.\n"
     },
     "excluded": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "string"
-      }
+      },
+      "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\nValues are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, .included attributes are included.\n"
     }
   },
   "required": [
@@ -4209,10 +4694,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `key` | unknown | unknown | unknown | unknown |
-| `values` | unknown | unknown | unknown | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `key` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `values` | not_implemented | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4235,14 +4720,16 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "key": {
-      "type": "string"
+      "type": "string",
+      "description": "The attribute key to match against.\nProperty is required and must be non-null.\n"
     },
     "values": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "string"
-      }
+      },
+      "description": "The attribute values to match against. If the attribute's value matches any of these, it matches.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -4268,13 +4755,13 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `always_off` | unknown | unknown | unknown | unknown |
-| `always_on` | unknown | unknown | unknown | unknown |
-| `parent_threshold` | unknown | unknown | unknown | unknown |
-| `probability` | unknown | unknown | unknown | unknown |
-| `rule_based` | unknown | unknown | unknown | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `always_off` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `always_on` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `parent_threshold` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `probability` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `rule_based` | not_implemented | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4307,19 +4794,24 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "always_off": {
-      "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler"
+      "$ref": "#/$defs/ExperimentalComposableAlwaysOffSampler",
+      "description": "Configure sampler to be always_off.\nIf omitted, ignore.\n"
     },
     "always_on": {
-      "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler"
+      "$ref": "#/$defs/ExperimentalComposableAlwaysOnSampler",
+      "description": "Configure sampler to be always_on.\nIf omitted, ignore.\n"
     },
     "parent_threshold": {
-      "$ref": "#/$defs/ExperimentalComposableParentThresholdSampler"
+      "$ref": "#/$defs/ExperimentalComposableParentThresholdSampler",
+      "description": "Configure sampler to be parent_threshold.\nIf omitted, ignore.\n"
     },
     "probability": {
-      "$ref": "#/$defs/ExperimentalComposableProbabilitySampler"
+      "$ref": "#/$defs/ExperimentalComposableProbabilitySampler",
+      "description": "Configure sampler to be probability.\nIf omitted, ignore.\n"
     },
     "rule_based": {
-      "$ref": "#/$defs/ExperimentalComposableRuleBasedSampler"
+      "$ref": "#/$defs/ExperimentalComposableRuleBasedSampler",
+      "description": "Configure sampler to be rule_based.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -4363,15 +4855,13 @@ No snippets.
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
-| `peer` | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | `false` | If omitted, defaults as described in ExperimentalPeerInstrumentation are used. | No constraints. | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/<br> |
 
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `http` | not_applicable | unknown | supported | unknown |
-| `peer` | not_applicable | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `http` | not_applicable | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4392,11 +4882,9 @@ No snippets.
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "peer": {
-      "$ref": "#/$defs/ExperimentalPeerInstrumentation"
-    },
     "http": {
-      "$ref": "#/$defs/ExperimentalHttpInstrumentation"
+      "$ref": "#/$defs/ExperimentalHttpInstrumentation",
+      "description": "Configure instrumentations following the http semantic conventions.\nSee http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/\nIf omitted, defaults as described in ExperimentalHttpInstrumentation are used.\n"
     }
   }
 }</pre>
@@ -4439,16 +4927,18 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
+| `known_methods` | `array` of `string` | `false` | If omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known. | * `minItems`: `0`<br> | Override the default list of known HTTP methods.<br>Known methods are case-sensitive.<br>This is a full override of the default known methods, not a list of known methods in addition to the defaults.<br> |
 | `request_captured_headers` | `array` of `string` | `false` | If omitted, no outbound request headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for outbound http requests.<br> |
 | `response_captured_headers` | `array` of `string` | `false` | If omitted, no inbound response headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for inbound http responses.<br> |
 
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `request_captured_headers` | not_applicable | unknown | supported | unknown |
-| `response_captured_headers` | not_applicable | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `known_methods` | not_applicable | unknown | supported | unknown | supported |
+| `request_captured_headers` | not_applicable | unknown | supported | unknown | supported |
+| `response_captured_headers` | not_applicable | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4474,14 +4964,24 @@ No snippets.
       "minItems": 1,
       "items": {
         "type": "string"
-      }
+      },
+      "description": "Configure headers to capture for outbound http requests.\nIf omitted, no outbound request headers are captured.\n"
     },
     "response_captured_headers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "string"
-      }
+      },
+      "description": "Configure headers to capture for inbound http responses.\nIf omitted, no inbound response headers are captured.\n"
+    },
+    "known_methods": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "description": "Override the default list of known HTTP methods.\nKnown methods are case-sensitive.\nThis is a full override of the default known methods, not a list of known methods in addition to the defaults.\nIf omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known.\n"
     }
   }
 }</pre>
@@ -4500,10 +5000,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `client` | not_applicable | unknown | supported | unknown |
-| `server` | not_applicable | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `client` | not_applicable | unknown | supported | unknown | supported |
+| `server` | not_applicable | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4525,10 +5025,12 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "client": {
-      "$ref": "#/$defs/ExperimentalHttpClientInstrumentation"
+      "$ref": "#/$defs/ExperimentalHttpClientInstrumentation",
+      "description": "Configure instrumentations following the http client semantic conventions.\nIf omitted, defaults as described in ExperimentalHttpClientInstrumentation are used.\n"
     },
     "server": {
-      "$ref": "#/$defs/ExperimentalHttpServerInstrumentation"
+      "$ref": "#/$defs/ExperimentalHttpServerInstrumentation",
+      "description": "Configure instrumentations following the http server semantic conventions.\nIf omitted, defaults as described in ExperimentalHttpServerInstrumentation are used.\n"
     }
   }
 }</pre>
@@ -4541,16 +5043,18 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
+| `known_methods` | `array` of `string` | `false` | If omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known. | * `minItems`: `0`<br> | Override the default list of known HTTP methods.<br>Known methods are case-sensitive.<br>This is a full override of the default known methods, not a list of known methods in addition to the defaults.<br> |
 | `request_captured_headers` | `array` of `string` | `false` | If omitted, no request headers are captured. | * `minItems`: `1`<br> | Configure headers to capture for inbound http requests.<br> |
 | `response_captured_headers` | `array` of `string` | `false` | If omitted, no response headers are captures. | * `minItems`: `1`<br> | Configure headers to capture for outbound http responses.<br> |
 
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `request_captured_headers` | not_applicable | unknown | supported | unknown |
-| `response_captured_headers` | not_applicable | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `known_methods` | not_applicable | unknown | supported | unknown | supported |
+| `request_captured_headers` | not_applicable | unknown | supported | unknown | supported |
+| `response_captured_headers` | not_applicable | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4576,14 +5080,24 @@ No snippets.
       "minItems": 1,
       "items": {
         "type": "string"
-      }
+      },
+      "description": "Configure headers to capture for inbound http requests.\nIf omitted, no request headers are captured.\n"
     },
     "response_captured_headers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "string"
-      }
+      },
+      "description": "Configure headers to capture for outbound http responses.\nIf omitted, no response headers are captures.\n"
+    },
+    "known_methods": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "description": "Override the default list of known HTTP methods.\nKnown methods are case-sensitive.\nThis is a full override of the default known methods, not a list of known methods in addition to the defaults.\nIf omitted, HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known.\n"
     }
   }
 }</pre>
@@ -4612,20 +5126,20 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `cpp` | not_applicable | unknown | not_applicable | unknown |
-| `dotnet` | not_applicable | unknown | not_applicable | unknown |
-| `erlang` | not_applicable | unknown | not_applicable | unknown |
-| `general` | not_applicable | unknown | supported | unknown |
-| `go` | not_applicable | unknown | not_applicable | unknown |
-| `java` | not_applicable | unknown | supported | unknown |
-| `js` | not_applicable | unknown | not_applicable | unknown |
-| `php` | not_applicable | unknown | not_applicable | unknown |
-| `python` | not_applicable | unknown | not_applicable | unknown |
-| `ruby` | not_applicable | unknown | not_applicable | unknown |
-| `rust` | not_applicable | unknown | not_applicable | unknown |
-| `swift` | not_applicable | unknown | not_applicable | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `cpp` | not_applicable | unknown | not_applicable | unknown | not_applicable |
+| `dotnet` | not_applicable | unknown | not_applicable | unknown | not_applicable |
+| `erlang` | not_applicable | unknown | not_applicable | unknown | not_applicable |
+| `general` | not_applicable | unknown | supported | unknown | supported |
+| `go` | not_applicable | unknown | not_applicable | unknown | not_applicable |
+| `java` | not_applicable | unknown | supported | unknown | not_applicable |
+| `js` | not_applicable | unknown | not_applicable | unknown | not_applicable |
+| `php` | not_applicable | unknown | not_applicable | unknown | supported |
+| `python` | not_applicable | unknown | not_applicable | unknown | not_applicable |
+| `ruby` | not_applicable | unknown | not_applicable | unknown | not_applicable |
+| `rust` | not_applicable | unknown | not_applicable | unknown | not_applicable |
+| `swift` | not_applicable | unknown | not_applicable | unknown | not_applicable |
 </details>
 
 Constraints: 
@@ -4636,7 +5150,84 @@ Usages:
 
 * [`OpenTelemetryConfiguration.instrumentation/development`](#opentelemetryconfiguration)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalInstrumentation_kitchen_sink.yaml)
+```yaml
+general:
+  http:
+    client:
+      request_captured_headers:
+        - Content-Type
+        - Accept
+      response_captured_headers:
+        - Content-Type
+        - Content-Encoding
+      known_methods:
+        - CONNECT
+        - DELETE
+        - GET
+        - HEAD
+        - OPTIONS
+        - PATCH
+        - POST
+        - PUT
+        - TRACE
+    server:
+      request_captured_headers:
+        - Content-Type
+        - Accept
+      response_captured_headers:
+        - Content-Type
+        - Content-Encoding
+      known_methods:
+        - CONNECT
+        - DELETE
+        - GET
+        - HEAD
+        - OPTIONS
+        - PATCH
+        - POST
+        - PUT
+        - TRACE
+cpp:
+  example:
+    property: "value"
+dotnet:
+  example:
+    property: "value"
+erlang:
+  example:
+    property: "value"
+go:
+  example:
+    property: "value"
+java:
+  example:
+    property: "value"
+js:
+  example:
+    property: "value"
+php:
+  example:
+    property: "value"
+python:
+  example:
+    property: "value"
+ruby:
+  example:
+    property: "value"
+rust:
+  example:
+    property: "value"
+swift:
+  example:
+    property: "value"
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -4647,40 +5238,52 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "general": {
-      "$ref": "#/$defs/ExperimentalGeneralInstrumentation"
+      "$ref": "#/$defs/ExperimentalGeneralInstrumentation",
+      "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\nInstrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.\nIf omitted, default values as described in ExperimentalGeneralInstrumentation are used.\n"
     },
     "cpp": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+      "description": "Configure C++ language-specific instrumentation libraries.\nIf omitted, instrumentation defaults are used.\n"
     },
     "dotnet": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+      "description": "Configure .NET language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
     },
     "erlang": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+      "description": "Configure Erlang language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
     },
     "go": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+      "description": "Configure Go language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
     },
     "java": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+      "description": "Configure Java language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
     },
     "js": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+      "description": "Configure JavaScript language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
     },
     "php": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+      "description": "Configure PHP language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
     },
     "python": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+      "description": "Configure Python language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
     },
     "ruby": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+      "description": "Configure Ruby language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
     },
     "rust": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+      "description": "Configure Rust language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
     },
     "swift": {
-      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation"
+      "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
+      "description": "Configure Swift language-specific instrumentation libraries.\nEach entry's key identifies a particular instrumentation library. The corresponding value configures it.\nIf omitted, instrumentation defaults are used.\n"
     }
   }
 }</pre>
@@ -4700,11 +5303,11 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `endpoint` | not_implemented | unknown | ignored | unknown |
-| `initial_sampler` | not_implemented | unknown | ignored | unknown |
-| `interval` | not_implemented | unknown | ignored | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `endpoint` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `initial_sampler` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `interval` | not_implemented | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4732,17 +5335,20 @@ No snippets.
     "endpoint": {
       "type": [
         "string"
-      ]
+      ],
+      "description": "Configure the endpoint of the jaeger remote sampling service.\nProperty is required and must be non-null.\n"
     },
     "interval": {
       "type": [
         "integer",
         "null"
       ],
-      "minimum": 0
+      "minimum": 0,
+      "description": "Configure the polling interval (in milliseconds) to fetch from the remote sampling service.\nIf omitted or null, 60000 is used.\n"
     },
     "initial_sampler": {
-      "$ref": "#/$defs/Sampler"
+      "$ref": "#/$defs/Sampler",
+      "description": "Configure the initial sampler used before first configuration is fetched.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -4798,18 +5404,18 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `disabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure if the logger is enabled or not.<br> |
+| `enabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, true is used. | No constraints. | Configure if the logger is enabled or not.<br> |
 | `minimum_severity` | [`SeverityNumber`](#severitynumber) | `false` | If omitted, severity filtering is not applied. | No constraints. | Configure severity filtering.<br>Log records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.<br> |
 | `trace_based` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, trace based filtering is not applied. | No constraints. | Configure trace based filtering.<br>If true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.<br> |
 
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `disabled` | not_implemented | unknown | supported | unknown |
-| `minimum_severity` | not_implemented | unknown | not_implemented | unknown |
-| `trace_based` | not_implemented | unknown | not_implemented | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `enabled` | not_implemented | unknown | supported | unknown | supported |
+| `minimum_severity` | not_implemented | unknown | supported | unknown | not_implemented |
+| `trace_based` | not_implemented | unknown | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4833,20 +5439,23 @@ No snippets.
   ],
   "additionalProperties": false,
   "properties": {
-    "disabled": {
+    "enabled": {
       "type": [
         "boolean",
         "null"
-      ]
+      ],
+      "description": "Configure if the logger is enabled or not.\nIf omitted or null, true is used.\n"
     },
     "minimum_severity": {
-      "$ref": "#/$defs/SeverityNumber"
+      "$ref": "#/$defs/SeverityNumber",
+      "description": "Configure severity filtering.\nLog records with an non-zero (i.e. unspecified) severity number which is less than minimum_severity are not processed.\nValues include:\n* debug: debug, severity number 5.\n* debug2: debug2, severity number 6.\n* debug3: debug3, severity number 7.\n* debug4: debug4, severity number 8.\n* error: error, severity number 17.\n* error2: error2, severity number 18.\n* error3: error3, severity number 19.\n* error4: error4, severity number 20.\n* fatal: fatal, severity number 21.\n* fatal2: fatal2, severity number 22.\n* fatal3: fatal3, severity number 23.\n* fatal4: fatal4, severity number 24.\n* info: info, severity number 9.\n* info2: info2, severity number 10.\n* info3: info3, severity number 11.\n* info4: info4, severity number 12.\n* trace: trace, severity number 1.\n* trace2: trace2, severity number 2.\n* trace3: trace3, severity number 3.\n* trace4: trace4, severity number 4.\n* warn: warn, severity number 13.\n* warn2: warn2, severity number 14.\n* warn3: warn3, severity number 15.\n* warn4: warn4, severity number 16.\nIf omitted, severity filtering is not applied.\n"
     },
     "trace_based": {
       "type": [
         "boolean",
         "null"
-      ]
+      ],
+      "description": "Configure trace based filtering.\nIf true, log records associated with unsampled trace contexts traces are not processed. If false, or if a log record is not associated with a trace context, trace based filtering is not applied.\nIf omitted or null, trace based filtering is not applied.\n"
     }
   }
 }</pre>
@@ -4865,10 +5474,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `default_config` | not_implemented | unknown | supported | unknown |
-| `loggers` | not_implemented | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `default_config` | not_implemented | unknown | supported | unknown | supported |
+| `loggers` | not_implemented | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4879,7 +5488,23 @@ Usages:
 
 * [`LoggerProvider.logger_configurator/development`](#loggerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalLoggerConfigurator_kitchen_sink.yaml)
+```yaml
+default_config:
+  enabled: false
+loggers:
+  - name: io.opentelemetry.contrib.*
+    config:
+      enabled: true
+      minimum_severity: info
+      trace_based: true
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -4892,14 +5517,16 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "default_config": {
-      "$ref": "#/$defs/ExperimentalLoggerConfig"
+      "$ref": "#/$defs/ExperimentalLoggerConfig",
+      "description": "Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.\nIf omitted, unmatched .loggers use default values as described in ExperimentalLoggerConfig.\n"
     },
     "loggers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalLoggerMatcherAndConfig"
-      }
+      },
+      "description": "Configure loggers.\nIf omitted, all loggers use .default_config.\n"
     }
   }
 }</pre>
@@ -4918,10 +5545,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `config` | not_implemented | unknown | supported | unknown |
-| `name` | not_implemented | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `config` | not_implemented | unknown | supported | unknown | supported |
+| `name` | not_implemented | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4948,10 +5575,12 @@ No snippets.
     "name": {
       "type": [
         "string"
-      ]
+      ],
+      "description": "Configure logger names to match, evaluated as follows:\n\n * If the logger name exactly matches.\n * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nProperty is required and must be non-null.\n"
     },
     "config": {
-      "$ref": "#/$defs/ExperimentalLoggerConfig"
+      "$ref": "#/$defs/ExperimentalLoggerConfig",
+      "description": "The logger config.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -4968,14 +5597,14 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `disabled` | `boolean` | `false` | If omitted, false is used. | No constraints. | Configure if the meter is enabled or not. |
+| `enabled` | `boolean` | `false` | If omitted, true is used. | No constraints. | Configure if the meter is enabled or not. |
 
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `disabled` | not_implemented | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `enabled` | not_implemented | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4999,10 +5628,11 @@ No snippets.
   ],
   "additionalProperties": false,
   "properties": {
-    "disabled": {
+    "enabled": {
       "type": [
         "boolean"
-      ]
+      ],
+      "description": "Configure if the meter is enabled or not.\nIf omitted, true is used.\n"
     }
   }
 }</pre>
@@ -5021,10 +5651,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `default_config` | not_implemented | unknown | supported | unknown |
-| `meters` | not_implemented | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `default_config` | not_implemented | unknown | supported | unknown | supported |
+| `meters` | not_implemented | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5035,7 +5665,21 @@ Usages:
 
 * [`MeterProvider.meter_configurator/development`](#meterprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalMeterConfigurator_kitchen_sink.yaml)
+```yaml
+default_config:
+  enabled: false
+meters:
+  - name: io.opentelemetry.contrib.*
+    config:
+      enabled: true
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5048,14 +5692,16 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "default_config": {
-      "$ref": "#/$defs/ExperimentalMeterConfig"
+      "$ref": "#/$defs/ExperimentalMeterConfig",
+      "description": "Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.\nIf omitted, unmatched .meters use default values as described in ExperimentalMeterConfig.\n"
     },
     "meters": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalMeterMatcherAndConfig"
-      }
+      },
+      "description": "Configure meters.\nIf omitted, all meters used .default_config.\n"
     }
   }
 }</pre>
@@ -5074,10 +5720,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `config` | not_implemented | unknown | supported | unknown |
-| `name` | not_implemented | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `config` | not_implemented | unknown | supported | unknown | supported |
+| `name` | not_implemented | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5104,10 +5750,12 @@ No snippets.
     "name": {
       "type": [
         "string"
-      ]
+      ],
+      "description": "Configure meter names to match, evaluated as follows:\n\n * If the meter name exactly matches.\n * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nProperty is required and must be non-null.\n"
     },
     "config": {
-      "$ref": "#/$defs/ExperimentalMeterConfig"
+      "$ref": "#/$defs/ExperimentalMeterConfig",
+      "description": "The meter config.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -5129,9 +5777,9 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `output_stream` | supported | unknown | not_implemented | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `output_stream` | supported | not_implemented | not_implemented | unknown | supported |
 </details>
 
 Constraints: 
@@ -5143,7 +5791,43 @@ Usages:
 * [`LogRecordExporter.otlp_file/development`](#logrecordexporter)
 * [`SpanExporter.otlp_file/development`](#spanexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Logs File</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileExporter_logs_file.yaml)
+```yaml
+output_stream: file:///var/log/logs.jsonl
+```
+</details>
+
+<details>
+<summary>Logs Stdout</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileExporter_logs_stdout.yaml)
+```yaml
+output_stream: stdout
+```
+</details>
+
+<details>
+<summary>Traces File</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileExporter_traces_file.yaml)
+```yaml
+output_stream: file:///var/log/traces.jsonl
+```
+</details>
+
+<details>
+<summary>Traces Stdout</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileExporter_traces_stdout.yaml)
+```yaml
+output_stream: stdout
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5160,7 +5844,8 @@ No snippets.
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure output stream. \nValues include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\nIf omitted or null, stdout is used.\n"
     }
   }
 }</pre>
@@ -5180,11 +5865,11 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `default_histogram_aggregation` | supported | unknown | supported | unknown |
-| `output_stream` | supported | unknown | not_implemented | unknown |
-| `temporality_preference` | supported | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `default_histogram_aggregation` | supported | not_implemented | supported | unknown | not_implemented |
+| `output_stream` | supported | not_implemented | not_implemented | unknown | supported |
+| `temporality_preference` | supported | not_implemented | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5195,7 +5880,29 @@ Usages:
 
 * [`PushMetricExporter.otlp_file/development`](#pushmetricexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Metrics File</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileMetricExporter_metrics_file.yaml)
+```yaml
+output_stream: file:///var/log/metrics.jsonl
+temporality_preference: cumulative
+default_histogram_aggregation: explicit_bucket_histogram
+```
+</details>
+
+<details>
+<summary>Metrics Stdout</summary>
+
+[Snippet Source File](./snippets/ExperimentalOtlpFileMetricExporter_metrics_stdout.yaml)
+```yaml
+output_stream: stdout
+temporality_preference: cumulative
+default_histogram_aggregation: explicit_bucket_histogram
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5212,113 +5919,18 @@ No snippets.
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure output stream. \nValues include stdout, or scheme+destination. For example: file:///path/to/file.jsonl.\nIf omitted or null, stdout is used.\n"
     },
     "temporality_preference": {
-      "$ref": "#/$defs/ExporterTemporalityPreference"
+      "$ref": "#/$defs/ExporterTemporalityPreference",
+      "description": "Configure temporality preference.\nValues include:\n* cumulative: Use cumulative aggregation temporality for all instrument types.\n* delta: Use delta aggregation for all instrument types except up down counter and asynchronous up down counter.\n* low_memory: Use delta aggregation temporality for counter and histogram instrument types. Use cumulative aggregation temporality for all other instrument types.\nIf omitted, cumulative is used.\n"
     },
     "default_histogram_aggregation": {
-      "$ref": "#/$defs/ExporterDefaultHistogramAggregation"
+      "$ref": "#/$defs/ExporterDefaultHistogramAggregation",
+      "description": "Configure default histogram aggregation.\nValues include:\n* base2_exponential_bucket_histogram: Use base2 exponential histogram as the default aggregation for histogram instruments.\n* explicit_bucket_histogram: Use explicit bucket histogram as the default aggregation for histogram instruments.\nIf omitted, explicit_bucket_histogram is used.\n"
     }
   }
-}</pre>
-</details>
-
-## ExperimentalPeerInstrumentation <a id="experimentalpeerinstrumentation"></a>
-
-> [!WARNING]
-> This type is [experimental](VERSIONING.md#experimental-features).
-
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | `false` | If omitted, no peer service mappings are used. | * `minItems`: `1`<br> | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes<br> |
-
-<details>
-<summary>Language support status</summary>
-
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `service_mapping` | not_implemented | unknown | supported | unknown |
-</details>
-
-Constraints: 
-
-* `additionalProperties`: `false`
-
-Usages:
-
-* [`ExperimentalGeneralInstrumentation.peer`](#experimentalgeneralinstrumentation)
-
-No snippets.
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/instrumentation.yaml)
-<pre>{
-  "type": "object",
-  "additionalProperties": false,
-  "properties": {
-    "service_mapping": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "$ref": "#/$defs/ExperimentalPeerServiceMapping"
-      }
-    }
-  }
-}</pre>
-</details>
-
-## ExperimentalPeerServiceMapping <a id="experimentalpeerservicemapping"></a>
-
-> [!WARNING]
-> This type is [experimental](VERSIONING.md#experimental-features).
-
-| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
-|---|---|---|---|---|---|
-| `peer` | `string` | `true` | Property is required and must be non-null. | No constraints. | The IP address to map.<br> |
-| `service` | `string` | `true` | Property is required and must be non-null. | No constraints. | The logical name corresponding to the IP address of .peer.<br> |
-
-<details>
-<summary>Language support status</summary>
-
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `peer` | not_implemented | unknown | supported | unknown |
-| `service` | not_implemented | unknown | supported | unknown |
-</details>
-
-Constraints: 
-
-* `additionalProperties`: `false`
-* `required`: `["peer","service"]`
-
-Usages:
-
-* [`ExperimentalPeerInstrumentation.service_mapping`](#experimentalpeerinstrumentation)
-
-No snippets.
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/instrumentation.yaml)
-<pre>{
-  "type": "object",
-  "additionalProperties": false,
-  "properties": {
-    "peer": {
-      "type": "string"
-    },
-    "service": {
-      "type": "string"
-    }
-  },
-  "required": [
-    "peer",
-    "service"
-  ]
 }</pre>
 </details>
 
@@ -5334,9 +5946,9 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `ratio` | not_implemented | unknown | ignored | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `ratio` | not_implemented | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -5366,7 +5978,8 @@ No snippets.
         "null"
       ],
       "minimum": 0,
-      "maximum": 1
+      "maximum": 1,
+      "description": "Configure ratio.\nIf omitted or null, 1.0 is used.\n"
     }
   }
 }</pre>
@@ -5413,20 +6026,20 @@ No snippets.
 | `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 9464 is used. | No constraints. | Configure port.<br> |
 | `translation_strategy` | [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | `false` | If omitted, underscore_escaping_with_suffixes is used. | No constraints. | Configure how metric names are translated to Prometheus metric names. |
 | `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, no resource attributes are added. | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
-| `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a scope info metric.<br> |
+| `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without scope labels.<br> |
 | `without_target_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a target info metric for the resource.<br> |
 
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `host` | supported | unknown | supported | unknown |
-| `port` | supported | unknown | supported | unknown |
-| `translation_strategy` | supported | unknown | not_implemented | unknown |
-| `with_resource_constant_labels` | supported | unknown | supported | unknown |
-| `without_scope_info` | unknown | unknown | ignored | unknown |
-| `without_target_info` | unknown | unknown | ignored | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `host` | supported | unknown | supported | unknown | not_implemented |
+| `port` | supported | unknown | supported | unknown | not_implemented |
+| `translation_strategy` | supported | unknown | not_implemented | unknown | not_implemented |
+| `with_resource_constant_labels` | supported | unknown | supported | unknown | not_implemented |
+| `without_scope_info` | supported | unknown | supported | unknown | not_implemented |
+| `without_target_info` | supported | unknown | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -5437,7 +6050,25 @@ Usages:
 
 * [`PullMetricExporter.prometheus/development`](#pullmetricexporter)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalPrometheusMetricExporter_kitchen_sink.yaml)
+```yaml
+host: localhost
+port: 9464
+without_scope_info: false
+without_target_info: false
+with_resource_constant_labels:
+  included:
+    - "service*"
+  excluded:
+    - "service.attr1"
+translation_strategy: underscore_escaping_with_suffixes
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5454,31 +6085,37 @@ No snippets.
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "description": "Configure host.\nIf omitted or null, localhost is used.\n"
     },
     "port": {
       "type": [
         "integer",
         "null"
-      ]
+      ],
+      "description": "Configure port.\nIf omitted or null, 9464 is used.\n"
     },
     "without_scope_info": {
       "type": [
         "boolean",
         "null"
-      ]
+      ],
+      "description": "Configure Prometheus Exporter to produce metrics without scope labels.\nIf omitted or null, false is used.\n"
     },
     "without_target_info": {
       "type": [
         "boolean",
         "null"
-      ]
+      ],
+      "description": "Configure Prometheus Exporter to produce metrics without a target info metric for the resource.\nIf omitted or null, false is used.\n"
     },
     "with_resource_constant_labels": {
-      "$ref": "#/$defs/IncludeExclude"
+      "$ref": "#/$defs/IncludeExclude",
+      "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.\nIf omitted, no resource attributes are added.\n"
     },
     "translation_strategy": {
-      "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy"
+      "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
+      "description": "Configure how metric names are translated to Prometheus metric names.\nValues include:\n* no_translation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.\n* no_utf8_escaping_with_suffixes: Special character escaping is disabled. Type and unit suffixes are enabled.\n* underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.\n* underscore_escaping_without_suffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.\nIf omitted, underscore_escaping_with_suffixes is used.\n"
     }
   }
 }</pre>
@@ -5501,12 +6138,12 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `no_translation` | unknown | unknown | unknown | unknown |
-| `no_utf8_escaping_with_suffixes` | unknown | unknown | unknown | unknown |
-| `underscore_escaping_with_suffixes` | unknown | unknown | unknown | unknown |
-| `underscore_escaping_without_suffixes` | unknown | unknown | unknown | unknown |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `no_translation` | not_implemented | unknown | not_implemented | unknown | not_implemented |
+| `no_utf8_escaping_with_suffixes` | not_implemented | unknown | not_implemented | unknown | not_implemented |
+| `underscore_escaping_with_suffixes` | supported | unknown | not_implemented | unknown | not_implemented |
+| `underscore_escaping_without_suffixes` | supported | unknown | not_implemented | unknown | not_implemented |
 </details>
 
 No constraints.
@@ -5548,10 +6185,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `attributes` | not_implemented | unknown | supported | unknown |
-| `detectors` | not_implemented | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `attributes` | not_implemented | unknown | supported | unknown | supported |
+| `detectors` | not_implemented | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5573,14 +6210,16 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "attributes": {
-      "$ref": "#/$defs/IncludeExclude"
+      "$ref": "#/$defs/IncludeExclude",
+      "description": "Configure attributes provided by resource detectors.\nIf omitted, all attributes from resource detectors are added.\n"
     },
     "detectors": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalResourceDetector"
-      }
+      },
+      "description": "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. \nIf omitted, no resource detectors are enabled.\n"
     }
   }
 }</pre>
@@ -5603,12 +6242,12 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `container` | not_implemented | unknown | supported | unknown |
-| `host` | not_implemented | unknown | supported | unknown |
-| `process` | not_implemented | unknown | supported | unknown |
-| `service` | not_implemented | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `container` | not_implemented | unknown | supported | unknown | ignored |
+| `host` | not_implemented | unknown | supported | unknown | supported |
+| `process` | not_implemented | unknown | supported | unknown | supported |
+| `service` | not_implemented | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5639,16 +6278,20 @@ No snippets.
   "maxProperties": 1,
   "properties": {
     "container": {
-      "$ref": "#/$defs/ExperimentalContainerResourceDetector"
+      "$ref": "#/$defs/ExperimentalContainerResourceDetector",
+      "description": "Enable the container resource detector, which populates container.* attributes.\nIf omitted, ignore.\n"
     },
     "host": {
-      "$ref": "#/$defs/ExperimentalHostResourceDetector"
+      "$ref": "#/$defs/ExperimentalHostResourceDetector",
+      "description": "Enable the host resource detector, which populates host.* and os.* attributes.\nIf omitted, ignore.\n"
     },
     "process": {
-      "$ref": "#/$defs/ExperimentalProcessResourceDetector"
+      "$ref": "#/$defs/ExperimentalProcessResourceDetector",
+      "description": "Enable the process resource detector, which populates process.* attributes.\nIf omitted, ignore.\n"
     },
     "service": {
-      "$ref": "#/$defs/ExperimentalServiceResourceDetector"
+      "$ref": "#/$defs/ExperimentalServiceResourceDetector",
+      "description": "Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -5700,11 +6343,11 @@ This is a enum type.
 <details>
 <summary>Language support status</summary>
 
-| Value | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `local` | unknown | unknown | unknown | unknown |
-| `none` | unknown | unknown | unknown | unknown |
-| `remote` | unknown | unknown | unknown | unknown |
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `local` | not_implemented | unknown | supported | unknown | not_implemented |
+| `none` | not_implemented | unknown | supported | unknown | not_implemented |
+| `remote` | not_implemented | unknown | supported | unknown | not_implemented |
 </details>
 
 No constraints.
@@ -5739,14 +6382,14 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `disabled` | `boolean` | `false` | If omitted, false is used. | No constraints. | Configure if the tracer is enabled or not. |
+| `enabled` | `boolean` | `false` | If omitted, true is used. | No constraints. | Configure if the tracer is enabled or not. |
 
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `disabled` | not_implemented | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `enabled` | not_implemented | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5770,10 +6413,11 @@ No snippets.
   ],
   "additionalProperties": false,
   "properties": {
-    "disabled": {
+    "enabled": {
       "type": [
         "boolean"
-      ]
+      ],
+      "description": "Configure if the tracer is enabled or not.\nIf omitted, true is used.\n"
     }
   }
 }</pre>
@@ -5792,10 +6436,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `default_config` | not_implemented | unknown | supported | unknown |
-| `tracers` | not_implemented | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `default_config` | not_implemented | unknown | supported | unknown | supported |
+| `tracers` | not_implemented | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5806,7 +6450,21 @@ Usages:
 
 * [`TracerProvider.tracer_configurator/development`](#tracerprovider)
 
-No snippets.
+Snippets:
+
+<details>
+<summary>Kitchen Sink</summary>
+
+[Snippet Source File](./snippets/ExperimentalTracerConfigurator_kitchen_sink.yaml)
+```yaml
+default_config:
+  enabled: false
+tracers:
+  - name: io.opentelemetry.contrib.*
+    config:
+      enabled: true
+```
+</details>
 
 <details>
 <summary>JSON Schema</summary>
@@ -5819,14 +6477,16 @@ No snippets.
   "additionalProperties": false,
   "properties": {
     "default_config": {
-      "$ref": "#/$defs/ExperimentalTracerConfig"
+      "$ref": "#/$defs/ExperimentalTracerConfig",
+      "description": "Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.\nIf omitted, unmatched .tracers use default values as described in ExperimentalTracerConfig.\n"
     },
     "tracers": {
       "type": "array",
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/ExperimentalTracerMatcherAndConfig"
-      }
+      },
+      "description": "Configure tracers.\nIf omitted, all tracers use .default_config.\n"
     }
   }
 }</pre>
@@ -5845,10 +6505,10 @@ No snippets.
 <details>
 <summary>Language support status</summary>
 
-| Property | [cpp](#cpp) | [go](#go) | [java](#java) | [js](#js) |
-|---|---|---|---|---|
-| `config` | not_implemented | unknown | supported | unknown |
-| `name` | not_implemented | unknown | supported | unknown |
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `config` | not_implemented | unknown | supported | unknown | supported |
+| `name` | not_implemented | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5875,10 +6535,12 @@ No snippets.
     "name": {
       "type": [
         "string"
-      ]
+      ],
+      "description": "Configure tracer names to match, evaluated as follows:\n\n * If the tracer name exactly matches.\n * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nProperty is required and must be non-null.\n"
     },
     "config": {
-      "$ref": "#/$defs/ExperimentalTracerConfig"
+      "$ref": "#/$defs/ExperimentalTracerConfig",
+      "description": "The tracer config.\nProperty is required and must be non-null.\n"
     }
   },
   "required": [
@@ -5888,471 +6550,13 @@ No snippets.
 }</pre>
 </details>
 
-# Language Support Status <a id="language-support-status"></a>
-
-## cpp <a id="cpp"></a>
-
-Latest supported file format: `1.0.0-rc.2`
-
-| Type | Status | Notes | Support Status Details |
-|---|---|---|---|
-| [`Aggregation`](#aggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `default`: supported<br>* `drop`: supported<br>* `explicit_bucket_histogram`: supported<br>* `last_value`: supported<br>* `sum`: supported<br> |
-| [`AlwaysOffSampler`](#alwaysoffsampler) | supported |  |  |
-| [`AlwaysOnSampler`](#alwaysonsampler) | supported |  |  |
-| [`AttributeLimits`](#attributelimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`AttributeNameValue`](#attributenamevalue) | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
-| [`AttributeType`](#attributetype) | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
-| [`B3MultiPropagator`](#b3multipropagator) | supported |  |  |
-| [`B3Propagator`](#b3propagator) | supported |  |  |
-| [`BaggagePropagator`](#baggagepropagator) | supported |  |  |
-| [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: supported<br> |
-| [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| [`BatchSpanProcessor`](#batchspanprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | not_implemented |  | * `counter`: not_implemented<br>* `default`: not_implemented<br>* `gauge`: not_implemented<br>* `histogram`: not_implemented<br>* `observable_counter`: not_implemented<br>* `observable_gauge`: not_implemented<br>* `observable_up_down_counter`: not_implemented<br>* `up_down_counter`: not_implemented<br> |
-| [`ConsoleExporter`](#consoleexporter) | supported |  |  |
-| [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `temporality_preference`: supported<br> |
-| [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
-| [`Distribution`](#distribution) | unknown |  |  |
-| [`DropAggregation`](#dropaggregation) | supported |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `trace_based`: not_implemented<br> |
-| [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
-| [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
-| [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
-| [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
-| [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
-| [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
-| [`LoggerProvider`](#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
-| [`LogRecordExporter`](#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`LogRecordLimits`](#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`LogRecordProcessor`](#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
-| [`MeterProvider`](#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
-| [`MetricProducer`](#metricproducer) | supported |  | * `opencensus`: supported<br> |
-| [`MetricReader`](#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
-| [`NameStringValuePair`](#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
-| [`OpenCensusMetricProducer`](#opencensusmetricproducer) | supported |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| [`OpenTracingPropagator`](#opentracingpropagator) | not_implemented |  |  |
-| [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
-| [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
-| [`PeriodicMetricReader`](#periodicmetricreader) | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: supported<br>* `timeout`: supported<br> |
-| [`Propagator`](#propagator) | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
-| [`PullMetricExporter`](#pullmetricexporter) | supported |  | * `prometheus/development`: supported<br> |
-| [`PullMetricReader`](#pullmetricreader) | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `producers`: supported<br> |
-| [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
-| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: supported<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
-| [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
-| [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
-| [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
-| [`SpanLimits`](#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
-| [`SpanProcessor`](#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
-| [`SumAggregation`](#sumaggregation) | supported |  |  |
-| [`TextMapPropagator`](#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `jaeger`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
-| [`TraceContextPropagator`](#tracecontextpropagator) | supported |  |  |
-| [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
-| [`TracerProvider`](#tracerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
-| [`View`](#view) | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
-| [`ViewSelector`](#viewselector) | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
-| [`ViewStream`](#viewstream) | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
-| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
-| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
-| [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | not_implemented |  |  |
-| [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | not_applicable |  | * `http`: not_applicable<br>* `peer`: not_applicable<br> |
-| [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | not_implemented |  |  |
-| [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | not_applicable |  | * `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
-| [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | not_applicable |  | * `client`: not_applicable<br>* `server`: not_applicable<br> |
-| [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | not_applicable |  | * `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
-| [`ExperimentalInstrumentation`](#experimentalinstrumentation) | not_applicable |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: not_applicable<br>* `go`: not_applicable<br>* `java`: not_applicable<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
-| [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
-| [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | not_applicable |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | not_implemented |  | * `disabled`: not_implemented<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
-| [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `loggers`: not_implemented<br> |
-| [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
-| [`ExperimentalMeterConfig`](#experimentalmeterconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
-| [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `meters`: not_implemented<br> |
-| [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
-| [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | supported |  | * `output_stream`: supported<br> |
-| [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `output_stream`: supported<br>* `temporality_preference`: supported<br> |
-| [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | not_implemented |  | * `service_mapping`: not_implemented<br> |
-| [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | not_implemented |  | * `peer`: not_implemented<br>* `service`: not_implemented<br> |
-| [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
-| [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | not_implemented |  |  |
-| [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: supported<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
-| [`ExperimentalResourceDetection`](#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
-| [`ExperimentalResourceDetector`](#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
-| [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | not_implemented |  |  |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-| [`ExperimentalTracerConfig`](#experimentaltracerconfig) | not_implemented |  | * `disabled`: not_implemented<br> |
-| [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
-| [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
-
-
-## go <a id="go"></a>
-
-Latest supported file format: `0.3.0`
-
-| Type | Status | Notes | Support Status Details |
-|---|---|---|---|
-| [`Aggregation`](#aggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `default`: unknown<br>* `drop`: unknown<br>* `explicit_bucket_histogram`: unknown<br>* `last_value`: unknown<br>* `sum`: unknown<br> |
-| [`AlwaysOffSampler`](#alwaysoffsampler) | unknown |  |  |
-| [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
-| [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
-| [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `type`: unknown<br>* `value`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
-| [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
-| [`B3Propagator`](#b3propagator) | unknown |  |  |
-| [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
-| [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | unknown |  | * `max_scale`: unknown<br>* `max_size`: unknown<br>* `record_min_max`: unknown<br> |
-| [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
-| [`BatchSpanProcessor`](#batchspanprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | unknown |  | * `counter`: unknown<br>* `default`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| [`ConsoleExporter`](#consoleexporter) | unknown |  |  |
-| [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `temporality_preference`: unknown<br> |
-| [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
-| [`Distribution`](#distribution) | unknown |  |  |
-| [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
-| [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
-| [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
-| [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
-| [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
-| [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
-| [`LoggerProvider`](#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
-| [`LogRecordExporter`](#logrecordexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`LogRecordLimits`](#logrecordlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
-| [`LogRecordProcessor`](#logrecordprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
-| [`MeterProvider`](#meterprovider) | unknown |  | * `exemplar_filter`: unknown<br>* `readers`: unknown<br>* `views`: unknown<br>* `meter_configurator/development`: unknown<br> |
-| [`MetricProducer`](#metricproducer) | unknown |  | * `opencensus`: unknown<br> |
-| [`MetricReader`](#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
-| [`NameStringValuePair`](#namestringvaluepair) | unknown |  | * `name`: unknown<br>* `value`: unknown<br> |
-| [`OpenCensusMetricProducer`](#opencensusmetricproducer) | unknown |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
-| [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
-| [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `compression`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
-| [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `compression`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
-| [`PeriodicMetricReader`](#periodicmetricreader) | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `interval`: unknown<br>* `producers`: unknown<br>* `timeout`: unknown<br> |
-| [`Propagator`](#propagator) | unknown |  | * `composite`: unknown<br>* `composite_list`: unknown<br> |
-| [`PullMetricExporter`](#pullmetricexporter) | unknown |  | * `prometheus/development`: unknown<br> |
-| [`PullMetricReader`](#pullmetricreader) | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `producers`: unknown<br> |
-| [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `attributes_list`: unknown<br>* `schema_url`: unknown<br>* `detection/development`: unknown<br> |
-| [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `composite/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `probability/development`: unknown<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
-| [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
-| [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
-| [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
-| [`SpanLimits`](#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
-| [`SpanProcessor`](#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
-| [`SumAggregation`](#sumaggregation) | unknown |  |  |
-| [`TextMapPropagator`](#textmappropagator) | unknown |  | * `b3`: unknown<br>* `b3multi`: unknown<br>* `baggage`: unknown<br>* `jaeger`: unknown<br>* `ottrace`: unknown<br>* `tracecontext`: unknown<br> |
-| [`TraceContextPropagator`](#tracecontextpropagator) | unknown |  |  |
-| [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | unknown |  | * `ratio`: unknown<br> |
-| [`TracerProvider`](#tracerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `sampler`: unknown<br>* `tracer_configurator/development`: unknown<br> |
-| [`View`](#view) | unknown |  | * `selector`: unknown<br>* `stream`: unknown<br> |
-| [`ViewSelector`](#viewselector) | unknown |  | * `instrument_name`: unknown<br>* `instrument_type`: unknown<br>* `meter_name`: unknown<br>* `meter_schema_url`: unknown<br>* `meter_version`: unknown<br>* `unit`: unknown<br> |
-| [`ViewStream`](#viewstream) | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
-| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
-| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
-| [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
-| [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |
-| [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
-| [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
-| [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | unknown |  | * `client`: unknown<br>* `server`: unknown<br> |
-| [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
-| [`ExperimentalInstrumentation`](#experimentalinstrumentation) | unknown |  | * `cpp`: unknown<br>* `dotnet`: unknown<br>* `erlang`: unknown<br>* `general`: unknown<br>* `go`: unknown<br>* `java`: unknown<br>* `js`: unknown<br>* `php`: unknown<br>* `python`: unknown<br>* `ruby`: unknown<br>* `rust`: unknown<br>* `swift`: unknown<br> |
-| [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `initial_sampler`: unknown<br>* `interval`: unknown<br> |
-| [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | unknown |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | unknown |  | * `disabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
-| [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | unknown |  | * `default_config`: unknown<br>* `loggers`: unknown<br> |
-| [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalMeterConfig`](#experimentalmeterconfig) | unknown |  | * `disabled`: unknown<br> |
-| [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | unknown |  | * `default_config`: unknown<br>* `meters`: unknown<br> |
-| [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | unknown |  | * `output_stream`: unknown<br> |
-| [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `output_stream`: unknown<br>* `temporality_preference`: unknown<br> |
-| [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | unknown |  | * `service_mapping`: unknown<br> |
-| [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | unknown |  | * `peer`: unknown<br>* `service`: unknown<br> |
-| [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | unknown |  |  |
-| [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | unknown |  | * `host`: unknown<br>* `port`: unknown<br>* `translation_strategy`: unknown<br>* `with_resource_constant_labels`: unknown<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
-| [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
-| [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
-| [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-| [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
-| [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
-| [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-
-
-## java <a id="java"></a>
-
-Latest supported file format: `1.0.0-rc.1`
-
-| Type | Status | Notes | Support Status Details |
-|---|---|---|---|
-| [`Aggregation`](#aggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `default`: supported<br>* `drop`: supported<br>* `explicit_bucket_histogram`: supported<br>* `last_value`: supported<br>* `sum`: supported<br> |
-| [`AlwaysOffSampler`](#alwaysoffsampler) | supported |  |  |
-| [`AlwaysOnSampler`](#alwaysonsampler) | supported |  |  |
-| [`AttributeLimits`](#attributelimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`AttributeNameValue`](#attributenamevalue) | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
-| [`AttributeType`](#attributetype) | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
-| [`B3MultiPropagator`](#b3multipropagator) | supported |  |  |
-| [`B3Propagator`](#b3propagator) | supported |  |  |
-| [`BaggagePropagator`](#baggagepropagator) | supported |  |  |
-| [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: not_implemented<br> |
-| [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| [`BatchSpanProcessor`](#batchspanprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | supported |  | * `counter`: supported<br>* `default`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
-| [`ConsoleExporter`](#consoleexporter) | supported |  |  |
-| [`ConsoleMetricExporter`](#consolemetricexporter) | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: ignored<br> |
-| [`DefaultAggregation`](#defaultaggregation) | supported |  |  |
-| [`Distribution`](#distribution) | unknown |  |  |
-| [`DropAggregation`](#dropaggregation) | supported |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `trace_based`: supported<br> |
-| [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: not_implemented<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
-| [`GrpcTls`](#grpctls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `insecure`: not_implemented<br>* `key_file`: not_implemented<br> |
-| [`HttpTls`](#httptls) | not_implemented |  | * `ca_file`: not_implemented<br>* `cert_file`: not_implemented<br>* `key_file`: not_implemented<br> |
-| [`IncludeExclude`](#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
-| [`InstrumentType`](#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
-| [`JaegerPropagator`](#jaegerpropagator) | supported |  |  |
-| [`LastValueAggregation`](#lastvalueaggregation) | supported |  |  |
-| [`LoggerProvider`](#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
-| [`LogRecordExporter`](#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`LogRecordLimits`](#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`LogRecordProcessor`](#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
-| [`MeterProvider`](#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
-| [`MetricProducer`](#metricproducer) | ignored |  | * `opencensus`: ignored<br> |
-| [`MetricReader`](#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
-| [`NameStringValuePair`](#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
-| [`OpenCensusMetricProducer`](#opencensusmetricproducer) | ignored |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| [`OpenTracingPropagator`](#opentracingpropagator) | supported |  |  |
-| [`OtlpGrpcExporter`](#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
-| [`OtlpHttpExporter`](#otlphttpexporter) | supported |  | * `compression`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| [`ParentBasedSampler`](#parentbasedsampler) | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
-| [`PeriodicMetricReader`](#periodicmetricreader) | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: not_implemented<br>* `timeout`: supported<br> |
-| [`Propagator`](#propagator) | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
-| [`PullMetricExporter`](#pullmetricexporter) | supported |  | * `prometheus/development`: supported<br> |
-| [`PullMetricReader`](#pullmetricreader) | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `producers`: not_implemented<br> |
-| [`PushMetricExporter`](#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`Resource`](#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: ignored<br>* `detection/development`: supported<br> |
-| [`Sampler`](#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: ignored<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
-| [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
-| [`SimpleSpanProcessor`](#simplespanprocessor) | supported |  | * `exporter`: supported<br> |
-| [`SpanExporter`](#spanexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
-| [`SpanLimits`](#spanlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
-| [`SpanProcessor`](#spanprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
-| [`SumAggregation`](#sumaggregation) | supported |  |  |
-| [`TextMapPropagator`](#textmappropagator) | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `jaeger`: supported<br>* `ottrace`: supported<br>* `tracecontext`: supported<br> |
-| [`TraceContextPropagator`](#tracecontextpropagator) | supported |  |  |
-| [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | supported |  | * `ratio`: supported<br> |
-| [`TracerProvider`](#tracerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
-| [`View`](#view) | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
-| [`ViewSelector`](#viewselector) | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: ignored<br> |
-| [`ViewStream`](#viewstream) | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
-| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
-| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
-| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
-| [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | supported |  |  |
-| [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | supported |  | * `http`: supported<br>* `peer`: supported<br> |
-| [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | supported |  |  |
-| [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | supported |  | * `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
-| [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | supported |  | * `client`: supported<br>* `server`: supported<br> |
-| [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | supported |  | * `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
-| [`ExperimentalInstrumentation`](#experimentalinstrumentation) | supported |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: supported<br>* `go`: not_applicable<br>* `java`: supported<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
-| [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | ignored |  | * `endpoint`: ignored<br>* `initial_sampler`: ignored<br>* `interval`: ignored<br> |
-| [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | supported |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | supported |  | * `disabled`: supported<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
-| [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |
-| [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| [`ExperimentalMeterConfig`](#experimentalmeterconfig) | supported |  | * `disabled`: supported<br> |
-| [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | supported |  | * `default_config`: supported<br>* `meters`: supported<br> |
-| [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | supported |  | * `output_stream`: not_implemented<br> |
-| [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `output_stream`: not_implemented<br>* `temporality_preference`: supported<br> |
-| [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | supported |  | * `service_mapping`: supported<br> |
-| [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | supported |  | * `peer`: supported<br>* `service`: supported<br> |
-| [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | ignored |  | * `ratio`: ignored<br> |
-| [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | supported |  |  |
-| [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: not_implemented<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: ignored<br>* `without_target_info`: ignored<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
-| [`ExperimentalResourceDetection`](#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
-| [`ExperimentalResourceDetector`](#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
-| [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | supported |  |  |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-| [`ExperimentalTracerConfig`](#experimentaltracerconfig) | supported |  | * `disabled`: supported<br> |
-| [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
-| [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
-
-
-## js <a id="js"></a>
-
-Latest supported file format: `1.0.0-rc.2`
-
-| Type | Status | Notes | Support Status Details |
-|---|---|---|---|
-| [`Aggregation`](#aggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `default`: unknown<br>* `drop`: unknown<br>* `explicit_bucket_histogram`: unknown<br>* `last_value`: unknown<br>* `sum`: unknown<br> |
-| [`AlwaysOffSampler`](#alwaysoffsampler) | unknown |  |  |
-| [`AlwaysOnSampler`](#alwaysonsampler) | unknown |  |  |
-| [`AttributeLimits`](#attributelimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
-| [`AttributeNameValue`](#attributenamevalue) | unknown |  | * `name`: unknown<br>* `type`: unknown<br>* `value`: unknown<br> |
-| [`AttributeType`](#attributetype) | unknown |  | * `bool`: unknown<br>* `bool_array`: unknown<br>* `double`: unknown<br>* `double_array`: unknown<br>* `int`: unknown<br>* `int_array`: unknown<br>* `string`: unknown<br>* `string_array`: unknown<br> |
-| [`B3MultiPropagator`](#b3multipropagator) | unknown |  |  |
-| [`B3Propagator`](#b3propagator) | unknown |  |  |
-| [`BaggagePropagator`](#baggagepropagator) | unknown |  |  |
-| [`Base2ExponentialBucketHistogramAggregation`](#base2exponentialbuckethistogramaggregation) | unknown |  | * `max_scale`: unknown<br>* `max_size`: unknown<br>* `record_min_max`: unknown<br> |
-| [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
-| [`BatchSpanProcessor`](#batchspanprocessor) | unknown |  | * `export_timeout`: unknown<br>* `exporter`: unknown<br>* `max_export_batch_size`: unknown<br>* `max_queue_size`: unknown<br>* `schedule_delay`: unknown<br> |
-| [`CardinalityLimits`](#cardinalitylimits) | unknown |  | * `counter`: unknown<br>* `default`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| [`ConsoleExporter`](#consoleexporter) | unknown |  |  |
-| [`ConsoleMetricExporter`](#consolemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `temporality_preference`: unknown<br> |
-| [`DefaultAggregation`](#defaultaggregation) | unknown |  |  |
-| [`Distribution`](#distribution) | unknown |  |  |
-| [`DropAggregation`](#dropaggregation) | unknown |  |  |
-| [`ExemplarFilter`](#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
-| [`ExplicitBucketHistogramAggregation`](#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
-| [`ExporterDefaultHistogramAggregation`](#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
-| [`ExporterTemporalityPreference`](#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
-| [`GrpcTls`](#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
-| [`HttpTls`](#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
-| [`IncludeExclude`](#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
-| [`InstrumentType`](#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| [`JaegerPropagator`](#jaegerpropagator) | unknown |  |  |
-| [`LastValueAggregation`](#lastvalueaggregation) | unknown |  |  |
-| [`LoggerProvider`](#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
-| [`LogRecordExporter`](#logrecordexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`LogRecordLimits`](#logrecordlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
-| [`LogRecordProcessor`](#logrecordprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
-| [`MeterProvider`](#meterprovider) | unknown |  | * `exemplar_filter`: unknown<br>* `readers`: unknown<br>* `views`: unknown<br>* `meter_configurator/development`: unknown<br> |
-| [`MetricProducer`](#metricproducer) | unknown |  | * `opencensus`: unknown<br> |
-| [`MetricReader`](#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
-| [`NameStringValuePair`](#namestringvaluepair) | unknown |  | * `name`: unknown<br>* `value`: unknown<br> |
-| [`OpenCensusMetricProducer`](#opencensusmetricproducer) | unknown |  |  |
-| [`OpenTelemetryConfiguration`](#opentelemetryconfiguration) | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
-| [`OpenTracingPropagator`](#opentracingpropagator) | unknown |  |  |
-| [`OtlpGrpcExporter`](#otlpgrpcexporter) | unknown |  | * `compression`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpGrpcMetricExporter`](#otlpgrpcmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpEncoding`](#otlphttpencoding) | unknown |  | * `json`: unknown<br>* `protobuf`: unknown<br> |
-| [`OtlpHttpExporter`](#otlphttpexporter) | unknown |  | * `compression`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`OtlpHttpMetricExporter`](#otlphttpmetricexporter) | unknown |  | * `compression`: unknown<br>* `default_histogram_aggregation`: unknown<br>* `encoding`: unknown<br>* `endpoint`: unknown<br>* `headers`: unknown<br>* `headers_list`: unknown<br>* `temporality_preference`: unknown<br>* `timeout`: unknown<br>* `tls`: unknown<br> |
-| [`ParentBasedSampler`](#parentbasedsampler) | unknown |  | * `local_parent_not_sampled`: unknown<br>* `local_parent_sampled`: unknown<br>* `remote_parent_not_sampled`: unknown<br>* `remote_parent_sampled`: unknown<br>* `root`: unknown<br> |
-| [`PeriodicMetricReader`](#periodicmetricreader) | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `interval`: unknown<br>* `producers`: unknown<br>* `timeout`: unknown<br> |
-| [`Propagator`](#propagator) | unknown |  | * `composite`: unknown<br>* `composite_list`: unknown<br> |
-| [`PullMetricExporter`](#pullmetricexporter) | unknown |  | * `prometheus/development`: unknown<br> |
-| [`PullMetricReader`](#pullmetricreader) | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `producers`: unknown<br> |
-| [`PushMetricExporter`](#pushmetricexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`Resource`](#resource) | unknown |  | * `attributes`: unknown<br>* `attributes_list`: unknown<br>* `schema_url`: unknown<br>* `detection/development`: unknown<br> |
-| [`Sampler`](#sampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_based`: unknown<br>* `trace_id_ratio_based`: unknown<br>* `composite/development`: unknown<br>* `jaeger_remote/development`: unknown<br>* `probability/development`: unknown<br> |
-| [`SeverityNumber`](#severitynumber) | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
-| [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | unknown |  | * `exporter`: unknown<br> |
-| [`SimpleSpanProcessor`](#simplespanprocessor) | unknown |  | * `exporter`: unknown<br> |
-| [`SpanExporter`](#spanexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
-| [`SpanKind`](#spankind) | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
-| [`SpanLimits`](#spanlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
-| [`SpanProcessor`](#spanprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
-| [`SumAggregation`](#sumaggregation) | unknown |  |  |
-| [`TextMapPropagator`](#textmappropagator) | unknown |  | * `b3`: unknown<br>* `b3multi`: unknown<br>* `baggage`: unknown<br>* `jaeger`: unknown<br>* `ottrace`: unknown<br>* `tracecontext`: unknown<br> |
-| [`TraceContextPropagator`](#tracecontextpropagator) | unknown |  |  |
-| [`TraceIdRatioBasedSampler`](#traceidratiobasedsampler) | unknown |  | * `ratio`: unknown<br> |
-| [`TracerProvider`](#tracerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `sampler`: unknown<br>* `tracer_configurator/development`: unknown<br> |
-| [`View`](#view) | unknown |  | * `selector`: unknown<br>* `stream`: unknown<br> |
-| [`ViewSelector`](#viewselector) | unknown |  | * `instrument_name`: unknown<br>* `instrument_type`: unknown<br>* `meter_name`: unknown<br>* `meter_schema_url`: unknown<br>* `meter_version`: unknown<br>* `unit`: unknown<br> |
-| [`ViewStream`](#viewstream) | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalComposableAlwaysOffSampler`](#experimentalcomposablealwaysoffsampler) | unknown |  |  |
-| [`ExperimentalComposableAlwaysOnSampler`](#experimentalcomposablealwaysonsampler) | unknown |  |  |
-| [`ExperimentalComposableParentThresholdSampler`](#experimentalcomposableparentthresholdsampler) | unknown |  | * `root`: unknown<br> |
-| [`ExperimentalComposableProbabilitySampler`](#experimentalcomposableprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSampler`](#experimentalcomposablerulebasedsampler) | unknown |  | * `rules`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRule`](#experimentalcomposablerulebasedsamplerrule) | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br>* `parent`: unknown<br>* `sampler`: unknown<br>* `span_kinds`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](#experimentalcomposablerulebasedsamplerruleattributepatterns) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
-| [`ExperimentalComposableSampler`](#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
-| [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | unknown |  |  |
-| [`ExperimentalGeneralInstrumentation`](#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `peer`: unknown<br> |
-| [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | unknown |  |  |
-| [`ExperimentalHttpClientInstrumentation`](#experimentalhttpclientinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
-| [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | unknown |  | * `client`: unknown<br>* `server`: unknown<br> |
-| [`ExperimentalHttpServerInstrumentation`](#experimentalhttpserverinstrumentation) | unknown |  | * `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
-| [`ExperimentalInstrumentation`](#experimentalinstrumentation) | unknown |  | * `cpp`: unknown<br>* `dotnet`: unknown<br>* `erlang`: unknown<br>* `general`: unknown<br>* `go`: unknown<br>* `java`: unknown<br>* `js`: unknown<br>* `php`: unknown<br>* `python`: unknown<br>* `ruby`: unknown<br>* `rust`: unknown<br>* `swift`: unknown<br> |
-| [`ExperimentalJaegerRemoteSampler`](#experimentaljaegerremotesampler) | unknown |  | * `endpoint`: unknown<br>* `initial_sampler`: unknown<br>* `interval`: unknown<br> |
-| [`ExperimentalLanguageSpecificInstrumentation`](#experimentallanguagespecificinstrumentation) | unknown |  |  |
-| [`ExperimentalLoggerConfig`](#experimentalloggerconfig) | unknown |  | * `disabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
-| [`ExperimentalLoggerConfigurator`](#experimentalloggerconfigurator) | unknown |  | * `default_config`: unknown<br>* `loggers`: unknown<br> |
-| [`ExperimentalLoggerMatcherAndConfig`](#experimentalloggermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalMeterConfig`](#experimentalmeterconfig) | unknown |  | * `disabled`: unknown<br> |
-| [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | unknown |  | * `default_config`: unknown<br>* `meters`: unknown<br> |
-| [`ExperimentalMeterMatcherAndConfig`](#experimentalmetermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalOtlpFileExporter`](#experimentalotlpfileexporter) | unknown |  | * `output_stream`: unknown<br> |
-| [`ExperimentalOtlpFileMetricExporter`](#experimentalotlpfilemetricexporter) | unknown |  | * `default_histogram_aggregation`: unknown<br>* `output_stream`: unknown<br>* `temporality_preference`: unknown<br> |
-| [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | unknown |  | * `service_mapping`: unknown<br> |
-| [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | unknown |  | * `peer`: unknown<br>* `service`: unknown<br> |
-| [`ExperimentalProbabilitySampler`](#experimentalprobabilitysampler) | unknown |  | * `ratio`: unknown<br> |
-| [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | unknown |  |  |
-| [`ExperimentalPrometheusMetricExporter`](#experimentalprometheusmetricexporter) | unknown |  | * `host`: unknown<br>* `port`: unknown<br>* `translation_strategy`: unknown<br>* `with_resource_constant_labels`: unknown<br>* `without_scope_info`: unknown<br>* `without_target_info`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
-| [`ExperimentalResourceDetection`](#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
-| [`ExperimentalResourceDetector`](#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
-| [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | unknown |  |  |
-| [`ExperimentalSpanParent`](#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
-| [`ExperimentalTracerConfig`](#experimentaltracerconfig) | unknown |  | * `disabled`: unknown<br> |
-| [`ExperimentalTracerConfigurator`](#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
-| [`ExperimentalTracerMatcherAndConfig`](#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-
-
 # SDK Extension Plugins <a id="sdk-extension-plugins"></a>
 
-[SDK extension plugins](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#supported-sdk-extension-plugins) are places where custom interface implementations can be referenced and configured.
+[SDK extension plugins](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#supported-sdk-plugin-components) are places where custom interface implementations can be referenced and configured.
 
 For example, you could write a custom `SpanExporter`, and indicate that it should be paired with a `BatchSpanProcessor`.
 
-Each of the following types support referencing custom interface implementations. Each type is an object type containing exactly one property whose value is type `object` or `null`. The property key refers to the name of the custom implementation, and must be the same as the `name` of a corresponding registered [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-componentprovider). The value passed as configuration when the [ComponentProvider.create](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create) is called.
+Each of the following types support referencing custom interface implementations. Each type is an object type containing exactly one property whose value is type `object` or `null`. The property key refers to the name of the custom implementation, and must be the same as the `name` of a corresponding registered [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-plugincomponentprovider). The value passed as configuration when the [ComponentProvider.create](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create) is called.
 
 SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the `otlp_http` property of `SpanExporter` defines the OTLP http/protobuf exporter.
 

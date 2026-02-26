@@ -1,4 +1,4 @@
-latestSupportedFileFormat: 1.0.0-rc.2
+latestSupportedFileFormat: 1.0.0-rc.3
 typeSupportStatuses:
   - type: Aggregation
     status: unknown
@@ -78,9 +78,6 @@ typeSupportStatuses:
   - type: InstrumentType
     status: unknown
     enumOverrides: []
-  - type: JaegerPropagator
-    status: unknown
-    propertyOverrides: []
   - type: LastValueAggregation
     status: unknown
     propertyOverrides: []
@@ -112,9 +109,6 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: OpenTelemetryConfiguration
-    status: unknown
-    propertyOverrides: []
-  - type: OpenTracingPropagator
     status: unknown
     propertyOverrides: []
   - type: OtlpGrpcExporter
@@ -277,12 +271,6 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalOtlpFileMetricExporter
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalPeerInstrumentation
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalPeerServiceMapping
     status: unknown
     propertyOverrides: []
   - type: ExperimentalProbabilitySampler

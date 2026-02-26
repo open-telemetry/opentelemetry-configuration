@@ -1,50 +1,54 @@
-latestSupportedFileFormat: 0.3.0
+latestSupportedFileFormat: 1.0.0-rc.2
 typeSupportStatuses:
   - type: Aggregation
     status: unknown
     propertyOverrides: []
   - type: AlwaysOffSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: AlwaysOnSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: AttributeLimits
     status: unknown
     propertyOverrides: []
   - type: AttributeNameValue
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: AttributeType
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: B3MultiPropagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: B3Propagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: BaggagePropagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: Base2ExponentialBucketHistogramAggregation
     status: unknown
     propertyOverrides: []
   - type: BatchLogRecordProcessor
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: BatchSpanProcessor
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: CardinalityLimits
     status: unknown
     propertyOverrides: []
   - type: ConsoleExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ConsoleMetricExporter
-    status: unknown
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: default_histogram_aggregation
+        status: not_implemented
+      - property: temporality_preference
+        status: not_implemented
   - type: DefaultAggregation
     status: unknown
     propertyOverrides: []
@@ -78,9 +82,6 @@ typeSupportStatuses:
   - type: InstrumentType
     status: unknown
     enumOverrides: []
-  - type: JaegerPropagator
-    status: unknown
-    propertyOverrides: []
   - type: LastValueAggregation
     status: unknown
     propertyOverrides: []
@@ -88,8 +89,10 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: LogRecordExporter
-    status: unknown
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: otlp_file/development
+        status: not_implemented
   - type: LogRecordLimits
     status: unknown
     propertyOverrides: []
@@ -114,32 +117,41 @@ typeSupportStatuses:
   - type: OpenTelemetryConfiguration
     status: unknown
     propertyOverrides: []
-  - type: OpenTracingPropagator
-    status: unknown
-    propertyOverrides: []
   - type: OtlpGrpcExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: OtlpGrpcMetricExporter
-    status: unknown
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: default_histogram_aggregation
+        status: not_implemented
   - type: OtlpHttpEncoding
-    status: unknown
+    status: not_implemented
     enumOverrides: []
   - type: OtlpHttpExporter
-    status: unknown
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: encoding
+        status: not_implemented
   - type: OtlpHttpMetricExporter
-    status: unknown
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: default_histogram_aggregation
+        status: not_implemented
+      - property: encoding
+        status: not_implemented
   - type: ParentBasedSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: PeriodicMetricReader
-    status: unknown
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: cardinality_limits
+        status: not_implemented
+      - property: producers
+        status: not_implemented
   - type: Propagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: PullMetricExporter
     status: unknown
@@ -154,8 +166,14 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: Sampler
-    status: unknown
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: composite/development
+        status: not_implemented
+      - property: jaeger_remote/development
+        status: not_implemented
+      - property: probability/development
+        status: not_implemented
   - type: SeverityNumber
     status: unknown
     enumOverrides: []
@@ -163,11 +181,13 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: SimpleSpanProcessor
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: SpanExporter
-    status: unknown
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: otlp_file/development
+        status: not_implemented
   - type: SpanKind
     status: unknown
     enumOverrides: []
@@ -175,19 +195,19 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: SpanProcessor
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: SumAggregation
     status: unknown
     propertyOverrides: []
   - type: TextMapPropagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: TraceContextPropagator
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: TraceIdRatioBasedSampler
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: TracerProvider
     status: unknown
@@ -202,31 +222,31 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOnSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableParentThresholdSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableProbabilitySampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRule
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: unknown
@@ -250,7 +270,7 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalJaegerRemoteSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
     status: unknown
@@ -274,19 +294,13 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalOtlpFileExporter
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalOtlpFileMetricExporter
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalPeerInstrumentation
-    status: unknown
-    propertyOverrides: []
-  - type: ExperimentalPeerServiceMapping
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalProbabilitySampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
     status: unknown

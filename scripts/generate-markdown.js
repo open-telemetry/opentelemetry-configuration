@@ -4,6 +4,7 @@ import {
     isExperimentalProperty,
     isExperimentalType,
     markdownDocPath,
+    languageSupportStatusPath,
     rootTypeName,
     schemaPath
 } from "./util.js";
@@ -36,8 +37,9 @@ This document is an auto-generated view of the declarative configuration JSON sc
 
 * [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [${rootTypeName}](#${rootTypeName.toLowerCase()}) is the root type and is a good starting point.
 * [Experimental Types](#experimental-types) same as [Types](#types) but for experimental types subject to breaking changes.
-* [Language Support Status](#language-support-status) provides all the details about each language's support in a single place. (Alternatively, each type definition has a table showing support status across languages.)
 * [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
+
+See also [language support status](language-support-status.md) for all details about each language's support in a single place.
 
 `);
 
@@ -127,7 +129,7 @@ function writeType(sourceSchemaType) {
         const rowHeader = sourceSchemaType.isEnumType() ? 'Value' : 'Property';
         output.push(`| ${rowHeader} |`);
         KNOWN_LANGUAGES.forEach(language => {
-            output.push(` [${language}](#${language}) |`);
+            output.push(` [${language}](language-support-status.md#${language}) |`);
             if (!languageImplementationsByLanguage[language]) {
                 throw new Error(`Meta schema LanguageImplementation not found for language ${language}.`);
             }
@@ -220,8 +222,6 @@ function writeType(sourceSchemaType) {
     output.push(`<details>\n`);
     output.push(`<summary>JSON Schema</summary>\n\n`);
     output.push(`[JSON Schema Source File](./schema/${sourceSchemaType.sourceFile})\n`);
-    // cleanSchema is a temp hack to minimize the diff while merging the meta schema
-    // TODO: come back and remove
     const schemaSource = cleanSchema(getSchemaSource(sourceSchemaType));
     output.push(`<pre>${JSON.stringify(schemaSource, null, 2)}</pre>\n`);
     output.push(`</details>\n`);
@@ -244,27 +244,48 @@ function getSchemaSource(sourceSchemaType) {
 }
 
 function cleanSchema(schemaSource) {
-    const adjustedSchema = JSON.parse(JSON.stringify(schemaSource));
-    const properties = adjustedSchema.properties;
-    if (properties) {
-        Object.values(properties).forEach(property => delete property.description);
-    }
-    delete adjustedSchema['$defs'];
-    return adjustedSchema;
+    const schemaCopy = JSON.parse(JSON.stringify(schemaSource));
+    delete schemaCopy['$defs'];
+    return schemaCopy;
 }
 
-// Write language support status
-addHeader('Language Support Status', 'language-support-status', 1);
+// Write SDK extension plugins
+addHeader('SDK Extension Plugins', 'sdk-extension-plugins', 1);
+output.push(
+    `[SDK extension plugins](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#supported-sdk-plugin-components) are places where custom interface implementations can be referenced and configured.
+
+For example, you could write a custom \`SpanExporter\`, and indicate that it should be paired with a \`BatchSpanProcessor\`.
+
+Each of the following types support referencing custom interface implementations. Each type is an object type containing exactly one property whose value is type \`object\` or \`null\`. The property key refers to the name of the custom implementation, and must be the same as the \`name\` of a corresponding registered [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-plugincomponentprovider). The value passed as configuration when the [ComponentProvider.create](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create) is called.
+
+SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the \`otlp_http\` property of \`SpanExporter\` defines the OTLP http/protobuf exporter.
+
+`);
+sourceTypes.filter(sourceSchemaType => sourceSchemaType.schema.isSdkExtensionPlugin)
+    .forEach(sourceSchemaType => {
+        output.push(`* [${sourceSchemaType.type}](#${sourceSchemaType.type})\n`)
+    });
+
+output.unshift('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
+fs.writeFileSync(markdownDocPath, output.join(""));
+
+// Write language support status to a separate file
+const languageSupportOutput = [];
+addHeader('Language Support Status', 'language-support-status', 1, languageSupportOutput);
+languageSupportOutput.push(`This page provides comprehensive language implementation status for each type in the declarative configuration schema. For type definitions and descriptions, see [schema-docs.md](schema-docs.md).\n\n`);
+KNOWN_LANGUAGES.forEach(language => languageSupportOutput.push(`* [${language}](#${language})\n`));
+languageSupportOutput.push(`\n`);
+
 KNOWN_LANGUAGES.forEach(language => {
-    addHeader(language, language, 2);
+    addHeader(language, language, 2, languageSupportOutput);
     const languageImplementation = languageImplementations.find(item => item.language === language);
     if (!languageImplementation) {
         throw new Error(`Meta schema LanguageImplementation not found for language ${language}.`);
     }
-    output.push(`Latest supported file format: \`${languageImplementation.latestSupportedFileFormat}\`\n\n`);
+    languageSupportOutput.push(`Latest supported file format: \`${languageImplementation.latestSupportedFileFormat}\`\n\n`);
 
-    output.push(`| Type | Status | Notes | Support Status Details |\n`);
-    output.push(`|---|---|---|---|\n`);
+    languageSupportOutput.push(`| Type | Status | Notes | Support Status Details |\n`);
+    languageSupportOutput.push(`|---|---|---|---|\n`);
     languageImplementation.typeSupportStatuses.forEach(typeSupportStatus => {
         const sourceSchemaType = sourceTypes.find(item => item.type === typeSupportStatus.type);
         if (!sourceSchemaType) {
@@ -292,30 +313,13 @@ KNOWN_LANGUAGES.forEach(language => {
             });
         }
 
-        output.push(`| [\`${typeSupportStatus.type}\`](#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${formattedNotes} | ${supportStatusDetails.join('')} |\n`);
+        languageSupportOutput.push(`| [\`${typeSupportStatus.type}\`](schema-docs.md#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${formattedNotes} | ${supportStatusDetails.join('')} |\n`);
     });
-    output.push(`\n\n`);
+    languageSupportOutput.push(`\n\n`);
 });
 
-// Write SDK extension plugins
-addHeader('SDK Extension Plugins', 'sdk-extension-plugins', 1);
-output.push(
-`[SDK extension plugins](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#supported-sdk-extension-plugins) are places where custom interface implementations can be referenced and configured.
-
-For example, you could write a custom \`SpanExporter\`, and indicate that it should be paired with a \`BatchSpanProcessor\`.
-
-Each of the following types support referencing custom interface implementations. Each type is an object type containing exactly one property whose value is type \`object\` or \`null\`. The property key refers to the name of the custom implementation, and must be the same as the \`name\` of a corresponding registered [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-componentprovider). The value passed as configuration when the [ComponentProvider.create](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create) is called.
-
-SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the \`otlp_http\` property of \`SpanExporter\` defines the OTLP http/protobuf exporter.
-
-`);
-sourceTypes.filter(sourceSchemaType => sourceSchemaType.schema.isSdkExtensionPlugin)
-    .forEach(sourceSchemaType => {
-        output.push(`* [${sourceSchemaType.type}](#${sourceSchemaType.type})\n`)
-    });
-
-output.unshift('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
-fs.writeFileSync(markdownDocPath, output.join(""));
+languageSupportOutput.unshift('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
+fs.writeFileSync(languageSupportStatusPath, languageSupportOutput.join(""));
 
 // Helper functions
 function formatPropertyType(sourceProperty, sourceTypesByType) {
@@ -339,8 +343,8 @@ function formatPropertyType(sourceProperty, sourceTypesByType) {
     return output.join('');
 }
 
-function addHeader(title, id, level) {
-    output.push(`${'#'.repeat(level)} ${title} <a id="${id}"></a>\n\n`);
+function addHeader(title, id, level, targetOutput = output) {
+    targetOutput.push(`${'#'.repeat(level)} ${title} <a id="${id}"></a>\n\n`);
 }
 
 function resolveAndFormatConstraints(schema, linebreak) {

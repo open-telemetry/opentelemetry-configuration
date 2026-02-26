@@ -1,0 +1,73 @@
+file_format: "1.0-rc.3"
+
+instrumentation/development:
+  # SNIPPET_START
+  general:
+    http:
+      client:
+        request_captured_headers:
+          - Content-Type
+          - Accept
+        response_captured_headers:
+          - Content-Type
+          - Content-Encoding
+        known_methods:
+          - CONNECT
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          - TRACE
+      server:
+        request_captured_headers:
+          - Content-Type
+          - Accept
+        response_captured_headers:
+          - Content-Type
+          - Content-Encoding
+        known_methods:
+          - CONNECT
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          - TRACE
+  cpp:
+    example:
+      property: "value"
+  dotnet:
+    example:
+      property: "value"
+  erlang:
+    example:
+      property: "value"
+  go:
+    example:
+      property: "value"
+  java:
+    example:
+      property: "value"
+  js:
+    example:
+      property: "value"
+  php:
+    example:
+      property: "value"
+  python:
+    example:
+      property: "value"
+  ruby:
+    example:
+      property: "value"
+  rust:
+    example:
+      property: "value"
+  swift:
+    example:
+      property: "value"

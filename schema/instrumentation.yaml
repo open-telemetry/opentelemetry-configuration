@@ -76,46 +76,12 @@ $defs:
     type: object
     additionalProperties: false
     properties:
-      peer:
-        $ref: "#/$defs/ExperimentalPeerInstrumentation"
-        description: |
-          Configure instrumentations following the peer semantic conventions.
-          See peer semantic conventions: https://opentelemetry.io/docs/specs/semconv/attributes-registry/peer/
-        defaultBehavior: defaults as described in ExperimentalPeerInstrumentation are used
       http:
         $ref: "#/$defs/ExperimentalHttpInstrumentation"
         description: |
           Configure instrumentations following the http semantic conventions.
           See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/
         defaultBehavior: defaults as described in ExperimentalHttpInstrumentation are used
-  ExperimentalPeerInstrumentation:
-    type: object
-    additionalProperties: false
-    properties:
-      service_mapping:
-        type: array
-        minItems: 1
-        items:
-          $ref: "#/$defs/ExperimentalPeerServiceMapping"
-        description: |
-          Configure the service mapping for instrumentations following peer.service semantic conventions.
-          See peer.service semantic conventions: https://opentelemetry.io/docs/specs/semconv/general/attributes/#general-remote-service-attributes
-        defaultBehavior: no peer service mappings are used
-  ExperimentalPeerServiceMapping:
-    type: object
-    additionalProperties: false
-    properties:
-      peer:
-        type: string
-        description: |
-          The IP address to map.
-      service:
-        type: string
-        description: |
-          The logical name corresponding to the IP address of .peer.
-    required:
-      - peer
-      - service
   ExperimentalHttpClientInstrumentation:
     type: object
     additionalProperties: false
@@ -136,6 +102,16 @@ $defs:
         description: |
           Configure headers to capture for inbound http responses.
         defaultBehavior: no inbound response headers are captured
+      known_methods:
+        type: array
+        minItems: 0
+        items:
+          type: string
+        description: |
+          Override the default list of known HTTP methods.
+          Known methods are case-sensitive.
+          This is a full override of the default known methods, not a list of known methods in addition to the defaults.
+        defaultBehavior: HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known
   ExperimentalHttpServerInstrumentation:
     type: object
     additionalProperties: false
@@ -156,6 +132,16 @@ $defs:
         description: |
           Configure headers to capture for outbound http responses.
         defaultBehavior: no response headers are captures
+      known_methods:
+        type: array
+        minItems: 0
+        items:
+          type: string
+        description: |
+          Override the default list of known HTTP methods.
+          Known methods are case-sensitive.
+          This is a full override of the default known methods, not a list of known methods in addition to the defaults.
+        defaultBehavior: HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known
   ExperimentalHttpInstrumentation:
     type: object
     additionalProperties: false
