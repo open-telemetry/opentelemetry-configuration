@@ -128,7 +128,6 @@ compatibility.
 * Extract kitchen sink to snippets
   ([#472](https://github.com/open-telemetry/opentelemetry-configuration/pull/472),
   [#471](https://github.com/open-telemetry/opentelemetry-configuration/pull/471),
-  [#471](https://github.com/open-telemetry/opentelemetry-configuration/pull/471),
   [#477](https://github.com/open-telemetry/opentelemetry-configuration/pull/477),
   [#478](https://github.com/open-telemetry/opentelemetry-configuration/pull/478),
   [#479](https://github.com/open-telemetry/opentelemetry-configuration/pull/479),
