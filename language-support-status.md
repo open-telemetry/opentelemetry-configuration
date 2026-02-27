@@ -91,7 +91,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributevalues) | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
 | [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | not_implemented |  |  |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | not_applicable |  | * `http`: not_applicable<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | not_applicable |  | * `http`: not_applicable<br>* `sanitization`: not_applicable<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | not_implemented |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | not_applicable |  | * `known_methods`: not_applicable<br>* `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | not_applicable |  | * `client`: not_applicable<br>* `server`: not_applicable<br> |
@@ -113,11 +113,13 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalPrometheusTranslationStrategy`](schema-docs.md#experimentalprometheustranslationstrategy) | supported |  | * `no_translation`: not_implemented<br>* `no_utf8_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_with_suffixes`: supported<br>* `underscore_escaping_without_suffixes`: supported<br> |
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
+| [`ExperimentalSanitization`](schema-docs.md#experimentalsanitization) | unknown |  | * `url`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | not_implemented |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | not_implemented |  | * `enabled`: not_implemented<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
+| [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 
 
 ## go <a id="go"></a>
@@ -201,7 +203,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributevalues) | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
 | [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | unknown |  |  |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `sanitization`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | unknown |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | unknown |  | * `known_methods`: unknown<br>* `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | unknown |  | * `client`: unknown<br>* `server`: unknown<br> |
@@ -223,11 +225,13 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalPrometheusTranslationStrategy`](schema-docs.md#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
+| [`ExperimentalSanitization`](schema-docs.md#experimentalsanitization) | unknown |  | * `url`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | unknown |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | unknown |  | * `enabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
+| [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 
 
 ## java <a id="java"></a>
@@ -311,7 +315,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributevalues) | supported |  | * `key`: supported<br>* `values`: supported<br> |
 | [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_threshold`: supported<br>* `probability`: supported<br>* `rule_based`: supported<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | supported |  |  |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `http`: supported<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `http`: supported<br>* `sanitization`: supported<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | supported |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | supported |  | * `client`: supported<br>* `server`: supported<br> |
@@ -333,11 +337,13 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalPrometheusTranslationStrategy`](schema-docs.md#experimentalprometheustranslationstrategy) | not_implemented |  | * `no_translation`: not_implemented<br>* `no_utf8_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes`: not_implemented<br> |
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
+| [`ExperimentalSanitization`](schema-docs.md#experimentalsanitization) | unknown |  | * `url`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | supported |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | supported |  | * `local`: supported<br>* `none`: supported<br>* `remote`: supported<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | supported |  | * `enabled`: supported<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
+| [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 
 
 ## js <a id="js"></a>
@@ -421,7 +427,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributevalues) | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
 | [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | unknown |  |  |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `http`: unknown<br>* `sanitization`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | unknown |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | unknown |  | * `known_methods`: unknown<br>* `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | unknown |  | * `client`: unknown<br>* `server`: unknown<br> |
@@ -443,11 +449,13 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalPrometheusTranslationStrategy`](schema-docs.md#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation`: unknown<br>* `no_utf8_escaping_with_suffixes`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes`: unknown<br> |
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
+| [`ExperimentalSanitization`](schema-docs.md#experimentalsanitization) | unknown |  | * `url`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | unknown |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | unknown |  | * `enabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
+| [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 
 
 ## php <a id="php"></a>
@@ -531,7 +539,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributevalues) | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
 | [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | ignored |  |  |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `http`: supported<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `http`: supported<br>* `sanitization`: supported<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | supported |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | supported |  | * `client`: supported<br>* `server`: supported<br> |
@@ -553,10 +561,12 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalPrometheusTranslationStrategy`](schema-docs.md#experimentalprometheustranslationstrategy) | not_implemented |  | * `no_translation`: not_implemented<br>* `no_utf8_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes`: not_implemented<br> |
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | supported |  | * `container`: ignored<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
+| [`ExperimentalSanitization`](schema-docs.md#experimentalsanitization) | unknown |  | * `url`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | supported |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | supported |  | * `enabled`: supported<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
+| [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 
 

@@ -38,6 +38,13 @@ instrumentation/development:
           - POST
           - PUT
           - TRACE
+    sanitization:
+      url:
+        sensitive_query_parameters:
+          - AWSAccessKeyId
+          - Signature
+          - sig
+          - X-Goog-Signature
   cpp:
     example:
       property: "value"
