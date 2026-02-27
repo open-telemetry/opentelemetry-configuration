@@ -195,6 +195,9 @@ typeSupportStatuses:
   - type: ViewStream
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalCodeInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: unknown
     propertyOverrides: []
@@ -223,6 +226,12 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalDbInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalGenAiInstrumentation
     status: unknown
     propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
@@ -258,6 +267,9 @@ typeSupportStatuses:
   - type: ExperimentalLoggerMatcherAndConfig
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalMessagingInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalMeterConfig
     status: unknown
     propertyOverrides: []
@@ -291,6 +303,15 @@ typeSupportStatuses:
   - type: ExperimentalResourceDetector
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalRpcInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalSanitization
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalSemconvConfig
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
     status: unknown
     propertyOverrides: []
@@ -304,5 +325,8 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalUrlSanitization
     status: unknown
     propertyOverrides: []
