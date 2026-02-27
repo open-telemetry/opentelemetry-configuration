@@ -259,7 +259,7 @@ $defs:
         description: |
           Configure Prometheus Exporter to produce metrics without scope labels.
         defaultBehavior: false is used
-      without_target_info:
+      without_target_info/development:
         type:
           - boolean
           - "null"
