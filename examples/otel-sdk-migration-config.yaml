@@ -122,3 +122,6 @@ logger_provider:
   limits:
     attribute_value_length_limit: ${OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT}
     attribute_count_limit: ${OTEL_LOGRECORD_ATTRIBUTE_COUNT_LIMIT:-128}
+instrumentation/development:
+  general:
+    stability_opt_in_list: ${OTEL_SEMCONV_STABILITY_OPT_IN}

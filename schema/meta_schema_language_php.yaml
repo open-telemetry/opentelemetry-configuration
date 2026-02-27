@@ -238,6 +238,9 @@ typeSupportStatuses:
       - property: aggregation_cardinality_limit
         status: not_implemented
     notes: "`attribute_keys.excluded` is not implemented, only `attribute_keys.included` is supported."
+  - type: ExperimentalCodeInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: not_implemented
     propertyOverrides: []
@@ -267,6 +270,12 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: ignored
+    propertyOverrides: []
+  - type: ExperimentalDbInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalGenAiInstrumentation
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
     status: supported
@@ -325,6 +334,9 @@ typeSupportStatuses:
   - type: ExperimentalLoggerMatcherAndConfig
     status: supported
     propertyOverrides: []
+  - type: ExperimentalMessagingInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalMeterConfig
     status: supported
     propertyOverrides: []
@@ -362,7 +374,13 @@ typeSupportStatuses:
     propertyOverrides:
       - property: container
         status: ignored
+  - type: ExperimentalRpcInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalSanitization
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalSemconvConfig
     status: unknown
     propertyOverrides: []
   - type: ExperimentalServiceResourceDetector

@@ -4,6 +4,10 @@ instrumentation/development:
   # SNIPPET_START
   general:
     http:
+      semconv:
+        version: 1
+        experimental: true
+        dual_emit: true
       client:
         request_captured_headers:
           - Content-Type
@@ -38,6 +42,21 @@ instrumentation/development:
           - POST
           - PUT
           - TRACE
+    db:
+      semconv:
+        version: 1
+        experimental: false
+        dual_emit: false
+    rpc:
+      semconv:
+        version: 1
+        experimental: false
+        dual_emit: true
+    messaging:
+      semconv:
+        version: 1
+        experimental: true
+        dual_emit: false
     sanitization:
       url:
         sensitive_query_parameters:
@@ -45,6 +64,8 @@ instrumentation/development:
           - Signature
           - sig
           - X-Goog-Signature
+    # Domain-specific semconv sections above (http, db, etc.) take precedence over this general setting.
+    stability_opt_in_list: "http/dup,database"
   cpp:
     example:
       property: "value"
