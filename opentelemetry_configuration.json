@@ -1133,7 +1133,7 @@
           ],
           "description": "Configure Prometheus Exporter to produce metrics without scope labels.\nIf omitted or null, false is used.\n"
         },
-        "without_target_info": {
+        "without_target_info/development": {
           "type": [
             "boolean",
             "null"

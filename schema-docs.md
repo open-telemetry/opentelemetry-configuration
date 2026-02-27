@@ -6300,7 +6300,7 @@ No snippets.
 | `translation_strategy` | [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | `false` | If omitted, underscore_escaping_with_suffixes is used. | No constraints. | Configure how metric names are translated to Prometheus metric names. |
 | `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, no resource attributes are added. | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
 | `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without scope labels.<br> |
-| `without_target_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a target info metric for the resource.<br> |
+| `without_target_info/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a target info metric for the resource.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -6312,7 +6312,7 @@ No snippets.
 | `translation_strategy` | supported | unknown | not_implemented | unknown | not_implemented |
 | `with_resource_constant_labels` | supported | unknown | supported | unknown | not_implemented |
 | `without_scope_info` | supported | unknown | supported | unknown | not_implemented |
-| `without_target_info` | supported | unknown | supported | unknown | not_implemented |
+| `without_target_info/development` | supported | unknown | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -6333,7 +6333,7 @@ Snippets:
 host: localhost
 port: 9464
 without_scope_info: false
-without_target_info: false
+without_target_info/development: false
 with_resource_constant_labels:
   included:
     - "service*"
@@ -6375,7 +6375,7 @@ translation_strategy: underscore_escaping_with_suffixes
       ],
       "description": "Configure Prometheus Exporter to produce metrics without scope labels.\nIf omitted or null, false is used.\n"
     },
-    "without_target_info": {
+    "without_target_info/development": {
       "type": [
         "boolean",
         "null"
