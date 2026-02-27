@@ -4940,7 +4940,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `semconv` | [`ExperimentalSemconvConfig`](#experimentalsemconvconfig) | `false` | If omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure GenAI semantic convention version and migration behavior.<br><br>This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.<br><br>Set .experimental to true to enable latest experimental mode.<br><br>See GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/<br> |
+| `semconv` | [`ExperimentalSemconvConfig`](#experimentalsemconvconfig) | `false` | If omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set. | No constraints. | Configure GenAI semantic convention version and migration behavior.<br><br>This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.<br><br>See GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -4970,7 +4970,7 @@ No snippets.
   "properties": {
     "semconv": {
       "$ref": "#/$defs/ExperimentalSemconvConfig",
-      "description": "Configure GenAI semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSet .experimental to true to enable latest experimental mode.\n\nSee GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+      "description": "Configure GenAI semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
     }
   }
 }</pre>
