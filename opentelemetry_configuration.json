@@ -1146,7 +1146,7 @@
         },
         "translation_strategy": {
           "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
-          "description": "Configure how metric names are translated to Prometheus metric names.\nValues include:\n* no_translation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.\n* no_utf8_escaping_with_suffixes: Special character escaping is disabled. Type and unit suffixes are enabled.\n* underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.\n* underscore_escaping_without_suffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.\nIf omitted, underscore_escaping_with_suffixes is used.\n"
+          "description": "Configure how metric names are translated to Prometheus metric names.\nValues include:\n* no_translation/development: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.\n* no_utf8_escaping_with_suffixes/development: Special character escaping is disabled. Type and unit suffixes are enabled.\n* underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.\n* underscore_escaping_without_suffixes/development: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.\nIf omitted, underscore_escaping_with_suffixes is used.\n"
         }
       }
     },
@@ -1157,9 +1157,9 @@
       ],
       "enum": [
         "underscore_escaping_with_suffixes",
-        "underscore_escaping_without_suffixes",
-        "no_utf8_escaping_with_suffixes",
-        "no_translation"
+        "underscore_escaping_without_suffixes/development",
+        "no_utf8_escaping_with_suffixes/development",
+        "no_translation/development"
       ]
     },
     "ExperimentalResourceDetection": {

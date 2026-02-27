@@ -6388,7 +6388,7 @@ translation_strategy: underscore_escaping_with_suffixes
     },
     "translation_strategy": {
       "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
-      "description": "Configure how metric names are translated to Prometheus metric names.\nValues include:\n* no_translation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.\n* no_utf8_escaping_with_suffixes: Special character escaping is disabled. Type and unit suffixes are enabled.\n* underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.\n* underscore_escaping_without_suffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.\nIf omitted, underscore_escaping_with_suffixes is used.\n"
+      "description": "Configure how metric names are translated to Prometheus metric names.\nValues include:\n* no_translation/development: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.\n* no_utf8_escaping_with_suffixes/development: Special character escaping is disabled. Type and unit suffixes are enabled.\n* underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.\n* underscore_escaping_without_suffixes/development: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.\nIf omitted, underscore_escaping_with_suffixes is used.\n"
     }
   }
 }</pre>
@@ -6403,20 +6403,20 @@ This is a enum type.
 
 | Value | Description |
 |---|---|
-| `no_translation` | Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered. |
-| `no_utf8_escaping_with_suffixes` | Special character escaping is disabled. Type and unit suffixes are enabled. |
+| `no_translation/development` | Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered. |
+| `no_utf8_escaping_with_suffixes/development` | Special character escaping is disabled. Type and unit suffixes are enabled. |
 | `underscore_escaping_with_suffixes` | Special character escaping is enabled. Type and unit suffixes are enabled. |
-| `underscore_escaping_without_suffixes` | Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility. |
+| `underscore_escaping_without_suffixes/development` | Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility. |
 
 <details>
 <summary>Language support status</summary>
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `no_translation` | not_implemented | unknown | not_implemented | unknown | not_implemented |
-| `no_utf8_escaping_with_suffixes` | not_implemented | unknown | not_implemented | unknown | not_implemented |
+| `no_translation/development` | not_implemented | unknown | not_implemented | unknown | not_implemented |
+| `no_utf8_escaping_with_suffixes/development` | not_implemented | unknown | not_implemented | unknown | not_implemented |
 | `underscore_escaping_with_suffixes` | supported | unknown | not_implemented | unknown | not_implemented |
-| `underscore_escaping_without_suffixes` | supported | unknown | not_implemented | unknown | not_implemented |
+| `underscore_escaping_without_suffixes/development` | supported | unknown | not_implemented | unknown | not_implemented |
 </details>
 
 No constraints.
@@ -6438,9 +6438,9 @@ No snippets.
   ],
   "enum": [
     "underscore_escaping_with_suffixes",
-    "underscore_escaping_without_suffixes",
-    "no_utf8_escaping_with_suffixes",
-    "no_translation"
+    "underscore_escaping_without_suffixes/development",
+    "no_utf8_escaping_with_suffixes/development",
+    "no_translation/development"
   ]
 }</pre>
 </details>
