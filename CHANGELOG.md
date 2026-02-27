@@ -121,7 +121,8 @@ compatibility.
 * Add `sanitization` property to `ExperimentalGeneralInstrumentation`
   ([#531](https://github.com/open-telemetry/opentelemetry-configuration/pull/531))
 * Add new `ExperimentalSemconvConfig` type, with options to configure `code`, `db`, `gen_ai`, `messaging`, `rpc`, `http` domains
-  ([#519](https://github.com/open-telemetry/opentelemetry-configuration/pull/519))
+  ([#519](https://github.com/open-telemetry/opentelemetry-configuration/pull/519),
+  [#550](https://github.com/open-telemetry/opentelemetry-configuration/pull/550))
 
 ### Tooling
 
