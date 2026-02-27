@@ -78,8 +78,11 @@ compatibility.
   </details>
 * **BREAKING (experimental type)**: Remove .instrumentation/development.general.peer
   ([#526](https://github.com/open-telemetry/opentelemetry-configuration/pull/526))
-* **BREAKING (experimental type)**: Add `/development` suffix to some `ExperimentalPrometheusTranslationStrategy` values
-  ([#543](https://github.com/open-telemetry/opentelemetry-configuration/pull/543))
+* **BREAKING (experimental type)**: Add `/development` suffix to some
+  `ExperimentalPrometheusTranslationStrategy` values,
+  `ExperimentalPrometheusMetricExporter.without_target_info`
+  ([#543](https://github.com/open-telemetry/opentelemetry-configuration/pull/543),
+  [#547](https://github.com/open-telemetry/opentelemetry-configuration/pull/547))
 
   <details>
 
@@ -92,6 +95,7 @@ compatibility.
       - pull:
           exporter:
             prometheus/development:
+              without_target_info: true
               translation_strategy: no_translation # or no_utf8_escaping_with_suffixes, underscore_escaping_without_suffixes 
   ---
   # After
@@ -100,6 +104,7 @@ compatibility.
       - pull:
           exporter:
             prometheus/development:
+              without_target_info/development: true
               translation_strategy: no_translation/development # or no_utf8_escaping_with_suffixes/development, underscore_escaping_without_suffixes/development
   ```
   </details>
