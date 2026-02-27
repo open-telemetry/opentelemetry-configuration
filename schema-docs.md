@@ -4989,6 +4989,7 @@ No snippets.
 | `http` | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | `false` | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | No constraints. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: https://opentelemetry.io/docs/specs/semconv/http/<br> |
 | `messaging` | [`ExperimentalMessagingInstrumentation`](#experimentalmessaginginstrumentation) | `false` | If omitted, defaults as described in ExperimentalMessagingInstrumentation are used. | No constraints. | Configure instrumentations following the messaging semantic conventions.<br>See messaging semantic conventions: https://opentelemetry.io/docs/specs/semconv/messaging/<br> |
 | `rpc` | [`ExperimentalRpcInstrumentation`](#experimentalrpcinstrumentation) | `false` | If omitted, defaults as described in ExperimentalRpcInstrumentation are used. | No constraints. | Configure instrumentations following the RPC semantic conventions.<br>See RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/<br> |
+| `sanitization` | [`ExperimentalSanitization`](#experimentalsanitization) | `false` | If omitted, defaults as described in ExperimentalSanitization are used. | No constraints. | Configure general sanitization options.<br> |
 | `stability_opt_in_list` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, no opt-in is configured and instrumentations continue emitting their default semantic convention version. | No constraints. | Configure semantic convention stability opt-in as a comma-separated list.<br>This property follows the format and semantics of the OTEL_SEMCONV_STABILITY_OPT_IN environment variable.<br>Controls the emission of stable vs. experimental semantic conventions for instrumentation.<br>This setting is only intended for migrating from experimental to stable semantic conventions.<br><br>Known values include:<br>- http: Emit stable HTTP and networking conventions only<br>- http/dup: Emit both old and stable HTTP and networking conventions (for phased migration)<br>- database: Emit stable database conventions only<br>- database/dup: Emit both old and stable database conventions (for phased migration)<br>- rpc: Emit stable RPC conventions only<br>- rpc/dup: Emit both experimental and stable RPC conventions (for phased migration)<br>- messaging: Emit stable messaging conventions only<br>- messaging/dup: Emit both old and stable messaging conventions (for phased migration)<br>- code: Emit stable code conventions only<br>- code/dup: Emit both old and stable code conventions (for phased migration)<br><br>Multiple values can be specified as a comma-separated list (e.g., "http,database/dup").<br>Additional signal types may be supported in future versions.<br><br>Domain-specific semconv properties (e.g., .instrumentation/development.general.db.semconv) take precedence over this general setting.<br><br>See:<br>- HTTP migration: https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/<br>- Database migration: https://opentelemetry.io/docs/specs/semconv/database/<br>- RPC: https://opentelemetry.io/docs/specs/semconv/rpc/<br>- Messaging: https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/<br> |
 
 <details>
@@ -5002,6 +5003,7 @@ No snippets.
 | `http` | not_applicable | unknown | supported | unknown | supported |
 | `messaging` | not_applicable | unknown | supported | unknown | supported |
 | `rpc` | not_applicable | unknown | supported | unknown | supported |
+| `sanitization` | not_applicable | unknown | supported | unknown | supported |
 | `stability_opt_in_list` | not_applicable | unknown | supported | unknown | supported |
 </details>
 
@@ -5068,6 +5070,10 @@ db:
     "rpc": {
       "$ref": "#/$defs/ExperimentalRpcInstrumentation",
       "description": "Configure instrumentations following the RPC semantic conventions.\nSee RPC semantic conventions: https://opentelemetry.io/docs/specs/semconv/rpc/\nIf omitted, defaults as described in ExperimentalRpcInstrumentation are used.\n"
+    },
+    "sanitization": {
+      "$ref": "#/$defs/ExperimentalSanitization",
+      "description": "Configure general sanitization options.\nIf omitted, defaults as described in ExperimentalSanitization are used.\n"
     },
     "stability_opt_in_list": {
       "type": [
@@ -5408,6 +5414,13 @@ general:
       version: 1
       experimental: true
       dual_emit: false
+  sanitization:
+    url:
+      sensitive_query_parameters:
+        - AWSAccessKeyId
+        - Signature
+        - sig
+        - X-Goog-Signature
   # Domain-specific semconv sections above (http, db, etc.) take precedence over this general setting.
   stability_opt_in_list: "http/dup,database"
 cpp:
@@ -6600,6 +6613,49 @@ No snippets.
 }</pre>
 </details>
 
+## ExperimentalSanitization <a id="experimentalsanitization"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `url` | [`ExperimentalUrlSanitization`](#experimentalurlsanitization) | `false` | If omitted, defaults as described in ExperimentalUrlSanitization are used. | No constraints. | Configure URL sanitization options.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `url` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalGeneralInstrumentation.sanitization`](#experimentalgeneralinstrumentation)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "url": {
+      "$ref": "#/$defs/ExperimentalUrlSanitization",
+      "description": "Configure URL sanitization options.\nIf omitted, defaults as described in ExperimentalUrlSanitization are used.\n"
+    }
+  }
+}</pre>
+</details>
+
 ## ExperimentalSemconvConfig <a id="experimentalsemconvconfig"></a>
 
 > [!WARNING]
@@ -6920,6 +6976,53 @@ No snippets.
     "name",
     "config"
   ]
+}</pre>
+</details>
+
+## ExperimentalUrlSanitization <a id="experimentalurlsanitization"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `sensitive_query_parameters` | `array` of `string` | `false` | If omitted, the default sensitive query parameter list as defined by the url semantic conventions (https://github.com/open-telemetry/semantic-conventions/blob/main/docs/registry/attributes/url.md) is used. | * `minItems`: `0`<br> | List of query parameter names whose values should be redacted from URLs.<br>Query parameter names are case-sensitive.<br>This is a full override of the default sensitive query parameter keys, it is not a list of keys in addition to the defaults.<br>Set to an empty array to disable query parameter redaction.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `sensitive_query_parameters` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalSanitization.url`](#experimentalsanitization)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/instrumentation.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "sensitive_query_parameters": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string"
+      },
+      "description": "List of query parameter names whose values should be redacted from URLs.\nQuery parameter names are case-sensitive.\nThis is a full override of the default sensitive query parameter keys, it is not a list of keys in addition to the defaults.\nSet to an empty array to disable query parameter redaction.\nIf omitted, the default sensitive query parameter list as defined by the url semantic conventions (https://github.com/open-telemetry/semantic-conventions/blob/main/docs/registry/attributes/url.md) is used.\n"
+    }
+  }
 }</pre>
 </details>
 

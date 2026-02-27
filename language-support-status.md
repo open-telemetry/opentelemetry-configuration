@@ -94,7 +94,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | not_implemented |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | not_applicable |  | * `code`: not_applicable<br>* `db`: not_applicable<br>* `gen_ai`: not_applicable<br>* `http`: not_applicable<br>* `messaging`: not_applicable<br>* `rpc`: not_applicable<br>* `stability_opt_in_list`: not_applicable<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | not_applicable |  | * `code`: not_applicable<br>* `db`: not_applicable<br>* `gen_ai`: not_applicable<br>* `http`: not_applicable<br>* `messaging`: not_applicable<br>* `rpc`: not_applicable<br>* `sanitization`: not_applicable<br>* `stability_opt_in_list`: not_applicable<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | not_implemented |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | not_applicable |  | * `known_methods`: not_applicable<br>* `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | not_applicable |  | * `client`: not_applicable<br>* `semconv`: not_applicable<br>* `server`: not_applicable<br> |
@@ -118,12 +118,14 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalSanitization`](schema-docs.md#experimentalsanitization) | unknown |  | * `url`: unknown<br> |
 | [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | not_implemented |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | not_implemented |  | * `enabled`: not_implemented<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
+| [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 
 
 ## go <a id="go"></a>
@@ -210,7 +212,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `code`: unknown<br>* `db`: unknown<br>* `gen_ai`: unknown<br>* `http`: unknown<br>* `messaging`: unknown<br>* `rpc`: unknown<br>* `stability_opt_in_list`: unknown<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `code`: unknown<br>* `db`: unknown<br>* `gen_ai`: unknown<br>* `http`: unknown<br>* `messaging`: unknown<br>* `rpc`: unknown<br>* `sanitization`: unknown<br>* `stability_opt_in_list`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | unknown |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | unknown |  | * `known_methods`: unknown<br>* `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | unknown |  | * `client`: unknown<br>* `semconv`: unknown<br>* `server`: unknown<br> |
@@ -234,12 +236,14 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalSanitization`](schema-docs.md#experimentalsanitization) | unknown |  | * `url`: unknown<br> |
 | [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | unknown |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | unknown |  | * `enabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
+| [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 
 
 ## java <a id="java"></a>
@@ -326,7 +330,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | supported |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `stability_opt_in_list`: supported<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | supported |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | supported |  | * `client`: supported<br>* `semconv`: supported<br>* `server`: supported<br> |
@@ -350,12 +354,14 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalSanitization`](schema-docs.md#experimentalsanitization) | unknown |  | * `url`: unknown<br> |
 | [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | supported |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | supported |  | * `local`: supported<br>* `none`: supported<br>* `remote`: supported<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | supported |  | * `enabled`: supported<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
+| [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 
 
 ## js <a id="js"></a>
@@ -442,7 +448,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `code`: unknown<br>* `db`: unknown<br>* `gen_ai`: unknown<br>* `http`: unknown<br>* `messaging`: unknown<br>* `rpc`: unknown<br>* `stability_opt_in_list`: unknown<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `code`: unknown<br>* `db`: unknown<br>* `gen_ai`: unknown<br>* `http`: unknown<br>* `messaging`: unknown<br>* `rpc`: unknown<br>* `sanitization`: unknown<br>* `stability_opt_in_list`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | unknown |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | unknown |  | * `known_methods`: unknown<br>* `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | unknown |  | * `client`: unknown<br>* `semconv`: unknown<br>* `server`: unknown<br> |
@@ -466,12 +472,14 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
 | [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalSanitization`](schema-docs.md#experimentalsanitization) | unknown |  | * `url`: unknown<br> |
 | [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | unknown |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | unknown |  | * `enabled`: unknown<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
+| [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 
 
 ## php <a id="php"></a>
@@ -558,7 +566,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | ignored |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `stability_opt_in_list`: supported<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | supported |  |  |
 | [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
 | [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | supported |  | * `client`: supported<br>* `semconv`: supported<br>* `server`: supported<br> |
@@ -582,11 +590,13 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | supported |  | * `container`: ignored<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalSanitization`](schema-docs.md#experimentalsanitization) | unknown |  | * `url`: unknown<br> |
 | [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | supported |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | supported |  | * `enabled`: supported<br> |
 | [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
+| [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 
 

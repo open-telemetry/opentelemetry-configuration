@@ -310,6 +310,9 @@ typeSupportStatuses:
   - type: ExperimentalRpcInstrumentation
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalSanitization
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalSemconvConfig
     status: unknown
     propertyOverrides: []
@@ -327,4 +330,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
     status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalUrlSanitization
+    status: unknown
     propertyOverrides: []

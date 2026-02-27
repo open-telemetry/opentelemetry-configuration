@@ -57,6 +57,13 @@ instrumentation/development:
         version: 1
         experimental: true
         dual_emit: false
+    sanitization:
+      url:
+        sensitive_query_parameters:
+          - AWSAccessKeyId
+          - Signature
+          - sig
+          - X-Goog-Signature
     # Domain-specific semconv sections above (http, db, etc.) take precedence over this general setting.
     stability_opt_in_list: "http/dup,database"
   cpp:
