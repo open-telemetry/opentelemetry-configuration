@@ -1,4 +1,168 @@
-# Changelog
+## [v1.0.0] - 2026-02-27
+
+### Schema
+
+This is the first stable release of the schema, and corresponds to declarative
+config [reaching stability in spec](https://github.com/open-telemetry/opentelemetry-specification/pull/4568)
+as well. It contains a few breaking changes to stable types, which are unlikely
+to be impactful, along with other braking changes to experimental types. Going
+forward, changes in minor versions will be backwards compatible.
+See [versioning policy](VERSIONING.md) for detailed definitions around
+compatibility.
+
+* **BREAKING**: Delete `JaegerPropagator`
+  ([#507](https://github.com/open-telemetry/opentelemetry-configuration/pull/507),
+  [#511](https://github.com/open-telemetry/opentelemetry-configuration/pull/511))
+* **BREAKING**: Delete `OpenTracingPropagator`
+  ([#510](https://github.com/open-telemetry/opentelemetry-configuration/pull/510))
+* **BREAKING (experimental type)**: Change Tracer/Meter/LoggerConfig `.disabled` to `.enabled`
+  ([#493](https://github.com/open-telemetry/opentelemetry-configuration/pull/493))
+
+  <details>
+
+  <summary>Migration steps</summary>
+
+  ```yaml
+  # Before
+  meter_provider:
+    meter_configuration/development:
+      default_config:
+        disabled: true
+      meters:
+        - name: "my_scope"
+          config:
+            disabled: false
+  tracer_provider:
+    tracer_configuration/development:
+      default_config:
+        disabled: true
+      tracers:
+        - name: "my_scope"
+          config:
+            disabled: false
+  logger_provider:
+    logger_configuration/development:
+      default_config:
+        disabled: true
+      loggers:
+        - name: "my_scope"
+          config:
+            disabled: false
+  ---
+  # After
+  meter_provider:
+    meter_configuration/development:
+      default_config:
+        enabled: false
+      meters:
+        - name: "my_scope"
+          config:
+            enabled: true
+  tracer_provider:
+    tracer_configuration/development:
+      default_config:
+        enabled: false
+      tracers:
+        - name: "my_scope"
+          config:
+            enabled: true
+  logger_provider:
+    logger_configuration/development:
+      default_config:
+        enabled: false
+      loggers:
+        - name: "my_scope"
+          config:
+            enabled: true
+  ```
+  </details>
+* **BREAKING (experimental type)**: Remove .instrumentation/development.general.peer
+  ([#526](https://github.com/open-telemetry/opentelemetry-configuration/pull/526))
+* **BREAKING (experimental type)**: Add `/development` suffix to some
+  `ExperimentalPrometheusTranslationStrategy` values,
+  `ExperimentalPrometheusMetricExporter.without_target_info`
+  ([#543](https://github.com/open-telemetry/opentelemetry-configuration/pull/543),
+  [#547](https://github.com/open-telemetry/opentelemetry-configuration/pull/547))
+
+  <details>
+
+  <summary>Migration steps</summary>
+
+  ```yaml
+  # Before
+  meter_provider:
+    readers:
+      - pull:
+          exporter:
+            prometheus/development:
+              without_target_info: true
+              translation_strategy: no_translation # or no_utf8_escaping_with_suffixes, underscore_escaping_without_suffixes 
+  ---
+  # After
+  meter_provider:
+    readers:
+      - pull:
+          exporter:
+            prometheus/development:
+              without_target_info/development: true
+              translation_strategy: no_translation/development # or no_utf8_escaping_with_suffixes/development, underscore_escaping_without_suffixes/development
+  ```
+  </details>
+
+* Fix `ExperimentalPrometheusMetricExporter.without_scope.info` description
+  ([#474](https://github.com/open-telemetry/opentelemetry-configuration/pull/474),
+  [#490](https://github.com/open-telemetry/opentelemetry-configuration/pull/490))
+* Drop `$id` in compiled schema
+  ([#487](https://github.com/open-telemetry/opentelemetry-configuration/pull/487))
+* Add `known_methods` property to `ExperimentalHttpClientInstrumentation`, `  ExperimentalHttpServerInstrumentation`
+  ([#527](https://github.com/open-telemetry/opentelemetry-configuration/pull/527))
+* Tweak `ExperimentalComposableRuleBasedSampler` constraints and description
+  ([#461](https://github.com/open-telemetry/opentelemetry-configuration/pull/461))
+* Add `sanitization` property to `ExperimentalGeneralInstrumentation`
+  ([#531](https://github.com/open-telemetry/opentelemetry-configuration/pull/531))
+* Add new `ExperimentalSemconvConfig` type, with options to configure `code`, `db`, `gen_ai`, `messaging`, `rpc`, `http` domains
+  ([#519](https://github.com/open-telemetry/opentelemetry-configuration/pull/519),
+  [#550](https://github.com/open-telemetry/opentelemetry-configuration/pull/550))
+
+### Tooling
+
+* Extract kitchen sink to snippets
+  ([#472](https://github.com/open-telemetry/opentelemetry-configuration/pull/472),
+  [#471](https://github.com/open-telemetry/opentelemetry-configuration/pull/471),
+  [#477](https://github.com/open-telemetry/opentelemetry-configuration/pull/477),
+  [#478](https://github.com/open-telemetry/opentelemetry-configuration/pull/478),
+  [#479](https://github.com/open-telemetry/opentelemetry-configuration/pull/479),
+  [#482](https://github.com/open-telemetry/opentelemetry-configuration/pull/482),
+  [#483](https://github.com/open-telemetry/opentelemetry-configuration/pull/483),
+  [#484](https://github.com/open-telemetry/opentelemetry-configuration/pull/484),
+  [#480](https://github.com/open-telemetry/opentelemetry-configuration/pull/480),
+  [#481](https://github.com/open-telemetry/opentelemetry-configuration/pull/481),
+  [#489](https://github.com/open-telemetry/opentelemetry-configuration/pull/489))
+* Rename example files to match anticipated schema store `fileMatch`
+  ([#488](https://github.com/open-telemetry/opentelemetry-configuration/pull/488))
+* Fix broken links
+  ([#514](https://github.com/open-telemetry/opentelemetry-configuration/pull/514),
+  [#499](https://github.com/open-telemetry/opentelemetry-configuration/pull/499))
+*  Move detailed language support information to separate page
+   ([#476](https://github.com/open-telemetry/opentelemetry-configuration/pull/476),
+   [#515](https://github.com/open-telemetry/opentelemetry-configuration/pull/515))
+* Stop stripping description from markdown JSON schema display
+  ([#517](https://github.com/open-telemetry/opentelemetry-configuration/pull/517))
+* Add versioning details for enum values
+  ([#540](https://github.com/open-telemetry/opentelemetry-configuration/pull/540))
+
+* Update C++ implementation support status
+  ([#496](https://github.com/open-telemetry/opentelemetry-configuration/pull/496),
+  [#516](https://github.com/open-telemetry/opentelemetry-configuration/pull/516),
+  [#521](https://github.com/open-telemetry/opentelemetry-configuration/pull/521))
+* Update Java implementation support status
+  ([#485](https://github.com/open-telemetry/opentelemetry-configuration/pull/485))
+* Update Go implementation support status
+  ([#498](https://github.com/open-telemetry/opentelemetry-configuration/pull/498))
+* Update PHP implementation support status
+  ([#513](https://github.com/open-telemetry/opentelemetry-configuration/pull/513))
+* Update Javascript implementation support status
+  ([#532](https://github.com/open-telemetry/opentelemetry-configuration/pull/532))
 
 ## [v1.0.0-rc.3] - 2025-12-11
 

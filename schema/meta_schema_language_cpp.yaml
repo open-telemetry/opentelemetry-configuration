@@ -195,6 +195,9 @@ typeSupportStatuses:
   - type: ViewStream
     status: supported
     propertyOverrides: []
+  - type: ExperimentalCodeInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: not_implemented
     propertyOverrides: []
@@ -224,6 +227,12 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalDbInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalGenAiInstrumentation
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
     status: not_applicable
@@ -258,6 +267,9 @@ typeSupportStatuses:
   - type: ExperimentalLoggerMatcherAndConfig
     status: not_implemented
     propertyOverrides: []
+  - type: ExperimentalMessagingInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalMeterConfig
     status: not_implemented
     propertyOverrides: []
@@ -285,15 +297,26 @@ typeSupportStatuses:
   - type: ExperimentalPrometheusTranslationStrategy
     status: supported
     enumOverrides:
-      - enumValue: no_translation
+      - enumValue: no_translation/development
         status: not_implemented
-      - enumValue: no_utf8_escaping_with_suffixes
+      - enumValue: no_utf8_escaping_with_suffixes/development
         status: not_implemented
+      - enumValue: underscore_escaping_without_suffixes/development
+        status: supported
   - type: ExperimentalResourceDetection
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalResourceDetector
     status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalRpcInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalSanitization
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalSemconvConfig
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
     status: not_implemented
@@ -309,4 +332,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
     status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalUrlSanitization
+    status: unknown
     propertyOverrides: []
