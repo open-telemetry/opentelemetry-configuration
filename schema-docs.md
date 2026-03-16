@@ -442,7 +442,7 @@ No snippets.
 |---|---|---|---|---|---|
 | `max_scale` | supported | unknown | supported | unknown | not_implemented |
 | `max_size` | supported | unknown | supported | unknown | not_implemented |
-| `record_min_max` | supported | unknown | not_implemented | unknown | not_implemented |
+| `record_min_max` | supported | unknown | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -1039,7 +1039,7 @@ No snippets.
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `boundaries` | supported | unknown | supported | unknown | ignored |
-| `record_min_max` | supported | unknown | not_implemented | unknown | ignored |
+| `record_min_max` | supported | unknown | supported | unknown | ignored |
 </details>
 
 Constraints: 
@@ -3053,7 +3053,7 @@ No snippets.
 |---|---|---|---|---|---|
 | `attributes` | supported | unknown | supported | unknown | supported |
 | `attributes_list` | supported | unknown | supported | unknown | supported |
-| `schema_url` | supported | unknown | ignored | unknown | supported |
+| `schema_url` | supported | unknown | supported | unknown | supported |
 | `detection/development` | supported | unknown | supported | unknown | supported |
 </details>
 
