@@ -730,7 +730,7 @@ $defs:
         type:
           - string
         description: |
-          Configure meter names to match, evaluated as follows:
+          Configure meter names to match. Matching is case-sensitive, evaluated as follows:
 
            * If the meter name exactly matches.
            * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
