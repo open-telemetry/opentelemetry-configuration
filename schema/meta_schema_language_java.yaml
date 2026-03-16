@@ -29,9 +29,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: Base2ExponentialBucketHistogramAggregation
     status: supported
-    propertyOverrides:
-      - property: record_min_max
-        status: not_implemented
+    propertyOverrides: []
   - type: BatchLogRecordProcessor
     status: supported
     propertyOverrides: []
@@ -65,9 +63,7 @@ typeSupportStatuses:
     enumOverrides: []
   - type: ExplicitBucketHistogramAggregation
     status: supported
-    propertyOverrides:
-      - property: record_min_max
-        status: not_implemented
+    propertyOverrides: []
   - type: ExporterDefaultHistogramAggregation
     status: supported
     enumOverrides: []
@@ -166,9 +162,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: Resource
     status: supported
-    propertyOverrides:
-      - property: schema_url
-        status: ignored
+    propertyOverrides: []
   - type: Sampler
     status: supported
     propertyOverrides: []
