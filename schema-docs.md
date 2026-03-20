@@ -5448,8 +5448,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `default_config` | not_implemented | unknown | supported | unknown | supported |
-| `loggers` | not_implemented | unknown | supported | unknown | supported |
+| `default_config` | supported | unknown | supported | unknown | supported |
+| `loggers` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5519,8 +5519,8 @@ loggers:
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `config` | not_implemented | unknown | supported | unknown | supported |
-| `name` | not_implemented | unknown | supported | unknown | supported |
+| `config` | supported | unknown | supported | unknown | supported |
+| `name` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5576,7 +5576,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `enabled` | not_implemented | unknown | supported | unknown | supported |
+| `enabled` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5625,8 +5625,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `default_config` | not_implemented | unknown | supported | unknown | supported |
-| `meters` | not_implemented | unknown | supported | unknown | supported |
+| `default_config` | supported | unknown | supported | unknown | supported |
+| `meters` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5694,8 +5694,8 @@ meters:
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `config` | not_implemented | unknown | supported | unknown | supported |
-| `name` | not_implemented | unknown | supported | unknown | supported |
+| `config` | supported | unknown | supported | unknown | supported |
+| `name` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -6462,7 +6462,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `enabled` | not_implemented | unknown | supported | unknown | supported |
+| `enabled` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -6511,8 +6511,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `default_config` | not_implemented | unknown | supported | unknown | supported |
-| `tracers` | not_implemented | unknown | supported | unknown | supported |
+| `default_config` | supported | unknown | supported | unknown | supported |
+| `tracers` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -6580,8 +6580,8 @@ tracers:
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `config` | not_implemented | unknown | supported | unknown | supported |
-| `name` | not_implemented | unknown | supported | unknown | supported |
+| `config` | supported | unknown | supported | unknown | supported |
+| `name` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 

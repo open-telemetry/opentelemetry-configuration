@@ -1,4 +1,4 @@
-latestSupportedFileFormat: 1.0.0-rc.3
+latestSupportedFileFormat: 1.0.0
 typeSupportStatuses:
   - type: Aggregation
     status: supported
@@ -253,19 +253,19 @@ typeSupportStatuses:
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalLoggerConfigurator
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalLoggerMatcherAndConfig
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalMeterConfig
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalMeterConfigurator
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalMeterMatcherAndConfig
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalOtlpFileExporter
     status: supported
@@ -308,11 +308,11 @@ typeSupportStatuses:
     status: not_implemented
     enumOverrides: []
   - type: ExperimentalTracerConfig
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalTracerConfigurator
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
-    status: not_implemented
+    status: supported
     propertyOverrides: []
