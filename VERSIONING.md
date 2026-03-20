@@ -46,7 +46,7 @@ Stable types provide the following guarantees. All types except those excluded i
     * [contains, minContains, maxContains](https://json-schema.org/understanding-json-schema/reference/array#contains): will not become stricter. `minContains` will not increase; `maxContains` will not decrease.
     * [minItems, maxItems](https://json-schema.org/understanding-json-schema/reference/array#length): `minItems` will not increase, `maxItems` will not decrease.
     * [uniqueItems](https://json-schema.org/understanding-json-schema/reference/array#uniqueItems): will not go from `false` to `true`.
-    * [enum](https://json-schema.org/understanding-json-schema/reference/enum): will not remove entries.
+    * [enum](https://json-schema.org/understanding-json-schema/reference/enum): will not remove stable values.
     * [const](https://json-schema.org/understanding-json-schema/reference/const): will not change.
     * [isSdkExtensionPlugin](CONTRIBUTING.md#json-schema-source-and-output): will not change.
 * No existing type will be deleted.
@@ -72,9 +72,9 @@ The versioning policy guarantees do not apply to [experimental features](#experi
 
 ### Experimental features
 
-Sometimes we need to experiment with new types and properties, e.g. when evaluating the configuration experience for experimental features in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification).
+Sometimes we need to experiment with new types, properties, and enum values, e.g. when evaluating the configuration experience for experimental features in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification).
 
-Experimental properties are denoted by a `*/(development|alpha|beta)` suffix (e.g.`foo/development`). The suffix indicates the property value and all types nested within it are exempt from versioning policy guarantees and are subject to breaking changes in minor versions. Experimental type key values in `$defs` should be prefixed with `Experimental*` (e.g. `ExperimentalFoo`). Note that because we [omit the title annotation](./CONTRIBUTING.md#annotations---title-and-description), the `$defs` key value effectively acts as the type title for code generation tools.
+Experimental properties and enum values are denoted by a `*/(development|alpha|beta)` suffix (e.g.`foo/development`). The suffix indicates the property value and all types nested within it are exempt from versioning policy guarantees and are subject to breaking changes in minor versions. Experimental type key values in `$defs` should be prefixed with `Experimental*` (e.g. `ExperimentalFoo`). Note that because we [omit the title annotation](./CONTRIBUTING.md#annotations---title-and-description), the `$defs` key value effectively acts as the type title for code generation tools.
 
 Maintainers are not obligated to implement support for experimental properties and types. When they do, they are not obligated to maintain any versioning policy guarantees.
 

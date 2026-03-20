@@ -29,9 +29,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: Base2ExponentialBucketHistogramAggregation
     status: supported
-    propertyOverrides:
-      - property: record_min_max
-        status: not_implemented
+    propertyOverrides: []
   - type: BatchLogRecordProcessor
     status: supported
     propertyOverrides: []
@@ -65,9 +63,7 @@ typeSupportStatuses:
     enumOverrides: []
   - type: ExplicitBucketHistogramAggregation
     status: supported
-    propertyOverrides:
-      - property: record_min_max
-        status: not_implemented
+    propertyOverrides: []
   - type: ExporterDefaultHistogramAggregation
     status: supported
     enumOverrides: []
@@ -166,9 +162,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: Resource
     status: supported
-    propertyOverrides:
-      - property: schema_url
-        status: ignored
+    propertyOverrides: []
   - type: Sampler
     status: supported
     propertyOverrides: []
@@ -217,6 +211,9 @@ typeSupportStatuses:
   - type: ViewStream
     status: supported
     propertyOverrides: []
+  - type: ExperimentalCodeInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: supported
     propertyOverrides: []
@@ -246,6 +243,12 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: supported
+    propertyOverrides: []
+  - type: ExperimentalDbInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalGenAiInstrumentation
+    status: unknown
     propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
     status: supported
@@ -300,6 +303,9 @@ typeSupportStatuses:
   - type: ExperimentalLoggerMatcherAndConfig
     status: supported
     propertyOverrides: []
+  - type: ExperimentalMessagingInstrumentation
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalMeterConfig
     status: supported
     propertyOverrides: []
@@ -319,12 +325,6 @@ typeSupportStatuses:
     propertyOverrides:
       - property: output_stream
         status: not_implemented
-  - type: ExperimentalPeerInstrumentation
-    status: supported
-    propertyOverrides: []
-  - type: ExperimentalPeerServiceMapping
-    status: supported
-    propertyOverrides: []
   - type: ExperimentalProbabilitySampler
     status: supported
     propertyOverrides: []
@@ -345,6 +345,15 @@ typeSupportStatuses:
   - type: ExperimentalResourceDetector
     status: supported
     propertyOverrides: []
+  - type: ExperimentalRpcInstrumentation
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalSanitization
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalSemconvConfig
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
     status: supported
     propertyOverrides: []
@@ -359,4 +368,7 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
     status: supported
+    propertyOverrides: []
+  - type: ExperimentalUrlSanitization
+    status: unknown
     propertyOverrides: []

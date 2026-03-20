@@ -1,15 +1,13 @@
-file_format: "1.0-rc.3"
+file_format: "1.0"
 
 instrumentation/development:
   # SNIPPET_START
   general:
-    peer:
-      service_mapping:
-        - peer: 1.2.3.4
-          service: FooService
-        - peer: 2.3.4.5
-          service: BarService
     http:
+      semconv:
+        version: 1
+        experimental: true
+        dual_emit: true
       client:
         request_captured_headers:
           - Content-Type
@@ -17,6 +15,16 @@ instrumentation/development:
         response_captured_headers:
           - Content-Type
           - Content-Encoding
+        known_methods:
+          - CONNECT
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          - TRACE
       server:
         request_captured_headers:
           - Content-Type
@@ -24,6 +32,40 @@ instrumentation/development:
         response_captured_headers:
           - Content-Type
           - Content-Encoding
+        known_methods:
+          - CONNECT
+          - DELETE
+          - GET
+          - HEAD
+          - OPTIONS
+          - PATCH
+          - POST
+          - PUT
+          - TRACE
+    db:
+      semconv:
+        version: 1
+        experimental: false
+        dual_emit: false
+    rpc:
+      semconv:
+        version: 1
+        experimental: false
+        dual_emit: true
+    messaging:
+      semconv:
+        version: 1
+        experimental: true
+        dual_emit: false
+    sanitization:
+      url:
+        sensitive_query_parameters:
+          - AWSAccessKeyId
+          - Signature
+          - sig
+          - X-Goog-Signature
+    # Domain-specific semconv sections above (http, db, etc.) take precedence over this general setting.
+    stability_opt_in_list: "http/dup,database"
   cpp:
     example:
       property: "value"
