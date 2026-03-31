@@ -6,7 +6,7 @@ logger_provider:
         exporter:
           otlp_grpc:
             # SNIPPET_START
-            endpoint: http://localhost:4318
+            endpoint: http://localhost:4317
             tls:
               ca_file: /app/cert.pem
               key_file: /app/cert.pem
