@@ -2109,7 +2109,7 @@ Snippets:
 
 [Snippet Source File](./snippets/OtlpGrpcExporter_logs_kitchen_sink.yaml)
 ```yaml
-endpoint: http://localhost:4318
+endpoint: http://localhost:4317
 tls:
   ca_file: /app/cert.pem
   key_file: /app/cert.pem
@@ -2129,7 +2129,7 @@ timeout: 10000
 
 [Snippet Source File](./snippets/OtlpGrpcExporter_traces_kitchen_sink.yaml)
 ```yaml
-endpoint: http://localhost:4318
+endpoint: http://localhost:4317
 tls:
   ca_file: /app/cert.pem
   key_file: /app/cert.pem
@@ -2243,7 +2243,7 @@ Snippets:
 
 [Snippet Source File](./snippets/OtlpGrpcMetricExporter_metrics_kitchen_sink.yaml)
 ```yaml
-endpoint: http://localhost:4318
+endpoint: http://localhost:4317
 tls:
   ca_file: /app/cert.pem
   key_file: /app/cert.pem
@@ -2569,7 +2569,7 @@ default_histogram_aggregation: explicit_bucket_histogram
 
 [Snippet Source File](./snippets/OtlpHttpMetricExporter_use_base2_exponential_histogram.yaml)
 ```yaml
-endpoint: http://localhost:4317
+endpoint: http://localhost:4318/v1/metrics
 default_histogram_aggregation: base2_exponential_bucket_histogram
 ```
 </details>
