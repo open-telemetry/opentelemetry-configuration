@@ -130,14 +130,14 @@ Latest supported file format: `1.0.0`
 
 ## go <a id="go"></a>
 
-Latest supported file format: `1.0.0-rc.2`
+Latest supported file format: `1.0.0`
 
 | Type | Status | Notes | Support Status Details |
 |---|---|---|---|
 | [`Aggregation`](schema-docs.md#aggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `default`: unknown<br>* `drop`: unknown<br>* `explicit_bucket_histogram`: unknown<br>* `last_value`: unknown<br>* `sum`: unknown<br> |
 | [`AlwaysOffSampler`](schema-docs.md#alwaysoffsampler) | supported |  |  |
 | [`AlwaysOnSampler`](schema-docs.md#alwaysonsampler) | supported |  |  |
-| [`AttributeLimits`](schema-docs.md#attributelimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
+| [`AttributeLimits`](schema-docs.md#attributelimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | [`AttributeNameValue`](schema-docs.md#attributenamevalue) | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
 | [`AttributeType`](schema-docs.md#attributetype) | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
 | [`B3MultiPropagator`](schema-docs.md#b3multipropagator) | supported |  |  |
@@ -155,20 +155,20 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExemplarFilter`](schema-docs.md#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExplicitBucketHistogramAggregation`](schema-docs.md#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
 | [`ExporterDefaultHistogramAggregation`](schema-docs.md#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
-| [`ExporterTemporalityPreference`](schema-docs.md#exportertemporalitypreference) | unknown |  | * `cumulative`: unknown<br>* `delta`: unknown<br>* `low_memory`: unknown<br> |
-| [`GrpcTls`](schema-docs.md#grpctls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `insecure`: unknown<br>* `key_file`: unknown<br> |
-| [`HttpTls`](schema-docs.md#httptls) | unknown |  | * `ca_file`: unknown<br>* `cert_file`: unknown<br>* `key_file`: unknown<br> |
-| [`IncludeExclude`](schema-docs.md#includeexclude) | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br> |
-| [`InstrumentType`](schema-docs.md#instrumenttype) | unknown |  | * `counter`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| [`LastValueAggregation`](schema-docs.md#lastvalueaggregation) | unknown |  |  |
-| [`LoggerProvider`](schema-docs.md#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
+| [`ExporterTemporalityPreference`](schema-docs.md#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
+| [`GrpcTls`](schema-docs.md#grpctls) | supported |  | * `ca_file`: supported<br>* `cert_file`: supported<br>* `insecure`: supported<br>* `key_file`: supported<br> |
+| [`HttpTls`](schema-docs.md#httptls) | supported |  | * `ca_file`: supported<br>* `cert_file`: supported<br>* `key_file`: supported<br> |
+| [`IncludeExclude`](schema-docs.md#includeexclude) | supported |  | * `excluded`: supported<br>* `included`: supported<br> |
+| [`InstrumentType`](schema-docs.md#instrumenttype) | supported |  | * `counter`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
+| [`LastValueAggregation`](schema-docs.md#lastvalueaggregation) | supported |  |  |
+| [`LoggerProvider`](schema-docs.md#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: not_implemented<br> |
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: not_implemented<br> |
-| [`LogRecordLimits`](schema-docs.md#logrecordlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
-| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br> |
-| [`MeterProvider`](schema-docs.md#meterprovider) | unknown |  | * `exemplar_filter`: unknown<br>* `readers`: unknown<br>* `views`: unknown<br>* `meter_configurator/development`: unknown<br> |
+| [`LogRecordLimits`](schema-docs.md#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
+| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
+| [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
 | [`MetricProducer`](schema-docs.md#metricproducer) | unknown |  | * `opencensus`: unknown<br> |
 | [`MetricReader`](schema-docs.md#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
-| [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | unknown |  | * `name`: unknown<br>* `value`: unknown<br> |
+| [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | [`OpenCensusMetricProducer`](schema-docs.md#opencensusmetricproducer) | unknown |  |  |
 | [`OpenTelemetryConfiguration`](schema-docs.md#opentelemetryconfiguration) | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
 | [`OtlpGrpcExporter`](schema-docs.md#otlpgrpcexporter) | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
@@ -199,7 +199,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`View`](schema-docs.md#view) | unknown |  | * `selector`: unknown<br>* `stream`: unknown<br> |
 | [`ViewSelector`](schema-docs.md#viewselector) | unknown |  | * `instrument_name`: unknown<br>* `instrument_type`: unknown<br>* `meter_name`: unknown<br>* `meter_schema_url`: unknown<br>* `meter_version`: unknown<br>* `unit`: unknown<br> |
 | [`ViewStream`](schema-docs.md#viewstream) | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalCodeInstrumentation`](schema-docs.md#experimentalcodeinstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalCodeInstrumentation`](schema-docs.md#experimentalcodeinstrumentation) | not_implemented |  | * `semconv`: not_implemented<br> |
 | [`ExperimentalComposableAlwaysOffSampler`](schema-docs.md#experimentalcomposablealwaysoffsampler) | not_implemented |  |  |
 | [`ExperimentalComposableAlwaysOnSampler`](schema-docs.md#experimentalcomposablealwaysonsampler) | not_implemented |  |  |
 | [`ExperimentalComposableParentThresholdSampler`](schema-docs.md#experimentalcomposableparentthresholdsampler) | not_implemented |  | * `root`: not_implemented<br> |
@@ -209,39 +209,39 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributepatterns) | not_implemented |  | * `excluded`: not_implemented<br>* `included`: not_implemented<br>* `key`: not_implemented<br> |
 | [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributevalues) | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
 | [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
-| [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | unknown |  |  |
-| [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `code`: unknown<br>* `db`: unknown<br>* `gen_ai`: unknown<br>* `http`: unknown<br>* `messaging`: unknown<br>* `rpc`: unknown<br>* `sanitization`: unknown<br>* `stability_opt_in_list`: unknown<br> |
-| [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | unknown |  |  |
-| [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | unknown |  | * `known_methods`: unknown<br>* `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
-| [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | unknown |  | * `client`: unknown<br>* `semconv`: unknown<br>* `server`: unknown<br> |
-| [`ExperimentalHttpServerInstrumentation`](schema-docs.md#experimentalhttpserverinstrumentation) | unknown |  | * `known_methods`: unknown<br>* `request_captured_headers`: unknown<br>* `response_captured_headers`: unknown<br> |
-| [`ExperimentalInstrumentation`](schema-docs.md#experimentalinstrumentation) | unknown |  | * `cpp`: unknown<br>* `dotnet`: unknown<br>* `erlang`: unknown<br>* `general`: unknown<br>* `go`: unknown<br>* `java`: unknown<br>* `js`: unknown<br>* `php`: unknown<br>* `python`: unknown<br>* `ruby`: unknown<br>* `rust`: unknown<br>* `swift`: unknown<br> |
+| [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | supported |  |  |
+| [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | not_implemented |  | * `semconv`: not_implemented<br> |
+| [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | not_implemented |  | * `semconv`: not_implemented<br> |
+| [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
+| [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | supported |  |  |
+| [`ExperimentalHttpClientInstrumentation`](schema-docs.md#experimentalhttpclientinstrumentation) | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
+| [`ExperimentalHttpInstrumentation`](schema-docs.md#experimentalhttpinstrumentation) | not_implemented |  | * `client`: not_implemented<br>* `semconv`: not_implemented<br>* `server`: not_implemented<br> |
+| [`ExperimentalHttpServerInstrumentation`](schema-docs.md#experimentalhttpserverinstrumentation) | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
+| [`ExperimentalInstrumentation`](schema-docs.md#experimentalinstrumentation) | not_implemented |  | * `cpp`: not_implemented<br>* `dotnet`: not_implemented<br>* `erlang`: not_implemented<br>* `general`: not_implemented<br>* `go`: not_implemented<br>* `java`: not_implemented<br>* `js`: not_implemented<br>* `php`: not_implemented<br>* `python`: not_implemented<br>* `ruby`: not_implemented<br>* `rust`: not_implemented<br>* `swift`: not_implemented<br> |
 | [`ExperimentalJaegerRemoteSampler`](schema-docs.md#experimentaljaegerremotesampler) | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
-| [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | unknown |  |  |
+| [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | not_implemented |  |  |
 | [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | unknown |  | * `enabled`: unknown<br>* `minimum_severity`: unknown<br>* `trace_based`: unknown<br> |
-| [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | unknown |  | * `default_config`: unknown<br>* `loggers`: unknown<br> |
+| [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `loggers`: not_implemented<br> |
 | [`ExperimentalLoggerMatcherAndConfig`](schema-docs.md#experimentalloggermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| [`ExperimentalMessagingInstrumentation`](schema-docs.md#experimentalmessaginginstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalMessagingInstrumentation`](schema-docs.md#experimentalmessaginginstrumentation) | not_implemented |  | * `semconv`: not_implemented<br> |
 | [`ExperimentalMeterConfig`](schema-docs.md#experimentalmeterconfig) | unknown |  | * `enabled`: unknown<br> |
-| [`ExperimentalMeterConfigurator`](schema-docs.md#experimentalmeterconfigurator) | unknown |  | * `default_config`: unknown<br>* `meters`: unknown<br> |
+| [`ExperimentalMeterConfigurator`](schema-docs.md#experimentalmeterconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `meters`: not_implemented<br> |
 | [`ExperimentalMeterMatcherAndConfig`](schema-docs.md#experimentalmetermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
 | [`ExperimentalOtlpFileExporter`](schema-docs.md#experimentalotlpfileexporter) | not_implemented |  | * `output_stream`: not_implemented<br> |
 | [`ExperimentalOtlpFileMetricExporter`](schema-docs.md#experimentalotlpfilemetricexporter) | not_implemented |  | * `default_histogram_aggregation`: not_implemented<br>* `output_stream`: not_implemented<br>* `temporality_preference`: not_implemented<br> |
 | [`ExperimentalProbabilitySampler`](schema-docs.md#experimentalprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
-| [`ExperimentalProcessResourceDetector`](schema-docs.md#experimentalprocessresourcedetector) | unknown |  |  |
-| [`ExperimentalPrometheusMetricExporter`](schema-docs.md#experimentalprometheusmetricexporter) | unknown |  | * `host`: unknown<br>* `port`: unknown<br>* `translation_strategy`: unknown<br>* `with_resource_constant_labels`: unknown<br>* `without_scope_info`: unknown<br>* `without_target_info/development`: unknown<br> |
-| [`ExperimentalPrometheusTranslationStrategy`](schema-docs.md#experimentalprometheustranslationstrategy) | unknown |  | * `no_translation/development`: unknown<br>* `no_utf8_escaping_with_suffixes/development`: unknown<br>* `underscore_escaping_with_suffixes`: unknown<br>* `underscore_escaping_without_suffixes/development`: unknown<br> |
-| [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | unknown |  | * `attributes`: unknown<br>* `detectors`: unknown<br> |
-| [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | unknown |  | * `container`: unknown<br>* `host`: unknown<br>* `process`: unknown<br>* `service`: unknown<br> |
-| [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalProcessResourceDetector`](schema-docs.md#experimentalprocessresourcedetector) | supported |  |  |
+| [`ExperimentalPrometheusMetricExporter`](schema-docs.md#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `translation_strategy`: supported<br>* `with_resource_constant_labels`: supported<br>* `without_scope_info`: supported<br>* `without_target_info/development`: supported<br> |
+| [`ExperimentalPrometheusTranslationStrategy`](schema-docs.md#experimentalprometheustranslationstrategy) | supported |  | * `no_translation/development`: supported<br>* `no_utf8_escaping_with_suffixes/development`: supported<br>* `underscore_escaping_with_suffixes`: supported<br>* `underscore_escaping_without_suffixes/development`: supported<br> |
+| [`ExperimentalResourceDetection`](schema-docs.md#experimentalresourcedetection) | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
+| [`ExperimentalResourceDetector`](schema-docs.md#experimentalresourcedetector) | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
+| [`ExperimentalRpcInstrumentation`](schema-docs.md#experimentalrpcinstrumentation) | not_implemented |  | * `semconv`: not_implemented<br> |
 | [`ExperimentalSanitization`](schema-docs.md#experimentalsanitization) | unknown |  | * `url`: unknown<br> |
 | [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
-| [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | unknown |  |  |
+| [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | supported |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
 | [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | unknown |  | * `enabled`: unknown<br> |
-| [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | unknown |  | * `default_config`: unknown<br>* `tracers`: unknown<br> |
+| [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
 | [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 

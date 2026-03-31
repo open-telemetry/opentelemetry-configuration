@@ -1,4 +1,4 @@
-latestSupportedFileFormat: 1.0.0-rc.2
+latestSupportedFileFormat: 1.0.0
 typeSupportStatuses:
   - type: Aggregation
     status: unknown
@@ -10,7 +10,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: AttributeLimits
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: AttributeNameValue
     status: supported
@@ -68,39 +68,41 @@ typeSupportStatuses:
     status: unknown
     enumOverrides: []
   - type: ExporterTemporalityPreference
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: GrpcTls
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: HttpTls
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: IncludeExclude
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: InstrumentType
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: LastValueAggregation
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: LoggerProvider
-    status: unknown
-    propertyOverrides: []
+    status: supported
+    propertyOverrides:
+      - property: logger_configurator/development
+        status: not_implemented
   - type: LogRecordExporter
     status: supported
     propertyOverrides:
       - property: otlp_file/development
         status: not_implemented
   - type: LogRecordLimits
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: LogRecordProcessor
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: MeterProvider
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: MetricProducer
     status: unknown
@@ -109,7 +111,7 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: NameStringValuePair
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: OpenCensusMetricProducer
     status: unknown
@@ -222,7 +224,7 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalCodeInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
     status: not_implemented
@@ -252,55 +254,55 @@ typeSupportStatuses:
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalDbInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalGenAiInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalHostResourceDetector
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalHttpClientInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalHttpInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalHttpServerInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalJaegerRemoteSampler
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalLanguageSpecificInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalLoggerConfig
     status: unknown
     propertyOverrides: []
   - type: ExperimentalLoggerConfigurator
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalLoggerMatcherAndConfig
     status: unknown
     propertyOverrides: []
   - type: ExperimentalMessagingInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalMeterConfig
     status: unknown
     propertyOverrides: []
   - type: ExperimentalMeterConfigurator
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalMeterMatcherAndConfig
     status: unknown
@@ -315,22 +317,22 @@ typeSupportStatuses:
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalPrometheusMetricExporter
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalPrometheusTranslationStrategy
-    status: unknown
+    status: supported
     enumOverrides: []
   - type: ExperimentalResourceDetection
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalResourceDetector
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalRpcInstrumentation
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalSanitization
     status: unknown
@@ -339,7 +341,7 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
-    status: unknown
+    status: supported
     propertyOverrides: []
   - type: ExperimentalSpanParent
     status: unknown
@@ -348,7 +350,7 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalTracerConfigurator
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalTracerMatcherAndConfig
     status: unknown
