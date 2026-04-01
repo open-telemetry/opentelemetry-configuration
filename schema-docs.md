@@ -442,7 +442,7 @@ No snippets.
 |---|---|---|---|---|---|
 | `max_scale` | supported | unknown | supported | unknown | not_implemented |
 | `max_size` | supported | unknown | supported | unknown | not_implemented |
-| `record_min_max` | supported | unknown | not_implemented | unknown | not_implemented |
+| `record_min_max` | supported | unknown | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -1039,7 +1039,7 @@ No snippets.
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `boundaries` | supported | unknown | supported | unknown | ignored |
-| `record_min_max` | supported | unknown | not_implemented | unknown | ignored |
+| `record_min_max` | supported | unknown | supported | unknown | ignored |
 </details>
 
 Constraints: 
@@ -2109,7 +2109,7 @@ Snippets:
 
 [Snippet Source File](./snippets/OtlpGrpcExporter_logs_kitchen_sink.yaml)
 ```yaml
-endpoint: http://localhost:4318
+endpoint: http://localhost:4317
 tls:
   ca_file: /app/cert.pem
   key_file: /app/cert.pem
@@ -2129,7 +2129,7 @@ timeout: 10000
 
 [Snippet Source File](./snippets/OtlpGrpcExporter_traces_kitchen_sink.yaml)
 ```yaml
-endpoint: http://localhost:4318
+endpoint: http://localhost:4317
 tls:
   ca_file: /app/cert.pem
   key_file: /app/cert.pem
@@ -2243,7 +2243,7 @@ Snippets:
 
 [Snippet Source File](./snippets/OtlpGrpcMetricExporter_metrics_kitchen_sink.yaml)
 ```yaml
-endpoint: http://localhost:4318
+endpoint: http://localhost:4317
 tls:
   ca_file: /app/cert.pem
   key_file: /app/cert.pem
@@ -2569,7 +2569,7 @@ default_histogram_aggregation: explicit_bucket_histogram
 
 [Snippet Source File](./snippets/OtlpHttpMetricExporter_use_base2_exponential_histogram.yaml)
 ```yaml
-endpoint: http://localhost:4317
+endpoint: http://localhost:4318/v1/metrics
 default_histogram_aggregation: base2_exponential_bucket_histogram
 ```
 </details>
@@ -3053,7 +3053,7 @@ No snippets.
 |---|---|---|---|---|---|
 | `attributes` | supported | unknown | supported | unknown | supported |
 | `attributes_list` | supported | unknown | supported | unknown | supported |
-| `schema_url` | supported | unknown | ignored | unknown | supported |
+| `schema_url` | supported | unknown | supported | unknown | supported |
 | `detection/development` | supported | unknown | supported | unknown | supported |
 </details>
 
@@ -5706,8 +5706,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `default_config` | not_implemented | unknown | supported | unknown | supported |
-| `loggers` | not_implemented | unknown | supported | unknown | supported |
+| `default_config` | supported | unknown | supported | unknown | supported |
+| `loggers` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5777,8 +5777,8 @@ loggers:
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `config` | not_implemented | unknown | supported | unknown | supported |
-| `name` | not_implemented | unknown | supported | unknown | supported |
+| `config` | supported | unknown | supported | unknown | supported |
+| `name` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5877,7 +5877,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `enabled` | not_implemented | unknown | supported | unknown | supported |
+| `enabled` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5926,8 +5926,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `default_config` | not_implemented | unknown | supported | unknown | supported |
-| `meters` | not_implemented | unknown | supported | unknown | supported |
+| `default_config` | supported | unknown | supported | unknown | supported |
+| `meters` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5995,8 +5995,8 @@ meters:
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `config` | not_implemented | unknown | supported | unknown | supported |
-| `name` | not_implemented | unknown | supported | unknown | supported |
+| `config` | supported | unknown | supported | unknown | supported |
+| `name` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -6818,7 +6818,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `enabled` | not_implemented | unknown | supported | unknown | supported |
+| `enabled` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -6867,8 +6867,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `default_config` | not_implemented | unknown | supported | unknown | supported |
-| `tracers` | not_implemented | unknown | supported | unknown | supported |
+| `default_config` | supported | unknown | supported | unknown | supported |
+| `tracers` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -6936,8 +6936,8 @@ tracers:
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `config` | not_implemented | unknown | supported | unknown | supported |
-| `name` | not_implemented | unknown | supported | unknown | supported |
+| `config` | supported | unknown | supported | unknown | supported |
+| `name` | supported | unknown | supported | unknown | supported |
 </details>
 
 Constraints: 

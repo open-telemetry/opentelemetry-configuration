@@ -21,6 +21,12 @@
   to [CHANGELOG.md](CHANGELOG.md) for a list of changes since last release.
   * Call out [breaking changes](CONTRIBUTING.md#pull-requests) and provide example migration steps (see [v0.4.0](https://github.com/open-telemetry/opentelemetry-configuration/releases/tag/v0.4.0) for an example).
 * Click "Publish Release".
+* Open a PR to update
+  the [schemastore](https://github.com/SchemaStore/schemastore) entry to include
+  the new tag. Update the `url` to be the latest, and `versions` to include the
+  newly tag.
+  For [example](https://github.com/SchemaStore/schemastore/pull/5436/changes) (
+  TODO: update to an update PR after we have one to reference).
 
 Our tags follow the naming convention of `v<major>.<minor>.<patch>`. Increment `minor` by 1
 and use `patch` value of 0 for new minor version releases. For patch releases keep `minor`

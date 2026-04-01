@@ -12,7 +12,7 @@ This page provides comprehensive language implementation status for each type in
 
 ## cpp <a id="cpp"></a>
 
-Latest supported file format: `1.0.0-rc.3`
+Latest supported file format: `1.0.0`
 
 | Type | Status | Notes | Support Status Details |
 |---|---|---|---|
@@ -103,12 +103,12 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalJaegerRemoteSampler`](schema-docs.md#experimentaljaegerremotesampler) | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
 | [`ExperimentalLanguageSpecificInstrumentation`](schema-docs.md#experimentallanguagespecificinstrumentation) | not_applicable |  |  |
 | [`ExperimentalLoggerConfig`](schema-docs.md#experimentalloggerconfig) | not_implemented |  | * `enabled`: not_implemented<br>* `minimum_severity`: not_implemented<br>* `trace_based`: not_implemented<br> |
-| [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `loggers`: not_implemented<br> |
-| [`ExperimentalLoggerMatcherAndConfig`](schema-docs.md#experimentalloggermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
+| [`ExperimentalLoggerConfigurator`](schema-docs.md#experimentalloggerconfigurator) | supported |  | * `default_config`: supported<br>* `loggers`: supported<br> |
+| [`ExperimentalLoggerMatcherAndConfig`](schema-docs.md#experimentalloggermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
 | [`ExperimentalMessagingInstrumentation`](schema-docs.md#experimentalmessaginginstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalMeterConfig`](schema-docs.md#experimentalmeterconfig) | not_implemented |  | * `enabled`: not_implemented<br> |
-| [`ExperimentalMeterConfigurator`](schema-docs.md#experimentalmeterconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `meters`: not_implemented<br> |
-| [`ExperimentalMeterMatcherAndConfig`](schema-docs.md#experimentalmetermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
+| [`ExperimentalMeterConfig`](schema-docs.md#experimentalmeterconfig) | supported |  | * `enabled`: supported<br> |
+| [`ExperimentalMeterConfigurator`](schema-docs.md#experimentalmeterconfigurator) | supported |  | * `default_config`: supported<br>* `meters`: supported<br> |
+| [`ExperimentalMeterMatcherAndConfig`](schema-docs.md#experimentalmetermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
 | [`ExperimentalOtlpFileExporter`](schema-docs.md#experimentalotlpfileexporter) | supported |  | * `output_stream`: supported<br> |
 | [`ExperimentalOtlpFileMetricExporter`](schema-docs.md#experimentalotlpfilemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `output_stream`: supported<br>* `temporality_preference`: supported<br> |
 | [`ExperimentalProbabilitySampler`](schema-docs.md#experimentalprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
@@ -122,9 +122,9 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalSemconvConfig`](schema-docs.md#experimentalsemconvconfig) | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | [`ExperimentalServiceResourceDetector`](schema-docs.md#experimentalserviceresourcedetector) | not_implemented |  |  |
 | [`ExperimentalSpanParent`](schema-docs.md#experimentalspanparent) | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
-| [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | not_implemented |  | * `enabled`: not_implemented<br> |
-| [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
-| [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
+| [`ExperimentalTracerConfig`](schema-docs.md#experimentaltracerconfig) | supported |  | * `enabled`: supported<br> |
+| [`ExperimentalTracerConfigurator`](schema-docs.md#experimentaltracerconfigurator) | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
+| [`ExperimentalTracerMatcherAndConfig`](schema-docs.md#experimentaltracermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
 | [`ExperimentalUrlSanitization`](schema-docs.md#experimentalurlsanitization) | unknown |  | * `sensitive_query_parameters`: unknown<br> |
 
 
@@ -261,7 +261,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`B3MultiPropagator`](schema-docs.md#b3multipropagator) | supported |  |  |
 | [`B3Propagator`](schema-docs.md#b3propagator) | supported |  |  |
 | [`BaggagePropagator`](schema-docs.md#baggagepropagator) | supported |  |  |
-| [`Base2ExponentialBucketHistogramAggregation`](schema-docs.md#base2exponentialbuckethistogramaggregation) | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: not_implemented<br> |
+| [`Base2ExponentialBucketHistogramAggregation`](schema-docs.md#base2exponentialbuckethistogramaggregation) | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: supported<br> |
 | [`BatchLogRecordProcessor`](schema-docs.md#batchlogrecordprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
 | [`BatchSpanProcessor`](schema-docs.md#batchspanprocessor) | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
 | [`CardinalityLimits`](schema-docs.md#cardinalitylimits) | supported |  | * `counter`: supported<br>* `default`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
@@ -271,7 +271,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`Distribution`](schema-docs.md#distribution) | supported |  |  |
 | [`DropAggregation`](schema-docs.md#dropaggregation) | supported |  |  |
 | [`ExemplarFilter`](schema-docs.md#exemplarfilter) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `trace_based`: supported<br> |
-| [`ExplicitBucketHistogramAggregation`](schema-docs.md#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: not_implemented<br> |
+| [`ExplicitBucketHistogramAggregation`](schema-docs.md#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
 | [`ExporterDefaultHistogramAggregation`](schema-docs.md#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
 | [`ExporterTemporalityPreference`](schema-docs.md#exportertemporalitypreference) | supported |  | * `cumulative`: supported<br>* `delta`: supported<br>* `low_memory`: supported<br> |
 | [`GrpcTls`](schema-docs.md#grpctls) | supported |  | * `ca_file`: supported<br>* `cert_file`: supported<br>* `insecure`: not_implemented<br>* `key_file`: supported<br> |
@@ -300,7 +300,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`PullMetricExporter`](schema-docs.md#pullmetricexporter) | supported |  | * `prometheus/development`: supported<br> |
 | [`PullMetricReader`](schema-docs.md#pullmetricreader) | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `producers`: not_implemented<br> |
 | [`PushMetricExporter`](schema-docs.md#pushmetricexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| [`Resource`](schema-docs.md#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: ignored<br>* `detection/development`: supported<br> |
+| [`Resource`](schema-docs.md#resource) | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
 | [`Sampler`](schema-docs.md#sampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: supported<br> |
 | [`SeverityNumber`](schema-docs.md#severitynumber) | supported |  | * `debug`: supported<br>* `debug2`: supported<br>* `debug3`: supported<br>* `debug4`: supported<br>* `error`: supported<br>* `error2`: supported<br>* `error3`: supported<br>* `error4`: supported<br>* `fatal`: supported<br>* `fatal2`: supported<br>* `fatal3`: supported<br>* `fatal4`: supported<br>* `info`: supported<br>* `info2`: supported<br>* `info3`: supported<br>* `info4`: supported<br>* `trace`: supported<br>* `trace2`: supported<br>* `trace3`: supported<br>* `trace4`: supported<br>* `warn`: supported<br>* `warn2`: supported<br>* `warn3`: supported<br>* `warn4`: supported<br> |
 | [`SimpleLogRecordProcessor`](schema-docs.md#simplelogrecordprocessor) | supported |  | * `exporter`: supported<br> |
