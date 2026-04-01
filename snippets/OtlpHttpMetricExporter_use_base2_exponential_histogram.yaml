@@ -6,5 +6,5 @@ meter_provider:
         exporter:
           otlp_http:
             # SNIPPET_START
-            endpoint: http://localhost:4317
+            endpoint: http://localhost:4318/v1/metrics
             default_histogram_aggregation: base2_exponential_bucket_histogram
