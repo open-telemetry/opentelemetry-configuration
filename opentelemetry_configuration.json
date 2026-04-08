@@ -455,13 +455,6 @@
       ],
       "additionalProperties": false
     },
-    "EventToSpanEventBridgeLogRecordProcessor": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "additionalProperties": false
-    },
     "ExemplarFilter": {
       "type": [
         "string",
@@ -685,6 +678,13 @@
           "description": "Configure database semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee database migration: https://opentelemetry.io/docs/specs/semconv/database/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
         }
       }
+    },
+    "ExperimentalEventToSpanEventBridgeLogRecordProcessor": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
     },
     "ExperimentalGenAiInstrumentation": {
       "type": "object",
@@ -1603,8 +1603,8 @@
           "$ref": "#/$defs/SimpleLogRecordProcessor",
           "description": "Configure a simple log record processor.\nIf omitted, ignore.\n"
         },
-        "event_to_span_event_bridge": {
-          "$ref": "#/$defs/EventToSpanEventBridgeLogRecordProcessor",
+        "event_to_span_event_bridge/development": {
+          "$ref": "#/$defs/ExperimentalEventToSpanEventBridgeLogRecordProcessor",
           "description": "Configure an event to span event bridge log record processor.\nIf omitted, ignore.\n"
         }
       }

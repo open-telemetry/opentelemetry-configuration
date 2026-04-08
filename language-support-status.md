@@ -34,7 +34,6 @@ Latest supported file format: `1.0.0`
 | [`DefaultAggregation`](schema-docs.md#defaultaggregation) | supported |  |  |
 | [`Distribution`](schema-docs.md#distribution) | supported |  |  |
 | [`DropAggregation`](schema-docs.md#dropaggregation) | supported |  |  |
-| [`EventToSpanEventBridgeLogRecordProcessor`](schema-docs.md#eventtospaneventbridgelogrecordprocessor) | not_implemented |  |  |
 | [`ExemplarFilter`](schema-docs.md#exemplarfilter) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `trace_based`: supported<br> |
 | [`ExplicitBucketHistogramAggregation`](schema-docs.md#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
 | [`ExporterDefaultHistogramAggregation`](schema-docs.md#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
@@ -47,7 +46,7 @@ Latest supported file format: `1.0.0`
 | [`LoggerProvider`](schema-docs.md#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`LogRecordLimits`](schema-docs.md#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `event_to_span_event_bridge`: unknown<br>* `simple`: supported<br> |
+| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
 | [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
 | [`MetricProducer`](schema-docs.md#metricproducer) | supported |  | * `opencensus`: supported<br> |
 | [`MetricReader`](schema-docs.md#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
@@ -94,6 +93,7 @@ Latest supported file format: `1.0.0`
 | [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | not_implemented |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalEventToSpanEventBridgeLogRecordProcessor`](schema-docs.md#experimentaleventtospaneventbridgelogrecordprocessor) | not_implemented |  |  |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | not_applicable |  | * `code`: not_applicable<br>* `db`: not_applicable<br>* `gen_ai`: not_applicable<br>* `http`: not_applicable<br>* `messaging`: not_applicable<br>* `rpc`: not_applicable<br>* `sanitization`: not_applicable<br>* `stability_opt_in_list`: not_applicable<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | not_implemented |  |  |
@@ -153,7 +153,6 @@ Latest supported file format: `1.0.0`
 | [`DefaultAggregation`](schema-docs.md#defaultaggregation) | unknown |  |  |
 | [`Distribution`](schema-docs.md#distribution) | unknown |  |  |
 | [`DropAggregation`](schema-docs.md#dropaggregation) | unknown |  |  |
-| [`EventToSpanEventBridgeLogRecordProcessor`](schema-docs.md#eventtospaneventbridgelogrecordprocessor) | not_implemented |  |  |
 | [`ExemplarFilter`](schema-docs.md#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExplicitBucketHistogramAggregation`](schema-docs.md#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
 | [`ExporterDefaultHistogramAggregation`](schema-docs.md#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
@@ -166,7 +165,7 @@ Latest supported file format: `1.0.0`
 | [`LoggerProvider`](schema-docs.md#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: not_implemented<br> |
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: not_implemented<br> |
 | [`LogRecordLimits`](schema-docs.md#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `event_to_span_event_bridge`: unknown<br>* `simple`: supported<br> |
+| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
 | [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
 | [`MetricProducer`](schema-docs.md#metricproducer) | unknown |  | * `opencensus`: unknown<br> |
 | [`MetricReader`](schema-docs.md#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
@@ -213,6 +212,7 @@ Latest supported file format: `1.0.0`
 | [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | supported |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | not_implemented |  | * `semconv`: not_implemented<br> |
+| [`ExperimentalEventToSpanEventBridgeLogRecordProcessor`](schema-docs.md#experimentaleventtospaneventbridgelogrecordprocessor) | not_implemented |  |  |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | not_implemented |  | * `semconv`: not_implemented<br> |
 | [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | supported |  |  |
@@ -272,7 +272,6 @@ Latest supported file format: `1.0.0-rc.3`
 | [`DefaultAggregation`](schema-docs.md#defaultaggregation) | supported |  |  |
 | [`Distribution`](schema-docs.md#distribution) | supported |  |  |
 | [`DropAggregation`](schema-docs.md#dropaggregation) | supported |  |  |
-| [`EventToSpanEventBridgeLogRecordProcessor`](schema-docs.md#eventtospaneventbridgelogrecordprocessor) | supported |  |  |
 | [`ExemplarFilter`](schema-docs.md#exemplarfilter) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `trace_based`: supported<br> |
 | [`ExplicitBucketHistogramAggregation`](schema-docs.md#explicitbuckethistogramaggregation) | supported |  | * `boundaries`: supported<br>* `record_min_max`: supported<br> |
 | [`ExporterDefaultHistogramAggregation`](schema-docs.md#exporterdefaulthistogramaggregation) | supported |  | * `base2_exponential_bucket_histogram`: supported<br>* `explicit_bucket_histogram`: supported<br> |
@@ -285,7 +284,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`LoggerProvider`](schema-docs.md#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`LogRecordLimits`](schema-docs.md#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `event_to_span_event_bridge`: unknown<br>* `simple`: supported<br> |
+| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
 | [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
 | [`MetricProducer`](schema-docs.md#metricproducer) | ignored |  | * `opencensus`: ignored<br> |
 | [`MetricReader`](schema-docs.md#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
@@ -332,6 +331,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_threshold`: supported<br>* `probability`: supported<br>* `rule_based`: supported<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | supported |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalEventToSpanEventBridgeLogRecordProcessor`](schema-docs.md#experimentaleventtospaneventbridgelogrecordprocessor) | supported |  |  |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | supported |  |  |
@@ -391,7 +391,6 @@ Latest supported file format: `1.0.0-rc.3`
 | [`DefaultAggregation`](schema-docs.md#defaultaggregation) | unknown |  |  |
 | [`Distribution`](schema-docs.md#distribution) | unknown |  |  |
 | [`DropAggregation`](schema-docs.md#dropaggregation) | unknown |  |  |
-| [`EventToSpanEventBridgeLogRecordProcessor`](schema-docs.md#eventtospaneventbridgelogrecordprocessor) | not_implemented |  |  |
 | [`ExemplarFilter`](schema-docs.md#exemplarfilter) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `trace_based`: unknown<br> |
 | [`ExplicitBucketHistogramAggregation`](schema-docs.md#explicitbuckethistogramaggregation) | unknown |  | * `boundaries`: unknown<br>* `record_min_max`: unknown<br> |
 | [`ExporterDefaultHistogramAggregation`](schema-docs.md#exporterdefaulthistogramaggregation) | unknown |  | * `base2_exponential_bucket_histogram`: unknown<br>* `explicit_bucket_histogram`: unknown<br> |
@@ -404,7 +403,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`LoggerProvider`](schema-docs.md#loggerprovider) | unknown |  | * `limits`: unknown<br>* `processors`: unknown<br>* `logger_configurator/development`: unknown<br> |
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
 | [`LogRecordLimits`](schema-docs.md#logrecordlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
-| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | unknown |  | * `batch`: unknown<br>* `event_to_span_event_bridge`: unknown<br>* `simple`: unknown<br> |
+| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br>* `event_to_span_event_bridge/development`: unknown<br> |
 | [`MeterProvider`](schema-docs.md#meterprovider) | unknown |  | * `exemplar_filter`: unknown<br>* `readers`: unknown<br>* `views`: unknown<br>* `meter_configurator/development`: unknown<br> |
 | [`MetricProducer`](schema-docs.md#metricproducer) | unknown |  | * `opencensus`: unknown<br> |
 | [`MetricReader`](schema-docs.md#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
@@ -451,6 +450,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | unknown |  | * `always_off`: unknown<br>* `always_on`: unknown<br>* `parent_threshold`: unknown<br>* `probability`: unknown<br>* `rule_based`: unknown<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | unknown |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalEventToSpanEventBridgeLogRecordProcessor`](schema-docs.md#experimentaleventtospaneventbridgelogrecordprocessor) | not_implemented |  |  |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | unknown |  | * `code`: unknown<br>* `db`: unknown<br>* `gen_ai`: unknown<br>* `http`: unknown<br>* `messaging`: unknown<br>* `rpc`: unknown<br>* `sanitization`: unknown<br>* `stability_opt_in_list`: unknown<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | unknown |  |  |
@@ -510,7 +510,6 @@ Latest supported file format: `1.0.0-rc.2`
 | [`DefaultAggregation`](schema-docs.md#defaultaggregation) | ignored |  |  |
 | [`Distribution`](schema-docs.md#distribution) | not_implemented |  |  |
 | [`DropAggregation`](schema-docs.md#dropaggregation) | ignored |  |  |
-| [`EventToSpanEventBridgeLogRecordProcessor`](schema-docs.md#eventtospaneventbridgelogrecordprocessor) | not_implemented |  |  |
 | [`ExemplarFilter`](schema-docs.md#exemplarfilter) | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `trace_based`: supported<br> |
 | [`ExplicitBucketHistogramAggregation`](schema-docs.md#explicitbuckethistogramaggregation) | ignored |  | * `boundaries`: ignored<br>* `record_min_max`: ignored<br> |
 | [`ExporterDefaultHistogramAggregation`](schema-docs.md#exporterdefaulthistogramaggregation) | ignored |  | * `base2_exponential_bucket_histogram`: ignored<br>* `explicit_bucket_histogram`: ignored<br> |
@@ -523,7 +522,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`LoggerProvider`](schema-docs.md#loggerprovider) | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`LogRecordLimits`](schema-docs.md#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
-| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `event_to_span_event_bridge`: unknown<br>* `simple`: supported<br> |
+| [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
 | [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
 | [`MetricProducer`](schema-docs.md#metricproducer) | not_implemented |  | * `opencensus`: not_implemented<br> |
 | [`MetricReader`](schema-docs.md#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: not_implemented<br> |
@@ -570,6 +569,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | ignored |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
+| [`ExperimentalEventToSpanEventBridgeLogRecordProcessor`](schema-docs.md#experimentaleventtospaneventbridgelogrecordprocessor) | not_implemented |  |  |
 | [`ExperimentalGenAiInstrumentation`](schema-docs.md#experimentalgenaiinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalGeneralInstrumentation`](schema-docs.md#experimentalgeneralinstrumentation) | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | [`ExperimentalHostResourceDetector`](schema-docs.md#experimentalhostresourcedetector) | supported |  |  |

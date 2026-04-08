@@ -981,33 +981,6 @@ No snippets.
 }</pre>
 </details>
 
-## EventToSpanEventBridgeLogRecordProcessor <a id="eventtospaneventbridgelogrecordprocessor"></a>
-
-No properties.
-
-Constraints: 
-
-* `additionalProperties`: `false`
-
-Usages:
-
-* [`LogRecordProcessor.event_to_span_event_bridge`](#logrecordprocessor)
-
-No snippets.
-
-<details>
-<summary>JSON Schema</summary>
-
-[JSON Schema Source File](./schema/logger_provider.yaml)
-<pre>{
-  "type": [
-    "object",
-    "null"
-  ],
-  "additionalProperties": false
-}</pre>
-</details>
-
 ## ExemplarFilter <a id="exemplarfilter"></a>
 
 This is a enum type.
@@ -1683,8 +1656,8 @@ attribute_value_length_limit: 4096
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `batch` | [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a batch log record processor. |
-| `event_to_span_event_bridge` | [`EventToSpanEventBridgeLogRecordProcessor`](#eventtospaneventbridgelogrecordprocessor) | `false` | If omitted, ignore. | No constraints. | Configure an event to span event bridge log record processor. |
 | `simple` | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a simple log record processor. |
+| `event_to_span_event_bridge/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalEventToSpanEventBridgeLogRecordProcessor`](#experimentaleventtospaneventbridgelogrecordprocessor) | `false` | If omitted, ignore. | No constraints. | Configure an event to span event bridge log record processor. |
 
 <details>
 <summary>Language support status</summary>
@@ -1692,8 +1665,8 @@ attribute_value_length_limit: 4096
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `batch` | supported | supported | supported | unknown | supported |
-| `event_to_span_event_bridge` | unknown | unknown | unknown | unknown | unknown |
 | `simple` | supported | supported | supported | unknown | supported |
+| `event_to_span_event_bridge/development` | unknown | unknown | unknown | unknown | unknown |
 </details>
 
 Constraints: 
@@ -1731,8 +1704,8 @@ No snippets.
       "$ref": "#/$defs/SimpleLogRecordProcessor",
       "description": "Configure a simple log record processor.\nIf omitted, ignore.\n"
     },
-    "event_to_span_event_bridge": {
-      "$ref": "#/$defs/EventToSpanEventBridgeLogRecordProcessor",
+    "event_to_span_event_bridge/development": {
+      "$ref": "#/$defs/ExperimentalEventToSpanEventBridgeLogRecordProcessor",
       "description": "Configure an event to span event bridge log record processor.\nIf omitted, ignore.\n"
     }
   }
@@ -4963,6 +4936,36 @@ No snippets.
       "description": "Configure database semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee database migration: https://opentelemetry.io/docs/specs/semconv/database/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
     }
   }
+}</pre>
+</details>
+
+## ExperimentalEventToSpanEventBridgeLogRecordProcessor <a id="experimentaleventtospaneventbridgelogrecordprocessor"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+No properties.
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`LogRecordProcessor.event_to_span_event_bridge/development`](#logrecordprocessor)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/logger_provider.yaml)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false
 }</pre>
 </details>
 
