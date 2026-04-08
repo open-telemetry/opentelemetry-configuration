@@ -54,6 +54,9 @@ typeSupportStatuses:
   - type: DropAggregation
     status: unknown
     propertyOverrides: []
+  - type: EventToSpanEventBridgeLogRecordProcessor
+    status: not_implemented
+    propertyOverrides: []
   - type: ExemplarFilter
     status: unknown
     enumOverrides: []

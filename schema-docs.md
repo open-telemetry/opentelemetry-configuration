@@ -981,6 +981,33 @@ No snippets.
 }</pre>
 </details>
 
+## EventToSpanEventBridgeLogRecordProcessor <a id="eventtospaneventbridgelogrecordprocessor"></a>
+
+No properties.
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`LogRecordProcessor.event_to_span_event_bridge`](#logrecordprocessor)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/logger_provider.yaml)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false
+}</pre>
+</details>
+
 ## ExemplarFilter <a id="exemplarfilter"></a>
 
 This is a enum type.
@@ -1656,6 +1683,7 @@ attribute_value_length_limit: 4096
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
 | `batch` | [`BatchLogRecordProcessor`](#batchlogrecordprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a batch log record processor. |
+| `event_to_span_event_bridge` | [`EventToSpanEventBridgeLogRecordProcessor`](#eventtospaneventbridgelogrecordprocessor) | `false` | If omitted, ignore. | No constraints. | Configure an event to span event bridge log record processor. |
 | `simple` | [`SimpleLogRecordProcessor`](#simplelogrecordprocessor) | `false` | If omitted, ignore. | No constraints. | Configure a simple log record processor. |
 
 <details>
@@ -1664,6 +1692,7 @@ attribute_value_length_limit: 4096
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `batch` | supported | supported | supported | unknown | supported |
+| `event_to_span_event_bridge` | unknown | unknown | unknown | unknown | unknown |
 | `simple` | supported | supported | supported | unknown | supported |
 </details>
 
@@ -1701,6 +1730,10 @@ No snippets.
     "simple": {
       "$ref": "#/$defs/SimpleLogRecordProcessor",
       "description": "Configure a simple log record processor.\nIf omitted, ignore.\n"
+    },
+    "event_to_span_event_bridge": {
+      "$ref": "#/$defs/EventToSpanEventBridgeLogRecordProcessor",
+      "description": "Configure an event to span event bridge log record processor.\nIf omitted, ignore.\n"
     }
   }
 }</pre>

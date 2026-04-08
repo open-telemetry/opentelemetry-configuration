@@ -455,6 +455,13 @@
       ],
       "additionalProperties": false
     },
+    "EventToSpanEventBridgeLogRecordProcessor": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
     "ExemplarFilter": {
       "type": [
         "string",
@@ -1595,6 +1602,10 @@
         "simple": {
           "$ref": "#/$defs/SimpleLogRecordProcessor",
           "description": "Configure a simple log record processor.\nIf omitted, ignore.\n"
+        },
+        "event_to_span_event_bridge": {
+          "$ref": "#/$defs/EventToSpanEventBridgeLogRecordProcessor",
+          "description": "Configure an event to span event bridge log record processor.\nIf omitted, ignore.\n"
         }
       }
     },

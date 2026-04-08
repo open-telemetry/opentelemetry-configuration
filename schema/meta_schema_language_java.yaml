@@ -58,6 +58,9 @@ typeSupportStatuses:
   - type: DropAggregation
     status: supported
     propertyOverrides: []
+  - type: EventToSpanEventBridgeLogRecordProcessor
+    status: supported
+    propertyOverrides: []
   - type: ExemplarFilter
     status: supported
     enumOverrides: []
@@ -98,7 +101,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: LogRecordProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: event_to_span_event_bridge
+        status: unknown
   - type: MeterProvider
     status: supported
     propertyOverrides: []
