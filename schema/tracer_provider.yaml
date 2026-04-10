@@ -349,7 +349,7 @@ $defs:
           type: string
         description: |
           Configure list of value patterns to include.
-          Values are evaluated to match as follows:
+          Matching is case-sensitive. Values are evaluated to match as follows:
            * If the value exactly matches.
            * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
         defaultBehavior: all values are included
@@ -360,7 +360,7 @@ $defs:
           type: string
         description: |
           Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).
-          Values are evaluated to match as follows:
+          Matching is case-sensitive. Values are evaluated to match as follows:
            * If the value exactly matches.
            * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
         defaultBehavior: .included attributes are included
@@ -533,7 +533,7 @@ $defs:
         type:
           - string
         description: |
-          Configure tracer names to match, evaluated as follows:
+          Configure tracer names to match. Matching is case-sensitive, evaluated as follows:
 
            * If the tracer name exactly matches.
            * If the tracer name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
