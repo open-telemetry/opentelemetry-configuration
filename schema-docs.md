@@ -153,8 +153,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `attribute_count_limit` | supported | unknown | supported | unknown | supported |
-| `attribute_value_length_limit` | supported | unknown | supported | unknown | supported |
+| `attribute_count_limit` | supported | supported | supported | unknown | supported |
+| `attribute_value_length_limit` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1142,9 +1142,9 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `cumulative` | supported | unknown | supported | unknown | supported |
-| `delta` | supported | unknown | supported | unknown | supported |
-| `low_memory` | supported | unknown | supported | unknown | supported |
+| `cumulative` | supported | supported | supported | unknown | supported |
+| `delta` | supported | supported | supported | unknown | supported |
+| `low_memory` | supported | supported | supported | unknown | supported |
 </details>
 
 No constraints.
@@ -1189,10 +1189,10 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `ca_file` | supported | unknown | supported | unknown | ignored |
-| `cert_file` | supported | unknown | supported | unknown | ignored |
-| `insecure` | supported | unknown | not_implemented | unknown | ignored |
-| `key_file` | supported | unknown | supported | unknown | ignored |
+| `ca_file` | supported | supported | supported | unknown | ignored |
+| `cert_file` | supported | supported | supported | unknown | ignored |
+| `insecure` | supported | supported | not_implemented | unknown | ignored |
+| `key_file` | supported | supported | supported | unknown | ignored |
 </details>
 
 Constraints: 
@@ -1262,9 +1262,9 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `ca_file` | supported | unknown | supported | unknown | ignored |
-| `cert_file` | supported | unknown | supported | unknown | ignored |
-| `key_file` | supported | unknown | supported | unknown | ignored |
+| `ca_file` | supported | supported | supported | unknown | ignored |
+| `cert_file` | supported | supported | supported | unknown | ignored |
+| `key_file` | supported | supported | supported | unknown | ignored |
 </details>
 
 Constraints: 
@@ -1326,8 +1326,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `excluded` | supported | unknown | supported | unknown | supported |
-| `included` | supported | unknown | supported | unknown | supported |
+| `excluded` | supported | supported | supported | unknown | supported |
+| `included` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1389,13 +1389,13 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `counter` | supported | unknown | supported | unknown | supported |
-| `gauge` | supported | unknown | supported | unknown | supported |
-| `histogram` | supported | unknown | supported | unknown | supported |
-| `observable_counter` | supported | unknown | supported | unknown | supported |
-| `observable_gauge` | supported | unknown | supported | unknown | supported |
-| `observable_up_down_counter` | supported | unknown | supported | unknown | supported |
-| `up_down_counter` | supported | unknown | supported | unknown | supported |
+| `counter` | supported | supported | supported | unknown | supported |
+| `gauge` | supported | supported | supported | unknown | supported |
+| `histogram` | supported | supported | supported | unknown | supported |
+| `observable_counter` | supported | supported | supported | unknown | supported |
+| `observable_gauge` | supported | supported | supported | unknown | supported |
+| `observable_up_down_counter` | supported | supported | supported | unknown | supported |
+| `up_down_counter` | supported | supported | supported | unknown | supported |
 </details>
 
 No constraints.
@@ -1467,9 +1467,9 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `limits` | supported | unknown | supported | unknown | supported |
-| `processors` | supported | unknown | supported | unknown | supported |
-| `logger_configurator/development` | supported | unknown | supported | unknown | supported |
+| `limits` | supported | supported | supported | unknown | supported |
+| `processors` | supported | supported | supported | unknown | supported |
+| `logger_configurator/development` | supported | not_implemented | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1596,8 +1596,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `attribute_count_limit` | supported | unknown | supported | unknown | supported |
-| `attribute_value_length_limit` | supported | unknown | supported | unknown | supported |
+| `attribute_count_limit` | supported | supported | supported | unknown | supported |
+| `attribute_value_length_limit` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1663,8 +1663,8 @@ attribute_value_length_limit: 4096
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `batch` | supported | unknown | supported | unknown | supported |
-| `simple` | supported | unknown | supported | unknown | supported |
+| `batch` | supported | supported | supported | unknown | supported |
+| `simple` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1720,10 +1720,10 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `exemplar_filter` | supported | unknown | supported | unknown | supported |
-| `readers` | supported | unknown | supported | unknown | supported |
-| `views` | supported | unknown | supported | unknown | supported |
-| `meter_configurator/development` | supported | unknown | supported | unknown | supported |
+| `exemplar_filter` | supported | supported | supported | unknown | supported |
+| `readers` | supported | supported | supported | unknown | supported |
+| `views` | supported | supported | supported | unknown | supported |
+| `meter_configurator/development` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -1890,8 +1890,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `name` | supported | unknown | supported | unknown | supported |
-| `value` | supported | unknown | supported | unknown | supported |
+| `name` | supported | supported | supported | unknown | supported |
+| `value` | supported | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -4338,7 +4338,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `semconv` | unknown | unknown | unknown | unknown | unknown |
+| `semconv` | unknown | not_implemented | unknown | unknown | unknown |
 </details>
 
 Constraints: 
@@ -4904,7 +4904,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `semconv` | unknown | unknown | unknown | unknown | unknown |
+| `semconv` | unknown | not_implemented | unknown | unknown | unknown |
 </details>
 
 Constraints: 
@@ -4947,7 +4947,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `semconv` | unknown | unknown | unknown | unknown | unknown |
+| `semconv` | unknown | not_implemented | unknown | unknown | unknown |
 </details>
 
 Constraints: 
@@ -4997,14 +4997,14 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `code` | not_applicable | unknown | supported | unknown | supported |
-| `db` | not_applicable | unknown | supported | unknown | supported |
-| `gen_ai` | not_applicable | unknown | supported | unknown | supported |
-| `http` | not_applicable | unknown | supported | unknown | supported |
-| `messaging` | not_applicable | unknown | supported | unknown | supported |
-| `rpc` | not_applicable | unknown | supported | unknown | supported |
-| `sanitization` | not_applicable | unknown | supported | unknown | supported |
-| `stability_opt_in_list` | not_applicable | unknown | supported | unknown | supported |
+| `code` | not_applicable | not_implemented | supported | unknown | supported |
+| `db` | not_applicable | not_implemented | supported | unknown | supported |
+| `gen_ai` | not_applicable | not_implemented | supported | unknown | supported |
+| `http` | not_applicable | not_implemented | supported | unknown | supported |
+| `messaging` | not_applicable | not_implemented | supported | unknown | supported |
+| `rpc` | not_applicable | not_implemented | supported | unknown | supported |
+| `sanitization` | not_applicable | not_implemented | supported | unknown | supported |
+| `stability_opt_in_list` | not_applicable | not_implemented | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5132,9 +5132,9 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `known_methods` | not_applicable | unknown | supported | unknown | supported |
-| `request_captured_headers` | not_applicable | unknown | supported | unknown | supported |
-| `response_captured_headers` | not_applicable | unknown | supported | unknown | supported |
+| `known_methods` | not_applicable | not_implemented | supported | unknown | supported |
+| `request_captured_headers` | not_applicable | not_implemented | supported | unknown | supported |
+| `response_captured_headers` | not_applicable | not_implemented | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5199,9 +5199,9 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `client` | not_applicable | unknown | supported | unknown | supported |
-| `semconv` | not_applicable | unknown | supported | unknown | supported |
-| `server` | not_applicable | unknown | supported | unknown | supported |
+| `client` | not_applicable | not_implemented | supported | unknown | supported |
+| `semconv` | not_applicable | not_implemented | supported | unknown | supported |
+| `server` | not_applicable | not_implemented | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5254,9 +5254,9 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `known_methods` | not_applicable | unknown | supported | unknown | supported |
-| `request_captured_headers` | not_applicable | unknown | supported | unknown | supported |
-| `response_captured_headers` | not_applicable | unknown | supported | unknown | supported |
+| `known_methods` | not_applicable | not_implemented | supported | unknown | supported |
+| `request_captured_headers` | not_applicable | not_implemented | supported | unknown | supported |
+| `response_captured_headers` | not_applicable | not_implemented | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5330,18 +5330,18 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `cpp` | not_applicable | unknown | not_applicable | unknown | not_applicable |
-| `dotnet` | not_applicable | unknown | not_applicable | unknown | not_applicable |
-| `erlang` | not_applicable | unknown | not_applicable | unknown | not_applicable |
-| `general` | not_applicable | unknown | supported | unknown | supported |
-| `go` | not_applicable | unknown | not_applicable | unknown | not_applicable |
-| `java` | not_applicable | unknown | supported | unknown | not_applicable |
-| `js` | not_applicable | unknown | not_applicable | unknown | not_applicable |
-| `php` | not_applicable | unknown | not_applicable | unknown | supported |
-| `python` | not_applicable | unknown | not_applicable | unknown | not_applicable |
-| `ruby` | not_applicable | unknown | not_applicable | unknown | not_applicable |
-| `rust` | not_applicable | unknown | not_applicable | unknown | not_applicable |
-| `swift` | not_applicable | unknown | not_applicable | unknown | not_applicable |
+| `cpp` | not_applicable | not_implemented | not_applicable | unknown | not_applicable |
+| `dotnet` | not_applicable | not_implemented | not_applicable | unknown | not_applicable |
+| `erlang` | not_applicable | not_implemented | not_applicable | unknown | not_applicable |
+| `general` | not_applicable | not_implemented | supported | unknown | supported |
+| `go` | not_applicable | not_implemented | not_applicable | unknown | not_applicable |
+| `java` | not_applicable | not_implemented | supported | unknown | not_applicable |
+| `js` | not_applicable | not_implemented | not_applicable | unknown | not_applicable |
+| `php` | not_applicable | not_implemented | not_applicable | unknown | supported |
+| `python` | not_applicable | not_implemented | not_applicable | unknown | not_applicable |
+| `ruby` | not_applicable | not_implemented | not_applicable | unknown | not_applicable |
+| `rust` | not_applicable | not_implemented | not_applicable | unknown | not_applicable |
+| `swift` | not_applicable | not_implemented | not_applicable | unknown | not_applicable |
 </details>
 
 Constraints: 
@@ -5706,8 +5706,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `default_config` | supported | unknown | supported | unknown | supported |
-| `loggers` | supported | unknown | supported | unknown | supported |
+| `default_config` | supported | not_implemented | supported | unknown | supported |
+| `loggers` | supported | not_implemented | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -5834,7 +5834,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `semconv` | unknown | unknown | unknown | unknown | unknown |
+| `semconv` | unknown | not_implemented | unknown | unknown | unknown |
 </details>
 
 Constraints: 
@@ -5926,8 +5926,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `default_config` | supported | unknown | supported | unknown | supported |
-| `meters` | supported | unknown | supported | unknown | supported |
+| `default_config` | supported | not_implemented | supported | unknown | supported |
+| `meters` | supported | not_implemented | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -6307,12 +6307,12 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `host` | supported | unknown | supported | unknown | not_implemented |
-| `port` | supported | unknown | supported | unknown | not_implemented |
-| `translation_strategy` | supported | unknown | not_implemented | unknown | not_implemented |
-| `with_resource_constant_labels` | supported | unknown | supported | unknown | not_implemented |
-| `without_scope_info` | supported | unknown | supported | unknown | not_implemented |
-| `without_target_info/development` | supported | unknown | supported | unknown | not_implemented |
+| `host` | supported | supported | supported | unknown | not_implemented |
+| `port` | supported | supported | supported | unknown | not_implemented |
+| `translation_strategy` | supported | supported | not_implemented | unknown | not_implemented |
+| `with_resource_constant_labels` | supported | supported | supported | unknown | not_implemented |
+| `without_scope_info` | supported | supported | supported | unknown | not_implemented |
+| `without_target_info/development` | supported | supported | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -6413,10 +6413,10 @@ This is a enum type.
 
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `no_translation/development` | not_implemented | unknown | not_implemented | unknown | not_implemented |
-| `no_utf8_escaping_with_suffixes/development` | not_implemented | unknown | not_implemented | unknown | not_implemented |
-| `underscore_escaping_with_suffixes` | supported | unknown | not_implemented | unknown | not_implemented |
-| `underscore_escaping_without_suffixes/development` | supported | unknown | not_implemented | unknown | not_implemented |
+| `no_translation/development` | not_implemented | supported | not_implemented | unknown | not_implemented |
+| `no_utf8_escaping_with_suffixes/development` | not_implemented | supported | not_implemented | unknown | not_implemented |
+| `underscore_escaping_with_suffixes` | supported | supported | not_implemented | unknown | not_implemented |
+| `underscore_escaping_without_suffixes/development` | supported | supported | not_implemented | unknown | not_implemented |
 </details>
 
 No constraints.
@@ -6460,8 +6460,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `attributes` | not_implemented | unknown | supported | unknown | supported |
-| `detectors` | not_implemented | unknown | supported | unknown | supported |
+| `attributes` | not_implemented | supported | supported | unknown | supported |
+| `detectors` | not_implemented | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -6517,10 +6517,10 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `container` | not_implemented | unknown | supported | unknown | ignored |
-| `host` | not_implemented | unknown | supported | unknown | supported |
-| `process` | not_implemented | unknown | supported | unknown | supported |
-| `service` | not_implemented | unknown | supported | unknown | supported |
+| `container` | not_implemented | supported | supported | unknown | ignored |
+| `host` | not_implemented | supported | supported | unknown | supported |
+| `process` | not_implemented | supported | supported | unknown | supported |
+| `service` | not_implemented | supported | supported | unknown | supported |
 </details>
 
 Constraints: 
@@ -6584,7 +6584,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `semconv` | unknown | unknown | unknown | unknown | unknown |
+| `semconv` | unknown | not_implemented | unknown | unknown | unknown |
 </details>
 
 Constraints: 
@@ -6867,8 +6867,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `default_config` | supported | unknown | supported | unknown | supported |
-| `tracers` | supported | unknown | supported | unknown | supported |
+| `default_config` | supported | not_implemented | supported | unknown | supported |
+| `tracers` | supported | not_implemented | supported | unknown | supported |
 </details>
 
 Constraints: 
