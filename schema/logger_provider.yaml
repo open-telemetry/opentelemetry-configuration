@@ -71,6 +71,11 @@ $defs:
         description: Configure exporter.
     required:
       - exporter
+  ExperimentalEventToSpanEventBridgeLogRecordProcessor:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
   LogRecordExporter:
     type: object
     additionalProperties:
@@ -136,6 +141,10 @@ $defs:
       simple:
         $ref: "#/$defs/SimpleLogRecordProcessor"
         description: Configure a simple log record processor.
+        defaultBehavior: ignore
+      event_to_span_event_bridge/development:
+        $ref: "#/$defs/ExperimentalEventToSpanEventBridgeLogRecordProcessor"
+        description: Configure an event to span event bridge log record processor.
         defaultBehavior: ignore
     isSdkExtensionPlugin: true
   ExperimentalLoggerConfigurator:
