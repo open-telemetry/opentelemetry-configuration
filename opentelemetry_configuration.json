@@ -679,6 +679,13 @@
         }
       }
     },
+    "ExperimentalEventToSpanEventBridgeLogRecordProcessor": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
     "ExperimentalGenAiInstrumentation": {
       "type": "object",
       "additionalProperties": false,
@@ -1595,6 +1602,10 @@
         "simple": {
           "$ref": "#/$defs/SimpleLogRecordProcessor",
           "description": "Configure a simple log record processor.\nIf omitted, ignore.\n"
+        },
+        "event_to_span_event_bridge/development": {
+          "$ref": "#/$defs/ExperimentalEventToSpanEventBridgeLogRecordProcessor",
+          "description": "Configure an event to span event bridge log record processor.\nIf omitted, ignore.\n"
         }
       }
     },

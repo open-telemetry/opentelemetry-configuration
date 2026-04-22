@@ -100,7 +100,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: LogRecordProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: event_to_span_event_bridge/development
+        status: unknown
   - type: MeterProvider
     status: supported
     propertyOverrides: []
@@ -257,6 +259,9 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ExperimentalDbInstrumentation
+    status: not_implemented
+    propertyOverrides: []
+  - type: ExperimentalEventToSpanEventBridgeLogRecordProcessor
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalGenAiInstrumentation
