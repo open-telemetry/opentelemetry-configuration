@@ -2,9 +2,9 @@ file_format: "1.0"
 
 tracer_provider:
   processors:
-    - simple:
+    - batch:
         exporter:
-          console:
+          otlp_http:
   sampler:
     # SNIPPET_START
     # Use the composite rule_based sampler to suppress noisy Redis health check spans,
