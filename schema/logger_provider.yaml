@@ -71,6 +71,11 @@ $defs:
         description: Configure exporter.
     required:
       - exporter
+  ExperimentalEventToSpanEventBridgeLogRecordProcessor:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
   LogRecordExporter:
     type: object
     additionalProperties:
@@ -137,6 +142,10 @@ $defs:
         $ref: "#/$defs/SimpleLogRecordProcessor"
         description: Configure a simple log record processor.
         defaultBehavior: ignore
+      event_to_span_event_bridge/development:
+        $ref: "#/$defs/ExperimentalEventToSpanEventBridgeLogRecordProcessor"
+        description: Configure an event to span event bridge log record processor.
+        defaultBehavior: ignore
     isSdkExtensionPlugin: true
   ExperimentalLoggerConfigurator:
     type:
@@ -163,7 +172,7 @@ $defs:
         type:
           - string
         description: |
-          Configure logger names to match, evaluated as follows:
+          Configure logger names to match. Matching is case-sensitive, evaluated as follows:
 
            * If the logger name exactly matches.
            * If the logger name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.

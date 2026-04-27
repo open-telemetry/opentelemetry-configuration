@@ -231,6 +231,9 @@ typeSupportStatuses:
   - type: ExperimentalDbInstrumentation
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalEventToSpanEventBridgeLogRecordProcessor
+    status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalGenAiInstrumentation
     status: unknown
     propertyOverrides: []
