@@ -3206,6 +3206,37 @@ Usages:
 Snippets:
 
 <details>
+<summary>Composite Rule Based Drop Redis Ping</summary>
+
+[Snippet Source File](./snippets/Sampler_composite_rule_based_drop_redis_ping.yaml)
+```yaml
+# Use the composite rule_based sampler to suppress noisy Redis health check spans,
+# while falling back to standard parent-based sampling for all other spans.
+# Rules are matched in order; if no rule matches, the span is not sampled.
+composite/development:
+  rule_based:
+    rules:
+      # Drop Redis PING health check spans. These are CLIENT spans where db.operation=PING.
+      # Use db.operation.name instead if using stable DB semantic conventions.
+      - span_kinds:
+          - client
+        attribute_values:
+          key: db.operation
+          values:
+            - PING
+        sampler:
+          always_off:
+      # Catch-all: apply standard parent-based behavior for all other spans.
+      # parent_threshold respects the parent sampling decision; always_on is used
+      # for root spans (no parent), matching the default parent_based behavior.
+      - sampler:
+          parent_threshold:
+            root:
+              always_on:
+```
+</details>
+
+<details>
 <summary>Parent Based Typical</summary>
 
 [Snippet Source File](./snippets/Sampler_parent_based_typical.yaml)
