@@ -1,3 +1,8 @@
+## Unreleased
+
+* Add development max_export_batch_size configuration to Periodic MetricReader
+  ([#TODO](https://github.com/open-telemetry/opentelemetry-configuration/pull/TODO))
+
 ## [v1.0.0] - 2026-02-27
 
 ### Schema
