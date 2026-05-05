@@ -69,7 +69,7 @@ $defs:
           - "null"
         minimum: 0
         description: |
-          Configure maximum export batch size for development.
+          Configure maximum export batch size.
         defaultBehavior: no limit is used
       exporter:
         $ref: "#/$defs/PushMetricExporter"
