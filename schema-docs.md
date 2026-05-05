@@ -2779,7 +2779,7 @@ No snippets.
         "integer",
         "null"
       ],
-      "minimum": 0,
+      "minimum": 1,
       "description": "Configure maximum export batch size for development.\nIf omitted or null, no limit is used.\n"
     },
     "exporter": {
