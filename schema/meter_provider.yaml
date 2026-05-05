@@ -67,7 +67,7 @@ $defs:
         type:
           - integer
           - "null"
-        minimum: 0
+        minimum: 1
         description: |
           Configure maximum export batch size.
         defaultBehavior: no limit is used

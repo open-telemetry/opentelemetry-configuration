@@ -2724,7 +2724,7 @@ No snippets.
 | `interval` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 60000 is used. | * `minimum`: `0`<br> | Configure delay interval (in milliseconds) between start of two consecutive exports. <br>Value must be non-negative.<br> |
 | `producers` | `array` of [`MetricProducer`](#metricproducer) | `false` | If omitted, no metric producers are added. | * `minItems`: `1`<br> | Configure metric producers. |
 | `timeout` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 30000 is used. | * `minimum`: `0`<br> | Configure maximum allowed time (in milliseconds) to export data. <br>Value must be non-negative. A value of 0 indicates no limit (infinity).<br> |
-| `max_export_batch_size/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, no limit is used. | * `minimum`: `0`<br> | Configure maximum export batch size for development.<br> |
+| `max_export_batch_size/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, no limit is used. | * `minimum`: `1`<br> | Configure maximum export batch size.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -2780,7 +2780,7 @@ No snippets.
         "null"
       ],
       "minimum": 1,
-      "description": "Configure maximum export batch size for development.\nIf omitted or null, no limit is used.\n"
+      "description": "Configure maximum export batch size.\nIf omitted or null, no limit is used.\n"
     },
     "exporter": {
       "$ref": "#/$defs/PushMetricExporter",
