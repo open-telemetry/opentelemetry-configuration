@@ -1986,6 +1986,14 @@
           "minimum": 0,
           "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
         },
+        "max_export_batch_size/development": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Configure maximum export batch size.\nIf omitted or null, no limit is used.\n"
+        },
         "exporter": {
           "$ref": "#/$defs/PushMetricExporter",
           "description": "Configure exporter.\nProperty is required and must be non-null.\n"

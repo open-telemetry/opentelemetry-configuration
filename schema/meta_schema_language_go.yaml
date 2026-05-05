@@ -152,6 +152,8 @@ typeSupportStatuses:
     propertyOverrides:
       - property: cardinality_limits
         status: not_implemented
+      - property: max_export_batch_size/development
+        status: not_implemented
       - property: producers
         status: not_implemented
   - type: Propagator
