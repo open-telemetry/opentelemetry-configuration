@@ -131,7 +131,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: PeriodicMetricReader
     status: unknown
-    propertyOverrides: []
+    propertyOverrides:
+      - property: max_export_batch_size/development
+        status: not_implemented
   - type: Propagator
     status: unknown
     propertyOverrides: []

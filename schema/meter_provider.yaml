@@ -63,6 +63,14 @@ $defs:
           Configure maximum allowed time (in milliseconds) to export data. 
           Value must be non-negative. A value of 0 indicates no limit (infinity).
         defaultBehavior: 30000 is used
+      max_export_batch_size/development:
+        type:
+          - integer
+          - "null"
+        minimum: 1
+        description: |
+          Configure maximum export batch size.
+        defaultBehavior: no limit is used
       exporter:
         $ref: "#/$defs/PushMetricExporter"
         description: Configure exporter.
