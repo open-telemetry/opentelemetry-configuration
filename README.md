@@ -40,7 +40,6 @@ See [RELEASING.MD](RELEASING.md) and [releases](https://github.com/open-telemetr
 
 * [Alex Boten](https://github.com/codeboten), Honeycomb
 * [Jack Berg](https://github.com/jack-berg), Grafana Labs
-* [Tristan Sloughter](https://github.com/tsloughter), MyDecisiveAI
 * [Tyler Yahn](https://github.com/MrAlias), Splunk
 
 For more information about the maintainer role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).
@@ -54,3 +53,10 @@ For more information about the approver role, see the [community repository](htt
 
 [annotation]: https://json-schema.org/understanding-json-schema/reference/annotations
 [env var substitution]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution
+
+### Emeritus
+
+* [Tristan Sloughter](https://github.com/tsloughter), Maintainer
+
+For more information about the emeritus role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
