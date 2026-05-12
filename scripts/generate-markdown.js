@@ -327,6 +327,16 @@ function formatPropertyType(sourceProperty, sourceTypesByType) {
     if (sourceProperty.isSeq) {
         output.push('`array` of ');
     }
+    const oneOf = sourceProperty.schema['oneOf'];
+    if (oneOf) {
+        if (oneOf.length > 1) {
+            output.push('one of:<br>');
+            oneOf.forEach(option => output.push(`* ${formatOneOfType(option)}<br>`));
+        } else {
+            output.push(formatOneOfType(oneOf[0]));
+        }
+        return output.join('');
+    }
     let prefix = '';
     let suffix = '';
     if (sourceProperty.types.length > 1) {
@@ -341,6 +351,15 @@ function formatPropertyType(sourceProperty, sourceTypesByType) {
         output.push(suffix);
     });
     return output.join('');
+}
+
+function formatOneOfType(option) {
+    const type = option['type'];
+    const items = option['items'];
+    if (type === 'array' && items) {
+        return `\`array\` of \`${items['type']}\``;
+    }
+    return `\`${type}\``;
 }
 
 function addHeader(title, id, level, targetOutput = output) {

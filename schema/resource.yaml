@@ -59,6 +59,7 @@ $defs:
         description: |
           The attribute value.
           The type of value must match .type.
+        nullBehavior: the entry is ignored
       type:
         $ref: "#/$defs/AttributeType"
         description: |
