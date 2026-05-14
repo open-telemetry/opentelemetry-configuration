@@ -4488,7 +4488,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `root` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `root` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4537,7 +4537,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `ratio` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `ratio` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4588,7 +4588,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `rules` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `rules` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4642,11 +4642,11 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `attribute_patterns` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `attribute_values` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `parent` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `sampler` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `span_kinds` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `attribute_patterns` | ignored | not_implemented | supported | unknown | not_implemented |
+| `attribute_values` | ignored | not_implemented | supported | unknown | not_implemented |
+| `parent` | ignored | not_implemented | supported | unknown | not_implemented |
+| `sampler` | ignored | not_implemented | supported | unknown | not_implemented |
+| `span_kinds` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4720,9 +4720,9 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `excluded` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `included` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `key` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `excluded` | ignored | not_implemented | supported | unknown | not_implemented |
+| `included` | ignored | not_implemented | supported | unknown | not_implemented |
+| `key` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4786,8 +4786,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `key` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `values` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `key` | ignored | not_implemented | supported | unknown | not_implemented |
+| `values` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4847,11 +4847,11 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `always_off` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `always_on` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `parent_threshold` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `probability` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `rule_based` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `always_off` | ignored | not_implemented | supported | unknown | not_implemented |
+| `always_on` | ignored | not_implemented | supported | unknown | not_implemented |
+| `parent_threshold` | ignored | not_implemented | supported | unknown | not_implemented |
+| `probability` | ignored | not_implemented | supported | unknown | not_implemented |
+| `rule_based` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -6298,7 +6298,7 @@ default_histogram_aggregation: explicit_bucket_histogram
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `ratio` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `ratio` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
