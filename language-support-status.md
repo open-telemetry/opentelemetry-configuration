@@ -82,15 +82,15 @@ Latest supported file format: `1.0.0`
 | [`ViewSelector`](schema-docs.md#viewselector) | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
 | [`ViewStream`](schema-docs.md#viewstream) | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
 | [`ExperimentalCodeInstrumentation`](schema-docs.md#experimentalcodeinstrumentation) | unknown |  | * `semconv`: unknown<br> |
-| [`ExperimentalComposableAlwaysOffSampler`](schema-docs.md#experimentalcomposablealwaysoffsampler) | not_implemented |  |  |
-| [`ExperimentalComposableAlwaysOnSampler`](schema-docs.md#experimentalcomposablealwaysonsampler) | not_implemented |  |  |
-| [`ExperimentalComposableParentThresholdSampler`](schema-docs.md#experimentalcomposableparentthresholdsampler) | not_implemented |  | * `root`: not_implemented<br> |
-| [`ExperimentalComposableProbabilitySampler`](schema-docs.md#experimentalcomposableprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
-| [`ExperimentalComposableRuleBasedSampler`](schema-docs.md#experimentalcomposablerulebasedsampler) | not_implemented |  | * `rules`: not_implemented<br> |
-| [`ExperimentalComposableRuleBasedSamplerRule`](schema-docs.md#experimentalcomposablerulebasedsamplerrule) | not_implemented |  | * `attribute_patterns`: not_implemented<br>* `attribute_values`: not_implemented<br>* `parent`: not_implemented<br>* `sampler`: not_implemented<br>* `span_kinds`: not_implemented<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributepatterns) | not_implemented |  | * `excluded`: not_implemented<br>* `included`: not_implemented<br>* `key`: not_implemented<br> |
-| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributevalues) | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
-| [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
+| [`ExperimentalComposableAlwaysOffSampler`](schema-docs.md#experimentalcomposablealwaysoffsampler) | ignored |  |  |
+| [`ExperimentalComposableAlwaysOnSampler`](schema-docs.md#experimentalcomposablealwaysonsampler) | ignored |  |  |
+| [`ExperimentalComposableParentThresholdSampler`](schema-docs.md#experimentalcomposableparentthresholdsampler) | ignored |  | * `root`: ignored<br> |
+| [`ExperimentalComposableProbabilitySampler`](schema-docs.md#experimentalcomposableprobabilitysampler) | ignored |  | * `ratio`: ignored<br> |
+| [`ExperimentalComposableRuleBasedSampler`](schema-docs.md#experimentalcomposablerulebasedsampler) | ignored |  | * `rules`: ignored<br> |
+| [`ExperimentalComposableRuleBasedSamplerRule`](schema-docs.md#experimentalcomposablerulebasedsamplerrule) | ignored |  | * `attribute_patterns`: ignored<br>* `attribute_values`: ignored<br>* `parent`: ignored<br>* `sampler`: ignored<br>* `span_kinds`: ignored<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributePatterns`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributepatterns) | ignored |  | * `excluded`: ignored<br>* `included`: ignored<br>* `key`: ignored<br> |
+| [`ExperimentalComposableRuleBasedSamplerRuleAttributeValues`](schema-docs.md#experimentalcomposablerulebasedsamplerruleattributevalues) | ignored |  | * `key`: ignored<br>* `values`: ignored<br> |
+| [`ExperimentalComposableSampler`](schema-docs.md#experimentalcomposablesampler) | ignored |  | * `always_off`: ignored<br>* `always_on`: ignored<br>* `parent_threshold`: ignored<br>* `probability`: ignored<br>* `rule_based`: ignored<br> |
 | [`ExperimentalContainerResourceDetector`](schema-docs.md#experimentalcontainerresourcedetector) | not_implemented |  |  |
 | [`ExperimentalDbInstrumentation`](schema-docs.md#experimentaldbinstrumentation) | unknown |  | * `semconv`: unknown<br> |
 | [`ExperimentalEventToSpanEventBridgeLogRecordProcessor`](schema-docs.md#experimentaleventtospaneventbridgelogrecordprocessor) | not_implemented |  |  |
@@ -112,7 +112,7 @@ Latest supported file format: `1.0.0`
 | [`ExperimentalMeterMatcherAndConfig`](schema-docs.md#experimentalmetermatcherandconfig) | supported |  | * `config`: supported<br>* `name`: supported<br> |
 | [`ExperimentalOtlpFileExporter`](schema-docs.md#experimentalotlpfileexporter) | supported |  | * `output_stream`: supported<br> |
 | [`ExperimentalOtlpFileMetricExporter`](schema-docs.md#experimentalotlpfilemetricexporter) | supported |  | * `default_histogram_aggregation`: supported<br>* `output_stream`: supported<br>* `temporality_preference`: supported<br> |
-| [`ExperimentalProbabilitySampler`](schema-docs.md#experimentalprobabilitysampler) | not_implemented |  | * `ratio`: not_implemented<br> |
+| [`ExperimentalProbabilitySampler`](schema-docs.md#experimentalprobabilitysampler) | ignored |  | * `ratio`: ignored<br> |
 | [`ExperimentalProcessResourceDetector`](schema-docs.md#experimentalprocessresourcedetector) | not_implemented |  |  |
 | [`ExperimentalPrometheusMetricExporter`](schema-docs.md#experimentalprometheusmetricexporter) | supported |  | * `host`: supported<br>* `port`: supported<br>* `resource_constant_labels`: supported<br>* `scope_info_enabled`: supported<br>* `translation_strategy`: supported<br>* `target_info_enabled/development`: supported<br> |
 | [`ExperimentalPrometheusTranslationStrategy`](schema-docs.md#experimentalprometheustranslationstrategy) | supported |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: supported<br>* `underscore_escaping_without_suffixes/development`: supported<br> |

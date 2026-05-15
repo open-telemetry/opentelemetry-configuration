@@ -203,31 +203,31 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOnSampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableParentThresholdSampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableProbabilitySampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRule
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableSampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: not_implemented
@@ -293,7 +293,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ExperimentalProbabilitySampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
     status: not_implemented
