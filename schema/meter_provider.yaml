@@ -260,21 +260,21 @@ $defs:
         description: |
           Configure port.
         defaultBehavior: 9464 is used
-      without_scope_info:
+      scope_info_enabled:
         type:
           - boolean
           - "null"
         description: |
-          Configure Prometheus Exporter to produce metrics without scope labels.
-        defaultBehavior: false is used
-      without_target_info/development:
+          Configure Prometheus Exporter to produce metrics with scope labels.
+        defaultBehavior: true is used
+      target_info_enabled/development:
         type:
           - boolean
           - "null"
         description: |
-          Configure Prometheus Exporter to produce metrics without a target info metric for the resource.
-        defaultBehavior: false is used
-      with_resource_constant_labels:
+          Configure Prometheus Exporter to produce metrics with a target info metric for the resource.
+        defaultBehavior: true is used
+      resource_constant_labels:
         $ref: common.yaml#/$defs/IncludeExclude
         description: Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.
         defaultBehavior: no resource attributes are added
