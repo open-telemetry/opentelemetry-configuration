@@ -1314,6 +1314,68 @@ No snippets.
 }</pre>
 </details>
 
+## IdGenerator <a id="idgenerator"></a>
+
+`IdGenerator` is an [SDK extension plugin](#sdk-extension-plugins).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `random` | [`RandomIdGenerator`](#randomidgenerator) | `false` | If omitted, ignore. | No constraints. | Configure the ID generator to randomly generate TraceIds and SpanIds (spec default). |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `random` | unknown | unknown | unknown | unknown | unknown |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `{"type":["object","null"]}`
+* `minProperties`: `1`
+* `maxProperties`: `1`
+
+Usages:
+
+* [`TracerProvider.id_generator`](#tracerprovider)
+
+Snippets:
+
+<details>
+<summary>Custom</summary>
+
+[Snippet Source File](./snippets/IdGenerator_custom.yaml)
+```yaml
+# configure a custom ID generator registered via PluginComponentProvider
+my_custom_id_generator:
+  property: value
+```
+</details>
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": "object",
+  "additionalProperties": {
+    "type": [
+      "object",
+      "null"
+    ]
+  },
+  "minProperties": 1,
+  "maxProperties": 1,
+  "properties": {
+    "random": {
+      "$ref": "#/$defs/RandomIdGenerator",
+      "description": "Configure the ID generator to randomly generate TraceIds and SpanIds (spec default).\nIf omitted, ignore.\n"
+    }
+  }
+}</pre>
+</details>
+
 ## IncludeExclude <a id="includeexclude"></a>
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
@@ -3053,6 +3115,33 @@ No snippets.
 }</pre>
 </details>
 
+## RandomIdGenerator <a id="randomidgenerator"></a>
+
+No properties.
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`IdGenerator.random`](#idgenerator)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/tracer_provider.yaml)
+<pre>{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false
+}</pre>
+</details>
+
 ## Resource <a id="resource"></a>
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
@@ -4035,6 +4124,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
+| `id_generator` | [`IdGenerator`](#idgenerator) | `false` | If omitted, an ID generator which randomly generates TraceIds and SpanIds is used. | No constraints. | Configure the trace and span ID generator.<br> |
 | `limits` | [`SpanLimits`](#spanlimits) | `false` | If omitted, default values as described in SpanLimits are used. | No constraints. | Configure span limits. See also attribute_limits. |
 | `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure span processors. |
 | `sampler` | [`Sampler`](#sampler) | `false` | If omitted, parent based sampler with a root of always_on is used. | No constraints. | Configure the sampler.<br> |
@@ -4045,6 +4135,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
+| `id_generator` | supported | unknown | supported | unknown | supported |
 | `limits` | supported | unknown | supported | unknown | supported |
 | `processors` | supported | unknown | supported | unknown | supported |
 | `sampler` | supported | unknown | supported | unknown | supported |
@@ -4085,6 +4176,10 @@ No snippets.
     "sampler": {
       "$ref": "#/$defs/Sampler",
       "description": "Configure the sampler.\nIf omitted, parent based sampler with a root of always_on is used.\n"
+    },
+    "id_generator": {
+      "$ref": "#/$defs/IdGenerator",
+      "description": "Configure the trace and span ID generator.\nIf omitted, an ID generator which randomly generates TraceIds and SpanIds is used.\n"
     },
     "tracer_configurator/development": {
       "$ref": "#/$defs/ExperimentalTracerConfigurator",
@@ -7114,6 +7209,7 @@ Each of the following types support referencing custom interface implementations
 SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the `otlp_http` property of `SpanExporter` defines the OTLP http/protobuf exporter.
 
 * [ExperimentalResourceDetector](#ExperimentalResourceDetector)
+* [IdGenerator](#IdGenerator)
 * [LogRecordExporter](#LogRecordExporter)
 * [LogRecordProcessor](#LogRecordProcessor)
 * [MetricProducer](#MetricProducer)
