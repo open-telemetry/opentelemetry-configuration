@@ -1133,21 +1133,21 @@
           ],
           "description": "Configure port.\nIf omitted or null, 9464 is used.\n"
         },
-        "without_scope_info": {
+        "scope_info_enabled": {
           "type": [
             "boolean",
             "null"
           ],
-          "description": "Configure Prometheus Exporter to produce metrics without scope labels.\nIf omitted or null, false is used.\n"
+          "description": "Configure Prometheus Exporter to produce metrics with scope labels.\nIf omitted or null, true is used.\n"
         },
-        "without_target_info/development": {
+        "target_info_enabled/development": {
           "type": [
             "boolean",
             "null"
           ],
-          "description": "Configure Prometheus Exporter to produce metrics without a target info metric for the resource.\nIf omitted or null, false is used.\n"
+          "description": "Configure Prometheus Exporter to produce metrics with a target info metric for the resource.\nIf omitted or null, true is used.\n"
         },
-        "with_resource_constant_labels": {
+        "resource_constant_labels": {
           "$ref": "#/$defs/IncludeExclude",
           "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.\nIf omitted, no resource attributes are added.\n"
         },

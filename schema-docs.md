@@ -1336,7 +1336,7 @@ Constraints:
 
 Usages:
 
-* [`ExperimentalPrometheusMetricExporter.with_resource_constant_labels`](#experimentalprometheusmetricexporter)
+* [`ExperimentalPrometheusMetricExporter.resource_constant_labels`](#experimentalprometheusmetricexporter)
 * [`ViewStream.attribute_keys`](#viewstream)
 * [`ExperimentalResourceDetection.attributes`](#experimentalresourcedetection)
 
@@ -4488,7 +4488,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `root` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `root` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4537,7 +4537,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `ratio` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `ratio` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4588,7 +4588,7 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `rules` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `rules` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4642,11 +4642,11 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `attribute_patterns` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `attribute_values` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `parent` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `sampler` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `span_kinds` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `attribute_patterns` | ignored | not_implemented | supported | unknown | not_implemented |
+| `attribute_values` | ignored | not_implemented | supported | unknown | not_implemented |
+| `parent` | ignored | not_implemented | supported | unknown | not_implemented |
+| `sampler` | ignored | not_implemented | supported | unknown | not_implemented |
+| `span_kinds` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4720,9 +4720,9 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `excluded` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `included` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `key` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `excluded` | ignored | not_implemented | supported | unknown | not_implemented |
+| `included` | ignored | not_implemented | supported | unknown | not_implemented |
+| `key` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4786,8 +4786,8 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `key` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `values` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `key` | ignored | not_implemented | supported | unknown | not_implemented |
+| `values` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -4847,11 +4847,11 @@ No snippets.
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `always_off` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `always_on` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `parent_threshold` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `probability` | not_implemented | not_implemented | supported | unknown | not_implemented |
-| `rule_based` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `always_off` | ignored | not_implemented | supported | unknown | not_implemented |
+| `always_on` | ignored | not_implemented | supported | unknown | not_implemented |
+| `parent_threshold` | ignored | not_implemented | supported | unknown | not_implemented |
+| `probability` | ignored | not_implemented | supported | unknown | not_implemented |
+| `rule_based` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -6298,7 +6298,7 @@ default_histogram_aggregation: explicit_bucket_histogram
 
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
-| `ratio` | not_implemented | not_implemented | supported | unknown | not_implemented |
+| `ratio` | ignored | not_implemented | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -6374,10 +6374,10 @@ No snippets.
 |---|---|---|---|---|---|
 | `host` | one of:<br>* `string`<br>* `null`<br> | `false` | If omitted or null, localhost is used. | No constraints. | Configure host.<br> |
 | `port` | one of:<br>* `integer`<br>* `null`<br> | `false` | If omitted or null, 9464 is used. | No constraints. | Configure port.<br> |
+| `resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, no resource attributes are added. | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
+| `scope_info_enabled` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, true is used. | No constraints. | Configure Prometheus Exporter to produce metrics with scope labels.<br> |
 | `translation_strategy` | [`ExperimentalPrometheusTranslationStrategy`](#experimentalprometheustranslationstrategy) | `false` | If omitted, underscore_escaping_with_suffixes is used. | No constraints. | Configure how metric names are translated to Prometheus metric names. |
-| `with_resource_constant_labels` | [`IncludeExclude`](#includeexclude) | `false` | If omitted, no resource attributes are added. | No constraints. | Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns. |
-| `without_scope_info` | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without scope labels.<br> |
-| `without_target_info/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, false is used. | No constraints. | Configure Prometheus Exporter to produce metrics without a target info metric for the resource.<br> |
+| `target_info_enabled/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | one of:<br>* `boolean`<br>* `null`<br> | `false` | If omitted or null, true is used. | No constraints. | Configure Prometheus Exporter to produce metrics with a target info metric for the resource.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -6386,10 +6386,10 @@ No snippets.
 |---|---|---|---|---|---|
 | `host` | supported | supported | supported | unknown | not_implemented |
 | `port` | supported | supported | supported | unknown | not_implemented |
+| `resource_constant_labels` | supported | supported | supported | unknown | not_implemented |
+| `scope_info_enabled` | supported | supported | supported | unknown | not_implemented |
 | `translation_strategy` | supported | supported | not_implemented | unknown | not_implemented |
-| `with_resource_constant_labels` | supported | supported | supported | unknown | not_implemented |
-| `without_scope_info` | supported | supported | supported | unknown | not_implemented |
-| `without_target_info/development` | supported | supported | supported | unknown | not_implemented |
+| `target_info_enabled/development` | supported | supported | supported | unknown | not_implemented |
 </details>
 
 Constraints: 
@@ -6409,9 +6409,9 @@ Snippets:
 ```yaml
 host: localhost
 port: 9464
-without_scope_info: false
-without_target_info/development: false
-with_resource_constant_labels:
+scope_info_enabled: true
+target_info_enabled/development: true
+resource_constant_labels:
   included:
     - "service*"
   excluded:
@@ -6445,21 +6445,21 @@ translation_strategy: underscore_escaping_with_suffixes
       ],
       "description": "Configure port.\nIf omitted or null, 9464 is used.\n"
     },
-    "without_scope_info": {
+    "scope_info_enabled": {
       "type": [
         "boolean",
         "null"
       ],
-      "description": "Configure Prometheus Exporter to produce metrics without scope labels.\nIf omitted or null, false is used.\n"
+      "description": "Configure Prometheus Exporter to produce metrics with scope labels.\nIf omitted or null, true is used.\n"
     },
-    "without_target_info/development": {
+    "target_info_enabled/development": {
       "type": [
         "boolean",
         "null"
       ],
-      "description": "Configure Prometheus Exporter to produce metrics without a target info metric for the resource.\nIf omitted or null, false is used.\n"
+      "description": "Configure Prometheus Exporter to produce metrics with a target info metric for the resource.\nIf omitted or null, true is used.\n"
     },
-    "with_resource_constant_labels": {
+    "resource_constant_labels": {
       "$ref": "#/$defs/IncludeExclude",
       "description": "Configure Prometheus Exporter to add resource attributes as metrics attributes, where the resource attribute keys match the patterns.\nIf omitted, no resource attributes are added.\n"
     },
