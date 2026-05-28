@@ -35,7 +35,9 @@ jobs:
           languages: go
 
       - name: Build
-        run: cd validator && go build ./...
+        run: |
+          make -C validator validator-copy-schema
+          cd validator && go build ./...
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@9e0d7b8d25671d64c341c19c0152d693099fb5ba # v4.35.5
