@@ -100,6 +100,9 @@ function resolveSourceSchemaProperties(sourceSchema, typesByType) {
             types.push(resolveRef(ref, typesByType).type);
         } else if (oneOf) {
             types.push('oneOf');
+            if (oneOf.some(option => option['type'] === 'null')) {
+                types.push('null');
+            }
         }
         resolvedProperties.push(new SourceSchemaProperty(propertyKey, types, isSeq, isRequired, propertySchema));
     });

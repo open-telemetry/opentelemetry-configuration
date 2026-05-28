@@ -201,7 +201,7 @@ No snippets.
 |---|---|---|---|---|---|
 | `name` | `string` | `true` | Property is required and must be non-null. | No constraints. | The attribute name.<br> |
 | `type` | [`AttributeType`](#attributetype) | `false` | If omitted, string is used. | No constraints. | The attribute type.<br> |
-| `value` | `oneOf` | `true` | Property is required and must be non-null. | No constraints. | The attribute value.<br>The type of value must match .type.<br> |
+| `value` | one of:<br>* `string`<br>* `number`<br>* `boolean`<br>* `null`<br>* `array` of `string`<br>* `array` of `boolean`<br>* `array` of `number`<br> | `true` | Property must be present, but if null the entry is ignored. | No constraints. | The attribute value.<br>The type of value must match .type.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -272,7 +272,7 @@ No snippets.
           "minItems": 1
         }
       ],
-      "description": "The attribute value.\nThe type of value must match .type.\nProperty is required and must be non-null.\n"
+      "description": "The attribute value.\nThe type of value must match .type.\nProperty must be present, but if null the entry is ignored.\n"
     },
     "type": {
       "$ref": "#/$defs/AttributeType",

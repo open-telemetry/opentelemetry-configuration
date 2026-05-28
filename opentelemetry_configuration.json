@@ -168,7 +168,7 @@
               "minItems": 1
             }
           ],
-          "description": "The attribute value.\nThe type of value must match .type.\nProperty is required and must be non-null.\n"
+          "description": "The attribute value.\nThe type of value must match .type.\nProperty must be present, but if null the entry is ignored.\n"
         },
         "type": {
           "$ref": "#/$defs/AttributeType",
