@@ -4124,7 +4124,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `id_generator` | [`IdGenerator`](#idgenerator) | `false` | If omitted, an ID generator which randomly generates TraceIds and SpanIds is used. | No constraints. | Configure the trace and span ID generator.<br> |
+| `id_generator` | [`IdGenerator`](#idgenerator) | `false` | If omitted, RandomIdGenerator is used. | No constraints. | Configure the trace and span ID generator.<br> |
 | `limits` | [`SpanLimits`](#spanlimits) | `false` | If omitted, default values as described in SpanLimits are used. | No constraints. | Configure span limits. See also attribute_limits. |
 | `processors` | `array` of [`SpanProcessor`](#spanprocessor) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure span processors. |
 | `sampler` | [`Sampler`](#sampler) | `false` | If omitted, parent based sampler with a root of always_on is used. | No constraints. | Configure the sampler.<br> |
@@ -4179,7 +4179,7 @@ No snippets.
     },
     "id_generator": {
       "$ref": "#/$defs/IdGenerator",
-      "description": "Configure the trace and span ID generator.\nIf omitted, an ID generator which randomly generates TraceIds and SpanIds is used.\n"
+      "description": "Configure the trace and span ID generator.\nIf omitted, RandomIdGenerator is used.\n"
     },
     "tracer_configurator/development": {
       "$ref": "#/$defs/ExperimentalTracerConfigurator",

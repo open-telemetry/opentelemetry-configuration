@@ -2462,7 +2462,7 @@
         },
         "id_generator": {
           "$ref": "#/$defs/IdGenerator",
-          "description": "Configure the trace and span ID generator.\nIf omitted, an ID generator which randomly generates TraceIds and SpanIds is used.\n"
+          "description": "Configure the trace and span ID generator.\nIf omitted, RandomIdGenerator is used.\n"
         },
         "tracer_configurator/development": {
           "$ref": "#/$defs/ExperimentalTracerConfigurator",
