@@ -2,6 +2,9 @@
 
 * Add development max_export_batch_size configuration to Periodic MetricReader
   ([#610](https://github.com/open-telemetry/opentelemetry-configuration/pull/610))
+* Add `id_generator` SDK extension plugin to `TracerProvider`, with built-in
+  `random` mapping to the spec-default random TraceId/SpanId generation
+  ([#70](https://github.com/open-telemetry/opentelemetry-configuration/issues/70))
 
 ## [v1.0.0] - 2026-02-27
 

@@ -72,6 +72,9 @@ typeSupportStatuses:
   - type: HttpTls
     status: unknown
     propertyOverrides: []
+  - type: IdGenerator
+    status: unknown
+    propertyOverrides: []
   - type: IncludeExclude
     status: unknown
     propertyOverrides: []
@@ -144,6 +147,9 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: PushMetricExporter
+    status: unknown
+    propertyOverrides: []
+  - type: RandomIdGenerator
     status: unknown
     propertyOverrides: []
   - type: Resource
