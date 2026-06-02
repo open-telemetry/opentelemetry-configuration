@@ -20,7 +20,7 @@ properties:
     $ref: "#/$defs/IdGenerator"
     description: |
       Configure the trace and span ID generator.
-    defaultBehavior: an ID generator which randomly generates TraceIds and SpanIds is used
+    defaultBehavior: RandomIdGenerator is used
   tracer_configurator/development:
     $ref: "#/$defs/ExperimentalTracerConfigurator"
     description: |
