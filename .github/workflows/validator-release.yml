@@ -194,6 +194,8 @@ jobs:
           merge-multiple: true
       - id: cargo-dist
         shell: bash
+        env:
+          NEEDS_PLAN_OUTPUTS_TAG_FLAG: ${{ needs.plan.outputs.tag-flag }}
         run: |
           dist build ${NEEDS_PLAN_OUTPUTS_TAG_FLAG} --output-format=json "--artifacts=global" > dist-manifest.json
           echo "dist ran successfully"
@@ -204,8 +206,6 @@ jobs:
           echo "EOF" >> "$GITHUB_OUTPUT"
 
           cp dist-manifest.json "$BUILD_MANIFEST_NAME"
-        env:
-          NEEDS_PLAN_OUTPUTS_TAG_FLAG: ${{ needs.plan.outputs.tag-flag }}
       - name: "Upload artifacts"
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
