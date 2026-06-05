@@ -1,5 +1,7 @@
 ## Unreleased
 
+## v1.1.0 - 2026-06-05
+
 ### Schema
 
 * **BREAKING**: Remove `with_` prefix from `ExperimentalPrometheusMetricExporter`
