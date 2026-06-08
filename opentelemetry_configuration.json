@@ -1464,6 +1464,23 @@
         }
       }
     },
+    "IdGenerator": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "random": {
+          "$ref": "#/$defs/RandomIdGenerator",
+          "description": "Configure the ID generator to randomly generate TraceIds and SpanIds (spec default).\nIf omitted, ignore.\n"
+        }
+      }
+    },
     "IncludeExclude": {
       "type": "object",
       "additionalProperties": false,
@@ -2107,6 +2124,13 @@
         }
       }
     },
+    "RandomIdGenerator": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false
+    },
     "Resource": {
       "type": "object",
       "additionalProperties": false,
@@ -2435,6 +2459,10 @@
         "sampler": {
           "$ref": "#/$defs/Sampler",
           "description": "Configure the sampler.\nIf omitted, parent based sampler with a root of always_on is used.\n"
+        },
+        "id_generator": {
+          "$ref": "#/$defs/IdGenerator",
+          "description": "Configure the trace and span ID generator.\nIf omitted, RandomIdGenerator is used.\n"
         },
         "tracer_configurator/development": {
           "$ref": "#/$defs/ExperimentalTracerConfigurator",

@@ -16,6 +16,11 @@ properties:
     description: |
       Configure the sampler.
     defaultBehavior: parent based sampler with a root of always_on is used
+  id_generator:
+    $ref: "#/$defs/IdGenerator"
+    description: |
+      Configure the trace and span ID generator.
+    defaultBehavior: RandomIdGenerator is used
   tracer_configurator/development:
     $ref: "#/$defs/ExperimentalTracerConfigurator"
     description: |
@@ -396,6 +401,25 @@ $defs:
         $ref: "#/$defs/ExperimentalComposableRuleBasedSampler"
         description: Configure sampler to be rule_based.
         defaultBehavior: ignore
+  IdGenerator:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      random:
+        $ref: "#/$defs/RandomIdGenerator"
+        description: Configure the ID generator to randomly generate TraceIds and SpanIds (spec default).
+        defaultBehavior: ignore
+    isSdkExtensionPlugin: true
+  RandomIdGenerator:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
   SimpleSpanProcessor:
     type: object
     additionalProperties: false

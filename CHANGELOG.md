@@ -1,7 +1,71 @@
 ## Unreleased
 
-* Add development max_export_batch_size configuration to Periodic MetricReader
+## v1.1.0 - 2026-06-05
+
+### Schema
+
+* **BREAKING**: Remove `with_` prefix from `ExperimentalPrometheusMetricExporter`
+  property names
+  ([#612](https://github.com/open-telemetry/opentelemetry-configuration/pull/612))
+
+  <details>
+
+  <summary>Migration steps</summary>
+
+  ```yaml
+  # Before
+  meter_provider:
+    readers:
+      - pull:
+          exporter:
+            prometheus/development:
+              without_scope_info: false
+              without_target_info/development: false
+              with_resource_constant_labels:
+                included:
+                  - "service*"
+                excluded:
+                  - "service.attr1"
+  ---
+  # After
+  meter_provider:
+    readers:
+      - pull:
+          exporter:
+            prometheus/development:
+              scope_info_enabled: true
+              target_info_enabled/development: true
+              resource_constant_labels:
+                included:
+                  - "service*"
+                excluded:
+                  - "service.attr1"
+  ```
+  </details>
+
+* Add `id_generator` definition to `TracerProvider`
+  ([#624](https://github.com/open-telemetry/opentelemetry-configuration/pull/624))
+* Add `DevelopmentEventToSpanEventBridgeLogRecordProcessor`
+  ([#588](https://github.com/open-telemetry/opentelemetry-configuration/pull/588))
+* Add `max_export_batch_size/development` to `PeriodicMetricReader`
   ([#610](https://github.com/open-telemetry/opentelemetry-configuration/pull/610))
+* Clarify AttributeNameValue description, fix related tooling
+  ([#617](https://github.com/open-telemetry/opentelemetry-configuration/pull/617))
+* Clarify pattern matching is case-sensitive
+  ([#556](https://github.com/open-telemetry/opentelemetry-configuration/pull/556))
+
+### Tooling
+
+* Update java implementation support status
+  ([#567](https://github.com/open-telemetry/opentelemetry-configuration/pull/567))
+* Update C++ implementation support status
+  ([#573](https://github.com/open-telemetry/opentelemetry-configuration/pull/573),
+  [#618](https://github.com/open-telemetry/opentelemetry-configuration/pull/618))
+* Update go implementation support status
+  ([#581](https://github.com/open-telemetry/opentelemetry-configuration/pull/581))
+* Add / update snippets
+  ([#579](https://github.com/open-telemetry/opentelemetry-configuration/pull/579),
+  [#602](https://github.com/open-telemetry/opentelemetry-configuration/pull/602))
 
 ## [v1.0.0] - 2026-02-27
 
