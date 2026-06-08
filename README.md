@@ -46,7 +46,6 @@ For more information about the maintainer role, see the [community repository](h
 
 ### Approvers
 
-* [Brett McBride](https://github.com/brettmc), Deakin University
 * [Marc Alff](https://github.com/marcalff), Oracle
 
 For more information about the approver role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).
@@ -56,6 +55,7 @@ For more information about the approver role, see the [community repository](htt
 
 ### Emeritus
 
+* [Brett McBride](https://github.com/brettmc), Approver
 * [Tristan Sloughter](https://github.com/tsloughter), Maintainer
 
 For more information about the emeritus role, see the
