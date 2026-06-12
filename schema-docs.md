@@ -1850,7 +1850,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `opencensus` | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | `false` | If omitted, ignore. | No constraints. | Configure metric producer to be opencensus. |
+| `opencensus` | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | `false` | If omitted, ignore. | No constraints. | Configure metric producer to be opencensus.<br><br>**Deprecated** as of June 2026. This entry will be removed no earlier<br>than June 2027, following the deprecation of OpenCensus compatibility<br>requirements in the specification<br>(https://github.com/open-telemetry/opentelemetry-specification/pull/5138).<br>Existing OpenCensus shims MAY continue to be supported for backwards<br>compatibility, but new configurations SHOULD NOT use this entry.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1890,7 +1890,8 @@ No snippets.
   "properties": {
     "opencensus": {
       "$ref": "#/$defs/OpenCensusMetricProducer",
-      "description": "Configure metric producer to be opencensus.\nIf omitted, ignore.\n"
+      "deprecated": true,
+      "description": "Configure metric producer to be opencensus.\n\n**Deprecated** as of June 2026. This entry will be removed no earlier\nthan June 2027, following the deprecation of OpenCensus compatibility\nrequirements in the specification\n(https://github.com/open-telemetry/opentelemetry-specification/pull/5138).\nExisting OpenCensus shims MAY continue to be supported for backwards\ncompatibility, but new configurations SHOULD NOT use this entry.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -2026,7 +2027,9 @@ No snippets.
     "object",
     "null"
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "deprecated": true,
+  "description": "**Deprecated** as of June 2026. This type will be removed no earlier than\nJune 2027, following the deprecation of OpenCensus compatibility\nrequirements in the specification\n(https://github.com/open-telemetry/opentelemetry-specification/pull/5138).\nSee also the\n[OpenCensus sunset announcement](https://opentelemetry.io/blog/2023/sunsetting-opencensus/).\n"
 }</pre>
 </details>
 
