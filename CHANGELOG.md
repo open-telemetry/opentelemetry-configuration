@@ -3,7 +3,7 @@
 * Deprecate `MetricProducer.opencensus` and `OpenCensusMetricProducer`,
   following the deprecation of OpenCensus compatibility in the
   specification
-  ([#655](https://github.com/open-telemetry/opentelemetry-configuration/pull/XXXX))
+  ([#655](https://github.com/open-telemetry/opentelemetry-configuration/pull/655))
 
 ## v1.1.0 - 2026-06-05
 
