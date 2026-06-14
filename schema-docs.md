@@ -1850,7 +1850,7 @@ No snippets.
 
 | Property | Type | Required? | Default and Null Behavior | Constraints | Description |
 |---|---|---|---|---|---|
-| `opencensus` | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | `false` | If omitted, ignore. | No constraints. | Configure metric producer to be opencensus.<br><br>**Deprecated** as of June 2026. This entry will be removed no earlier<br>than June 2027, following the deprecation of OpenCensus compatibility<br>requirements in the specification<br>(https://github.com/open-telemetry/opentelemetry-specification/pull/5138).<br>Existing OpenCensus shims MAY continue to be supported for backwards<br>compatibility, but new configurations SHOULD NOT use this entry.<br> |
+| `opencensus` | [`OpenCensusMetricProducer`](#opencensusmetricproducer) | `false` | If omitted, ignore. | No constraints. | Configure metric producer to be opencensus.<br><br>**Deprecated** as of June 2026. The OpenCensus compatibility<br>specification it relies on was deprecated in<br>https://github.com/open-telemetry/opentelemetry-specification/pull/5138.<br>SDKs MAY continue to support this entry for backwards compatibility;<br>new configurations SHOULD NOT use it.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1891,7 +1891,7 @@ No snippets.
     "opencensus": {
       "$ref": "#/$defs/OpenCensusMetricProducer",
       "deprecated": true,
-      "description": "Configure metric producer to be opencensus.\n\n**Deprecated** as of June 2026. This entry will be removed no earlier\nthan June 2027, following the deprecation of OpenCensus compatibility\nrequirements in the specification\n(https://github.com/open-telemetry/opentelemetry-specification/pull/5138).\nExisting OpenCensus shims MAY continue to be supported for backwards\ncompatibility, but new configurations SHOULD NOT use this entry.\nIf omitted, ignore.\n"
+      "description": "Configure metric producer to be opencensus.\n\n**Deprecated** as of June 2026. The OpenCensus compatibility\nspecification it relies on was deprecated in\nhttps://github.com/open-telemetry/opentelemetry-specification/pull/5138.\nSDKs MAY continue to support this entry for backwards compatibility;\nnew configurations SHOULD NOT use it.\nIf omitted, ignore.\n"
     }
   }
 }</pre>
@@ -2029,7 +2029,7 @@ No snippets.
   ],
   "additionalProperties": false,
   "deprecated": true,
-  "description": "**Deprecated** as of June 2026. This type will be removed no earlier than\nJune 2027, following the deprecation of OpenCensus compatibility\nrequirements in the specification\n(https://github.com/open-telemetry/opentelemetry-specification/pull/5138).\nSee also the\n[OpenCensus sunset announcement](https://opentelemetry.io/blog/2023/sunsetting-opencensus/).\n"
+  "description": "**Deprecated** as of June 2026. The OpenCensus compatibility specification\nit relies on was deprecated in\nhttps://github.com/open-telemetry/opentelemetry-specification/pull/5138.\nSee also the\n[OpenCensus sunset announcement](https://opentelemetry.io/blog/2023/sunsetting-opencensus/).\n"
 }</pre>
 </details>
 
