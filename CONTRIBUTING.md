@@ -306,6 +306,53 @@ tracer_provider:
 
 [Schema validation](#schema-validation) project tooling enforces that types labeled `isSdkExtensionPlugin: true` are modeled consistently as described above.
 
+### Deprecating properties and types
+
+Properties and types that are no longer recommended for use should be deprecated rather than removed. Per the [versioning policy](VERSIONING.md), no existing type or type property may be deleted in a `MINOR` version. Deprecated properties and types must therefore be kept until at least the next `MAJOR` version.
+
+To deprecate a property or type:
+
+1. Set [`deprecated: true`](https://json-schema.org/understanding-json-schema/reference/annotations) on the property or type in the YAML source.
+2. Update the `description` to include a bold `**Deprecated**` notice that:
+   * States the first `MINOR` version in which the deprecation appears and the earliest `MAJOR` version in which it may be removed (e.g. "as of v1.2.0, may be removed in v2.0.0").
+   * Explains why the property or type is deprecated, including a link to the relevant specification change.
+   * Advises that SDKs MAY continue to support the property for backwards compatibility and that new configurations SHOULD NOT use it.
+3. Add a CHANGELOG entry.
+
+For example, a deprecated property in YAML source:
+
+```yaml
+opencensus:
+  $ref: "#/$defs/OpenCensusMetricProducer"
+  deprecated: true
+  description: |
+    Configure metric producer to be opencensus.
+
+    **Deprecated** as of v1.2.0, may be removed in v2.0.0. The OpenCensus
+    compatibility specification it relies on was deprecated in
+    https://github.com/open-telemetry/opentelemetry-specification/pull/5138.
+    SDKs MAY continue to support this entry for backwards compatibility;
+    new configurations SHOULD NOT use it.
+  defaultBehavior: ignore
+```
+
+And a deprecated type:
+
+```yaml
+OpenCensusMetricProducer:
+  type:
+    - object
+    - "null"
+  additionalProperties: false
+  deprecated: true
+  description: |
+    **Deprecated** as of v1.2.0, may be removed in v2.0.0. The OpenCensus
+    compatibility specification it relies on was deprecated in
+    https://github.com/open-telemetry/opentelemetry-specification/pull/5138.
+    See also the
+    [OpenCensus sunset announcement](https://opentelemetry.io/blog/2023/sunsetting-opencensus/).
+```
+
 ## Project tooling
 
 This repository has a variety of tooling assisting with the development of the JSON schema and associated artifacts.
