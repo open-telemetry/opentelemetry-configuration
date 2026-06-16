@@ -232,7 +232,15 @@ $defs:
     properties:
       opencensus:
         $ref: "#/$defs/OpenCensusMetricProducer"
-        description: Configure metric producer to be opencensus.
+        deprecated: true
+        description: |
+          Configure metric producer to be opencensus.
+
+          **Deprecated** as of June 2026. The OpenCensus compatibility
+          specification it relies on was deprecated in
+          https://github.com/open-telemetry/opentelemetry-specification/pull/5138.
+          SDKs MAY continue to support this entry for backwards compatibility;
+          new configurations SHOULD NOT use it.
         defaultBehavior: ignore
     isSdkExtensionPlugin: true
   OpenCensusMetricProducer:
@@ -240,6 +248,13 @@ $defs:
       - object
       - "null"
     additionalProperties: false
+    deprecated: true
+    description: |
+      **Deprecated** as of June 2026. The OpenCensus compatibility specification
+      it relies on was deprecated in
+      https://github.com/open-telemetry/opentelemetry-specification/pull/5138.
+      See also the
+      [OpenCensus sunset announcement](https://opentelemetry.io/blog/2023/sunsetting-opencensus/).
   ExperimentalPrometheusMetricExporter:
     type:
       - object
