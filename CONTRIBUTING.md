@@ -310,6 +310,8 @@ tracer_provider:
 
 Properties and types that are no longer recommended for use should be deprecated rather than removed. Per the [versioning policy](VERSIONING.md), no existing type or type property may be deleted in a `MINOR` version. Deprecated properties and types must therefore be kept until at least the next `MAJOR` version.
 
+This guidance does not apply to [experimental features](VERSIONING.md#experimental-features), which are exempt from versioning policy guarantees and may be removed in `MINOR` versions without deprecation.
+
 To deprecate a property or type:
 
 1. Set [`deprecated: true`](https://json-schema.org/understanding-json-schema/reference/annotations) on the property or type in the YAML source.
