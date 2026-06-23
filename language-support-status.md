@@ -48,7 +48,7 @@ Latest supported file format: `1.0.0`
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`LogRecordLimits`](schema-docs.md#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | [`MetricProducer`](schema-docs.md#metricproducer) | supported |  | * `opencensus`: supported<br> |
 | [`MetricReader`](schema-docs.md#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -169,7 +169,7 @@ Latest supported file format: `1.0.0`
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: not_implemented<br> |
 | [`LogRecordLimits`](schema-docs.md#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | [`MetricProducer`](schema-docs.md#metricproducer) | unknown |  | * `opencensus`: unknown<br> |
 | [`MetricReader`](schema-docs.md#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
 | [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -290,7 +290,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`LogRecordLimits`](schema-docs.md#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | [`MetricProducer`](schema-docs.md#metricproducer) | ignored |  | * `opencensus`: ignored<br> |
 | [`MetricReader`](schema-docs.md#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -411,7 +411,7 @@ Latest supported file format: `1.0.0-rc.3`
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
 | [`LogRecordLimits`](schema-docs.md#logrecordlimits) | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br> |
 | [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | unknown |  | * `batch`: unknown<br>* `simple`: unknown<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| [`MeterProvider`](schema-docs.md#meterprovider) | unknown |  | * `exemplar_filter`: unknown<br>* `readers`: unknown<br>* `views`: unknown<br>* `meter_configurator/development`: unknown<br> |
+| [`MeterProvider`](schema-docs.md#meterprovider) | unknown |  | * `exemplar_filter`: unknown<br>* `readers`: unknown<br>* `views`: unknown<br>* `meter_configurator/development`: unknown<br>* `view_matching_mode/development`: not_implemented<br> |
 | [`MetricProducer`](schema-docs.md#metricproducer) | unknown |  | * `opencensus`: unknown<br> |
 | [`MetricReader`](schema-docs.md#metricreader) | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
 | [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | unknown |  | * `name`: unknown<br>* `value`: unknown<br> |
@@ -532,7 +532,7 @@ Latest supported file format: `1.0.0-rc.2`
 | [`LogRecordExporter`](schema-docs.md#logrecordexporter) | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | [`LogRecordLimits`](schema-docs.md#logrecordlimits) | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | [`LogRecordProcessor`](schema-docs.md#logrecordprocessor) | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| [`MeterProvider`](schema-docs.md#meterprovider) | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | [`MetricProducer`](schema-docs.md#metricproducer) | not_implemented |  | * `opencensus`: not_implemented<br> |
 | [`MetricReader`](schema-docs.md#metricreader) | supported |  | * `periodic`: supported<br>* `pull`: not_implemented<br> |
 | [`NameStringValuePair`](schema-docs.md#namestringvaluepair) | supported |  | * `name`: supported<br>* `value`: supported<br> |

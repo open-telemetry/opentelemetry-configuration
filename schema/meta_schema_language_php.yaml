@@ -108,7 +108,9 @@ typeSupportStatuses:
         status: unknown
   - type: MeterProvider
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: view_matching_mode/development
+        status: not_implemented
   - type: MetricProducer
     status: not_implemented
     propertyOverrides: []

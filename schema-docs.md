@@ -1782,6 +1782,7 @@ No snippets.
 | `readers` | `array` of [`MetricReader`](#metricreader) | `true` | Property is required and must be non-null. | * `minItems`: `1`<br> | Configure metric readers. |
 | `views` | `array` of [`View`](#view) | `false` | If omitted, no views are registered. | * `minItems`: `1`<br> | Configure views. <br>Each view has a selector which determines the instrument(s) it applies to, and a configuration for the resulting stream(s).<br> |
 | `meter_configurator/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalMeterConfigurator`](#experimentalmeterconfigurator) | `false` | If omitted, all meters use default values as described in ExperimentalMeterConfig. | No constraints. | Configure meters.<br> |
+| `view_matching_mode/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | `string` | `false` | If omitted, independent is used. | No constraints. | Controls how multiple matching Views are applied to an Instrument. 'independent' (default) creates separate metric streams independently for each matching View. 'composable' combines (merges) matching Views into unified metric streams unless distinct stream names are configured.<br> |
 
 <details>
 <summary>Language support status</summary>
@@ -1792,6 +1793,7 @@ No snippets.
 | `readers` | supported | supported | supported | unknown | supported |
 | `views` | supported | supported | supported | unknown | supported |
 | `meter_configurator/development` | supported | supported | supported | unknown | supported |
+| `view_matching_mode/development` | not_implemented | not_implemented | not_implemented | not_implemented | not_implemented |
 </details>
 
 Constraints: 
@@ -1813,6 +1815,15 @@ No snippets.
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "view_matching_mode/development": {
+      "type": "string",
+      "enum": [
+        "independent",
+        "composable"
+      ],
+      "default": "independent",
+      "description": "Controls how multiple matching Views are applied to an Instrument. 'independent' (default) creates separate metric streams independently for each matching View. 'composable' combines (merges) matching Views into unified metric streams unless distinct stream names are configured.\nIf omitted, independent is used.\n"
+    },
     "readers": {
       "type": "array",
       "minItems": 1,
