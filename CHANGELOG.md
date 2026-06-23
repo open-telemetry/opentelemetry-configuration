@@ -1,5 +1,6 @@
 ## Unreleased
 
+* Add experimental `meter_provider.view_matching_mode/development` property
 * Deprecate `MetricProducer.opencensus` and `OpenCensusMetricProducer`,
   following the deprecation of OpenCensus compatibility in the
   specification
