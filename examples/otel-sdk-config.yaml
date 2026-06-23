@@ -72,6 +72,21 @@ meter_provider:
             timeout: 10000
             temporality_preference: cumulative
             default_histogram_aggregation: explicit_bucket_histogram
+  view_matching_mode/development: composable
+  views:
+    - selector:
+        meter_name: go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+        instrument_name: http.client.request.duration
+      stream:
+        name: http.client.latency
+        aggregation:
+          sum: {}
+    - selector:
+        meter_name: go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+      stream:
+        attribute_keys:
+          excluded:
+            - http.response.status_code
   exemplar_filter: trace_based
 logger_provider:
   processors:
