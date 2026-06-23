@@ -50,7 +50,7 @@ Latest supported file format: `1.0.0`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | `MetricProducer` | supported |  | * `opencensus`: supported<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -172,7 +172,7 @@ Latest supported file format: `1.0.0`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: not_implemented<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | `MetricProducer` | unknown |  | * `opencensus`: unknown<br> |
 | `MetricReader` | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -294,7 +294,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | `MetricProducer` | ignored |  | * `opencensus`: ignored<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -416,7 +416,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: supported<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | `MetricProducer` | supported |  | * `opencensus`: supported<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -538,7 +538,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | `MetricProducer` | not_implemented |  | * `opencensus`: not_implemented<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: not_implemented<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -660,7 +660,7 @@ Latest supported file format: `1.0.0`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `LogRecordLimits` | ignored |  | * `attribute_count_limit`: ignored<br>* `attribute_value_length_limit`: ignored<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: supported<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: supported<br> |
 | `MetricProducer` | ignored |  | * `opencensus`: ignored<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
