@@ -7,7 +7,6 @@ const __dirname = path.dirname(__filename);
 export const metaSchemaFilePrefix = "meta_schema";
 export const schemaSourceDirPath = __dirname + "/../schema/";
 export const schemaPath = __dirname + `/../opentelemetry_configuration.json`;
-export const markdownDocPath = __dirname + "/../schema-docs.md";
 export const languageSupportStatusPath = __dirname + "/../language-support-status.md";
 
 export const metaSchemaLanguageFilePrefix = `${metaSchemaFilePrefix}_language`;

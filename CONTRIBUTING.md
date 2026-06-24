@@ -263,7 +263,7 @@ In order to promote stylistic consistency and allow for reuse of concepts, `obje
 
 [SDK extension plugin interfaces](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#sdk-extension-components) should be modeled consistently for improved user experience and to facilitate implementations supporting custom implementations via the [PluginComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#plugincomponentprovider) mechanism.
 
-The [SpanExporter](schema-docs.md#spanexporter) schema is typical:
+The [SpanExporter](schema/tracer_provider.yaml) schema is typical:
 
 ```json
 ...
@@ -484,7 +484,7 @@ It's important to run `fix-language-implementations` before committing changes t
 
 Each snippet file name follows the pattern: `<JsonSchemaType>_<snake_case_description>.yaml`:
 
-* `<JsonSchemaType>`: Refers to the name of a JSON schema type as referenced in [types](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#types-).
+* `<JsonSchemaType>`: Refers to the name of a JSON schema type as referenced in the [schema types reference](https://opentelemetry.io/docs/specs/otel-config/types/).
 * `<snake_case_description>`: A short description of what the snippet demonstrates, in lower snake case.
 * File content must validate against the top level `OpenTelemetryConfiguration` type.
 * File content must contain `# SNIPPET_START`, which marks the start of the relevant portion of the snippet. The content which follows is validated against the `<JsonSchemaType>` type in the file name. NOTE: The same number of whitespace characters proceeding `# SNIPPET_START` are stripped from later lines before validation.
@@ -522,7 +522,9 @@ make validate-snippets
 
 ### Documentation generation
 
-[schema-docs.md](schema-docs.md) contains generated markdown summarizing a variety of useful information about the JSON schema and [language implementation status](#language-implementation-status-tracking) in an easy to consume format.
+[language-support-status.md](language-support-status.md) contains generated markdown summarizing [language implementation status](#language-implementation-status-tracking) in an easy to consume format.
+
+The human-friendly schema explorer (types, properties, and constraints) is rendered from the schema at [opentelemetry.io/docs/specs/otel-config/types](https://opentelemetry.io/docs/specs/otel-config/types/).
 
 To generate:
 
