@@ -1110,7 +1110,31 @@
         "object",
         "null"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "properties": {
+        "command_args/development": {
+          "$ref": "#/$defs/ExperimentalProcessResourceDetectorAttribute",
+          "description": "Configure whether process.command_args is collected.\nIf omitted, process.command_args is not collected.\n"
+        },
+        "command_line/development": {
+          "$ref": "#/$defs/ExperimentalProcessResourceDetectorAttribute",
+          "description": "Configure whether process.command_line is collected.\nIf omitted, process.command_line is not collected.\n"
+        }
+      }
+    },
+    "ExperimentalProcessResourceDetectorAttribute": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": [
+            "boolean"
+          ],
+          "description": "Set to true to collect this attribute.\nIf omitted, false is used.\n"
+        }
+      }
     },
     "ExperimentalPrometheusMetricExporter": {
       "type": [
@@ -1208,7 +1232,7 @@
         },
         "process": {
           "$ref": "#/$defs/ExperimentalProcessResourceDetector",
-          "description": "Enable the process resource detector, which populates process.* attributes.\nIf omitted, ignore.\n"
+          "description": "Enable the process resource detector, which populates process.* attributes except process.command_args and process.command_line unless they are explicitly enabled.\nIf omitted, ignore.\n"
         },
         "service": {
           "$ref": "#/$defs/ExperimentalServiceResourceDetector",

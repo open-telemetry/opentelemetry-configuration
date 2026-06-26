@@ -3218,6 +3218,10 @@ detection/development:
     - container:
     - host:
     - process:
+        command_args/development:
+          enabled: false
+        command_line/development:
+          enabled: false
     - service:
 schema_url: https://opentelemetry.io/schemas/1.16.0
 ```
@@ -6438,7 +6442,19 @@ No snippets.
 > [!WARNING]
 > This type is [experimental](VERSIONING.md#experimental-features).
 
-No properties.
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `command_args/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalProcessResourceDetectorAttribute`](#experimentalprocessresourcedetectorattribute) | `false` | If omitted, process.command_args is not collected. | No constraints. | Configure whether process.command_args is collected.<br> |
+| `command_line/development`<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features). | [`ExperimentalProcessResourceDetectorAttribute`](#experimentalprocessresourcedetectorattribute) | `false` | If omitted, process.command_line is not collected. | No constraints. | Configure whether process.command_line is collected.<br> |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `command_args/development` | not_implemented | not_implemented | not_implemented | not_implemented | not_implemented |
+| `command_line/development` | not_implemented | not_implemented | not_implemented | not_implemented | not_implemented |
+</details>
 
 Constraints: 
 
@@ -6459,7 +6475,65 @@ No snippets.
     "object",
     "null"
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "properties": {
+    "command_args/development": {
+      "$ref": "#/$defs/ExperimentalProcessResourceDetectorAttribute",
+      "description": "Configure whether process.command_args is collected.\nIf omitted, process.command_args is not collected.\n"
+    },
+    "command_line/development": {
+      "$ref": "#/$defs/ExperimentalProcessResourceDetectorAttribute",
+      "description": "Configure whether process.command_line is collected.\nIf omitted, process.command_line is not collected.\n"
+    }
+  }
+}</pre>
+</details>
+
+## ExperimentalProcessResourceDetectorAttribute <a id="experimentalprocessresourcedetectorattribute"></a>
+
+> [!WARNING]
+> This type is [experimental](VERSIONING.md#experimental-features).
+
+| Property | Type | Required? | Default and Null Behavior | Constraints | Description |
+|---|---|---|---|---|---|
+| `enabled` | `boolean` | `false` | If omitted, false is used. | No constraints. | Set to true to collect this attribute. |
+
+<details>
+<summary>Language support status</summary>
+
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
+|---|---|---|---|---|---|
+| `enabled` | not_implemented | not_implemented | not_implemented | not_implemented | not_implemented |
+</details>
+
+Constraints: 
+
+* `additionalProperties`: `false`
+
+Usages:
+
+* [`ExperimentalProcessResourceDetector.command_args/development`](#experimentalprocessresourcedetector)
+* [`ExperimentalProcessResourceDetector.command_line/development`](#experimentalprocessresourcedetector)
+
+No snippets.
+
+<details>
+<summary>JSON Schema</summary>
+
+[JSON Schema Source File](./schema/resource.yaml)
+<pre>{
+  "type": [
+    "object"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "enabled": {
+      "type": [
+        "boolean"
+      ],
+      "description": "Set to true to collect this attribute.\nIf omitted, false is used.\n"
+    }
+  }
 }</pre>
 </details>
 
@@ -6684,7 +6758,7 @@ No snippets.
 |---|---|---|---|---|---|
 | `container` | [`ExperimentalContainerResourceDetector`](#experimentalcontainerresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the container resource detector, which populates container.* attributes.<br> |
 | `host` | [`ExperimentalHostResourceDetector`](#experimentalhostresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the host resource detector, which populates host.* and os.* attributes.<br> |
-| `process` | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the process resource detector, which populates process.* attributes.<br> |
+| `process` | [`ExperimentalProcessResourceDetector`](#experimentalprocessresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the process resource detector, which populates process.* attributes except process.command_args and process.command_line unless they are explicitly enabled.<br> |
 | `service` | [`ExperimentalServiceResourceDetector`](#experimentalserviceresourcedetector) | `false` | If omitted, ignore. | No constraints. | Enable the service detector, which populates service.name based on the OTEL_SERVICE_NAME environment variable and service.instance.id.<br> |
 
 <details>
@@ -6735,7 +6809,7 @@ No snippets.
     },
     "process": {
       "$ref": "#/$defs/ExperimentalProcessResourceDetector",
-      "description": "Enable the process resource detector, which populates process.* attributes.\nIf omitted, ignore.\n"
+      "description": "Enable the process resource detector, which populates process.* attributes except process.command_args and process.command_line unless they are explicitly enabled.\nIf omitted, ignore.\n"
     },
     "service": {
       "$ref": "#/$defs/ExperimentalServiceResourceDetector",

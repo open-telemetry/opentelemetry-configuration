@@ -1,9 +1,14 @@
 ## Unreleased
 
+### Schema
+
 * Deprecate `MetricProducer.opencensus` and `OpenCensusMetricProducer`,
   following the deprecation of OpenCensus compatibility in the
   specification
   ([#655](https://github.com/open-telemetry/opentelemetry-configuration/pull/655))
+* Add `command_args/development` and `command_line/development` configuration
+  to `ExperimentalProcessResourceDetector`, defaulting to `false`.
+  ([#673](https://github.com/open-telemetry/opentelemetry-configuration/pull/673))
 
 ## v1.1.0 - 2026-06-05
 
