@@ -129,7 +129,7 @@ $defs:
       process:
         $ref: "#/$defs/ExperimentalProcessResourceDetector"
         description: |
-          Enable the process resource detector, which populates process.* attributes.
+          Enable the process resource detector, which populates process.* attributes except process.command_args and process.command_line unless they are explicitly enabled.
         defaultBehavior: ignore
       service:
         $ref: "#/$defs/ExperimentalServiceResourceDetector"
@@ -152,6 +152,27 @@ $defs:
       - object
       - "null"
     additionalProperties: false
+    properties:
+      command_args/development:
+        $ref: "#/$defs/ExperimentalProcessResourceDetectorAttribute"
+        description: |
+          Configure whether process.command_args is collected.
+        defaultBehavior: process.command_args is not collected
+      command_line/development:
+        $ref: "#/$defs/ExperimentalProcessResourceDetectorAttribute"
+        description: |
+          Configure whether process.command_line is collected.
+        defaultBehavior: process.command_line is not collected
+  ExperimentalProcessResourceDetectorAttribute:
+    type:
+      - object
+    additionalProperties: false
+    properties:
+      enabled:
+        type:
+          - boolean
+        description: Set to true to collect this attribute.
+        defaultBehavior: false is used
   ExperimentalServiceResourceDetector:
     type:
       - object

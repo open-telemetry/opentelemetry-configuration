@@ -304,6 +304,9 @@ typeSupportStatuses:
   - type: ExperimentalProcessResourceDetector
     status: not_implemented
     propertyOverrides: []
+  - type: ExperimentalProcessResourceDetectorAttribute
+    status: not_implemented
+    propertyOverrides: []
   - type: ExperimentalPrometheusMetricExporter
     status: supported
     propertyOverrides: []

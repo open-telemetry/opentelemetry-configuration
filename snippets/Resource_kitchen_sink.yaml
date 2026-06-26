@@ -40,5 +40,9 @@ resource:
       - container:
       - host:
       - process:
+          command_args/development:
+            enabled: false
+          command_line/development:
+            enabled: false
       - service:
   schema_url: https://opentelemetry.io/schemas/1.16.0
