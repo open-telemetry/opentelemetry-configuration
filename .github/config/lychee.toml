@@ -16,7 +16,7 @@ accept = ["200..=299", "403"]
 exclude = [
     # excluding links to pull requests and issues is done for performance
     '^https://github.com/open-telemetry/opentelemetry-configuration/(issues|pull)/\d+$',
-    # exclude localhost, file references from schema-docs.md
+    # exclude localhost and file references that appear in example snippets
     "^http://localhost",
     "file:///path/to/file.jsonl",
     "file:///var/log/logs.jsonl",
