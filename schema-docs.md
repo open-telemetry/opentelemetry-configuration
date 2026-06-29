@@ -35,6 +35,16 @@ See also [language support status](language-support-status.md) for all details a
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown | ignored | supported |
+| `default` | supported | unknown | supported | unknown | ignored | supported |
+| `drop` | supported | unknown | supported | unknown | ignored | supported |
+| `explicit_bucket_histogram` | supported | unknown | supported | unknown | ignored | supported |
+| `last_value` | supported | unknown | supported | unknown | ignored | supported |
+| `sum` | supported | unknown | supported | unknown | ignored | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown | ignored | unknown |
 | `default` | supported | unknown | supported | unknown | ignored | unknown |
 | `drop` | supported | unknown | supported | unknown | ignored | unknown |
@@ -51,6 +61,7 @@ See also [language support status](language-support-status.md) for all details a
 | `last_value` | supported | unknown | supported | supported | ignored |
 | `sum` | supported | unknown | supported | supported | ignored |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -170,6 +181,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `attribute_count_limit` | supported | supported | supported | unknown | supported | ignored |
+| `attribute_value_length_limit` | supported | supported | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `attribute_count_limit` | supported | supported | supported | unknown | supported | unknown |
 | `attribute_value_length_limit` | supported | supported | supported | unknown | supported | unknown |
 =======
@@ -178,6 +195,7 @@ No snippets.
 | `attribute_count_limit` | supported | supported | supported | supported | supported |
 | `attribute_value_length_limit` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -232,6 +250,13 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `name` | supported | supported | supported | unknown | supported | supported |
+| `type` | supported | supported | supported | unknown | not_implemented | supported |
+| `value` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `name` | supported | supported | supported | unknown | supported | unknown |
 | `type` | supported | supported | supported | unknown | not_implemented | unknown |
 | `value` | supported | supported | supported | unknown | supported | unknown |
@@ -242,6 +267,7 @@ No snippets.
 | `type` | supported | supported | supported | supported | not_implemented |
 | `value` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -338,6 +364,18 @@ This is a enum type.
 <<<<<<< HEAD
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `bool` | supported | supported | supported | unknown | not_implemented | supported |
+| `bool_array` | supported | supported | supported | unknown | not_implemented | supported |
+| `double` | supported | supported | supported | unknown | not_implemented | supported |
+| `double_array` | supported | supported | supported | unknown | not_implemented | supported |
+| `int` | supported | supported | supported | unknown | not_implemented | supported |
+| `int_array` | supported | supported | supported | unknown | not_implemented | supported |
+| `string` | supported | supported | supported | unknown | not_implemented | supported |
+| `string_array` | supported | supported | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `bool` | supported | supported | supported | unknown | not_implemented | unknown |
 | `bool_array` | supported | supported | supported | unknown | not_implemented | unknown |
 | `double` | supported | supported | supported | unknown | not_implemented | unknown |
@@ -358,6 +396,7 @@ This is a enum type.
 | `string` | supported | supported | supported | supported | not_implemented |
 | `string_array` | supported | supported | supported | supported | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 No constraints.
@@ -485,6 +524,13 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `max_scale` | supported | unknown | supported | unknown | not_implemented | supported |
+| `max_size` | supported | unknown | supported | unknown | not_implemented | supported |
+| `record_min_max` | supported | unknown | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `max_scale` | supported | unknown | supported | unknown | not_implemented | unknown |
 | `max_size` | supported | unknown | supported | unknown | not_implemented | unknown |
 | `record_min_max` | supported | unknown | supported | unknown | not_implemented | unknown |
@@ -495,6 +541,7 @@ No snippets.
 | `max_size` | supported | unknown | supported | supported | not_implemented |
 | `record_min_max` | supported | unknown | supported | supported | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -562,6 +609,15 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `export_timeout` | supported | supported | supported | unknown | supported | supported |
+| `exporter` | supported | supported | supported | unknown | supported | supported |
+| `max_export_batch_size` | supported | supported | supported | unknown | supported | supported |
+| `max_queue_size` | supported | supported | supported | unknown | supported | supported |
+| `schedule_delay` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `export_timeout` | supported | supported | supported | unknown | supported | unknown |
 | `exporter` | supported | supported | supported | unknown | supported | unknown |
 | `max_export_batch_size` | supported | supported | supported | unknown | supported | unknown |
@@ -576,6 +632,7 @@ No snippets.
 | `max_queue_size` | supported | supported | supported | supported | supported |
 | `schedule_delay` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -656,6 +713,15 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `export_timeout` | supported | supported | supported | unknown | supported | supported |
+| `exporter` | supported | supported | supported | unknown | supported | supported |
+| `max_export_batch_size` | supported | supported | supported | unknown | supported | supported |
+| `max_queue_size` | supported | supported | supported | unknown | supported | supported |
+| `schedule_delay` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `export_timeout` | supported | supported | supported | unknown | supported | unknown |
 | `exporter` | supported | supported | supported | unknown | supported | unknown |
 | `max_export_batch_size` | supported | supported | supported | unknown | supported | unknown |
@@ -670,6 +736,7 @@ No snippets.
 | `max_queue_size` | supported | supported | supported | supported | supported |
 | `schedule_delay` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -753,6 +820,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `counter` | ignored | unknown | supported | unknown | not_implemented | supported |
+| `default` | ignored | unknown | supported | unknown | not_implemented | supported |
+| `gauge` | ignored | unknown | supported | unknown | not_implemented | supported |
+| `histogram` | ignored | unknown | supported | unknown | not_implemented | supported |
+| `observable_counter` | ignored | unknown | supported | unknown | not_implemented | supported |
+| `observable_gauge` | ignored | unknown | supported | unknown | not_implemented | supported |
+| `observable_up_down_counter` | ignored | unknown | supported | unknown | not_implemented | supported |
+| `up_down_counter` | ignored | unknown | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `counter` | ignored | unknown | supported | unknown | not_implemented | unknown |
 | `default` | ignored | unknown | supported | unknown | not_implemented | unknown |
 | `gauge` | ignored | unknown | supported | unknown | not_implemented | unknown |
@@ -773,6 +852,7 @@ No snippets.
 | `observable_up_down_counter` | ignored | unknown | supported | not_implemented | not_implemented |
 | `up_down_counter` | ignored | unknown | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -938,6 +1018,12 @@ Snippets:
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `default_histogram_aggregation` | supported | not_implemented | not_implemented | unknown | not_implemented | supported |
+| `temporality_preference` | supported | not_implemented | ignored | unknown | ignored | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `default_histogram_aggregation` | supported | not_implemented | not_implemented | unknown | not_implemented | unknown |
 | `temporality_preference` | supported | not_implemented | ignored | unknown | ignored | unknown |
 =======
@@ -946,6 +1032,7 @@ Snippets:
 | `default_histogram_aggregation` | supported | not_implemented | not_implemented | not_implemented | not_implemented |
 | `temporality_preference` | supported | not_implemented | ignored | not_implemented | ignored |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -1089,6 +1176,13 @@ This is a enum type.
 <<<<<<< HEAD
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `always_off` | supported | unknown | supported | unknown | supported | supported |
+| `always_on` | supported | unknown | supported | unknown | supported | supported |
+| `trace_based` | supported | unknown | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `always_off` | supported | unknown | supported | unknown | supported | unknown |
 | `always_on` | supported | unknown | supported | unknown | supported | unknown |
 | `trace_based` | supported | unknown | supported | unknown | supported | unknown |
@@ -1099,6 +1193,7 @@ This is a enum type.
 | `always_on` | supported | unknown | supported | not_implemented | supported |
 | `trace_based` | supported | unknown | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 No constraints.
@@ -1139,6 +1234,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `boundaries` | supported | unknown | supported | unknown | ignored | supported |
+| `record_min_max` | supported | unknown | supported | unknown | ignored | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `boundaries` | supported | unknown | supported | unknown | ignored | unknown |
 | `record_min_max` | supported | unknown | supported | unknown | ignored | unknown |
 =======
@@ -1147,6 +1248,7 @@ No snippets.
 | `boundaries` | supported | unknown | supported | supported | ignored |
 | `record_min_max` | supported | unknown | supported | supported | ignored |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -1204,6 +1306,12 @@ This is a enum type.
 <<<<<<< HEAD
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown | ignored | supported |
+| `explicit_bucket_histogram` | supported | unknown | supported | unknown | ignored | supported |
+=======
+<<<<<<< HEAD
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `base2_exponential_bucket_histogram` | supported | unknown | supported | unknown | ignored | unknown |
 | `explicit_bucket_histogram` | supported | unknown | supported | unknown | ignored | unknown |
 =======
@@ -1212,6 +1320,7 @@ This is a enum type.
 | `base2_exponential_bucket_histogram` | supported | unknown | supported | supported | ignored |
 | `explicit_bucket_histogram` | supported | unknown | supported | supported | ignored |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 No constraints.
@@ -1257,6 +1366,13 @@ This is a enum type.
 <<<<<<< HEAD
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `cumulative` | supported | supported | supported | unknown | supported | supported |
+| `delta` | supported | supported | supported | unknown | supported | supported |
+| `low_memory` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `cumulative` | supported | supported | supported | unknown | supported | unknown |
 | `delta` | supported | supported | supported | unknown | supported | unknown |
 | `low_memory` | supported | supported | supported | unknown | supported | unknown |
@@ -1267,6 +1383,7 @@ This is a enum type.
 | `delta` | supported | supported | supported | supported | supported |
 | `low_memory` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 No constraints.
@@ -1312,6 +1429,14 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `ca_file` | supported | supported | supported | unknown | ignored | supported |
+| `cert_file` | supported | supported | supported | unknown | ignored | supported |
+| `insecure` | supported | supported | not_implemented | unknown | ignored | supported |
+| `key_file` | supported | supported | supported | unknown | ignored | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `ca_file` | supported | supported | supported | unknown | ignored | unknown |
 | `cert_file` | supported | supported | supported | unknown | ignored | unknown |
 | `insecure` | supported | supported | not_implemented | unknown | ignored | unknown |
@@ -1324,6 +1449,7 @@ No snippets.
 | `insecure` | supported | supported | not_implemented | supported | ignored |
 | `key_file` | supported | supported | supported | supported | ignored |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -1394,6 +1520,13 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `ca_file` | supported | supported | supported | unknown | ignored | supported |
+| `cert_file` | supported | supported | supported | unknown | ignored | supported |
+| `key_file` | supported | supported | supported | unknown | ignored | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `ca_file` | supported | supported | supported | unknown | ignored | unknown |
 | `cert_file` | supported | supported | supported | unknown | ignored | unknown |
 | `key_file` | supported | supported | supported | unknown | ignored | unknown |
@@ -1404,6 +1537,7 @@ No snippets.
 | `cert_file` | supported | supported | supported | supported | ignored |
 | `key_file` | supported | supported | supported | supported | ignored |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -1467,12 +1601,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `random` | unknown | unknown | unknown | unknown | unknown | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `random` | unknown | unknown | unknown | unknown | unknown | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `random` | unknown | unknown | unknown | supported | unknown |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -1534,6 +1674,12 @@ my_custom_id_generator:
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `excluded` | supported | supported | supported | unknown | supported | supported |
+| `included` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `excluded` | supported | supported | supported | unknown | supported | unknown |
 | `included` | supported | supported | supported | unknown | supported | unknown |
 =======
@@ -1542,6 +1688,7 @@ my_custom_id_generator:
 | `excluded` | supported | supported | supported | supported | supported |
 | `included` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -1604,6 +1751,17 @@ This is a enum type.
 <<<<<<< HEAD
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `counter` | supported | supported | supported | unknown | supported | supported |
+| `gauge` | supported | supported | supported | unknown | supported | supported |
+| `histogram` | supported | supported | supported | unknown | supported | supported |
+| `observable_counter` | supported | supported | supported | unknown | supported | supported |
+| `observable_gauge` | supported | supported | supported | unknown | supported | supported |
+| `observable_up_down_counter` | supported | supported | supported | unknown | supported | supported |
+| `up_down_counter` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `counter` | supported | supported | supported | unknown | supported | unknown |
 | `gauge` | supported | supported | supported | unknown | supported | unknown |
 | `histogram` | supported | supported | supported | unknown | supported | unknown |
@@ -1622,6 +1780,7 @@ This is a enum type.
 | `observable_up_down_counter` | supported | supported | supported | supported | supported |
 | `up_down_counter` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 No constraints.
@@ -1694,6 +1853,13 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `limits` | supported | supported | supported | unknown | supported | supported |
+| `processors` | supported | supported | supported | unknown | supported | supported |
+| `logger_configurator/development` | supported | not_implemented | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `limits` | supported | supported | supported | unknown | supported | unknown |
 | `processors` | supported | supported | supported | unknown | supported | unknown |
 | `logger_configurator/development` | supported | not_implemented | supported | unknown | supported | unknown |
@@ -1704,6 +1870,7 @@ No snippets.
 | `processors` | supported | supported | supported | supported | supported |
 | `logger_configurator/development` | supported | not_implemented | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -1765,6 +1932,14 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `console` | supported | supported | supported | unknown | supported | supported |
+| `otlp_grpc` | supported | supported | supported | unknown | supported | supported |
+| `otlp_http` | supported | supported | supported | unknown | supported | supported |
+| `otlp_file/development` | supported | not_implemented | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `console` | supported | supported | supported | unknown | supported | unknown |
 | `otlp_grpc` | supported | supported | supported | unknown | supported | unknown |
 | `otlp_http` | supported | supported | supported | unknown | supported | unknown |
@@ -1777,6 +1952,7 @@ No snippets.
 | `otlp_http` | supported | supported | supported | supported | supported |
 | `otlp_file/development` | supported | not_implemented | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -1840,6 +2016,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `attribute_count_limit` | supported | supported | supported | unknown | supported | ignored |
+| `attribute_value_length_limit` | supported | supported | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `attribute_count_limit` | supported | supported | supported | unknown | supported | unknown |
 | `attribute_value_length_limit` | supported | supported | supported | unknown | supported | unknown |
 =======
@@ -1848,6 +2030,7 @@ No snippets.
 | `attribute_count_limit` | supported | supported | supported | supported | supported |
 | `attribute_value_length_limit` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -1915,6 +2098,13 @@ attribute_value_length_limit: 4096
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `batch` | supported | supported | supported | unknown | supported | supported |
+| `simple` | supported | supported | supported | unknown | supported | supported |
+| `event_to_span_event_bridge/development` | unknown | unknown | unknown | unknown | unknown | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `batch` | supported | supported | supported | unknown | supported | unknown |
 | `simple` | supported | supported | supported | unknown | supported | unknown |
 | `event_to_span_event_bridge/development` | unknown | unknown | unknown | unknown | unknown | unknown |
@@ -1925,6 +2115,7 @@ attribute_value_length_limit: 4096
 | `simple` | supported | supported | supported | supported | supported |
 | `event_to_span_event_bridge/development` | unknown | unknown | unknown | supported | unknown |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -1985,6 +2176,14 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `exemplar_filter` | supported | supported | supported | unknown | supported | supported |
+| `readers` | supported | supported | supported | unknown | supported | supported |
+| `views` | supported | supported | supported | unknown | supported | supported |
+| `meter_configurator/development` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `exemplar_filter` | supported | supported | supported | unknown | supported | unknown |
 | `readers` | supported | supported | supported | unknown | supported | unknown |
 | `views` | supported | supported | supported | unknown | supported | unknown |
@@ -1997,6 +2196,7 @@ No snippets.
 | `views` | supported | supported | supported | supported | supported |
 | `meter_configurator/development` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -2063,12 +2263,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `opencensus` | supported | unknown | ignored | unknown | not_implemented | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `opencensus` | supported | unknown | ignored | unknown | not_implemented | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `opencensus` | supported | unknown | ignored | supported | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -2121,6 +2327,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `periodic` | supported | unknown | supported | unknown | supported | supported |
+| `pull` | supported | unknown | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `periodic` | supported | unknown | supported | unknown | supported | unknown |
 | `pull` | supported | unknown | supported | unknown | not_implemented | unknown |
 =======
@@ -2129,6 +2341,7 @@ No snippets.
 | `periodic` | supported | unknown | supported | supported | supported |
 | `pull` | supported | unknown | supported | supported | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -2178,6 +2391,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `name` | supported | supported | supported | unknown | supported | supported |
+| `value` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `name` | supported | supported | supported | unknown | supported | unknown |
 | `value` | supported | supported | supported | unknown | supported | unknown |
 =======
@@ -2186,6 +2405,7 @@ No snippets.
 | `name` | supported | supported | supported | supported | supported |
 | `value` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -2280,6 +2500,21 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `attribute_limits` | supported | unknown | supported | unknown | supported | supported |
+| `disabled` | supported | unknown | supported | unknown | supported | supported |
+| `distribution` | supported | unknown | supported | unknown | not_implemented | supported |
+| `file_format` | supported | unknown | supported | unknown | supported | supported |
+| `log_level` | supported | unknown | not_implemented | unknown | not_implemented | supported |
+| `logger_provider` | supported | unknown | supported | unknown | supported | supported |
+| `meter_provider` | supported | unknown | supported | unknown | supported | supported |
+| `propagator` | supported | unknown | supported | unknown | supported | supported |
+| `resource` | supported | unknown | supported | unknown | supported | supported |
+| `tracer_provider` | supported | unknown | supported | unknown | supported | supported |
+| `instrumentation/development` | supported | unknown | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `attribute_limits` | supported | unknown | supported | unknown | supported | unknown |
 | `disabled` | supported | unknown | supported | unknown | supported | unknown |
 | `distribution` | supported | unknown | supported | unknown | not_implemented | unknown |
@@ -2306,6 +2541,7 @@ No snippets.
 | `tracer_provider` | supported | unknown | supported | supported | supported |
 | `instrumentation/development` | supported | unknown | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -2398,6 +2634,16 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `compression` | supported | supported | supported | unknown | supported | supported |
+| `endpoint` | supported | supported | supported | unknown | supported | supported |
+| `headers` | supported | supported | supported | unknown | supported | supported |
+| `headers_list` | supported | supported | supported | unknown | supported | supported |
+| `timeout` | supported | supported | supported | unknown | supported | supported |
+| `tls` | supported | supported | supported | unknown | ignored | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `compression` | supported | supported | supported | unknown | supported | unknown |
 | `endpoint` | supported | supported | supported | unknown | supported | unknown |
 | `headers` | supported | supported | supported | unknown | supported | unknown |
@@ -2414,6 +2660,7 @@ No snippets.
 | `timeout` | supported | supported | supported | supported | supported |
 | `tls` | supported | supported | supported | supported | ignored |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -2542,6 +2789,18 @@ timeout: 10000
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `compression` | supported | supported | supported | unknown | supported | supported |
+| `default_histogram_aggregation` | supported | not_implemented | supported | unknown | not_implemented | supported |
+| `endpoint` | supported | supported | supported | unknown | supported | supported |
+| `headers` | supported | supported | supported | unknown | supported | supported |
+| `headers_list` | supported | supported | supported | unknown | supported | supported |
+| `temporality_preference` | supported | supported | supported | unknown | supported | supported |
+| `timeout` | supported | supported | supported | unknown | supported | supported |
+| `tls` | supported | supported | supported | unknown | ignored | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `compression` | supported | supported | supported | unknown | supported | unknown |
 | `default_histogram_aggregation` | supported | not_implemented | supported | unknown | not_implemented | unknown |
 | `endpoint` | supported | supported | supported | unknown | supported | unknown |
@@ -2562,6 +2821,7 @@ timeout: 10000
 | `timeout` | supported | supported | supported | supported | supported |
 | `tls` | supported | supported | supported | supported | ignored |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -2673,6 +2933,12 @@ This is a enum type.
 <<<<<<< HEAD
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `json` | supported | not_implemented | not_implemented | unknown | supported | supported |
+| `protobuf` | supported | not_implemented | not_implemented | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `json` | supported | not_implemented | not_implemented | unknown | supported | unknown |
 | `protobuf` | supported | not_implemented | not_implemented | unknown | supported | unknown |
 =======
@@ -2681,6 +2947,7 @@ This is a enum type.
 | `json` | supported | not_implemented | not_implemented | supported | supported |
 | `protobuf` | supported | not_implemented | not_implemented | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 No constraints.
@@ -2726,6 +2993,17 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `compression` | supported | supported | supported | unknown | supported | supported |
+| `encoding` | supported | not_implemented | not_implemented | unknown | supported | supported |
+| `endpoint` | supported | supported | supported | unknown | supported | supported |
+| `headers` | supported | supported | supported | unknown | supported | supported |
+| `headers_list` | supported | supported | supported | unknown | supported | supported |
+| `timeout` | supported | supported | supported | unknown | supported | supported |
+| `tls` | supported | supported | supported | unknown | ignored | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `compression` | supported | supported | supported | unknown | supported | unknown |
 | `encoding` | supported | not_implemented | not_implemented | unknown | supported | unknown |
 | `endpoint` | supported | supported | supported | unknown | supported | unknown |
@@ -2744,6 +3022,7 @@ No snippets.
 | `timeout` | supported | supported | supported | supported | supported |
 | `tls` | supported | supported | supported | supported | ignored |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -2877,6 +3156,19 @@ encoding: protobuf
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `compression` | supported | supported | supported | unknown | supported | supported |
+| `default_histogram_aggregation` | supported | not_implemented | supported | unknown | not_implemented | supported |
+| `encoding` | supported | not_implemented | not_implemented | unknown | supported | supported |
+| `endpoint` | supported | supported | supported | unknown | supported | supported |
+| `headers` | supported | supported | supported | unknown | supported | supported |
+| `headers_list` | supported | supported | supported | unknown | supported | supported |
+| `temporality_preference` | supported | supported | supported | unknown | supported | supported |
+| `timeout` | supported | supported | supported | unknown | supported | supported |
+| `tls` | supported | supported | supported | unknown | ignored | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `compression` | supported | supported | supported | unknown | supported | unknown |
 | `default_histogram_aggregation` | supported | not_implemented | supported | unknown | not_implemented | unknown |
 | `encoding` | supported | not_implemented | not_implemented | unknown | supported | unknown |
@@ -2899,6 +3191,7 @@ encoding: protobuf
 | `timeout` | supported | supported | supported | supported | supported |
 | `tls` | supported | supported | supported | supported | ignored |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -3027,6 +3320,15 @@ default_histogram_aggregation: base2_exponential_bucket_histogram
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `local_parent_not_sampled` | supported | supported | supported | unknown | supported | supported |
+| `local_parent_sampled` | supported | supported | supported | unknown | supported | supported |
+| `remote_parent_not_sampled` | supported | supported | supported | unknown | supported | supported |
+| `remote_parent_sampled` | supported | supported | supported | unknown | supported | supported |
+| `root` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `local_parent_not_sampled` | supported | supported | supported | unknown | supported | unknown |
 | `local_parent_sampled` | supported | supported | supported | unknown | supported | unknown |
 | `remote_parent_not_sampled` | supported | supported | supported | unknown | supported | unknown |
@@ -3041,6 +3343,7 @@ default_histogram_aggregation: base2_exponential_bucket_histogram
 | `remote_parent_sampled` | supported | supported | supported | supported | supported |
 | `root` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -3105,6 +3408,16 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `cardinality_limits` | supported | not_implemented | supported | unknown | supported | supported |
+| `exporter` | supported | supported | supported | unknown | supported | supported |
+| `interval` | supported | supported | supported | unknown | not_implemented | supported |
+| `producers` | supported | not_implemented | not_implemented | unknown | not_implemented | supported |
+| `timeout` | supported | supported | supported | unknown | supported | supported |
+| `max_export_batch_size/development` | not_implemented | not_implemented | not_implemented | not_implemented | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `cardinality_limits` | supported | not_implemented | supported | unknown | supported | unknown |
 | `exporter` | supported | supported | supported | unknown | supported | unknown |
 | `interval` | supported | supported | supported | unknown | not_implemented | unknown |
@@ -3121,6 +3434,7 @@ No snippets.
 | `timeout` | supported | supported | supported | supported | supported |
 | `max_export_batch_size/development` | not_implemented | not_implemented | not_implemented | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -3202,6 +3516,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `composite` | supported | supported | supported | unknown | supported | supported |
+| `composite_list` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `composite` | supported | supported | supported | unknown | supported | unknown |
 | `composite_list` | supported | supported | supported | unknown | supported | unknown |
 =======
@@ -3210,6 +3530,7 @@ No snippets.
 | `composite` | supported | supported | supported | supported | supported |
 | `composite_list` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -3278,12 +3599,18 @@ composite_list: "xray"
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `prometheus/development` | supported | unknown | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `prometheus/development` | supported | unknown | supported | unknown | not_implemented | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `prometheus/development` | supported | unknown | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -3335,6 +3662,13 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `cardinality_limits` | supported | unknown | supported | unknown | not_implemented | supported |
+| `exporter` | supported | unknown | supported | unknown | not_implemented | supported |
+| `producers` | supported | unknown | not_implemented | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `cardinality_limits` | supported | unknown | supported | unknown | not_implemented | unknown |
 | `exporter` | supported | unknown | supported | unknown | not_implemented | unknown |
 | `producers` | supported | unknown | not_implemented | unknown | not_implemented | unknown |
@@ -3345,6 +3679,7 @@ No snippets.
 | `exporter` | supported | unknown | supported | not_implemented | not_implemented |
 | `producers` | supported | unknown | not_implemented | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -3406,6 +3741,14 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `console` | supported | unknown | supported | unknown | supported | supported |
+| `otlp_grpc` | supported | unknown | supported | unknown | supported | supported |
+| `otlp_http` | supported | unknown | supported | unknown | supported | supported |
+| `otlp_file/development` | supported | unknown | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `console` | supported | unknown | supported | unknown | supported | unknown |
 | `otlp_grpc` | supported | unknown | supported | unknown | supported | unknown |
 | `otlp_http` | supported | unknown | supported | unknown | supported | unknown |
@@ -3418,6 +3761,7 @@ No snippets.
 | `otlp_http` | supported | unknown | supported | supported | supported |
 | `otlp_file/development` | supported | unknown | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -3509,6 +3853,14 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `attributes` | supported | unknown | supported | unknown | supported | supported |
+| `attributes_list` | supported | unknown | supported | unknown | supported | supported |
+| `schema_url` | supported | unknown | supported | unknown | supported | supported |
+| `detection/development` | supported | unknown | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `attributes` | supported | unknown | supported | unknown | supported | unknown |
 | `attributes_list` | supported | unknown | supported | unknown | supported | unknown |
 | `schema_url` | supported | unknown | supported | unknown | supported | unknown |
@@ -3521,6 +3873,7 @@ No snippets.
 | `schema_url` | supported | unknown | supported | supported | supported |
 | `detection/development` | supported | unknown | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -3639,6 +3992,17 @@ schema_url: https://opentelemetry.io/schemas/1.16.0
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `always_off` | supported | supported | supported | unknown | supported | supported |
+| `always_on` | supported | supported | supported | unknown | supported | supported |
+| `parent_based` | supported | supported | supported | unknown | supported | supported |
+| `trace_id_ratio_based` | supported | supported | supported | unknown | supported | supported |
+| `composite/development` | supported | not_implemented | supported | unknown | not_implemented | supported |
+| `jaeger_remote/development` | supported | not_implemented | supported | unknown | not_implemented | supported |
+| `probability/development` | supported | not_implemented | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `always_off` | supported | supported | supported | unknown | supported | unknown |
 | `always_on` | supported | supported | supported | unknown | supported | unknown |
 | `parent_based` | supported | supported | supported | unknown | supported | unknown |
@@ -3657,6 +4021,7 @@ schema_url: https://opentelemetry.io/schemas/1.16.0
 | `jaeger_remote/development` | supported | not_implemented | supported | supported | not_implemented |
 | `probability/development` | supported | not_implemented | supported | supported | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -3875,6 +4240,34 @@ This is a enum type.
 <<<<<<< HEAD
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `debug` | supported | unknown | supported | unknown | supported | supported |
+| `debug2` | supported | unknown | supported | unknown | supported | supported |
+| `debug3` | supported | unknown | supported | unknown | supported | supported |
+| `debug4` | supported | unknown | supported | unknown | supported | supported |
+| `error` | supported | unknown | supported | unknown | supported | supported |
+| `error2` | supported | unknown | supported | unknown | supported | supported |
+| `error3` | supported | unknown | supported | unknown | supported | supported |
+| `error4` | supported | unknown | supported | unknown | supported | supported |
+| `fatal` | supported | unknown | supported | unknown | supported | supported |
+| `fatal2` | supported | unknown | supported | unknown | supported | supported |
+| `fatal3` | supported | unknown | supported | unknown | supported | supported |
+| `fatal4` | supported | unknown | supported | unknown | supported | supported |
+| `info` | supported | unknown | supported | unknown | supported | supported |
+| `info2` | supported | unknown | supported | unknown | supported | supported |
+| `info3` | supported | unknown | supported | unknown | supported | supported |
+| `info4` | supported | unknown | supported | unknown | supported | supported |
+| `trace` | supported | unknown | supported | unknown | supported | supported |
+| `trace2` | supported | unknown | supported | unknown | supported | supported |
+| `trace3` | supported | unknown | supported | unknown | supported | supported |
+| `trace4` | supported | unknown | supported | unknown | supported | supported |
+| `warn` | supported | unknown | supported | unknown | supported | supported |
+| `warn2` | supported | unknown | supported | unknown | supported | supported |
+| `warn3` | supported | unknown | supported | unknown | supported | supported |
+| `warn4` | supported | unknown | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `debug` | supported | unknown | supported | unknown | supported | unknown |
 | `debug2` | supported | unknown | supported | unknown | supported | unknown |
 | `debug3` | supported | unknown | supported | unknown | supported | unknown |
@@ -3927,6 +4320,7 @@ This is a enum type.
 | `warn3` | supported | unknown | supported | supported | supported |
 | `warn4` | supported | unknown | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 No constraints.
@@ -3988,12 +4382,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `exporter` | supported | unknown | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `exporter` | supported | unknown | supported | unknown | supported | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `exporter` | supported | unknown | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -4038,12 +4438,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `exporter` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `exporter` | supported | supported | supported | unknown | supported | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `exporter` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -4093,6 +4499,14 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `console` | supported | supported | supported | unknown | supported | supported |
+| `otlp_grpc` | supported | supported | supported | unknown | supported | supported |
+| `otlp_http` | supported | supported | supported | unknown | supported | supported |
+| `otlp_file/development` | supported | not_implemented | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `console` | supported | supported | supported | unknown | supported | unknown |
 | `otlp_grpc` | supported | supported | supported | unknown | supported | unknown |
 | `otlp_http` | supported | supported | supported | unknown | supported | unknown |
@@ -4105,6 +4519,7 @@ No snippets.
 | `otlp_http` | supported | supported | supported | supported | supported |
 | `otlp_file/development` | supported | not_implemented | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -4173,6 +4588,15 @@ This is a enum type.
 <<<<<<< HEAD
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `client` | not_implemented | unknown | supported | unknown | not_implemented | supported |
+| `consumer` | not_implemented | unknown | supported | unknown | not_implemented | supported |
+| `internal` | not_implemented | unknown | supported | unknown | not_implemented | supported |
+| `producer` | not_implemented | unknown | supported | unknown | not_implemented | supported |
+| `server` | not_implemented | unknown | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `client` | not_implemented | unknown | supported | unknown | not_implemented | unknown |
 | `consumer` | not_implemented | unknown | supported | unknown | not_implemented | unknown |
 | `internal` | not_implemented | unknown | supported | unknown | not_implemented | unknown |
@@ -4187,6 +4611,7 @@ This is a enum type.
 | `producer` | not_implemented | unknown | supported | supported | not_implemented |
 | `server` | not_implemented | unknown | supported | supported | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 No constraints.
@@ -4233,6 +4658,16 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `attribute_count_limit` | supported | unknown | supported | unknown | supported | supported |
+| `attribute_value_length_limit` | supported | unknown | supported | unknown | supported | supported |
+| `event_attribute_count_limit` | supported | unknown | supported | unknown | supported | supported |
+| `event_count_limit` | supported | unknown | supported | unknown | supported | supported |
+| `link_attribute_count_limit` | supported | unknown | supported | unknown | supported | supported |
+| `link_count_limit` | supported | unknown | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `attribute_count_limit` | supported | unknown | supported | unknown | supported | unknown |
 | `attribute_value_length_limit` | supported | unknown | supported | unknown | supported | unknown |
 | `event_attribute_count_limit` | supported | unknown | supported | unknown | supported | unknown |
@@ -4249,6 +4684,7 @@ No snippets.
 | `link_attribute_count_limit` | supported | unknown | supported | supported | supported |
 | `link_count_limit` | supported | unknown | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -4351,6 +4787,12 @@ link_count_limit: 128
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `batch` | supported | supported | supported | unknown | supported | supported |
+| `simple` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `batch` | supported | supported | supported | unknown | supported | unknown |
 | `simple` | supported | supported | supported | unknown | supported | unknown |
 =======
@@ -4359,6 +4801,7 @@ link_count_limit: 128
 | `batch` | supported | supported | supported | supported | supported |
 | `simple` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -4444,6 +4887,14 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `b3` | supported | supported | supported | unknown | supported | supported |
+| `b3multi` | supported | supported | supported | unknown | supported | supported |
+| `baggage` | supported | supported | supported | unknown | supported | supported |
+| `tracecontext` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `b3` | supported | supported | supported | unknown | supported | unknown |
 | `b3multi` | supported | supported | supported | unknown | supported | unknown |
 | `baggage` | supported | supported | supported | unknown | supported | unknown |
@@ -4456,6 +4907,7 @@ No snippets.
 | `baggage` | supported | supported | supported | supported | supported |
 | `tracecontext` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -4544,12 +4996,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `ratio` | supported | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `ratio` | supported | supported | supported | unknown | supported | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `ratio` | supported | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -4602,6 +5060,15 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `id_generator` | supported | unknown | supported | unknown | supported | supported |
+| `limits` | supported | unknown | supported | unknown | supported | supported |
+| `processors` | supported | unknown | supported | unknown | supported | supported |
+| `sampler` | supported | unknown | supported | unknown | supported | supported |
+| `tracer_configurator/development` | supported | unknown | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `id_generator` | supported | unknown | supported | unknown | supported | unknown |
 | `limits` | supported | unknown | supported | unknown | supported | unknown |
 | `processors` | supported | unknown | supported | unknown | supported | unknown |
@@ -4616,6 +5083,7 @@ No snippets.
 | `sampler` | supported | unknown | supported | supported | supported |
 | `tracer_configurator/development` | supported | unknown | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -4681,6 +5149,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `selector` | supported | unknown | supported | unknown | supported | supported |
+| `stream` | supported | unknown | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `selector` | supported | unknown | supported | unknown | supported | unknown |
 | `stream` | supported | unknown | supported | unknown | supported | unknown |
 =======
@@ -4689,6 +5163,7 @@ No snippets.
 | `selector` | supported | unknown | supported | supported | supported |
 | `stream` | supported | unknown | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -4805,6 +5280,16 @@ stream:
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `instrument_name` | supported | unknown | supported | unknown | supported | supported |
+| `instrument_type` | supported | unknown | supported | unknown | supported | supported |
+| `meter_name` | supported | unknown | supported | unknown | supported | supported |
+| `meter_schema_url` | supported | unknown | supported | unknown | supported | supported |
+| `meter_version` | supported | unknown | supported | unknown | supported | supported |
+| `unit` | supported | unknown | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `instrument_name` | supported | unknown | supported | unknown | supported | unknown |
 | `instrument_type` | supported | unknown | supported | unknown | supported | unknown |
 | `meter_name` | supported | unknown | supported | unknown | supported | unknown |
@@ -4821,6 +5306,7 @@ stream:
 | `meter_version` | supported | unknown | supported | supported | supported |
 | `unit` | supported | unknown | supported | supported | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -4900,6 +5386,15 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `aggregation` | supported | unknown | supported | unknown | ignored | supported |
+| `aggregation_cardinality_limit` | supported | unknown | supported | unknown | not_implemented | supported |
+| `attribute_keys` | supported | unknown | supported | unknown | supported | supported |
+| `description` | supported | unknown | supported | unknown | supported | supported |
+| `name` | supported | unknown | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `aggregation` | supported | unknown | supported | unknown | ignored | unknown |
 | `aggregation_cardinality_limit` | supported | unknown | supported | unknown | not_implemented | unknown |
 | `attribute_keys` | supported | unknown | supported | unknown | supported | unknown |
@@ -4914,6 +5409,7 @@ No snippets.
 | `description` | supported | unknown | supported | supported | supported |
 | `name` | supported | unknown | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -4985,12 +5481,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `semconv` | unknown | not_implemented | unknown | unknown | unknown | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `semconv` | unknown | not_implemented | unknown | unknown | unknown | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `semconv` | unknown | not_implemented | unknown | not_implemented | unknown |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5094,12 +5596,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `root` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `root` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `root` | ignored | not_implemented | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5149,12 +5657,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `ratio` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `ratio` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `ratio` | ignored | not_implemented | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5206,12 +5720,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `rules` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `rules` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `rules` | ignored | not_implemented | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5266,6 +5786,15 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `attribute_patterns` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+| `attribute_values` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+| `parent` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+| `sampler` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+| `span_kinds` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `attribute_patterns` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 | `attribute_values` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 | `parent` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
@@ -5280,6 +5809,7 @@ No snippets.
 | `sampler` | ignored | not_implemented | supported | not_implemented | not_implemented |
 | `span_kinds` | ignored | not_implemented | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5354,6 +5884,13 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `excluded` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+| `included` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+| `key` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `excluded` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 | `included` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 | `key` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
@@ -5364,6 +5901,7 @@ No snippets.
 | `included` | ignored | not_implemented | supported | not_implemented | not_implemented |
 | `key` | ignored | not_implemented | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5428,6 +5966,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `key` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+| `values` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `key` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 | `values` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 =======
@@ -5436,6 +5980,7 @@ No snippets.
 | `key` | ignored | not_implemented | supported | not_implemented | not_implemented |
 | `values` | ignored | not_implemented | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5496,6 +6041,15 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `always_off` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+| `always_on` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+| `parent_threshold` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+| `probability` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+| `rule_based` | ignored | not_implemented | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `always_off` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 | `always_on` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 | `parent_threshold` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
@@ -5510,6 +6064,7 @@ No snippets.
 | `probability` | ignored | not_implemented | supported | not_implemented | not_implemented |
 | `rule_based` | ignored | not_implemented | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5610,12 +6165,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `semconv` | unknown | not_implemented | unknown | unknown | unknown | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `semconv` | unknown | not_implemented | unknown | unknown | unknown | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `semconv` | unknown | not_implemented | unknown | not_implemented | unknown |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5689,12 +6250,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `semconv` | unknown | not_implemented | unknown | unknown | unknown | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `semconv` | unknown | not_implemented | unknown | unknown | unknown | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `semconv` | unknown | not_implemented | unknown | not_implemented | unknown |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5745,6 +6312,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `code` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `db` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `gen_ai` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `http` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `messaging` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `rpc` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `sanitization` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `stability_opt_in_list` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `code` | not_applicable | not_implemented | supported | unknown | supported | unknown |
 | `db` | not_applicable | not_implemented | supported | unknown | supported | unknown |
 | `gen_ai` | not_applicable | not_implemented | supported | unknown | supported | unknown |
@@ -5765,6 +6344,7 @@ No snippets.
 | `sanitization` | not_applicable | not_implemented | supported | not_implemented | supported |
 | `stability_opt_in_list` | not_applicable | not_implemented | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5893,6 +6473,13 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `known_methods` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `request_captured_headers` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `response_captured_headers` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `known_methods` | not_applicable | not_implemented | supported | unknown | supported | unknown |
 | `request_captured_headers` | not_applicable | not_implemented | supported | unknown | supported | unknown |
 | `response_captured_headers` | not_applicable | not_implemented | supported | unknown | supported | unknown |
@@ -5903,6 +6490,7 @@ No snippets.
 | `request_captured_headers` | not_applicable | not_implemented | supported | not_implemented | supported |
 | `response_captured_headers` | not_applicable | not_implemented | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -5968,6 +6556,13 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `client` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `semconv` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `server` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `client` | not_applicable | not_implemented | supported | unknown | supported | unknown |
 | `semconv` | not_applicable | not_implemented | supported | unknown | supported | unknown |
 | `server` | not_applicable | not_implemented | supported | unknown | supported | unknown |
@@ -5978,6 +6573,7 @@ No snippets.
 | `semconv` | not_applicable | not_implemented | supported | not_implemented | supported |
 | `server` | not_applicable | not_implemented | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -6031,6 +6627,13 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `known_methods` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `request_captured_headers` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `response_captured_headers` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `known_methods` | not_applicable | not_implemented | supported | unknown | supported | unknown |
 | `request_captured_headers` | not_applicable | not_implemented | supported | unknown | supported | unknown |
 | `response_captured_headers` | not_applicable | not_implemented | supported | unknown | supported | unknown |
@@ -6041,6 +6644,7 @@ No snippets.
 | `request_captured_headers` | not_applicable | not_implemented | supported | not_implemented | supported |
 | `response_captured_headers` | not_applicable | not_implemented | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -6115,6 +6719,22 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `cpp` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | ignored |
+| `dotnet` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | ignored |
+| `erlang` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | ignored |
+| `general` | not_applicable | not_implemented | supported | unknown | supported | ignored |
+| `go` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | ignored |
+| `java` | not_applicable | not_implemented | supported | unknown | not_applicable | ignored |
+| `js` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | ignored |
+| `php` | not_applicable | not_implemented | not_applicable | unknown | supported | ignored |
+| `python` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | ignored |
+| `ruby` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | ignored |
+| `rust` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | ignored |
+| `swift` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `cpp` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | unknown |
 | `dotnet` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | unknown |
 | `erlang` | not_applicable | not_implemented | not_applicable | unknown | not_applicable | unknown |
@@ -6143,6 +6763,7 @@ No snippets.
 | `rust` | not_applicable | not_implemented | not_applicable | not_implemented | not_applicable |
 | `swift` | not_applicable | not_implemented | not_applicable | not_implemented | not_applicable |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -6337,6 +6958,13 @@ swift:
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `endpoint` | not_implemented | not_implemented | supported | unknown | not_implemented | ignored |
+| `initial_sampler` | not_implemented | not_implemented | supported | unknown | not_implemented | ignored |
+| `interval` | not_implemented | not_implemented | supported | unknown | not_implemented | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `endpoint` | not_implemented | not_implemented | supported | unknown | not_implemented | unknown |
 | `initial_sampler` | not_implemented | not_implemented | supported | unknown | not_implemented | unknown |
 | `interval` | not_implemented | not_implemented | supported | unknown | not_implemented | unknown |
@@ -6347,6 +6975,7 @@ swift:
 | `initial_sampler` | not_implemented | not_implemented | supported | not_implemented | not_implemented |
 | `interval` | not_implemented | not_implemented | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -6453,6 +7082,13 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `enabled` | not_implemented | unknown | supported | unknown | supported | ignored |
+| `minimum_severity` | not_implemented | unknown | supported | unknown | not_implemented | ignored |
+| `trace_based` | not_implemented | unknown | supported | unknown | not_implemented | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `enabled` | not_implemented | unknown | supported | unknown | supported | unknown |
 | `minimum_severity` | not_implemented | unknown | supported | unknown | not_implemented | unknown |
 | `trace_based` | not_implemented | unknown | supported | unknown | not_implemented | unknown |
@@ -6463,6 +7099,7 @@ No snippets.
 | `minimum_severity` | not_implemented | unknown | supported | not_implemented | not_implemented |
 | `trace_based` | not_implemented | unknown | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -6524,6 +7161,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `default_config` | supported | not_implemented | supported | unknown | supported | ignored |
+| `loggers` | supported | not_implemented | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `default_config` | supported | not_implemented | supported | unknown | supported | unknown |
 | `loggers` | supported | not_implemented | supported | unknown | supported | unknown |
 =======
@@ -6532,6 +7175,7 @@ No snippets.
 | `default_config` | supported | not_implemented | supported | not_implemented | supported |
 | `loggers` | supported | not_implemented | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -6602,6 +7246,12 @@ loggers:
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `config` | supported | unknown | supported | unknown | supported | ignored |
+| `name` | supported | unknown | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `config` | supported | unknown | supported | unknown | supported | unknown |
 | `name` | supported | unknown | supported | unknown | supported | unknown |
 =======
@@ -6610,6 +7260,7 @@ loggers:
 | `config` | supported | unknown | supported | not_implemented | supported |
 | `name` | supported | unknown | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -6666,12 +7317,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `semconv` | unknown | not_implemented | unknown | unknown | unknown | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `semconv` | unknown | not_implemented | unknown | unknown | unknown | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `semconv` | unknown | not_implemented | unknown | not_implemented | unknown |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -6715,12 +7372,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `enabled` | supported | unknown | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `enabled` | supported | unknown | supported | unknown | supported | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `enabled` | supported | unknown | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -6770,6 +7433,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `default_config` | supported | not_implemented | supported | unknown | supported | ignored |
+| `meters` | supported | not_implemented | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `default_config` | supported | not_implemented | supported | unknown | supported | unknown |
 | `meters` | supported | not_implemented | supported | unknown | supported | unknown |
 =======
@@ -6778,6 +7447,7 @@ No snippets.
 | `default_config` | supported | not_implemented | supported | not_implemented | supported |
 | `meters` | supported | not_implemented | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -6846,6 +7516,12 @@ meters:
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `config` | supported | unknown | supported | unknown | supported | ignored |
+| `name` | supported | unknown | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `config` | supported | unknown | supported | unknown | supported | unknown |
 | `name` | supported | unknown | supported | unknown | supported | unknown |
 =======
@@ -6854,6 +7530,7 @@ meters:
 | `config` | supported | unknown | supported | not_implemented | supported |
 | `name` | supported | unknown | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -6910,12 +7587,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `output_stream` | supported | not_implemented | not_implemented | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `output_stream` | supported | not_implemented | not_implemented | unknown | supported | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `output_stream` | supported | not_implemented | not_implemented | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7004,6 +7687,13 @@ output_stream: stdout
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `default_histogram_aggregation` | supported | not_implemented | supported | unknown | not_implemented | ignored |
+| `output_stream` | supported | not_implemented | not_implemented | unknown | supported | ignored |
+| `temporality_preference` | supported | not_implemented | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `default_histogram_aggregation` | supported | not_implemented | supported | unknown | not_implemented | unknown |
 | `output_stream` | supported | not_implemented | not_implemented | unknown | supported | unknown |
 | `temporality_preference` | supported | not_implemented | supported | unknown | supported | unknown |
@@ -7014,6 +7704,7 @@ output_stream: stdout
 | `output_stream` | supported | not_implemented | not_implemented | not_implemented | supported |
 | `temporality_preference` | supported | not_implemented | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7093,12 +7784,18 @@ default_histogram_aggregation: explicit_bucket_histogram
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `ratio` | ignored | not_implemented | supported | unknown | not_implemented | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `ratio` | ignored | not_implemented | supported | unknown | not_implemented | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `ratio` | ignored | not_implemented | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7185,6 +7882,16 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `host` | supported | supported | supported | unknown | not_implemented | ignored |
+| `port` | supported | supported | supported | unknown | not_implemented | ignored |
+| `resource_constant_labels` | supported | supported | supported | unknown | not_implemented | ignored |
+| `scope_info_enabled` | supported | supported | supported | unknown | not_implemented | ignored |
+| `translation_strategy` | supported | supported | not_implemented | unknown | not_implemented | ignored |
+| `target_info_enabled/development` | supported | supported | supported | unknown | not_implemented | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `host` | supported | supported | supported | unknown | not_implemented | unknown |
 | `port` | supported | supported | supported | unknown | not_implemented | unknown |
 | `resource_constant_labels` | supported | supported | supported | unknown | not_implemented | unknown |
@@ -7201,6 +7908,7 @@ No snippets.
 | `translation_strategy` | supported | supported | not_implemented | not_implemented | not_implemented |
 | `target_info_enabled/development` | supported | supported | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7302,6 +8010,14 @@ This is a enum type.
 <<<<<<< HEAD
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `no_translation/development` | not_implemented | supported | not_implemented | unknown | not_implemented | ignored |
+| `no_utf8_escaping_with_suffixes/development` | not_implemented | supported | not_implemented | unknown | not_implemented | ignored |
+| `underscore_escaping_with_suffixes` | supported | supported | not_implemented | unknown | not_implemented | ignored |
+| `underscore_escaping_without_suffixes/development` | supported | supported | not_implemented | unknown | not_implemented | ignored |
+=======
+<<<<<<< HEAD
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `no_translation/development` | not_implemented | supported | not_implemented | unknown | not_implemented | unknown |
 | `no_utf8_escaping_with_suffixes/development` | not_implemented | supported | not_implemented | unknown | not_implemented | unknown |
 | `underscore_escaping_with_suffixes` | supported | supported | not_implemented | unknown | not_implemented | unknown |
@@ -7314,6 +8030,7 @@ This is a enum type.
 | `underscore_escaping_with_suffixes` | supported | supported | not_implemented | not_implemented | not_implemented |
 | `underscore_escaping_without_suffixes/development` | supported | supported | not_implemented | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 No constraints.
@@ -7358,6 +8075,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `attributes` | not_implemented | supported | supported | unknown | supported | supported |
+| `detectors` | not_implemented | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `attributes` | not_implemented | supported | supported | unknown | supported | unknown |
 | `detectors` | not_implemented | supported | supported | unknown | supported | unknown |
 =======
@@ -7366,6 +8089,7 @@ No snippets.
 | `attributes` | not_implemented | supported | supported | supported | supported |
 | `detectors` | not_implemented | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7422,6 +8146,14 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `container` | not_implemented | supported | supported | unknown | ignored | supported |
+| `host` | not_implemented | supported | supported | unknown | supported | supported |
+| `process` | not_implemented | supported | supported | unknown | supported | supported |
+| `service` | not_implemented | supported | supported | unknown | supported | supported |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `container` | not_implemented | supported | supported | unknown | ignored | unknown |
 | `host` | not_implemented | supported | supported | unknown | supported | unknown |
 | `process` | not_implemented | supported | supported | unknown | supported | unknown |
@@ -7434,6 +8166,7 @@ No snippets.
 | `process` | not_implemented | supported | supported | supported | supported |
 | `service` | not_implemented | supported | supported | supported | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7498,12 +8231,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `semconv` | unknown | not_implemented | unknown | unknown | unknown | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `semconv` | unknown | not_implemented | unknown | unknown | unknown | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `semconv` | unknown | not_implemented | unknown | not_implemented | unknown |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7547,12 +8286,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `url` | unknown | unknown | unknown | unknown | unknown | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `url` | unknown | unknown | unknown | unknown | unknown | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `url` | unknown | unknown | unknown | not_implemented | unknown |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7598,6 +8343,13 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `dual_emit` | unknown | unknown | unknown | unknown | unknown | ignored |
+| `experimental` | unknown | unknown | unknown | unknown | unknown | ignored |
+| `version` | unknown | unknown | unknown | unknown | unknown | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `dual_emit` | unknown | unknown | unknown | unknown | unknown | unknown |
 | `experimental` | unknown | unknown | unknown | unknown | unknown | unknown |
 | `version` | unknown | unknown | unknown | unknown | unknown | unknown |
@@ -7608,6 +8360,7 @@ No snippets.
 | `experimental` | unknown | unknown | unknown | not_implemented | unknown |
 | `version` | unknown | unknown | unknown | not_implemented | unknown |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7708,6 +8461,13 @@ This is a enum type.
 <<<<<<< HEAD
 | Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `local` | not_implemented | unknown | supported | unknown | not_implemented | supported |
+| `none` | not_implemented | unknown | supported | unknown | not_implemented | supported |
+| `remote` | not_implemented | unknown | supported | unknown | not_implemented | supported |
+=======
+<<<<<<< HEAD
+| Value | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `local` | not_implemented | unknown | supported | unknown | not_implemented | unknown |
 | `none` | not_implemented | unknown | supported | unknown | not_implemented | unknown |
 | `remote` | not_implemented | unknown | supported | unknown | not_implemented | unknown |
@@ -7718,6 +8478,7 @@ This is a enum type.
 | `none` | not_implemented | unknown | supported | not_implemented | not_implemented |
 | `remote` | not_implemented | unknown | supported | not_implemented | not_implemented |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 No constraints.
@@ -7760,12 +8521,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `enabled` | supported | unknown | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `enabled` | supported | unknown | supported | unknown | supported | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `enabled` | supported | unknown | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7815,6 +8582,12 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `default_config` | supported | not_implemented | supported | unknown | supported | ignored |
+| `tracers` | supported | not_implemented | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `default_config` | supported | not_implemented | supported | unknown | supported | unknown |
 | `tracers` | supported | not_implemented | supported | unknown | supported | unknown |
 =======
@@ -7823,6 +8596,7 @@ No snippets.
 | `default_config` | supported | not_implemented | supported | not_implemented | supported |
 | `tracers` | supported | not_implemented | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7891,6 +8665,12 @@ tracers:
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `config` | supported | unknown | supported | unknown | supported | ignored |
+| `name` | supported | unknown | supported | unknown | supported | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `config` | supported | unknown | supported | unknown | supported | unknown |
 | `name` | supported | unknown | supported | unknown | supported | unknown |
 =======
@@ -7899,6 +8679,7 @@ tracers:
 | `config` | supported | unknown | supported | not_implemented | supported |
 | `name` | supported | unknown | supported | not_implemented | supported |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
@@ -7955,12 +8736,18 @@ No snippets.
 <<<<<<< HEAD
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
 |---|---|---|---|---|---|---|
+| `sensitive_query_parameters` | unknown | unknown | unknown | unknown | unknown | ignored |
+=======
+<<<<<<< HEAD
+| Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) | [python](language-support-status.md#python) |
+|---|---|---|---|---|---|---|
 | `sensitive_query_parameters` | unknown | unknown | unknown | unknown | unknown | unknown |
 =======
 | Property | [cpp](language-support-status.md#cpp) | [go](language-support-status.md#go) | [java](language-support-status.md#java) | [js](language-support-status.md#js) | [php](language-support-status.md#php) |
 |---|---|---|---|---|---|
 | `sensitive_query_parameters` | unknown | unknown | unknown | not_implemented | unknown |
 >>>>>>> ed45488639225ee3a5ed1cb5928d5ec9263b6c2f
+>>>>>>> 38a4b880b1d3437e4e800c4a65b611c5a9073810
 </details>
 
 Constraints: 
