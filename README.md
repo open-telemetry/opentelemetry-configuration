@@ -9,7 +9,7 @@ JSON schema was chosen in part because of the large [ecosystem of tools](https:/
 ## Project organization
 
 * [opentelemetry_configuration.json](./opentelemetry_configuration.json): the complete compiled JSON schema
-* [schema-docs.md](schema-docs.md): generated documentation for the schema, optimized for human consumption
+* a human-friendly schema explorer (types, properties, and constraints) is rendered at [opentelemetry.io/docs/specs/otel-config/types](https://opentelemetry.io/docs/specs/otel-config/types/)
 * [language-support-status.md](language-support-status.md): generated documentation for language implementation status
 * [/schema](schema): the source schema and language implementation status tracking files (see [CONTRIBUTING.md](CONTRIBUTING.md#json-schema-source-and-output) for more details)
 * [/examples](examples): sample configuration files (see [starter templates](#starter-templates) for more details)
