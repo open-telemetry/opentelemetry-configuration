@@ -10,11 +10,12 @@ import {
 import {readSourceTypesByType} from "./source-schema.js";
 
 export const KNOWN_LANGUAGES = [
-    'cpp', 
-    'go', 
+    'cpp',
+    'go',
     'java',
     'js',
     'php',
+    'python',
 ];
 
 const IMPLEMENTATION_STATUS_UNKNOWN = 'unknown';
