@@ -1,15 +1,12 @@
 import {KNOWN_LANGUAGES, readAndFixLanguageImplementations} from "./language-implementations.js";
 import fs from "node:fs";
-import {
-    isExperimentalProperty,
-    isExperimentalType,
-    markdownDocPath,
-    languageSupportStatusPath,
-    rootTypeName,
-    schemaPath
-} from "./util.js";
+import {languageSupportStatusPath} from "./util.js";
 import {readSourceTypesByType} from "./source-schema.js";
-import {readSnippets} from "./snippets.js";
+
+// The human-friendly schema explorer that used to be generated into schema-docs.md
+// now lives at https://opentelemetry.io/docs/specs/otel-config/types/. This script
+// only generates language-support-status.md, which the website does not cover.
+const TYPES_PAGE_URL = "https://opentelemetry.io/docs/specs/otel-config/types/";
 
 const sourceTypesByType = readSourceTypesByType();
 const sourceTypes = Object.values(sourceTypesByType);
@@ -19,260 +16,10 @@ if (messages.length > 0) {
     throw new Error("Language implementations have problems. Please run fix-language-implementations and try again.");
 }
 
-const outputSchema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
-
-const snippetsByType = {};
-readSnippets().forEach(snippet => {
-    if (!(snippet.jsonSchemaType in snippetsByType)) {
-        snippetsByType[snippet.jsonSchemaType] = [];
-    }
-    snippetsByType[snippet.jsonSchemaType].push(snippet);
-});
-
-const output = [];
-
-addHeader('Overview', 'overview', 1);
-output.push(`
-This document is an auto-generated view of the declarative configuration JSON schema and meta schema meant for improved consumability by humans.
-
-* [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [${rootTypeName}](#${rootTypeName.toLowerCase()}) is the root type and is a good starting point.
-* [Experimental Types](#experimental-types) same as [Types](#types) but for experimental types subject to breaking changes.
-* [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
-
-See also [language support status](language-support-status.md) for all details about each language's support in a single place.
-
-`);
-
-const types = [];
-const experimentalTypes = [];
-sourceTypes.sort((a, b) => a.type.localeCompare(b.type));
-sourceTypes.forEach(sourceSchemaType => {
-    if (isExperimentalType(sourceSchemaType.type)) {
-        experimentalTypes.push(sourceSchemaType);
-    } else {
-        types.push(sourceSchemaType);
-    }
-});
-
-// Write types
-
-addHeader('Types', 'types', 1);
-types.forEach(writeType);
-
-addHeader('Experimental Types', 'experimental-types', 1);
-experimentalTypes.forEach(writeType);
-
-function writeType(sourceSchemaType) {
-    const type = sourceSchemaType.type;
-    const required = sourceSchemaType.schema['required'];
-
-    // Heading
-    addHeader(type, type.toLowerCase(), 2);
-
-    // Experimental type warning
-    if (isExperimentalType(type)) {
-        output.push('> [!WARNING]\n');
-        output.push('> This type is [experimental](VERSIONING.md#experimental-features).\n\n');
-    }
-
-    // SDK extension plugin
-    if (sourceSchemaType.schema.isSdkExtensionPlugin) {
-        output.push(`\`${type}\` is an [SDK extension plugin](#sdk-extension-plugins).\n\n`);
-    }
-
-    if (sourceSchemaType.isEnumType()) {
-        // Enum values
-        output.push("This is a enum type.\n\n");
-        output.push(`| Value | Description |\n`);
-        output.push(`|---|---|\n`);
-        sourceSchemaType.sortedEnumValues().forEach(enumValue => {
-            const description = sourceSchemaType.schema['enumDescriptions'][enumValue];
-            const formattedDescription = description.split("\n").join("<br>");
-            output.push(`| \`${enumValue}\` | ${formattedDescription} |\n`);
-        });
-        output.push('\n');
-    } else {
-        // Properties
-        const properties = sourceSchemaType.sortedProperties();
-        if (properties.length === 0) {
-            output.push("No properties.\n\n");
-        } else {
-            // Property type and description table
-            output.push(`| Property | Type | Required? | Default and Null Behavior | Constraints | Description |\n`);
-            output.push("|---|---|---|---|---|---|\n");
-            properties.forEach(sourceSchemaProperty => {
-                let formattedProperty = `\`${sourceSchemaProperty.property}\``
-                if (isExperimentalProperty(sourceSchemaProperty.property)) {
-                    formattedProperty += '<br>**WARNING:** This property is [experimental](VERSIONING.md#experimental-features).'
-                }
-                const formattedPropertyType = formatPropertyType(sourceSchemaProperty, sourceTypesByType);
-                const isRequired = required !== undefined && required.includes(sourceSchemaProperty.property);
-                const formattedDefaultAndNullBehavior = sourceSchemaProperty.formatDefaultAndNullBehavior();
-                let formattedConstraints = resolveAndFormatConstraints(sourceSchemaProperty.schema, '<br>');
-                if (formattedConstraints.length === 0) {
-                    formattedConstraints = 'No constraints.';
-                }
-                const formattedDescription = sourceSchemaProperty.schema.description.split("\n").join("<br>");
-
-                output.push(`| ${formattedProperty} | ${formattedPropertyType} | \`${isRequired}\` | ${formattedDefaultAndNullBehavior} | ${formattedConstraints} | ${formattedDescription} |\n`);
-            });
-            output.push('\n');
-        }
-    }
-
-    // Write language support status for type
-    if ((sourceSchemaType.isEnumType() && sourceSchemaType.enumValues.length > 0) || (!sourceSchemaType.isEnumType() && sourceSchemaType.properties.length > 0)) {
-        output.push(`<details>\n`);
-        output.push('<summary>Language support status</summary>\n\n');
-        const languageImplementationsByLanguage = {};
-        languageImplementations.forEach(languageImplementation => languageImplementationsByLanguage[languageImplementation.language] = languageImplementation);
-        const rowHeader = sourceSchemaType.isEnumType() ? 'Value' : 'Property';
-        output.push(`| ${rowHeader} |`);
-        KNOWN_LANGUAGES.forEach(language => {
-            output.push(` [${language}](language-support-status.md#${language}) |`);
-            if (!languageImplementationsByLanguage[language]) {
-                throw new Error(`Meta schema LanguageImplementation not found for language ${language}.`);
-            }
-        });
-        output.push('\n');
-        output.push('|---|');
-        KNOWN_LANGUAGES.forEach(language => output.push(`---|`));
-        output.push('\n');
-        if (sourceSchemaType.isEnumType()) {
-            sourceSchemaType.sortedEnumValues().forEach(enumValue => {
-                output.push(`| \`${enumValue}\` |`);
-                KNOWN_LANGUAGES.forEach(language => {
-                    const typeSupportStatus = languageImplementationsByLanguage[language].typeSupportStatuses.find(item => item.type === type);
-                    if (!typeSupportStatus) {
-                        throw new Error(`Meta schema LanguageImplementation for language ${language} missing type ${type}.`);
-                    }
-                    const enumValueOverride = typeSupportStatus.enumOverrides.find(enumOverride => enumOverride.enumValue === enumValue);
-                    const status = enumValueOverride ? enumValueOverride.status : typeSupportStatus.status;
-                    output.push(` ${status} |`);
-                });
-                output.push('\n');
-            });
-        } else {
-            sourceSchemaType.sortedProperties().forEach(property => {
-                output.push(`| \`${property.property}\` |`);
-                KNOWN_LANGUAGES.forEach(language => {
-                    const typeSupportStatus = languageImplementationsByLanguage[language].typeSupportStatuses.find(item => item.type === type);
-                    if (!typeSupportStatus) {
-                        throw new Error(`Meta schema LanguageImplementation for language ${language} missing type ${type}.`);
-                    }
-                    const propertyOverride = typeSupportStatus.propertyOverrides.find(propertyOverride => propertyOverride.property === property.property);
-                    const status = propertyOverride ? propertyOverride.status : typeSupportStatus.status;
-                    output.push(` ${status} |`);
-                });
-                output.push('\n');
-            });
-        }
-
-        output.push(`</details>\n\n`)
-    }
-
-    // Constraints
-    const formattedConstraints = resolveAndFormatConstraints(sourceSchemaType.schema, '\n');
-    if (formattedConstraints.length > 0) {
-        output.push('Constraints: \n\n');
-        output.push(formattedConstraints);
-        output.push('\n');
-    } else {
-        output.push('No constraints.\n\n');
-    }
-
-    // Usages
-    const usages = [];
-    Object.values(sourceTypesByType).forEach(otherSourceType => {
-       otherSourceType.properties.forEach(property => {
-           if (property.types.find(item => item === type)) {
-               usages.push([ otherSourceType, property ]);
-           }
-       });
-    });
-    if (usages.length > 0) {
-        output.push('Usages:\n\n');
-        usages.forEach(usage => output.push(`* [\`${usage[0].type}.${usage[1].property}\`](#${usage[0].type.toLowerCase()})\n`));
-        output.push('\n');
-    } else {
-        output.push('No usages.\n\n');
-    }
-
-    // Snippets
-    const snippetsForType = snippetsByType[type];
-    if (!snippetsForType) {
-        output.push("No snippets.\n\n");
-    } else {
-        output.push("Snippets:\n\n");
-        snippetsForType.forEach(snippet => {
-            output.push(`<details>\n`);
-            output.push(`<summary>${snippet.description}</summary>\n\n`);
-            output.push(`[Snippet Source File](./snippets/${snippet.file})\n`)
-            output.push(`\`\`\`yaml\n`);
-            output.push(snippet.rawSnippetContent);
-            if (!snippet.rawSnippetContent.endsWith('\n')) {
-                output.push('\n');
-            }
-            output.push(`\`\`\`\n`);
-            output.push('</details>\n\n');
-        });
-    }
-
-    // JSON schema collapsible section
-    output.push(`<details>\n`);
-    output.push(`<summary>JSON Schema</summary>\n\n`);
-    output.push(`[JSON Schema Source File](./schema/${sourceSchemaType.sourceFile})\n`);
-    const schemaSource = cleanSchema(getSchemaSource(sourceSchemaType));
-    output.push(`<pre>${JSON.stringify(schemaSource, null, 2)}</pre>\n`);
-    output.push(`</details>\n`);
-    output.push('\n');
-}
-
-function getSchemaSource(sourceSchemaType) {
-    if (sourceSchemaType.type === rootTypeName) {
-        return outputSchema;
-    }
-    const defs = outputSchema['$defs'];
-    if (!defs) {
-        throw new Error(`Output schema does not have $defs.`);
-    }
-    const def = defs[sourceSchemaType.type];
-    if (!def) {
-        throw new Error(`Output schema does not $defs entry for ${sourceSchemaType.type}.`);
-    }
-    return def;
-}
-
-function cleanSchema(schemaSource) {
-    const schemaCopy = JSON.parse(JSON.stringify(schemaSource));
-    delete schemaCopy['$defs'];
-    return schemaCopy;
-}
-
-// Write SDK extension plugins
-addHeader('SDK Extension Plugins', 'sdk-extension-plugins', 1);
-output.push(
-    `[SDK extension plugins](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#supported-sdk-plugin-components) are places where custom interface implementations can be referenced and configured.
-
-For example, you could write a custom \`SpanExporter\`, and indicate that it should be paired with a \`BatchSpanProcessor\`.
-
-Each of the following types support referencing custom interface implementations. Each type is an object type containing exactly one property whose value is type \`object\` or \`null\`. The property key refers to the name of the custom implementation, and must be the same as the \`name\` of a corresponding registered [ComponentProvider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#register-plugincomponentprovider). The value passed as configuration when the [ComponentProvider.create](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk.md#create) is called.
-
-SDK extension plugin types may have properties defined corresponding to built-in implementations of the interface. For example, the \`otlp_http\` property of \`SpanExporter\` defines the OTLP http/protobuf exporter.
-
-`);
-sourceTypes.filter(sourceSchemaType => sourceSchemaType.schema.isSdkExtensionPlugin)
-    .forEach(sourceSchemaType => {
-        output.push(`* [${sourceSchemaType.type}](#${sourceSchemaType.type})\n`)
-    });
-
-output.unshift('<!-- This file is generated using "make generate-markdown". Do not edit directly. -->\n\n')
-fs.writeFileSync(markdownDocPath, output.join(""));
-
-// Write language support status to a separate file
+// Write language support status
 const languageSupportOutput = [];
 addHeader('Language Support Status', 'language-support-status', 1, languageSupportOutput);
-languageSupportOutput.push(`This page provides comprehensive language implementation status for each type in the declarative configuration schema. For type definitions and descriptions, see [schema-docs.md](schema-docs.md).\n\n`);
+languageSupportOutput.push(`This page provides comprehensive language implementation status for each type in the declarative configuration schema. For type definitions and descriptions, see the [schema types reference](${TYPES_PAGE_URL}).\n\n`);
 KNOWN_LANGUAGES.forEach(language => languageSupportOutput.push(`* [${language}](#${language})\n`));
 languageSupportOutput.push(`\n`);
 
@@ -313,7 +60,7 @@ KNOWN_LANGUAGES.forEach(language => {
             });
         }
 
-        languageSupportOutput.push(`| [\`${typeSupportStatus.type}\`](schema-docs.md#${typeSupportStatus.type.toLowerCase()}) | ${typeSupportStatus.status} | ${formattedNotes} | ${supportStatusDetails.join('')} |\n`);
+        languageSupportOutput.push(`| \`${typeSupportStatus.type}\` | ${typeSupportStatus.status} | ${formattedNotes} | ${supportStatusDetails.join('')} |\n`);
     });
     languageSupportOutput.push(`\n\n`);
 });
@@ -322,84 +69,6 @@ languageSupportOutput.unshift('<!-- This file is generated using "make generate-
 fs.writeFileSync(languageSupportStatusPath, languageSupportOutput.join(""));
 
 // Helper functions
-function formatPropertyType(sourceProperty, sourceTypesByType) {
-    const output = [];
-    if (sourceProperty.isSeq) {
-        output.push('`array` of ');
-    }
-    const oneOf = sourceProperty.schema['oneOf'];
-    if (oneOf) {
-        if (oneOf.length > 1) {
-            output.push('one of:<br>');
-            oneOf.forEach(option => output.push(`* ${formatOneOfType(option)}<br>`));
-        } else {
-            output.push(formatOneOfType(oneOf[0]));
-        }
-        return output.join('');
-    }
-    let prefix = '';
-    let suffix = '';
-    if (sourceProperty.types.length > 1) {
-        output.push('one of:<br>');
-        prefix = '* ';
-        suffix = '<br>';
-    }
-    sourceProperty.types.forEach(type => {
-        let resolvedType = sourceTypesByType[type];
-        output.push(prefix);
-        output.push(resolvedType ? `[\`${resolvedType.type}\`](#${resolvedType.type.toLowerCase()})` : `\`${type}\``)
-        output.push(suffix);
-    });
-    return output.join('');
-}
-
-function formatOneOfType(option) {
-    const type = option['type'];
-    const items = option['items'];
-    if (type === 'array' && items) {
-        return `\`array\` of \`${items['type']}\``;
-    }
-    return `\`${type}\``;
-}
-
-function addHeader(title, id, level, targetOutput = output) {
+function addHeader(title, id, level, targetOutput) {
     targetOutput.push(`${'#'.repeat(level)} ${title} <a id="${id}"></a>\n\n`);
-}
-
-function resolveAndFormatConstraints(schema, linebreak) {
-    const constraints = [];
-    const constraintPropertyNames = [
-        'minLength',
-        'maxLength',
-        'pattern',
-        'format',
-        'multipleOf',
-        'minimum',
-        'exclusiveMinimum',
-        'maximum',
-        'exclusiveMaximum',
-        'patternProperties',
-        'additionalProperties',
-        'propertyNames',
-        'minProperties',
-        'maxProperties',
-        'required',
-        'contains',
-        'minContains',
-        'maxContains',
-        'uniqueItems',
-        'const',
-        'minItems',
-        'maxItems',
-        // skip enum because we have special formatting for enum types
-    ];
-
-    constraintPropertyNames.forEach(propertyName => {
-        const property = schema[propertyName];
-        if (property !== undefined && property !== null) {
-            constraints.push(`* \`${propertyName}\`: \`${JSON.stringify(property)}\`${linebreak}`);
-        }
-    });
-
-    return constraints.join('');
 }

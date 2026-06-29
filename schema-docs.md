@@ -1,14 +1,19 @@
-<!-- This file is generated using "make generate-markdown". Do not edit directly. -->
+# Schema documentation has moved
 
-# Overview <a id="overview"></a>
+The human-friendly schema explorer that used to be generated into this file now lives at:
 
+**<https://opentelemetry.io/docs/specs/otel-config/types/>**
 
-This document is an auto-generated view of the declarative configuration JSON schema and meta schema meant for improved consumability by humans.
+That page is a searchable reference for all types defined in the OpenTelemetry
+declarative configuration schema, including their properties, constraints, and JSON
+schema.
 
-* [Types](#types) contains descriptions of all types and properties, with convenient linking between type references. [OpenTelemetryConfiguration](#opentelemetryconfiguration) is the root type and is a good starting point.
-* [Experimental Types](#experimental-types) same as [Types](#types) but for experimental types subject to breaking changes.
-* [SDK Extension Plugins](#sdk-extension-plugins) lists all the SDK extension plugin points.
+This file is retained only to avoid breaking existing links.
 
+<<<<<<< HEAD
+For language implementation status, see
+[language-support-status.md](language-support-status.md).
+=======
 See also [language support status](language-support-status.md) for all details about each language's support in a single place.
 
 # Types <a id="types"></a>
@@ -7222,3 +7227,4 @@ SDK extension plugin types may have properties defined corresponding to built-in
 * [SpanExporter](#SpanExporter)
 * [SpanProcessor](#SpanProcessor)
 * [TextMapPropagator](#TextMapPropagator)
+>>>>>>> 4da9d576ed6f2327cf4ba4d2af2fec6c5b0e9d00
