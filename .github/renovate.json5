@@ -7,6 +7,11 @@
   ],
   "packageRules": [
     {
+      "groupName": "github actions",
+      "matchManagers": ["github-actions"],
+      "schedule": ["before 8am on Monday"]
+    },
+    {
       "groupName": "all patch versions",
       "matchUpdateTypes": ["patch"],
       "schedule": ["before 8am every weekday"]
