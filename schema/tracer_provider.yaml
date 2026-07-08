@@ -16,6 +16,11 @@ properties:
     description: |
       Configure the sampler.
     defaultBehavior: parent based sampler with a root of always_on is used
+  trace_continuation_decider/development:
+    $ref: "#/$defs/ExperimentalTraceContinuationDecider"
+    description: |
+      Configure the trace continuation decider, which determines whether trace context is continued or restarted across ingress and egress boundaries.
+    defaultBehavior: ingress trace context is continued and egress trace context is injected
   id_generator:
     $ref: "#/$defs/IdGenerator"
     description: |
@@ -138,6 +143,224 @@ $defs:
         description: Configure sampler to be trace_id_ratio_based.
         defaultBehavior: ignore
     isSdkExtensionPlugin: true
+  ExperimentalTraceContinuationDecider:
+    type: object
+    additionalProperties:
+      type:
+        - object
+        - "null"
+    minProperties: 1
+    maxProperties: 1
+    properties:
+      always_continue/development:
+        $ref: "#/$defs/ExperimentalAlwaysContinueTraceContinuationDecider"
+        description: Configure the trace continuation decider to always continue the trace.
+        defaultBehavior: ignore
+      always_restart_with_link/development:
+        $ref: "#/$defs/ExperimentalAlwaysRestartWithLinkTraceContinuationDecider"
+        description: Configure the trace continuation decider to always restart the trace linking previous parent.
+        defaultBehavior: ignore
+      always_restart_without_link/development:
+        $ref: "#/$defs/ExperimentalAlwaysRestartWithoutLinkTraceContinuationDecider"
+        description: Configure the trace continuation decider to always restart without links.
+        defaultBehavior: ignore
+      rule_based/development:
+        $ref: "#/$defs/ExperimentalRuleBasedTraceContinuationDecider"
+        description: Configure the trace continuation decider to use ordered rules.
+        defaultBehavior: ignore
+    isSdkExtensionPlugin: true
+  ExperimentalTraceContinuationDirection:
+    type: string
+    enum:
+      - ingress
+      - egress
+    enumDescriptions:
+      ingress: ingress, a context extracted for an incoming boundary.
+      egress: egress, a context selected for propagation across an outgoing boundary.
+  ExperimentalTraceContinuationStrategy:
+    type:
+      - string
+      - "null"
+    enum:
+      - continue
+      - restart_with_link
+      - restart_without_link
+    enumDescriptions:
+      continue: continue, use the candidate span context as the parent according to existing parentage rules.
+      restart_with_link: restart_with_link, start a new trace and add a link to the candidate span context.
+      restart_without_link: restart_without_link, start a new trace without preserving the candidate span context as a link.
+  ExperimentalTraceContinuationEgressAction:
+    type:
+      - string
+      - "null"
+    enum:
+      - inject_trace_context
+      - suppress_trace_context
+    enumDescriptions:
+      inject_trace_context: inject_trace_context, preserve existing trace context injection behavior.
+      suppress_trace_context: suppress_trace_context, do not inject the selected trace context for this outgoing boundary.
+  ExperimentalAlwaysContinueTraceContinuationDecider:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExperimentalAlwaysRestartWithLinkTraceContinuationDecider:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExperimentalAlwaysRestartWithoutLinkTraceContinuationDecider:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+  ExperimentalRuleBasedTraceContinuationDecider:
+    type:
+      - object
+      - "null"
+    additionalProperties: false
+    properties:
+      default_ingress_strategy:
+        $ref: "#/$defs/ExperimentalTraceContinuationStrategy"
+        description: Configure the ingress strategy used when no ingress rule matches.
+        defaultBehavior: continue is used
+      default_egress_action:
+        $ref: "#/$defs/ExperimentalTraceContinuationEgressAction"
+        description: Configure the egress action used when no egress rule matches.
+        defaultBehavior: inject_trace_context is used
+      rules:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/ExperimentalRuleBasedTraceContinuationDeciderRule"
+        description: |
+          The rules for the trace continuation decider, matched in order.
+          Each rule declares a direction and can have multiple match conditions. All conditions must match for the rule to match.
+          If no optional conditions are specified, the rule matches all inputs for its direction.
+          If no rule matches, default_ingress_strategy or default_egress_action is used for the input direction.
+    required:
+      - rules
+  ExperimentalRuleBasedTraceContinuationDeciderRule:
+    type: object
+    description: |
+      A rule for ExperimentalRuleBasedTraceContinuationDecider. Rules are matched in order, and the first matching rule determines the trace continuation result.
+    additionalProperties: false
+    properties:
+      direction:
+        $ref: "#/$defs/ExperimentalTraceContinuationDirection"
+        description: The input direction this rule matches.
+      span_kind:
+        $ref: "#/$defs/SpanKind"
+        description: The span kind to match.
+        defaultBehavior: ignore
+      conditions:
+        $ref: "#/$defs/ExperimentalRuleBasedTraceContinuationDeciderConditions"
+        description: Additional match conditions for this rule.
+        defaultBehavior: ignore
+      strategy:
+        $ref: "#/$defs/ExperimentalTraceContinuationStrategy"
+        description: The ingress trace continuation strategy to use when this rule matches.
+        defaultBehavior: ignore
+      egress_action:
+        $ref: "#/$defs/ExperimentalTraceContinuationEgressAction"
+        description: The egress propagation action to use when this rule matches.
+        defaultBehavior: ignore
+      link_attributes:
+        type: array
+        minItems: 1
+        items:
+          $ref: resource.yaml#/$defs/AttributeNameValue
+        description: Link attributes to attach when strategy is restart_with_link.
+        defaultBehavior: no link attributes are added
+    required:
+      - direction
+    allOf:
+      - if:
+          properties:
+            direction:
+              const: ingress
+          required:
+            - direction
+        then:
+          required:
+            - strategy
+      - if:
+          properties:
+            direction:
+              const: egress
+          required:
+            - direction
+        then:
+          required:
+            - egress_action
+  ExperimentalRuleBasedTraceContinuationDeciderConditions:
+    type: object
+    description: Match conditions for an ExperimentalRuleBasedTraceContinuationDeciderRule. When multiple conditions are specified, all must match.
+    additionalProperties: false
+    properties:
+      attribute_values:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/ExperimentalRuleBasedTraceContinuationDeciderAttributeValues"
+        description: Attribute value conditions. All listed conditions must match.
+        defaultBehavior: ignore
+      attribute_patterns:
+        type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/ExperimentalRuleBasedTraceContinuationDeciderAttributePatterns"
+        description: Attribute pattern conditions. All listed conditions must match.
+        defaultBehavior: ignore
+  ExperimentalRuleBasedTraceContinuationDeciderAttributeValues:
+    type: object
+    additionalProperties: false
+    properties:
+      key:
+        type: string
+        description: The attribute key to match against.
+      values:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: |
+          The attribute values to match against. Non-string attributes are matched using their string representation.
+          For array attributes, if any item matches, it is considered a match.
+    required:
+      - key
+      - values
+  ExperimentalRuleBasedTraceContinuationDeciderAttributePatterns:
+    type: object
+    additionalProperties: false
+    properties:
+      key:
+        type: string
+        description: The attribute key to match against.
+      included:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: |
+          Configure list of value patterns to include.
+          Matching is case-sensitive. Values are evaluated to match as follows:
+           * If the value exactly matches.
+           * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        defaultBehavior: all values are included
+      excluded:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: |
+          Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).
+          Matching is case-sensitive. Values are evaluated to match as follows:
+           * If the value exactly matches.
+           * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
+        defaultBehavior: .included attributes are included
+    required:
+      - key
   AlwaysOffSampler:
     type:
       - object
