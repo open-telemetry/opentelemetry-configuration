@@ -56,6 +56,10 @@ Properties defined in the schema should be lower [snake case](https://en.wikiped
 
 [enum](https://json-schema.org/understanding-json-schema/reference/enum) values should be lower [snake case](https://en.wikipedia.org/wiki/Snake_case).
 
+### Property name and enum value character set
+
+Property names and enum values must match `^[A-Za-z_][A-Za-z0-9_]*$`: ASCII letters, digits, and underscores, not starting with a digit. These names become identifiers in the languages that generate code from the schema, so restricting them to this portable set means no code generator has to sanitize or translate a name (see [#690](https://github.com/open-telemetry/opentelemetry-configuration/issues/690)). This rule is checked by `make check-schema-names`.
+
 ### Properties requiring pattern matching
 
 When a property requires pattern matching, use wildcard `*` (match any number of any character, including none) and `?` (match any single character) instead of regex. Matching is case-sensitive. If a single property with wildcards is likely to be insufficient to model the configuration requirements, accept `included` and `excluded` properties, each with an array of strings with wildcard entries. The wildcard entries should be joined with a logical OR. If `included` is not specified, assume that all entries are included. Apply `excluded` after applying `included`. Examples:

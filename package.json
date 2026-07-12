@@ -2,6 +2,7 @@
   "type": "module",
   "scripts": {
     "compile-schema": "node scripts/compile-schema.js",
+    "check-schema-names": "node scripts/check-schema-names.js",
     "generate-markdown": "node scripts/generate-markdown.js",
     "validate-snippets": "node scripts/validate-snippets.js",
     "fix-language-implementations": "node scripts/fix-language-implementations.js"
