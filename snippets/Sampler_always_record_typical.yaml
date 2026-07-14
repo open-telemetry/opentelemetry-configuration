@@ -1,0 +1,17 @@
+file_format: "1.1"
+
+tracer_provider:
+  processors:
+    - simple:
+        exporter:
+          console:
+  sampler:
+    # SNIPPET_START
+    # record all spans so processors see them (e.g. for span-to-metrics processing),
+    # while only exporting the spans sampled by the wrapped parent based sampler
+    always_record:
+      root:
+        parent_based:
+          root:
+            trace_id_ratio_based:
+              ratio: 0.01
