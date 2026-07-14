@@ -119,7 +119,7 @@ Latest supported file format: `1.0.0`
 | `ExperimentalProcessResourceDetector` | not_implemented |  |  |
 | `ExperimentalPrometheusMetricExporter` | supported |  | * `host`: supported<br>* `port`: supported<br>* `resource_constant_labels`: supported<br>* `scope_info_enabled`: supported<br>* `translation_strategy`: supported<br>* `target_info_enabled/development`: supported<br> |
 | `ExperimentalPrometheusTranslationStrategy` | supported |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: supported<br>* `underscore_escaping_without_suffixes/development`: supported<br> |
-| `ExperimentalResourceDetection` | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
+| `ExperimentalResourceDetection` | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br>* `entities_enabled`: not_implemented<br> |
 | `ExperimentalResourceDetector` | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | `ExperimentalRpcInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalSanitization` | unknown |  | * `url`: unknown<br> |
@@ -240,7 +240,7 @@ Latest supported file format: `1.0.0`
 | `ExperimentalProcessResourceDetector` | supported |  |  |
 | `ExperimentalPrometheusMetricExporter` | supported |  | * `host`: supported<br>* `port`: supported<br>* `resource_constant_labels`: supported<br>* `scope_info_enabled`: supported<br>* `translation_strategy`: supported<br>* `target_info_enabled/development`: supported<br> |
 | `ExperimentalPrometheusTranslationStrategy` | supported |  | * `no_translation/development`: supported<br>* `no_utf8_escaping_with_suffixes/development`: supported<br>* `underscore_escaping_with_suffixes`: supported<br>* `underscore_escaping_without_suffixes/development`: supported<br> |
-| `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
+| `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br>* `entities_enabled`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | `ExperimentalRpcInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalSanitization` | unknown |  | * `url`: unknown<br> |
@@ -361,7 +361,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalProcessResourceDetector` | supported |  |  |
 | `ExperimentalPrometheusMetricExporter` | supported |  | * `host`: supported<br>* `port`: supported<br>* `resource_constant_labels`: supported<br>* `scope_info_enabled`: supported<br>* `translation_strategy`: not_implemented<br>* `target_info_enabled/development`: supported<br> |
 | `ExperimentalPrometheusTranslationStrategy` | not_implemented |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes/development`: not_implemented<br> |
-| `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
+| `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br>* `entities_enabled`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | `ExperimentalRpcInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalSanitization` | unknown |  | * `url`: unknown<br> |
@@ -482,7 +482,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalProcessResourceDetector` | supported |  |  |
 | `ExperimentalPrometheusMetricExporter` | not_implemented |  | * `host`: not_implemented<br>* `port`: not_implemented<br>* `resource_constant_labels`: not_implemented<br>* `scope_info_enabled`: not_implemented<br>* `translation_strategy`: not_implemented<br>* `target_info_enabled/development`: not_implemented<br> |
 | `ExperimentalPrometheusTranslationStrategy` | not_implemented |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes/development`: not_implemented<br> |
-| `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
+| `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br>* `entities_enabled`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | `ExperimentalRpcInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalSanitization` | not_implemented |  | * `url`: not_implemented<br> |
@@ -603,7 +603,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `ExperimentalProcessResourceDetector` | supported |  |  |
 | `ExperimentalPrometheusMetricExporter` | not_implemented |  | * `host`: not_implemented<br>* `port`: not_implemented<br>* `resource_constant_labels`: not_implemented<br>* `scope_info_enabled`: not_implemented<br>* `translation_strategy`: not_implemented<br>* `target_info_enabled/development`: not_implemented<br> |
 | `ExperimentalPrometheusTranslationStrategy` | not_implemented |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes/development`: not_implemented<br> |
-| `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
+| `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br>* `entities_enabled`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: ignored<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | `ExperimentalRpcInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalSanitization` | unknown |  | * `url`: unknown<br> |
@@ -724,7 +724,7 @@ Latest supported file format: `1.0.0`
 | `ExperimentalProcessResourceDetector` | supported |  |  |
 | `ExperimentalPrometheusMetricExporter` | ignored |  | * `host`: ignored<br>* `port`: ignored<br>* `resource_constant_labels`: ignored<br>* `scope_info_enabled`: ignored<br>* `translation_strategy`: ignored<br>* `target_info_enabled/development`: ignored<br> |
 | `ExperimentalPrometheusTranslationStrategy` | ignored |  | * `no_translation/development`: ignored<br>* `no_utf8_escaping_with_suffixes/development`: ignored<br>* `underscore_escaping_with_suffixes`: ignored<br>* `underscore_escaping_without_suffixes/development`: ignored<br> |
-| `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
+| `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br>* `entities_enabled`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | `ExperimentalRpcInstrumentation` | ignored |  | * `semconv`: ignored<br> |
 | `ExperimentalSanitization` | ignored |  | * `url`: ignored<br> |

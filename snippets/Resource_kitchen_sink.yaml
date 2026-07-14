@@ -41,4 +41,5 @@ resource:
       - host:
       - process:
       - service:
+    entities_enabled: true
   schema_url: https://opentelemetry.io/schemas/1.16.0
