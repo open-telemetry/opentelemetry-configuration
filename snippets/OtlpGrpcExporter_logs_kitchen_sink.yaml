@@ -17,4 +17,6 @@ logger_provider:
                 value: "1234"
             headers_list: "api-key=1234"
             compression: gzip
+            max_request_size: 67108864
+            max_response_size: 4194304
             timeout: 10000

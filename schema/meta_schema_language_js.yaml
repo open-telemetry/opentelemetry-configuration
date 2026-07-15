@@ -120,19 +120,35 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: OtlpGrpcExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: max_request_size
+        status: not_implemented
+      - property: max_response_size
+        status: not_implemented
   - type: OtlpGrpcMetricExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: max_request_size
+        status: not_implemented
+      - property: max_response_size
+        status: not_implemented
   - type: OtlpHttpEncoding
     status: supported
     enumOverrides: []
   - type: OtlpHttpExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: max_request_size
+        status: not_implemented
+      - property: max_response_size
+        status: not_implemented
   - type: OtlpHttpMetricExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: max_request_size
+        status: not_implemented
+      - property: max_response_size
+        status: not_implemented
   - type: ParentBasedSampler
     status: supported
     propertyOverrides: []

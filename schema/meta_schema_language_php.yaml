@@ -133,12 +133,20 @@ typeSupportStatuses:
   - type: OtlpGrpcExporter
     status: supported
     propertyOverrides:
+      - property: max_request_size
+        status: not_implemented
+      - property: max_response_size
+        status: not_implemented
       - property: tls
         status: ignored
   - type: OtlpGrpcMetricExporter
     status: supported
     propertyOverrides:
       - property: default_histogram_aggregation
+        status: not_implemented
+      - property: max_request_size
+        status: not_implemented
+      - property: max_response_size
         status: not_implemented
       - property: tls
         status: ignored
@@ -148,12 +156,20 @@ typeSupportStatuses:
   - type: OtlpHttpExporter
     status: supported
     propertyOverrides:
+      - property: max_request_size
+        status: not_implemented
+      - property: max_response_size
+        status: not_implemented
       - property: tls
         status: ignored
   - type: OtlpHttpMetricExporter
     status: supported
     propertyOverrides:
       - property: default_histogram_aggregation
+        status: not_implemented
+      - property: max_request_size
+        status: not_implemented
+      - property: max_response_size
         status: not_implemented
       - property: tls
         status: ignored
