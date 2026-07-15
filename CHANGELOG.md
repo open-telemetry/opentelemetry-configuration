@@ -5,7 +5,7 @@
   specification
   ([#655](https://github.com/open-telemetry/opentelemetry-configuration/pull/655))
 * Add `max_request_size` and `max_response_size` to OTLP exporters
-  ([#696](https://github.com/open-telemetry/opentelemetry-configuration/pull/696))
+  ([#700](https://github.com/open-telemetry/opentelemetry-configuration/pull/700))
 
 ## v1.1.0 - 2026-06-05
 
