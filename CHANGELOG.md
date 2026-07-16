@@ -5,6 +5,7 @@
   specification
   ([#655](https://github.com/open-telemetry/opentelemetry-configuration/pull/655))
 * Add `attribute_value_depth_limit` to attribute, span, and log record limits
+  ([#702](https://github.com/open-telemetry/opentelemetry-configuration/pull/#702))
 
 ## v1.1.0 - 2026-06-05
 
