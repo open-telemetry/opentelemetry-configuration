@@ -173,7 +173,9 @@ typeSupportStatuses:
     enumOverrides: []
   - type: SpanLimits
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: attribute_value_depth_limit
+        status: not_implemented
   - type: SpanProcessor
     status: supported
     propertyOverrides: []

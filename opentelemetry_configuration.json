@@ -114,6 +114,14 @@
           "minimum": 0,
           "description": "Configure max attribute value size. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
         },
+        "attribute_value_depth_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Configure the maximum attribute value depth for nested array and map values.\nDepth starts at 1 for the top-level attribute value and increments when descending into array elements or map values.\nArray or map values deeper than the limit are replaced with an empty value.\nValue must be positive.\nIf omitted or null, 64 is used.\n"
+        },
         "attribute_count_limit": {
           "type": [
             "integer",
@@ -1591,6 +1599,14 @@
           "minimum": 0,
           "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
         },
+        "attribute_value_depth_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Configure the maximum attribute value depth for nested array and map values. Overrides .attribute_limits.attribute_value_depth_limit.\nDepth starts at 1 for the top-level attribute value and increments when descending into array elements or map values.\nArray or map values deeper than the limit are replaced with an empty value.\nValue must be positive.\nIf omitted or null, 64 is used.\n"
+        },
         "attribute_count_limit": {
           "type": [
             "integer",
@@ -2318,6 +2334,14 @@
           ],
           "minimum": 0,
           "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+        },
+        "attribute_value_depth_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Configure the maximum attribute value depth for nested array and map values. Overrides .attribute_limits.attribute_value_depth_limit.\nDepth starts at 1 for the top-level attribute value and increments when descending into array elements or map values.\nArray or map values deeper than the limit are replaced with an empty value.\nValue must be positive.\nIf omitted or null, 64 is used.\n"
         },
         "attribute_count_limit": {
           "type": [

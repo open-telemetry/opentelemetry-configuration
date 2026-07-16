@@ -4,6 +4,7 @@
   following the deprecation of OpenCensus compatibility in the
   specification
   ([#655](https://github.com/open-telemetry/opentelemetry-configuration/pull/655))
+* Add `attribute_value_depth_limit` to attribute, span, and log record limits
 
 ## v1.1.0 - 2026-06-05
 
