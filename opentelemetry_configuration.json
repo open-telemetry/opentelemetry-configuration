@@ -1352,6 +1352,16 @@
         }
       }
     },
+    "ExperimentalViewMatchingMode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "independent",
+        "composable"
+      ]
+    },
     "ExplicitBucketHistogramAggregation": {
       "type": [
         "object",
@@ -1631,13 +1641,8 @@
       "additionalProperties": false,
       "properties": {
         "view_matching_mode/development": {
-          "type": "string",
-          "enum": [
-            "independent",
-            "composable"
-          ],
-          "default": "independent",
-          "description": "Controls how multiple matching Views are applied to an Instrument. 'independent' (default) creates separate metric streams independently for each matching View. 'composable' combines (merges) matching Views into unified metric streams unless distinct stream names are configured.\nIf omitted, independent is used.\n"
+          "$ref": "#/$defs/ExperimentalViewMatchingMode",
+          "description": "Controls how multiple matching Views are applied to an Instrument.\nValues include:\n* composable: Combines (merges) matching Views into unified metric streams unless distinct stream names are configured.\n* independent: Creates separate metric streams independently for each matching View.\nIf omitted, independent is used.\n"
         },
         "readers": {
           "type": "array",

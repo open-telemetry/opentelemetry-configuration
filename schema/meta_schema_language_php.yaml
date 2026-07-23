@@ -416,3 +416,6 @@ typeSupportStatuses:
   - type: ExperimentalUrlSanitization
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalViewMatchingMode
+    status: not_implemented
+    enumOverrides: []
