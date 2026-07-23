@@ -2,13 +2,9 @@ type: object
 additionalProperties: false
 properties:
   view_matching_mode/development:
-    type: string
-    enum:
-      - independent
-      - composable
-    default: independent
+    $ref: "#/$defs/ExperimentalViewMatchingMode"
     description: |
-      Controls how multiple matching Views are applied to an Instrument. 'independent' (default) creates separate metric streams independently for each matching View. 'composable' combines (merges) matching Views into unified metric streams unless distinct stream names are configured.
+      Controls how multiple matching Views are applied to an Instrument.
     defaultBehavior: independent is used
   readers:
     type: array
@@ -38,6 +34,16 @@ properties:
 required:
   - readers
 $defs:
+  ExperimentalViewMatchingMode:
+    type:
+      - string
+      - "null"
+    enum:
+      - independent
+      - composable
+    enumDescriptions:
+      composable: Combines (merges) matching Views into unified metric streams unless distinct stream names are configured.
+      independent: Creates separate metric streams independently for each matching View.
   ExemplarFilter:
     type:
       - string
