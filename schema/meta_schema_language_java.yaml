@@ -106,7 +106,9 @@ typeSupportStatuses:
         status: unknown
   - type: MeterProvider
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: view_matching_mode/development
+        status: not_implemented
   - type: MetricProducer
     status: ignored
     propertyOverrides: []
@@ -385,3 +387,6 @@ typeSupportStatuses:
   - type: ExperimentalUrlSanitization
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalViewMatchingMode
+    status: not_implemented
+    enumOverrides: []

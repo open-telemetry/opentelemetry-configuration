@@ -1,0 +1,4 @@
+otel_config_validator shelltests/invalid_view_matching_mode.yaml
+>>>2
+jsonschema: '/meter_provider/view_matching_mode~1development' does not validate with https://opentelemetry.io/otelconfig/opentelemetry_configuration.json#/properties/meter_provider/$ref/properties/view_matching_mode~1development/$ref/enum: value must be one of "independent", "composable"
+>>>= 1

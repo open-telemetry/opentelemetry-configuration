@@ -26,6 +26,11 @@ properties:
     description: |
       Configure meters.
     defaultBehavior: all meters use default values as described in ExperimentalMeterConfig
+  view_matching_mode/development:
+    $ref: "#/$defs/ExperimentalViewMatchingMode"
+    description: |
+      Controls how multiple matching Views are applied to an Instrument.
+    defaultBehavior: independent is used
 required:
   - readers
 $defs:
@@ -773,3 +778,13 @@ $defs:
           - boolean
         description: Configure if the meter is enabled or not.
         defaultBehavior: true is used
+  ExperimentalViewMatchingMode:
+    type:
+      - string
+      - "null"
+    enum:
+      - independent
+      - composable
+    enumDescriptions:
+      composable: Combines (merges) matching Views into unified metric streams unless distinct stream names are configured.
+      independent: Creates separate metric streams independently for each matching View.

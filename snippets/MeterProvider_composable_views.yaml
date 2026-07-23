@@ -1,0 +1,18 @@
+file_format: "1.1"
+
+meter_provider:
+  # SNIPPET_START
+  readers:
+    - periodic:
+        exporter:
+          console:
+  views:
+    - selector:
+        instrument_name: my_instrument
+      stream:
+        description: first view description
+    - selector:
+        instrument_name: my_instrument
+      stream:
+        aggregation_cardinality_limit: 1000
+  view_matching_mode/development: composable

@@ -49,7 +49,7 @@ Latest supported file format: `1.0.0`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | `MetricProducer` | supported |  | * `opencensus`: supported<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -130,6 +130,7 @@ Latest supported file format: `1.0.0`
 | `ExperimentalTracerConfigurator` | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | `ExperimentalTracerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
 | `ExperimentalUrlSanitization` | unknown |  | * `sensitive_query_parameters`: unknown<br> |
+| `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 
 ## go <a id="go"></a>
@@ -170,7 +171,7 @@ Latest supported file format: `1.0.0`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: not_implemented<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | `MetricProducer` | unknown |  | * `opencensus`: unknown<br> |
 | `MetricReader` | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -251,6 +252,7 @@ Latest supported file format: `1.0.0`
 | `ExperimentalTracerConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | `ExperimentalTracerMatcherAndConfig` | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
 | `ExperimentalUrlSanitization` | unknown |  | * `sensitive_query_parameters`: unknown<br> |
+| `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 
 ## java <a id="java"></a>
@@ -291,7 +293,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | `MetricProducer` | ignored |  | * `opencensus`: ignored<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -372,6 +374,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalTracerConfigurator` | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | `ExperimentalTracerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
 | `ExperimentalUrlSanitization` | unknown |  | * `sensitive_query_parameters`: unknown<br> |
+| `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 
 ## js <a id="js"></a>
@@ -412,7 +415,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: supported<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | `MetricProducer` | supported |  | * `opencensus`: supported<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -493,6 +496,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalTracerConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | `ExperimentalTracerMatcherAndConfig` | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
 | `ExperimentalUrlSanitization` | not_implemented |  | * `sensitive_query_parameters`: not_implemented<br> |
+| `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 
 ## php <a id="php"></a>
@@ -533,7 +537,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | `MetricProducer` | not_implemented |  | * `opencensus`: not_implemented<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: not_implemented<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -614,6 +618,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `ExperimentalTracerConfigurator` | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | `ExperimentalTracerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
 | `ExperimentalUrlSanitization` | unknown |  | * `sensitive_query_parameters`: unknown<br> |
+| `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 
 ## python <a id="python"></a>
@@ -654,7 +659,7 @@ Latest supported file format: `1.0.0`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `LogRecordLimits` | ignored |  | * `attribute_count_limit`: ignored<br>* `attribute_value_length_limit`: ignored<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: supported<br> |
-| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
+| `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br>* `view_matching_mode/development`: not_implemented<br> |
 | `MetricProducer` | ignored |  | * `opencensus`: ignored<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
@@ -735,5 +740,6 @@ Latest supported file format: `1.0.0`
 | `ExperimentalTracerConfigurator` | ignored |  | * `default_config`: ignored<br>* `tracers`: ignored<br> |
 | `ExperimentalTracerMatcherAndConfig` | ignored |  | * `config`: ignored<br>* `name`: ignored<br> |
 | `ExperimentalUrlSanitization` | ignored |  | * `sensitive_query_parameters`: ignored<br> |
+| `ExperimentalViewMatchingMode` | not_implemented |  | * `composable`: not_implemented<br>* `independent`: not_implemented<br> |
 
 
