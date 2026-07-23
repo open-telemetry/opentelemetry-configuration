@@ -2,7 +2,6 @@ file_format: "1.1"
 
 meter_provider:
   # SNIPPET_START
-  view_matching_mode/development: composable
   readers:
     - periodic:
         exporter:
@@ -16,3 +15,4 @@ meter_provider:
         instrument_name: my_instrument
       stream:
         aggregation_cardinality_limit: 1000
+  view_matching_mode/development: composable

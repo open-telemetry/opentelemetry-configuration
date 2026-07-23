@@ -1640,10 +1640,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "view_matching_mode/development": {
-          "$ref": "#/$defs/ExperimentalViewMatchingMode",
-          "description": "Controls how multiple matching Views are applied to an Instrument.\nValues include:\n* composable: Combines (merges) matching Views into unified metric streams unless distinct stream names are configured.\n* independent: Creates separate metric streams independently for each matching View.\nIf omitted, independent is used.\n"
-        },
         "readers": {
           "type": "array",
           "minItems": 1,
@@ -1667,6 +1663,10 @@
         "meter_configurator/development": {
           "$ref": "#/$defs/ExperimentalMeterConfigurator",
           "description": "Configure meters.\nIf omitted, all meters use default values as described in ExperimentalMeterConfig.\n"
+        },
+        "view_matching_mode/development": {
+          "$ref": "#/$defs/ExperimentalViewMatchingMode",
+          "description": "Controls how multiple matching Views are applied to an Instrument.\nValues include:\n* composable: Combines (merges) matching Views into unified metric streams unless distinct stream names are configured.\n* independent: Creates separate metric streams independently for each matching View.\nIf omitted, independent is used.\n"
         }
       },
       "required": [
