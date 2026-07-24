@@ -80,10 +80,13 @@ Latest supported file format: `1.0.0`
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
 | `TraceIdRatioBasedSampler` | supported |  | * `ratio`: supported<br> |
-| `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
+| `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `trace_continuation_decider/development`: supported<br>* `tracer_configurator/development`: supported<br> |
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
 | `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
+| `ExperimentalAlwaysContinueTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithLinkTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithoutLinkTraceContinuationDecider` | unknown |  |  |
 | `ExperimentalCodeInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalComposableAlwaysOffSampler` | ignored |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | ignored |  |  |
@@ -122,10 +125,19 @@ Latest supported file format: `1.0.0`
 | `ExperimentalResourceDetection` | not_implemented |  | * `attributes`: not_implemented<br>* `detectors`: not_implemented<br> |
 | `ExperimentalResourceDetector` | not_implemented |  | * `container`: not_implemented<br>* `host`: not_implemented<br>* `process`: not_implemented<br>* `service`: not_implemented<br> |
 | `ExperimentalRpcInstrumentation` | unknown |  | * `semconv`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDecider` | unknown |  | * `default_egress_action`: unknown<br>* `default_ingress_strategy`: unknown<br>* `rules`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributePatterns` | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributeValues` | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderConditions` | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderRule` | unknown |  | * `conditions`: unknown<br>* `direction`: unknown<br>* `egress_action`: unknown<br>* `link_attributes`: unknown<br>* `span_kind`: unknown<br>* `strategy`: unknown<br> |
 | `ExperimentalSanitization` | unknown |  | * `url`: unknown<br> |
 | `ExperimentalSemconvConfig` | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | `ExperimentalServiceResourceDetector` | not_implemented |  |  |
 | `ExperimentalSpanParent` | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
+| `ExperimentalTraceContinuationDecider` | unknown |  | * `always_continue/development`: unknown<br>* `always_restart_with_link/development`: unknown<br>* `always_restart_without_link/development`: unknown<br>* `rule_based/development`: unknown<br> |
+| `ExperimentalTraceContinuationDirection` | unknown |  | * `egress`: unknown<br>* `ingress`: unknown<br> |
+| `ExperimentalTraceContinuationEgressAction` | unknown |  | * `inject_trace_context`: unknown<br>* `suppress_trace_context`: unknown<br> |
+| `ExperimentalTraceContinuationStrategy` | unknown |  | * `continue`: unknown<br>* `restart_with_link`: unknown<br>* `restart_without_link`: unknown<br> |
 | `ExperimentalTracerConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalTracerConfigurator` | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | `ExperimentalTracerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
@@ -201,10 +213,13 @@ Latest supported file format: `1.0.0`
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
 | `TraceIdRatioBasedSampler` | supported |  | * `ratio`: supported<br> |
-| `TracerProvider` | unknown |  | * `id_generator`: unknown<br>* `limits`: unknown<br>* `processors`: unknown<br>* `sampler`: unknown<br>* `tracer_configurator/development`: unknown<br> |
+| `TracerProvider` | unknown |  | * `id_generator`: unknown<br>* `limits`: unknown<br>* `processors`: unknown<br>* `sampler`: unknown<br>* `trace_continuation_decider/development`: unknown<br>* `tracer_configurator/development`: unknown<br> |
 | `View` | unknown |  | * `selector`: unknown<br>* `stream`: unknown<br> |
 | `ViewSelector` | unknown |  | * `instrument_name`: unknown<br>* `instrument_type`: unknown<br>* `meter_name`: unknown<br>* `meter_schema_url`: unknown<br>* `meter_version`: unknown<br>* `unit`: unknown<br> |
 | `ViewStream` | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br> |
+| `ExperimentalAlwaysContinueTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithLinkTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithoutLinkTraceContinuationDecider` | unknown |  |  |
 | `ExperimentalCodeInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalComposableAlwaysOffSampler` | not_implemented |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | not_implemented |  |  |
@@ -243,10 +258,19 @@ Latest supported file format: `1.0.0`
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | `ExperimentalRpcInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
+| `ExperimentalRuleBasedTraceContinuationDecider` | unknown |  | * `default_egress_action`: unknown<br>* `default_ingress_strategy`: unknown<br>* `rules`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributePatterns` | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributeValues` | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderConditions` | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderRule` | unknown |  | * `conditions`: unknown<br>* `direction`: unknown<br>* `egress_action`: unknown<br>* `link_attributes`: unknown<br>* `span_kind`: unknown<br>* `strategy`: unknown<br> |
 | `ExperimentalSanitization` | unknown |  | * `url`: unknown<br> |
 | `ExperimentalSemconvConfig` | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | `ExperimentalServiceResourceDetector` | supported |  |  |
 | `ExperimentalSpanParent` | unknown |  | * `local`: unknown<br>* `none`: unknown<br>* `remote`: unknown<br> |
+| `ExperimentalTraceContinuationDecider` | unknown |  | * `always_continue/development`: unknown<br>* `always_restart_with_link/development`: unknown<br>* `always_restart_without_link/development`: unknown<br>* `rule_based/development`: unknown<br> |
+| `ExperimentalTraceContinuationDirection` | unknown |  | * `egress`: unknown<br>* `ingress`: unknown<br> |
+| `ExperimentalTraceContinuationEgressAction` | unknown |  | * `inject_trace_context`: unknown<br>* `suppress_trace_context`: unknown<br> |
+| `ExperimentalTraceContinuationStrategy` | unknown |  | * `continue`: unknown<br>* `restart_with_link`: unknown<br>* `restart_without_link`: unknown<br> |
 | `ExperimentalTracerConfig` | unknown |  | * `enabled`: unknown<br> |
 | `ExperimentalTracerConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | `ExperimentalTracerMatcherAndConfig` | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
@@ -322,10 +346,13 @@ Latest supported file format: `1.0.0-rc.3`
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
 | `TraceIdRatioBasedSampler` | supported |  | * `ratio`: supported<br> |
-| `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
+| `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `trace_continuation_decider/development`: supported<br>* `tracer_configurator/development`: supported<br> |
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
 | `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
+| `ExperimentalAlwaysContinueTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithLinkTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithoutLinkTraceContinuationDecider` | unknown |  |  |
 | `ExperimentalCodeInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalComposableAlwaysOffSampler` | supported |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | supported |  |  |
@@ -364,10 +391,19 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | `ExperimentalRpcInstrumentation` | unknown |  | * `semconv`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDecider` | unknown |  | * `default_egress_action`: unknown<br>* `default_ingress_strategy`: unknown<br>* `rules`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributePatterns` | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributeValues` | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderConditions` | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderRule` | unknown |  | * `conditions`: unknown<br>* `direction`: unknown<br>* `egress_action`: unknown<br>* `link_attributes`: unknown<br>* `span_kind`: unknown<br>* `strategy`: unknown<br> |
 | `ExperimentalSanitization` | unknown |  | * `url`: unknown<br> |
 | `ExperimentalSemconvConfig` | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | `ExperimentalServiceResourceDetector` | supported |  |  |
 | `ExperimentalSpanParent` | supported |  | * `local`: supported<br>* `none`: supported<br>* `remote`: supported<br> |
+| `ExperimentalTraceContinuationDecider` | unknown |  | * `always_continue/development`: unknown<br>* `always_restart_with_link/development`: unknown<br>* `always_restart_without_link/development`: unknown<br>* `rule_based/development`: unknown<br> |
+| `ExperimentalTraceContinuationDirection` | unknown |  | * `egress`: unknown<br>* `ingress`: unknown<br> |
+| `ExperimentalTraceContinuationEgressAction` | unknown |  | * `inject_trace_context`: unknown<br>* `suppress_trace_context`: unknown<br> |
+| `ExperimentalTraceContinuationStrategy` | unknown |  | * `continue`: unknown<br>* `restart_with_link`: unknown<br>* `restart_without_link`: unknown<br> |
 | `ExperimentalTracerConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalTracerConfigurator` | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | `ExperimentalTracerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
@@ -443,10 +479,13 @@ Latest supported file format: `1.0.0-rc.3`
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
 | `TraceIdRatioBasedSampler` | supported |  | * `ratio`: supported<br> |
-| `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
+| `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `trace_continuation_decider/development`: supported<br>* `tracer_configurator/development`: supported<br> |
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
 | `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
+| `ExperimentalAlwaysContinueTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithLinkTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithoutLinkTraceContinuationDecider` | unknown |  |  |
 | `ExperimentalCodeInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalComposableAlwaysOffSampler` | not_implemented |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | not_implemented |  |  |
@@ -485,10 +524,19 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | `ExperimentalRpcInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
+| `ExperimentalRuleBasedTraceContinuationDecider` | unknown |  | * `default_egress_action`: unknown<br>* `default_ingress_strategy`: unknown<br>* `rules`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributePatterns` | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributeValues` | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderConditions` | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderRule` | unknown |  | * `conditions`: unknown<br>* `direction`: unknown<br>* `egress_action`: unknown<br>* `link_attributes`: unknown<br>* `span_kind`: unknown<br>* `strategy`: unknown<br> |
 | `ExperimentalSanitization` | not_implemented |  | * `url`: not_implemented<br> |
 | `ExperimentalSemconvConfig` | not_implemented |  | * `dual_emit`: not_implemented<br>* `experimental`: not_implemented<br>* `version`: not_implemented<br> |
 | `ExperimentalServiceResourceDetector` | supported |  |  |
 | `ExperimentalSpanParent` | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
+| `ExperimentalTraceContinuationDecider` | unknown |  | * `always_continue/development`: unknown<br>* `always_restart_with_link/development`: unknown<br>* `always_restart_without_link/development`: unknown<br>* `rule_based/development`: unknown<br> |
+| `ExperimentalTraceContinuationDirection` | unknown |  | * `egress`: unknown<br>* `ingress`: unknown<br> |
+| `ExperimentalTraceContinuationEgressAction` | unknown |  | * `inject_trace_context`: unknown<br>* `suppress_trace_context`: unknown<br> |
+| `ExperimentalTraceContinuationStrategy` | unknown |  | * `continue`: unknown<br>* `restart_with_link`: unknown<br>* `restart_without_link`: unknown<br> |
 | `ExperimentalTracerConfig` | not_implemented |  | * `enabled`: not_implemented<br> |
 | `ExperimentalTracerConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `tracers`: not_implemented<br> |
 | `ExperimentalTracerMatcherAndConfig` | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
@@ -564,10 +612,13 @@ Latest supported file format: `1.0.0-rc.2`
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
 | `TraceIdRatioBasedSampler` | supported |  | * `ratio`: supported<br> |
-| `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
+| `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `trace_continuation_decider/development`: supported<br>* `tracer_configurator/development`: supported<br> |
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: not_implemented<br> |
 | `ViewStream` | supported | `attribute_keys.excluded` is not implemented, only `attribute_keys.included` is supported. | * `aggregation`: ignored<br>* `aggregation_cardinality_limit`: not_implemented<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
+| `ExperimentalAlwaysContinueTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithLinkTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithoutLinkTraceContinuationDecider` | unknown |  |  |
 | `ExperimentalCodeInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalComposableAlwaysOffSampler` | not_implemented |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | not_implemented |  |  |
@@ -606,10 +657,19 @@ Latest supported file format: `1.0.0-rc.2`
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: ignored<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | `ExperimentalRpcInstrumentation` | unknown |  | * `semconv`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDecider` | unknown |  | * `default_egress_action`: unknown<br>* `default_ingress_strategy`: unknown<br>* `rules`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributePatterns` | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributeValues` | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderConditions` | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderRule` | unknown |  | * `conditions`: unknown<br>* `direction`: unknown<br>* `egress_action`: unknown<br>* `link_attributes`: unknown<br>* `span_kind`: unknown<br>* `strategy`: unknown<br> |
 | `ExperimentalSanitization` | unknown |  | * `url`: unknown<br> |
 | `ExperimentalSemconvConfig` | unknown |  | * `dual_emit`: unknown<br>* `experimental`: unknown<br>* `version`: unknown<br> |
 | `ExperimentalServiceResourceDetector` | supported |  |  |
 | `ExperimentalSpanParent` | not_implemented |  | * `local`: not_implemented<br>* `none`: not_implemented<br>* `remote`: not_implemented<br> |
+| `ExperimentalTraceContinuationDecider` | unknown |  | * `always_continue/development`: unknown<br>* `always_restart_with_link/development`: unknown<br>* `always_restart_without_link/development`: unknown<br>* `rule_based/development`: unknown<br> |
+| `ExperimentalTraceContinuationDirection` | unknown |  | * `egress`: unknown<br>* `ingress`: unknown<br> |
+| `ExperimentalTraceContinuationEgressAction` | unknown |  | * `inject_trace_context`: unknown<br>* `suppress_trace_context`: unknown<br> |
+| `ExperimentalTraceContinuationStrategy` | unknown |  | * `continue`: unknown<br>* `restart_with_link`: unknown<br>* `restart_without_link`: unknown<br> |
 | `ExperimentalTracerConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalTracerConfigurator` | supported |  | * `default_config`: supported<br>* `tracers`: supported<br> |
 | `ExperimentalTracerMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
@@ -685,10 +745,13 @@ Latest supported file format: `1.0.0`
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
 | `TraceIdRatioBasedSampler` | supported |  | * `ratio`: supported<br> |
-| `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator/development`: supported<br> |
+| `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `trace_continuation_decider/development`: supported<br>* `tracer_configurator/development`: supported<br> |
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
 | `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br> |
+| `ExperimentalAlwaysContinueTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithLinkTraceContinuationDecider` | unknown |  |  |
+| `ExperimentalAlwaysRestartWithoutLinkTraceContinuationDecider` | unknown |  |  |
 | `ExperimentalCodeInstrumentation` | ignored |  | * `semconv`: ignored<br> |
 | `ExperimentalComposableAlwaysOffSampler` | supported |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | supported |  |  |
@@ -727,10 +790,19 @@ Latest supported file format: `1.0.0`
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
 | `ExperimentalRpcInstrumentation` | ignored |  | * `semconv`: ignored<br> |
+| `ExperimentalRuleBasedTraceContinuationDecider` | unknown |  | * `default_egress_action`: unknown<br>* `default_ingress_strategy`: unknown<br>* `rules`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributePatterns` | unknown |  | * `excluded`: unknown<br>* `included`: unknown<br>* `key`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderAttributeValues` | unknown |  | * `key`: unknown<br>* `values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderConditions` | unknown |  | * `attribute_patterns`: unknown<br>* `attribute_values`: unknown<br> |
+| `ExperimentalRuleBasedTraceContinuationDeciderRule` | unknown |  | * `conditions`: unknown<br>* `direction`: unknown<br>* `egress_action`: unknown<br>* `link_attributes`: unknown<br>* `span_kind`: unknown<br>* `strategy`: unknown<br> |
 | `ExperimentalSanitization` | ignored |  | * `url`: ignored<br> |
 | `ExperimentalSemconvConfig` | ignored |  | * `dual_emit`: ignored<br>* `experimental`: ignored<br>* `version`: ignored<br> |
 | `ExperimentalServiceResourceDetector` | supported |  |  |
 | `ExperimentalSpanParent` | supported |  | * `local`: supported<br>* `none`: supported<br>* `remote`: supported<br> |
+| `ExperimentalTraceContinuationDecider` | unknown |  | * `always_continue/development`: unknown<br>* `always_restart_with_link/development`: unknown<br>* `always_restart_without_link/development`: unknown<br>* `rule_based/development`: unknown<br> |
+| `ExperimentalTraceContinuationDirection` | unknown |  | * `egress`: unknown<br>* `ingress`: unknown<br> |
+| `ExperimentalTraceContinuationEgressAction` | unknown |  | * `inject_trace_context`: unknown<br>* `suppress_trace_context`: unknown<br> |
+| `ExperimentalTraceContinuationStrategy` | unknown |  | * `continue`: unknown<br>* `restart_with_link`: unknown<br>* `restart_without_link`: unknown<br> |
 | `ExperimentalTracerConfig` | ignored |  | * `enabled`: ignored<br> |
 | `ExperimentalTracerConfigurator` | ignored |  | * `default_config`: ignored<br>* `tracers`: ignored<br> |
 | `ExperimentalTracerMatcherAndConfig` | ignored |  | * `config`: ignored<br>* `name`: ignored<br> |
