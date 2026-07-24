@@ -6,7 +6,7 @@ SNIPPET_FILES := $(shell find . -path './snippets/*.yaml' -exec basename {} \; |
 $(shell mkdir -p out)
 
 .PHONY: all
-all: install-tools validate-examples fix-language-implementations generate-markdown
+all: install-tools validate-examples fix-language-implementations generate-markdown check-schema-names
 
 include validator/Makefile
 
@@ -16,6 +16,10 @@ compile-schema:
 	npm run-script compile-schema || exit 1;
 	@if ! npm ls ajv-cli; then npm install; fi
 	npx --no ajv-cli compile --spec=draft2020 --allow-matching-properties -s ./opentelemetry_configuration.json;
+
+.PHONY: check-schema-names
+check-schema-names: compile-schema
+	npm run-script check-schema-names || exit 1
 
 .PHONY: validate-examples
 validate-examples: compile-schema
