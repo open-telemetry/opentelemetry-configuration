@@ -11,7 +11,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: AttributeLimits
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: attribute_value_depth_limit
+        status: not_implemented
   - type: AttributeNameValue
     status: supported
     propertyOverrides: []
@@ -92,7 +94,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: LogRecordLimits
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: attribute_value_depth_limit
+        status: not_implemented
   - type: LogRecordProcessor
     status: supported
     propertyOverrides:
@@ -177,7 +181,9 @@ typeSupportStatuses:
     enumOverrides: []
   - type: SpanLimits
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: attribute_value_depth_limit
+        status: not_implemented
   - type: SpanProcessor
     status: supported
     propertyOverrides: []

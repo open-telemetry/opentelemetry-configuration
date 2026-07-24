@@ -16,6 +16,7 @@ resource:
       value: unknown_service
 attribute_limits:
   attribute_value_length_limit:
+  attribute_value_depth_limit: 64
   attribute_count_limit: 128
 propagator:
   composite:
@@ -39,6 +40,7 @@ tracer_provider:
             timeout: 10000
   limits:
     attribute_value_length_limit:
+    attribute_value_depth_limit: 64
     attribute_count_limit: 128
     event_count_limit: 128
     link_count_limit: 128
@@ -91,4 +93,5 @@ logger_provider:
             timeout: 10000
   limits:
     attribute_value_length_limit:
+    attribute_value_depth_limit: 64
     attribute_count_limit: 128
