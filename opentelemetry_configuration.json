@@ -102,6 +102,21 @@
       ],
       "additionalProperties": false
     },
+    "AlwaysRecordSampler": {
+      "type": [
+        "object"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "$ref": "#/$defs/Sampler",
+          "description": "Configure the wrapped sampler which provides the original sampling\ndecision that always_record modifies. DROP decisions are converted\nto RECORD_ONLY, so spans are passed to processors without being\nexported.\nProperty is required and must be non-null.\n"
+        }
+      },
+      "required": [
+        "root"
+      ]
+    },
     "AttributeLimits": {
       "type": "object",
       "additionalProperties": false,
@@ -2184,6 +2199,10 @@
         "always_on": {
           "$ref": "#/$defs/AlwaysOnSampler",
           "description": "Configure sampler to be always_on.\nIf omitted, ignore.\n"
+        },
+        "always_record": {
+          "$ref": "#/$defs/AlwaysRecordSampler",
+          "description": "Configure sampler to be always_record.\nIf omitted, ignore.\n"
         },
         "composite/development": {
           "$ref": "#/$defs/ExperimentalComposableSampler",

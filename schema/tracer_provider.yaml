@@ -117,6 +117,10 @@ $defs:
         $ref: "#/$defs/AlwaysOnSampler"
         description: Configure sampler to be always_on.
         defaultBehavior: ignore
+      always_record:
+        $ref: "#/$defs/AlwaysRecordSampler"
+        description: Configure sampler to be always_record.
+        defaultBehavior: ignore
       composite/development:
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configure sampler to be composite.
@@ -148,6 +152,20 @@ $defs:
       - object
       - "null"
     additionalProperties: false
+  AlwaysRecordSampler:
+    type:
+      - object
+    additionalProperties: false
+    properties:
+      root:
+        $ref: "#/$defs/Sampler"
+        description: |
+          Configure the wrapped sampler which provides the original sampling
+          decision that always_record modifies. DROP decisions are converted
+          to RECORD_ONLY, so spans are passed to processors without being
+          exported.
+    required:
+      - root
   ExperimentalJaegerRemoteSampler:
     type:
       - object
