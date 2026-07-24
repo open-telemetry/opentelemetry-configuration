@@ -107,6 +107,17 @@ $defs:
           Configure resource detectors.
           Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
         defaultBehavior: no resource detectors are enabled
+      entities_enabled:
+        type:
+          - boolean
+          - "null"
+        description: |
+          Configure whether resource detectors emit entity-aware resources.
+
+          Resource detectors always produce entity-aware output internally. When this option is
+          not true, the SDK erases entity information from detector results before merging
+          them into the resource.
+        defaultBehavior: false is used
   ExperimentalResourceDetector:
     type: object
     additionalProperties:

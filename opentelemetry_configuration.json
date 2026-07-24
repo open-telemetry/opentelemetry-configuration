@@ -1184,6 +1184,13 @@
             "$ref": "#/$defs/ExperimentalResourceDetector"
           },
           "description": "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. \nIf omitted, no resource detectors are enabled.\n"
+        },
+        "entities_enabled": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure whether resource detectors emit entity-aware resources.\n\nResource detectors always produce entity-aware output internally. When this option is\nnot true, the SDK erases entity information from detector results before merging\nthem into the resource.\nIf omitted or null, false is used.\n"
         }
       }
     },
