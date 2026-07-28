@@ -161,9 +161,8 @@ $defs:
         $ref: "#/$defs/Sampler"
         description: |
           Configure the wrapped sampler which provides the original sampling
-          decision that always_record modifies. DROP decisions are converted
-          to RECORD_ONLY, so spans are passed to processors without being
-          exported.
+          decision that AlwaysRecord modifies. DROP decisions are converted
+          to RECORD_ONLY, allowing processors to see all spans without sending them to exporters.
     required:
       - root
   ExperimentalJaegerRemoteSampler:

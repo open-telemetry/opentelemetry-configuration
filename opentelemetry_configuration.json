@@ -110,7 +110,7 @@
       "properties": {
         "root": {
           "$ref": "#/$defs/Sampler",
-          "description": "Configure the wrapped sampler which provides the original sampling\ndecision that always_record modifies. DROP decisions are converted\nto RECORD_ONLY, so spans are passed to processors without being\nexported.\nProperty is required and must be non-null.\n"
+          "description": "Configure the wrapped sampler which provides the original sampling\ndecision that AlwaysRecord modifies. DROP decisions are converted\nto RECORD_ONLY, allowing processors to see all spans without sending them to exporters.\nProperty is required and must be non-null.\n"
         }
       },
       "required": [

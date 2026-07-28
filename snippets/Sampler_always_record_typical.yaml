@@ -7,8 +7,9 @@ tracer_provider:
           console:
   sampler:
     # SNIPPET_START
-    # record all spans so processors see them (e.g. for span-to-metrics processing),
-    # while only exporting the spans sampled by the wrapped parent based sampler
+    # Record all spans so compatible processors can observe them, for example
+    # span-to-metrics processors. No such processor is configured in this
+    # snippet; the wrapped sampler still controls which spans are exported.
     always_record:
       root:
         parent_based:
