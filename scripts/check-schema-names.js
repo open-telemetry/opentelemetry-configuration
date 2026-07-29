@@ -7,24 +7,26 @@
 // that generate code from the schema, so restricting them to this common set
 // means no generator has to sanitize or translate a name. See issue #690.
 //
-// NOTE: the schema currently contains names that violate this rule (the
-// `/(development|alpha|beta)` stability suffix, e.g. `detection/development`).
-// While those exist, the check runs in warn-only mode: it reports violations
-// but exits 0 so it does not break the build. Flip ENFORCE to true once the
-// remaining violations are resolved to turn it into a hard failure.
+// The one exception is the intentional stability suffix `/development`,
+// `/alpha`, or `/beta` (e.g. `detection/development`), which denotes maturity.
+// A name is accepted when the part before an optional maturity suffix is a
+// portable identifier. Violations are a hard build error.
 
 import fs from "fs";
 import { schemaPath } from "./util.js";
 
-const ENFORCE = false;
-
 const IDENTIFIER = /^[A-Za-z_][A-Za-z0-9_]*$/;
+
+// Intentional maturity suffixes that are allowed to trail an identifier. If
+// the stability-in-names convention changes, update this here (see #689).
+const MATURITY_SUFFIX = /\/(development|alpha|beta)$/;
 
 const schema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
 const violations = [];
 
 // Walk the compiled schema, collecting property names and enum/const values
-// with a JSON-path breadcrumb for actionable messages.
+// with a JSON-path breadcrumb for actionable messages. A name is valid when
+// the part before an optional maturity suffix is a portable identifier.
 function walk(node, path) {
   if (Array.isArray(node)) {
     node.forEach((item, i) => walk(item, `${path}[${i}]`));
@@ -36,7 +38,7 @@ function walk(node, path) {
 
   if (node.properties && typeof node.properties === "object") {
     for (const name of Object.keys(node.properties)) {
-      if (!IDENTIFIER.test(name)) {
+      if (!IDENTIFIER.test(name.replace(MATURITY_SUFFIX, ""))) {
         violations.push({ kind: "property", value: name, at: `${path}.properties` });
       }
     }
@@ -44,13 +46,13 @@ function walk(node, path) {
 
   if (Array.isArray(node.enum)) {
     for (const value of node.enum) {
-      if (typeof value === "string" && !IDENTIFIER.test(value)) {
+      if (typeof value === "string" && !IDENTIFIER.test(value.replace(MATURITY_SUFFIX, ""))) {
         violations.push({ kind: "enum value", value, at: `${path}.enum` });
       }
     }
   }
 
-  if (typeof node.const === "string" && !IDENTIFIER.test(node.const)) {
+  if (typeof node.const === "string" && !IDENTIFIER.test(node.const.replace(MATURITY_SUFFIX, ""))) {
     violations.push({ kind: "const value", value: node.const, at: `${path}.const` });
   }
 
@@ -62,10 +64,10 @@ function walk(node, path) {
 walk(schema, "#");
 
 if (violations.length > 0) {
-  const label = ENFORCE ? "ERROR" : "WARNING";
   console.error(
-    `${label}: found ${violations.length} name(s) that are not valid ` +
-    `identifiers (must match ${IDENTIFIER}):\n`
+    `ERROR: found ${violations.length} name(s) that are not valid ` +
+    `identifiers (must match ${IDENTIFIER}, optionally followed by a ` +
+    `/development, /alpha, or /beta maturity suffix):\n`
   );
   for (const v of violations) {
     console.error(`  - ${v.kind} "${v.value}"  (at ${v.at})`);
@@ -74,7 +76,7 @@ if (violations.length > 0) {
     `\nNames become identifiers in generated code; restrict them to ASCII ` +
     `letters, digits, and underscores. See the schema modeling rules and #690.`
   );
-  process.exit(ENFORCE ? 1 : 0);
+  process.exit(1);
 }
 
 console.log("All property names and enum/const values are valid identifiers.");
