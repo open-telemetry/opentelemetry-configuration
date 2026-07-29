@@ -7,19 +7,20 @@
 // that generate code from the schema, so restricting them to this common set
 // means no generator has to sanitize or translate a name. See issue #690.
 //
-// The one exception is the intentional stability suffix `/development`,
-// `/alpha`, or `/beta` (e.g. `detection/development`), which denotes maturity.
-// A name is accepted when the part before an optional maturity suffix is a
-// portable identifier. Violations are a hard build error.
+// The one exception is the intentional `/development` stability suffix
+// (e.g. `detection/development`), which denotes maturity. A name is accepted
+// when the part before an optional `/development` suffix is a portable
+// identifier. Violations are a hard build error.
 
 import fs from "fs";
 import { schemaPath } from "./util.js";
 
 const IDENTIFIER = /^[A-Za-z_][A-Za-z0-9_]*$/;
 
-// Intentional maturity suffixes that are allowed to trail an identifier. If
-// the stability-in-names convention changes, update this here (see #689).
-const MATURITY_SUFFIX = /\/(development|alpha|beta)$/;
+// The intentional `/development` maturity suffix that is allowed to trail an
+// identifier. If the stability-in-names convention changes, update this here
+// (see #689).
+const MATURITY_SUFFIX = /\/development$/;
 
 const schema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
 const violations = [];
@@ -67,7 +68,7 @@ if (violations.length > 0) {
   console.error(
     `ERROR: found ${violations.length} name(s) that are not valid ` +
     `identifiers (must match ${IDENTIFIER}, optionally followed by a ` +
-    `/development, /alpha, or /beta maturity suffix):\n`
+    `/development maturity suffix):\n`
   );
   for (const v of violations) {
     console.error(`  - ${v.kind} "${v.value}"  (at ${v.at})`);
