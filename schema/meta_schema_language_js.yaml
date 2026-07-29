@@ -9,6 +9,9 @@ typeSupportStatuses:
   - type: AlwaysOnSampler
     status: supported
     propertyOverrides: []
+  - type: AlwaysRecordSampler
+    status: unknown
+    propertyOverrides: []
   - type: AttributeLimits
     status: supported
     propertyOverrides: []
@@ -161,7 +164,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: Sampler
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: always_record
+        status: unknown
   - type: SeverityNumber
     status: supported
     enumOverrides: []

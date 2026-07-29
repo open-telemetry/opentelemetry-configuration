@@ -9,6 +9,9 @@ typeSupportStatuses:
   - type: AlwaysOnSampler
     status: supported
     propertyOverrides: []
+  - type: AlwaysRecordSampler
+    status: unknown
+    propertyOverrides: []
   - type: AttributeLimits
     status: supported
     propertyOverrides: []
@@ -190,6 +193,8 @@ typeSupportStatuses:
   - type: Sampler
     status: supported
     propertyOverrides:
+      - property: always_record
+        status: unknown
       - property: composite/development
         status: not_implemented
       - property: jaeger_remote/development
