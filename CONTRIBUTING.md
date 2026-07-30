@@ -60,6 +60,10 @@ Properties defined in the schema should be lower [snake case](https://en.wikiped
 
 Property names and enum values must match `^[A-Za-z_][A-Za-z0-9_]*$`: ASCII letters, digits, and underscores, not starting with a digit. These names become identifiers in the languages that generate code from the schema, so restricting them to this portable set means no code generator has to sanitize or translate a name (see [#690](https://github.com/open-telemetry/opentelemetry-configuration/issues/690)). The one exception is the intentional `/development` stability suffix (e.g. `detection/development`): a name is accepted when the part before that suffix is a valid identifier. This rule is enforced by `make compile-schema`, which fails the build if you add a property or enum value with an invalid identifier.
 
+### Type name case
+
+Type names (the top-level types defined under `$defs`, e.g. `BatchSpanProcessor`) should be [PascalCase](https://en.wikipedia.org/wiki/Camel_case): they must match `^[A-Z][A-Za-z0-9]*$`, a leading uppercase ASCII letter followed by ASCII letters and digits. Like property names and enum values, type names become identifiers in the languages that generate code from the schema. Experimental types are denoted with an `Experimental` prefix rather than a `/development` suffix. This rule is enforced by `make compile-schema`, which fails the build if you add a type with a name that is not PascalCase.
+
 ### Properties requiring pattern matching
 
 When a property requires pattern matching, use wildcard `*` (match any number of any character, including none) and `?` (match any single character) instead of regex. Matching is case-sensitive. If a single property with wildcards is likely to be insufficient to model the configuration requirements, accept `included` and `excluded` properties, each with an array of strings with wildcard entries. The wildcard entries should be joined with a logical OR. If `included` is not specified, assume that all entries are included. Apply `excluded` after applying `included`. Examples:

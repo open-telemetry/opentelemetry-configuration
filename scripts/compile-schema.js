@@ -12,6 +12,14 @@ import {readSourceTypesByType} from "./source-schema.js";
 const identifier = /^[A-Za-z_][A-Za-z0-9_]*$/;
 const maturitySuffix = /\/development$/;
 
+// Type names (the keys under `$defs`, e.g. `BatchSpanProcessor`) must be
+// PascalCase alphanumerics: a leading uppercase ASCII letter followed by ASCII
+// letters and digits. Like property names, type names become identifiers in the
+// languages that generate code from the schema. Experimental types carry an
+// `Experimental` prefix rather than a `/development` suffix (see #689), which is
+// itself PascalCase, so no suffix handling is needed.
+const pascalCaseTypeName = /^[A-Z][A-Za-z0-9]*$/;
+
 // Read source schema
 const sourceTypes = Object.values(readSourceTypesByType());
 
@@ -24,6 +32,7 @@ sourceTypes.forEach(sourceSchemaType => {
     noSubschemas(sourceSchemaType, messages);
     optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages);
     namesShouldBeValidIdentifiers(sourceSchemaType, messages);
+    typeNamesShouldBePascalCase(sourceSchemaType, messages);
 });
 if (messages.length > 0) {
     messages.forEach(message => console.log(message));
@@ -222,6 +231,12 @@ function namesShouldBeValidIdentifiers(sourceSchemaType, messages) {
             messages.push(`Enum value '${enumValue}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix); it becomes an identifier in generated code. See #690.`);
         }
     });
+}
+
+function typeNamesShouldBePascalCase(sourceSchemaType, messages) {
+    if (!pascalCaseTypeName.test(sourceSchemaType.type)) {
+        messages.push(`Type name '${sourceSchemaType.type}' must match ${pascalCaseTypeName} (PascalCase); it becomes an identifier in generated code. See #690.`);
+    }
 }
 
 function optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages) {
