@@ -58,7 +58,7 @@ Properties defined in the schema should be lower [snake case](https://en.wikiped
 
 ### Property name and enum value character set
 
-Property names and enum values must match `^[A-Za-z_][A-Za-z0-9_]*$`: ASCII letters, digits, and underscores, not starting with a digit. These names become identifiers in the languages that generate code from the schema, so restricting them to this portable set means no code generator has to sanitize or translate a name (see [#690](https://github.com/open-telemetry/opentelemetry-configuration/issues/690)). The one exception is the intentional `/development` stability suffix (e.g. `detection/development`): a name is accepted when the part before that suffix is a valid identifier. This rule is checked by `make check-schema-names` and is enforced as a build error.
+Property names and enum values must match `^[A-Za-z_][A-Za-z0-9_]*$`: ASCII letters, digits, and underscores, not starting with a digit. These names become identifiers in the languages that generate code from the schema, so restricting them to this portable set means no code generator has to sanitize or translate a name (see [#690](https://github.com/open-telemetry/opentelemetry-configuration/issues/690)). The one exception is the intentional `/development` stability suffix (e.g. `detection/development`): a name is accepted when the part before that suffix is a valid identifier. This rule is enforced by `make compile-schema`, which fails the build if you add a property or enum value with an invalid identifier.
 
 ### Properties requiring pattern matching
 

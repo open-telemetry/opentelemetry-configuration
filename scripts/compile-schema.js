@@ -2,6 +2,16 @@ import fs from 'fs';
 import {rootTypeName, schemaPath} from "./util.js";
 import {readSourceTypesByType} from "./source-schema.js";
 
+// Property names and enum values must be portable identifiers: ASCII letters,
+// digits, and underscores, not starting with a digit. These names become
+// identifiers in the languages that generate code from the schema, so
+// restricting them to this common set means no generator has to sanitize or
+// translate a name. See #690. The one exception is the intentional
+// `/development` maturity suffix (e.g. `detection/development`): a name is
+// accepted when the part before that suffix is a valid identifier.
+const identifier = /^[A-Za-z_][A-Za-z0-9_]*$/;
+const maturitySuffix = /\/development$/;
+
 // Read source schema
 const sourceTypes = Object.values(readSourceTypesByType());
 
@@ -13,6 +23,7 @@ sourceTypes.forEach(sourceSchemaType => {
     sdkExtensionPluginSchema(sourceSchemaType, messages);
     noSubschemas(sourceSchemaType, messages);
     optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages);
+    namesShouldBeValidIdentifiers(sourceSchemaType, messages);
 });
 if (messages.length > 0) {
     messages.forEach(message => console.log(message));
@@ -196,6 +207,20 @@ function noSubschemas(sourceSchemaType, messages) {
                 messages.push(`Please move subschema for ${sourceSchemaType.type}.${property.property} to top level type in $defs.`)
             }
         });
+    });
+}
+
+function namesShouldBeValidIdentifiers(sourceSchemaType, messages) {
+    const isValidName = name => identifier.test(name.replace(maturitySuffix, ''));
+    sourceSchemaType.properties.forEach(property => {
+        if (!isValidName(property.property)) {
+            messages.push(`Property name '${property.property}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix); it becomes an identifier in generated code. See #690.`);
+        }
+    });
+    (sourceSchemaType.enumValues || []).forEach(enumValue => {
+        if (typeof enumValue === 'string' && !isValidName(enumValue)) {
+            messages.push(`Enum value '${enumValue}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix); it becomes an identifier in generated code. See #690.`);
+        }
     });
 }
 
