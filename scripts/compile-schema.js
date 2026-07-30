@@ -10,6 +10,8 @@ import {readSourceTypesByType} from "./source-schema.js";
 // `/development` maturity suffix (e.g. `detection/development`): a name is
 // accepted when the part before that suffix is a valid identifier.
 const identifier = /^[A-Za-z_][A-Za-z0-9_]*$/;
+// The `/alpha` and `/beta` maturity suffixes could also be allowed here, but
+// are omitted because the schema has no instances of them at the moment.
 const maturitySuffix = /\/development$/;
 
 // Type names (the keys under `$defs`, e.g. `BatchSpanProcessor`) must be
