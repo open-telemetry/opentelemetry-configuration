@@ -2,24 +2,10 @@ import fs from 'fs';
 import {rootTypeName, schemaPath} from "./util.js";
 import {readSourceTypesByType} from "./source-schema.js";
 
-// Property names and enum values must be portable identifiers: ASCII letters,
-// digits, and underscores, not starting with a digit. These names become
-// identifiers in the languages that generate code from the schema, so
-// restricting them to this common set means no generator has to sanitize or
-// translate a name. See #690. The one exception is the intentional
-// `/development` maturity suffix (e.g. `detection/development`): a name is
-// accepted when the part before that suffix is a valid identifier.
+// See the schema modeling rules in CONTRIBUTING.md. /alpha and /beta suffixes
+// are also permitted but omitted here as the schema has no instances of them.
 const identifier = /^[A-Za-z_][A-Za-z0-9_]*$/;
-// The `/alpha` and `/beta` maturity suffixes could also be allowed here, but
-// are omitted because the schema has no instances of them at the moment.
 const maturitySuffix = /\/development$/;
-
-// Type names (the keys under `$defs`, e.g. `BatchSpanProcessor`) must be
-// PascalCase alphanumerics: a leading uppercase ASCII letter followed by ASCII
-// letters and digits. Like property names, type names become identifiers in the
-// languages that generate code from the schema. Experimental types carry an
-// `Experimental` prefix rather than a `/development` suffix (see #689), which is
-// itself PascalCase, so no suffix handling is needed.
 const pascalCaseTypeName = /^[A-Z][A-Za-z0-9]*$/;
 
 // Read source schema
@@ -225,19 +211,19 @@ function namesShouldBeValidIdentifiers(sourceSchemaType, messages) {
     const isValidName = name => identifier.test(name.replace(maturitySuffix, ''));
     sourceSchemaType.properties.forEach(property => {
         if (!isValidName(property.property)) {
-            messages.push(`Property name '${property.property}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix); it becomes an identifier in generated code. See #690.`);
+            messages.push(`Property name '${property.property}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix)`);
         }
     });
     (sourceSchemaType.enumValues || []).forEach(enumValue => {
         if (typeof enumValue === 'string' && !isValidName(enumValue)) {
-            messages.push(`Enum value '${enumValue}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix); it becomes an identifier in generated code. See #690.`);
+            messages.push(`Enum value '${enumValue}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix)`);
         }
     });
 }
 
 function typeNamesShouldBePascalCase(sourceSchemaType, messages) {
     if (!pascalCaseTypeName.test(sourceSchemaType.type)) {
-        messages.push(`Type name '${sourceSchemaType.type}' must match ${pascalCaseTypeName} (PascalCase); it becomes an identifier in generated code. See #690.`);
+        messages.push(`Type name '${sourceSchemaType.type}' must match ${pascalCaseTypeName} (PascalCase)`);
     }
 }
 
