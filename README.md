@@ -38,7 +38,7 @@ See [RELEASING.MD](RELEASING.md) and [releases](https://github.com/open-telemetr
 
 ### Maintainers
 
-* [Alex Boten](https://github.com/codeboten), Honeycomb
+* [Alex Boten](https://github.com/codeboten), Grafana Labs
 * [Jack Berg](https://github.com/jack-berg), Grafana Labs
 * [Marc Alff](https://github.com/marcalff), Oracle
 * [Tyler Yahn](https://github.com/MrAlias), Splunk
