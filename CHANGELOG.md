@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Add `sql_commenter/development` to `ExperimentalDbInstrumentation`
+  ([#715](https://github.com/open-telemetry/opentelemetry-configuration/pull/715))
 * Add `always_record` definition to `Sampler`
   ([#698](https://github.com/open-telemetry/opentelemetry-configuration/pull/698))
 * Deprecate `MetricProducer.opencensus` and `OpenCensusMetricProducer`,

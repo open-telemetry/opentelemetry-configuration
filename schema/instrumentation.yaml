@@ -278,6 +278,15 @@ $defs:
 
           See database migration: https://opentelemetry.io/docs/specs/semconv/database/
         defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
+      sql_commenter/development:
+        type:
+          - boolean
+          - "null"
+        description: |
+          Configure whether to propagate trace context by injecting SQL commenter
+          comments into SQL queries before execution.
+          See SQL commenter: https://opentelemetry.io/docs/specs/semconv/db/database-spans/#sql-commenter
+        defaultBehavior: false is used, SQL commenter-based context propagation is disabled
   ExperimentalGenAiInstrumentation:
     type: object
     additionalProperties: false

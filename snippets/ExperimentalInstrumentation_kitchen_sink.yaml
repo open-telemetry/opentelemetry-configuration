@@ -47,6 +47,7 @@ instrumentation/development:
         version: 1
         experimental: false
         dual_emit: false
+      sql_commenter/development: false
     rpc:
       semconv:
         version: 1
