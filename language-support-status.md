@@ -101,9 +101,9 @@ Latest supported file format: `1.0.0`
 | `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | not_applicable |  | * `code`: not_applicable<br>* `db`: not_applicable<br>* `gen_ai`: not_applicable<br>* `http`: not_applicable<br>* `messaging`: not_applicable<br>* `rpc`: not_applicable<br>* `sanitization`: not_applicable<br>* `stability_opt_in_list`: not_applicable<br> |
 | `ExperimentalHostResourceDetector` | not_implemented |  |  |
-| `ExperimentalHttpClientInstrumentation` | not_applicable |  | * `known_methods`: not_applicable<br>* `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
+| `ExperimentalHttpClientInstrumentation` | not_applicable |  | * `known_methods`: not_applicable<br> |
 | `ExperimentalHttpInstrumentation` | not_applicable |  | * `client`: not_applicable<br>* `semconv`: not_applicable<br>* `server`: not_applicable<br> |
-| `ExperimentalHttpServerInstrumentation` | not_applicable |  | * `known_methods`: not_applicable<br>* `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
+| `ExperimentalHttpServerInstrumentation` | not_applicable |  | * `known_methods`: not_applicable<br> |
 | `ExperimentalInstrumentation` | not_applicable |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: not_applicable<br>* `go`: not_applicable<br>* `java`: not_applicable<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | `ExperimentalJaegerRemoteSampler` | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | not_applicable |  |  |
@@ -223,9 +223,9 @@ Latest supported file format: `1.0.0`
 | `ExperimentalGenAiInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalGeneralInstrumentation` | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
-| `ExperimentalHttpClientInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
+| `ExperimentalHttpClientInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br> |
 | `ExperimentalHttpInstrumentation` | not_implemented |  | * `client`: not_implemented<br>* `semconv`: not_implemented<br>* `server`: not_implemented<br> |
-| `ExperimentalHttpServerInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
+| `ExperimentalHttpServerInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br> |
 | `ExperimentalInstrumentation` | not_implemented |  | * `cpp`: not_implemented<br>* `dotnet`: not_implemented<br>* `erlang`: not_implemented<br>* `general`: not_implemented<br>* `go`: not_implemented<br>* `java`: not_implemented<br>* `js`: not_implemented<br>* `php`: not_implemented<br>* `python`: not_implemented<br>* `ruby`: not_implemented<br>* `rust`: not_implemented<br>* `swift`: not_implemented<br> |
 | `ExperimentalJaegerRemoteSampler` | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | not_implemented |  |  |
@@ -345,9 +345,9 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
-| `ExperimentalHttpClientInstrumentation` | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
+| `ExperimentalHttpClientInstrumentation` | supported |  | * `known_methods`: supported<br> |
 | `ExperimentalHttpInstrumentation` | supported |  | * `client`: supported<br>* `semconv`: supported<br>* `server`: supported<br> |
-| `ExperimentalHttpServerInstrumentation` | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
+| `ExperimentalHttpServerInstrumentation` | supported |  | * `known_methods`: supported<br> |
 | `ExperimentalInstrumentation` | supported |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: supported<br>* `go`: not_applicable<br>* `java`: supported<br>* `js`: not_applicable<br>* `php`: not_applicable<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | `ExperimentalJaegerRemoteSampler` | supported |  | * `endpoint`: supported<br>* `initial_sampler`: supported<br>* `interval`: supported<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | supported |  |  |
@@ -467,9 +467,9 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalGenAiInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalGeneralInstrumentation` | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
-| `ExperimentalHttpClientInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
+| `ExperimentalHttpClientInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br> |
 | `ExperimentalHttpInstrumentation` | not_implemented |  | * `client`: not_implemented<br>* `semconv`: not_implemented<br>* `server`: not_implemented<br> |
-| `ExperimentalHttpServerInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
+| `ExperimentalHttpServerInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br> |
 | `ExperimentalInstrumentation` | not_implemented |  | * `cpp`: not_implemented<br>* `dotnet`: not_implemented<br>* `erlang`: not_implemented<br>* `general`: not_implemented<br>* `go`: not_implemented<br>* `java`: not_implemented<br>* `js`: not_implemented<br>* `php`: not_implemented<br>* `python`: not_implemented<br>* `ruby`: not_implemented<br>* `rust`: not_implemented<br>* `swift`: not_implemented<br> |
 | `ExperimentalJaegerRemoteSampler` | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | not_implemented |  |  |
@@ -589,9 +589,9 @@ Latest supported file format: `1.0.0-rc.2`
 | `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
-| `ExperimentalHttpClientInstrumentation` | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
+| `ExperimentalHttpClientInstrumentation` | supported |  | * `known_methods`: supported<br> |
 | `ExperimentalHttpInstrumentation` | supported |  | * `client`: supported<br>* `semconv`: supported<br>* `server`: supported<br> |
-| `ExperimentalHttpServerInstrumentation` | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
+| `ExperimentalHttpServerInstrumentation` | supported |  | * `known_methods`: supported<br> |
 | `ExperimentalInstrumentation` | supported |  | * `cpp`: not_applicable<br>* `dotnet`: not_applicable<br>* `erlang`: not_applicable<br>* `general`: supported<br>* `go`: not_applicable<br>* `java`: not_applicable<br>* `js`: not_applicable<br>* `php`: supported<br>* `python`: not_applicable<br>* `ruby`: not_applicable<br>* `rust`: not_applicable<br>* `swift`: not_applicable<br> |
 | `ExperimentalJaegerRemoteSampler` | not_implemented |  | * `endpoint`: not_implemented<br>* `initial_sampler`: not_implemented<br>* `interval`: not_implemented<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | supported |  |  |
@@ -711,9 +711,9 @@ Latest supported file format: `1.0.0`
 | `ExperimentalGenAiInstrumentation` | ignored |  | * `semconv`: ignored<br> |
 | `ExperimentalGeneralInstrumentation` | ignored |  | * `code`: ignored<br>* `db`: ignored<br>* `gen_ai`: ignored<br>* `http`: ignored<br>* `messaging`: ignored<br>* `rpc`: ignored<br>* `sanitization`: ignored<br>* `stability_opt_in_list`: ignored<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
-| `ExperimentalHttpClientInstrumentation` | ignored |  | * `known_methods`: ignored<br>* `request_captured_headers`: ignored<br>* `response_captured_headers`: ignored<br> |
+| `ExperimentalHttpClientInstrumentation` | ignored |  | * `known_methods`: ignored<br> |
 | `ExperimentalHttpInstrumentation` | ignored |  | * `client`: ignored<br>* `semconv`: ignored<br>* `server`: ignored<br> |
-| `ExperimentalHttpServerInstrumentation` | ignored |  | * `known_methods`: ignored<br>* `request_captured_headers`: ignored<br>* `response_captured_headers`: ignored<br> |
+| `ExperimentalHttpServerInstrumentation` | ignored |  | * `known_methods`: ignored<br> |
 | `ExperimentalInstrumentation` | ignored |  | * `cpp`: ignored<br>* `dotnet`: ignored<br>* `erlang`: ignored<br>* `general`: ignored<br>* `go`: ignored<br>* `java`: ignored<br>* `js`: ignored<br>* `php`: ignored<br>* `python`: ignored<br>* `ruby`: ignored<br>* `rust`: ignored<br>* `swift`: ignored<br> |
 | `ExperimentalJaegerRemoteSampler` | ignored |  | * `endpoint`: ignored<br>* `initial_sampler`: ignored<br>* `interval`: ignored<br> |
 | `ExperimentalLanguageSpecificInstrumentation` | ignored |  |  |

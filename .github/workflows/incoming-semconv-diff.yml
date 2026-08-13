@@ -1,0 +1,152 @@
+name: Incoming semconv diff
+
+# Keeps a pinned tracking issue up to date with the diff between the
+# currently pinned semconv submodule and open-telemetry/semantic-conventions@main.
+# See scratch/declarative-config-integration/plan.md milestone 6.
+
+on:
+  schedule:
+    - cron: '0 4 * * *'  # daily at 04:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  # Exact title of the tracking issue whose body gets rewritten on each
+  # run. Must match a single open issue in this repository.
+  ISSUE_TITLE: 'Incoming semconv diff'
+  # TODO: flip to open-telemetry/semantic-conventions@main once the pilot lands upstream.
+  UPSTREAM_REPO: 'jack-berg/semantic-conventions'
+  UPSTREAM_BRANCH: 'declarative-config-integration'
+
+jobs:
+  update-tracking-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out otel-config
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: recursive
+          persist-credentials: false
+
+      - name: install dependencies
+        run: npm install
+
+      - name: capture pinned semconv ref
+        id: pinned
+        run: |
+          pinned_sha=$(git -C semantic-conventions rev-parse HEAD)
+          pinned_url=$(git config -f .gitmodules submodule.semantic-conventions.url)
+          pinned_repo=$(echo "$pinned_url" | sed -E 's#(https?://github.com/|git@github.com:)##; s#\.git$##')
+          echo "sha=$pinned_sha" >> "$GITHUB_OUTPUT"
+          echo "label=${pinned_repo}@${pinned_sha:0:7}" >> "$GITHUB_OUTPUT"
+          echo "url=https://github.com/${pinned_repo}/commit/${pinned_sha}" >> "$GITHUB_OUTPUT"
+
+      - name: compile baseline schema
+        run: |
+          make compile-schema
+          cp opentelemetry_configuration.json /tmp/baseline.json
+
+      - name: override submodule with upstream main
+        id: upstream
+        run: |
+          cd semantic-conventions
+          git remote add upstream "https://github.com/${UPSTREAM_REPO}.git" 2>/dev/null || \
+            git remote set-url upstream "https://github.com/${UPSTREAM_REPO}.git"
+          git fetch --depth=1 upstream "${UPSTREAM_BRANCH}"
+          git checkout FETCH_HEAD
+          upstream_sha=$(git rev-parse HEAD)
+          cd ..
+          echo "sha=$upstream_sha" >> "$GITHUB_OUTPUT"
+          echo "label=${UPSTREAM_REPO}@${upstream_sha:0:7}" >> "$GITHUB_OUTPUT"
+          echo "url=https://github.com/${UPSTREAM_REPO}/commit/${upstream_sha}" >> "$GITHUB_OUTPUT"
+
+      - name: compile head schema
+        run: make compile-schema
+
+      - name: upload compiled schema artifact
+        id: artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: opentelemetry_configuration
+          path: opentelemetry_configuration.json
+
+      - name: render issue body
+        env:
+          PINNED_LABEL: ${{ steps.pinned.outputs.label }}
+          PINNED_URL: ${{ steps.pinned.outputs.url }}
+          UPSTREAM_LABEL: ${{ steps.upstream.outputs.label }}
+          UPSTREAM_URL: ${{ steps.upstream.outputs.url }}
+          ARTIFACT_URL: ${{ steps.artifact.outputs.artifact-url }}
+        run: |
+          head_json=opentelemetry_configuration.json
+          baseline_size=$(wc -c < /tmp/baseline.json)
+          head_size=$(wc -c < "$head_json")
+          delta=$((head_size - baseline_size))
+
+          # `diff` exits 1 when files differ; capture and continue.
+          diff_output=$(diff -u /tmp/baseline.json "$head_json" || true)
+
+          {
+            echo "## Comparing"
+            echo
+            echo "- **Baseline (pinned):** [\`${PINNED_LABEL}\`](${PINNED_URL})"
+            echo "- **Head:** [\`${UPSTREAM_LABEL}\`](${UPSTREAM_URL})"
+            echo
+            echo "Schema size: ${baseline_size} → ${head_size} bytes (delta ${delta})."
+            echo
+            echo "[Download the compiled \`opentelemetry_configuration.json\` for this run](${ARTIFACT_URL})."
+            echo
+            if [ -z "$diff_output" ]; then
+              echo "## Diff"
+              echo
+              echo "No changes to the compiled schema."
+            else
+              echo "## Diff"
+              echo
+              echo '```diff'
+              printf '%s\n' "$diff_output"
+              echo '```'
+            fi
+          } > /tmp/issue-body.md
+
+          echo "--- rendered body ---"
+          cat /tmp/issue-body.md
+
+      - name: find tracking issue
+        id: find_issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # `gh issue list --search "in:title ..."` does a substring search;
+          # filter for an exact title match client-side to avoid false positives.
+          matches=$(gh issue list \
+            --repo "${GITHUB_REPOSITORY}" \
+            --state open \
+            --search "in:title \"${ISSUE_TITLE}\"" \
+            --json number,title \
+            --jq "[.[] | select(.title == \"${ISSUE_TITLE}\")]")
+          count=$(echo "$matches" | jq 'length')
+          if [ "$count" -eq 0 ]; then
+            echo "::warning::No open issue with title '${ISSUE_TITLE}' found in ${GITHUB_REPOSITORY}; skipping issue edit."
+            echo "number=" >> "$GITHUB_OUTPUT"
+          elif [ "$count" -gt 1 ]; then
+            echo "::error::Multiple open issues match title '${ISSUE_TITLE}' in ${GITHUB_REPOSITORY}. Resolve ambiguity by closing extras."
+            echo "$matches" | jq .
+            exit 1
+          else
+            number=$(echo "$matches" | jq -r '.[0].number')
+            echo "Found issue #${number}."
+            echo "number=${number}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: update tracking issue
+        if: steps.find_issue.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue edit "${{ steps.find_issue.outputs.number }}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --body-file /tmp/issue-body.md

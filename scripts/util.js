@@ -6,6 +6,7 @@ const __dirname = path.dirname(__filename);
 
 export const metaSchemaFilePrefix = "meta_schema";
 export const schemaSourceDirPath = __dirname + "/../schema/";
+export const semconvSourceDirPath = __dirname + "/../semantic-conventions/model/";
 export const schemaPath = __dirname + `/../opentelemetry_configuration.json`;
 export const languageSupportStatusPath = __dirname + "/../language-support-status.md";
 
