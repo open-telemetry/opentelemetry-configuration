@@ -2,6 +2,12 @@ import fs from 'fs';
 import {rootTypeName, schemaPath} from "./util.js";
 import {readSourceTypesByType} from "./source-schema.js";
 
+// See the schema modeling rules in CONTRIBUTING.md. /alpha and /beta suffixes
+// are also permitted but omitted here as the schema has no instances of them.
+const identifier = /^[A-Za-z_][A-Za-z0-9_]*$/;
+const maturitySuffix = /\/development$/;
+const pascalCaseTypeName = /^[A-Z][A-Za-z0-9]*$/;
+
 // Read source schema
 const sourceTypes = Object.values(readSourceTypesByType());
 
@@ -13,6 +19,8 @@ sourceTypes.forEach(sourceSchemaType => {
     sdkExtensionPluginSchema(sourceSchemaType, messages);
     noSubschemas(sourceSchemaType, messages);
     optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages);
+    namesShouldBeValidIdentifiers(sourceSchemaType, messages);
+    typeNamesShouldBePascalCase(sourceSchemaType, messages);
 });
 if (messages.length > 0) {
     messages.forEach(message => console.log(message));
@@ -197,6 +205,26 @@ function noSubschemas(sourceSchemaType, messages) {
             }
         });
     });
+}
+
+function namesShouldBeValidIdentifiers(sourceSchemaType, messages) {
+    const isValidName = name => identifier.test(name.replace(maturitySuffix, ''));
+    sourceSchemaType.properties.forEach(property => {
+        if (!isValidName(property.property)) {
+            messages.push(`Property name '${property.property}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix)`);
+        }
+    });
+    (sourceSchemaType.enumValues || []).forEach(enumValue => {
+        if (typeof enumValue === 'string' && !isValidName(enumValue)) {
+            messages.push(`Enum value '${enumValue}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix)`);
+        }
+    });
+}
+
+function typeNamesShouldBePascalCase(sourceSchemaType, messages) {
+    if (!pascalCaseTypeName.test(sourceSchemaType.type)) {
+        messages.push(`Type name '${sourceSchemaType.type}' must match ${pascalCaseTypeName} (PascalCase)`);
+    }
 }
 
 function optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages) {
