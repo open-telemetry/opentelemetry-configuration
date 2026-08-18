@@ -56,6 +56,14 @@ Properties defined in the schema should be lower [snake case](https://en.wikiped
 
 [enum](https://json-schema.org/understanding-json-schema/reference/enum) values should be lower [snake case](https://en.wikipedia.org/wiki/Snake_case).
 
+### Property name and enum value character set
+
+Property names and enum values must match `^[A-Za-z_][A-Za-z0-9_]*$`. This facilitates usage as identifiers in generated code. Experimental properties are an exception, and are [denoted with a `/(development|alpha|beta)` suffix](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features) (e.g. `detection/development`).
+
+### Type name case
+
+Type names (the top-level types defined under `$defs`, e.g. `BatchSpanProcessor`) should be [PascalCase](https://en.wikipedia.org/wiki/Camel_case): they must match `^[A-Z][A-Za-z0-9]*$`. This facilitates usage as identifiers in generated code. Experimental types are [denoted with an `Experimental` prefix](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features).
+
 ### Properties requiring pattern matching
 
 When a property requires pattern matching, use wildcard `*` (match any number of any character, including none) and `?` (match any single character) instead of regex. Matching is case-sensitive. If a single property with wildcards is likely to be insufficient to model the configuration requirements, accept `included` and `excluded` properties, each with an array of strings with wildcard entries. The wildcard entries should be joined with a logical OR. If `included` is not specified, assume that all entries are included. Apply `excluded` after applying `included`. Examples:
@@ -412,6 +420,7 @@ It's important to run `compile-schema` before committing changes to the schema a
 Before compiling the schema, the `compile-schema` target performs a variety of validation checks to help ensure schema consistency and quality:
 
 * Validate all properties have a [`description`](#annotations---title-and-description).
+* Validate [property names and enum values](#property-name-and-enum-value-character-set) and [type names](#type-name-case) are valid identifiers.
 * Validate all enum types have a `enumDescription` (see above) and all enum values have a corresponding entry.
 * Validate all types labeled `isSdkExtensionPlugin: true` are modeled consistently.
 * Validate there are [no subschemas](#schemas-and-subschemas) (i.e. all types are defined at the top level of in `$defs`).

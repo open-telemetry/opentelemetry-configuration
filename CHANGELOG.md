@@ -1,11 +1,15 @@
 ## Unreleased
 
+* Add `always_record` definition to `Sampler`
+  ([#698](https://github.com/open-telemetry/opentelemetry-configuration/pull/698))
 * Deprecate `MetricProducer.opencensus` and `OpenCensusMetricProducer`,
   following the deprecation of OpenCensus compatibility in the
   specification
   ([#655](https://github.com/open-telemetry/opentelemetry-configuration/pull/655))
 * Add `attribute_value_depth_limit` to attribute, span, and log record limits
   ([#702](https://github.com/open-telemetry/opentelemetry-configuration/pull/702))
+* Add `max_request_size` and `max_response_size` to OTLP exporters
+  ([#700](https://github.com/open-telemetry/opentelemetry-configuration/pull/700))
 
 ## v1.1.0 - 2026-06-05
 
