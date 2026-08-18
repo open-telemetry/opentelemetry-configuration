@@ -22,6 +22,8 @@
           max_export_batch_size: 512
   ```
   </details>
+* Add `enabled/development` property to `ViewStream`
+  ([#724](https://github.com/open-telemetry/opentelemetry-configuration/pull/724))
 
 ## v1.2.0 - 2026-09-11
 
