@@ -1785,6 +1785,22 @@
           ],
           "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
         },
+        "max_request_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure the maximum size of each export request message in bytes, before compression.\nValue must be non-negative. A value of 0 indicates no limit (infinity) and is not recommended.\nIf omitted or null, 67108864 (64 MiB) is used.\n"
+        },
+        "max_response_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Configure the maximum size of each export response in bytes, after decompression.\nValue must be positive.\nIf omitted or null, 4194304 (4 MiB) is used.\n"
+        },
         "timeout": {
           "type": [
             "integer",
@@ -1834,6 +1850,22 @@
             "null"
           ],
           "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+        },
+        "max_request_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure the maximum size of each export request message in bytes, before compression.\nValue must be non-negative. A value of 0 indicates no limit (infinity) and is not recommended.\nIf omitted or null, 67108864 (64 MiB) is used.\n"
+        },
+        "max_response_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Configure the maximum size of each export response in bytes, after decompression.\nValue must be positive.\nIf omitted or null, 4194304 (4 MiB) is used.\n"
         },
         "timeout": {
           "type": [
@@ -1903,6 +1935,22 @@
           ],
           "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
         },
+        "max_request_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure the maximum size of each export request body in bytes, before compression.\nValue must be non-negative. A value of 0 indicates no limit (infinity) and is not recommended.\nIf omitted or null, 67108864 (64 MiB) is used.\n"
+        },
+        "max_response_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Configure the maximum size of each export response in bytes, after decompression.\nValue must be positive.\nIf omitted or null, 4194304 (4 MiB) is used.\n"
+        },
         "timeout": {
           "type": [
             "integer",
@@ -1956,6 +2004,22 @@
             "null"
           ],
           "description": "Configure compression.\nKnown values include: gzip, none. Implementations may support other compression algorithms.\nIf omitted or null, none is used.\n"
+        },
+        "max_request_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Configure the maximum size of each export request body in bytes, before compression.\nValue must be non-negative. A value of 0 indicates no limit (infinity) and is not recommended.\nIf omitted or null, 67108864 (64 MiB) is used.\n"
+        },
+        "max_response_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Configure the maximum size of each export response in bytes, after decompression.\nValue must be positive.\nIf omitted or null, 4194304 (4 MiB) is used.\n"
         },
         "timeout": {
           "type": [
