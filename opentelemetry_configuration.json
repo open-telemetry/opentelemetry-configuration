@@ -692,7 +692,7 @@
           "$ref": "#/$defs/ExperimentalSemconvConfig",
           "description": "Configure database semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee database migration: https://opentelemetry.io/docs/specs/semconv/database/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
         },
-        "sql_commenter/development": {
+        "sql_commenter_enabled/development": {
           "type": [
             "boolean",
             "null"

@@ -278,7 +278,7 @@ $defs:
 
           See database migration: https://opentelemetry.io/docs/specs/semconv/database/
         defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
-      sql_commenter/development:
+      sql_commenter_enabled/development:
         type:
           - boolean
           - "null"
