@@ -43,3 +43,4 @@ meter_provider:
             - foo.*
           excluded:
             - foo.bar
+        enabled/development: true

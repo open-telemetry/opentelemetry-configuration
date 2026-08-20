@@ -227,7 +227,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ViewStream
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: enabled/development
+        status: not_implemented
   - type: ExperimentalCodeInstrumentation
     status: not_implemented
     propertyOverrides: []
