@@ -96,7 +96,7 @@ Latest supported file format: `1.0.0`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | ignored |  | * `key`: ignored<br>* `values`: ignored<br> |
 | `ExperimentalComposableSampler` | ignored |  | * `always_off`: ignored<br>* `always_on`: ignored<br>* `parent_threshold`: ignored<br>* `probability`: ignored<br>* `rule_based`: ignored<br> |
 | `ExperimentalContainerResourceDetector` | not_implemented |  |  |
-| `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br> |
+| `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br>* `sql_commenter_enabled/development`: unknown<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
 | `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | not_applicable |  | * `code`: not_applicable<br>* `db`: not_applicable<br>* `gen_ai`: not_applicable<br>* `http`: not_applicable<br>* `messaging`: not_applicable<br>* `rpc`: not_applicable<br>* `sanitization`: not_applicable<br>* `stability_opt_in_list`: not_applicable<br> |
@@ -218,7 +218,7 @@ Latest supported file format: `1.0.0`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
 | `ExperimentalComposableSampler` | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | `ExperimentalContainerResourceDetector` | supported |  |  |
-| `ExperimentalDbInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
+| `ExperimentalDbInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br>* `sql_commenter_enabled/development`: not_implemented<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
 | `ExperimentalGenAiInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalGeneralInstrumentation` | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
@@ -340,7 +340,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | supported |  | * `key`: supported<br>* `values`: supported<br> |
 | `ExperimentalComposableSampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_threshold`: supported<br>* `probability`: supported<br>* `rule_based`: supported<br> |
 | `ExperimentalContainerResourceDetector` | supported |  |  |
-| `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br> |
+| `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br>* `sql_commenter_enabled/development`: unknown<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | supported |  |  |
 | `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
@@ -462,7 +462,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
 | `ExperimentalComposableSampler` | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | `ExperimentalContainerResourceDetector` | not_implemented |  |  |
-| `ExperimentalDbInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
+| `ExperimentalDbInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br>* `sql_commenter_enabled/development`: not_implemented<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
 | `ExperimentalGenAiInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalGeneralInstrumentation` | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
@@ -584,7 +584,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | not_implemented |  | * `key`: not_implemented<br>* `values`: not_implemented<br> |
 | `ExperimentalComposableSampler` | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | `ExperimentalContainerResourceDetector` | ignored |  |  |
-| `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br> |
+| `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br>* `sql_commenter_enabled/development`: unknown<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
 | `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
@@ -706,7 +706,7 @@ Latest supported file format: `1.0.0`
 | `ExperimentalComposableRuleBasedSamplerRuleAttributeValues` | supported |  | * `key`: supported<br>* `values`: supported<br> |
 | `ExperimentalComposableSampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_threshold`: supported<br>* `probability`: supported<br>* `rule_based`: supported<br> |
 | `ExperimentalContainerResourceDetector` | ignored |  |  |
-| `ExperimentalDbInstrumentation` | ignored |  | * `semconv`: ignored<br> |
+| `ExperimentalDbInstrumentation` | ignored |  | * `semconv`: ignored<br>* `sql_commenter_enabled/development`: ignored<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | ignored |  |  |
 | `ExperimentalGenAiInstrumentation` | ignored |  | * `semconv`: ignored<br> |
 | `ExperimentalGeneralInstrumentation` | ignored |  | * `code`: ignored<br>* `db`: ignored<br>* `gen_ai`: ignored<br>* `http`: ignored<br>* `messaging`: ignored<br>* `rpc`: ignored<br>* `sanitization`: ignored<br>* `stability_opt_in_list`: ignored<br> |

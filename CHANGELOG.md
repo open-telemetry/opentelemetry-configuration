@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Add `sql_commenter_enabled/development` to `ExperimentalDbInstrumentation`
+  ([#715](https://github.com/open-telemetry/opentelemetry-configuration/pull/715))
 * Add `always_record` definition to `Sampler`
   ([#698](https://github.com/open-telemetry/opentelemetry-configuration/pull/698))
 * Deprecate `MetricProducer.opencensus` and `OpenCensusMetricProducer`,
@@ -464,7 +466,7 @@ see [project tooling docs](CONTRIBUTING.md#json-schema-source-and-output) for mo
 This release has a significant number of breaking changes, new additions and
 fixes. The breaking changes reflect a higher degree of scrutiny on consistency
 and correct data modeling as we approach a stable
-release ([#161](https://github.com/open-telemetry/opentelemetry-configuration/issues/161), [#4374](https://github.com/open-telemetry/opentelemetry-specification/issues/4374)).
+release ([#161](https://github.com/open-telemetry/opentelemetry-configuration/issues/161), open-telemetry/opentelemetry-specification#4374).
 We anticipate limited churn going forward. Additionally, once we do have a
 stable release, users can rely on
 the [strong compatibility guarantees](https://github.com/open-telemetry/opentelemetry-configuration?tab=readme-ov-file#stability-definition)
