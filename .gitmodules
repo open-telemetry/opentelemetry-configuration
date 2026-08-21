@@ -1,0 +1,4 @@
+[submodule "semantic-conventions"]
+	path = semantic-conventions
+	url = https://github.com/jack-berg/semantic-conventions.git
+	branch = declarative-config-integration

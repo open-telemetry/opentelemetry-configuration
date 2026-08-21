@@ -6,6 +6,7 @@ import {
     schemaSourceDirPath
 } from "./util.js";
 import yaml from "yaml";
+import { mergeSemconvConfig } from "./merge-semconv-config.js";
 
 const localDefPrefix = '#/$defs/';
 
@@ -16,22 +17,26 @@ export function readSourceTypesByType() {
     fs.readdirSync(schemaSourceDirPath)
         .filter(file => file.endsWith('.yaml') && !file.startsWith(metaSchemaFilePrefix))
         .forEach(file => {
-            const sourceContent = yaml.parse(fs.readFileSync(schemaSourceDirPath + file, "utf-8"));
-
-            sourceContentByFile[file] = sourceContent;
-
-            if (file === 'opentelemetry_configuration.yaml') {
-                sourceTypesByType[rootTypeName] = new SourceSchemaType(rootTypeName, file, sourceContent, '.', sourceContent);
-            }
-
-            Object.entries(getDefs(sourceContent)).forEach(([type, schema]) => {
-                const jsonSchemaPath = `${localDefPrefix}${type}`;
-                if (type in sourceTypesByType) {
-                    throw new Error(`${type} already exists in schemasByName with definition: ` + sourceTypesByType[type]);
-                }
-                sourceTypesByType[type] = new SourceSchemaType(type, file, sourceContent, jsonSchemaPath, schema);
-            });
+            sourceContentByFile[file] = yaml.parse(fs.readFileSync(schemaSourceDirPath + file, "utf-8"));
         });
+
+    // Merge in semconv-owned instrumentation config properties before building
+    // SourceSchemaType objects, so all downstream consumers see the merged view.
+    mergeSemconvConfig(sourceContentByFile);
+
+    Object.entries(sourceContentByFile).forEach(([file, sourceContent]) => {
+        if (file === 'opentelemetry_configuration.yaml') {
+            sourceTypesByType[rootTypeName] = new SourceSchemaType(rootTypeName, file, sourceContent, '.', sourceContent);
+        }
+
+        Object.entries(getDefs(sourceContent)).forEach(([type, schema]) => {
+            const jsonSchemaPath = `${localDefPrefix}${type}`;
+            if (type in sourceTypesByType) {
+                throw new Error(`${type} already exists in schemasByName with definition: ` + sourceTypesByType[type]);
+            }
+            sourceTypesByType[type] = new SourceSchemaType(type, file, sourceContent, jsonSchemaPath, schema);
+        });
+    });
 
     // Resolve refs to top-level types
     Object.values(sourceTypesByType).forEach(sourceSchemaType => {
