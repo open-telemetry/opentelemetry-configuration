@@ -21,7 +21,7 @@ Latest supported file format: `1.0.0`
 | `AlwaysOffSampler` | supported |  |  |
 | `AlwaysOnSampler` | supported |  |  |
 | `AlwaysRecordSampler` | unknown |  | * `root`: unknown<br> |
-| `AttributeLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
+| `AttributeLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `AttributeNameValue` | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
 | `AttributeType` | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
 | `B3MultiPropagator` | supported |  |  |
@@ -48,7 +48,7 @@ Latest supported file format: `1.0.0`
 | `LastValueAggregation` | supported |  |  |
 | `LoggerProvider` | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
+| `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
 | `MetricProducer` | supported |  | * `opencensus`: supported<br> |
@@ -75,7 +75,7 @@ Latest supported file format: `1.0.0`
 | `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `SpanKind` | not_implemented |  | * `client`: not_implemented<br>* `consumer`: not_implemented<br>* `internal`: not_implemented<br>* `producer`: not_implemented<br>* `server`: not_implemented<br> |
-| `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
+| `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | `SumAggregation` | supported |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
@@ -143,7 +143,7 @@ Latest supported file format: `1.0.0`
 | `AlwaysOffSampler` | supported |  |  |
 | `AlwaysOnSampler` | supported |  |  |
 | `AlwaysRecordSampler` | unknown |  | * `root`: unknown<br> |
-| `AttributeLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
+| `AttributeLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `AttributeNameValue` | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
 | `AttributeType` | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
 | `B3MultiPropagator` | supported |  |  |
@@ -170,7 +170,7 @@ Latest supported file format: `1.0.0`
 | `LastValueAggregation` | supported |  |  |
 | `LoggerProvider` | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: not_implemented<br> |
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: not_implemented<br> |
-| `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
+| `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
 | `MetricProducer` | unknown |  | * `opencensus`: unknown<br> |
@@ -197,7 +197,7 @@ Latest supported file format: `1.0.0`
 | `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: not_implemented<br> |
 | `SpanKind` | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
-| `SpanLimits` | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
+| `SpanLimits` | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_depth_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | `SumAggregation` | unknown |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
@@ -265,7 +265,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `AlwaysOffSampler` | supported |  |  |
 | `AlwaysOnSampler` | supported |  |  |
 | `AlwaysRecordSampler` | unknown |  | * `root`: unknown<br> |
-| `AttributeLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
+| `AttributeLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `AttributeNameValue` | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
 | `AttributeType` | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
 | `B3MultiPropagator` | supported |  |  |
@@ -292,7 +292,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `LastValueAggregation` | supported |  |  |
 | `LoggerProvider` | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
+| `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
 | `MetricProducer` | ignored |  | * `opencensus`: ignored<br> |
@@ -319,7 +319,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `SpanKind` | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
-| `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
+| `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | `SumAggregation` | supported |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
@@ -387,7 +387,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `AlwaysOffSampler` | supported |  |  |
 | `AlwaysOnSampler` | supported |  |  |
 | `AlwaysRecordSampler` | unknown |  | * `root`: unknown<br> |
-| `AttributeLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
+| `AttributeLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `AttributeNameValue` | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
 | `AttributeType` | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
 | `B3MultiPropagator` | supported |  |  |
@@ -414,7 +414,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `LastValueAggregation` | supported |  |  |
 | `LoggerProvider` | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
+| `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: supported<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
 | `MetricProducer` | supported |  | * `opencensus`: supported<br> |
@@ -441,7 +441,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `SpanKind` | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
-| `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
+| `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | `SumAggregation` | supported |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
@@ -509,7 +509,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `AlwaysOffSampler` | supported |  |  |
 | `AlwaysOnSampler` | supported |  |  |
 | `AlwaysRecordSampler` | unknown |  | * `root`: unknown<br> |
-| `AttributeLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
+| `AttributeLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `AttributeNameValue` | supported |  | * `name`: supported<br>* `type`: not_implemented<br>* `value`: supported<br> |
 | `AttributeType` | not_implemented |  | * `bool`: not_implemented<br>* `bool_array`: not_implemented<br>* `double`: not_implemented<br>* `double_array`: not_implemented<br>* `int`: not_implemented<br>* `int_array`: not_implemented<br>* `string`: not_implemented<br>* `string_array`: not_implemented<br> |
 | `B3MultiPropagator` | supported |  |  |
@@ -536,7 +536,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `LastValueAggregation` | ignored |  |  |
 | `LoggerProvider` | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br> |
+| `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: unknown<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
 | `MetricProducer` | not_implemented |  | * `opencensus`: not_implemented<br> |
@@ -563,7 +563,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `SpanKind` | not_implemented |  | * `client`: not_implemented<br>* `consumer`: not_implemented<br>* `internal`: not_implemented<br>* `producer`: not_implemented<br>* `server`: not_implemented<br> |
-| `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
+| `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | `SumAggregation` | ignored |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
@@ -631,7 +631,7 @@ Latest supported file format: `1.0.0`
 | `AlwaysOffSampler` | supported |  |  |
 | `AlwaysOnSampler` | supported |  |  |
 | `AlwaysRecordSampler` | unknown |  | * `root`: unknown<br> |
-| `AttributeLimits` | ignored |  | * `attribute_count_limit`: ignored<br>* `attribute_value_length_limit`: ignored<br> |
+| `AttributeLimits` | ignored |  | * `attribute_count_limit`: ignored<br>* `attribute_value_depth_limit`: ignored<br>* `attribute_value_length_limit`: ignored<br> |
 | `AttributeNameValue` | supported |  | * `name`: supported<br>* `type`: supported<br>* `value`: supported<br> |
 | `AttributeType` | supported |  | * `bool`: supported<br>* `bool_array`: supported<br>* `double`: supported<br>* `double_array`: supported<br>* `int`: supported<br>* `int_array`: supported<br>* `string`: supported<br>* `string_array`: supported<br> |
 | `B3MultiPropagator` | supported |  |  |
@@ -658,7 +658,7 @@ Latest supported file format: `1.0.0`
 | `LastValueAggregation` | supported |  |  |
 | `LoggerProvider` | supported |  | * `limits`: supported<br>* `processors`: supported<br>* `logger_configurator/development`: supported<br> |
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
-| `LogRecordLimits` | ignored |  | * `attribute_count_limit`: ignored<br>* `attribute_value_length_limit`: ignored<br> |
+| `LogRecordLimits` | ignored |  | * `attribute_count_limit`: ignored<br>* `attribute_value_depth_limit`: ignored<br>* `attribute_value_length_limit`: ignored<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge/development`: supported<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator/development`: supported<br> |
 | `MetricProducer` | ignored |  | * `opencensus`: ignored<br> |
@@ -685,7 +685,7 @@ Latest supported file format: `1.0.0`
 | `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `SpanKind` | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
-| `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
+| `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
 | `SumAggregation` | supported |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
