@@ -676,8 +676,8 @@ $defs:
           - boolean
           - "null"
         description: |
-          Configure whether the instrument is enabled or not.
-        defaultBehavior: "it is determined by whether the instrument is opt-in: false if the instrument is opt-in, true otherwise"
+          Configure whether the resulting stream(s) are enabled or not.
+        defaultBehavior: the instrument's OptIn advisory parameter determines whether the resulting stream(s) are enabled
   Aggregation:
     type: object
     additionalProperties: false
