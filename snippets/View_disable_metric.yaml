@@ -1,0 +1,15 @@
+file_format: "1.1"
+
+meter_provider:
+  readers:
+    - periodic:
+        exporter:
+          console:
+  views:
+    -
+      # SNIPPET_START
+      # Disable a metric instrument
+      selector:
+        instrument_name: my.unwanted.instrument
+      stream:
+        enabled/development: false
