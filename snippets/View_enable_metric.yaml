@@ -1,6 +1,7 @@
 file_format: "1.1"
 
 meter_provider:
+  view_matching_mode/development: composable
   readers:
     - periodic:
         exporter:
