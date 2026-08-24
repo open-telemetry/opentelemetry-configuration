@@ -2699,7 +2699,7 @@
             "boolean",
             "null"
           ],
-          "description": "Configure whether the instrument is enabled or not.\nIf omitted or null, it is determined by whether the instrument is opt-in: false if the instrument is opt-in, true otherwise.\n"
+          "description": "Configure whether the resulting stream(s) are enabled or not.\nIf omitted or null, the instrument's OptIn advisory parameter determines whether the resulting stream(s) are enabled.\n"
         }
       }
     }
