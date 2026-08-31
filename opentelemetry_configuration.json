@@ -699,6 +699,13 @@
         "semconv": {
           "$ref": "#/$defs/ExperimentalSemconvConfig",
           "description": "Configure database semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee database migration: https://opentelemetry.io/docs/specs/semconv/database/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+        },
+        "sql_commenter_enabled/development": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure whether to propagate trace context by injecting SQL commenter\ncomments into SQL queries before execution.\nSee SQL commenter: https://opentelemetry.io/docs/specs/semconv/db/database-spans/#sql-commenter\nIf omitted or null, false is used, SQL commenter-based context propagation is disabled.\n"
         }
       }
     },
