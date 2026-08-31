@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Add `enabled/development` property to `ViewStream`
+  ([#724](https://github.com/open-telemetry/opentelemetry-configuration/pull/724))
 * Add `always_record` definition to `Sampler`
   ([#698](https://github.com/open-telemetry/opentelemetry-configuration/pull/698))
 * Add experimental `meter_provider.view_matching_mode/development` property
