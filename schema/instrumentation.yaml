@@ -171,66 +171,19 @@ $defs:
           For version=2 and above, the previous version is the prior stable major version (e.g., version=2, dual_emit=true emits both v2 and v1).
           Enables dual-emit for phased migration between versions.
         defaultBehavior: "false is used"
+  # request_captured_headers, response_captured_headers, known_methods on the
+  # two types below are sourced from semantic-conventions via
+  # merge-semconv-config.js.
   ExperimentalHttpClientInstrumentation:
     type: object
-    additionalProperties: false
-    properties:
-      request_captured_headers:
-        type: array
-        minItems: 1
-        items:
-          type: string
-        description: |
-          Configure headers to capture for outbound http requests.
-        defaultBehavior: no outbound request headers are captured
-      response_captured_headers:
-        type: array
-        minItems: 1
-        items:
-          type: string
-        description: |
-          Configure headers to capture for inbound http responses.
-        defaultBehavior: no inbound response headers are captured
-      known_methods:
-        type: array
-        minItems: 0
-        items:
-          type: string
-        description: |
-          Override the default list of known HTTP methods.
-          Known methods are case-sensitive.
-          This is a full override of the default known methods, not a list of known methods in addition to the defaults.
-        defaultBehavior: HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known
+    # temp, revert after testing
+    additionalProperties: true
+    properties: {}
   ExperimentalHttpServerInstrumentation:
     type: object
-    additionalProperties: false
-    properties:
-      request_captured_headers:
-        type: array
-        minItems: 1
-        items:
-          type: string
-        description: |
-          Configure headers to capture for inbound http requests.
-        defaultBehavior: no request headers are captured
-      response_captured_headers:
-        type: array
-        minItems: 1
-        items:
-          type: string
-        description: |
-          Configure headers to capture for outbound http responses.
-        defaultBehavior: no response headers are captures
-      known_methods:
-        type: array
-        minItems: 0
-        items:
-          type: string
-        description: |
-          Override the default list of known HTTP methods.
-          Known methods are case-sensitive.
-          This is a full override of the default known methods, not a list of known methods in addition to the defaults.
-        defaultBehavior: HTTP methods GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH are known
+    # temp, revert after testing
+    additionalProperties: true
+    properties: {}
   ExperimentalHttpInstrumentation:
     type: object
     additionalProperties: false
