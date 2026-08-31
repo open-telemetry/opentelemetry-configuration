@@ -260,6 +260,15 @@ typeSupportStatuses:
   - type: ViewStream
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalAlwaysContinueTraceContinuationDecider
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalAlwaysRestartWithLinkTraceContinuationDecider
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalAlwaysRestartWithoutLinkTraceContinuationDecider
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalCodeInstrumentation
     status: not_implemented
     propertyOverrides: []
@@ -374,6 +383,21 @@ typeSupportStatuses:
   - type: ExperimentalRpcInstrumentation
     status: not_implemented
     propertyOverrides: []
+  - type: ExperimentalRuleBasedTraceContinuationDecider
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalRuleBasedTraceContinuationDeciderAttributePatterns
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalRuleBasedTraceContinuationDeciderAttributeValues
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalRuleBasedTraceContinuationDeciderConditions
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalRuleBasedTraceContinuationDeciderRule
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalSanitization
     status: unknown
     propertyOverrides: []
@@ -384,6 +408,18 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ExperimentalSpanParent
+    status: unknown
+    enumOverrides: []
+  - type: ExperimentalTraceContinuationDecider
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalTraceContinuationDirection
+    status: unknown
+    enumOverrides: []
+  - type: ExperimentalTraceContinuationEgressAction
+    status: unknown
+    enumOverrides: []
+  - type: ExperimentalTraceContinuationStrategy
     status: unknown
     enumOverrides: []
   - type: ExperimentalTracerConfig
