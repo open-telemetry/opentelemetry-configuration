@@ -3,6 +3,7 @@
 ### Schema
 
 * Add optional experimental names for SDK processors, exporters, and metric readers.
+  ([#737](https://github.com/open-telemetry/opentelemetry-configuration/pull/737))
 
 ## v1.2.0 - 2026-09-11
 
