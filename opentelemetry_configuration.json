@@ -282,7 +282,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "schedule_delay": {
           "type": [
@@ -334,7 +334,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "schedule_delay": {
           "type": [
@@ -459,7 +459,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         }
       }
     },
@@ -475,7 +475,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "temporality_preference": {
           "$ref": "#/$defs/ExporterTemporalityPreference",
@@ -744,7 +744,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         }
       }
     },
@@ -1121,7 +1121,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "output_stream": {
           "type": [
@@ -1144,7 +1144,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "output_stream": {
           "type": [
@@ -1200,7 +1200,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "host": {
           "type": [
@@ -1840,7 +1840,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "endpoint": {
           "type": [
@@ -1913,7 +1913,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "endpoint": {
           "type": [
@@ -2004,7 +2004,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "endpoint": {
           "type": [
@@ -2081,7 +2081,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "endpoint": {
           "type": [
@@ -2192,7 +2192,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "interval": {
           "type": [
@@ -2286,7 +2286,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "exporter": {
           "$ref": "#/$defs/PullMetricExporter",
@@ -2463,7 +2463,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "exporter": {
           "$ref": "#/$defs/LogRecordExporter",
@@ -2483,7 +2483,7 @@
             "string",
             "null"
           ],
-          "description": "Configure the name used as `otel.component.name` in SDK self-observability telemetry.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
+          "description": "Configure a name that uniquely identifies this component within its containing SDK instance. When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.\nIf omitted, an automatically assigned name is used. If present and null, an automatically assigned name is used.\n"
         },
         "exporter": {
           "$ref": "#/$defs/SpanExporter",
