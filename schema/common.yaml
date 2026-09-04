@@ -47,6 +47,13 @@ $defs:
       - "null"
     additionalProperties: false
     properties:
+      name/development:
+        type:
+          - string
+          - "null"
+        description: Configure the name used as `otel.component.name` in SDK self-observability telemetry.
+        defaultBehavior: an automatically assigned name is used
+        nullBehavior: an automatically assigned name is used
       endpoint:
         type:
           - string
@@ -132,6 +139,13 @@ $defs:
       - "null"
     additionalProperties: false
     properties:
+      name/development:
+        type:
+          - string
+          - "null"
+        description: Configure the name used as `otel.component.name` in SDK self-observability telemetry.
+        defaultBehavior: an automatically assigned name is used
+        nullBehavior: an automatically assigned name is used
       endpoint:
         type:
           - string
@@ -201,6 +215,13 @@ $defs:
       - "null"
     additionalProperties: false
     properties:
+      name/development:
+        type:
+          - string
+          - "null"
+        description: Configure the name used as `otel.component.name` in SDK self-observability telemetry.
+        defaultBehavior: an automatically assigned name is used
+        nullBehavior: an automatically assigned name is used
       output_stream:
         type:
           - string
@@ -214,6 +235,14 @@ $defs:
       - object
       - "null"
     additionalProperties: false
+    properties:
+      name/development:
+        type:
+          - string
+          - "null"
+        description: Configure the name used as `otel.component.name` in SDK self-observability telemetry.
+        defaultBehavior: an automatically assigned name is used
+        nullBehavior: an automatically assigned name is used
   HttpTls:
     type:
       - object
