@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Add optional experimental names for SDK processors, exporters, and metric readers.
+  ([#737](https://github.com/open-telemetry/opentelemetry-configuration/pull/737))
 * Add `always_record` definition to `Sampler`
   ([#698](https://github.com/open-telemetry/opentelemetry-configuration/pull/698))
 * Add experimental `meter_provider.view_matching_mode/development` property

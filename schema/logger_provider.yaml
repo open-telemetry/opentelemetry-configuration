@@ -23,6 +23,15 @@ $defs:
     type: object
     additionalProperties: false
     properties:
+      name/development:
+        type:
+          - string
+          - "null"
+        description: >
+          Configure a name that uniquely identifies this component within its containing SDK instance.
+          When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
+        defaultBehavior: an implementation-defined component name is automatically assigned
+        nullBehavior: an implementation-defined component name is automatically assigned
       exporter:
         $ref: "#/$defs/LogRecordExporter"
         description: Configure exporter.
@@ -32,6 +41,15 @@ $defs:
     type: object
     additionalProperties: false
     properties:
+      name/development:
+        type:
+          - string
+          - "null"
+        description: >
+          Configure a name that uniquely identifies this component within its containing SDK instance.
+          When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
+        defaultBehavior: an implementation-defined component name is automatically assigned
+        nullBehavior: an implementation-defined component name is automatically assigned
       schedule_delay:
         type:
           - integer
@@ -76,6 +94,16 @@ $defs:
       - object
       - "null"
     additionalProperties: false
+    properties:
+      name/development:
+        type:
+          - string
+          - "null"
+        description: >
+          Configure a name that uniquely identifies this component within its containing SDK instance.
+          When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
+        defaultBehavior: an implementation-defined component name is automatically assigned
+        nullBehavior: an implementation-defined component name is automatically assigned
   LogRecordExporter:
     type: object
     additionalProperties:
