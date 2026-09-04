@@ -1,5 +1,9 @@
 ## Unreleased
 
+### Schema
+
+* Add optional experimental names for SDK processors, exporters, and metric readers.
+
 ## v1.2.0 - 2026-09-11
 
 ### Schema

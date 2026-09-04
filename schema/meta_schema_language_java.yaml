@@ -37,21 +37,29 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: BatchLogRecordProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: BatchSpanProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: CardinalityLimits
     status: supported
     propertyOverrides: []
   - type: ConsoleExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: ConsoleMetricExporter
     status: supported
     propertyOverrides:
       - property: default_histogram_aggregation
         status: not_implemented
+      - property: name/development
+        status: unknown
       - property: temporality_preference
         status: ignored
   - type: DefaultAggregation
@@ -140,6 +148,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
   - type: OtlpGrpcMetricExporter
     status: supported
     propertyOverrides:
@@ -147,6 +157,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
   - type: OtlpHttpEncoding
     status: not_implemented
     enumOverrides: []
@@ -159,6 +171,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
   - type: OtlpHttpMetricExporter
     status: supported
     propertyOverrides:
@@ -168,6 +182,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
   - type: ParentBasedSampler
     status: supported
     propertyOverrides: []
@@ -176,6 +192,8 @@ typeSupportStatuses:
     propertyOverrides:
       - property: max_export_batch_size/development
         status: not_implemented
+      - property: name/development
+        status: unknown
       - property: producers
         status: not_implemented
   - type: Propagator
@@ -187,6 +205,8 @@ typeSupportStatuses:
   - type: PullMetricReader
     status: supported
     propertyOverrides:
+      - property: name/development
+        status: unknown
       - property: producers
         status: not_implemented
   - type: PushMetricExporter
@@ -208,10 +228,14 @@ typeSupportStatuses:
     enumOverrides: []
   - type: SimpleLogRecordProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: SimpleSpanProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: SpanExporter
     status: supported
     propertyOverrides: []
@@ -288,7 +312,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalEventToSpanEventBridgeLogRecordProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: ExperimentalGenAiInstrumentation
     status: unknown
     propertyOverrides: []
@@ -360,11 +386,15 @@ typeSupportStatuses:
   - type: ExperimentalOtlpFileExporter
     status: supported
     propertyOverrides:
+      - property: name/development
+        status: unknown
       - property: output_stream
         status: not_implemented
   - type: ExperimentalOtlpFileMetricExporter
     status: supported
     propertyOverrides:
+      - property: name/development
+        status: unknown
       - property: output_stream
         status: not_implemented
   - type: ExperimentalProbabilitySampler
@@ -376,6 +406,8 @@ typeSupportStatuses:
   - type: ExperimentalPrometheusMetricExporter
     status: supported
     propertyOverrides:
+      - property: name/development
+        status: unknown
       - property: translation_strategy
         status: not_implemented
   - type: ExperimentalPrometheusTranslationStrategy
