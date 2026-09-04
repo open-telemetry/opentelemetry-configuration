@@ -35,19 +35,27 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: BatchLogRecordProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: BatchSpanProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: CardinalityLimits
     status: supported
     propertyOverrides: []
   - type: ConsoleExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: ConsoleMetricExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: DefaultAggregation
     status: supported
     propertyOverrides: []
@@ -126,6 +134,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
   - type: OtlpGrpcMetricExporter
     status: supported
     propertyOverrides:
@@ -133,6 +143,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
   - type: OtlpHttpEncoding
     status: supported
     enumOverrides: []
@@ -143,6 +155,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
   - type: OtlpHttpMetricExporter
     status: supported
     propertyOverrides:
@@ -150,12 +164,16 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
   - type: ParentBasedSampler
     status: supported
     propertyOverrides: []
   - type: PeriodicMetricReader
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: Propagator
     status: supported
     propertyOverrides: []
@@ -164,7 +182,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: PullMetricReader
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: PushMetricExporter
     status: supported
     propertyOverrides: []
@@ -184,10 +204,14 @@ typeSupportStatuses:
     enumOverrides: []
   - type: SimpleLogRecordProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: SimpleSpanProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: SpanExporter
     status: supported
     propertyOverrides: []
