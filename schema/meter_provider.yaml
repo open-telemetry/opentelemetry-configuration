@@ -57,8 +57,8 @@ $defs:
         description: >
           Configure a name that uniquely identifies this component within its containing SDK instance.
           When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
-        defaultBehavior: an automatically assigned name is used
-        nullBehavior: an automatically assigned name is used
+        defaultBehavior: an implementation-defined component name is automatically assigned
+        nullBehavior: an implementation-defined component name is automatically assigned
       interval:
         type:
           - integer
@@ -112,8 +112,8 @@ $defs:
         description: >
           Configure a name that uniquely identifies this component within its containing SDK instance.
           When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
-        defaultBehavior: an automatically assigned name is used
-        nullBehavior: an automatically assigned name is used
+        defaultBehavior: an implementation-defined component name is automatically assigned
+        nullBehavior: an implementation-defined component name is automatically assigned
       exporter:
         $ref: "#/$defs/PullMetricExporter"
         description: Configure exporter.
@@ -291,8 +291,8 @@ $defs:
         description: >
           Configure a name that uniquely identifies this component within its containing SDK instance.
           When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
-        defaultBehavior: an automatically assigned name is used
-        nullBehavior: an automatically assigned name is used
+        defaultBehavior: an implementation-defined component name is automatically assigned
+        nullBehavior: an implementation-defined component name is automatically assigned
       host:
         type:
           - string
@@ -392,8 +392,8 @@ $defs:
         description: >
           Configure a name that uniquely identifies this component within its containing SDK instance.
           When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
-        defaultBehavior: an automatically assigned name is used
-        nullBehavior: an automatically assigned name is used
+        defaultBehavior: an implementation-defined component name is automatically assigned
+        nullBehavior: an implementation-defined component name is automatically assigned
       endpoint:
         type:
           - string
@@ -486,8 +486,8 @@ $defs:
         description: >
           Configure a name that uniquely identifies this component within its containing SDK instance.
           When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
-        defaultBehavior: an automatically assigned name is used
-        nullBehavior: an automatically assigned name is used
+        defaultBehavior: an implementation-defined component name is automatically assigned
+        nullBehavior: an implementation-defined component name is automatically assigned
       endpoint:
         type:
           - string
@@ -574,8 +574,8 @@ $defs:
         description: >
           Configure a name that uniquely identifies this component within its containing SDK instance.
           When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
-        defaultBehavior: an automatically assigned name is used
-        nullBehavior: an automatically assigned name is used
+        defaultBehavior: an implementation-defined component name is automatically assigned
+        nullBehavior: an implementation-defined component name is automatically assigned
       output_stream:
         type:
           - string
@@ -607,8 +607,8 @@ $defs:
         description: >
           Configure a name that uniquely identifies this component within its containing SDK instance.
           When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
-        defaultBehavior: an automatically assigned name is used
-        nullBehavior: an automatically assigned name is used
+        defaultBehavior: an implementation-defined component name is automatically assigned
+        nullBehavior: an implementation-defined component name is automatically assigned
       temporality_preference:
         $ref: "#/$defs/ExporterTemporalityPreference"
         description: |
