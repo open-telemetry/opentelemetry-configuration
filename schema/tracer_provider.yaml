@@ -65,7 +65,9 @@ $defs:
         type:
           - string
           - "null"
-        description: Configure the name used as `otel.component.name` in SDK self-observability telemetry.
+        description: >
+          Configure a name that uniquely identifies this component within its containing SDK instance.
+          When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
         defaultBehavior: an automatically assigned name is used
         nullBehavior: an automatically assigned name is used
       schedule_delay:
@@ -452,7 +454,9 @@ $defs:
         type:
           - string
           - "null"
-        description: Configure the name used as `otel.component.name` in SDK self-observability telemetry.
+        description: >
+          Configure a name that uniquely identifies this component within its containing SDK instance.
+          When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
         defaultBehavior: an automatically assigned name is used
         nullBehavior: an automatically assigned name is used
       exporter:
