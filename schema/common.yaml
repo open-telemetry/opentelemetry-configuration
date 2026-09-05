@@ -196,6 +196,7 @@ $defs:
           Value must be non-negative. A value of 0 indicates no limit (infinity).
         defaultBehavior: 10000 is used
   ExperimentalOtlpFileExporter:
+    stability: development
     type:
       - object
       - "null"

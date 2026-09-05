@@ -10,7 +10,7 @@ tracer_provider:
     # Use the composite rule_based sampler to suppress noisy Redis health check spans,
     # while falling back to standard parent-based sampling for all other spans.
     # Rules are matched in order; if no rule matches, the span is not sampled.
-    composite/development:
+    composite:
       rule_based:
         rules:
           # Drop Redis PING health check spans. These are CLIENT spans where db.operation=PING.

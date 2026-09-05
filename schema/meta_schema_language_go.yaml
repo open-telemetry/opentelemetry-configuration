@@ -96,12 +96,12 @@ typeSupportStatuses:
   - type: LoggerProvider
     status: supported
     propertyOverrides:
-      - property: logger_configurator/development
+      - property: logger_configurator
         status: not_implemented
   - type: LogRecordExporter
     status: supported
     propertyOverrides:
-      - property: otlp_file/development
+      - property: otlp_file
         status: not_implemented
   - type: LogRecordLimits
     status: supported
@@ -111,12 +111,12 @@ typeSupportStatuses:
   - type: LogRecordProcessor
     status: supported
     propertyOverrides:
-      - property: event_to_span_event_bridge/development
+      - property: event_to_span_event_bridge
         status: unknown
   - type: MeterProvider
     status: supported
     propertyOverrides:
-      - property: view_matching_mode/development
+      - property: view_matching_mode
         status: not_implemented
   - type: MetricProducer
     status: unknown
@@ -180,7 +180,7 @@ typeSupportStatuses:
     propertyOverrides:
       - property: cardinality_limits
         status: not_implemented
-      - property: max_export_batch_size/development
+      - property: max_export_batch_size
         status: not_implemented
       - property: producers
         status: not_implemented
@@ -207,11 +207,11 @@ typeSupportStatuses:
     propertyOverrides:
       - property: always_record
         status: unknown
-      - property: composite/development
+      - property: composite
         status: not_implemented
-      - property: jaeger_remote/development
+      - property: jaeger_remote
         status: not_implemented
-      - property: probability/development
+      - property: probability
         status: not_implemented
   - type: SeverityNumber
     status: unknown
@@ -225,7 +225,7 @@ typeSupportStatuses:
   - type: SpanExporter
     status: supported
     propertyOverrides:
-      - property: otlp_file/development
+      - property: otlp_file
         status: not_implemented
   - type: SpanKind
     status: unknown

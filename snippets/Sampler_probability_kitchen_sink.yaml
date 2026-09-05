@@ -7,5 +7,5 @@ tracer_provider:
           console:
   sampler:
     # SNIPPET_START
-    probability/development:
+    probability:
       ratio: 0.001

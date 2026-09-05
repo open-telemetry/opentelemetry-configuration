@@ -11,7 +11,8 @@ properties:
     $ref: "#/$defs/LogRecordLimits"
     description: Configure log record limits. See also attribute_limits.
     defaultBehavior: default values as described in LogRecordLimits are used
-  logger_configurator/development:
+  logger_configurator:
+    stability: development
     $ref: "#/$defs/ExperimentalLoggerConfigurator"
     description: |
       Configure loggers.
@@ -72,6 +73,7 @@ $defs:
     required:
       - exporter
   ExperimentalEventToSpanEventBridgeLogRecordProcessor:
+    stability: development
     type:
       - object
       - "null"
@@ -93,7 +95,8 @@ $defs:
         $ref: common.yaml#/$defs/OtlpGrpcExporter
         description: Configure exporter to be OTLP with gRPC transport.
         defaultBehavior: ignore
-      otlp_file/development:
+      otlp_file:
+        stability: development
         $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
         description: |
           Configure exporter to be OTLP with file transport.
@@ -153,19 +156,21 @@ $defs:
         $ref: "#/$defs/SimpleLogRecordProcessor"
         description: Configure a simple log record processor.
         defaultBehavior: ignore
-      event_to_span_event_bridge/development:
+      event_to_span_event_bridge:
+        stability: development
         $ref: "#/$defs/ExperimentalEventToSpanEventBridgeLogRecordProcessor"
         description: Configure an event to span event bridge log record processor.
         defaultBehavior: ignore
     isSdkExtensionPlugin: true
   ExperimentalLoggerConfigurator:
+    stability: development
     type:
       - object
     additionalProperties: false
     properties:
       default_config:
         $ref: "#/$defs/ExperimentalLoggerConfig"
-        description: Configure the default logger config used there is no matching entry in .logger_configurator/development.loggers.
+        description: Configure the default logger config used there is no matching entry in .logger_configurator.loggers.
         defaultBehavior: unmatched .loggers use default values as described in ExperimentalLoggerConfig
       loggers:
         type: array
@@ -175,6 +180,7 @@ $defs:
         description: Configure loggers.
         defaultBehavior: all loggers use .default_config
   ExperimentalLoggerMatcherAndConfig:
+    stability: development
     type:
       - object
     additionalProperties: false
@@ -194,6 +200,7 @@ $defs:
       - name
       - config
   ExperimentalLoggerConfig:
+    stability: development
     type:
       - object
     additionalProperties: false

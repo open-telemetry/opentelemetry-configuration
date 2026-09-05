@@ -109,12 +109,12 @@ typeSupportStatuses:
   - type: LogRecordProcessor
     status: supported
     propertyOverrides:
-      - property: event_to_span_event_bridge/development
+      - property: event_to_span_event_bridge
         status: unknown
   - type: MeterProvider
     status: supported
     propertyOverrides:
-      - property: view_matching_mode/development
+      - property: view_matching_mode
         status: not_implemented
   - type: MetricProducer
     status: ignored
@@ -174,7 +174,7 @@ typeSupportStatuses:
   - type: PeriodicMetricReader
     status: supported
     propertyOverrides:
-      - property: max_export_batch_size/development
+      - property: max_export_batch_size
         status: not_implemented
       - property: producers
         status: not_implemented
