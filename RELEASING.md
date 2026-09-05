@@ -43,3 +43,7 @@ make update-file-format
 ```
 
 Merge a PR with the changes to `main`.
+
+Also update `supportedFileFormat` in [validator/main.go](./validator/main.go) to the same
+version, so the validator keeps rejecting configuration it cannot describe. `go test` in
+`./validator` fails while the two disagree.
