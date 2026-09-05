@@ -3,11 +3,10 @@ import {
     developmentStability,
     enumStabilityKey,
     isDevelopmentSchema,
-    isExperimentalProperty,
-    isExperimentalType,
     metaSchemaFilePrefix,
     rootTypeName,
-    schemaSourceDirPath
+    schemaSourceDirPath,
+    stabilityKey
 } from "./util.js";
 import yaml from "yaml";
 
@@ -50,6 +49,11 @@ export function readSourceTypesByType() {
         sourceSchemaType.sourceFile = ref;
         sourceSchemaType.jsonSchemaPath = '.';
         sourceSchemaType.schema = topLevelSchema;
+        // The stub being replaced here is the only place a cross file type can
+        // be annotated, so its maturity has to outlive it.
+        if (sourceSchemaType.stability === undefined) {
+            sourceSchemaType.stability = topLevelSchema[stabilityKey];
+        }
     });
 
     // Resolve properties, enum values
@@ -159,7 +163,7 @@ export class SourceSchemaProperty {
         this.isSeq = isSeq;
         this.isRequired = isRequired;
         this.isNullable = types.includes('null');
-        this.isDevelopment = isDevelopmentSchema(schema) || isExperimentalProperty(property);
+        this.isDevelopment = isDevelopmentSchema(schema);
         this.schema = schema;
     }
 
@@ -191,6 +195,7 @@ export class SourceSchemaType {
     schema;
     properties;
     enumValues; // null if not enum
+    stability;
 
     constructor(type, sourceFile, fileContent, jsonSchemaPath, schema) {
         this.type = type;
@@ -200,6 +205,7 @@ export class SourceSchemaType {
         this.schema = schema;
         this.properties = [];
         this.enumValues = null;
+        this.stability = schema[stabilityKey];
     }
 
     isEnumType() {
@@ -207,7 +213,7 @@ export class SourceSchemaType {
     }
 
     isDevelopment() {
-        return isDevelopmentSchema(this.schema) || isExperimentalType(this.type);
+        return this.stability === developmentStability;
     }
 
     enumStability() {
@@ -215,10 +221,7 @@ export class SourceSchemaType {
     }
 
     isDevelopmentEnumValue(enumValue) {
-        if (this.enumStability()[enumValue] === developmentStability) {
-            return true;
-        }
-        return typeof enumValue === 'string' && isExperimentalProperty(enumValue);
+        return this.enumStability()[enumValue] === developmentStability;
     }
 
     jsonSchemaRef() {

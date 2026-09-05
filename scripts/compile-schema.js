@@ -8,10 +8,9 @@ import {
 } from "./util.js";
 import {readSourceTypesByType} from "./source-schema.js";
 
-// See the schema modeling rules in CONTRIBUTING.md. /alpha and /beta suffixes
-// are also permitted but omitted here as the schema has no instances of them.
+// See the schema modeling rules in CONTRIBUTING.md. A name is an identifier and
+// nothing else: the maturity of a node is recorded in its stability annotation.
 const identifier = /^[A-Za-z_][A-Za-z0-9_]*$/;
-const maturitySuffix = /\/development$/;
 const pascalCaseTypeName = /^[A-Z][A-Za-z0-9]*$/;
 
 // Read source schema
@@ -218,15 +217,15 @@ function noSubschemas(sourceSchemaType, messages) {
 }
 
 function namesShouldBeValidIdentifiers(sourceSchemaType, messages) {
-    const isValidName = name => identifier.test(name.replace(maturitySuffix, ''));
+    const isValidName = name => identifier.test(name);
     sourceSchemaType.properties.forEach(property => {
         if (!isValidName(property.property)) {
-            messages.push(`Property name '${property.property}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix)`);
+            messages.push(`Property name '${property.property}' in ${sourceSchemaType.type} must match ${identifier}. Record maturity in '${stabilityKey}', not in the name.`);
         }
     });
     (sourceSchemaType.enumValues || []).forEach(enumValue => {
         if (typeof enumValue === 'string' && !isValidName(enumValue)) {
-            messages.push(`Enum value '${enumValue}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix)`);
+            messages.push(`Enum value '${enumValue}' in ${sourceSchemaType.type} must match ${identifier}. Record maturity in '${enumStabilityKey}', not in the name.`);
         }
     });
 }

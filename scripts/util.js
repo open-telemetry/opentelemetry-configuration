@@ -24,10 +24,5 @@ export const stabilityValues = [stableStability, developmentStability];
 
 export const isDevelopmentSchema = (schema) => schema != null && schema[stabilityKey] === developmentStability;
 
-// Maturity used to be recorded in the name. Retained only until the source
-// schema has been migrated to the annotations above.
-export const isExperimentalProperty = (property) => property.endsWith('/development');
-export const isExperimentalType = (type) => type.startsWith('Experimental');
-
 export const snippetsDirPath = __dirname + "/../snippets/";
 export const rootTypeName = 'OpenTelemetryConfiguration';

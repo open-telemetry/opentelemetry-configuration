@@ -4,8 +4,7 @@ import {
     metaSchemaLanguageStatusPath,
     metaSchemaLanguageStatusFileName,
     schemaSourceDirPath,
-    metaSchemaLanguageFilePrefix,
-    isExperimentalType
+    metaSchemaLanguageFilePrefix
 } from "./util.js";
 import {readSourceTypesByType} from "./source-schema.js";
 
@@ -67,12 +66,13 @@ export class LanguageImplementation {
     }
 
     toJson() {
-        // Types in lexicographical order, with non-experimental first
-        const typeSupportStatuses = this.typeSupportStatuses.map(typeSupportStatus => typeSupportStatus.toJson());
-        typeSupportStatuses.sort((a, b) => {
-            const differentMaturities = isExperimentalType(a.type) - isExperimentalType(b.type);
+        // Types in lexicographical order, with stable types first
+        const sorted = this.typeSupportStatuses.slice();
+        sorted.sort((a, b) => {
+            const differentMaturities = a.isDevelopment - b.isDevelopment;
             return differentMaturities === 0 ? a.type.localeCompare(b.type) : +differentMaturities;
         });
+        const typeSupportStatuses = sorted.map(typeSupportStatus => typeSupportStatus.toJson());
 
         return {
             latestSupportedFileFormat: this.latestSupportedFileFormat,
@@ -99,13 +99,15 @@ export class TypeSupportStatus {
     propertyOverrides; // null if enum
     enumOverrides; // null if not enum
     notes;
+    isDevelopment; // read from the source schema, not serialized
 
-    constructor(type, status, propertyOverrides, enumOverrides, notes) {
+    constructor(type, status, propertyOverrides, enumOverrides, notes, isDevelopment = false) {
         this.type = type;
         this.status = status;
         this.propertyOverrides = propertyOverrides;
         this.enumOverrides = enumOverrides;
         this.notes = notes;
+        this.isDevelopment = isDevelopment;
     }
 
     toJson() {
@@ -270,6 +272,10 @@ function reconcileLanguageImplementations(languageImplementations, sourceTypesBy
             }
         });
 
+        reconciledTypeSupportStatuses.forEach(typeSupportStatus => {
+            const sourceSchemaType = sourceTypesByType[typeSupportStatus.type];
+            typeSupportStatus.isDevelopment = sourceSchemaType ? sourceSchemaType.isDevelopment() : false;
+        });
         languageImplementation.typeSupportStatuses = reconciledTypeSupportStatuses;
     });
 
@@ -298,7 +304,7 @@ function emptyLanguageImplementation(language, sourceTypesByType) {
     return new LanguageImplementation(
         language,
         'TODO',
-        Object.values(sourceTypesByType).map(sourceSchemaType => new TypeSupportStatus(sourceSchemaType.type, IMPLEMENTATION_STATUS_UNKNOWN, [], sourceSchemaType.enumValues === null ? null : [], null)));
+        Object.values(sourceTypesByType).map(sourceSchemaType => new TypeSupportStatus(sourceSchemaType.type, IMPLEMENTATION_STATUS_UNKNOWN, [], sourceSchemaType.enumValues === null ? null : [], null, sourceSchemaType.isDevelopment())));
 }
 
 function parseEnum(rawJson, propertyName, errorMessage, knownValues) {
