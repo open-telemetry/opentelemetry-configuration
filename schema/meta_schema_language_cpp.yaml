@@ -103,12 +103,15 @@ typeSupportStatuses:
   - type: LogRecordProcessor
     status: supported
     propertyOverrides:
-      - property: event_to_span_event_bridge/development
+      - property: event_to_span_event_bridge
         status: not_implemented
+  - type: MaturityLevel
+    status: unknown
+    enumOverrides: []
   - type: MeterProvider
     status: supported
     propertyOverrides:
-      - property: view_matching_mode/development
+      - property: view_matching_mode
         status: not_implemented
   - type: MetricProducer
     status: supported
@@ -162,7 +165,7 @@ typeSupportStatuses:
   - type: PeriodicMetricReader
     status: supported
     propertyOverrides:
-      - property: max_export_batch_size/development
+      - property: max_export_batch_size
         status: not_implemented
   - type: Propagator
     status: supported
@@ -339,11 +342,11 @@ typeSupportStatuses:
   - type: ExperimentalPrometheusTranslationStrategy
     status: supported
     enumOverrides:
-      - enumValue: no_translation/development
+      - enumValue: no_translation
         status: not_implemented
-      - enumValue: no_utf8_escaping_with_suffixes/development
+      - enumValue: no_utf8_escaping_with_suffixes
         status: not_implemented
-      - enumValue: underscore_escaping_without_suffixes/development
+      - enumValue: underscore_escaping_without_suffixes
         status: supported
   - type: ExperimentalResourceDetection
     status: supported

@@ -1,4 +1,5 @@
 file_format: "1.1"
+maturity_level: development
 
 tracer_provider:
   processors:
@@ -7,5 +8,5 @@ tracer_provider:
           console:
   sampler:
     # SNIPPET_START
-    probability/development:
+    probability:
       ratio: 0.001

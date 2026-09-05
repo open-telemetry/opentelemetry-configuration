@@ -1,9 +1,12 @@
 import fs from 'fs';
 import {
-    isExperimentalProperty,
+    developmentStability,
+    enumStabilityKey,
+    isDevelopmentSchema,
     metaSchemaFilePrefix,
     rootTypeName,
-    schemaSourceDirPath
+    schemaSourceDirPath,
+    stabilityKey
 } from "./util.js";
 import yaml from "yaml";
 
@@ -46,6 +49,11 @@ export function readSourceTypesByType() {
         sourceSchemaType.sourceFile = ref;
         sourceSchemaType.jsonSchemaPath = '.';
         sourceSchemaType.schema = topLevelSchema;
+        // The stub being replaced here is the only place a cross file type can
+        // be annotated, so its maturity has to outlive it.
+        if (sourceSchemaType.stability === undefined) {
+            sourceSchemaType.stability = topLevelSchema[stabilityKey];
+        }
     });
 
     // Resolve properties, enum values
@@ -146,6 +154,7 @@ export class SourceSchemaProperty {
     isSeq;
     isRequired;
     isNullable;
+    isDevelopment;
     schema;
 
     constructor(property, types, isSeq, isRequired, schema) {
@@ -154,6 +163,7 @@ export class SourceSchemaProperty {
         this.isSeq = isSeq;
         this.isRequired = isRequired;
         this.isNullable = types.includes('null');
+        this.isDevelopment = isDevelopmentSchema(schema);
         this.schema = schema;
     }
 
@@ -185,6 +195,7 @@ export class SourceSchemaType {
     schema;
     properties;
     enumValues; // null if not enum
+    stability;
 
     constructor(type, sourceFile, fileContent, jsonSchemaPath, schema) {
         this.type = type;
@@ -194,10 +205,23 @@ export class SourceSchemaType {
         this.schema = schema;
         this.properties = [];
         this.enumValues = null;
+        this.stability = schema[stabilityKey];
     }
 
     isEnumType() {
         return this.enumValues !== null;
+    }
+
+    isDevelopment() {
+        return this.stability === developmentStability;
+    }
+
+    enumStability() {
+        return this.schema[enumStabilityKey] || {};
+    }
+
+    isDevelopmentEnumValue(enumValue) {
+        return this.enumStability()[enumValue] === developmentStability;
     }
 
     jsonSchemaRef() {
@@ -216,9 +240,9 @@ export class SourceSchemaType {
 
     sortedProperties() {
         const sorted = this.properties.slice();
-        // Sort in lexigraphical order, with non-experimental properties first
+        // Sort in lexigraphical order, with stable properties first
         sorted.sort((a, b) => {
-            const differentMaturities = isExperimentalProperty(a.property) - isExperimentalProperty(b.property);
+            const differentMaturities = a.isDevelopment - b.isDevelopment;
             return differentMaturities === 0 ? a.property.localeCompare(b.property) : +differentMaturities;
         });
         return sorted;

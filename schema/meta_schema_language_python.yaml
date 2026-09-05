@@ -99,10 +99,13 @@ typeSupportStatuses:
   - type: LogRecordProcessor
     status: supported
     propertyOverrides: []
+  - type: MaturityLevel
+    status: unknown
+    enumOverrides: []
   - type: MeterProvider
     status: supported
     propertyOverrides:
-      - property: view_matching_mode/development
+      - property: view_matching_mode
         status: not_implemented
   - type: MetricProducer
     status: ignored

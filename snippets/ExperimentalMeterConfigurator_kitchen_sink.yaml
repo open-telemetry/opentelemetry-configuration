@@ -1,11 +1,12 @@
 file_format: "1.1"
+maturity_level: development
 
 meter_provider:
   readers:
     - periodic:
         exporter:
           console:
-  meter_configurator/development:
+  meter_configurator:
     # SNIPPET_START
     default_config:
       enabled: false

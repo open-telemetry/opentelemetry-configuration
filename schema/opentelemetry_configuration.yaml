@@ -8,6 +8,13 @@ properties:
       Represented as a string including the semver major, minor version numbers (and optionally the meta tag). For example: "0.4", "1.0-rc.2", "1.0" (after stable release).
       See https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md for more details.
       The yaml format is documented at https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
+  maturity_level:
+    $ref: "#/$defs/MaturityLevel"
+    description: |
+      The maturity level of the schema this file is written against.
+      A file that omits this property is read with the stable schema and may use stable properties only. A file that declares development is read with the development schema and may also use properties that are under development.
+      See https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md for more details.
+    defaultBehavior: stable is used
   disabled:
     type:
       - boolean
@@ -50,7 +57,8 @@ properties:
     description: |
       Configure resource for all signals.
     defaultBehavior: the default resource is used
-  instrumentation/development:
+  instrumentation:
+    stability: development
     $ref: "#/$defs/ExperimentalInstrumentation"
     description: |
       Configure instrumentation.
@@ -99,6 +107,16 @@ $defs:
           Configure max attribute count. 
           Value must be non-negative.
         defaultBehavior: 128 is used
+  MaturityLevel:
+    type: string
+    enum:
+      - stable
+      - development
+    enumDescriptions:
+      stable: The file is read with the stable schema and may use stable properties only.
+      development: The file is read with the development schema and may also use properties that are under development, which may change or be removed in any release.
+    enumStability:
+      development: development
   LoggerProvider:
     $ref: logger_provider.yaml
   MeterProvider:
@@ -110,6 +128,7 @@ $defs:
   Resource:
     $ref: resource.yaml
   ExperimentalInstrumentation:
+    stability: development
     $ref: instrumentation.yaml
   Distribution:
     type: object

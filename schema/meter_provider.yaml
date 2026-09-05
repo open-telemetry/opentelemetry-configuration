@@ -21,12 +21,14 @@ properties:
     description: |
       Configure the exemplar filter.
     defaultBehavior: trace_based is used
-  meter_configurator/development:
+  meter_configurator:
+    stability: development
     $ref: "#/$defs/ExperimentalMeterConfigurator"
     description: |
       Configure meters.
     defaultBehavior: all meters use default values as described in ExperimentalMeterConfig
-  view_matching_mode/development:
+  view_matching_mode:
+    stability: development
     $ref: "#/$defs/ExperimentalViewMatchingMode"
     description: |
       Controls how multiple matching Views are applied to an Instrument.
@@ -68,7 +70,8 @@ $defs:
           Configure maximum allowed time (in milliseconds) to export data. 
           Value must be non-negative. A value of 0 indicates no limit (infinity).
         defaultBehavior: 30000 is used
-      max_export_batch_size/development:
+      max_export_batch_size:
+        stability: development
         type:
           - integer
           - "null"
@@ -200,7 +203,8 @@ $defs:
         description: |
           Configure exporter to be OTLP with gRPC transport.
         defaultBehavior: ignore
-      otlp_file/development:
+      otlp_file:
+        stability: development
         $ref: "#/$defs/ExperimentalOtlpFileMetricExporter"
         description: |
           Configure exporter to be OTLP with file transport.
@@ -220,7 +224,8 @@ $defs:
     minProperties: 1
     maxProperties: 1
     properties:
-      prometheus/development:
+      prometheus:
+        stability: development
         $ref: "#/$defs/ExperimentalPrometheusMetricExporter"
         description: |
           Configure exporter to be prometheus.
@@ -261,6 +266,7 @@ $defs:
       See also the
       [OpenCensus sunset announcement](https://opentelemetry.io/blog/2023/sunsetting-opencensus/).
   ExperimentalPrometheusMetricExporter:
+    stability: development
     type:
       - object
       - "null"
@@ -287,7 +293,8 @@ $defs:
         description: |
           Configure Prometheus Exporter to produce metrics with scope labels.
         defaultBehavior: true is used
-      target_info_enabled/development:
+      target_info_enabled:
+        stability: development
         type:
           - boolean
           - "null"
@@ -303,19 +310,24 @@ $defs:
         description: Configure how metric names are translated to Prometheus metric names.
         defaultBehavior: underscore_escaping_with_suffixes is used
   ExperimentalPrometheusTranslationStrategy:
+    stability: development
     type:
       - string
       - "null"
     enum:
       - underscore_escaping_with_suffixes
-      - underscore_escaping_without_suffixes/development
-      - no_utf8_escaping_with_suffixes/development
-      - no_translation/development
+      - underscore_escaping_without_suffixes
+      - no_utf8_escaping_with_suffixes
+      - no_translation
     enumDescriptions:
-      no_translation/development: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.
-      no_utf8_escaping_with_suffixes/development: Special character escaping is disabled. Type and unit suffixes are enabled.
-      underscore_escaping_without_suffixes/development: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.
+      no_translation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.
+      no_utf8_escaping_with_suffixes: Special character escaping is disabled. Type and unit suffixes are enabled.
+      underscore_escaping_without_suffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.
       underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.
+    enumStability:
+      no_translation: development
+      no_utf8_escaping_with_suffixes: development
+      underscore_escaping_without_suffixes: development
   MetricReader:
     type: object
     additionalProperties: false
@@ -517,6 +529,7 @@ $defs:
           Configure default histogram aggregation.
         defaultBehavior: explicit_bucket_histogram is used
   ExperimentalOtlpFileMetricExporter:
+    stability: development
     type:
       - object
       - "null"
@@ -770,13 +783,14 @@ $defs:
       - "null"
     additionalProperties: false
   ExperimentalMeterConfigurator:
+    stability: development
     type:
       - object
     additionalProperties: false
     properties:
       default_config:
         $ref: "#/$defs/ExperimentalMeterConfig"
-        description: Configure the default meter config used there is no matching entry in .meter_configurator/development.meters.
+        description: Configure the default meter config used there is no matching entry in .meter_configurator.meters.
         defaultBehavior: unmatched .meters use default values as described in ExperimentalMeterConfig
       meters:
         type: array
@@ -786,6 +800,7 @@ $defs:
         description: Configure meters.
         defaultBehavior: all meters used .default_config
   ExperimentalMeterMatcherAndConfig:
+    stability: development
     type:
       - object
     additionalProperties: false
@@ -805,6 +820,7 @@ $defs:
       - name
       - config
   ExperimentalMeterConfig:
+    stability: development
     type:
       - object
     additionalProperties: false
@@ -815,6 +831,7 @@ $defs:
         description: Configure if the meter is enabled or not.
         defaultBehavior: true is used
   ExperimentalViewMatchingMode:
+    stability: development
     type:
       - string
       - "null"

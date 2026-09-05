@@ -1,4 +1,5 @@
 file_format: "1.1"
+maturity_level: development
 
 tracer_provider:
   processors:
@@ -7,7 +8,7 @@ tracer_provider:
           console:
   sampler:
     # SNIPPET_START
-    composite/development:
+    composite:
       rule_based:
         # The rules for the sampler, matched in order. Each rule can have multiple match conditions - the sampler will be applied if all match.
         # If no conditions are specified, the rule matches all spans that reach it. If no rules match, the span is not sampled.

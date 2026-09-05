@@ -1,4 +1,5 @@
 file_format: "1.1"
+maturity_level: development
 
 resource:
   # SNIPPET_START
@@ -30,7 +31,7 @@ resource:
       value: [ 1.1, 2.2 ]
       type: double_array
   attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
-  detection/development:
+  detection:
     attributes:
       included:
         - process.*

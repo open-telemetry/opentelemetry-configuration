@@ -1,13 +1,12 @@
 import fs from "fs";
-import {rootTypeName, schemaPath} from "./util.js";
+import {developmentSchemaPath, developmentStability, maturityLevelKey, rootTypeName, schemaPath} from "./util.js";
 import Ajv from "ajv/dist/2020.js";
 import {readSnippets} from "./snippets.js";
 import {readSourceTypesByType} from "./source-schema.js";
 
-// Initialize ajv
-const ajv = new Ajv({ allErrors: true });
-const outputSchema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
-ajv.addSchema(outputSchema);
+// One validator per compiled schema. A file says which one reads it.
+const stableAjv = newValidator(schemaPath, true);
+const developmentAjv = newValidator(developmentSchemaPath, false);
 
 const sourceTypesByType = readSourceTypesByType();
 
@@ -18,6 +17,7 @@ const messages = [];
 
 readSnippets()
     .forEach(snippet => {
+        const ajv = validatorFor(snippet.parsedFullContent);
         const rootValidator = ajv.getSchema(rootJsonSchemaTypeRef);
         if (!rootValidator) {
             throw new Error(`Unable to resolve root schema for JSON schema type ref: ${rootJsonSchemaTypeRef}`);
@@ -54,6 +54,20 @@ if (messages.length > 0) {
 }
 
 // Helper functions
+
+function newValidator(path, strict) {
+    // The development schema keeps the stability annotation. A validator is
+    // required to ignore a keyword it does not know, but the strict mode of ajv
+    // is stricter than that.
+    const ajv = new Ajv({allErrors: true, strict});
+    ajv.addSchema(JSON.parse(fs.readFileSync(path, "utf-8")));
+    return ajv;
+}
+
+function validatorFor(parsedContent) {
+    const declared = parsedContent && parsedContent[maturityLevelKey];
+    return declared === developmentStability ? developmentAjv : stableAjv;
+}
 
 function validate(snippetFile, ajvValidator, ajvRef, data) {
     try {

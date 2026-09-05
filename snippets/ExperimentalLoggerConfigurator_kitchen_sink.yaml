@@ -1,11 +1,12 @@
 file_format: "1.1"
+maturity_level: development
 
 logger_provider:
   processors:
     - simple:
         exporter:
           console:
-  logger_configurator/development:
+  logger_configurator:
     # SNIPPET_START
     default_config:
       enabled: false

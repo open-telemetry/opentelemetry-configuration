@@ -9,7 +9,8 @@ properties:
     description: |
       Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
     defaultBehavior: no resource attributes are added
-  detection/development:
+  detection:
+    stability: development
     $ref: "#/$defs/ExperimentalResourceDetection"
     description: |
       Configure resource detection.
@@ -91,6 +92,7 @@ $defs:
       string: String attribute value.
       string_array: String array attribute value.
   ExperimentalResourceDetection:
+    stability: development
     type: object
     additionalProperties: false
     properties:
@@ -108,6 +110,7 @@ $defs:
           Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
         defaultBehavior: no resource detectors are enabled
   ExperimentalResourceDetector:
+    stability: development
     type: object
     additionalProperties:
       type:
@@ -138,21 +141,25 @@ $defs:
         defaultBehavior: ignore
     isSdkExtensionPlugin: true
   ExperimentalContainerResourceDetector:
+    stability: development
     type:
       - object
       - "null"
     additionalProperties: false
   ExperimentalHostResourceDetector:
+    stability: development
     type:
       - object
       - "null"
     additionalProperties: false
   ExperimentalProcessResourceDetector:
+    stability: development
     type:
       - object
       - "null"
     additionalProperties: false
   ExperimentalServiceResourceDetector:
+    stability: development
     type:
       - object
       - "null"

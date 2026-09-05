@@ -74,11 +74,22 @@ The versioning policy guarantees do not apply to [experimental features](#experi
 
 Sometimes we need to experiment with new types, properties, and enum values, e.g. when evaluating the configuration experience for experimental features in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification).
 
-Experimental properties and enum values are denoted by a `*/(development|alpha|beta)` suffix (e.g.`foo/development`). The suffix indicates the property value and all types nested within it are exempt from versioning policy guarantees and are subject to breaking changes in minor versions. Experimental type key values in `$defs` should be prefixed with `Experimental*` (e.g. `ExperimentalFoo`). Note that because we [omit the title annotation](./CONTRIBUTING.md#annotations---title-and-description), the `$defs` key value effectively acts as the type title for code generation tools.
+The maturity of a property, an enum value or a type is recorded in the source schema as an annotation beside it, and never in its name. A property carries `stability: development`, one value of an enum is recorded in the `enumStability` map of that enum, and a type carries `stability: development` too. A node marked this way, and everything nested within it, is exempt from versioning policy guarantees and is subject to breaking changes in minor versions.
 
-Maintainers are not obligated to implement support for experimental properties and types. When they do, they are not obligated to maintain any versioning policy guarantees.
+A name is therefore an identifier and nothing else, and a property keeps the same name when it stabilizes. Nothing in a config file has to be rewritten on the day a property becomes stable, and no SDK has to accept two spellings of one property.
 
-End users should be cautious of adopting experimental properties and types, since in doing so they are subject to breaking changes in `MINOR` versions.
+Two schemas are compiled from that one source:
+
+* `opentelemetry_configuration.json` holds nothing that is under development.
+* `opentelemetry_configuration_development.json` holds everything, and keeps the annotations so that a reader of the schema can still tell which parts are under development.
+
+A config file selects one with the `maturity_level` property. A file that omits it, which is every file written so far, is read with the stable schema and may use stable properties only. A file that declares `maturity_level: development` is read with the development schema and may also use properties that are under development. Declaring it is the only way to reach them, so nobody adopts an unstable property without saying so.
+
+This cannot be enforced at an [extension point](#extension-points): those types accept any property name so that an SDK plugin can be configured, so the stable schema cannot tell a component that is under development from a plugin it has never heard of.
+
+Maintainers are not obligated to implement support for properties and types that are under development. When they do, they are not obligated to maintain any versioning policy guarantees.
+
+End users should be cautious of adopting them, since in doing so they are subject to breaking changes in `MINOR` versions.
 
 ### Extension points
 

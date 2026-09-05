@@ -1,4 +1,5 @@
 file_format: "1.1"
+maturity_level: development
 
 meter_provider:
   # SNIPPET_START
@@ -20,4 +21,4 @@ meter_provider:
         instrument_name: my_instrument
       stream:
         aggregation_cardinality_limit: 1000
-  view_matching_mode/development: composable
+  view_matching_mode: composable
