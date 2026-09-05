@@ -58,11 +58,24 @@ Properties defined in the schema should be lower [snake case](https://en.wikiped
 
 ### Property name and enum value character set
 
-Property names and enum values must match `^[A-Za-z_][A-Za-z0-9_]*$`. This facilitates usage as identifiers in generated code. Experimental properties are an exception, and are [denoted with a `/(development|alpha|beta)` suffix](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features) (e.g. `detection/development`).
+Property names and enum values must match `^[A-Za-z_][A-Za-z0-9_]*$`, with no exceptions. This facilitates usage as identifiers in generated code. The maturity of a property or an enum value is [recorded in an annotation](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features), never in its name, so a property keeps the same name when it stabilizes.
 
 ### Type name case
 
-Type names (the top-level types defined under `$defs`, e.g. `BatchSpanProcessor`) should be [PascalCase](https://en.wikipedia.org/wiki/Camel_case): they must match `^[A-Z][A-Za-z0-9]*$`. This facilitates usage as identifiers in generated code. Experimental types are [denoted with an `Experimental` prefix](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features).
+Type names (the top-level types defined under `$defs`, e.g. `BatchSpanProcessor`) should be [PascalCase](https://en.wikipedia.org/wiki/Camel_case): they must match `^[A-Z][A-Za-z0-9]*$`. This facilitates usage as identifiers in generated code. The maturity of a type is [recorded in an annotation](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features) as well.
+
+### Maturity
+
+The maturity of a node is metadata about that node, so it is recorded beside the node rather than inside its name:
+
+* `stability: development` on a property or a type.
+* `enumStability: {<enum value>: development}` on an enum type, which records the maturity of one value of that enum.
+
+Both are stripped when the schema is compiled, the way `enumDescriptions` and `defaultBehavior` are. Omitting them means stable.
+
+`make compile-schema` produces two schemas from this one source. `opentelemetry_configuration.json` holds nothing under development. `opentelemetry_configuration_development.json` holds everything and keeps the annotations. A config file selects one with its `maturity_level` property, and a file that omits it is read with the stable schema.
+
+Note that the split cannot be enforced at an [extension point](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#extension-points). Those types accept any property name so that an SDK plugin can be configured, so the stable schema cannot tell a component that is under development from a plugin it has never heard of.
 
 ### Properties requiring pattern matching
 
