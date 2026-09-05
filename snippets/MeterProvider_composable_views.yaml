@@ -1,4 +1,5 @@
 file_format: "1.1"
+maturity_level: development
 
 meter_provider:
   # SNIPPET_START

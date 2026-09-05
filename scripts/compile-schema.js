@@ -1,5 +1,7 @@
 import fs from 'fs';
 import {
+    developmentSchemaPath,
+    developmentStability,
     enumStabilityKey,
     rootTypeName,
     schemaPath,
@@ -35,49 +37,81 @@ if (messages.length > 0) {
 
 // If we make it here, source schema is valid.
 
-// Construct and write full schema into single output file
-// All types go in $defs, except root type, which is the top level schema
+// One source schema, two compiled schemas. The stable one holds nothing that is
+// under development. The development one holds everything, and keeps the
+// annotation so that a reader can still tell which parts are under development.
 sourceTypes.sort((a, b) => a.type.localeCompare(b.type));
-const defs = {};
-sourceTypes.filter(sourceSchemaType => sourceSchemaType.type !== rootTypeName)
-    .forEach(sourceSchemaType => {
-        defs[sourceSchemaType.type] = prepareSchemaForOutput(sourceSchemaType, sourceTypes);
-    });
 
-const rootType = sourceTypes.find(sourceSchemaType => sourceSchemaType.type === rootTypeName);
-if (!rootType) {
-    throw new Error(`Root type ${rootTypeName} not found in source schema.`);
-}
-const rootTypeSchema = prepareSchemaForOutput(rootType, sourceTypes);
-
-const output = {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": rootTypeName,
-    ...rootTypeSchema,
-    "$defs": defs
-};
-
-fs.writeFileSync(schemaPath, JSON.stringify(output, null, 2));
+fs.writeFileSync(schemaPath, JSON.stringify(compile(sourceTypes, false), null, 2));
+fs.writeFileSync(developmentSchemaPath, JSON.stringify(compile(sourceTypes, true), null, 2));
 
 // Helper functions
 
-function prepareSchemaForOutput(sourceSchemaType, sourceTypes) {
+function compile(sourceTypes, includeDevelopment) {
+    const includedTypes = sourceTypes.filter(sourceSchemaType => includeDevelopment || !sourceSchemaType.isDevelopment());
+
+    const defs = {};
+    includedTypes.filter(sourceSchemaType => sourceSchemaType.type !== rootTypeName)
+        .forEach(sourceSchemaType => {
+            defs[sourceSchemaType.type] = prepareSchemaForOutput(sourceSchemaType, sourceTypes, includeDevelopment);
+        });
+
+    const rootType = includedTypes.find(sourceSchemaType => sourceSchemaType.type === rootTypeName);
+    if (!rootType) {
+        throw new Error(`Root type ${rootTypeName} not found in source schema.`);
+    }
+
+    return {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "title": rootTypeName,
+        ...prepareSchemaForOutput(rootType, sourceTypes, includeDevelopment),
+        "$defs": defs
+    };
+}
+
+function prepareSchemaForOutput(sourceSchemaType, sourceTypes, includeDevelopment) {
     const schema = JSON.parse(JSON.stringify(sourceSchemaType.schema));
 
     delete schema['$defs'];
 
-    stripMetadata(schema);
+    if (!includeDevelopment) {
+        removeDevelopmentNodes(sourceSchemaType, schema);
+    }
+    stripMetadata(schema, includeDevelopment);
     replaceCrossFileRefs(schema);
-    enrichDescriptions(sourceSchemaType, schema, sourceTypes);
+    enrichDescriptions(sourceSchemaType, schema, sourceTypes, includeDevelopment);
+    if (includeDevelopment && sourceSchemaType.isDevelopment()) {
+        // A type annotated on a cross file stub loses the annotation when the
+        // stub is replaced, so state it on the way out.
+        schema[stabilityKey] = developmentStability;
+    }
 
     return schema;
 }
 
-function stripMetadata(schema) {
+function removeDevelopmentNodes(sourceSchemaType, schema) {
+    sourceSchemaType.properties
+        .filter(property => property.isDevelopment)
+        .forEach(property => {
+            delete schema.properties[property.property];
+            const required = schema['required'];
+            if (required) {
+                schema['required'] = required.filter(name => name !== property.property);
+            }
+        });
+
+    if (sourceSchemaType.isEnumType()) {
+        schema['enum'] = sourceSchemaType.enumValues.filter(enumValue => !sourceSchemaType.isDevelopmentEnumValue(enumValue));
+    }
+}
+
+function stripMetadata(schema, includeDevelopment) {
     delete schema['enumDescriptions'];
     delete schema['isSdkExtensionPlugin'];
-    delete schema[stabilityKey];
-    delete schema[enumStabilityKey];
+    if (!includeDevelopment) {
+        delete schema[stabilityKey];
+        delete schema[enumStabilityKey];
+    }
 
     const properties = schema.properties;
     if (!properties) {
@@ -86,7 +120,9 @@ function stripMetadata(schema) {
     Object.values(properties).forEach(propertySchema => {
         delete propertySchema['defaultBehavior'];
         delete propertySchema['nullBehavior'];
-        delete propertySchema[stabilityKey];
+        if (!includeDevelopment) {
+            delete propertySchema[stabilityKey];
+        }
     });
 }
 
@@ -110,7 +146,7 @@ function replaceCrossFileRefs(schema) {
     });
 }
 
-function enrichDescriptions(sourceSchemaType, schema, sourceTypes) {
+function enrichDescriptions(sourceSchemaType, schema, sourceTypes, includeDevelopment) {
     const properties = schema.properties;
     if (!properties) {
         return;
@@ -124,7 +160,9 @@ function enrichDescriptions(sourceSchemaType, schema, sourceTypes) {
         if (enumSourceType) {
             description = maybeAddLineBreak(description);
             description += 'Values include:\n';
-            enumSourceType.sortedEnumValues().forEach(enumValue => {
+            enumSourceType.sortedEnumValues()
+                .filter(enumValue => includeDevelopment || !enumSourceType.isDevelopmentEnumValue(enumValue))
+                .forEach(enumValue => {
                 const enumDescription = enumSourceType.schema['enumDescriptions'][enumValue];
                 description += `* ${enumValue}: ${enumDescription}\n`;
             });

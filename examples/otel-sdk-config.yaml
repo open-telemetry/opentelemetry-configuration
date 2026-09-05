@@ -8,6 +8,7 @@
 # For schema documentation, including required properties, semantics, default behavior, etc,
 # see: https://opentelemetry.io/docs/specs/otel-config/types/
 file_format: "1.1"
+maturity_level: development
 disabled: false
 log_level: info
 resource:

@@ -107,6 +107,9 @@ typeSupportStatuses:
   - type: LogRecordProcessor
     status: supported
     propertyOverrides: []
+  - type: MaturityLevel
+    status: unknown
+    enumOverrides: []
   - type: MeterProvider
     status: supported
     propertyOverrides:

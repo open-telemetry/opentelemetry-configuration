@@ -9,6 +9,7 @@
 # see: https://opentelemetry.io/docs/specs/otel-config/types/
 
 file_format: "1.1"
+maturity_level: development
 
 resource:
   # Read resource attributes from the OTEL_RESOURCE_ATTRIBUTES environment variable.

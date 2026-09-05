@@ -105,6 +105,9 @@ typeSupportStatuses:
     propertyOverrides:
       - property: event_to_span_event_bridge
         status: not_implemented
+  - type: MaturityLevel
+    status: unknown
+    enumOverrides: []
   - type: MeterProvider
     status: supported
     propertyOverrides:

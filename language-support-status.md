@@ -50,12 +50,13 @@ Latest supported file format: `1.0.0`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge`: not_implemented<br> |
+| `MaturityLevel` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator`: supported<br>* `view_matching_mode`: not_implemented<br> |
 | `MetricProducer` | supported |  | * `opencensus`: supported<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | supported |  |  |
-| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
+| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `maturity_level`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
@@ -173,12 +174,13 @@ Latest supported file format: `1.0.0`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file`: not_implemented<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge`: unknown<br> |
+| `MaturityLevel` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator`: supported<br>* `view_matching_mode`: not_implemented<br> |
 | `MetricProducer` | unknown |  | * `opencensus`: unknown<br> |
 | `MetricReader` | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | unknown |  |  |
-| `OpenTelemetryConfiguration` | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation`: unknown<br> |
+| `OpenTelemetryConfiguration` | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `maturity_level`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation`: unknown<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpHttpEncoding` | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
@@ -296,12 +298,13 @@ Latest supported file format: `1.0.0-rc.3`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge`: unknown<br> |
+| `MaturityLevel` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator`: supported<br>* `view_matching_mode`: not_implemented<br> |
 | `MetricProducer` | ignored |  | * `opencensus`: ignored<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | ignored |  |  |
-| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
+| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `maturity_level`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpHttpEncoding` | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
@@ -419,12 +422,13 @@ Latest supported file format: `1.0.0-rc.3`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge`: supported<br> |
+| `MaturityLevel` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator`: supported<br>* `view_matching_mode`: not_implemented<br> |
 | `MetricProducer` | supported |  | * `opencensus`: supported<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | not_implemented |  |  |
-| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
+| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `maturity_level`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
@@ -542,12 +546,13 @@ Latest supported file format: `1.0.0-rc.2`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file`: supported<br> |
 | `LogRecordLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge`: unknown<br> |
+| `MaturityLevel` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator`: supported<br>* `view_matching_mode`: not_implemented<br> |
 | `MetricProducer` | not_implemented |  | * `opencensus`: not_implemented<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: not_implemented<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | not_implemented |  |  |
-| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: not_implemented<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
+| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: not_implemented<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `maturity_level`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
@@ -665,12 +670,13 @@ Latest supported file format: `1.0.0`
 | `LogRecordExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file`: supported<br> |
 | `LogRecordLimits` | ignored |  | * `attribute_count_limit`: ignored<br>* `attribute_value_depth_limit`: ignored<br>* `attribute_value_length_limit`: ignored<br> |
 | `LogRecordProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br>* `event_to_span_event_bridge`: supported<br> |
+| `MaturityLevel` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `MeterProvider` | supported |  | * `exemplar_filter`: supported<br>* `readers`: supported<br>* `views`: supported<br>* `meter_configurator`: supported<br>* `view_matching_mode`: not_implemented<br> |
 | `MetricProducer` | ignored |  | * `opencensus`: ignored<br> |
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | ignored |  |  |
-| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
+| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `maturity_level`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |

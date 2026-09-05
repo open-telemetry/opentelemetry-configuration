@@ -16,13 +16,19 @@ compile-schema:
 	npm run-script compile-schema || exit 1;
 	@if ! npm ls ajv-cli; then npm install; fi
 	npx --no ajv-cli compile --spec=draft2020 --allow-matching-properties -s ./opentelemetry_configuration.json;
+	@# The development schema keeps the stability annotation, which the strict mode of ajv rejects.
+	npx --no ajv-cli compile --spec=draft2020 --strict=false --allow-matching-properties -s ./opentelemetry_configuration_development.json;
 
 .PHONY: validate-examples
 validate-examples: compile-schema
 	@if ! npm ls ajv-cli; then npm install; fi
 	@for f in $(EXAMPLE_FILES); do \
 	    npx envsub ./examples/$$f ./out/$$f || exit 1; \
-		npx --no ajv-cli validate --spec=draft2020 --allow-matching-properties --errors=text -s ./opentelemetry_configuration.json -d ./out/$$f \
+		schema=./opentelemetry_configuration.json; strict=; \
+		if grep -q '^maturity_level: *development' ./out/$$f; then \
+			schema=./opentelemetry_configuration_development.json; strict=--strict=false; \
+		fi; \
+		npx --no ajv-cli validate --spec=draft2020 $$strict --allow-matching-properties --errors=text -s $$schema -d ./out/$$f \
 		    || exit 1; \
 	done
 
