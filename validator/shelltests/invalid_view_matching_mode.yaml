@@ -1,6 +1,7 @@
 file_format: "1.1"
+maturity_level: development
 meter_provider:
-  view_matching_mode/development: merge_all
+  view_matching_mode: merge_all
   readers:
     - periodic:
         exporter:
