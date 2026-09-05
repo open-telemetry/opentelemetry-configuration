@@ -1,7 +1,10 @@
 package main
 
 import (
+	yaml "gopkg.in/yaml.v3"
+
 	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 )
@@ -71,5 +74,37 @@ func TestExpandString(t *testing.T) {
 	s = expandString("${UNDEFINED:-firstdefault} ${UNDEFINED:-seconddefault}")
 	if !strings.EqualFold(s, "firstdefault seconddefault") {
 		t.Errorf("String \"%s\" should be \"firstdefault seconddefault\"", s)
+	}
+}
+
+// The embedded schema is copied from the repository at build time, and
+// ./examples and ./snippets are rewritten to the current file format version on
+// release, so the two have to agree.
+func TestSupportedFileFormatMatchesExamples(t *testing.T) {
+	examples, err := filepath.Glob(filepath.Join("..", "examples", "*.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if len(examples) == 0 {
+		t.Fatal("No examples found to compare the supported file format against")
+	}
+
+	for _, example := range examples {
+		body, err := os.ReadFile(example)
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		var declared struct {
+			FileFormat string `yaml:"file_format"`
+		}
+		if err := yaml.Unmarshal(body, &declared); err != nil {
+			t.Fatal(err)
+		}
+
+		if declared.FileFormat != supportedFileFormat {
+			t.Errorf("%v declares file_format %q, but the validator supports %q", example, declared.FileFormat, supportedFileFormat)
+		}
 	}
 }

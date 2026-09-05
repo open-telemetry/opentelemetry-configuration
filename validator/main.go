@@ -21,6 +21,13 @@ import (
 //go:embed schema/*
 var schemaFS embed.FS
 
+// The file format version described by the embedded schema. A configuration
+// file declaring a different major version is not described by that schema at
+// all, and one declaring a newer minor version may use configuration the schema
+// does not contain. Kept in step with the rest of the repository by
+// TestSupportedFileFormatMatchesExamples.
+const supportedFileFormat = "1.1"
+
 func main() {
 	log.SetFlags(0)
 
