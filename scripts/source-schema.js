@@ -1,6 +1,10 @@
 import fs from 'fs';
 import {
+    developmentStability,
+    enumStabilityKey,
+    isDevelopmentSchema,
     isExperimentalProperty,
+    isExperimentalType,
     metaSchemaFilePrefix,
     rootTypeName,
     schemaSourceDirPath
@@ -146,6 +150,7 @@ export class SourceSchemaProperty {
     isSeq;
     isRequired;
     isNullable;
+    isDevelopment;
     schema;
 
     constructor(property, types, isSeq, isRequired, schema) {
@@ -154,6 +159,7 @@ export class SourceSchemaProperty {
         this.isSeq = isSeq;
         this.isRequired = isRequired;
         this.isNullable = types.includes('null');
+        this.isDevelopment = isDevelopmentSchema(schema) || isExperimentalProperty(property);
         this.schema = schema;
     }
 
@@ -200,6 +206,21 @@ export class SourceSchemaType {
         return this.enumValues !== null;
     }
 
+    isDevelopment() {
+        return isDevelopmentSchema(this.schema) || isExperimentalType(this.type);
+    }
+
+    enumStability() {
+        return this.schema[enumStabilityKey] || {};
+    }
+
+    isDevelopmentEnumValue(enumValue) {
+        if (this.enumStability()[enumValue] === developmentStability) {
+            return true;
+        }
+        return typeof enumValue === 'string' && isExperimentalProperty(enumValue);
+    }
+
     jsonSchemaRef() {
         let ref = this.sourceFile;
         if (this.jsonSchemaPath !== '.') {
@@ -216,9 +237,9 @@ export class SourceSchemaType {
 
     sortedProperties() {
         const sorted = this.properties.slice();
-        // Sort in lexigraphical order, with non-experimental properties first
+        // Sort in lexigraphical order, with stable properties first
         sorted.sort((a, b) => {
-            const differentMaturities = isExperimentalProperty(a.property) - isExperimentalProperty(b.property);
+            const differentMaturities = a.isDevelopment - b.isDevelopment;
             return differentMaturities === 0 ? a.property.localeCompare(b.property) : +differentMaturities;
         });
         return sorted;

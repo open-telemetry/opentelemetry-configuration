@@ -13,6 +13,19 @@ export const metaSchemaLanguageFilePrefix = `${metaSchemaFilePrefix}_language`;
 export const metaSchemaLanguageStatusFileName = (language) => `${metaSchemaLanguageFilePrefix}_${language}.yaml`;
 export const metaSchemaLanguageStatusPath = (language) => schemaSourceDirPath + metaSchemaLanguageStatusFileName(language);
 
+// Maturity is metadata about a node, not part of the name of that node.
+// `stability` annotates a property or a type, `enumStability` maps an enum value
+// to its maturity. Both are stripped when the schema is compiled.
+export const stabilityKey = 'stability';
+export const enumStabilityKey = 'enumStability';
+export const developmentStability = 'development';
+export const stableStability = 'stable';
+export const stabilityValues = [stableStability, developmentStability];
+
+export const isDevelopmentSchema = (schema) => schema != null && schema[stabilityKey] === developmentStability;
+
+// Maturity used to be recorded in the name. Retained only until the source
+// schema has been migrated to the annotations above.
 export const isExperimentalProperty = (property) => property.endsWith('/development');
 export const isExperimentalType = (type) => type.startsWith('Experimental');
 
