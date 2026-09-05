@@ -3,6 +3,7 @@ package main
 import (
 	yaml "gopkg.in/yaml.v3"
 
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -105,6 +106,63 @@ func TestSupportedFileFormatMatchesExamples(t *testing.T) {
 
 		if declared.FileFormat != supportedFileFormat {
 			t.Errorf("%v declares file_format %q, but the validator supports %q", example, declared.FileFormat, supportedFileFormat)
+		}
+	}
+}
+
+func TestSplitFileFormat(t *testing.T) {
+	valid := map[string][2]int{
+		"1.1":      {1, 1},
+		"0.4":      {0, 4},
+		"1.0-rc.2": {1, 0},
+		"2":        {2, 0},
+		"10.23":    {10, 23},
+	}
+
+	for fileFormat, expected := range valid {
+		major, minor, err := splitFileFormat(fileFormat)
+		if err != nil {
+			t.Errorf("splitFileFormat(%q) returned %v", fileFormat, err)
+		}
+		if major != expected[0] || minor != expected[1] {
+			t.Errorf("splitFileFormat(%q) returned %v.%v, expected %v.%v", fileFormat, major, minor, expected[0], expected[1])
+		}
+	}
+
+	for _, fileFormat := range []string{"", "banana", "1.x", "x.1", "1.1.0", " 1.1"} {
+		if _, _, err := splitFileFormat(fileFormat); err == nil {
+			t.Errorf("splitFileFormat(%q) was accepted, expected an error", fileFormat)
+		}
+	}
+}
+
+func TestCheckFileFormat(t *testing.T) {
+	supportedMajor, supportedMinor, err := splitFileFormat(supportedFileFormat)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	accepted := []string{
+		supportedFileFormat,
+		fmt.Sprintf("%v.0", supportedMajor),
+		fmt.Sprintf("%v.%v", supportedMajor, supportedMinor+1),
+		fmt.Sprintf("%v.%v-rc.1", supportedMajor, supportedMinor),
+	}
+	for _, fileFormat := range accepted {
+		if err := checkFileFormat(map[string]interface{}{"file_format": fileFormat}); err != nil {
+			t.Errorf("checkFileFormat(%q) returned %v, expected it to be accepted", fileFormat, err)
+		}
+	}
+
+	rejected := []string{
+		fmt.Sprintf("%v.0", supportedMajor+1),
+		fmt.Sprintf("%v.0", supportedMajor-1),
+		"banana",
+		"",
+	}
+	for _, fileFormat := range rejected {
+		if err := checkFileFormat(map[string]interface{}{"file_format": fileFormat}); err == nil {
+			t.Errorf("checkFileFormat(%q) was accepted, expected an error", fileFormat)
 		}
 	}
 }
