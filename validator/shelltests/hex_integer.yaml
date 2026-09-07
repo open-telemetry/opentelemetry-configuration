@@ -1,5 +1,5 @@
 # The file format version
-file_format: "0.1"
+file_format: "1.1"
 
 # Configure if the SDK is disabled or not.
 disabled: ${OTEL_SDK_DISABLED:-false}

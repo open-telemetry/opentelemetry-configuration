@@ -5,6 +5,7 @@ import (
 	"context"
 	"embed"
 	"encoding/json"
+	"fmt"
 	jsonschema "github.com/santhosh-tekuri/jsonschema/v5"
 	"github.com/urfave/cli/v3"
 	yaml "gopkg.in/yaml.v3"
@@ -20,6 +21,13 @@ import (
 
 //go:embed schema/*
 var schemaFS embed.FS
+
+// The file format version described by the embedded schema. A configuration
+// file declaring a different major version is not described by that schema at
+// all, and one declaring a newer minor version may use configuration the schema
+// does not contain. Kept in step with the rest of the repository by
+// TestSupportedFileFormatMatchesExamples.
+const supportedFileFormat = "1.1"
 
 func main() {
 	log.SetFlags(0)
@@ -150,6 +158,66 @@ func add_resources_from_embed(c *jsonschema.Compiler) {
 }
 
 
+// splitFileFormat splits a file format version into its major and minor
+// numbers, discarding any meta tag, so that "1.0-rc.2" yields 1 and 0.
+func splitFileFormat(fileFormat string) (int, int, error) {
+	numbers := strings.SplitN(strings.SplitN(fileFormat, "-", 2)[0], ".", 2)
+
+	major, err := strconv.Atoi(numbers[0])
+	if err != nil {
+		return 0, 0, fmt.Errorf("expected MAJOR.MINOR version numbers, got %q", fileFormat)
+	}
+
+	if len(numbers) < 2 {
+		return major, 0, nil
+	}
+
+	minor, err := strconv.Atoi(numbers[1])
+	if err != nil {
+		return 0, 0, fmt.Errorf("expected MAJOR.MINOR version numbers, got %q", fileFormat)
+	}
+
+	return major, minor, nil
+}
+
+// checkFileFormat compares the file format version a configuration declares
+// against the version the embedded schema describes, following the rules in
+// VERSIONING.md: a major version the schema does not describe is an error, and
+// a newer minor version is a warning.
+func checkFileFormat(expandedConfig interface{}) error {
+	config, ok := expandedConfig.(map[string]interface{})
+	if !ok {
+		return nil
+	}
+
+	// The schema makes file_format required and constrains it to a string, so a
+	// configuration that has already validated against it carries one.
+	declared, ok := config["file_format"].(string)
+	if !ok {
+		return nil
+	}
+
+	declaredMajor, declaredMinor, err := splitFileFormat(declared)
+	if err != nil {
+		return fmt.Errorf("Invalid file_format: %v", err)
+	}
+
+	supportedMajor, supportedMinor, err := splitFileFormat(supportedFileFormat)
+	if err != nil {
+		return fmt.Errorf("Invalid supported file format %q: %v", supportedFileFormat, err)
+	}
+
+	if declaredMajor != supportedMajor {
+		return fmt.Errorf("Unsupported file_format %q: this validator embeds the schema for version %d.x", declared, supportedMajor)
+	}
+
+	if declaredMinor > supportedMinor {
+		log.Printf("Warning: file_format %q is newer than the schema this validator embeds (%q), which may not describe everything the configuration uses", declared, supportedFileFormat)
+	}
+
+	return nil
+}
+
 func validateConfiguration(configFile string, outfileExt string, schemaDir *string) []byte {
 	c := jsonschema.NewCompiler()
 	if schemaDir != nil {
@@ -171,6 +239,10 @@ func validateConfiguration(configFile string, outfileExt string, schemaDir *stri
 		} else {
 			log.Fatalf("%+v", err)
 		}
+	}
+
+	if err = checkFileFormat(expandedConfig); err != nil {
+		log.Fatalf("%v", err)
 	}
 
 	return outFile
