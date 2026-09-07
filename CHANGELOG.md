@@ -12,6 +12,12 @@
 * Add `max_request_size` and `max_response_size` to OTLP exporters
   ([#700](https://github.com/open-telemetry/opentelemetry-configuration/pull/700))
 
+### Tooling
+
+* Validator: read the `file_format` a configuration file declares and check it
+  against the schema version the binary embeds
+  ([#739](https://github.com/open-telemetry/opentelemetry-configuration/pull/739))
+
 ## v1.1.0 - 2026-06-05
 
 ### Schema

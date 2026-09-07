@@ -1,0 +1,4 @@
+otel_config_validator shelltests/newer_minor_file_format.yaml
+>>>2
+Warning: file_format "1.99" is newer than the schema this validator embeds ("1.1"), which may not describe everything the configuration uses
+>>>= 0
