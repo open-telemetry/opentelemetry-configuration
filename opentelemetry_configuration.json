@@ -851,7 +851,7 @@
       "properties": {
         "general": {
           "$ref": "#/$defs/ExperimentalGeneralInstrumentation",
-          "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\nInstrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.\nIf omitted, default values as described in ExperimentalGeneralInstrumentation are used.\n"
+          "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\nInstrumentation may merge general config options with the language specific configuration at .instrumentation.<language>.\nIf omitted, default values as described in ExperimentalGeneralInstrumentation are used.\n"
         },
         "cpp": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
