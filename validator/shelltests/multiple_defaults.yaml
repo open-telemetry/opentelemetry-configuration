@@ -1,1 +1,1 @@
-file_format: ${FILE_FORMAT}${BLANK:-}${FILE_FORMAT:-1.1}
+file_format: ${FILE_FORMAT}${BLANK:-}${FILE_FORMAT:-1.2}

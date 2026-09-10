@@ -1,2 +1,2 @@
-FILE_FORMAT=1.1 otel_config_validator shelltests/no_expected_key.yaml
+FILE_FORMAT=1.2 otel_config_validator shelltests/no_expected_key.yaml
 >>>= 1
