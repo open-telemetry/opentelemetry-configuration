@@ -27,7 +27,7 @@ var schemaFS embed.FS
 // all, and one declaring a newer minor version may use configuration the schema
 // does not contain. Kept in step with the rest of the repository by
 // TestSupportedFileFormatMatchesExamples.
-const supportedFileFormat = "1.1"
+const supportedFileFormat = "1.2"
 
 func main() {
 	log.SetFlags(0)

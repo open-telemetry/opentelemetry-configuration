@@ -1,8 +1,13 @@
 ## Unreleased
 
+## v1.2.0 - 2026-09-11
+
+### Schema
+
 * Add `always_record` definition to `Sampler`
   ([#698](https://github.com/open-telemetry/opentelemetry-configuration/pull/698))
 * Add experimental `meter_provider.view_matching_mode/development` property
+  ([#666](https://github.com/open-telemetry/opentelemetry-configuration/pull/666))
 * Deprecate `MetricProducer.opencensus` and `OpenCensusMetricProducer`,
   following the deprecation of OpenCensus compatibility in the
   specification
@@ -17,6 +22,27 @@
 * Validator: read the `file_format` a configuration file declares and check it
   against the schema version the binary embeds
   ([#739](https://github.com/open-telemetry/opentelemetry-configuration/pull/739))
+* Add schema modeling rule describing the deprecation process
+  ([#659](https://github.com/open-telemetry/opentelemetry-configuration/pull/659))
+* Add check for non-identifier characters in schema names
+  ([#691](https://github.com/open-telemetry/opentelemetry-configuration/pull/691))
+* Remove generated `schema-docs.md`, favoring opentelemetry.io
+  ([#667](https://github.com/open-telemetry/opentelemetry-configuration/pull/667),
+  [#678](https://github.com/open-telemetry/opentelemetry-configuration/pull/678))
+* Add Python implementation support status
+  ([#668](https://github.com/open-telemetry/opentelemetry-configuration/pull/668),
+  [#669](https://github.com/open-telemetry/opentelemetry-configuration/pull/669))
+* Add JavaScript implementation support status
+  ([#670](https://github.com/open-telemetry/opentelemetry-configuration/pull/670))
+* Update C++ implementation support status
+  ([#734](https://github.com/open-telemetry/opentelemetry-configuration/pull/734))
+* Add shared OSSF Scorecard, security scanning, and zizmor CI workflows;
+  group GitHub Action updates
+  ([#648](https://github.com/open-telemetry/opentelemetry-configuration/pull/648),
+  [#685](https://github.com/open-telemetry/opentelemetry-configuration/pull/685),
+  [#720](https://github.com/open-telemetry/opentelemetry-configuration/pull/720),
+  [#725](https://github.com/open-telemetry/opentelemetry-configuration/pull/725),
+  [#732](https://github.com/open-telemetry/opentelemetry-configuration/pull/732))
 
 ## v1.1.0 - 2026-06-05
 
