@@ -1,5 +1,9 @@
 ## Unreleased
 
+### Schema
+
+* Stabilize `PeriodicMetricReader.max_export_batch_size`
+
 ## v1.2.0 - 2026-09-11
 
 ### Schema

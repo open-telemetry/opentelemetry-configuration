@@ -164,7 +164,7 @@ typeSupportStatuses:
   - type: PeriodicMetricReader
     status: supported
     propertyOverrides:
-      - property: max_export_batch_size/development
+      - property: max_export_batch_size
         status: not_implemented
   - type: Propagator
     status: supported
