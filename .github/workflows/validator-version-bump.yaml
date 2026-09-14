@@ -1,0 +1,92 @@
+name: Bump validator for schema release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  bump-validator:
+    # Validator releases use validator-* tags. Schema releases use stable v* tags.
+    if: ${{ !github.event.release.prerelease && startsWith(github.event.release.tag_name, 'v') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    concurrency:
+      group: validator-version-${{ github.event.release.tag_name }}
+      cancel-in-progress: false
+    steps:
+      - name: Checkout the default branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Bump validator versions
+        id: bump
+        env:
+          SCHEMA_TAG: ${{ github.event.release.tag_name }}
+        run: .github/scripts/bump-validator-version.sh "${SCHEMA_TAG}"
+
+      - name: Check for an existing bump pull request
+        id: existing
+        env:
+          BRANCH_NAME: automation/validator-${{ steps.bump.outputs.schema_version }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pull_request_url="$(gh pr list --state all --head "${BRANCH_NAME}" --json url --jq '.[0].url // empty')"
+          if [[ -n "${pull_request_url}" ]]; then
+            echo "A pull request for this schema release already exists: ${pull_request_url}"
+            echo "found=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "found=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Test validator
+        if: steps.existing.outputs.found == 'false'
+        run: |
+          make validator-copy-schema
+          go test ./...
+        working-directory: validator
+
+      - name: Check generated changes
+        if: steps.existing.outputs.found == 'false'
+        run: |
+          git diff --check
+          if git diff --exit-code --quiet -- validator/main.go dist.toml; then
+            echo "The validator bump did not change either versioned file" >&2
+            exit 1
+          fi
+
+      - name: Create bump pull request
+        if: steps.existing.outputs.found == 'false'
+        env:
+          BRANCH_NAME: automation/validator-${{ steps.bump.outputs.schema_version }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_URL: ${{ github.event.release.html_url }}
+          SCHEMA_FILE_FORMAT: ${{ steps.bump.outputs.schema_file_format }}
+          SCHEMA_VERSION: ${{ steps.bump.outputs.schema_version }}
+          BUMP_TYPE: ${{ steps.bump.outputs.bump_type }}
+          VALIDATOR_VERSION: ${{ steps.bump.outputs.validator_version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "${BRANCH_NAME}"
+          git add validator/main.go dist.toml
+          git commit -m "chore(validator): bump to ${VALIDATOR_VERSION}"
+
+          gh auth setup-git
+          git push origin "HEAD:refs/heads/${BRANCH_NAME}"
+
+          gh pr create \
+            --base "${DEFAULT_BRANCH}" \
+            --head "${BRANCH_NAME}" \
+            --title "chore(validator): bump to ${VALIDATOR_VERSION}" \
+            --body "$(printf '%s\n\n%s\n\n%s\n' \
+              "Schema [v${SCHEMA_VERSION}](${RELEASE_URL}) is a ${BUMP_TYPE} release." \
+              "This updates the supported file format to ${SCHEMA_FILE_FORMAT} and applies the same ${BUMP_TYPE} bump to the validator, producing validator version ${VALIDATOR_VERSION}." \
+              "After this PR is merged, tag the merge commit as \`validator-${VALIDATOR_VERSION}\` to run the validator release workflow.")"
