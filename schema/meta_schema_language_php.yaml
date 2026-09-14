@@ -39,23 +39,31 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: BatchLogRecordProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
     notes: "`schedule_delay` is only checked on `::onEmit()`."
   - type: BatchSpanProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
     notes: "`schedule_delay` is only checked on `::onEnd()`."
   - type: CardinalityLimits
     status: not_implemented
     propertyOverrides: []
   - type: ConsoleExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: ConsoleMetricExporter
     status: supported
     propertyOverrides:
       - property: default_histogram_aggregation
         status: not_implemented
+      - property: name/development
+        status: unknown
       - property: temporality_preference
         status: ignored
   - type: DefaultAggregation
@@ -146,6 +154,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
       - property: tls
         status: ignored
   - type: OtlpGrpcMetricExporter
@@ -157,6 +167,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
       - property: tls
         status: ignored
   - type: OtlpHttpEncoding
@@ -169,6 +181,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
       - property: tls
         status: ignored
   - type: OtlpHttpMetricExporter
@@ -180,6 +194,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: name/development
+        status: unknown
       - property: tls
         status: ignored
   - type: ParentBasedSampler
@@ -192,6 +208,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_export_batch_size/development
         status: not_implemented
+      - property: name/development
+        status: unknown
       - property: producers
         status: not_implemented
   - type: Propagator
@@ -228,10 +246,14 @@ typeSupportStatuses:
     enumOverrides: []
   - type: SimpleLogRecordProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: SimpleSpanProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: SpanExporter
     status: supported
     propertyOverrides: []
@@ -390,12 +412,16 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalOtlpFileExporter
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: name/development
+        status: unknown
   - type: ExperimentalOtlpFileMetricExporter
     status: supported
     propertyOverrides:
       - property: default_histogram_aggregation
         status: not_implemented
+      - property: name/development
+        status: unknown
   - type: ExperimentalProbabilitySampler
     status: not_implemented
     propertyOverrides: []
