@@ -1,5 +1,10 @@
 ## Unreleased
 
+### Schema
+
+* Add `enabled/development` property to `ViewStream`
+  ([#724](https://github.com/open-telemetry/opentelemetry-configuration/pull/724))
+
 ## v1.2.0 - 2026-09-11
 
 ### Schema
