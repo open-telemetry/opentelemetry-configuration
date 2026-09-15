@@ -21,6 +21,10 @@
   to [CHANGELOG.md](CHANGELOG.md) for a list of changes since last release.
   * Call out [breaking changes](CONTRIBUTING.md#pull-requests) and provide example migration steps (see [v0.4.0](https://github.com/open-telemetry/opentelemetry-configuration/releases/tag/v0.4.0) for an example).
 * Click "Publish Release".
+* Merge the automatically created validator version bump pull request. The pull
+  request updates the validator's supported file format and applies the same
+  type of semantic version bump as the schema release. Follow the instructions
+  in the pull request to tag and release the validator.
 * Open a PR to update
   the [schemastore](https://github.com/SchemaStore/schemastore) entry to include
   the new tag. Update the `url` to be the latest, and `versions` to include the
