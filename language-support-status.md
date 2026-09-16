@@ -28,11 +28,11 @@ Latest supported file format: `1.0.0`
 | `B3Propagator` | supported |  |  |
 | `BaggagePropagator` | supported |  |  |
 | `Base2ExponentialBucketHistogramAggregation` | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: supported<br> |
-| `BatchLogRecordProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| `BatchSpanProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
+| `BatchLogRecordProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
+| `BatchSpanProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
 | `CardinalityLimits` | ignored |  | * `counter`: ignored<br>* `default`: ignored<br>* `gauge`: ignored<br>* `histogram`: ignored<br>* `observable_counter`: ignored<br>* `observable_gauge`: ignored<br>* `observable_up_down_counter`: ignored<br>* `up_down_counter`: ignored<br> |
-| `ConsoleExporter` | supported |  |  |
-| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: supported<br>* `temporality_preference`: supported<br> |
+| `ConsoleExporter` | supported |  | * `name/development`: unknown<br> |
+| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: supported<br>* `temporality_preference`: supported<br>* `name/development`: unknown<br> |
 | `DefaultAggregation` | supported |  |  |
 | `Distribution` | supported |  |  |
 | `DropAggregation` | supported |  |  |
@@ -56,23 +56,23 @@ Latest supported file format: `1.0.0`
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | supported |  |  |
 | `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
+| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
-| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
+| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
 | `ParentBasedSampler` | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
-| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: supported<br>* `timeout`: supported<br>* `max_export_batch_size/development`: not_implemented<br> |
+| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: supported<br>* `timeout`: supported<br>* `max_export_batch_size/development`: not_implemented<br>* `name/development`: unknown<br> |
 | `Propagator` | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
 | `PullMetricExporter` | supported |  | * `prometheus/development`: supported<br> |
-| `PullMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `producers`: supported<br> |
+| `PullMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `producers`: supported<br>* `name/development`: unknown<br> |
 | `PushMetricExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `RandomIdGenerator` | not_implemented |  |  |
 | `Resource` | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
 | `Sampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `always_record`: not_implemented<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: supported<br> |
 | `SeverityNumber` | supported |  | * `debug`: supported<br>* `debug2`: supported<br>* `debug3`: supported<br>* `debug4`: supported<br>* `error`: supported<br>* `error2`: supported<br>* `error3`: supported<br>* `error4`: supported<br>* `fatal`: supported<br>* `fatal2`: supported<br>* `fatal3`: supported<br>* `fatal4`: supported<br>* `info`: supported<br>* `info2`: supported<br>* `info3`: supported<br>* `info4`: supported<br>* `trace`: supported<br>* `trace2`: supported<br>* `trace3`: supported<br>* `trace4`: supported<br>* `warn`: supported<br>* `warn2`: supported<br>* `warn3`: supported<br>* `warn4`: supported<br> |
-| `SimpleLogRecordProcessor` | supported |  | * `exporter`: supported<br> |
-| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
+| `SimpleLogRecordProcessor` | supported |  | * `exporter`: supported<br>* `name/development`: unknown<br> |
+| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br>* `name/development`: unknown<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `SpanKind` | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
 | `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
@@ -97,7 +97,7 @@ Latest supported file format: `1.0.0`
 | `ExperimentalComposableSampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_threshold`: supported<br>* `probability`: supported<br>* `rule_based`: supported<br> |
 | `ExperimentalContainerResourceDetector` | supported |  |  |
 | `ExperimentalDbInstrumentation` | not_applicable |  | * `semconv`: not_applicable<br> |
-| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
+| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  | * `name/development`: not_implemented<br> |
 | `ExperimentalGenAiInstrumentation` | not_applicable |  | * `semconv`: not_applicable<br> |
 | `ExperimentalGeneralInstrumentation` | not_applicable |  | * `code`: not_applicable<br>* `db`: not_applicable<br>* `gen_ai`: not_applicable<br>* `http`: not_applicable<br>* `messaging`: not_applicable<br>* `rpc`: not_applicable<br>* `sanitization`: not_applicable<br>* `stability_opt_in_list`: not_applicable<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
@@ -114,11 +114,11 @@ Latest supported file format: `1.0.0`
 | `ExperimentalMeterConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalMeterConfigurator` | supported |  | * `default_config`: supported<br>* `meters`: supported<br> |
 | `ExperimentalMeterMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| `ExperimentalOtlpFileExporter` | supported |  | * `output_stream`: supported<br> |
-| `ExperimentalOtlpFileMetricExporter` | supported |  | * `default_histogram_aggregation`: supported<br>* `output_stream`: supported<br>* `temporality_preference`: supported<br> |
+| `ExperimentalOtlpFileExporter` | supported |  | * `output_stream`: supported<br>* `name/development`: unknown<br> |
+| `ExperimentalOtlpFileMetricExporter` | supported |  | * `default_histogram_aggregation`: supported<br>* `output_stream`: supported<br>* `temporality_preference`: supported<br>* `name/development`: unknown<br> |
 | `ExperimentalProbabilitySampler` | supported |  | * `ratio`: supported<br> |
 | `ExperimentalProcessResourceDetector` | supported |  |  |
-| `ExperimentalPrometheusMetricExporter` | supported |  | * `host`: supported<br>* `port`: supported<br>* `resource_constant_labels`: supported<br>* `scope_info_enabled`: supported<br>* `translation_strategy`: supported<br>* `target_info_enabled/development`: supported<br> |
+| `ExperimentalPrometheusMetricExporter` | supported |  | * `host`: supported<br>* `port`: supported<br>* `resource_constant_labels`: supported<br>* `scope_info_enabled`: supported<br>* `translation_strategy`: supported<br>* `name/development`: unknown<br>* `target_info_enabled/development`: supported<br> |
 | `ExperimentalPrometheusTranslationStrategy` | supported |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: supported<br>* `underscore_escaping_without_suffixes/development`: supported<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
@@ -151,11 +151,11 @@ Latest supported file format: `1.0.0`
 | `B3Propagator` | supported |  |  |
 | `BaggagePropagator` | supported |  |  |
 | `Base2ExponentialBucketHistogramAggregation` | unknown |  | * `max_scale`: unknown<br>* `max_size`: unknown<br>* `record_min_max`: unknown<br> |
-| `BatchLogRecordProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| `BatchSpanProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
+| `BatchLogRecordProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
+| `BatchSpanProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
 | `CardinalityLimits` | unknown |  | * `counter`: unknown<br>* `default`: unknown<br>* `gauge`: unknown<br>* `histogram`: unknown<br>* `observable_counter`: unknown<br>* `observable_gauge`: unknown<br>* `observable_up_down_counter`: unknown<br>* `up_down_counter`: unknown<br> |
-| `ConsoleExporter` | supported |  |  |
-| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: not_implemented<br> |
+| `ConsoleExporter` | supported |  | * `name/development`: unknown<br> |
+| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: not_implemented<br>* `name/development`: unknown<br> |
 | `DefaultAggregation` | unknown |  |  |
 | `Distribution` | unknown |  |  |
 | `DropAggregation` | unknown |  |  |
@@ -179,23 +179,23 @@ Latest supported file format: `1.0.0`
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | unknown |  |  |
 | `OpenTelemetryConfiguration` | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation/development`: unknown<br> |
-| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
+| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
 | `OtlpHttpEncoding` | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
-| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
+| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
 | `ParentBasedSampler` | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
-| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: not_implemented<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: not_implemented<br>* `timeout`: supported<br>* `max_export_batch_size/development`: not_implemented<br> |
+| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: not_implemented<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: not_implemented<br>* `timeout`: supported<br>* `max_export_batch_size/development`: not_implemented<br>* `name/development`: unknown<br> |
 | `Propagator` | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
 | `PullMetricExporter` | unknown |  | * `prometheus/development`: unknown<br> |
-| `PullMetricReader` | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `producers`: unknown<br> |
+| `PullMetricReader` | unknown |  | * `cardinality_limits`: unknown<br>* `exporter`: unknown<br>* `producers`: unknown<br>* `name/development`: unknown<br> |
 | `PushMetricExporter` | unknown |  | * `console`: unknown<br>* `otlp_grpc`: unknown<br>* `otlp_http`: unknown<br>* `otlp_file/development`: unknown<br> |
 | `RandomIdGenerator` | unknown |  |  |
 | `Resource` | unknown |  | * `attributes`: unknown<br>* `attributes_list`: unknown<br>* `schema_url`: unknown<br>* `detection/development`: unknown<br> |
 | `Sampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `always_record`: unknown<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: not_implemented<br>* `jaeger_remote/development`: not_implemented<br>* `probability/development`: not_implemented<br> |
 | `SeverityNumber` | unknown |  | * `debug`: unknown<br>* `debug2`: unknown<br>* `debug3`: unknown<br>* `debug4`: unknown<br>* `error`: unknown<br>* `error2`: unknown<br>* `error3`: unknown<br>* `error4`: unknown<br>* `fatal`: unknown<br>* `fatal2`: unknown<br>* `fatal3`: unknown<br>* `fatal4`: unknown<br>* `info`: unknown<br>* `info2`: unknown<br>* `info3`: unknown<br>* `info4`: unknown<br>* `trace`: unknown<br>* `trace2`: unknown<br>* `trace3`: unknown<br>* `trace4`: unknown<br>* `warn`: unknown<br>* `warn2`: unknown<br>* `warn3`: unknown<br>* `warn4`: unknown<br> |
-| `SimpleLogRecordProcessor` | unknown |  | * `exporter`: unknown<br> |
-| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
+| `SimpleLogRecordProcessor` | unknown |  | * `exporter`: unknown<br>* `name/development`: unknown<br> |
+| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br>* `name/development`: unknown<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: not_implemented<br> |
 | `SpanKind` | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
 | `SpanLimits` | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_depth_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
@@ -220,7 +220,7 @@ Latest supported file format: `1.0.0`
 | `ExperimentalComposableSampler` | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | `ExperimentalContainerResourceDetector` | supported |  |  |
 | `ExperimentalDbInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
-| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
+| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  | * `name/development`: not_implemented<br> |
 | `ExperimentalGenAiInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalGeneralInstrumentation` | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
@@ -237,11 +237,11 @@ Latest supported file format: `1.0.0`
 | `ExperimentalMeterConfig` | unknown |  | * `enabled`: unknown<br> |
 | `ExperimentalMeterConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `meters`: not_implemented<br> |
 | `ExperimentalMeterMatcherAndConfig` | unknown |  | * `config`: unknown<br>* `name`: unknown<br> |
-| `ExperimentalOtlpFileExporter` | not_implemented |  | * `output_stream`: not_implemented<br> |
-| `ExperimentalOtlpFileMetricExporter` | not_implemented |  | * `default_histogram_aggregation`: not_implemented<br>* `output_stream`: not_implemented<br>* `temporality_preference`: not_implemented<br> |
+| `ExperimentalOtlpFileExporter` | not_implemented |  | * `output_stream`: not_implemented<br>* `name/development`: not_implemented<br> |
+| `ExperimentalOtlpFileMetricExporter` | not_implemented |  | * `default_histogram_aggregation`: not_implemented<br>* `output_stream`: not_implemented<br>* `temporality_preference`: not_implemented<br>* `name/development`: not_implemented<br> |
 | `ExperimentalProbabilitySampler` | not_implemented |  | * `ratio`: not_implemented<br> |
 | `ExperimentalProcessResourceDetector` | supported |  |  |
-| `ExperimentalPrometheusMetricExporter` | supported |  | * `host`: supported<br>* `port`: supported<br>* `resource_constant_labels`: supported<br>* `scope_info_enabled`: supported<br>* `translation_strategy`: supported<br>* `target_info_enabled/development`: supported<br> |
+| `ExperimentalPrometheusMetricExporter` | supported |  | * `host`: supported<br>* `port`: supported<br>* `resource_constant_labels`: supported<br>* `scope_info_enabled`: supported<br>* `translation_strategy`: supported<br>* `name/development`: unknown<br>* `target_info_enabled/development`: supported<br> |
 | `ExperimentalPrometheusTranslationStrategy` | supported |  | * `no_translation/development`: supported<br>* `no_utf8_escaping_with_suffixes/development`: supported<br>* `underscore_escaping_with_suffixes`: supported<br>* `underscore_escaping_without_suffixes/development`: supported<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
@@ -274,11 +274,11 @@ Latest supported file format: `1.0.0-rc.3`
 | `B3Propagator` | supported |  |  |
 | `BaggagePropagator` | supported |  |  |
 | `Base2ExponentialBucketHistogramAggregation` | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: supported<br> |
-| `BatchLogRecordProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| `BatchSpanProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
+| `BatchLogRecordProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
+| `BatchSpanProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
 | `CardinalityLimits` | supported |  | * `counter`: supported<br>* `default`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
-| `ConsoleExporter` | supported |  |  |
-| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: ignored<br> |
+| `ConsoleExporter` | supported |  | * `name/development`: unknown<br> |
+| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: ignored<br>* `name/development`: unknown<br> |
 | `DefaultAggregation` | supported |  |  |
 | `Distribution` | supported |  |  |
 | `DropAggregation` | supported |  |  |
@@ -302,23 +302,23 @@ Latest supported file format: `1.0.0-rc.3`
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | ignored |  |  |
 | `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
+| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
 | `OtlpHttpEncoding` | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
-| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
+| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
 | `ParentBasedSampler` | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
-| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: not_implemented<br>* `timeout`: supported<br>* `max_export_batch_size/development`: not_implemented<br> |
+| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: not_implemented<br>* `timeout`: supported<br>* `max_export_batch_size/development`: not_implemented<br>* `name/development`: unknown<br> |
 | `Propagator` | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
 | `PullMetricExporter` | supported |  | * `prometheus/development`: supported<br> |
-| `PullMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `producers`: not_implemented<br> |
+| `PullMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `producers`: not_implemented<br>* `name/development`: unknown<br> |
 | `PushMetricExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `RandomIdGenerator` | unknown |  |  |
 | `Resource` | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
 | `Sampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `always_record`: unknown<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: supported<br> |
 | `SeverityNumber` | supported |  | * `debug`: supported<br>* `debug2`: supported<br>* `debug3`: supported<br>* `debug4`: supported<br>* `error`: supported<br>* `error2`: supported<br>* `error3`: supported<br>* `error4`: supported<br>* `fatal`: supported<br>* `fatal2`: supported<br>* `fatal3`: supported<br>* `fatal4`: supported<br>* `info`: supported<br>* `info2`: supported<br>* `info3`: supported<br>* `info4`: supported<br>* `trace`: supported<br>* `trace2`: supported<br>* `trace3`: supported<br>* `trace4`: supported<br>* `warn`: supported<br>* `warn2`: supported<br>* `warn3`: supported<br>* `warn4`: supported<br> |
-| `SimpleLogRecordProcessor` | supported |  | * `exporter`: supported<br> |
-| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
+| `SimpleLogRecordProcessor` | supported |  | * `exporter`: supported<br>* `name/development`: unknown<br> |
+| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br>* `name/development`: unknown<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `SpanKind` | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
 | `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
@@ -343,7 +343,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalComposableSampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_threshold`: supported<br>* `probability`: supported<br>* `rule_based`: supported<br> |
 | `ExperimentalContainerResourceDetector` | supported |  |  |
 | `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br> |
-| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | supported |  |  |
+| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | supported |  | * `name/development`: unknown<br> |
 | `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
@@ -360,11 +360,11 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalMeterConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalMeterConfigurator` | supported |  | * `default_config`: supported<br>* `meters`: supported<br> |
 | `ExperimentalMeterMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| `ExperimentalOtlpFileExporter` | supported |  | * `output_stream`: not_implemented<br> |
-| `ExperimentalOtlpFileMetricExporter` | supported |  | * `default_histogram_aggregation`: supported<br>* `output_stream`: not_implemented<br>* `temporality_preference`: supported<br> |
+| `ExperimentalOtlpFileExporter` | supported |  | * `output_stream`: not_implemented<br>* `name/development`: unknown<br> |
+| `ExperimentalOtlpFileMetricExporter` | supported |  | * `default_histogram_aggregation`: supported<br>* `output_stream`: not_implemented<br>* `temporality_preference`: supported<br>* `name/development`: unknown<br> |
 | `ExperimentalProbabilitySampler` | supported |  | * `ratio`: supported<br> |
 | `ExperimentalProcessResourceDetector` | supported |  |  |
-| `ExperimentalPrometheusMetricExporter` | supported |  | * `host`: supported<br>* `port`: supported<br>* `resource_constant_labels`: supported<br>* `scope_info_enabled`: supported<br>* `translation_strategy`: not_implemented<br>* `target_info_enabled/development`: supported<br> |
+| `ExperimentalPrometheusMetricExporter` | supported |  | * `host`: supported<br>* `port`: supported<br>* `resource_constant_labels`: supported<br>* `scope_info_enabled`: supported<br>* `translation_strategy`: not_implemented<br>* `name/development`: unknown<br>* `target_info_enabled/development`: supported<br> |
 | `ExperimentalPrometheusTranslationStrategy` | not_implemented |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes/development`: not_implemented<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
@@ -397,11 +397,11 @@ Latest supported file format: `1.0.0-rc.3`
 | `B3Propagator` | supported |  |  |
 | `BaggagePropagator` | supported |  |  |
 | `Base2ExponentialBucketHistogramAggregation` | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: supported<br> |
-| `BatchLogRecordProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| `BatchSpanProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
+| `BatchLogRecordProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
+| `BatchSpanProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
 | `CardinalityLimits` | not_implemented |  | * `counter`: not_implemented<br>* `default`: not_implemented<br>* `gauge`: not_implemented<br>* `histogram`: not_implemented<br>* `observable_counter`: not_implemented<br>* `observable_gauge`: not_implemented<br>* `observable_up_down_counter`: not_implemented<br>* `up_down_counter`: not_implemented<br> |
-| `ConsoleExporter` | supported |  |  |
-| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: not_implemented<br> |
+| `ConsoleExporter` | supported |  | * `name/development`: unknown<br> |
+| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: not_implemented<br>* `name/development`: unknown<br> |
 | `DefaultAggregation` | supported |  |  |
 | `Distribution` | not_implemented |  |  |
 | `DropAggregation` | supported |  |  |
@@ -425,23 +425,23 @@ Latest supported file format: `1.0.0-rc.3`
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | not_implemented |  |  |
 | `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
+| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
-| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
+| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
 | `ParentBasedSampler` | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
-| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: supported<br>* `timeout`: supported<br>* `max_export_batch_size/development`: not_implemented<br> |
+| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: supported<br>* `timeout`: supported<br>* `max_export_batch_size/development`: not_implemented<br>* `name/development`: unknown<br> |
 | `Propagator` | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
 | `PullMetricExporter` | not_implemented |  | * `prometheus/development`: not_implemented<br> |
-| `PullMetricReader` | not_implemented |  | * `cardinality_limits`: not_implemented<br>* `exporter`: not_implemented<br>* `producers`: not_implemented<br> |
+| `PullMetricReader` | not_implemented |  | * `cardinality_limits`: not_implemented<br>* `exporter`: not_implemented<br>* `producers`: not_implemented<br>* `name/development`: not_implemented<br> |
 | `PushMetricExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `RandomIdGenerator` | supported |  |  |
 | `Resource` | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
 | `Sampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `always_record`: unknown<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: supported<br> |
 | `SeverityNumber` | supported |  | * `debug`: supported<br>* `debug2`: supported<br>* `debug3`: supported<br>* `debug4`: supported<br>* `error`: supported<br>* `error2`: supported<br>* `error3`: supported<br>* `error4`: supported<br>* `fatal`: supported<br>* `fatal2`: supported<br>* `fatal3`: supported<br>* `fatal4`: supported<br>* `info`: supported<br>* `info2`: supported<br>* `info3`: supported<br>* `info4`: supported<br>* `trace`: supported<br>* `trace2`: supported<br>* `trace3`: supported<br>* `trace4`: supported<br>* `warn`: supported<br>* `warn2`: supported<br>* `warn3`: supported<br>* `warn4`: supported<br> |
-| `SimpleLogRecordProcessor` | supported |  | * `exporter`: supported<br> |
-| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
+| `SimpleLogRecordProcessor` | supported |  | * `exporter`: supported<br>* `name/development`: unknown<br> |
+| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br>* `name/development`: unknown<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `SpanKind` | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
 | `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
@@ -466,7 +466,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalComposableSampler` | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | `ExperimentalContainerResourceDetector` | not_implemented |  |  |
 | `ExperimentalDbInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
-| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
+| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  | * `name/development`: not_implemented<br> |
 | `ExperimentalGenAiInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalGeneralInstrumentation` | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
@@ -483,11 +483,11 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalMeterConfig` | not_implemented |  | * `enabled`: not_implemented<br> |
 | `ExperimentalMeterConfigurator` | not_implemented |  | * `default_config`: not_implemented<br>* `meters`: not_implemented<br> |
 | `ExperimentalMeterMatcherAndConfig` | not_implemented |  | * `config`: not_implemented<br>* `name`: not_implemented<br> |
-| `ExperimentalOtlpFileExporter` | not_implemented |  | * `output_stream`: not_implemented<br> |
-| `ExperimentalOtlpFileMetricExporter` | not_implemented |  | * `default_histogram_aggregation`: not_implemented<br>* `output_stream`: not_implemented<br>* `temporality_preference`: not_implemented<br> |
+| `ExperimentalOtlpFileExporter` | not_implemented |  | * `output_stream`: not_implemented<br>* `name/development`: not_implemented<br> |
+| `ExperimentalOtlpFileMetricExporter` | not_implemented |  | * `default_histogram_aggregation`: not_implemented<br>* `output_stream`: not_implemented<br>* `temporality_preference`: not_implemented<br>* `name/development`: not_implemented<br> |
 | `ExperimentalProbabilitySampler` | not_implemented |  | * `ratio`: not_implemented<br> |
 | `ExperimentalProcessResourceDetector` | supported |  |  |
-| `ExperimentalPrometheusMetricExporter` | not_implemented |  | * `host`: not_implemented<br>* `port`: not_implemented<br>* `resource_constant_labels`: not_implemented<br>* `scope_info_enabled`: not_implemented<br>* `translation_strategy`: not_implemented<br>* `target_info_enabled/development`: not_implemented<br> |
+| `ExperimentalPrometheusMetricExporter` | not_implemented |  | * `host`: not_implemented<br>* `port`: not_implemented<br>* `resource_constant_labels`: not_implemented<br>* `scope_info_enabled`: not_implemented<br>* `translation_strategy`: not_implemented<br>* `name/development`: not_implemented<br>* `target_info_enabled/development`: not_implemented<br> |
 | `ExperimentalPrometheusTranslationStrategy` | not_implemented |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes/development`: not_implemented<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
@@ -520,11 +520,11 @@ Latest supported file format: `1.0.0-rc.2`
 | `B3Propagator` | supported |  |  |
 | `BaggagePropagator` | supported |  |  |
 | `Base2ExponentialBucketHistogramAggregation` | not_implemented |  | * `max_scale`: not_implemented<br>* `max_size`: not_implemented<br>* `record_min_max`: not_implemented<br> |
-| `BatchLogRecordProcessor` | supported | `schedule_delay` is only checked on `::onEmit()`. | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| `BatchSpanProcessor` | supported | `schedule_delay` is only checked on `::onEnd()`. | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
+| `BatchLogRecordProcessor` | supported | `schedule_delay` is only checked on `::onEmit()`. | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
+| `BatchSpanProcessor` | supported | `schedule_delay` is only checked on `::onEnd()`. | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
 | `CardinalityLimits` | not_implemented |  | * `counter`: not_implemented<br>* `default`: not_implemented<br>* `gauge`: not_implemented<br>* `histogram`: not_implemented<br>* `observable_counter`: not_implemented<br>* `observable_gauge`: not_implemented<br>* `observable_up_down_counter`: not_implemented<br>* `up_down_counter`: not_implemented<br> |
-| `ConsoleExporter` | supported |  |  |
-| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: ignored<br> |
+| `ConsoleExporter` | supported |  | * `name/development`: unknown<br> |
+| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `temporality_preference`: ignored<br>* `name/development`: unknown<br> |
 | `DefaultAggregation` | ignored |  |  |
 | `Distribution` | not_implemented |  |  |
 | `DropAggregation` | ignored |  |  |
@@ -548,23 +548,23 @@ Latest supported file format: `1.0.0-rc.2`
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | not_implemented |  |  |
 | `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: not_implemented<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
+| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: ignored<br>* `name/development`: unknown<br> |
+| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br>* `name/development`: unknown<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
-| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: ignored<br> |
-| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
+| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: ignored<br>* `name/development`: unknown<br> |
+| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br>* `name/development`: unknown<br> |
 | `ParentBasedSampler` | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
-| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: not_implemented<br>* `producers`: not_implemented<br>* `timeout`: supported<br>* `max_export_batch_size/development`: not_implemented<br> |
+| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: not_implemented<br>* `producers`: not_implemented<br>* `timeout`: supported<br>* `max_export_batch_size/development`: not_implemented<br>* `name/development`: unknown<br> |
 | `Propagator` | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
 | `PullMetricExporter` | not_implemented |  | * `prometheus/development`: not_implemented<br> |
-| `PullMetricReader` | not_implemented |  | * `cardinality_limits`: not_implemented<br>* `exporter`: not_implemented<br>* `producers`: not_implemented<br> |
+| `PullMetricReader` | not_implemented |  | * `cardinality_limits`: not_implemented<br>* `exporter`: not_implemented<br>* `producers`: not_implemented<br>* `name/development`: not_implemented<br> |
 | `PushMetricExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `RandomIdGenerator` | unknown |  |  |
 | `Resource` | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
 | `Sampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `always_record`: unknown<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: not_implemented<br>* `jaeger_remote/development`: not_implemented<br>* `probability/development`: not_implemented<br> |
 | `SeverityNumber` | supported |  | * `debug`: supported<br>* `debug2`: supported<br>* `debug3`: supported<br>* `debug4`: supported<br>* `error`: supported<br>* `error2`: supported<br>* `error3`: supported<br>* `error4`: supported<br>* `fatal`: supported<br>* `fatal2`: supported<br>* `fatal3`: supported<br>* `fatal4`: supported<br>* `info`: supported<br>* `info2`: supported<br>* `info3`: supported<br>* `info4`: supported<br>* `trace`: supported<br>* `trace2`: supported<br>* `trace3`: supported<br>* `trace4`: supported<br>* `warn`: supported<br>* `warn2`: supported<br>* `warn3`: supported<br>* `warn4`: supported<br> |
-| `SimpleLogRecordProcessor` | supported |  | * `exporter`: supported<br> |
-| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
+| `SimpleLogRecordProcessor` | supported |  | * `exporter`: supported<br>* `name/development`: unknown<br> |
+| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br>* `name/development`: unknown<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `SpanKind` | not_implemented |  | * `client`: not_implemented<br>* `consumer`: not_implemented<br>* `internal`: not_implemented<br>* `producer`: not_implemented<br>* `server`: not_implemented<br> |
 | `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
@@ -589,7 +589,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `ExperimentalComposableSampler` | not_implemented |  | * `always_off`: not_implemented<br>* `always_on`: not_implemented<br>* `parent_threshold`: not_implemented<br>* `probability`: not_implemented<br>* `rule_based`: not_implemented<br> |
 | `ExperimentalContainerResourceDetector` | ignored |  |  |
 | `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br> |
-| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
+| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  | * `name/development`: not_implemented<br> |
 | `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
@@ -606,11 +606,11 @@ Latest supported file format: `1.0.0-rc.2`
 | `ExperimentalMeterConfig` | supported |  | * `enabled`: supported<br> |
 | `ExperimentalMeterConfigurator` | supported |  | * `default_config`: supported<br>* `meters`: supported<br> |
 | `ExperimentalMeterMatcherAndConfig` | supported |  | * `config`: supported<br>* `name`: supported<br> |
-| `ExperimentalOtlpFileExporter` | supported |  | * `output_stream`: supported<br> |
-| `ExperimentalOtlpFileMetricExporter` | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `output_stream`: supported<br>* `temporality_preference`: supported<br> |
+| `ExperimentalOtlpFileExporter` | supported |  | * `output_stream`: supported<br>* `name/development`: unknown<br> |
+| `ExperimentalOtlpFileMetricExporter` | supported |  | * `default_histogram_aggregation`: not_implemented<br>* `output_stream`: supported<br>* `temporality_preference`: supported<br>* `name/development`: unknown<br> |
 | `ExperimentalProbabilitySampler` | not_implemented |  | * `ratio`: not_implemented<br> |
 | `ExperimentalProcessResourceDetector` | supported |  |  |
-| `ExperimentalPrometheusMetricExporter` | not_implemented |  | * `host`: not_implemented<br>* `port`: not_implemented<br>* `resource_constant_labels`: not_implemented<br>* `scope_info_enabled`: not_implemented<br>* `translation_strategy`: not_implemented<br>* `target_info_enabled/development`: not_implemented<br> |
+| `ExperimentalPrometheusMetricExporter` | not_implemented |  | * `host`: not_implemented<br>* `port`: not_implemented<br>* `resource_constant_labels`: not_implemented<br>* `scope_info_enabled`: not_implemented<br>* `translation_strategy`: not_implemented<br>* `name/development`: not_implemented<br>* `target_info_enabled/development`: not_implemented<br> |
 | `ExperimentalPrometheusTranslationStrategy` | not_implemented |  | * `no_translation/development`: not_implemented<br>* `no_utf8_escaping_with_suffixes/development`: not_implemented<br>* `underscore_escaping_with_suffixes`: not_implemented<br>* `underscore_escaping_without_suffixes/development`: not_implemented<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: ignored<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
@@ -643,11 +643,11 @@ Latest supported file format: `1.0.0`
 | `B3Propagator` | supported |  |  |
 | `BaggagePropagator` | supported |  |  |
 | `Base2ExponentialBucketHistogramAggregation` | supported |  | * `max_scale`: supported<br>* `max_size`: supported<br>* `record_min_max`: supported<br> |
-| `BatchLogRecordProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
-| `BatchSpanProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br> |
+| `BatchLogRecordProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
+| `BatchSpanProcessor` | supported |  | * `export_timeout`: supported<br>* `exporter`: supported<br>* `max_export_batch_size`: supported<br>* `max_queue_size`: supported<br>* `schedule_delay`: supported<br>* `name/development`: unknown<br> |
 | `CardinalityLimits` | supported |  | * `counter`: supported<br>* `default`: supported<br>* `gauge`: supported<br>* `histogram`: supported<br>* `observable_counter`: supported<br>* `observable_gauge`: supported<br>* `observable_up_down_counter`: supported<br>* `up_down_counter`: supported<br> |
-| `ConsoleExporter` | supported |  |  |
-| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: supported<br>* `temporality_preference`: supported<br> |
+| `ConsoleExporter` | supported |  | * `name/development`: unknown<br> |
+| `ConsoleMetricExporter` | supported |  | * `default_histogram_aggregation`: supported<br>* `temporality_preference`: supported<br>* `name/development`: unknown<br> |
 | `DefaultAggregation` | supported |  |  |
 | `Distribution` | ignored |  |  |
 | `DropAggregation` | supported |  |  |
@@ -671,23 +671,23 @@ Latest supported file format: `1.0.0`
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | ignored |  |  |
 | `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation/development`: supported<br> |
-| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
+| `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
-| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
-| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
+| `OtlpHttpExporter` | supported |  | * `compression`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
+| `OtlpHttpMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `encoding`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br>* `name/development`: unknown<br> |
 | `ParentBasedSampler` | supported |  | * `local_parent_not_sampled`: supported<br>* `local_parent_sampled`: supported<br>* `remote_parent_not_sampled`: supported<br>* `remote_parent_sampled`: supported<br>* `root`: supported<br> |
-| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: supported<br>* `timeout`: supported<br>* `max_export_batch_size/development`: supported<br> |
+| `PeriodicMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `interval`: supported<br>* `producers`: supported<br>* `timeout`: supported<br>* `max_export_batch_size/development`: supported<br>* `name/development`: unknown<br> |
 | `Propagator` | supported |  | * `composite`: supported<br>* `composite_list`: supported<br> |
 | `PullMetricExporter` | supported |  | * `prometheus/development`: supported<br> |
-| `PullMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `producers`: supported<br> |
+| `PullMetricReader` | supported |  | * `cardinality_limits`: supported<br>* `exporter`: supported<br>* `producers`: supported<br>* `name/development`: unknown<br> |
 | `PushMetricExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `RandomIdGenerator` | ignored |  |  |
 | `Resource` | supported |  | * `attributes`: supported<br>* `attributes_list`: supported<br>* `schema_url`: supported<br>* `detection/development`: supported<br> |
 | `Sampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `always_record`: unknown<br>* `parent_based`: supported<br>* `trace_id_ratio_based`: supported<br>* `composite/development`: supported<br>* `jaeger_remote/development`: supported<br>* `probability/development`: supported<br> |
 | `SeverityNumber` | supported |  | * `debug`: supported<br>* `debug2`: supported<br>* `debug3`: supported<br>* `debug4`: supported<br>* `error`: supported<br>* `error2`: supported<br>* `error3`: supported<br>* `error4`: supported<br>* `fatal`: supported<br>* `fatal2`: supported<br>* `fatal3`: supported<br>* `fatal4`: supported<br>* `info`: supported<br>* `info2`: supported<br>* `info3`: supported<br>* `info4`: supported<br>* `trace`: supported<br>* `trace2`: supported<br>* `trace3`: supported<br>* `trace4`: supported<br>* `warn`: supported<br>* `warn2`: supported<br>* `warn3`: supported<br>* `warn4`: supported<br> |
-| `SimpleLogRecordProcessor` | supported |  | * `exporter`: supported<br> |
-| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br> |
+| `SimpleLogRecordProcessor` | supported |  | * `exporter`: supported<br>* `name/development`: unknown<br> |
+| `SimpleSpanProcessor` | supported |  | * `exporter`: supported<br>* `name/development`: unknown<br> |
 | `SpanExporter` | supported |  | * `console`: supported<br>* `otlp_grpc`: supported<br>* `otlp_http`: supported<br>* `otlp_file/development`: supported<br> |
 | `SpanKind` | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
 | `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
@@ -712,7 +712,7 @@ Latest supported file format: `1.0.0`
 | `ExperimentalComposableSampler` | supported |  | * `always_off`: supported<br>* `always_on`: supported<br>* `parent_threshold`: supported<br>* `probability`: supported<br>* `rule_based`: supported<br> |
 | `ExperimentalContainerResourceDetector` | ignored |  |  |
 | `ExperimentalDbInstrumentation` | ignored |  | * `semconv`: ignored<br> |
-| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | ignored |  |  |
+| `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | ignored |  | * `name/development`: ignored<br> |
 | `ExperimentalGenAiInstrumentation` | ignored |  | * `semconv`: ignored<br> |
 | `ExperimentalGeneralInstrumentation` | ignored |  | * `code`: ignored<br>* `db`: ignored<br>* `gen_ai`: ignored<br>* `http`: ignored<br>* `messaging`: ignored<br>* `rpc`: ignored<br>* `sanitization`: ignored<br>* `stability_opt_in_list`: ignored<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
@@ -729,11 +729,11 @@ Latest supported file format: `1.0.0`
 | `ExperimentalMeterConfig` | ignored |  | * `enabled`: ignored<br> |
 | `ExperimentalMeterConfigurator` | ignored |  | * `default_config`: ignored<br>* `meters`: ignored<br> |
 | `ExperimentalMeterMatcherAndConfig` | ignored |  | * `config`: ignored<br>* `name`: ignored<br> |
-| `ExperimentalOtlpFileExporter` | ignored |  | * `output_stream`: ignored<br> |
-| `ExperimentalOtlpFileMetricExporter` | ignored |  | * `default_histogram_aggregation`: ignored<br>* `output_stream`: ignored<br>* `temporality_preference`: ignored<br> |
+| `ExperimentalOtlpFileExporter` | ignored |  | * `output_stream`: ignored<br>* `name/development`: ignored<br> |
+| `ExperimentalOtlpFileMetricExporter` | ignored |  | * `default_histogram_aggregation`: ignored<br>* `output_stream`: ignored<br>* `temporality_preference`: ignored<br>* `name/development`: ignored<br> |
 | `ExperimentalProbabilitySampler` | ignored |  | * `ratio`: ignored<br> |
 | `ExperimentalProcessResourceDetector` | supported |  |  |
-| `ExperimentalPrometheusMetricExporter` | ignored |  | * `host`: ignored<br>* `port`: ignored<br>* `resource_constant_labels`: ignored<br>* `scope_info_enabled`: ignored<br>* `translation_strategy`: ignored<br>* `target_info_enabled/development`: ignored<br> |
+| `ExperimentalPrometheusMetricExporter` | ignored |  | * `host`: ignored<br>* `port`: ignored<br>* `resource_constant_labels`: ignored<br>* `scope_info_enabled`: ignored<br>* `translation_strategy`: ignored<br>* `name/development`: ignored<br>* `target_info_enabled/development`: ignored<br> |
 | `ExperimentalPrometheusTranslationStrategy` | ignored |  | * `no_translation/development`: ignored<br>* `no_utf8_escaping_with_suffixes/development`: ignored<br>* `underscore_escaping_with_suffixes`: ignored<br>* `underscore_escaping_without_suffixes/development`: ignored<br> |
 | `ExperimentalResourceDetection` | supported |  | * `attributes`: supported<br>* `detectors`: supported<br> |
 | `ExperimentalResourceDetector` | supported |  | * `container`: supported<br>* `host`: supported<br>* `process`: supported<br>* `service`: supported<br> |
