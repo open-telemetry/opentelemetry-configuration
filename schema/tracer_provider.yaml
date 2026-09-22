@@ -68,8 +68,7 @@ $defs:
         description: >
           Configure a name that uniquely identifies this component within its containing SDK instance.
           When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
-        defaultBehavior: an implementation-defined component name is automatically assigned
-        nullBehavior: an implementation-defined component name is automatically assigned
+        defaultBehavior: no name is configured
       schedule_delay:
         type:
           - integer
@@ -457,8 +456,7 @@ $defs:
         description: >
           Configure a name that uniquely identifies this component within its containing SDK instance.
           When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
-        defaultBehavior: an implementation-defined component name is automatically assigned
-        nullBehavior: an implementation-defined component name is automatically assigned
+        defaultBehavior: no name is configured
       exporter:
         $ref: "#/$defs/SpanExporter"
         description: Configure exporter.
