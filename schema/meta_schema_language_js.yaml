@@ -275,9 +275,18 @@ typeSupportStatuses:
   - type: ExperimentalEventToSpanEventBridgeLogRecordProcessor
     status: not_implemented
     propertyOverrides: []
+  - type: ExperimentalGenAiCaptureMessageContent
+    status: unknown
+    enumOverrides: []
   - type: ExperimentalGenAiInstrumentation
     status: not_implemented
     propertyOverrides: []
+  - type: ExperimentalGenAiUploadConfig
+    status: unknown
+    propertyOverrides: []
+  - type: ExperimentalGenAiUploadFormat
+    status: unknown
+    enumOverrides: []
   - type: ExperimentalGeneralInstrumentation
     status: not_implemented
     propertyOverrides: []
