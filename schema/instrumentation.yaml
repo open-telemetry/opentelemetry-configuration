@@ -278,19 +278,75 @@ $defs:
 
           See database migration: https://opentelemetry.io/docs/specs/semconv/database/
         defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
+  ExperimentalGenAiCaptureMessageContent:
+    type:
+      - string
+      - "null"
+    enum:
+      - no_content
+      - span_only
+      - event_only
+      - span_and_event
+    enumDescriptions:
+      no_content: Do not capture message content (default).
+      span_only: Capture message content in spans only.
+      event_only: Capture message content in events only.
+      span_and_event: Capture message content in both spans and events.
+  ExperimentalGenAiUploadFormat:
+    type:
+      - string
+      - "null"
+    enum:
+      - json
+      - jsonl
+    enumDescriptions:
+      json: Upload prompt and completion content formatted as JSON.
+      jsonl: Upload prompt and completion content formatted as JSON Lines.
+  ExperimentalGenAiUploadConfig:
+    type: object
+    additionalProperties: false
+    properties:
+      base_path:
+        type:
+          - string
+          - "null"
+        description: |
+          A URI or filesystem path for uploading prompt and completion content (for example, a local directory or cloud storage bucket URI).
+        defaultBehavior: prompt and completion content is not uploaded
+      format:
+        $ref: "#/$defs/ExperimentalGenAiUploadFormat"
+        description: |
+          The format to use when uploading prompt and completion data.
+        defaultBehavior: json
+      max_queue_size:
+        type:
+          - integer
+          - "null"
+        exclusiveMinimum: 0
+        description: |
+          The maximum number of concurrent uploads to queue. New uploads will be dropped if the queue is full.
+        defaultBehavior: 20
   ExperimentalGenAiInstrumentation:
     type: object
     additionalProperties: false
     properties:
-      semconv:
-        $ref: "#/$defs/ExperimentalSemconvConfig"
+      capture_message_content:
+        $ref: "#/$defs/ExperimentalGenAiCaptureMessageContent"
         description: |
-          Configure GenAI semantic convention version and migration behavior.
-
-          This property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.
-
-          See GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/
-        defaultBehavior: uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set
+          Controls whether and how to capture GenAI message content (prompts, completions, and system instructions).
+        defaultBehavior: no_content
+      completion_hook:
+        type:
+          - string
+          - "null"
+        description: |
+          Name of the completion hook entry point or extension to load for forwarding captured prompt and completion content.
+        defaultBehavior: no completion hook is loaded
+      upload:
+        $ref: "#/$defs/ExperimentalGenAiUploadConfig"
+        description: |
+          Configure settings for uploading captured prompt and completion content to external storage.
+        defaultBehavior: defaults as described in ExperimentalGenAiUploadConfig are used
   ExperimentalRpcInstrumentation:
     type: object
     additionalProperties: false
