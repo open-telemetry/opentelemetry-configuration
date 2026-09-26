@@ -47,6 +47,14 @@ $defs:
       - "null"
     additionalProperties: false
     properties:
+      name/development:
+        type:
+          - string
+          - "null"
+        description: >
+          Configure a name that uniquely identifies this component within its containing SDK instance.
+          When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
+        defaultBehavior: no name is configured
       endpoint:
         type:
           - string
@@ -132,6 +140,14 @@ $defs:
       - "null"
     additionalProperties: false
     properties:
+      name/development:
+        type:
+          - string
+          - "null"
+        description: >
+          Configure a name that uniquely identifies this component within its containing SDK instance.
+          When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
+        defaultBehavior: no name is configured
       endpoint:
         type:
           - string
@@ -201,6 +217,14 @@ $defs:
       - "null"
     additionalProperties: false
     properties:
+      name/development:
+        type:
+          - string
+          - "null"
+        description: >
+          Configure a name that uniquely identifies this component within its containing SDK instance.
+          When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
+        defaultBehavior: no name is configured
       output_stream:
         type:
           - string
@@ -214,6 +238,15 @@ $defs:
       - object
       - "null"
     additionalProperties: false
+    properties:
+      name/development:
+        type:
+          - string
+          - "null"
+        description: >
+          Configure a name that uniquely identifies this component within its containing SDK instance.
+          When the component emits SDK self-observability telemetry, this name is used as `otel.component.name`.
+        defaultBehavior: no name is configured
   HttpTls:
     type:
       - object
