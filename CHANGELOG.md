@@ -1,5 +1,28 @@
 ## Unreleased
 
+### Schema
+
+* **BREAKING (experimental property)**: Stabilize `PeriodicMetricReader.max_export_batch_size/development` to `PeriodicMetricReader.max_export_batch_size`
+
+  <details>
+
+  <summary>Migration steps</summary>
+
+  ```yaml
+  # Before
+  meter_provider:
+    readers:
+      - periodic:
+          max_export_batch_size/development: 512
+  ---
+  # After
+  meter_provider:
+    readers:
+      - periodic:
+          max_export_batch_size: 512
+  ```
+  </details>
+
 ## v1.2.0 - 2026-09-11
 
 ### Schema
