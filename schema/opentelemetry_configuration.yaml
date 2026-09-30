@@ -50,7 +50,8 @@ properties:
     description: |
       Configure resource for all signals.
     defaultBehavior: the default resource is used
-  instrumentation/development:
+  instrumentation:
+    stability: development
     $ref: "#/$defs/ExperimentalInstrumentation"
     description: |
       Configure instrumentation.
@@ -110,6 +111,7 @@ $defs:
   Resource:
     $ref: resource.yaml
   ExperimentalInstrumentation:
+    stability: development
     $ref: instrumentation.yaml
   Distribution:
     type: object

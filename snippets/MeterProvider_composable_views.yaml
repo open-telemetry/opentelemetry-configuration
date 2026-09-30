@@ -20,4 +20,4 @@ meter_provider:
         instrument_name: my_instrument
       stream:
         aggregation_cardinality_limit: 1000
-  view_matching_mode/development: composable
+  view_matching_mode: composable

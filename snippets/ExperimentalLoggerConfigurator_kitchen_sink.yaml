@@ -5,7 +5,7 @@ logger_provider:
     - simple:
         exporter:
           console:
-  logger_configurator/development:
+  logger_configurator:
     # SNIPPET_START
     default_config:
       enabled: false
