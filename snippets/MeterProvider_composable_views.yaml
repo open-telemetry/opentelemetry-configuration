@@ -1,4 +1,5 @@
 file_format: "1.2"
+stability: development
 
 meter_provider:
   # SNIPPET_START
