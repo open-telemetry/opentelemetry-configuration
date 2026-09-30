@@ -1206,7 +1206,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalResourceDetector"
           },
-          "description": "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. \nIf omitted, no resource detectors are enabled.\n"
+          "description": "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. SDKs may not recognize all detector names. Unrecognized names are ignored with a warning rather than failing SDK construction.\nIf omitted, no resource detectors are enabled.\n"
         }
       }
     },
