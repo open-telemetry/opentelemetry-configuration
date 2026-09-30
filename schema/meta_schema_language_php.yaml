@@ -246,6 +246,9 @@ typeSupportStatuses:
   - type: SpanProcessor
     status: supported
     propertyOverrides: []
+  - type: Stability
+    status: unknown
+    enumOverrides: []
   - type: SumAggregation
     status: ignored
     propertyOverrides: []

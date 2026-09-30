@@ -55,7 +55,7 @@ Latest supported file format: `1.0.0`
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | supported |  |  |
-| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
+| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `stability`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
@@ -77,6 +77,7 @@ Latest supported file format: `1.0.0`
 | `SpanKind` | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
 | `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
+| `Stability` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `SumAggregation` | supported |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
@@ -178,7 +179,7 @@ Latest supported file format: `1.0.0`
 | `MetricReader` | unknown |  | * `periodic`: unknown<br>* `pull`: unknown<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | unknown |  |  |
-| `OpenTelemetryConfiguration` | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation`: unknown<br> |
+| `OpenTelemetryConfiguration` | unknown |  | * `attribute_limits`: unknown<br>* `disabled`: unknown<br>* `distribution`: unknown<br>* `file_format`: unknown<br>* `log_level`: unknown<br>* `logger_provider`: unknown<br>* `meter_provider`: unknown<br>* `propagator`: unknown<br>* `resource`: unknown<br>* `stability`: unknown<br>* `tracer_provider`: unknown<br>* `instrumentation`: unknown<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpHttpEncoding` | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
@@ -200,6 +201,7 @@ Latest supported file format: `1.0.0`
 | `SpanKind` | unknown |  | * `client`: unknown<br>* `consumer`: unknown<br>* `internal`: unknown<br>* `producer`: unknown<br>* `server`: unknown<br> |
 | `SpanLimits` | unknown |  | * `attribute_count_limit`: unknown<br>* `attribute_value_depth_limit`: unknown<br>* `attribute_value_length_limit`: unknown<br>* `event_attribute_count_limit`: unknown<br>* `event_count_limit`: unknown<br>* `link_attribute_count_limit`: unknown<br>* `link_count_limit`: unknown<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
+| `Stability` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `SumAggregation` | unknown |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
@@ -301,7 +303,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | ignored |  |  |
-| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
+| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `stability`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpHttpEncoding` | not_implemented |  | * `json`: not_implemented<br>* `protobuf`: not_implemented<br> |
@@ -323,6 +325,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `SpanKind` | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
 | `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
+| `Stability` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `SumAggregation` | supported |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
@@ -424,7 +427,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | not_implemented |  |  |
-| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
+| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `stability`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
@@ -446,6 +449,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `SpanKind` | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
 | `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
+| `Stability` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `SumAggregation` | supported |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
@@ -547,7 +551,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: not_implemented<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | not_implemented |  |  |
-| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: not_implemented<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
+| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: not_implemented<br>* `file_format`: supported<br>* `log_level`: not_implemented<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `stability`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: not_implemented<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: ignored<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
@@ -569,6 +573,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `SpanKind` | not_implemented |  | * `client`: not_implemented<br>* `consumer`: not_implemented<br>* `internal`: not_implemented<br>* `producer`: not_implemented<br>* `server`: not_implemented<br> |
 | `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
+| `Stability` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `SumAggregation` | ignored |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
@@ -670,7 +675,7 @@ Latest supported file format: `1.0.0`
 | `MetricReader` | supported |  | * `periodic`: supported<br>* `pull`: supported<br> |
 | `NameStringValuePair` | supported |  | * `name`: supported<br>* `value`: supported<br> |
 | `OpenCensusMetricProducer` | ignored |  |  |
-| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
+| `OpenTelemetryConfiguration` | supported |  | * `attribute_limits`: supported<br>* `disabled`: supported<br>* `distribution`: supported<br>* `file_format`: supported<br>* `log_level`: supported<br>* `logger_provider`: supported<br>* `meter_provider`: supported<br>* `propagator`: supported<br>* `resource`: supported<br>* `stability`: supported<br>* `tracer_provider`: supported<br>* `instrumentation`: supported<br> |
 | `OtlpGrpcExporter` | supported |  | * `compression`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpGrpcMetricExporter` | supported |  | * `compression`: supported<br>* `default_histogram_aggregation`: supported<br>* `endpoint`: supported<br>* `headers`: supported<br>* `headers_list`: supported<br>* `max_request_size`: not_implemented<br>* `max_response_size`: not_implemented<br>* `temporality_preference`: supported<br>* `timeout`: supported<br>* `tls`: supported<br> |
 | `OtlpHttpEncoding` | supported |  | * `json`: supported<br>* `protobuf`: supported<br> |
@@ -692,6 +697,7 @@ Latest supported file format: `1.0.0`
 | `SpanKind` | supported |  | * `client`: supported<br>* `consumer`: supported<br>* `internal`: supported<br>* `producer`: supported<br>* `server`: supported<br> |
 | `SpanLimits` | supported |  | * `attribute_count_limit`: supported<br>* `attribute_value_depth_limit`: not_implemented<br>* `attribute_value_length_limit`: supported<br>* `event_attribute_count_limit`: supported<br>* `event_count_limit`: supported<br>* `link_attribute_count_limit`: supported<br>* `link_count_limit`: supported<br> |
 | `SpanProcessor` | supported |  | * `batch`: supported<br>* `simple`: supported<br> |
+| `Stability` | unknown |  | * `development`: unknown<br>* `stable`: unknown<br> |
 | `SumAggregation` | supported |  |  |
 | `TextMapPropagator` | supported |  | * `b3`: supported<br>* `b3multi`: supported<br>* `baggage`: supported<br>* `tracecontext`: supported<br> |
 | `TraceContextPropagator` | supported |  |  |
