@@ -1,11 +1,17 @@
 import fs from 'fs';
-import {rootTypeName, schemaPath} from "./util.js";
+import {
+    enumStabilityKey,
+    rootTypeName,
+    schemaPath,
+    stabilityKey,
+    stabilityValues
+} from "./util.js";
 import {readSourceTypesByType} from "./source-schema.js";
 
 // See the schema modeling rules in CONTRIBUTING.md. /alpha and /beta suffixes
 // are also permitted but omitted here as the schema has no instances of them.
 const identifier = /^[A-Za-z_][A-Za-z0-9_]*$/;
-const maturitySuffix = /\/development$/;
+const stabilitySuffix = /\/development$/;
 const pascalCaseTypeName = /^[A-Z][A-Za-z0-9]*$/;
 
 // Read source schema
@@ -21,6 +27,7 @@ sourceTypes.forEach(sourceSchemaType => {
     optionalPropertiesHaveDefaultBehavior(sourceSchemaType, messages);
     namesShouldBeValidIdentifiers(sourceSchemaType, messages);
     typeNamesShouldBePascalCase(sourceSchemaType, messages);
+    stabilityAnnotationsShouldBeValid(sourceSchemaType, messages);
 });
 if (messages.length > 0) {
     messages.forEach(message => console.log(message));
@@ -70,6 +77,8 @@ function prepareSchemaForOutput(sourceSchemaType, sourceTypes) {
 function stripMetadata(schema) {
     delete schema['enumDescriptions'];
     delete schema['isSdkExtensionPlugin'];
+    delete schema[stabilityKey];
+    delete schema[enumStabilityKey];
 
     const properties = schema.properties;
     if (!properties) {
@@ -78,6 +87,7 @@ function stripMetadata(schema) {
     Object.values(properties).forEach(propertySchema => {
         delete propertySchema['defaultBehavior'];
         delete propertySchema['nullBehavior'];
+        delete propertySchema[stabilityKey];
     });
 }
 
@@ -208,16 +218,44 @@ function noSubschemas(sourceSchemaType, messages) {
 }
 
 function namesShouldBeValidIdentifiers(sourceSchemaType, messages) {
-    const isValidName = name => identifier.test(name.replace(maturitySuffix, ''));
+    const isValidName = name => identifier.test(name.replace(stabilitySuffix, ''));
     sourceSchemaType.properties.forEach(property => {
         if (!isValidName(property.property)) {
-            messages.push(`Property name '${property.property}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix)`);
+            messages.push(`Property name '${property.property}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development stability suffix)`);
         }
     });
     (sourceSchemaType.enumValues || []).forEach(enumValue => {
         if (typeof enumValue === 'string' && !isValidName(enumValue)) {
-            messages.push(`Enum value '${enumValue}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development maturity suffix)`);
+            messages.push(`Enum value '${enumValue}' in ${sourceSchemaType.type} must match ${identifier} (optionally followed by a /development stability suffix)`);
         }
+    });
+}
+
+function stabilityAnnotationsShouldBeValid(sourceSchemaType, messages) {
+    const reportInvalidStability = (stability, location) => {
+        if (stability !== undefined && !stabilityValues.includes(stability)) {
+            messages.push(`'${stabilityKey}' of ${location} must be one of ${stabilityValues.join(', ')}, found '${stability}'.`);
+        }
+    };
+
+    reportInvalidStability(sourceSchemaType.schema[stabilityKey], sourceSchemaType.type);
+    sourceSchemaType.properties.forEach(property => {
+        reportInvalidStability(property.schema[stabilityKey], `${sourceSchemaType.type}.${property.property}`);
+    });
+
+    const enumStability = sourceSchemaType.schema[enumStabilityKey];
+    if (!enumStability) {
+        return;
+    }
+    if (!sourceSchemaType.isEnumType()) {
+        messages.push(`Please remove '${enumStabilityKey}' from ${sourceSchemaType.type}, which is not an enum type.`);
+        return;
+    }
+    Object.entries(enumStability).forEach(([enumValue, stability]) => {
+        if (!sourceSchemaType.enumValues.includes(enumValue)) {
+            messages.push(`Please remove entry for ${enumValue} from '${enumStabilityKey}' for ${sourceSchemaType.type}.`);
+        }
+        reportInvalidStability(stability, `${sourceSchemaType.type}.${enumValue}`);
     });
 }
 

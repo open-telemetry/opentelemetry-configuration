@@ -70,8 +70,8 @@ export class LanguageImplementation {
         // Types in lexicographical order, with non-experimental first
         const typeSupportStatuses = this.typeSupportStatuses.map(typeSupportStatus => typeSupportStatus.toJson());
         typeSupportStatuses.sort((a, b) => {
-            const differentMaturities = isExperimentalType(a.type) - isExperimentalType(b.type);
-            return differentMaturities === 0 ? a.type.localeCompare(b.type) : +differentMaturities;
+            const differentStabilities = isExperimentalType(a.type) - isExperimentalType(b.type);
+            return differentStabilities === 0 ? a.type.localeCompare(b.type) : +differentStabilities;
         });
 
         return {
