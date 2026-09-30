@@ -4,6 +4,6 @@ tracer_provider:
   processors:
     - batch:
         exporter:
-          otlp_file/development:
+          otlp_file:
             # SNIPPET_START
             output_stream: file:///var/log/traces.jsonl

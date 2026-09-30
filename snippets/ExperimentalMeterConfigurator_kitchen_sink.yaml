@@ -5,7 +5,7 @@ meter_provider:
     - periodic:
         exporter:
           console:
-  meter_configurator/development:
+  meter_configurator:
     # SNIPPET_START
     default_config:
       enabled: false
