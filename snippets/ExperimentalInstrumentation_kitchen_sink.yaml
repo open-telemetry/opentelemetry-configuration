@@ -57,6 +57,13 @@ instrumentation/development:
         version: 1
         experimental: true
         dual_emit: false
+    gen_ai:
+      capture_message_content: span_and_event
+      completion_hook: upload
+      upload:
+        base_path: gs://my-bucket/genai
+        format: json
+        max_queue_size: 50
     sanitization:
       url:
         sensitive_query_parameters:
