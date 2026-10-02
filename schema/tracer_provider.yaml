@@ -21,7 +21,8 @@ properties:
     description: |
       Configure the trace and span ID generator.
     defaultBehavior: RandomIdGenerator is used
-  tracer_configurator/development:
+  tracer_configurator:
+    stability: development
     $ref: "#/$defs/ExperimentalTracerConfigurator"
     description: |
       Configure tracers.
@@ -46,6 +47,7 @@ $defs:
       producer: producer, a producer span.
       consumer: consumer, a consumer span.
   ExperimentalSpanParent:
+    stability: development
     type:
       - string
       - "null"
@@ -121,11 +123,13 @@ $defs:
         $ref: "#/$defs/AlwaysRecordSampler"
         description: Configure sampler to be always_record.
         defaultBehavior: ignore
-      composite/development:
+      composite:
+        stability: development
         $ref: "#/$defs/ExperimentalComposableSampler"
         description: Configure sampler to be composite.
         defaultBehavior: ignore
-      jaeger_remote/development:
+      jaeger_remote:
+        stability: development
         $ref: "#/$defs/ExperimentalJaegerRemoteSampler"
         description: Configure sampler to be jaeger_remote.
         defaultBehavior: ignore
@@ -133,7 +137,8 @@ $defs:
         $ref: "#/$defs/ParentBasedSampler"
         description: Configure sampler to be parent_based.
         defaultBehavior: ignore
-      probability/development:
+      probability:
+        stability: development
         $ref: "#/$defs/ExperimentalProbabilitySampler"
         description: Configure sampler to be probability.
         defaultBehavior: ignore
@@ -166,6 +171,7 @@ $defs:
     required:
       - root
   ExperimentalJaegerRemoteSampler:
+    stability: development
     type:
       - object
       - "null"
@@ -220,6 +226,7 @@ $defs:
           Configure local_parent_not_sampled sampler.
         defaultBehavior: always_off is used
   ExperimentalProbabilitySampler:
+    stability: development
     type:
       - object
       - "null"
@@ -250,16 +257,19 @@ $defs:
           Configure trace_id_ratio.
         defaultBehavior: 1.0 is used
   ExperimentalComposableAlwaysOffSampler:
+    stability: development
     type:
       - object
       - "null"
     additionalProperties: false
   ExperimentalComposableAlwaysOnSampler:
+    stability: development
     type:
       - object
       - "null"
     additionalProperties: false
   ExperimentalComposableParentThresholdSampler:
+    stability: development
     type:
       - object
     additionalProperties: false
@@ -270,6 +280,7 @@ $defs:
     required:
       - root
   ExperimentalComposableProbabilitySampler:
+    stability: development
     type:
       - object
       - "null"
@@ -285,6 +296,7 @@ $defs:
           Configure ratio.
         defaultBehavior: 1.0 is used
   ExperimentalComposableRuleBasedSampler:
+    stability: development
     type:
       - object
       - 'null'
@@ -302,6 +314,7 @@ $defs:
           If no rules match, the span is not sampled.
         defaultBehavior: no span is sampled
   ExperimentalComposableRuleBasedSamplerRule:
+    stability: development
     type: object
     description: |
       A rule for ExperimentalComposableRuleBasedSampler. A rule can have multiple match conditions - the sampler will be applied if all match. 
@@ -342,6 +355,7 @@ $defs:
     required:
       - sampler
   ExperimentalComposableRuleBasedSamplerRuleAttributeValues:
+    stability: development
     type: object
     additionalProperties: false
     properties:
@@ -358,6 +372,7 @@ $defs:
       - key
       - values
   ExperimentalComposableRuleBasedSamplerRuleAttributePatterns:
+    stability: development
     type: object
     additionalProperties: false
     properties:
@@ -389,6 +404,7 @@ $defs:
     required:
       - key
   ExperimentalComposableSampler:
+    stability: development
     type: object
     additionalProperties:
       type:
@@ -463,7 +479,8 @@ $defs:
         $ref: common.yaml#/$defs/OtlpGrpcExporter
         description: Configure exporter to be OTLP with gRPC transport.
         defaultBehavior: ignore
-      otlp_file/development:
+      otlp_file:
+        stability: development
         $ref: common.yaml#/$defs/ExperimentalOtlpFileExporter
         description: |
           Configure exporter to be OTLP with file transport.
@@ -561,13 +578,14 @@ $defs:
         defaultBehavior: ignore
     isSdkExtensionPlugin: true
   ExperimentalTracerConfigurator:
+    stability: development
     type:
       - object
     additionalProperties: false
     properties:
       default_config:
         $ref: "#/$defs/ExperimentalTracerConfig"
-        description: Configure the default tracer config used there is no matching entry in .tracer_configurator/development.tracers.
+        description: Configure the default tracer config used there is no matching entry in .tracer_configurator.tracers.
         defaultBehavior: unmatched .tracers use default values as described in ExperimentalTracerConfig
       tracers:
         type: array
@@ -577,6 +595,7 @@ $defs:
         description: Configure tracers.
         defaultBehavior: all tracers use .default_config
   ExperimentalTracerMatcherAndConfig:
+    stability: development
     type:
       - object
     additionalProperties: false
@@ -596,6 +615,7 @@ $defs:
       - name
       - config
   ExperimentalTracerConfig:
+    stability: development
     type:
       - object
     additionalProperties: false
