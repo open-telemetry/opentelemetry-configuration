@@ -8,8 +8,6 @@ $(shell mkdir -p out)
 .PHONY: all
 all: install-tools validate-examples fix-language-implementations generate-markdown
 
-include validator/Makefile
-
 .PHONY: compile-schema
 compile-schema:
 	@if ! npm ls minimatch yaml; then npm install; fi

@@ -1,8 +1,0 @@
-FILE_FORMAT=1.2 otel_config_validator -o out/out.yaml shelltests/test.yaml
->>>
->>>= 0
-
-cat out/out.yaml
->>>
-file_format: "1.2"
->>>= 0

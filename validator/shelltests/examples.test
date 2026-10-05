@@ -1,6 +1,0 @@
-make validator-validate-examples
->>>
-Validating otel-getting-started.yaml
-Validating otel-sdk-config.yaml
-Validating otel-sdk-migration-config.yaml
->>>= 0
