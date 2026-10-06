@@ -14,7 +14,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: AttributeLimits
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: attribute_value_depth_limit
+        status: not_implemented
   - type: AttributeNameValue
     status: supported
     propertyOverrides: []
@@ -103,7 +105,9 @@ typeSupportStatuses:
         status: not_implemented
   - type: LogRecordLimits
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: attribute_value_depth_limit
+        status: not_implemented
   - type: LogRecordProcessor
     status: supported
     propertyOverrides:
@@ -111,7 +115,9 @@ typeSupportStatuses:
         status: unknown
   - type: MeterProvider
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: view_matching_mode/development
+        status: not_implemented
   - type: MetricProducer
     status: unknown
     propertyOverrides: []
@@ -174,7 +180,7 @@ typeSupportStatuses:
     propertyOverrides:
       - property: cardinality_limits
         status: not_implemented
-      - property: max_export_batch_size/development
+      - property: max_export_batch_size
         status: not_implemented
       - property: producers
         status: not_implemented
@@ -392,3 +398,6 @@ typeSupportStatuses:
   - type: ExperimentalUrlSanitization
     status: unknown
     propertyOverrides: []
+  - type: ExperimentalViewMatchingMode
+    status: not_implemented
+    enumOverrides: []

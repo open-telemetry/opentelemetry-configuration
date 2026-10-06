@@ -25,8 +25,7 @@
   the [schemastore](https://github.com/SchemaStore/schemastore) entry to include
   the new tag. Update the `url` to be the latest, and `versions` to include the
   newly tag.
-  For [example](https://github.com/SchemaStore/schemastore/pull/5436/changes) (
-  TODO: update to an update PR after we have one to reference).
+  For [example](https://github.com/SchemaStore/schemastore/pull/6343).
 
 Our tags follow the naming convention of `v<major>.<minor>.<patch>`. Increment `minor` by 1
 and use `patch` value of 0 for new minor version releases. For patch releases keep `minor`
@@ -43,3 +42,7 @@ make update-file-format
 ```
 
 Merge a PR with the changes to `main`.
+
+Also update `supportedFileFormat` in [validator/main.go](./validator/main.go) to the same
+version, so the validator keeps rejecting configuration it cannot describe. `go test` in
+`./validator` fails while the two disagree.

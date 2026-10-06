@@ -1,0 +1,4 @@
+otel_config_validator shelltests/invalid_file_format.yaml
+>>>2
+Invalid file_format: expected MAJOR.MINOR version numbers, got "banana"
+>>>= 1

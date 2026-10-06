@@ -7,7 +7,7 @@
 #
 # For schema documentation, including required properties, semantics, default behavior, etc,
 # see: https://opentelemetry.io/docs/specs/otel-config/types/
-file_format: "1.1"
+file_format: "1.2"
 disabled: false
 log_level: info
 resource:
@@ -16,6 +16,7 @@ resource:
       value: unknown_service
 attribute_limits:
   attribute_value_length_limit:
+  attribute_value_depth_limit: 64
   attribute_count_limit: 128
 propagator:
   composite:
@@ -39,6 +40,7 @@ tracer_provider:
             timeout: 10000
   limits:
     attribute_value_length_limit:
+    attribute_value_depth_limit: 64
     attribute_count_limit: 128
     event_count_limit: 128
     link_count_limit: 128
@@ -91,4 +93,5 @@ logger_provider:
             timeout: 10000
   limits:
     attribute_value_length_limit:
+    attribute_value_depth_limit: 64
     attribute_count_limit: 128

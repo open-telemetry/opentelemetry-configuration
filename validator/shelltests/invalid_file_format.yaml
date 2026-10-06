@@ -1,0 +1,5 @@
+file_format: "banana"
+resource:
+  attributes:
+    - name: service.name
+      value: my-service

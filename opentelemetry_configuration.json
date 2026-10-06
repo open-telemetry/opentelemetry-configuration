@@ -129,6 +129,14 @@
           "minimum": 0,
           "description": "Configure max attribute value size. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
         },
+        "attribute_value_depth_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Configure the maximum attribute value depth for nested array and map values.\nDepth starts at 1 for the top-level attribute value and increments when descending into array elements or map values.\nArray or map values deeper than the limit are replaced with an empty value.\nValue must be positive.\nIf omitted or null, 64 is used.\n"
+        },
         "attribute_count_limit": {
           "type": [
             "integer",
@@ -850,7 +858,7 @@
       "properties": {
         "general": {
           "$ref": "#/$defs/ExperimentalGeneralInstrumentation",
-          "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\nInstrumenation may merge general config options with the language specific configuration at .instrumentation.<language>.\nIf omitted, default values as described in ExperimentalGeneralInstrumentation are used.\n"
+          "description": "Configure general SemConv options that may apply to multiple languages and instrumentations.\nInstrumentation may merge general config options with the language specific configuration at .instrumentation.<language>.\nIf omitted, default values as described in ExperimentalGeneralInstrumentation are used.\n"
         },
         "cpp": {
           "$ref": "#/$defs/ExperimentalLanguageSpecificInstrumentation",
@@ -1205,7 +1213,7 @@
           "items": {
             "$ref": "#/$defs/ExperimentalResourceDetector"
           },
-          "description": "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. \nIf omitted, no resource detectors are enabled.\n"
+          "description": "Configure resource detectors.\nResource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. SDKs may not recognize all detector names. Unrecognized names are ignored with a warning rather than failing SDK construction.\nIf omitted, no resource detectors are enabled.\n"
         }
       }
     },
@@ -1373,6 +1381,16 @@
           "description": "List of query parameter names whose values should be redacted from URLs.\nQuery parameter names are case-sensitive.\nThis is a full override of the default sensitive query parameter keys, it is not a list of keys in addition to the defaults.\nSet to an empty array to disable query parameter redaction.\nIf omitted, the default sensitive query parameter list as defined by the url semantic conventions (https://github.com/open-telemetry/semantic-conventions/blob/main/docs/registry/attributes/url.md) is used.\n"
         }
       }
+    },
+    "ExperimentalViewMatchingMode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "independent",
+        "composable"
+      ]
     },
     "ExplicitBucketHistogramAggregation": {
       "type": [
@@ -1613,6 +1631,14 @@
           "minimum": 0,
           "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
         },
+        "attribute_value_depth_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Configure the maximum attribute value depth for nested array and map values. Overrides .attribute_limits.attribute_value_depth_limit.\nDepth starts at 1 for the top-level attribute value and increments when descending into array elements or map values.\nArray or map values deeper than the limit are replaced with an empty value.\nValue must be positive.\nIf omitted or null, 64 is used.\n"
+        },
         "attribute_count_limit": {
           "type": [
             "integer",
@@ -1675,6 +1701,10 @@
         "meter_configurator/development": {
           "$ref": "#/$defs/ExperimentalMeterConfigurator",
           "description": "Configure meters.\nIf omitted, all meters use default values as described in ExperimentalMeterConfig.\n"
+        },
+        "view_matching_mode/development": {
+          "$ref": "#/$defs/ExperimentalViewMatchingMode",
+          "description": "Controls how multiple matching Views are applied to an Instrument.\nValues include:\n* composable: Combines (merges) matching Views into unified metric streams unless distinct stream names are configured.\n* independent: Creates separate metric streams independently for each matching View.\nIf omitted, independent is used.\n"
         }
       },
       "required": [
@@ -2092,7 +2122,7 @@
           "minimum": 0,
           "description": "Configure maximum allowed time (in milliseconds) to export data. \nValue must be non-negative. A value of 0 indicates no limit (infinity).\nIf omitted or null, 30000 is used.\n"
         },
-        "max_export_batch_size/development": {
+        "max_export_batch_size": {
           "type": [
             "integer",
             "null"
@@ -2408,6 +2438,14 @@
           ],
           "minimum": 0,
           "description": "Configure max attribute value size. Overrides .attribute_limits.attribute_value_length_limit. \nValue must be non-negative.\nIf omitted or null, there is no limit.\n"
+        },
+        "attribute_value_depth_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Configure the maximum attribute value depth for nested array and map values. Overrides .attribute_limits.attribute_value_depth_limit.\nDepth starts at 1 for the top-level attribute value and increments when descending into array elements or map values.\nArray or map values deeper than the limit are replaced with an empty value.\nValue must be positive.\nIf omitted or null, 64 is used.\n"
         },
         "attribute_count_limit": {
           "type": [

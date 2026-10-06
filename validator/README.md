@@ -64,6 +64,23 @@ Environment variable substitution is supported with the syntax `${VARIABLE}` or
 found in the
 [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/data-model.md#environment-variable-substitution).
 
+#### File Format Version
+
+The embedded schema describes one version of the file format, and the validator
+compares it against the `file_format` a configuration file declares, following
+[VERSIONING.md](../VERSIONING.md#file-format):
+
+- A different `MAJOR` version is an error, because the embedded schema does not
+  describe that version of the format.
+- A newer `MINOR` version is a warning, because the configuration may use
+  properties the embedded schema does not contain.
+- A `file_format` that is not `MAJOR.MINOR`, optionally followed by a meta tag
+  such as `1.0-rc.2`, is an error.
+
+Passing `-s`/`--schema` does not change the version the validator expects, so a
+schema for a different `MAJOR` version has to be used with a build of the
+validator that targets it.
+
 #### Using a Different Schema Version
 
 To use a version of of the schema other than the one builtin to the

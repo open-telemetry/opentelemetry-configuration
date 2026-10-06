@@ -1,0 +1,4 @@
+otel_config_validator shelltests/unsupported_file_format.yaml
+>>>2
+Unsupported file_format "0.4": this validator embeds the schema for version 1.x
+>>>= 1

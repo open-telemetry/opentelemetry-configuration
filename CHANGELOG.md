@@ -1,15 +1,74 @@
 ## Unreleased
 
+### Schema
+
+* **BREAKING (experimental property)**: Stabilize `PeriodicMetricReader.max_export_batch_size/development` to `PeriodicMetricReader.max_export_batch_size`
+
+  <details>
+
+  <summary>Migration steps</summary>
+
+  ```yaml
+  # Before
+  meter_provider:
+    readers:
+      - periodic:
+          max_export_batch_size/development: 512
+  ---
+  # After
+  meter_provider:
+    readers:
+      - periodic:
+          max_export_batch_size: 512
+  ```
+  </details>
+
 * Add `sql_commenter_enabled/development` to `ExperimentalDbInstrumentation`
   ([#715](https://github.com/open-telemetry/opentelemetry-configuration/pull/715))
+
+## v1.2.0 - 2026-09-11
+
+### Schema
+
 * Add `always_record` definition to `Sampler`
   ([#698](https://github.com/open-telemetry/opentelemetry-configuration/pull/698))
+* Add experimental `meter_provider.view_matching_mode/development` property
+  ([#666](https://github.com/open-telemetry/opentelemetry-configuration/pull/666))
 * Deprecate `MetricProducer.opencensus` and `OpenCensusMetricProducer`,
   following the deprecation of OpenCensus compatibility in the
   specification
   ([#655](https://github.com/open-telemetry/opentelemetry-configuration/pull/655))
+* Add `attribute_value_depth_limit` to attribute, span, and log record limits
+  ([#702](https://github.com/open-telemetry/opentelemetry-configuration/pull/702))
 * Add `max_request_size` and `max_response_size` to OTLP exporters
   ([#700](https://github.com/open-telemetry/opentelemetry-configuration/pull/700))
+
+### Tooling
+
+* Validator: read the `file_format` a configuration file declares and check it
+  against the schema version the binary embeds
+  ([#739](https://github.com/open-telemetry/opentelemetry-configuration/pull/739))
+* Add schema modeling rule describing the deprecation process
+  ([#659](https://github.com/open-telemetry/opentelemetry-configuration/pull/659))
+* Add check for non-identifier characters in schema names
+  ([#691](https://github.com/open-telemetry/opentelemetry-configuration/pull/691))
+* Remove generated `schema-docs.md`, favoring opentelemetry.io
+  ([#667](https://github.com/open-telemetry/opentelemetry-configuration/pull/667),
+  [#678](https://github.com/open-telemetry/opentelemetry-configuration/pull/678))
+* Add Python implementation support status
+  ([#668](https://github.com/open-telemetry/opentelemetry-configuration/pull/668),
+  [#669](https://github.com/open-telemetry/opentelemetry-configuration/pull/669))
+* Add JavaScript implementation support status
+  ([#670](https://github.com/open-telemetry/opentelemetry-configuration/pull/670))
+* Update C++ implementation support status
+  ([#734](https://github.com/open-telemetry/opentelemetry-configuration/pull/734))
+* Add shared OSSF Scorecard, security scanning, and zizmor CI workflows;
+  group GitHub Action updates
+  ([#648](https://github.com/open-telemetry/opentelemetry-configuration/pull/648),
+  [#685](https://github.com/open-telemetry/opentelemetry-configuration/pull/685),
+  [#720](https://github.com/open-telemetry/opentelemetry-configuration/pull/720),
+  [#725](https://github.com/open-telemetry/opentelemetry-configuration/pull/725),
+  [#732](https://github.com/open-telemetry/opentelemetry-configuration/pull/732))
 
 ## v1.1.0 - 2026-06-05
 
@@ -466,7 +525,7 @@ see [project tooling docs](CONTRIBUTING.md#json-schema-source-and-output) for mo
 This release has a significant number of breaking changes, new additions and
 fixes. The breaking changes reflect a higher degree of scrutiny on consistency
 and correct data modeling as we approach a stable
-release ([#161](https://github.com/open-telemetry/opentelemetry-configuration/issues/161), open-telemetry/opentelemetry-specification#4374).
+release ([#161](https://github.com/open-telemetry/opentelemetry-configuration/issues/161), [#4374](https://github.com/open-telemetry/opentelemetry-specification/issues/4374)).
 We anticipate limited churn going forward. Additionally, once we do have a
 stable release, users can rely on
 the [strong compatibility guarantees](https://github.com/open-telemetry/opentelemetry-configuration?tab=readme-ov-file#stability-definition)

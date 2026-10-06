@@ -10,11 +10,13 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: AlwaysRecordSampler
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: AttributeLimits
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: attribute_value_depth_limit
+        status: not_implemented
   - type: AttributeNameValue
     status: supported
     propertyOverrides: []
@@ -76,7 +78,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: IdGenerator
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: IncludeExclude
     status: supported
@@ -95,15 +97,19 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: LogRecordLimits
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: attribute_value_depth_limit
+        status: not_implemented
   - type: LogRecordProcessor
     status: supported
     propertyOverrides:
       - property: event_to_span_event_bridge/development
-        status: unknown
+        status: not_implemented
   - type: MeterProvider
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: view_matching_mode/development
+        status: not_implemented
   - type: MetricProducer
     status: supported
     propertyOverrides: []
@@ -156,7 +162,7 @@ typeSupportStatuses:
   - type: PeriodicMetricReader
     status: supported
     propertyOverrides:
-      - property: max_export_batch_size/development
+      - property: max_export_batch_size
         status: not_implemented
   - type: Propagator
     status: supported
@@ -171,7 +177,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: RandomIdGenerator
-    status: unknown
+    status: not_implemented
     propertyOverrides: []
   - type: Resource
     status: supported
@@ -180,7 +186,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides:
       - property: always_record
-        status: unknown
+        status: not_implemented
   - type: SeverityNumber
     status: supported
     enumOverrides: []
@@ -194,11 +200,13 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: SpanKind
-    status: not_implemented
+    status: supported
     enumOverrides: []
   - type: SpanLimits
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: attribute_value_depth_limit
+        status: not_implemented
   - type: SpanProcessor
     status: supported
     propertyOverrides: []
@@ -227,52 +235,52 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ExperimentalCodeInstrumentation
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOnSampler
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableParentThresholdSampler
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableProbabilitySampler
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSampler
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRule
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalComposableSampler
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalDbInstrumentation
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalEventToSpanEventBridgeLogRecordProcessor
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalGenAiInstrumentation
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalGeneralInstrumentation
     status: not_applicable
     propertyOverrides: []
   - type: ExperimentalHostResourceDetector
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalHttpClientInstrumentation
     status: not_applicable
@@ -293,7 +301,7 @@ typeSupportStatuses:
     status: not_applicable
     propertyOverrides: []
   - type: ExperimentalLoggerConfig
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalLoggerConfigurator
     status: supported
@@ -302,7 +310,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ExperimentalMessagingInstrumentation
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalMeterConfig
     status: supported
@@ -320,10 +328,10 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ExperimentalProbabilitySampler
-    status: ignored
+    status: supported
     propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalPrometheusMetricExporter
     status: supported
@@ -338,25 +346,25 @@ typeSupportStatuses:
       - enumValue: underscore_escaping_without_suffixes/development
         status: supported
   - type: ExperimentalResourceDetection
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalResourceDetector
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalRpcInstrumentation
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalSanitization
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalSemconvConfig
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
   - type: ExperimentalServiceResourceDetector
-    status: not_implemented
+    status: supported
     propertyOverrides: []
   - type: ExperimentalSpanParent
-    status: not_implemented
+    status: supported
     enumOverrides: []
   - type: ExperimentalTracerConfig
     status: supported
@@ -368,5 +376,8 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ExperimentalUrlSanitization
-    status: unknown
+    status: not_applicable
     propertyOverrides: []
+  - type: ExperimentalViewMatchingMode
+    status: not_implemented
+    enumOverrides: []
