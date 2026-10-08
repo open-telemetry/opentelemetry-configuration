@@ -2,6 +2,8 @@
 
 ### Schema
 
+* **BREAKING (experimental property)**: Remove `semconv` from `ExperimentalGenAiInstrumentation` following GenAI stability opt-in removal
+* Update `ExperimentalGenAiInstrumentation` with GenAI utilities configuration (`capture_message_content`, `completion_hook`, and nested `upload` settings)
 * **BREAKING (experimental property)**: Stabilize `PeriodicMetricReader.max_export_batch_size/development` to `PeriodicMetricReader.max_export_batch_size`
 
   <details>
