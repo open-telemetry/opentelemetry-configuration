@@ -23,6 +23,9 @@
   ```
   </details>
 
+* Add `sql_commenter_enabled/development` to `ExperimentalDbInstrumentation`
+  ([#715](https://github.com/open-telemetry/opentelemetry-configuration/pull/715))
+
 ## v1.2.0 - 2026-09-11
 
 ### Schema
