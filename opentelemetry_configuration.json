@@ -2693,6 +2693,13 @@
         "attribute_keys": {
           "$ref": "#/$defs/IncludeExclude",
           "description": "Configure attribute keys retained in the resulting stream(s).\nIf omitted, all attribute keys are retained.\n"
+        },
+        "enabled/development": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure whether the resulting stream(s) are enabled or not.\nIf omitted or null, the instrument's OptIn advisory parameter determines whether the resulting stream(s) are enabled.\n"
         }
       }
     }
