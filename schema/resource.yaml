@@ -105,7 +105,7 @@ $defs:
           $ref: "#/$defs/ExperimentalResourceDetector"
         description: |
           Configure resource detectors.
-          Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. 
+          Resource detector names are dependent on the SDK language ecosystem. Please consult documentation for each respective language. SDKs may not recognize all detector names. Unrecognized names are ignored with a warning rather than failing SDK construction.
         defaultBehavior: no resource detectors are enabled
   ExperimentalResourceDetector:
     type: object
