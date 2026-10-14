@@ -191,7 +191,7 @@
               "minItems": 1
             }
           ],
-          "description": "The attribute value.\nThe type of value must match .type.\nProperty must be present, but if null the entry is ignored.\n"
+          "description": "The attribute value.\nThe type of a non-null value must match .type.\nProperty must be present, but if null the entry is ignored unless the enclosing type specifies otherwise.\n"
         },
         "type": {
           "$ref": "#/$defs/AttributeType",
@@ -2253,7 +2253,7 @@
           "items": {
             "$ref": "#/$defs/AttributeNameValue"
           },
-          "description": "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.\nIf omitted, no resource attributes are added.\n"
+          "description": "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.\nIf an entry's .value is null, the attribute with the corresponding .name is removed from the resource, regardless of its source, including .resource.detection/development, .resource.attributes_list, and attributes provided by the SDK by default.\nIf omitted, no resource attributes are added.\n"
         },
         "detection/development": {
           "$ref": "#/$defs/ExperimentalResourceDetection",
