@@ -35,6 +35,7 @@ tools: $(GOVULNCHECK)
 validator-copy-schema:
 	mkdir -p ${ROOT_DIR}/schema
 	cp ${PARENT_DIR}/opentelemetry_configuration.json ${ROOT_DIR}/schema/opentelemetry_configuration.json
+	cp ${PARENT_DIR}/opentelemetry_configuration_development.json ${ROOT_DIR}/schema/opentelemetry_configuration_development.json
 	find ${PARENT_DIR} -path '*/schema/*.json' ! -path '*/validator/schema/*.json' -exec cp '{}' "${ROOT_DIR}/schema/" ';'
 
 validator: validator-copy-schema
