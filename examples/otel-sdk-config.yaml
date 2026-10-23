@@ -95,3 +95,13 @@ logger_provider:
     attribute_value_length_limit:
     attribute_value_depth_limit: 64
     attribute_count_limit: 128
+instrumentation/development:
+  general:
+    gen_ai:
+      capture_message_content: span_and_event
+      completion_hook: upload
+      upload:
+        base_path: /var/log/genai
+        format: json
+        max_queue_size: 20
+

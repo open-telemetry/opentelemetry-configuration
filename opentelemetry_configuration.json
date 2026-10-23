@@ -709,15 +709,73 @@
       ],
       "additionalProperties": false
     },
+    "ExperimentalGenAiCaptureMessageContent": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "no_content",
+        "span_only",
+        "event_only",
+        "span_and_event"
+      ]
+    },
     "ExperimentalGenAiInstrumentation": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "semconv": {
-          "$ref": "#/$defs/ExperimentalSemconvConfig",
-          "description": "Configure GenAI semantic convention version and migration behavior.\n\nThis property takes precedence over the .instrumentation/development.general.stability_opt_in_list setting.\n\nSee GenAI semantic conventions: https://opentelemetry.io/docs/specs/semconv/gen-ai/\nIf omitted, uses the general stability_opt_in_list setting, or instrumentations continue emitting their default semantic convention version if not set.\n"
+        "capture_message_content": {
+          "$ref": "#/$defs/ExperimentalGenAiCaptureMessageContent",
+          "description": "Controls whether and how to capture GenAI message content (prompts, completions, and system instructions).\nValues include:\n* event_only: Capture message content in events only.\n* no_content: Do not capture message content (default).\n* span_and_event: Capture message content in both spans and events.\n* span_only: Capture message content in spans only.\nIf omitted, no_content.\n"
+        },
+        "completion_hook": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Name of the completion hook entry point or extension to load for forwarding captured prompt and completion content.\nIf omitted or null, no completion hook is loaded.\n"
+        },
+        "upload": {
+          "$ref": "#/$defs/ExperimentalGenAiUploadConfig",
+          "description": "Configure settings for uploading captured prompt and completion content to external storage.\nIf omitted, defaults as described in ExperimentalGenAiUploadConfig are used.\n"
         }
       }
+    },
+    "ExperimentalGenAiUploadConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "base_path": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "A URI or filesystem path for uploading prompt and completion content (for example, a local directory or cloud storage bucket URI).\nIf omitted or null, prompt and completion content is not uploaded.\n"
+        },
+        "format": {
+          "$ref": "#/$defs/ExperimentalGenAiUploadFormat",
+          "description": "The format to use when uploading prompt and completion data.\nValues include:\n* json: Upload prompt and completion content formatted as JSON.\n* jsonl: Upload prompt and completion content formatted as JSON Lines.\nIf omitted, json.\n"
+        },
+        "max_queue_size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "description": "The maximum number of concurrent uploads to queue. New uploads will be dropped if the queue is full.\nIf omitted or null, 20.\n"
+        }
+      }
+    },
+    "ExperimentalGenAiUploadFormat": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "json",
+        "jsonl"
+      ]
     },
     "ExperimentalGeneralInstrumentation": {
       "type": "object",
