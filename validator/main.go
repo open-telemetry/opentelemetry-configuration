@@ -218,6 +218,27 @@ func checkFileFormat(expandedConfig interface{}) error {
 	return nil
 }
 
+// A configuration file says which of the two compiled schemas reads it. A file
+// that declares nothing is read with the stable schema, which holds no property
+// that is under development.
+func schemaURLFor(expandedConfig interface{}) string {
+	const (
+		stableSchemaURL      = "https://opentelemetry.io/otelconfig/opentelemetry_configuration.json"
+		developmentSchemaURL = "https://opentelemetry.io/otelconfig/opentelemetry_configuration_development.json"
+		stabilityKey         = "stability"
+		developmentStability = "development"
+	)
+
+	config, ok := expandedConfig.(map[string]interface{})
+	if !ok {
+		return stableSchemaURL
+	}
+	if stability, ok := config[stabilityKey].(string); ok && stability == developmentStability {
+		return developmentSchemaURL
+	}
+	return stableSchemaURL
+}
+
 func validateConfiguration(configFile string, outfileExt string, schemaDir *string) []byte {
 	c := jsonschema.NewCompiler()
 	if schemaDir != nil {
@@ -226,12 +247,12 @@ func validateConfiguration(configFile string, outfileExt string, schemaDir *stri
 		add_resources_from_embed(c)
 	}
 
-	schema, err := c.Compile("https://opentelemetry.io/otelconfig/opentelemetry_configuration.json")
+	expandedConfig, outFile := decodeFile(configFile, outfileExt)
+
+	schema, err := c.Compile(schemaURLFor(expandedConfig))
 	if err != nil {
 		log.Fatalf("%#v", err)
 	}
-
-	expandedConfig, outFile := decodeFile(configFile, outfileExt)
 
 	if err = schema.Validate(expandedConfig); err != nil {
 		if ve, ok := err.(*jsonschema.ValidationError); ok {
