@@ -110,11 +110,18 @@ $ make validator-run-shelltests
 
 ### Releasing
 
-To release a new version of `otel_config_validator` the version in `dist.toml`
-and the `Version` property of `cli.Comamnd` in `main.go` must be bumped. Next, a
-tag prefixed with `validator-` must be created and pushed to the repository, for
-example `validator-0.1.0`. Then, the `cargo-dist` Github Action will create a
-Github release, build binaries for multiple platforms and publish them to the
-new release.
+Publishing a stable schema release automatically opens a pull request that
+updates `supportedFileFormat` and applies the same type of semantic version bump
+to the validator version in `dist.toml` and `main.go`. For example, a schema
+minor release causes a validator minor version bump.
+
+After the version bump pull request is merged, create and push a tag prefixed
+with `validator-`, for example `validator-0.2.0`. The `cargo-dist` GitHub Action
+will create a GitHub release, build binaries for multiple platforms, and publish
+them to the new release.
+
+For a validator-only release, manually make the same validator version change
+in `dist.toml` and the `Version` property of `cli.Command` in `main.go` before
+creating the tag.
 
 Docker image are published on merge to `main`.
