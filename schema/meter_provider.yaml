@@ -671,6 +671,13 @@ $defs:
         description: |
           Configure attribute keys retained in the resulting stream(s).
         defaultBehavior: all attribute keys are retained
+      enabled/development:
+        type:
+          - boolean
+          - "null"
+        description: |
+          Configure whether the resulting stream(s) are enabled or not.
+        defaultBehavior: the instrument's OptIn advisory parameter determines whether the resulting stream(s) are enabled
   Aggregation:
     type: object
     additionalProperties: false
