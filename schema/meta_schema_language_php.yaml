@@ -327,13 +327,21 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalHttpClientInstrumentation
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: request_headers
+        status: not_implemented
+      - property: response_headers
+        status: not_implemented
   - type: ExperimentalHttpInstrumentation
     status: supported
     propertyOverrides: []
   - type: ExperimentalHttpServerInstrumentation
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: request_headers
+        status: not_implemented
+      - property: response_headers
+        status: not_implemented
   - type: ExperimentalInstrumentation
     status: supported
     propertyOverrides:

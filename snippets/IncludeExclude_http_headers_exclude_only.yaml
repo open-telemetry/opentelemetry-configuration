@@ -1,0 +1,13 @@
+file_format: "1.2"
+
+instrumentation/development:
+  general:
+    http:
+      server:
+        request_headers:
+          # SNIPPET_START
+          # Capture all request headers except those matching an exclusion.
+          excluded:
+            - Authorization
+            - Cookie
+            - X-Api-Key

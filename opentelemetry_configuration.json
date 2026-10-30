@@ -771,21 +771,13 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "request_captured_headers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          },
-          "description": "Configure headers to capture for outbound http requests.\nIf omitted, no outbound request headers are captured.\n"
+        "request_headers": {
+          "$ref": "#/$defs/IncludeExclude",
+          "description": "Configure headers to capture for outbound http requests.\nHeader names are case-insensitive. Normalize header names and patterns to ASCII lowercase before applying the selector.\nIf omitted, no outbound request headers are captured.\n"
         },
-        "response_captured_headers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          },
-          "description": "Configure headers to capture for inbound http responses.\nIf omitted, no inbound response headers are captured.\n"
+        "response_headers": {
+          "$ref": "#/$defs/IncludeExclude",
+          "description": "Configure headers to capture for inbound http responses.\nHeader names are case-insensitive. Normalize header names and patterns to ASCII lowercase before applying the selector.\nIf omitted, no inbound response headers are captured.\n"
         },
         "known_methods": {
           "type": "array",
@@ -819,21 +811,13 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "request_captured_headers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          },
-          "description": "Configure headers to capture for inbound http requests.\nIf omitted, no request headers are captured.\n"
+        "request_headers": {
+          "$ref": "#/$defs/IncludeExclude",
+          "description": "Configure headers to capture for inbound http requests.\nHeader names are case-insensitive. Normalize header names and patterns to ASCII lowercase before applying the selector.\nIf omitted, no request headers are captured.\n"
         },
-        "response_captured_headers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          },
-          "description": "Configure headers to capture for outbound http responses.\nIf omitted, no response headers are captures.\n"
+        "response_headers": {
+          "$ref": "#/$defs/IncludeExclude",
+          "description": "Configure headers to capture for outbound http responses.\nHeader names are case-insensitive. Normalize header names and patterns to ASCII lowercase before applying the selector.\nIf omitted, no response headers are captured.\n"
         },
         "known_methods": {
           "type": "array",

@@ -2,6 +2,51 @@
 
 ### Schema
 
+* **BREAKING (experimental property)**: Replace HTTP client and server `request_captured_headers` and `response_captured_headers` with `request_headers` and `response_headers`, each with `included` and `excluded` lists.
+  Patterns match header names case-insensitively and support `*` and `?` wildcards. Exclusions take precedence.
+  Omitting `included` includes all headers; omitting `request_headers` or `response_headers` captures no headers for that direction.
+
+  <details>
+
+  <summary>Migration steps</summary>
+
+  Under `instrumentation/development.general.http`, update request and response headers for both `client` and `server`:
+
+  ```yaml
+  # Before
+  client:
+    request_captured_headers:
+      - Content-Type
+      - Accept
+    response_captured_headers:
+      - Content-Type
+  server:
+    request_captured_headers:
+      - Content-Type
+      - Accept
+    response_captured_headers:
+      - Content-Type
+  ---
+  # After
+  client:
+    request_headers:
+      included:
+        - Content-Type
+        - Accept
+    response_headers:
+      included:
+        - Content-Type
+  server:
+    request_headers:
+      included:
+        - Content-Type
+        - Accept
+    response_headers:
+      included:
+        - Content-Type
+  ```
+  </details>
+
 * **BREAKING (experimental property)**: Stabilize `PeriodicMetricReader.max_export_batch_size/development` to `PeriodicMetricReader.max_export_batch_size`
 
   <details>
