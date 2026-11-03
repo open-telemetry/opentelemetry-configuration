@@ -2699,7 +2699,7 @@
             "boolean",
             "null"
           ],
-          "description": "Configure whether the resulting stream(s) are enabled or not.\nIf omitted or null, the instrument's OptIn advisory parameter determines whether the resulting stream(s) are enabled.\n"
+          "description": "Configure whether the resulting stream(s) are enabled or not.\nIf true, the resulting stream(s) are enabled even for OptIn instruments (as if the instrument's OptIn advisory parameter were false).\nIf false, Drop Aggregation is used regardless of .aggregation.\nIf omitted or null, the instrument's OptIn advisory parameter determines whether the resulting stream(s) are enabled.\n"
         }
       }
     }

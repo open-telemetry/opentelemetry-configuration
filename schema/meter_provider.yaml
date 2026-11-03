@@ -677,6 +677,8 @@ $defs:
           - "null"
         description: |
           Configure whether the resulting stream(s) are enabled or not.
+          If true, the resulting stream(s) are enabled even for OptIn instruments (as if the instrument's OptIn advisory parameter were false).
+          If false, Drop Aggregation is used regardless of .aggregation.
         defaultBehavior: the instrument's OptIn advisory parameter determines whether the resulting stream(s) are enabled
   Aggregation:
     type: object
