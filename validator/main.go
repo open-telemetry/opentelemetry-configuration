@@ -6,6 +6,7 @@ import (
 	"embed"
 	"encoding/json"
 	"fmt"
+
 	jsonschema "github.com/santhosh-tekuri/jsonschema/v5"
 	"github.com/urfave/cli/v3"
 	yaml "gopkg.in/yaml.v3"
@@ -14,9 +15,10 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
-	k8syaml "sigs.k8s.io/yaml"
 	"strconv"
 	"strings"
+
+	k8syaml "sigs.k8s.io/yaml"
 )
 
 //go:embed schema/*
@@ -33,8 +35,8 @@ func main() {
 	log.SetFlags(0)
 
 	cmd := &cli.Command{
-		Name:  "otel_config_validator",
-		Usage: "Validate a configuration file against the OpenTelemetry Configuration Schema",
+		Name:    "otel_config_validator",
+		Usage:   "Validate a configuration file against the OpenTelemetry Configuration Schema",
 		Version: "0.1.0",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
@@ -104,7 +106,7 @@ func validateOutputOption(isOutputSet bool, outFile string) string {
 			}
 
 			return ext
-		} else  {
+		} else {
 			log.Fatal("Output can not be an empty string")
 		}
 	}
@@ -113,7 +115,7 @@ func validateOutputOption(isOutputSet bool, outFile string) string {
 }
 
 func add_resources_from_dir(c *jsonschema.Compiler, schemaDir string) {
-	schemaFiles, err :=os.ReadDir(schemaDir)
+	schemaFiles, err := os.ReadDir(schemaDir)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -135,7 +137,7 @@ func add_resources_from_dir(c *jsonschema.Compiler, schemaDir string) {
 }
 
 func add_resources_from_embed(c *jsonschema.Compiler) {
-	schemaFiles, err :=schemaFS.ReadDir("schema")
+	schemaFiles, err := schemaFS.ReadDir("schema")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -156,7 +158,6 @@ func add_resources_from_embed(c *jsonschema.Compiler) {
 	}
 
 }
-
 
 // splitFileFormat splits a file format version into its major and minor
 // numbers, discarding any meta tag, so that "1.0-rc.2" yields 1 and 0.
