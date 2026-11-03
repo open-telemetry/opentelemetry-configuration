@@ -98,7 +98,10 @@ Latest supported file format: `1.0.0`
 | `ExperimentalContainerResourceDetector` | supported |  |  |
 | `ExperimentalDbInstrumentation` | not_applicable |  | * `semconv`: not_applicable<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
-| `ExperimentalGenAiInstrumentation` | not_applicable |  | * `semconv`: not_applicable<br> |
+| `ExperimentalGenAiCaptureMessageContent` | unknown |  | * `event_only`: unknown<br>* `no_content`: unknown<br>* `span_and_event`: unknown<br>* `span_only`: unknown<br> |
+| `ExperimentalGenAiInstrumentation` | not_applicable |  | * `capture_message_content`: not_applicable<br>* `completion_hook`: not_applicable<br>* `upload`: not_applicable<br> |
+| `ExperimentalGenAiUploadConfig` | unknown |  | * `base_path`: unknown<br>* `format`: unknown<br>* `max_queue_size`: unknown<br> |
+| `ExperimentalGenAiUploadFormat` | unknown |  | * `json`: unknown<br>* `jsonl`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | not_applicable |  | * `code`: not_applicable<br>* `db`: not_applicable<br>* `gen_ai`: not_applicable<br>* `http`: not_applicable<br>* `messaging`: not_applicable<br>* `rpc`: not_applicable<br>* `sanitization`: not_applicable<br>* `stability_opt_in_list`: not_applicable<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
 | `ExperimentalHttpClientInstrumentation` | not_applicable |  | * `known_methods`: not_applicable<br>* `request_captured_headers`: not_applicable<br>* `response_captured_headers`: not_applicable<br> |
@@ -221,7 +224,10 @@ Latest supported file format: `1.0.0`
 | `ExperimentalContainerResourceDetector` | supported |  |  |
 | `ExperimentalDbInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
-| `ExperimentalGenAiInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
+| `ExperimentalGenAiCaptureMessageContent` | unknown |  | * `event_only`: unknown<br>* `no_content`: unknown<br>* `span_and_event`: unknown<br>* `span_only`: unknown<br> |
+| `ExperimentalGenAiInstrumentation` | not_implemented |  | * `capture_message_content`: not_implemented<br>* `completion_hook`: not_implemented<br>* `upload`: not_implemented<br> |
+| `ExperimentalGenAiUploadConfig` | unknown |  | * `base_path`: unknown<br>* `format`: unknown<br>* `max_queue_size`: unknown<br> |
+| `ExperimentalGenAiUploadFormat` | unknown |  | * `json`: unknown<br>* `jsonl`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
 | `ExperimentalHttpClientInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
@@ -344,7 +350,10 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalContainerResourceDetector` | supported |  |  |
 | `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | supported |  |  |
-| `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
+| `ExperimentalGenAiCaptureMessageContent` | unknown |  | * `event_only`: unknown<br>* `no_content`: unknown<br>* `span_and_event`: unknown<br>* `span_only`: unknown<br> |
+| `ExperimentalGenAiInstrumentation` | unknown |  | * `capture_message_content`: unknown<br>* `completion_hook`: unknown<br>* `upload`: unknown<br> |
+| `ExperimentalGenAiUploadConfig` | unknown |  | * `base_path`: unknown<br>* `format`: unknown<br>* `max_queue_size`: unknown<br> |
+| `ExperimentalGenAiUploadFormat` | unknown |  | * `json`: unknown<br>* `jsonl`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
 | `ExperimentalHttpClientInstrumentation` | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
@@ -467,7 +476,10 @@ Latest supported file format: `1.0.0-rc.3`
 | `ExperimentalContainerResourceDetector` | not_implemented |  |  |
 | `ExperimentalDbInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
-| `ExperimentalGenAiInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
+| `ExperimentalGenAiCaptureMessageContent` | unknown |  | * `event_only`: unknown<br>* `no_content`: unknown<br>* `span_and_event`: unknown<br>* `span_only`: unknown<br> |
+| `ExperimentalGenAiInstrumentation` | not_implemented |  | * `capture_message_content`: not_implemented<br>* `completion_hook`: not_implemented<br>* `upload`: not_implemented<br> |
+| `ExperimentalGenAiUploadConfig` | unknown |  | * `base_path`: unknown<br>* `format`: unknown<br>* `max_queue_size`: unknown<br> |
+| `ExperimentalGenAiUploadFormat` | unknown |  | * `json`: unknown<br>* `jsonl`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | not_implemented |  | * `code`: not_implemented<br>* `db`: not_implemented<br>* `gen_ai`: not_implemented<br>* `http`: not_implemented<br>* `messaging`: not_implemented<br>* `rpc`: not_implemented<br>* `sanitization`: not_implemented<br>* `stability_opt_in_list`: not_implemented<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
 | `ExperimentalHttpClientInstrumentation` | not_implemented |  | * `known_methods`: not_implemented<br>* `request_captured_headers`: not_implemented<br>* `response_captured_headers`: not_implemented<br> |
@@ -590,7 +602,10 @@ Latest supported file format: `1.0.0-rc.2`
 | `ExperimentalContainerResourceDetector` | ignored |  |  |
 | `ExperimentalDbInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | not_implemented |  |  |
-| `ExperimentalGenAiInstrumentation` | unknown |  | * `semconv`: unknown<br> |
+| `ExperimentalGenAiCaptureMessageContent` | unknown |  | * `event_only`: unknown<br>* `no_content`: unknown<br>* `span_and_event`: unknown<br>* `span_only`: unknown<br> |
+| `ExperimentalGenAiInstrumentation` | unknown |  | * `capture_message_content`: unknown<br>* `completion_hook`: unknown<br>* `upload`: unknown<br> |
+| `ExperimentalGenAiUploadConfig` | unknown |  | * `base_path`: unknown<br>* `format`: unknown<br>* `max_queue_size`: unknown<br> |
+| `ExperimentalGenAiUploadFormat` | unknown |  | * `json`: unknown<br>* `jsonl`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | supported |  | * `code`: supported<br>* `db`: supported<br>* `gen_ai`: supported<br>* `http`: supported<br>* `messaging`: supported<br>* `rpc`: supported<br>* `sanitization`: supported<br>* `stability_opt_in_list`: supported<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
 | `ExperimentalHttpClientInstrumentation` | supported |  | * `known_methods`: supported<br>* `request_captured_headers`: supported<br>* `response_captured_headers`: supported<br> |
@@ -713,7 +728,10 @@ Latest supported file format: `1.0.0`
 | `ExperimentalContainerResourceDetector` | ignored |  |  |
 | `ExperimentalDbInstrumentation` | ignored |  | * `semconv`: ignored<br> |
 | `ExperimentalEventToSpanEventBridgeLogRecordProcessor` | ignored |  |  |
-| `ExperimentalGenAiInstrumentation` | ignored |  | * `semconv`: ignored<br> |
+| `ExperimentalGenAiCaptureMessageContent` | unknown |  | * `event_only`: unknown<br>* `no_content`: unknown<br>* `span_and_event`: unknown<br>* `span_only`: unknown<br> |
+| `ExperimentalGenAiInstrumentation` | ignored |  | * `capture_message_content`: ignored<br>* `completion_hook`: ignored<br>* `upload`: ignored<br> |
+| `ExperimentalGenAiUploadConfig` | unknown |  | * `base_path`: unknown<br>* `format`: unknown<br>* `max_queue_size`: unknown<br> |
+| `ExperimentalGenAiUploadFormat` | unknown |  | * `json`: unknown<br>* `jsonl`: unknown<br> |
 | `ExperimentalGeneralInstrumentation` | ignored |  | * `code`: ignored<br>* `db`: ignored<br>* `gen_ai`: ignored<br>* `http`: ignored<br>* `messaging`: ignored<br>* `rpc`: ignored<br>* `sanitization`: ignored<br>* `stability_opt_in_list`: ignored<br> |
 | `ExperimentalHostResourceDetector` | supported |  |  |
 | `ExperimentalHttpClientInstrumentation` | ignored |  | * `known_methods`: ignored<br>* `request_captured_headers`: ignored<br>* `response_captured_headers`: ignored<br> |
