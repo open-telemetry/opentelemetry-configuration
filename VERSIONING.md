@@ -87,7 +87,7 @@ A config file selects one with the `stability` property. A file that omits it, w
 
 The word `stability` therefore appears in two positions, which are one concept at two levels. Beside a node in the source schema it is an annotation recording the stability of that node. At the root of a config file it is a property recording which stability of the schema that file is written against. Both appear in `opentelemetry_configuration_development.json`: a node under development carries a `stability` keyword, and the root declares a `stability` property. Nothing is ambiguous, because JSON Schema reads one as a keyword on a schema object and the other as an entry in `properties`.
 
-This cannot be enforced at an [extension point](#extension-points): those types accept any property name so that an SDK plugin can be configured, so the stable schema cannot tell a component that is under development from a plugin it has never heard of.
+At an [extension point](#extension-points) the stable schema rejects every component it knows to be under development, by listing those names in a `propertyNames` constraint. It cannot say anything about a property name it has never heard of, so an SDK plugin is accepted there whatever its stability.
 
 Maintainers are not obligated to implement support for properties and types that are under development. When they do, they are not obligated to maintain any versioning policy guarantees.
 
