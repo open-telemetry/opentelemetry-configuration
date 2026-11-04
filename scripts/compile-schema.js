@@ -90,15 +90,21 @@ function prepareSchemaForOutput(sourceSchemaType, sourceTypes, includeDevelopmen
 }
 
 function removeDevelopmentNodes(sourceSchemaType, schema) {
+    const removedProperties = [];
     sourceSchemaType.properties
         .filter(property => property.isDevelopment)
         .forEach(property => {
             delete schema.properties[property.property];
+            removedProperties.push(property.property);
             const required = schema['required'];
             if (required) {
                 schema['required'] = required.filter(name => name !== property.property);
             }
         });
+
+    if (removedProperties.length > 0 && schema['additionalProperties'] !== false) {
+        schema['propertyNames'] = {not: {enum: removedProperties.sort()}};
+    }
 
     if (sourceSchemaType.isEnumType()) {
         schema['enum'] = sourceSchemaType.enumValues.filter(enumValue => !sourceSchemaType.isDevelopmentEnumValue(enumValue));

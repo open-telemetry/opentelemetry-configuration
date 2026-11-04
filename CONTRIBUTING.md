@@ -75,7 +75,7 @@ Both are stripped when the schema is compiled, the way `enumDescriptions` and `d
 
 `make compile-schema` produces two schemas from this one source. `opentelemetry_configuration.json` holds nothing under development. `opentelemetry_configuration_development.json` holds everything and keeps the annotations. A config file selects one with its `stability` property, and a file that omits it is read with the stable schema.
 
-Note that the split cannot be enforced at an [extension point](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#extension-points). Those types accept any property name so that an SDK plugin can be configured, so the stable schema cannot tell a component that is under development from a plugin it has never heard of.
+An [extension point](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#extension-points) accepts any property name so that an SDK plugin can be configured. The stable schema still rejects every component it knows to be under development, because `make compile-schema` emits a `propertyNames` constraint listing those names. Any other name is accepted, so a plugin the schema has never heard of is accepted there whatever its stability.
 
 ### Properties requiring pattern matching
 

@@ -55,6 +55,13 @@
   "required": [
     "file_format"
   ],
+  "propertyNames": {
+    "not": {
+      "enum": [
+        "instrumentation"
+      ]
+    }
+  },
   "$defs": {
     "Aggregation": {
       "type": "object",
@@ -706,6 +713,13 @@
           "$ref": "#/$defs/ConsoleExporter",
           "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
         }
+      },
+      "propertyNames": {
+        "not": {
+          "enum": [
+            "otlp_file"
+          ]
+        }
       }
     },
     "LogRecordLimits": {
@@ -756,6 +770,13 @@
         "simple": {
           "$ref": "#/$defs/SimpleLogRecordProcessor",
           "description": "Configure a simple log record processor.\nIf omitted, ignore.\n"
+        }
+      },
+      "propertyNames": {
+        "not": {
+          "enum": [
+            "event_to_span_event_bridge"
+          ]
         }
       }
     },
@@ -1259,7 +1280,14 @@
       },
       "minProperties": 1,
       "maxProperties": 1,
-      "properties": {}
+      "properties": {},
+      "propertyNames": {
+        "not": {
+          "enum": [
+            "prometheus"
+          ]
+        }
+      }
     },
     "PullMetricReader": {
       "type": "object",
@@ -1308,6 +1336,13 @@
         "console": {
           "$ref": "#/$defs/ConsoleMetricExporter",
           "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
+        }
+      },
+      "propertyNames": {
+        "not": {
+          "enum": [
+            "otlp_file"
+          ]
         }
       }
     },
@@ -1376,6 +1411,15 @@
         "trace_id_ratio_based": {
           "$ref": "#/$defs/TraceIdRatioBasedSampler",
           "description": "Configure sampler to be trace_id_ratio_based.\nIf omitted, ignore.\n"
+        }
+      },
+      "propertyNames": {
+        "not": {
+          "enum": [
+            "composite",
+            "jaeger_remote",
+            "probability"
+          ]
         }
       }
     },
@@ -1459,6 +1503,13 @@
         "console": {
           "$ref": "#/$defs/ConsoleExporter",
           "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
+        }
+      },
+      "propertyNames": {
+        "not": {
+          "enum": [
+            "otlp_file"
+          ]
         }
       }
     },
