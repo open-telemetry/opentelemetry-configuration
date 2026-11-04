@@ -71,7 +71,7 @@ The stability of a node is metadata about that node, so it is recorded beside th
 * `stability: development` on a property or a type.
 * `enumStability: {<enum value>: development}` on an enum type, which records the stability of one value of that enum.
 
-Both are stripped when the schema is compiled, the way `enumDescriptions` and `defaultBehavior` are. Omitting them means stable.
+Both are stripped from `opentelemetry_configuration.json` when the schema is compiled, and both are kept in `opentelemetry_configuration_development.json`, so that a reader of the development schema can still tell which parts are under development. `enumDescriptions` and `defaultBehavior` are stripped from both. Omitting the annotations means stable.
 
 `make compile-schema` produces two schemas from this one source. `opentelemetry_configuration.json` holds nothing under development. `opentelemetry_configuration_development.json` holds everything and keeps the annotations. A config file selects one with its `stability` property, and a file that omits it is read with the stable schema.
 
