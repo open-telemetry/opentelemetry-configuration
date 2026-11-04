@@ -16,8 +16,9 @@ export const metaSchemaLanguageStatusPath = (language) => schemaSourceDirPath + 
 
 // Stability is metadata about a node, not part of the name of that node.
 // `stability` annotates a property or a type, `enumStability` maps an enum value
-// to its stability. Both are stripped when the schema is compiled. The same
-// `stability` key names the root property a config file selects a schema with.
+// to its stability. Both are stripped from the stable schema and kept in the
+// development one. The same `stability` key names the root property a config
+// file selects a schema with.
 export const stabilityKey = 'stability';
 export const enumStabilityKey = 'enumStability';
 export const stabilityDevelopment = 'development';
