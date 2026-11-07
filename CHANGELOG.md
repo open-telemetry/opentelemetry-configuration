@@ -2,6 +2,35 @@
 
 ### Schema
 
+* **BREAKING (experimental property)**: Replace `Resource.detection/development.attributes` with `Resource.attribute_filter` to filter attributes from all sources, including SDK defaults.
+
+  <details>
+
+  <summary>Migration steps</summary>
+
+  Move `included` and `excluded` patterns to `.resource.attribute_filter`. The patterns now apply to the combined resource, not just detector output. Review `included` patterns to retain any attributes from other sources that should remain.
+
+  ```yaml
+  # Before
+  resource:
+    detection/development:
+      attributes:
+        excluded:
+          - process.command_args
+      detectors:
+        - process:
+  ---
+  # After
+  resource:
+    attribute_filter:
+      excluded:
+        - process.command_args
+    detection/development:
+      detectors:
+        - process:
+  ```
+  </details>
+
 * **BREAKING (experimental property)**: Stabilize `PeriodicMetricReader.max_export_batch_size/development` to `PeriodicMetricReader.max_export_batch_size`
 
   <details>
