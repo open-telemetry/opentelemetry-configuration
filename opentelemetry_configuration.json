@@ -1524,7 +1524,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Configure list of value patterns to include.\nMatching is case-sensitive. Values are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, all values are included.\n"
+          "description": "Configure list of value patterns to include.\nMatching is case-sensitive. Values are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, all values are included if .excluded is specified, otherwise the parent property's default behavior applies.\n"
         },
         "excluded": {
           "type": "array",
@@ -1532,7 +1532,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\nMatching is case-sensitive. Values are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, .included attributes are included.\n"
+          "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\nMatching is case-sensitive. Values are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, .included values are included if .included is specified, otherwise the parent property's default behavior applies.\n"
         }
       }
     },

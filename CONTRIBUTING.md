@@ -66,7 +66,7 @@ Type names (the top-level types defined under `$defs`, e.g. `BatchSpanProcessor`
 
 ### Properties requiring pattern matching
 
-When a property requires pattern matching, use wildcard `*` (match any number of any character, including none) and `?` (match any single character) instead of regex. Matching is case-sensitive. If a single property with wildcards is likely to be insufficient to model the configuration requirements, accept `included` and `excluded` properties, each with an array of strings with wildcard entries. The wildcard entries should be joined with a logical OR. If `included` is not specified, assume that all entries are included. Apply `excluded` after applying `included`. Examples:
+When a property requires pattern matching, use wildcard `*` (match any number of any character, including none) and `?` (match any single character) instead of regex. Matching is case-sensitive. If a single property with wildcards is likely to be insufficient to model the configuration requirements, accept `included` and `excluded` properties, each with an array of strings with wildcard entries. The wildcard entries should be joined with a logical OR. If `included` is not specified and `excluded` is specified, assume that all entries are included. If neither `included` nor `excluded` is specified, the parent property's default behavior applies. Apply `excluded` after applying `included`. Examples:
 
 * Given `excluded: ["a*"]`: Match all except values starting with `a`.
 * Given `included: ["a*", "b*"]`, `excluded: ["ab*"]`: Match any value starting with `a` or `b`, excluding values starting with `ab`.
