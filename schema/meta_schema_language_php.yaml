@@ -146,6 +146,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: proxy/development
+        status: unknown
       - property: tls
         status: ignored
   - type: OtlpGrpcMetricExporter
@@ -157,6 +159,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: proxy/development
+        status: unknown
       - property: tls
         status: ignored
   - type: OtlpHttpEncoding
@@ -169,6 +173,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: proxy/development
+        status: unknown
       - property: tls
         status: ignored
   - type: OtlpHttpMetricExporter
@@ -180,6 +186,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: proxy/development
+        status: unknown
       - property: tls
         status: ignored
   - type: ParentBasedSampler
@@ -408,6 +416,9 @@ typeSupportStatuses:
   - type: ExperimentalPrometheusTranslationStrategy
     status: not_implemented
     enumOverrides: []
+  - type: ExperimentalProxy
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalResourceDetection
     status: supported
     propertyOverrides: []

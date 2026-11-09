@@ -132,6 +132,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: proxy/development
+        status: unknown
   - type: OtlpGrpcMetricExporter
     status: supported
     propertyOverrides:
@@ -139,6 +141,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: proxy/development
+        status: unknown
   - type: OtlpHttpEncoding
     status: supported
     enumOverrides: []
@@ -149,6 +153,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: proxy/development
+        status: unknown
   - type: OtlpHttpMetricExporter
     status: supported
     propertyOverrides:
@@ -156,6 +162,8 @@ typeSupportStatuses:
         status: not_implemented
       - property: max_response_size
         status: not_implemented
+      - property: proxy/development
+        status: unknown
   - type: ParentBasedSampler
     status: supported
     propertyOverrides: []
@@ -345,6 +353,9 @@ typeSupportStatuses:
         status: not_implemented
       - enumValue: underscore_escaping_without_suffixes/development
         status: supported
+  - type: ExperimentalProxy
+    status: unknown
+    propertyOverrides: []
   - type: ExperimentalResourceDetection
     status: supported
     propertyOverrides: []

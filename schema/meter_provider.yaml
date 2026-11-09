@@ -369,6 +369,12 @@ $defs:
         $ref: common.yaml#/$defs/HttpTls
         description: Configure TLS settings for the exporter.
         defaultBehavior: system default TLS settings are used
+      proxy/development:
+        $ref: common.yaml#/$defs/ExperimentalProxy
+        description: |
+          Configure an HTTP forward proxy through which the exporter sends all requests.
+          See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#proxy for details.
+        defaultBehavior: no proxy is used, and ambient proxy settings (e.g. HTTP_PROXY, HTTPS_PROXY, NO_PROXY environment variables, platform or language runtime proxy settings) are ignored
       headers:
         type: array
         minItems: 1
@@ -454,6 +460,12 @@ $defs:
         $ref: common.yaml#/$defs/GrpcTls
         description: Configure TLS settings for the exporter.
         defaultBehavior: system default TLS settings are used
+      proxy/development:
+        $ref: common.yaml#/$defs/ExperimentalProxy
+        description: |
+          Configure an HTTP forward proxy through which the exporter sends all requests.
+          See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#proxy for details.
+        defaultBehavior: no proxy is used, and ambient proxy settings (e.g. HTTP_PROXY, HTTPS_PROXY, NO_PROXY environment variables, platform or language runtime proxy settings) are ignored
       headers:
         type: array
         minItems: 1
