@@ -1,0 +1,13 @@
+file_format: "1.2"
+
+tracer_provider:
+  processors:
+    - batch:
+        exporter:
+          otlp_http:
+            # SNIPPET_START
+            endpoint: https://otlp.example.com:4318/v1/traces
+            proxy/development:
+              url: http://proxy.internal.example.com:3128
+              username: ${PROXY_USER}
+              password: ${PROXY_PASSWORD}
