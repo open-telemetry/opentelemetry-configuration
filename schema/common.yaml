@@ -13,7 +13,7 @@ $defs:
           Matching is case-sensitive. Values are evaluated to match as follows:
            * If the value exactly matches.
            * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-        defaultBehavior: all values are included
+        defaultBehavior: all values are included if .excluded is specified, otherwise the parent property's default behavior applies
       excluded:
         type: array
         minItems: 1
@@ -24,7 +24,7 @@ $defs:
           Matching is case-sensitive. Values are evaluated to match as follows:
            * If the value exactly matches.
            * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
-        defaultBehavior: .included attributes are included
+        defaultBehavior: .included values are included if .included is specified, otherwise the parent property's default behavior applies
   NameStringValuePair:
     type: object
     additionalProperties: false
