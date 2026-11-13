@@ -1,8 +1,10 @@
 import fs from 'fs';
 import {
     developmentSchemaPath,
+    emitLegacyAliases,
     stabilityDevelopment,
     enumStabilityKey,
+    legacySuffix,
     rootTypeName,
     schemaPath,
     stabilityKey,
@@ -74,12 +76,13 @@ function prepareSchemaForOutput(sourceSchemaType, sourceTypes, includeDevelopmen
 
     delete schema['$defs'];
 
-    if (!includeDevelopment) {
-        removeDevelopmentNodes(sourceSchemaType, schema);
-    }
     stripMetadata(schema, includeDevelopment);
     replaceCrossFileRefs(schema);
     enrichDescriptions(sourceSchemaType, schema, sourceTypes, includeDevelopment);
+    addLegacyAliases(sourceSchemaType, schema, includeDevelopment);
+    if (!includeDevelopment) {
+        removeDevelopmentNodes(sourceSchemaType, schema);
+    }
     if (includeDevelopment && sourceSchemaType.isDevelopment()) {
         // A type annotated on a cross file stub loses the annotation when the
         // stub is replaced, so state it on the way out.
@@ -108,6 +111,30 @@ function removeDevelopmentNodes(sourceSchemaType, schema) {
 
     if (sourceSchemaType.isEnumType()) {
         schema['enum'] = sourceSchemaType.enumValues.filter(enumValue => !sourceSchemaType.isDevelopmentEnumValue(enumValue));
+    }
+}
+
+function addLegacyAliases(sourceSchemaType, schema, includeDevelopment) {
+    if (!emitLegacyAliases) {
+        return;
+    }
+
+    sourceSchemaType.properties
+        .filter(property => property.isDevelopment)
+        .forEach(property => {
+            const renamed = schema.properties[property.property];
+            const alias = includeDevelopment ? JSON.parse(JSON.stringify(renamed)) : {};
+            alias['description'] = maybeAddLineBreak(renamed['description'])
+                + `Deprecated: renamed to \`${property.property}\`.\n`;
+            alias['deprecated'] = true;
+            schema.properties[`${property.property}${legacySuffix}`] = alias;
+        });
+
+    if (sourceSchemaType.isEnumType() && sourceSchemaType.isDevelopment()) {
+        schema['enum'] = schema['enum'].concat(
+            sourceSchemaType.enumValues
+                .filter(enumValue => sourceSchemaType.isDevelopmentEnumValue(enumValue))
+                .map(enumValue => `${enumValue}${legacySuffix}`));
     }
 }
 

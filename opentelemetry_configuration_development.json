@@ -55,6 +55,12 @@
     "distribution": {
       "$ref": "#/$defs/Distribution",
       "description": "Defines configuration parameters specific to a particular OpenTelemetry distribution or vendor.\nThis section provides a standardized location for distribution-specific settings\nthat are not part of the OpenTelemetry configuration model.\nIt allows vendors to expose their own extensions and general configuration options.\nIf omitted, distribution defaults are used.\n"
+    },
+    "instrumentation/development": {
+      "stability": "development",
+      "$ref": "#/$defs/ExperimentalInstrumentation",
+      "description": "Configure instrumentation.\nIf omitted, instrumentation defaults are used.\nDeprecated: renamed to `instrumentation`.\n",
+      "deprecated": true
     }
   },
   "required": [
@@ -1217,6 +1223,15 @@
         "translation_strategy": {
           "$ref": "#/$defs/ExperimentalPrometheusTranslationStrategy",
           "description": "Configure how metric names are translated to Prometheus metric names.\nValues include:\n* no_translation: Special character escaping is disabled. Type and unit suffixes are disabled. Metric names are unaltered.\n* no_utf8_escaping_with_suffixes: Special character escaping is disabled. Type and unit suffixes are enabled.\n* underscore_escaping_with_suffixes: Special character escaping is enabled. Type and unit suffixes are enabled.\n* underscore_escaping_without_suffixes: Special character escaping is enabled. Type and unit suffixes are disabled. This represents classic Prometheus metric name compatibility.\nIf omitted, underscore_escaping_with_suffixes is used.\n"
+        },
+        "target_info_enabled/development": {
+          "stability": "development",
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure Prometheus Exporter to produce metrics with a target info metric for the resource.\nIf omitted or null, true is used.\nDeprecated: renamed to `target_info_enabled`.\n",
+          "deprecated": true
         }
       }
     },
@@ -1230,7 +1245,10 @@
         "underscore_escaping_with_suffixes",
         "underscore_escaping_without_suffixes",
         "no_utf8_escaping_with_suffixes",
-        "no_translation"
+        "no_translation",
+        "underscore_escaping_without_suffixes/development",
+        "no_utf8_escaping_with_suffixes/development",
+        "no_translation/development"
       ],
       "enumStability": {
         "no_translation": "development",
@@ -1636,6 +1654,12 @@
           "stability": "development",
           "$ref": "#/$defs/ExperimentalLoggerConfigurator",
           "description": "Configure loggers.\nIf omitted, all loggers use default values as described in ExperimentalLoggerConfig.\n"
+        },
+        "logger_configurator/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalLoggerConfigurator",
+          "description": "Configure loggers.\nIf omitted, all loggers use default values as described in ExperimentalLoggerConfig.\nDeprecated: renamed to `logger_configurator`.\n",
+          "deprecated": true
         }
       },
       "required": [
@@ -1669,6 +1693,12 @@
         "console": {
           "$ref": "#/$defs/ConsoleExporter",
           "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
+        },
+        "otlp_file/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalOtlpFileExporter",
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\nDeprecated: renamed to `otlp_file`.\n",
+          "deprecated": true
         }
       }
     },
@@ -1725,6 +1755,12 @@
           "stability": "development",
           "$ref": "#/$defs/ExperimentalEventToSpanEventBridgeLogRecordProcessor",
           "description": "Configure an event to span event bridge log record processor.\nIf omitted, ignore.\n"
+        },
+        "event_to_span_event_bridge/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalEventToSpanEventBridgeLogRecordProcessor",
+          "description": "Configure an event to span event bridge log record processor.\nIf omitted, ignore.\nDeprecated: renamed to `event_to_span_event_bridge`.\n",
+          "deprecated": true
         }
       }
     },
@@ -1761,6 +1797,18 @@
           "stability": "development",
           "$ref": "#/$defs/ExperimentalViewMatchingMode",
           "description": "Controls how multiple matching Views are applied to an Instrument.\nValues include:\n* composable: Combines (merges) matching Views into unified metric streams unless distinct stream names are configured.\n* independent: Creates separate metric streams independently for each matching View.\nIf omitted, independent is used.\n"
+        },
+        "meter_configurator/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalMeterConfigurator",
+          "description": "Configure meters.\nIf omitted, all meters use default values as described in ExperimentalMeterConfig.\nDeprecated: renamed to `meter_configurator`.\n",
+          "deprecated": true
+        },
+        "view_matching_mode/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalViewMatchingMode",
+          "description": "Controls how multiple matching Views are applied to an Instrument.\nValues include:\n* composable: Combines (merges) matching Views into unified metric streams unless distinct stream names are configured.\n* independent: Creates separate metric streams independently for each matching View.\nIf omitted, independent is used.\nDeprecated: renamed to `view_matching_mode`.\n",
+          "deprecated": true
         }
       },
       "required": [
@@ -2243,6 +2291,12 @@
           "stability": "development",
           "$ref": "#/$defs/ExperimentalPrometheusMetricExporter",
           "description": "Configure exporter to be prometheus.\nIf omitted, ignore.\n"
+        },
+        "prometheus/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalPrometheusMetricExporter",
+          "description": "Configure exporter to be prometheus.\nIf omitted, ignore.\nDeprecated: renamed to `prometheus`.\n",
+          "deprecated": true
         }
       }
     },
@@ -2298,6 +2352,12 @@
         "console": {
           "$ref": "#/$defs/ConsoleMetricExporter",
           "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
+        },
+        "otlp_file/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalOtlpFileMetricExporter",
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\nDeprecated: renamed to `otlp_file`.\n",
+          "deprecated": true
         }
       }
     },
@@ -2338,6 +2398,12 @@
             "null"
           ],
           "description": "Configure resource attributes. Entries have lower priority than entries from .resource.attributes.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nIf omitted or null, no resource attributes are added.\n"
+        },
+        "detection/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalResourceDetection",
+          "description": "Configure resource detection.\nIf omitted, resource detection is disabled.\nDeprecated: renamed to `detection`.\n",
+          "deprecated": true
         }
       }
     },
@@ -2386,6 +2452,24 @@
         "trace_id_ratio_based": {
           "$ref": "#/$defs/TraceIdRatioBasedSampler",
           "description": "Configure sampler to be trace_id_ratio_based.\nIf omitted, ignore.\n"
+        },
+        "composite/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalComposableSampler",
+          "description": "Configure sampler to be composite.\nIf omitted, ignore.\nDeprecated: renamed to `composite`.\n",
+          "deprecated": true
+        },
+        "jaeger_remote/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalJaegerRemoteSampler",
+          "description": "Configure sampler to be jaeger_remote.\nIf omitted, ignore.\nDeprecated: renamed to `jaeger_remote`.\n",
+          "deprecated": true
+        },
+        "probability/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalProbabilitySampler",
+          "description": "Configure sampler to be probability.\nIf omitted, ignore.\nDeprecated: renamed to `probability`.\n",
+          "deprecated": true
         }
       }
     },
@@ -2474,6 +2558,12 @@
         "console": {
           "$ref": "#/$defs/ConsoleExporter",
           "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
+        },
+        "otlp_file/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalOtlpFileExporter",
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\nDeprecated: renamed to `otlp_file`.\n",
+          "deprecated": true
         }
       }
     },
@@ -2672,6 +2762,12 @@
           "stability": "development",
           "$ref": "#/$defs/ExperimentalTracerConfigurator",
           "description": "Configure tracers.\nIf omitted, all tracers use default values as described in ExperimentalTracerConfig.\n"
+        },
+        "tracer_configurator/development": {
+          "stability": "development",
+          "$ref": "#/$defs/ExperimentalTracerConfigurator",
+          "description": "Configure tracers.\nIf omitted, all tracers use default values as described in ExperimentalTracerConfig.\nDeprecated: renamed to `tracer_configurator`.\n",
+          "deprecated": true
         }
       },
       "required": [

@@ -25,6 +25,9 @@ export const stabilityDevelopment = 'development';
 export const stabilityStable = 'stable';
 export const stabilityValues = [stabilityStable, stabilityDevelopment];
 
+export const legacySuffix = '/development';
+export const emitLegacyAliases = true;
+
 export const isDevelopmentSchema = (schema) => schema != null && schema[stabilityKey] === stabilityDevelopment;
 
 export const snippetsDirPath = __dirname + "/../snippets/";

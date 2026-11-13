@@ -50,6 +50,10 @@
     "distribution": {
       "$ref": "#/$defs/Distribution",
       "description": "Defines configuration parameters specific to a particular OpenTelemetry distribution or vendor.\nThis section provides a standardized location for distribution-specific settings\nthat are not part of the OpenTelemetry configuration model.\nIt allows vendors to expose their own extensions and general configuration options.\nIf omitted, distribution defaults are used.\n"
+    },
+    "instrumentation/development": {
+      "description": "Configure instrumentation.\nIf omitted, instrumentation defaults are used.\nDeprecated: renamed to `instrumentation`.\n",
+      "deprecated": true
     }
   },
   "required": [
@@ -684,6 +688,10 @@
         "limits": {
           "$ref": "#/$defs/LogRecordLimits",
           "description": "Configure log record limits. See also attribute_limits.\nIf omitted, default values as described in LogRecordLimits are used.\n"
+        },
+        "logger_configurator/development": {
+          "description": "Configure loggers.\nIf omitted, all loggers use default values as described in ExperimentalLoggerConfig.\nDeprecated: renamed to `logger_configurator`.\n",
+          "deprecated": true
         }
       },
       "required": [
@@ -712,6 +720,10 @@
         "console": {
           "$ref": "#/$defs/ConsoleExporter",
           "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
+        },
+        "otlp_file/development": {
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\nDeprecated: renamed to `otlp_file`.\n",
+          "deprecated": true
         }
       },
       "propertyNames": {
@@ -770,6 +782,10 @@
         "simple": {
           "$ref": "#/$defs/SimpleLogRecordProcessor",
           "description": "Configure a simple log record processor.\nIf omitted, ignore.\n"
+        },
+        "event_to_span_event_bridge/development": {
+          "description": "Configure an event to span event bridge log record processor.\nIf omitted, ignore.\nDeprecated: renamed to `event_to_span_event_bridge`.\n",
+          "deprecated": true
         }
       },
       "propertyNames": {
@@ -803,6 +819,14 @@
         "exemplar_filter": {
           "$ref": "#/$defs/ExemplarFilter",
           "description": "Configure the exemplar filter.\nValues include:\n* always_off: ExemplarFilter which makes no measurements eligible for being an Exemplar.\n* always_on: ExemplarFilter which makes all measurements eligible for being an Exemplar.\n* trace_based: ExemplarFilter which makes measurements recorded in the context of a sampled parent span eligible for being an Exemplar.\nIf omitted, trace_based is used.\n"
+        },
+        "meter_configurator/development": {
+          "description": "Configure meters.\nIf omitted, all meters use default values as described in ExperimentalMeterConfig.\nDeprecated: renamed to `meter_configurator`.\n",
+          "deprecated": true
+        },
+        "view_matching_mode/development": {
+          "description": "Controls how multiple matching Views are applied to an Instrument.\nValues include:\n* composable: Combines (merges) matching Views into unified metric streams unless distinct stream names are configured.\n* independent: Creates separate metric streams independently for each matching View.\nIf omitted, independent is used.\nDeprecated: renamed to `view_matching_mode`.\n",
+          "deprecated": true
         }
       },
       "required": [
@@ -1280,7 +1304,12 @@
       },
       "minProperties": 1,
       "maxProperties": 1,
-      "properties": {},
+      "properties": {
+        "prometheus/development": {
+          "description": "Configure exporter to be prometheus.\nIf omitted, ignore.\nDeprecated: renamed to `prometheus`.\n",
+          "deprecated": true
+        }
+      },
       "propertyNames": {
         "not": {
           "enum": [
@@ -1336,6 +1365,10 @@
         "console": {
           "$ref": "#/$defs/ConsoleMetricExporter",
           "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
+        },
+        "otlp_file/development": {
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\nDeprecated: renamed to `otlp_file`.\n",
+          "deprecated": true
         }
       },
       "propertyNames": {
@@ -1378,6 +1411,10 @@
             "null"
           ],
           "description": "Configure resource attributes. Entries have lower priority than entries from .resource.attributes.\nThe value is a list of comma separated key-value pairs matching the format of OTEL_RESOURCE_ATTRIBUTES. See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration for details.\nIf omitted or null, no resource attributes are added.\n"
+        },
+        "detection/development": {
+          "description": "Configure resource detection.\nIf omitted, resource detection is disabled.\nDeprecated: renamed to `detection`.\n",
+          "deprecated": true
         }
       }
     },
@@ -1411,6 +1448,18 @@
         "trace_id_ratio_based": {
           "$ref": "#/$defs/TraceIdRatioBasedSampler",
           "description": "Configure sampler to be trace_id_ratio_based.\nIf omitted, ignore.\n"
+        },
+        "composite/development": {
+          "description": "Configure sampler to be composite.\nIf omitted, ignore.\nDeprecated: renamed to `composite`.\n",
+          "deprecated": true
+        },
+        "jaeger_remote/development": {
+          "description": "Configure sampler to be jaeger_remote.\nIf omitted, ignore.\nDeprecated: renamed to `jaeger_remote`.\n",
+          "deprecated": true
+        },
+        "probability/development": {
+          "description": "Configure sampler to be probability.\nIf omitted, ignore.\nDeprecated: renamed to `probability`.\n",
+          "deprecated": true
         }
       },
       "propertyNames": {
@@ -1503,6 +1552,10 @@
         "console": {
           "$ref": "#/$defs/ConsoleExporter",
           "description": "Configure exporter to be console.\nIf omitted, ignore.\n"
+        },
+        "otlp_file/development": {
+          "description": "Configure exporter to be OTLP with file transport.\nIf omitted, ignore.\nDeprecated: renamed to `otlp_file`.\n",
+          "deprecated": true
         }
       },
       "propertyNames": {
@@ -1699,6 +1752,10 @@
         "id_generator": {
           "$ref": "#/$defs/IdGenerator",
           "description": "Configure the trace and span ID generator.\nIf omitted, RandomIdGenerator is used.\n"
+        },
+        "tracer_configurator/development": {
+          "description": "Configure tracers.\nIf omitted, all tracers use default values as described in ExperimentalTracerConfig.\nDeprecated: renamed to `tracer_configurator`.\n",
+          "deprecated": true
         }
       },
       "required": [
