@@ -85,7 +85,7 @@ Latest supported file format: `1.0.0`
 | `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator`: supported<br> |
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
-| `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br>* `enabled/development`: not_implemented<br> |
+| `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br>* `enabled`: not_implemented<br> |
 | `ExperimentalCodeInstrumentation` | not_applicable |  | * `semconv`: not_applicable<br> |
 | `ExperimentalComposableAlwaysOffSampler` | supported |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | supported |  |  |
@@ -209,7 +209,7 @@ Latest supported file format: `1.0.0`
 | `TracerProvider` | unknown |  | * `id_generator`: unknown<br>* `limits`: unknown<br>* `processors`: unknown<br>* `sampler`: unknown<br>* `tracer_configurator`: unknown<br> |
 | `View` | unknown |  | * `selector`: unknown<br>* `stream`: unknown<br> |
 | `ViewSelector` | unknown |  | * `instrument_name`: unknown<br>* `instrument_type`: unknown<br>* `meter_name`: unknown<br>* `meter_schema_url`: unknown<br>* `meter_version`: unknown<br>* `unit`: unknown<br> |
-| `ViewStream` | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br>* `enabled/development`: not_implemented<br> |
+| `ViewStream` | unknown |  | * `aggregation`: unknown<br>* `aggregation_cardinality_limit`: unknown<br>* `attribute_keys`: unknown<br>* `description`: unknown<br>* `name`: unknown<br>* `enabled`: not_implemented<br> |
 | `ExperimentalCodeInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalComposableAlwaysOffSampler` | not_implemented |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | not_implemented |  |  |
@@ -333,7 +333,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator`: supported<br> |
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
-| `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br>* `enabled/development`: not_implemented<br> |
+| `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br>* `enabled`: not_implemented<br> |
 | `ExperimentalCodeInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalComposableAlwaysOffSampler` | supported |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | supported |  |  |
@@ -457,7 +457,7 @@ Latest supported file format: `1.0.0-rc.3`
 | `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator`: supported<br> |
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
-| `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br>* `enabled/development`: not_implemented<br> |
+| `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br>* `enabled`: not_implemented<br> |
 | `ExperimentalCodeInstrumentation` | not_implemented |  | * `semconv`: not_implemented<br> |
 | `ExperimentalComposableAlwaysOffSampler` | not_implemented |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | not_implemented |  |  |
@@ -581,7 +581,7 @@ Latest supported file format: `1.0.0-rc.2`
 | `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator`: supported<br> |
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: not_implemented<br> |
-| `ViewStream` | supported | `attribute_keys.excluded` is not implemented, only `attribute_keys.included` is supported. | * `aggregation`: ignored<br>* `aggregation_cardinality_limit`: not_implemented<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br>* `enabled/development`: not_implemented<br> |
+| `ViewStream` | supported | `attribute_keys.excluded` is not implemented, only `attribute_keys.included` is supported. | * `aggregation`: ignored<br>* `aggregation_cardinality_limit`: not_implemented<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br>* `enabled`: not_implemented<br> |
 | `ExperimentalCodeInstrumentation` | unknown |  | * `semconv`: unknown<br> |
 | `ExperimentalComposableAlwaysOffSampler` | not_implemented |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | not_implemented |  |  |
@@ -705,7 +705,7 @@ Latest supported file format: `1.0.0`
 | `TracerProvider` | supported |  | * `id_generator`: supported<br>* `limits`: supported<br>* `processors`: supported<br>* `sampler`: supported<br>* `tracer_configurator`: supported<br> |
 | `View` | supported |  | * `selector`: supported<br>* `stream`: supported<br> |
 | `ViewSelector` | supported |  | * `instrument_name`: supported<br>* `instrument_type`: supported<br>* `meter_name`: supported<br>* `meter_schema_url`: supported<br>* `meter_version`: supported<br>* `unit`: supported<br> |
-| `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br>* `enabled/development`: not_implemented<br> |
+| `ViewStream` | supported |  | * `aggregation`: supported<br>* `aggregation_cardinality_limit`: supported<br>* `attribute_keys`: supported<br>* `description`: supported<br>* `name`: supported<br>* `enabled`: not_implemented<br> |
 | `ExperimentalCodeInstrumentation` | ignored |  | * `semconv`: ignored<br> |
 | `ExperimentalComposableAlwaysOffSampler` | supported |  |  |
 | `ExperimentalComposableAlwaysOnSampler` | supported |  |  |

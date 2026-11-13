@@ -263,7 +263,7 @@ typeSupportStatuses:
   - type: ViewStream
     status: unknown
     propertyOverrides:
-      - property: enabled/development
+      - property: enabled
         status: not_implemented
   - type: ExperimentalCodeInstrumentation
     status: not_implemented

@@ -1600,7 +1600,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Configure list of value patterns to include.\nMatching is case-sensitive. Values are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, all values are included.\n"
+          "description": "Configure list of value patterns to include.\nMatching is case-sensitive. Values are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, all values are included if .excluded is specified, otherwise the parent property's default behavior applies.\n"
         },
         "excluded": {
           "type": "array",
@@ -1608,7 +1608,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\nMatching is case-sensitive. Values are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, .included attributes are included.\n"
+          "description": "Configure list of value patterns to exclude. Applies after .included (i.e. excluded has higher priority than included).\nMatching is case-sensitive. Values are evaluated to match as follows:\n * If the value exactly matches.\n * If the value matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.\nIf omitted, .included values are included if .included is specified, otherwise the parent property's default behavior applies.\n"
         }
       }
     },
@@ -2870,6 +2870,23 @@
         "attribute_keys": {
           "$ref": "#/$defs/IncludeExclude",
           "description": "Configure attribute keys retained in the resulting stream(s).\nIf omitted, all attribute keys are retained.\n"
+        },
+        "enabled": {
+          "stability": "development",
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure whether the resulting stream(s) are enabled or not.\nIf true, the resulting stream(s) are enabled even for OptIn instruments (as if the instrument's OptIn advisory parameter were false).\nIf false, Drop Aggregation is used regardless of .aggregation.\nIf omitted or null, the instrument's OptIn advisory parameter determines whether the resulting stream(s) are enabled.\n"
+        },
+        "enabled/development": {
+          "stability": "development",
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Configure whether the resulting stream(s) are enabled or not.\nIf true, the resulting stream(s) are enabled even for OptIn instruments (as if the instrument's OptIn advisory parameter were false).\nIf false, Drop Aggregation is used regardless of .aggregation.\nIf omitted or null, the instrument's OptIn advisory parameter determines whether the resulting stream(s) are enabled.\nDeprecated: renamed to `enabled`.\n",
+          "deprecated": true
         }
       }
     }

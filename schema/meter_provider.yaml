@@ -683,7 +683,8 @@ $defs:
         description: |
           Configure attribute keys retained in the resulting stream(s).
         defaultBehavior: all attribute keys are retained
-      enabled/development:
+      enabled:
+        stability: development
         type:
           - boolean
           - "null"
