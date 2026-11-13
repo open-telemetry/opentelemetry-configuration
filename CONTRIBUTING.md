@@ -58,11 +58,24 @@ Properties defined in the schema should be lower [snake case](https://en.wikiped
 
 ### Property name and enum value character set
 
-Property names and enum values must match `^[A-Za-z_][A-Za-z0-9_]*$`. This facilitates usage as identifiers in generated code. Experimental properties are an exception, and are [denoted with a `/(development|alpha|beta)` suffix](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features) (e.g. `detection/development`).
+Property names and enum values must match `^[A-Za-z_][A-Za-z0-9_]*$`, with no exceptions. This facilitates usage as identifiers in generated code. The stability of a property or an enum value is [recorded in an annotation](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features), never in its name, so a property keeps the same name when it stabilizes.
 
 ### Type name case
 
-Type names (the top-level types defined under `$defs`, e.g. `BatchSpanProcessor`) should be [PascalCase](https://en.wikipedia.org/wiki/Camel_case): they must match `^[A-Z][A-Za-z0-9]*$`. This facilitates usage as identifiers in generated code. Experimental types are [denoted with an `Experimental` prefix](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features).
+Type names (the top-level types defined under `$defs`, e.g. `BatchSpanProcessor`) should be [PascalCase](https://en.wikipedia.org/wiki/Camel_case): they must match `^[A-Z][A-Za-z0-9]*$`. This facilitates usage as identifiers in generated code. The stability of a type is [recorded in an annotation](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features) as well.
+
+### Stability
+
+The stability of a node is metadata about that node, so it is recorded beside the node rather than inside its name:
+
+* `stability: development` on a property or a type.
+* `enumStability: {<enum value>: development}` on an enum type, which records the stability of one value of that enum.
+
+Both are stripped from `opentelemetry_configuration.json` when the schema is compiled, and both are kept in `opentelemetry_configuration_development.json`, so that a reader of the development schema can still tell which parts are under development. `enumDescriptions` and `defaultBehavior` are stripped from both. Omitting the annotations means stable.
+
+`make compile-schema` produces two schemas from this one source. `opentelemetry_configuration.json` holds nothing under development. `opentelemetry_configuration_development.json` holds everything and keeps the annotations. A config file selects one with its `stability` property, and a file that omits it is read with the stable schema.
+
+An [extension point](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#extension-points) accepts any property name so that an SDK plugin can be configured. The stable schema still rejects every component it knows to be under development, because `make compile-schema` emits a `propertyNames` constraint listing those names. Any other name is accepted, so a plugin the schema has never heard of is accepted there whatever its stability.
 
 ### Properties requiring pattern matching
 

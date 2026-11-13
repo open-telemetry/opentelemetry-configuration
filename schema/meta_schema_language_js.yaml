@@ -110,7 +110,7 @@ typeSupportStatuses:
   - type: MeterProvider
     status: supported
     propertyOverrides:
-      - property: view_matching_mode/development
+      - property: view_matching_mode
         status: not_implemented
   - type: MetricProducer
     status: supported
@@ -212,6 +212,9 @@ typeSupportStatuses:
   - type: SpanProcessor
     status: supported
     propertyOverrides: []
+  - type: Stability
+    status: unknown
+    enumOverrides: []
   - type: SumAggregation
     status: supported
     propertyOverrides: []
@@ -236,7 +239,7 @@ typeSupportStatuses:
   - type: ViewStream
     status: supported
     propertyOverrides:
-      - property: enabled/development
+      - property: enabled
         status: not_implemented
   - type: ExperimentalCodeInstrumentation
     status: not_implemented
