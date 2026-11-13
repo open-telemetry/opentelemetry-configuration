@@ -31,17 +31,11 @@ resource:
       type: double_array
   attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
   attribute_filter:
+    # Demonstration only: all attributes are included by default.
     included:
-      - service.*
-      - telemetry.sdk.*
-      - process.*
-      - "*_key"
+      - "*"
     excluded:
       - process.command_args
-      - service.name
-      - service.version
-      - service.instance.id
-      - telemetry.sdk.language
   detection/development:
     detectors:
       - container:
