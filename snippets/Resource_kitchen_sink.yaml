@@ -30,12 +30,13 @@ resource:
       value: [ 1.1, 2.2 ]
       type: double_array
   attributes_list: "service.namespace=my-namespace,service.version=1.0.0"
+  attribute_filter:
+    # Demonstration only: all attributes are included by default.
+    included:
+      - "*"
+    excluded:
+      - process.command_args
   detection/development:
-    attributes:
-      included:
-        - process.*
-      excluded:
-        - process.command_args
     detectors:
       - container:
       - host:
