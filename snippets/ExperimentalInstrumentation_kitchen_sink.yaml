@@ -9,12 +9,17 @@ instrumentation/development:
         experimental: true
         dual_emit: true
       client:
-        request_captured_headers:
-          - Content-Type
-          - Accept
-        response_captured_headers:
-          - Content-Type
-          - Content-Encoding
+        request_headers:
+          included:
+            - Content-*
+            - Accept
+          excluded:
+            - Content-Length
+        response_headers:
+          included:
+            - Content-*
+          excluded:
+            - Content-Length
         known_methods:
           - CONNECT
           - DELETE
@@ -26,12 +31,17 @@ instrumentation/development:
           - PUT
           - TRACE
       server:
-        request_captured_headers:
-          - Content-Type
-          - Accept
-        response_captured_headers:
-          - Content-Type
-          - Content-Encoding
+        request_headers:
+          included:
+            - Content-*
+            - Accept
+          excluded:
+            - Content-Length
+        response_headers:
+          included:
+            - Content-*
+          excluded:
+            - Content-Length
         known_methods:
           - CONNECT
           - DELETE
