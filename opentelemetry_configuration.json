@@ -1192,6 +1192,41 @@
         "no_translation/development"
       ]
     },
+    "ExperimentalProxy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Configure the URL of the HTTP forward proxy, e.g. http://proxy.example.com:3128.\nThe scheme must be http or https. Implementations may not support https (TLS between the exporter and the proxy).\nMust not include userinfo; set credentials with .username and .password instead.\nProperty is required and must be non-null.\n"
+        },
+        "username": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure the username for Basic authentication to the proxy.\nIf omitted or null, no proxy authentication is used.\n"
+        },
+        "password": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Configure the password for Basic authentication to the proxy.\nIf omitted or null, no proxy authentication is used.\n"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "dependentRequired": {
+        "username": [
+          "password"
+        ],
+        "password": [
+          "username"
+        ]
+      }
+    },
     "ExperimentalResourceDetection": {
       "type": "object",
       "additionalProperties": false,
@@ -1786,6 +1821,10 @@
           "$ref": "#/$defs/GrpcTls",
           "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
         },
+        "proxy/development": {
+          "$ref": "#/$defs/ExperimentalProxy",
+          "description": "Configure an HTTP forward proxy through which the exporter sends all requests.\nSee https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#proxy for details.\nIf omitted, no proxy is used, and ambient proxy settings (e.g. HTTP_PROXY, HTTPS_PROXY, NO_PROXY environment variables, platform or language runtime proxy settings) are ignored.\n"
+        },
         "headers": {
           "type": "array",
           "minItems": 1,
@@ -1851,6 +1890,10 @@
         "tls": {
           "$ref": "#/$defs/GrpcTls",
           "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
+        },
+        "proxy/development": {
+          "$ref": "#/$defs/ExperimentalProxy",
+          "description": "Configure an HTTP forward proxy through which the exporter sends all requests.\nSee https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#proxy for details.\nIf omitted, no proxy is used, and ambient proxy settings (e.g. HTTP_PROXY, HTTPS_PROXY, NO_PROXY environment variables, platform or language runtime proxy settings) are ignored.\n"
         },
         "headers": {
           "type": "array",
@@ -1936,6 +1979,10 @@
           "$ref": "#/$defs/HttpTls",
           "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
         },
+        "proxy/development": {
+          "$ref": "#/$defs/ExperimentalProxy",
+          "description": "Configure an HTTP forward proxy through which the exporter sends all requests.\nSee https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#proxy for details.\nIf omitted, no proxy is used, and ambient proxy settings (e.g. HTTP_PROXY, HTTPS_PROXY, NO_PROXY environment variables, platform or language runtime proxy settings) are ignored.\n"
+        },
         "headers": {
           "type": "array",
           "minItems": 1,
@@ -2005,6 +2052,10 @@
         "tls": {
           "$ref": "#/$defs/HttpTls",
           "description": "Configure TLS settings for the exporter.\nIf omitted, system default TLS settings are used.\n"
+        },
+        "proxy/development": {
+          "$ref": "#/$defs/ExperimentalProxy",
+          "description": "Configure an HTTP forward proxy through which the exporter sends all requests.\nSee https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#proxy for details.\nIf omitted, no proxy is used, and ambient proxy settings (e.g. HTTP_PROXY, HTTPS_PROXY, NO_PROXY environment variables, platform or language runtime proxy settings) are ignored.\n"
         },
         "headers": {
           "type": "array",
