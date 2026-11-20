@@ -26,7 +26,29 @@ export const stabilityStable = 'stable';
 export const stabilityValues = [stabilityStable, stabilityDevelopment];
 
 export const legacySuffix = '/development';
-export const emitLegacyAliases = true;
+export const legacyAliasProperties = [
+    'ExperimentalPrometheusMetricExporter.target_info_enabled',
+    'LogRecordExporter.otlp_file',
+    'LogRecordProcessor.event_to_span_event_bridge',
+    'LoggerProvider.logger_configurator',
+    'MeterProvider.meter_configurator',
+    'MeterProvider.view_matching_mode',
+    'OpenTelemetryConfiguration.instrumentation',
+    'PullMetricExporter.prometheus',
+    'PushMetricExporter.otlp_file',
+    'Resource.detection',
+    'Sampler.composite',
+    'Sampler.jaeger_remote',
+    'Sampler.probability',
+    'SpanExporter.otlp_file',
+    'TracerProvider.tracer_configurator',
+    'ViewStream.enabled'
+];
+export const legacyAliasEnumValues = [
+    'ExperimentalPrometheusTranslationStrategy.no_translation',
+    'ExperimentalPrometheusTranslationStrategy.no_utf8_escaping_with_suffixes',
+    'ExperimentalPrometheusTranslationStrategy.underscore_escaping_without_suffixes'
+];
 
 export const isDevelopmentSchema = (schema) => schema != null && schema[stabilityKey] === stabilityDevelopment;
 

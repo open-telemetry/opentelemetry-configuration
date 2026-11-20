@@ -1,15 +1,19 @@
 import fs from 'fs';
 import {
     developmentSchemaPath,
-    emitLegacyAliases,
     stabilityDevelopment,
     enumStabilityKey,
+    legacyAliasEnumValues,
+    legacyAliasProperties,
     legacySuffix,
     rootTypeName,
     schemaPath,
     stabilityKey,
     stabilityValues
 } from "./util.js";
+
+const legacyAliasPropertySet = new Set(legacyAliasProperties);
+const legacyAliasEnumValueSet = new Set(legacyAliasEnumValues);
 import {readSourceTypesByType} from "./source-schema.js";
 
 // See the schema modeling rules in CONTRIBUTING.md. A name is an identifier and
@@ -52,11 +56,23 @@ fs.writeFileSync(developmentSchemaPath, JSON.stringify(compile(sourceTypes, true
 function compile(sourceTypes, includeDevelopment) {
     const includedTypes = sourceTypes.filter(sourceSchemaType => includeDevelopment || !sourceSchemaType.isDevelopment());
 
-    const defs = {};
+    const unsorted = {};
     includedTypes.filter(sourceSchemaType => sourceSchemaType.type !== rootTypeName)
         .forEach(sourceSchemaType => {
-            defs[sourceSchemaType.type] = prepareSchemaForOutput(sourceSchemaType, sourceTypes, includeDevelopment);
+            unsorted[sourceSchemaType.type] = prepareSchemaForOutput(sourceSchemaType, sourceTypes, includeDevelopment);
         });
+    if (!includeDevelopment) {
+        legacyReachableTypes(sourceTypes)
+            .filter(sourceSchemaType => sourceSchemaType.type !== rootTypeName)
+            .forEach(sourceSchemaType => {
+                unsorted[sourceSchemaType.type] = prepareLegacySchemaForOutput(sourceSchemaType, sourceTypes);
+            });
+    }
+
+    const defs = {};
+    Object.keys(unsorted).sort((a, b) => a.localeCompare(b)).forEach(type => {
+        defs[type] = unsorted[type];
+    });
 
     const rootType = includedTypes.find(sourceSchemaType => sourceSchemaType.type === rootTypeName);
     if (!rootType) {
@@ -71,6 +87,67 @@ function compile(sourceTypes, includeDevelopment) {
     };
 }
 
+function legacyReachableTypes(sourceTypes) {
+    const byName = new Map(sourceTypes.map(sourceSchemaType => [sourceSchemaType.type, sourceSchemaType]));
+    const pending = [];
+    const reached = new Set();
+
+    const collectRefs = (node, out) => {
+        if (node === null || typeof node !== 'object') {
+            return out;
+        }
+        if (Array.isArray(node)) {
+            node.forEach(item => collectRefs(item, out));
+            return out;
+        }
+        Object.entries(node).forEach(([key, value]) => {
+            if (key === '$ref' && typeof value === 'string') {
+                const marker = '#/$defs/';
+                const at = value.indexOf(marker);
+                if (at >= 0) {
+                    out.push(value.substring(at + marker.length));
+                }
+                return;
+            }
+            collectRefs(value, out);
+        });
+        return out;
+    };
+
+    sourceTypes.forEach(sourceSchemaType => {
+        sourceSchemaType.properties
+            .filter(property => property.isDevelopment
+                && legacyAliasPropertySet.has(`${sourceSchemaType.type}.${property.property}`))
+            .forEach(property => collectRefs(property.schema, pending));
+    });
+
+    while (pending.length > 0) {
+        const type = pending.shift();
+        const target = byName.get(type);
+        if (!target || reached.has(type) || !target.isDevelopment()) {
+            continue;
+        }
+        reached.add(type);
+        collectRefs(target.schema, pending);
+    }
+
+    return [...reached].map(type => byName.get(type));
+}
+
+function prepareLegacySchemaForOutput(sourceSchemaType, sourceTypes) {
+    const schema = JSON.parse(JSON.stringify(sourceSchemaType.schema));
+
+    delete schema['$defs'];
+
+    stripMetadata(schema, false);
+    replaceCrossFileRefs(schema);
+    enrichDescriptions(sourceSchemaType, schema, sourceTypes, true);
+    addLegacyAliases(sourceSchemaType, schema);
+    schema['deprecated'] = true;
+
+    return schema;
+}
+
 function prepareSchemaForOutput(sourceSchemaType, sourceTypes, includeDevelopment) {
     const schema = JSON.parse(JSON.stringify(sourceSchemaType.schema));
 
@@ -79,7 +156,7 @@ function prepareSchemaForOutput(sourceSchemaType, sourceTypes, includeDevelopmen
     stripMetadata(schema, includeDevelopment);
     replaceCrossFileRefs(schema);
     enrichDescriptions(sourceSchemaType, schema, sourceTypes, includeDevelopment);
-    addLegacyAliases(sourceSchemaType, schema, includeDevelopment);
+    addLegacyAliases(sourceSchemaType, schema);
     if (!includeDevelopment) {
         removeDevelopmentNodes(sourceSchemaType, schema);
     }
@@ -114,27 +191,27 @@ function removeDevelopmentNodes(sourceSchemaType, schema) {
     }
 }
 
-function addLegacyAliases(sourceSchemaType, schema, includeDevelopment) {
-    if (!emitLegacyAliases) {
-        return;
-    }
-
+function addLegacyAliases(sourceSchemaType, schema) {
     sourceSchemaType.properties
-        .filter(property => property.isDevelopment)
+        .filter(property => property.isDevelopment
+            && legacyAliasPropertySet.has(`${sourceSchemaType.type}.${property.property}`))
         .forEach(property => {
-            const renamed = schema.properties[property.property];
-            const alias = includeDevelopment ? JSON.parse(JSON.stringify(renamed)) : {};
-            alias['description'] = maybeAddLineBreak(renamed['description'])
+            const alias = JSON.parse(JSON.stringify(schema.properties[property.property]));
+            alias['description'] = maybeAddLineBreak(alias['description'])
                 + `Deprecated: renamed to \`${property.property}\`.\n`;
             alias['deprecated'] = true;
             schema.properties[`${property.property}${legacySuffix}`] = alias;
         });
 
-    if (sourceSchemaType.isEnumType() && sourceSchemaType.isDevelopment()) {
-        schema['enum'] = schema['enum'].concat(
-            sourceSchemaType.enumValues
-                .filter(enumValue => sourceSchemaType.isDevelopmentEnumValue(enumValue))
-                .map(enumValue => `${enumValue}${legacySuffix}`));
+    if (!sourceSchemaType.isEnumType()) {
+        return;
+    }
+    const legacyValues = sourceSchemaType.enumValues
+        .filter(enumValue => sourceSchemaType.isDevelopmentEnumValue(enumValue)
+            && legacyAliasEnumValueSet.has(`${sourceSchemaType.type}.${enumValue}`))
+        .map(enumValue => `${enumValue}${legacySuffix}`);
+    if (legacyValues.length > 0) {
+        schema['enum'] = schema['enum'].concat(legacyValues);
     }
 }
 
