@@ -385,7 +385,7 @@ function stabilityAnnotationsShouldBeValid(sourceSchemaType, messages) {
         }
     };
 
-    reportInvalidStability(sourceSchemaType.schema[stabilityKey], sourceSchemaType.type);
+    reportInvalidStability(sourceSchemaType.stability, sourceSchemaType.type);
     sourceSchemaType.properties.forEach(property => {
         reportInvalidStability(property.schema[stabilityKey], `${sourceSchemaType.type}.${property.property}`);
     });
