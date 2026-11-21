@@ -1,6 +1,7 @@
 file_format: "1.2"
+stability: development
 
-instrumentation/development:
+instrumentation:
   # SNIPPET_START
   general:
     http:

@@ -1,7 +1,8 @@
 file_format: "1.2"
+stability: development
 
 meter_provider:
-  view_matching_mode/development: composable
+  view_matching_mode: composable
   readers:
     - periodic:
         exporter:
@@ -13,4 +14,4 @@ meter_provider:
       selector:
         instrument_name: my.opt_in.instrument
       stream:
-        enabled/development: true
+        enabled: true
