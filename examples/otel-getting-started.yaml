@@ -20,6 +20,9 @@ resource:
       - host:
       - process:
       - container:
+  attribute_filter:
+    excluded:
+      - process.command_args
 
 propagator:
   composite:

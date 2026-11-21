@@ -9,6 +9,12 @@ properties:
     description: |
       Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.
     defaultBehavior: no resource attributes are added
+  attribute_filter:
+    $ref: common.yaml#/$defs/IncludeExclude
+    description: |
+      Configure resource attribute filtering.
+      Applies after all resource attributes are combined, including .resource.attributes, .resource.attributes_list, .resource.detection/development, and attributes provided by the SDK by default.
+    defaultBehavior: all attribute keys are retained
   detection/development:
     $ref: "#/$defs/ExperimentalResourceDetection"
     description: |
@@ -94,10 +100,6 @@ $defs:
     type: object
     additionalProperties: false
     properties:
-      attributes:
-        $ref: common.yaml#/$defs/IncludeExclude
-        description: Configure attributes provided by resource detectors.
-        defaultBehavior: all attributes from resource detectors are added
       detectors:
         type: array
         minItems: 1

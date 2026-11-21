@@ -173,7 +173,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: Resource
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: attribute_filter
+        status: not_implemented
   - type: Sampler
     status: supported
     propertyOverrides:

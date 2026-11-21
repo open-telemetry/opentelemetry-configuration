@@ -1196,10 +1196,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "attributes": {
-          "$ref": "#/$defs/IncludeExclude",
-          "description": "Configure attributes provided by resource detectors.\nIf omitted, all attributes from resource detectors are added.\n"
-        },
         "detectors": {
           "type": "array",
           "minItems": 1,
@@ -2254,6 +2250,10 @@
             "$ref": "#/$defs/AttributeNameValue"
           },
           "description": "Configure resource attributes. Entries have higher priority than entries from .resource.attributes_list.\nIf omitted, no resource attributes are added.\n"
+        },
+        "attribute_filter": {
+          "$ref": "#/$defs/IncludeExclude",
+          "description": "Configure resource attribute filtering.\nApplies after all resource attributes are combined, including .resource.attributes, .resource.attributes_list, .resource.detection/development, and attributes provided by the SDK by default.\nIf omitted, all attribute keys are retained.\n"
         },
         "detection/development": {
           "$ref": "#/$defs/ExperimentalResourceDetection",
