@@ -58,6 +58,12 @@ $defs:
         $ref: "#/$defs/HttpTls"
         description: Configure TLS settings for the exporter.
         defaultBehavior: system default TLS settings are used
+      proxy/development:
+        $ref: "#/$defs/ExperimentalProxy"
+        description: |
+          Configure an HTTP forward proxy through which the exporter sends all requests.
+          See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#proxy for details.
+        defaultBehavior: no proxy is used, and ambient proxy settings (e.g. HTTP_PROXY, HTTPS_PROXY, NO_PROXY environment variables, platform or language runtime proxy settings) are ignored
       headers:
         type: array
         minItems: 1
@@ -143,6 +149,12 @@ $defs:
         $ref: "#/$defs/GrpcTls"
         description: Configure TLS settings for the exporter.
         defaultBehavior: system default TLS settings are used
+      proxy/development:
+        $ref: "#/$defs/ExperimentalProxy"
+        description: |
+          Configure an HTTP forward proxy through which the exporter sends all requests.
+          See https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md#proxy for details.
+        defaultBehavior: no proxy is used, and ambient proxy settings (e.g. HTTP_PROXY, HTTPS_PROXY, NO_PROXY environment variables, platform or language runtime proxy settings) are ignored
       headers:
         type: array
         minItems: 1
@@ -282,6 +294,37 @@ $defs:
           Configure client transport security for the exporter's connection. 
           Only applicable when .endpoint is provided without http or https scheme. Implementations may choose to ignore .insecure.
         defaultBehavior: false is used
+  ExperimentalProxy:
+    type: object
+    additionalProperties: false
+    properties:
+      url:
+        type: string
+        description: |
+          Configure the URL of the HTTP forward proxy, e.g. http://proxy.example.com:3128.
+          The scheme must be http or https. Implementations may not support https (TLS between the exporter and the proxy).
+          Must not include userinfo; set credentials with .username and .password instead.
+      username:
+        type:
+          - string
+          - "null"
+        description: |
+          Configure the username for Basic authentication to the proxy.
+        defaultBehavior: no proxy authentication is used
+      password:
+        type:
+          - string
+          - "null"
+        description: |
+          Configure the password for Basic authentication to the proxy.
+        defaultBehavior: no proxy authentication is used
+    required:
+      - url
+    dependentRequired:
+      username:
+        - password
+      password:
+        - username
   SeverityNumber:
     type:
       - string

@@ -2,6 +2,9 @@
 
 ### Schema
 
+* Add experimental `proxy/development` property to OTLP exporters, following
+  the addition of OTLP exporter proxy options in the specification
+  ([open-telemetry/opentelemetry-specification#5415](https://github.com/open-telemetry/opentelemetry-specification/pull/5415))
 * **BREAKING (experimental property)**: Stabilize `PeriodicMetricReader.max_export_batch_size/development` to `PeriodicMetricReader.max_export_batch_size`
 
   <details>
