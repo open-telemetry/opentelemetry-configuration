@@ -1,4 +1,5 @@
 file_format: "1.2"
+stability: development
 
 meter_provider:
   readers:
@@ -12,4 +13,4 @@ meter_provider:
       selector:
         instrument_name: my.unwanted.instrument
       stream:
-        enabled/development: false
+        enabled: false
